@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+
+
+<!-- header  -->
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AnyFX Header</Title>
+            <Shortcut>aheader</Shortcut>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Object>
+                    <ID>description</ID>
+                    <Type>String of text</Type>
+                    <ToolTip>Write a description of this header file.</ToolTip>
+                    <Default>WRITE ME OR ELSE!</Default>
+                </Object>
+                <Object>
+                    <ID>year</ID>
+                    <Type>Current year</Type>
+                    <ToolTip>Please insert this year, and not some other year...</ToolTip>
+                    <Default>2021</Default>
+                </Object>
+            </Declarations>
+            <Code Language="cpp">
+                <![CDATA[#pragma once
+//------------------------------------------------------------------------------
+/**
+    $description$
+
+    @copyright (C) $year$ Gustav Sterbrant
+*/
+//------------------------------------------------------------------------------
+namespace AnyFX
+{
+$end$
+} // namespace AnyFX
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+
+<!-- source  -->
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AnyFX Source</Title>
+            <Shortcut>asource</Shortcut>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Object>
+                    <ID>filename</ID>
+                    <Type>String of text</Type>
+                    <ToolTip>Write a description of this header file.</ToolTip>
+                    <Default>WRITE ME OR ELSE!</Default>
+                </Object>
+                <Object>
+                    <ID>year</ID>
+                    <Type>Current year</Type>
+                    <ToolTip>Please insert this year, and not some other year...</ToolTip>
+                    <Default>2021</Default>
+                </Object>
+            </Declarations>
+            <Code Language="cpp">
+                <![CDATA[//------------------------------------------------------------------------------
+//  @file $filename$.cc
+//  @copyright (C) $year$ Gustav Sterbrant
+//------------------------------------------------------------------------------
+#include "$filename$.h"
+namespace AnyFX
+{
+$end$
+} // namespace AnyFX
+                ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+
+
+<!-- comment  -->
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Function comment</Title>
+            <Shortcut>acomment</Shortcut>
+        </Header>
+        <Snippet>
+
+            <Code Language="cpp">
+                <![CDATA[//------------------------------------------------------------------------------
+/**
+*/$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

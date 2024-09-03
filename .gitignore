@@ -1,0 +1,7 @@
+#>fips
+# this area is managed by fips, do not edit
+.fips-*
+*.pyc
+#<fips
+﻿code/compiler/ext/antlr4/grammar/.antlr
+code/test/shaders/output

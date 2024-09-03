@@ -1,0 +1,18 @@
+#
+# fips-gpulang
+#
+---
+imports:
+      fips-vulkanheaders:
+        git: https://github.com/gscept/fips-vulkanheaders
+
+exports:
+    header-dirs:
+    - code
+    - code/api
+    - code/compiler
+    - code/compiler/ext/antlr4/src
+    - code/compiler/ext/mcpp
+    - code/util
+    modules:
+        code: .

@@ -1,0 +1,9 @@
+---
+platform: linux
+generator: Unix Makefiles
+build_tool: make
+build_type: Release
+defines:
+  BUILD_COMPILER: ON
+  FIPS_RTTI: ON
+  FIPS_EXCEPTIONS: ON

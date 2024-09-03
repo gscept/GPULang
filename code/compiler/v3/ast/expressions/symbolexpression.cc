@@ -1,0 +1,253 @@
+//------------------------------------------------------------------------------
+//  symbolexpression.cc
+//  (C) 2020 Gustav Sterbrant
+//------------------------------------------------------------------------------
+#include "symbolexpression.h"
+#include "ast/symbol.h"
+#include "ast/variable.h"
+#include "ast/function.h"
+#include "compiler.h"
+#include "util.h"
+#include "v3/ast/types/type.h"
+#include "v3/ast/structure.h"
+#include "v3/ast/expressions/enumexpression.h"
+#include <string>
+
+namespace AnyFX
+{
+
+//------------------------------------------------------------------------------
+/**
+*/
+SymbolExpression::SymbolExpression(const std::string symbol)
+    : symbol(symbol)
+{
+    this->resolved = new SymbolExpression::__Resolved;
+    this->symbolType = SymbolExpressionType;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SymbolExpression::~SymbolExpression()
+{
+    // empty
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+SymbolExpression::Resolve(Compiler* compiler)
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (compiler->declareTy == nullptr)
+    {
+        thisResolved->symbol = compiler->GetSymbol(this->symbol);
+        if (thisResolved->symbol == nullptr)
+        {
+            compiler->UnrecognizedSymbolError(this->symbol, this);
+            return false;
+        }
+        else
+        {
+            if (thisResolved->symbol->symbolType == Symbol::VariableType)
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                auto varResolved = Symbol::Resolved(var);
+                thisResolved->fullType = varResolved->type;
+                return true;
+            }
+            else if (thisResolved->symbol->symbolType == Symbol::StructureType)
+            {
+                Structure* struc = static_cast<Structure*>(thisResolved->symbol);
+                thisResolved->fullType = Type::FullType{ struc->name };
+                return true;
+            }
+            else if (thisResolved->symbol->symbolType == Symbol::TypeType)
+            {
+                Type* type = static_cast<Type*>(thisResolved->symbol);
+                thisResolved->fullType = Type::FullType{ type->name };
+                return true;
+            }
+            else if (thisResolved->symbol->symbolType == Symbol::FunctionType)
+            {
+                // If lhs, it means it's a function assignment, therefore function pointer
+                thisResolved->fullType = { "function" };
+                return true;
+            }
+            else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
+            {
+                EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->symbol);
+                thisResolved->fullType = expr->type;
+                return true;
+            }
+            else
+            {
+                compiler->Error(Format("Symbol is not function, type, variable, enum or structure"), this);
+                return false;
+            }
+        }
+    }
+    else
+    {
+        thisResolved->fullType = compiler->declareType;
+        thisResolved->type = compiler->declareTy;
+        return true;
+    }
+
+    compiler->Error(Format("Could not resolve type for '%s'", this->symbol.c_str()), this);
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+SymbolExpression::EvalType(Type::FullType& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->fullType;
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalSymbol(std::string& out) const
+{
+    out = this->symbol;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalInt(int& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->symbol)
+    {
+        switch (thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                return varResolved->value->EvalInt(out);
+            }
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                return expr->EvalInt(out);
+            }
+        }
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalUInt(unsigned& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->symbol)
+    {
+        switch (thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                return varResolved->value->EvalUInt(out);
+            }
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                return expr->EvalUInt(out);
+            }
+        }
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalFloat(float& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->symbol != nullptr)
+    {
+        switch (thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                return varResolved->value->EvalFloat(out);
+            }
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                return expr->EvalFloat(out);
+            }
+        }
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalBool(bool& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->symbol)
+    {
+        switch (thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                return varResolved->value->EvalBool(out);
+            }
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                return expr->EvalBool(out);
+            }
+        }
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+std::string
+SymbolExpression::EvalString() const
+{
+    return this->symbol;
+}
+
+} // namespace AnyFX
