@@ -197,8 +197,6 @@ fips_dir(v3/generators)
         hgenerator.h
         hlslgenerator.cc
         hlslgenerator.h
-        llvmgenerator.cc
-        llvmgenerator.h
         spirvgenerator.cc
         spirvgenerator.h
     )
@@ -208,7 +206,7 @@ fips_dir(v3/validators)
         validator.h
     )
 
-fips_deps(gpulang_util antlr4 glslang mcpp LLVMSupport)
+fips_deps(gpulang_util antlr4 glslang mcpp)
 
 IF (MSVC11)
     ADD_DEFINITIONS(-D_XKEYCHECK_H)

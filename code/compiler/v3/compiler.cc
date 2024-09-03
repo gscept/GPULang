@@ -8,7 +8,6 @@
 #include "generators/hlslgenerator.h"
 #include "generators/glslgenerator.h"
 #include "generators/spirvgenerator.h"
-#include "generators/llvmgenerator.h"
 #include "generators/hgenerator.h"
 #include "util.h"
 #include "v3/ast/types/type.h"
@@ -94,12 +93,6 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     case Language::HLSL_SPIRV:
     case Language::HLSL:
         this->generator = new HLSLGenerator();
-        break;
-    case Language::LLVM_SPIRV:
-        this->generator = new LLVMGenerator(LLVMGenerator::Backend::SPIRV);
-        break;
-    case Language::LLVM_AMDGPU:
-        this->generator = new LLVMGenerator(LLVMGenerator::Backend::AMDGPU);
         break;
     case Language::SPIRV:
         this->generator = new SPIRVGenerator();

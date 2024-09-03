@@ -5,6 +5,9 @@
 imports:
       fips-vulkanheaders:
         git: https://github.com/gscept/fips-vulkanheaders
+      fips-glslang:
+        git: https://github.com/gscept/fips-glslang.git
+        cond: "BUILD_GPULANGCOMPILER"
 
 exports:
     header-dirs:

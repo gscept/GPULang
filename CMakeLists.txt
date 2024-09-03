@@ -7,6 +7,7 @@ ADD_DEFINITIONS(-DANTLR4CPP_STATIC)
 
 if(NOT FIPS_IMPORT)
 	fips_project(gpulang)
+	SET(BUILD_GPULANGCOMPILER 1)
 	fips_setup()
 endif()
 
