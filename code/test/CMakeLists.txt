@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
-# anyfx tests
+# GPULang tests
 #-------------------------------------------------------------------------------
 
 
-fips_begin_app(anyfx_test cmdline)
+fips_begin_app(gpulang_test cmdline)
 
     fips_include_directories(
-        ${ANYFX_ROOT}/code/compiler
-        ${ANYFX_ROOT}/code/api/
+        ${GPULANG_ROOT}/code/compiler
+        ${GPULANG_ROOT}/code/api/
 
         )
 
@@ -22,15 +22,6 @@ fips_begin_app(anyfx_test cmdline)
         apitest.cc
     )
 
-    set(LLVM_LINK_COMPONENTS
-          LLVMBitWriter
-          LLVMCore
-          LLVMExecutionEngine
-          LLVMMC
-          LLVMMCJIT
-          LLVMSupport
-          )
-
-    fips_deps(anyfx_compiler anyfx_api ${LLVM_LINK_COMPONENTS})
+    fips_deps(gpulang_compiler gpulang_reflection)
 
 fips_end_app()

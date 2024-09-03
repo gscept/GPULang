@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -120,4 +120,4 @@ CmdLineArgs::FindIndex(const std::string& key)
     return NOT_FOUND;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

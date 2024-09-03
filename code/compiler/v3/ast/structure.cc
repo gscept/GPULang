@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "structure.h"
 #include "compiler.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -28,4 +28,4 @@ Structure::Structure()
     
 }
 
-} // namespace AnyFX
+} // namespace GPULang

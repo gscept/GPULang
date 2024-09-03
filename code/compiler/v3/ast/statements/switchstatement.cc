@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "switchstatement.h"
 #include <array>
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -31,4 +31,4 @@ SwitchStatement::~SwitchStatement()
         delete this->defaultStatement;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

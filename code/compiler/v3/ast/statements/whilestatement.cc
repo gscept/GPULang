@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "whilestatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -26,4 +26,4 @@ WhileStatement::~WhileStatement()
     delete this->statement;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

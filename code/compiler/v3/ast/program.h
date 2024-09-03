@@ -13,7 +13,7 @@
 #include "annotation.h"
 #include "symbol.h"
 #include "ast/statements/statement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Function;
@@ -87,4 +87,4 @@ struct Program : public Symbol
 
 extern const std::map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
 
-} // namespace AnyFX
+} // namespace GPULang

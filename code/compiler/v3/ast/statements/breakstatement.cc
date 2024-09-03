@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "breakstatement.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -14,4 +14,4 @@ BreakStatement::BreakStatement()
     this->symbolType = BreakStatementType;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -9,7 +9,7 @@
 #include "attribute.h"
 #include "variable.h"
 #include "types/type.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Structure : public Type
@@ -50,4 +50,4 @@ struct Structure : public Type
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

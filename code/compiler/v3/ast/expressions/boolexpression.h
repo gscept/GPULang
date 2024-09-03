@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::BoolExpression
+    @class GPULang::BoolExpression
     
     A boolean expression holds a single boolean argument.
     
@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct BoolExpression : public Expression
 {
@@ -45,5 +45,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 #include <vector>
 #include <string>
 
-namespace AnyFX
+namespace GPULang
 {
 
 class CmdLineArgs
@@ -43,4 +43,4 @@ private:
 
 
 
-} // namespace AnyFX
+} // namespace GPULang

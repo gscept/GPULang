@@ -133,7 +133,7 @@ void SetupDefaultResources()
 }
 
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -1311,4 +1311,4 @@ GLSLGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* sy
 
 }
 
-} // namespace AnyFX
+} // namespace GPULang

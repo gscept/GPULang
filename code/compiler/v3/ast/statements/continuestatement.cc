@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "continuestatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -14,4 +14,4 @@ ContinueStatement::ContinueStatement()
     this->symbolType = ContinueStatementType;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

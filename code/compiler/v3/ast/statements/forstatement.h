@@ -9,7 +9,7 @@
 #include "statement.h"
 #include "ast/expressions/expression.h"
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 struct ForStatement : public Statement
@@ -25,4 +25,4 @@ struct ForStatement : public Statement
     Statement* contents;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

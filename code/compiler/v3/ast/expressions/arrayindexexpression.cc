@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 #include "v3/ast/types/type.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -199,4 +199,4 @@ ArrayIndexExpression::EvalString() const
         return Format("%s[]", left.c_str());
 }
 
-} // namespace AnyFX
+} // namespace GPULang

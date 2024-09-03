@@ -8,7 +8,7 @@
 #include <stack>
 #include <tuple>
 
-#include "anyfxtoken.h"
+#include "gpulangtoken.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -48,68 +48,68 @@
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 
-using namespace AnyFX;
+using namespace GPULang;
 
 
 
-// Generated from antlr4/grammar/AnyFX.g4 by ANTLR 4.7.1
+// Generated from antlr4/grammar/GPULang.g4 by ANTLR 4.7.1
 
 
-#include "AnyFXListener.h"
+#include "GPULangListener.h"
 
-#include "AnyFXParser.h"
+#include "GPULangParser.h"
 
 
 using namespace antlrcpp;
 using namespace antlr4;
 
-AnyFXParser::AnyFXParser(TokenStream *input) : Parser(input) {
+GPULangParser::GPULangParser(TokenStream *input) : Parser(input) {
   _interpreter = new atn::ParserATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
 }
 
-AnyFXParser::~AnyFXParser() {
+GPULangParser::~GPULangParser() {
   delete _interpreter;
 }
 
-std::string AnyFXParser::getGrammarFileName() const {
-  return "AnyFX.g4";
+std::string GPULangParser::getGrammarFileName() const {
+  return "GPULang.g4";
 }
 
-const std::vector<std::string>& AnyFXParser::getRuleNames() const {
+const std::vector<std::string>& GPULangParser::getRuleNames() const {
   return _ruleNames;
 }
 
-dfa::Vocabulary& AnyFXParser::getVocabulary() const {
+dfa::Vocabulary& GPULangParser::getVocabulary() const {
   return _vocabulary;
 }
 
 
 //----------------- StringContext ------------------------------------------------------------------
 
-AnyFXParser::StringContext::StringContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::StringContext::StringContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t AnyFXParser::StringContext::getRuleIndex() const {
-  return AnyFXParser::RuleString;
+size_t GPULangParser::StringContext::getRuleIndex() const {
+  return GPULangParser::RuleString;
 }
 
-void AnyFXParser::StringContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StringContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterString(this);
 }
 
-void AnyFXParser::StringContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StringContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitString(this);
 }
 
-AnyFXParser::StringContext* AnyFXParser::string() {
+GPULangParser::StringContext* GPULangParser::string() {
   StringContext *_localctx = _tracker.createInstance<StringContext>(_ctx, getState());
-  enterRule(_localctx, 0, AnyFXParser::RuleString);
+  enterRule(_localctx, 0, GPULangParser::RuleString);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -119,101 +119,101 @@ AnyFXParser::StringContext* AnyFXParser::string() {
     setState(114);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::QO: {
+      case GPULangParser::QO: {
         enterOuterAlt(_localctx, 1);
         setState(96);
-        match(AnyFXParser::QO);
+        match(GPULangParser::QO);
         setState(101);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while ((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-          | (1ULL << AnyFXParser::T__1)
-          | (1ULL << AnyFXParser::T__2)
-          | (1ULL << AnyFXParser::T__3)
-          | (1ULL << AnyFXParser::T__4)
-          | (1ULL << AnyFXParser::T__5)
-          | (1ULL << AnyFXParser::T__6)
-          | (1ULL << AnyFXParser::T__7)
-          | (1ULL << AnyFXParser::T__8)
-          | (1ULL << AnyFXParser::T__9)
-          | (1ULL << AnyFXParser::T__10)
-          | (1ULL << AnyFXParser::T__11)
-          | (1ULL << AnyFXParser::T__12)
-          | (1ULL << AnyFXParser::T__13)
-          | (1ULL << AnyFXParser::T__14)
-          | (1ULL << AnyFXParser::T__15)
-          | (1ULL << AnyFXParser::T__16)
-          | (1ULL << AnyFXParser::T__17)
-          | (1ULL << AnyFXParser::T__18)
-          | (1ULL << AnyFXParser::T__19)
-          | (1ULL << AnyFXParser::T__20)
-          | (1ULL << AnyFXParser::T__21)
-          | (1ULL << AnyFXParser::T__22)
-          | (1ULL << AnyFXParser::T__23)
-          | (1ULL << AnyFXParser::T__24)
-          | (1ULL << AnyFXParser::T__25)
-          | (1ULL << AnyFXParser::T__26)
-          | (1ULL << AnyFXParser::T__27)
-          | (1ULL << AnyFXParser::T__28)
-          | (1ULL << AnyFXParser::T__29)
-          | (1ULL << AnyFXParser::T__30)
-          | (1ULL << AnyFXParser::T__31)
-          | (1ULL << AnyFXParser::T__32)
-          | (1ULL << AnyFXParser::T__33)
-          | (1ULL << AnyFXParser::SC)
-          | (1ULL << AnyFXParser::CO)
-          | (1ULL << AnyFXParser::COL)
-          | (1ULL << AnyFXParser::LP)
-          | (1ULL << AnyFXParser::RP)
-          | (1ULL << AnyFXParser::LB)
-          | (1ULL << AnyFXParser::RB)
-          | (1ULL << AnyFXParser::LL)
-          | (1ULL << AnyFXParser::RR)
-          | (1ULL << AnyFXParser::DOT)
-          | (1ULL << AnyFXParser::NOT)
-          | (1ULL << AnyFXParser::EQ)
-          | (1ULL << AnyFXParser::QU)
-          | (1ULL << AnyFXParser::AND)
-          | (1ULL << AnyFXParser::ANDSET)
-          | (1ULL << AnyFXParser::OR)
-          | (1ULL << AnyFXParser::ORSET)
-          | (1ULL << AnyFXParser::XOR)
-          | (1ULL << AnyFXParser::XORSET)
-          | (1ULL << AnyFXParser::CONNJUGATE)
-          | (1ULL << AnyFXParser::Q)
-          | (1ULL << AnyFXParser::NU)
-          | (1ULL << AnyFXParser::FORWARDSLASH)
-          | (1ULL << AnyFXParser::LESS)
-          | (1ULL << AnyFXParser::LESSEQ)
-          | (1ULL << AnyFXParser::GREATER)
-          | (1ULL << AnyFXParser::GREATEREQ)
-          | (1ULL << AnyFXParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
-          ((1ULL << (_la - 64)) & ((1ULL << (AnyFXParser::NOTEQ - 64))
-          | (1ULL << (AnyFXParser::LOGICAND - 64))
-          | (1ULL << (AnyFXParser::LOGICOR - 64))
-          | (1ULL << (AnyFXParser::MOD - 64))
-          | (1ULL << (AnyFXParser::UNDERSC - 64))
-          | (1ULL << (AnyFXParser::SOBAKA - 64))
-          | (1ULL << (AnyFXParser::ADD_OP - 64))
-          | (1ULL << (AnyFXParser::SUB_OP - 64))
-          | (1ULL << (AnyFXParser::DIV_OP - 64))
-          | (1ULL << (AnyFXParser::MUL_OP - 64))
-          | (1ULL << (AnyFXParser::ARROW - 64))
-          | (1ULL << (AnyFXParser::INTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::UINTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::COMMENT - 64))
-          | (1ULL << (AnyFXParser::ML_COMMENT - 64))
-          | (1ULL << (AnyFXParser::FLOATLITERAL - 64))
-          | (1ULL << (AnyFXParser::EXPONENT - 64))
-          | (1ULL << (AnyFXParser::DOUBLELITERAL - 64))
-          | (1ULL << (AnyFXParser::HEX - 64))
-          | (1ULL << (AnyFXParser::IDENTIFIER - 64))
-          | (1ULL << (AnyFXParser::WS - 64)))) != 0)) {
+          ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+          | (1ULL << GPULangParser::T__1)
+          | (1ULL << GPULangParser::T__2)
+          | (1ULL << GPULangParser::T__3)
+          | (1ULL << GPULangParser::T__4)
+          | (1ULL << GPULangParser::T__5)
+          | (1ULL << GPULangParser::T__6)
+          | (1ULL << GPULangParser::T__7)
+          | (1ULL << GPULangParser::T__8)
+          | (1ULL << GPULangParser::T__9)
+          | (1ULL << GPULangParser::T__10)
+          | (1ULL << GPULangParser::T__11)
+          | (1ULL << GPULangParser::T__12)
+          | (1ULL << GPULangParser::T__13)
+          | (1ULL << GPULangParser::T__14)
+          | (1ULL << GPULangParser::T__15)
+          | (1ULL << GPULangParser::T__16)
+          | (1ULL << GPULangParser::T__17)
+          | (1ULL << GPULangParser::T__18)
+          | (1ULL << GPULangParser::T__19)
+          | (1ULL << GPULangParser::T__20)
+          | (1ULL << GPULangParser::T__21)
+          | (1ULL << GPULangParser::T__22)
+          | (1ULL << GPULangParser::T__23)
+          | (1ULL << GPULangParser::T__24)
+          | (1ULL << GPULangParser::T__25)
+          | (1ULL << GPULangParser::T__26)
+          | (1ULL << GPULangParser::T__27)
+          | (1ULL << GPULangParser::T__28)
+          | (1ULL << GPULangParser::T__29)
+          | (1ULL << GPULangParser::T__30)
+          | (1ULL << GPULangParser::T__31)
+          | (1ULL << GPULangParser::T__32)
+          | (1ULL << GPULangParser::T__33)
+          | (1ULL << GPULangParser::SC)
+          | (1ULL << GPULangParser::CO)
+          | (1ULL << GPULangParser::COL)
+          | (1ULL << GPULangParser::LP)
+          | (1ULL << GPULangParser::RP)
+          | (1ULL << GPULangParser::LB)
+          | (1ULL << GPULangParser::RB)
+          | (1ULL << GPULangParser::LL)
+          | (1ULL << GPULangParser::RR)
+          | (1ULL << GPULangParser::DOT)
+          | (1ULL << GPULangParser::NOT)
+          | (1ULL << GPULangParser::EQ)
+          | (1ULL << GPULangParser::QU)
+          | (1ULL << GPULangParser::AND)
+          | (1ULL << GPULangParser::ANDSET)
+          | (1ULL << GPULangParser::OR)
+          | (1ULL << GPULangParser::ORSET)
+          | (1ULL << GPULangParser::XOR)
+          | (1ULL << GPULangParser::XORSET)
+          | (1ULL << GPULangParser::CONNJUGATE)
+          | (1ULL << GPULangParser::Q)
+          | (1ULL << GPULangParser::NU)
+          | (1ULL << GPULangParser::FORWARDSLASH)
+          | (1ULL << GPULangParser::LESS)
+          | (1ULL << GPULangParser::LESSEQ)
+          | (1ULL << GPULangParser::GREATER)
+          | (1ULL << GPULangParser::GREATEREQ)
+          | (1ULL << GPULangParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
+          ((1ULL << (_la - 64)) & ((1ULL << (GPULangParser::NOTEQ - 64))
+          | (1ULL << (GPULangParser::LOGICAND - 64))
+          | (1ULL << (GPULangParser::LOGICOR - 64))
+          | (1ULL << (GPULangParser::MOD - 64))
+          | (1ULL << (GPULangParser::UNDERSC - 64))
+          | (1ULL << (GPULangParser::SOBAKA - 64))
+          | (1ULL << (GPULangParser::ADD_OP - 64))
+          | (1ULL << (GPULangParser::SUB_OP - 64))
+          | (1ULL << (GPULangParser::DIV_OP - 64))
+          | (1ULL << (GPULangParser::MUL_OP - 64))
+          | (1ULL << (GPULangParser::ARROW - 64))
+          | (1ULL << (GPULangParser::INTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::UINTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::COMMENT - 64))
+          | (1ULL << (GPULangParser::ML_COMMENT - 64))
+          | (1ULL << (GPULangParser::FLOATLITERAL - 64))
+          | (1ULL << (GPULangParser::EXPONENT - 64))
+          | (1ULL << (GPULangParser::DOUBLELITERAL - 64))
+          | (1ULL << (GPULangParser::HEX - 64))
+          | (1ULL << (GPULangParser::IDENTIFIER - 64))
+          | (1ULL << (GPULangParser::WS - 64)))) != 0)) {
           setState(97);
           dynamic_cast<StringContext *>(_localctx)->data = _input->LT(1);
           _la = _input->LA(1);
-          if (_la == 0 || _la == Token::EOF || (_la == AnyFXParser::QO)) {
+          if (_la == 0 || _la == Token::EOF || (_la == GPULangParser::QO)) {
             dynamic_cast<StringContext *>(_localctx)->data = _errHandler->recoverInline(this);
           }
           else {
@@ -226,105 +226,105 @@ AnyFXParser::StringContext* AnyFXParser::string() {
           _la = _input->LA(1);
         }
         setState(104);
-        match(AnyFXParser::QO);
+        match(GPULangParser::QO);
         break;
       }
 
-      case AnyFXParser::Q: {
+      case GPULangParser::Q: {
         enterOuterAlt(_localctx, 2);
         setState(105);
-        match(AnyFXParser::Q);
+        match(GPULangParser::Q);
         setState(110);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while ((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-          | (1ULL << AnyFXParser::T__1)
-          | (1ULL << AnyFXParser::T__2)
-          | (1ULL << AnyFXParser::T__3)
-          | (1ULL << AnyFXParser::T__4)
-          | (1ULL << AnyFXParser::T__5)
-          | (1ULL << AnyFXParser::T__6)
-          | (1ULL << AnyFXParser::T__7)
-          | (1ULL << AnyFXParser::T__8)
-          | (1ULL << AnyFXParser::T__9)
-          | (1ULL << AnyFXParser::T__10)
-          | (1ULL << AnyFXParser::T__11)
-          | (1ULL << AnyFXParser::T__12)
-          | (1ULL << AnyFXParser::T__13)
-          | (1ULL << AnyFXParser::T__14)
-          | (1ULL << AnyFXParser::T__15)
-          | (1ULL << AnyFXParser::T__16)
-          | (1ULL << AnyFXParser::T__17)
-          | (1ULL << AnyFXParser::T__18)
-          | (1ULL << AnyFXParser::T__19)
-          | (1ULL << AnyFXParser::T__20)
-          | (1ULL << AnyFXParser::T__21)
-          | (1ULL << AnyFXParser::T__22)
-          | (1ULL << AnyFXParser::T__23)
-          | (1ULL << AnyFXParser::T__24)
-          | (1ULL << AnyFXParser::T__25)
-          | (1ULL << AnyFXParser::T__26)
-          | (1ULL << AnyFXParser::T__27)
-          | (1ULL << AnyFXParser::T__28)
-          | (1ULL << AnyFXParser::T__29)
-          | (1ULL << AnyFXParser::T__30)
-          | (1ULL << AnyFXParser::T__31)
-          | (1ULL << AnyFXParser::T__32)
-          | (1ULL << AnyFXParser::T__33)
-          | (1ULL << AnyFXParser::SC)
-          | (1ULL << AnyFXParser::CO)
-          | (1ULL << AnyFXParser::COL)
-          | (1ULL << AnyFXParser::LP)
-          | (1ULL << AnyFXParser::RP)
-          | (1ULL << AnyFXParser::LB)
-          | (1ULL << AnyFXParser::RB)
-          | (1ULL << AnyFXParser::LL)
-          | (1ULL << AnyFXParser::RR)
-          | (1ULL << AnyFXParser::DOT)
-          | (1ULL << AnyFXParser::NOT)
-          | (1ULL << AnyFXParser::EQ)
-          | (1ULL << AnyFXParser::QO)
-          | (1ULL << AnyFXParser::QU)
-          | (1ULL << AnyFXParser::AND)
-          | (1ULL << AnyFXParser::ANDSET)
-          | (1ULL << AnyFXParser::OR)
-          | (1ULL << AnyFXParser::ORSET)
-          | (1ULL << AnyFXParser::XOR)
-          | (1ULL << AnyFXParser::XORSET)
-          | (1ULL << AnyFXParser::CONNJUGATE)
-          | (1ULL << AnyFXParser::NU)
-          | (1ULL << AnyFXParser::FORWARDSLASH)
-          | (1ULL << AnyFXParser::LESS)
-          | (1ULL << AnyFXParser::LESSEQ)
-          | (1ULL << AnyFXParser::GREATER)
-          | (1ULL << AnyFXParser::GREATEREQ)
-          | (1ULL << AnyFXParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
-          ((1ULL << (_la - 64)) & ((1ULL << (AnyFXParser::NOTEQ - 64))
-          | (1ULL << (AnyFXParser::LOGICAND - 64))
-          | (1ULL << (AnyFXParser::LOGICOR - 64))
-          | (1ULL << (AnyFXParser::MOD - 64))
-          | (1ULL << (AnyFXParser::UNDERSC - 64))
-          | (1ULL << (AnyFXParser::SOBAKA - 64))
-          | (1ULL << (AnyFXParser::ADD_OP - 64))
-          | (1ULL << (AnyFXParser::SUB_OP - 64))
-          | (1ULL << (AnyFXParser::DIV_OP - 64))
-          | (1ULL << (AnyFXParser::MUL_OP - 64))
-          | (1ULL << (AnyFXParser::ARROW - 64))
-          | (1ULL << (AnyFXParser::INTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::UINTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::COMMENT - 64))
-          | (1ULL << (AnyFXParser::ML_COMMENT - 64))
-          | (1ULL << (AnyFXParser::FLOATLITERAL - 64))
-          | (1ULL << (AnyFXParser::EXPONENT - 64))
-          | (1ULL << (AnyFXParser::DOUBLELITERAL - 64))
-          | (1ULL << (AnyFXParser::HEX - 64))
-          | (1ULL << (AnyFXParser::IDENTIFIER - 64))
-          | (1ULL << (AnyFXParser::WS - 64)))) != 0)) {
+          ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+          | (1ULL << GPULangParser::T__1)
+          | (1ULL << GPULangParser::T__2)
+          | (1ULL << GPULangParser::T__3)
+          | (1ULL << GPULangParser::T__4)
+          | (1ULL << GPULangParser::T__5)
+          | (1ULL << GPULangParser::T__6)
+          | (1ULL << GPULangParser::T__7)
+          | (1ULL << GPULangParser::T__8)
+          | (1ULL << GPULangParser::T__9)
+          | (1ULL << GPULangParser::T__10)
+          | (1ULL << GPULangParser::T__11)
+          | (1ULL << GPULangParser::T__12)
+          | (1ULL << GPULangParser::T__13)
+          | (1ULL << GPULangParser::T__14)
+          | (1ULL << GPULangParser::T__15)
+          | (1ULL << GPULangParser::T__16)
+          | (1ULL << GPULangParser::T__17)
+          | (1ULL << GPULangParser::T__18)
+          | (1ULL << GPULangParser::T__19)
+          | (1ULL << GPULangParser::T__20)
+          | (1ULL << GPULangParser::T__21)
+          | (1ULL << GPULangParser::T__22)
+          | (1ULL << GPULangParser::T__23)
+          | (1ULL << GPULangParser::T__24)
+          | (1ULL << GPULangParser::T__25)
+          | (1ULL << GPULangParser::T__26)
+          | (1ULL << GPULangParser::T__27)
+          | (1ULL << GPULangParser::T__28)
+          | (1ULL << GPULangParser::T__29)
+          | (1ULL << GPULangParser::T__30)
+          | (1ULL << GPULangParser::T__31)
+          | (1ULL << GPULangParser::T__32)
+          | (1ULL << GPULangParser::T__33)
+          | (1ULL << GPULangParser::SC)
+          | (1ULL << GPULangParser::CO)
+          | (1ULL << GPULangParser::COL)
+          | (1ULL << GPULangParser::LP)
+          | (1ULL << GPULangParser::RP)
+          | (1ULL << GPULangParser::LB)
+          | (1ULL << GPULangParser::RB)
+          | (1ULL << GPULangParser::LL)
+          | (1ULL << GPULangParser::RR)
+          | (1ULL << GPULangParser::DOT)
+          | (1ULL << GPULangParser::NOT)
+          | (1ULL << GPULangParser::EQ)
+          | (1ULL << GPULangParser::QO)
+          | (1ULL << GPULangParser::QU)
+          | (1ULL << GPULangParser::AND)
+          | (1ULL << GPULangParser::ANDSET)
+          | (1ULL << GPULangParser::OR)
+          | (1ULL << GPULangParser::ORSET)
+          | (1ULL << GPULangParser::XOR)
+          | (1ULL << GPULangParser::XORSET)
+          | (1ULL << GPULangParser::CONNJUGATE)
+          | (1ULL << GPULangParser::NU)
+          | (1ULL << GPULangParser::FORWARDSLASH)
+          | (1ULL << GPULangParser::LESS)
+          | (1ULL << GPULangParser::LESSEQ)
+          | (1ULL << GPULangParser::GREATER)
+          | (1ULL << GPULangParser::GREATEREQ)
+          | (1ULL << GPULangParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
+          ((1ULL << (_la - 64)) & ((1ULL << (GPULangParser::NOTEQ - 64))
+          | (1ULL << (GPULangParser::LOGICAND - 64))
+          | (1ULL << (GPULangParser::LOGICOR - 64))
+          | (1ULL << (GPULangParser::MOD - 64))
+          | (1ULL << (GPULangParser::UNDERSC - 64))
+          | (1ULL << (GPULangParser::SOBAKA - 64))
+          | (1ULL << (GPULangParser::ADD_OP - 64))
+          | (1ULL << (GPULangParser::SUB_OP - 64))
+          | (1ULL << (GPULangParser::DIV_OP - 64))
+          | (1ULL << (GPULangParser::MUL_OP - 64))
+          | (1ULL << (GPULangParser::ARROW - 64))
+          | (1ULL << (GPULangParser::INTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::UINTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::COMMENT - 64))
+          | (1ULL << (GPULangParser::ML_COMMENT - 64))
+          | (1ULL << (GPULangParser::FLOATLITERAL - 64))
+          | (1ULL << (GPULangParser::EXPONENT - 64))
+          | (1ULL << (GPULangParser::DOUBLELITERAL - 64))
+          | (1ULL << (GPULangParser::HEX - 64))
+          | (1ULL << (GPULangParser::IDENTIFIER - 64))
+          | (1ULL << (GPULangParser::WS - 64)))) != 0)) {
           setState(106);
           dynamic_cast<StringContext *>(_localctx)->data = _input->LT(1);
           _la = _input->LA(1);
-          if (_la == 0 || _la == Token::EOF || (_la == AnyFXParser::Q)) {
+          if (_la == 0 || _la == Token::EOF || (_la == GPULangParser::Q)) {
             dynamic_cast<StringContext *>(_localctx)->data = _errHandler->recoverInline(this);
           }
           else {
@@ -337,7 +337,7 @@ AnyFXParser::StringContext* AnyFXParser::string() {
           _la = _input->LA(1);
         }
         setState(113);
-        match(AnyFXParser::Q);
+        match(GPULangParser::Q);
         break;
       }
 
@@ -357,30 +357,30 @@ AnyFXParser::StringContext* AnyFXParser::string() {
 
 //----------------- BooleanContext ------------------------------------------------------------------
 
-AnyFXParser::BooleanContext::BooleanContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::BooleanContext::BooleanContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t AnyFXParser::BooleanContext::getRuleIndex() const {
-  return AnyFXParser::RuleBoolean;
+size_t GPULangParser::BooleanContext::getRuleIndex() const {
+  return GPULangParser::RuleBoolean;
 }
 
-void AnyFXParser::BooleanContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BooleanContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterBoolean(this);
 }
 
-void AnyFXParser::BooleanContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BooleanContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBoolean(this);
 }
 
-AnyFXParser::BooleanContext* AnyFXParser::boolean() {
+GPULangParser::BooleanContext* GPULangParser::boolean() {
   BooleanContext *_localctx = _tracker.createInstance<BooleanContext>(_ctx, getState());
-  enterRule(_localctx, 2, AnyFXParser::RuleBoolean);
+  enterRule(_localctx, 2, GPULangParser::RuleBoolean);
 
           dynamic_cast<BooleanContext *>(_localctx)->val =  false;
       
@@ -392,18 +392,18 @@ AnyFXParser::BooleanContext* AnyFXParser::boolean() {
     setState(120);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::T__0: {
+      case GPULangParser::T__0: {
         enterOuterAlt(_localctx, 1);
         setState(116);
-        match(AnyFXParser::T__0);
+        match(GPULangParser::T__0);
          dynamic_cast<BooleanContext *>(_localctx)->val =  true; 
         break;
       }
 
-      case AnyFXParser::T__1: {
+      case GPULangParser::T__1: {
         enterOuterAlt(_localctx, 2);
         setState(118);
-        match(AnyFXParser::T__1);
+        match(GPULangParser::T__1);
          dynamic_cast<BooleanContext *>(_localctx)->val =  false; 
         break;
       }
@@ -424,50 +424,50 @@ AnyFXParser::BooleanContext* AnyFXParser::boolean() {
 
 //----------------- PreprocessContext ------------------------------------------------------------------
 
-AnyFXParser::PreprocessContext::PreprocessContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::PreprocessContext::PreprocessContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::PreprocessContext::EOF() {
-  return getToken(AnyFXParser::EOF, 0);
+tree::TerminalNode* GPULangParser::PreprocessContext::EOF() {
+  return getToken(GPULangParser::EOF, 0);
 }
 
-std::vector<tree::TerminalNode *> AnyFXParser::PreprocessContext::INTEGERLITERAL() {
-  return getTokens(AnyFXParser::INTEGERLITERAL);
+std::vector<tree::TerminalNode *> GPULangParser::PreprocessContext::INTEGERLITERAL() {
+  return getTokens(GPULangParser::INTEGERLITERAL);
 }
 
-tree::TerminalNode* AnyFXParser::PreprocessContext::INTEGERLITERAL(size_t i) {
-  return getToken(AnyFXParser::INTEGERLITERAL, i);
+tree::TerminalNode* GPULangParser::PreprocessContext::INTEGERLITERAL(size_t i) {
+  return getToken(GPULangParser::INTEGERLITERAL, i);
 }
 
-std::vector<AnyFXParser::StringContext *> AnyFXParser::PreprocessContext::string() {
-  return getRuleContexts<AnyFXParser::StringContext>();
+std::vector<GPULangParser::StringContext *> GPULangParser::PreprocessContext::string() {
+  return getRuleContexts<GPULangParser::StringContext>();
 }
 
-AnyFXParser::StringContext* AnyFXParser::PreprocessContext::string(size_t i) {
-  return getRuleContext<AnyFXParser::StringContext>(i);
+GPULangParser::StringContext* GPULangParser::PreprocessContext::string(size_t i) {
+  return getRuleContext<GPULangParser::StringContext>(i);
 }
 
 
-size_t AnyFXParser::PreprocessContext::getRuleIndex() const {
-  return AnyFXParser::RulePreprocess;
+size_t GPULangParser::PreprocessContext::getRuleIndex() const {
+  return GPULangParser::RulePreprocess;
 }
 
-void AnyFXParser::PreprocessContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::PreprocessContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterPreprocess(this);
 }
 
-void AnyFXParser::PreprocessContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::PreprocessContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPreprocess(this);
 }
 
-AnyFXParser::PreprocessContext* AnyFXParser::preprocess() {
+GPULangParser::PreprocessContext* GPULangParser::preprocess() {
   PreprocessContext *_localctx = _tracker.createInstance<PreprocessContext>(_ctx, getState());
-  enterRule(_localctx, 4, AnyFXParser::RulePreprocess);
+  enterRule(_localctx, 4, GPULangParser::RulePreprocess);
 
           Token* start = nullptr;
       
@@ -489,9 +489,9 @@ AnyFXParser::PreprocessContext* AnyFXParser::preprocess() {
         case 1: {
            start = _input->LT(1); 
           setState(123);
-          match(AnyFXParser::T__2);
+          match(GPULangParser::T__2);
           setState(124);
-          dynamic_cast<PreprocessContext *>(_localctx)->line = match(AnyFXParser::INTEGERLITERAL);
+          dynamic_cast<PreprocessContext *>(_localctx)->line = match(GPULangParser::INTEGERLITERAL);
           setState(125);
           dynamic_cast<PreprocessContext *>(_localctx)->path = string();
            lines.push_back(std::make_tuple(atoi((dynamic_cast<PreprocessContext *>(_localctx)->line != nullptr ? dynamic_cast<PreprocessContext *>(_localctx)->line->getText() : "").c_str()), _input->LT(-1)->getLine(), start->getStartIndex(), _input->LT(1)->getStartIndex(), (dynamic_cast<PreprocessContext *>(_localctx)->path != nullptr ? _input->getText(dynamic_cast<PreprocessContext *>(_localctx)->path->start, dynamic_cast<PreprocessContext *>(_localctx)->path->stop) : nullptr))); 
@@ -511,7 +511,7 @@ AnyFXParser::PreprocessContext* AnyFXParser::preprocess() {
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 5, _ctx);
     }
     setState(134);
-    match(AnyFXParser::EOF);
+    match(GPULangParser::EOF);
    
   }
   catch (RecognitionException &e) {
@@ -525,38 +525,38 @@ AnyFXParser::PreprocessContext* AnyFXParser::preprocess() {
 
 //----------------- EntryContext ------------------------------------------------------------------
 
-AnyFXParser::EntryContext::EntryContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::EntryContext::EntryContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::EffectContext* AnyFXParser::EntryContext::effect() {
-  return getRuleContext<AnyFXParser::EffectContext>(0);
+GPULangParser::EffectContext* GPULangParser::EntryContext::effect() {
+  return getRuleContext<GPULangParser::EffectContext>(0);
 }
 
-tree::TerminalNode* AnyFXParser::EntryContext::EOF() {
-  return getToken(AnyFXParser::EOF, 0);
+tree::TerminalNode* GPULangParser::EntryContext::EOF() {
+  return getToken(GPULangParser::EOF, 0);
 }
 
 
-size_t AnyFXParser::EntryContext::getRuleIndex() const {
-  return AnyFXParser::RuleEntry;
+size_t GPULangParser::EntryContext::getRuleIndex() const {
+  return GPULangParser::RuleEntry;
 }
 
-void AnyFXParser::EntryContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EntryContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterEntry(this);
 }
 
-void AnyFXParser::EntryContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EntryContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEntry(this);
 }
 
-AnyFXParser::EntryContext* AnyFXParser::entry() {
+GPULangParser::EntryContext* GPULangParser::entry() {
   EntryContext *_localctx = _tracker.createInstance<EntryContext>(_ctx, getState());
-  enterRule(_localctx, 6, AnyFXParser::RuleEntry);
+  enterRule(_localctx, 6, GPULangParser::RuleEntry);
 
   auto onExit = finally([=] {
     exitRule();
@@ -569,7 +569,7 @@ AnyFXParser::EntryContext* AnyFXParser::entry() {
             dynamic_cast<EntryContext *>(_localctx)->returnEffect =  dynamic_cast<EntryContext *>(_localctx)->effectContext->eff;
         
     setState(138);
-    match(AnyFXParser::EOF);
+    match(GPULangParser::EOF);
    
   }
   catch (RecognitionException &e) {
@@ -583,94 +583,94 @@ AnyFXParser::EntryContext* AnyFXParser::entry() {
 
 //----------------- EffectContext ------------------------------------------------------------------
 
-AnyFXParser::EffectContext::EffectContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::EffectContext::EffectContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::AliasContext *> AnyFXParser::EffectContext::alias() {
-  return getRuleContexts<AnyFXParser::AliasContext>();
+std::vector<GPULangParser::AliasContext *> GPULangParser::EffectContext::alias() {
+  return getRuleContexts<GPULangParser::AliasContext>();
 }
 
-AnyFXParser::AliasContext* AnyFXParser::EffectContext::alias(size_t i) {
-  return getRuleContext<AnyFXParser::AliasContext>(i);
+GPULangParser::AliasContext* GPULangParser::EffectContext::alias(size_t i) {
+  return getRuleContext<GPULangParser::AliasContext>(i);
 }
 
-std::vector<AnyFXParser::FunctionDeclarationContext *> AnyFXParser::EffectContext::functionDeclaration() {
-  return getRuleContexts<AnyFXParser::FunctionDeclarationContext>();
+std::vector<GPULangParser::FunctionDeclarationContext *> GPULangParser::EffectContext::functionDeclaration() {
+  return getRuleContexts<GPULangParser::FunctionDeclarationContext>();
 }
 
-AnyFXParser::FunctionDeclarationContext* AnyFXParser::EffectContext::functionDeclaration(size_t i) {
-  return getRuleContext<AnyFXParser::FunctionDeclarationContext>(i);
+GPULangParser::FunctionDeclarationContext* GPULangParser::EffectContext::functionDeclaration(size_t i) {
+  return getRuleContext<GPULangParser::FunctionDeclarationContext>(i);
 }
 
-std::vector<AnyFXParser::FunctionContext *> AnyFXParser::EffectContext::function() {
-  return getRuleContexts<AnyFXParser::FunctionContext>();
+std::vector<GPULangParser::FunctionContext *> GPULangParser::EffectContext::function() {
+  return getRuleContexts<GPULangParser::FunctionContext>();
 }
 
-AnyFXParser::FunctionContext* AnyFXParser::EffectContext::function(size_t i) {
-  return getRuleContext<AnyFXParser::FunctionContext>(i);
+GPULangParser::FunctionContext* GPULangParser::EffectContext::function(size_t i) {
+  return getRuleContext<GPULangParser::FunctionContext>(i);
 }
 
-std::vector<AnyFXParser::VariablesContext *> AnyFXParser::EffectContext::variables() {
-  return getRuleContexts<AnyFXParser::VariablesContext>();
+std::vector<GPULangParser::VariablesContext *> GPULangParser::EffectContext::variables() {
+  return getRuleContexts<GPULangParser::VariablesContext>();
 }
 
-AnyFXParser::VariablesContext* AnyFXParser::EffectContext::variables(size_t i) {
-  return getRuleContext<AnyFXParser::VariablesContext>(i);
+GPULangParser::VariablesContext* GPULangParser::EffectContext::variables(size_t i) {
+  return getRuleContext<GPULangParser::VariablesContext>(i);
 }
 
-std::vector<AnyFXParser::StructureContext *> AnyFXParser::EffectContext::structure() {
-  return getRuleContexts<AnyFXParser::StructureContext>();
+std::vector<GPULangParser::StructureContext *> GPULangParser::EffectContext::structure() {
+  return getRuleContexts<GPULangParser::StructureContext>();
 }
 
-AnyFXParser::StructureContext* AnyFXParser::EffectContext::structure(size_t i) {
-  return getRuleContext<AnyFXParser::StructureContext>(i);
+GPULangParser::StructureContext* GPULangParser::EffectContext::structure(size_t i) {
+  return getRuleContext<GPULangParser::StructureContext>(i);
 }
 
-std::vector<AnyFXParser::EnumerationContext *> AnyFXParser::EffectContext::enumeration() {
-  return getRuleContexts<AnyFXParser::EnumerationContext>();
+std::vector<GPULangParser::EnumerationContext *> GPULangParser::EffectContext::enumeration() {
+  return getRuleContexts<GPULangParser::EnumerationContext>();
 }
 
-AnyFXParser::EnumerationContext* AnyFXParser::EffectContext::enumeration(size_t i) {
-  return getRuleContext<AnyFXParser::EnumerationContext>(i);
+GPULangParser::EnumerationContext* GPULangParser::EffectContext::enumeration(size_t i) {
+  return getRuleContext<GPULangParser::EnumerationContext>(i);
 }
 
-std::vector<AnyFXParser::StateContext *> AnyFXParser::EffectContext::state() {
-  return getRuleContexts<AnyFXParser::StateContext>();
+std::vector<GPULangParser::StateContext *> GPULangParser::EffectContext::state() {
+  return getRuleContexts<GPULangParser::StateContext>();
 }
 
-AnyFXParser::StateContext* AnyFXParser::EffectContext::state(size_t i) {
-  return getRuleContext<AnyFXParser::StateContext>(i);
+GPULangParser::StateContext* GPULangParser::EffectContext::state(size_t i) {
+  return getRuleContext<GPULangParser::StateContext>(i);
 }
 
-std::vector<AnyFXParser::ProgramContext *> AnyFXParser::EffectContext::program() {
-  return getRuleContexts<AnyFXParser::ProgramContext>();
+std::vector<GPULangParser::ProgramContext *> GPULangParser::EffectContext::program() {
+  return getRuleContexts<GPULangParser::ProgramContext>();
 }
 
-AnyFXParser::ProgramContext* AnyFXParser::EffectContext::program(size_t i) {
-  return getRuleContext<AnyFXParser::ProgramContext>(i);
+GPULangParser::ProgramContext* GPULangParser::EffectContext::program(size_t i) {
+  return getRuleContext<GPULangParser::ProgramContext>(i);
 }
 
 
-size_t AnyFXParser::EffectContext::getRuleIndex() const {
-  return AnyFXParser::RuleEffect;
+size_t GPULangParser::EffectContext::getRuleIndex() const {
+  return GPULangParser::RuleEffect;
 }
 
-void AnyFXParser::EffectContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EffectContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterEffect(this);
 }
 
-void AnyFXParser::EffectContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EffectContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEffect(this);
 }
 
-AnyFXParser::EffectContext* AnyFXParser::effect() {
+GPULangParser::EffectContext* GPULangParser::effect() {
   EffectContext *_localctx = _tracker.createInstance<EffectContext>(_ctx, getState());
-  enterRule(_localctx, 8, AnyFXParser::RuleEffect);
+  enterRule(_localctx, 8, GPULangParser::RuleEffect);
 
           dynamic_cast<EffectContext *>(_localctx)->eff =  new Effect();
       
@@ -693,7 +693,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(140);
           dynamic_cast<EffectContext *>(_localctx)->aliasContext = alias();
           setState(141);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->aliasContext->sym); 
           break;
         }
@@ -702,7 +702,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(144);
           dynamic_cast<EffectContext *>(_localctx)->functionDeclarationContext = functionDeclaration();
           setState(145);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->functionDeclarationContext->sym); 
           break;
         }
@@ -718,7 +718,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(151);
           dynamic_cast<EffectContext *>(_localctx)->variablesContext = variables();
           setState(152);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            for (Variable* var : dynamic_cast<EffectContext *>(_localctx)->variablesContext->list) { _localctx->eff->symbols.push_back(var); } 
           break;
         }
@@ -727,7 +727,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(155);
           dynamic_cast<EffectContext *>(_localctx)->structureContext = structure();
           setState(156);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->structureContext->sym); 
           break;
         }
@@ -736,7 +736,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(159);
           dynamic_cast<EffectContext *>(_localctx)->enumerationContext = enumeration();
           setState(160);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->enumerationContext->sym); 
           break;
         }
@@ -745,7 +745,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(163);
           dynamic_cast<EffectContext *>(_localctx)->stateContext = state();
           setState(164);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->stateContext->sym); 
           break;
         }
@@ -754,7 +754,7 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
           setState(167);
           dynamic_cast<EffectContext *>(_localctx)->programContext = program();
           setState(168);
-          match(AnyFXParser::SC);
+          match(GPULangParser::SC);
            _localctx->eff->symbols.push_back(dynamic_cast<EffectContext *>(_localctx)->programContext->sym); 
           break;
         }
@@ -778,38 +778,38 @@ AnyFXParser::EffectContext* AnyFXParser::effect() {
 
 //----------------- AliasContext ------------------------------------------------------------------
 
-AnyFXParser::AliasContext::AliasContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AliasContext::AliasContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> AnyFXParser::AliasContext::IDENTIFIER() {
-  return getTokens(AnyFXParser::IDENTIFIER);
+std::vector<tree::TerminalNode *> GPULangParser::AliasContext::IDENTIFIER() {
+  return getTokens(GPULangParser::IDENTIFIER);
 }
 
-tree::TerminalNode* AnyFXParser::AliasContext::IDENTIFIER(size_t i) {
-  return getToken(AnyFXParser::IDENTIFIER, i);
+tree::TerminalNode* GPULangParser::AliasContext::IDENTIFIER(size_t i) {
+  return getToken(GPULangParser::IDENTIFIER, i);
 }
 
 
-size_t AnyFXParser::AliasContext::getRuleIndex() const {
-  return AnyFXParser::RuleAlias;
+size_t GPULangParser::AliasContext::getRuleIndex() const {
+  return GPULangParser::RuleAlias;
 }
 
-void AnyFXParser::AliasContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AliasContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAlias(this);
 }
 
-void AnyFXParser::AliasContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AliasContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAlias(this);
 }
 
-AnyFXParser::AliasContext* AnyFXParser::alias() {
+GPULangParser::AliasContext* GPULangParser::alias() {
   AliasContext *_localctx = _tracker.createInstance<AliasContext>(_ctx, getState());
-  enterRule(_localctx, 10, AnyFXParser::RuleAlias);
+  enterRule(_localctx, 10, GPULangParser::RuleAlias);
 
           dynamic_cast<AliasContext *>(_localctx)->sym =  nullptr;
           std::string name;
@@ -822,13 +822,13 @@ AnyFXParser::AliasContext* AnyFXParser::alias() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(176);
-    match(AnyFXParser::T__3);
+    match(GPULangParser::T__3);
     setState(177);
-    dynamic_cast<AliasContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<AliasContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
     setState(178);
-    match(AnyFXParser::T__4);
+    match(GPULangParser::T__4);
     setState(179);
-    dynamic_cast<AliasContext *>(_localctx)->type = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<AliasContext *>(_localctx)->type = match(GPULangParser::IDENTIFIER);
      name = (dynamic_cast<AliasContext *>(_localctx)->name != nullptr ? dynamic_cast<AliasContext *>(_localctx)->name->getText() : ""); type = (dynamic_cast<AliasContext *>(_localctx)->type != nullptr ? dynamic_cast<AliasContext *>(_localctx)->type->getText() : ""); 
 
             dynamic_cast<AliasContext *>(_localctx)->sym =  new Alias();
@@ -848,38 +848,38 @@ AnyFXParser::AliasContext* AnyFXParser::alias() {
 
 //----------------- AnnotationContext ------------------------------------------------------------------
 
-AnyFXParser::AnnotationContext::AnnotationContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AnnotationContext::AnnotationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::AnnotationContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::AnnotationContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::AnnotationContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::AnnotationContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::AnnotationContext::getRuleIndex() const {
-  return AnyFXParser::RuleAnnotation;
+size_t GPULangParser::AnnotationContext::getRuleIndex() const {
+  return GPULangParser::RuleAnnotation;
 }
 
-void AnyFXParser::AnnotationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AnnotationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAnnotation(this);
 }
 
-void AnyFXParser::AnnotationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AnnotationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAnnotation(this);
 }
 
-AnyFXParser::AnnotationContext* AnyFXParser::annotation() {
+GPULangParser::AnnotationContext* GPULangParser::annotation() {
   AnnotationContext *_localctx = _tracker.createInstance<AnnotationContext>(_ctx, getState());
-  enterRule(_localctx, 12, AnyFXParser::RuleAnnotation);
+  enterRule(_localctx, 12, GPULangParser::RuleAnnotation);
 
   auto onExit = finally([=] {
     exitRule();
@@ -887,16 +887,16 @@ AnyFXParser::AnnotationContext* AnyFXParser::annotation() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(183);
-    match(AnyFXParser::SOBAKA);
+    match(GPULangParser::SOBAKA);
 
     setState(184);
-    dynamic_cast<AnnotationContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<AnnotationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
     setState(185);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(186);
     dynamic_cast<AnnotationContext *>(_localctx)->value = expression();
     setState(187);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
      _localctx->annot.name = (dynamic_cast<AnnotationContext *>(_localctx)->name != nullptr ? dynamic_cast<AnnotationContext *>(_localctx)->name->getText() : ""); _localctx->annot.value = dynamic_cast<AnnotationContext *>(_localctx)->value->tree; 
    
   }
@@ -911,38 +911,38 @@ AnyFXParser::AnnotationContext* AnyFXParser::annotation() {
 
 //----------------- AttributeContext ------------------------------------------------------------------
 
-AnyFXParser::AttributeContext::AttributeContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AttributeContext::AttributeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::AttributeContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::AttributeContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
-tree::TerminalNode* AnyFXParser::AttributeContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::AttributeContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
 
-size_t AnyFXParser::AttributeContext::getRuleIndex() const {
-  return AnyFXParser::RuleAttribute;
+size_t GPULangParser::AttributeContext::getRuleIndex() const {
+  return GPULangParser::RuleAttribute;
 }
 
-void AnyFXParser::AttributeContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AttributeContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAttribute(this);
 }
 
-void AnyFXParser::AttributeContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AttributeContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAttribute(this);
 }
 
-AnyFXParser::AttributeContext* AnyFXParser::attribute() {
+GPULangParser::AttributeContext* GPULangParser::attribute() {
   AttributeContext *_localctx = _tracker.createInstance<AttributeContext>(_ctx, getState());
-  enterRule(_localctx, 14, AnyFXParser::RuleAttribute);
+  enterRule(_localctx, 14, GPULangParser::RuleAttribute);
 
   auto onExit = finally([=] {
     exitRule();
@@ -954,13 +954,13 @@ AnyFXParser::AttributeContext* AnyFXParser::attribute() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(190);
-      dynamic_cast<AttributeContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+      dynamic_cast<AttributeContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
       setState(191);
-      match(AnyFXParser::LP);
+      match(GPULangParser::LP);
       setState(192);
       dynamic_cast<AttributeContext *>(_localctx)->expressionContext = expression();
       setState(193);
-      match(AnyFXParser::RP);
+      match(GPULangParser::RP);
        _localctx->attr.name = (dynamic_cast<AttributeContext *>(_localctx)->name != nullptr ? dynamic_cast<AttributeContext *>(_localctx)->name->getText() : ""); _localctx->attr.expression = dynamic_cast<AttributeContext *>(_localctx)->expressionContext->tree; 
       break;
     }
@@ -968,7 +968,7 @@ AnyFXParser::AttributeContext* AnyFXParser::attribute() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(196);
-      dynamic_cast<AttributeContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+      dynamic_cast<AttributeContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
        _localctx->attr.name = (dynamic_cast<AttributeContext *>(_localctx)->name != nullptr ? dynamic_cast<AttributeContext *>(_localctx)->name->getText() : ""); _localctx->attr.expression = nullptr; 
       break;
     }
@@ -987,34 +987,34 @@ AnyFXParser::AttributeContext* AnyFXParser::attribute() {
 
 //----------------- TypeDeclarationContext ------------------------------------------------------------------
 
-AnyFXParser::TypeDeclarationContext::TypeDeclarationContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::TypeDeclarationContext::TypeDeclarationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::TypeDeclarationContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::TypeDeclarationContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
 
-size_t AnyFXParser::TypeDeclarationContext::getRuleIndex() const {
-  return AnyFXParser::RuleTypeDeclaration;
+size_t GPULangParser::TypeDeclarationContext::getRuleIndex() const {
+  return GPULangParser::RuleTypeDeclaration;
 }
 
-void AnyFXParser::TypeDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::TypeDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterTypeDeclaration(this);
 }
 
-void AnyFXParser::TypeDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::TypeDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitTypeDeclaration(this);
 }
 
-AnyFXParser::TypeDeclarationContext* AnyFXParser::typeDeclaration() {
+GPULangParser::TypeDeclarationContext* GPULangParser::typeDeclaration() {
   TypeDeclarationContext *_localctx = _tracker.createInstance<TypeDeclarationContext>(_ctx, getState());
-  enterRule(_localctx, 16, AnyFXParser::RuleTypeDeclaration);
+  enterRule(_localctx, 16, GPULangParser::RuleTypeDeclaration);
 
           _localctx->type.name = "";
       
@@ -1025,7 +1025,7 @@ AnyFXParser::TypeDeclarationContext* AnyFXParser::typeDeclaration() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(200);
-    dynamic_cast<TypeDeclarationContext *>(_localctx)->identifierToken = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<TypeDeclarationContext *>(_localctx)->identifierToken = match(GPULangParser::IDENTIFIER);
      _localctx->type.name = (dynamic_cast<TypeDeclarationContext *>(_localctx)->identifierToken != nullptr ? dynamic_cast<TypeDeclarationContext *>(_localctx)->identifierToken->getText() : ""); 
    
   }
@@ -1040,58 +1040,58 @@ AnyFXParser::TypeDeclarationContext* AnyFXParser::typeDeclaration() {
 
 //----------------- VariablesContext ------------------------------------------------------------------
 
-AnyFXParser::VariablesContext::VariablesContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::VariablesContext::VariablesContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::TypeDeclarationContext* AnyFXParser::VariablesContext::typeDeclaration() {
-  return getRuleContext<AnyFXParser::TypeDeclarationContext>(0);
+GPULangParser::TypeDeclarationContext* GPULangParser::VariablesContext::typeDeclaration() {
+  return getRuleContext<GPULangParser::TypeDeclarationContext>(0);
 }
 
-std::vector<AnyFXParser::AnnotationContext *> AnyFXParser::VariablesContext::annotation() {
-  return getRuleContexts<AnyFXParser::AnnotationContext>();
+std::vector<GPULangParser::AnnotationContext *> GPULangParser::VariablesContext::annotation() {
+  return getRuleContexts<GPULangParser::AnnotationContext>();
 }
 
-AnyFXParser::AnnotationContext* AnyFXParser::VariablesContext::annotation(size_t i) {
-  return getRuleContext<AnyFXParser::AnnotationContext>(i);
+GPULangParser::AnnotationContext* GPULangParser::VariablesContext::annotation(size_t i) {
+  return getRuleContext<GPULangParser::AnnotationContext>(i);
 }
 
-std::vector<AnyFXParser::AttributeContext *> AnyFXParser::VariablesContext::attribute() {
-  return getRuleContexts<AnyFXParser::AttributeContext>();
+std::vector<GPULangParser::AttributeContext *> GPULangParser::VariablesContext::attribute() {
+  return getRuleContexts<GPULangParser::AttributeContext>();
 }
 
-AnyFXParser::AttributeContext* AnyFXParser::VariablesContext::attribute(size_t i) {
-  return getRuleContext<AnyFXParser::AttributeContext>(i);
+GPULangParser::AttributeContext* GPULangParser::VariablesContext::attribute(size_t i) {
+  return getRuleContext<GPULangParser::AttributeContext>(i);
 }
 
-std::vector<AnyFXParser::AssignmentExpressionContext *> AnyFXParser::VariablesContext::assignmentExpression() {
-  return getRuleContexts<AnyFXParser::AssignmentExpressionContext>();
+std::vector<GPULangParser::AssignmentExpressionContext *> GPULangParser::VariablesContext::assignmentExpression() {
+  return getRuleContexts<GPULangParser::AssignmentExpressionContext>();
 }
 
-AnyFXParser::AssignmentExpressionContext* AnyFXParser::VariablesContext::assignmentExpression(size_t i) {
-  return getRuleContext<AnyFXParser::AssignmentExpressionContext>(i);
+GPULangParser::AssignmentExpressionContext* GPULangParser::VariablesContext::assignmentExpression(size_t i) {
+  return getRuleContext<GPULangParser::AssignmentExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::VariablesContext::getRuleIndex() const {
-  return AnyFXParser::RuleVariables;
+size_t GPULangParser::VariablesContext::getRuleIndex() const {
+  return GPULangParser::RuleVariables;
 }
 
-void AnyFXParser::VariablesContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::VariablesContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterVariables(this);
 }
 
-void AnyFXParser::VariablesContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::VariablesContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitVariables(this);
 }
 
-AnyFXParser::VariablesContext* AnyFXParser::variables() {
+GPULangParser::VariablesContext* GPULangParser::variables() {
   VariablesContext *_localctx = _tracker.createInstance<VariablesContext>(_ctx, getState());
-  enterRule(_localctx, 18, AnyFXParser::RuleVariables);
+  enterRule(_localctx, 18, GPULangParser::RuleVariables);
 
           std::vector<Annotation> annotations;
           std::vector<Attribute> attributes;
@@ -1109,7 +1109,7 @@ AnyFXParser::VariablesContext* AnyFXParser::variables() {
     setState(208);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::SOBAKA) {
+    while (_la == GPULangParser::SOBAKA) {
       setState(203);
       dynamic_cast<VariablesContext *>(_localctx)->annotationContext = annotation();
        annotations.push_back(dynamic_cast<VariablesContext *>(_localctx)->annotationContext->annot); 
@@ -1140,9 +1140,9 @@ AnyFXParser::VariablesContext* AnyFXParser::variables() {
     setState(229);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::CO) {
+    while (_la == GPULangParser::CO) {
       setState(223);
-      match(AnyFXParser::CO);
+      match(GPULangParser::CO);
       setState(224);
       dynamic_cast<VariablesContext *>(_localctx)->varN = assignmentExpression();
        nameExpressions.push_back(dynamic_cast<VariablesContext *>(_localctx)->varN->tree); 
@@ -1175,46 +1175,46 @@ AnyFXParser::VariablesContext* AnyFXParser::variables() {
 
 //----------------- VariableContext ------------------------------------------------------------------
 
-AnyFXParser::VariableContext::VariableContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::VariableContext::VariableContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::TypeDeclarationContext* AnyFXParser::VariableContext::typeDeclaration() {
-  return getRuleContext<AnyFXParser::TypeDeclarationContext>(0);
+GPULangParser::TypeDeclarationContext* GPULangParser::VariableContext::typeDeclaration() {
+  return getRuleContext<GPULangParser::TypeDeclarationContext>(0);
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::VariableContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::VariableContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
-std::vector<AnyFXParser::AttributeContext *> AnyFXParser::VariableContext::attribute() {
-  return getRuleContexts<AnyFXParser::AttributeContext>();
+std::vector<GPULangParser::AttributeContext *> GPULangParser::VariableContext::attribute() {
+  return getRuleContexts<GPULangParser::AttributeContext>();
 }
 
-AnyFXParser::AttributeContext* AnyFXParser::VariableContext::attribute(size_t i) {
-  return getRuleContext<AnyFXParser::AttributeContext>(i);
+GPULangParser::AttributeContext* GPULangParser::VariableContext::attribute(size_t i) {
+  return getRuleContext<GPULangParser::AttributeContext>(i);
 }
 
 
-size_t AnyFXParser::VariableContext::getRuleIndex() const {
-  return AnyFXParser::RuleVariable;
+size_t GPULangParser::VariableContext::getRuleIndex() const {
+  return GPULangParser::RuleVariable;
 }
 
-void AnyFXParser::VariableContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::VariableContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterVariable(this);
 }
 
-void AnyFXParser::VariableContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::VariableContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitVariable(this);
 }
 
-AnyFXParser::VariableContext* AnyFXParser::variable() {
+GPULangParser::VariableContext* GPULangParser::variable() {
   VariableContext *_localctx = _tracker.createInstance<VariableContext>(_ctx, getState());
-  enterRule(_localctx, 20, AnyFXParser::RuleVariable);
+  enterRule(_localctx, 20, GPULangParser::RuleVariable);
 
           dynamic_cast<VariableContext *>(_localctx)->sym =  nullptr;
           std::vector<Attribute> attributes;
@@ -1268,50 +1268,50 @@ AnyFXParser::VariableContext* AnyFXParser::variable() {
 
 //----------------- StructureDeclarationContext ------------------------------------------------------------------
 
-AnyFXParser::StructureDeclarationContext::StructureDeclarationContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::StructureDeclarationContext::StructureDeclarationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::StructureDeclarationContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::StructureDeclarationContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-std::vector<AnyFXParser::AnnotationContext *> AnyFXParser::StructureDeclarationContext::annotation() {
-  return getRuleContexts<AnyFXParser::AnnotationContext>();
+std::vector<GPULangParser::AnnotationContext *> GPULangParser::StructureDeclarationContext::annotation() {
+  return getRuleContexts<GPULangParser::AnnotationContext>();
 }
 
-AnyFXParser::AnnotationContext* AnyFXParser::StructureDeclarationContext::annotation(size_t i) {
-  return getRuleContext<AnyFXParser::AnnotationContext>(i);
+GPULangParser::AnnotationContext* GPULangParser::StructureDeclarationContext::annotation(size_t i) {
+  return getRuleContext<GPULangParser::AnnotationContext>(i);
 }
 
-std::vector<AnyFXParser::AttributeContext *> AnyFXParser::StructureDeclarationContext::attribute() {
-  return getRuleContexts<AnyFXParser::AttributeContext>();
+std::vector<GPULangParser::AttributeContext *> GPULangParser::StructureDeclarationContext::attribute() {
+  return getRuleContexts<GPULangParser::AttributeContext>();
 }
 
-AnyFXParser::AttributeContext* AnyFXParser::StructureDeclarationContext::attribute(size_t i) {
-  return getRuleContext<AnyFXParser::AttributeContext>(i);
+GPULangParser::AttributeContext* GPULangParser::StructureDeclarationContext::attribute(size_t i) {
+  return getRuleContext<GPULangParser::AttributeContext>(i);
 }
 
 
-size_t AnyFXParser::StructureDeclarationContext::getRuleIndex() const {
-  return AnyFXParser::RuleStructureDeclaration;
+size_t GPULangParser::StructureDeclarationContext::getRuleIndex() const {
+  return GPULangParser::RuleStructureDeclaration;
 }
 
-void AnyFXParser::StructureDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StructureDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterStructureDeclaration(this);
 }
 
-void AnyFXParser::StructureDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StructureDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStructureDeclaration(this);
 }
 
-AnyFXParser::StructureDeclarationContext* AnyFXParser::structureDeclaration() {
+GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration() {
   StructureDeclarationContext *_localctx = _tracker.createInstance<StructureDeclarationContext>(_ctx, getState());
-  enterRule(_localctx, 22, AnyFXParser::RuleStructureDeclaration);
+  enterRule(_localctx, 22, GPULangParser::RuleStructureDeclaration);
 
           dynamic_cast<StructureDeclarationContext *>(_localctx)->sym =  nullptr;
           std::vector<Annotation> annotations;
@@ -1328,7 +1328,7 @@ AnyFXParser::StructureDeclarationContext* AnyFXParser::structureDeclaration() {
     setState(253);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::SOBAKA) {
+    while (_la == GPULangParser::SOBAKA) {
       setState(248);
       dynamic_cast<StructureDeclarationContext *>(_localctx)->annotationContext = annotation();
        annotations.push_back(dynamic_cast<StructureDeclarationContext *>(_localctx)->annotationContext->annot); 
@@ -1337,7 +1337,7 @@ AnyFXParser::StructureDeclarationContext* AnyFXParser::structureDeclaration() {
       _la = _input->LA(1);
     }
     setState(256);
-    match(AnyFXParser::T__5);
+    match(GPULangParser::T__5);
     setState(262);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx);
@@ -1352,7 +1352,7 @@ AnyFXParser::StructureDeclarationContext* AnyFXParser::structureDeclaration() {
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx);
     }
     setState(265);
-    dynamic_cast<StructureDeclarationContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<StructureDeclarationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      
             dynamic_cast<StructureDeclarationContext *>(_localctx)->sym =  new Structure();
             _localctx->sym->name = (dynamic_cast<StructureDeclarationContext *>(_localctx)->name != nullptr ? dynamic_cast<StructureDeclarationContext *>(_localctx)->name->getText() : ""); 
@@ -1373,42 +1373,42 @@ AnyFXParser::StructureDeclarationContext* AnyFXParser::structureDeclaration() {
 
 //----------------- StructureContext ------------------------------------------------------------------
 
-AnyFXParser::StructureContext::StructureContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::StructureContext::StructureContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::StructureDeclarationContext* AnyFXParser::StructureContext::structureDeclaration() {
-  return getRuleContext<AnyFXParser::StructureDeclarationContext>(0);
+GPULangParser::StructureDeclarationContext* GPULangParser::StructureContext::structureDeclaration() {
+  return getRuleContext<GPULangParser::StructureDeclarationContext>(0);
 }
 
-std::vector<AnyFXParser::VariablesContext *> AnyFXParser::StructureContext::variables() {
-  return getRuleContexts<AnyFXParser::VariablesContext>();
+std::vector<GPULangParser::VariablesContext *> GPULangParser::StructureContext::variables() {
+  return getRuleContexts<GPULangParser::VariablesContext>();
 }
 
-AnyFXParser::VariablesContext* AnyFXParser::StructureContext::variables(size_t i) {
-  return getRuleContext<AnyFXParser::VariablesContext>(i);
+GPULangParser::VariablesContext* GPULangParser::StructureContext::variables(size_t i) {
+  return getRuleContext<GPULangParser::VariablesContext>(i);
 }
 
 
-size_t AnyFXParser::StructureContext::getRuleIndex() const {
-  return AnyFXParser::RuleStructure;
+size_t GPULangParser::StructureContext::getRuleIndex() const {
+  return GPULangParser::RuleStructure;
 }
 
-void AnyFXParser::StructureContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StructureContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterStructure(this);
 }
 
-void AnyFXParser::StructureContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StructureContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStructure(this);
 }
 
-AnyFXParser::StructureContext* AnyFXParser::structure() {
+GPULangParser::StructureContext* GPULangParser::structure() {
   StructureContext *_localctx = _tracker.createInstance<StructureContext>(_ctx, getState());
-  enterRule(_localctx, 24, AnyFXParser::RuleStructure);
+  enterRule(_localctx, 24, GPULangParser::RuleStructure);
 
           dynamic_cast<StructureContext *>(_localctx)->sym =  nullptr;
           std::vector<Symbol*> members;
@@ -1427,24 +1427,24 @@ AnyFXParser::StructureContext* AnyFXParser::structure() {
     dynamic_cast<StructureContext *>(_localctx)->structureDeclarationContext = structureDeclaration();
      dynamic_cast<StructureContext *>(_localctx)->sym =  dynamic_cast<StructureContext *>(_localctx)->structureDeclarationContext->sym; 
     setState(270);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(277);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::SOBAKA
+    while (_la == GPULangParser::SOBAKA
 
-    || _la == AnyFXParser::IDENTIFIER) {
+    || _la == GPULangParser::IDENTIFIER) {
       setState(271);
       dynamic_cast<StructureContext *>(_localctx)->variablesContext = variables();
        for(Variable* var : dynamic_cast<StructureContext *>(_localctx)->variablesContext->list) { members.push_back(var); }
       setState(273);
-      match(AnyFXParser::SC);
+      match(GPULangParser::SC);
       setState(279);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
     setState(280);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
      
             _localctx->sym->symbols = members; 
             //_localctx->sym->instanceName = instanceName;
@@ -1464,42 +1464,42 @@ AnyFXParser::StructureContext* AnyFXParser::structure() {
 
 //----------------- EnumerationContext ------------------------------------------------------------------
 
-AnyFXParser::EnumerationContext::EnumerationContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::EnumerationContext::EnumerationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> AnyFXParser::EnumerationContext::IDENTIFIER() {
-  return getTokens(AnyFXParser::IDENTIFIER);
+std::vector<tree::TerminalNode *> GPULangParser::EnumerationContext::IDENTIFIER() {
+  return getTokens(GPULangParser::IDENTIFIER);
 }
 
-tree::TerminalNode* AnyFXParser::EnumerationContext::IDENTIFIER(size_t i) {
-  return getToken(AnyFXParser::IDENTIFIER, i);
+tree::TerminalNode* GPULangParser::EnumerationContext::IDENTIFIER(size_t i) {
+  return getToken(GPULangParser::IDENTIFIER, i);
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::EnumerationContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::EnumerationContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::EnumerationContext::getRuleIndex() const {
-  return AnyFXParser::RuleEnumeration;
+size_t GPULangParser::EnumerationContext::getRuleIndex() const {
+  return GPULangParser::RuleEnumeration;
 }
 
-void AnyFXParser::EnumerationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EnumerationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterEnumeration(this);
 }
 
-void AnyFXParser::EnumerationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EnumerationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEnumeration(this);
 }
 
-AnyFXParser::EnumerationContext* AnyFXParser::enumeration() {
+GPULangParser::EnumerationContext* GPULangParser::enumeration() {
   EnumerationContext *_localctx = _tracker.createInstance<EnumerationContext>(_ctx, getState());
-  enterRule(_localctx, 26, AnyFXParser::RuleEnumeration);
+  enterRule(_localctx, 26, GPULangParser::RuleEnumeration);
 
           dynamic_cast<EnumerationContext *>(_localctx)->sym =  nullptr;
           std::vector<std::string> enumLabels;
@@ -1513,21 +1513,21 @@ AnyFXParser::EnumerationContext* AnyFXParser::enumeration() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(283);
-    match(AnyFXParser::T__6);
+    match(GPULangParser::T__6);
     setState(284);
-    dynamic_cast<EnumerationContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<EnumerationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
     setState(285);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(286);
-    dynamic_cast<EnumerationContext *>(_localctx)->label = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<EnumerationContext *>(_localctx)->label = match(GPULangParser::IDENTIFIER);
      Expression* expr = nullptr; 
     setState(292);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == AnyFXParser::EQ) {
+    if (_la == GPULangParser::EQ) {
       setState(288);
-      match(AnyFXParser::EQ);
+      match(GPULangParser::EQ);
       setState(289);
       dynamic_cast<EnumerationContext *>(_localctx)->value = expression();
        expr = dynamic_cast<EnumerationContext *>(_localctx)->value->tree; 
@@ -1537,7 +1537,7 @@ AnyFXParser::EnumerationContext* AnyFXParser::enumeration() {
                 enumValues.push_back(expr);
             
     setState(295);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
 
             dynamic_cast<EnumerationContext *>(_localctx)->sym =  new Enumeration();
             _localctx->sym->labels = enumLabels;
@@ -1557,54 +1557,54 @@ AnyFXParser::EnumerationContext* AnyFXParser::enumeration() {
 
 //----------------- FunctionDeclarationContext ------------------------------------------------------------------
 
-AnyFXParser::FunctionDeclarationContext::FunctionDeclarationContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::FunctionDeclarationContext::FunctionDeclarationContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::TypeDeclarationContext* AnyFXParser::FunctionDeclarationContext::typeDeclaration() {
-  return getRuleContext<AnyFXParser::TypeDeclarationContext>(0);
+GPULangParser::TypeDeclarationContext* GPULangParser::FunctionDeclarationContext::typeDeclaration() {
+  return getRuleContext<GPULangParser::TypeDeclarationContext>(0);
 }
 
-tree::TerminalNode* AnyFXParser::FunctionDeclarationContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::FunctionDeclarationContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-std::vector<AnyFXParser::AttributeContext *> AnyFXParser::FunctionDeclarationContext::attribute() {
-  return getRuleContexts<AnyFXParser::AttributeContext>();
+std::vector<GPULangParser::AttributeContext *> GPULangParser::FunctionDeclarationContext::attribute() {
+  return getRuleContexts<GPULangParser::AttributeContext>();
 }
 
-AnyFXParser::AttributeContext* AnyFXParser::FunctionDeclarationContext::attribute(size_t i) {
-  return getRuleContext<AnyFXParser::AttributeContext>(i);
+GPULangParser::AttributeContext* GPULangParser::FunctionDeclarationContext::attribute(size_t i) {
+  return getRuleContext<GPULangParser::AttributeContext>(i);
 }
 
-std::vector<AnyFXParser::VariableContext *> AnyFXParser::FunctionDeclarationContext::variable() {
-  return getRuleContexts<AnyFXParser::VariableContext>();
+std::vector<GPULangParser::VariableContext *> GPULangParser::FunctionDeclarationContext::variable() {
+  return getRuleContexts<GPULangParser::VariableContext>();
 }
 
-AnyFXParser::VariableContext* AnyFXParser::FunctionDeclarationContext::variable(size_t i) {
-  return getRuleContext<AnyFXParser::VariableContext>(i);
+GPULangParser::VariableContext* GPULangParser::FunctionDeclarationContext::variable(size_t i) {
+  return getRuleContext<GPULangParser::VariableContext>(i);
 }
 
 
-size_t AnyFXParser::FunctionDeclarationContext::getRuleIndex() const {
-  return AnyFXParser::RuleFunctionDeclaration;
+size_t GPULangParser::FunctionDeclarationContext::getRuleIndex() const {
+  return GPULangParser::RuleFunctionDeclaration;
 }
 
-void AnyFXParser::FunctionDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::FunctionDeclarationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterFunctionDeclaration(this);
 }
 
-void AnyFXParser::FunctionDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::FunctionDeclarationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunctionDeclaration(this);
 }
 
-AnyFXParser::FunctionDeclarationContext* AnyFXParser::functionDeclaration() {
+GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() {
   FunctionDeclarationContext *_localctx = _tracker.createInstance<FunctionDeclarationContext>(_ctx, getState());
-  enterRule(_localctx, 28, AnyFXParser::RuleFunctionDeclaration);
+  enterRule(_localctx, 28, GPULangParser::RuleFunctionDeclaration);
 
           dynamic_cast<FunctionDeclarationContext *>(_localctx)->sym =  nullptr;
           std::vector<Variable*> variables;
@@ -1635,24 +1635,24 @@ AnyFXParser::FunctionDeclarationContext* AnyFXParser::functionDeclaration() {
     setState(306);
     dynamic_cast<FunctionDeclarationContext *>(_localctx)->returnType = typeDeclaration();
     setState(307);
-    dynamic_cast<FunctionDeclarationContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<FunctionDeclarationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      location = SetupFile(); 
     setState(309);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(321);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == AnyFXParser::IDENTIFIER) {
+    if (_la == GPULangParser::IDENTIFIER) {
       setState(310);
       dynamic_cast<FunctionDeclarationContext *>(_localctx)->arg0 = variable();
        variables.push_back(dynamic_cast<FunctionDeclarationContext *>(_localctx)->arg0->sym); 
       setState(318);
       _errHandler->sync(this);
       _la = _input->LA(1);
-      while (_la == AnyFXParser::CO) {
+      while (_la == GPULangParser::CO) {
         setState(312);
-        match(AnyFXParser::CO);
+        match(GPULangParser::CO);
         setState(313);
         dynamic_cast<FunctionDeclarationContext *>(_localctx)->argn = variable();
          variables.push_back(dynamic_cast<FunctionDeclarationContext *>(_localctx)->argn->sym); 
@@ -1662,7 +1662,7 @@ AnyFXParser::FunctionDeclarationContext* AnyFXParser::functionDeclaration() {
       }
     }
     setState(323);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
 
             dynamic_cast<FunctionDeclarationContext *>(_localctx)->sym =  new Function(); 
             _localctx->sym->hasBody = false;
@@ -1685,38 +1685,38 @@ AnyFXParser::FunctionDeclarationContext* AnyFXParser::functionDeclaration() {
 
 //----------------- CodeblockContext ------------------------------------------------------------------
 
-AnyFXParser::CodeblockContext::CodeblockContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::CodeblockContext::CodeblockContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::CodeblockContext *> AnyFXParser::CodeblockContext::codeblock() {
-  return getRuleContexts<AnyFXParser::CodeblockContext>();
+std::vector<GPULangParser::CodeblockContext *> GPULangParser::CodeblockContext::codeblock() {
+  return getRuleContexts<GPULangParser::CodeblockContext>();
 }
 
-AnyFXParser::CodeblockContext* AnyFXParser::CodeblockContext::codeblock(size_t i) {
-  return getRuleContext<AnyFXParser::CodeblockContext>(i);
+GPULangParser::CodeblockContext* GPULangParser::CodeblockContext::codeblock(size_t i) {
+  return getRuleContext<GPULangParser::CodeblockContext>(i);
 }
 
 
-size_t AnyFXParser::CodeblockContext::getRuleIndex() const {
-  return AnyFXParser::RuleCodeblock;
+size_t GPULangParser::CodeblockContext::getRuleIndex() const {
+  return GPULangParser::RuleCodeblock;
 }
 
-void AnyFXParser::CodeblockContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::CodeblockContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterCodeblock(this);
 }
 
-void AnyFXParser::CodeblockContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::CodeblockContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitCodeblock(this);
 }
 
-AnyFXParser::CodeblockContext* AnyFXParser::codeblock() {
+GPULangParser::CodeblockContext* GPULangParser::codeblock() {
   CodeblockContext *_localctx = _tracker.createInstance<CodeblockContext>(_ctx, getState());
-  enterRule(_localctx, 30, AnyFXParser::RuleCodeblock);
+  enterRule(_localctx, 30, GPULangParser::RuleCodeblock);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -1726,97 +1726,97 @@ AnyFXParser::CodeblockContext* AnyFXParser::codeblock() {
     setState(335);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::LB: {
+      case GPULangParser::LB: {
         enterOuterAlt(_localctx, 1);
         setState(326);
-        match(AnyFXParser::LB);
+        match(GPULangParser::LB);
         setState(330);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while ((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-          | (1ULL << AnyFXParser::T__1)
-          | (1ULL << AnyFXParser::T__2)
-          | (1ULL << AnyFXParser::T__3)
-          | (1ULL << AnyFXParser::T__4)
-          | (1ULL << AnyFXParser::T__5)
-          | (1ULL << AnyFXParser::T__6)
-          | (1ULL << AnyFXParser::T__7)
-          | (1ULL << AnyFXParser::T__8)
-          | (1ULL << AnyFXParser::T__9)
-          | (1ULL << AnyFXParser::T__10)
-          | (1ULL << AnyFXParser::T__11)
-          | (1ULL << AnyFXParser::T__12)
-          | (1ULL << AnyFXParser::T__13)
-          | (1ULL << AnyFXParser::T__14)
-          | (1ULL << AnyFXParser::T__15)
-          | (1ULL << AnyFXParser::T__16)
-          | (1ULL << AnyFXParser::T__17)
-          | (1ULL << AnyFXParser::T__18)
-          | (1ULL << AnyFXParser::T__19)
-          | (1ULL << AnyFXParser::T__20)
-          | (1ULL << AnyFXParser::T__21)
-          | (1ULL << AnyFXParser::T__22)
-          | (1ULL << AnyFXParser::T__23)
-          | (1ULL << AnyFXParser::T__24)
-          | (1ULL << AnyFXParser::T__25)
-          | (1ULL << AnyFXParser::T__26)
-          | (1ULL << AnyFXParser::T__27)
-          | (1ULL << AnyFXParser::T__28)
-          | (1ULL << AnyFXParser::T__29)
-          | (1ULL << AnyFXParser::T__30)
-          | (1ULL << AnyFXParser::T__31)
-          | (1ULL << AnyFXParser::T__32)
-          | (1ULL << AnyFXParser::T__33)
-          | (1ULL << AnyFXParser::SC)
-          | (1ULL << AnyFXParser::CO)
-          | (1ULL << AnyFXParser::COL)
-          | (1ULL << AnyFXParser::LP)
-          | (1ULL << AnyFXParser::RP)
-          | (1ULL << AnyFXParser::LB)
-          | (1ULL << AnyFXParser::LL)
-          | (1ULL << AnyFXParser::RR)
-          | (1ULL << AnyFXParser::DOT)
-          | (1ULL << AnyFXParser::NOT)
-          | (1ULL << AnyFXParser::EQ)
-          | (1ULL << AnyFXParser::QO)
-          | (1ULL << AnyFXParser::QU)
-          | (1ULL << AnyFXParser::AND)
-          | (1ULL << AnyFXParser::ANDSET)
-          | (1ULL << AnyFXParser::OR)
-          | (1ULL << AnyFXParser::ORSET)
-          | (1ULL << AnyFXParser::XOR)
-          | (1ULL << AnyFXParser::XORSET)
-          | (1ULL << AnyFXParser::CONNJUGATE)
-          | (1ULL << AnyFXParser::Q)
-          | (1ULL << AnyFXParser::NU)
-          | (1ULL << AnyFXParser::FORWARDSLASH)
-          | (1ULL << AnyFXParser::LESS)
-          | (1ULL << AnyFXParser::LESSEQ)
-          | (1ULL << AnyFXParser::GREATER)
-          | (1ULL << AnyFXParser::GREATEREQ)
-          | (1ULL << AnyFXParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
-          ((1ULL << (_la - 64)) & ((1ULL << (AnyFXParser::NOTEQ - 64))
-          | (1ULL << (AnyFXParser::LOGICAND - 64))
-          | (1ULL << (AnyFXParser::LOGICOR - 64))
-          | (1ULL << (AnyFXParser::MOD - 64))
-          | (1ULL << (AnyFXParser::UNDERSC - 64))
-          | (1ULL << (AnyFXParser::SOBAKA - 64))
-          | (1ULL << (AnyFXParser::ADD_OP - 64))
-          | (1ULL << (AnyFXParser::SUB_OP - 64))
-          | (1ULL << (AnyFXParser::DIV_OP - 64))
-          | (1ULL << (AnyFXParser::MUL_OP - 64))
-          | (1ULL << (AnyFXParser::ARROW - 64))
-          | (1ULL << (AnyFXParser::INTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::UINTEGERLITERAL - 64))
-          | (1ULL << (AnyFXParser::COMMENT - 64))
-          | (1ULL << (AnyFXParser::ML_COMMENT - 64))
-          | (1ULL << (AnyFXParser::FLOATLITERAL - 64))
-          | (1ULL << (AnyFXParser::EXPONENT - 64))
-          | (1ULL << (AnyFXParser::DOUBLELITERAL - 64))
-          | (1ULL << (AnyFXParser::HEX - 64))
-          | (1ULL << (AnyFXParser::IDENTIFIER - 64))
-          | (1ULL << (AnyFXParser::WS - 64)))) != 0)) {
+          ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+          | (1ULL << GPULangParser::T__1)
+          | (1ULL << GPULangParser::T__2)
+          | (1ULL << GPULangParser::T__3)
+          | (1ULL << GPULangParser::T__4)
+          | (1ULL << GPULangParser::T__5)
+          | (1ULL << GPULangParser::T__6)
+          | (1ULL << GPULangParser::T__7)
+          | (1ULL << GPULangParser::T__8)
+          | (1ULL << GPULangParser::T__9)
+          | (1ULL << GPULangParser::T__10)
+          | (1ULL << GPULangParser::T__11)
+          | (1ULL << GPULangParser::T__12)
+          | (1ULL << GPULangParser::T__13)
+          | (1ULL << GPULangParser::T__14)
+          | (1ULL << GPULangParser::T__15)
+          | (1ULL << GPULangParser::T__16)
+          | (1ULL << GPULangParser::T__17)
+          | (1ULL << GPULangParser::T__18)
+          | (1ULL << GPULangParser::T__19)
+          | (1ULL << GPULangParser::T__20)
+          | (1ULL << GPULangParser::T__21)
+          | (1ULL << GPULangParser::T__22)
+          | (1ULL << GPULangParser::T__23)
+          | (1ULL << GPULangParser::T__24)
+          | (1ULL << GPULangParser::T__25)
+          | (1ULL << GPULangParser::T__26)
+          | (1ULL << GPULangParser::T__27)
+          | (1ULL << GPULangParser::T__28)
+          | (1ULL << GPULangParser::T__29)
+          | (1ULL << GPULangParser::T__30)
+          | (1ULL << GPULangParser::T__31)
+          | (1ULL << GPULangParser::T__32)
+          | (1ULL << GPULangParser::T__33)
+          | (1ULL << GPULangParser::SC)
+          | (1ULL << GPULangParser::CO)
+          | (1ULL << GPULangParser::COL)
+          | (1ULL << GPULangParser::LP)
+          | (1ULL << GPULangParser::RP)
+          | (1ULL << GPULangParser::LB)
+          | (1ULL << GPULangParser::LL)
+          | (1ULL << GPULangParser::RR)
+          | (1ULL << GPULangParser::DOT)
+          | (1ULL << GPULangParser::NOT)
+          | (1ULL << GPULangParser::EQ)
+          | (1ULL << GPULangParser::QO)
+          | (1ULL << GPULangParser::QU)
+          | (1ULL << GPULangParser::AND)
+          | (1ULL << GPULangParser::ANDSET)
+          | (1ULL << GPULangParser::OR)
+          | (1ULL << GPULangParser::ORSET)
+          | (1ULL << GPULangParser::XOR)
+          | (1ULL << GPULangParser::XORSET)
+          | (1ULL << GPULangParser::CONNJUGATE)
+          | (1ULL << GPULangParser::Q)
+          | (1ULL << GPULangParser::NU)
+          | (1ULL << GPULangParser::FORWARDSLASH)
+          | (1ULL << GPULangParser::LESS)
+          | (1ULL << GPULangParser::LESSEQ)
+          | (1ULL << GPULangParser::GREATER)
+          | (1ULL << GPULangParser::GREATEREQ)
+          | (1ULL << GPULangParser::LOGICEQ))) != 0) || ((((_la - 64) & ~ 0x3fULL) == 0) &&
+          ((1ULL << (_la - 64)) & ((1ULL << (GPULangParser::NOTEQ - 64))
+          | (1ULL << (GPULangParser::LOGICAND - 64))
+          | (1ULL << (GPULangParser::LOGICOR - 64))
+          | (1ULL << (GPULangParser::MOD - 64))
+          | (1ULL << (GPULangParser::UNDERSC - 64))
+          | (1ULL << (GPULangParser::SOBAKA - 64))
+          | (1ULL << (GPULangParser::ADD_OP - 64))
+          | (1ULL << (GPULangParser::SUB_OP - 64))
+          | (1ULL << (GPULangParser::DIV_OP - 64))
+          | (1ULL << (GPULangParser::MUL_OP - 64))
+          | (1ULL << (GPULangParser::ARROW - 64))
+          | (1ULL << (GPULangParser::INTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::UINTEGERLITERAL - 64))
+          | (1ULL << (GPULangParser::COMMENT - 64))
+          | (1ULL << (GPULangParser::ML_COMMENT - 64))
+          | (1ULL << (GPULangParser::FLOATLITERAL - 64))
+          | (1ULL << (GPULangParser::EXPONENT - 64))
+          | (1ULL << (GPULangParser::DOUBLELITERAL - 64))
+          | (1ULL << (GPULangParser::HEX - 64))
+          | (1ULL << (GPULangParser::IDENTIFIER - 64))
+          | (1ULL << (GPULangParser::WS - 64)))) != 0)) {
           setState(327);
           codeblock();
           setState(332);
@@ -1824,98 +1824,98 @@ AnyFXParser::CodeblockContext* AnyFXParser::codeblock() {
           _la = _input->LA(1);
         }
         setState(333);
-        match(AnyFXParser::RB);
+        match(GPULangParser::RB);
         break;
       }
 
-      case AnyFXParser::T__0:
-      case AnyFXParser::T__1:
-      case AnyFXParser::T__2:
-      case AnyFXParser::T__3:
-      case AnyFXParser::T__4:
-      case AnyFXParser::T__5:
-      case AnyFXParser::T__6:
-      case AnyFXParser::T__7:
-      case AnyFXParser::T__8:
-      case AnyFXParser::T__9:
-      case AnyFXParser::T__10:
-      case AnyFXParser::T__11:
-      case AnyFXParser::T__12:
-      case AnyFXParser::T__13:
-      case AnyFXParser::T__14:
-      case AnyFXParser::T__15:
-      case AnyFXParser::T__16:
-      case AnyFXParser::T__17:
-      case AnyFXParser::T__18:
-      case AnyFXParser::T__19:
-      case AnyFXParser::T__20:
-      case AnyFXParser::T__21:
-      case AnyFXParser::T__22:
-      case AnyFXParser::T__23:
-      case AnyFXParser::T__24:
-      case AnyFXParser::T__25:
-      case AnyFXParser::T__26:
-      case AnyFXParser::T__27:
-      case AnyFXParser::T__28:
-      case AnyFXParser::T__29:
-      case AnyFXParser::T__30:
-      case AnyFXParser::T__31:
-      case AnyFXParser::T__32:
-      case AnyFXParser::T__33:
-      case AnyFXParser::SC:
-      case AnyFXParser::CO:
-      case AnyFXParser::COL:
-      case AnyFXParser::LP:
-      case AnyFXParser::RP:
-      case AnyFXParser::LL:
-      case AnyFXParser::RR:
-      case AnyFXParser::DOT:
-      case AnyFXParser::NOT:
-      case AnyFXParser::EQ:
-      case AnyFXParser::QO:
-      case AnyFXParser::QU:
-      case AnyFXParser::AND:
-      case AnyFXParser::ANDSET:
-      case AnyFXParser::OR:
-      case AnyFXParser::ORSET:
-      case AnyFXParser::XOR:
-      case AnyFXParser::XORSET:
-      case AnyFXParser::CONNJUGATE:
-      case AnyFXParser::Q:
-      case AnyFXParser::NU:
-      case AnyFXParser::FORWARDSLASH:
-      case AnyFXParser::LESS:
-      case AnyFXParser::LESSEQ:
-      case AnyFXParser::GREATER:
-      case AnyFXParser::GREATEREQ:
-      case AnyFXParser::LOGICEQ:
-      case AnyFXParser::NOTEQ:
-      case AnyFXParser::LOGICAND:
-      case AnyFXParser::LOGICOR:
-      case AnyFXParser::MOD:
-      case AnyFXParser::UNDERSC:
-      case AnyFXParser::SOBAKA:
-      case AnyFXParser::ADD_OP:
-      case AnyFXParser::SUB_OP:
-      case AnyFXParser::DIV_OP:
-      case AnyFXParser::MUL_OP:
-      case AnyFXParser::ARROW:
-      case AnyFXParser::INTEGERLITERAL:
-      case AnyFXParser::UINTEGERLITERAL:
-      case AnyFXParser::COMMENT:
-      case AnyFXParser::ML_COMMENT:
-      case AnyFXParser::FLOATLITERAL:
-      case AnyFXParser::EXPONENT:
-      case AnyFXParser::DOUBLELITERAL:
-      case AnyFXParser::HEX:
-      case AnyFXParser::IDENTIFIER:
-      case AnyFXParser::WS: {
+      case GPULangParser::T__0:
+      case GPULangParser::T__1:
+      case GPULangParser::T__2:
+      case GPULangParser::T__3:
+      case GPULangParser::T__4:
+      case GPULangParser::T__5:
+      case GPULangParser::T__6:
+      case GPULangParser::T__7:
+      case GPULangParser::T__8:
+      case GPULangParser::T__9:
+      case GPULangParser::T__10:
+      case GPULangParser::T__11:
+      case GPULangParser::T__12:
+      case GPULangParser::T__13:
+      case GPULangParser::T__14:
+      case GPULangParser::T__15:
+      case GPULangParser::T__16:
+      case GPULangParser::T__17:
+      case GPULangParser::T__18:
+      case GPULangParser::T__19:
+      case GPULangParser::T__20:
+      case GPULangParser::T__21:
+      case GPULangParser::T__22:
+      case GPULangParser::T__23:
+      case GPULangParser::T__24:
+      case GPULangParser::T__25:
+      case GPULangParser::T__26:
+      case GPULangParser::T__27:
+      case GPULangParser::T__28:
+      case GPULangParser::T__29:
+      case GPULangParser::T__30:
+      case GPULangParser::T__31:
+      case GPULangParser::T__32:
+      case GPULangParser::T__33:
+      case GPULangParser::SC:
+      case GPULangParser::CO:
+      case GPULangParser::COL:
+      case GPULangParser::LP:
+      case GPULangParser::RP:
+      case GPULangParser::LL:
+      case GPULangParser::RR:
+      case GPULangParser::DOT:
+      case GPULangParser::NOT:
+      case GPULangParser::EQ:
+      case GPULangParser::QO:
+      case GPULangParser::QU:
+      case GPULangParser::AND:
+      case GPULangParser::ANDSET:
+      case GPULangParser::OR:
+      case GPULangParser::ORSET:
+      case GPULangParser::XOR:
+      case GPULangParser::XORSET:
+      case GPULangParser::CONNJUGATE:
+      case GPULangParser::Q:
+      case GPULangParser::NU:
+      case GPULangParser::FORWARDSLASH:
+      case GPULangParser::LESS:
+      case GPULangParser::LESSEQ:
+      case GPULangParser::GREATER:
+      case GPULangParser::GREATEREQ:
+      case GPULangParser::LOGICEQ:
+      case GPULangParser::NOTEQ:
+      case GPULangParser::LOGICAND:
+      case GPULangParser::LOGICOR:
+      case GPULangParser::MOD:
+      case GPULangParser::UNDERSC:
+      case GPULangParser::SOBAKA:
+      case GPULangParser::ADD_OP:
+      case GPULangParser::SUB_OP:
+      case GPULangParser::DIV_OP:
+      case GPULangParser::MUL_OP:
+      case GPULangParser::ARROW:
+      case GPULangParser::INTEGERLITERAL:
+      case GPULangParser::UINTEGERLITERAL:
+      case GPULangParser::COMMENT:
+      case GPULangParser::ML_COMMENT:
+      case GPULangParser::FLOATLITERAL:
+      case GPULangParser::EXPONENT:
+      case GPULangParser::DOUBLELITERAL:
+      case GPULangParser::HEX:
+      case GPULangParser::IDENTIFIER:
+      case GPULangParser::WS: {
         enterOuterAlt(_localctx, 2);
         setState(334);
         _la = _input->LA(1);
-        if (_la == 0 || _la == Token::EOF || (_la == AnyFXParser::LB
+        if (_la == 0 || _la == Token::EOF || (_la == GPULangParser::LB
 
-        || _la == AnyFXParser::RB)) {
+        || _la == GPULangParser::RB)) {
         _errHandler->recoverInline(this);
         }
         else {
@@ -1941,38 +1941,38 @@ AnyFXParser::CodeblockContext* AnyFXParser::codeblock() {
 
 //----------------- FunctionContext ------------------------------------------------------------------
 
-AnyFXParser::FunctionContext::FunctionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::FunctionContext::FunctionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::FunctionDeclarationContext* AnyFXParser::FunctionContext::functionDeclaration() {
-  return getRuleContext<AnyFXParser::FunctionDeclarationContext>(0);
+GPULangParser::FunctionDeclarationContext* GPULangParser::FunctionContext::functionDeclaration() {
+  return getRuleContext<GPULangParser::FunctionDeclarationContext>(0);
 }
 
-AnyFXParser::ScopeStatementContext* AnyFXParser::FunctionContext::scopeStatement() {
-  return getRuleContext<AnyFXParser::ScopeStatementContext>(0);
+GPULangParser::ScopeStatementContext* GPULangParser::FunctionContext::scopeStatement() {
+  return getRuleContext<GPULangParser::ScopeStatementContext>(0);
 }
 
 
-size_t AnyFXParser::FunctionContext::getRuleIndex() const {
-  return AnyFXParser::RuleFunction;
+size_t GPULangParser::FunctionContext::getRuleIndex() const {
+  return GPULangParser::RuleFunction;
 }
 
-void AnyFXParser::FunctionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::FunctionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterFunction(this);
 }
 
-void AnyFXParser::FunctionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::FunctionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitFunction(this);
 }
 
-AnyFXParser::FunctionContext* AnyFXParser::function() {
+GPULangParser::FunctionContext* GPULangParser::function() {
   FunctionContext *_localctx = _tracker.createInstance<FunctionContext>(_ctx, getState());
-  enterRule(_localctx, 32, AnyFXParser::RuleFunction);
+  enterRule(_localctx, 32, GPULangParser::RuleFunction);
 
           dynamic_cast<FunctionContext *>(_localctx)->sym =  nullptr;
           Token* startToken = nullptr;
@@ -2016,50 +2016,50 @@ AnyFXParser::FunctionContext* AnyFXParser::function() {
 
 //----------------- ProgramContext ------------------------------------------------------------------
 
-AnyFXParser::ProgramContext::ProgramContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ProgramContext::ProgramContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::ProgramContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::ProgramContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-std::vector<AnyFXParser::AnnotationContext *> AnyFXParser::ProgramContext::annotation() {
-  return getRuleContexts<AnyFXParser::AnnotationContext>();
+std::vector<GPULangParser::AnnotationContext *> GPULangParser::ProgramContext::annotation() {
+  return getRuleContexts<GPULangParser::AnnotationContext>();
 }
 
-AnyFXParser::AnnotationContext* AnyFXParser::ProgramContext::annotation(size_t i) {
-  return getRuleContext<AnyFXParser::AnnotationContext>(i);
+GPULangParser::AnnotationContext* GPULangParser::ProgramContext::annotation(size_t i) {
+  return getRuleContext<GPULangParser::AnnotationContext>(i);
 }
 
-std::vector<AnyFXParser::ExpressionContext *> AnyFXParser::ProgramContext::expression() {
-  return getRuleContexts<AnyFXParser::ExpressionContext>();
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::ProgramContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::ProgramContext::expression(size_t i) {
-  return getRuleContext<AnyFXParser::ExpressionContext>(i);
+GPULangParser::ExpressionContext* GPULangParser::ProgramContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::ProgramContext::getRuleIndex() const {
-  return AnyFXParser::RuleProgram;
+size_t GPULangParser::ProgramContext::getRuleIndex() const {
+  return GPULangParser::RuleProgram;
 }
 
-void AnyFXParser::ProgramContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ProgramContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterProgram(this);
 }
 
-void AnyFXParser::ProgramContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ProgramContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitProgram(this);
 }
 
-AnyFXParser::ProgramContext* AnyFXParser::program() {
+GPULangParser::ProgramContext* GPULangParser::program() {
   ProgramContext *_localctx = _tracker.createInstance<ProgramContext>(_ctx, getState());
-  enterRule(_localctx, 34, AnyFXParser::RuleProgram);
+  enterRule(_localctx, 34, GPULangParser::RuleProgram);
 
           dynamic_cast<ProgramContext *>(_localctx)->sym =  nullptr;
           Symbol::Location location;
@@ -2077,7 +2077,7 @@ AnyFXParser::ProgramContext* AnyFXParser::program() {
     setState(348);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::SOBAKA) {
+    while (_la == GPULangParser::SOBAKA) {
       setState(343);
       dynamic_cast<ProgramContext *>(_localctx)->annotationContext = annotation();
        annotations.push_back(dynamic_cast<ProgramContext *>(_localctx)->annotationContext->annot); 
@@ -2086,46 +2086,46 @@ AnyFXParser::ProgramContext* AnyFXParser::program() {
       _la = _input->LA(1);
     }
     setState(351);
-    match(AnyFXParser::T__7);
+    match(GPULangParser::T__7);
     setState(352);
-    dynamic_cast<ProgramContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<ProgramContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      location = SetupFile(); 
     setState(354);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(361);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(355);
       dynamic_cast<ProgramContext *>(_localctx)->assignment = expression();
        entries.push_back(dynamic_cast<ProgramContext *>(_localctx)->assignment->tree); 
       setState(357);
-      match(AnyFXParser::SC);
+      match(GPULangParser::SC);
       setState(363);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
     setState(364);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
      
             dynamic_cast<ProgramContext *>(_localctx)->sym =  new Program();
             _localctx->sym->location = location;
@@ -2146,42 +2146,42 @@ AnyFXParser::ProgramContext* AnyFXParser::program() {
 
 //----------------- StateContext ------------------------------------------------------------------
 
-AnyFXParser::StateContext::StateContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::StateContext::StateContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::StateContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::StateContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-std::vector<AnyFXParser::ExpressionContext *> AnyFXParser::StateContext::expression() {
-  return getRuleContexts<AnyFXParser::ExpressionContext>();
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::StateContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::StateContext::expression(size_t i) {
-  return getRuleContext<AnyFXParser::ExpressionContext>(i);
+GPULangParser::ExpressionContext* GPULangParser::StateContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::StateContext::getRuleIndex() const {
-  return AnyFXParser::RuleState;
+size_t GPULangParser::StateContext::getRuleIndex() const {
+  return GPULangParser::RuleState;
 }
 
-void AnyFXParser::StateContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StateContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterState(this);
 }
 
-void AnyFXParser::StateContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StateContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitState(this);
 }
 
-AnyFXParser::StateContext* AnyFXParser::state() {
+GPULangParser::StateContext* GPULangParser::state() {
   StateContext *_localctx = _tracker.createInstance<StateContext>(_ctx, getState());
-  enterRule(_localctx, 36, AnyFXParser::RuleState);
+  enterRule(_localctx, 36, GPULangParser::RuleState);
 
           Expression* arrayExpression = nullptr;
           Symbol::Location location;
@@ -2197,16 +2197,16 @@ AnyFXParser::StateContext* AnyFXParser::state() {
     setState(371);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::T__8: {
+      case GPULangParser::T__8: {
         setState(367);
-        match(AnyFXParser::T__8);
+        match(GPULangParser::T__8);
          dynamic_cast<StateContext *>(_localctx)->sym =  new SamplerState(); 
         break;
       }
 
-      case AnyFXParser::T__9: {
+      case GPULangParser::T__9: {
         setState(369);
-        match(AnyFXParser::T__9);
+        match(GPULangParser::T__9);
          dynamic_cast<StateContext *>(_localctx)->sym =  new RenderState(); 
         break;
       }
@@ -2215,44 +2215,44 @@ AnyFXParser::StateContext* AnyFXParser::state() {
       throw NoViableAltException(this);
     }
     setState(373);
-    dynamic_cast<StateContext *>(_localctx)->name = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<StateContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      location = SetupFile(); 
     setState(375);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(382);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(376);
       dynamic_cast<StateContext *>(_localctx)->assign = expression();
        entries.push_back(dynamic_cast<StateContext *>(_localctx)->assign->tree); 
       setState(378);
-      match(AnyFXParser::SC);
+      match(GPULangParser::SC);
       setState(384);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
     setState(385);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
 
             _localctx->sym->name = (dynamic_cast<StateContext *>(_localctx)->name != nullptr ? dynamic_cast<StateContext *>(_localctx)->name->getText() : "");
             _localctx->sym->location = location;
@@ -2271,62 +2271,62 @@ AnyFXParser::StateContext* AnyFXParser::state() {
 
 //----------------- StatementContext ------------------------------------------------------------------
 
-AnyFXParser::StatementContext::StatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::StatementContext::StatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::IfStatementContext* AnyFXParser::StatementContext::ifStatement() {
-  return getRuleContext<AnyFXParser::IfStatementContext>(0);
+GPULangParser::IfStatementContext* GPULangParser::StatementContext::ifStatement() {
+  return getRuleContext<GPULangParser::IfStatementContext>(0);
 }
 
-AnyFXParser::ScopeStatementContext* AnyFXParser::StatementContext::scopeStatement() {
-  return getRuleContext<AnyFXParser::ScopeStatementContext>(0);
+GPULangParser::ScopeStatementContext* GPULangParser::StatementContext::scopeStatement() {
+  return getRuleContext<GPULangParser::ScopeStatementContext>(0);
 }
 
-AnyFXParser::ForStatementContext* AnyFXParser::StatementContext::forStatement() {
-  return getRuleContext<AnyFXParser::ForStatementContext>(0);
+GPULangParser::ForStatementContext* GPULangParser::StatementContext::forStatement() {
+  return getRuleContext<GPULangParser::ForStatementContext>(0);
 }
 
-AnyFXParser::WhileStatementContext* AnyFXParser::StatementContext::whileStatement() {
-  return getRuleContext<AnyFXParser::WhileStatementContext>(0);
+GPULangParser::WhileStatementContext* GPULangParser::StatementContext::whileStatement() {
+  return getRuleContext<GPULangParser::WhileStatementContext>(0);
 }
 
-AnyFXParser::ReturnStatementContext* AnyFXParser::StatementContext::returnStatement() {
-  return getRuleContext<AnyFXParser::ReturnStatementContext>(0);
+GPULangParser::ReturnStatementContext* GPULangParser::StatementContext::returnStatement() {
+  return getRuleContext<GPULangParser::ReturnStatementContext>(0);
 }
 
-AnyFXParser::ContinueStatementContext* AnyFXParser::StatementContext::continueStatement() {
-  return getRuleContext<AnyFXParser::ContinueStatementContext>(0);
+GPULangParser::ContinueStatementContext* GPULangParser::StatementContext::continueStatement() {
+  return getRuleContext<GPULangParser::ContinueStatementContext>(0);
 }
 
-AnyFXParser::BreakStatementContext* AnyFXParser::StatementContext::breakStatement() {
-  return getRuleContext<AnyFXParser::BreakStatementContext>(0);
+GPULangParser::BreakStatementContext* GPULangParser::StatementContext::breakStatement() {
+  return getRuleContext<GPULangParser::BreakStatementContext>(0);
 }
 
-AnyFXParser::ExpressionStatementContext* AnyFXParser::StatementContext::expressionStatement() {
-  return getRuleContext<AnyFXParser::ExpressionStatementContext>(0);
+GPULangParser::ExpressionStatementContext* GPULangParser::StatementContext::expressionStatement() {
+  return getRuleContext<GPULangParser::ExpressionStatementContext>(0);
 }
 
 
-size_t AnyFXParser::StatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleStatement;
+size_t GPULangParser::StatementContext::getRuleIndex() const {
+  return GPULangParser::RuleStatement;
 }
 
-void AnyFXParser::StatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterStatement(this);
 }
 
-void AnyFXParser::StatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::StatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStatement(this);
 }
 
-AnyFXParser::StatementContext* AnyFXParser::statement() {
+GPULangParser::StatementContext* GPULangParser::statement() {
   StatementContext *_localctx = _tracker.createInstance<StatementContext>(_ctx, getState());
-  enterRule(_localctx, 38, AnyFXParser::RuleStatement);
+  enterRule(_localctx, 38, GPULangParser::RuleStatement);
 
           dynamic_cast<StatementContext *>(_localctx)->tree =  nullptr;
       
@@ -2399,7 +2399,7 @@ AnyFXParser::StatementContext* AnyFXParser::statement() {
       setState(409);
       dynamic_cast<StatementContext *>(_localctx)->expressionStatementContext = expressionStatement();
       setState(410);
-      match(AnyFXParser::SC);
+      match(GPULangParser::SC);
        dynamic_cast<StatementContext *>(_localctx)->tree =  dynamic_cast<StatementContext *>(_localctx)->expressionStatementContext->tree; 
       break;
     }
@@ -2418,34 +2418,34 @@ AnyFXParser::StatementContext* AnyFXParser::statement() {
 
 //----------------- ExpressionStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ExpressionStatementContext::ExpressionStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ExpressionStatementContext::ExpressionStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::ExpressionStatementContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::ExpressionStatementContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::ExpressionStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleExpressionStatement;
+size_t GPULangParser::ExpressionStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleExpressionStatement;
 }
 
-void AnyFXParser::ExpressionStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ExpressionStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterExpressionStatement(this);
 }
 
-void AnyFXParser::ExpressionStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ExpressionStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpressionStatement(this);
 }
 
-AnyFXParser::ExpressionStatementContext* AnyFXParser::expressionStatement() {
+GPULangParser::ExpressionStatementContext* GPULangParser::expressionStatement() {
   ExpressionStatementContext *_localctx = _tracker.createInstance<ExpressionStatementContext>(_ctx, getState());
-  enterRule(_localctx, 40, AnyFXParser::RuleExpressionStatement);
+  enterRule(_localctx, 40, GPULangParser::RuleExpressionStatement);
 
           dynamic_cast<ExpressionStatementContext *>(_localctx)->tree =  nullptr;
       
@@ -2474,42 +2474,42 @@ AnyFXParser::ExpressionStatementContext* AnyFXParser::expressionStatement() {
 
 //----------------- IfStatementContext ------------------------------------------------------------------
 
-AnyFXParser::IfStatementContext::IfStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::IfStatementContext::IfStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::IfStatementContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::IfStatementContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
-std::vector<AnyFXParser::StatementContext *> AnyFXParser::IfStatementContext::statement() {
-  return getRuleContexts<AnyFXParser::StatementContext>();
+std::vector<GPULangParser::StatementContext *> GPULangParser::IfStatementContext::statement() {
+  return getRuleContexts<GPULangParser::StatementContext>();
 }
 
-AnyFXParser::StatementContext* AnyFXParser::IfStatementContext::statement(size_t i) {
-  return getRuleContext<AnyFXParser::StatementContext>(i);
+GPULangParser::StatementContext* GPULangParser::IfStatementContext::statement(size_t i) {
+  return getRuleContext<GPULangParser::StatementContext>(i);
 }
 
 
-size_t AnyFXParser::IfStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleIfStatement;
+size_t GPULangParser::IfStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleIfStatement;
 }
 
-void AnyFXParser::IfStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::IfStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterIfStatement(this);
 }
 
-void AnyFXParser::IfStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::IfStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitIfStatement(this);
 }
 
-AnyFXParser::IfStatementContext* AnyFXParser::ifStatement() {
+GPULangParser::IfStatementContext* GPULangParser::ifStatement() {
   IfStatementContext *_localctx = _tracker.createInstance<IfStatementContext>(_ctx, getState());
-  enterRule(_localctx, 42, AnyFXParser::RuleIfStatement);
+  enterRule(_localctx, 42, GPULangParser::RuleIfStatement);
 
           dynamic_cast<IfStatementContext *>(_localctx)->tree =  nullptr;
           Expression* condition = nullptr;
@@ -2524,15 +2524,15 @@ AnyFXParser::IfStatementContext* AnyFXParser::ifStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(418);
-    match(AnyFXParser::T__10);
+    match(GPULangParser::T__10);
      location = SetupFile(); 
     setState(420);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(421);
     dynamic_cast<IfStatementContext *>(_localctx)->condition = expression();
      condition = dynamic_cast<IfStatementContext *>(_localctx)->condition->tree; 
     setState(423);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
     setState(424);
     dynamic_cast<IfStatementContext *>(_localctx)->ifBody = statement();
      ifBody = dynamic_cast<IfStatementContext *>(_localctx)->ifBody->tree; 
@@ -2542,7 +2542,7 @@ AnyFXParser::IfStatementContext* AnyFXParser::ifStatement() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 27, _ctx)) {
     case 1: {
       setState(426);
-      match(AnyFXParser::T__11);
+      match(GPULangParser::T__11);
       setState(427);
       dynamic_cast<IfStatementContext *>(_localctx)->elseBody = statement();
        elseBody = dynamic_cast<IfStatementContext *>(_localctx)->elseBody->tree; 
@@ -2567,46 +2567,46 @@ AnyFXParser::IfStatementContext* AnyFXParser::ifStatement() {
 
 //----------------- ForStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ForStatementContext::ForStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ForStatementContext::ForStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::StatementContext* AnyFXParser::ForStatementContext::statement() {
-  return getRuleContext<AnyFXParser::StatementContext>(0);
+GPULangParser::StatementContext* GPULangParser::ForStatementContext::statement() {
+  return getRuleContext<GPULangParser::StatementContext>(0);
 }
 
-AnyFXParser::VariablesContext* AnyFXParser::ForStatementContext::variables() {
-  return getRuleContext<AnyFXParser::VariablesContext>(0);
+GPULangParser::VariablesContext* GPULangParser::ForStatementContext::variables() {
+  return getRuleContext<GPULangParser::VariablesContext>(0);
 }
 
-std::vector<AnyFXParser::ExpressionContext *> AnyFXParser::ForStatementContext::expression() {
-  return getRuleContexts<AnyFXParser::ExpressionContext>();
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::ForStatementContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::ForStatementContext::expression(size_t i) {
-  return getRuleContext<AnyFXParser::ExpressionContext>(i);
+GPULangParser::ExpressionContext* GPULangParser::ForStatementContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::ForStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleForStatement;
+size_t GPULangParser::ForStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleForStatement;
 }
 
-void AnyFXParser::ForStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ForStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterForStatement(this);
 }
 
-void AnyFXParser::ForStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ForStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitForStatement(this);
 }
 
-AnyFXParser::ForStatementContext* AnyFXParser::forStatement() {
+GPULangParser::ForStatementContext* GPULangParser::forStatement() {
   ForStatementContext *_localctx = _tracker.createInstance<ForStatementContext>(_ctx, getState());
-  enterRule(_localctx, 44, AnyFXParser::RuleForStatement);
+  enterRule(_localctx, 44, GPULangParser::RuleForStatement);
 
           dynamic_cast<ForStatementContext *>(_localctx)->tree =  nullptr;
           std::vector<Variable*> declarations;
@@ -2623,83 +2623,83 @@ AnyFXParser::ForStatementContext* AnyFXParser::forStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(434);
-    match(AnyFXParser::T__12);
+    match(GPULangParser::T__12);
      location = SetupFile(); 
     setState(436);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(440);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == AnyFXParser::SOBAKA
+    if (_la == GPULangParser::SOBAKA
 
-    || _la == AnyFXParser::IDENTIFIER) {
+    || _la == GPULangParser::IDENTIFIER) {
       setState(437);
       dynamic_cast<ForStatementContext *>(_localctx)->variablesContext = variables();
        declarations = dynamic_cast<ForStatementContext *>(_localctx)->variablesContext->list; 
     }
     setState(442);
-    match(AnyFXParser::SC);
+    match(GPULangParser::SC);
     setState(446);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(443);
       dynamic_cast<ForStatementContext *>(_localctx)->condition = expression();
        conditionExpression = dynamic_cast<ForStatementContext *>(_localctx)->condition->tree; 
     }
     setState(448);
-    match(AnyFXParser::SC);
+    match(GPULangParser::SC);
     setState(452);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(449);
       dynamic_cast<ForStatementContext *>(_localctx)->loop = expression();
        loopExpression = dynamic_cast<ForStatementContext *>(_localctx)->loop->tree; 
     }
     setState(454);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
     setState(455);
     dynamic_cast<ForStatementContext *>(_localctx)->content = statement();
      contents = dynamic_cast<ForStatementContext *>(_localctx)->content->tree; 
@@ -2720,42 +2720,42 @@ AnyFXParser::ForStatementContext* AnyFXParser::forStatement() {
 
 //----------------- ForRangeStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ForRangeStatementContext::ForRangeStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ForRangeStatementContext::ForRangeStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> AnyFXParser::ForRangeStatementContext::IDENTIFIER() {
-  return getTokens(AnyFXParser::IDENTIFIER);
+std::vector<tree::TerminalNode *> GPULangParser::ForRangeStatementContext::IDENTIFIER() {
+  return getTokens(GPULangParser::IDENTIFIER);
 }
 
-tree::TerminalNode* AnyFXParser::ForRangeStatementContext::IDENTIFIER(size_t i) {
-  return getToken(AnyFXParser::IDENTIFIER, i);
+tree::TerminalNode* GPULangParser::ForRangeStatementContext::IDENTIFIER(size_t i) {
+  return getToken(GPULangParser::IDENTIFIER, i);
 }
 
-AnyFXParser::StatementContext* AnyFXParser::ForRangeStatementContext::statement() {
-  return getRuleContext<AnyFXParser::StatementContext>(0);
+GPULangParser::StatementContext* GPULangParser::ForRangeStatementContext::statement() {
+  return getRuleContext<GPULangParser::StatementContext>(0);
 }
 
 
-size_t AnyFXParser::ForRangeStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleForRangeStatement;
+size_t GPULangParser::ForRangeStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleForRangeStatement;
 }
 
-void AnyFXParser::ForRangeStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ForRangeStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterForRangeStatement(this);
 }
 
-void AnyFXParser::ForRangeStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ForRangeStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitForRangeStatement(this);
 }
 
-AnyFXParser::ForRangeStatementContext* AnyFXParser::forRangeStatement() {
+GPULangParser::ForRangeStatementContext* GPULangParser::forRangeStatement() {
   ForRangeStatementContext *_localctx = _tracker.createInstance<ForRangeStatementContext>(_ctx, getState());
-  enterRule(_localctx, 46, AnyFXParser::RuleForRangeStatement);
+  enterRule(_localctx, 46, GPULangParser::RuleForRangeStatement);
 
           dynamic_cast<ForRangeStatementContext *>(_localctx)->tree =  nullptr;
           Statement* contents = nullptr;
@@ -2768,22 +2768,22 @@ AnyFXParser::ForRangeStatementContext* AnyFXParser::forRangeStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(459);
-    match(AnyFXParser::T__12);
+    match(GPULangParser::T__12);
      location = SetupFile(); 
     setState(461);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(462);
-    dynamic_cast<ForRangeStatementContext *>(_localctx)->iterator = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<ForRangeStatementContext *>(_localctx)->iterator = match(GPULangParser::IDENTIFIER);
     setState(463);
-    match(AnyFXParser::COL);
+    match(GPULangParser::COL);
     setState(464);
-    dynamic_cast<ForRangeStatementContext *>(_localctx)->start = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<ForRangeStatementContext *>(_localctx)->start = match(GPULangParser::IDENTIFIER);
     setState(465);
-    match(AnyFXParser::T__13);
+    match(GPULangParser::T__13);
     setState(466);
-    dynamic_cast<ForRangeStatementContext *>(_localctx)->end = match(AnyFXParser::IDENTIFIER);
+    dynamic_cast<ForRangeStatementContext *>(_localctx)->end = match(GPULangParser::IDENTIFIER);
     setState(467);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
     setState(468);
     dynamic_cast<ForRangeStatementContext *>(_localctx)->content = statement();
      contents = dynamic_cast<ForRangeStatementContext *>(_localctx)->content->tree; 
@@ -2803,38 +2803,38 @@ AnyFXParser::ForRangeStatementContext* AnyFXParser::forRangeStatement() {
 
 //----------------- WhileStatementContext ------------------------------------------------------------------
 
-AnyFXParser::WhileStatementContext::WhileStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::WhileStatementContext::WhileStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::WhileStatementContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::WhileStatementContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
-AnyFXParser::StatementContext* AnyFXParser::WhileStatementContext::statement() {
-  return getRuleContext<AnyFXParser::StatementContext>(0);
+GPULangParser::StatementContext* GPULangParser::WhileStatementContext::statement() {
+  return getRuleContext<GPULangParser::StatementContext>(0);
 }
 
 
-size_t AnyFXParser::WhileStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleWhileStatement;
+size_t GPULangParser::WhileStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleWhileStatement;
 }
 
-void AnyFXParser::WhileStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::WhileStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterWhileStatement(this);
 }
 
-void AnyFXParser::WhileStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::WhileStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitWhileStatement(this);
 }
 
-AnyFXParser::WhileStatementContext* AnyFXParser::whileStatement() {
+GPULangParser::WhileStatementContext* GPULangParser::whileStatement() {
   WhileStatementContext *_localctx = _tracker.createInstance<WhileStatementContext>(_ctx, getState());
-  enterRule(_localctx, 48, AnyFXParser::RuleWhileStatement);
+  enterRule(_localctx, 48, GPULangParser::RuleWhileStatement);
 
           dynamic_cast<WhileStatementContext *>(_localctx)->tree =  nullptr;
           Expression* conditionExpression = nullptr;
@@ -2850,18 +2850,18 @@ AnyFXParser::WhileStatementContext* AnyFXParser::whileStatement() {
     setState(494);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::T__14: {
+      case GPULangParser::T__14: {
         enterOuterAlt(_localctx, 1);
         setState(472);
-        match(AnyFXParser::T__14);
+        match(GPULangParser::T__14);
          location = SetupFile(); 
         setState(474);
-        match(AnyFXParser::LP);
+        match(GPULangParser::LP);
         setState(475);
         dynamic_cast<WhileStatementContext *>(_localctx)->condition = expression();
          conditionExpression = dynamic_cast<WhileStatementContext *>(_localctx)->condition->tree; 
         setState(477);
-        match(AnyFXParser::RP);
+        match(GPULangParser::RP);
         setState(478);
         dynamic_cast<WhileStatementContext *>(_localctx)->content = statement();
          contents = dynamic_cast<WhileStatementContext *>(_localctx)->content->tree; 
@@ -2872,25 +2872,25 @@ AnyFXParser::WhileStatementContext* AnyFXParser::whileStatement() {
         break;
       }
 
-      case AnyFXParser::T__15: {
+      case GPULangParser::T__15: {
         enterOuterAlt(_localctx, 2);
         setState(482);
-        match(AnyFXParser::T__15);
+        match(GPULangParser::T__15);
          location = SetupFile(); 
         setState(484);
         dynamic_cast<WhileStatementContext *>(_localctx)->content = statement();
          contents = dynamic_cast<WhileStatementContext *>(_localctx)->content->tree; isDoWhile = true; 
         setState(486);
-        match(AnyFXParser::T__14);
+        match(GPULangParser::T__14);
         setState(487);
-        match(AnyFXParser::LP);
+        match(GPULangParser::LP);
         setState(488);
         dynamic_cast<WhileStatementContext *>(_localctx)->condition = expression();
          conditionExpression = dynamic_cast<WhileStatementContext *>(_localctx)->condition->tree; 
         setState(490);
-        match(AnyFXParser::RP);
+        match(GPULangParser::RP);
         setState(491);
-        match(AnyFXParser::SC);
+        match(GPULangParser::SC);
 
                 dynamic_cast<WhileStatementContext *>(_localctx)->tree =  new WhileStatement(conditionExpression, contents, isDoWhile);
                 _localctx->tree->location = location;
@@ -2914,46 +2914,46 @@ AnyFXParser::WhileStatementContext* AnyFXParser::whileStatement() {
 
 //----------------- ScopeStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ScopeStatementContext::ScopeStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ScopeStatementContext::ScopeStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::StatementContext *> AnyFXParser::ScopeStatementContext::statement() {
-  return getRuleContexts<AnyFXParser::StatementContext>();
+std::vector<GPULangParser::StatementContext *> GPULangParser::ScopeStatementContext::statement() {
+  return getRuleContexts<GPULangParser::StatementContext>();
 }
 
-AnyFXParser::StatementContext* AnyFXParser::ScopeStatementContext::statement(size_t i) {
-  return getRuleContext<AnyFXParser::StatementContext>(i);
+GPULangParser::StatementContext* GPULangParser::ScopeStatementContext::statement(size_t i) {
+  return getRuleContext<GPULangParser::StatementContext>(i);
 }
 
-std::vector<AnyFXParser::VariablesContext *> AnyFXParser::ScopeStatementContext::variables() {
-  return getRuleContexts<AnyFXParser::VariablesContext>();
+std::vector<GPULangParser::VariablesContext *> GPULangParser::ScopeStatementContext::variables() {
+  return getRuleContexts<GPULangParser::VariablesContext>();
 }
 
-AnyFXParser::VariablesContext* AnyFXParser::ScopeStatementContext::variables(size_t i) {
-  return getRuleContext<AnyFXParser::VariablesContext>(i);
+GPULangParser::VariablesContext* GPULangParser::ScopeStatementContext::variables(size_t i) {
+  return getRuleContext<GPULangParser::VariablesContext>(i);
 }
 
 
-size_t AnyFXParser::ScopeStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleScopeStatement;
+size_t GPULangParser::ScopeStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleScopeStatement;
 }
 
-void AnyFXParser::ScopeStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ScopeStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterScopeStatement(this);
 }
 
-void AnyFXParser::ScopeStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ScopeStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitScopeStatement(this);
 }
 
-AnyFXParser::ScopeStatementContext* AnyFXParser::scopeStatement() {
+GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
   ScopeStatementContext *_localctx = _tracker.createInstance<ScopeStatementContext>(_ctx, getState());
-  enterRule(_localctx, 50, AnyFXParser::RuleScopeStatement);
+  enterRule(_localctx, 50, GPULangParser::RuleScopeStatement);
 
           dynamic_cast<ScopeStatementContext *>(_localctx)->tree =  nullptr;
           std::vector<Symbol*> contents;
@@ -2967,39 +2967,39 @@ AnyFXParser::ScopeStatementContext* AnyFXParser::scopeStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(496);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
      location = SetupFile(); 
     setState(507);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__10)
-      | (1ULL << AnyFXParser::T__12)
-      | (1ULL << AnyFXParser::T__14)
-      | (1ULL << AnyFXParser::T__15)
-      | (1ULL << AnyFXParser::T__16)
-      | (1ULL << AnyFXParser::T__17)
-      | (1ULL << AnyFXParser::T__21)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 69) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 69)) & ((1ULL << (AnyFXParser::SOBAKA - 69))
-      | (1ULL << (AnyFXParser::ADD_OP - 69))
-      | (1ULL << (AnyFXParser::SUB_OP - 69))
-      | (1ULL << (AnyFXParser::MUL_OP - 69))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 69))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 69))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 69))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 69))
-      | (1ULL << (AnyFXParser::HEX - 69))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 69)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__10)
+      | (1ULL << GPULangParser::T__12)
+      | (1ULL << GPULangParser::T__14)
+      | (1ULL << GPULangParser::T__15)
+      | (1ULL << GPULangParser::T__16)
+      | (1ULL << GPULangParser::T__17)
+      | (1ULL << GPULangParser::T__21)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 69) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 69)) & ((1ULL << (GPULangParser::SOBAKA - 69))
+      | (1ULL << (GPULangParser::ADD_OP - 69))
+      | (1ULL << (GPULangParser::SUB_OP - 69))
+      | (1ULL << (GPULangParser::MUL_OP - 69))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 69))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 69))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 69))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 69))
+      | (1ULL << (GPULangParser::HEX - 69))
+      | (1ULL << (GPULangParser::IDENTIFIER - 69)))) != 0)) {
       setState(505);
       _errHandler->sync(this);
       switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 32, _ctx)) {
@@ -3014,7 +3014,7 @@ AnyFXParser::ScopeStatementContext* AnyFXParser::scopeStatement() {
         setState(501);
         dynamic_cast<ScopeStatementContext *>(_localctx)->variablesContext = variables();
         setState(502);
-        match(AnyFXParser::SC);
+        match(GPULangParser::SC);
          for(Variable* var : dynamic_cast<ScopeStatementContext *>(_localctx)->variablesContext->list) { contents.push_back(var); } 
         break;
       }
@@ -3025,7 +3025,7 @@ AnyFXParser::ScopeStatementContext* AnyFXParser::scopeStatement() {
       _la = _input->LA(1);
     }
     setState(510);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
 
             dynamic_cast<ScopeStatementContext *>(_localctx)->tree =  new ScopeStatement(contents);
             _localctx->tree->location = location;
@@ -3043,34 +3043,34 @@ AnyFXParser::ScopeStatementContext* AnyFXParser::scopeStatement() {
 
 //----------------- ReturnStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ReturnStatementContext::ReturnStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ReturnStatementContext::ReturnStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::ReturnStatementContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::ReturnStatementContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::ReturnStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleReturnStatement;
+size_t GPULangParser::ReturnStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleReturnStatement;
 }
 
-void AnyFXParser::ReturnStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ReturnStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterReturnStatement(this);
 }
 
-void AnyFXParser::ReturnStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ReturnStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitReturnStatement(this);
 }
 
-AnyFXParser::ReturnStatementContext* AnyFXParser::returnStatement() {
+GPULangParser::ReturnStatementContext* GPULangParser::returnStatement() {
   ReturnStatementContext *_localctx = _tracker.createInstance<ReturnStatementContext>(_ctx, getState());
-  enterRule(_localctx, 52, AnyFXParser::RuleReturnStatement);
+  enterRule(_localctx, 52, GPULangParser::RuleReturnStatement);
 
           dynamic_cast<ReturnStatementContext *>(_localctx)->tree =  nullptr;
           Expression* returnValue = nullptr;
@@ -3084,38 +3084,38 @@ AnyFXParser::ReturnStatementContext* AnyFXParser::returnStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(513);
-    match(AnyFXParser::T__16);
+    match(GPULangParser::T__16);
      location = SetupFile(); 
     setState(518);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(515);
       dynamic_cast<ReturnStatementContext *>(_localctx)->value = expression();
        returnValue = dynamic_cast<ReturnStatementContext *>(_localctx)->value->tree; 
     }
     setState(520);
-    match(AnyFXParser::SC);
+    match(GPULangParser::SC);
 
             dynamic_cast<ReturnStatementContext *>(_localctx)->tree =  new ReturnStatement(returnValue);
         
@@ -3132,30 +3132,30 @@ AnyFXParser::ReturnStatementContext* AnyFXParser::returnStatement() {
 
 //----------------- ContinueStatementContext ------------------------------------------------------------------
 
-AnyFXParser::ContinueStatementContext::ContinueStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ContinueStatementContext::ContinueStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t AnyFXParser::ContinueStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleContinueStatement;
+size_t GPULangParser::ContinueStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleContinueStatement;
 }
 
-void AnyFXParser::ContinueStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ContinueStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterContinueStatement(this);
 }
 
-void AnyFXParser::ContinueStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ContinueStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitContinueStatement(this);
 }
 
-AnyFXParser::ContinueStatementContext* AnyFXParser::continueStatement() {
+GPULangParser::ContinueStatementContext* GPULangParser::continueStatement() {
   ContinueStatementContext *_localctx = _tracker.createInstance<ContinueStatementContext>(_ctx, getState());
-  enterRule(_localctx, 54, AnyFXParser::RuleContinueStatement);
+  enterRule(_localctx, 54, GPULangParser::RuleContinueStatement);
 
           dynamic_cast<ContinueStatementContext *>(_localctx)->tree =  nullptr;
           Symbol::Location location;
@@ -3167,10 +3167,10 @@ AnyFXParser::ContinueStatementContext* AnyFXParser::continueStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(523);
-    match(AnyFXParser::T__17);
+    match(GPULangParser::T__17);
      location = SetupFile(); 
     setState(525);
-    match(AnyFXParser::SC);
+    match(GPULangParser::SC);
 
             dynamic_cast<ContinueStatementContext *>(_localctx)->tree =  new ContinueStatement();
         
@@ -3187,50 +3187,50 @@ AnyFXParser::ContinueStatementContext* AnyFXParser::continueStatement() {
 
 //----------------- SwitchStatementContext ------------------------------------------------------------------
 
-AnyFXParser::SwitchStatementContext::SwitchStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::SwitchStatementContext::SwitchStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::SwitchStatementContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::SwitchStatementContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
-std::vector<tree::TerminalNode *> AnyFXParser::SwitchStatementContext::IDENTIFIER() {
-  return getTokens(AnyFXParser::IDENTIFIER);
+std::vector<tree::TerminalNode *> GPULangParser::SwitchStatementContext::IDENTIFIER() {
+  return getTokens(GPULangParser::IDENTIFIER);
 }
 
-tree::TerminalNode* AnyFXParser::SwitchStatementContext::IDENTIFIER(size_t i) {
-  return getToken(AnyFXParser::IDENTIFIER, i);
+tree::TerminalNode* GPULangParser::SwitchStatementContext::IDENTIFIER(size_t i) {
+  return getToken(GPULangParser::IDENTIFIER, i);
 }
 
-std::vector<AnyFXParser::StatementContext *> AnyFXParser::SwitchStatementContext::statement() {
-  return getRuleContexts<AnyFXParser::StatementContext>();
+std::vector<GPULangParser::StatementContext *> GPULangParser::SwitchStatementContext::statement() {
+  return getRuleContexts<GPULangParser::StatementContext>();
 }
 
-AnyFXParser::StatementContext* AnyFXParser::SwitchStatementContext::statement(size_t i) {
-  return getRuleContext<AnyFXParser::StatementContext>(i);
+GPULangParser::StatementContext* GPULangParser::SwitchStatementContext::statement(size_t i) {
+  return getRuleContext<GPULangParser::StatementContext>(i);
 }
 
 
-size_t AnyFXParser::SwitchStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleSwitchStatement;
+size_t GPULangParser::SwitchStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleSwitchStatement;
 }
 
-void AnyFXParser::SwitchStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::SwitchStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterSwitchStatement(this);
 }
 
-void AnyFXParser::SwitchStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::SwitchStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSwitchStatement(this);
 }
 
-AnyFXParser::SwitchStatementContext* AnyFXParser::switchStatement() {
+GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
   SwitchStatementContext *_localctx = _tracker.createInstance<SwitchStatementContext>(_ctx, getState());
-  enterRule(_localctx, 56, AnyFXParser::RuleSwitchStatement);
+  enterRule(_localctx, 56, GPULangParser::RuleSwitchStatement);
 
           dynamic_cast<SwitchStatementContext *>(_localctx)->tree =  nullptr;
           Expression* switchExpression;
@@ -3247,27 +3247,27 @@ AnyFXParser::SwitchStatementContext* AnyFXParser::switchStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(528);
-    match(AnyFXParser::T__18);
+    match(GPULangParser::T__18);
      location = SetupFile(); 
     setState(530);
-    match(AnyFXParser::LP);
+    match(GPULangParser::LP);
     setState(531);
     dynamic_cast<SwitchStatementContext *>(_localctx)->expressionContext = expression();
     setState(532);
-    match(AnyFXParser::RP);
+    match(GPULangParser::RP);
      switchExpression = dynamic_cast<SwitchStatementContext *>(_localctx)->expressionContext->tree; 
     setState(534);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(543);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::T__19) {
+    while (_la == GPULangParser::T__19) {
       setState(535);
-      match(AnyFXParser::T__19);
+      match(GPULangParser::T__19);
       setState(536);
-      dynamic_cast<SwitchStatementContext *>(_localctx)->identifierToken = match(AnyFXParser::IDENTIFIER);
+      dynamic_cast<SwitchStatementContext *>(_localctx)->identifierToken = match(GPULangParser::IDENTIFIER);
       setState(537);
-      match(AnyFXParser::COL);
+      match(GPULangParser::COL);
       setState(538);
       dynamic_cast<SwitchStatementContext *>(_localctx)->statementContext = statement();
        
@@ -3282,11 +3282,11 @@ AnyFXParser::SwitchStatementContext* AnyFXParser::switchStatement() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == AnyFXParser::T__20) {
+    if (_la == GPULangParser::T__20) {
       setState(546);
-      match(AnyFXParser::T__20);
+      match(GPULangParser::T__20);
       setState(547);
-      match(AnyFXParser::COL);
+      match(GPULangParser::COL);
       setState(548);
       dynamic_cast<SwitchStatementContext *>(_localctx)->statementContext = statement();
 
@@ -3294,7 +3294,7 @@ AnyFXParser::SwitchStatementContext* AnyFXParser::switchStatement() {
                   
     }
     setState(553);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
 
             dynamic_cast<SwitchStatementContext *>(_localctx)->tree =  new SwitchStatement(switchExpression, caseValues, caseStatements, defaultStatement);
         
@@ -3311,30 +3311,30 @@ AnyFXParser::SwitchStatementContext* AnyFXParser::switchStatement() {
 
 //----------------- BreakStatementContext ------------------------------------------------------------------
 
-AnyFXParser::BreakStatementContext::BreakStatementContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::BreakStatementContext::BreakStatementContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t AnyFXParser::BreakStatementContext::getRuleIndex() const {
-  return AnyFXParser::RuleBreakStatement;
+size_t GPULangParser::BreakStatementContext::getRuleIndex() const {
+  return GPULangParser::RuleBreakStatement;
 }
 
-void AnyFXParser::BreakStatementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BreakStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterBreakStatement(this);
 }
 
-void AnyFXParser::BreakStatementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BreakStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBreakStatement(this);
 }
 
-AnyFXParser::BreakStatementContext* AnyFXParser::breakStatement() {
+GPULangParser::BreakStatementContext* GPULangParser::breakStatement() {
   BreakStatementContext *_localctx = _tracker.createInstance<BreakStatementContext>(_ctx, getState());
-  enterRule(_localctx, 58, AnyFXParser::RuleBreakStatement);
+  enterRule(_localctx, 58, GPULangParser::RuleBreakStatement);
 
           dynamic_cast<BreakStatementContext *>(_localctx)->tree =  nullptr;
           Symbol::Location location;
@@ -3346,9 +3346,9 @@ AnyFXParser::BreakStatementContext* AnyFXParser::breakStatement() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(556);
-    match(AnyFXParser::T__21);
+    match(GPULangParser::T__21);
     setState(557);
-    match(AnyFXParser::SC);
+    match(GPULangParser::SC);
 
             dynamic_cast<BreakStatementContext *>(_localctx)->tree =  new BreakStatement();
         
@@ -3365,34 +3365,34 @@ AnyFXParser::BreakStatementContext* AnyFXParser::breakStatement() {
 
 //----------------- ExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::ExpressionContext::ExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ExpressionContext::ExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::CommaExpressionContext* AnyFXParser::ExpressionContext::commaExpression() {
-  return getRuleContext<AnyFXParser::CommaExpressionContext>(0);
+GPULangParser::CommaExpressionContext* GPULangParser::ExpressionContext::commaExpression() {
+  return getRuleContext<GPULangParser::CommaExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::ExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleExpression;
+size_t GPULangParser::ExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleExpression;
 }
 
-void AnyFXParser::ExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterExpression(this);
 }
 
-void AnyFXParser::ExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpression(this);
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::expression() {
+GPULangParser::ExpressionContext* GPULangParser::expression() {
   ExpressionContext *_localctx = _tracker.createInstance<ExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 60, AnyFXParser::RuleExpression);
+  enterRule(_localctx, 60, GPULangParser::RuleExpression);
 
           dynamic_cast<ExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3418,38 +3418,38 @@ AnyFXParser::ExpressionContext* AnyFXParser::expression() {
 
 //----------------- CommaExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::CommaExpressionContext::CommaExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::CommaExpressionContext::CommaExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::AssignmentExpressionContext *> AnyFXParser::CommaExpressionContext::assignmentExpression() {
-  return getRuleContexts<AnyFXParser::AssignmentExpressionContext>();
+std::vector<GPULangParser::AssignmentExpressionContext *> GPULangParser::CommaExpressionContext::assignmentExpression() {
+  return getRuleContexts<GPULangParser::AssignmentExpressionContext>();
 }
 
-AnyFXParser::AssignmentExpressionContext* AnyFXParser::CommaExpressionContext::assignmentExpression(size_t i) {
-  return getRuleContext<AnyFXParser::AssignmentExpressionContext>(i);
+GPULangParser::AssignmentExpressionContext* GPULangParser::CommaExpressionContext::assignmentExpression(size_t i) {
+  return getRuleContext<GPULangParser::AssignmentExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::CommaExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleCommaExpression;
+size_t GPULangParser::CommaExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleCommaExpression;
 }
 
-void AnyFXParser::CommaExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::CommaExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterCommaExpression(this);
 }
 
-void AnyFXParser::CommaExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::CommaExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitCommaExpression(this);
 }
 
-AnyFXParser::CommaExpressionContext* AnyFXParser::commaExpression() {
+GPULangParser::CommaExpressionContext* GPULangParser::commaExpression() {
   CommaExpressionContext *_localctx = _tracker.createInstance<CommaExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 62, AnyFXParser::RuleCommaExpression);
+  enterRule(_localctx, 62, GPULangParser::RuleCommaExpression);
 
           dynamic_cast<CommaExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3469,7 +3469,7 @@ AnyFXParser::CommaExpressionContext* AnyFXParser::commaExpression() {
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         setState(565);
-        match(AnyFXParser::CO);
+        match(GPULangParser::CO);
         setState(566);
         dynamic_cast<CommaExpressionContext *>(_localctx)->e2 = assignmentExpression();
 
@@ -3495,46 +3495,46 @@ AnyFXParser::CommaExpressionContext* AnyFXParser::commaExpression() {
 
 //----------------- AssignmentExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::AssignmentExpressionContext::AssignmentExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AssignmentExpressionContext::AssignmentExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::LogicalOrExpressionContext *> AnyFXParser::AssignmentExpressionContext::logicalOrExpression() {
-  return getRuleContexts<AnyFXParser::LogicalOrExpressionContext>();
+std::vector<GPULangParser::LogicalOrExpressionContext *> GPULangParser::AssignmentExpressionContext::logicalOrExpression() {
+  return getRuleContexts<GPULangParser::LogicalOrExpressionContext>();
 }
 
-AnyFXParser::LogicalOrExpressionContext* AnyFXParser::AssignmentExpressionContext::logicalOrExpression(size_t i) {
-  return getRuleContext<AnyFXParser::LogicalOrExpressionContext>(i);
+GPULangParser::LogicalOrExpressionContext* GPULangParser::AssignmentExpressionContext::logicalOrExpression(size_t i) {
+  return getRuleContext<GPULangParser::LogicalOrExpressionContext>(i);
 }
 
-std::vector<AnyFXParser::ExpressionContext *> AnyFXParser::AssignmentExpressionContext::expression() {
-  return getRuleContexts<AnyFXParser::ExpressionContext>();
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::AssignmentExpressionContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::AssignmentExpressionContext::expression(size_t i) {
-  return getRuleContext<AnyFXParser::ExpressionContext>(i);
+GPULangParser::ExpressionContext* GPULangParser::AssignmentExpressionContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::AssignmentExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleAssignmentExpression;
+size_t GPULangParser::AssignmentExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleAssignmentExpression;
 }
 
-void AnyFXParser::AssignmentExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AssignmentExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAssignmentExpression(this);
 }
 
-void AnyFXParser::AssignmentExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AssignmentExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAssignmentExpression(this);
 }
 
-AnyFXParser::AssignmentExpressionContext* AnyFXParser::assignmentExpression() {
+GPULangParser::AssignmentExpressionContext* GPULangParser::assignmentExpression() {
   AssignmentExpressionContext *_localctx = _tracker.createInstance<AssignmentExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 64, AnyFXParser::RuleAssignmentExpression);
+  enterRule(_localctx, 64, GPULangParser::RuleAssignmentExpression);
 
           dynamic_cast<AssignmentExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3557,32 +3557,32 @@ AnyFXParser::AssignmentExpressionContext* AnyFXParser::assignmentExpression() {
         setState(586);
         _errHandler->sync(this);
         switch (_input->LA(1)) {
-          case AnyFXParser::T__22:
-          case AnyFXParser::T__23:
-          case AnyFXParser::T__24:
-          case AnyFXParser::T__25:
-          case AnyFXParser::T__26:
-          case AnyFXParser::T__27:
-          case AnyFXParser::T__28:
-          case AnyFXParser::EQ:
-          case AnyFXParser::ANDSET:
-          case AnyFXParser::ORSET:
-          case AnyFXParser::XORSET: {
+          case GPULangParser::T__22:
+          case GPULangParser::T__23:
+          case GPULangParser::T__24:
+          case GPULangParser::T__25:
+          case GPULangParser::T__26:
+          case GPULangParser::T__27:
+          case GPULangParser::T__28:
+          case GPULangParser::EQ:
+          case GPULangParser::ANDSET:
+          case GPULangParser::ORSET:
+          case GPULangParser::XORSET: {
             setState(576);
             dynamic_cast<AssignmentExpressionContext *>(_localctx)->op = _input->LT(1);
             _la = _input->LA(1);
             if (!((((_la & ~ 0x3fULL) == 0) &&
-              ((1ULL << _la) & ((1ULL << AnyFXParser::T__22)
-              | (1ULL << AnyFXParser::T__23)
-              | (1ULL << AnyFXParser::T__24)
-              | (1ULL << AnyFXParser::T__25)
-              | (1ULL << AnyFXParser::T__26)
-              | (1ULL << AnyFXParser::T__27)
-              | (1ULL << AnyFXParser::T__28)
-              | (1ULL << AnyFXParser::EQ)
-              | (1ULL << AnyFXParser::ANDSET)
-              | (1ULL << AnyFXParser::ORSET)
-              | (1ULL << AnyFXParser::XORSET))) != 0))) {
+              ((1ULL << _la) & ((1ULL << GPULangParser::T__22)
+              | (1ULL << GPULangParser::T__23)
+              | (1ULL << GPULangParser::T__24)
+              | (1ULL << GPULangParser::T__25)
+              | (1ULL << GPULangParser::T__26)
+              | (1ULL << GPULangParser::T__27)
+              | (1ULL << GPULangParser::T__28)
+              | (1ULL << GPULangParser::EQ)
+              | (1ULL << GPULangParser::ANDSET)
+              | (1ULL << GPULangParser::ORSET)
+              | (1ULL << GPULangParser::XORSET))) != 0))) {
               dynamic_cast<AssignmentExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
             }
             else {
@@ -3599,13 +3599,13 @@ AnyFXParser::AssignmentExpressionContext* AnyFXParser::assignmentExpression() {
             break;
           }
 
-          case AnyFXParser::QU: {
+          case GPULangParser::QU: {
             setState(580);
-            match(AnyFXParser::QU);
+            match(GPULangParser::QU);
             setState(581);
             dynamic_cast<AssignmentExpressionContext *>(_localctx)->ifBody = expression();
             setState(582);
-            match(AnyFXParser::COL);
+            match(GPULangParser::COL);
             setState(583);
             dynamic_cast<AssignmentExpressionContext *>(_localctx)->elseBody = expression();
              
@@ -3637,38 +3637,38 @@ AnyFXParser::AssignmentExpressionContext* AnyFXParser::assignmentExpression() {
 
 //----------------- LogicalOrExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::LogicalOrExpressionContext::LogicalOrExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::LogicalOrExpressionContext::LogicalOrExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::LogicalAndExpressionContext *> AnyFXParser::LogicalOrExpressionContext::logicalAndExpression() {
-  return getRuleContexts<AnyFXParser::LogicalAndExpressionContext>();
+std::vector<GPULangParser::LogicalAndExpressionContext *> GPULangParser::LogicalOrExpressionContext::logicalAndExpression() {
+  return getRuleContexts<GPULangParser::LogicalAndExpressionContext>();
 }
 
-AnyFXParser::LogicalAndExpressionContext* AnyFXParser::LogicalOrExpressionContext::logicalAndExpression(size_t i) {
-  return getRuleContext<AnyFXParser::LogicalAndExpressionContext>(i);
+GPULangParser::LogicalAndExpressionContext* GPULangParser::LogicalOrExpressionContext::logicalAndExpression(size_t i) {
+  return getRuleContext<GPULangParser::LogicalAndExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::LogicalOrExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleLogicalOrExpression;
+size_t GPULangParser::LogicalOrExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleLogicalOrExpression;
 }
 
-void AnyFXParser::LogicalOrExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::LogicalOrExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterLogicalOrExpression(this);
 }
 
-void AnyFXParser::LogicalOrExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::LogicalOrExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitLogicalOrExpression(this);
 }
 
-AnyFXParser::LogicalOrExpressionContext* AnyFXParser::logicalOrExpression() {
+GPULangParser::LogicalOrExpressionContext* GPULangParser::logicalOrExpression() {
   LogicalOrExpressionContext *_localctx = _tracker.createInstance<LogicalOrExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 66, AnyFXParser::RuleLogicalOrExpression);
+  enterRule(_localctx, 66, GPULangParser::RuleLogicalOrExpression);
 
           dynamic_cast<LogicalOrExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3685,9 +3685,9 @@ AnyFXParser::LogicalOrExpressionContext* AnyFXParser::logicalOrExpression() {
     setState(599);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::LOGICOR) {
+    while (_la == GPULangParser::LOGICOR) {
       setState(593);
-      match(AnyFXParser::LOGICOR);
+      match(GPULangParser::LOGICOR);
       setState(594);
       dynamic_cast<LogicalOrExpressionContext *>(_localctx)->e2 = logicalAndExpression();
 
@@ -3712,38 +3712,38 @@ AnyFXParser::LogicalOrExpressionContext* AnyFXParser::logicalOrExpression() {
 
 //----------------- LogicalAndExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::LogicalAndExpressionContext::LogicalAndExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::LogicalAndExpressionContext::LogicalAndExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::OrExpressionContext *> AnyFXParser::LogicalAndExpressionContext::orExpression() {
-  return getRuleContexts<AnyFXParser::OrExpressionContext>();
+std::vector<GPULangParser::OrExpressionContext *> GPULangParser::LogicalAndExpressionContext::orExpression() {
+  return getRuleContexts<GPULangParser::OrExpressionContext>();
 }
 
-AnyFXParser::OrExpressionContext* AnyFXParser::LogicalAndExpressionContext::orExpression(size_t i) {
-  return getRuleContext<AnyFXParser::OrExpressionContext>(i);
+GPULangParser::OrExpressionContext* GPULangParser::LogicalAndExpressionContext::orExpression(size_t i) {
+  return getRuleContext<GPULangParser::OrExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::LogicalAndExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleLogicalAndExpression;
+size_t GPULangParser::LogicalAndExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleLogicalAndExpression;
 }
 
-void AnyFXParser::LogicalAndExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::LogicalAndExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterLogicalAndExpression(this);
 }
 
-void AnyFXParser::LogicalAndExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::LogicalAndExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitLogicalAndExpression(this);
 }
 
-AnyFXParser::LogicalAndExpressionContext* AnyFXParser::logicalAndExpression() {
+GPULangParser::LogicalAndExpressionContext* GPULangParser::logicalAndExpression() {
   LogicalAndExpressionContext *_localctx = _tracker.createInstance<LogicalAndExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 68, AnyFXParser::RuleLogicalAndExpression);
+  enterRule(_localctx, 68, GPULangParser::RuleLogicalAndExpression);
 
           dynamic_cast<LogicalAndExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3760,9 +3760,9 @@ AnyFXParser::LogicalAndExpressionContext* AnyFXParser::logicalAndExpression() {
     setState(610);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::LOGICAND) {
+    while (_la == GPULangParser::LOGICAND) {
       setState(604);
-      match(AnyFXParser::LOGICAND);
+      match(GPULangParser::LOGICAND);
       setState(605);
       dynamic_cast<LogicalAndExpressionContext *>(_localctx)->e2 = orExpression();
 
@@ -3787,38 +3787,38 @@ AnyFXParser::LogicalAndExpressionContext* AnyFXParser::logicalAndExpression() {
 
 //----------------- OrExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::OrExpressionContext::OrExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::OrExpressionContext::OrExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::XorExpressionContext *> AnyFXParser::OrExpressionContext::xorExpression() {
-  return getRuleContexts<AnyFXParser::XorExpressionContext>();
+std::vector<GPULangParser::XorExpressionContext *> GPULangParser::OrExpressionContext::xorExpression() {
+  return getRuleContexts<GPULangParser::XorExpressionContext>();
 }
 
-AnyFXParser::XorExpressionContext* AnyFXParser::OrExpressionContext::xorExpression(size_t i) {
-  return getRuleContext<AnyFXParser::XorExpressionContext>(i);
+GPULangParser::XorExpressionContext* GPULangParser::OrExpressionContext::xorExpression(size_t i) {
+  return getRuleContext<GPULangParser::XorExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::OrExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleOrExpression;
+size_t GPULangParser::OrExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleOrExpression;
 }
 
-void AnyFXParser::OrExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::OrExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterOrExpression(this);
 }
 
-void AnyFXParser::OrExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::OrExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitOrExpression(this);
 }
 
-AnyFXParser::OrExpressionContext* AnyFXParser::orExpression() {
+GPULangParser::OrExpressionContext* GPULangParser::orExpression() {
   OrExpressionContext *_localctx = _tracker.createInstance<OrExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 70, AnyFXParser::RuleOrExpression);
+  enterRule(_localctx, 70, GPULangParser::RuleOrExpression);
 
           dynamic_cast<OrExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3835,9 +3835,9 @@ AnyFXParser::OrExpressionContext* AnyFXParser::orExpression() {
     setState(621);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::OR) {
+    while (_la == GPULangParser::OR) {
       setState(615);
-      match(AnyFXParser::OR);
+      match(GPULangParser::OR);
       setState(616);
       dynamic_cast<OrExpressionContext *>(_localctx)->e2 = xorExpression();
 
@@ -3862,38 +3862,38 @@ AnyFXParser::OrExpressionContext* AnyFXParser::orExpression() {
 
 //----------------- XorExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::XorExpressionContext::XorExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::XorExpressionContext::XorExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::AndExpressionContext *> AnyFXParser::XorExpressionContext::andExpression() {
-  return getRuleContexts<AnyFXParser::AndExpressionContext>();
+std::vector<GPULangParser::AndExpressionContext *> GPULangParser::XorExpressionContext::andExpression() {
+  return getRuleContexts<GPULangParser::AndExpressionContext>();
 }
 
-AnyFXParser::AndExpressionContext* AnyFXParser::XorExpressionContext::andExpression(size_t i) {
-  return getRuleContext<AnyFXParser::AndExpressionContext>(i);
+GPULangParser::AndExpressionContext* GPULangParser::XorExpressionContext::andExpression(size_t i) {
+  return getRuleContext<GPULangParser::AndExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::XorExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleXorExpression;
+size_t GPULangParser::XorExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleXorExpression;
 }
 
-void AnyFXParser::XorExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::XorExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterXorExpression(this);
 }
 
-void AnyFXParser::XorExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::XorExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitXorExpression(this);
 }
 
-AnyFXParser::XorExpressionContext* AnyFXParser::xorExpression() {
+GPULangParser::XorExpressionContext* GPULangParser::xorExpression() {
   XorExpressionContext *_localctx = _tracker.createInstance<XorExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 72, AnyFXParser::RuleXorExpression);
+  enterRule(_localctx, 72, GPULangParser::RuleXorExpression);
 
           dynamic_cast<XorExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3910,9 +3910,9 @@ AnyFXParser::XorExpressionContext* AnyFXParser::xorExpression() {
     setState(632);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::XOR) {
+    while (_la == GPULangParser::XOR) {
       setState(626);
-      match(AnyFXParser::XOR);
+      match(GPULangParser::XOR);
       setState(627);
       dynamic_cast<XorExpressionContext *>(_localctx)->e2 = andExpression();
 
@@ -3937,38 +3937,38 @@ AnyFXParser::XorExpressionContext* AnyFXParser::xorExpression() {
 
 //----------------- AndExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::AndExpressionContext::AndExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AndExpressionContext::AndExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::EquivalencyExpressionContext *> AnyFXParser::AndExpressionContext::equivalencyExpression() {
-  return getRuleContexts<AnyFXParser::EquivalencyExpressionContext>();
+std::vector<GPULangParser::EquivalencyExpressionContext *> GPULangParser::AndExpressionContext::equivalencyExpression() {
+  return getRuleContexts<GPULangParser::EquivalencyExpressionContext>();
 }
 
-AnyFXParser::EquivalencyExpressionContext* AnyFXParser::AndExpressionContext::equivalencyExpression(size_t i) {
-  return getRuleContext<AnyFXParser::EquivalencyExpressionContext>(i);
+GPULangParser::EquivalencyExpressionContext* GPULangParser::AndExpressionContext::equivalencyExpression(size_t i) {
+  return getRuleContext<GPULangParser::EquivalencyExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::AndExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleAndExpression;
+size_t GPULangParser::AndExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleAndExpression;
 }
 
-void AnyFXParser::AndExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AndExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAndExpression(this);
 }
 
-void AnyFXParser::AndExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AndExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAndExpression(this);
 }
 
-AnyFXParser::AndExpressionContext* AnyFXParser::andExpression() {
+GPULangParser::AndExpressionContext* GPULangParser::andExpression() {
   AndExpressionContext *_localctx = _tracker.createInstance<AndExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 74, AnyFXParser::RuleAndExpression);
+  enterRule(_localctx, 74, GPULangParser::RuleAndExpression);
 
           dynamic_cast<AndExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -3985,9 +3985,9 @@ AnyFXParser::AndExpressionContext* AnyFXParser::andExpression() {
     setState(643);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::AND) {
+    while (_la == GPULangParser::AND) {
       setState(637);
-      match(AnyFXParser::AND);
+      match(GPULangParser::AND);
       setState(638);
       dynamic_cast<AndExpressionContext *>(_localctx)->e2 = equivalencyExpression();
 
@@ -4012,38 +4012,38 @@ AnyFXParser::AndExpressionContext* AnyFXParser::andExpression() {
 
 //----------------- EquivalencyExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::EquivalencyExpressionContext::EquivalencyExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::EquivalencyExpressionContext::EquivalencyExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::RelationalExpressionContext *> AnyFXParser::EquivalencyExpressionContext::relationalExpression() {
-  return getRuleContexts<AnyFXParser::RelationalExpressionContext>();
+std::vector<GPULangParser::RelationalExpressionContext *> GPULangParser::EquivalencyExpressionContext::relationalExpression() {
+  return getRuleContexts<GPULangParser::RelationalExpressionContext>();
 }
 
-AnyFXParser::RelationalExpressionContext* AnyFXParser::EquivalencyExpressionContext::relationalExpression(size_t i) {
-  return getRuleContext<AnyFXParser::RelationalExpressionContext>(i);
+GPULangParser::RelationalExpressionContext* GPULangParser::EquivalencyExpressionContext::relationalExpression(size_t i) {
+  return getRuleContext<GPULangParser::RelationalExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::EquivalencyExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleEquivalencyExpression;
+size_t GPULangParser::EquivalencyExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleEquivalencyExpression;
 }
 
-void AnyFXParser::EquivalencyExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EquivalencyExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterEquivalencyExpression(this);
 }
 
-void AnyFXParser::EquivalencyExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::EquivalencyExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEquivalencyExpression(this);
 }
 
-AnyFXParser::EquivalencyExpressionContext* AnyFXParser::equivalencyExpression() {
+GPULangParser::EquivalencyExpressionContext* GPULangParser::equivalencyExpression() {
   EquivalencyExpressionContext *_localctx = _tracker.createInstance<EquivalencyExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 76, AnyFXParser::RuleEquivalencyExpression);
+  enterRule(_localctx, 76, GPULangParser::RuleEquivalencyExpression);
 
           dynamic_cast<EquivalencyExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4060,15 +4060,15 @@ AnyFXParser::EquivalencyExpressionContext* AnyFXParser::equivalencyExpression() 
     setState(654);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::LOGICEQ
+    while (_la == GPULangParser::LOGICEQ
 
-    || _la == AnyFXParser::NOTEQ) {
+    || _la == GPULangParser::NOTEQ) {
       setState(648);
       dynamic_cast<EquivalencyExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
-      if (!(_la == AnyFXParser::LOGICEQ
+      if (!(_la == GPULangParser::LOGICEQ
 
-      || _la == AnyFXParser::NOTEQ)) {
+      || _la == GPULangParser::NOTEQ)) {
         dynamic_cast<EquivalencyExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4099,38 +4099,38 @@ AnyFXParser::EquivalencyExpressionContext* AnyFXParser::equivalencyExpression() 
 
 //----------------- RelationalExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::RelationalExpressionContext::RelationalExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::RelationalExpressionContext::RelationalExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::ShiftExpressionContext *> AnyFXParser::RelationalExpressionContext::shiftExpression() {
-  return getRuleContexts<AnyFXParser::ShiftExpressionContext>();
+std::vector<GPULangParser::ShiftExpressionContext *> GPULangParser::RelationalExpressionContext::shiftExpression() {
+  return getRuleContexts<GPULangParser::ShiftExpressionContext>();
 }
 
-AnyFXParser::ShiftExpressionContext* AnyFXParser::RelationalExpressionContext::shiftExpression(size_t i) {
-  return getRuleContext<AnyFXParser::ShiftExpressionContext>(i);
+GPULangParser::ShiftExpressionContext* GPULangParser::RelationalExpressionContext::shiftExpression(size_t i) {
+  return getRuleContext<GPULangParser::ShiftExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::RelationalExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleRelationalExpression;
+size_t GPULangParser::RelationalExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleRelationalExpression;
 }
 
-void AnyFXParser::RelationalExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::RelationalExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterRelationalExpression(this);
 }
 
-void AnyFXParser::RelationalExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::RelationalExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitRelationalExpression(this);
 }
 
-AnyFXParser::RelationalExpressionContext* AnyFXParser::relationalExpression() {
+GPULangParser::RelationalExpressionContext* GPULangParser::relationalExpression() {
   RelationalExpressionContext *_localctx = _tracker.createInstance<RelationalExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 78, AnyFXParser::RuleRelationalExpression);
+  enterRule(_localctx, 78, GPULangParser::RuleRelationalExpression);
 
           dynamic_cast<RelationalExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4148,18 +4148,18 @@ AnyFXParser::RelationalExpressionContext* AnyFXParser::relationalExpression() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::LESS)
-      | (1ULL << AnyFXParser::LESSEQ)
-      | (1ULL << AnyFXParser::GREATER)
-      | (1ULL << AnyFXParser::GREATEREQ))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::LESS)
+      | (1ULL << GPULangParser::LESSEQ)
+      | (1ULL << GPULangParser::GREATER)
+      | (1ULL << GPULangParser::GREATEREQ))) != 0)) {
       setState(659);
       dynamic_cast<RelationalExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
       if (!((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & ((1ULL << AnyFXParser::LESS)
-        | (1ULL << AnyFXParser::LESSEQ)
-        | (1ULL << AnyFXParser::GREATER)
-        | (1ULL << AnyFXParser::GREATEREQ))) != 0))) {
+        ((1ULL << _la) & ((1ULL << GPULangParser::LESS)
+        | (1ULL << GPULangParser::LESSEQ)
+        | (1ULL << GPULangParser::GREATER)
+        | (1ULL << GPULangParser::GREATEREQ))) != 0))) {
         dynamic_cast<RelationalExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4190,38 +4190,38 @@ AnyFXParser::RelationalExpressionContext* AnyFXParser::relationalExpression() {
 
 //----------------- ShiftExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::ShiftExpressionContext::ShiftExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::ShiftExpressionContext::ShiftExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::AddSubtractExpressionContext *> AnyFXParser::ShiftExpressionContext::addSubtractExpression() {
-  return getRuleContexts<AnyFXParser::AddSubtractExpressionContext>();
+std::vector<GPULangParser::AddSubtractExpressionContext *> GPULangParser::ShiftExpressionContext::addSubtractExpression() {
+  return getRuleContexts<GPULangParser::AddSubtractExpressionContext>();
 }
 
-AnyFXParser::AddSubtractExpressionContext* AnyFXParser::ShiftExpressionContext::addSubtractExpression(size_t i) {
-  return getRuleContext<AnyFXParser::AddSubtractExpressionContext>(i);
+GPULangParser::AddSubtractExpressionContext* GPULangParser::ShiftExpressionContext::addSubtractExpression(size_t i) {
+  return getRuleContext<GPULangParser::AddSubtractExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::ShiftExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleShiftExpression;
+size_t GPULangParser::ShiftExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleShiftExpression;
 }
 
-void AnyFXParser::ShiftExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ShiftExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterShiftExpression(this);
 }
 
-void AnyFXParser::ShiftExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::ShiftExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitShiftExpression(this);
 }
 
-AnyFXParser::ShiftExpressionContext* AnyFXParser::shiftExpression() {
+GPULangParser::ShiftExpressionContext* GPULangParser::shiftExpression() {
   ShiftExpressionContext *_localctx = _tracker.createInstance<ShiftExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 80, AnyFXParser::RuleShiftExpression);
+  enterRule(_localctx, 80, GPULangParser::RuleShiftExpression);
 
           dynamic_cast<ShiftExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4238,15 +4238,15 @@ AnyFXParser::ShiftExpressionContext* AnyFXParser::shiftExpression() {
     setState(676);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::T__29
+    while (_la == GPULangParser::T__29
 
-    || _la == AnyFXParser::T__30) {
+    || _la == GPULangParser::T__30) {
       setState(670);
       dynamic_cast<ShiftExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
-      if (!(_la == AnyFXParser::T__29
+      if (!(_la == GPULangParser::T__29
 
-      || _la == AnyFXParser::T__30)) {
+      || _la == GPULangParser::T__30)) {
         dynamic_cast<ShiftExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4277,38 +4277,38 @@ AnyFXParser::ShiftExpressionContext* AnyFXParser::shiftExpression() {
 
 //----------------- AddSubtractExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::AddSubtractExpressionContext::AddSubtractExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::AddSubtractExpressionContext::AddSubtractExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::MultiplyDivideExpressionContext *> AnyFXParser::AddSubtractExpressionContext::multiplyDivideExpression() {
-  return getRuleContexts<AnyFXParser::MultiplyDivideExpressionContext>();
+std::vector<GPULangParser::MultiplyDivideExpressionContext *> GPULangParser::AddSubtractExpressionContext::multiplyDivideExpression() {
+  return getRuleContexts<GPULangParser::MultiplyDivideExpressionContext>();
 }
 
-AnyFXParser::MultiplyDivideExpressionContext* AnyFXParser::AddSubtractExpressionContext::multiplyDivideExpression(size_t i) {
-  return getRuleContext<AnyFXParser::MultiplyDivideExpressionContext>(i);
+GPULangParser::MultiplyDivideExpressionContext* GPULangParser::AddSubtractExpressionContext::multiplyDivideExpression(size_t i) {
+  return getRuleContext<GPULangParser::MultiplyDivideExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::AddSubtractExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleAddSubtractExpression;
+size_t GPULangParser::AddSubtractExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleAddSubtractExpression;
 }
 
-void AnyFXParser::AddSubtractExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AddSubtractExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterAddSubtractExpression(this);
 }
 
-void AnyFXParser::AddSubtractExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::AddSubtractExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAddSubtractExpression(this);
 }
 
-AnyFXParser::AddSubtractExpressionContext* AnyFXParser::addSubtractExpression() {
+GPULangParser::AddSubtractExpressionContext* GPULangParser::addSubtractExpression() {
   AddSubtractExpressionContext *_localctx = _tracker.createInstance<AddSubtractExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 82, AnyFXParser::RuleAddSubtractExpression);
+  enterRule(_localctx, 82, GPULangParser::RuleAddSubtractExpression);
 
           dynamic_cast<AddSubtractExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4325,15 +4325,15 @@ AnyFXParser::AddSubtractExpressionContext* AnyFXParser::addSubtractExpression() 
     setState(687);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == AnyFXParser::ADD_OP
+    while (_la == GPULangParser::ADD_OP
 
-    || _la == AnyFXParser::SUB_OP) {
+    || _la == GPULangParser::SUB_OP) {
       setState(681);
       dynamic_cast<AddSubtractExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
-      if (!(_la == AnyFXParser::ADD_OP
+      if (!(_la == GPULangParser::ADD_OP
 
-      || _la == AnyFXParser::SUB_OP)) {
+      || _la == GPULangParser::SUB_OP)) {
         dynamic_cast<AddSubtractExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4364,38 +4364,38 @@ AnyFXParser::AddSubtractExpressionContext* AnyFXParser::addSubtractExpression() 
 
 //----------------- MultiplyDivideExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::MultiplyDivideExpressionContext::MultiplyDivideExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::MultiplyDivideExpressionContext::MultiplyDivideExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::PrefixExpressionContext *> AnyFXParser::MultiplyDivideExpressionContext::prefixExpression() {
-  return getRuleContexts<AnyFXParser::PrefixExpressionContext>();
+std::vector<GPULangParser::PrefixExpressionContext *> GPULangParser::MultiplyDivideExpressionContext::prefixExpression() {
+  return getRuleContexts<GPULangParser::PrefixExpressionContext>();
 }
 
-AnyFXParser::PrefixExpressionContext* AnyFXParser::MultiplyDivideExpressionContext::prefixExpression(size_t i) {
-  return getRuleContext<AnyFXParser::PrefixExpressionContext>(i);
+GPULangParser::PrefixExpressionContext* GPULangParser::MultiplyDivideExpressionContext::prefixExpression(size_t i) {
+  return getRuleContext<GPULangParser::PrefixExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::MultiplyDivideExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleMultiplyDivideExpression;
+size_t GPULangParser::MultiplyDivideExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleMultiplyDivideExpression;
 }
 
-void AnyFXParser::MultiplyDivideExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::MultiplyDivideExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterMultiplyDivideExpression(this);
 }
 
-void AnyFXParser::MultiplyDivideExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::MultiplyDivideExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitMultiplyDivideExpression(this);
 }
 
-AnyFXParser::MultiplyDivideExpressionContext* AnyFXParser::multiplyDivideExpression() {
+GPULangParser::MultiplyDivideExpressionContext* GPULangParser::multiplyDivideExpression() {
   MultiplyDivideExpressionContext *_localctx = _tracker.createInstance<MultiplyDivideExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 84, AnyFXParser::RuleMultiplyDivideExpression);
+  enterRule(_localctx, 84, GPULangParser::RuleMultiplyDivideExpression);
 
           dynamic_cast<MultiplyDivideExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4413,16 +4413,16 @@ AnyFXParser::MultiplyDivideExpressionContext* AnyFXParser::multiplyDivideExpress
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (((((_la - 67) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 67)) & ((1ULL << (AnyFXParser::MOD - 67))
-      | (1ULL << (AnyFXParser::DIV_OP - 67))
-      | (1ULL << (AnyFXParser::MUL_OP - 67)))) != 0)) {
+      ((1ULL << (_la - 67)) & ((1ULL << (GPULangParser::MOD - 67))
+      | (1ULL << (GPULangParser::DIV_OP - 67))
+      | (1ULL << (GPULangParser::MUL_OP - 67)))) != 0)) {
       setState(692);
       dynamic_cast<MultiplyDivideExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
       if (!(((((_la - 67) & ~ 0x3fULL) == 0) &&
-        ((1ULL << (_la - 67)) & ((1ULL << (AnyFXParser::MOD - 67))
-        | (1ULL << (AnyFXParser::DIV_OP - 67))
-        | (1ULL << (AnyFXParser::MUL_OP - 67)))) != 0))) {
+        ((1ULL << (_la - 67)) & ((1ULL << (GPULangParser::MOD - 67))
+        | (1ULL << (GPULangParser::DIV_OP - 67))
+        | (1ULL << (GPULangParser::MUL_OP - 67)))) != 0))) {
         dynamic_cast<MultiplyDivideExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4453,34 +4453,34 @@ AnyFXParser::MultiplyDivideExpressionContext* AnyFXParser::multiplyDivideExpress
 
 //----------------- PrefixExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::PrefixExpressionContext::PrefixExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::PrefixExpressionContext::PrefixExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::SuffixExpressionContext* AnyFXParser::PrefixExpressionContext::suffixExpression() {
-  return getRuleContext<AnyFXParser::SuffixExpressionContext>(0);
+GPULangParser::SuffixExpressionContext* GPULangParser::PrefixExpressionContext::suffixExpression() {
+  return getRuleContext<GPULangParser::SuffixExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::PrefixExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RulePrefixExpression;
+size_t GPULangParser::PrefixExpressionContext::getRuleIndex() const {
+  return GPULangParser::RulePrefixExpression;
 }
 
-void AnyFXParser::PrefixExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::PrefixExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterPrefixExpression(this);
 }
 
-void AnyFXParser::PrefixExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::PrefixExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitPrefixExpression(this);
 }
 
-AnyFXParser::PrefixExpressionContext* AnyFXParser::prefixExpression() {
+GPULangParser::PrefixExpressionContext* GPULangParser::prefixExpression() {
   PrefixExpressionContext *_localctx = _tracker.createInstance<PrefixExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 86, AnyFXParser::RulePrefixExpression);
+  enterRule(_localctx, 86, GPULangParser::RulePrefixExpression);
 
           dynamic_cast<PrefixExpressionContext *>(_localctx)->tree =  nullptr;
           std::vector<uint32_t> ops;
@@ -4497,24 +4497,24 @@ AnyFXParser::PrefixExpressionContext* AnyFXParser::prefixExpression() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while (((((_la - 32) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 32)) & ((1ULL << (AnyFXParser::T__31 - 32))
-      | (1ULL << (AnyFXParser::T__32 - 32))
-      | (1ULL << (AnyFXParser::NOT - 32))
-      | (1ULL << (AnyFXParser::CONNJUGATE - 32))
-      | (1ULL << (AnyFXParser::ADD_OP - 32))
-      | (1ULL << (AnyFXParser::SUB_OP - 32))
-      | (1ULL << (AnyFXParser::MUL_OP - 32)))) != 0)) {
+      ((1ULL << (_la - 32)) & ((1ULL << (GPULangParser::T__31 - 32))
+      | (1ULL << (GPULangParser::T__32 - 32))
+      | (1ULL << (GPULangParser::NOT - 32))
+      | (1ULL << (GPULangParser::CONNJUGATE - 32))
+      | (1ULL << (GPULangParser::ADD_OP - 32))
+      | (1ULL << (GPULangParser::SUB_OP - 32))
+      | (1ULL << (GPULangParser::MUL_OP - 32)))) != 0)) {
       setState(701);
       dynamic_cast<PrefixExpressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
       if (!(((((_la - 32) & ~ 0x3fULL) == 0) &&
-        ((1ULL << (_la - 32)) & ((1ULL << (AnyFXParser::T__31 - 32))
-        | (1ULL << (AnyFXParser::T__32 - 32))
-        | (1ULL << (AnyFXParser::NOT - 32))
-        | (1ULL << (AnyFXParser::CONNJUGATE - 32))
-        | (1ULL << (AnyFXParser::ADD_OP - 32))
-        | (1ULL << (AnyFXParser::SUB_OP - 32))
-        | (1ULL << (AnyFXParser::MUL_OP - 32)))) != 0))) {
+        ((1ULL << (_la - 32)) & ((1ULL << (GPULangParser::T__31 - 32))
+        | (1ULL << (GPULangParser::T__32 - 32))
+        | (1ULL << (GPULangParser::NOT - 32))
+        | (1ULL << (GPULangParser::CONNJUGATE - 32))
+        | (1ULL << (GPULangParser::ADD_OP - 32))
+        | (1ULL << (GPULangParser::SUB_OP - 32))
+        | (1ULL << (GPULangParser::MUL_OP - 32)))) != 0))) {
         dynamic_cast<PrefixExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
@@ -4550,58 +4550,58 @@ AnyFXParser::PrefixExpressionContext* AnyFXParser::prefixExpression() {
 
 //----------------- SuffixExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::SuffixExpressionContext::SuffixExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::SuffixExpressionContext::SuffixExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-AnyFXParser::BinaryexpatomContext* AnyFXParser::SuffixExpressionContext::binaryexpatom() {
-  return getRuleContext<AnyFXParser::BinaryexpatomContext>(0);
+GPULangParser::BinaryexpatomContext* GPULangParser::SuffixExpressionContext::binaryexpatom() {
+  return getRuleContext<GPULangParser::BinaryexpatomContext>(0);
 }
 
-std::vector<AnyFXParser::SuffixExpressionContext *> AnyFXParser::SuffixExpressionContext::suffixExpression() {
-  return getRuleContexts<AnyFXParser::SuffixExpressionContext>();
+std::vector<GPULangParser::SuffixExpressionContext *> GPULangParser::SuffixExpressionContext::suffixExpression() {
+  return getRuleContexts<GPULangParser::SuffixExpressionContext>();
 }
 
-AnyFXParser::SuffixExpressionContext* AnyFXParser::SuffixExpressionContext::suffixExpression(size_t i) {
-  return getRuleContext<AnyFXParser::SuffixExpressionContext>(i);
+GPULangParser::SuffixExpressionContext* GPULangParser::SuffixExpressionContext::suffixExpression(size_t i) {
+  return getRuleContext<GPULangParser::SuffixExpressionContext>(i);
 }
 
-std::vector<AnyFXParser::LogicalOrExpressionContext *> AnyFXParser::SuffixExpressionContext::logicalOrExpression() {
-  return getRuleContexts<AnyFXParser::LogicalOrExpressionContext>();
+std::vector<GPULangParser::LogicalOrExpressionContext *> GPULangParser::SuffixExpressionContext::logicalOrExpression() {
+  return getRuleContexts<GPULangParser::LogicalOrExpressionContext>();
 }
 
-AnyFXParser::LogicalOrExpressionContext* AnyFXParser::SuffixExpressionContext::logicalOrExpression(size_t i) {
-  return getRuleContext<AnyFXParser::LogicalOrExpressionContext>(i);
+GPULangParser::LogicalOrExpressionContext* GPULangParser::SuffixExpressionContext::logicalOrExpression(size_t i) {
+  return getRuleContext<GPULangParser::LogicalOrExpressionContext>(i);
 }
 
-std::vector<AnyFXParser::ExpressionContext *> AnyFXParser::SuffixExpressionContext::expression() {
-  return getRuleContexts<AnyFXParser::ExpressionContext>();
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::SuffixExpressionContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::SuffixExpressionContext::expression(size_t i) {
-  return getRuleContext<AnyFXParser::ExpressionContext>(i);
+GPULangParser::ExpressionContext* GPULangParser::SuffixExpressionContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::SuffixExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleSuffixExpression;
+size_t GPULangParser::SuffixExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleSuffixExpression;
 }
 
-void AnyFXParser::SuffixExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::SuffixExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterSuffixExpression(this);
 }
 
-void AnyFXParser::SuffixExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::SuffixExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSuffixExpression(this);
 }
 
-AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
+GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
   SuffixExpressionContext *_localctx = _tracker.createInstance<SuffixExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 88, AnyFXParser::RuleSuffixExpression);
+  enterRule(_localctx, 88, GPULangParser::RuleSuffixExpression);
 
           dynamic_cast<SuffixExpressionContext *>(_localctx)->tree =  nullptr;
 
@@ -4629,15 +4629,15 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
       setState(716);
       _errHandler->sync(this);
       _la = _input->LA(1);
-      while (_la == AnyFXParser::T__31
+      while (_la == GPULangParser::T__31
 
-      || _la == AnyFXParser::T__32) {
+      || _la == GPULangParser::T__32) {
         setState(712);
         dynamic_cast<SuffixExpressionContext *>(_localctx)->op = _input->LT(1);
         _la = _input->LA(1);
-        if (!(_la == AnyFXParser::T__31
+        if (!(_la == GPULangParser::T__31
 
-        || _la == AnyFXParser::T__32)) {
+        || _la == GPULangParser::T__32)) {
           dynamic_cast<SuffixExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
         }
         else {
@@ -4676,43 +4676,43 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
           setState(759);
           _errHandler->sync(this);
           switch (_input->LA(1)) {
-            case AnyFXParser::LP: {
+            case GPULangParser::LP: {
               setState(723);
-              match(AnyFXParser::LP);
+              match(GPULangParser::LP);
                location = SetupFile(); 
               setState(736);
               _errHandler->sync(this);
 
               _la = _input->LA(1);
               if ((((_la & ~ 0x3fULL) == 0) &&
-                ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-                | (1ULL << AnyFXParser::T__1)
-                | (1ULL << AnyFXParser::T__31)
-                | (1ULL << AnyFXParser::T__32)
-                | (1ULL << AnyFXParser::LP)
-                | (1ULL << AnyFXParser::LB)
-                | (1ULL << AnyFXParser::NOT)
-                | (1ULL << AnyFXParser::QO)
-                | (1ULL << AnyFXParser::CONNJUGATE)
-                | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-                ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-                | (1ULL << (AnyFXParser::SUB_OP - 70))
-                | (1ULL << (AnyFXParser::MUL_OP - 70))
-                | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-                | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-                | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-                | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-                | (1ULL << (AnyFXParser::HEX - 70))
-                | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+                ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+                | (1ULL << GPULangParser::T__1)
+                | (1ULL << GPULangParser::T__31)
+                | (1ULL << GPULangParser::T__32)
+                | (1ULL << GPULangParser::LP)
+                | (1ULL << GPULangParser::LB)
+                | (1ULL << GPULangParser::NOT)
+                | (1ULL << GPULangParser::QO)
+                | (1ULL << GPULangParser::CONNJUGATE)
+                | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+                ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+                | (1ULL << (GPULangParser::SUB_OP - 70))
+                | (1ULL << (GPULangParser::MUL_OP - 70))
+                | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+                | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+                | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+                | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+                | (1ULL << (GPULangParser::HEX - 70))
+                | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
                 setState(725);
                 dynamic_cast<SuffixExpressionContext *>(_localctx)->arg0 = logicalOrExpression();
                  args.push_back(dynamic_cast<SuffixExpressionContext *>(_localctx)->arg0->tree); 
                 setState(733);
                 _errHandler->sync(this);
                 _la = _input->LA(1);
-                while (_la == AnyFXParser::CO) {
+                while (_la == GPULangParser::CO) {
                   setState(727);
-                  match(AnyFXParser::CO);
+                  match(GPULangParser::CO);
                   setState(728);
                   dynamic_cast<SuffixExpressionContext *>(_localctx)->argn = logicalOrExpression();
                    args.push_back(dynamic_cast<SuffixExpressionContext *>(_localctx)->argn->tree); 
@@ -4722,7 +4722,7 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
                 }
               }
               setState(738);
-              match(AnyFXParser::RP);
+              match(GPULangParser::RP);
 
                           CallExpression* expr = new CallExpression(_localctx->tree, args);
                           expr->location = location;
@@ -4731,9 +4731,9 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
               break;
             }
 
-            case AnyFXParser::DOT: {
+            case GPULangParser::DOT: {
               setState(740);
-              match(AnyFXParser::DOT);
+              match(GPULangParser::DOT);
                location = SetupFile(); 
               setState(742);
               dynamic_cast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
@@ -4745,9 +4745,9 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
               break;
             }
 
-            case AnyFXParser::ARROW: {
+            case GPULangParser::ARROW: {
               setState(745);
-              match(AnyFXParser::ARROW);
+              match(GPULangParser::ARROW);
                location = SetupFile(); 
               setState(747);
               dynamic_cast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
@@ -4759,40 +4759,40 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
               break;
             }
 
-            case AnyFXParser::LL: {
+            case GPULangParser::LL: {
               setState(750);
-              match(AnyFXParser::LL);
+              match(GPULangParser::LL);
                location = SetupFile(); 
               setState(755);
               _errHandler->sync(this);
 
               _la = _input->LA(1);
               if ((((_la & ~ 0x3fULL) == 0) &&
-                ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-                | (1ULL << AnyFXParser::T__1)
-                | (1ULL << AnyFXParser::T__31)
-                | (1ULL << AnyFXParser::T__32)
-                | (1ULL << AnyFXParser::LP)
-                | (1ULL << AnyFXParser::LB)
-                | (1ULL << AnyFXParser::NOT)
-                | (1ULL << AnyFXParser::QO)
-                | (1ULL << AnyFXParser::CONNJUGATE)
-                | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-                ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-                | (1ULL << (AnyFXParser::SUB_OP - 70))
-                | (1ULL << (AnyFXParser::MUL_OP - 70))
-                | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-                | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-                | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-                | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-                | (1ULL << (AnyFXParser::HEX - 70))
-                | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+                ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+                | (1ULL << GPULangParser::T__1)
+                | (1ULL << GPULangParser::T__31)
+                | (1ULL << GPULangParser::T__32)
+                | (1ULL << GPULangParser::LP)
+                | (1ULL << GPULangParser::LB)
+                | (1ULL << GPULangParser::NOT)
+                | (1ULL << GPULangParser::QO)
+                | (1ULL << GPULangParser::CONNJUGATE)
+                | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+                ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+                | (1ULL << (GPULangParser::SUB_OP - 70))
+                | (1ULL << (GPULangParser::MUL_OP - 70))
+                | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+                | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+                | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+                | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+                | (1ULL << (GPULangParser::HEX - 70))
+                | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
                 setState(752);
                 dynamic_cast<SuffixExpressionContext *>(_localctx)->e3 = expression();
                  arrayIndexExpr = dynamic_cast<SuffixExpressionContext *>(_localctx)->e3->tree; 
               }
               setState(757);
-              match(AnyFXParser::RR);
+              match(GPULangParser::RR);
 
                           ArrayIndexExpression* expr = new ArrayIndexExpression(_localctx->tree, arrayIndexExpr);
                           expr->location = location;
@@ -4826,38 +4826,38 @@ AnyFXParser::SuffixExpressionContext* AnyFXParser::suffixExpression() {
 
 //----------------- NamespaceExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::NamespaceExpressionContext::NamespaceExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::NamespaceExpressionContext::NamespaceExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::BinaryexpatomContext *> AnyFXParser::NamespaceExpressionContext::binaryexpatom() {
-  return getRuleContexts<AnyFXParser::BinaryexpatomContext>();
+std::vector<GPULangParser::BinaryexpatomContext *> GPULangParser::NamespaceExpressionContext::binaryexpatom() {
+  return getRuleContexts<GPULangParser::BinaryexpatomContext>();
 }
 
-AnyFXParser::BinaryexpatomContext* AnyFXParser::NamespaceExpressionContext::binaryexpatom(size_t i) {
-  return getRuleContext<AnyFXParser::BinaryexpatomContext>(i);
+GPULangParser::BinaryexpatomContext* GPULangParser::NamespaceExpressionContext::binaryexpatom(size_t i) {
+  return getRuleContext<GPULangParser::BinaryexpatomContext>(i);
 }
 
 
-size_t AnyFXParser::NamespaceExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleNamespaceExpression;
+size_t GPULangParser::NamespaceExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleNamespaceExpression;
 }
 
-void AnyFXParser::NamespaceExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::NamespaceExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterNamespaceExpression(this);
 }
 
-void AnyFXParser::NamespaceExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::NamespaceExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitNamespaceExpression(this);
 }
 
-AnyFXParser::NamespaceExpressionContext* AnyFXParser::namespaceExpression() {
+GPULangParser::NamespaceExpressionContext* GPULangParser::namespaceExpression() {
   NamespaceExpressionContext *_localctx = _tracker.createInstance<NamespaceExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 90, AnyFXParser::RuleNamespaceExpression);
+  enterRule(_localctx, 90, GPULangParser::RuleNamespaceExpression);
 
           dynamic_cast<NamespaceExpressionContext *>(_localctx)->tree =  nullptr;
       
@@ -4870,7 +4870,7 @@ AnyFXParser::NamespaceExpressionContext* AnyFXParser::namespaceExpression() {
     setState(766);
     dynamic_cast<NamespaceExpressionContext *>(_localctx)->e1 = binaryexpatom();
     setState(767);
-    match(AnyFXParser::T__33);
+    match(GPULangParser::T__33);
     setState(768);
     dynamic_cast<NamespaceExpressionContext *>(_localctx)->e2 = binaryexpatom();
 
@@ -4889,70 +4889,70 @@ AnyFXParser::NamespaceExpressionContext* AnyFXParser::namespaceExpression() {
 
 //----------------- BinaryexpatomContext ------------------------------------------------------------------
 
-AnyFXParser::BinaryexpatomContext::BinaryexpatomContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::BinaryexpatomContext::BinaryexpatomContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::INTEGERLITERAL() {
-  return getToken(AnyFXParser::INTEGERLITERAL, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::INTEGERLITERAL() {
+  return getToken(GPULangParser::INTEGERLITERAL, 0);
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::UINTEGERLITERAL() {
-  return getToken(AnyFXParser::UINTEGERLITERAL, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::UINTEGERLITERAL() {
+  return getToken(GPULangParser::UINTEGERLITERAL, 0);
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::FLOATLITERAL() {
-  return getToken(AnyFXParser::FLOATLITERAL, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::FLOATLITERAL() {
+  return getToken(GPULangParser::FLOATLITERAL, 0);
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::DOUBLELITERAL() {
-  return getToken(AnyFXParser::DOUBLELITERAL, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::DOUBLELITERAL() {
+  return getToken(GPULangParser::DOUBLELITERAL, 0);
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::HEX() {
-  return getToken(AnyFXParser::HEX, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::HEX() {
+  return getToken(GPULangParser::HEX, 0);
 }
 
-AnyFXParser::StringContext* AnyFXParser::BinaryexpatomContext::string() {
-  return getRuleContext<AnyFXParser::StringContext>(0);
+GPULangParser::StringContext* GPULangParser::BinaryexpatomContext::string() {
+  return getRuleContext<GPULangParser::StringContext>(0);
 }
 
-tree::TerminalNode* AnyFXParser::BinaryexpatomContext::IDENTIFIER() {
-  return getToken(AnyFXParser::IDENTIFIER, 0);
+tree::TerminalNode* GPULangParser::BinaryexpatomContext::IDENTIFIER() {
+  return getToken(GPULangParser::IDENTIFIER, 0);
 }
 
-AnyFXParser::BooleanContext* AnyFXParser::BinaryexpatomContext::boolean() {
-  return getRuleContext<AnyFXParser::BooleanContext>(0);
+GPULangParser::BooleanContext* GPULangParser::BinaryexpatomContext::boolean() {
+  return getRuleContext<GPULangParser::BooleanContext>(0);
 }
 
-AnyFXParser::InitializerExpressionContext* AnyFXParser::BinaryexpatomContext::initializerExpression() {
-  return getRuleContext<AnyFXParser::InitializerExpressionContext>(0);
+GPULangParser::InitializerExpressionContext* GPULangParser::BinaryexpatomContext::initializerExpression() {
+  return getRuleContext<GPULangParser::InitializerExpressionContext>(0);
 }
 
-AnyFXParser::ExpressionContext* AnyFXParser::BinaryexpatomContext::expression() {
-  return getRuleContext<AnyFXParser::ExpressionContext>(0);
+GPULangParser::ExpressionContext* GPULangParser::BinaryexpatomContext::expression() {
+  return getRuleContext<GPULangParser::ExpressionContext>(0);
 }
 
 
-size_t AnyFXParser::BinaryexpatomContext::getRuleIndex() const {
-  return AnyFXParser::RuleBinaryexpatom;
+size_t GPULangParser::BinaryexpatomContext::getRuleIndex() const {
+  return GPULangParser::RuleBinaryexpatom;
 }
 
-void AnyFXParser::BinaryexpatomContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BinaryexpatomContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterBinaryexpatom(this);
 }
 
-void AnyFXParser::BinaryexpatomContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::BinaryexpatomContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBinaryexpatom(this);
 }
 
-AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
+GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
   BinaryexpatomContext *_localctx = _tracker.createInstance<BinaryexpatomContext>(_ctx, getState());
-  enterRule(_localctx, 92, AnyFXParser::RuleBinaryexpatom);
+  enterRule(_localctx, 92, GPULangParser::RuleBinaryexpatom);
 
           dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  nullptr;
       
@@ -4964,48 +4964,48 @@ AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
     setState(797);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
-      case AnyFXParser::INTEGERLITERAL: {
+      case GPULangParser::INTEGERLITERAL: {
         enterOuterAlt(_localctx, 1);
         setState(771);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->integerliteralToken = match(AnyFXParser::INTEGERLITERAL);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->integerliteralToken = match(GPULangParser::INTEGERLITERAL);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new IntExpression(atoi((dynamic_cast<BinaryexpatomContext *>(_localctx)->integerliteralToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->integerliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::UINTEGERLITERAL: {
+      case GPULangParser::UINTEGERLITERAL: {
         enterOuterAlt(_localctx, 2);
         setState(773);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken = match(AnyFXParser::UINTEGERLITERAL);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken = match(GPULangParser::UINTEGERLITERAL);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new UIntExpression(strtoul((dynamic_cast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken->getText() : "").c_str(), nullptr, 10)); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::FLOATLITERAL: {
+      case GPULangParser::FLOATLITERAL: {
         enterOuterAlt(_localctx, 3);
         setState(775);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->floatliteralToken = match(AnyFXParser::FLOATLITERAL);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->floatliteralToken = match(GPULangParser::FLOATLITERAL);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new FloatExpression(atof((dynamic_cast<BinaryexpatomContext *>(_localctx)->floatliteralToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->floatliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::DOUBLELITERAL: {
+      case GPULangParser::DOUBLELITERAL: {
         enterOuterAlt(_localctx, 4);
         setState(777);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->doubleliteralToken = match(AnyFXParser::DOUBLELITERAL);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->doubleliteralToken = match(GPULangParser::DOUBLELITERAL);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new FloatExpression(atof((dynamic_cast<BinaryexpatomContext *>(_localctx)->doubleliteralToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->doubleliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::HEX: {
+      case GPULangParser::HEX: {
         enterOuterAlt(_localctx, 5);
         setState(779);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->hexToken = match(AnyFXParser::HEX);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->hexToken = match(GPULangParser::HEX);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new UIntExpression(strtoul((dynamic_cast<BinaryexpatomContext *>(_localctx)->hexToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->hexToken->getText() : "").c_str(), nullptr, 16)); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::QO:
-      case AnyFXParser::Q: {
+      case GPULangParser::QO:
+      case GPULangParser::Q: {
         enterOuterAlt(_localctx, 6);
         setState(781);
         dynamic_cast<BinaryexpatomContext *>(_localctx)->stringContext = string();
@@ -5013,16 +5013,16 @@ AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
         break;
       }
 
-      case AnyFXParser::IDENTIFIER: {
+      case GPULangParser::IDENTIFIER: {
         enterOuterAlt(_localctx, 7);
         setState(784);
-        dynamic_cast<BinaryexpatomContext *>(_localctx)->identifierToken = match(AnyFXParser::IDENTIFIER);
+        dynamic_cast<BinaryexpatomContext *>(_localctx)->identifierToken = match(GPULangParser::IDENTIFIER);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  new SymbolExpression((dynamic_cast<BinaryexpatomContext *>(_localctx)->identifierToken != nullptr ? dynamic_cast<BinaryexpatomContext *>(_localctx)->identifierToken->getText() : "")); _localctx->tree->location = SetupFile(); 
         break;
       }
 
-      case AnyFXParser::T__0:
-      case AnyFXParser::T__1: {
+      case GPULangParser::T__0:
+      case GPULangParser::T__1: {
         enterOuterAlt(_localctx, 8);
         setState(786);
         dynamic_cast<BinaryexpatomContext *>(_localctx)->booleanContext = boolean();
@@ -5030,7 +5030,7 @@ AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
         break;
       }
 
-      case AnyFXParser::LB: {
+      case GPULangParser::LB: {
         enterOuterAlt(_localctx, 9);
         setState(789);
         dynamic_cast<BinaryexpatomContext *>(_localctx)->initializerExpressionContext = initializerExpression();
@@ -5038,14 +5038,14 @@ AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
         break;
       }
 
-      case AnyFXParser::LP: {
+      case GPULangParser::LP: {
         enterOuterAlt(_localctx, 10);
         setState(792);
-        match(AnyFXParser::LP);
+        match(GPULangParser::LP);
         setState(793);
         dynamic_cast<BinaryexpatomContext *>(_localctx)->expressionContext = expression();
         setState(794);
-        match(AnyFXParser::RP);
+        match(GPULangParser::RP);
          dynamic_cast<BinaryexpatomContext *>(_localctx)->tree =  dynamic_cast<BinaryexpatomContext *>(_localctx)->expressionContext->tree; 
         break;
       }
@@ -5066,38 +5066,38 @@ AnyFXParser::BinaryexpatomContext* AnyFXParser::binaryexpatom() {
 
 //----------------- InitializerExpressionContext ------------------------------------------------------------------
 
-AnyFXParser::InitializerExpressionContext::InitializerExpressionContext(ParserRuleContext *parent, size_t invokingState)
+GPULangParser::InitializerExpressionContext::InitializerExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<AnyFXParser::AssignmentExpressionContext *> AnyFXParser::InitializerExpressionContext::assignmentExpression() {
-  return getRuleContexts<AnyFXParser::AssignmentExpressionContext>();
+std::vector<GPULangParser::AssignmentExpressionContext *> GPULangParser::InitializerExpressionContext::assignmentExpression() {
+  return getRuleContexts<GPULangParser::AssignmentExpressionContext>();
 }
 
-AnyFXParser::AssignmentExpressionContext* AnyFXParser::InitializerExpressionContext::assignmentExpression(size_t i) {
-  return getRuleContext<AnyFXParser::AssignmentExpressionContext>(i);
+GPULangParser::AssignmentExpressionContext* GPULangParser::InitializerExpressionContext::assignmentExpression(size_t i) {
+  return getRuleContext<GPULangParser::AssignmentExpressionContext>(i);
 }
 
 
-size_t AnyFXParser::InitializerExpressionContext::getRuleIndex() const {
-  return AnyFXParser::RuleInitializerExpression;
+size_t GPULangParser::InitializerExpressionContext::getRuleIndex() const {
+  return GPULangParser::RuleInitializerExpression;
 }
 
-void AnyFXParser::InitializerExpressionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::InitializerExpressionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->enterInitializerExpression(this);
 }
 
-void AnyFXParser::InitializerExpressionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<AnyFXListener *>(listener);
+void GPULangParser::InitializerExpressionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitInitializerExpression(this);
 }
 
-AnyFXParser::InitializerExpressionContext* AnyFXParser::initializerExpression() {
+GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpression() {
   InitializerExpressionContext *_localctx = _tracker.createInstance<InitializerExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 94, AnyFXParser::RuleInitializerExpression);
+  enterRule(_localctx, 94, GPULangParser::RuleInitializerExpression);
 
           dynamic_cast<InitializerExpressionContext *>(_localctx)->tree =  nullptr;
           std::vector<Expression*> exprs;
@@ -5110,40 +5110,40 @@ AnyFXParser::InitializerExpressionContext* AnyFXParser::initializerExpression() 
   try {
     enterOuterAlt(_localctx, 1);
     setState(799);
-    match(AnyFXParser::LB);
+    match(GPULangParser::LB);
     setState(811);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << AnyFXParser::T__0)
-      | (1ULL << AnyFXParser::T__1)
-      | (1ULL << AnyFXParser::T__31)
-      | (1ULL << AnyFXParser::T__32)
-      | (1ULL << AnyFXParser::LP)
-      | (1ULL << AnyFXParser::LB)
-      | (1ULL << AnyFXParser::NOT)
-      | (1ULL << AnyFXParser::QO)
-      | (1ULL << AnyFXParser::CONNJUGATE)
-      | (1ULL << AnyFXParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 70)) & ((1ULL << (AnyFXParser::ADD_OP - 70))
-      | (1ULL << (AnyFXParser::SUB_OP - 70))
-      | (1ULL << (AnyFXParser::MUL_OP - 70))
-      | (1ULL << (AnyFXParser::INTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::UINTEGERLITERAL - 70))
-      | (1ULL << (AnyFXParser::FLOATLITERAL - 70))
-      | (1ULL << (AnyFXParser::DOUBLELITERAL - 70))
-      | (1ULL << (AnyFXParser::HEX - 70))
-      | (1ULL << (AnyFXParser::IDENTIFIER - 70)))) != 0)) {
+      ((1ULL << _la) & ((1ULL << GPULangParser::T__0)
+      | (1ULL << GPULangParser::T__1)
+      | (1ULL << GPULangParser::T__31)
+      | (1ULL << GPULangParser::T__32)
+      | (1ULL << GPULangParser::LP)
+      | (1ULL << GPULangParser::LB)
+      | (1ULL << GPULangParser::NOT)
+      | (1ULL << GPULangParser::QO)
+      | (1ULL << GPULangParser::CONNJUGATE)
+      | (1ULL << GPULangParser::Q))) != 0) || ((((_la - 70) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 70)) & ((1ULL << (GPULangParser::ADD_OP - 70))
+      | (1ULL << (GPULangParser::SUB_OP - 70))
+      | (1ULL << (GPULangParser::MUL_OP - 70))
+      | (1ULL << (GPULangParser::INTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::UINTEGERLITERAL - 70))
+      | (1ULL << (GPULangParser::FLOATLITERAL - 70))
+      | (1ULL << (GPULangParser::DOUBLELITERAL - 70))
+      | (1ULL << (GPULangParser::HEX - 70))
+      | (1ULL << (GPULangParser::IDENTIFIER - 70)))) != 0)) {
       setState(800);
       dynamic_cast<InitializerExpressionContext *>(_localctx)->arg0 = assignmentExpression();
        exprs.push_back(dynamic_cast<InitializerExpressionContext *>(_localctx)->arg0->tree); 
       setState(808);
       _errHandler->sync(this);
       _la = _input->LA(1);
-      while (_la == AnyFXParser::CO) {
+      while (_la == GPULangParser::CO) {
         setState(802);
-        match(AnyFXParser::CO);
+        match(GPULangParser::CO);
         setState(803);
         dynamic_cast<InitializerExpressionContext *>(_localctx)->argN = assignmentExpression();
          exprs.push_back(dynamic_cast<InitializerExpressionContext *>(_localctx)->argN->tree); 
@@ -5153,7 +5153,7 @@ AnyFXParser::InitializerExpressionContext* AnyFXParser::initializerExpression() 
       }
     }
     setState(813);
-    match(AnyFXParser::RB);
+    match(GPULangParser::RB);
 
             dynamic_cast<InitializerExpressionContext *>(_localctx)->tree =  new InitializerExpression(exprs);
             _localctx->tree->location = SetupFile();
@@ -5170,14 +5170,14 @@ AnyFXParser::InitializerExpressionContext* AnyFXParser::initializerExpression() 
 }
 
 // Static vars and initialization.
-std::vector<dfa::DFA> AnyFXParser::_decisionToDFA;
-atn::PredictionContextCache AnyFXParser::_sharedContextCache;
+std::vector<dfa::DFA> GPULangParser::_decisionToDFA;
+atn::PredictionContextCache GPULangParser::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN AnyFXParser::_atn;
-std::vector<uint16_t> AnyFXParser::_serializedATN;
+atn::ATN GPULangParser::_atn;
+std::vector<uint16_t> GPULangParser::_serializedATN;
 
-std::vector<std::string> AnyFXParser::_ruleNames = {
+std::vector<std::string> GPULangParser::_ruleNames = {
   "string", "boolean", "preprocess", "entry", "effect", "alias", "annotation", 
   "attribute", "typeDeclaration", "variables", "variable", "structureDeclaration", 
   "structure", "enumeration", "functionDeclaration", "codeblock", "function", 
@@ -5191,7 +5191,7 @@ std::vector<std::string> AnyFXParser::_ruleNames = {
   "binaryexpatom", "initializerExpression"
 };
 
-std::vector<std::string> AnyFXParser::_literalNames = {
+std::vector<std::string> GPULangParser::_literalNames = {
   "", "'true'", "'false'", "'#line'", "'alias'", "'as'", "'struct'", "'enum'", 
   "'program'", "'sampler_state'", "'render_state'", "'if'", "'else'", "'for'", 
   "'..'", "'while'", "'do'", "'return'", "'continue'", "'switch'", "'case'", 
@@ -5203,7 +5203,7 @@ std::vector<std::string> AnyFXParser::_literalNames = {
   "'%'", "'_'", "'@'", "'+'", "'-'", "'/'", "'*'", "'->'"
 };
 
-std::vector<std::string> AnyFXParser::_symbolicNames = {
+std::vector<std::string> GPULangParser::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "SC", 
   "CO", "COL", "LP", "RP", "LB", "RB", "LL", "RR", "DOT", "NOT", "EQ", "QO", 
@@ -5215,11 +5215,11 @@ std::vector<std::string> AnyFXParser::_symbolicNames = {
   "HEX", "IDENTIFIER", "WS"
 };
 
-dfa::Vocabulary AnyFXParser::_vocabulary(_literalNames, _symbolicNames);
+dfa::Vocabulary GPULangParser::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> AnyFXParser::_tokenNames;
+std::vector<std::string> GPULangParser::_tokenNames;
 
-AnyFXParser::Initializer::Initializer() {
+GPULangParser::Initializer::Initializer() {
 	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
 		std::string name = _vocabulary.getLiteralName(i);
 		if (name.empty()) {
@@ -5810,4 +5810,4 @@ AnyFXParser::Initializer::Initializer() {
   }
 }
 
-AnyFXParser::Initializer AnyFXParser::_init;
+GPULangParser::Initializer GPULangParser::_init;

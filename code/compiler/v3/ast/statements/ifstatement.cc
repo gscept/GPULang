@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "ifstatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -27,4 +27,4 @@ IfStatement::~IfStatement()
     delete this->elseStatement;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::FloatExpression
+    @class GPULang::FloatExpression
     
     A simple expression which holds a floating point value.
     
@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct FloatExpression : public Expression
 {
@@ -45,5 +45,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

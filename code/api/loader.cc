@@ -5,7 +5,7 @@
 #include "loader.h"
 #include "serialize.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -46,13 +46,13 @@ Parse(const char* data, const size_t offset)
 /**
 */
 void
-LoadAnnotations(size_t annotationCount, AnyFX::Deserialize::Annotation* annotations, size_t offset, const char* buf)
+LoadAnnotations(size_t annotationCount, GPULang::Deserialize::Annotation* annotations, size_t offset, const char* buf)
 {
     size_t annotationsOffset = offset;
     for (size_t i = 0; i < annotationCount; i++)
     {
-        const AnyFX::Serialize::Annotation* annotation = ParseAndConsume<AnyFX::Serialize::Annotation>(buf, annotationsOffset);
-        AnyFX::Deserialize::Annotation& annotDeserialized = annotations[i];
+        const GPULang::Serialize::Annotation* annotation = ParseAndConsume<GPULang::Serialize::Annotation>(buf, annotationsOffset);
+        GPULang::Deserialize::Annotation& annotDeserialized = annotations[i];
 
         annotDeserialized.name = Parse<const char>(buf, annotation->nameOffset);
         annotDeserialized.nameLength = annotation->nameLength;
@@ -98,13 +98,13 @@ Loader::Load(const char* data, const size_t length)
 
     while (frontIterator != backIterator)
     {
-        const AnyFX::Serialize::Serializable* type = ParseAndConsume<AnyFX::Serialize::Serializable>(data, frontIterator);
+        const GPULang::Serialize::Serializable* type = ParseAndConsume<GPULang::Serialize::Serializable>(data, frontIterator);
         switch (type->type)
         {
-        case AnyFX::Serialize::SamplerStateType:
+        case GPULang::Serialize::SamplerStateType:
         {
-            const AnyFX::Serialize::SamplerState* samplerState = ParseAndConsume<AnyFX::Serialize::SamplerState>(data, frontIterator);
-            AnyFX::Deserialize::SamplerState* deserialized = new AnyFX::Deserialize::SamplerState;
+            const GPULang::Serialize::SamplerState* samplerState = ParseAndConsume<GPULang::Serialize::SamplerState>(data, frontIterator);
+            GPULang::Deserialize::SamplerState* deserialized = new GPULang::Deserialize::SamplerState;
             deserialized->name = Parse<const char>(buf, samplerState->nameOffset);
             deserialized->nameLength = samplerState->nameLength;
             deserialized->binding = samplerState->binding;
@@ -127,16 +127,16 @@ Loader::Load(const char* data, const size_t length)
             deserialized->unnormalizedSamplingEnabled = samplerState->unnormalizedSamplingEnabled;
 
             deserialized->annotationCount = samplerState->annotationsCount;
-            deserialized->annotations = new AnyFX::Deserialize::Annotation[deserialized->annotationCount];
+            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
             LoadAnnotations(deserialized->annotationCount, deserialized->annotations, samplerState->annotationsOffset, buf);
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
         }
-        case AnyFX::Serialize::VariableType:
+        case GPULang::Serialize::VariableType:
         {
-            const AnyFX::Serialize::Variable* var = ParseAndConsume<AnyFX::Serialize::Variable>(data, frontIterator);
-            AnyFX::Deserialize::Variable* deserialized = new AnyFX::Deserialize::Variable;
+            const GPULang::Serialize::Variable* var = ParseAndConsume<GPULang::Serialize::Variable>(data, frontIterator);
+            GPULang::Deserialize::Variable* deserialized = new GPULang::Deserialize::Variable;
             deserialized->name = Parse<const char>(buf, var->nameOffset);
             deserialized->nameLength = var->nameLength;
             deserialized->binding = var->binding;
@@ -149,27 +149,27 @@ Loader::Load(const char* data, const size_t length)
             
 
             deserialized->annotationCount = var->annotationsCount;
-            deserialized->annotations = new AnyFX::Deserialize::Annotation[deserialized->annotationCount];
+            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
             LoadAnnotations(deserialized->annotationCount, deserialized->annotations, var->annotationsOffset, buf);
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
         }
-        case AnyFX::Serialize::StructureType:
+        case GPULang::Serialize::StructureType:
         {
-            const AnyFX::Serialize::Structure* struc = ParseAndConsume<AnyFX::Serialize::Structure>(data, frontIterator);
-            AnyFX::Deserialize::Structure* deserialized = new AnyFX::Deserialize::Structure;
+            const GPULang::Serialize::Structure* struc = ParseAndConsume<GPULang::Serialize::Structure>(data, frontIterator);
+            GPULang::Deserialize::Structure* deserialized = new GPULang::Deserialize::Structure;
 
             deserialized->name = Parse<const char>(buf, struc->nameOffset);
             deserialized->nameLength = struc->nameLength;
             deserialized->variableCount = struc->variablesCount;
-            deserialized->variables = new AnyFX::Deserialize::Variable[deserialized->variableCount];
+            deserialized->variables = new GPULang::Deserialize::Variable[deserialized->variableCount];
             size_t variableIterator = struc->variablesOffset;
 
             for (int i = 0; i < struc->variablesCount; i++)
             {
-                const AnyFX::Serialize::Variable* var = ParseAndConsume<AnyFX::Serialize::Variable>(buf, variableIterator);
-                AnyFX::Deserialize::Variable& deserializedVar = deserialized->variables[i];
+                const GPULang::Serialize::Variable* var = ParseAndConsume<GPULang::Serialize::Variable>(buf, variableIterator);
+                GPULang::Deserialize::Variable& deserializedVar = deserialized->variables[i];
 
                 deserializedVar.binding = var->binding;
                 deserializedVar.group = var->group;
@@ -182,16 +182,16 @@ Loader::Load(const char* data, const size_t length)
             }
 
             deserialized->annotationCount = struc->annotationsCount;
-            deserialized->annotations = new AnyFX::Deserialize::Annotation[deserialized->annotationCount];
+            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
             LoadAnnotations(deserialized->annotationCount, deserialized->annotations, struc->annotationsOffset, buf);
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
         }
-        case AnyFX::Serialize::ProgramType:
+        case GPULang::Serialize::ProgramType:
         {
-            const AnyFX::Serialize::Program* prog = ParseAndConsume<AnyFX::Serialize::Program>(data, frontIterator);
-            AnyFX::Deserialize::Program* deserialized = new AnyFX::Deserialize::Program;
+            const GPULang::Serialize::Program* prog = ParseAndConsume<GPULang::Serialize::Program>(data, frontIterator);
+            GPULang::Deserialize::Program* deserialized = new GPULang::Deserialize::Program;
 
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
@@ -221,16 +221,16 @@ Loader::Load(const char* data, const size_t length)
             deserialized->rahs.binaryLength = prog->rahs.binaryLength;
 
             deserialized->annotationCount = prog->annotationsCount;
-            deserialized->annotations = new AnyFX::Deserialize::Annotation[deserialized->annotationCount];
+            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
             LoadAnnotations(deserialized->annotationCount, deserialized->annotations, prog->annotationsOffset, buf);
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
         }
-        case AnyFX::Serialize::RenderStateType:
+        case GPULang::Serialize::RenderStateType:
         {
-            const AnyFX::Serialize::RenderState* rend = ParseAndConsume<AnyFX::Serialize::RenderState>(data, frontIterator);
-            AnyFX::Deserialize::RenderState* deserialized = new AnyFX::Deserialize::RenderState;
+            const GPULang::Serialize::RenderState* rend = ParseAndConsume<GPULang::Serialize::RenderState>(data, frontIterator);
+            GPULang::Deserialize::RenderState* deserialized = new GPULang::Deserialize::RenderState;
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
@@ -239,4 +239,4 @@ Loader::Load(const char* data, const size_t length)
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct HGenerator : public Generator
@@ -21,4 +21,4 @@ struct HGenerator : public Generator
     void GenerateVariable(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
 };
 
-} // namespace AnyFX
+} // namespace GPULang

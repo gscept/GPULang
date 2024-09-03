@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "renderstate.h"
 #include <map>
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -269,4 +269,4 @@ RenderState::__Resolved::StringToBlendOp(const std::string& str)
         return InvalidBlendOp;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

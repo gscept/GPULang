@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "statement.h"
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 struct ScopeStatement : public Statement
@@ -21,4 +21,4 @@ struct ScopeStatement : public Statement
     std::vector<Symbol*> statements;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

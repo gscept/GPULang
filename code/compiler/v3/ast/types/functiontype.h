@@ -10,7 +10,7 @@
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct FunctionType : public Type
@@ -19,4 +19,4 @@ struct FunctionType : public Type
     FunctionType();
 };
 
-} // namespace AnyFX
+} // namespace GPULang

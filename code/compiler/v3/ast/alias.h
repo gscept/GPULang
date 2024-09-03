@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include <string>
 #include "symbol.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 struct Alias : public Symbol
@@ -23,4 +23,4 @@ struct Alias : public Symbol
     bool EndOfParse(Compiler* compiler);
 };
 
-} // namespace AnyFX
+} // namespace GPULang

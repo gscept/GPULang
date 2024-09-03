@@ -1,55 +1,55 @@
 
     #include <string>
     #include <vector>
-    #include "anyfxtoken.h"
+    #include "gpulangtoken.h"
 
 
-// Generated from antlr4/grammar/AnyFX.g4 by ANTLR 4.7.1
+// Generated from antlr4/grammar/GPULang.g4 by ANTLR 4.7.1
 
 
-#include "AnyFXLexer.h"
+#include "GPULangLexer.h"
 
 
 using namespace antlr4;
 
 
-AnyFXLexer::AnyFXLexer(CharStream *input) : Lexer(input) {
+GPULangLexer::GPULangLexer(CharStream *input) : Lexer(input) {
   _interpreter = new atn::LexerATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
 }
 
-AnyFXLexer::~AnyFXLexer() {
+GPULangLexer::~GPULangLexer() {
   delete _interpreter;
 }
 
-std::string AnyFXLexer::getGrammarFileName() const {
-  return "AnyFX.g4";
+std::string GPULangLexer::getGrammarFileName() const {
+  return "GPULang.g4";
 }
 
-const std::vector<std::string>& AnyFXLexer::getRuleNames() const {
+const std::vector<std::string>& GPULangLexer::getRuleNames() const {
   return _ruleNames;
 }
 
-const std::vector<std::string>& AnyFXLexer::getChannelNames() const {
+const std::vector<std::string>& GPULangLexer::getChannelNames() const {
   return _channelNames;
 }
 
-const std::vector<std::string>& AnyFXLexer::getModeNames() const {
+const std::vector<std::string>& GPULangLexer::getModeNames() const {
   return _modeNames;
 }
 
-const std::vector<std::string>& AnyFXLexer::getTokenNames() const {
+const std::vector<std::string>& GPULangLexer::getTokenNames() const {
   return _tokenNames;
 }
 
-dfa::Vocabulary& AnyFXLexer::getVocabulary() const {
+dfa::Vocabulary& GPULangLexer::getVocabulary() const {
   return _vocabulary;
 }
 
-const std::vector<uint16_t> AnyFXLexer::getSerializedATN() const {
+const std::vector<uint16_t> GPULangLexer::getSerializedATN() const {
   return _serializedATN;
 }
 
-const atn::ATN& AnyFXLexer::getATN() const {
+const atn::ATN& GPULangLexer::getATN() const {
   return _atn;
 }
 
@@ -57,14 +57,14 @@ const atn::ATN& AnyFXLexer::getATN() const {
 
 
 // Static vars and initialization.
-std::vector<dfa::DFA> AnyFXLexer::_decisionToDFA;
-atn::PredictionContextCache AnyFXLexer::_sharedContextCache;
+std::vector<dfa::DFA> GPULangLexer::_decisionToDFA;
+atn::PredictionContextCache GPULangLexer::_sharedContextCache;
 
 // We own the ATN which in turn owns the ATN states.
-atn::ATN AnyFXLexer::_atn;
-std::vector<uint16_t> AnyFXLexer::_serializedATN;
+atn::ATN GPULangLexer::_atn;
+std::vector<uint16_t> GPULangLexer::_serializedATN;
 
-std::vector<std::string> AnyFXLexer::_ruleNames = {
+std::vector<std::string> GPULangLexer::_ruleNames = {
   u8"T__0", u8"T__1", u8"T__2", u8"T__3", u8"T__4", u8"T__5", u8"T__6", 
   u8"T__7", u8"T__8", u8"T__9", u8"T__10", u8"T__11", u8"T__12", u8"T__13", 
   u8"T__14", u8"T__15", u8"T__16", u8"T__17", u8"T__18", u8"T__19", u8"T__20", 
@@ -80,15 +80,15 @@ std::vector<std::string> AnyFXLexer::_ruleNames = {
   u8"DOUBLELITERAL", u8"HEX", u8"ALPHABET", u8"IDENTIFIER", u8"WS"
 };
 
-std::vector<std::string> AnyFXLexer::_channelNames = {
+std::vector<std::string> GPULangLexer::_channelNames = {
   "DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 };
 
-std::vector<std::string> AnyFXLexer::_modeNames = {
+std::vector<std::string> GPULangLexer::_modeNames = {
   u8"DEFAULT_MODE"
 };
 
-std::vector<std::string> AnyFXLexer::_literalNames = {
+std::vector<std::string> GPULangLexer::_literalNames = {
   "", u8"'true'", u8"'false'", u8"'#line'", u8"'alias'", u8"'as'", u8"'struct'", 
   u8"'enum'", u8"'program'", u8"'sampler_state'", u8"'render_state'", u8"'if'", 
   u8"'else'", u8"'for'", u8"'..'", u8"'while'", u8"'do'", u8"'return'", 
@@ -102,7 +102,7 @@ std::vector<std::string> AnyFXLexer::_literalNames = {
   u8"'+'", u8"'-'", u8"'/'", u8"'*'", u8"'->'"
 };
 
-std::vector<std::string> AnyFXLexer::_symbolicNames = {
+std::vector<std::string> GPULangLexer::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", u8"SC", 
   u8"CO", u8"COL", u8"LP", u8"RP", u8"LB", u8"RB", u8"LL", u8"RR", u8"DOT", 
@@ -115,11 +115,11 @@ std::vector<std::string> AnyFXLexer::_symbolicNames = {
   u8"HEX", u8"IDENTIFIER", u8"WS"
 };
 
-dfa::Vocabulary AnyFXLexer::_vocabulary(_literalNames, _symbolicNames);
+dfa::Vocabulary GPULangLexer::_vocabulary(_literalNames, _symbolicNames);
 
-std::vector<std::string> AnyFXLexer::_tokenNames;
+std::vector<std::string> GPULangLexer::_tokenNames;
 
-AnyFXLexer::Initializer::Initializer() {
+GPULangLexer::Initializer::Initializer() {
   // This code could be in a static initializer lambda, but VS doesn't allow access to private class members from there.
 	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
 		std::string name = _vocabulary.getLiteralName(i);
@@ -562,4 +562,4 @@ AnyFXLexer::Initializer::Initializer() {
   }
 }
 
-AnyFXLexer::Initializer AnyFXLexer::_init;
+GPULangLexer::Initializer GPULangLexer::_init;

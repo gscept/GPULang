@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "mat3x2.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -46,4 +46,4 @@ Mat3x2::Mat3x2()
 
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "statement.h"
 #include "ast/expressions/expression.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct IfStatement : public Statement
@@ -23,4 +23,4 @@ struct IfStatement : public Statement
     Statement* elseStatement;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "state.h"
 #include "serialize.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct SamplerState : public State
@@ -79,4 +79,4 @@ struct SamplerState : public State
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

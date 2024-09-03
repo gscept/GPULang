@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include <string>
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -598,4 +598,4 @@ struct Structure : public Bindable
 
 } // namespace Deserialize
 
-} // namespace AnyFX
+} // namespace GPULang

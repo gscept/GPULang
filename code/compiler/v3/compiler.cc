@@ -19,7 +19,7 @@
 #include "v3/ast/program.h"
 #include "v3/ast/structure.h"
 #include "v3/ast/variable.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -830,4 +830,4 @@ Compiler::OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLeng
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

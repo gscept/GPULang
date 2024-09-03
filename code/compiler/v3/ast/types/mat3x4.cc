@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "mat3x4.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -51,4 +51,4 @@ Mat3x4::Mat3x4()
     __IMPLEMENT_FUNCTION_1(bracketOperatorUInt, operator[], float4, uint);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

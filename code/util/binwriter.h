@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::BinWriter
+    @class GPULang::BinWriter
     
     Writes common AnyFX data types to a binary file.
     
@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 #include <iostream>
 #include <fstream>
-namespace AnyFX
+namespace GPULang
 {
 class BinWriter
 {
@@ -95,5 +95,5 @@ BinWriter::WriteType(const T& data)
     this->WriteBytes((const char*)&data, sizeof(T));
 }
 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

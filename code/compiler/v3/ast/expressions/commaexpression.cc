@@ -5,7 +5,7 @@
 #include "commaexpression.h"
 #include "util.h"
 #include "compiler.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -96,4 +96,4 @@ CommaExpression::EvalString() const
     return Format("%s,%s", left.c_str(), right.c_str());
 }
 
-} // namespace AnyFX
+} // namespace GPULang

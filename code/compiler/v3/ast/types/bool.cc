@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "bool.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -38,4 +38,4 @@ Bool::Bool()
     __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, bool, uint);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

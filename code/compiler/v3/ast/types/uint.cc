@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "uint.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -52,4 +52,4 @@ UInt::UInt()
     __IMPLEMENT_FUNCTION_1(assignOperator, operator=, uint, int);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

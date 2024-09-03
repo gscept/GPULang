@@ -11,7 +11,7 @@
 #include "expression.h"
 #include <vector>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct InitializerExpression : public Expression
@@ -38,4 +38,4 @@ struct InitializerExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

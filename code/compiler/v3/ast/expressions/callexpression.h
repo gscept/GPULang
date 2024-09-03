@@ -9,7 +9,7 @@
 #include "expression.h"
 #include <vector>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct CallExpression : public Expression
@@ -45,4 +45,4 @@ struct CallExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

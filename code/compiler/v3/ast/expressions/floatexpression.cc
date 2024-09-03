@@ -7,7 +7,7 @@
 #include "util.h"
 #include "v3/ast/types/type.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -108,4 +108,4 @@ FloatExpression::EvalString() const
 {
     return Format("%f", this->value);
 }
-} // namespace AnyFX
+} // namespace GPULang

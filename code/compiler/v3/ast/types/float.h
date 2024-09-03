@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "ast/function.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Float : public Type
@@ -39,4 +39,4 @@ struct Float : public Type
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

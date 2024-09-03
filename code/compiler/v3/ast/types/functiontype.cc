@@ -4,9 +4,9 @@
 //------------------------------------------------------------------------------
 #include "functiontype.h"
 
-namespace AnyFX
+namespace GPULang
 {
 FunctionType::FunctionType()
 {
 }
-} // namespace AnyFX
+} // namespace GPULang

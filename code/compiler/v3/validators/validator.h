@@ -11,7 +11,7 @@
 #include <set>
 #include <map>
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 struct Compiler;
@@ -83,4 +83,4 @@ struct Validator
     uint32_t outParameterIndexCounter;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

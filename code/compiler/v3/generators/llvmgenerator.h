@@ -7,10 +7,9 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
-#include "llvm/IR/IRBuilder.h"
 #include "ast/types/type.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 class LLVMGenerator : public Generator
@@ -80,4 +79,4 @@ public:
     std::multimap<llvm::Type*, llvm::MDNode*> llvmTypeToMetadataMap;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -10,7 +10,7 @@
 #include "expression.h"
 #include <vector>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct ArrayIndexExpression : public Expression
@@ -51,4 +51,4 @@ struct ArrayIndexExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

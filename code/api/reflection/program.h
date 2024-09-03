@@ -6,7 +6,7 @@
     (C) 2021 Individual contributors, see AUTHORS file
 */
 //------------------------------------------------------------------------------
-namespace AnyFX
+namespace GPULang
 {
 
 struct Program
@@ -14,4 +14,4 @@ struct Program
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

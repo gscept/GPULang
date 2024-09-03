@@ -8,7 +8,7 @@
 #include <stack>
 #include <tuple>
 
-#include "anyfxtoken.h"
+#include "gpulangtoken.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -48,13 +48,13 @@
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 
-using namespace AnyFX;
+using namespace GPULang;
 
 
 
-// Generated from antlr4/grammar/AnyFX.g4 by ANTLR 4.7.1
+// Generated from antlr4/grammar/GPULang.g4 by ANTLR 4.7.1
 
 
-#include "AnyFXBaseListener.h"
+#include "GPULangListener.h"
 
 

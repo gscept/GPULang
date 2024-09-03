@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -68,4 +68,4 @@ Symbol::TypeToString() const
     return "";
 }
 
-} // namespace AnyFX
+} // namespace GPULang

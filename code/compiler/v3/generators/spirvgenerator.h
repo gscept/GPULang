@@ -11,7 +11,7 @@
 #include "generator.h"
 #include <map>
 #include <set>
-namespace AnyFX
+namespace GPULang
 {
 
 class SPIRVGenerator : public Generator
@@ -40,4 +40,4 @@ public:
     std::string header;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

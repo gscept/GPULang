@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "int3.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -63,4 +63,4 @@ Int3::Int3()
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

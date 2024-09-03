@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 #include "ast/function.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -174,4 +174,4 @@ CallExpression::EvalString() const
     return Format("%s(%s)", fun.c_str(), args.c_str());
 }
 
-} // namespace AnyFX
+} // namespace GPULang

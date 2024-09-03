@@ -1,38 +1,36 @@
 #-------------------------------------------------------------------------------
-# anyfx compiler
+# GPULang compiler
 #-------------------------------------------------------------------------------
 
 ADD_SUBDIRECTORY(ext/antlr4)
 ADD_SUBDIRECTORY(ext/mcpp)
 
-fips_begin_lib(anyfx_compiler)
+fips_begin_lib(gpulang_compiler)
 
 fips_include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${ANYFX_ROOT}/code/util/
-    ${ANYFX_ROOT}/code/compiler
-    ${ANYFX_ROOT}/code/compiler/ext/antlr4/src
-    ${ANYFX_ROOT}/exts/glslang
-    ${ANYFX_ROOT}/code/compiler/ext/mcpp
-    ${ANYFX_ROOT}/code/compiler/v3
-    ${ANYFX_ROOT}/exts/fips-llvm
+    ${GPULANG_ROOT}/code/util/
+    ${GPULANG_ROOT}/code/compiler
+    ${GPULANG_ROOT}/code/compiler/ext/antlr4/src
+    ${GPULANG_ROOT}/code/compiler/ext/mcpp
+    ${GPULANG_ROOT}/code/compiler/v3
     )
 
 fips_files(
-    afxcompiler.cc
-    afxcompiler.h
+    gpulangcompiler.cc
+    gpulangcompiler.h
 )
 
 fips_dir(parser4)
     fips_files(
-        AnyFXParser.cpp
-        AnyFXParser.h
-        AnyFXLexer.cpp
-        AnyFXLexer.h
-        anyfxerrorhandlers.cpp
-        anyfxerrorhandlers.h
-        anyfxtoken.cpp
-        anyfxtoken.h
+        GPULangParser.cpp
+        GPULangParser.h
+        GPULangLexer.cpp
+        GPULangLexer.h
+        gpulangerrorhandlers.cpp
+        gpulangerrorhandlers.h
+        gpulangtoken.cpp
+        gpulangtoken.h
     )
 
 fips_dir(v3)
@@ -210,8 +208,7 @@ fips_dir(v3/validators)
         validator.h
     )
 
-fips_deps(anyfx_util antlr4 glslang mcpp LLVMSupport)
-fips_include_directories(${CMAKE_BINARY_DIR}/fips-llvm-gpulang_llvm/llvm/include/)
+fips_deps(gpulang_util antlr4 glslang mcpp LLVMSupport)
 
 IF (MSVC11)
     ADD_DEFINITIONS(-D_XKEYCHECK_H)

@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::TextWriter
+    @class GPULang::TextWriter
     
     Outputs raw text
     
@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 #include <iostream>
 #include <fstream>
-namespace AnyFX
+namespace GPULang
 {
 class TextWriter
 {
@@ -68,5 +68,5 @@ TextWriter::IsOpen() const
 	return this->isOpen;
 }
 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

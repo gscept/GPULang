@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::EnumExpression
+    @class GPULang::EnumExpression
     
     Expression used to resolve enums
     
@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct EnumExpression : public Expression
 {
@@ -46,5 +46,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

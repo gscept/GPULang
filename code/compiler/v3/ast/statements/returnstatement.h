@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "statement.h"
 #include "ast/expressions/expression.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct ReturnStatement : public Statement
@@ -21,4 +21,4 @@ struct ReturnStatement : public Statement
     Expression* returnValue;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

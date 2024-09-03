@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::SymbolExpression
+    @class GPULang::SymbolExpression
     
     Evaluates, if possible, a symbol as a single value, currently this is
 	only possible for constants.
@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------------
 #include "expression.h"
 
-namespace AnyFX
+namespace GPULang
 {
 struct SymbolExpression : public Expression
 {
@@ -48,5 +48,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

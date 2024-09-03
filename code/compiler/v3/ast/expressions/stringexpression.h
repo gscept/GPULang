@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::StringExpression
+    @class GPULang::StringExpression
     
     An int expression is a simple expression which holds a string
     
@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 #include "expression.h"
 #include <string>
-namespace AnyFX
+namespace GPULang
 {
 struct StringExpression : public Expression
 {
@@ -33,5 +33,5 @@ public:
 
 	std::string value;
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

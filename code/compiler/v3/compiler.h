@@ -19,7 +19,7 @@
 #include "binwriter.h"
 #include "textwriter.h"
 #include "serialize.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Type;
@@ -233,4 +233,4 @@ Compiler::GetSymbol(const std::string& name) const
     return static_cast<T*>(this->GetSymbol(name));
 }
 
-} // namespace AnyFX
+} // namespace GPULang

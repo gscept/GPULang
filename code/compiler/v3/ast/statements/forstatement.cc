@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "forstatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -30,4 +30,4 @@ ForStatement::~ForStatement()
     delete this->contents;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

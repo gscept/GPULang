@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::UIntExpression
+    @class GPULang::UIntExpression
     
     An unsigned expression is a simple expression which holds an unsigned integer.
     
@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct UIntExpression : public Expression
 {
@@ -45,5 +45,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

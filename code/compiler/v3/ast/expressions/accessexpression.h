@@ -11,7 +11,7 @@
 #include "expression.h"
 #include <vector>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct AccessExpression : public Expression
@@ -47,4 +47,4 @@ struct AccessExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -14,7 +14,7 @@
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; this->staticSymbols.push_back(&val);
 #define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::ArrayLevel}, {size} }; this->staticSymbols.push_back(&val);
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -168,6 +168,6 @@ RenderStateType::RenderStateType()
 }
 
 
-} // namespace AnyFX
+} // namespace GPULang
 
 

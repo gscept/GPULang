@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "state.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct RenderState : public State
@@ -132,4 +132,4 @@ struct RenderState : public State
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

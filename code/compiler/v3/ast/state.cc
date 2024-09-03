@@ -5,7 +5,7 @@
 #include "state.h"
 #include "v3/ast/expressions/binaryexpression.h"
 #include <map>
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -48,4 +48,4 @@ State::__Resolved::StringToCompareMode(const std::string& str)
         return InvalidCompareMode;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

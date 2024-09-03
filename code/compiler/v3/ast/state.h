@@ -10,7 +10,7 @@
 #include "annotation.h"
 #include "serialize.h"
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 struct Expression;
@@ -29,4 +29,4 @@ struct State : public Symbol
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

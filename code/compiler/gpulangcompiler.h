@@ -29,7 +29,7 @@ struct AnyFXErrorBlob
 	}
 };
 
-extern std::vector<std::string> AnyFXGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
-extern bool AnyFXCompile(const std::string& file, const std::string& output, const std::string& header_output, const std::string& target, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, AnyFXErrorBlob*& errorBuffer);
+extern std::vector<std::string> GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
+extern bool GPULangCompile(const std::string& file, const std::string& output, const std::string& header_output, const std::string& target, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, AnyFXErrorBlob*& errorBuffer);
 extern void AnyFXBeginCompile();
 extern void AnyFXEndCompile();

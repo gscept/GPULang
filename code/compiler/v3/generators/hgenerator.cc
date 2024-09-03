@@ -8,7 +8,7 @@
 #include "ast/expressions/initializerexpression.h"
 #include "compiler.h"
 #include "util.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -206,4 +206,4 @@ HGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* symbo
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

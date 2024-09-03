@@ -8,7 +8,7 @@
 #include <algorithm>
 
 static char encryptionTable[] = {'A', 'T', 'C', 'G', 'F', 'F', 'W', 'I', 'T', 'C', 'H', 'E', 'R'};
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -157,4 +157,4 @@ BinWriter::WriteBytes(const char* ptr, unsigned numbytes)
 	this->output.write(ptr, numbytes);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

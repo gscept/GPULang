@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "samplerstate.h"
 #include <map>
-namespace AnyFX
+namespace GPULang
 {
 SamplerState::SamplerState()
 {
@@ -137,4 +137,4 @@ SamplerState::__Resolved::StringToBorderColor(const std::string& str)
         return InvalidBorderColor;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

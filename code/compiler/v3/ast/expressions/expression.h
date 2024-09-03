@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::Expression
+    @class GPULang::Expression
     
     Base class for expressions. 
     In AnyFX, expressions are purely aritmetic, meaning they can only return a value.
@@ -12,7 +12,7 @@
 #include "ast/symbol.h"
 #include "v3/ast/types/type.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct Compiler;
@@ -55,5 +55,5 @@ struct Expression : public Symbol
         } value;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

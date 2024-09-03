@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "bool4.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -49,4 +49,4 @@ Bool4::Bool4()
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

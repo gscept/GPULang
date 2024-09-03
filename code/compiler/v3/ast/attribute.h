@@ -10,7 +10,7 @@
 #include "util.h"
 #include "symbol.h"
 #include "expressions/expression.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Compiler;
@@ -83,4 +83,4 @@ Attribute::ToString(std::string& out) const
     return ret;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

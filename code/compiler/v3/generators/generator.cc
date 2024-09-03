@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "generator.h"
 #include "ast/symbol.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -17,4 +17,4 @@ Generator::Generate(Compiler* compiler, Program* program, const std::vector<Symb
 }
 
 
-} // namespace AnyFX
+} // namespace GPULang

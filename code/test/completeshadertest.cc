@@ -14,7 +14,7 @@ CompleteShaderTest()
 {
     AnyFXBeginCompile();
     AnyFXErrorBlob* errors;
-    AnyFXCompile(std::string(TEST_FOLDER) + "/completeshader.fx", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "vk", "khronos", {}, {}, errors);
+    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.fx", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "vk", "khronos", {}, {}, errors);
     AnyFXEndCompile();
 
     if (errors != nullptr)
@@ -31,6 +31,6 @@ CompleteShaderTest()
 
     char* buf = new char[size];
     fread(buf, 1, size, file);
-    AnyFX::Loader loader;
+    GPULang::Loader loader;
     loader.Load(buf, size);
 }

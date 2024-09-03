@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "float.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -39,4 +39,4 @@ Float::Float()
     __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, float, uint);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

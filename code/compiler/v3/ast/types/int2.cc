@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "int2.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -58,4 +58,4 @@ Int2::Int2()
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

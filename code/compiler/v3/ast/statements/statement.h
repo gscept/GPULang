@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "ast/symbol.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Statement : public Symbol
@@ -15,4 +15,4 @@ struct Statement : public Symbol
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -53,7 +53,7 @@ this->variable.name = id;\
 this->variable.type = {#t};\
 this->lookup.insert({id, &this->variable});
 
-namespace AnyFX
+namespace GPULang
 {
 
 enum class TypeCode
@@ -223,4 +223,4 @@ struct Type : public Symbol
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

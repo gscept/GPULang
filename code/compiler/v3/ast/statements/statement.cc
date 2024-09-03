@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "statement.h"
-namespace AnyFX
+namespace GPULang
 {
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -1,10 +1,10 @@
 
     #include <string>
     #include <vector>
-    #include "anyfxtoken.h"
+    #include "gpulangtoken.h"
 
 
-// Generated from antlr4/grammar/AnyFX.g4 by ANTLR 4.7.1
+// Generated from antlr4/grammar/GPULang.g4 by ANTLR 4.7.1
 
 #pragma once
 
@@ -14,7 +14,7 @@
 
 
 
-class  AnyFXLexer : public antlr4::Lexer {
+class  GPULangLexer : public antlr4::Lexer {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
@@ -33,8 +33,8 @@ public:
     HEX = 82, IDENTIFIER = 83, WS = 84
   };
 
-  AnyFXLexer(antlr4::CharStream *input);
-  ~AnyFXLexer();
+  GPULangLexer(antlr4::CharStream *input);
+  ~GPULangLexer();
 
 
   #include <iostream>

@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -110,4 +110,4 @@ EnumExpression::EvalString() const
     return Format("%d", this->value);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

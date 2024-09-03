@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
-namespace AnyFX
+namespace GPULang
 {
 
 class GLSLGenerator : public Generator
@@ -36,4 +36,4 @@ public:
     LanguageFeatureSet featureSet;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

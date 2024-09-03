@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 #include "expression.h"
 #include "ast/expressions/expression.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct TernaryExpression : public Expression
@@ -37,4 +37,4 @@ struct TernaryExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

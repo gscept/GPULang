@@ -6,7 +6,7 @@
 */
 //------------------------------------------------------------------------------
 #include "cmdlineargs.h"
-#include "afxcompiler.h"
+#include "gpulangcompiler.h"
 #include "v3/compiler.h"
 #include "v3/ast/effect.h"
 #include <fstream>
@@ -16,22 +16,22 @@
 
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
-#include "parser4/AnyFXLexer.h"
-#include "parser4/AnyFXParser.h"
-#include "parser4/AnyFXBaseListener.h"
-#include "parser4/anyfxerrorhandlers.h"
+#include "parser4/GPULangLexer.h"
+#include "parser4/GPULangParser.h"
+#include "parser4/GPULangBaseListener.h"
+#include "parser4/gpulangerrorhandlers.h"
 
 using namespace antlr4;
+using namespace GPULang;
 
 #include "mcpp_lib.h"
 #include "mcpp_out.h"
-#include "glslang/Public/ShaderLang.h"
 
 //------------------------------------------------------------------------------
 /**
 */
 bool
-AnyFXPreprocess(const std::string& file, const std::vector<std::string>& defines, const std::string& vendor, std::string& output)
+GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, const std::string& vendor, std::string& output)
 {
     std::string fileName = file.substr(file.rfind("/")+1, file.length()-1);
     std::string vend = "-DVENDOR=" + vendor;
@@ -82,7 +82,7 @@ AnyFXPreprocess(const std::string& file, const std::vector<std::string>& defines
 /**
 */
 std::vector<std::string>
-AnyFXGenerateDependencies(const std::string& file, const std::vector<std::string>& defines)
+GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines)
 {
     std::vector<std::string> res;
 
@@ -168,22 +168,22 @@ Error(const std::string message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-AnyFXCompile(const std::string& file, const std::string& output, const std::string& header_output, const std::string& target, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, AnyFXErrorBlob*& errorBuffer)
+GPULangCompile(const std::string& file, const std::string& output, const std::string& header_output, const std::string& target, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, AnyFXErrorBlob*& errorBuffer)
 {
     bool ret = true;
 
     std::string preprocessed;
     errorBuffer = nullptr;
 
-    if (AnyFXPreprocess(file, defines, vendor, preprocessed))
+    if (GPULangPreprocess(file, defines, vendor, preprocessed))
     {
         ANTLRInputStream input;
         input.load(preprocessed);
 
-        AnyFXLexer lexer(&input);
-        lexer.setTokenFactory(AnyFXTokenFactory::DEFAULT);
+        GPULangLexer lexer(&input);
+        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         CommonTokenStream tokens(&lexer);
-        AnyFXParser parser(&tokens);
+        GPULangParser parser(&tokens);
 
         // get the name of the shader
         std::locale loc;
@@ -212,16 +212,16 @@ AnyFXCompile(const std::string& file, const std::string& output, const std::stri
             preprocessed.replace(start, stop - start, fill);
         }
 
-        AnyFXLexerHandler lexerErrorHandler;
+        GPULangLexerErrorHandler lexerErrorHandler;
         lexerErrorHandler.lines = parser.lines;
-        AnyFXParserHandler parserErrorHandler;
+        GPULangParserErrorHandler parserErrorHandler;
         parserErrorHandler.lines = parser.lines;
 
         // reload the preprocessed data
         input.reset();
         input.load(preprocessed);
         lexer.setInputStream(&input);
-        lexer.setTokenFactory(AnyFXTokenFactory::DEFAULT);
+        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         lexer.addErrorListener(&lexerErrorHandler);
         tokens.setTokenSource(&lexer);
         parser.setTokenStream(&tokens);
@@ -272,25 +272,4 @@ AnyFXCompile(const std::string& file, const std::string& output, const std::stri
         }
     }
     return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-    Run before compilation
-*/
-void
-AnyFXBeginCompile()
-{
-    glslang::InitializeProcess();
-}
-
-//------------------------------------------------------------------------------
-/**
-    Run after compilation
-*/
-void
-AnyFXEndCompile()
-{
-    glslang::FinalizeProcess();
-
 }

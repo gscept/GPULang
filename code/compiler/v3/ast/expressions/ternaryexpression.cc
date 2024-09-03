@@ -5,7 +5,7 @@
 #include "ternaryexpression.h"
 #include "compiler.h"
 #include "util.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -80,4 +80,4 @@ TernaryExpression::EvalString() const
     return Format("%s ? %s : %s", lhs.c_str(), ifStr.c_str(), elseStr.c_str());
 }
 
-} // namespace AnyFX
+} // namespace GPULang

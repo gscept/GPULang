@@ -11,7 +11,7 @@
 #include "types/type.h"
 #include <vector>
 #include <map>
-namespace AnyFX
+namespace GPULang
 {
 
 struct Variable : public Symbol
@@ -126,4 +126,4 @@ struct Variable : public Symbol
 };
 
 
-} // namespace AnyFX
+} // namespace GPULang

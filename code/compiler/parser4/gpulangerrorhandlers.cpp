@@ -1,8 +1,8 @@
-#include "anyfxerrorhandlers.h"
-#include "anyfxtoken.h"
+#include "gpulangerrorhandlers.h"
+#include "gpulangtoken.h"
 #include "util.h"
 
-void AnyFXLexerHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine, const std::string& msg, std::exception_ptr e)
+void GPULangLexerErrorHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine, const std::string& msg, std::exception_ptr e)
 {
 	// find the next parsed row which comes after the token
 	int loop = 0;
@@ -23,11 +23,11 @@ void AnyFXLexerHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Toke
 	file = file.substr(1, file.length() - 2); // remove trailing "
 	int correctedLine = std::get<0>(tu2);
 
-	this->errorBuffer += AnyFX::Format("%s(%d): error: %s\n", file.c_str(), correctedLine + line, msg.c_str());
+	this->errorBuffer += GPULang::Format("%s(%d): error: %s\n", file.c_str(), correctedLine + line, msg.c_str());
 	this->hasError = true;
 }
 
-void AnyFXParserHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine, const std::string& msg, std::exception_ptr e)
+void GPULangParserErrorHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine, const std::string& msg, std::exception_ptr e)
 {
 	// find the next parsed row which comes after the token
 	int loop = 0;
@@ -48,6 +48,6 @@ void AnyFXParserHandler::syntaxError(antlr4::Recognizer* recognizer, antlr4::Tok
 	file = file.substr(1, file.length() - 2); // remove trailing "
 	int correctedLine = std::get<0>(tu2);
 
-	this->errorBuffer += AnyFX::Format("%s(%d): error: %s\n", file.c_str(), correctedLine + line, msg.c_str());
+	this->errorBuffer += GPULang::Format("%s(%d): error: %s\n", file.c_str(), correctedLine + line, msg.c_str());
 	this->hasError = true;
 }

@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "util.h"
-namespace AnyFX
+namespace GPULang
 {
 
 template<typename T, int S>

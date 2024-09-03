@@ -12,7 +12,7 @@
 #include "symbol.h"
 #include "binwriter.h"
 #include "expressions/expression.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 struct Compiler;
@@ -22,4 +22,4 @@ struct Annotation
     Expression* value;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

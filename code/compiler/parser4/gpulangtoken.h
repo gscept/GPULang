@@ -6,33 +6,33 @@
 #include "TokenFactory.h"
 
 using namespace antlr4;
-class ANTLR4CPP_PUBLIC AnyFXToken : public CommonToken
+class ANTLR4CPP_PUBLIC GPULangToken : public CommonToken
 {
 public:
 
-	AnyFXToken(size_t type) :
+	GPULangToken(size_t type) :
 		CommonToken(type)
 	{
 	};
 
-	AnyFXToken(std::pair<TokenSource*, CharStream*> source, size_t type, size_t channel, size_t start, size_t stop):
+	GPULangToken(std::pair<TokenSource*, CharStream*> source, size_t type, size_t channel, size_t start, size_t stop):
 		CommonToken(source, type, channel, start, stop)
 	{};
 
-	AnyFXToken(size_t type, const std::string &text) :
+	GPULangToken(size_t type, const std::string &text) :
 		CommonToken(type, text)
 	{};
 
-	AnyFXToken(Token *oldToken) :
+	GPULangToken(Token *oldToken) :
 		CommonToken(oldToken)
 	{
-		file = ((AnyFXToken*)oldToken)->file;
+		file = ((GPULangToken*)oldToken)->file;
 	};
 
 	std::string file;
 };
 
-class ANTLR4CPP_PUBLIC AnyFXTokenFactory : public TokenFactory<CommonToken>
+class ANTLR4CPP_PUBLIC GPULangTokenFactory : public TokenFactory<CommonToken>
 {
 public:
 
@@ -45,10 +45,10 @@ public:
 	 * The {@link #DEFAULT} instance should be used instead of calling this
 	 * directly.</p>
 	 */
-	AnyFXTokenFactory();
+	GPULangTokenFactory();
 
 	/**
-	 * The default {@link AnyFXTokenFactory} instance.
+	 * The default {@link GPULangTokenFactory} instance.
 	 *
 	 * <p>
 	 * This token factory does not explicitly copy token text when constructing

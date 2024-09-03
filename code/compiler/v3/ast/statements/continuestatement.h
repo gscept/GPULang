@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "statement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct ContinueStatement : public Statement
@@ -16,4 +16,4 @@ struct ContinueStatement : public Statement
     ContinueStatement();
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------------------
-# anyfx util
+# GPULang util
 #-------------------------------------------------------------------------------
 
-fips_begin_lib(anyfx_util)
+fips_begin_lib(gpulang_util)
 
 fips_include_directories(
 	${CMAKE_CURRENT_BINARY_DIR}
-	${ANYFX_ROOT}/util/
+	${GPULANG_ROOT}/util/
 	)
 
 fips_files(

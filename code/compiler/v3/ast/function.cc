@@ -10,7 +10,7 @@
 #include "v3/ast/expressions/symbolexpression.h"
 #include "v3/ast/expressions/unaryexpression.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -938,4 +938,4 @@ Function::IsCompatible(Function* otherFunction, bool checkReturnType)
     return true;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

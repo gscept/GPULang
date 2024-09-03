@@ -1,4 +1,4 @@
-grammar AnyFX;
+grammar GPULang;
 
 options {
     language = Cpp;
@@ -21,7 +21,7 @@ int currentLine = 0;
 @lexer::header {
     #include <string>
     #include <vector>
-    #include "anyfxtoken.h"
+    #include "gpulangtoken.h"
 }
 
 // parser API hooks
@@ -38,7 +38,7 @@ SetupFile(bool updateLine = true)
     Symbol::Location location;
     if (this->lines.empty())
         return location;
-    ::AnyFXToken* token = (::AnyFXToken*)_input->LT(-1);
+    ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
     if (updateLine)
         UpdateLine(_input, -1);
@@ -55,7 +55,7 @@ SetupFile(bool updateLine = true)
 void
 UpdateLine(antlr4::TokenStream* stream, int index = -1)
 {
-    ::AnyFXToken* token = (::AnyFXToken*)stream->LT(index);
+    ::GPULangToken* token = (::GPULangToken*)stream->LT(index);
 
       // find the next parsed row which comes after the token
       int loop = this->currentLine;
@@ -96,7 +96,7 @@ std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 #include <stack>
 #include <tuple>
 
-#include "anyfxtoken.h"
+#include "gpulangtoken.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -136,7 +136,7 @@ std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 
-using namespace AnyFX;
+using namespace GPULang;
 
 }
 

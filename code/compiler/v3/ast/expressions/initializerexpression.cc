@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 #include "uintexpression.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -92,4 +92,4 @@ InitializerExpression::EvalString() const
     return ret;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -34,7 +34,7 @@
 #include "programtype.h"
 #include "functiontype.h"
 #include <set>
-namespace AnyFX
+namespace GPULang
 {
 
 Function* activeFunction = nullptr;
@@ -150,32 +150,32 @@ Type::SetupDefaultTypes()
 {
     __BEGIN_TYPES__
 
-    __MAKE_TYPE_CUSTOM(int, AnyFX::Int);
-    __MAKE_TYPE_CUSTOM(int2, AnyFX::Int2);
-    __MAKE_TYPE_CUSTOM(int3, AnyFX::Int3);
-    __MAKE_TYPE_CUSTOM(int4, AnyFX::Int4);
-    __MAKE_TYPE_CUSTOM(uint, AnyFX::UInt);
-    __MAKE_TYPE_CUSTOM(uint2, AnyFX::UInt2);
-    __MAKE_TYPE_CUSTOM(uint3, AnyFX::UInt3);
-    __MAKE_TYPE_CUSTOM(uint4, AnyFX::UInt4);
-    __MAKE_TYPE_CUSTOM(bool, AnyFX::Bool);
-    __MAKE_TYPE_CUSTOM(bool2, AnyFX::Bool2);
-    __MAKE_TYPE_CUSTOM(bool3, AnyFX::Bool3);
-    __MAKE_TYPE_CUSTOM(bool4, AnyFX::Bool4);
+    __MAKE_TYPE_CUSTOM(int, GPULang::Int);
+    __MAKE_TYPE_CUSTOM(int2, GPULang::Int2);
+    __MAKE_TYPE_CUSTOM(int3, GPULang::Int3);
+    __MAKE_TYPE_CUSTOM(int4, GPULang::Int4);
+    __MAKE_TYPE_CUSTOM(uint, GPULang::UInt);
+    __MAKE_TYPE_CUSTOM(uint2, GPULang::UInt2);
+    __MAKE_TYPE_CUSTOM(uint3, GPULang::UInt3);
+    __MAKE_TYPE_CUSTOM(uint4, GPULang::UInt4);
+    __MAKE_TYPE_CUSTOM(bool, GPULang::Bool);
+    __MAKE_TYPE_CUSTOM(bool2, GPULang::Bool2);
+    __MAKE_TYPE_CUSTOM(bool3, GPULang::Bool3);
+    __MAKE_TYPE_CUSTOM(bool4, GPULang::Bool4);
 
-    __MAKE_TYPE_CUSTOM(float, AnyFX::Float);
-    __MAKE_TYPE_CUSTOM(float2, AnyFX::Float2);
-    __MAKE_TYPE_CUSTOM(float3, AnyFX::Float3);
-    __MAKE_TYPE_CUSTOM(float4, AnyFX::Float4);
-    __MAKE_TYPE_CUSTOM(float2x2, AnyFX::Mat2x2);
-    __MAKE_TYPE_CUSTOM(float2x3, AnyFX::Mat2x3);
-    __MAKE_TYPE_CUSTOM(float2x4, AnyFX::Mat2x4);
-    __MAKE_TYPE_CUSTOM(float3x2, AnyFX::Mat3x2);
-    __MAKE_TYPE_CUSTOM(float3x3, AnyFX::Mat3x3);
-    __MAKE_TYPE_CUSTOM(float3x4, AnyFX::Mat3x4);
-    __MAKE_TYPE_CUSTOM(float4x2, AnyFX::Mat4x2);
-    __MAKE_TYPE_CUSTOM(float4x3, AnyFX::Mat4x3);
-    __MAKE_TYPE_CUSTOM(float4x4, AnyFX::Mat4x4);
+    __MAKE_TYPE_CUSTOM(float, GPULang::Float);
+    __MAKE_TYPE_CUSTOM(float2, GPULang::Float2);
+    __MAKE_TYPE_CUSTOM(float3, GPULang::Float3);
+    __MAKE_TYPE_CUSTOM(float4, GPULang::Float4);
+    __MAKE_TYPE_CUSTOM(float2x2, GPULang::Mat2x2);
+    __MAKE_TYPE_CUSTOM(float2x3, GPULang::Mat2x3);
+    __MAKE_TYPE_CUSTOM(float2x4, GPULang::Mat2x4);
+    __MAKE_TYPE_CUSTOM(float3x2, GPULang::Mat3x2);
+    __MAKE_TYPE_CUSTOM(float3x3, GPULang::Mat3x3);
+    __MAKE_TYPE_CUSTOM(float3x4, GPULang::Mat3x4);
+    __MAKE_TYPE_CUSTOM(float4x2, GPULang::Mat4x2);
+    __MAKE_TYPE_CUSTOM(float4x3, GPULang::Mat4x3);
+    __MAKE_TYPE_CUSTOM(float4x4, GPULang::Mat4x4);
 
     __MAKE_TYPE(readWriteTexture1D, TypeCode::ReadWriteTexture1D);
     __MAKE_RWTEX();
@@ -239,7 +239,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* builtinEnum = new Enumeration();
     builtinEnum->name = "CompareMode";
-    builtinEnum->baseType = AnyFX::TypeCode::UInt;
+    builtinEnum->baseType = GPULang::TypeCode::UInt;
     builtinEnum->labels.push_back("InvalidCompareMode"); builtinEnum->values.push_back(nullptr);
     builtinEnum->labels.push_back("Never"); builtinEnum->values.push_back(nullptr);
     builtinEnum->labels.push_back("Less"); builtinEnum->values.push_back(nullptr);
@@ -251,10 +251,10 @@ Type::SetupDefaultTypes()
     builtinEnum->labels.push_back("Always"); builtinEnum->values.push_back(nullptr);
     types.push_back(builtinEnum);
 
-    __MAKE_TYPE_CUSTOM(function, AnyFX::FunctionType);
-    __MAKE_TYPE_CUSTOM(renderState, AnyFX::RenderStateType);
-    __MAKE_TYPE_CUSTOM(samplerState, AnyFX::SamplerStateType);
-    __MAKE_TYPE_CUSTOM(program, AnyFX::ProgramType);
+    __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
+    __MAKE_TYPE_CUSTOM(renderState, GPULang::RenderStateType);
+    __MAKE_TYPE_CUSTOM(samplerState, GPULang::SamplerStateType);
+    __MAKE_TYPE_CUSTOM(program, GPULang::ProgramType);
 
     __MAKE_TYPE(sampler, TypeCode::Sampler);
     __MAKE_SAMPLER();
@@ -469,4 +469,4 @@ Type::FullType::IsPointer() const
         return false;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

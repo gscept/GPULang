@@ -27,7 +27,7 @@
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/switchstatement.h"
 #include "ast/statements/whilestatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -432,4 +432,4 @@ SPIRVGenerator::LookupIntermediate(std::string value, std::string declare)
     return ret;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

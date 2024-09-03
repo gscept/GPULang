@@ -6,7 +6,7 @@
 
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; this->staticSymbols.push_back(&val);
 
-namespace AnyFX
+namespace GPULang
 {
 ProgramType::ProgramType()
 {
@@ -18,4 +18,4 @@ ProgramType::ProgramType()
     __SETUP_MEMBER(this->pixelShader, PixelShader, function);
     __SETUP_MEMBER(this->computeShader, ComputeShader, function);
 }
-} // namespace AnyFX
+} // namespace GPULang

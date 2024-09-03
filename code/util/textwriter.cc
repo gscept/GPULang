@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -70,4 +70,4 @@ TextWriter::WriteChar(char c)
 	this->output.put(c);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

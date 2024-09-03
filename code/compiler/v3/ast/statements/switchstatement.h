@@ -10,7 +10,7 @@
 #include "ast/expressions/expression.h"
 #include <vector>
 #include <string>
-namespace AnyFX
+namespace GPULang
 {
 
 struct SwitchStatement : public Statement
@@ -26,4 +26,4 @@ struct SwitchStatement : public Statement
     Statement* defaultStatement;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "mat2x3.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -44,4 +44,4 @@ Mat2x3::Mat2x3()
     __IMPLEMENT_FUNCTION_1(bracketOperatorUInt, operator[], float3, uint);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -8,7 +8,7 @@
 #include <stack>
 #include <tuple>
 
-#include "anyfxtoken.h"
+#include "gpulangtoken.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -48,11 +48,11 @@
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 
-using namespace AnyFX;
+using namespace GPULang;
 
 
 
-// Generated from antlr4/grammar/AnyFX.g4 by ANTLR 4.7.1
+// Generated from antlr4/grammar/GPULang.g4 by ANTLR 4.7.1
 
 #pragma once
 
@@ -62,7 +62,7 @@ using namespace AnyFX;
 
 
 
-class  AnyFXParser : public antlr4::Parser {
+class  GPULangParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
@@ -99,8 +99,8 @@ public:
     RuleBinaryexpatom = 46, RuleInitializerExpression = 47
   };
 
-  AnyFXParser(antlr4::TokenStream *input);
-  ~AnyFXParser();
+  GPULangParser(antlr4::TokenStream *input);
+  ~GPULangParser();
 
   virtual std::string getGrammarFileName() const override;
   virtual const antlr4::atn::ATN& getATN() const override { return _atn; };
@@ -117,7 +117,7 @@ public:
       Symbol::Location location;
       if (this->lines.empty())
           return location;
-      ::AnyFXToken* token = (::AnyFXToken*)_input->LT(-1);
+      ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
       if (updateLine)
           UpdateLine(_input, -1);
@@ -134,7 +134,7 @@ public:
   void
   UpdateLine(antlr4::TokenStream* stream, int index = -1)
   {
-      ::AnyFXToken* token = (::AnyFXToken*)stream->LT(index);
+      ::GPULangToken* token = (::GPULangToken*)stream->LT(index);
 
         // find the next parsed row which comes after the token
         int loop = this->currentLine;
@@ -243,7 +243,7 @@ public:
   class  PreprocessContext : public antlr4::ParserRuleContext {
   public:
     antlr4::Token *line = nullptr;;
-    AnyFXParser::StringContext *path = nullptr;;
+    GPULangParser::StringContext *path = nullptr;;
     PreprocessContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *EOF();
@@ -262,7 +262,7 @@ public:
   class  EntryContext : public antlr4::ParserRuleContext {
   public:
     Effect* returnEffect;
-    AnyFXParser::EffectContext *effectContext = nullptr;;
+    GPULangParser::EffectContext *effectContext = nullptr;;
     EntryContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     EffectContext *effect();
@@ -278,14 +278,14 @@ public:
   class  EffectContext : public antlr4::ParserRuleContext {
   public:
     Effect* eff;
-    AnyFXParser::AliasContext *aliasContext = nullptr;;
-    AnyFXParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;;
-    AnyFXParser::FunctionContext *functionContext = nullptr;;
-    AnyFXParser::VariablesContext *variablesContext = nullptr;;
-    AnyFXParser::StructureContext *structureContext = nullptr;;
-    AnyFXParser::EnumerationContext *enumerationContext = nullptr;;
-    AnyFXParser::StateContext *stateContext = nullptr;;
-    AnyFXParser::ProgramContext *programContext = nullptr;;
+    GPULangParser::AliasContext *aliasContext = nullptr;;
+    GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;;
+    GPULangParser::FunctionContext *functionContext = nullptr;;
+    GPULangParser::VariablesContext *variablesContext = nullptr;;
+    GPULangParser::StructureContext *structureContext = nullptr;;
+    GPULangParser::EnumerationContext *enumerationContext = nullptr;;
+    GPULangParser::StateContext *stateContext = nullptr;;
+    GPULangParser::ProgramContext *programContext = nullptr;;
     EffectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<AliasContext *> alias();
@@ -333,7 +333,7 @@ public:
   public:
     Annotation annot;
     antlr4::Token *name = nullptr;;
-    AnyFXParser::ExpressionContext *value = nullptr;;
+    GPULangParser::ExpressionContext *value = nullptr;;
     AnnotationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IDENTIFIER();
@@ -350,7 +350,7 @@ public:
   public:
     Attribute attr;
     antlr4::Token *name = nullptr;;
-    AnyFXParser::ExpressionContext *expressionContext = nullptr;;
+    GPULangParser::ExpressionContext *expressionContext = nullptr;;
     AttributeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -381,11 +381,11 @@ public:
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
     std::vector<Variable*> list;
-    AnyFXParser::AnnotationContext *annotationContext = nullptr;;
-    AnyFXParser::AttributeContext *attributeContext = nullptr;;
-    AnyFXParser::TypeDeclarationContext *typeDeclarationContext = nullptr;;
-    AnyFXParser::AssignmentExpressionContext *var0 = nullptr;;
-    AnyFXParser::AssignmentExpressionContext *varN = nullptr;;
+    GPULangParser::AnnotationContext *annotationContext = nullptr;;
+    GPULangParser::AttributeContext *attributeContext = nullptr;;
+    GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;;
+    GPULangParser::AssignmentExpressionContext *var0 = nullptr;;
+    GPULangParser::AssignmentExpressionContext *varN = nullptr;;
     VariablesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     TypeDeclarationContext *typeDeclaration();
@@ -406,9 +406,9 @@ public:
   class  VariableContext : public antlr4::ParserRuleContext {
   public:
     Variable* sym;
-    AnyFXParser::AttributeContext *attributeContext = nullptr;;
-    AnyFXParser::TypeDeclarationContext *typeDeclarationContext = nullptr;;
-    AnyFXParser::ExpressionContext *var0 = nullptr;;
+    GPULangParser::AttributeContext *attributeContext = nullptr;;
+    GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;;
+    GPULangParser::ExpressionContext *var0 = nullptr;;
     VariableContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     TypeDeclarationContext *typeDeclaration();
@@ -426,8 +426,8 @@ public:
   class  StructureDeclarationContext : public antlr4::ParserRuleContext {
   public:
     Structure* sym;
-    AnyFXParser::AnnotationContext *annotationContext = nullptr;;
-    AnyFXParser::AttributeContext *attributeContext = nullptr;;
+    GPULangParser::AnnotationContext *annotationContext = nullptr;;
+    GPULangParser::AttributeContext *attributeContext = nullptr;;
     antlr4::Token *name = nullptr;;
     StructureDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -447,8 +447,8 @@ public:
   class  StructureContext : public antlr4::ParserRuleContext {
   public:
     Structure* sym;
-    AnyFXParser::StructureDeclarationContext *structureDeclarationContext = nullptr;;
-    AnyFXParser::VariablesContext *variablesContext = nullptr;;
+    GPULangParser::StructureDeclarationContext *structureDeclarationContext = nullptr;;
+    GPULangParser::VariablesContext *variablesContext = nullptr;;
     StructureContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     StructureDeclarationContext *structureDeclaration();
@@ -467,7 +467,7 @@ public:
     Enumeration* sym;
     antlr4::Token *name = nullptr;;
     antlr4::Token *label = nullptr;;
-    AnyFXParser::ExpressionContext *value = nullptr;;
+    GPULangParser::ExpressionContext *value = nullptr;;
     EnumerationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
@@ -484,11 +484,11 @@ public:
   class  FunctionDeclarationContext : public antlr4::ParserRuleContext {
   public:
     Function* sym;
-    AnyFXParser::AttributeContext *attributeContext = nullptr;;
-    AnyFXParser::TypeDeclarationContext *returnType = nullptr;;
+    GPULangParser::AttributeContext *attributeContext = nullptr;;
+    GPULangParser::TypeDeclarationContext *returnType = nullptr;;
     antlr4::Token *name = nullptr;;
-    AnyFXParser::VariableContext *arg0 = nullptr;;
-    AnyFXParser::VariableContext *argn = nullptr;;
+    GPULangParser::VariableContext *arg0 = nullptr;;
+    GPULangParser::VariableContext *argn = nullptr;;
     FunctionDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     TypeDeclarationContext *typeDeclaration();
@@ -522,8 +522,8 @@ public:
   class  FunctionContext : public antlr4::ParserRuleContext {
   public:
     Function* sym;
-    AnyFXParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;;
-    AnyFXParser::ScopeStatementContext *scopeStatementContext = nullptr;;
+    GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;;
+    GPULangParser::ScopeStatementContext *scopeStatementContext = nullptr;;
     FunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     FunctionDeclarationContext *functionDeclaration();
@@ -539,9 +539,9 @@ public:
   class  ProgramContext : public antlr4::ParserRuleContext {
   public:
     Program* sym;
-    AnyFXParser::AnnotationContext *annotationContext = nullptr;;
+    GPULangParser::AnnotationContext *annotationContext = nullptr;;
     antlr4::Token *name = nullptr;;
-    AnyFXParser::ExpressionContext *assignment = nullptr;;
+    GPULangParser::ExpressionContext *assignment = nullptr;;
     ProgramContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IDENTIFIER();
@@ -561,7 +561,7 @@ public:
   public:
     State* sym;
     antlr4::Token *name = nullptr;;
-    AnyFXParser::ExpressionContext *assign = nullptr;;
+    GPULangParser::ExpressionContext *assign = nullptr;;
     StateContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IDENTIFIER();
@@ -578,14 +578,14 @@ public:
   class  StatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::IfStatementContext *ifStatementContext = nullptr;;
-    AnyFXParser::ScopeStatementContext *scopeStatementContext = nullptr;;
-    AnyFXParser::ForStatementContext *forStatementContext = nullptr;;
-    AnyFXParser::WhileStatementContext *whileStatementContext = nullptr;;
-    AnyFXParser::ReturnStatementContext *returnStatementContext = nullptr;;
-    AnyFXParser::ContinueStatementContext *continueStatementContext = nullptr;;
-    AnyFXParser::BreakStatementContext *breakStatementContext = nullptr;;
-    AnyFXParser::ExpressionStatementContext *expressionStatementContext = nullptr;;
+    GPULangParser::IfStatementContext *ifStatementContext = nullptr;;
+    GPULangParser::ScopeStatementContext *scopeStatementContext = nullptr;;
+    GPULangParser::ForStatementContext *forStatementContext = nullptr;;
+    GPULangParser::WhileStatementContext *whileStatementContext = nullptr;;
+    GPULangParser::ReturnStatementContext *returnStatementContext = nullptr;;
+    GPULangParser::ContinueStatementContext *continueStatementContext = nullptr;;
+    GPULangParser::BreakStatementContext *breakStatementContext = nullptr;;
+    GPULangParser::ExpressionStatementContext *expressionStatementContext = nullptr;;
     StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     IfStatementContext *ifStatement();
@@ -607,7 +607,7 @@ public:
   class  ExpressionStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::ExpressionContext *expressionContext = nullptr;;
+    GPULangParser::ExpressionContext *expressionContext = nullptr;;
     ExpressionStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -622,9 +622,9 @@ public:
   class  IfStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::ExpressionContext *condition = nullptr;;
-    AnyFXParser::StatementContext *ifBody = nullptr;;
-    AnyFXParser::StatementContext *elseBody = nullptr;;
+    GPULangParser::ExpressionContext *condition = nullptr;;
+    GPULangParser::StatementContext *ifBody = nullptr;;
+    GPULangParser::StatementContext *elseBody = nullptr;;
     IfStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -641,10 +641,10 @@ public:
   class  ForStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::VariablesContext *variablesContext = nullptr;;
-    AnyFXParser::ExpressionContext *condition = nullptr;;
-    AnyFXParser::ExpressionContext *loop = nullptr;;
-    AnyFXParser::StatementContext *content = nullptr;;
+    GPULangParser::VariablesContext *variablesContext = nullptr;;
+    GPULangParser::ExpressionContext *condition = nullptr;;
+    GPULangParser::ExpressionContext *loop = nullptr;;
+    GPULangParser::StatementContext *content = nullptr;;
     ForStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     StatementContext *statement();
@@ -665,7 +665,7 @@ public:
     antlr4::Token *iterator = nullptr;;
     antlr4::Token *start = nullptr;;
     antlr4::Token *end = nullptr;;
-    AnyFXParser::StatementContext *content = nullptr;;
+    GPULangParser::StatementContext *content = nullptr;;
     ForRangeStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
@@ -682,8 +682,8 @@ public:
   class  WhileStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::ExpressionContext *condition = nullptr;;
-    AnyFXParser::StatementContext *content = nullptr;;
+    GPULangParser::ExpressionContext *condition = nullptr;;
+    GPULangParser::StatementContext *content = nullptr;;
     WhileStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -699,8 +699,8 @@ public:
   class  ScopeStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::StatementContext *statementContext = nullptr;;
-    AnyFXParser::VariablesContext *variablesContext = nullptr;;
+    GPULangParser::StatementContext *statementContext = nullptr;;
+    GPULangParser::VariablesContext *variablesContext = nullptr;;
     ScopeStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<StatementContext *> statement();
@@ -718,7 +718,7 @@ public:
   class  ReturnStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::ExpressionContext *value = nullptr;;
+    GPULangParser::ExpressionContext *value = nullptr;;
     ReturnStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -746,9 +746,9 @@ public:
   class  SwitchStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    AnyFXParser::ExpressionContext *expressionContext = nullptr;;
+    GPULangParser::ExpressionContext *expressionContext = nullptr;;
     antlr4::Token *identifierToken = nullptr;;
-    AnyFXParser::StatementContext *statementContext = nullptr;;
+    GPULangParser::StatementContext *statementContext = nullptr;;
     SwitchStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
@@ -780,7 +780,7 @@ public:
   class  ExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::CommaExpressionContext *commaExpressionContext = nullptr;;
+    GPULangParser::CommaExpressionContext *commaExpressionContext = nullptr;;
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     CommaExpressionContext *commaExpression();
@@ -795,8 +795,8 @@ public:
   class  CommaExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::AssignmentExpressionContext *e1 = nullptr;;
-    AnyFXParser::AssignmentExpressionContext *e2 = nullptr;;
+    GPULangParser::AssignmentExpressionContext *e1 = nullptr;;
+    GPULangParser::AssignmentExpressionContext *e2 = nullptr;;
     CommaExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<AssignmentExpressionContext *> assignmentExpression();
@@ -812,11 +812,11 @@ public:
   class  AssignmentExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::LogicalOrExpressionContext *e1 = nullptr;;
+    GPULangParser::LogicalOrExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::LogicalOrExpressionContext *e2 = nullptr;;
-    AnyFXParser::ExpressionContext *ifBody = nullptr;;
-    AnyFXParser::ExpressionContext *elseBody = nullptr;;
+    GPULangParser::LogicalOrExpressionContext *e2 = nullptr;;
+    GPULangParser::ExpressionContext *ifBody = nullptr;;
+    GPULangParser::ExpressionContext *elseBody = nullptr;;
     AssignmentExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<LogicalOrExpressionContext *> logicalOrExpression();
@@ -834,8 +834,8 @@ public:
   class  LogicalOrExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::LogicalAndExpressionContext *e1 = nullptr;;
-    AnyFXParser::LogicalAndExpressionContext *e2 = nullptr;;
+    GPULangParser::LogicalAndExpressionContext *e1 = nullptr;;
+    GPULangParser::LogicalAndExpressionContext *e2 = nullptr;;
     LogicalOrExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<LogicalAndExpressionContext *> logicalAndExpression();
@@ -851,8 +851,8 @@ public:
   class  LogicalAndExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::OrExpressionContext *e1 = nullptr;;
-    AnyFXParser::OrExpressionContext *e2 = nullptr;;
+    GPULangParser::OrExpressionContext *e1 = nullptr;;
+    GPULangParser::OrExpressionContext *e2 = nullptr;;
     LogicalAndExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<OrExpressionContext *> orExpression();
@@ -868,8 +868,8 @@ public:
   class  OrExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::XorExpressionContext *e1 = nullptr;;
-    AnyFXParser::XorExpressionContext *e2 = nullptr;;
+    GPULangParser::XorExpressionContext *e1 = nullptr;;
+    GPULangParser::XorExpressionContext *e2 = nullptr;;
     OrExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<XorExpressionContext *> xorExpression();
@@ -885,8 +885,8 @@ public:
   class  XorExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::AndExpressionContext *e1 = nullptr;;
-    AnyFXParser::AndExpressionContext *e2 = nullptr;;
+    GPULangParser::AndExpressionContext *e1 = nullptr;;
+    GPULangParser::AndExpressionContext *e2 = nullptr;;
     XorExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<AndExpressionContext *> andExpression();
@@ -902,8 +902,8 @@ public:
   class  AndExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::EquivalencyExpressionContext *e1 = nullptr;;
-    AnyFXParser::EquivalencyExpressionContext *e2 = nullptr;;
+    GPULangParser::EquivalencyExpressionContext *e1 = nullptr;;
+    GPULangParser::EquivalencyExpressionContext *e2 = nullptr;;
     AndExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<EquivalencyExpressionContext *> equivalencyExpression();
@@ -919,9 +919,9 @@ public:
   class  EquivalencyExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::RelationalExpressionContext *e1 = nullptr;;
+    GPULangParser::RelationalExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::RelationalExpressionContext *e2 = nullptr;;
+    GPULangParser::RelationalExpressionContext *e2 = nullptr;;
     EquivalencyExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<RelationalExpressionContext *> relationalExpression();
@@ -937,9 +937,9 @@ public:
   class  RelationalExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::ShiftExpressionContext *e1 = nullptr;;
+    GPULangParser::ShiftExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::ShiftExpressionContext *e2 = nullptr;;
+    GPULangParser::ShiftExpressionContext *e2 = nullptr;;
     RelationalExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<ShiftExpressionContext *> shiftExpression();
@@ -955,9 +955,9 @@ public:
   class  ShiftExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::AddSubtractExpressionContext *e1 = nullptr;;
+    GPULangParser::AddSubtractExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::AddSubtractExpressionContext *e2 = nullptr;;
+    GPULangParser::AddSubtractExpressionContext *e2 = nullptr;;
     ShiftExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<AddSubtractExpressionContext *> addSubtractExpression();
@@ -973,9 +973,9 @@ public:
   class  AddSubtractExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::MultiplyDivideExpressionContext *e1 = nullptr;;
+    GPULangParser::MultiplyDivideExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::MultiplyDivideExpressionContext *e2 = nullptr;;
+    GPULangParser::MultiplyDivideExpressionContext *e2 = nullptr;;
     AddSubtractExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<MultiplyDivideExpressionContext *> multiplyDivideExpression();
@@ -991,9 +991,9 @@ public:
   class  MultiplyDivideExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::PrefixExpressionContext *e1 = nullptr;;
+    GPULangParser::PrefixExpressionContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::PrefixExpressionContext *e2 = nullptr;;
+    GPULangParser::PrefixExpressionContext *e2 = nullptr;;
     MultiplyDivideExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<PrefixExpressionContext *> prefixExpression();
@@ -1010,7 +1010,7 @@ public:
   public:
     Expression* tree;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::SuffixExpressionContext *e1 = nullptr;;
+    GPULangParser::SuffixExpressionContext *e1 = nullptr;;
     PrefixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     SuffixExpressionContext *suffixExpression();
@@ -1025,12 +1025,12 @@ public:
   class  SuffixExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::BinaryexpatomContext *e1 = nullptr;;
+    GPULangParser::BinaryexpatomContext *e1 = nullptr;;
     antlr4::Token *op = nullptr;;
-    AnyFXParser::LogicalOrExpressionContext *arg0 = nullptr;;
-    AnyFXParser::LogicalOrExpressionContext *argn = nullptr;;
-    AnyFXParser::SuffixExpressionContext *e2 = nullptr;;
-    AnyFXParser::ExpressionContext *e3 = nullptr;;
+    GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;;
+    GPULangParser::LogicalOrExpressionContext *argn = nullptr;;
+    GPULangParser::SuffixExpressionContext *e2 = nullptr;;
+    GPULangParser::ExpressionContext *e3 = nullptr;;
     SuffixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     BinaryexpatomContext *binaryexpatom();
@@ -1051,8 +1051,8 @@ public:
   class  NamespaceExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::BinaryexpatomContext *e1 = nullptr;;
-    AnyFXParser::BinaryexpatomContext *e2 = nullptr;;
+    GPULangParser::BinaryexpatomContext *e1 = nullptr;;
+    GPULangParser::BinaryexpatomContext *e2 = nullptr;;
     NamespaceExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<BinaryexpatomContext *> binaryexpatom();
@@ -1073,11 +1073,11 @@ public:
     antlr4::Token *floatliteralToken = nullptr;;
     antlr4::Token *doubleliteralToken = nullptr;;
     antlr4::Token *hexToken = nullptr;;
-    AnyFXParser::StringContext *stringContext = nullptr;;
+    GPULangParser::StringContext *stringContext = nullptr;;
     antlr4::Token *identifierToken = nullptr;;
-    AnyFXParser::BooleanContext *booleanContext = nullptr;;
-    AnyFXParser::InitializerExpressionContext *initializerExpressionContext = nullptr;;
-    AnyFXParser::ExpressionContext *expressionContext = nullptr;;
+    GPULangParser::BooleanContext *booleanContext = nullptr;;
+    GPULangParser::InitializerExpressionContext *initializerExpressionContext = nullptr;;
+    GPULangParser::ExpressionContext *expressionContext = nullptr;;
     BinaryexpatomContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *INTEGERLITERAL();
@@ -1101,8 +1101,8 @@ public:
   class  InitializerExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    AnyFXParser::AssignmentExpressionContext *arg0 = nullptr;;
-    AnyFXParser::AssignmentExpressionContext *argN = nullptr;;
+    GPULangParser::AssignmentExpressionContext *arg0 = nullptr;;
+    GPULangParser::AssignmentExpressionContext *argN = nullptr;;
     InitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<AssignmentExpressionContext *> assignmentExpression();

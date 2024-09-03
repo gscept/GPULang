@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "statement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct BreakStatement : public Statement
@@ -16,4 +16,4 @@ struct BreakStatement : public Statement
     BreakStatement();
 };
 
-} // namespace AnyFX
+} // namespace GPULang

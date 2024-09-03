@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "float2.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -46,4 +46,4 @@ Float2::Float2()
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

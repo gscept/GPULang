@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "statement.h"
 #include "ast/expressions/expression.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct WhileStatement : public Statement
@@ -23,4 +23,4 @@ struct WhileStatement : public Statement
     bool isDoWhile;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

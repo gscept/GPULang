@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "stringexpression.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -74,4 +74,4 @@ StringExpression::EvalString() const
     return this->value;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

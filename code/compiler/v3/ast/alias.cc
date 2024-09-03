@@ -5,7 +5,7 @@
 #include "alias.h"
 #include "compiler.h"
 #include "util.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -32,4 +32,4 @@ Alias::EndOfParse(Compiler* compiler)
     return compiler->AddSymbol(this->name, sym);
 }
 
-} // namespace AnyFX
+} // namespace GPULang

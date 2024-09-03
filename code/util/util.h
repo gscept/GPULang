@@ -27,7 +27,7 @@
 // remove loss of data conversion from double to float
 #pragma warning( disable : 4244 )
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -176,4 +176,4 @@ inline constexpr T max(T a, T2 b)
 }
 
 
-} // namespace AnyFX
+} // namespace GPULang

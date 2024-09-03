@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "program.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -66,4 +66,4 @@ Program::__Resolved::EntryTypeToString(const ProgramEntryType type)
     return default;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

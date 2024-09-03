@@ -1,17 +1,16 @@
 #-------------------------------------------------------------------------------
-# anyfx api
+# GPULang reflection
 #-------------------------------------------------------------------------------
 
 
-fips_begin_lib(anyfx_api)
-fips_deps(anyfx_util)
+fips_begin_lib(gpulang_reflection)
+fips_deps(gpulang_util)
 
 fips_include_directories(
-	${ANYFX_ROOT}
-	${ANYFX_ROOT}/code/util
-	${ANYFX_ROOT}/exts/glslang
-	${ANYFX_ROOT}/api
-	${ANYFX_ROOT}/api/lowlevel
+	${GPULANG_ROOT}
+	${GPULANG_ROOT}/code/util
+	${GPULANG_ROOT}/api
+	${GPULANG_ROOT}/api/lowlevel
 	${VULKAN_INCLUDE_DIR}
 )
 

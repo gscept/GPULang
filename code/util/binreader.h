@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::BinReader
+    @class GPULang::BinReader
     
     A binary reader, can read the basic data types provided in AnyFX from file.
 	Also decodes AnyFX XOR:ed strings.
@@ -14,7 +14,7 @@
 #include <sstream>
 #include <assert.h>
 
-namespace AnyFX
+namespace GPULang
 {
 class BinReader
 {
@@ -110,5 +110,5 @@ BinReader::Read()
     return value;
 }
 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

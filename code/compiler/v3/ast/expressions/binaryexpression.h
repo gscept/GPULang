@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::BinaryExpression
+    @class GPULang::BinaryExpression
     
     A binary expression is a two-part expression, using a left-hand side and right-hand side argument together with an operator.
 
@@ -11,7 +11,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct BinaryExpression : public Expression
 {
@@ -62,5 +62,5 @@ public:
 }; 
 
 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

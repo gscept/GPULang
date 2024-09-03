@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "symbol.h"
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 struct Effect
@@ -21,4 +21,4 @@ struct Effect
     std::vector<Symbol*> symbols;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

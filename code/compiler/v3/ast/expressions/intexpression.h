@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::IntExpression
+    @class GPULang::IntExpression
     
     An int expression is a simple expression which holds an integer.
     
@@ -9,7 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct IntExpression : public Expression
 {
@@ -45,5 +45,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

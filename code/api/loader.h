@@ -11,7 +11,7 @@
 #include "reflection/program.h"
 #include "reflection/structure.h"
 #include "reflection/variable.h"
-namespace AnyFX
+namespace GPULang
 {
 
 namespace Deserialize
@@ -26,8 +26,8 @@ struct Loader
     /// load from byte stream
     void Load(const char* data, const size_t length);
 
-    std::map<const char*, AnyFX::Deserialize::Deserializable*> nameToObject;
+    std::map<const char*, GPULang::Deserialize::Deserializable*> nameToObject;
 };
 
 
-} // namespace AnyFX
+} // namespace GPULang

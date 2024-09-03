@@ -39,7 +39,7 @@
 #include "llvm/IR/IntrinsicsGPULang.h"
 #include "llvm/IR/Metadata.h"
 #include "llvm/Support/raw_os_ostream.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -197,7 +197,7 @@ CreateMetadata(llvm::LLVMContext& ctx, llvm::Module* mod, llvm::StringRef object
 }
 
 
-std::map<AnyFX::IntrinsicOpCode, llvm::Intrinsic::GPULANGIntrinsics> intrinsicToLLVM =
+std::map<GPULang::IntrinsicOpCode, llvm::Intrinsic::GPULANGIntrinsics> intrinsicToLLVM =
 {
 
 };
@@ -1003,4 +1003,4 @@ LLVMGenerator::Error(const std::string& msg, Symbol* symbol)
     abort();
 }
 
-} // namespace AnyFX
+} // namespace GPULang

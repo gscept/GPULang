@@ -10,7 +10,7 @@
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct ProgramType : public Type
@@ -27,4 +27,4 @@ struct ProgramType : public Type
     Variable computeShader;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

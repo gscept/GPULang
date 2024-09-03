@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "int4.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -77,4 +77,4 @@ Int4::Int4()
     }
 }
 
-} // namespace AnyFX
+} // namespace GPULang

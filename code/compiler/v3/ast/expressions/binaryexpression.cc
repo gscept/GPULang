@@ -7,7 +7,7 @@
 #include "compiler.h"
 #include "util.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -567,4 +567,4 @@ BinaryExpression::EvalBool(bool lhs, bool rhs) const
     }
     return false;
 }
-} // namespace AnyFX
+} // namespace GPULang

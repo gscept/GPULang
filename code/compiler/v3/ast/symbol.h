@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::Symbol
+    @class GPULang::Symbol
     
     Basic object representation, contains basic information for an AnyFX symbol.
 
@@ -18,7 +18,7 @@
 #define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute> attributes;
 #define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation> annotations;
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct Compiler;
@@ -120,5 +120,5 @@ struct Symbol
     }
 }; 
 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

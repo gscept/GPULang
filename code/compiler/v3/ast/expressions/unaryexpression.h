@@ -1,7 +1,7 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class AnyFX::UnaryExpression
+    @class GPULang::UnaryExpression
     
     A unary expression is a one-sided expression.
 
@@ -17,7 +17,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
-namespace AnyFX
+namespace GPULang
 {
 struct UnaryExpression : public Expression
 {
@@ -55,5 +55,5 @@ public:
         Type* type;
     };
 }; 
-} // namespace AnyFX
+} // namespace GPULang
 //------------------------------------------------------------------------------

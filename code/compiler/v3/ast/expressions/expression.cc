@@ -7,7 +7,7 @@
 #include "compiler.h"
 #include "v3/ast/types/type.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -100,4 +100,4 @@ Expression::EvalString() const
     return "";
 }
 
-} // namespace AnyFX
+} // namespace GPULang

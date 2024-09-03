@@ -11,7 +11,7 @@
 #include "expression.h"
 #include <vector>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct CommaExpression : public Expression
@@ -43,4 +43,4 @@ struct CommaExpression : public Expression
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -106,4 +106,4 @@ BoolExpression::EvalString() const
 {
     return this->value ? "true" : "false";
 }
-} // namespace AnyFX
+} // namespace GPULang

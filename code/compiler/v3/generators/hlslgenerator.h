@@ -7,7 +7,7 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
-namespace AnyFX
+namespace GPULang
 {
 
 class HLSLGenerator : public Generator
@@ -15,4 +15,4 @@ class HLSLGenerator : public Generator
 public:
 };
 
-} // namespace AnyFX
+} // namespace GPULang

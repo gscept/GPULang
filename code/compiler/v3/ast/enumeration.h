@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "types/type.h"
 #include "ast/function.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Enumeration : public Type
@@ -28,4 +28,4 @@ struct Enumeration : public Type
     };
 };
 
-} // namespace AnyFX
+} // namespace GPULang

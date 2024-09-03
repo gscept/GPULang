@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 #include "v3/ast/variable.h"
-namespace AnyFX 
+namespace GPULang 
 {
 
 //------------------------------------------------------------------------------
@@ -154,4 +154,4 @@ AccessExpression::EvalString() const
     return Format("%s.%s", left.c_str(), right.c_str());
 }
 
-} // namespace AnyFX
+} // namespace GPULang

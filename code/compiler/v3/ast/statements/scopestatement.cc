@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "scopestatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -24,4 +24,4 @@ ScopeStatement::~ScopeStatement()
         delete sym;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

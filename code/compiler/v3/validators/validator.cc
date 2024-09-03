@@ -38,7 +38,7 @@
 #include "util.h"
 #include <algorithm>
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -377,35 +377,35 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         {
         case SamplerState::__Resolved::AllAddressType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (AnyFX::AddressMode)value;
+            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AddressUType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->addressU = (AnyFX::AddressMode)value;
+            stateResolved->addressU = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AddressVType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->addressV = (AnyFX::AddressMode)value;
+            stateResolved->addressV = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AddressWType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->addressW = (AnyFX::AddressMode)value;
+            stateResolved->addressW = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AllFilterType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->minFilter = stateResolved->magFilter = stateResolved->mipFilter = (AnyFX::Filter)value;
+            stateResolved->minFilter = stateResolved->magFilter = stateResolved->mipFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MinFilterType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->minFilter = (AnyFX::Filter)value;
+            stateResolved->minFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MagFilterType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->magFilter = (AnyFX::Filter)value;
+            stateResolved->magFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MipFilterType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->mipFilter = (AnyFX::Filter)value;
+            stateResolved->mipFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MipLodBiasType:
             assignEntry->right->EvalFloat(stateResolved->mipLodBias);
@@ -421,7 +421,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             break;
         case SamplerState::__Resolved::CompareModeType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->compareMode = (AnyFX::CompareMode)value;
+            stateResolved->compareMode = (GPULang::CompareMode)value;
             break;
         case SamplerState::__Resolved::MinLodType:
             assignEntry->right->EvalFloat(stateResolved->minLod);
@@ -431,7 +431,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             break;
         case SamplerState::__Resolved::BorderColorType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->borderColor = (AnyFX::BorderColor)value;
+            stateResolved->borderColor = (GPULang::BorderColor)value;
             break;
         case SamplerState::__Resolved::UnnormalizedSamplingType:
             assignEntry->right->EvalBool(stateResolved->unnormalizedSamplingEnabled);
@@ -1054,27 +1054,27 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 break;
             case RenderState::__Resolved::SourceBlendColorFactorType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].sourceColorBlendFactor = (AnyFX::BlendFactor)enumValue;
+                stateResolved->blendStates[index].sourceColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendColorFactorType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].destinationColorBlendFactor = (AnyFX::BlendFactor)enumValue;
+                stateResolved->blendStates[index].destinationColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::SourceBlendAlphaFactorType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].sourceAlphaBlendFactor = (AnyFX::BlendFactor)enumValue;
+                stateResolved->blendStates[index].sourceAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendAlphaFactorType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].destinationAlphaBlendFactor = (AnyFX::BlendFactor)enumValue;
+                stateResolved->blendStates[index].destinationAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::ColorBlendOpType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].colorBlendOp = (AnyFX::BlendOp)enumValue;
+                stateResolved->blendStates[index].colorBlendOp = (GPULang::BlendOp)enumValue;
                 break;
             case RenderState::__Resolved::AlphaBlendOpType:
                 assignEntry->right->EvalUInt(enumValue);
-                stateResolved->blendStates[index].alphaBlendOp = (AnyFX::BlendOp)enumValue;
+                stateResolved->blendStates[index].alphaBlendOp = (GPULang::BlendOp)enumValue;
                 break;
                 
             }
@@ -1094,19 +1094,19 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             {
                 case RenderState::__Resolved::StencilFailOpType:
                     assignEntry->right->EvalUInt(enumValue);
-                    state->fail = (AnyFX::StencilOp)enumValue;
+                    state->fail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilPassOpType:
                     assignEntry->right->EvalUInt(enumValue);
-                    state->pass = (AnyFX::StencilOp)enumValue;
+                    state->pass = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilDepthFailOpType:
                     assignEntry->right->EvalUInt(enumValue);
-                    state->depthFail = (AnyFX::StencilOp)enumValue;
+                    state->depthFail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareModeType:
                     assignEntry->right->EvalUInt(enumValue);
-                    state->compare = (AnyFX::CompareMode)enumValue;
+                    state->compare = (GPULang::CompareMode)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareMaskType:
                     assignEntry->right->EvalUInt(state->compareMask);
@@ -1132,15 +1132,15 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     break;
                 case RenderState::__Resolved::PolygonModeType:
                     assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->polygonMode = (AnyFX::PolygonMode)enumValue;
+                    stateResolved->polygonMode = (GPULang::PolygonMode)enumValue;
                     break;
                 case RenderState::__Resolved::CullModeType:
                     assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->cullMode = (AnyFX::CullMode)enumValue;
+                    stateResolved->cullMode = (GPULang::CullMode)enumValue;
                     break;
                 case RenderState::__Resolved::WindingOrderType:
                     assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->windingOrderMode = (AnyFX::WindingOrderMode)enumValue;
+                    stateResolved->windingOrderMode = (GPULang::WindingOrderMode)enumValue;
                     break;
                 case RenderState::__Resolved::DepthBiasEnabledType:
                     assignEntry->right->EvalBool(stateResolved->depthBiasEnabled);
@@ -1165,7 +1165,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     break;
                 case RenderState::__Resolved::DepthTestFunction:
                     assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->depthCompare = (AnyFX::CompareMode)enumValue;
+                    stateResolved->depthCompare = (GPULang::CompareMode)enumValue;
                     break;
                 case RenderState::__Resolved::DepthBoundsTestEnabledType:
                     assignEntry->right->EvalBool(stateResolved->depthBoundsTestEnabled);
@@ -1184,7 +1184,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     break;
                 case RenderState::__Resolved::LogicOpType:
                     assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->logicOp = (AnyFX::LogicOp)enumValue;
+                    stateResolved->logicOp = (GPULang::LogicOp)enumValue;
                     break;
                 default:
                     compiler->Error(Format("Unknown render state entry '%s'", entry.c_str()), symbol);
@@ -2283,4 +2283,4 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
     return true;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

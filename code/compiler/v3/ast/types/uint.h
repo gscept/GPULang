@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "ast/function.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct UInt : public Type
@@ -53,4 +53,4 @@ struct UInt : public Type
     Function assignOperator;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

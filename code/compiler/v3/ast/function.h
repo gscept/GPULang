@@ -10,7 +10,7 @@
 #include "annotation.h"
 #include "variable.h"
 #include <vector>
-namespace AnyFX
+namespace GPULang
 {
 
 enum class IntrinsicOpCode
@@ -257,4 +257,4 @@ struct Function : public Symbol
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

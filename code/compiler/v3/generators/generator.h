@@ -11,7 +11,7 @@
 #include <string>
 #include <functional>
 
-namespace AnyFX
+namespace GPULang
 {
 
 struct Symbol;
@@ -27,4 +27,4 @@ struct Generator
     Function* mainFunction;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

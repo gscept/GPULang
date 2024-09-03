@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "returnstatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -23,4 +23,4 @@ ReturnStatement::~ReturnStatement()
     delete this->returnValue;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

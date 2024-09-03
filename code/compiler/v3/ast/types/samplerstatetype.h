@@ -10,7 +10,7 @@
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct SamplerStateType : public Type
@@ -48,4 +48,4 @@ struct SamplerStateType : public Type
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

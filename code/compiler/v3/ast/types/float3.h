@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "ast/function.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct Float3 : public Type
@@ -32,4 +32,4 @@ struct Float3 : public Type
     Function bracketOperatorUInt;
 };
 
-} // namespace AnyFX
+} // namespace GPULang

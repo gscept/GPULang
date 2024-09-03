@@ -11,7 +11,7 @@
 #include "ast/variable.h"
 #include "ast/enumeration.h"
 #include "ast/structure.h"
-namespace AnyFX
+namespace GPULang
 {
 
 struct RenderStateType : public Type
@@ -62,4 +62,4 @@ struct RenderStateType : public Type
 
 };
 
-} // namespace AnyFX
+} // namespace GPULang

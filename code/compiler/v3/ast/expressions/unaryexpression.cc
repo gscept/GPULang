@@ -6,7 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -170,4 +170,4 @@ UnaryExpression::EvalString() const
     else
         return Format("%s", expString.c_str());
 }
-} // namespace AnyFX
+} // namespace GPULang

@@ -6,7 +6,7 @@
 #include "util.h"
 
 #include <map>
-namespace AnyFX
+namespace GPULang
 {
 
 
@@ -128,4 +128,4 @@ Variable::IsImageFormatUnsigned(ImageFormat format)
     return format >= RGA32U && format <= R8U;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

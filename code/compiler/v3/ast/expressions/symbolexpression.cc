@@ -13,7 +13,7 @@
 #include "v3/ast/expressions/enumexpression.h"
 #include <string>
 
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -250,4 +250,4 @@ SymbolExpression::EvalString() const
     return this->symbol;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

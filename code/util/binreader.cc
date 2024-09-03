@@ -6,7 +6,7 @@
 #include <sstream>
 
 static char encryptionTable[] = {'A', 'T', 'C', 'G', 'F', 'F', 'W', 'I', 'T', 'C', 'H', 'E', 'R'};
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -216,4 +216,4 @@ BinReader::Skip(unsigned n)
 	if (this->inputFile) this->inputFile->ignore(n);
 	else this->inputString->ignore(n);
 }
-} // namespace AnyFX
+} // namespace GPULang

@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "expressionstatement.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -23,4 +23,4 @@ ExpressionStatement::~ExpressionStatement()
     delete this->expr;
 }
 
-} // namespace AnyFX
+} // namespace GPULang

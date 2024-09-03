@@ -3,7 +3,7 @@
 #include "antlr4-common.h"
 #include "BaseErrorListener.h"
 
-class AnyFXLexerHandler : public antlr4::BaseErrorListener
+class GPULangLexerErrorHandler : public antlr4::BaseErrorListener
 {
 private:
 	virtual void syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine,
@@ -15,7 +15,7 @@ public:
 	std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 };
 
-class AnyFXParserHandler : public antlr4::BaseErrorListener
+class GPULangParserErrorHandler : public antlr4::BaseErrorListener
 {
 private:
 	virtual void syntaxError(antlr4::Recognizer* recognizer, antlr4::Token* offendingSymbol, size_t line, size_t charPositionInLine,

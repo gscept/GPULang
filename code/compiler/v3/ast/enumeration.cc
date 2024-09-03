@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "enumeration.h"
-namespace AnyFX
+namespace GPULang
 {
 
 //------------------------------------------------------------------------------
@@ -15,4 +15,4 @@ Enumeration::Enumeration()
     this->category = Type::Category::EnumCategory;
     this->resolved = new Enumeration::__Resolved;
 }
-} // namespace AnyFX
+} // namespace GPULang
