@@ -20,9 +20,9 @@ const textureHandle foobar = 5;
 const int foo = 5;
 const int ARRAY_INIT[][] = { {1}, {foo}, {3} };
 
-read rgba32f readWriteTexture2D* myReadImage;
-write rgb10_a2 readWriteTexture2D* myWriteImage;
-binding(0) rg16f read_write readWriteTexture2D* myReadWriteImage;
+rgba32f readWriteTexture2D* myReadImage;
+no_read mutable rgb10_a2 readWriteTexture2D* myWriteImage;
+binding(0) rg16f mutable readWriteTexture2D* myReadWriteImage;
 volatile r8u readWriteTexture2D* myVolatileImage[5];
 atomic r32i readWriteTexture2D* myAtomicImage[];
 
@@ -147,6 +147,8 @@ prototype float4 DynamicFunction(in int i);
 //------------------------------------------------------------------------------
 /**
 */
+shader
+local_size_x(64)
 void
 MyComputeShader()
 {

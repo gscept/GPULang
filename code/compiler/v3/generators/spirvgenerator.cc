@@ -145,7 +145,6 @@ GenerateScalarTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::Ful
     return name;
 }
 
-
 //------------------------------------------------------------------------------
 /**
 */
@@ -153,6 +152,9 @@ uint32_t
 GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr, std::string& outCode)
 {
     CallExpression* callExpression = static_cast<CallExpression*>(expr);
+
+    //uint32_t label = generator->FindIntermediate(callExpression->function->name);
+    //outCode.append(Format("OpBranch %d", label));
     return 0xFFFFFFFF;
 }
 
@@ -177,10 +179,10 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     uint32_t typeName = GenerateScalarTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
     uint32_t uintName = generator->LookupIntermediate(Format("uint"), Format("OpTypeInt 32 0"));
     uint32_t sizeName = generator->LookupIntermediate(Format("%du", initExpression->values.size()), Format("OpConstant %%%d %d", uintName, initExpression->values.size()));
-    typeName = generator->LookupIntermediate(Format("{%s}_array[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName));
-    std::string initializer = Format("{%s}_init", values.c_str());
+    typeName = generator->LookupIntermediate(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName));
+    std::string initializer = Format("{%s}", values.c_str());
     name = generator->LookupIntermediate(initializer, Format("OpConstantComposite %%%d %s", typeName, values.c_str()));
-    outCode.append(Format("%%%d ", name));
+    outCode.append(Format("%%%d \n", name));
     return name;
 }
 
@@ -231,8 +233,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             intExpr->EvalInt(value);
             uint32_t name = generator->LookupIntermediate("int", Format("OpTypeInt 32 1"));
             name = generator->LookupIntermediate(Format("%ds", value), Format("OpConstant %%%d %d", name, value));
-            outCode.append(Format("%%%d ", name));
-            return 0xFFFFFFFF;
+            outCode.append(Format("%%%d \n", name));
+            return name;
         }
         case Symbol::UIntExpressionType:
         {
@@ -241,8 +243,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             uintExpr->EvalUInt(value);
             uint32_t name = generator->LookupIntermediate("uint", Format("OpTypeInt 32 0"));
             name = generator->LookupIntermediate(Format("%du", value), Format("OpConstant %%%d %d", name, value));
-            outCode.append(Format("%%%d ", name));
-            return 0xFFFFFFFF;
+            outCode.append(Format("%%%d \n", name));
+            return name;
         }
         case Symbol::FloatExpressionType:
         {
@@ -251,8 +253,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             floatExpr->EvalFloat(value);
             uint32_t name = generator->LookupIntermediate("float", Format("OpTypeFloat 32"));
             name = generator->LookupIntermediate(Format("%ff", value), Format("OpConstant %%%d %f", name, value));
-            outCode.append(Format("%%%d ", name));
-            return 0xFFFFFFFF;
+            outCode.append(Format("%%%d \n", name));
+            return name;
         }
         case Symbol::BoolExpressionType:
         {
@@ -261,9 +263,47 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             boolExpr->EvalBool(value);
             uint32_t name = generator->LookupIntermediate("bool", Format("OpTypeBool"));
             name = generator->LookupIntermediate(value ? "true" : "false", value ? "OpConstantTrue" : "OpConstantFalse");
-            outCode.append(Format("%%%d ", name));
-            return 0xFFFFFFFF;
+            outCode.append(Format("%%%d \n", name));
+            return name;
         }
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement* stat, std::string& outCode)
+{
+    switch (stat->symbolType)
+    {
+         case Symbol::BreakStatementType:
+            break;
+        case Symbol::ContinueStatementType:
+            break;
+        case Symbol::ExpressionStatementType:
+        {
+            GenerateExpressionSPIRV(compiler, generator, static_cast<ExpressionStatement*>(stat)->expr, outCode);
+            break;
+        }
+        case Symbol::ForStatementType:
+            //GenerateForStatementGLSL(compiler, statement, outCode);
+            break;
+        case Symbol::IfStatementType:
+            //GenerateIfStatementGLSL(compiler, statement, outCode);
+            break;
+        case Symbol::ReturnStatementType:
+            //GenerateReturnStatementGLSL(compiler, statement, outCode);
+            break;
+        case Symbol::ScopeStatementType:
+            //GenerateScopeStatementGLSL(compiler, statement, outCode);
+            break;
+        case Symbol::SwitchStatementType:
+            //GenerateSwitchStatementGLSL(compiler, statement, outCode);
+            break;
+        case Symbol::WhileStatementType:
+            //GenerateWhileStatementGLSL(compiler, statement, outCode);
+            break;
     }
 }
 
@@ -273,6 +313,27 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
 void 
 SPIRVGenerator::GenerateFunction(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
+    Function* func = static_cast<Function*>(symbol);
+    Function::__Resolved* funcResolved = static_cast<Function::__Resolved*>(func->resolved);
+
+    uint32_t returnName = GenerateScalarTypeSPIRV(compiler, this, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
+    uint32_t functionType = this->LookupIntermediate(func->name, Format("OpTypeFunction %%%d", returnName));
+    for (auto& param : func->parameters)
+    {
+        Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
+        outCode.append("OpFunctionParameter %%%d\n", GenerateScalarTypeSPIRV(compiler, this, paramResolved->type, paramResolved->typeSymbol));
+    }
+    outCode.append("OpFunction %%%d\n", returnName);
+
+    GenerateStatementSPIRV(compiler, this, func->ast, outCode);
+
+    uint32_t returnValue = 0xFFFFFFFF;
+    if (returnValue != 0xFFFFFFFF)
+        outCode.append(Format("OpReturn %%%d\n", returnValue));
+    else
+        outCode.append("OpReturn\n");
+
+    outCode.append("OpFunctionEnd\n");
 }
 
 //------------------------------------------------------------------------------
@@ -325,7 +386,7 @@ SPIRVGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* s
         std::string spirvType = typeToSpirvType[varResolved->type.name];
         uint32_t floatName = this->LookupIntermediate("float", "float");
         std::string access;
-        if (varResolved->accessBits.flags.readAccess && varResolved->accessBits.flags.writeAccess)
+        if (varResolved->accessBits.flags.writeAccess && varResolved->accessBits.flags.writeAccess)
             access = "ReadWrite";
         else if (varResolved->accessBits.flags.readAccess)
             access = "ReadOnly";
@@ -374,7 +435,7 @@ SPIRVGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* s
             uint32_t uintName = this->LookupIntermediate("uint", "OpTypeInt 32 0");
             uint32_t value = varResolved->type.modifierValues[i];
             name = this->LookupIntermediate(Format("%du", value), Format("OpConstant %%%d %d", uintName, value));
-            type = Format("{%s}_array[%d]", type.c_str(), value);
+            type = Format("%s[%d]", type.c_str(), value);
             typeName = this->LookupIntermediate(type, Format("OpTypeArray %%%d %%%d", typeName, name));
         }
     }
@@ -391,20 +452,20 @@ SPIRVGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* s
     {
         if (varResolved->usageBits.flags.isConst)
         {
-            type = Format("{%s}_typeptr", type.c_str());
+            type = Format("ptr(%s)", type.c_str());
             name = this->LookupIntermediate(type, Format("OpTypePointer UniformConstant %%%d", name));
             name = this->LookupIntermediate(varResolved->name, Format("OpVariable %%%d UniformConstant %%%d", name, initializer));
         }
         else
         {
-            type = Format("{%s}_typeptr", type.c_str());
+            type = Format("ptr(%s)", type.c_str());
             name = this->LookupIntermediate(type, Format("OpTypePointer Uniform %%%d", name));
             name = this->LookupIntermediate(varResolved->name, Format("OpVariable %%%d Uniform", name));
         }
     }
     else
     {
-        type = Format("{%s}_typeptr", type.c_str());
+        type = Format("ptr(%s)", type.c_str());
         name = this->LookupIntermediate(type, Format("OpTypePointer Function %%%d", name));
         name = this->LookupIntermediate(varResolved->name, Format("OpVariable %%%d Function", name));
     }
@@ -426,10 +487,22 @@ SPIRVGenerator::LookupIntermediate(std::string value, std::string declare)
     {
         ret = this->symbolCounter;
         this->symbolLookup[value] = ret;
-        this->declarations.append(Format("%%%d = %s\n", ret, declare.c_str()));
+        this->declarations.append(Format("%%%d = %s ; %s\n", ret, declare.c_str(), value.c_str()));
         this->symbolCounter++;
     }
     return ret;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+SPIRVGenerator::FindIntermediate(std::string value)
+{
+    uint32_t ret = 0xFFFFFFFF;
+    auto it = this->symbolLookup.find(value);
+    assert(it != this->symbolLookup.end());
+    return it->second;
 }
 
 } // namespace GPULang

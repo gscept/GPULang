@@ -30,6 +30,8 @@ public:
 
     /// add or search for SPIRV symbol and return name
     uint32_t LookupIntermediate(std::string value, std::string declare);
+    /// find symbol and assert if fails
+    uint32_t FindIntermediate(std::string value);
 
     std::set<std::string> requiredCapabilities;
     uint32_t symbolCounter;

@@ -57,13 +57,13 @@ Program::__Resolved::StringToEntryType(const std::string& str)
 const std::string&
 Program::__Resolved::EntryTypeToString(const ProgramEntryType type)
 {
-    static std::string default = "";
+    static std::string def = "";
     for (auto& it : programEntryTypeLookup)
     {
         if (it.second == type)
             return it.first;
     }
-    return default;
+    return def;
 }
 
 } // namespace GPULang

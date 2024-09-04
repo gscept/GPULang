@@ -6,7 +6,7 @@
 fips_begin_lib(gpulang_reflection)
 fips_deps(gpulang_util)
 
-fips_include_directories(
+target_include_directories(gpulang_reflection PUBLIC
 	${GPULANG_ROOT}
 	${GPULANG_ROOT}/code/util
 	${GPULANG_ROOT}/api

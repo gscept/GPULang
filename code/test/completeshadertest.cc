@@ -2,7 +2,7 @@
 //  @file completeshadertest.cc
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
-#include "afxcompiler.h"
+#include "gpulangcompiler.h"
 #include "loader.h"
 #include <stdlib.h>
 #include <string>
@@ -12,10 +12,8 @@
 void 
 CompleteShaderTest()
 {
-    AnyFXBeginCompile();
-    AnyFXErrorBlob* errors;
-    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.fx", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "vk", "khronos", {}, {}, errors);
-    AnyFXEndCompile();
+    GPULangErrorBlob* errors;
+    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.fx", GPULang::Compiler::Language::SPIRV, std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "khronos", {}, {}, errors);
 
     if (errors != nullptr)
     {

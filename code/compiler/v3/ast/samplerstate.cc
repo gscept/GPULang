@@ -66,13 +66,13 @@ SamplerState::__Resolved::StringToEntryType(const std::string& str)
 const std::string&
 SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
 {
-    static std::string default = "";
+    static std::string def = "";
     for (auto& it : samplerEntryTypeLookup)
     {
         if (it.second == type)
             return it.first;
     }
-    return default;
+    return def;
 }
 
 const std::map<std::string, AddressMode> stringToAddressMode =

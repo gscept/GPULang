@@ -31,8 +31,6 @@ struct Compiler
         GLSL_SPIRV,     // uses GLSL as intermediate to generate SPIRV
         HLSL,
         HLSL_SPIRV,     // uses HLSL as intermediate to generate SPIRV
-        LLVM_SPIRV,     // uses LLVM as an intermediate to generate SPIRV
-        LLVM_AMDGPU,    // uses LLVM as an intermediate to generate AMDGPU ISA
         SPIRV           // target is pure SPIRV
     };
 

@@ -7,7 +7,7 @@ ADD_SUBDIRECTORY(ext/mcpp)
 
 fips_begin_lib(gpulang_compiler)
 
-fips_include_directories(
+target_include_directories(gpulang_compiler PUBLIC
     ${CMAKE_CURRENT_BINARY_DIR}
     ${GPULANG_ROOT}/code/util/
     ${GPULANG_ROOT}/code/compiler
@@ -207,6 +207,7 @@ fips_dir(v3/validators)
     )
 
 fips_deps(gpulang_util antlr4 glslang mcpp)
+SET_DEFAULT_OUTPUT(gpulang_compiler)
 
 IF (MSVC11)
     ADD_DEFINITIONS(-D_XKEYCHECK_H)

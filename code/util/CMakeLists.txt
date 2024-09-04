@@ -4,7 +4,7 @@
 
 fips_begin_lib(gpulang_util)
 
-fips_include_directories(
+target_include_directories(gpulang_util PUBLIC
 	${CMAKE_CURRENT_BINARY_DIR}
 	${GPULANG_ROOT}/util/
 	)

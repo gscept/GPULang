@@ -15,7 +15,7 @@
 bool
 ShaderCompilerApp::ParseCmdLineArgs(int argc, const char ** argv)
 {
-    AnyFX::CmdLineArgs args(argc, argv);
+    GPULang::CmdLineArgs args(argc, argv);
     
 	if (args.HasArgument("--help"))
 	{

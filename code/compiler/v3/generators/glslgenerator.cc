@@ -142,7 +142,16 @@ namespace GPULang
 GLSLGenerator::GLSLGenerator(LanguageFeatureSet featureSet)
     : featureSet(featureSet)
 {
-    // empty
+    glslang::InitializeProcess();
+}
+
+
+//------------------------------------------------------------------------------
+/**
+*/
+GLSLGenerator::~GLSLGenerator()
+{
+    glslang::FinalizeProcess();
 }
 
 //------------------------------------------------------------------------------
@@ -237,7 +246,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
 
             glslang::TShader* shaderObject = new glslang::TShader(entryToGlslangShaderMappings.at(it.first));
             const char* sources[] = { header.c_str(), code.c_str() };
-            int lengths[] = { header.length(), code.length() };
+            int lengths[] = { (int)header.length(), (int)code.length() };
             shaderObject->setStringsWithLengths(sources, lengths, 2);
 
             // perform compilation

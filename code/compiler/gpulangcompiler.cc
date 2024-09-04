@@ -137,10 +137,10 @@ GPULangGenerateDependencies(const std::string& file, const std::vector<std::stri
 //------------------------------------------------------------------------------
 /**
 */
-AnyFXErrorBlob*
+GPULangErrorBlob*
 Error(const std::string message)
 {
-    AnyFXErrorBlob* ret = new AnyFXErrorBlob();
+    GPULangErrorBlob* ret = new GPULangErrorBlob();
     if (message.size() > 0)
     {
         ret->buffer = new char[message.size() + 1];
@@ -168,7 +168,7 @@ Error(const std::string message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const std::string& file, const std::string& output, const std::string& header_output, const std::string& target, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, AnyFXErrorBlob*& errorBuffer)
+GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, GPULangErrorBlob*& errorBuffer)
 {
     bool ret = true;
 
@@ -248,7 +248,7 @@ GPULangCompile(const std::string& file, const std::string& output, const std::st
         Compiler compiler;
         compiler.debugPath = output;
         compiler.debugOutput = true;
-        compiler.Setup(Compiler::Language::SPIRV, {}, 1);
+        compiler.Setup(target, {}, 1);
 
         if (compiler.Compile(effect, binaryWriter, headerWriter))
         {

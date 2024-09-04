@@ -46,7 +46,7 @@ namespace GPULang
 */
 std::set<std::string> readWriteAccessFlags =
 {
-    "read", "write", "read_write", "atomic", "volatile"
+    "mutable", "no_read", "atomic", "volatile"
 };
 
 std::set<std::string> readWriteTextureQualifiers =
@@ -76,7 +76,7 @@ std::set<std::string> constantBufferQualifiers =
 
 std::set<std::string> storageBufferAccessFlags =
 {
-    "read", "write", "read_write", "atomic", "volatile"
+    "mutable", "no_read", "atomic", "volatile"
 };
 
 std::set<std::string> storageBufferQualifiers =
@@ -86,7 +86,7 @@ std::set<std::string> storageBufferQualifiers =
 
 std::set<std::string> functionAttributes =
 {
-    "local_size_x", "local_size_y", "local_size_z", "early_depth"
+    "shader", "local_size_x", "local_size_y", "local_size_z", "early_depth"
     , "input_vertices", "max_output_vertices", "winding"
     , "topology", "patch_type", "patch_size", "partition",
     "prototype"
@@ -561,7 +561,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        if (attr.name == "local_size_x")
+        if (attr.name == "shader")
+        {
+            funResolved->isShader = true;
+        }
+        else if (attr.name == "local_size_x")
             if (!attr.expression->EvalUInt(funResolved->computeShaderWorkGroupSize[0]))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
@@ -1341,6 +1345,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->typeSymbol = type;
     var->type.name = type->name;        // because we can do an alias lookup, this value might change
     varResolved->type = var->type;
+    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
 
     // struct members may only be scalars
     if (varResolved->usageBits.flags.isStructMember && 
@@ -1481,6 +1486,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "mutable")
         {
             varResolved->usageBits.flags.isMutable = true;
+            varResolved->accessBits.flags.writeAccess = true;
             if (varResolved->usageBits.flags.isUniform)
             {
                 compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
@@ -1494,12 +1500,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             // more complicated lookups
             if (set_contains(readWriteAccessFlags, attr.name))
             {
-                if (attr.name == "read")
-                    varResolved->accessBits.flags.readAccess = true;
-                else if (attr.name == "write")
-                    varResolved->accessBits.flags.writeAccess = true;
-                else if (attr.name == "read_write")
-                    varResolved->accessBits.flags.readAccess = varResolved->accessBits.flags.writeAccess = true;
+                if (attr.name == "no_read")
+                    varResolved->accessBits.flags.readAccess = false;
                 else if (attr.name == "atomic")
                     varResolved->accessBits.flags.atomicAccess = true;
                 else if (attr.name == "volatile")
@@ -1684,19 +1686,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             else if (cat == Type::Category::UserTypeCategory)
             {
                 compiler->Error(Format("Variable of '%s' pointer must be either 'uniform' or 'mutable'", type->name.c_str()), var);
-                return false;
-            }
-        }
-        else
-        {
-            if (varResolved->usageBits.flags.isMutable)
-            {
-                compiler->Error(Format("Non-struct variable declared 'mutable'"), var);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isUniform)
-            {
-                compiler->Error(Format("Non-struct variable declared 'uniform'"), var);
                 return false;
             }
         }

@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "singleshadercompiler.h"
 #include <filesystem>
-#include "afxcompiler.h"
+#include "gpulangcompiler.h"
 
 //------------------------------------------------------------------------------
 /**
@@ -57,9 +57,6 @@ SingleShaderCompiler::CompileShader(const std::string& src)
 bool
 SingleShaderCompiler::CompileSPIRV(const std::string& src)
 {
-	// start AnyFX compilation
-	AnyFXBeginCompile();
-
 	std::filesystem::path sp(src);
 	std::string file = sp.stem().string();
     std::string folder = sp.parent_path().string();
@@ -117,20 +114,16 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
         flags.push_back("/O");
     }
 
-    AnyFXErrorBlob* errors = NULL;
+    GPULangErrorBlob* errors = NULL;
 
     // this will get the highest possible value for the GL version, now clamp the minor and major to the one supported by glew
     int major = 1;
     int minor = 0;
 
-    std::string target;
-    snprintf(buffer,25,"spv%d%d", major, minor);
-	target = buffer;
-
 	std::filesystem::path escapedDst(destFile);
 	std::filesystem::path escapedHeader(destHeader);
 
-    bool res = AnyFXCompile(sp.string().c_str(), escapedDst.string().c_str(), escapedHeader.string().c_str(), target.c_str(), "Khronos", defines, flags, &errors);
+    bool res = GPULangCompile(sp.string().c_str(), GPULang::Compiler::Language::SPIRV, escapedDst.string().c_str(), escapedHeader.string().c_str(), "Khronos", defines, flags, errors);
     if (!res)
     {
         if (errors)
@@ -147,8 +140,6 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
         delete errors;
         errors = 0;
     }
-    // stop AnyFX compilation
-    AnyFXEndCompile();
     return true;
 }
 
@@ -194,7 +185,7 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 	FILE * output = fopen(destFile.c_str(), "w");
 	if(output)
 	{
-		std::vector<std::string> deps = AnyFXGenerateDependencies(sp.string().c_str(), defines);
+		std::vector<std::string> deps = GPULangGenerateDependencies(sp.string().c_str(), defines);
         for(auto str : deps)
         {
 			fprintf(output, "%s;", str.c_str());

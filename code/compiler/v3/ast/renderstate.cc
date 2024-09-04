@@ -85,13 +85,13 @@ RenderState::__Resolved::StringToEntryType(const std::string& str)
 const std::string&
 RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
 {
-    static std::string default = "";
+    static std::string def = "";
     for (auto& it : stringToRenderStateEntryType)
     {
         if (it.second == type)
             return it.first;
     }
-    return default;
+    return def;
 }
 
 std::map<std::string, PolygonMode> stringToPolygonMode =

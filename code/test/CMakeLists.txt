@@ -5,14 +5,14 @@
 
 fips_begin_app(gpulang_test cmdline)
 
-    fips_include_directories(
+    target_include_directories(gpulang_test PUBLIC
         ${GPULANG_ROOT}/code/compiler
         ${GPULANG_ROOT}/code/api/
 
         )
 
-    ADD_DEFINITIONS(-DTEST_FOLDER="${ANYFX_ROOT}/code/test/shaders")
-    ADD_DEFINITIONS(-DTEST_OUTPUT_FOLDER="${ANYFX_ROOT}/code/test/shaders/output")
+    ADD_DEFINITIONS(-DTEST_FOLDER="${GPULANG_ROOT}/code/test/shaders")
+    ADD_DEFINITIONS(-DTEST_OUTPUT_FOLDER="${GPULANG_ROOT}/code/test/shaders/output")
 
     fips_files(
         main.cc
