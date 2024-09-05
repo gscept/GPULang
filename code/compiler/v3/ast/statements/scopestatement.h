@@ -18,7 +18,7 @@ struct ScopeStatement : public Statement
     /// destructor
     virtual ~ScopeStatement();
 
-    std::vector<Symbol*> statements;
+    std::vector<Symbol*> symbols;
 };
 
 } // namespace GPULang

@@ -1873,7 +1873,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             auto statement = reinterpret_cast<ScopeStatement*>(symbol);
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, compiler->GetScopeOwner());
 
-            for (Symbol* sym : statement->statements)
+            for (Symbol* sym : statement->symbols)
             {
                 if (sym->symbolType == Symbol::VariableType)
                 {

@@ -882,7 +882,7 @@ GenerateScopeStatementGLSL(Compiler* compiler, Statement* statement, std::string
     std::string indentation = GenerateIndentation();
     std::string contents;
     IndentationLevel++;
-    for (Symbol* content : scope->statements)
+    for (Symbol* content : scope->symbols)
     {
         if (content->symbolType == Symbol::VariableType)
         {

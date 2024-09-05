@@ -10,7 +10,7 @@ namespace GPULang
 /**
 */
 ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
-    : statements(contents)
+    : symbols(contents)
 {
     this->symbolType = ScopeStatementType;
 }
@@ -20,7 +20,7 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
 */
 ScopeStatement::~ScopeStatement()
 {
-    for (Symbol* sym : this->statements)
+    for (Symbol* sym : this->symbols)
         delete sym;
 }
 
