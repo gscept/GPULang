@@ -16,22 +16,29 @@ struct Float4 : public Type
     /// constructor
     Float4();
 
-    Function ctorSingleValue;
-    Function ctorXYZW;
-    Function ctorFloat3W;
-    Function ctorFloat2ZW;
+    static Function ctor_XYZW;
+    static Function ctorSingleValue;
+    static Function ctor_Float3_W;
+    static Function ctor_Float2_ZW;
 
-    Function additionOperator;
-    Function subtractionOperator;
-    Function multiplicationOperator;
-    Function divisionOperator;
-    Function additionAssignOperator;
-    Function subtractionAssignOperator;
-    Function multiplicationAssignOperator;
-    Function divisionAssignOperator;
+    static Function additionOperator;
+    static Function subtractionOperator;
+    static Function multiplicationOperator;
+    static Function divisionOperator;
+    static Function modOperator;
+    static Function scaleOperator;
 
-    Function bracketOperatorInt;
-    Function bracketOperatorUInt;
+    static Function matrix44Mul;
+    static Function matrix43Mul;
+    static Function matrix42Mul;
+
+    static Function additionAssignOperator;
+    static Function subtractionAssignOperator;
+    static Function multiplicationAssignOperator;
+    static Function divisionAssignOperator;
+
+    static Function elementAccessOperatorInt;
+    static Function elementAccessOperatorUInt;
 };
 
 } // namespace GPULang

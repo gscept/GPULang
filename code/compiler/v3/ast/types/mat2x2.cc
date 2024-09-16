@@ -6,6 +6,22 @@
 namespace GPULang
 {
 
+Function Mat2x2::floatConstructor;
+Function Mat2x2::vectorConstructor;
+
+Function Mat2x2::additionOperator;
+Function Mat2x2::subtractionOperator;
+Function Mat2x2::multiplyOperator;
+Function Mat2x2::additionAssignOperator;
+Function Mat2x2::subtractionAssignOperator;
+Function Mat2x2::multiplyAssignOperator;
+
+Function Mat2x2::vectorTransformOperator;
+
+Function Mat2x2::assignOperator;
+
+Function Mat2x2::elementAccessOperatorInt;
+Function Mat2x2::elementAccessOperatorUInt;
 //------------------------------------------------------------------------------
 /**
 */
@@ -17,13 +33,13 @@ Mat2x2::Mat2x2()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_FUNCTION(floatConstructor, float2x2, float2x2);
+    __IMPLEMENT_GLOBAL(floatConstructor, float2x2, float2x2);
     __ADD_FUNCTION_PARAM(m00, float);
     __ADD_FUNCTION_PARAM(m01, float);
     __ADD_FUNCTION_PARAM(m10, float);
     __ADD_FUNCTION_PARAM(m11, float);
 
-    __IMPLEMENT_FUNCTION(vectorConstructor, float2x2, float2x2);
+    __IMPLEMENT_GLOBAL(vectorConstructor, float2x2, float2x2);
     __ADD_FUNCTION_PARAM(r0, float2);
     __ADD_FUNCTION_PARAM(r1, float2);
 
@@ -38,8 +54,8 @@ Mat2x2::Mat2x2()
 
     __IMPLEMENT_FUNCTION_1(assignOperator, operator=, float2x2, float2x2);
 
-    __IMPLEMENT_FUNCTION_1(bracketOperatorInt, operator[], float2, int);
-    __IMPLEMENT_FUNCTION_1(bracketOperatorUInt, operator[], float2, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], float2, int);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], float2, uint);
 }
 
 } // namespace GPULang

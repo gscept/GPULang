@@ -230,23 +230,57 @@ variables
     returns[ std::vector<Variable*> list ]
     @init
     {
+        std::vector<Type::FullType> types;
         std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
-        std::vector<Expression*> nameExpressions;
+        std::vector<std::string> names;
+        std::vector<Expression*> valueExpressions;
+        std::vector<Symbol::Location> locations;
         Symbol::Location location;
+        Type::FullType type;
     }:
     (annotation { annotations.push_back($annotation.annot); })*
     (attribute { attributes.push_back($attribute.attr); })*
-    typeDeclaration { location = SetupFile(); } (var0 = assignmentExpression { nameExpressions.push_back($var0.tree); } (',' varN = assignmentExpression { nameExpressions.push_back($varN.tree); })* )
+    typeName = IDENTIFIER { type.name = $typeName.text; } (
+        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
+    )*
+    varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } ( 
+        { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
+        '[' (
+            arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); }
+        )? 
+        ']'
+    )* 
+    { types.push_back(type); type.ClearModifiers(); }
+    (
+        '=' valueExpr = assignmentExpression { valueExpressions.back() = $valueExpr.tree; } 
+    )?
+    
+    (',' (
+            '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
+        )*
+        varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } (
+            { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
+            '[' (
+                    arraySizeN = INTEGERLITERAL { type.UpdateValue(atoi($arraySizeN.text.c_str())); }
+            )?  
+            ']' 
+        )* 
+        { types.push_back(type); type.ClearModifiers(); }
+        (
+            '=' valueExprN = assignmentExpression { valueExpressions.back() = $valueExprN.tree; }
+        )?
+    )* 
     {
-        for (Expression* expr : nameExpressions)
+        for (size_t i = 0; i < names.size(); i++)
         {
             Variable* var = new Variable(); 
-            var->type = $typeDeclaration.type; 
-            var->location = location; 
+            var->type = types[i]; 
+            var->location = locations[i]; 
             var->annotations = annotations; 
             var->attributes = attributes;
-            var->nameExpression = expr;
+            var->name = names[i];
+            var->valueExpression = valueExpressions[i];
             $list.push_back(var);
         }
     }
@@ -257,19 +291,32 @@ variable
     @init
     {
         $sym = nullptr;
+        Type::FullType type;
         std::vector<Attribute> attributes;
-        std::vector<Expression*> nameExpressions;
-        Expression* nameExpression = nullptr;
+        std::string name;
+        Expression* valueExpression = nullptr;
         Symbol::Location location;
     }:
     (attribute { attributes.push_back($attribute.attr); })*
-    typeDeclaration { location = SetupFile(); } var0 = expression { nameExpression = $var0.tree; }
+    typeName = IDENTIFIER { type.name = $typeName.text; location = SetupFile(); } (
+        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
+    )*
+    varName = IDENTIFIER { name = $varName.text; } (
+        { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
+        '[' (
+                arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); }
+            )? 
+        ']'
+    )* (
+        '=' valueExpr = expression { valueExpression = $valueExpr.tree; } 
+    )?
     {
         $sym = new Variable(); 
-        $sym->type = $typeDeclaration.type; 
+        $sym->type = type; 
         $sym->location = location; 
         $sym->attributes = attributes;
-        $sym->nameExpression = nameExpression;
+        $sym->name = name;
+        $sym->valueExpression = valueExpression;
     }
     ;
 

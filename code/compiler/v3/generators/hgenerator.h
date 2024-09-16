@@ -16,9 +16,9 @@ struct HGenerator : public Generator
     bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate structure 
-    void GenerateStructure(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
-    void GenerateVariable(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    void GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
 };
 
 } // namespace GPULang

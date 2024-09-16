@@ -16,7 +16,7 @@ RenderState::RenderState()
     this->resolved = new RenderState::__Resolved();
 }
 
-std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
+const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
 {
     { "DepthClampEnabled", RenderState::__Resolved::DepthClampEnabledType },
     { "NoPixels", RenderState::__Resolved::NoPixelsType },
@@ -94,7 +94,7 @@ RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
     return def;
 }
 
-std::map<std::string, PolygonMode> stringToPolygonMode =
+const std::map<std::string, PolygonMode> stringToPolygonMode =
 {
     { "Fill" , FillMode },
     { "Line" , LineMode },
@@ -114,7 +114,7 @@ RenderState::__Resolved::StringToPolygonMode(const std::string& str)
         return InvalidPolygonMode;
 }
 
-std::map<std::string, CullMode> stringToCullMode =
+const std::map<std::string, CullMode> stringToCullMode =
 {
     { "Front", FrontMode },
     { "Back", BackMode },
@@ -134,7 +134,7 @@ RenderState::__Resolved::StringToCullMode(const std::string& str)
         return InvalidCullMode;
 }
 
-std::map<std::string, WindingOrderMode> stringToWindingOrderMode =
+const std::map<std::string, WindingOrderMode> stringToWindingOrderMode =
 {
     { "Clockwise", ClockwiseMode },
     { "CounterClockwise", CounterClockwiseMode }
@@ -153,7 +153,7 @@ RenderState::__Resolved::StringToWindingOrderMode(const std::string& str)
         return InvalidWindingOrderMode;
 }
 
-std::map<std::string, LogicOp> stringToLogicOp =
+const std::map<std::string, LogicOp> stringToLogicOp =
 {
     { "Clear", LogicClearOp },
     { "And", LogicAndOp },
@@ -186,7 +186,7 @@ RenderState::__Resolved::StringToLogicOp(const std::string& str)
         return InvalidLogicOp;
 }
 
-std::map<std::string, StencilOp> stringToStencilOp =
+const std::map<std::string, StencilOp> stringToStencilOp =
 {
     { "Keep", StencilKeepOp },
     { "Zero", StencilZeroOp },
@@ -211,7 +211,7 @@ RenderState::__Resolved::StringToStencilOp(const std::string& str)
         return InvalidStencilOp;
 }
 
-std::map<std::string, BlendFactor> stringToBlendFactor =
+const std::map<std::string, BlendFactor> stringToBlendFactor =
 {
     { "Zero", ZeroFactor },
     { "One", OneFactor },
@@ -247,7 +247,7 @@ RenderState::__Resolved::StringToBlendFactor(const std::string& str)
         return InvalidBlendFactor;
 }
 
-std::map<std::string, BlendOp> stringToBlendOp =
+const std::map<std::string, BlendOp> stringToBlendOp =
 {
     { "Add", AddOp },
     { "Subtract", SubtractOp },

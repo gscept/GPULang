@@ -3,6 +3,23 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 
+struct MyTestStruct
+{
+    float f;
+    int i;
+};
+
+void
+AccessTest()
+{
+    MyTestStruct test;
+    //test.f = 5;
+    float4 accessTest = float4(1);
+    float4 copyTest = accessTest;
+    float2 f2 = accessTest.zy;
+    float f = accessTest.x;
+}
+
 const int arr[5][2] = { {1,1},{2,2},{3,3},{4,4},{5,5} };
 const float4 ARRAY_VEC4[] = { float4(1) };
 struct MyConstantBuffer
@@ -79,9 +96,7 @@ MegaFunction()
 
     const int arr[5][2] = { {1,1},{2,2},{3,3},{4,4},{5,5} };
 
-    const float4 vecarray[5] = { float4(1), float4(2), float4(3), float4(4), float4(5) };
 
-    float3 foobar = vecarray[1].xyz;
 
     if (foo > 0)
     {
@@ -110,7 +125,7 @@ MegaFunction()
     } while (foo > 0);
 
     foo = 6;
-    for (int i = 0, j = 0; i < foo; i++, ++j)
+    for (int i = 0, j = 1; i < foo; i++, ++j)
     {
         if ((i % 2) == 0)
             continue;
@@ -161,12 +176,13 @@ MyComputeShader()
 @Mask("MyProgram")
 program MyProgram
 {
-    ComputeShader = MyComputeShader;
+    ComputeShader = *MyComputeShader();
 };
 
 //------------------------------------------------------------------------------
 /**
 */
+shader
 void
 MyVertexShader(
     binding(0) in float4 position
@@ -179,6 +195,7 @@ MyVertexShader(
 //------------------------------------------------------------------------------
 /**
 */
+shader
 void
 MyPixelShader(
     binding(0) in float4 position
@@ -194,7 +211,7 @@ MyPixelShader(
 @Mask("MyGraphicsProgram")
 program MyGraphicsProgram
 {
-    DynamicFunction = Function;
-    VertexShader = MyVertexShader;
-    PixelShader = MyPixelShader;
+    DynamicFunction = *Function(int);
+    VertexShader = *MyVertexShader(float4, float4);
+    PixelShader = *MyPixelShader(float4, float4);
 };

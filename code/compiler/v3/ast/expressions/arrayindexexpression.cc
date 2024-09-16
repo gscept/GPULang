@@ -5,6 +5,7 @@
 #include "arrayindexexpression.h"
 #include "util.h"
 #include "compiler.h"
+#include "v3/ast/function.h"
 #include "v3/ast/types/type.h"
 namespace GPULang 
 {
@@ -60,44 +61,41 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     if (this->right != nullptr)
         this->right->EvalType(thisResolved->rightFullType);
 
-    thisResolved->returnType = thisResolved->leftFullType;
-    if (!this->isDeclaration)
+    thisResolved->returnFullType = thisResolved->leftFullType;
+
+    // If there are no modifiers, then we check for an array access operator for the type
+    if (thisResolved->returnFullType.modifiers.empty())
     {
-        if (thisResolved->returnType.modifiers.empty())
+        Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnFullType.name));
+        auto it = type->lookup.find(Format("operator[](%s)", thisResolved->rightFullType.name.c_str()));
+        if (it == type->lookup.end())
         {
-            Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnType.name));
-            auto it = type->lookup.find("operator[]");
-            if (it == type->lookup.end())
-            {
-                compiler->Error(Format("'%s' does not implement the [] operator", thisResolved->leftFullType.ToString().c_str()), this);
-                return false;
-            }
-            return true;
+            compiler->Error(Format("'%s' does not implement the [] operator", thisResolved->leftFullType.ToString().c_str()), this);
+            return false;
         }
-        else
+            
+        // If access operator was found, set the return type of this expression as the result of it
+        Function* accessFunc = static_cast<Function*>(it->second);
+        thisResolved->returnFullType = accessFunc->returnType;
+        //thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
+        if (!this->right->EvalUInt(thisResolved->literalAccess))
         {
-            if (thisResolved->returnType.modifiers.back() != Type::FullType::Modifier::ArrayLevel)
-            {
-                compiler->Error(Format("operator [] not valid on non-array type '%s'", thisResolved->leftFullType.ToString().c_str()), this);
-                return false;
-            }
-            thisResolved->returnType.modifiers.pop_back();
-            thisResolved->returnType.modifierValues.pop_back();
+            compiler->Error(Format("'%s' only allows indexing with a literal or compile time deducable value", thisResolved->leftFullType.ToString().c_str()), this);
+            return false;
         }
+        //return true;
     }
     else
     {
-        unsigned int value = 0;
-        if (this->right != nullptr)
-            this->right->EvalUInt(value);
-        else if (!compiler->IsScopeGlobal())
+        if (thisResolved->returnFullType.modifiers.back() != Type::FullType::Modifier::ArrayLevel)
         {
-            compiler->Error(Format("Only globally declared arrays can be unsized"), this);
+            compiler->Error(Format("operator [] not valid on non-array type '%s'", thisResolved->leftFullType.ToString().c_str()), this);
             return false;
         }
-        thisResolved->returnType.modifiers.push_back(Type::FullType::Modifier::ArrayLevel);
-        thisResolved->returnType.modifierValues.push_back(value);
+        thisResolved->returnFullType.modifiers.pop_back();
+        thisResolved->returnFullType.modifierValues.pop_back();
     }
+    thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
 
     // Return type is the left type with one less modifier
     thisResolved->lhsType = compiler->GetSymbol<Type>(thisResolved->leftFullType.name);
@@ -134,7 +132,7 @@ bool
 ArrayIndexExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
-    out = thisResolved->returnType;
+    out = thisResolved->returnFullType;
     return true;
 }
 

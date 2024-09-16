@@ -15,27 +15,29 @@ struct Float : public Type
 {
     Float();
 
-    Function ctorUInt;
-    Function ctorInt;
+    static Function ctor_UInt;
+    static Function ctor_Int;
 
-    Function additionOperator;
-    Function subtractionOperator;
-    Function multiplicationOperator;
-    Function divisionOperator;
-    Function additionAssignOperator;
-    Function subtractionAssignOperator;
-    Function multiplicationAssignOperator;
-    Function divisionAssignOperator;
+    static Function additionOperator;
+    static Function subtractionOperator;
+    static Function multiplicationOperator;
+    static Function divisionOperator;
+    static Function modOperator;
 
-    Function ltOperator;
-    Function lteOperator;
-    Function gtOperator;
-    Function gteOperator;
-    Function eOperator;
-    Function neOperator;
+    static Function additionAssignOperator;
+    static Function subtractionAssignOperator;
+    static Function multiplicationAssignOperator;
+    static Function divisionAssignOperator;
 
-    Function intAssignOperator;
-    Function uintAssignOperator;
+    static Function ltOperator;
+    static Function lteOperator;
+    static Function gtOperator;
+    static Function gteOperator;
+    static Function eOperator;
+    static Function neOperator;
+
+    static Function intAssignOperator;
+    static Function uintAssignOperator;
 
 };
 

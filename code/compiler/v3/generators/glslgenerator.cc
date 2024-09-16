@@ -192,13 +192,13 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
                 switch (symbol->symbolType)
                 {
                 case Symbol::SymbolType::FunctionType:
-                    this->GenerateFunction(compiler, program, symbol, code);
+                    this->GenerateFunctionSPIRV(compiler, program, symbol, code);
                     break;
                 case Symbol::SymbolType::StructureType:
-                    this->GenerateStructure(compiler, program, symbol, code);
+                    this->GenerateStructureSPIRV(compiler, program, symbol, code);
                     break;
                 case Symbol::SymbolType::VariableType:
-                    this->GenerateVariable(compiler, program, symbol, code, false);
+                    this->GenerateVariableSPIRV(compiler, program, symbol, code, false);
                     break;
                 }
             }
@@ -1006,7 +1006,7 @@ GenerateStatementGLSL(Compiler* compiler, Statement* statement, std::string& out
 /**
 */
 void 
-GLSLGenerator::GenerateFunction(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = static_cast<Function::__Resolved*>(fun->resolved);
@@ -1050,7 +1050,7 @@ GLSLGenerator::GenerateFunction(Compiler* compiler, Program* program, Symbol* sy
     std::string arguments;
     for (Variable* param : fun->parameters)
     {
-        this->GenerateVariable(compiler, program, param, arguments, isMain);
+        this->GenerateVariableSPIRV(compiler, program, param, arguments, isMain);
 
         if (!isMain)
         {
@@ -1156,7 +1156,7 @@ GenerateAlignedVariables(Compiler* compiler, Structure* struc, StructureAlignmen
 /**
 */
 void 
-GLSLGenerator::GenerateStructure(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = static_cast<Structure::__Resolved*>(struc->resolved);
@@ -1182,7 +1182,7 @@ GLSLGenerator::GenerateStructure(Compiler* compiler, Program* program, Symbol* s
 /**
 */
 void 
-GLSLGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);

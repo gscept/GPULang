@@ -18,23 +18,25 @@ Bool2::Bool2()
     this->category = Type::ScalarCategory;
 
     // setup constructor for xy
-    __IMPLEMENT_FUNCTION(ctorXY, bool2, bool2);
+    __IMPLEMENT_GLOBAL(ctor_XY, bool2, bool2);
     __ADD_FUNCTION_PARAM(x, bool);
     __ADD_FUNCTION_PARAM(y, bool);
+    __ADD_CONSTRUCTOR()
 
         // setup constructor for single component
-    __IMPLEMENT_FUNCTION_1(ctorSingleValue, bool2, bool2, bool);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, bool2, bool2, bool);
+    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(bracketOperatorInt, operator[], bool, int);
-    __IMPLEMENT_FUNCTION_1(bracketOperatorUInt, operator[], bool, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], bool, int);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], bool, uint);
 
     char swizzleMask[] = { 'x', 'y' };
     for (char x = 0; x < 2; x++)
     {
-        __ADD_SWIZZLE(Format("%c", swizzleMask[x]));
+        __ADD_SWIZZLE(bool, "%c", swizzleMask[x]);
         for (char y = 0; y < 2; y++)
         {
-            __ADD_SWIZZLE(Format("%c%c", swizzleMask[x], swizzleMask[y]));
+            __ADD_SWIZZLE(bool2, "%c%c", swizzleMask[x], swizzleMask[y]);
         }
     }   
 }

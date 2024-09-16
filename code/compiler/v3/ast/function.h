@@ -13,66 +13,6 @@
 namespace GPULang
 {
 
-enum class IntrinsicOpCode
-{
-    Invalid
-    , Mad
-    , Dot
-    , Min
-    , Max
-    , Clamp
-    , Ceil
-    , Floor
-    , Frac
-    , Saturate
-    , Truncate
-    , SubgroupId
-    , SubgroupFirstActive
-    , SubgroupFirst
-    , SubgroupBallot
-    , SubgroupInverseBallot
-    , SubgroupBallotBitCount
-    , SubgroupBallotBit
-    , SubgroupSwapDiagonal
-    , SubgroupSwapVertical
-    , SubgroupSwapHorizontal
-    , TextureLoad
-    , TextureLoadLod
-    , TextureStore
-    , TextureStoreLod
-    , PixelCacheLoad
-    , TextureSample
-    , TextureSampleOffset
-    , TextureSampleBias
-    , TextureSampleBiasCompare
-    , TextureSampleBiasOffset
-    , TextureSampleBiasProj
-    , TextureSampleBiasProjCompare
-    , TextureSampleBiasProjOffset
-    , TextureSampleCompare
-    , TextureSampleCompareOffset
-    , TextureSampleGrad
-    , TextureSampleGradCompare
-    , TextureSampleGradCompareOffset
-    , TextureSampleGradOffset
-    , TextureSampleGradProj
-    , TextureSampleGradProjCompare
-    , TextureSampleGradProjCompareOffset
-    , TextureSampleGradProjOffset
-    , TextureSampleLod
-    , TextureSampleLodCompare
-    , TextureSampleLodCompareOffset
-    , TextureSampleLodOffset
-    , TextureSampleLodProj
-    , TextureSampleLodProjCompare
-    , TextureSampleLodProjCompareOffset
-    , TextureSampleLodProjOffset
-    , TextureSampleProj
-    , TextureSampleProjCompare
-    , TextureSampleProjCompareOffset
-    , TextureSampleProjOffset
-};
-
 struct Variable;
 struct Type;
 struct Statement;
@@ -84,12 +24,10 @@ struct Function : public Symbol
     ~Function();
 
     Statement* ast;
-    std::string signature;
     Type::FullType returnType;
     std::string body;
     bool hasBody;
     std::vector<Variable*> parameters;
-    IntrinsicOpCode intrinsicOp;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 
@@ -103,6 +41,9 @@ struct Function : public Symbol
     struct __Resolved : public Symbol::__Resolved
     {
         Type* returnTypeSymbol;
+
+        std::string name;
+        std::string signature;
 
         unsigned int computeShaderWorkGroupSize[3];
         bool earlyDepth;

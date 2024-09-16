@@ -11,6 +11,7 @@
 #include "generator.h"
 #include <map>
 #include <set>
+#include <stack>
 namespace GPULang
 {
 
@@ -18,33 +19,51 @@ class SPIRVGenerator : public Generator
 {
 public:
 
+    /// Bind intrinsics codegen to builtin functions
+    void SetupIntrinsics() override;
+
     /// generate SPIRV output
     bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
-    /// generate function
-    void GenerateFunction(Compiler* compiler, Symbol* symbol, std::string& outCode);
-    /// generate structure 
-    void GenerateStructure(Compiler* compiler, Symbol* symbol, std::string& outCode);
-    /// generate variable
-    void GenerateVariable(Compiler* compiler, Symbol* symbol, std::string& outCode, bool isStructMember, bool isShaderArgument, bool isGlobal);
+    /// Add or search for a symbol
+    uint32_t AddSymbol(std::string name, std::string declare, bool global = false);
+    /// Get symbol
+    uint32_t GetSymbol(std::string name);
+    /// Returns true if symbol exists
+    bool HasSymbol(std::string name);
+    /// Add an op without a mapping
+    void AddOp(std::string name, bool global = false, std::string comment = "");
+    /// Add mapped op
+    uint32_t AddMappedOp(std::string name, std::string comment = "");
+    /// Add capability
+    void AddCapability(std::string name, std::string declare);
 
-    /// add or search for SPIRV symbol and return name
-    uint32_t LookupDeclaration(std::string value, std::string declare);
-    /// add function
-    uint32_t LookupFunctional(std::string value, std::string functional);
-    /// add op without a return value
-    void AddOp(std::string value);
-    /// find symbol and assert if fails
+    /// Find symbol and assert if fails
     uint32_t FindSymbolMapping(std::string value);
+    /// Replace symbol mapping, assumes symbol already exists
+    void ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping);
 
     std::set<std::string> requiredCapabilities;
     uint32_t symbolCounter;
-    std::map<std::string, uint32_t> symbolLookup;
+
+    struct Scope
+    {
+        std::map<std::string, uint32_t> symbols;
+    };
+    std::vector<Scope> scopeStack;
+    std::set<std::string> capabilities;
+    /// Push a new scope on the stack
+    void PushScope();
+    /// Pop scope
+    void PopScope();
 
     std::string decorations;
     std::string declarations;
     std::string header;
     std::string functional;
+
+    using IntrinsicMappingFunction = std::function<uint32_t(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<uint32_t>&, const std::vector<uint32_t>&)>;
+    std::map<Function*, IntrinsicMappingFunction> intrinsicMap;
 };
 
 } // namespace GPULang

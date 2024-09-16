@@ -5,6 +5,7 @@
 #include "unaryexpression.h"
 #include "util.h"
 #include "compiler.h"
+#include "../function.h"
 
 namespace GPULang
 {
@@ -41,6 +42,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         this->expr->isDeclaration = true;
 
     this->expr->Resolve(compiler);
+    auto thisResolved = Symbol::Resolved(this);
 
     Type::FullType type;
     this->expr->EvalType(type);
@@ -49,9 +51,24 @@ UnaryExpression::Resolve(Compiler* compiler)
         if (!this->isLhsValue)
         {
             if (type.modifiers.empty())
-                return false;
-            type.modifiers.pop_back();
-            type.modifierValues.pop_back();
+            {
+                Symbol* sym = compiler->GetSymbol<Symbol>(this->expr->EvalString());
+                switch (sym->symbolType)
+                {
+                    case Symbol::SymbolType::FunctionType:
+                    {
+                        Function* fun = static_cast<Function*>(sym);
+                        thisResolved->dereffedSymbol = sym;
+                        thisResolved->fullType = { "function" };
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                type.modifiers.pop_back();
+                type.modifierValues.pop_back();
+            }
         }
         else
         {
@@ -65,7 +82,6 @@ UnaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    auto thisResolved = Symbol::Resolved(this);
     thisResolved->type = compiler->GetSymbol<Type>(type.name);
     thisResolved->fullType = type;
     return true;
@@ -88,6 +104,21 @@ UnaryExpression::EvalType(Type::FullType& out) const
 bool
 UnaryExpression::EvalSymbol(std::string& out) const
 {
+    if (this->op == '*')
+    {
+        auto thisResolved = Symbol::Resolved(this);
+        if (thisResolved->dereffedSymbol != nullptr)
+        {
+            if (thisResolved->dereffedSymbol->symbolType == Symbol::SymbolType::FunctionType)
+            {
+                Function* fun = static_cast<Function*>(thisResolved->dereffedSymbol);
+                Function::__Resolved* funResolved = Symbol::Resolved(fun);
+
+                out = funResolved->name;
+                return true;
+            }
+        }
+    }
     return this->expr->EvalSymbol(out);
 }
 

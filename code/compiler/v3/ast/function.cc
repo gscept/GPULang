@@ -7,6 +7,7 @@
 #include "variable.h"
 #include "types/type.h"
 #include "compiler.h"
+#include "intrinsics.h"
 #include "v3/ast/expressions/symbolexpression.h"
 #include "v3/ast/expressions/unaryexpression.h"
 
@@ -22,7 +23,6 @@ Function::Function()
     this->resolved = new Function::__Resolved();
     this->hasBody = false;
     this->ast = nullptr;
-    this->intrinsicOp = IntrinsicOpCode::Invalid; // not an intrinsic
 
     Function::__Resolved* typeResolved = static_cast<Function::__Resolved*>(this->resolved);
     typeResolved->computeShaderWorkGroupSize[0] = 1;
@@ -40,6 +40,7 @@ Function::Function()
     typeResolved->patchType = Function::__Resolved::InvalidPatchType;
     typeResolved->partitionMethod = Function::__Resolved::InvalidPartitionMethod;
     typeResolved->pixelOrigin = Function::__Resolved::Lower;
+    typeResolved->isPrototype = false;
 }
 
 //------------------------------------------------------------------------------
@@ -117,31 +118,33 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
 #define __MAKE_INTRINSIC(nm, opcode)\
 newIntrinsic = new Function();\
 newIntrinsic->name = #nm;\
-newIntrinsic->intrinsicOp = IntrinsicOpCode::opcode;\
+Intrinsics::opcode = newIntrinsic;\
 intrinsics.push_back(newIntrinsic);
 
-#define __ADD_ARG(name, tp)\
+#define __ADD_ARG(nm, tp)\
 newVar = new Variable();\
 newVar->type = { tp };\
-newVar->nameExpression = new SymbolExpression(#name);\
+newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
-#define __ADD_ARG_LIT(name, tp)\
+#define __ADD_ARG_LIT(nm, tp)\
 newVar = new Variable();\
 newVar->type = { #tp };\
-newVar->nameExpression = new SymbolExpression(#name);\
+newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
-#define __ADD_HANDLE_ARG(name, tp)\
+#define __ADD_HANDLE_ARG(nm, tp)\
 newVar = new Variable();\
-newVar->type = { tp };\
-newVar->nameExpression = new UnaryExpression(StringToFourCC("*"), 0x0, new SymbolExpression(#name));\
+newVar->type = Type::FullType{ tp };\
+newVar->type.AddModifier(Type::FullType::Modifier::PointerLevel);\
+newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
-#define __ADD_HANDLE_ARG_LIT(name, tp)\
+#define __ADD_HANDLE_ARG_LIT(nm, tp)\
 newVar = new Variable();\
 newVar->type = { #tp };\
-newVar->nameExpression = new UnaryExpression(StringToFourCC("*"), 0x0, new SymbolExpression(#name));\
+newVar->type.AddModifier(Type::FullType::Modifier::PointerLevel);\
+newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __SET_RET_LIT(name)\
@@ -271,6 +274,27 @@ Function::SetupIntrinsics()
     for (int i = 0; i < numFloatArgs; i++)
     {
         __MAKE_INTRINSIC(trunc, Truncate);
+        __ADD_ARG(x, floatArgs[i]);
+        __SET_RET(floatArgs[i]);
+    }
+
+    for (int i = 0; i < numFloatArgs; i++)
+    {
+        __MAKE_INTRINSIC(ddx, DDX);
+        __ADD_ARG(x, floatArgs[i]);
+        __SET_RET(floatArgs[i]);
+    }
+
+    for (int i = 0; i < numFloatArgs; i++)
+    {
+        __MAKE_INTRINSIC(ddy, DDY);
+        __ADD_ARG(x, floatArgs[i]);
+        __SET_RET(floatArgs[i]);
+    }
+
+    for (int i = 0; i < numFloatArgs; i++)
+    {
+        __MAKE_INTRINSIC(fwidth, FWidth);
         __ADD_ARG(x, floatArgs[i]);
         __SET_RET(floatArgs[i]);
     }

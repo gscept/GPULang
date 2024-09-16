@@ -42,6 +42,7 @@ struct CallExpression : public Expression
 
         std::vector<Type::FullType> argumentTypes;
         std::vector<Type*> argTypes;
+        std::vector<Function*> conversions;
     };
 };
 

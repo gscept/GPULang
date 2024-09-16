@@ -16,20 +16,28 @@ struct Float3 : public Type
     /// constructor
     Float3();
 
-    Function ctorXYZ;
-    Function ctorSingleValue;
+    static Function ctor_XYZ;
+    static Function ctor_Float2_Z;
+    static Function ctorSingleValue;
 
-    Function additionOperator;
-    Function subtractionOperator;
-    Function multiplicationOperator;
-    Function divisionOperator;
-    Function additionAssignOperator;
-    Function subtractionAssignOperator;
-    Function multiplicationAssignOperator;
-    Function divisionAssignOperator;
+    static Function additionOperator;
+    static Function subtractionOperator;
+    static Function multiplicationOperator;
+    static Function divisionOperator;
+    static Function modOperator;
+    static Function scaleOperator;
 
-    Function bracketOperatorInt;
-    Function bracketOperatorUInt;
+    static Function matrix34Mul;
+    static Function matrix33Mul;
+    static Function matrix32Mul;
+
+    static Function additionAssignOperator;
+    static Function subtractionAssignOperator;
+    static Function multiplicationAssignOperator;
+    static Function divisionAssignOperator;
+
+    static Function elementAccessOperatorInt;
+    static Function elementAccessOperatorUInt;
 };
 
 } // namespace GPULang

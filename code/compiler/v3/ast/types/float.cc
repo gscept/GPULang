@@ -6,6 +6,28 @@
 namespace GPULang
 {
 
+Function Float::ctor_UInt;
+Function Float::ctor_Int;
+Function Float::additionOperator;
+Function Float::subtractionOperator;
+Function Float::multiplicationOperator;
+Function Float::divisionOperator;
+Function Float::modOperator;
+Function Float::additionAssignOperator;
+Function Float::subtractionAssignOperator;
+Function Float::multiplicationAssignOperator;
+Function Float::divisionAssignOperator;
+
+Function Float::ltOperator;
+Function Float::lteOperator;
+Function Float::gtOperator;
+Function Float::gteOperator;
+Function Float::eOperator;
+Function Float::neOperator;
+
+Function Float::intAssignOperator;
+Function Float::uintAssignOperator;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -17,12 +39,15 @@ Float::Float()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_FUNCTION_1(ctorUInt, float, float, uint);
-    __IMPLEMENT_FUNCTION_1(ctorInt, float, float, int);
+    __IMPLEMENT_GLOBAL_1(ctor_UInt, float, float, uint);
+    __IMPLEMENT_GLOBAL_1(ctor_Int, float, float, int);
+
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float, float);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float, float);
     __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, float, float);
     __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, float, float);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, float, float);
+
     __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float, float);
     __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float, float);
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, float, float);

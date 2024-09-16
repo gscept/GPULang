@@ -16,8 +16,8 @@ struct Bool : public Type
     /// constructor
     Bool();
 
-    Function ctorUInt;
-    Function ctorInt;
+    Function ctor_UInt;
+    Function ctor_Int;
 
     Function orOperator;
     Function andOperator;
@@ -31,6 +31,7 @@ struct Bool : public Type
     Function eOperator;
     Function neOperator;
 
+    Function boolAssignOperator;
     Function intAssignOperator;
     Function uintAssignOperator;
 };

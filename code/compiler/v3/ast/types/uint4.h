@@ -16,35 +16,37 @@ struct UInt4 : public Type
     /// constructor
     UInt4();
 
-    Function ctorXYZW;
-    Function ctorSingleValue;
-    Function ctorUInt2ZW;
-    Function ctorUInt3W;
-    
-    Function andOperator;
-    Function orOperator;
-    Function xorOperator;
-    Function leftShiftOperator;
-    Function rightShiftOperator;
-    Function andAssignOperator;
-    Function orAssignOperator;
-    Function xorAssignOperator;
-    Function leftShiftAssignOperator;
-    Function rightShiftAssignOperator;
+    static Function ctor_XYZW;
+    static Function ctorSingleValue;
+    static Function ctor_3_W;
+    static Function ctor_2_ZW;
 
-    Function additionOperator;
-    Function subtractionOperator;
-    Function multiplicationOperator;
-    Function divisionOperator;
-    Function moduloOperator;
-    Function additionAssignOperator;
-    Function subtractionAssignOperator;
-    Function multiplicationAssignOperator;
-    Function divisionAssignOperator;
-    Function moduloAssignOperator;
+    static Function andOperator;
+    static Function orOperator;
+    static Function xorOperator;
+    static Function leftShiftOperator;
+    static Function rightShiftOperator;
+    static Function additionOperator;
+    static Function subtractionOperator;
+    static Function multiplicationOperator;
+    static Function divisionOperator;
+    static Function modOperator;
+    static Function fractOperator;
+    static Function scaleOperator;
 
-    Function bracketOperatorInt;
-    Function bracketOperatorUInt;
+    static Function andAssignOperator;
+    static Function orAssignOperator;
+    static Function xorAssignOperator;
+    static Function leftShiftAssignOperator;
+    static Function rightShiftAssignOperator;
+    static Function additionAssignOperator;
+    static Function subtractionAssignOperator;
+    static Function multiplicationAssignOperator;
+    static Function divisionAssignOperator;
+    static Function moduloAssignOperator;
+
+    static Function elementAccessOperatorInt;
+    static Function elementAccessOperatorUInt;
 };
 
 } // namespace GPULang

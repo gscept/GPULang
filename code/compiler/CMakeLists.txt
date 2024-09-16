@@ -50,6 +50,8 @@ fips_dir(v3/ast)
         enumeration.h
         function.cc
         function.h
+        intrinsics.cc
+        intrinsics.h
         program.cc
         program.h
         renderstate.cc
@@ -133,6 +135,7 @@ fips_dir(v3/ast/types)
         bool3.h
         bool4.cc
         bool4.h
+        builtins.h
         float.cc
         float.h
         float2.cc

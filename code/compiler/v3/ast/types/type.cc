@@ -3,36 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "type.h"
-#include "util.h"
-#include "bool.h"
-#include "bool2.h"
-#include "bool3.h"
-#include "bool4.h"
-#include "int.h"
-#include "int2.h"
-#include "int3.h"
-#include "int4.h"
-#include "uint.h"
-#include "uint2.h"
-#include "uint3.h"
-#include "uint4.h"
-#include "float.h"
-#include "float2.h"
-#include "float3.h"
-#include "float4.h"
-#include "mat2x2.h"
-#include "mat2x3.h"
-#include "mat2x4.h"
-#include "mat3x2.h"
-#include "mat3x3.h"
-#include "mat3x4.h"
-#include "mat4x2.h"
-#include "mat4x3.h"
-#include "mat4x4.h"
-#include "renderstatetype.h"
-#include "samplerstatetype.h"
-#include "programtype.h"
-#include "functiontype.h"
+#include "builtins.h"
 #include <set>
 namespace GPULang
 {
@@ -92,9 +63,10 @@ Type::~Type()
         delete sym;
 }
 
-std::map<TypeCode, std::string> codeToStringMapping =
+const std::map<TypeCode, std::string> codeToStringMapping =
 {
-    { TypeCode::Float, "float" }
+    { TypeCode::Void, "void" }
+    , { TypeCode::Float, "float" }
     , { TypeCode::Float16, "float16" }
     , { TypeCode::Int, "int" }
     , { TypeCode::Int16, "int16" }
@@ -310,10 +282,10 @@ bool
 Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
 {
     // convert to swizzle mask
-    out.x = SwizzleMask::Invalid;
-    out.y = SwizzleMask::Invalid;
-    out.z = SwizzleMask::Invalid;
-    out.w = SwizzleMask::Invalid;
+    out.bits.x = SwizzleMask::Invalid;
+    out.bits.y = SwizzleMask::Invalid;
+    out.bits.z = SwizzleMask::Invalid;
+    out.bits.w = SwizzleMask::Invalid;
     for (size_t i = 0; i < str.length() && i <= 4; i++)
     {
         char c = str[i];
@@ -324,16 +296,16 @@ Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
                 switch (i)
                 {
                     case 0:
-                        out.x = SwizzleMask::X;
+                        out.bits.x = SwizzleMask::X;
                         break;
                     case 1:
-                        out.y = SwizzleMask::X;
+                        out.bits.y = SwizzleMask::X;
                         break;
                     case 2:
-                        out.z = SwizzleMask::X;
+                        out.bits.z = SwizzleMask::X;
                         break;
                     case 3:
-                        out.w = SwizzleMask::X;
+                        out.bits.w = SwizzleMask::X;
                         break;
                 }
                 break;
@@ -342,16 +314,16 @@ Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
                 switch (i)
                 {
                     case 0:
-                        out.x = SwizzleMask::Y;
+                        out.bits.x = SwizzleMask::Y;
                         break;
                     case 1:
-                        out.y = SwizzleMask::Y;
+                        out.bits.y = SwizzleMask::Y;
                         break;
                     case 2:
-                        out.z = SwizzleMask::Y;
+                        out.bits.z = SwizzleMask::Y;
                         break;
                     case 3:
-                        out.w = SwizzleMask::Y;
+                        out.bits.w = SwizzleMask::Y;
                         break;
                 }
                 break;
@@ -360,16 +332,16 @@ Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
                 switch (i)
                 {
                     case 0:
-                        out.x = SwizzleMask::Z;
+                        out.bits.x = SwizzleMask::Z;
                         break;
                     case 1:
-                        out.y = SwizzleMask::Z;
+                        out.bits.y = SwizzleMask::Z;
                         break;
                     case 2:
-                        out.z = SwizzleMask::Z;
+                        out.bits.z = SwizzleMask::Z;
                         break;
                     case 3:
-                        out.w = SwizzleMask::Z;
+                        out.bits.w = SwizzleMask::Z;
                         break;
                 }
                 break;
@@ -378,16 +350,16 @@ Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
                 switch (i)
                 {
                     case 0:
-                        out.x = SwizzleMask::W;
+                        out.bits.x = SwizzleMask::W;
                         break;
                     case 1:
-                        out.y = SwizzleMask::W;
+                        out.bits.y = SwizzleMask::W;
                         break;
                     case 2:
-                        out.z = SwizzleMask::W;
+                        out.bits.z = SwizzleMask::W;
                         break;
                     case 3:
-                        out.w = SwizzleMask::W;
+                        out.bits.w = SwizzleMask::W;
                         break;
                 }
                 break;
@@ -405,17 +377,16 @@ unsigned
 Type::SwizzleMaskComponents(SwizzleMask mask)
 {
     int numComponents = 0;
-    if (mask.x != SwizzleMask::Invalid)
+    if (mask.bits.x != SwizzleMask::Invalid)
         numComponents++;
-    if (mask.y != SwizzleMask::Invalid)
+    if (mask.bits.y != SwizzleMask::Invalid)
         numComponents++;
-    if (mask.z != SwizzleMask::Invalid)
+    if (mask.bits.z != SwizzleMask::Invalid)
         numComponents++;
-    if (mask.w != SwizzleMask::Invalid)
+    if (mask.bits.w != SwizzleMask::Invalid)
         numComponents++;
     return numComponents;
 }
-
 
 //------------------------------------------------------------------------------
 /**
@@ -426,10 +397,10 @@ Type::SwizzleMaskBiggestComponent(SwizzleMask mask)
     unsigned ret = 0;
 
     // Find the max value, but make sure to mask out Invalid
-    ret = max(mask.x & ~SwizzleMask::Invalid, ret);
-    ret = max(mask.y & ~SwizzleMask::Invalid, ret);
-    ret = max(mask.z & ~SwizzleMask::Invalid, ret);
-    ret = max(mask.w & ~SwizzleMask::Invalid, ret);
+    ret = max(mask.bits.x & ~SwizzleMask::Invalid, ret);
+    ret = max(mask.bits.y & ~SwizzleMask::Invalid, ret);
+    ret = max(mask.bits.z & ~SwizzleMask::Invalid, ret);
+    ret = max(mask.bits.w & ~SwizzleMask::Invalid, ret);
     return ret;
 }
 
@@ -464,7 +435,7 @@ const bool
 Type::FullType::IsPointer() const
 {
     if (!this->modifiers.empty())
-        return this->modifiers.back() == Type::FullType::Modifier::PointerLevel;
+        return this->modifiers.front() == Type::FullType::Modifier::PointerLevel;
     else
         return false;
 }

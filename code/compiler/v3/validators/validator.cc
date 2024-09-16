@@ -235,6 +235,11 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         if (!this->ResolveStructure(compiler, type))
             return false;
     }
+    else if (type->symbolType == Symbol::SymbolType::TypeType)
+    {
+        if (!compiler->AddSymbol(symbol->name, symbol))
+            return false;
+    }
     else if (type->symbolType != Symbol::SymbolType::FunctionType)
     {
         if (!compiler->AddSymbol(symbol->name, symbol))
@@ -305,6 +310,16 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
 
+    for (Symbol* sym : type->globals)
+    {
+        if (sym->symbolType == Symbol::SymbolType::FunctionType)
+        {
+            Function* fun = static_cast<Function*>(sym);
+            if (!this->ResolveFunction(compiler, fun))
+                return false;
+        }
+    }
+
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, type);
 
     for (Symbol* sym : type->symbols)
@@ -315,7 +330,7 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             if (!this->ResolveFunction(compiler, fun))
                 return false;
         }
-    }
+    }    
 
     for (Symbol* sym : type->staticSymbols)
     {
@@ -477,7 +492,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     std::string attributeList;
-    bool isPrototype = false;
 
     // make a set of all attributes
     for (const Attribute& attr : fun->attributes)
@@ -490,15 +504,17 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         attributeList.append(Format("%s ", attrAsString.c_str()));
         if (attr.name == "prototype")
-            isPrototype = true;
+            funResolved->isPrototype = true;
     }
 
     // format function with all attributes and parameters
-    std::string functionFormatted = Format("%s%s %s(%s)", attributeList.c_str(), fun->returnType.name.c_str(), fun->name.c_str(), paramList.c_str());
-    fun->signature = functionFormatted;
+    std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
+    std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
+    funResolved->name = resolvedName;
+    funResolved->signature = functionFormatted;
 
     // if prototype, add as an ordinary symbol
-    if (isPrototype)
+    if (funResolved->isPrototype)
     {
         if (!compiler->AddSymbol(fun->name, fun, false))
             return false;
@@ -523,22 +539,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
     }
-
-    // if we didn't fault, add the symbol
-    if (!compiler->AddSymbol(fun->name, fun, true))
-        return false;
-
-    // also add the signature for type lookup
-    if (!compiler->AddSymbol(fun->signature, fun, false))
-        return false;
-
-    Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
-    if (type == nullptr)
-    {
-        compiler->UnrecognizedTypeError(fun->returnType.name, fun);
-        return false;
-    }
-    funResolved->returnTypeSymbol = type;
 
     // run attribute validation
     for (const Attribute& attr : fun->attributes)
@@ -696,6 +696,22 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    // if we didn't fault, add the symbol
+    if (!compiler->AddSymbol(funResolved->name, fun, true))
+        return false;
+
+    // also add the signature for type lookup
+    if (!compiler->AddSymbol(funResolved->signature, fun, false))
+        return false;
+
+    Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
+    if (type == nullptr)
+    {
+        compiler->UnrecognizedTypeError(fun->returnType.name, fun);
+        return false;
+    }
+    funResolved->returnTypeSymbol = type;
+
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, fun);
 
     // Variables already resolved, just need to add them back to the scope
@@ -745,7 +761,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         }
 
         // only allow symbol assignments
-        if (assignEntry->right->symbolType != Symbol::SymbolExpressionType)
+        if (assignEntry->right->symbolType != Symbol::UnaryExpressionType)
         {
             compiler->Error(Format("Program binds '%s' but it is not an identifier", assignEntry->EvalString().c_str()), symbol);
             return false;
@@ -814,7 +830,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 for (Symbol* sym : functions)
                 {
                     Function* func = static_cast<Function*>(sym);
-                    candidates.append(func->signature);
+                    Function::__Resolved* res = Symbol::Resolved(func);
+
+                    candidates.append(res->signature);
                     if (sym != functions.back())
                         candidates.append(",\n");
                 }
@@ -1267,7 +1285,7 @@ bool
 Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 {
     Enumeration* enumeration = static_cast<Enumeration*>(symbol);
-    auto enumResolved = Symbol::Resolved(enumeration);
+    Enumeration::__Resolved* enumResolved = Symbol::Resolved(enumeration);
 
     if (!compiler->AddSymbol(enumeration->name, enumeration))
         return false;
@@ -1345,6 +1363,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->typeSymbol = type;
     var->type.name = type->name;        // because we can do an alias lookup, this value might change
     varResolved->type = var->type;
+    varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
 
     // struct members may only be scalars
@@ -1355,54 +1374,19 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         return false;
     }
 
-    // resolve array type and names
-    if (var->nameExpression != nullptr)
-    {
-        // Set declaration type for potential symbol evaluation
-        compiler->declareTy = type;
-        compiler->declareType = varResolved->type;
-
-        Expression* expr = var->nameExpression;
-        expr->isDeclaration = true;
-        expr->isLhsValue = true;
-        expr->Resolve(compiler);
-
-        // Reset declaration type
-        compiler->declareTy = nullptr;
-        compiler->declareType = Type::FullType{};
-
-        expr->EvalSymbol(varResolved->name);
-        expr->EvalType(varResolved->type);
-        var->name = varResolved->name;
-
-        // make sure binary expression is valid
-        if (expr->symbolType == Symbol::BinaryExpressionType)
-        {
-            BinaryExpression* binaryExpression = static_cast<BinaryExpression*>(expr);
-            if (binaryExpression->op != '=')
-            {
-                compiler->Error(Format("Expected assignment but got operator '%s'", FourCCToString(binaryExpression->op).c_str()), expr);
-                return false;
-            }
-            varResolved->value = binaryExpression->right;
-        }
-        else if (expr->symbolType != Symbol::SymbolExpressionType
-                 && expr->symbolType != Symbol::UnaryExpressionType
-                 && expr->symbolType != Symbol::ArrayIndexExpressionType)
-        {
-            // Only symbols, unary expressions and array expressions are valid as variable declarations
-            compiler->Error(Format("Expected either identifier, assignment or pointer expression"), symbol);
-            return false;
-        }        
-    }
-    else
-    {
-        varResolved->name = var->name;
-    }
-
     // Add symbol
-    if (!compiler->AddSymbol(varResolved->name, var))
+    if (!compiler->AddSymbol(var->name, var))
         return false;
+
+    // resolve array type and names
+    if (var->valueExpression != nullptr)
+    {
+        Expression* expr = var->valueExpression;
+        expr->isDeclaration = true;
+        expr->isLhsValue = false;
+        expr->Resolve(compiler);
+        varResolved->value = var->valueExpression;
+    }
 
     // If struct member, only allow sized arrays and no initializers
     if (varResolved->usageBits.flags.isStructMember)
@@ -1626,7 +1610,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
 
         Type* lhsType = compiler->GetSymbol<Type>(lhs.name);
-        std::vector<Symbol*> assignmentOperators = lhsType->GetSymbols("operator=");
+        std::vector<Symbol*> assignmentOperators = lhsType->GetSymbols(Format("operator=(%s)", rhs.name.c_str()));
         Symbol* fun = Function::MatchOverload(compiler, assignmentOperators, { rhs });
         if (lhs != rhs
             && fun == nullptr)
@@ -1673,20 +1657,31 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         // if user type and mutable or uniform, convert to either mutable or constant type
         if (cat == Type::Category::UserTypeCategory)
         {
-            if (varResolved->usageBits.flags.isMutable)
-                cat = Type::Category::MutableStructureCategory;
-            else if (varResolved->usageBits.flags.isUniform)
-                cat = Type::Category::UniformStructureCategory;
+            if (compiler->IsScopeGlobal())
+            {
+                if (varResolved->usageBits.flags.isMutable)
+                    cat = Type::Category::MutableStructureCategory;
+                else if (varResolved->usageBits.flags.isUniform)
+                    cat = Type::Category::UniformStructureCategory;
 
-            if (!varResolved->type.IsPointer())
-            {
-                compiler->Error(Format("Variable of '%s' with qualifier 'uniform' or 'mutable' must be pointer", type->name.c_str()), var);
-                return false;
+                if (!varResolved->type.IsPointer())
+                {
+                    compiler->Error(Format("Variable of '%s' with qualifier 'uniform' or 'mutable' must be pointer", type->name.c_str()), var);
+                    return false;
+                }
+                else if (cat == Type::Category::UserTypeCategory)
+                {
+                    compiler->Error(Format("Variable of '%s' must be either 'uniform' or 'mutable'", type->name.c_str()), var);
+                    return false;
+                }
             }
-            else if (cat == Type::Category::UserTypeCategory)
+            else
             {
-                compiler->Error(Format("Variable of '%s' pointer must be either 'uniform' or 'mutable'", type->name.c_str()), var);
-                return false;
+                if (varResolved->usageBits.flags.isMutable || varResolved->usageBits.flags.isUniform)
+                {
+                    compiler->Error(Format("Variable of '%s' with qualifier 'uniform' or 'mutable' are only allowed in the global scope", type->name.c_str()), var);
+                    return false;
+                }
             }
         }
 

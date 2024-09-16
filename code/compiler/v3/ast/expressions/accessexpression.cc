@@ -106,7 +106,7 @@ AccessExpression::Resolve(Compiler* compiler)
     }
     else
     {
-        Variable* memberVar = static_cast<Variable*>(compiler->GetSymbol(member));
+        Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(member));
         if (memberVar == nullptr)
         {
             compiler->Error(Format("Type does not have member or method '%s'", member.c_str()), this);

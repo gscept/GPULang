@@ -98,6 +98,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->generator = new SPIRVGenerator();
         break;
     }
+    this->generator->SetupIntrinsics();
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();

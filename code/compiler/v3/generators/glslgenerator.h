@@ -29,11 +29,11 @@ public:
     bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate function
-    void GenerateFunction(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate structure 
-    void GenerateStructure(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
-    void GenerateVariable(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    void GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
 
     LanguageFeatureSet featureSet;
 };

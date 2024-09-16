@@ -17,10 +17,12 @@ Bool::Bool()
     this->byteSize = 1;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_FUNCTION_1(ctorInt, bool, bool, int);
+    __IMPLEMENT_GLOBAL_1(ctor_Int, bool, bool, int);
+    __ADD_CONSTRUCTOR()
 
     // setup uint constructor
-    __IMPLEMENT_FUNCTION_1(ctorUInt, bool, bool, uint);
+    __IMPLEMENT_GLOBAL_1(ctor_UInt, bool, bool, uint);
+    __ADD_CONSTRUCTOR()
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, bool, bool);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, bool, bool);
@@ -34,6 +36,7 @@ Bool::Bool()
     __IMPLEMENT_FUNCTION_1(eOperator, operator==, bool, bool);
     __IMPLEMENT_FUNCTION_1(neOperator, operator!=, bool, bool);
 
+    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, bool, bool);
     __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, bool, int);
     __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, bool, uint);
 }

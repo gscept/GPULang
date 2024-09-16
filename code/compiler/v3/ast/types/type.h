@@ -10,6 +10,24 @@
 #include <vector>
 #include <map>
 
+#define __IMPLEMENT_GLOBAL_1(method, id, t, argtype)\
+this->method.name = #id;\
+this->method.returnType = {#t};\
+this->globals.push_back(&this->method);\
+activeFunction = &this->method;\
+{\
+    Variable* var = new Variable; \
+    var->name = "_arg0"; \
+    var->type = { #argtype }; \
+    activeFunction->parameters.push_back(var); \
+}
+
+#define __IMPLEMENT_GLOBAL(method, id, type)\
+this->method.name = #id;\
+this->method.returnType = {#type};\
+this->globals.push_back(&this->method);\
+activeFunction = &this->method;\
+
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 this->method.name = #id;\
 this->method.returnType = {#t};\
@@ -26,18 +44,18 @@ activeFunction = &this->method;\
 this->method.name = #id;\
 this->method.returnType = {#type};\
 this->staticSymbols.push_back(&this->method);\
-activeFunction = &this->method;;\
+activeFunction = &this->method;\
 
 
 #define __ADD_FUNCTION_LOOKUP(id)\
 this->lookup.insert({ #id, activeFunction });
 
-#define __ADD_SWIZZLE(id)\
+#define __ADD_SWIZZLE(retType, format, ...)\
 {\
-    SwizzleMask mask;\
-    auto str = id;\
-    Type::StringToSwizzleMask(str, mask);\
-    this->swizzle.insert({str, mask});\
+    Variable* swizzleMember = new Variable;\
+    swizzleMember->name = Format(format, __VA_ARGS__);\
+    swizzleMember->type = {#retType};\
+    this->staticSymbols.push_back(swizzleMember);\
 }
 
 #define __ADD_FUNCTION_PARAM(id, t)\
@@ -52,6 +70,10 @@ this->lookup.insert({ #id, activeFunction });
 this->variable.name = id;\
 this->variable.type = {#t};\
 this->lookup.insert({id, &this->variable});
+
+#define __ADD_CONSTRUCTOR()\
+this->constructors.push_back(activeFunction);
+
 
 namespace GPULang
 {
@@ -143,10 +165,16 @@ struct Type : public Symbol
             W = 3,
             Invalid = 4
         };
-        uint16_t x : 3;
-        uint16_t y : 3;
-        uint16_t z : 3;
-        uint16_t w : 3;
+        union
+        {
+            struct {
+                uint8_t x : 3;
+                uint8_t y : 3;
+                uint8_t z : 3;
+                uint8_t w : 3;
+            } bits;
+            uint32_t mask;
+        };
     };
 
     /// convert string to swizzle mask, returns true if possible swizzle mask
@@ -178,6 +206,23 @@ struct Type : public Symbol
             ArrayLevel,
             PointerLevel
         };
+
+        void AddModifier(Modifier type, uint32_t value = 0x0)
+        {
+            this->modifiers.push_back(type);
+            this->modifierValues.push_back(value);
+        }
+
+        void UpdateValue(uint32_t value)
+        {
+            this->modifierValues.back() = value;
+        }
+
+        void ClearModifiers()
+        {
+            this->modifiers.clear();
+            this->modifierValues.clear();
+        }
         
         std::vector<Modifier> modifiers;
         std::vector<uint32_t> modifierValues;
@@ -208,10 +253,11 @@ struct Type : public Symbol
         const bool IsPointer() const;
     };
 
+    std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;
     std::vector<Symbol*> symbols;
+    std::vector<Symbol*> constructors;
     std::multimap<std::string, Symbol*> lookup;
-    std::map<std::string, SwizzleMask> swizzle;
 
     /// return member symbol
     Symbol* GetSymbol(const std::string str);

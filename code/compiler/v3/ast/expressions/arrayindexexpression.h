@@ -47,7 +47,10 @@ struct ArrayIndexExpression : public Expression
         Type* lhsType;
         Type::FullType rightFullType;
         Type* rhsType;
-        Type::FullType returnType;
+        Type::FullType returnFullType;
+        Type* returnType;
+
+        unsigned int literalAccess = 0xFFFFFFFF;
     };
 };
 

@@ -52,6 +52,7 @@ public:
     struct __Resolved : public Expression::__Resolved
     {
         Type::FullType fullType;
+        Symbol* dereffedSymbol = nullptr;
         Type* type;
     };
 }; 

@@ -16,20 +16,27 @@ struct Float2 : public Type
     /// constructor
     Float2();
 
-    Function ctorXY;
-    Function ctorSingleValue;
+    static Function ctor_XY;
+    static Function ctorSingleValue;
 
-    Function additionOperator;
-    Function subtractionOperator;
-    Function multiplicationOperator;
-    Function divisionOperator;
-    Function additionAssignOperator;
-    Function subtractionAssignOperator;
-    Function multiplicationAssignOperator;
-    Function divisionAssignOperator;
+    static Function additionOperator;
+    static Function subtractionOperator;
+    static Function multiplicationOperator;
+    static Function divisionOperator;
+    static Function modOperator;
+    static Function scaleOperator;
 
-    Function bracketOperatorInt;
-    Function bracketOperatorUInt;
+    static Function matrix24Mul;
+    static Function matrix23Mul;
+    static Function matrix22Mul;
+
+    static Function additionAssignOperator;
+    static Function subtractionAssignOperator;
+    static Function multiplicationAssignOperator;
+    static Function divisionAssignOperator;
+
+    static Function elementAccessOperatorInt;
+    static Function elementAccessOperatorUInt;
 };
 
 } // namespace GPULang

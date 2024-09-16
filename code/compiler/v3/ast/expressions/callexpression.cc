@@ -43,17 +43,9 @@ CallExpression::Resolve(Compiler* compiler)
     if (this->isLhsValue)
         this->function->isLhsValue = true;
 
-    if (!this->function->Resolve(compiler))
-        return false;
-
     this->function->EvalSymbol(thisResolved->functionSymbol);
-    Symbol* symbol = compiler->GetSymbol(thisResolved->functionSymbol);
-    if (symbol == nullptr)
-    {
-        compiler->UnrecognizedSymbolError(thisResolved->functionSymbol, this);
-        return false;
-    }
 
+    std::string argList = "";
     for (Expression* expr : this->args)
     {
         if (!expr->Resolve(compiler))
@@ -70,52 +62,77 @@ CallExpression::Resolve(Compiler* compiler)
         }
         thisResolved->argumentTypes.push_back(fullType);
         thisResolved->argTypes.push_back(type);
+        argList.append(fullType.ToString());
+        if (expr != this->args.back())
+            argList.append(",");
     }
+    std::string callSignature = Format("%s(%s)", thisResolved->functionSymbol.c_str(), argList.c_str());
 
-    // function case
-    std::vector<Symbol*> matches;
-    if (symbol->symbolType == Symbol::FunctionType)
+    Symbol* symbol = compiler->GetSymbol(callSignature);
+    if (symbol == nullptr)
     {
-        matches = compiler->GetSymbols(thisResolved->functionSymbol);
+        // If the function isn't available, check for any type constructor that might implement it
+        Symbol* typeSymbol = compiler->GetSymbol(thisResolved->functionSymbol.c_str());
+        if (typeSymbol != nullptr)
+        {
+            Type* type = static_cast<Type*>(typeSymbol);
+            bool conversionFound = false;
+            for (Symbol* ctor : type->constructors)
+            {
+                Function* ctorFun = static_cast<Function*>(ctor);
+                thisResolved->function = ctorFun;
+                if (ctorFun->parameters.size() == thisResolved->argTypes.size())
+                {
+                    uint32_t numMatches = 0;
+                    for (size_t i = 0; i < ctorFun->parameters.size(); i++)
+                    {
+                        if (ctorFun->parameters[i]->type.name != thisResolved->argTypes[i]->name)
+                        {
+                            std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), thisResolved->argTypes[i]->name.c_str());
+                            Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
-        Symbol* match = Function::MatchOverload(compiler, matches, thisResolved->argumentTypes);
-        if (match)
-            thisResolved->function = static_cast<Function*>(match);
+                            // No conversion available for this member, skip to next constructor
+                            if (componentConversionSymbol == nullptr)
+                            {
+                                thisResolved->conversions.clear();
+                                break;
+                            }
+                            thisResolved->conversions.push_back(static_cast<Function*>(componentConversionSymbol));
+                        }
+                        else
+                        {
+                            // No conversion needed
+                            thisResolved->conversions.push_back(nullptr);
+                        }
+                        numMatches++;
+                    }
+                    if (numMatches == ctorFun->parameters.size())
+                    {
+                        conversionFound = true;
+                        break;
+                    }
+                }
+            }
+            if (!conversionFound)
+            {
+                compiler->Error(Format("No constructor exists for %s", callSignature.c_str()), this);
+                thisResolved->function = nullptr;
+                return false;
+            }
+        }
         else
         {
-            std::string argList;
-            for (size_t i = 0; i < thisResolved->argumentTypes.size(); i++)
-            {
-                argList.append(thisResolved->argumentTypes[i].ToString());
-                if (i < thisResolved->argumentTypes.size() - 1)
-                    argList.append(", ");
-            }
-            compiler->Error(Format("No overload of '%s' matches arguments '%s'", thisResolved->functionSymbol.c_str(), argList.c_str()), this);
+            compiler->UnrecognizedSymbolError(callSignature, this);
             return false;
         }
     }
-    else if (symbol->symbolType == Symbol::TypeType)
+    else
     {
-        // constructor case
-        Type* type = static_cast<Type*>(symbol);
-        matches = type->GetSymbols(thisResolved->functionSymbol);
-
-        // if type constructor, allow for implicit conversion of individual arguments
-        Symbol* match = Function::MatchOverload(compiler, matches, thisResolved->argumentTypes, true);
-        if (match)
-            thisResolved->function = static_cast<Function*>(match);
-        else
+        if (symbol->symbolType != Symbol::FunctionType)
         {
-            std::string argList;
-            for (size_t i = 0; i < thisResolved->argumentTypes.size(); i++)
-            {
-                argList.append(thisResolved->argumentTypes[i].ToString());
-                if (i < thisResolved->argumentTypes.size() - 1)
-                    argList.append(", ");
-            }
-            compiler->Error(Format("No constructor for type '%s' matches arguments '%s'", type->name.c_str(), argList.c_str()), this);
-            return false;
+            compiler->Error(Format("'%s' is not a function", thisResolved->functionSymbol.c_str()), this);
         }
+        thisResolved->function = static_cast<Function*>(symbol);
     }
 
     if (thisResolved->function != nullptr)
@@ -131,7 +148,7 @@ CallExpression::Resolve(Compiler* compiler)
     }
     else
     {
-        compiler->Error(Format("No overload of function '%s' found", thisResolved->functionSymbol.c_str()), this);
+        compiler->Error(Format("No overload of function '%s' found", callSignature.c_str()), this);
         return false;
     }
 }
@@ -168,7 +185,7 @@ CallExpression::EvalString() const
         std::string arg = expr->EvalString();
         args.append(arg);
         if (expr != this->args.back())
-            args.append(", ");
+            args.append(",");
     }
     std::string fun = this->function->EvalString();
     return Format("%s(%s)", fun.c_str(), args.c_str());

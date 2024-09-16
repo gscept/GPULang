@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "binaryexpression.h"
 #include "ast/function.h"
+#include "ast/expressions/symbolexpression.h"
 #include "compiler.h"
 #include "util.h"
 
@@ -20,6 +21,7 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
 {
     this->resolved = new BinaryExpression::__Resolved;
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->conversionFunction = nullptr;
     thisResolved->lhsType = nullptr;
     thisResolved->rhsType = nullptr;
     thisResolved->retType = nullptr;
@@ -69,6 +71,21 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    SymbolExpression* lhs = static_cast<SymbolExpression*>(this->left);
+    if (lhs->symbolType == Symbol::SymbolType::SymbolExpressionType)
+    {
+        Variable* leftSymbol = compiler->GetSymbol<Variable>(lhs->symbol);
+        if (leftSymbol != nullptr)
+        {
+            Variable::__Resolved* leftSymbolResolved = Symbol::Resolved(leftSymbol);
+            if (leftSymbolResolved->usageBits.flags.isConst && !this->left->isDeclaration)
+            {
+                compiler->Error(Format("Invalid operator '%c' on const symbol '%s'", this->op, leftSymbol->name.c_str()), this);
+                return false;
+            }
+        }
+    }
+
     // If assignment, allow if types are identical
     if (this->op == '=')
     {
@@ -81,29 +98,17 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
 
     // If not, or the operator is otherwise, look for conversion assignment or comparison operators
-    std::string functionName = Format("operator%s", FourCCToString(this->op).c_str());
-    std::vector<Symbol*> functions = thisResolved->lhsType->GetSymbols(functionName);
-    if (functions.empty())
+    std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
+    Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
+    if (conversionFunction == nullptr)
     {
         compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
         return false;
     }
-    else
-    {
-        Symbol* matchingOverload = Function::MatchOverload(compiler, functions, { thisResolved->rightType });
-        if (matchingOverload != nullptr)
-        {
-            Function* fun = static_cast<Function*>(matchingOverload);
-            thisResolved->returnType = fun->returnType;
-            thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
-        }
-        else
-        {
-            compiler->Error(Format("No known overload for '%s' with types '%s' and '%s'", functionName.c_str(), thisResolved->leftType.name.c_str(), thisResolved->rightType.name.c_str()), this);
-            return false;
-        }
-    }
-
+    Function* fun = static_cast<Function*>(conversionFunction);
+    thisResolved->returnType = fun->returnType;
+    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+    thisResolved->conversionFunction = static_cast<Function*>(conversionFunction);
     return true;
 }
 

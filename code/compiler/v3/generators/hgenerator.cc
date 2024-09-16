@@ -23,10 +23,10 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
         switch (sym->symbolType)
         {
         case Symbol::StructureType:
-            this->GenerateStructure(compiler, program, sym, output);
+            this->GenerateStructureSPIRV(compiler, program, sym, output);
             break;
         case Symbol::VariableType:
-            this->GenerateVariable(compiler, program, sym, output, false);
+            this->GenerateVariableSPIRV(compiler, program, sym, output, false);
             break;
         }
     }
@@ -102,7 +102,7 @@ std::map<std::string, std::string> typeToArraySize =
 /**
 */
 void 
-HGenerator::GenerateStructure(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     std::string variables;
@@ -111,7 +111,7 @@ HGenerator::GenerateStructure(Compiler* compiler, Program* program, Symbol* symb
         if (sym->symbolType == Symbol::SymbolType::VariableType)
         {
             Variable* var = static_cast<Variable*>(sym);
-            this->GenerateVariable(compiler, program, var, variables, false);
+            this->GenerateVariableSPIRV(compiler, program, var, variables, false);
             if (var != struc->symbols.back())
                 variables.append("\n");
         }
@@ -151,7 +151,7 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, std::string& outCode)
 /**
 */
 void 
-HGenerator::GenerateVariable(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);

@@ -18,7 +18,7 @@ Variable::Variable()
     this->symbolType = VariableType;
     this->resolved = new Variable::__Resolved;
     this->type = { "" };
-    this->nameExpression = nullptr;
+    this->valueExpression = nullptr;
 
     Variable::__Resolved* typeResolved = static_cast<Variable::__Resolved*>(this->resolved);
     typeResolved->accessBits.bits = 0x0;

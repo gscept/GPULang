@@ -23,7 +23,8 @@ struct Variable : public Symbol
 
     std::vector<std::string> values;
     Type::FullType type;
-    Expression* nameExpression;
+    std::string name;
+    Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 
