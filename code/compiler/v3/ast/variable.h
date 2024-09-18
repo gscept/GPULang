@@ -42,11 +42,11 @@ struct Variable : public Symbol
         R32F, R16F, 
 
         // integer
-        RGA32I, RGBA16I, RGBA8I, RG32I, RG16I, RG8I,
+        RGBA32I, RGBA16I, RGBA8I, RG32I, RG16I, RG8I,
         R32I, R16I, R8I,
 
         // unsigned integer
-        RGA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
+        RGBA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
         R32U, R16U, R8U
     };
 
@@ -62,6 +62,9 @@ struct Variable : public Symbol
     {
         union AccessBits
         {
+            AccessBits(uint32_t mask)
+                : bits(mask)
+            {}
             struct
             {
                 uint32_t readAccess : 1;
@@ -71,7 +74,7 @@ struct Variable : public Symbol
             } flags;
             uint32_t bits;
         };
-        AccessBits accessBits;
+        AccessBits accessBits = 0x0;
 
         union ParameterBits
         {

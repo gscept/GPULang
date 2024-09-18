@@ -356,45 +356,45 @@ BinaryExpression::EvalBool(bool& out) const
     this->right->EvalType(rhsType);
 
     bool ret = true;
-    if (lhsType.name == "int")
+    if (lhsType.name == "i32")
     {
         int lVal;
         ret &= this->left->EvalInt(lVal);
-        if (rhsType.name == "float")
+        if (rhsType.name == "f32")
         {
             float rVal;
             ret &= this->right->EvalFloat(rVal);
             out = EvalBool(lVal, rVal);
         }
-        else if (rhsType.name == "int")
+        else if (rhsType.name == "i32")
         {
             int rVal;
             ret &= this->right->EvalInt(rVal);
             out = EvalBool(lVal, rVal);
         }
     }
-    else if (lhsType.name == "float")
+    else if (lhsType.name == "f32")
     {
         float lVal;
         ret &= this->left->EvalFloat(lVal);
-        if (rhsType.name == "int")
+        if (rhsType.name == "i32")
         {
             int rVal;
             ret &= this->right->EvalInt(rVal);
             out = EvalBool(lVal, rVal);
         }
-        else if (rhsType.name == "float")
+        else if (rhsType.name == "f32")
         {
             float rVal;
             ret &= this->right->EvalFloat(rVal);
             out = EvalBool(lVal, rVal);
         }
     }
-    else if (lhsType.name == "bool")
+    else if (lhsType.name == "b8")
     {
         bool lVal;
         ret &= this->left->EvalBool(lVal);
-        if (rhsType.name == "bool")
+        if (rhsType.name == "b8")
         {
             bool rVal;
             ret &= this->right->EvalBool(rVal);

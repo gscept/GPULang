@@ -59,11 +59,11 @@ Symbol::TypeToString() const
     case StructureType:
         return "struct";
     case FloatExpressionType:
-        return "float";
+        return "f32";
     case IntExpressionType:
-        return "int";
+        return "i32";
     case BoolExpressionType:
-        return "bool";
+        return "b8";
     }
     return "";
 }

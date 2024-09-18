@@ -48,66 +48,66 @@ Int4::Int4()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZW, int4, int4);
-    __ADD_FUNCTION_PARAM(x, int);
-    __ADD_FUNCTION_PARAM(y, int);
-    __ADD_FUNCTION_PARAM(z, int);
-    __ADD_FUNCTION_PARAM(w, int);
+    __IMPLEMENT_GLOBAL(ctor_XYZW, i32x4, i32x4);
+    __ADD_FUNCTION_PARAM(x, i32);
+    __ADD_FUNCTION_PARAM(y, i32);
+    __ADD_FUNCTION_PARAM(z, i32);
+    __ADD_FUNCTION_PARAM(w, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, int4, int4, int);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, i32x4, i32x4, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_3_W, int4, int4);
-    __ADD_FUNCTION_PARAM(xyz, int3);
-    __ADD_FUNCTION_PARAM(w, int);
+    __IMPLEMENT_GLOBAL(ctor_3_W, i32x4, i32x4);
+    __ADD_FUNCTION_PARAM(xyz, i32x3);
+    __ADD_FUNCTION_PARAM(w, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_2_ZW, int4, int4);
-    __ADD_FUNCTION_PARAM(xy, int2);
-    __ADD_FUNCTION_PARAM(z, int);
-    __ADD_FUNCTION_PARAM(w, int);
+    __IMPLEMENT_GLOBAL(ctor_2_ZW, i32x4, i32x4);
+    __ADD_FUNCTION_PARAM(xy, i32x2);
+    __ADD_FUNCTION_PARAM(z, i32);
+    __ADD_FUNCTION_PARAM(w, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, int4, int4);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, int4, int4);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, int4, int4);
-    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, int4, int4);
-    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, int4, int4);
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, int4, int4);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, int4, int4);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, int4, int4);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, int4, int4);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, int4, int4);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, int4, int);
+    __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(andOperator, operator&, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, i32x4, i32);
 
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, int4, int4);
-    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, int4, int4);
+    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, i32x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, i32x4, i32x4);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], int, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], int, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], i32, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], i32, u32);
 
     char swizzleMask[] = { 'x', 'y', 'z', 'w' };
     for (char x = 0; x < 4; x++)
     {
-        __ADD_SWIZZLE(int, "%c", swizzleMask[x]);
+        __ADD_SWIZZLE(i32, "%c", swizzleMask[x]);
         for (char y = 0; y < 4; y++)
         {
-            __ADD_SWIZZLE(int2, "%c%c", swizzleMask[x], swizzleMask[y]);
+            __ADD_SWIZZLE(i32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
             for (char z = 0; z < 4; z++)
             {
-                __ADD_SWIZZLE(int3, "%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z]);
+                __ADD_SWIZZLE(i32x3, "%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z]);
                 for (char w = 0; w < 4; w++)
                 {
-                    __ADD_SWIZZLE(int4, "%c%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z], swizzleMask[w]);
+                    __ADD_SWIZZLE(i32x4, "%c%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z], swizzleMask[w]);
                 }
             }
         }

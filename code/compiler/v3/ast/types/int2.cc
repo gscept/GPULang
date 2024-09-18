@@ -46,47 +46,47 @@ Int2::Int2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XY, int2, int2);
-    __ADD_FUNCTION_PARAM(x, int);
-    __ADD_FUNCTION_PARAM(y, int);
+    __IMPLEMENT_GLOBAL(ctor_XY, i32x2, i32x2);
+    __ADD_FUNCTION_PARAM(x, i32);
+    __ADD_FUNCTION_PARAM(y, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, int2, int2, int);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, i32x2, i32x2, i32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, int2, int2);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, int2, int2);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, int2, int2);
-    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, int2, int2);
-    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, int2, int2);
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, int2, int2);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, int2, int2);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, int2, int2);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, int2, int2);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, int2, int2);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, int2, int);
+    __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(andOperator, operator&, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, i32x2, i32);
 
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, int2, int2);
-    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, int2, int2);
+    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, i32x2, i32x2);
+    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, i32x2, i32x2);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], int, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], int, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], i32, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], i32, u32);
 
     char swizzleMask[] = { 'x', 'y' };
     for (char x = 0; x < 2; x++)
     {
-        __ADD_SWIZZLE(int, "%c", swizzleMask[x]);
+        __ADD_SWIZZLE(i32, "%c", swizzleMask[x]);
         for (char y = 0; y < 2; y++)
         {
-            __ADD_SWIZZLE(int2, "%c%c", swizzleMask[x], swizzleMask[y]);
+            __ADD_SWIZZLE(i32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
         }
     }
 }

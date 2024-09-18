@@ -16,6 +16,7 @@ Function* activeFunction = nullptr;
 newType = new Type();\
 newType->name = #typename;\
 newType->baseType = typecode;\
+newType->category = Type::VoidCategory;\
 types.push_back(newType);
 
 #define __MAKE_RWTEX()\
@@ -66,13 +67,32 @@ Type::~Type()
 const std::map<TypeCode, std::string> codeToStringMapping =
 {
     { TypeCode::Void, "void" }
-    , { TypeCode::Float, "float" }
-    , { TypeCode::Float16, "float16" }
-    , { TypeCode::Int, "int" }
-    , { TypeCode::Int16, "int16" }
-    , { TypeCode::UInt, "uint" }
-    , { TypeCode::UInt16, "uint16" }
-    , { TypeCode::Bool, "bool" }
+    , { TypeCode::Float, "f32" }
+    , { TypeCode::Float16, "f16" }
+    , { TypeCode::Int, "i32" }
+    , { TypeCode::Int16, "i16" }
+    , { TypeCode::UInt, "u32" }
+    , { TypeCode::UInt16, "u16" }
+    , { TypeCode::Bool, "b8" }
+    , { TypeCode::Texture1D, "texture1D" }
+    , { TypeCode::Texture2D, "texture2D" }
+    , { TypeCode::Texture2DMS, "texture2DMS" }
+    , { TypeCode::Texture3D, "texture3D" }
+    , { TypeCode::TextureCube, "textureCube" }
+    , { TypeCode::Texture1D, "texture1D" }
+    , { TypeCode::Texture1D, "texture1D" }
+    , { TypeCode::PixelCache, "pixelCache" }
+    , { TypeCode::PixelCacheMS, "pixelCacheMS" }
+    , { TypeCode::ReadWriteTexture1D, "readWriteTexture1D" }
+    , { TypeCode::ReadWriteTexture2D, "readWriteTexture2D" }
+    , { TypeCode::ReadWriteTexture2DMS, "readWriteTexture2DMS" }
+    , { TypeCode::ReadWriteTexture3D, "readWriteTexture3D" }
+    , { TypeCode::ReadWriteTextureCube, "readWriteTextureCube" }
+    , { TypeCode::ReadWriteTexture1DArray, "readWriteTexture1DArray" }
+    , { TypeCode::ReadWriteTexture2DArray, "readWriteTexture2DArray" }
+    , { TypeCode::ReadWriteTexture2DMSArray, "readWriteTexture2DMSArray" }
+    , { TypeCode::ReadWriteTextureCubeArray, "readWriteTextureCubeArray" }
+    , { TypeCode::Sampler, "sampler" }
 };
 
 //------------------------------------------------------------------------------
@@ -122,32 +142,32 @@ Type::SetupDefaultTypes()
 {
     __BEGIN_TYPES__
 
-    __MAKE_TYPE_CUSTOM(int, GPULang::Int);
-    __MAKE_TYPE_CUSTOM(int2, GPULang::Int2);
-    __MAKE_TYPE_CUSTOM(int3, GPULang::Int3);
-    __MAKE_TYPE_CUSTOM(int4, GPULang::Int4);
-    __MAKE_TYPE_CUSTOM(uint, GPULang::UInt);
-    __MAKE_TYPE_CUSTOM(uint2, GPULang::UInt2);
-    __MAKE_TYPE_CUSTOM(uint3, GPULang::UInt3);
-    __MAKE_TYPE_CUSTOM(uint4, GPULang::UInt4);
-    __MAKE_TYPE_CUSTOM(bool, GPULang::Bool);
-    __MAKE_TYPE_CUSTOM(bool2, GPULang::Bool2);
-    __MAKE_TYPE_CUSTOM(bool3, GPULang::Bool3);
-    __MAKE_TYPE_CUSTOM(bool4, GPULang::Bool4);
+    __MAKE_TYPE_CUSTOM(i32, GPULang::Int);
+    __MAKE_TYPE_CUSTOM(i32x2, GPULang::Int2);
+    __MAKE_TYPE_CUSTOM(i32x3, GPULang::Int3);
+    __MAKE_TYPE_CUSTOM(i32x4, GPULang::Int4);
+    __MAKE_TYPE_CUSTOM(u32, GPULang::UInt);
+    __MAKE_TYPE_CUSTOM(u32x2, GPULang::UInt2);
+    __MAKE_TYPE_CUSTOM(u32x3, GPULang::UInt3);
+    __MAKE_TYPE_CUSTOM(u32x4, GPULang::UInt4);
+    __MAKE_TYPE_CUSTOM(b8, GPULang::Bool);
+    __MAKE_TYPE_CUSTOM(b8x2, GPULang::Bool2);
+    __MAKE_TYPE_CUSTOM(b8x3, GPULang::Bool3);
+    __MAKE_TYPE_CUSTOM(b8x4, GPULang::Bool4);
 
-    __MAKE_TYPE_CUSTOM(float, GPULang::Float);
-    __MAKE_TYPE_CUSTOM(float2, GPULang::Float2);
-    __MAKE_TYPE_CUSTOM(float3, GPULang::Float3);
-    __MAKE_TYPE_CUSTOM(float4, GPULang::Float4);
-    __MAKE_TYPE_CUSTOM(float2x2, GPULang::Mat2x2);
-    __MAKE_TYPE_CUSTOM(float2x3, GPULang::Mat2x3);
-    __MAKE_TYPE_CUSTOM(float2x4, GPULang::Mat2x4);
-    __MAKE_TYPE_CUSTOM(float3x2, GPULang::Mat3x2);
-    __MAKE_TYPE_CUSTOM(float3x3, GPULang::Mat3x3);
-    __MAKE_TYPE_CUSTOM(float3x4, GPULang::Mat3x4);
-    __MAKE_TYPE_CUSTOM(float4x2, GPULang::Mat4x2);
-    __MAKE_TYPE_CUSTOM(float4x3, GPULang::Mat4x3);
-    __MAKE_TYPE_CUSTOM(float4x4, GPULang::Mat4x4);
+    __MAKE_TYPE_CUSTOM(f32, GPULang::Float);
+    __MAKE_TYPE_CUSTOM(f32x2, GPULang::Float2);
+    __MAKE_TYPE_CUSTOM(f32x3, GPULang::Float3);
+    __MAKE_TYPE_CUSTOM(f32x4, GPULang::Float4);
+    __MAKE_TYPE_CUSTOM(f32x2x2, GPULang::Mat2x2);
+    __MAKE_TYPE_CUSTOM(f32x2x3, GPULang::Mat2x3);
+    __MAKE_TYPE_CUSTOM(f32x2x4, GPULang::Mat2x4);
+    __MAKE_TYPE_CUSTOM(f32x3x2, GPULang::Mat3x2);
+    __MAKE_TYPE_CUSTOM(f32x3x3, GPULang::Mat3x3);
+    __MAKE_TYPE_CUSTOM(f32x3x4, GPULang::Mat3x4);
+    __MAKE_TYPE_CUSTOM(f32x4x2, GPULang::Mat4x2);
+    __MAKE_TYPE_CUSTOM(f32x4x3, GPULang::Mat4x3);
+    __MAKE_TYPE_CUSTOM(f32x4x4, GPULang::Mat4x4);
 
     __MAKE_TYPE(readWriteTexture1D, TypeCode::ReadWriteTexture1D);
     __MAKE_RWTEX();
@@ -238,10 +258,13 @@ Type::SetupDefaultTypes()
 
 std::map<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
 {
-    { TypeCode::Float, { "float", "float2", "float3", "float4" } }
-    , { TypeCode::Int, { "int", "int2", "int3", "int4" } }
-    , { TypeCode::UInt, { "uint", "uint2", "uint3", "uint4" } }
-    , { TypeCode::Bool, { "bool", "bool2", "bool3", "bool4" } }
+    { TypeCode::Float,      { "f32",    "f32x2",    "f32x3",    "f32x4" } }
+    , { TypeCode::Float16,  { "f16",    "f16x2",    "f16x3",    "f16x4" } }
+    , { TypeCode::Int,      { "i32",    "i32x2",    "i32x3",    "i32x4" } }
+    , { TypeCode::Int16,    { "i16",    "i16x2",    "i16x3",    "i16x4" } }
+    , { TypeCode::UInt,     { "u32",    "u32x2",    "u32x3",    "u32x4" } }
+    , { TypeCode::UInt16,   { "u16",    "u16x2",    "u16x3",    "u16x4" } }
+    , { TypeCode::Bool,     { "b8",     "b8x2",     "b8x3",     "b8x4"  } }
 
 };
 
@@ -435,7 +458,7 @@ const bool
 Type::FullType::IsPointer() const
 {
     if (!this->modifiers.empty())
-        return this->modifiers.front() == Type::FullType::Modifier::PointerLevel;
+        return this->modifiers.back() == Type::FullType::Modifier::PointerLevel;
     else
         return false;
 }

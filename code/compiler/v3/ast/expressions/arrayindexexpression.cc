@@ -115,9 +115,9 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
             return false;
         }
 
-        if (thisResolved->rhsType->name != "uint" && thisResolved->rhsType->name != "int")
+        if (thisResolved->rhsType->name != "u32" && thisResolved->rhsType->name != "i32")
         {
-            compiler->Error(Format("Expected array index to be uint or int but got '%s'", thisResolved->rightFullType.ToString().c_str()), this->right);
+            compiler->Error(Format("Expected array index to be u32 or i32 but got '%s'", thisResolved->rightFullType.ToString().c_str()), this->right);
             return false;
         }
     }

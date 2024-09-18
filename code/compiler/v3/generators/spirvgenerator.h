@@ -15,6 +15,24 @@
 namespace GPULang
 {
 
+struct SPIRVResult
+{
+    uint32_t name = 0xFFFFFFFF;
+    uint32_t typeName = 0xFFFFFFFF;
+    bool isValue = false;       // If not, then the object needs a load to be read. If it is, doesn't support store
+
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false)
+        : name(name)
+        , typeName(type)
+        , isValue(isValue)
+    {};
+
+    static SPIRVResult Invalid()
+    {
+        return SPIRVResult(0xFFFFFFFF, 0xFFFFFFFF);
+    }
+};
+
 class SPIRVGenerator : public Generator
 {
 public:
@@ -62,7 +80,7 @@ public:
     std::string header;
     std::string functional;
 
-    using IntrinsicMappingFunction = std::function<uint32_t(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<uint32_t>&, const std::vector<uint32_t>&)>;
+    using IntrinsicMappingFunction = std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&)>;
     std::map<Function*, IntrinsicMappingFunction> intrinsicMap;
 };
 

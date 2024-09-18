@@ -50,12 +50,12 @@ TernaryExpression::Resolve(Compiler* compiler)
     this->elseExpression->EvalType(type2);
 
     if (
-    (type3.name != "bool"
-        && type3.name != "int"
-        && type3.name != "uint")
+    (type3.name != "b8"
+        && type3.name != "i32"
+        && type3.name != "u32")
     || !type3.modifiers.empty())
     {
-        compiler->Error(Format("Condition must evaluate to 'bool', 'int' or 'uint', but got '%s'", type3.name.c_str()), this);
+        compiler->Error(Format("Condition must evaluate to 'b8', 'i32' or 'u32', but got '%s'", type3.name.c_str()), this);
         return false;
     }
 

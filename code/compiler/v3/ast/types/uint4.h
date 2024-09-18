@@ -31,7 +31,6 @@ struct UInt4 : public Type
     static Function multiplicationOperator;
     static Function divisionOperator;
     static Function modOperator;
-    static Function fractOperator;
     static Function scaleOperator;
 
     static Function andAssignOperator;

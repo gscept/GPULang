@@ -383,12 +383,11 @@ public:
     std::vector<Variable*> list;
     GPULangParser::AnnotationContext *annotationContext = nullptr;;
     GPULangParser::AttributeContext *attributeContext = nullptr;;
-    antlr4::Token *typeName = nullptr;;
     antlr4::Token *varName = nullptr;;
-    antlr4::Token *arraySize0 = nullptr;;
-    GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;;
     antlr4::Token *varNameN = nullptr;;
-    antlr4::Token *arraySizeN = nullptr;;
+    antlr4::Token *arraySize0 = nullptr;;
+    antlr4::Token *typeName = nullptr;;
+    GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;;
     GPULangParser::AssignmentExpressionContext *valueExprN = nullptr;;
     VariablesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -413,18 +412,21 @@ public:
   class  VariableContext : public antlr4::ParserRuleContext {
   public:
     Variable* sym;
+    GPULangParser::AnnotationContext *annotationContext = nullptr;;
     GPULangParser::AttributeContext *attributeContext = nullptr;;
-    antlr4::Token *typeName = nullptr;;
     antlr4::Token *varName = nullptr;;
     antlr4::Token *arraySize0 = nullptr;;
-    GPULangParser::ExpressionContext *valueExpr = nullptr;;
+    antlr4::Token *typeName = nullptr;;
+    GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;;
     VariableContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    std::vector<AnnotationContext *> annotation();
+    AnnotationContext* annotation(size_t i);
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
-    ExpressionContext *expression();
+    AssignmentExpressionContext *assignmentExpression();
     std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
     antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
 

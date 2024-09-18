@@ -54,17 +54,17 @@ SamplerStateType::SamplerStateType()
     __SETUP_MEMBER(this->magFilter, MagFilter, FilterMode);
     __SETUP_MEMBER(this->mipFilter, MipFilter, FilterMode);
 
-    __SETUP_MEMBER(this->mipLodBias, MipLodBias, float);
-    __SETUP_MEMBER(this->anisotropicEnabled, AnisotropicEnabled, bool);
-    __SETUP_MEMBER(this->maxAnisotropy, MaxAnisotropy, float);
+    __SETUP_MEMBER(this->mipLodBias, MipLodBias, f32);
+    __SETUP_MEMBER(this->anisotropicEnabled, AnisotropicEnabled, b8);
+    __SETUP_MEMBER(this->maxAnisotropy, MaxAnisotropy, f32);
 
-    __SETUP_MEMBER(this->compareSamplerEnabled, CompareSamplerEnabled, bool);
+    __SETUP_MEMBER(this->compareSamplerEnabled, CompareSamplerEnabled, b8);
     __SETUP_MEMBER(this->compareMode, CompareMode, CompareMode);
 
-    __SETUP_MEMBER(this->minLod, MinLod, float);
-    __SETUP_MEMBER(this->maxLod, MaxLod, float);
+    __SETUP_MEMBER(this->minLod, MinLod, f32);
+    __SETUP_MEMBER(this->maxLod, MaxLod, f32);
     __SETUP_MEMBER(this->borderColor, BorderColor, BorderColorMode);
 
-    __SETUP_MEMBER(this->unnormalizedSamplingEnabled, UnnormalizedSamplingEnabled, bool);
+    __SETUP_MEMBER(this->unnormalizedSamplingEnabled, UnnormalizedSamplingEnabled, b8);
 }
 } // namespace GPULang

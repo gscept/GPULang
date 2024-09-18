@@ -35,43 +35,43 @@ Mat4x4::Mat4x4()
     this->byteSize = 64;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(floatConstructor, float4x4, float4x4);
-    __ADD_FUNCTION_PARAM(m00, float);
-    __ADD_FUNCTION_PARAM(m01, float);
-    __ADD_FUNCTION_PARAM(m02, float);
-    __ADD_FUNCTION_PARAM(m03, float);
-    __ADD_FUNCTION_PARAM(m10, float);
-    __ADD_FUNCTION_PARAM(m11, float);
-    __ADD_FUNCTION_PARAM(m12, float);
-    __ADD_FUNCTION_PARAM(m13, float);
-    __ADD_FUNCTION_PARAM(m20, float);
-    __ADD_FUNCTION_PARAM(m21, float);
-    __ADD_FUNCTION_PARAM(m22, float);
-    __ADD_FUNCTION_PARAM(m23, float);
-    __ADD_FUNCTION_PARAM(m30, float);
-    __ADD_FUNCTION_PARAM(m31, float);
-    __ADD_FUNCTION_PARAM(m32, float);
-    __ADD_FUNCTION_PARAM(m33, float);
+    __IMPLEMENT_GLOBAL(floatConstructor, f32x4x4, f32x4x4);
+    __ADD_FUNCTION_PARAM(m00, f32);
+    __ADD_FUNCTION_PARAM(m01, f32);
+    __ADD_FUNCTION_PARAM(m02, f32);
+    __ADD_FUNCTION_PARAM(m03, f32);
+    __ADD_FUNCTION_PARAM(m10, f32);
+    __ADD_FUNCTION_PARAM(m11, f32);
+    __ADD_FUNCTION_PARAM(m12, f32);
+    __ADD_FUNCTION_PARAM(m13, f32);
+    __ADD_FUNCTION_PARAM(m20, f32);
+    __ADD_FUNCTION_PARAM(m21, f32);
+    __ADD_FUNCTION_PARAM(m22, f32);
+    __ADD_FUNCTION_PARAM(m23, f32);
+    __ADD_FUNCTION_PARAM(m30, f32);
+    __ADD_FUNCTION_PARAM(m31, f32);
+    __ADD_FUNCTION_PARAM(m32, f32);
+    __ADD_FUNCTION_PARAM(m33, f32);
 
-    __IMPLEMENT_GLOBAL(vectorConstructor, float4x4, float4x4);
-    __ADD_FUNCTION_PARAM(r0, float4);
-    __ADD_FUNCTION_PARAM(r1, float4);
-    __ADD_FUNCTION_PARAM(r2, float4);
-    __ADD_FUNCTION_PARAM(r3, float4);
+    __IMPLEMENT_GLOBAL(vectorConstructor, f32x4x4, f32x4x4);
+    __ADD_FUNCTION_PARAM(r0, f32x4);
+    __ADD_FUNCTION_PARAM(r1, f32x4);
+    __ADD_FUNCTION_PARAM(r2, f32x4);
+    __ADD_FUNCTION_PARAM(r3, f32x4);
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float4x4, float4x4);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float4x4, float4x4);
-    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, float4x4, float4x4);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float4x4, float4x4);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float4x4, float4x4);
-    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, float4x4, float4x4);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x4x4, f32x4x4);
 
-    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, float4, float4);
+    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x4, f32x4);
 
-    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, float4x4, float4x4);
+    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x4x4, f32x4x4);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], float2, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], float2, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32x4, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32x4, u32);
 }
 
 } // namespace GPULang

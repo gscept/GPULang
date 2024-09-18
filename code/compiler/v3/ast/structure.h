@@ -38,7 +38,7 @@ struct Structure : public Type
         };
         UsageFlags usageFlags;
 
-        Variable::__Resolved::AccessBits accessBits;
+        Variable::__Resolved::AccessBits accessBits = 0x0;
 
         static const uint8_t NOT_BOUND = 0xF;
         uint32_t group;

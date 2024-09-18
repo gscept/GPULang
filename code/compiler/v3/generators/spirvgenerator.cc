@@ -43,20 +43,21 @@
 namespace GPULang
 {
 
-uint32_t GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
-uint32_t GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
+
+SPIRVResult GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
+SPIRVResult GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 void GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
 
 std::map<std::string, std::string> typeToSpirvType =
 {
     { "void", "OpTypeVoid" }
-    , { "float", "OpTypeFloat 32" }
-    , { "float16", "OpTypeFloat 16" }
-    , { "bool", "OpTypeBool" }
-    , { "int", "OpTypeInt 32 1" }
-    , { "int16", "OpTypeInt 16 1" }
-    , { "uint", "OpTypeInt 32 0" }
-    , { "uint16", "OpTypeInt 16 0" }
+    , { "f32", "OpTypeFloat 32" }
+    , { "f16", "OpTypeFloat 16" }
+    , { "b8", "OpTypeBool" }
+    , { "i32", "OpTypeInt 32 1" }
+    , { "i16", "OpTypeInt 16 1" }
+    , { "u32", "OpTypeInt 32 0" }
+    , { "u16", "OpTypeInt 16 0" }
     , { "readWriteTexture1D", "OpTypeImage %%%d 1D 0 0 0 2 %s %s" }
     , { "readWriteTexture2D", "OpTypeImage %%%d 2D 0 0 0 2 %s %s" }
     , { "readWriteTexture2DMS", "OpTypeImage %%%d 2D 0 0 1 2 %s %s" }
@@ -87,31 +88,148 @@ std::map<std::string, std::string> typeToSpirvType =
     , { "sampledTexture2DMSArray", "OpTypeImage %%%d 2D 0 1 1 1 %s" }
     , { "sampledTexture3DArray", "OpTypeImage %%%d 3D 0 1 0 1 %s" }
     , { "sampledTextureCubeArray", "OpTypeImage %%%d Cube 0 1 0 1 %s" }
-    , { "inputAttachment", "OpTypeImage %%%d SubpassData 0 0 0 2 %s" }
-    , { "inputAttachmentMS", "OpTypeImage %%%d SubpassData 0 0 1 2 %s" }
+    , { "pixelCache", "OpTypeImage %%%d SubpassData 0 0 0 2 Unknown ReadOnly" }
+    , { "pixelCacheMS", "OpTypeImage %%%d SubpassData 0 0 1 2 Unknown ReadOnly" }
+    , { "sampler", "OpTypeSampler" }
+};
+
+std::map<Variable::ImageFormat, std::string> imageFormatToSpirvType =
+{
+    { Variable::ImageFormat::RGBA16, "Rgba16" }
+    , { Variable::ImageFormat::RGB10_A2, "Rgb10A2" }
+    , { Variable::ImageFormat::RGBA8, "Rgba8" }
+    , { Variable::ImageFormat::RG16, "Rg16" }
+    , { Variable::ImageFormat::RG8, "Rg8" }
+    , { Variable::ImageFormat::R16, "R16" }
+    , { Variable::ImageFormat::R8, "R8" }
+    , { Variable::ImageFormat::RGBA16_SNORM, "Rgba16Snorm" }
+    , { Variable::ImageFormat::RGBA8_SNORM, "Rgba8Snorm" }
+    , { Variable::ImageFormat::RG16_SNORM, "Rg16Snorm" }
+    , { Variable::ImageFormat::RG8_SNORM, "Rg8Snorm" }
+    , { Variable::ImageFormat::R16_SNORM, "R16Snorm" }
+    , { Variable::ImageFormat::R8_SNORM, "R8Snorm" }
+
+    // float
+    , { Variable::ImageFormat::RGBA32F, "Rgba32f" }
+    , { Variable::ImageFormat::RGBA16F, "Rgba16f" }
+    , { Variable::ImageFormat::RG32F, "Rg32f" }
+    , { Variable::ImageFormat::RG16F, "Rg16f" }
+    , { Variable::ImageFormat::R11G11B10F, "R11fG11fB10f" }
+    , { Variable::ImageFormat::R32F, "R32f" }
+    , { Variable::ImageFormat::R16F, "R16f" }
+
+    // integer
+    , { Variable::ImageFormat::RGBA32I, "Rgba32i" }
+    , { Variable::ImageFormat::RGBA16I, "Rgba16i" }
+    , { Variable::ImageFormat::RGBA8I, "Rgba8i" }
+    , { Variable::ImageFormat::RG32I, "Rg32i" }
+    , { Variable::ImageFormat::RG16I, "Rg16i" }
+    , { Variable::ImageFormat::RG8I, "Rg8i" }
+    , { Variable::ImageFormat::R32I, "R32i" }
+    , { Variable::ImageFormat::R16I, "R16i" }
+    , { Variable::ImageFormat::R8I, "R8i" }
+
+    // unsigned integer
+    , { Variable::ImageFormat::RGBA32U, "Rgba32ui" }
+    , { Variable::ImageFormat::RGBA16U, "Rgba16ui" }
+    , { Variable::ImageFormat::RGB10_A2U, "Rga10a2ui" }
+    , { Variable::ImageFormat::RGBA8U, "Rgba8ui" }
+    , { Variable::ImageFormat::RG32U, "Rg32ui" }
+    , { Variable::ImageFormat::RG16U, "Rg16ui" }
+    , { Variable::ImageFormat::RG8U, "Rg8ui" }
+    , { Variable::ImageFormat::R32U, "R32ui" }
+    , { Variable::ImageFormat::R16U, "R16ui" }
+    , { Variable::ImageFormat::R8U, "R8ui" }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 uint32_t
-GenerateScalarTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType type, Type* typeSymbol)
+GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType type, Type* typeSymbol, Variable::ImageFormat imageFormat = Variable::ImageFormat::InvalidImageFormat, Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0))
 {
     std::string baseType = Type::CodeToString(typeSymbol->baseType);
     std::string spirvType = typeToSpirvType[baseType];
 
-    uint32_t name = generator->AddSymbol(baseType, spirvType, true);
-    if (typeSymbol->IsVector())
+    uint32_t name = 0xFFFFFFFF;
+    if (typeSymbol->category == Type::ScalarCategory)
     {
-        name = generator->AddSymbol(type.name, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
+        name = generator->AddSymbol(baseType, spirvType, true);
+        if (typeSymbol->IsVector())
+        {
+            name = generator->AddSymbol(type.name, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
+        }
+        else if (typeSymbol->IsMatrix())
+        {
+            generator->AddCapability("matrix", "OpCapability Matrix");
+            baseType = Format("%s%d", baseType.c_str(), typeSymbol->columnSize);
+            name = generator->AddSymbol(baseType, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
+            baseType = Format("%s%dx%d", baseType.c_str(), typeSymbol->columnSize, typeSymbol->rowSize);
+            name = generator->AddSymbol(baseType, Format("OpTypeMatrix %%%d %d", name, typeSymbol->rowSize), true);
+        }
     }
-    else if (typeSymbol->IsMatrix())
+    else if (typeSymbol->category == Type::ReadWriteTextureCategory || typeSymbol->category == Type::TextureCategory || typeSymbol->category == Type::SampledTextureCategory)
     {
-        generator->AddCapability("matrix", "OpCapability Matrix");
-        baseType = Format("%s%d", baseType.c_str(), typeSymbol->columnSize);
-        name = generator->AddSymbol(baseType, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
-        baseType = Format("%s%dx%d", baseType.c_str(), typeSymbol->columnSize, typeSymbol->rowSize);
-        name = generator->AddSymbol(baseType, Format("OpTypeMatrix %%%d %d", name, typeSymbol->rowSize), true);
+        Type* vec = compiler->GetSymbol<Type>("f32x4");
+        uint32_t vecType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "f32x4" }, vec);
+        std::string accessPattern = "";
+        if (typeSymbol->category == Type::ReadWriteTextureCategory)
+        {
+            if (accessBits.flags.readAccess && accessBits.flags.writeAccess)
+                accessPattern = "ReadWrite";
+            else if (accessBits.flags.readAccess)
+                accessPattern = "ReadOnly";
+            else if (accessBits.flags.writeAccess)
+                accessPattern = "WriteOnly";
+            std::string spirvFormat = imageFormatToSpirvType[imageFormat];
+            spirvType = Format(spirvType.c_str(), vecType, spirvFormat.c_str(), accessPattern.c_str());
+        }
+        else
+        {
+            spirvType = Format(spirvType.c_str(), vecType, "ReadOnly");
+        }
+        name = generator->AddSymbol(baseType, spirvType, true);
+    }
+    else if (typeSymbol->category == Type::PixelCacheCategory)
+    {
+        Type* vec = compiler->GetSymbol<Type>("f32x4");
+        uint32_t vecType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "f32x4" }, vec);
+        spirvType = Format(spirvType.c_str(), vecType);
+        name = generator->AddSymbol(baseType, spirvType, true);
+    }
+    else if (typeSymbol->category == Type::VoidCategory)
+    {
+        name = generator->AddSymbol("void", "OpTypeVoid", true);
+    }
+
+    for (size_t i = 0; i < type.modifiers.size(); i++)
+    {
+        const Type::FullType::Modifier& mod = type.modifiers[i];
+        if (mod == Type::FullType::Modifier::PointerLevel)
+        {
+            std::string newBase = Format("ptr(%s)", baseType.c_str());
+            name = generator->AddSymbol(newBase, Format("OpTypePointer Function %%%d", name), true);
+            baseType = newBase;
+        }
+        else if (mod == Type::FullType::Modifier::ArrayLevel)
+        {
+
+            if (type.modifierValues[i] == 0x0)
+            {
+                std::string newBase = Format("arr[](%s)", baseType.c_str());
+                name = generator->AddSymbol(newBase, Format("OpTypeRuntimeArray %%%d", name));
+                baseType = newBase;
+            }
+            else
+            {
+                std::string newBase = Format("arr[%d](%s)", type.modifierValues[i], baseType.c_str());
+                Type* i32 = compiler->GetSymbol<Type>("i32");
+                uint32_t intType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "i32" }, i32);
+                uint32_t arraySizeConstant = generator->AddSymbol(Format("%ds", type.modifierValues[i]), Format("OpConstant %%%d %d", intType, type.modifierValues[i]), true);
+                name = generator->AddSymbol(newBase, Format("OpTypeArray %%%d %%%d", name, arraySizeConstant), true);
+                baseType = newBase;
+            }
+        }
     }
 
     return name;
@@ -127,98 +245,119 @@ enum class ConversionTable
     FloatToInt,
 };
 
-std::map<ConversionTable, std::function<uint32_t(Compiler*, SPIRVGenerator*, uint32_t, uint32_t)>> converters =
+std::map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, SPIRVResult)>> converters =
 {
-    { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, name)); } }
-    , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertSToU %%%d %%%d", type, name)); } }
-    , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertUToS %%%d %%%d", type, name)); } }
-    , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, name)); } }
-    , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, name)); } }
-    , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t type, uint32_t name) -> uint32_t { return g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, name)); } }
+    { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true );
+    } }
+    , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToU %%%d %%%d", type, value.name)), type, true);
+    } }
+    , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToS %%%d %%%d", type, value.name)), type, true);
+    } }
+    , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("float", "OpTypeFloat 32", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true);
+    } }
+    , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true);
+    } }
+    , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true);
+    } }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 void
-GenerateConversionsSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, const std::vector<uint32_t>& inValues, const std::vector<uint32_t>& inTypes, std::vector<uint32_t>& outValues)
+GenerateConversionsSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, const std::vector<SPIRVResult>& inArgs, std::vector<SPIRVResult>& outValues)
 {
-    for (size_t i = 0; i < inValues.size(); i++)
+    for (size_t i = 0; i < inArgs.size(); i++)
     {
-        outValues.push_back(converters[conversion](compiler, generator, inValues[i], inTypes[i]));
+        outValues.push_back(converters[conversion](compiler, generator, inArgs[i]));
     }
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
-GenerateConversionSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, uint32_t invalue, uint32_t intype)
+SPIRVResult
+GenerateConversionSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, SPIRVResult inArg)
 {
-    return converters[conversion](compiler, generator, invalue, intype);
+    return converters[conversion](compiler, generator, inArg);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
-GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<uint32_t>& args)
+SPIRVResult
+GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     std::string argList = "";
-    for (uint32_t arg : args)
+    bool isConst = true;
+    for (const SPIRVResult& arg : args)
     {
-        argList.append(Format("%%%d ", arg));
+        argList.append(Format("%%%d ", arg.name));
+        if (!arg.isValue)
+            isConst = false;
     }
-    return generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str()));
+    return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
-GenerateSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, uint32_t arg)
+SPIRVResult
+GenerateSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, SPIRVResult arg)
 {
-    std::vector<uint32_t> splat(4, arg);
+    std::vector<SPIRVResult> splat(4, arg);
     return GenerateCompositeSPIRV(compiler, generator, returnType, splat);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
-GenerateConvertAndSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types, ConversionTable conversion)
+SPIRVResult
+GenerateConvertAndSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
 {
-    std::vector<uint32_t> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, args, types, converted);
+    std::vector<SPIRVResult> converted;
+    GenerateConversionsSPIRV(compiler, generator, conversion, args, converted);
     return GenerateSplatCompositeSPIRV(compiler, generator, returnType, 4, converted[0]);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateCompositeExtractSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t arg, uint32_t index)
 {
-    return generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", returnType, arg, index));
+    return SPIRVResult(generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", returnType, arg, index)), returnType, true);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateCompositeInsertSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t arg, uint32_t index, uint32_t val)
 {
-    return generator->AddMappedOp(Format("OpCompositeInsert %%%d %%%d %%%d %d", returnType, val, arg, index));
+    return SPIRVResult(generator->AddMappedOp(Format("OpCompositeInsert %%%d %%%d %%%d %d", returnType, val, arg, index)), returnType, true );
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
-GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types, ConversionTable conversion)
+SPIRVResult
+GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
 {
-    std::vector<uint32_t> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, args, types, converted);
+    std::vector<SPIRVResult> converted;
+    GenerateConversionsSPIRV(compiler, generator, conversion, args, converted);
     return GenerateCompositeSPIRV(compiler, generator, returnType, converted);
 }
 
@@ -228,167 +367,167 @@ GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, 
 void
 SPIRVGenerator::SetupIntrinsics()
 {
-    this->intrinsicMap[&Float4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
     };
-    this->intrinsicMap[&Float4::ctor_Float3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float4::ctor_f32x3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float4::ctor_Float2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float4::ctor_f32x2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
     };
-    this->intrinsicMap[&Float3::ctor_Float2_Z] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float3::ctor_f32x2_Z] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
     };
-    this->intrinsicMap[&Float::ctor_UInt] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float::ctor_UInt] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToFloat, args[0], types[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToFloat, args[0]);
     };
-    this->intrinsicMap[&Float::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Float::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::IntToFloat, args[0], types[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::IntToFloat, args[0]);
     };
 
     // For matrix float constructors, we need to first construct the vectors and then compose the matrix from them
-    this->intrinsicMap[&Mat2x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
-        Type* vecType = c->GetSymbol<Type>("float2");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float2" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3] });
+        Type* vecType = c->GetSymbol<Type>("f32x2");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x2" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1 });
     };
-    this->intrinsicMap[&Mat2x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat2x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 6);
-        Type* vecType = c->GetSymbol<Type>("float2");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float2" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4] });
-        uint32_t col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5] });
+        Type* vecType = c->GetSymbol<Type>("f32x2");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x2" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4] });
+        SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col3 });
     };
-    this->intrinsicMap[&Mat2x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat2x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 8);
-        Type* vecType = c->GetSymbol<Type>("float2");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float2" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5] });
-        uint32_t col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6] });
-        uint32_t col4 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7] });
+        Type* vecType = c->GetSymbol<Type>("f32x2");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x2" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5] });
+        SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6] });
+        SPIRVResult col4 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col3, col4 });
     };
-    this->intrinsicMap[&Mat2x4::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat2x4::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
 
-    this->intrinsicMap[&Mat3x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 6);
-        Type* vecType = c->GetSymbol<Type>("float3");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float3" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2], args[4] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3], args[5] });
+        Type* vecType = c->GetSymbol<Type>("f32x3");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x3" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2], args[4] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3], args[5] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1 });
     };
-    this->intrinsicMap[&Mat3x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat3x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 9);
-        Type* vecType = c->GetSymbol<Type>("float3");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float3" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3], args[6] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4], args[7] });
-        uint32_t col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5], args[8] });
+        Type* vecType = c->GetSymbol<Type>("f32x3");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x3" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3], args[6] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4], args[7] });
+        SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5], args[8] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col2 });
     };
-    this->intrinsicMap[&Mat3x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat3x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 12);
-        Type* vecType = c->GetSymbol<Type>("float3");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float3" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4], args[8] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5], args[9] });
-        uint32_t col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6], args[10] });
-        uint32_t col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7], args[11] });
+        Type* vecType = c->GetSymbol<Type>("f32x3");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x3" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4], args[8] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5], args[9] });
+        SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6], args[10] });
+        SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7], args[11] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col2, col3 });
     };
-    this->intrinsicMap[&Mat3x4::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat3x4::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat4x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 8);
         Type* vecType = c->GetSymbol<Type>("float4");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float4" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2], args[4], args[6] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3], args[5], args[7] });
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "float4" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[2], args[4], args[6] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[3], args[5], args[7] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1 });
     };
-    this->intrinsicMap[&Mat4x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x2::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat4x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x3::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 12);
-        Type* vecType = c->GetSymbol<Type>("float4");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float4" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3], args[6], args[9] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4], args[7], args[10] });
-        uint32_t col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5], args[8], args[11] });
+        Type* vecType = c->GetSymbol<Type>("f32x4");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x4" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[3], args[6], args[9] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[4], args[7], args[10] });
+        SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[5], args[8], args[11] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col2 });
     };
-    this->intrinsicMap[&Mat4x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Mat4x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x4::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 16);
-        Type* vecType = c->GetSymbol<Type>("float4");
-        uint32_t vectorType = GenerateScalarTypeSPIRV(c, g, Type::FullType{ "float4" }, vecType);
-        uint32_t col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4], args[8], args[12] });
-        uint32_t col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5], args[9], args[13] });
-        uint32_t col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6], args[10], args[14] });
-        uint32_t col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7], args[11], args[15] });
+        Type* vecType = c->GetSymbol<Type>("f32x4");
+        uint32_t vectorType = GenerateTypeSPIRV(c, g, Type::FullType{ "f32x4" }, vecType);
+        SPIRVResult col0 = GenerateCompositeSPIRV(c, g, vectorType, { args[0], args[4], args[8], args[12] });
+        SPIRVResult col1 = GenerateCompositeSPIRV(c, g, vectorType, { args[1], args[5], args[9], args[13] });
+        SPIRVResult col2 = GenerateCompositeSPIRV(c, g, vectorType, { args[2], args[6], args[10], args[14] });
+        SPIRVResult col3 = GenerateCompositeSPIRV(c, g, vectorType, { args[3], args[7], args[11], args[15] });
         return GenerateCompositeSPIRV(c, g, returnType, { col0, col1, col2, col3 });
     };
-    this->intrinsicMap[&Mat4x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+    this->intrinsicMap[&Mat4x3::vectorConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
@@ -440,12 +579,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : additionFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, returnType, args[0], args[1]));
+            uint32_t ret = g->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0], ret);
-            return ret;
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType );
         };
     }
 
@@ -496,12 +635,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : subtractionFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, returnType, args[0], args[1]));
+            uint32_t ret = g->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0], ret);
-            return ret;
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType );
         };
     }
 
@@ -534,12 +673,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : multiplicationFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0], args[1]));
+            uint32_t ret = g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0], ret);
-            return ret;
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType );
         };
     }
 
@@ -566,12 +705,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : matrixMultiplicationFunctions)
     {
-        this->intrinsicMap[fun.first] = [assign = fun.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [assign = fun.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("OpMatrixTimesMatrix %%%d %%%d %%%d", returnType, args[0], args[1]));
+            uint32_t ret = g->AddMappedOp(Format("OpMatrixTimesMatrix %%%d %%%d %%%d", returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0], ret);
-            return ret;
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType );
         };
     }
 
@@ -589,9 +728,9 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : matrixVectorTransformFunctions)
     {
-        this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return g->AddMappedOp(Format("OpMatrixTimesVector %%%d %%%d %%%d", returnType, args[0], args[1]));
+            return SPIRVResult(g->AddMappedOp(Format("OpMatrixTimesVector %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType);
         };
     }
 
@@ -624,12 +763,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : divisionFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cDiv %%%d %%%d %%%d", op, returnType, args[0], args[1]));
+            uint32_t ret = g->AddMappedOp(Format("Op%cDiv %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0], ret);
-            return ret;
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType);
         };
     }
 
@@ -650,9 +789,9 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : modFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return g->AddMappedOp(Format("Op%cMod %%%d %%%d %%%d", op, returnType, args[0], args[1]));
+            return SPIRVResult(g->AddMappedOp(Format("Op%cMod %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name)), returnType);
         };
     }
 
@@ -664,9 +803,9 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : vectorScaleFunctions)
     {
-        this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return g->AddMappedOp(Format("OpVectorTimesScalar %%%d %%%d %%%d", returnType, args[0], args[1]));
+            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesScalar %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType);
         };
     }
 
@@ -681,10 +820,10 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : intVectorScaleFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, num = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun.first] = [op = fun.second.first, num = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t splat = GenerateSplatCompositeSPIRV(c, g, returnType, num, args[1]);
-            return g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0], splat));
+            SPIRVResult splat = GenerateSplatCompositeSPIRV(c, g, returnType, num, args[1]);
+            return SPIRVResult(g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0].name, splat.name)), returnType);
         };
     }
 
@@ -702,9 +841,9 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : vectorMatrixMulFunctions)
     {
-        this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return g->AddMappedOp(Format("OpVectorTimesMatrix %%%d %%%d %%%d", types[0], args[0], args[1]), fun->name);
+            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesMatrix %%%d %%%d %%%d", args[0].typeName, args[0].name, args[1].name), fun->name), returnType);
         };
     }
 
@@ -731,25 +870,11 @@ SPIRVGenerator::SetupIntrinsics()
     };
     for (auto fun : arrayAccessFunctions)
     {
-        this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<uint32_t>& args, const std::vector<uint32_t>& types) -> uint32_t {
+        this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return g->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", returnType, args[0], args[1]), fun->name);
+            return SPIRVResult(g->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", returnType, args[0].name, args[1].name), fun->name), returnType);
         };
     }
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-uint32_t
-GenerateLocalVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType type, uint32_t init = 0xFFFFFFFF)
-{
-    uint32_t typeName = generator->GetSymbol(type.name);
-    uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)", type.name.c_str()), Format("OpTypePointer Function %%%d", typeName), true);
-    uint32_t name = generator->AddMappedOp(Format("OpVariable %%%d Function", ptrTypeName), Format("Intermediate '%s'", type.name.c_str()));
-    if (init != 0xFFFFFFFF)
-        generator->AddOp(Format("OpStore %%%d %%%d", name, init));
-    return name;
 }
 
 //------------------------------------------------------------------------------
@@ -763,12 +888,12 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 
     if (funcResolved->isPrototype)
         return;
-    uint32_t returnName = GenerateScalarTypeSPIRV(compiler, generator, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
+    uint32_t returnName = GenerateTypeSPIRV(compiler, generator, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
     std::string typeArgs = "";
     for (auto& param : func->parameters)
     {
         Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
-        uint32_t typeName = GenerateScalarTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
+        uint32_t typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
         typeArgs.append(Format("%%%d", typeName));
     }
     uint32_t functionType = generator->AddSymbol(Format("type(%s)", funcResolved->name.c_str()), Format("OpTypeFunction %%%d %s", returnName, typeArgs.c_str()), true);
@@ -778,7 +903,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     for (auto& param : func->parameters)
     {
         Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
-        generator->AddSymbol(param->name, Format("OpFunctionParameter %%%d", GenerateScalarTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol)));
+        generator->AddSymbol(param->name, Format("OpFunctionParameter %%%d", GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol)));
     }
 
     GenerateStatementSPIRV(compiler, generator, func->ast);
@@ -789,7 +914,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     else
         generator->AddOp("OpReturn");
 
-    generator->AddOp("OpFunctionEnd");
+    generator->AddOp("OpFunctionEnd", false, Format("End of %s", func->name.c_str()));
 }
 
 //------------------------------------------------------------------------------
@@ -816,94 +941,33 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
         {
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-            uint32_t varType = GenerateScalarTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
+            uint32_t varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
             str.append(Format("%%%d ", varType));
         }
     }
     generator->AddSymbol(struc->name, str, true);
 }
 
-std::map<Variable::ImageFormat, std::string> imageFormatToSpirvType =
-{
-
-};
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-    uint32_t name = 0xFFFFFFFF;
-    if (varResolved->typeSymbol->category == Type::ScalarCategory)
-    {
-        name = GenerateScalarTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
-    }
-    else if (varResolved->typeSymbol->category == Type::ReadWriteTextureCategory)
-    {
-        std::string spirvType = typeToSpirvType[varResolved->type.name];
-        uint32_t floatName = generator->AddSymbol("float", "OpTypeFloat 32", true);
-        std::string access;
-        if (varResolved->accessBits.flags.readAccess && varResolved->accessBits.flags.writeAccess)
-            access = "ReadWrite";
-        else if (varResolved->accessBits.flags.readAccess)
-            access = "ReadOnly";
-        else if (varResolved->accessBits.flags.writeAccess)
-            access = "WriteOnly";
-        spirvType = Format(spirvType.c_str(), floatName, imageFormatToSpirvType[varResolved->imageFormat].c_str(), access.c_str());
-        name = generator->AddSymbol(Format("%s, %d", varResolved->type.name.c_str(), varResolved->accessBits.bits & 0x3), spirvType, true);
-    }
-    else if (varResolved->typeSymbol->category == Type::TextureCategory)
-    {
-        std::string spirvType = typeToSpirvType[varResolved->type.name];
-        uint32_t floatName = generator->AddSymbol("float", "OpTypeFloat 32", true);
-        name = generator->AddSymbol(varResolved->type.name, Format("OpTypeSampledImage %%%d", name), true);
-
-    }
-    else if (varResolved->typeSymbol->category == Type::SamplerCategory)
-    {
-        name = generator->AddSymbol(varResolved->type.name, "OpTypeSampler", true);
-    }
-    else if (varResolved->typeSymbol->category == Type::PixelCacheCategory)
-    {
-        std::string spirvType = typeToSpirvType[varResolved->type.name];
-        uint32_t floatName = generator->AddSymbol("float", "OpTypeFloat 32", true);
-        spirvType = Format(spirvType.c_str(), floatName, "Rgba32f");
-        name = generator->AddSymbol(varResolved->type.name, spirvType, true);
-    }
-    else
-    {
-        // Just lookup struct as it has to have been declared prior
-        name = generator->GetSymbol(varResolved->type.name);
-    }
-
-    // Save type name
-    uint32_t typeName = name;
+    uint32_t typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits);
     std::string type = varResolved->type.name;
 
-    // Generate array or pointer
-    for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
-    {
-        if (varResolved->type.modifiers[i] == Type::FullType::Modifier::ArrayLevel)
-        {
-            // First add constant for array value
-            uint32_t uintName = generator->AddSymbol("uint", "OpTypeInt 32 0", true);
-            uint32_t value = varResolved->type.modifierValues[i];
-            name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", uintName, value), true);
-            type = Format("%s[%d]", type.c_str(), value);
-            typeName = generator->AddSymbol(type, Format("OpTypeArray %%%d %%%d", typeName, name), true);
-        }
-    }
-
-    uint32_t initializer = 0xFFFFFFFF;
+    SPIRVResult initializer = SPIRVResult::Invalid();
     if (varResolved->value != nullptr)
     {
         // Setup initializer
         initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
     }
 
+    uint32_t name = 0xFFFFFFFF;
     if (isGlobal)
     {
         if (varResolved->usageBits.flags.isConst)
@@ -924,29 +988,36 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         type = Format("ptr(%s)", type.c_str());
         uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer Function %%%d", typeName), true);
 
-        if (initializer != 0xFFFFFFFF)
+        if (initializer.name != 0xFFFFFFFF)
         {
-            uint32_t initializerValue = generator->AddMappedOp(Format("OpLoad %%%d %%%d", typeName, initializer));
-            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Function", typePtrName), isGlobal);
-            generator->AddOp(Format("OpStore %%%d %%%d", name, initializerValue));
+            if (initializer.isValue)
+            {
+                name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Function %%%d", typePtrName, initializer.name), isGlobal);
+            }
+            else
+            {
+                uint32_t initializerValue = generator->AddMappedOp(Format("OpLoad %%%d %%%d", typeName, initializer.name));
+                name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Function", typePtrName), isGlobal);
+                generator->AddOp(Format("OpStore %%%d %%%d", name, initializerValue));
+            }
         }
         else
             name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Function", typePtrName), isGlobal);
     }
-    return name;
+    return SPIRVResult(name, typeName);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     CallExpression* callExpression = static_cast<CallExpression*>(expr);
     CallExpression::__Resolved* resolvedCall = Symbol::Resolved(callExpression);
 
     Function::__Resolved* resolvedFunction = Symbol::Resolved(resolvedCall->function);
-    uint32_t returnTypeName = GenerateScalarTypeSPIRV(compiler, generator, resolvedCall->function->returnType, resolvedFunction->returnTypeSymbol);
+    uint32_t returnTypeName = GenerateTypeSPIRV(compiler, generator, resolvedCall->function->returnType, resolvedFunction->returnTypeSymbol);
 
     uint32_t funName;
     if (generator->HasSymbol(resolvedFunction->name))
@@ -957,31 +1028,23 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
         std::string argList = "";
         for (const auto& param : callExpression->args)
         {
-            uint32_t argName = GenerateExpressionSPIRV(compiler, generator, param);
-            Type::FullType type;
-            param->EvalType(type);
-            uint32_t typeName = generator->GetSymbol(type.ToString());
-            argList.append(Format("%%%d ", argName));
+            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, param);
+            argList.append(Format("%%%d ", arg.name));
         }
 
         // Then call the function
-        return generator->AddMappedOp(Format("OpFunctionCall %%%d %%%d %s", returnTypeName, funName, argList.c_str()));
+        return SPIRVResult(generator->AddMappedOp(Format("OpFunctionCall %%%d %%%d %s", returnTypeName, funName, argList.c_str())), returnTypeName);
     }
     else
     {
         // If there is no symbol matching this function, then we assume it's an intrinsic function
-        std::vector<uint32_t> argTypes;
-        std::vector<uint32_t> argNames;
+        std::vector<SPIRVResult> args;
 
         // First step is to get the type of all parameters, and get their SSA mappings
         for (const auto& param : callExpression->args)
         {
-            uint32_t argName = GenerateExpressionSPIRV(compiler, generator, param);
-            Type::FullType type;
-            param->EvalType(type);
-            uint32_t typeName = generator->GetSymbol(type.ToString());
-            argNames.push_back(argName);
-            argTypes.push_back(typeName);
+            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, param);
+            args.push_back(arg);
         }
 
         // Then we walk through all conversions which should be per parameter, or null if the type matches
@@ -993,14 +1056,12 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
                 Function::__Resolved* converterResolved = Symbol::Resolved(converter);
                 auto conv = generator->intrinsicMap.find(converter);
                 assert(conv != generator->intrinsicMap.end());
-                uint32_t returnTypeName = GenerateScalarTypeSPIRV(compiler, generator, converter->returnType, converterResolved->returnTypeSymbol);
+                uint32_t returnTypeName = GenerateTypeSPIRV(compiler, generator, converter->returnType, converterResolved->returnTypeSymbol);
 
-                std::vector<uint32_t> types{ argTypes[i] };
-                std::vector<uint32_t> names{ argNames[i] };
+                std::vector<SPIRVResult> tempArgs{ args[i] };
 
                 // After conversion the type is changed and the SSA is the value of the conversion being done
-                argNames[i] = conv->second(compiler, generator, returnTypeName, types, names);
-                argTypes[i] = returnTypeName;
+                args[i] = conv->second(compiler, generator, returnTypeName, tempArgs);
             }
         }
 
@@ -1009,20 +1070,19 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
         assert(it != generator->intrinsicMap.end());
 
         // Lastly, run the intrinsic generation with the converted parameters
-        uint32_t val = it->second(compiler, generator, returnTypeName, argNames, argTypes);
-        return GenerateLocalVariableSPIRV(compiler, generator, resolvedCall->returnType, val);
+        return it->second(compiler, generator, returnTypeName, args);
     }
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     ArrayIndexExpression* arrayIndexExpression = static_cast<ArrayIndexExpression*>(expr);
     ArrayIndexExpression::__Resolved* arrayIndexExpressionResolved = Symbol::Resolved(arrayIndexExpression);
-    uint32_t leftSymbol = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->left);
+    SPIRVResult leftSymbol = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->left);
 
     Type::FullType leftType, rightType;
     arrayIndexExpression->left->EvalType(leftType);
@@ -1032,7 +1092,7 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     bool res = arrayIndexExpression->right->EvalUInt(index);
     assert(res);
 
-    uint32_t returnType = GenerateScalarTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+    uint32_t returnType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
 
     // Evaluate the index which has to be a literal or constant value that evaluates at compile time
     if (leftType.modifiers.empty())
@@ -1050,58 +1110,69 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
 
             uint32_t returnPtrType = generator->AddSymbol(Format("ptr(%s)", arrayIndexExpressionResolved->returnFullType.ToString().c_str()), Format("OpTypePointer Function %%%d", returnType), true);
             uint32_t indexType = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
-            uint32_t indexConstant = generator->AddSymbol(Format("%du", index), Format("OpConstant %%%d %d", indexType, index), true);
+            SPIRVResult indexConstant = SPIRVResult(generator->AddSymbol(Format("%du", index), Format("OpConstant %%%d %d", indexType, index), true), indexType);
 
             /// Generate array access
-            return intrin->second(compiler, generator, returnPtrType, { leftSymbol, indexConstant }, {});
-
-            /// %15 = OpAccessChain %12 %6 %14 ;
+            return intrin->second(compiler, generator, returnPtrType, { leftSymbol, indexConstant });
         }
     }
     else
     {
 
     }
-    return 0xFFFFFFFF;
+    return SPIRVResult::Invalid();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     uint32_t name = 0xFFFFFFFF;
     InitializerExpression* initExpression = static_cast<InitializerExpression*>(expr);
 
-    std::vector<uint32_t> composites;
+    std::vector<SPIRVResult> composites;
     for (Expression* expr : initExpression->values)
     {
-        name = GenerateExpressionSPIRV(compiler, generator, expr);
-        composites.push_back(name);
+        SPIRVResult value = GenerateExpressionSPIRV(compiler, generator, expr);
+        composites.push_back(value);
     }
     Type::FullType type;
     initExpression->values[0]->EvalType(type);
     Symbol* typeSymbol = compiler->GetSymbol(type.name);
-    uint32_t typeName = GenerateScalarTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
+    uint32_t typeName = GenerateTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
     uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
     uint32_t sizeName = generator->AddSymbol(Format("%du", initExpression->values.size()), Format("OpConstant %%%d %d", uintName, initExpression->values.size()), true);
     typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName), true);
     std::string initializer = "";
-    for (uint32_t component : composites)
+    bool isConst = true;
+    for (SPIRVResult component : composites)
     {
-        uint32_t loadedComponent = generator->AddMappedOp(Format("OpLoad %%%d %%%d", typeName, component));
-        initializer.append(Format("%%%d ", loadedComponent));
+        if (!component.isValue)
+        {
+            uint32_t loadedComponent = generator->AddMappedOp(Format("OpLoad %%%d %%%d", component.typeName, component.name));
+            initializer.append(Format("%%%d ", loadedComponent));
+            isConst = false;
+        }
+        else
+        {
+            initializer.append(Format("%%%d ", component.name));
+        }
     }
-    name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName, initializer.c_str()));
+
+    if (isConst)
+        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName, initializer.c_str()), true);
+    else
+        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName, initializer.c_str()));
     //outCode.append(Format("%%%d \n", name));
-    return name;
+    return SPIRVResult(name, typeName, isConst);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     BinaryExpression* binaryExpression = static_cast<BinaryExpression*>(expr);
@@ -1110,18 +1181,16 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     binaryExpression->left->EvalType(leftType);
     binaryExpression->right->EvalType(rightType);
 
-    uint32_t leftTypeName = GenerateScalarTypeSPIRV(compiler, generator, leftType, binaryExpressionResolved->lhsType);
-    uint32_t rightTypeName = GenerateScalarTypeSPIRV(compiler, generator, rightType, binaryExpressionResolved->rhsType);
-    uint32_t rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right );
+    SPIRVResult rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right);
+    SPIRVResult leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
 
     // If there is a conversion function, generate it first
     if (binaryExpressionResolved->conversionFunction)
     {
         auto it = generator->intrinsicMap.find(binaryExpressionResolved->conversionFunction);
         assert(it != generator->intrinsicMap.end());
-        rightValue = it->second(compiler, generator, leftTypeName, { rightValue }, { rightTypeName });
+        rightValue = it->second(compiler, generator, leftValue.typeName, { rightValue });
     }
-    uint32_t leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
 
     std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), leftType.name.c_str());
     Function* fun = compiler->GetSymbol<Function>(functionName);
@@ -1132,7 +1201,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Get operator 
         auto op = generator->intrinsicMap.find(fun);
         assert(op != generator->intrinsicMap.end());
-        rightValue = op->second(compiler, generator, leftTypeName, { leftValue, rightValue }, { leftTypeName, leftTypeName });
+        rightValue = op->second(compiler, generator, leftValue.typeName, { leftValue, rightValue });
     }
 
     // Assignment is a store operation
@@ -1147,32 +1216,30 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     AccessExpression* accessExpression = static_cast<AccessExpression*>(expr);
     AccessExpression::__Resolved* accessExpressionResolved = Symbol::Resolved(accessExpression);
-    uint32_t lhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->left);
+    SPIRVResult lhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->left);
 
-    Type::SwizzleMask swizzle;
-    std::string rhsSymbol;
-    accessExpression->right->EvalSymbol(rhsSymbol);
-
-    if (Type::StringToSwizzleMask(rhsSymbol, swizzle))
+    Type::SwizzleMask swizzle = accessExpressionResolved->swizzleMask;
+    if (swizzle.mask != 0x0)
     {
-        // If single value, then use an access chain
+                // If single value, then use an access chain
         if (Type::SwizzleMaskComponents(swizzle) == 1)
         {
             uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
             uint32_t indexName = generator->AddSymbol(Format("%du", swizzle.bits.x), Format("OpConstant %%%d %d", uintName, swizzle.bits.x), true);
-            uint32_t retName = GenerateScalarTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", retName, lhs, indexName));
-            return ptr;
+            uint32_t retName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
+            uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", retName, lhs.name, indexName));
+            return SPIRVResult(ptr, retName);
         }
         else
         {
-            uint32_t retType = GenerateScalarTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            uint32_t origType = GenerateScalarTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
+            assert(accessExpressionResolved->rhsType->IsVector());
+            uint32_t retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
+            uint32_t origType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
             std::string swizzleIndices;
             if (swizzle.bits.x != Type::SwizzleMask::Invalid)
                 swizzleIndices.append(Format("%d ", swizzle.bits.x));
@@ -1182,9 +1249,9 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
                 swizzleIndices.append(Format("%d ", swizzle.bits.z));
             if (swizzle.bits.w != Type::SwizzleMask::Invalid)
                 swizzleIndices.append(Format("%d ", swizzle.bits.w));
-            uint32_t vec = generator->AddMappedOp(Format("OpLoad %%%d %%%d", origType, lhs), Format("Intermediate '%s'", accessExpressionResolved->leftType.name.c_str()));
+            uint32_t vec = generator->AddMappedOp(Format("OpLoad %%%d %%%d", origType, lhs.name), Format("Intermediate '%s'", accessExpressionResolved->leftType.name.c_str()));
             uint32_t shuffledVec = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", retType, vec, vec, swizzleIndices.c_str()));
-            return GenerateLocalVariableSPIRV(compiler, generator, accessExpressionResolved->rightType, shuffledVec);
+            return SPIRVResult(shuffledVec, retType, true);
         }
         // Generate swizzle access
     }
@@ -1200,43 +1267,43 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 
         }
     }
-    return 0xFFFFFFFF;
+    return SPIRVResult::Invalid();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateCommaExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     CommaExpression* commaExpression = static_cast<CommaExpression*>(expr);
-    return 0xFFFFFFFF;
+    return SPIRVResult::Invalid();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateTernaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     TernaryExpression* ternaryExpression = static_cast<TernaryExpression*>(expr);
-    return 0xFFFFFFFF;
+    return SPIRVResult::Invalid();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     UnaryExpression* unaryExpression = static_cast<UnaryExpression*>(expr);
-    return 0xFFFFFFFF;
+    return SPIRVResult::Invalid();
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     switch (expr->symbolType)
@@ -1246,36 +1313,36 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             float value;
             FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
             floatExpr->EvalFloat(value);
-            uint32_t typeName = generator->AddSymbol("float", Format("OpTypeFloat 32"), true);
+            uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
             uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
-            return GenerateLocalVariableSPIRV(compiler, generator, Type::FullType{ "float" }, name);
+            return SPIRVResult(name, typeName, true);
         }
         case Symbol::IntExpressionType:
         {
             int value;
             IntExpression* intExpr = static_cast<IntExpression*>(expr);
             intExpr->EvalInt(value);
-            uint32_t typeName = generator->AddSymbol("int", Format("OpTypeInt 32 1"), true);
+            uint32_t typeName = generator->AddSymbol("i32", Format("OpTypeInt 32 1"), true);
             uint32_t name = generator->AddSymbol(Format("%ds", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return GenerateLocalVariableSPIRV(compiler, generator, Type::FullType{ "int" }, name);
+            return SPIRVResult(name, typeName, true);
         }
         case Symbol::UIntExpressionType:
         {
             uint32_t value;
             UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
             uintExpr->EvalUInt(value);
-            uint32_t typeName = generator->AddSymbol("uint", Format("OpTypeInt 32 0"), true);
+            uint32_t typeName = generator->AddSymbol("u32", Format("OpTypeInt 32 0"), true);
             uint32_t name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return GenerateLocalVariableSPIRV(compiler, generator, Type::FullType{ "uint" }, name);
+            return SPIRVResult(name, typeName, true);
         }
         case Symbol::BoolExpressionType:
         {
             bool value;
             BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
             boolExpr->EvalBool(value);
-            uint32_t typeName = generator->AddSymbol("bool", Format("OpTypeBool"), true);
+            uint32_t typeName = generator->AddSymbol("b8", Format("OpTypeBool"), true);
             uint32_t name = generator->AddSymbol(value ? "true" : "false", value ? "OpConstantTrue" : "OpConstantFalse", true);
-            return GenerateLocalVariableSPIRV(compiler, generator, Type::FullType{ "bool" }, name);
+            return SPIRVResult(name, typeName, true);
         }
         case Symbol::BinaryExpressionType:
             return GenerateBinaryExpressionSPIRV(compiler, generator, expr);
@@ -1283,7 +1350,9 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
         case Symbol::SymbolExpressionType:
         {
             SymbolExpression* symbolExpression = static_cast<SymbolExpression*>(expr);
-            return generator->GetSymbol(symbolExpression->symbol);
+            SymbolExpression::__Resolved* symResolved = Symbol::Resolved(symbolExpression);
+            uint32_t type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
+            return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type);
         }
         case Symbol::AccessExpressionType:
             return GenerateAccessExpressionSPIRV(compiler, generator, expr);
@@ -1449,7 +1518,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             this->header.append("; Magic:     0x07230203 (SPIR-V)\n");
             this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
             this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
-            this->header.append("OpCapability Shader\n");
+            this->header.append("\t\tOpCapability Shader\n");
 
             for (Symbol* sym : symbols)
             {
@@ -1488,7 +1557,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 uint32_t 
 SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
 {
-    auto& scope = this->scopeStack.rbegin();
+    auto scope = this->scopeStack.rbegin();
     while (scope != this->scopeStack.rend())
     {
         auto it = scope->symbols.find(name);
@@ -1519,10 +1588,10 @@ uint32_t
 SPIRVGenerator::GetSymbol(std::string name)
 {
     uint32_t ret = 0xFFFFFFFF;
-    auto& it = this->scopeStack.rbegin();
+    auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
-        auto& sym = it->symbols.find(name);
+        auto sym = it->symbols.find(name);
         if (sym != it->symbols.end())
         {
             ret = sym->second;
@@ -1541,10 +1610,10 @@ bool
 SPIRVGenerator::HasSymbol(std::string name)
 {
     uint32_t ret = 0xFFFFFFFF;
-    auto& it = this->scopeStack.rbegin();
+    auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
-        auto& sym = it->symbols.find(name);
+        auto sym = it->symbols.find(name);
         if (sym != it->symbols.end())
         {
             ret = sym->second;
@@ -1599,10 +1668,10 @@ uint32_t
 SPIRVGenerator::FindSymbolMapping(std::string value)
 {
     uint32_t ret = 0xFFFFFFFF;
-    auto& it = this->scopeStack.rbegin();
+    auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
-        auto& sym = it->symbols.find(value);
+        auto sym = it->symbols.find(value);
         if (sym != it->symbols.end())
         {
             ret = sym->second;
@@ -1620,10 +1689,10 @@ SPIRVGenerator::FindSymbolMapping(std::string value)
 void 
 SPIRVGenerator::ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping)
 {
-    auto& it = this->scopeStack.rbegin();
+    auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
-        auto& sym = it->symbols.begin();
+        auto sym = it->symbols.begin();
         while (sym != it->symbols.end())
         {
             if (sym->second == oldMapping)

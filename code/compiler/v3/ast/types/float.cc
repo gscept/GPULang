@@ -39,29 +39,29 @@ Float::Float()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor_UInt, float, float, uint);
-    __IMPLEMENT_GLOBAL_1(ctor_Int, float, float, int);
+    __IMPLEMENT_GLOBAL_1(ctor_UInt, f32, f32, u32);
+    __IMPLEMENT_GLOBAL_1(ctor_Int, f32, f32, i32);
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float, float);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float, float);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, float, float);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, float, float);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, float, float);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32, f32);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32, f32);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, f32, f32);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, f32, f32);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, f32, f32);
 
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float, float);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float, float);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, float, float);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, float, float);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32, f32);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32, f32);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32, f32);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32, f32);
 
-    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, bool, float);
-    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, bool, float);
-    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, bool, float);
-    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, bool, float);
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, bool, float);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, bool, float);
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, f32);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, f32);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, f32);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, f32);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, f32);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, f32);
 
-    __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, float, int);
-    __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, float, uint);
+    __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, f32, i32);
+    __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, f32, u32);
 }
 
 } // namespace GPULang

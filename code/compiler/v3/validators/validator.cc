@@ -1314,7 +1314,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             Type::FullType type;
             expr->EvalType(type);
-            if (type.name == "uint" || type.name == "int")
+            if (type.name == "u32" || type.name == "i32" || type.name == "u16" || type.name == "i16")
             {
                 uint32_t value;
                 expr->EvalUInt(value);

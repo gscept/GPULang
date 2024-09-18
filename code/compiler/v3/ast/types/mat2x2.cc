@@ -33,29 +33,29 @@ Mat2x2::Mat2x2()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(floatConstructor, float2x2, float2x2);
-    __ADD_FUNCTION_PARAM(m00, float);
-    __ADD_FUNCTION_PARAM(m01, float);
-    __ADD_FUNCTION_PARAM(m10, float);
-    __ADD_FUNCTION_PARAM(m11, float);
+    __IMPLEMENT_GLOBAL(floatConstructor, f32x2x2, f32x2x2);
+    __ADD_FUNCTION_PARAM(m00, f32);
+    __ADD_FUNCTION_PARAM(m01, f32);
+    __ADD_FUNCTION_PARAM(m10, f32);
+    __ADD_FUNCTION_PARAM(m11, f32);
 
-    __IMPLEMENT_GLOBAL(vectorConstructor, float2x2, float2x2);
-    __ADD_FUNCTION_PARAM(r0, float2);
-    __ADD_FUNCTION_PARAM(r1, float2);
+    __IMPLEMENT_GLOBAL(vectorConstructor, f32x2x2, f32x2x2);
+    __ADD_FUNCTION_PARAM(r0, f32x2);
+    __ADD_FUNCTION_PARAM(r1, f32x2);
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float2x2, float2x2);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float2x2, float2x2);
-    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, float2x2, float2x2);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float2x2, float2x2);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float2x2, float2x2);
-    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, float2x2, float2x2);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x2x2, f32x2x2);
 
-    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, float2, float2);
+    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x2, f32x2);
 
-    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, float2x2, float2x2);
+    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x2x2, f32x2x2);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], float2, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], float2, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32x2, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32x2, u32);
 }
 
 } // namespace GPULang

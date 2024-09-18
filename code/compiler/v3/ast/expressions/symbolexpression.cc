@@ -54,18 +54,21 @@ SymbolExpression::Resolve(Compiler* compiler)
             Variable* var = static_cast<Variable*>(thisResolved->symbol);
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = varResolved->type;
+            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)
         {
             Structure* struc = static_cast<Structure*>(thisResolved->symbol);
             thisResolved->fullType = Type::FullType{ struc->name };
+            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::TypeType)
         {
             Type* type = static_cast<Type*>(thisResolved->symbol);
             thisResolved->fullType = Type::FullType{ type->name };
+            thisResolved->type = type;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::FunctionType)

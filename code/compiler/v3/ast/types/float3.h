@@ -17,7 +17,7 @@ struct Float3 : public Type
     Float3();
 
     static Function ctor_XYZ;
-    static Function ctor_Float2_Z;
+    static Function ctor_f32x2_Z;
     static Function ctorSingleValue;
 
     static Function additionOperator;

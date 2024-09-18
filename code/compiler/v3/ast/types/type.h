@@ -144,6 +144,7 @@ struct Type : public Symbol
         InvalidCategory,
         ReadWriteTextureCategory,
         TextureCategory,
+        SampledTextureCategory,
         PixelCacheCategory,
         ScalarCategory,
         UserTypeCategory,

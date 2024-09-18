@@ -225,57 +225,42 @@ typeDeclaration
     IDENTIFIER { $type.name = $IDENTIFIER.text; } 
     ;
 
-// Variable declaration <annotation>* <attribute>* <type> instance0, .. instanceN
+    // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
 variables
     returns[ std::vector<Variable*> list ]
     @init
     {
-        std::vector<Type::FullType> types;
         std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
         std::vector<std::string> names;
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
-        Symbol::Location location;
+        unsigned initCounter = 0;
         Type::FullType type;
     }:
     (annotation { annotations.push_back($annotation.annot); })*
     (attribute { attributes.push_back($attribute.attr); })*
-    typeName = IDENTIFIER { type.name = $typeName.text; } (
-        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
-    )*
-    varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } ( 
-        { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
-        '[' (
-            arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); }
-        )? 
+    
+    varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
+    (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
+    
+    ':' 
+    ( 
+        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
+        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
         ']'
     )* 
-    { types.push_back(type); type.ClearModifiers(); }
+    typeName = IDENTIFIER { type.name = $typeName.text; } 
     (
-        '=' valueExpr = assignmentExpression { valueExpressions.back() = $valueExpr.tree; } 
+        '=' valueExpr = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
+        (',' valueExprN = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExprN.tree; } )*
     )?
-    
-    (',' (
-            '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
-        )*
-        varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } (
-            { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
-            '[' (
-                    arraySizeN = INTEGERLITERAL { type.UpdateValue(atoi($arraySizeN.text.c_str())); }
-            )?  
-            ']' 
-        )* 
-        { types.push_back(type); type.ClearModifiers(); }
-        (
-            '=' valueExprN = assignmentExpression { valueExpressions.back() = $valueExprN.tree; }
-        )?
-    )* 
     {
         for (size_t i = 0; i < names.size(); i++)
         {
             Variable* var = new Variable(); 
-            var->type = types[i]; 
+            var->type = type; 
             var->location = locations[i]; 
             var->annotations = annotations; 
             var->attributes = attributes;
@@ -286,37 +271,41 @@ variables
     }
     ;
 
+    // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
 variable
     returns[ Variable* sym ]
     @init
     {
-        $sym = nullptr;
-        Type::FullType type;
+        std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
+        Type::FullType type;
     }:
+    (annotation { annotations.push_back($annotation.annot); })*
     (attribute { attributes.push_back($attribute.attr); })*
-    typeName = IDENTIFIER { type.name = $typeName.text; location = SetupFile(); } (
-        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); }
-    )*
-    varName = IDENTIFIER { name = $varName.text; } (
-        { type.AddModifier(Type::FullType::Modifier::ArrayLevel); }
-        '[' (
-                arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); }
-            )? 
+    
+    varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
+    ':' 
+    ( 
+        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
+        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
         ']'
-    )* (
-        '=' valueExpr = expression { valueExpression = $valueExpr.tree; } 
+    )* 
+    typeName = IDENTIFIER { type.name = $typeName.text; } 
+    (
+        '=' valueExpr = assignmentExpression { valueExpression = $valueExpr.tree; } 
     )?
     {
-        $sym = new Variable(); 
-        $sym->type = type; 
-        $sym->location = location; 
-        $sym->attributes = attributes;
-        $sym->name = name;
-        $sym->valueExpression = valueExpression;
+            $sym = new Variable(); 
+            $sym->type = type; 
+            $sym->location = location; 
+            $sym->annotations = annotations; 
+            $sym->attributes = attributes;
+            $sym->name = name;
+            $sym->valueExpression = valueExpression;
     }
     ;
 

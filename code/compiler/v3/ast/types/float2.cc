@@ -35,37 +35,37 @@ Float2::Float2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XY, float2, float2);
-    __ADD_FUNCTION_PARAM(x, float);
-    __ADD_FUNCTION_PARAM(y, float);
+    __IMPLEMENT_GLOBAL(ctor_XY, f32x2, f32x2);
+    __ADD_FUNCTION_PARAM(x, f32);
+    __ADD_FUNCTION_PARAM(y, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, float2, float2, float);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x2, f32x2, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float2, float2);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float2, float2);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, float2, float2);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, float2, float2);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float2, float2);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float2, float2);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, float2, float2);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, float2, float2);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x2, f32x2);
 
-    __IMPLEMENT_FUNCTION_1(matrix24Mul, operator*, float3, float2x4);
-    __IMPLEMENT_FUNCTION_1(matrix23Mul, operator*, float3, float2x3);
-    __IMPLEMENT_FUNCTION_1(matrix22Mul, operator*, float3, float2x2);
+    __IMPLEMENT_FUNCTION_1(matrix24Mul, operator*, f32x3, f32x2x4);
+    __IMPLEMENT_FUNCTION_1(matrix23Mul, operator*, f32x3, f32x2x3);
+    __IMPLEMENT_FUNCTION_1(matrix22Mul, operator*, f32x3, f32x2x2);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], float, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], float, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);
 
     char swizzleMask[] = { 'x', 'y' };
     for (char x = 0; x < 2; x++)
     {
-        __ADD_SWIZZLE(float, "%c", swizzleMask[x]);
+        __ADD_SWIZZLE(f32, "%c", swizzleMask[x]);
         for (char y = 0; y < 2; y++)
         {
-            __ADD_SWIZZLE(float2, "%c%c", swizzleMask[x], swizzleMask[y]);
+            __ADD_SWIZZLE(f32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
         }
     }
 }

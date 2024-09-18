@@ -35,7 +35,7 @@ bool
 FloatExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ "float" };
+    thisResolved->fullType = Type::FullType{ "f32" };
     thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
     return true;
 }

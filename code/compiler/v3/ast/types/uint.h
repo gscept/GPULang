@@ -30,7 +30,6 @@ struct UInt : public Type
     static Function multiplicationOperator;
     static Function divisionOperator;
     static Function modOperator;
-    static Function fractOperator;
 
     static Function andAssignOperator;
     static Function orAssignOperator;

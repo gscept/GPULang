@@ -17,28 +17,28 @@ Bool::Bool()
     this->byteSize = 1;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor_Int, bool, bool, int);
+    __IMPLEMENT_GLOBAL_1(ctor_Int, b8, b8, i32);
     __ADD_CONSTRUCTOR()
 
     // setup uint constructor
-    __IMPLEMENT_GLOBAL_1(ctor_UInt, bool, bool, uint);
+    __IMPLEMENT_GLOBAL_1(ctor_UInt, b8, b8, u32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, bool, bool);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, bool, bool);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, bool, bool);
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, bool, bool);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, bool, bool);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, bool, bool);
-    __IMPLEMENT_FUNCTION_1(ororOperator, operator&&, bool, bool);
-    __IMPLEMENT_FUNCTION_1(andandOperator, operator||, bool, bool);
+    __IMPLEMENT_FUNCTION_1(orOperator, operator|, b8, b8);
+    __IMPLEMENT_FUNCTION_1(andOperator, operator&, b8, b8);
+    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, b8, b8);
+    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, b8, b8);
+    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, b8, b8);
+    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, b8, b8);
+    __IMPLEMENT_FUNCTION_1(ororOperator, operator&&, b8, b8);
+    __IMPLEMENT_FUNCTION_1(andandOperator, operator||, b8, b8);
 
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, bool, bool);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, bool, bool);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, b8);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, b8);
 
-    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, bool, bool);
-    __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, bool, int);
-    __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, bool, uint);
+    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, b8, b8);
+    __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, b8, i32);
+    __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, b8, u32);
 }
 
 } // namespace GPULang

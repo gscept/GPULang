@@ -75,7 +75,7 @@ void Variable::SetupImageFormats()
         { "r11g11b10f", R11G11B10F },
         { "r32f", R32F },
         { "r16f", R16F },
-        { "rga32i", RGA32I },
+        { "rga32i", RGBA32I },
         { "rgba16i", RGBA16I },
         { "rgba8i", RGBA8I },
         { "rg32i", RG32I },
@@ -84,7 +84,7 @@ void Variable::SetupImageFormats()
         { "r32i", R32I },
         { "r16i", R16I },
         { "r8i", R8I },
-        { "rga32u", RGA32U },
+        { "rga32u", RGBA32U },
         { "rgba16u", RGBA16U },
         { "rgb10_a2u", RGB10_A2U },
         { "rgba8u", RGBA8U },
@@ -116,7 +116,7 @@ Variable::StringToImageFormat(const std::string& format)
 bool 
 Variable::IsImageFormatInteger(ImageFormat format)
 {
-    return format >= RGA32I && format <= R8I;
+    return format >= RGBA32I && format <= R8I;
 }
 
 //------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ Variable::IsImageFormatInteger(ImageFormat format)
 bool 
 Variable::IsImageFormatUnsigned(ImageFormat format)
 {
-    return format >= RGA32U && format <= R8U;
+    return format >= RGBA32U && format <= R8U;
 }
 
 } // namespace GPULang

@@ -19,7 +19,6 @@ Function UInt2::subtractionOperator;
 Function UInt2::multiplicationOperator;
 Function UInt2::divisionOperator;
 Function UInt2::modOperator;
-Function UInt2::fractOperator;
 Function UInt2::scaleOperator;
 
 Function UInt2::andAssignOperator;
@@ -47,48 +46,47 @@ UInt2::UInt2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XY, uint2, uint2);
-    __ADD_FUNCTION_PARAM(x, uint);
-    __ADD_FUNCTION_PARAM(y, uint);
+    __IMPLEMENT_GLOBAL(ctor_XY, u32x2, u32x2);
+    __ADD_FUNCTION_PARAM(x, u32);
+    __ADD_FUNCTION_PARAM(y, u32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, uint2, uint2, uint);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, u32x2, u32x2, u32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(fractOperator, fract, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, uint2, int);
+    __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, u32x2, u32);
 
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, uint2, uint2);
-    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, uint2, uint2);
+    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, u32x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, u32x2, u32x2);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], uint, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], uint, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], u32, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], u32, u32);
 
     char swizzleMask[] = { 'x', 'y' };
     for (char x = 0; x < 2; x++)
     {
-        __ADD_SWIZZLE(uint, "%c", swizzleMask[x]);
+        __ADD_SWIZZLE(u32, "%c", swizzleMask[x]);
         for (char y = 0; y < 2; y++)
         {
-            __ADD_SWIZZLE(uint2, "%c%c", swizzleMask[x], swizzleMask[y]);
+            __ADD_SWIZZLE(u32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
         }
     }
 }

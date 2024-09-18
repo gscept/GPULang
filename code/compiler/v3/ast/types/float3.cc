@@ -7,7 +7,7 @@ namespace GPULang
 {
 
 Function Float3::ctor_XYZ;
-Function Float3::ctor_Float2_Z;
+Function Float3::ctor_f32x2_Z;
 Function Float3::ctorSingleValue;
 Function Float3::additionOperator;
 Function Float3::subtractionOperator;
@@ -36,49 +36,49 @@ Float3::Float3()
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZ, float3, float3);
-    __ADD_FUNCTION_PARAM(x, float);
-    __ADD_FUNCTION_PARAM(y, float);
-    __ADD_FUNCTION_PARAM(z, float);
+    __IMPLEMENT_GLOBAL(ctor_XYZ, f32x3, f32x3);
+    __ADD_FUNCTION_PARAM(x, f32);
+    __ADD_FUNCTION_PARAM(y, f32);
+    __ADD_FUNCTION_PARAM(z, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_Float2_Z, float3, float3);
-    __ADD_FUNCTION_PARAM(xy, float2);
-    __ADD_FUNCTION_PARAM(z, float);
+    __IMPLEMENT_GLOBAL(ctor_f32x2_Z, f32x3, f32x3);
+    __ADD_FUNCTION_PARAM(xy, f32x2);
+    __ADD_FUNCTION_PARAM(z, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, float3, float3, float);
+    __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x3, f32x3, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, float3, float3);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, float3, float3);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, float3, float3);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, float3, float3);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, float3, float3);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, float3, float);
+    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, f32x3, f32);
 
-    __IMPLEMENT_FUNCTION_1(matrix34Mul, operator*, float3, float3x4);
-    __IMPLEMENT_FUNCTION_1(matrix33Mul, operator*, float3, float3x3);
-    __IMPLEMENT_FUNCTION_1(matrix32Mul, operator*, float3, float3x2);
+    __IMPLEMENT_FUNCTION_1(matrix34Mul, operator*, f32x3, f32x3x4);
+    __IMPLEMENT_FUNCTION_1(matrix33Mul, operator*, f32x3, f32x3x3);
+    __IMPLEMENT_FUNCTION_1(matrix32Mul, operator*, f32x3, f32x3x2);
 
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, float3, float3);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, float3, float3);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, float3, float3);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, float3, float3);
+    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x3, f32x3);
+    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x3, f32x3);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], float, int);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], float, uint);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
+    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);
 
     char swizzleMask[] = { 'x', 'y', 'z' };
     for (char x = 0; x < 3; x++)
     {
-        __ADD_SWIZZLE(float, "%c", swizzleMask[x]);
+        __ADD_SWIZZLE(f32, "%c", swizzleMask[x]);
         for (char y = 0; y < 3; y++)
         {
-            __ADD_SWIZZLE(float2, "%c%c", swizzleMask[x], swizzleMask[y]);
+            __ADD_SWIZZLE(f32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
             for (char z = 0; z < 3; z++)
             {
-                __ADD_SWIZZLE(float3, "%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z]);
+                __ADD_SWIZZLE(f32x3, "%c%c%c", swizzleMask[x], swizzleMask[y], swizzleMask[z]);
             }
         }
     }

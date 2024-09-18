@@ -165,22 +165,22 @@ Function::SetupIntrinsics()
 
     std::string scalarArgs[] =
     {
-        "int"
-        , "int2"
-        , "int3"
-        , "int4"
-        , "uint"
-        , "uint2"
-        , "uint3"
-        , "uint4"
-        , "float"
-        , "float2"
-        , "float3"
-        , "float4"
-        , "bool"
-        , "bool2"
-        , "bool3"
-        , "bool4"
+        "i32"
+        , "i32x2"
+        , "i32x3"
+        , "i32x4"
+        , "u32"
+        , "u32x2"
+        , "u32x3"
+        , "u32x4"
+        , "f32"
+        , "f32x2"
+        , "f32x3"
+        , "f32x4"
+        , "b8"
+        , "b8x2"
+        , "b8x3"
+        , "b8x4"
     };
     constexpr uint32_t numScalarArgs = sizeof(scalarArgs) / sizeof(std::string);
 
@@ -233,10 +233,10 @@ Function::SetupIntrinsics()
 
     std::string floatArgs[] =
     {
-        "float"
-        , "float2"
-        , "float3"
-        , "float4"
+        "f32"
+        , "f32x2"
+        , "f32x3"
+        , "f32x4"
     };
     constexpr uint32_t numFloatArgs = sizeof(floatArgs) / sizeof(std::string);
 
@@ -306,31 +306,31 @@ Function::SetupIntrinsics()
     //------------------------------------------------------------------------------
 
     __MAKE_INTRINSIC(subgroupId, SubgroupId);                       // Simply returns the ID of the subgroup
-    __SET_RET_LIT(uint);
+    __SET_RET_LIT(u32);
 
     __MAKE_INTRINSIC(subgroupFirstActive, SubgroupFirstActive);      // Returns true for the first active invocation in the subgroup, and false for all else
-    __SET_RET_LIT(bool);
+    __SET_RET_LIT(b8);
 
     __MAKE_INTRINSIC(subgroupFirst, SubgroupFirst);                 // Returns value from the invocation with the lowest invocation
-    __ADD_ARG_LIT(x, uint);
-    __SET_RET_LIT(uint);
+    __ADD_ARG_LIT(x, u32);
+    __SET_RET_LIT(u32);
 
     __MAKE_INTRINSIC(subgroupBallot, SubgroupBallot);               // Creates lane mask with bit set to 1 if value in predicate is true
-    __ADD_ARG_LIT(predicate, bool);
-    __SET_RET_LIT(uint4);
+    __ADD_ARG_LIT(predicate, b8);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_INTRINSIC(subgroupInverseBallot, SubgroupInverseBallot);    // Creates an inverted lane mask with bit set to 1 if predicate is false
-    __ADD_ARG_LIT(predicate, bool);
-    __SET_RET_LIT(uint4);
+    __ADD_ARG_LIT(predicate, b8);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_INTRINSIC(subgroupBallotBitCount, SubgroupBallotBitCount);   // Counts bits set in ballot result up to thread index within subgroup
-    __ADD_ARG_LIT(mask, uint4);
-    __SET_RET_LIT(uint);
+    __ADD_ARG_LIT(mask, u32x4);
+    __SET_RET_LIT(u32);
 
     __MAKE_INTRINSIC(subgroupBallotBit, SubgroupBallotBit);        // Check if bit in ballot result is for a given index
-    __ADD_ARG_LIT(mask, uint4);
-    __ADD_ARG_LIT(index, uint);
-    __SET_RET_LIT(bool);
+    __ADD_ARG_LIT(mask, u32x4);
+    __ADD_ARG_LIT(index, u32);
+    __SET_RET_LIT(b8);
 
     for (int i = 0; i < numScalarArgs; i++)
     {
@@ -368,15 +368,15 @@ Function::SetupIntrinsics()
 
     std::string intCoordinates[] =
     {
-        "int"
-        , "int2"
-        , "int2"
-        , "int3"
-        , "int3"
-        , "int2"
-        , "int3"
-        , "int3"
-        , "int4"
+        "i32"
+        , "i32x2"
+        , "i32x2"
+        , "i32x3"
+        , "i32x3"
+        , "i32x2"
+        , "i32x3"
+        , "i32x3"
+        , "i32x4"
     };
     constexpr uint32_t numTextureTypes = sizeof(rwTextures) / sizeof(std::string);
 
@@ -392,17 +392,17 @@ Function::SetupIntrinsics()
         __MAKE_INTRINSIC(textureLoad, TextureLoad);
         __ADD_HANDLE_ARG(texture, rwTextures[i]);
         __ADD_ARG(coords, intCoordinates[i]);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Load + lod
     for (int i = 0; i < numTextureTypes; i++)
     {
-        __MAKE_INTRINSIC(textureLoadLod, TextureLoadLod);
+        __MAKE_INTRINSIC(textureLoadMip, TextureLoadMip);
         __ADD_HANDLE_ARG(texture, rwTextures[i]);
         __ADD_ARG(coords, intCoordinates[i]);
-        __ADD_ARG_LIT(lod, int);
-        __SET_RET_LIT(float4);
+        __ADD_ARG_LIT(lod, i32);
+        __SET_RET_LIT(f32x4);
     }
 
     // Store
@@ -411,28 +411,28 @@ Function::SetupIntrinsics()
         __MAKE_INTRINSIC(textureStore, TextureStore);
         __ADD_HANDLE_ARG(texture, rwTextures[i]);
         __ADD_ARG(coords, intCoordinates[i]);
-        __ADD_ARG_LIT(value, float4);
-        __SET_RET_LIT(float4);
+        __ADD_ARG_LIT(value, f32x4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Store + lod
     for (int i = 0; i < numTextureTypes; i++)
     {
-        __MAKE_INTRINSIC(textureStoreLod, TextureStoreLod);
+        __MAKE_INTRINSIC(textureStoreMip, TextureStoreMip);
         __ADD_HANDLE_ARG(texture, rwTextures[i]);
         __ADD_ARG(coords, intCoordinates[i]);
-        __ADD_ARG_LIT(lod, int);
-        __ADD_ARG_LIT(value, float4);
-        __SET_RET_LIT(float4);
+        __ADD_ARG_LIT(lod, i32);
+        __ADD_ARG_LIT(value, f32x4);
+        __SET_RET_LIT(f32x4);
     }
 
     __MAKE_INTRINSIC(pixelCacheLoad, PixelCacheLoad);
     __ADD_HANDLE_ARG_LIT(texture, pixelCache);
-    __SET_RET_LIT(float4);
+    __SET_RET_LIT(f32x4);
 
     __MAKE_INTRINSIC(pixelCacheLoad, PixelCacheLoad);
     __ADD_HANDLE_ARG_LIT(texture, pixelCacheMS);
-    __SET_RET_LIT(float4);
+    __SET_RET_LIT(f32x4);
 
     std::string textures[] =
     {
@@ -449,15 +449,15 @@ Function::SetupIntrinsics()
 
     std::string normCoordinates[] =
     {
-        "float"     // 1D
-        , "float2"  // 2D
-        , "float2"  // 2DMS
-        , "float3"  // 3D
-        , "float3"  // Cube
-        , "float2"  // 1D + array slice
-        , "float3"  // 2D + array slice
-        , "float3"  // 2D + array slice
-        , "float4"  // 3D + array slice
+        "f32"     // 1D
+        , "f32x2"  // 2D
+        , "f32x2"  // 2DMS
+        , "f32x3"  // 3D
+        , "f32x3"  // Cube
+        , "f32x2"  // 1D + array slice
+        , "f32x3"  // 2D + array slice
+        , "f32x3"  // 2D + array slice
+        , "f32x4"  // 3D + array slice
     };
 
     // Normal sample
@@ -467,33 +467,33 @@ Function::SetupIntrinsics()
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     std::string offsets[] =
     {
-        "int"     // 1D
-        , "int2"  // 2D
-        , "int2"  // 2DMS
-        , "int3"  // 3D
-        , "int3"  // Cube
-        , "int"   // 1DArray - array slice
-        , "int2"  // 2DArray - array slice
-        , "int2"  // 2DArray - array slice
-        , "int3"  // 3DArray - array slice
+        "i32"     // 1D
+        , "i32x2"  // 2D
+        , "i32x2"  // 2DMS
+        , "i32x3"  // 3D
+        , "i32x3"  // Cube
+        , "i32"   // 1DArray - array slice
+        , "i32x2"  // 2DArray - array slice
+        , "i32x2"  // 2DArray - array slice
+        , "i32x3"  // 3DArray - array slice
     };
 
     std::string gradients[] =
     {
-        "float"     // 1D
-        , "float2"  // 2D
-        , "float2"  // 2DMS
-        , "float3"  // 3D
-        , "float3"  // Cube
-        , "float"   // 1DArray - array slice
-        , "float2"  // 2DArray - array slice
-        , "float2"  // 2DArray - array slice
-        , "float3"  // 3DArray - array slice
+        "f32"     // 1D
+        , "f32x2"  // 2D
+        , "f32x2"  // 2DMS
+        , "f32x3"  // 3D
+        , "f32x3"  // Cube
+        , "f32"   // 1DArray - array slice
+        , "f32x2"  // 2DArray - array slice
+        , "f32x2"  // 2DArray - array slice
+        , "f32x3"  // 3DArray - array slice
     };
 
 // These macros help to setup the different sampling functions based on requirements
@@ -531,7 +531,7 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Bias
@@ -541,9 +541,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBias, TextureSampleBias);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
+        __ADD_ARG_LIT(bias, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Bias + compare
@@ -553,10 +553,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBiasCompare, TextureSampleBiasCompare);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(bias, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Offset + bias
@@ -567,10 +567,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBiasOffset, TextureSampleBiasOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
+        __ADD_ARG_LIT(bias, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + bias
@@ -581,10 +581,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBiasProj, TextureSampleBiasProj);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(bias, f32);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + bias + compare
@@ -595,11 +595,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBiasProjCompare, TextureSample);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(bias, f32);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + offset + bias
@@ -611,11 +611,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleBiasProjOffset, TextureSampleBiasProjOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(bias, float);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(bias, f32);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
 
@@ -625,9 +625,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleCompare, TextureSample);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Compare + offset
@@ -637,10 +637,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleCompareOffset, TextureSampleCompareOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad
@@ -652,7 +652,7 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + compare
@@ -663,9 +663,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + compare + offset
@@ -677,10 +677,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + offset
@@ -694,7 +694,7 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_ARG(grad, gradients[i]);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + proj
@@ -706,9 +706,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + proj + compare
@@ -720,10 +720,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + proj + compare + offset
@@ -736,11 +736,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Grad + proj + offset
@@ -753,10 +753,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
         __ADD_ARG(grad, gradients[i]);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod
@@ -766,9 +766,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLod, TextureSampleLod);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
+        __ADD_ARG_LIT(lod, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + compare
@@ -778,10 +778,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodCompare, TextureSampleLodCompare);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + compare + offset
@@ -792,11 +792,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodCompareOffset, TextureSampleLodCompareOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + offset
@@ -807,10 +807,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodOffset, TextureSampleLodOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
+        __ADD_ARG_LIT(lod, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + proj
@@ -821,10 +821,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodProj, TextureSampleLodProj);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + proj + compare
@@ -835,11 +835,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodProjCompare, TextureSampleLodProjCompare);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Lod + proj + compare + offset
@@ -851,12 +851,12 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodProjCompareOffset, TextureSampleLodProjCompareOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coords, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + lod + offset
@@ -868,11 +868,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleLodProjOffset, TextureSampleLodProjOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(lod, float);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(lod, f32);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj
@@ -882,9 +882,9 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleProj, TextureSampleProj);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + compare
@@ -894,10 +894,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleProjCompare, TextureSampleProjCompare);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + compare + offset
@@ -908,11 +908,11 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleProjCompareOffset, TextureSampleProjCompareOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(proj, float);
-        __ADD_ARG_LIT(compare, float);
+        __ADD_ARG_LIT(proj, f32);
+        __ADD_ARG_LIT(compare, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     // Proj + offset
@@ -923,10 +923,10 @@ if (textures[i].find_last_of("MS") != std::string::npos)\
         __MAKE_INTRINSIC(textureSampleProjOffset, TextureSampleProjOffset);
         __ADD_HANDLE_ARG(texture, textures[i]);
         __ADD_ARG(coord, normCoordinates[i]);
-        __ADD_ARG_LIT(proj, float);
+        __ADD_ARG_LIT(proj, f32);
         __ADD_ARG(offsets, offsets[i]);
         __ADD_HANDLE_ARG_LIT(sampler, sampler);
-        __SET_RET_LIT(float4);
+        __SET_RET_LIT(f32x4);
     }
 
     __END_INTRINSICS__
