@@ -18,8 +18,8 @@ struct Float4 : public Type
 
     static Function ctor_XYZW;
     static Function ctorSingleValue;
-    static Function ctor_f32x3_W;
-    static Function ctor_f32x2_ZW;
+    static Function ctor_3_W;
+    static Function ctor_2_ZW;
 
     static Function additionOperator;
     static Function subtractionOperator;

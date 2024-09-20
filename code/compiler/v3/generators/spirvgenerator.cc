@@ -248,28 +248,28 @@ enum class ConversionTable
 std::map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, SPIRVResult)>> converters =
 {
     { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true );
+        uint32_t type = g->AddSymbol("float", "OpTypeFloat 32", true);        
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToU %%%d %%%d", type, value.name)), type, true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToU %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToS %%%d %%%d", type, value.name)), type, true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToS %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("float", "OpTypeFloat 32", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
 };
 
@@ -301,14 +301,17 @@ SPIRVResult
 GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     std::string argList = "";
-    bool isConst = true;
+    bool isLiteral = true;
     for (const SPIRVResult& arg : args)
     {
         argList.append(Format("%%%d ", arg.name));
-        if (!arg.isValue)
-            isConst = false;
+        if (!arg.isLiteral)
+            isLiteral = false;
     }
-    return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
+    if (isLiteral)
+        return SPIRVResult(generator->AddMappedOp(Format("OpConstantConstruct %%%d %s", returnType, argList.c_str())), returnType, true, true);
+    else
+        return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
 }
 
 //------------------------------------------------------------------------------
@@ -375,11 +378,11 @@ SPIRVGenerator::SetupIntrinsics()
         assert(args.size() == 1);
         return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
     };
-    this->intrinsicMap[&Float4::ctor_f32x3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Float4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float4::ctor_f32x2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Float4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
@@ -410,6 +413,110 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[&Float::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::IntToFloat, args[0]);
+    };
+    this->intrinsicMap[&Int4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 4);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Int4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
+    };
+    this->intrinsicMap[&Int4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 2);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Int4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 3);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Int3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 3);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Int3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
+    };
+    this->intrinsicMap[&Int2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 2);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Int2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
+    };
+    this->intrinsicMap[&Int::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToInt, args[0]);
+    };
+    this->intrinsicMap[&UInt4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 4);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&UInt4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
+    };
+    this->intrinsicMap[&UInt4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 2);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&UInt4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 3);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&UInt3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 3);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&UInt3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
+    };
+    this->intrinsicMap[&UInt2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 2);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&UInt2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
+    };
+    this->intrinsicMap[&UInt::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::IntToUInt, args[0]);
+    };
+    this->intrinsicMap[&Bool4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 4);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Bool4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
+    };
+    this->intrinsicMap[&Bool3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 3);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Bool3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
+    };
+    this->intrinsicMap[&Bool2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 2);
+        return GenerateCompositeSPIRV(c, g, returnType, args);
+    };
+    this->intrinsicMap[&Bool2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
+    };
+    this->intrinsicMap[&Bool::ctor_UInt] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return args[0];
+    };
+    this->intrinsicMap[&Bool::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return args[0];
     };
 
     // For matrix float constructors, we need to first construct the vectors and then compose the matrix from them
@@ -532,157 +639,146 @@ SPIRVGenerator::SetupIntrinsics()
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
 
-    std::map<Function*, std::pair<char, bool>> additionFunctions =
+#define OPERATOR_INTRINSIC(ty, fn, op, inst)\
+    { &ty::##fn##Operator, #op[0], #inst, false }\
+    , { &ty::##fn##AssignOperator, #op[0], #inst, true }
+
+#define OPERATOR_INTRINSIC_NO_ASSIGN(ty, fn, op, inst)\
+    { &ty::##fn##Operator, #op[0], #inst, false }\
+
+    std::vector<std::tuple<Function*, char, const char*, bool>> operatorFunctions =
     {
-        { &Float4::additionOperator, { 'F', false } }
-        , { &Float3::additionOperator, { 'F', false } }
-        , { &Float2::additionOperator, { 'F', false } }
-        , { &Float::additionOperator, { 'F', false } }
-        , { &Int4::additionOperator, { 'S', false } }
-        , { &Int3::additionOperator, { 'S', false } }
-        , { &Int2::additionOperator, { 'S', false } }
-        , { &Int::additionOperator, { 'S', false } }
-        , { &UInt4::additionOperator, { 'U', false } }
-        , { &UInt3::additionOperator, { 'U', false } }
-        , { &UInt2::additionOperator, { 'U', false } }
-        , { &UInt::additionOperator, { 'U', false } }
-        , { &Mat2x2::additionOperator, { 'F', false } }
-        , { &Mat2x3::additionOperator, { 'F', false } }
-        , { &Mat2x4::additionOperator, { 'F', false } }
-        , { &Mat3x2::additionOperator, { 'F', false } }
-        , { &Mat3x3::additionOperator, { 'F', false } }
-        , { &Mat3x4::additionOperator, { 'F', false } }
-        , { &Mat4x4::additionOperator, { 'F', false } }
-        , { &Mat4x3::additionOperator, { 'F', false } }
-        , { &Mat4x2::additionOperator, { 'F', false } }
-        , { &Float4::additionAssignOperator, { 'F', true } }
-        , { &Float3::additionAssignOperator, { 'F', true } }
-        , { &Float2::additionAssignOperator, { 'F', true } }
-        , { &Float::additionAssignOperator, { 'F', true } }
-        , { &Int4::additionAssignOperator, { 'S', true } }
-        , { &Int3::additionAssignOperator, { 'S', true } }
-        , { &Int2::additionAssignOperator, { 'S', true } }
-        , { &Int::additionAssignOperator, { 'S', true } }
-        , { &UInt4::additionAssignOperator, { 'U', true } }
-        , { &UInt3::additionAssignOperator, { 'U', true } }
-        , { &UInt2::additionAssignOperator, { 'U', true } }
-        , { &UInt::additionAssignOperator, { 'U', true } }
-        , { &Mat2x2::additionAssignOperator, { 'F', true } }
-        , { &Mat2x3::additionAssignOperator, { 'F', true } }
-        , { &Mat2x4::additionAssignOperator, { 'F', true } }
-        , { &Mat3x2::additionAssignOperator, { 'F', true } }
-        , { &Mat3x3::additionAssignOperator, { 'F', true } }
-        , { &Mat3x4::additionAssignOperator, { 'F', true } }
-        , { &Mat4x4::additionAssignOperator, { 'F', true } }
-        , { &Mat4x3::additionAssignOperator, { 'F', true } }
-        , { &Mat4x2::additionAssignOperator, { 'F', true } }
+        OPERATOR_INTRINSIC(Float4, addition, F, Add)
+        , OPERATOR_INTRINSIC(Float3, addition, F, Add)
+        , OPERATOR_INTRINSIC(Float2, addition, F, Add)
+        , OPERATOR_INTRINSIC(Float, addition, F, Add)
+        , OPERATOR_INTRINSIC(Float4, subtraction, F, Sub)
+        , OPERATOR_INTRINSIC(Float3, subtraction, F, Sub)
+        , OPERATOR_INTRINSIC(Float2, subtraction, F, Sub)
+        , OPERATOR_INTRINSIC(Float, subtraction, F, Sub)
+        , OPERATOR_INTRINSIC(Float4, multiplication, F, Mul)
+        , OPERATOR_INTRINSIC(Float3, multiplication, F, Mul)
+        , OPERATOR_INTRINSIC(Float2, multiplication, F, Mul)
+        , OPERATOR_INTRINSIC(Float, multiplication, F, Mul)
+        , OPERATOR_INTRINSIC(Float4, division, F, Div)
+        , OPERATOR_INTRINSIC(Float3, division, F, Div)
+        , OPERATOR_INTRINSIC(Float2, division, F, Div)
+        , OPERATOR_INTRINSIC(Float, division, F, Div)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, mod, F, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, mod, F, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, mod, F, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, mod, F, Mod)
+        , OPERATOR_INTRINSIC(Int4, addition, S, Add)
+        , OPERATOR_INTRINSIC(Int3, addition, S, Add)
+        , OPERATOR_INTRINSIC(Int2, addition, S, Add)
+        , OPERATOR_INTRINSIC(Int, addition, S, Add)
+        , OPERATOR_INTRINSIC(Int4, subtraction, S, Sub)
+        , OPERATOR_INTRINSIC(Int3, subtraction, S, Sub)
+        , OPERATOR_INTRINSIC(Int2, subtraction, S, Sub)
+        , OPERATOR_INTRINSIC(Int, subtraction, S, Sub)
+        , OPERATOR_INTRINSIC(Int4, multiplication, S, Mul)
+        , OPERATOR_INTRINSIC(Int3, multiplication, S, Mul)
+        , OPERATOR_INTRINSIC(Int2, multiplication, S, Mul)
+        , OPERATOR_INTRINSIC(Int, multiplication, S, Mul)
+        , OPERATOR_INTRINSIC(Int4, division, S, Div)
+        , OPERATOR_INTRINSIC(Int3, division, S, Div)
+        , OPERATOR_INTRINSIC(Int2, division, S, Div)
+        , OPERATOR_INTRINSIC(Int, division, S, Div)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, mod, S, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, mod, S, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, mod, S, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, mod, S, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, lt, S, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, lt, S, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, lt, S, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, lt, S, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, lte, S, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, lte, S, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, lte, S, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, lte, S, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, gt, S, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, gt, S, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, gt, S, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, gt, S, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, gte, S, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, gte, S, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, gte, S, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, gte, S, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int4, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Int, ne, I, Equal)
+        , OPERATOR_INTRINSIC(UInt4, addition, U, Add)
+        , OPERATOR_INTRINSIC(UInt3, addition, U, Add)
+        , OPERATOR_INTRINSIC(UInt2, addition, U, Add)
+        , OPERATOR_INTRINSIC(UInt, addition, U, Add)
+        , OPERATOR_INTRINSIC(UInt4, subtraction, U, Sub)
+        , OPERATOR_INTRINSIC(UInt3, subtraction, U, Sub)
+        , OPERATOR_INTRINSIC(UInt2, subtraction, U, Sub)
+        , OPERATOR_INTRINSIC(UInt, subtraction, U, Sub)
+        , OPERATOR_INTRINSIC(UInt4, multiplication, U, Mul)
+        , OPERATOR_INTRINSIC(UInt3, multiplication, U, Mul)
+        , OPERATOR_INTRINSIC(UInt2, multiplication, U, Mul)
+        , OPERATOR_INTRINSIC(UInt, multiplication, U, Mul)
+        , OPERATOR_INTRINSIC(UInt4, division, U, Div)
+        , OPERATOR_INTRINSIC(UInt3, division, U, Div)
+        , OPERATOR_INTRINSIC(UInt2, division, U, Div)
+        , OPERATOR_INTRINSIC(UInt, division, U, Div)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, mod, U, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, mod, U, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, mod, U, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, mod, U, Mod)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, lt, U, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, lt, U, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, lt, U, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, lt, U, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, lte, U, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, lte, U, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, lte, U, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, lte, U, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, gt, U, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, gt, U, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, gt, U, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, gt, U, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, gte, U, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, gte, U, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, gte, U, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, gte, U, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, e, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt4, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt3, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt2, ne, I, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(UInt, ne, I, Equal)
+        , OPERATOR_INTRINSIC(Mat2x2, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat2x3, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat2x4, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat3x2, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat3x3, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat3x4, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat4x2, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat4x3, addition, F, Add)
+        , OPERATOR_INTRINSIC(Mat4x4, addition, F, Add)
     };
-    for (auto fun : additionFunctions)
+
+    for (auto fun : operatorFunctions)
     {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        this->intrinsicMap[std::get<0>(fun)] = [ty = std::get<1>(fun), op = std::get<2>(fun), assign = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
+            uint32_t ret = g->AddMappedOp(Format("Op%c%s %%%d %%%d %%%d", ty, op, returnType, args[0].name, args[1].name));
             if (assign)
                 g->ReplaceSymbolMapping(args[0].name, ret);
-            return SPIRVResult(ret, returnType );
+            return SPIRVResult(ret, returnType, true);
         };
     }
 
-    std::map<Function*, std::pair<char, bool>> subtractionFunctions =
-    {
-        { &Float4::subtractionOperator, { 'F', false } }
-        , { &Float3::subtractionOperator, { 'F', false } }
-        , { &Float2::subtractionOperator, { 'F', false } }
-        , { &Float::subtractionOperator, { 'F', false } }
-        , { &Int4::subtractionOperator, { 'S', false } }
-        , { &Int3::subtractionOperator, { 'S', false } }
-        , { &Int2::subtractionOperator, { 'S', false } }
-        , { &Int::subtractionOperator, { 'S', false } }
-        , { &UInt4::subtractionOperator, { 'U', false } }
-        , { &UInt3::subtractionOperator, { 'U', false } }
-        , { &UInt2::subtractionOperator, { 'U', false } }
-        , { &UInt::subtractionOperator, { 'U', false } }
-        , { &Mat2x2::subtractionOperator, { 'F', false } }
-        , { &Mat2x3::subtractionOperator, { 'F', false } }
-        , { &Mat2x4::subtractionOperator, { 'F', false } }
-        , { &Mat3x2::subtractionOperator, { 'F', false } }
-        , { &Mat3x3::subtractionOperator, { 'F', false } }
-        , { &Mat3x4::subtractionOperator, { 'F', false } }
-        , { &Mat4x4::subtractionOperator, { 'F', false } }
-        , { &Mat4x3::subtractionOperator, { 'F', false } }
-        , { &Mat4x2::subtractionOperator, { 'F', false } }
-        , { &Float4::subtractionAssignOperator, { 'F', true } }
-        , { &Float3::subtractionAssignOperator, { 'F', true } }
-        , { &Float2::subtractionAssignOperator, { 'F', true } }
-        , { &Float::subtractionAssignOperator, { 'F', true } }
-        , { &Int4::subtractionAssignOperator, { 'S', true } }
-        , { &Int3::subtractionAssignOperator, { 'S', true } }
-        , { &Int2::subtractionAssignOperator, { 'S', true } }
-        , { &Int::subtractionAssignOperator, { 'S', true } }
-        , { &UInt4::subtractionAssignOperator, { 'U', true } }
-        , { &UInt3::subtractionAssignOperator, { 'U', true } }
-        , { &UInt2::subtractionAssignOperator, { 'U', true } }
-        , { &UInt::subtractionAssignOperator, { 'U', true } }
-        , { &Mat2x2::subtractionAssignOperator, { 'F', true } }
-        , { &Mat2x3::subtractionAssignOperator, { 'F', true } }
-        , { &Mat2x4::subtractionAssignOperator, { 'F', true } }
-        , { &Mat3x2::subtractionAssignOperator, { 'F', true } }
-        , { &Mat3x3::subtractionAssignOperator, { 'F', true } }
-        , { &Mat3x4::subtractionAssignOperator, { 'F', true } }
-        , { &Mat4x4::subtractionAssignOperator, { 'F', true } }
-        , { &Mat4x3::subtractionAssignOperator, { 'F', true } }
-        , { &Mat4x2::subtractionAssignOperator, { 'F', true } }
-    };
-    for (auto fun : subtractionFunctions)
-    {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
-            if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
-            return SPIRVResult(ret, returnType );
-        };
-    }
-
-    std::map<Function*, std::pair<char, bool>> multiplicationFunctions =
-    {
-        { &Float4::multiplicationOperator, { 'F', false } }
-        , { &Float3::multiplicationOperator, { 'F', false } }
-        , { &Float2::multiplicationOperator, { 'F', false } }
-        , { &Float::multiplicationOperator, { 'F', false } }
-        , { &Int4::multiplicationOperator, { 'S', false } }
-        , { &Int3::multiplicationOperator, { 'S', false } }
-        , { &Int2::multiplicationOperator, { 'S', false } }
-        , { &Int::multiplicationOperator, { 'S', false } }
-        , { &UInt4::multiplicationOperator, { 'U', false } }
-        , { &UInt3::multiplicationOperator, { 'U', false } }
-        , { &UInt2::multiplicationOperator, { 'U', false } }
-        , { &UInt::multiplicationOperator, { 'U', false } }
-        , { &Float4::multiplicationAssignOperator, { 'F', true } }
-        , { &Float3::multiplicationAssignOperator, { 'F', true } }
-        , { &Float2::multiplicationAssignOperator, { 'F', true } }
-        , { &Float::multiplicationAssignOperator, { 'F', true } }
-        , { &Int4::multiplicationAssignOperator, { 'S', true } }
-        , { &Int3::multiplicationAssignOperator, { 'S', true } }
-        , { &Int2::multiplicationAssignOperator, { 'S', true } }
-        , { &Int::multiplicationAssignOperator, { 'S', true } }
-        , { &UInt4::multiplicationAssignOperator, { 'U', true } }
-        , { &UInt3::multiplicationAssignOperator, { 'U', true } }
-        , { &UInt2::multiplicationAssignOperator, { 'U', true } }
-        , { &UInt::multiplicationAssignOperator, { 'U', true } }
-    };
-    for (auto fun : multiplicationFunctions)
-    {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
-            if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
-            return SPIRVResult(ret, returnType );
-        };
-    }
-
-    std::map<Function*, bool> matrixMultiplicationFunctions =
+    std::vector<std::pair<Function*, bool>> matrixMultiplicationFunctions =
     {
         { &Mat2x2::multiplyOperator, false }
         , { &Mat2x3::multiplyOperator, false }
@@ -710,7 +806,7 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t ret = g->AddMappedOp(Format("OpMatrixTimesMatrix %%%d %%%d %%%d", returnType, args[0].name, args[1].name));
             if (assign)
                 g->ReplaceSymbolMapping(args[0].name, ret);
-            return SPIRVResult(ret, returnType );
+            return SPIRVResult(ret, returnType, true);
         };
     }
 
@@ -730,68 +826,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return SPIRVResult(g->AddMappedOp(Format("OpMatrixTimesVector %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType);
-        };
-    }
-
-    std::map<Function*, std::pair<char, bool>> divisionFunctions =
-    {
-        { &Float4::divisionOperator, { 'F', false } }
-        , { &Float3::divisionOperator, { 'F', false } }
-        , { &Float2::divisionOperator, { 'F', false } }
-        , { &Float::divisionOperator, { 'F', false } }
-        , { &Int4::divisionOperator, { 'S', false } }
-        , { &Int3::divisionOperator, { 'S', false } }
-        , { &Int2::divisionOperator, { 'S', false } }
-        , { &Int::divisionOperator, { 'S', false } }
-        , { &UInt4::divisionOperator, { 'U', false } }
-        , { &UInt3::divisionOperator, { 'U', false } }
-        , { &UInt2::divisionOperator, { 'U', false } }
-        , { &UInt::divisionOperator, { 'U', false } }
-        , { &Float4::divisionAssignOperator, { 'F', true } }
-        , { &Float3::divisionAssignOperator, { 'F', true } }
-        , { &Float2::divisionAssignOperator, { 'F', true } }
-        , { &Float::divisionAssignOperator, { 'F', true } }
-        , { &Int4::divisionAssignOperator, { 'S', true } }
-        , { &Int3::divisionAssignOperator, { 'S', true } }
-        , { &Int2::divisionAssignOperator, { 'S', true } }
-        , { &Int::divisionAssignOperator, { 'S', true } }
-        , { &UInt4::divisionAssignOperator, { 'U', true } }
-        , { &UInt3::divisionAssignOperator, { 'U', true } }
-        , { &UInt2::divisionAssignOperator, { 'U', true } }
-        , { &UInt::divisionAssignOperator, { 'U', true } }
-    };
-    for (auto fun : divisionFunctions)
-    {
-        this->intrinsicMap[fun.first] = [op = fun.second.first, assign = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%cDiv %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
-            if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
-            return SPIRVResult(ret, returnType);
-        };
-    }
-
-    std::map<Function*, char> modFunctions =
-    {
-        { &Float4::modOperator, 'F' }
-        , { &Float3::modOperator, 'F' }
-        , { &Float2::modOperator, 'F' }
-        , { &Float::modOperator, 'F' }
-        , { &Int4::modOperator, 'S' }
-        , { &Int3::modOperator, 'S' }
-        , { &Int2::modOperator, 'S' }
-        , { &Int::modOperator, 'S' }
-        , { &UInt4::modOperator, 'U' }
-        , { &UInt3::modOperator, 'U' }
-        , { &UInt2::modOperator, 'U' }
-        , { &UInt::modOperator, 'U' }
-    };
-    for (auto fun : modFunctions)
-    {
-        this->intrinsicMap[fun.first] = [op = fun.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 2);
-            return SPIRVResult(g->AddMappedOp(Format("Op%cMod %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name)), returnType);
+            return SPIRVResult(g->AddMappedOp(Format("OpMatrixTimesVector %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true);
         };
     }
 
@@ -805,7 +840,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesScalar %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType);
+            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesScalar %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true);
         };
     }
 
@@ -823,7 +858,7 @@ SPIRVGenerator::SetupIntrinsics()
         this->intrinsicMap[fun.first] = [op = fun.second.first, num = fun.second.second](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
             SPIRVResult splat = GenerateSplatCompositeSPIRV(c, g, returnType, num, args[1]);
-            return SPIRVResult(g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0].name, splat.name)), returnType);
+            return SPIRVResult(g->AddMappedOp(Format("Op%cMul %%%d %%%d %%%d", op, returnType, args[0].name, splat.name)), returnType, true);
         };
     }
 
@@ -843,7 +878,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesMatrix %%%d %%%d %%%d", args[0].typeName, args[0].name, args[1].name), fun->name), returnType);
+            return SPIRVResult(g->AddMappedOp(Format("OpVectorTimesMatrix %%%d %%%d %%%d", args[0].typeName, args[0].name, args[1].name), fun->name), returnType, true);
         };
     }
 
@@ -873,6 +908,341 @@ SPIRVGenerator::SetupIntrinsics()
         this->intrinsicMap[fun] = [fun](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
             return SPIRVResult(g->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", returnType, args[0].name, args[1].name), fun->name), returnType);
+        };
+    }
+
+#define BIT_INTRINSIC(ty, fn, inst)\
+    { &ty::##fn##Operator, #inst, false }\
+    , { &ty::##fn##AssignOperator, #inst, true }
+
+    std::vector<std::tuple<Function*, const char*, bool>> bitwiseOps =
+    {
+        BIT_INTRINSIC(Int4, or, BitwiseOr)
+        , BIT_INTRINSIC(Int3, or, BitwiseOr)
+        , BIT_INTRINSIC(Int2, or, BitwiseOr)
+        , BIT_INTRINSIC(Int, or, BitwiseOr)
+        , BIT_INTRINSIC(Int4, xor, BitwiseXor)
+        , BIT_INTRINSIC(Int3, xor, BitwiseXor)
+        , BIT_INTRINSIC(Int2, xor, BitwiseXor)
+        , BIT_INTRINSIC(Int, xor, BitwiseXor)
+        , BIT_INTRINSIC(Int4, and, BitwiseAnd)
+        , BIT_INTRINSIC(Int3, and, BitwiseAnd)
+        , BIT_INTRINSIC(Int2, and, BitwiseAnd)
+        , BIT_INTRINSIC(Int, and, BitwiseAnd)
+        , BIT_INTRINSIC(UInt4, or, BitwiseOr)
+        , BIT_INTRINSIC(UInt3, or, BitwiseOr)
+        , BIT_INTRINSIC(UInt2, or, BitwiseOr)
+        , BIT_INTRINSIC(UInt, or, BitwiseOr)
+        , BIT_INTRINSIC(UInt4, xor, BitwiseXor)
+        , BIT_INTRINSIC(UInt3, xor, BitwiseXor)
+        , BIT_INTRINSIC(UInt2, xor, BitwiseXor)
+        , BIT_INTRINSIC(UInt, xor, BitwiseXor)
+        , BIT_INTRINSIC(UInt4, and, BitwiseAnd)
+        , BIT_INTRINSIC(UInt3, and, BitwiseAnd)
+        , BIT_INTRINSIC(UInt2, and, BitwiseAnd)
+        , BIT_INTRINSIC(UInt, and, BitwiseAnd)
+        , BIT_INTRINSIC(Int4, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(Int3, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(Int2, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(Int, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(Int4, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(Int3, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(Int2, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(Int, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(UInt4, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(UInt3, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(UInt2, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(UInt, leftShift, ShiftLeftLogical)
+        , BIT_INTRINSIC(UInt4, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(UInt3, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(UInt2, rightShift, ShiftRightLogical)
+        , BIT_INTRINSIC(UInt, rightShift, ShiftRightLogical)
+    };
+    for (auto fun : bitwiseOps)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun), assign = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            uint32_t ret = g->AddMappedOp(Format("Op%s %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
+            if (assign)
+                g->ReplaceSymbolMapping(args[0].name, ret);
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
+    {
+        { Intrinsics::TextureFetchBase_texture1D, false }
+        , { Intrinsics::TextureFetchBase_texture2D, false }
+        , { Intrinsics::TextureFetchBase_texture2DMS, false }
+        , { Intrinsics::TextureFetchBase_texture3D, false }
+        , { Intrinsics::TextureFetchBase_texture1DArray, false }
+        , { Intrinsics::TextureFetchBase_texture2DArray, false }
+        , { Intrinsics::TextureFetchBase_texture2DMSArray, false }
+        , { Intrinsics::TextureFetchSample_texture2DMS, true }
+        , { Intrinsics::TextureFetchSample_texture2DMSArray, true }
+    };
+    for (auto fun : textureFetchIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [sample = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret;
+            if (sample)
+                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d Sample %d", returnType, args[0].name, args[1].name, args[2].name));
+            else
+                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+        };
+    }
+
+    std::vector<std::tuple<Function*, bool>> textureGatherIntrinsics =
+    {
+        { Intrinsics::TextureGatherBase_texture2D, false }
+        , { Intrinsics::TextureGatherBase_texture2DArray, false }
+        , { Intrinsics::TextureGatherBase_textureCube, false }
+        , { Intrinsics::TextureGatherBase_textureCubeArray, false }
+        , { Intrinsics::TextureGatherOffsets_texture2D, true }
+        , { Intrinsics::TextureGatherOffsets_texture2DArray, true }
+    };
+    for (auto fun : textureGatherIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [offsets = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret;
+            if (offsets)
+                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d ConstOffsets %%%d", returnType, args[0].name, args[1].name, args[2].name));
+            else
+                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+        };
+    }
+
+    enum SampleOperands : uint8_t
+    {
+        None = 0x0,
+        Lod = 0x1,
+        Bias = 0x2,
+        Grad = 0x4,
+        Offset = 0x8,
+        Proj = 0x10,
+        Comp = 0x20
+    };
+
+    std::vector<std::tuple<Function*, SampleOperands>> textureSampleInstructions =
+    {
+        { Intrinsics::TextureSampleBase_texture1D, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_texture2D, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_texture2DArray, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_texture2DMS, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_texture2DMSArray, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_texture3D, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_textureCube, SampleOperands::None }
+        , { Intrinsics::TextureSampleBase_textureCubeArray, SampleOperands::None }
+        , { Intrinsics::TextureSampleLod_texture1D, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_texture2D, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_texture2DArray, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_texture2DMS, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_texture2DMSArray, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_texture3D, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_textureCube, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLod_textureCubeArray, SampleOperands::Lod }
+        , { Intrinsics::TextureSampleLodCompare_texture1D, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_texture2D, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_texture2DArray, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_texture2DMS, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_texture2DMSArray, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_texture3D, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_textureCube, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompare_textureCubeArray, SampleOperands::Lod | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture1D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture2D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture2DArray, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture2DMS, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture2DMSArray, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodCompareOffset_texture3D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture1D, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture2D, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture2DArray, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture2DMS, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture2DMSArray, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodOffset_texture3D, SampleOperands::Lod | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProj_texture1D, SampleOperands::Lod | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleLodProj_texture2D, SampleOperands::Lod | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleLodProj_texture3D, SampleOperands::Lod | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleLodProj_textureCube, SampleOperands::Lod | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleLodProjCompare_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodProjCompare_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodProjCompare_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodProjCompare_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleLodProjCompareOffset_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjCompareOffset_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjCompareOffset_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjCompareOffset_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjOffset_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjOffset_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjOffset_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleLodProjOffset_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBias_texture1D, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBias_texture2D, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBias_texture2DArray, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBias_texture3D, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBias_textureCube, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBias_textureCubeArray, SampleOperands::Bias }
+        , { Intrinsics::TextureSampleBiasCompare_texture1D, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasCompare_texture2D, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasCompare_texture2DArray, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasCompare_texture3D, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasCompare_textureCube, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasCompare_textureCubeArray, SampleOperands::Bias | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasOffset_texture1D, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasOffset_texture2D, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasOffset_texture2DArray, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasOffset_texture3D, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasOffset_textureCube, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasOffset_textureCubeArray, SampleOperands::Bias | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasProj_texture1D, SampleOperands::Bias | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleBiasProj_texture2D, SampleOperands::Bias | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleBiasProj_texture3D, SampleOperands::Bias | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleBiasProj_textureCube, SampleOperands::Bias | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleBiasProjCompare_texture1D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasProjCompare_texture2D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasProjCompare_texture3D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasProjCompare_textureCube, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleBiasProjOffset_texture1D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasProjOffset_texture2D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasProjOffset_texture3D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleBiasProjOffset_textureCube, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompare_texture1D, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_texture2D, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_texture2DArray, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_texture2DMS, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_texture2DMSArray, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_texture3D, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_textureCube, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompare_textureCubeArray, SampleOperands::Comp }
+        , { Intrinsics::TextureSampleCompareOffset_texture1D, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompareOffset_texture2D, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompareOffset_texture2DArray, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompareOffset_texture2DMS, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompareOffset_texture2DMSArray, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleCompareOffset_texture3D, SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGrad_texture1D, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGrad_texture2D, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGrad_texture2DArray, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGrad_texture3D, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGrad_textureCube, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGrad_textureCubeArray, SampleOperands::Grad }
+        , { Intrinsics::TextureSampleGradCompare_texture1D, SampleOperands::Grad | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradCompare_texture2D, SampleOperands::Grad | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradCompare_texture2DArray, SampleOperands::Grad | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradCompare_texture3D, SampleOperands::Grad | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradOffset_texture1D, SampleOperands::Grad | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradOffset_texture2D, SampleOperands::Grad | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradOffset_texture2DArray, SampleOperands::Grad | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradOffset_texture3D, SampleOperands::Grad | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProj_texture1D, SampleOperands::Grad | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleGradProj_texture2D, SampleOperands::Grad | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleGradProj_texture3D, SampleOperands::Grad | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleGradProj_textureCube, SampleOperands::Grad | SampleOperands::Proj }
+        , { Intrinsics::TextureSampleGradProjCompare_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradProjCompare_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradProjCompare_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradProjCompare_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleGradProjCompareOffset_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjCompareOffset_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjCompareOffset_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjCompareOffset_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjOffset_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjOffset_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjOffset_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleGradProjOffset_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProj_texture1D, SampleOperands::Proj }
+        , { Intrinsics::TextureSampleProj_texture2D, SampleOperands::Proj }
+        , { Intrinsics::TextureSampleProj_texture3D, SampleOperands::Proj }
+        , { Intrinsics::TextureSampleProj_textureCube, SampleOperands::Proj }
+        , { Intrinsics::TextureSampleProjCompare_texture1D, SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleProjCompare_texture2D, SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleProjCompare_texture3D, SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleProjCompare_textureCube, SampleOperands::Proj | SampleOperands::Comp }
+        , { Intrinsics::TextureSampleProjCompareOffset_texture1D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjCompareOffset_texture2D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjCompareOffset_texture3D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjCompareOffset_textureCube, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjOffset_texture1D, SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjOffset_texture2D, SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjOffset_texture3D, SampleOperands::Proj | SampleOperands::Offset }
+        , { Intrinsics::TextureSampleProjOffset_textureCube, SampleOperands::Proj | SampleOperands::Offset }
+    };
+    for (auto fun : textureSampleInstructions)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [operands = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret;
+            if (operands & Lod || operands & Grad)
+                if (operands & Comp)
+                    if (operands & Grad)
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                        else
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                    else
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                        else
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                else
+                    if (operands & Grad)
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                        else
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                    else
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                        else
+                            if (operands & Bias)
+                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            else
+                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name));
+            else
+                if (operands & Comp)
+                    if (operands & Proj)
+                        if (operands & Bias)
+                            ret = g->AddMappedOp(Format("OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                        else
+                            ret = g->AddMappedOp(Format("OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name, args[2].name));
+                    else
+                        if (operands & Bias)
+                            ret = g->AddMappedOp(Format("OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                        else
+                            ret = g->AddMappedOp(Format("OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name, args[2].name));
+                else
+                    if (operands & Proj)
+                        if (operands & Bias)
+                            ret = g->AddMappedOp(Format("OpImageSampleProjImplicitLod %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                        else
+                            ret = g->AddMappedOp(Format("OpImageSampleProjImplicitLod %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+                    else
+                        if (operands & Bias)
+                            ret = g->AddMappedOp(Format("OpImageSampleImplicitLod %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                        else
+                            ret = g->AddMappedOp(Format("OpImageSampleImplicitLod %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+
         };
     }
 }
@@ -957,8 +1327,6 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-    uint32_t typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits);
-    std::string type = varResolved->type.name;
 
     SPIRVResult initializer = SPIRVResult::Invalid();
     if (varResolved->value != nullptr)
@@ -966,6 +1334,9 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         // Setup initializer
         initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
     }
+
+    uint32_t typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits);
+    std::string type = varResolved->type.name;
 
     uint32_t name = 0xFFFFFFFF;
     if (isGlobal)
@@ -1146,27 +1517,27 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     uint32_t sizeName = generator->AddSymbol(Format("%du", initExpression->values.size()), Format("OpConstant %%%d %d", uintName, initExpression->values.size()), true);
     typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName), true);
     std::string initializer = "";
-    bool isConst = true;
+    bool isLiteral = true;
     for (SPIRVResult component : composites)
     {
         if (!component.isValue)
         {
             uint32_t loadedComponent = generator->AddMappedOp(Format("OpLoad %%%d %%%d", component.typeName, component.name));
             initializer.append(Format("%%%d ", loadedComponent));
-            isConst = false;
         }
         else
         {
             initializer.append(Format("%%%d ", component.name));
         }
+        isLiteral &= component.isLiteral;
     }
 
-    if (isConst)
+    if (isLiteral)
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName, initializer.c_str()), true);
     else
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName, initializer.c_str()));
     //outCode.append(Format("%%%d \n", name));
-    return SPIRVResult(name, typeName, isConst);
+    return SPIRVResult(name, typeName, true, isLiteral);
 }
 
 //------------------------------------------------------------------------------
@@ -1315,7 +1686,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             floatExpr->EvalFloat(value);
             uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
             uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
-            return SPIRVResult(name, typeName, true);
+            return SPIRVResult(name, typeName, true, true);
         }
         case Symbol::IntExpressionType:
         {
@@ -1324,7 +1695,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             intExpr->EvalInt(value);
             uint32_t typeName = generator->AddSymbol("i32", Format("OpTypeInt 32 1"), true);
             uint32_t name = generator->AddSymbol(Format("%ds", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return SPIRVResult(name, typeName, true);
+            return SPIRVResult(name, typeName, true, true);
         }
         case Symbol::UIntExpressionType:
         {
@@ -1333,7 +1704,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             uintExpr->EvalUInt(value);
             uint32_t typeName = generator->AddSymbol("u32", Format("OpTypeInt 32 0"), true);
             uint32_t name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return SPIRVResult(name, typeName, true);
+            return SPIRVResult(name, typeName, true, true);
         }
         case Symbol::BoolExpressionType:
         {
@@ -1342,7 +1713,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             boolExpr->EvalBool(value);
             uint32_t typeName = generator->AddSymbol("b8", Format("OpTypeBool"), true);
             uint32_t name = generator->AddSymbol(value ? "true" : "false", value ? "OpConstantTrue" : "OpConstantFalse", true);
-            return SPIRVResult(name, typeName, true);
+            return SPIRVResult(name, typeName, true, true);
         }
         case Symbol::BinaryExpressionType:
             return GenerateBinaryExpressionSPIRV(compiler, generator, expr);

@@ -16,11 +16,10 @@ struct Bool4 : public Type
     ///constructor
     Bool4();
 
-    Function ctor_XYZW;
-    Function ctorSingleValue;
-
-    Function elementAccessOperatorInt;
-    Function elementAccessOperatorUInt;
+    static Function ctor_XYZW;
+    static Function ctorSingleValue;
+    static Function elementAccessOperatorInt;
+    static Function elementAccessOperatorUInt;
 };
 
 } // namespace GPULang

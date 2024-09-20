@@ -32,6 +32,13 @@ Function Int3::multiplicationAssignOperator;
 Function Int3::divisionAssignOperator;
 Function Int3::moduloAssignOperator;
 
+Function Int3::ltOperator;
+Function Int3::lteOperator;
+Function Int3::gtOperator;
+Function Int3::gteOperator;
+Function Int3::eOperator;
+Function Int3::neOperator;
+
 Function Int3::elementAccessOperatorInt;
 Function Int3::elementAccessOperatorUInt;
 
@@ -77,6 +84,13 @@ Int3::Int3()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, i32x3, i32x3);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, i32x3, i32x3);
     __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, i32x3, i32x3);
+
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x3, i32x3);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], i32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], i32, u32);

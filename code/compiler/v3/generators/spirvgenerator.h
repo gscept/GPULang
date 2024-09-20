@@ -20,11 +20,13 @@ struct SPIRVResult
     uint32_t name = 0xFFFFFFFF;
     uint32_t typeName = 0xFFFFFFFF;
     bool isValue = false;       // If not, then the object needs a load to be read. If it is, doesn't support store
+    bool isLiteral = false;     // If true, then the value is a literal value and can be constant constructed
 
-    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false)
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isLiteral = false)
         : name(name)
         , typeName(type)
         , isValue(isValue)
+        , isLiteral(isLiteral)
     {};
 
     static SPIRVResult Invalid()

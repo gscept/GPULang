@@ -6,6 +6,11 @@
 namespace GPULang
 {
 
+Function Bool3::ctor_XYZ;
+Function Bool3::ctorSingleValue;
+Function Bool3::elementAccessOperatorInt;
+Function Bool3::elementAccessOperatorUInt;
+
 //------------------------------------------------------------------------------
 /**
 */

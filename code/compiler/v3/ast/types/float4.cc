@@ -8,8 +8,8 @@ namespace GPULang
 
 Function Float4::ctor_XYZW;
 Function Float4::ctorSingleValue;
-Function Float4::ctor_f32x3_W;
-Function Float4::ctor_f32x2_ZW;
+Function Float4::ctor_3_W;
+Function Float4::ctor_2_ZW;
 Function Float4::additionOperator;
 Function Float4::subtractionOperator;
 Function Float4::multiplicationOperator;
@@ -47,12 +47,12 @@ Float4::Float4()
     __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x4, f32x4, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_f32x3_W, f32x4, f32x4);
+    __IMPLEMENT_GLOBAL(ctor_3_W, f32x4, f32x4);
     __ADD_FUNCTION_PARAM(xyz, f32x3);
     __ADD_FUNCTION_PARAM(w, f32);
     __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_f32x2_ZW, f32x4, f32x4);
+    __IMPLEMENT_GLOBAL(ctor_2_ZW, f32x4, f32x4);
     __ADD_FUNCTION_PARAM(xy, f32x2);
     __ADD_FUNCTION_PARAM(z, f32);
     __ADD_FUNCTION_PARAM(w, f32);

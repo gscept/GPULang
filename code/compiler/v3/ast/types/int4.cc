@@ -34,6 +34,13 @@ Function Int4::multiplicationAssignOperator;
 Function Int4::divisionAssignOperator;
 Function Int4::moduloAssignOperator;
 
+Function Int4::ltOperator;
+Function Int4::lteOperator;
+Function Int4::gtOperator;
+Function Int4::gteOperator;
+Function Int4::eOperator;
+Function Int4::neOperator;
+
 Function Int4::elementAccessOperatorInt;
 Function Int4::elementAccessOperatorUInt;
 
@@ -91,6 +98,13 @@ Int4::Int4()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, i32x4, i32x4);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, i32x4, i32x4);
     __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, i32x4, i32x4);
+
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x4, i32x4);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x4, i32x4);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], i32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], i32, u32);

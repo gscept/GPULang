@@ -6,6 +6,22 @@
 namespace GPULang
 {
 
+Function Bool::ctor_UInt;
+Function Bool::ctor_Int;
+Function Bool::orOperator;
+Function Bool::andOperator;
+Function Bool::xorOperator;
+Function Bool::orAssignOperator;
+Function Bool::andAssignOperator;
+Function Bool::xorAssignOperator;
+Function Bool::ororOperator;
+Function Bool::andandOperator;
+Function Bool::eOperator;
+Function Bool::neOperator;
+Function Bool::boolAssignOperator;
+Function Bool::intAssignOperator;
+Function Bool::uintAssignOperator;
+
 //------------------------------------------------------------------------------
 /**
 */

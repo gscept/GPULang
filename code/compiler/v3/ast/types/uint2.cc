@@ -32,6 +32,13 @@ Function UInt2::multiplicationAssignOperator;
 Function UInt2::divisionAssignOperator;
 Function UInt2::moduloAssignOperator;
 
+Function UInt2::ltOperator;
+Function UInt2::lteOperator;
+Function UInt2::gtOperator;
+Function UInt2::gteOperator;
+Function UInt2::eOperator;
+Function UInt2::neOperator;
+
 Function UInt2::elementAccessOperatorInt;
 Function UInt2::elementAccessOperatorUInt;
 
@@ -76,6 +83,13 @@ UInt2::UInt2()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, u32x2, u32x2);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, u32x2, u32x2);
     __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, u32x2, u32x2);
+
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x2, u32x2);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x2, u32x2);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], u32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], u32, u32);
