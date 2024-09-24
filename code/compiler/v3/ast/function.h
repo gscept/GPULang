@@ -182,12 +182,15 @@ struct Function : public Symbol
                 uint32_t isGeometryShader : 1;
                 uint32_t isPixelShader : 1;
                 uint32_t isComputeShader : 1;
+                uint32_t isTaskShader : 1;
+                uint32_t isMeshShader : 1;
                 uint32_t isRayGenerationShader : 1;
                 uint32_t isRayMissShader : 1;
-                uint32_t isRayHitShader : 1;
                 uint32_t isRayClosestHitShader : 1;
                 uint32_t isRayAnyHitShader : 1;
                 uint32_t isRayIntersectionShader : 1;
+                uint32_t isRayCallableShader : 1;
+
             } flags;
             uint32_t bits;
         };

@@ -88,6 +88,21 @@
     X(f32x3, 2)\
     X(f32x4, 3)
 
+#define FLOAT_VEC_LIST\
+    X(f32x2, 1)\
+    X(f32x3, 2)\
+    X(f32x4, 3)
+
+#define SIGN_LIST\
+    X(f32, 0)\
+    X(f32x2, 1)\
+    X(f32x3, 2)\
+    X(f32x4, 3)\
+    X(i32, 4)\
+    X(i32x2, 5)\
+    X(i32x3, 6)\
+    X(i32x4, 7)
+
 #define INT_LIST\
     X(i32, 4)\
     X(i32x2, 5)\
@@ -97,6 +112,15 @@
     X(u32x2, 9)\
     X(u32x3, 10)\
     X(u32x4, 11)
+
+#define INT_SINGLE_LIST\
+    X(i32, 4)\
+    X(u32, 8)
+
+#define SINGLE_COMPONENT_LIST\
+    X(f32, 0)\
+    X(i32, 4)\
+    X(u32, 8)
 
 #define BOOL_LIST\
     X(b8, 12)\
@@ -113,12 +137,61 @@ namespace GPULang
 
 namespace Intrinsics {
 
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Sqrt, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(InvSqrt, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Log, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Log2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Exp, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Exp2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Sin, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Cos, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Tan, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ASin, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ACos, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ATan, ty)
+    FLOAT_LIST
+#undef X
+
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Mad, ty)
     SCALAR_LIST
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Dot, ty)
-    FLOAT_LIST
+    FLOAT_VEC_LIST
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Min, ty)
@@ -153,6 +226,14 @@ namespace Intrinsics {
     FLOAT_LIST
 #undef X
 
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Abs, ty)
+    SIGN_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Sign, ty)
+    SIGN_LIST
+#undef X
+
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(DDX, ty)
     FLOAT_LIST
 #undef X
@@ -165,13 +246,94 @@ namespace Intrinsics {
     FLOAT_LIST
 #undef X
 
-extern Function* SubgroupId_;
-extern Function* SubgroupFirstActive_;
-extern Function* SubgroupFirst_;
-extern Function* SubgroupBallot_;
-extern Function* SubgroupInverseBallot_;
-extern Function* SubgroupBallotBitCount_;
-extern Function* SubgroupBallotBit_;
+//------------------------------------------------------------------------------
+/**
+    Builtins, like:
+    gl_Position, gl_Layer, etc.
+
+    In GPULang these are Get/Set functions to make it clear which ones are modifiable in the shader
+*/
+//------------------------------------------------------------------------------
+extern Function* SetOutputLayer;
+extern Function* GetOutputLayer;
+extern Function* SetOutputViewport;
+extern Function* GetOutputViewport;
+extern Function* ExportVertexCoordinates;
+extern Function* GetVertexIndex;
+extern Function* GetInstanceIndex;
+
+extern Function* GetPixelCoordinates;
+extern Function* SetPixelDepth;
+
+extern Function* GetLocalInvocationIndices;
+extern Function* GetGlobalInvocationIndices;
+extern Function* GetWorkGroupIndices;
+extern Function* GetWorkGroupDimensions;
+
+extern Function* GetSubgroupId;
+extern Function* GetSubgroupSize;
+extern Function* GetNumSubgroups;
+extern Function* SubgroupFirstInvocation;
+extern Function* SubgroupRead;
+extern Function* SubgroupBallot;
+extern Function* SubgroupInverseBallot;
+extern Function* SubgroupBallotBitCount;
+extern Function* SubgroupBallotBit;
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicLoad, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicStore, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicExchange, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicCompareExchange, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicIncrement, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicDecrement, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicAdd, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicSub, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicMin, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicMax, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicAnd, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicOr, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicXor, ty)
+    INT_SINGLE_LIST
+#undef X
+
+extern Function* ExecutionBarrier;
+extern Function* MemoryBarrier;
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
     SCALAR_LIST
@@ -183,8 +345,8 @@ extern Function* SubgroupBallotBit_;
     SCALAR_LIST
 #undef X
 
-extern Function* PixelCacheLoad_;
-extern Function* PixelCacheLoadMS_;
+extern Function* PixelCacheLoad;
+extern Function* PixelCacheLoadMS;
 
 #define X(ty, index) DECLARE_TEXTURE_INTRINSIC(LoadBase, ty)
     TEXTURE_INTRINSIC_ALL_LIST

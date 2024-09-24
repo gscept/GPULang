@@ -170,12 +170,14 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
         { Program::__Resolved::GeometryShader, EShLangGeometry },
         { Program::__Resolved::PixelShader, EShLangFragment },
         { Program::__Resolved::ComputeShader, EShLangCompute },
+        { Program::__Resolved::TaskShader, EShLangTaskNV },
+        { Program::__Resolved::MeshShader, EShLangMeshNV },
         { Program::__Resolved::RayGenerationShader, EShLangRayGen },
         { Program::__Resolved::RayMissShader, EShLangMiss },
-        { Program::__Resolved::RayHitShader, EShLangIntersect },
         { Program::__Resolved::RayClosestHitShader, EShLangClosestHit },
         { Program::__Resolved::RayAnyHitShader, EShLangAnyHit },
-        { Program::__Resolved::RayIntersectionShader, EShLangIntersect }
+        { Program::__Resolved::RayIntersectionShader, EShLangIntersect },
+        { Program::__Resolved::RayCallableShader, EShLangCallable },
     };
 
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);

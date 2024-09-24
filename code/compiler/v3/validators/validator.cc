@@ -465,6 +465,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
+    if (fun->name.substr(0, 3) == "gpl")
+    {
+        compiler->ReservedWordError(fun->name, symbol);
+    }
+
     // Push temporary scope to evaluate variables
     compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
 
@@ -878,14 +883,17 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             case Program::__Resolved::ComputeShader:
                 progResolved->usage.flags.hasComputeShader = true;
                 break;
+            case Program::__Resolved::TaskShader:
+                progResolved->usage.flags.hasTaskShader = true;
+                break;
+            case Program::__Resolved::MeshShader:
+                progResolved->usage.flags.hasMeshShader = true;
+                break;
             case Program::__Resolved::RayGenerationShader:
                 progResolved->usage.flags.hasRayGenerationShader = true;
                 break;
             case Program::__Resolved::RayMissShader:
                 progResolved->usage.flags.hasRayMissShader = true;
-                break;
-            case Program::__Resolved::RayHitShader:
-                progResolved->usage.flags.hasRayHitShader = true;
                 break;
             case Program::__Resolved::RayClosestHitShader:
                 progResolved->usage.flags.hasRayClosestHitShader = true;
@@ -895,6 +903,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 break;
             case Program::__Resolved::RayIntersectionShader:
                 progResolved->usage.flags.hasRayIntersectionShader = true;
+                break;
+            case Program::__Resolved::RayCallableShader:
+                progResolved->usage.flags.hasRayCallableShader = true;
                 break;
             case Program::__Resolved::RenderState:
                 progResolved->usage.flags.hasRenderState = true;
@@ -928,14 +939,17 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 case Program::__Resolved::ProgramEntryType::ComputeShader:
                     funResolved->shaderUsage.flags.isComputeShader = true;
                     break;
+                case Program::__Resolved::ProgramEntryType::TaskShader:
+                    funResolved->shaderUsage.flags.isTaskShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::MeshShader:
+                    funResolved->shaderUsage.flags.isMeshShader = true;
+                    break;
                 case Program::__Resolved::ProgramEntryType::RayGenerationShader:
                     funResolved->shaderUsage.flags.isRayGenerationShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayMissShader:
                     funResolved->shaderUsage.flags.isRayMissShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayHitShader:
-                    funResolved->shaderUsage.flags.isRayHitShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
                     funResolved->shaderUsage.flags.isRayClosestHitShader = true;
@@ -945,6 +959,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     break;
                 case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
                     funResolved->shaderUsage.flags.isRayIntersectionShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                    funResolved->shaderUsage.flags.isRayCallableShader = true;
                     break;
                 }
 
@@ -1353,6 +1370,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 {
     Variable* var = static_cast<Variable*>(symbol);
     auto varResolved = Symbol::Resolved(var);
+    if (var->name.substr(0, 3) == "gpl")
+    {
+        compiler->ReservedWordError(var->name, symbol);
+    }
 
     Type* type = (Type*)compiler->GetSymbol(var->type.name);
     if (type == nullptr)
@@ -2183,8 +2204,10 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             || it.first == Program::__Resolved::DomainShader
             || it.first == Program::__Resolved::GeometryShader
             || it.first == Program::__Resolved::PixelShader
+            || it.first == Program::__Resolved::TaskShader
+            || it.first == Program::__Resolved::MeshShader
             || it.first == Program::__Resolved::RayAnyHitShader
-            || it.first == Program::__Resolved::RayHitShader
+            || it.first == Program::__Resolved::RayCallableShader
             || it.first == Program::__Resolved::RayIntersectionShader
             || it.first == Program::__Resolved::RayMissShader
             || it.first == Program::__Resolved::RenderState

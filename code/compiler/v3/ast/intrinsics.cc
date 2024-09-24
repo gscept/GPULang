@@ -15,29 +15,207 @@ namespace GPULang
 
 namespace Intrinsics {
 
-Function* Mad;
-Function* Dot;
-Function* Min;
-Function* Max;
-Function* Clamp;
-Function* Ceil;
-Function* Floor;
-Function* Frac;
-Function* Saturate;
-Function* Truncate;
-Function* DDX;
-Function* DDY;
-Function* FWidth;
-Function* SubgroupId;
-Function* SubgroupFirstActive;
-Function* SubgroupFirst;
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Sqrt, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(InvSqrt, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Log, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Log2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Exp, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Exp2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Sin, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Cos, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Tan, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ASin, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ACos, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ATan, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Mad, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Dot, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Min, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Max, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Clamp, ty)
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Ceil, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Floor, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Fract, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Saturate, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Truncate, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Abs, ty)
+    SIGN_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Sign, ty)
+    SIGN_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(DDX, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(DDY, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(FWidth, ty)
+    FLOAT_LIST
+#undef X
+
+        
+Function* SetOutputLayer;
+Function* GetOutputLayer;
+Function* SetOutputViewport;
+Function* GetOutputViewport;
+Function* ExportVertexCoordinates;
+Function* GetVertexIndex;
+Function* GetInstanceIndex;
+
+Function* GetPixelCoordinates;
+Function* SetPixelDepth;
+
+Function* GetLocalInvocationIndices;
+Function* GetGlobalInvocationIndices;
+Function* GetWorkGroupIndices;
+Function* GetWorkGroupDimensions;
+
+Function* GetSubgroupId;
+Function* GetSubgroupSize;
+Function* GetNumSubgroups;
+Function* SubgroupFirstInvocation;
+Function* SubgroupRead;
 Function* SubgroupBallot;
 Function* SubgroupInverseBallot;
 Function* SubgroupBallotBitCount;
 Function* SubgroupBallotBit;
-Function* SubgroupSwapDiagonal;
-Function* SubgroupSwapVertical;
-Function* SubgroupSwapHorizontal;
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicLoad, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicStore, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicExchange, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicCompareExchange, ty)
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicIncrement, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicDecrement, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicAdd, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicSub, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicMin, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicMax, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicAnd, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicOr, ty)
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicXor, ty)
+    INT_SINGLE_LIST
+#undef X
+
+Function* ExecutionBarrier;
+Function* MemoryBarrier;
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
+    SCALAR_LIST
+#undef X
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(SubgroupSwapVertical, ty)
+    SCALAR_LIST
+#undef X
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(SubgroupSwapHorizontal, ty)
+    SCALAR_LIST
+#undef X
+
 Function* PixelCacheLoad;
 Function* PixelCacheLoadMS;
 

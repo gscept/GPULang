@@ -433,6 +433,15 @@ Compiler::UnrecognizedSymbolError(const std::string& symbol, Symbol* sym)
 //------------------------------------------------------------------------------
 /**
 */
+void 
+Compiler::ReservedWordError(const std::string& word, Symbol* sym)
+{
+    this->Error(Format("Reserved word '%s'. No variables or functions are allowed to be prefixed with 'gpl'", word.c_str()), sym);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 void
 WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
@@ -573,6 +582,30 @@ Compiler::OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLeng
             output.cs.binaryLength = -1;
         }
 
+        if (resolved->usage.flags.hasTaskShader)
+        {
+            const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::TaskShader];
+            output.cs.binaryOffset = dynamicDataBlob.Write((const char*)&binary.front(), binary.size() * sizeof(uint32_t));
+            output.cs.binaryLength = binary.size() * sizeof(uint32_t);
+        }
+        else
+        {
+            output.cs.binaryOffset = -1;
+            output.cs.binaryLength = -1;
+        }
+
+        if (resolved->usage.flags.hasMeshShader)
+        {
+            const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::MeshShader];
+            output.cs.binaryOffset = dynamicDataBlob.Write((const char*)&binary.front(), binary.size() * sizeof(uint32_t));
+            output.cs.binaryLength = binary.size() * sizeof(uint32_t);
+        }
+        else
+        {
+            output.cs.binaryOffset = -1;
+            output.cs.binaryLength = -1;
+        }
+
         if (resolved->usage.flags.hasRayGenerationShader)
         {
             const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::RayGenerationShader];
@@ -595,18 +628,6 @@ Compiler::OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLeng
         {
             output.rms.binaryOffset = -1;
             output.rms.binaryLength = -1;
-        }
-
-        if (resolved->usage.flags.hasRayHitShader)
-        {
-            const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::RayHitShader];
-            output.rhs.binaryOffset = dynamicDataBlob.Write((const char*)&binary.front(), binary.size() * sizeof(uint32_t));
-            output.rhs.binaryLength = binary.size() * sizeof(uint32_t);
-        }
-        else
-        {
-            output.rhs.binaryOffset = -1;
-            output.rhs.binaryLength = -1;
         }
 
         if (resolved->usage.flags.hasRayClosestHitShader)
@@ -645,6 +666,17 @@ Compiler::OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLeng
             output.ris.binaryLength = -1;
         }
 
+        if (resolved->usage.flags.hasRayCallableShader)
+        {
+            const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::RayCallableShader];
+            output.rhs.binaryOffset = dynamicDataBlob.Write((const char*)&binary.front(), binary.size() * sizeof(uint32_t));
+            output.rhs.binaryLength = binary.size() * sizeof(uint32_t);
+        }
+        else
+        {
+            output.rhs.binaryOffset = -1;
+            output.rhs.binaryLength = -1;
+        }
         if (resolved->usage.flags.hasRenderState)
         {
             Symbol* renderState = resolved->programMappings[Program::__Resolved::RenderState];

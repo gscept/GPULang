@@ -137,6 +137,8 @@ struct Compiler
     void UnrecognizedTypeError(const std::string& type, Symbol* sym);
     /// helper for unrecognized symbol error
     void UnrecognizedSymbolError(const std::string& symbol, Symbol* sym);
+    /// Helper for reserved words
+    void ReservedWordError(const std::string& word, Symbol* sym);
 
     /// output binary data
     void OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);

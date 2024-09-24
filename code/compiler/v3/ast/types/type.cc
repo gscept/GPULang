@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "builtins.h"
+#include "ast/expressions/uintexpression.h"
 #include <set>
 namespace GPULang
 {
@@ -250,6 +251,31 @@ Type::SetupDefaultTypes()
 
     __MAKE_TYPE(sampler, TypeCode::Sampler);
     __MAKE_SAMPLER();
+
+    Enumeration* executionScopeEnum = new Enumeration();
+    executionScopeEnum->name = "ExecutionScope";
+    executionScopeEnum->baseType = GPULang::TypeCode::UInt;
+    executionScopeEnum->labels.push_back("CrossDevice"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("DeviceLocal"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
+    types.push_back(executionScopeEnum);
+
+    Enumeration* memorySemanticsEnum = new Enumeration();
+    memorySemanticsEnum->name = "MemorySemantics";
+    memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
+    memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(new UIntExpression(0x0));
+    memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(new UIntExpression(0x1));
+    memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(new UIntExpression(0x2));
+    memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(new UIntExpression(0x4));
+    memorySemanticsEnum->labels.push_back("UniformMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x8));
+    memorySemanticsEnum->labels.push_back("SubgroupMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x10));
+    memorySemanticsEnum->labels.push_back("WorkgroupMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x20));
+    memorySemanticsEnum->labels.push_back("DeviceMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x40));
+    memorySemanticsEnum->labels.push_back("AtomicCounterMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x80));
+    memorySemanticsEnum->labels.push_back("ImageMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x100));
+    types.push_back(memorySemanticsEnum);
 
     __MAKE_TYPE(void, TypeCode::Void);
 

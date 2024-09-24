@@ -115,6 +115,12 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
 
 #define __BEGIN_INTRINSICS__ std::vector<Symbol*> intrinsics; Function* newIntrinsic = nullptr; Variable* newVar = nullptr;
 
+#define __MAKE_BUILTIN(nm, opcode)\
+newIntrinsic = new Function();\
+newIntrinsic->name = #nm;\
+Intrinsics::opcode## = newIntrinsic;\
+intrinsics.push_back(newIntrinsic);
+
 #define __MAKE_INTRINSIC(nm, opcode, ty)\
 newIntrinsic = new Function();\
 newIntrinsic->name = #nm;\
@@ -201,6 +207,102 @@ Function::SetupIntrinsics()
     constexpr uint32_t numScalarArgs = sizeof(scalarArgs) / sizeof(std::string);
 
 #define X(ty, index)\
+    __MAKE_INTRINSIC(sqrt, Sqrt, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(invSqrt, InvSqrt, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(log, Log, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(log2, Log2, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(exp, Exp, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(exp2, Exp2, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(sin, Sin, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(cos, Cos, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(tan, Tan, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(asin, ASin, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(acos, ACos, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atan, ATan, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
     __MAKE_INTRINSIC(mad, Mad, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __ADD_ARG(y, scalarArgs[index]);\
@@ -215,7 +317,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+    FLOAT_VEC_LIST
 #undef X
 
 #define X(ty, index)\
@@ -224,7 +326,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    SCALAR_LIST
+SCALAR_LIST
 #undef X
 
 #define X(ty, index)\
@@ -233,7 +335,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    SCALAR_LIST
+SCALAR_LIST
 #undef X
 
 #define X(ty, index)\
@@ -243,7 +345,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(max, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    SCALAR_LIST
+SCALAR_LIST
 #undef X
 
 #define X(ty, index)\
@@ -252,7 +354,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -261,7 +363,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -270,15 +372,15 @@ Function::SetupIntrinsics()
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
-   
+
 #define X(ty, index)\
     __MAKE_INTRINSIC(saturate, Saturate, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -286,7 +388,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -294,7 +396,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -302,7 +404,7 @@ Function::SetupIntrinsics()
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -310,8 +412,44 @@ Function::SetupIntrinsics()
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-    FLOAT_LIST
+FLOAT_LIST
 #undef X
+
+    //------------------------------------------------------------------------------
+    /**
+        Shader state intrinsics
+    */
+    //------------------------------------------------------------------------------
+    __MAKE_BUILTIN(gplSetOutputLayer, SetOutputLayer);
+    __ADD_ARG_LIT(layer, u32);
+
+    __MAKE_BUILTIN(gplGetOutputLayer, GetOutputLayer);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplSetOutputViewport, SetOutputViewport);
+    __ADD_ARG_LIT(layer, u32);
+
+    __MAKE_BUILTIN(gplGetOutputViewport, GetOutputViewport);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetPixelCoordinates, GetPixelCoordinates);
+    __SET_RET_LIT(f32x4);
+
+    __MAKE_BUILTIN(gplExportVertexCoordinates, ExportVertexCoordinates);
+    __ADD_ARG_LIT(layer, f32x4);
+
+    __MAKE_BUILTIN(gplGetLocalInvocationIndices, GetLocalInvocationIndices);
+    __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(gplGetGlobalInvocationIndices, GetGlobalInvocationIndices);
+    __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(gplGetWorkGroupIndices, GetWorkGroupIndices);
+    __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(gplGetWorkGroupDimensions, GetWorkGroupDimensions);
+    __SET_RET_LIT(u32x3);
+    
 
     //------------------------------------------------------------------------------
     /**
@@ -319,32 +457,98 @@ Function::SetupIntrinsics()
     */
     //------------------------------------------------------------------------------
 
-    __MAKE_INTRINSIC(subgroupId, SubgroupId);                       // Simply returns the ID of the subgroup
+    __MAKE_BUILTIN(gplGetSubgroupId, GetSubgroupId);                       // The id of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_INTRINSIC(subgroupFirstActive, SubgroupFirstActive);      // Returns true for the first active invocation in the subgroup, and false for all else
-    __SET_RET_LIT(b8);
+    __MAKE_BUILTIN(gplGetSubgroupSize, GetSubgroupSize);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
 
-    __MAKE_INTRINSIC(subgroupFirst, SubgroupFirst);                 // Returns value from the invocation with the lowest invocation
+    __MAKE_BUILTIN(gplGetNumSubgroups, GetNumSubgroups);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(subgroupFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(subgroupRead, SubgroupRead);                 // Returns value from the invocation with the lowest invocation
     __ADD_ARG_LIT(x, u32);
     __SET_RET_LIT(u32);
 
-    __MAKE_INTRINSIC(subgroupBallot, SubgroupBallot);               // Creates lane mask with bit set to 1 if value in predicate is true
+    __MAKE_BUILTIN(subgroupBallot, SubgroupBallot);               // Creates lane mask with bit set to 1 if value in predicate is true
     __ADD_ARG_LIT(predicate, b8);
     __SET_RET_LIT(u32x4);
 
-    __MAKE_INTRINSIC(subgroupInverseBallot, SubgroupInverseBallot);    // Creates an inverted lane mask with bit set to 1 if predicate is false
+    __MAKE_BUILTIN(subgroupInverseBallot, SubgroupInverseBallot);    // Creates an inverted lane mask with bit set to 1 if predicate is false
     __ADD_ARG_LIT(predicate, b8);
     __SET_RET_LIT(u32x4);
 
-    __MAKE_INTRINSIC(subgroupBallotBitCount, SubgroupBallotBitCount);   // Counts bits set in ballot result up to thread index within subgroup
+    __MAKE_BUILTIN(subgroupBallotBitCount, SubgroupBallotBitCount);   // Counts bits set in ballot result up to thread index within subgroup
     __ADD_ARG_LIT(mask, u32x4);
     __SET_RET_LIT(u32);
 
-    __MAKE_INTRINSIC(subgroupBallotBit, SubgroupBallotBit);        // Check if bit in ballot result is for a given index
+    __MAKE_BUILTIN(subgroupBallotBit, SubgroupBallotBit);        // Check if bit in ballot result is for a given index
     __ADD_ARG_LIT(mask, u32x4);
     __ADD_ARG_LIT(index, u32);
     __SET_RET_LIT(b8);
+
+    //------------------------------------------------------------------------------
+    /**
+        Atomic intrinsics
+    */
+    //------------------------------------------------------------------------------
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicLoad, AtomicLoad, ty)\
+    __ADD_HANDLE_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+    
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicStore, AtomicStore, ty)\
+    __ADD_HANDLE_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicExchange, AtomicExchange, ty)\
+    __ADD_HANDLE_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(exchange, ty);\
+    __ADD_ARG_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    SINGLE_COMPONENT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicCompareExchange, AtomicCompareExchange, ty)\
+    __ADD_HANDLE_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(compare, ty);\
+    __ADD_ARG_LIT(exchange, ty);\
+    __ADD_ARG_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    SINGLE_COMPONENT_LIST
+#undef X
+
+
+    //------------------------------------------------------------------------------
+    /**
+        Barrier intrinsics
+    */
+    //------------------------------------------------------------------------------
+
+    __MAKE_BUILTIN(executionBarrier, ExecutionBarrier);
+    __ADD_ARG_LIT(executionScope, ExecutionScope);
+    __ADD_ARG_LIT(memoryScope, ExecutionScope);
+    __ADD_ARG_LIT(semantics, MemorySemantics);
+
+    __MAKE_BUILTIN(memoryBarrier, MemoryBarrier);
+    __ADD_ARG_LIT(memoryScope, ExecutionScope);
+    __ADD_ARG_LIT(semantics, MemorySemantics);
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(subgroupSwapDiagonal, SubgroupSwapDiagonal, ty)\
@@ -476,11 +680,11 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #undef X
 
 
-    __MAKE_INTRINSIC(pixelCacheLoad, PixelCacheLoad);
+    __MAKE_BUILTIN(pixelCacheLoad, PixelCacheLoad);
     __ADD_HANDLE_ARG_LIT(texture, pixelCache);
     __SET_RET_LIT(f32x4);
 
-    __MAKE_INTRINSIC(pixelCacheLoad, PixelCacheLoad);
+    __MAKE_BUILTIN(pixelCacheLoad, PixelCacheLoad);
     __ADD_HANDLE_ARG_LIT(texture, pixelCacheMS);
     __SET_RET_LIT(f32x4);
 

@@ -119,6 +119,7 @@ enum class TypeCode
     /// Sampler
     , Sampler
 
+
     /// Other types
     , Void
 };

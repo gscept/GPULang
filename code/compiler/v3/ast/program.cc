@@ -27,12 +27,14 @@ const std::map<std::string, Program::__Resolved::ProgramEntryType> programEntryT
     , { "GeometryShader", Program::__Resolved::GeometryShader }
     , { "PixelShader", Program::__Resolved::PixelShader }
     , { "ComputeShader", Program::__Resolved::ComputeShader }
+    , { "TaskShader", Program::__Resolved::TaskShader }
+    , { "MeshShader", Program::__Resolved::MeshShader }
     , { "RayGenerationShader", Program::__Resolved::RayGenerationShader }
     , { "RayMissShader", Program::__Resolved::RayMissShader }
-    , { "RayHitShader", Program::__Resolved::RayHitShader }
     , { "RayClosestHitShader", Program::__Resolved::RayClosestHitShader }
     , { "RayAnyHitShader", Program::__Resolved::RayAnyHitShader }
     , { "RayIntersectionShader", Program::__Resolved::RayIntersectionShader }
+    , { "RayCallableShader", Program::__Resolved::RayCallableShader }
     , { "RenderState", Program::__Resolved::RenderState }
 
 };

@@ -42,12 +42,14 @@ struct Program : public Symbol
             GeometryShader,
             PixelShader,
             ComputeShader,
+            TaskShader,
+            MeshShader,
             RayGenerationShader,
             RayMissShader,
-            RayHitShader,
             RayClosestHitShader,
             RayAnyHitShader,
             RayIntersectionShader,
+            RayCallableShader,
             RenderState
         };
 
@@ -66,12 +68,14 @@ struct Program : public Symbol
                 uint32_t hasGeometryShader : 1;
                 uint32_t hasPixelShader : 1;
                 uint32_t hasComputeShader : 1;
+                uint32_t hasTaskShader : 1;
+                uint32_t hasMeshShader : 1;
                 uint32_t hasRayGenerationShader : 1;
                 uint32_t hasRayMissShader : 1;
-                uint32_t hasRayHitShader : 1;
                 uint32_t hasRayClosestHitShader : 1;
                 uint32_t hasRayAnyHitShader : 1;
                 uint32_t hasRayIntersectionShader : 1;
+                uint32_t hasRayCallableShader : 1;
                 uint32_t hasRenderState : 1;
             } flags;
             uint32_t bits;

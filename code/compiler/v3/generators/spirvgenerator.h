@@ -39,6 +39,9 @@ class SPIRVGenerator : public Generator
 {
 public:
 
+    /// Constructor
+    SPIRVGenerator();
+
     /// Bind intrinsics codegen to builtin functions
     void SetupIntrinsics() override;
 
@@ -56,7 +59,11 @@ public:
     /// Add mapped op
     uint32_t AddMappedOp(std::string name, std::string comment = "");
     /// Add capability
-    void AddCapability(std::string name, std::string declare);
+    void AddCapability(std::string declare);
+    /// Add extension
+    uint32_t AddExtension(std::string name);
+    /// Add decoration
+    void AddDecoration(std::string name, uint32_t object, std::string decorate);
 
     /// Find symbol and assert if fails
     uint32_t FindSymbolMapping(std::string value);
@@ -81,6 +88,8 @@ public:
     std::string declarations;
     std::string header;
     std::string functional;
+    std::map<std::string, uint32_t> extensions;
+    std::map<std::string, std::set<std::string>> decorationMap;
 
     using IntrinsicMappingFunction = std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&)>;
     std::map<Function*, IntrinsicMappingFunction> intrinsicMap;
