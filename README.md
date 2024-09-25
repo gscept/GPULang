@@ -1,25 +1,26 @@
 GPULang
 =====
 
-GPULang is a frontend shader langauge meant to serve as a common shader interface for multiple backends. GPULang targets backend platforms directly, by aiming to translate the relatively low level frontend langauge to SPIR-V, DXIL, WGSL and Metal. 
+GPULang is a frontend shader language meant to serve as a common shader interface for multiple backends. GPULang targets backend platforms directly, by aiming to translate the relatively low level frontend langauge to SPIR-V, WGSL and Metal. GPULang is designed from the bottom up to support certain quality of life features such as enums, aliasing, and fp16, as well as exposing certain hardware level functionality on a native level, such as device addresses (through pointers), shader stage link validation and shader pipeline composition with depth/rasterization/blend states and shader stages combined and validated at compile time.
 
 GPULang also offers a reflection API, which allows a title to reason about the shader resource layout, allowing for a dynamic setup of desciptor sets/root signatures/bind groups/etc...
 
-GPULang uses the following libraries (all of which are included), all of which follows either the BSD or GNU lesser general license:
+GPULang uses the following libraries (all of which are automatically downloaded through fips), and all of which follows either the BSD or GNU lesser general license:
 
 * mcpp
 * antlr3c
+* spv-tools
 
 GPULang also allows for compile time linking of shader programs, allowing outputting of shader binaries for graphics APIs that support them.
 
-Objects are annotatable, which allows for the runtime to read information about certain bindings at load time. This can include tooling hints, shader stage visibility, shader program labeling, etc. 
+Objects are annotatable, which allows for the runtime to read information about certain symbols. This can include tooling hints, shader stage visibility, shader program labeling, etc. 
 
-Below is a text clump showing the syntax of the language:
+Below is an example gpulang shader file showing the syntax of the language:
 
 ```rust
 //------------------------------------------------------------------------------
-//  @file completeshader.fx
-//  @copyright (C) 2021 Individual contributors, see AUTHORS file
+//  @file completeshader.gpul
+//  @copyright (C) 2024 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 
 struct MyTestStruct
