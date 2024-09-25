@@ -16,53 +16,70 @@ Objects are annotatable, which allows for the runtime to read information about 
 
 Below is a text clump showing the syntax of the language:
 
-```c
+```rust
 //------------------------------------------------------------------------------
 //  @file completeshader.fx
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 
-const int arr[5][2] = { {1,1},{2,2},{3,3},{4,4},{5,5} };
-const float4 ARRAY_VEC4[] = { float4(1) };
+struct MyTestStruct
+{
+    f : f32;
+    i : i32;
+};
+
+void
+AccessTest()
+{
+    test : MyTestStruct;
+    //test.f = 5;
+    accessTest : f32x4 = f32x4(1);
+    copyTest : f32x4 = accessTest;
+    f2 : f32x2 = accessTest.zy;
+    f : f32 = accessTest.x;
+}
+
+const arr : [5][2]i32 = { {1,1},{2,2},{3,3},{4,4},{5,5} };
+const ARRAY_VEC4 : []f32x4 = { f32x4(1) };
 struct MyConstantBuffer
 {
-    int NumWorkGroups;
-    float2 ElementPaddedArray[10];
+    NumWorkGroups : i32;
+    ElementPaddedArray : [10]f32x2;
 };
 
 @Visibility("CS")
-uniform MyConstantBuffer* myConstantBuffer;
+uniform myConstantBuffer : *MyConstantBuffer;
 
-alias textureHandle as int;
-const textureHandle foobar = 5;
+alias textureHandle as i32;
+const foobar : textureHandle = 5;
 
-const int foo = 5;
-const int ARRAY_INIT[][] = { {1}, {foo}, {3} };
+const foo : i32 = 5;
+const ARRAY_INIT : [][]i32 = { {1}, {foo}, {3} };
 
-read rgba32f readWriteTexture2D* myReadImage;
-write rgb10_a2 readWriteTexture2D* myWriteImage;
-binding(0) rg16f read_write readWriteTexture2D* myReadWriteImage;
-volatile r8u readWriteTexture2D* myVolatileImage[5];
-atomic r32i readWriteTexture2D* myAtomicImage[];
+//rgba32f readWriteTexture2D* myReadImage;
+no_read mutable rgb10_a2 myWriteImage : *readWriteTexture2D;
+binding(0) rg16f mutable myReadWriteImage : *readWriteTexture2D;
+volatile r8u myVolatileImage : [5]*readWriteTexture2D;
+atomic r32i myAtomicImage : []*readWriteTexture2D;
 
 @Visibility("CS")
-group(0) sampler* MyDynamicSampler;
+group(0) MyDynamicSampler : *sampler;
 
 struct MyStruct
 {
-    int i;  
-    textureHandle tex;
+    i : i32;
+    tex : textureHandle;
 };
 
 struct MyStorageBuffer
 {
-    int ProvokePadding;
-    float3 Output;  
+    ProvokePadding : i32;
+    Output : f32x3;
 };
-mutable MyStorageBuffer* myStorageBuffer;
+mutable myStorageBuffer : *MyStorageBuffer;
 
-const int NUM_FOO = 5;
-const float4 NUM_BLORF[2] = { float4(1,1,1,1), float4(2,2,2,2) };
+const NUM_FOO : i32 = 5;
+const NUM_BLORF : [2]f32x4  = { f32x4(1,1,1,1), f32x4(2,2,2,2) };
 
 // sampler_states gets converted to ordinary sampler objects, 
 // but is supposed to be read on the receiving side
@@ -88,23 +105,19 @@ render_state MyRenderState
 /**
     Test statements
 */
-int
+i32
 MegaFunction()
 {
-    int foo = 5;
+    foo : i32 = 5;
     {
-        int foo = 5;
+        foo : i32 = 5;
     }
 
-    const int arr[5][2] = { {1,1},{2,2},{3,3},{4,4},{5,5} };
-
-    const float4 vecarray[5] = { float4(1), float4(2), float4(3), float4(4), float4(5) };
-
-    float3 foobar = vecarray[1].xyz;
+    const arr : [5][2]i32 = { {1,1},{2,2},{3,3},{4,4},{5,5} };
 
     if (foo > 0)
     {
-        int bar = 5;
+        bar : i32 = 5;
         if (foo != 0)
             return bar;
         else
@@ -112,7 +125,7 @@ MegaFunction()
     }
     else
     {
-        int bar = 5;
+        bar : i32 = 5;
     }
 
     while (true)
@@ -129,7 +142,7 @@ MegaFunction()
     } while (foo > 0);
 
     foo = 6;
-    for (int i = 0, j = 0; i < foo; i++, ++j)
+    for (i, j : i32 = 0, 1; i < foo; i++, ++j)
     {
         if ((i % 2) == 0)
             continue;
@@ -141,35 +154,37 @@ MegaFunction()
 //------------------------------------------------------------------------------
 /**
 */
-float4 
-Function(in float f)
+f32x4 
+Function(in f : f32)
 {
-    return float4(f);
+    return f32x4(f);
 }
 
 //------------------------------------------------------------------------------
 /**
     Overload function
 */
-float4
-Function(in int i)
+f32x4
+Function(in i : i32)
 {
-    return float4(i);
+    return f32x4(i);
 }
 
 //------------------------------------------------------------------------------
 /**
     Per-program bind function
 */
-prototype float4 DynamicFunction(in int i);
+prototype f32x4 DynamicFunction(in i : i32);
 
 //------------------------------------------------------------------------------
 /**
 */
+shader
+local_size_x(64)
 void
 MyComputeShader()
 {
-    textureStore(myReadWriteImage, int2(0, 0), Function(myConstantBuffer->NumWorkGroups));
+    textureStore(myReadWriteImage, i32x2(0, 0), Function(myConstantBuffer->NumWorkGroups));
 }
 
 //------------------------------------------------------------------------------
@@ -178,16 +193,17 @@ MyComputeShader()
 @Mask("MyProgram")
 program MyProgram
 {
-    ComputeShader = MyComputeShader;
+    ComputeShader = *MyComputeShader();
 };
 
 //------------------------------------------------------------------------------
 /**
 */
+shader
 void
 MyVertexShader(
-    binding(0) in float4 position
-    , binding(0) out float4 Position
+    binding(0) in position : f32x4
+    , binding(0) out Position : f32x4
 )
 {
     Position = position;
@@ -196,10 +212,11 @@ MyVertexShader(
 //------------------------------------------------------------------------------
 /**
 */
+shader
 void
 MyPixelShader(
-    binding(0) in float4 position
-    , binding(0) out float4 Color
+    binding(0) in position : f32x4
+    , binding(0) out Color : f32x4
 )
 {
     Color = position;
@@ -211,9 +228,9 @@ MyPixelShader(
 @Mask("MyGraphicsProgram")
 program MyGraphicsProgram
 {
-    DynamicFunction = Function;
-    VertexShader = MyVertexShader;
-    PixelShader = MyPixelShader;
+    DynamicFunction = *Function(i32);
+    VertexShader = *MyVertexShader(f32x4, f32x4);
+    PixelShader = *MyPixelShader(f32x4, f32x4);
 };
 
 ```
