@@ -279,6 +279,18 @@ extern Function* SubgroupBallot;
 extern Function* SubgroupInverseBallot;
 extern Function* SubgroupBallotBitCount;
 extern Function* SubgroupBallotBit;
+extern Function* SubgroupBallotFirstOne;
+extern Function* SubgroupBallotLastOne;
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
+    SCALAR_LIST
+#undef X
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapVertical, ty)
+    SCALAR_LIST
+#undef X
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapHorizontal, ty)
+    SCALAR_LIST
+#undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicLoad, ty)
     SINGLE_COMPONENT_LIST
@@ -335,15 +347,6 @@ extern Function* SubgroupBallotBit;
 extern Function* ExecutionBarrier;
 extern Function* MemoryBarrier;
 
-#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
-    SCALAR_LIST
-#undef X
-#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapVertical, ty)
-    SCALAR_LIST
-#undef X
-#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SubgroupSwapHorizontal, ty)
-    SCALAR_LIST
-#undef X
 
 extern Function* PixelCacheLoad;
 extern Function* PixelCacheLoadMS;

@@ -1619,16 +1619,50 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
     this->intrinsicMap[Intrinsics::SubgroupFirstInvocation] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("SubgroupBallotKHR");
-        uint32_t ext = g->AddExtension("SPV_KHR_shader_ballot");
-        uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d OpSubgroupFirstInvocationKHR %%%d", ext, returnType, args[0].name));
+        g->AddCapability("GroupNonUniform");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformElect %%%d Subgroup", returnType));
         return SPIRVResult(ret, returnType);
     };
 
     this->intrinsicMap[Intrinsics::SubgroupRead] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddCapability("SubgroupBallotKHR");
-        uint32_t ext = g->AddExtension("SPV_KHR_shader_ballot");
-        uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d OpSubgroupReadInvocationKHR %%%d", ext, returnType, args[0].name));
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBroadcastFirst %%%d Subgroup %%%d", returnType, args[0].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupBallot] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallot %%%d Subgroup %%%d", returnType, args[0].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupInverseBallot] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformInverseBallot %%%d Subgroup %%%d", returnType, args[0].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupBallotBitCount] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallotBitCount %%%d Subgroup Reduce %%%d", returnType, args[0].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupBallotBit] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallotBitExtract %%%d Subgroup %%%d %%%d", returnType, args[0].name, args[1].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupBallotFirstOne] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallotFindLSB %%%d Subgroup %%%d", returnType, args[0].name));
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::SubgroupBallotLastOne] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniformBallot");
+        uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallotFindMSB %%%d Subgroup %%%d", returnType, args[0].name));
         return SPIRVResult(ret, returnType);
     };
 
@@ -1640,153 +1674,103 @@ SPIRVGenerator::SetupIntrinsics()
         Grad = 0x4,
         Offset = 0x8,
         Proj = 0x10,
-        Comp = 0x20
+        Comp = 0x20,
+
+        LodComp = Lod | Comp,
+        LodCompOffset = Lod | Comp | Offset,
+        LodOffset = Lod | Offset,
+        LodProj = Lod | Proj,
+        LodProjComp = Lod | Proj | Comp,
+        LodProjCompOffset = Lod | Proj | Comp | Offset,
+        LodProjOffset = Lod | Proj | Offset,
+
+        BiasComp = Bias | Comp,
+        BiasOffset = Bias | Offset,
+        BiasProj = Bias | Proj,
+        BiasProjComp = Bias | Proj | Comp,
+        BiasProjOffset = Bias | Proj | Offset,
+
+        CompOffset = Comp | Offset,
+
+        GradComp = Grad | Comp,
+        GradOffset = Grad | Offset,
+        GradProj = Grad | Proj,
+        GradProjComp = Grad | Proj | Comp,
+        GradProjCompOffset = Grad | Proj | Comp | Offset,
+        GradProjOffset = Grad | Proj | Offset,
+
+        ProjComp = Proj | Comp,
+        ProjCompOffset = Proj | Comp | Offset,
+        ProjOffset = Proj | Offset,
     };
+
+#define MAKE_TEXTURE_SAMPLE_INTRINSICS(op, operands)\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::##operands }
+
+#define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+
+#define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::##operands }
+
+#define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
+
+#define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
 
     std::vector<std::tuple<Function*, uint32_t>> textureSampleInstructions =
     {
-        { Intrinsics::TextureSampleBase_texture1D, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_texture2D, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_texture2DArray, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_texture2DMS, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_texture2DMSArray, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_texture3D, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_textureCube, SampleOperands::None }
-        , { Intrinsics::TextureSampleBase_textureCubeArray, SampleOperands::None }
-        , { Intrinsics::TextureSampleLod_texture1D, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_texture2D, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_texture2DArray, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_texture2DMS, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_texture2DMSArray, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_texture3D, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_textureCube, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLod_textureCubeArray, SampleOperands::Lod }
-        , { Intrinsics::TextureSampleLodCompare_texture1D, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_texture2D, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_texture2DArray, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_texture2DMS, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_texture2DMSArray, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_texture3D, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_textureCube, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompare_textureCubeArray, SampleOperands::Lod | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture1D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture2D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture2DArray, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture2DMS, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture2DMSArray, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodCompareOffset_texture3D, SampleOperands::Lod | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture1D, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture2D, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture2DArray, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture2DMS, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture2DMSArray, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodOffset_texture3D, SampleOperands::Lod | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProj_texture1D, SampleOperands::Lod | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleLodProj_texture2D, SampleOperands::Lod | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleLodProj_texture3D, SampleOperands::Lod | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleLodProj_textureCube, SampleOperands::Lod | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleLodProjCompare_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodProjCompare_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodProjCompare_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodProjCompare_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleLodProjCompareOffset_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjCompareOffset_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjCompareOffset_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjCompareOffset_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjOffset_texture1D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjOffset_texture2D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjOffset_texture3D, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleLodProjOffset_textureCube, SampleOperands::Lod | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBias_texture1D, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBias_texture2D, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBias_texture2DArray, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBias_texture3D, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBias_textureCube, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBias_textureCubeArray, SampleOperands::Bias }
-        , { Intrinsics::TextureSampleBiasCompare_texture1D, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasCompare_texture2D, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasCompare_texture2DArray, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasCompare_texture3D, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasCompare_textureCube, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasCompare_textureCubeArray, SampleOperands::Bias | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasOffset_texture1D, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasOffset_texture2D, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasOffset_texture2DArray, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasOffset_texture3D, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasOffset_textureCube, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasOffset_textureCubeArray, SampleOperands::Bias | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasProj_texture1D, SampleOperands::Bias | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleBiasProj_texture2D, SampleOperands::Bias | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleBiasProj_texture3D, SampleOperands::Bias | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleBiasProj_textureCube, SampleOperands::Bias | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleBiasProjCompare_texture1D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasProjCompare_texture2D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasProjCompare_texture3D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasProjCompare_textureCube, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleBiasProjOffset_texture1D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasProjOffset_texture2D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasProjOffset_texture3D, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleBiasProjOffset_textureCube, SampleOperands::Bias | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompare_texture1D, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_texture2D, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_texture2DArray, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_texture2DMS, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_texture2DMSArray, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_texture3D, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_textureCube, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompare_textureCubeArray, SampleOperands::Comp }
-        , { Intrinsics::TextureSampleCompareOffset_texture1D, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompareOffset_texture2D, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompareOffset_texture2DArray, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompareOffset_texture2DMS, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompareOffset_texture2DMSArray, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleCompareOffset_texture3D, SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGrad_texture1D, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGrad_texture2D, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGrad_texture2DArray, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGrad_texture3D, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGrad_textureCube, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGrad_textureCubeArray, SampleOperands::Grad }
-        , { Intrinsics::TextureSampleGradCompare_texture1D, SampleOperands::Grad | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradCompare_texture2D, SampleOperands::Grad | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradCompare_texture2DArray, SampleOperands::Grad | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradCompare_texture3D, SampleOperands::Grad | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradOffset_texture1D, SampleOperands::Grad | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradOffset_texture2D, SampleOperands::Grad | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradOffset_texture2DArray, SampleOperands::Grad | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradOffset_texture3D, SampleOperands::Grad | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProj_texture1D, SampleOperands::Grad | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleGradProj_texture2D, SampleOperands::Grad | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleGradProj_texture3D, SampleOperands::Grad | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleGradProj_textureCube, SampleOperands::Grad | SampleOperands::Proj }
-        , { Intrinsics::TextureSampleGradProjCompare_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradProjCompare_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradProjCompare_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradProjCompare_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleGradProjCompareOffset_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjCompareOffset_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjCompareOffset_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjCompareOffset_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjOffset_texture1D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjOffset_texture2D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjOffset_texture3D, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleGradProjOffset_textureCube, SampleOperands::Grad | SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProj_texture1D, SampleOperands::Proj }
-        , { Intrinsics::TextureSampleProj_texture2D, SampleOperands::Proj }
-        , { Intrinsics::TextureSampleProj_texture3D, SampleOperands::Proj }
-        , { Intrinsics::TextureSampleProj_textureCube, SampleOperands::Proj }
-        , { Intrinsics::TextureSampleProjCompare_texture1D, SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleProjCompare_texture2D, SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleProjCompare_texture3D, SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleProjCompare_textureCube, SampleOperands::Proj | SampleOperands::Comp }
-        , { Intrinsics::TextureSampleProjCompareOffset_texture1D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjCompareOffset_texture2D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjCompareOffset_texture3D, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjCompareOffset_textureCube, SampleOperands::Proj | SampleOperands::Comp | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjOffset_texture1D, SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjOffset_texture2D, SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjOffset_texture3D, SampleOperands::Proj | SampleOperands::Offset }
-        , { Intrinsics::TextureSampleProjOffset_textureCube, SampleOperands::Proj | SampleOperands::Offset }
+        MAKE_TEXTURE_SAMPLE_INTRINSICS(Base, None),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS(Lod, Lod),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS(LodCompare, LodComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE(LodOffset, LodOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProj, LodProj),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjCompare, LodProjComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjCompareOffset, LodProjCompOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjOffset, LodProjOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(Bias, Bias),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(BiasCompare, BiasComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(BiasOffset, BiasOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProj, BiasProj),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProjCompare, BiasProjComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProjOffset, BiasProjOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS(Compare, Comp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE(CompareOffset, CompOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(Grad, Grad),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(GradCompare, GradComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(GradOffset, GradOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProj, GradProj),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjCompare, GradProjComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjCompareOffset, GradProjCompOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjOffset, GradProjOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(Proj, Proj),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjCompare, ProjComp),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjCompareOffset, ProjCompOffset),
+        MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjOffset, ProjOffset)
     };
     for (auto fun : textureSampleInstructions)
     {

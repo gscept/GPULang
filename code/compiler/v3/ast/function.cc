@@ -490,6 +490,14 @@ FLOAT_LIST
     __ADD_ARG_LIT(index, u32);
     __SET_RET_LIT(b8);
 
+    __MAKE_BUILTIN(subgroupBallotFirstOne, SubgroupBallotFirstOne);        // Get first bit set to 1
+    __ADD_ARG_LIT(mask, u32x4);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(subgroupBallotLastOne, SubgroupBallotLastOne);        // Get last bit set to 1
+    __ADD_ARG_LIT(mask, u32x4);
+    __SET_RET_LIT(u32);
+
     //------------------------------------------------------------------------------
     /**
         Atomic intrinsics

@@ -150,6 +150,8 @@ Function* SubgroupBallot;
 Function* SubgroupInverseBallot;
 Function* SubgroupBallotBitCount;
 Function* SubgroupBallotBit;
+Function* SubgroupBallotFirstOne;
+Function* SubgroupBallotLastOne;
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(AtomicLoad, ty)
     SINGLE_COMPONENT_LIST
