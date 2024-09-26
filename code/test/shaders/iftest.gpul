@@ -1,0 +1,19 @@
+shader
+void
+IfTest()
+{
+    i : i32 = 5;
+    if (i > 5)
+    {
+        i = 1;
+    }
+    else
+    {
+        i = 2;
+    }
+}
+
+program TestProgram
+{
+    ComputeShader = *IfTest();
+}

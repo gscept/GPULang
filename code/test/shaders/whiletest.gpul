@@ -1,0 +1,15 @@
+shader
+void
+WhileTest()
+{
+    a : i32 = 5;
+    while (a > 0)
+    {
+        a--;
+    }
+}
+
+program TestProgram
+{
+    ComputeShader = *WhileTest();
+}

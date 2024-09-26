@@ -1,0 +1,15 @@
+shader
+void
+ForTest()
+{
+    a : i32 = 0;
+    for (i : i32 = 0; i < 5; i++)
+    {
+        a += i;
+    }
+}
+
+program TestProgram
+{
+    ComputeShader = *ForTest();
+};

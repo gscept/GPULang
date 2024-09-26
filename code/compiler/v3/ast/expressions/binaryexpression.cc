@@ -87,28 +87,97 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
 
     // If assignment, allow if types are identical
-    if (this->op == '=')
+    if (thisResolved->leftType != thisResolved->rightType)
     {
-        if (thisResolved->leftType == thisResolved->rightType)
+        // If not, or the operator is otherwise, look for conversion assignment or comparison operators
+        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
+        Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
+        if (conversionFunction == nullptr)
+        {
+            compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
+            return false;
+        }
+        Function* fun = static_cast<Function*>(conversionFunction);
+        thisResolved->conversionFunction = static_cast<Function*>(conversionFunction);
+        thisResolved->returnType = fun->returnType;
+    }
+    else
+    {
+        if (this->op == '+')
         {
             thisResolved->returnType = thisResolved->rightType;
-            thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
-            return true;
+        }
+        else if (this->op == '-')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '*')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '/')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '%')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '^')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '|')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '&')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '>>')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '<<')
+        {
+            thisResolved->returnType = thisResolved->rightType;
+        }
+        else if (this->op == '||')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '&&')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '<')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '>')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '<=')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '>=')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '==')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
+        }
+        else if (this->op == '!=')
+        {
+            thisResolved->returnType = Type::FullType{ "b8" };
         }
     }
-
-    // If not, or the operator is otherwise, look for conversion assignment or comparison operators
-    std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
-    Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
-    if (conversionFunction == nullptr)
-    {
-        compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
-        return false;
-    }
-    Function* fun = static_cast<Function*>(conversionFunction);
-    thisResolved->returnType = fun->returnType;
+    
     thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
-    thisResolved->conversionFunction = static_cast<Function*>(conversionFunction);
     return true;
 }
 

@@ -78,7 +78,7 @@ Function* Cross_f32x3;
     FLOAT_VEC_LIST
 #undef X
 
-#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Length, ty)
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Length, ty)
     FLOAT_VEC_LIST
 #undef X
 

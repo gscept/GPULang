@@ -368,8 +368,13 @@ GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, 
 /**
 */
 SPIRVGenerator::SPIRVGenerator()
+    : symbolCounter(0)
+    , returnLabel(0xFFFFFFFF)
+    , continueLabel(0xFFFFFFFF)
+    , breakLabel(0xFFFFFFFF)
 {
     // Setup intrinsics
+
     intrinsicMap.clear();
     SetupIntrinsics();
 }
@@ -779,11 +784,16 @@ SPIRVGenerator::SetupIntrinsics()
 
     for (auto fun : operatorFunctions)
     {
-        this->intrinsicMap[std::get<0>(fun)] = [ty = std::get<1>(fun), op = std::get<2>(fun), assign = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 2);
+        this->intrinsicMap[std::get<0>(fun)] = [ty = std::get<1>(fun), op = std::get<2>(fun), assign = std::get<3>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() >= 2);
             uint32_t ret = g->AddMappedOp(Format("Op%c%s %%%d %%%d %%%d", ty, op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
+            {
+                assert(args.size() == 3);
+                assert(!args[2].isValue);
+                g->AddOp(Format("OpStore %%%d %%%d", args[2].name, ret));
+                return SPIRVResult(args[2].name, args[2].typeName);
+            }
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -1949,7 +1959,7 @@ void
 GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
     Function* func = static_cast<Function*>(symbol);
-    Function::__Resolved* funcResolved = static_cast<Function::__Resolved*>(func->resolved);
+    Function::__Resolved* funcResolved = Symbol::Resolved(func);
 
     if (funcResolved->isPrototype)
         return;
@@ -1957,7 +1967,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     std::string typeArgs = "";
     for (auto& param : func->parameters)
     {
-        Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
+        Variable::__Resolved* paramResolved = Symbol::Resolved(param);
         uint32_t typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
         typeArgs.append(Format("%%%d", typeName));
 
@@ -1972,7 +1982,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     generator->AddSymbol(funcResolved->name, Format("OpFunction %%%d None %%%d", returnName, functionType));
     for (auto& param : func->parameters)
     {
-        Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
+        Variable::__Resolved* paramResolved = Symbol::Resolved(param);
         generator->AddSymbol(param->name, Format("OpFunctionParameter %%%d", GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol)));
     }
 
@@ -1988,7 +1998,7 @@ void
 GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
     Structure* struc = static_cast<Structure*>(symbol);
-    Structure::__Resolved* strucResolved = static_cast<Structure::__Resolved*>(struc->resolved);
+    Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
 
     uint32_t numVariables = 0;
     for (Symbol* sym : struc->symbols)
@@ -2008,7 +2018,7 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
         if (sym->symbolType == Symbol::SymbolType::VariableType)
         {
             Variable* var = static_cast<Variable*>(sym);
-            Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+            Variable::__Resolved* varResolved = Symbol::Resolved(var);
             uint32_t varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
             memberTypes.append(Format("%%%d ", varType));
             generator->AddMemberDecoration(structName, i, Format("Offset %d", offset));
@@ -2309,30 +2319,34 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     SPIRVResult rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right);
     SPIRVResult leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
 
+    SPIRVResult right = rightValue, left = leftValue;
+    if (!rightValue.isValue)
+        right = SPIRVResult(generator->AddMappedOp(Format("OpLoad %%%d %%%d", rightValue.typeName, rightValue.name)), rightValue.typeName);
+    if (!leftValue.isValue)
+        left = SPIRVResult(generator->AddMappedOp(Format("OpLoad %%%d %%%d", leftValue.typeName, leftValue.name)), leftValue.typeName);
+
     // If there is a conversion function, generate it first
     if (binaryExpressionResolved->conversionFunction)
     {
         auto it = generator->intrinsicMap.find(binaryExpressionResolved->conversionFunction);
         assert(it != generator->intrinsicMap.end());
-        rightValue = it->second(compiler, generator, leftValue.typeName, { rightValue });
+        rightValue = it->second(compiler, generator, leftValue.typeName, { leftValue, right });
     }
 
     std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), leftType.name.c_str());
-    Function* fun = compiler->GetSymbol<Function>(functionName);
+    Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
+    assert(fun != nullptr);
 
-    // If fun is not a null pointer, there is some conversion needed
-    if (fun != nullptr)
-    {
-        // Get operator 
-        auto op = generator->intrinsicMap.find(fun);
-        assert(op != generator->intrinsicMap.end());
-        rightValue = op->second(compiler, generator, leftValue.typeName, { leftValue, rightValue });
-    }
+    // Get operator 
+    auto op = generator->intrinsicMap.find(fun);
+    assert(op != generator->intrinsicMap.end());
+    rightValue = op->second(compiler, generator, leftValue.typeName, { left, right, leftValue });
 
     // Assignment is a store operation
     if (binaryExpression->op == '=')
     {
-        generator->AddOp(Format("OpStore %%%d %%%d", leftValue, rightValue));
+        assert(!leftValue.isValue);
+        generator->AddOp(Format("OpStore %%%d %%%d", leftValue, right));
     }
     
     return rightValue;
@@ -2442,6 +2456,19 @@ SPIRVResult
 GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     UnaryExpression* unaryExpression = static_cast<UnaryExpression*>(expr);
+
+    SPIRVResult rhs = GenerateExpressionSPIRV(unaryExpression->expr);
+    switch (unaryExpression->op)
+    {
+        case '++':
+            break;
+        case '--':
+            break;
+        case '*':
+            break;
+        case '-':
+            break;
+    }
     return SPIRVResult::Invalid();
 }
 
@@ -2646,7 +2673,7 @@ GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Swit
         reservedCaseLabels.push_back(caseLabel);
     }
     uint32_t defaultCase = generator->ReserveName();
-    generator->AddOp(Format("OpSwitch %%%d %%%d %s", switchRes.name, defaultCase, caseList.c_str());
+    generator->AddOp(Format("OpSwitch %%%d %%%d %s", switchRes.name, defaultCase, caseList.c_str()));
 
     for (size_t i = 0; i < stat->caseStatements.size(); i++)
     {
@@ -2851,11 +2878,12 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                 }
             }
 
-            uint32_t entryFunction = this->GetSymbol(it.second->name);
-            this->header.append(Format("OpEntryPoint %s %%%d \"main\"", executionModelMap[it.first].c_str(), entryFunction));
+            Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(it.second));
+            uint32_t entryFunction = this->GetSymbol(funResolved->name);
+            this->header.append(Format("\t\tOpEntryPoint %s %%%d \"main\"", executionModelMap[it.first].c_str(), entryFunction));
 
             // Compose and convert to binary, then validate
-            std::string binary = Format("%s /// Declarations\n %s /// Decorations\n %s /// Functions\n %s", this->header.c_str(), this->declarations.c_str(), this->decorations.c_str(), this->functional.c_str());
+            std::string binary = Format("/// Header\n%s\n\n/// Declarations\n%s\n\n/// Decorations\n%s\n\n/// Functions\n%s\n\n", this->header.c_str(), this->declarations.c_str(), this->decorations.c_str(), this->functional.c_str());
             spv_binary bin = nullptr;
             spv_diagnostic diag = nullptr;
             spv_result_t res = spvTextToBinary(spvContext, binary.c_str(), binary.size(), &bin, &diag);
@@ -2902,7 +2930,7 @@ SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t 
+void
 SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global)
 {
     auto scope = this->scopeStack.rbegin();
@@ -2911,20 +2939,19 @@ SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string
         auto it = scope->symbols.find(name);
         if (it != scope->symbols.end())
         {
-            return it->second;
+            break;
         }
         scope++;
     }
 
     // If symbol isn't found in scope, create it
-    this->scopeStack.back().symbols[name] = ret;
+    this->scopeStack.back().symbols[name] = object;
 
     std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", object, declare.c_str(), name.c_str());
     if (global)
         this->declarations.append(decl);
     else
         this->functional.append(decl);
-    return ret;
 }
 
 //------------------------------------------------------------------------------
@@ -3108,6 +3135,7 @@ SPIRVGenerator::ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping)
                 sym->second = newMapping;
                 return;
             }
+            sym++;
         }
         it++;
     }

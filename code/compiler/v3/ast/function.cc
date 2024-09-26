@@ -320,9 +320,9 @@ Function::SetupIntrinsics()
 #undef X
 
 __MAKE_INTRINSIC(cross, Cross, f32x3)
-__ADD_ARG_LIT(v0, "f32x3");
-__ADD_ARG_LIT(v1, "f32x3");
-__SET_RET_LIT("f32x3");
+__ADD_ARG_LIT(v0, f32x3);
+__ADD_ARG_LIT(v1, f32x3);
+__SET_RET_LIT(f32x3);
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(normalize, Normalize, ty)\
@@ -335,7 +335,7 @@ __SET_RET_LIT("f32x3");
 #define X(ty, index)\
     __MAKE_INTRINSIC(length, Length, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __SET_RET_LIT("f32");
+    __SET_RET_LIT(f32);
 
     FLOAT_VEC_LIST
 #undef X

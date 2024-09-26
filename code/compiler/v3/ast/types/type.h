@@ -265,6 +265,9 @@ struct Type : public Symbol
 
     /// return member symbol
     Symbol* GetSymbol(const std::string str);
+    /// return member symbol
+    template<typename T>
+    T* GetSymbol(const std::string str);
     /// return member symbols matching string
     std::vector<Symbol*> GetSymbols(const std::string str);
 
@@ -272,5 +275,20 @@ struct Type : public Symbol
     static std::vector<Symbol*> SetupDefaultTypes();
 
 };
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T>
+inline T*
+Type::GetSymbol(const std::string str)
+{
+    auto it = this->lookup.find(str);
+    if (it != this->lookup.end())
+        return static_cast<T*>(it->second);
+    else
+        return nullptr;
+}
+
 
 } // namespace GPULang

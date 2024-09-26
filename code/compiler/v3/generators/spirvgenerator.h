@@ -51,7 +51,7 @@ public:
     /// Add or search for a symbol
     uint32_t AddSymbol(std::string name, std::string declare, bool global = false);
     /// Add a symbol for a reserved name
-    uint32_t AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global = false);
+    void AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global = false);
     /// Get symbol
     uint32_t GetSymbol(std::string name);
     /// Returns true if symbol exists

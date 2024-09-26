@@ -1011,9 +1011,9 @@ void
 GLSLGenerator::GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Function* fun = static_cast<Function*>(symbol);
-    Function::__Resolved* funResolved = static_cast<Function::__Resolved*>(fun->resolved);
+    Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
-    Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
+    Program::__Resolved* progResolved = Symbol::Resolved(program);
 
 
     bool isMain = fun == this->mainFunction;
