@@ -327,6 +327,15 @@ Type::IsMatrix() const
 //------------------------------------------------------------------------------
 /**
 */
+uint32_t 
+Type::CalculateSize() const
+{
+    return this->byteSize * this->columnSize * this->rowSize;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
 {

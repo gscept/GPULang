@@ -138,7 +138,7 @@ struct Compiler
     /// helper for unrecognized symbol error
     void UnrecognizedSymbolError(const std::string& symbol, Symbol* sym);
     /// Helper for reserved words
-    void ReservedWordError(const std::string& word, Symbol* sym);
+    void ReservedPrefixError(const std::string& name, const std::string& word, Symbol* sym);
 
     /// output binary data
     void OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
@@ -164,6 +164,8 @@ struct Compiler
 
     std::string debugPath;
     bool debugOutput;
+
+    bool ignoreReservedWords;
 };
 
 //------------------------------------------------------------------------------

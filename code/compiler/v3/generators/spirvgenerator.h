@@ -50,6 +50,8 @@ public:
 
     /// Add or search for a symbol
     uint32_t AddSymbol(std::string name, std::string declare, bool global = false);
+    /// Add a symbol for a reserved name
+    uint32_t AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global = false);
     /// Get symbol
     uint32_t GetSymbol(std::string name);
     /// Returns true if symbol exists
@@ -64,6 +66,12 @@ public:
     uint32_t AddExtension(std::string name);
     /// Add decoration
     void AddDecoration(std::string name, uint32_t object, std::string decorate);
+    /// Add member decoration
+    void AddMemberDecoration(uint32_t struc, uint32_t index, std::string decorate);
+    /// Reserve a name
+    uint32_t ReserveName();
+    /// Add op with reserved name
+    void AddReserved(std::string op, uint32_t name, std::string comment = "");
 
     /// Find symbol and assert if fails
     uint32_t FindSymbolMapping(std::string value);
@@ -90,6 +98,8 @@ public:
     std::string functional;
     std::map<std::string, uint32_t> extensions;
     std::map<std::string, std::set<std::string>> decorationMap;
+
+    uint32_t returnLabel, continueLabel, breakLabel;
 
     using IntrinsicMappingFunction = std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&)>;
     std::map<Function*, IntrinsicMappingFunction> intrinsicMap;

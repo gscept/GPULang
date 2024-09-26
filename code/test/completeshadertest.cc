@@ -13,7 +13,7 @@ void
 CompleteShaderTest()
 {
     GPULangErrorBlob* errors;
-    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.fx", GPULang::Compiler::Language::SPIRV, std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "khronos", {}, {}, errors);
+    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.gpul", GPULang::Compiler::Language::SPIRV, std::string(TEST_OUTPUT_FOLDER) + "/completeshader.gplb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "khronos", {}, {}, errors);
 
     if (errors != nullptr)
     {
@@ -22,7 +22,7 @@ CompleteShaderTest()
     }
 
     // try to load
-    FILE* file = fopen((std::string(TEST_OUTPUT_FOLDER) + "/completeshader.fxb").c_str(), "r");
+    FILE* file = fopen((std::string(TEST_OUTPUT_FOLDER) + "/completeshader.gplb").c_str(), "r");
     fseek(file, 0, SEEK_END);
     int size = ftell(file);
     rewind(file);

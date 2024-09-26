@@ -78,6 +78,9 @@ struct Variable : public Symbol
 
         union ParameterBits
         {
+            ParameterBits(uint32_t mask)
+                : bits(mask)
+            {}
             struct
             {
                 uint32_t isIn : 1;
@@ -85,25 +88,31 @@ struct Variable : public Symbol
                 uint32_t isPatch : 1;
                 uint32_t isNoPerspective : 1;
                 uint32_t isNoInterpolate : 1;
+                uint32_t isCentroid : 1;
             } flags;
             uint32_t bits;
         };
-        ParameterBits parameterBits;
+        ParameterBits parameterBits = 0x0;
 
         union UsageBits
         {
+            UsageBits(uint32_t mask)
+                : bits(mask)
+            {}
             struct
             {
                 uint32_t isConst : 1;                   // true if variable is const
                 uint32_t isUniform : 1;
                 uint32_t isMutable : 1;                 // true if variable is mutable
                 uint32_t isParameter : 1;               // true if variable is passed to a function
+                uint32_t isShaderParameter : 1;         // true if variable is passed to, or exported from, a shader function
                 uint32_t isStructMember : 1;            // true if variable is the member of a struct
                 uint32_t isGroupShared : 1;             // true if variable is work group shared memory
+                uint32_t isInline : 1;                  // true if variable data is sourced directly from command buffer
             } flags;
             uint32_t bits;
         };
-        UsageBits usageBits;
+        UsageBits usageBits = 0x0;
         std::vector<Variable*> siblings;
 
         /// type here is the fully qualified (pointer and array) type

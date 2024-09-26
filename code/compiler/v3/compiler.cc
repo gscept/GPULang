@@ -28,6 +28,7 @@ Compiler::Compiler()
     : debugOutput(false)
     , declareTy(nullptr)
     , declareType(Type::FullType{})
+    , ignoreReservedWords(false)
 {
     Variable::SetupImageFormats();
     this->validator = new Validator;
@@ -54,12 +55,14 @@ Compiler::Compiler()
 
     // setup intrinsics
     const std::vector<Symbol*> intrinsics = Function::SetupIntrinsics();
+    this->ignoreReservedWords = true;
     auto intrinIt = intrinsics.begin();
     while (intrinIt != intrinsics.end())
     {
         this->validator->ResolveFunction(this, *intrinIt);
         intrinIt++;
     }
+    this->ignoreReservedWords = false;
 
     // push a new scope for all the parsed symbols
     this->PushScope(Scope::ScopeType::Global);
@@ -434,9 +437,9 @@ Compiler::UnrecognizedSymbolError(const std::string& symbol, Symbol* sym)
 /**
 */
 void 
-Compiler::ReservedWordError(const std::string& word, Symbol* sym)
+Compiler::ReservedPrefixError(const std::string& name, const std::string& word, Symbol* sym)
 {
-    this->Error(Format("Reserved word '%s'. No variables or functions are allowed to be prefixed with 'gpl'", word.c_str()), sym);
+    this->Error(Format("Reserved word '%s'. No variables or functions are allowed to be prefixed with '%s'", name.c_str(), word.c_str()), sym);
 }
 
 //------------------------------------------------------------------------------

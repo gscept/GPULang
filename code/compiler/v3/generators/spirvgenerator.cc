@@ -1036,13 +1036,18 @@ SPIRVGenerator::SetupIntrinsics()
     , { Intrinsics::##op##_u32, 'U' }\
     , { Intrinsics::##op##_u32x2, 'U' }\
     , { Intrinsics::##op##_u32x3, 'U' }\
-    , { Intrinsics::##op##_u32x4, 'U' }\
+    , { Intrinsics::##op##_u32x4, 'U' }
 
 #define MAKE_FLOAT_INTRINSICS(op)\
       { Intrinsics::##op##_f32, 'F' }\
     , { Intrinsics::##op##_f32x2, 'F' }\
     , { Intrinsics::##op##_f32x3, 'F' }\
-    , { Intrinsics::##op##_f32x4, 'F' }\
+    , { Intrinsics::##op##_f32x4, 'F' }
+
+#define MAKE_FLOAT_VEC_INTRINSICS(op)\
+    { Intrinsics::##op##_f32x2, 'F' }\
+    , { Intrinsics::##op##_f32x3, 'F' }\
+    , { Intrinsics::##op##_f32x4, 'F' }
 
 #define MAKE_SIGN_INTRINSICS(op)\
       { Intrinsics::##op##_f32, 'F' }\
@@ -1052,13 +1057,13 @@ SPIRVGenerator::SetupIntrinsics()
     , { Intrinsics::##op##_i32, 'S' }\
     , { Intrinsics::##op##_i32x2, 'S' }\
     , { Intrinsics::##op##_i32x3, 'S' }\
-    , { Intrinsics::##op##_i32x4, 'S' }\
+    , { Intrinsics::##op##_i32x4, 'S' }
 
 #define MAKE_FLOAT_INTRINSICS_VEC(op)\
       { Intrinsics::##op##_f32, 'F', 1 }\
     , { Intrinsics::##op##_f32x2, 'F', 2 }\
     , { Intrinsics::##op##_f32x3, 'F', 3 }\
-    , { Intrinsics::##op##_f32x4, 'F', 4 }\
+    , { Intrinsics::##op##_f32x4, 'F', 4 }
 
 
 #define MAKE_INT_INTRINSICS(op)\
@@ -1069,7 +1074,7 @@ SPIRVGenerator::SetupIntrinsics()
     , { Intrinsics::##op##_u32, 'U' }\
     , { Intrinsics::##op##_u32x2, 'U' }\
     , { Intrinsics::##op##_u32x3, 'U' }\
-    , { Intrinsics::##op##_u32x4, 'U' }\
+    , { Intrinsics::##op##_u32x4, 'U' }
 
     std::vector<std::tuple<Function*, const char>> sqrtIntrinsics =
     {
@@ -1255,9 +1260,7 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*, const char>> dotIntrinsics =
     {
-        { Intrinsics::Dot_f32x2, 'F' }\
-        , { Intrinsics::Dot_f32x3, 'F' }\
-        , { Intrinsics::Dot_f32x4, 'F' }\
+        MAKE_FLOAT_VEC_INTRINSICS(Dot)
     };
     for (auto fun : madIntrinsics)
     {
@@ -1268,6 +1271,48 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
+    std::vector<std::tuple<Function*, const char>> crossIntrinsics =
+    {
+        { Intrinsics::Cross_f32x3, 'F' }
+    };
+    for (auto fun : madIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Cross %%%d %%%d", returnType, args[0].name, args[1].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char>> normalizeIntrinsics =
+    {
+        MAKE_FLOAT_VEC_INTRINSICS(Normalize)
+    };
+    for (auto fun : normalizeIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Normalize %%%d", returnType, args[0].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char>> lengthIntrinsics =
+    {
+        MAKE_FLOAT_VEC_INTRINSICS(Length)
+    };
+    for (auto fun : lengthIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Length %%%d", returnType, args[0].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+    
     std::vector<std::tuple<Function*, const char>> minIntrinsics =
     {
         MAKE_SCALAR_INTRINSICS(Min)
@@ -1618,6 +1663,51 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(ret, returnType);
     };
 
+    this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniform");
+        uint32_t baseType = g->AddSymbol("uint", "OpTypeInt 32 0");
+        uint32_t typePtr = g->AddSymbol("ptr(uint)", Format("OpTypePointer %%%d", baseType));
+        uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d", typePtr));
+        g->AddDecoration("gplNumSubgroups", ret, "Builtin SubgroupEqMask");
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationAndLowerMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniform");
+        uint32_t baseType = g->AddSymbol("uint", "OpTypeInt 32 0");
+        uint32_t typePtr = g->AddSymbol("ptr(uint)", Format("OpTypePointer %%%d", baseType));
+        uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d", typePtr));
+        g->AddDecoration("gplNumSubgroups", ret, "Builtin SubgroupLeMask");
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::GetSubgroupLowerMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniform");
+        uint32_t baseType = g->AddSymbol("uint", "OpTypeInt 32 0");
+        uint32_t typePtr = g->AddSymbol("ptr(uint)", Format("OpTypePointer %%%d", baseType));
+        uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d", typePtr));
+        g->AddDecoration("gplNumSubgroups", ret, "Builtin SubgroupLtMask");
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationAndGreaterMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniform");
+        uint32_t baseType = g->AddSymbol("uint", "OpTypeInt 32 0");
+        uint32_t typePtr = g->AddSymbol("ptr(uint)", Format("OpTypePointer %%%d", baseType));
+        uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d", typePtr));
+        g->AddDecoration("gplNumSubgroups", ret, "Builtin SubgroupGeMask");
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::GetSubgroupGreaterMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("GroupNonUniform");
+        uint32_t baseType = g->AddSymbol("uint", "OpTypeInt 32 0");
+        uint32_t typePtr = g->AddSymbol("ptr(uint)", Format("OpTypePointer %%%d", baseType));
+        uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d", typePtr));
+        g->AddDecoration("gplNumSubgroups", ret, "Builtin SubgroupGtMask");
+        return SPIRVResult(ret, returnType);
+    };
+
     this->intrinsicMap[Intrinsics::SubgroupFirstInvocation] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("GroupNonUniform");
         uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformElect %%%d Subgroup", returnType));
@@ -1870,6 +1960,11 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         Variable::__Resolved* paramResolved = static_cast<Variable::__Resolved*>(param->resolved);
         uint32_t typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
         typeArgs.append(Format("%%%d", typeName));
+
+        if (funcResolved->isShader)
+        {
+            GenerateVariableSPIRV(compiler, generator, param, true, false);
+        }
     }
     uint32_t functionType = generator->AddSymbol(Format("type(%s)", funcResolved->name.c_str()), Format("OpTypeFunction %%%d %s", returnName, typeArgs.c_str()), true);
 
@@ -1882,12 +1977,6 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     }
 
     GenerateStatementSPIRV(compiler, generator, func->ast);
-
-    uint32_t returnValue = 0xFFFFFFFF;
-    if (returnValue != 0xFFFFFFFF)
-        generator->AddOp(Format("OpReturnValue %%%d", returnValue));
-    else
-        generator->AddOp("OpReturn");
 
     generator->AddOp("OpFunctionEnd", false, Format("End of %s", func->name.c_str()));
 }
@@ -1909,18 +1998,24 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
     }
     uint32_t name = 0xFFFFFFFF;
     uint32_t* varNames = (uint32_t*)alloca(sizeof(uint32_t) * numVariables);
-    std::string str = "OpTypeStruct ";
-    for (Symbol* sym : struc->symbols)
+    uint32_t structName = generator->ReserveName();
+
+    uint32_t offset = 0;
+    std::string memberTypes = "";
+    for (size_t i = 0; i < struc->symbols.size(); i++)
     {
+        Symbol* sym = struc->symbols[i];
         if (sym->symbolType == Symbol::SymbolType::VariableType)
         {
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
             uint32_t varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
-            str.append(Format("%%%d ", varType));
+            memberTypes.append(Format("%%%d ", varType));
+            generator->AddMemberDecoration(structName, i, Format("Offset %d", offset));
+            offset += varResolved->typeSymbol->CalculateSize();
         }
     }
-    generator->AddSymbol(struc->name, str, true);
+    generator->AddReservedSymbol(struc->name, structName, Format("OpTypeStruct %s", memberTypes.c_str()), true);
 }
 
 //------------------------------------------------------------------------------
@@ -1953,19 +2048,66 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         }
         else if (varResolved->usageBits.flags.isGroupShared)
         {
-            uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer CrossWorkgroup %%%d", typeName), true);
-            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d CrossWorkgroup %%%d", typePtrName, initializer), isGlobal);
+            uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer Workgroup %%%d", typeName), true);
+            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Workgroup %%%d", typePtrName, initializer), isGlobal);
         }
         else if (varResolved->usageBits.flags.isMutable && varResolved->typeSymbol->category == Type::UserTypeCategory)
         {
+            uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name);
+            generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
             uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer StorageBuffer %%%d", typeName), true);
             name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d StorageBuffer %%%d", typePtrName, initializer), isGlobal);
+            generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+            generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->group));
         }
-        else
+        else if (varResolved->usageBits.flags.isInline)
+        {
+            uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer PushConstant %%%d", typeName), true);
+            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d PushConstant %%%d", typePtrName, initializer), isGlobal);
+            generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+            generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->group));
+        }
+        else if (varResolved->usageBits.flags.isUniform)
         {
             uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer Uniform %%%d", typeName), true);
             name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Uniform", typePtrName), isGlobal);
+            generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+            generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->group));
         }
+        else
+        {
+            uint32_t typePtrName = generator->AddSymbol(type, Format("OpTypePointer Private %%%d", typeName), true);
+            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Private", typePtrName), isGlobal);
+        }
+    }
+    else if (isShaderArgument)
+    {
+        type = Format("ptr(%s)", type.c_str());
+        uint32_t typePtrName = 0xFFFFFFFF;
+        uint32_t name = 0xFFFFFFFF;
+        if (varResolved->parameterBits.flags.isIn)
+        {
+            typePtrName = generator->AddSymbol(type, Format("OpTypePointer Input %%%d", typeName), true);
+            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Input", typePtrName), isGlobal);
+            generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", varResolved->inBinding));
+        }
+        else if (varResolved->parameterBits.flags.isOut)
+        {
+            typePtrName = generator->AddSymbol(type, Format("OpTypePointer Output %%%d", typeName), true);
+            name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d Output", typePtrName), isGlobal);
+            generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", varResolved->outBinding));
+        }
+
+        if (varResolved->parameterBits.flags.isNoInterpolate)
+            generator->AddDecoration(Format("NoInterpolate(%s)", varResolved->name.c_str()), name, "Flat");
+        if (varResolved->parameterBits.flags.isNoPerspective)
+            generator->AddDecoration(Format("NoPerspective(%s)", varResolved->name.c_str()), name, "NoPerspective");
+        if (varResolved->parameterBits.flags.isPatch)
+            generator->AddDecoration(Format("Patch(%s)", varResolved->name.c_str()), name, "Patch");
+        if (varResolved->parameterBits.flags.isCentroid)
+            generator->AddDecoration(Format("Centroid(%s)", varResolved->name.c_str()), name, "Centroid");
+
+        
     }
     else
     {
@@ -2149,7 +2291,6 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName, initializer.c_str()), true);
     else
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName, initializer.c_str()));
-    //outCode.append(Format("%%%d \n", name));
     return SPIRVResult(name, typeName, true, isLiteral);
 }
 
@@ -2210,7 +2351,7 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     Type::SwizzleMask swizzle = accessExpressionResolved->swizzleMask;
     if (swizzle.mask != 0x0)
     {
-                // If single value, then use an access chain
+        // If single value, then use an access chain
         if (Type::SwizzleMaskComponents(swizzle) == 1)
         {
             uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
@@ -2244,11 +2385,22 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Otherwise, find offset of member
         std::string lhsSymbol;
         accessExpression->left->EvalSymbol(lhsSymbol);
-        Symbol* rhsSymbol = compiler->GetSymbol(lhsSymbol);
+        Type* rhsSymbol = compiler->GetSymbol<Type>(lhsSymbol);
 
         if (rhsSymbol->symbolType == Symbol::StructureType)
         {
-
+            for (size_t i = 0; i < rhsSymbol->symbols.size(); i++)
+            {
+                Symbol* sym = rhsSymbol->symbols[i];
+                if (sym->name == accessExpressionResolved->rightSymbol)
+                {
+                    uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
+                    uint32_t indexName = generator->AddSymbol(Format("%du", swizzle.bits.x), Format("OpConstant %%%d %d", uintName, i), true);
+                    uint32_t typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
+                    generator->GetSymbol(accessExpressionResolved->rightType.ToString());
+                    return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", typeName, lhs.name, indexName)), typeName);
+                }
+            }
         }
     }
     return SPIRVResult::Invalid();
@@ -2261,7 +2413,9 @@ SPIRVResult
 GenerateCommaExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     CommaExpression* commaExpression = static_cast<CommaExpression*>(expr);
-    return SPIRVResult::Invalid();
+
+    GenerateExpressionSPIRV(compiler, generator, commaExpression->left);
+    return GenerateExpressionSPIRV(compiler, generator, commaExpression->right);
 }
 
 //------------------------------------------------------------------------------
@@ -2271,7 +2425,14 @@ SPIRVResult
 GenerateTernaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     TernaryExpression* ternaryExpression = static_cast<TernaryExpression*>(expr);
-    return SPIRVResult::Invalid();
+
+    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->lhs);
+
+    SPIRVResult ifResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
+    SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
+    uint32_t ret = generator->AddMappedOp(Format("OpSelect %%%d %%%d %%%d %%%d", ifResult.typeName, lhsResult.name, ifResult.name, elseResult.name));
+
+    return SPIRVResult(ret, ifResult.typeName, ifResult.isValue, ifResult.isLiteral);
 }
 
 //------------------------------------------------------------------------------
@@ -2364,7 +2525,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
 void
 GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, BreakStatement* stat)
 {
-
+    assert(generator->breakLabel != 0xFFFFFFFF);
+    generator->AddOp(Format("OpBranch %%%d", generator->breakLabel));
 }
 
 //------------------------------------------------------------------------------
@@ -2373,7 +2535,8 @@ GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Break
 void
 GenerateContinueStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ContinueStatement* stat)
 {
-
+    assert(generator->continueLabel != 0xFFFFFFFF);
+    generator->AddOp(Format("OpBranch %%%d", generator->continueLabel));
 }
 
 //------------------------------------------------------------------------------
@@ -2382,7 +2545,44 @@ GenerateContinueStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Co
 void
 GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStatement* stat)
 {
+    for (auto decl : stat->declarations)
+        GenerateVariableSPIRV(compiler, generator, decl, false, false);
 
+    uint32_t startLabel = generator->ReserveName();
+    uint32_t conditionLabel = generator->ReserveName();
+    uint32_t repeatLabel = generator->ReserveName();
+    uint32_t bodyLabel = generator->ReserveName();
+    uint32_t endLabel = generator->ReserveName();
+
+    generator->breakLabel = endLabel;
+    generator->continueLabel = startLabel;
+
+    // Initial label to start the loop
+    generator->AddOp(Format("OpBranch %%%d", startLabel));
+    generator->AddReserved("OpLabel", startLabel);
+
+    // All loops must begin with a loop merge
+    generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, repeatLabel));
+    generator->AddOp(Format("OpBranch %%%d", conditionLabel));
+
+    // This block is for the condition testing
+    generator->AddReserved("OpLabel", conditionLabel, "for condition");
+    SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+
+    // Decide whether or not to end the loop
+    generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
+    generator->AddReserved("OpLabel", bodyLabel, "for body");
+    GenerateStatementSPIRV(compiler, generator, stat->contents);
+    generator->AddOp(Format("OpBranch %%%d", repeatLabel));
+
+    // This is the repeat condition
+    generator->AddReserved("OpLabel", repeatLabel, "for repeat");
+    GenerateExpressionSPIRV(compiler, generator, stat->loop);
+    generator->AddOp(Format("OpBranch %%%d", startLabel));
+    generator->AddReserved("OpLabel", endLabel, "end of for");
+
+    generator->continueLabel = 0xFFFFFFFF;
+    generator->breakLabel = 0xFFFFFFFF;
 }
 
 //------------------------------------------------------------------------------
@@ -2391,7 +2591,24 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
 void
 GenerateIfStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, IfStatement* stat)
 {
+    SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
 
+    uint32_t ifLabel = generator->ReserveName();
+    uint32_t elseLabel = generator->ReserveName();
+    uint32_t endLabel = generator->ReserveName();
+
+    generator->AddOp(Format("OpSelectionMerge %%%d None", endLabel));
+    generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", lhsResult.name, ifLabel, elseLabel));
+
+    generator->AddReserved("OpLabel", ifLabel, "if");
+    GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
+    generator->AddOp(Format("OpBranch %%%d", endLabel));
+
+    generator->AddReserved("OpLabel", elseLabel, "else");
+    GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
+    generator->AddOp(Format("OpBranch %%%d", endLabel));
+
+    generator->AddReserved("OpLabel", endLabel, "end of condition");
 }
 
 //------------------------------------------------------------------------------
@@ -2400,7 +2617,15 @@ GenerateIfStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, IfStatem
 void
 GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ReturnStatement* stat)
 {
-
+    if (stat->returnValue != nullptr)
+    {
+        SPIRVResult res = GenerateExpressionSPIRV(compiler, generator, stat->returnValue);
+        generator->AddOp(Format("OpReturnValue %%%d", res.name));
+    }
+    else
+    {
+        generator->AddOp("OpReturn");
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -2409,7 +2634,27 @@ GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Retu
 void
 GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
+    SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
 
+    // First forward declare our labels and setup the switch
+    std::string caseList = "";
+    std::vector<uint32_t> reservedCaseLabels;
+    for (Statement* caseStat : stat->caseStatements)
+    {
+        uint32_t caseLabel = generator->ReserveName();
+        caseList += Format("%%%d ", caseLabel);
+        reservedCaseLabels.push_back(caseLabel);
+    }
+    uint32_t defaultCase = generator->ReserveName();
+    generator->AddOp(Format("OpSwitch %%%d %%%d %s", switchRes.name, defaultCase, caseList.c_str());
+
+    for (size_t i = 0; i < stat->caseStatements.size(); i++)
+    {
+        generator->AddReserved("OpLabel", reservedCaseLabels[i], stat->caseValues[i]);
+        GenerateStatementSPIRV(compiler, generator, stat->caseStatements[i]);
+    }
+    generator->AddReserved("OpLabel", defaultCase, "case default");
+    GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
 }
 
 //------------------------------------------------------------------------------
@@ -2418,7 +2663,58 @@ GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Swit
 void
 GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, WhileStatement* stat)
 {
+    uint32_t startLabel = generator->ReserveName();
+    uint32_t conditionLabel = generator->ReserveName();
+    uint32_t bodyLabel = generator->ReserveName();
+    uint32_t endLabel = generator->ReserveName();
 
+    generator->breakLabel = endLabel;
+    generator->continueLabel = startLabel;
+
+    // Initial label to start the loop
+    generator->AddOp(Format("OpBranch %%%d", startLabel));
+    generator->AddReserved("OpLabel", startLabel);
+
+    if (stat->isDoWhile)
+    {
+        // All loops must begin with a loop merge
+        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, bodyLabel));
+        generator->AddOp(Format("OpBranch %%%d", bodyLabel));
+
+        // Decide whether or not to end the loop
+        generator->AddReserved("OpLabel", bodyLabel, "while body");
+        GenerateStatementSPIRV(compiler, generator, stat->statement);
+
+        // This block is for the condition testing
+        generator->AddReserved("OpLabel", conditionLabel, "while condition");
+        SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, startLabel, endLabel));
+
+        // This is the repeat condition
+        generator->AddReserved("OpLabel", endLabel, "end of while");
+    }
+    else
+    {
+        // All loops must begin with a loop merge
+        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, bodyLabel));
+        generator->AddOp(Format("OpBranch %%%d", conditionLabel));
+
+        // This block is for the condition testing
+        generator->AddReserved("OpLabel", conditionLabel, "while condition");
+        SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+
+        // Decide whether or not to end the loop
+        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
+        generator->AddReserved("OpLabel", bodyLabel, "while body");
+        GenerateStatementSPIRV(compiler, generator, stat->statement);
+        generator->AddOp(Format("OpBranch %%%d", startLabel));
+
+        // This is the repeat condition
+        generator->AddReserved("OpLabel", endLabel, "end of while");
+    }
+
+    generator->continueLabel = 0xFFFFFFFF;
+    generator->breakLabel = 0xFFFFFFFF;
 }
 
 //------------------------------------------------------------------------------
@@ -2607,6 +2903,34 @@ SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
 /**
 */
 uint32_t 
+SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global)
+{
+    auto scope = this->scopeStack.rbegin();
+    while (scope != this->scopeStack.rend())
+    {
+        auto it = scope->symbols.find(name);
+        if (it != scope->symbols.end())
+        {
+            return it->second;
+        }
+        scope++;
+    }
+
+    // If symbol isn't found in scope, create it
+    this->scopeStack.back().symbols[name] = ret;
+
+    std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", object, declare.c_str(), name.c_str());
+    if (global)
+        this->declarations.append(decl);
+    else
+        this->functional.append(decl);
+    return ret;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
 SPIRVGenerator::GetSymbol(std::string name)
 {
     uint32_t ret = 0xFFFFFFFF;
@@ -2716,6 +3040,33 @@ SPIRVGenerator::AddDecoration(std::string name, uint32_t object, std::string dec
         this->decorationMap[name].insert(decorate);
         this->decorations.append(Format("OpDecorate %%%d %s", object, decorate.c_str()));
     }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+SPIRVGenerator::AddMemberDecoration(uint32_t struc, uint32_t index, std::string decorate)
+{
+    this->decorations.append(Format("OpMemberDecorate %%%d %d %s", struc, index, decorate.c_str()));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+SPIRVGenerator::ReserveName()
+{
+    return this->symbolCounter++;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
+{
+    this->functional.append(Format("%%%d = \t\t%s\t\t\t; %s\n", name, op.c_str(), comment.c_str()));
 }
 
 //------------------------------------------------------------------------------

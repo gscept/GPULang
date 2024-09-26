@@ -184,7 +184,6 @@ Function::SetupIntrinsics()
 {
     __BEGIN_INTRINSICS__;
 
-
     std::string scalarArgs[] =
     {
         "i32"
@@ -320,6 +319,27 @@ Function::SetupIntrinsics()
     FLOAT_VEC_LIST
 #undef X
 
+__MAKE_INTRINSIC(cross, Cross, f32x3)
+__ADD_ARG_LIT(v0, "f32x3");
+__ADD_ARG_LIT(v1, "f32x3");
+__SET_RET_LIT("f32x3");
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(normalize, Normalize, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(length, Length, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET_LIT("f32");
+
+    FLOAT_VEC_LIST
+#undef X
+
 #define X(ty, index)\
     __MAKE_INTRINSIC(min, Min, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
@@ -422,21 +442,43 @@ FLOAT_LIST
     //------------------------------------------------------------------------------
     __MAKE_BUILTIN(gplSetOutputLayer, SetOutputLayer);
     __ADD_ARG_LIT(layer, u32);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(gplGetOutputLayer, GetOutputLayer);
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(gplSetOutputViewport, SetOutputViewport);
     __ADD_ARG_LIT(layer, u32);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(gplGetOutputViewport, GetOutputViewport);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplExportVertexCoordinates, ExportVertexCoordinates);
+    __ADD_ARG_LIT(layer, f32x4);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(gplGetVertexIndex, GetVertexIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetInstanceIndex, GetInstanceIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetBaseVertexIndex, GetBaseVertexIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetBaseInstanceIndex, GetBaseInstanceIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetDrawIndex, GetDrawIndex);
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(gplGetPixelCoordinates, GetPixelCoordinates);
     __SET_RET_LIT(f32x4);
 
-    __MAKE_BUILTIN(gplExportVertexCoordinates, ExportVertexCoordinates);
-    __ADD_ARG_LIT(layer, f32x4);
+    __MAKE_BUILTIN(gplSetPixelDepth, SetPixelDepth);
+    __ADD_ARG_LIT(depth, f32);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(gplGetLocalInvocationIndices, GetLocalInvocationIndices);
     __SET_RET_LIT(u32x3);
@@ -464,6 +506,21 @@ FLOAT_LIST
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(gplGetNumSubgroups, GetNumSubgroups);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetSubgroupLowerMask, GetSubgroupLowerMask);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);                       // The size of the subgroup
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(gplGetSubgroupGreaterMask, GetSubgroupGreaterMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(subgroupFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
@@ -553,10 +610,12 @@ FLOAT_LIST
     __ADD_ARG_LIT(executionScope, ExecutionScope);
     __ADD_ARG_LIT(memoryScope, ExecutionScope);
     __ADD_ARG_LIT(semantics, MemorySemantics);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(memoryBarrier, MemoryBarrier);
     __ADD_ARG_LIT(memoryScope, ExecutionScope);
     __ADD_ARG_LIT(semantics, MemorySemantics);
+    __SET_RET_LIT(void);
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(subgroupSwapDiagonal, SubgroupSwapDiagonal, ty)\
@@ -605,17 +664,34 @@ FLOAT_LIST
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = STRINGIFY(texture##ty##variant); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 intrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 
-#define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
+#define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
 newIntrinsic->returnType = { #ret }; \
+Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
+intrinsics.push_back(newIntrinsic);\
+__ADD_HANDLE_ARG_LIT(texture, overload);\
+
+#define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
+newIntrinsic = new Function(); \
+newIntrinsic->name = STRINGIFY(texture##ty##variant); \
+newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
+intrinsics.push_back(newIntrinsic);\
+__ADD_HANDLE_ARG_LIT(texture, overload);\
+__ADD_HANDLE_ARG_LIT(sampler, sampler);
+
+#define __MAKE_TEXTURE_INTRINSIC_BASE(ty, overload, ret)\
+newIntrinsic = new Function(); \
+newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->returnType = { #ret }; \
+Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 intrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 __ADD_HANDLE_ARG_LIT(sampler, sampler);
@@ -654,7 +730,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(Fetch, Base, type, f32x4)\
+    __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(Fetch, type, f32x4)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);
 
@@ -671,7 +747,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(Gather, Base, type, f32x4)\
+    __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(Gather, type, f32x4)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);
 
@@ -749,7 +825,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
     };
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, Base, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC_BASE(Sample, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
 
     TEXTURE_INTRINSIC_ALL_LIST

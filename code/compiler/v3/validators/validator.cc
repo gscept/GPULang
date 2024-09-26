@@ -61,7 +61,7 @@ std::set<std::string> textureQualifiers =
 
 std::set<std::string> scalarQualifiers =
 {
-    "const", "group_shared",
+    "const", "workgroup",
 };
 
 std::set<std::string> samplerQualifiers =
@@ -131,7 +131,7 @@ std::set<std::string> attributesRequiringEvaluation =
 
 std::set<std::string> pointerQualifiers =
 {
-    "uniform", "mutable", "read", "write", "read_write", "atomic", "volatile"
+    "uniform", "mutable", "read", "write", "inline", "read_write", "atomic", "volatile"
 };
 
 //------------------------------------------------------------------------------
@@ -465,87 +465,12 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
-    if (fun->name.substr(0, 3) == "gpl")
+    if (fun->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
     {
-        compiler->ReservedWordError(fun->name, symbol);
+        compiler->ReservedPrefixError(fun->name, "gpl", symbol);
     }
 
-    // Push temporary scope to evaluate variables
-    compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
-
-    // run validation on parameters
-    for (Variable* var : fun->parameters)
-    {
-        Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        varResolved->usageBits.flags.isParameter = true;
-        this->ResolveVariable(compiler, var);
-    }
-
-    compiler->PopScope();
-
-    // setup our variables and attributes as sets
-    std::string paramList;
-    for (Variable* var : fun->parameters)
-    {
-        // add comma if not first argument
-        Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        if (var != fun->parameters.front())
-            paramList.append(",");
-
-        // finally add type
-        paramList.append(varResolved->type.ToString());
-    }
-
-    std::string attributeList;
-
-    // make a set of all attributes
-    for (const Attribute& attr : fun->attributes)
-    {
-        std::string attrAsString;
-        if (!attr.ToString(attrAsString))
-        {
-            compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr.name.c_str()), symbol);
-            return false;
-        }
-        attributeList.append(Format("%s ", attrAsString.c_str()));
-        if (attr.name == "prototype")
-            funResolved->isPrototype = true;
-    }
-
-    // format function with all attributes and parameters
-    std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
-    std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
-    funResolved->name = resolvedName;
-    funResolved->signature = functionFormatted;
-
-    // if prototype, add as an ordinary symbol
-    if (funResolved->isPrototype)
-    {
-        if (!compiler->AddSymbol(fun->name, fun, false))
-            return false;
-    }
-    else
-    {
-        // find functions with similar name
-        std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
-        for (Symbol* matchingFunction : matchingFunctions)
-        {
-            Function* otherFunction = static_cast<Function*>(matchingFunction);
-
-            if (!fun->IsCompatible(otherFunction, false))
-                continue;
-
-            // if all checks prove these functions are identical, throw error
-            if (fun->returnType != otherFunction->returnType)
-                compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
-            else
-                compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
-
-            return false;
-        }
-    }
-
-    // run attribute validation
+     // run attribute validation
     for (const Attribute& attr : fun->attributes)
     {
         if (attr.expression != nullptr)
@@ -697,6 +622,82 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             )
         {
             compiler->Error("'local_size_(x/y/z)' is only allowed on functions with the 'shader' qualifier", symbol);
+            return false;
+        }
+    }
+
+    // Push temporary scope to evaluate variables
+    compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
+
+    // run validation on parameters
+    for (Variable* var : fun->parameters)
+    {
+        Variable::__Resolved* varResolved = Symbol::Resolved(var);
+        varResolved->usageBits.flags.isParameter = !funResolved->isShader;
+        varResolved->usageBits.flags.isShaderParameter = funResolved->isShader;
+        this->ResolveVariable(compiler, var);
+    }
+
+    compiler->PopScope();
+
+    // setup our variables and attributes as sets
+    std::string paramList;
+    for (Variable* var : fun->parameters)
+    {
+        // add comma if not first argument
+        Variable::__Resolved* varResolved = Symbol::Resolved(var);
+        if (var != fun->parameters.front())
+            paramList.append(",");
+
+        // finally add type
+        paramList.append(varResolved->type.ToString());
+    }
+
+    std::string attributeList;
+
+    // make a set of all attributes
+    for (const Attribute& attr : fun->attributes)
+    {
+        std::string attrAsString;
+        if (!attr.ToString(attrAsString))
+        {
+            compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr.name.c_str()), symbol);
+            return false;
+        }
+        attributeList.append(Format("%s ", attrAsString.c_str()));
+        if (attr.name == "prototype")
+            funResolved->isPrototype = true;
+    }
+
+    // format function with all attributes and parameters
+    std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
+    std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
+    funResolved->name = resolvedName;
+    funResolved->signature = functionFormatted;
+
+    // if prototype, add as an ordinary symbol
+    if (funResolved->isPrototype)
+    {
+        if (!compiler->AddSymbol(fun->name, fun, false))
+            return false;
+    }
+    else
+    {
+        // find functions with similar name
+        std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
+        for (Symbol* matchingFunction : matchingFunctions)
+        {
+            Function* otherFunction = static_cast<Function*>(matchingFunction);
+
+            if (!fun->IsCompatible(otherFunction, false))
+                continue;
+
+            // if all checks prove these functions are identical, throw error
+            if (fun->returnType != otherFunction->returnType)
+                compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+            else
+                compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+
             return false;
         }
     }
@@ -1370,9 +1371,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 {
     Variable* var = static_cast<Variable*>(symbol);
     auto varResolved = Symbol::Resolved(var);
-    if (var->name.substr(0, 3) == "gpl")
+    if (var->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
     {
-        compiler->ReservedWordError(var->name, symbol);
+        compiler->ReservedPrefixError(var->name, "gpl", symbol);
     }
 
     Type* type = (Type*)compiler->GetSymbol(var->type.name);
@@ -1484,7 +1485,36 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->usageBits.flags.isUniform = true;
             if (varResolved->usageBits.flags.isMutable)
             {
-                compiler->Error(Format("Variable declared as 'mutable' can't also be 'uniform'"), symbol);
+                compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isInline)
+            {
+                compiler->Error(Format("Variable declared as 'uniform' can't also be 'inline'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isGroupShared)
+            {
+                compiler->Error(Format("Variable declared as 'uniform' can't also be 'workgroup'"), symbol);
+                return false;
+            }
+        }
+        else if (attr.name == "inline")
+        {
+            varResolved->usageBits.flags.isInline = true;
+            if (varResolved->usageBits.flags.isMutable)
+            {
+                compiler->Error(Format("Variable declared as 'inline' can't also be 'mutable'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isUniform)
+            {
+                compiler->Error(Format("Variable declared as 'inline' can't also be 'uniform'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isGroupShared)
+            {
+                compiler->Error(Format("Variable declared as 'inline' can't also be 'workgroup'"), symbol);
                 return false;
             }
         }
@@ -1494,12 +1524,40 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->accessBits.flags.writeAccess = true;
             if (varResolved->usageBits.flags.isUniform)
             {
-                compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
+                compiler->Error(Format("Variable declared as 'mutable' can't also be 'uniform'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isInline)
+            {
+                compiler->Error(Format("Variable declared as 'mutable' can't also be 'inline'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isGroupShared)
+            {
+                compiler->Error(Format("Variable declared as 'mutable' can't also be 'workgroup'"), symbol);
+                return false;
+            }
+
+        }
+        else if (attr.name == "workgroup")
+        {
+            varResolved->usageBits.flags.isGroupShared = true;
+            if (varResolved->usageBits.flags.isMutable)
+            {
+                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'mutable'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isInline)
+            {
+                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'inline'"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isUniform)
+            {
+                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'uniform'"), symbol);
                 return false;
             }
         }
-        else if (attr.name == "group_shared")
-            varResolved->usageBits.flags.isGroupShared = true;
         else
         {
             // more complicated lookups
@@ -1521,7 +1579,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             else if (attr.name == "out")
                 varResolved->parameterBits.flags.isOut = true;
             else if (attr.name == "in_out")
+            {
+                if (varResolved->usageBits.flags.isShaderParameter)
+                {
+                    compiler->Error(Format("in_out is not supported on shader arguments"), symbol);
+                    return false;
+                }
                 varResolved->parameterBits.flags.isIn = varResolved->parameterBits.flags.isOut = true;
+            }
         }
         else if (set_contains(parameterQualifiers, attr.name))
         {
@@ -1531,18 +1596,23 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->parameterBits.flags.isNoPerspective = true;
             else if (attr.name == "no_interpolate")
                 varResolved->parameterBits.flags.isNoInterpolate = true;
-            else if (attr.name == "binding")
-                if (!attr.expression->EvalUInt(varResolved->binding))
-                {
-                    compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
-                    return false;
-                }
+            else if (attr.name == "centroid")
+                varResolved->parameterBits.flags.isCentroid = true;
         }
 
         // check image formats
         if (map_contains(Variable::stringToFormats, attr.name))
         {
             varResolved->imageFormat = Variable::stringToFormats[attr.name];
+        }
+    }
+
+    if (varResolved->usageBits.flags.isMutable)
+    {
+        if (varResolved->usageBits.flags.isUniform)
+        {
+            compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
+            return false;
         }
     }
 
@@ -1665,10 +1735,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else
         {
+            varResolved->inBinding = varResolved->binding;
+            varResolved->outBinding = varResolved->binding;
             if (varResolved->parameterBits.flags.isIn)
-                this->inParameterIndexCounter = varResolved->inBinding + 1;
+                this->inParameterIndexCounter = varResolved->binding + 1;
             if (varResolved->parameterBits.flags.isOut)
-                this->outParameterIndexCounter = varResolved->outBinding + 1;
+                this->outParameterIndexCounter = varResolved->binding + 1;
         }
     }
     else if (!compiler->IsScopeType())
@@ -1859,7 +1931,22 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 if (!this->ResolveVariable(compiler, var))
                     return false;
             }
-            return statement->condition->Resolve(compiler) && statement->loop->Resolve(compiler) && this->ResolveStatement(compiler, statement->contents);
+            Type::FullType type;
+            if (statement->condition->Resolve(compiler))
+            {
+                statement->condition->EvalType(type);
+                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                if (typeSymbol->baseType != TypeCode::Bool)
+                {
+                    compiler->Error(Format("For condition must evaluate to a boolean value"), statement);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return statement->loop->Resolve(compiler) && this->ResolveStatement(compiler, statement->contents);
         }
         case Symbol::IfStatementType:
         {
@@ -1916,13 +2003,44 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
             }
-            return statement->switchExpression->Resolve(compiler) && this->ResolveStatement(compiler, statement->defaultStatement);
+            if (statement->switchExpression->Resolve(compiler))
+            {
+                Type::FullType type;
+                statement->switchExpression->EvalType(type);
+                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                if (typeSymbol->baseType != TypeCode::Int && typeSymbol->baseType != TypeCode::UInt)
+                {
+                    compiler->Error(Format("Switch condition must evaluate to an integer value"), statement);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return this->ResolveStatement(compiler, statement->defaultStatement);
         }
         case Symbol::WhileStatementType:
         {
             auto statement = reinterpret_cast<WhileStatement*>(symbol);
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
-            return statement->condition->Resolve(compiler) && this->ResolveStatement(compiler, statement->statement);
+            Type::FullType type;
+            if (statement->condition->Resolve(compiler))
+            {
+                statement->condition->EvalType(type);
+                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                if (typeSymbol->baseType != TypeCode::Bool)
+                {
+                    compiler->Error(Format("While condition has to evaluate to a boolean value"), statement);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            return this->ResolveStatement(compiler, statement->statement);
         }
     }
     return true;

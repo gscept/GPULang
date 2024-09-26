@@ -192,6 +192,8 @@ struct Type : public Symbol
     const bool IsVector() const;
     /// returns true if type is matrix
     const bool IsMatrix() const;
+    /// Calculate byte size
+    uint32_t CalculateSize() const;
 
     TypeCode baseType;
     uint32_t rowSize;

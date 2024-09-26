@@ -72,6 +72,16 @@ namespace Intrinsics {
     FLOAT_VEC_LIST
 #undef X
 
+Function* Cross_f32x3;
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Normalize, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Length, ty)
+    FLOAT_VEC_LIST
+#undef X
+
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(Min, ty)
     SCALAR_LIST
 #undef X
@@ -133,6 +143,10 @@ Function* ExportVertexCoordinates;
 Function* GetVertexIndex;
 Function* GetInstanceIndex;
 
+Function* GetBaseVertexIndex;
+Function* GetBaseInstanceIndex;
+Function* GetDrawIndex;
+
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
 
@@ -144,6 +158,12 @@ Function* GetWorkGroupDimensions;
 Function* GetSubgroupId;
 Function* GetSubgroupSize;
 Function* GetNumSubgroups;
+Function* GetSubgroupLocalInvocationMask;
+Function* GetSubgroupLocalInvocationAndLowerMask;
+Function* GetSubgroupLowerMask;
+Function* GetSubgroupLocalInvocationAndGreaterMask;
+Function* GetSubgroupGreaterMask;
+
 Function* SubgroupFirstInvocation;
 Function* SubgroupRead;
 Function* SubgroupBallot;
