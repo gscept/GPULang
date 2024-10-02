@@ -13,7 +13,7 @@ void
 CompleteShaderTest()
 {
     GPULangErrorBlob* errors;
-    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.gpul", GPULang::Compiler::Language::SPIRV, std::string(TEST_OUTPUT_FOLDER) + "/completeshader.gplb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", "khronos", {}, {}, errors);
+    GPULangCompile(std::string(TEST_FOLDER) + "/completeshader.gpul", GPULang::Compiler::Language::SPIRV, std::string(TEST_OUTPUT_FOLDER) + "/completeshader.gplb", std::string(TEST_OUTPUT_FOLDER) + "/completeshader.h", {}, {}, errors);
 
     if (errors != nullptr)
     {

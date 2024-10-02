@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "spirvgenerator.h"
 #include "compiler.h"
-#include "ast/symbol.h"
+
 #include "ast/function.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
@@ -37,6 +37,7 @@
 #include "ast/intrinsics.h"
 
 #include "spirv-tools/libspirv.h"
+#include "spirv-tools/optimizer.hpp"
 
 #include <array>
 
@@ -46,9 +47,9 @@ namespace GPULang
 
 SPIRVResult GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
 SPIRVResult GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
-void GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
+bool GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
 
-std::map<std::string, std::string> typeToSpirvType =
+std::unordered_map<std::string, std::string> typeToSpirvType =
 {
     { "void", "OpTypeVoid" }
     , { "f32", "OpTypeFloat 32" }
@@ -93,60 +94,60 @@ std::map<std::string, std::string> typeToSpirvType =
     , { "sampler", "OpTypeSampler" }
 };
 
-std::map<Variable::ImageFormat, std::string> imageFormatToSpirvType =
+std::unordered_map<ImageFormat, std::string> imageFormatToSpirvType =
 {
-    { Variable::ImageFormat::RGBA16, "Rgba16" }
-    , { Variable::ImageFormat::RGB10_A2, "Rgb10A2" }
-    , { Variable::ImageFormat::RGBA8, "Rgba8" }
-    , { Variable::ImageFormat::RG16, "Rg16" }
-    , { Variable::ImageFormat::RG8, "Rg8" }
-    , { Variable::ImageFormat::R16, "R16" }
-    , { Variable::ImageFormat::R8, "R8" }
-    , { Variable::ImageFormat::RGBA16_SNORM, "Rgba16Snorm" }
-    , { Variable::ImageFormat::RGBA8_SNORM, "Rgba8Snorm" }
-    , { Variable::ImageFormat::RG16_SNORM, "Rg16Snorm" }
-    , { Variable::ImageFormat::RG8_SNORM, "Rg8Snorm" }
-    , { Variable::ImageFormat::R16_SNORM, "R16Snorm" }
-    , { Variable::ImageFormat::R8_SNORM, "R8Snorm" }
+    { ImageFormat::RGBA16, "Rgba16" }
+    , { ImageFormat::RGB10_A2, "Rgb10A2" }
+    , { ImageFormat::RGBA8, "Rgba8" }
+    , { ImageFormat::RG16, "Rg16" }
+    , { ImageFormat::RG8, "Rg8" }
+    , { ImageFormat::R16, "R16" }
+    , { ImageFormat::R8, "R8" }
+    , { ImageFormat::RGBA16_SNORM, "Rgba16Snorm" }
+    , { ImageFormat::RGBA8_SNORM, "Rgba8Snorm" }
+    , { ImageFormat::RG16_SNORM, "Rg16Snorm" }
+    , { ImageFormat::RG8_SNORM, "Rg8Snorm" }
+    , { ImageFormat::R16_SNORM, "R16Snorm" }
+    , { ImageFormat::R8_SNORM, "R8Snorm" }
 
     // float
-    , { Variable::ImageFormat::RGBA32F, "Rgba32f" }
-    , { Variable::ImageFormat::RGBA16F, "Rgba16f" }
-    , { Variable::ImageFormat::RG32F, "Rg32f" }
-    , { Variable::ImageFormat::RG16F, "Rg16f" }
-    , { Variable::ImageFormat::R11G11B10F, "R11fG11fB10f" }
-    , { Variable::ImageFormat::R32F, "R32f" }
-    , { Variable::ImageFormat::R16F, "R16f" }
+    , { ImageFormat::RGBA32F, "Rgba32f" }
+    , { ImageFormat::RGBA16F, "Rgba16f" }
+    , { ImageFormat::RG32F, "Rg32f" }
+    , { ImageFormat::RG16F, "Rg16f" }
+    , { ImageFormat::R11G11B10F, "R11fG11fB10f" }
+    , { ImageFormat::R32F, "R32f" }
+    , { ImageFormat::R16F, "R16f" }
 
     // integer
-    , { Variable::ImageFormat::RGBA32I, "Rgba32i" }
-    , { Variable::ImageFormat::RGBA16I, "Rgba16i" }
-    , { Variable::ImageFormat::RGBA8I, "Rgba8i" }
-    , { Variable::ImageFormat::RG32I, "Rg32i" }
-    , { Variable::ImageFormat::RG16I, "Rg16i" }
-    , { Variable::ImageFormat::RG8I, "Rg8i" }
-    , { Variable::ImageFormat::R32I, "R32i" }
-    , { Variable::ImageFormat::R16I, "R16i" }
-    , { Variable::ImageFormat::R8I, "R8i" }
+    , { ImageFormat::RGBA32I, "Rgba32i" }
+    , { ImageFormat::RGBA16I, "Rgba16i" }
+    , { ImageFormat::RGBA8I, "Rgba8i" }
+    , { ImageFormat::RG32I, "Rg32i" }
+    , { ImageFormat::RG16I, "Rg16i" }
+    , { ImageFormat::RG8I, "Rg8i" }
+    , { ImageFormat::R32I, "R32i" }
+    , { ImageFormat::R16I, "R16i" }
+    , { ImageFormat::R8I, "R8i" }
 
     // unsigned integer
-    , { Variable::ImageFormat::RGBA32U, "Rgba32ui" }
-    , { Variable::ImageFormat::RGBA16U, "Rgba16ui" }
-    , { Variable::ImageFormat::RGB10_A2U, "Rga10a2ui" }
-    , { Variable::ImageFormat::RGBA8U, "Rgba8ui" }
-    , { Variable::ImageFormat::RG32U, "Rg32ui" }
-    , { Variable::ImageFormat::RG16U, "Rg16ui" }
-    , { Variable::ImageFormat::RG8U, "Rg8ui" }
-    , { Variable::ImageFormat::R32U, "R32ui" }
-    , { Variable::ImageFormat::R16U, "R16ui" }
-    , { Variable::ImageFormat::R8U, "R8ui" }
+    , { ImageFormat::RGBA32U, "Rgba32ui" }
+    , { ImageFormat::RGBA16U, "Rgba16ui" }
+    , { ImageFormat::RGB10_A2U, "Rga10a2ui" }
+    , { ImageFormat::RGBA8U, "Rgba8ui" }
+    , { ImageFormat::RG32U, "Rg32ui" }
+    , { ImageFormat::RG16U, "Rg16ui" }
+    , { ImageFormat::RG8U, "Rg8ui" }
+    , { ImageFormat::R32U, "R32ui" }
+    , { ImageFormat::R16U, "R16ui" }
+    , { ImageFormat::R8U, "R8ui" }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 uint32_t
-GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType type, Type* typeSymbol, Variable::ImageFormat imageFormat = Variable::ImageFormat::InvalidImageFormat, Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0))
+GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType type, Type* typeSymbol, ImageFormat imageFormat = ImageFormat::InvalidImageFormat, Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0))
 {
     std::string baseType = Type::CodeToString(typeSymbol->baseType);
     std::string spirvType = typeToSpirvType[baseType];
@@ -162,10 +163,9 @@ GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType 
         else if (typeSymbol->IsMatrix())
         {
             generator->AddCapability("OpCapability Matrix");
-            baseType = Format("%s%d", baseType.c_str(), typeSymbol->columnSize);
+            baseType = Format("%s(%d", baseType.c_str(), typeSymbol->columnSize);
             name = generator->AddSymbol(baseType, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
-            baseType = Format("%s%dx%d", baseType.c_str(), typeSymbol->columnSize, typeSymbol->rowSize);
-            name = generator->AddSymbol(baseType, Format("OpTypeMatrix %%%d %d", name, typeSymbol->rowSize), true);
+            name = generator->AddSymbol(type.name, Format("OpTypeMatrix %%%d %d", name, typeSymbol->rowSize), true);
         }
     }
     else if (typeSymbol->category == Type::ReadWriteTextureCategory || typeSymbol->category == Type::TextureCategory || typeSymbol->category == Type::SampledTextureCategory)
@@ -213,7 +213,6 @@ GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType 
         }
         else if (mod == Type::FullType::Modifier::ArrayLevel)
         {
-
             if (type.modifierValues[i] == 0x0)
             {
                 std::string newBase = Format("arr[](%s)", baseType.c_str());
@@ -227,6 +226,7 @@ GenerateTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, Type::FullType 
                 uint32_t intType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "i32" }, i32);
                 uint32_t arraySizeConstant = generator->AddSymbol(Format("%ds", type.modifierValues[i]), Format("OpConstant %%%d %d", intType, type.modifierValues[i]), true);
                 name = generator->AddSymbol(newBase, Format("OpTypeArray %%%d %%%d", name, arraySizeConstant), true);
+                generator->AddDecoration(newBase, name, Format("ArrayStride %d", typeSymbol->CalculateAlignment()));
                 baseType = newBase;
             }
         }
@@ -245,30 +245,30 @@ enum class ConversionTable
     FloatToInt,
 };
 
-std::map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, SPIRVResult)>> converters =
+std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, SPIRVResult)>> converters =
 {
     { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("float", "OpTypeFloat 32", true);        
+        uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);        
         return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
+        uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertSToU %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
+        uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertUToS %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("float", "OpTypeFloat 32", true);
+        uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("uint", "OpTypeInt 32 0", true);
+        uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
     , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
-        uint32_t type = g->AddSymbol("int", "OpTypeInt 32 1", true);
+        uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true, value.isLiteral);
     } }
 };
@@ -312,6 +312,81 @@ GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t r
         return SPIRVResult(generator->AddMappedOp(Format("OpConstantConstruct %%%d %s", returnType, argList.c_str())), returnType, true, true);
     else
         return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
+}
+
+
+struct ConstantCreationInfo
+{
+    enum class Type 
+    {
+        Float32,
+        Int32,
+        UInt32
+    } type;
+    union
+    {
+        float f;
+        int32_t i;
+        uint32_t ui;
+    } data;
+
+    static ConstantCreationInfo Float32(float val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float32;
+        ret.data.f = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt32(uint32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt32;
+        ret.data.ui = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int32(int32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int32;
+        ret.data.i = val;
+        return ret;
+    }
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
+GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info)
+{
+    SPIRVResult res = SPIRVResult::Invalid();
+    switch (info.type)
+    {
+        case ConstantCreationInfo::Type::UInt32:
+        {
+            uint32_t baseType = generator->AddSymbol("u32", "OpTypeInt 32 0", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Int32:
+        {
+            uint32_t baseType = generator->AddSymbol("i32", "OpTypeInt 32 1", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Float32:
+        {
+            uint32_t baseType = generator->AddSymbol("f32", "OpTypeFloat 32", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %d", baseType, info.data.f), true);
+            break;
+        }
+    }
+    return res;
 }
 
 //------------------------------------------------------------------------------
@@ -369,12 +444,9 @@ GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, 
 */
 SPIRVGenerator::SPIRVGenerator()
     : symbolCounter(0)
-    , returnLabel(0xFFFFFFFF)
-    , continueLabel(0xFFFFFFFF)
-    , breakLabel(0xFFFFFFFF)
 {
     // Setup intrinsics
-
+    this->mergeBlockCounter = 0;
     intrinsicMap.clear();
     SetupIntrinsics();
 }
@@ -683,18 +755,18 @@ SPIRVGenerator::SetupIntrinsics()
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, mod, F, Mod)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, mod, F, Mod)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float, mod, F, Mod)
-        , OPERATOR_INTRINSIC(Int4, addition, S, Add)
-        , OPERATOR_INTRINSIC(Int3, addition, S, Add)
-        , OPERATOR_INTRINSIC(Int2, addition, S, Add)
-        , OPERATOR_INTRINSIC(Int, addition, S, Add)
-        , OPERATOR_INTRINSIC(Int4, subtraction, S, Sub)
-        , OPERATOR_INTRINSIC(Int3, subtraction, S, Sub)
-        , OPERATOR_INTRINSIC(Int2, subtraction, S, Sub)
-        , OPERATOR_INTRINSIC(Int, subtraction, S, Sub)
-        , OPERATOR_INTRINSIC(Int4, multiplication, S, Mul)
-        , OPERATOR_INTRINSIC(Int3, multiplication, S, Mul)
-        , OPERATOR_INTRINSIC(Int2, multiplication, S, Mul)
-        , OPERATOR_INTRINSIC(Int, multiplication, S, Mul)
+        , OPERATOR_INTRINSIC(Int4, addition, I, Add)
+        , OPERATOR_INTRINSIC(Int3, addition, I, Add)
+        , OPERATOR_INTRINSIC(Int2, addition, I, Add)
+        , OPERATOR_INTRINSIC(Int, addition, I, Add)
+        , OPERATOR_INTRINSIC(Int4, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(Int3, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(Int2, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(Int, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(Int4, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(Int3, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(Int2, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(Int, multiplication, I, Mul)
         , OPERATOR_INTRINSIC(Int4, division, S, Div)
         , OPERATOR_INTRINSIC(Int3, division, S, Div)
         , OPERATOR_INTRINSIC(Int2, division, S, Div)
@@ -727,18 +799,18 @@ SPIRVGenerator::SetupIntrinsics()
         , OPERATOR_INTRINSIC_NO_ASSIGN(Int3, ne, I, Equal)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Int2, ne, I, Equal)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Int, ne, I, Equal)
-        , OPERATOR_INTRINSIC(UInt4, addition, U, Add)
-        , OPERATOR_INTRINSIC(UInt3, addition, U, Add)
-        , OPERATOR_INTRINSIC(UInt2, addition, U, Add)
-        , OPERATOR_INTRINSIC(UInt, addition, U, Add)
-        , OPERATOR_INTRINSIC(UInt4, subtraction, U, Sub)
-        , OPERATOR_INTRINSIC(UInt3, subtraction, U, Sub)
-        , OPERATOR_INTRINSIC(UInt2, subtraction, U, Sub)
-        , OPERATOR_INTRINSIC(UInt, subtraction, U, Sub)
-        , OPERATOR_INTRINSIC(UInt4, multiplication, U, Mul)
-        , OPERATOR_INTRINSIC(UInt3, multiplication, U, Mul)
-        , OPERATOR_INTRINSIC(UInt2, multiplication, U, Mul)
-        , OPERATOR_INTRINSIC(UInt, multiplication, U, Mul)
+        , OPERATOR_INTRINSIC(UInt4, addition, I, Add)
+        , OPERATOR_INTRINSIC(UInt3, addition, I, Add)
+        , OPERATOR_INTRINSIC(UInt2, addition, I, Add)
+        , OPERATOR_INTRINSIC(UInt, addition, I, Add)
+        , OPERATOR_INTRINSIC(UInt4, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(UInt3, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(UInt2, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(UInt, subtraction, I, Sub)
+        , OPERATOR_INTRINSIC(UInt4, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(UInt3, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(UInt2, multiplication, I, Mul)
+        , OPERATOR_INTRINSIC(UInt, multiplication, I, Mul)
         , OPERATOR_INTRINSIC(UInt4, division, U, Div)
         , OPERATOR_INTRINSIC(UInt3, division, U, Div)
         , OPERATOR_INTRINSIC(UInt2, division, U, Div)
@@ -864,7 +936,7 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
-    std::map<Function*, std::pair<char, uint32_t>> intVectorScaleFunctions =
+    std::unordered_map<Function*, std::pair<char, uint32_t>> intVectorScaleFunctions =
     {
         { &Int4::scaleOperator, { 'S', 4 } }
         , { &Int3::scaleOperator, { 'S', 3 } }
@@ -1971,7 +2043,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         uint32_t typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
         typeArgs.append(Format("%%%d", typeName));
 
-        if (funcResolved->isShader)
+        if (funcResolved->isEntryPoint)
         {
             GenerateVariableSPIRV(compiler, generator, param, true, false);
         }
@@ -1985,10 +2057,21 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
         generator->AddSymbol(param->name, Format("OpFunctionParameter %%%d", GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol)));
     }
+    uint32_t label = generator->AddMappedOp("OpLabel");
+    generator->functions.append(generator->functional);
 
+
+    generator->functional.clear();
     GenerateStatementSPIRV(compiler, generator, func->ast);
-
+    generator->functions.append(generator->variableDeclarations);
+    if (!funcResolved->hasExplicitReturn)
+        generator->AddOp("OpReturn");
+    else
+        generator->AddOp("OpUnreachable");
     generator->AddOp("OpFunctionEnd", false, Format("End of %s", func->name.c_str()));
+
+    generator->functions.append(generator->functional);
+    generator->functional.clear();
 }
 
 //------------------------------------------------------------------------------
@@ -2021,6 +2104,7 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
             uint32_t varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
             memberTypes.append(Format("%%%d ", varType));
+            offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
             generator->AddMemberDecoration(structName, i, Format("Offset %d", offset));
             offset += varResolved->typeSymbol->CalculateSize();
         }
@@ -2245,8 +2329,7 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
             assert(intrin != generator->intrinsicMap.end());
 
             uint32_t returnPtrType = generator->AddSymbol(Format("ptr(%s)", arrayIndexExpressionResolved->returnFullType.ToString().c_str()), Format("OpTypePointer Function %%%d", returnType), true);
-            uint32_t indexType = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
-            SPIRVResult indexConstant = SPIRVResult(generator->AddSymbol(Format("%du", index), Format("OpConstant %%%d %d", indexType, index), true), indexType);
+            SPIRVResult indexConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(index));
 
             /// Generate array access
             return intrin->second(compiler, generator, returnPtrType, { leftSymbol, indexConstant });
@@ -2278,9 +2361,8 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     initExpression->values[0]->EvalType(type);
     Symbol* typeSymbol = compiler->GetSymbol(type.name);
     uint32_t typeName = GenerateTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
-    uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
-    uint32_t sizeName = generator->AddSymbol(Format("%du", initExpression->values.size()), Format("OpConstant %%%d %d", uintName, initExpression->values.size()), true);
-    typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName), true);
+    SPIRVResult sizeName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(initExpression->values.size()));
+    typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName, sizeName.name), true);
     std::string initializer = "";
     bool isLiteral = true;
     for (SPIRVResult component : composites)
@@ -2333,23 +2415,30 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         rightValue = it->second(compiler, generator, leftValue.typeName, { leftValue, right });
     }
 
-    std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), leftType.name.c_str());
-    Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
-    assert(fun != nullptr);
-
-    // Get operator 
-    auto op = generator->intrinsicMap.find(fun);
-    assert(op != generator->intrinsicMap.end());
-    rightValue = op->second(compiler, generator, leftValue.typeName, { left, right, leftValue });
-
-    // Assignment is a store operation
-    if (binaryExpression->op == '=')
+    SPIRVResult opResult = SPIRVResult::Invalid();
+    if (leftType == rightType && binaryExpression->op == '=')
     {
         assert(!leftValue.isValue);
-        generator->AddOp(Format("OpStore %%%d %%%d", leftValue, right));
+        generator->AddOp(Format("OpStore %%%d %%%d", leftValue.name, right.name));
+        opResult = leftValue;
     }
-    
-    return rightValue;
+    else
+    {
+
+        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), leftType.name.c_str());
+        Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
+        Function::__Resolved* funResolved = Symbol::Resolved(fun);
+        assert(fun != nullptr);
+
+        uint32_t retType = GenerateTypeSPIRV(compiler, generator, fun->returnType, funResolved->returnTypeSymbol);
+
+        // Get operator 
+        auto op = generator->intrinsicMap.find(fun);
+        assert(op != generator->intrinsicMap.end());
+        opResult = op->second(compiler, generator, retType, { left, right, leftValue });
+    }
+
+    return opResult;
 }
 
 //------------------------------------------------------------------------------
@@ -2368,10 +2457,9 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // If single value, then use an access chain
         if (Type::SwizzleMaskComponents(swizzle) == 1)
         {
-            uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
-            uint32_t indexName = generator->AddSymbol(Format("%du", swizzle.bits.x), Format("OpConstant %%%d %d", uintName, swizzle.bits.x), true);
+            SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(swizzle.bits.x));
             uint32_t retName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", retName, lhs.name, indexName));
+            uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", retName, lhs.name, indexName.name), accessExpressionResolved->text);
             return SPIRVResult(ptr, retName);
         }
         else
@@ -2389,7 +2477,7 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
             if (swizzle.bits.w != Type::SwizzleMask::Invalid)
                 swizzleIndices.append(Format("%d ", swizzle.bits.w));
             uint32_t vec = generator->AddMappedOp(Format("OpLoad %%%d %%%d", origType, lhs.name), Format("Intermediate '%s'", accessExpressionResolved->leftType.name.c_str()));
-            uint32_t shuffledVec = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", retType, vec, vec, swizzleIndices.c_str()));
+            uint32_t shuffledVec = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", retType, vec, vec, swizzleIndices.c_str()), accessExpressionResolved->text);
             return SPIRVResult(shuffledVec, retType, true);
         }
         // Generate swizzle access
@@ -2408,11 +2496,10 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
                 Symbol* sym = rhsSymbol->symbols[i];
                 if (sym->name == accessExpressionResolved->rightSymbol)
                 {
-                    uint32_t uintName = generator->AddSymbol(Format("uint"), Format("OpTypeInt 32 0"), true);
-                    uint32_t indexName = generator->AddSymbol(Format("%du", swizzle.bits.x), Format("OpConstant %%%d %d", uintName, i), true);
+                    SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(swizzle.bits.x));
                     uint32_t typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
                     generator->GetSymbol(accessExpressionResolved->rightType.ToString());
-                    return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", typeName, lhs.name, indexName)), typeName);
+                    return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", typeName, lhs.name, indexName.name), accessExpressionResolved->text), typeName);
                 }
             }
         }
@@ -2439,12 +2526,13 @@ SPIRVResult
 GenerateTernaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     TernaryExpression* ternaryExpression = static_cast<TernaryExpression*>(expr);
+    TernaryExpression::__Resolved* ternaryExpressionResolved = Symbol::Resolved(ternaryExpression);
 
     SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->lhs);
 
     SPIRVResult ifResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
     SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
-    uint32_t ret = generator->AddMappedOp(Format("OpSelect %%%d %%%d %%%d %%%d", ifResult.typeName, lhsResult.name, ifResult.name, elseResult.name));
+    uint32_t ret = generator->AddMappedOp(Format("OpSelect %%%d %%%d %%%d %%%d", ifResult.typeName, lhsResult.name, ifResult.name, elseResult.name), ternaryExpressionResolved->text);
 
     return SPIRVResult(ret, ifResult.typeName, ifResult.isValue, ifResult.isLiteral);
 }
@@ -2456,18 +2544,121 @@ SPIRVResult
 GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
     UnaryExpression* unaryExpression = static_cast<UnaryExpression*>(expr);
+    UnaryExpression::__Resolved* unaryExpressionResolved = Symbol::Resolved(unaryExpression);
 
-    SPIRVResult rhs = GenerateExpressionSPIRV(unaryExpression->expr);
+    SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, unaryExpression->expr);
+
+    static std::unordered_map<std::string, std::tuple<const char, bool>> lookupTable =
+    {
+        { "f32", { 'F', true } }
+        , { "i32", { 'I', true } }
+        , { "u32", { 'I', false } }
+    };
+
+    auto value = lookupTable.find(unaryExpressionResolved->fullType.name);
+    assert(value != lookupTable.end());
+
+    const char op = std::get<0>(value->second);
+    bool isSigned = std::get<1>(value->second);
     switch (unaryExpression->op)
     {
         case '++':
-            break;
+        {
+            SPIRVResult constOne = SPIRVResult::Invalid();
+            if (isSigned)
+            {
+                if (op == 'I')
+                {
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int32(1));
+                }
+                else
+                {
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float32(1));
+                }
+            }
+            else
+            {
+                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(1));
+            }
+
+            uint32_t value = rhs.name;
+            if (!rhs.isValue)
+                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
+            uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, rhs.typeName, value, constOne.name), unaryExpressionResolved->text);
+            generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
+            if (unaryExpression->isPrefix)
+                return SPIRVResult(res, rhs.typeName, true);
+            else
+                return SPIRVResult(value, rhs.typeName, true);
+        }
         case '--':
+        {
+            SPIRVResult constOne = SPIRVResult::Invalid();
+            if (isSigned)
+            {
+                if (op == 'I')
+                {
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int32(1));
+                }
+                else
+                {
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float32(1));
+                }
+            }
+            else
+            {
+                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(1));
+            }
+
+            uint32_t value = rhs.name;
+            if (!rhs.isValue)
+                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
+            uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, rhs.typeName, value, constOne.name), unaryExpressionResolved->text);
+            generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
+            if (unaryExpression->isPrefix)
+                return SPIRVResult(res, rhs.typeName, true);
+            else
+                return SPIRVResult(value, rhs.typeName, true);
             break;
+        }
         case '*':
+        {
+            Type::FullType newType = unaryExpressionResolved->fullType;
+            assert(newType.modifiers.size() > 0);
+            assert(newType.modifiers.back() == Type::FullType::Modifier::PointerLevel);
+            newType.modifiers.pop_back();
+            Type* type = compiler->GetSymbol<Type>(newType.name);
+            uint32_t typeName = GenerateTypeSPIRV(compiler, generator, newType, type);
+            uint32_t deref = generator->AddMappedOp(Format("OpLoad %%%d %%%d", typeName, rhs.name), unaryExpressionResolved->text);
+            return SPIRVResult(deref, typeName, newType.modifiers.empty());
             break;
+        }
         case '-':
+        {
+            uint32_t value = rhs.name;
+            if (!rhs.isValue)
+                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
+            uint32_t res = generator->AddMappedOp(Format("Op%cNegate %%%d", op, value), unaryExpressionResolved->text);
+            generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
             break;
+        }
+        case '+':
+        {
+            uint32_t value = rhs.name;
+            if (!rhs.isValue)
+                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name), unaryExpressionResolved->text);
+            return SPIRVResult(value, rhs.typeName, true);
+        }
+        case '!':
+        case '~':
+        {
+            uint32_t value = rhs.name;
+            if (!rhs.isValue)
+                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name), unaryExpressionResolved->text);
+            uint32_t res = generator->AddMappedOp(Format("OpNot %%%d", value));
+            generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
+            break;
+        }
     }
     return SPIRVResult::Invalid();
 }
@@ -2513,7 +2704,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
             boolExpr->EvalBool(value);
             uint32_t typeName = generator->AddSymbol("b8", Format("OpTypeBool"), true);
-            uint32_t name = generator->AddSymbol(value ? "true" : "false", value ? "OpConstantTrue" : "OpConstantFalse", true);
+            uint32_t name = generator->AddSymbol(value ? "true" : "false", value ? Format("OpConstantTrue %%%d", typeName) : Format("OpConstantFalse %%%d", typeName), true);
             return SPIRVResult(name, typeName, true, true);
         }
         case Symbol::BinaryExpressionType:
@@ -2552,8 +2743,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
 void
 GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, BreakStatement* stat)
 {
-    assert(generator->breakLabel != 0xFFFFFFFF);
-    generator->AddOp(Format("OpBranch %%%d", generator->breakLabel));
+    assert(generator->mergeBlocks[generator->mergeBlockCounter-1].breakLabel != 0xFFFFFFFF);
+    generator->AddOp(Format("OpBranch %%%d", generator->mergeBlocks[generator->mergeBlockCounter - 1].breakLabel), false, "break");
 }
 
 //------------------------------------------------------------------------------
@@ -2562,8 +2753,8 @@ GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Break
 void
 GenerateContinueStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ContinueStatement* stat)
 {
-    assert(generator->continueLabel != 0xFFFFFFFF);
-    generator->AddOp(Format("OpBranch %%%d", generator->continueLabel));
+    assert(generator->mergeBlocks[generator->mergeBlockCounter - 1].continueLabel != 0xFFFFFFFF);
+    generator->AddOp(Format("OpBranch %%%d", generator->mergeBlocks[generator->mergeBlockCounter - 1].continueLabel), false, "continue");
 }
 
 //------------------------------------------------------------------------------
@@ -2581,8 +2772,11 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
     uint32_t bodyLabel = generator->ReserveName();
     uint32_t endLabel = generator->ReserveName();
 
-    generator->breakLabel = endLabel;
-    generator->continueLabel = startLabel;
+    generator->mergeBlocks[generator->mergeBlockCounter++] =
+    SPIRVGenerator::MergeBlock
+    {
+        startLabel, endLabel
+    };
 
     // Initial label to start the loop
     generator->AddOp(Format("OpBranch %%%d", startLabel));
@@ -2595,12 +2789,16 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
     // This block is for the condition testing
     generator->AddReserved("OpLabel", conditionLabel, "for condition");
     SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+    if (!cond.isValue)
+        cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
 
     // Decide whether or not to end the loop
     generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
     generator->AddReserved("OpLabel", bodyLabel, "for body");
-    GenerateStatementSPIRV(compiler, generator, stat->contents);
-    generator->AddOp(Format("OpBranch %%%d", repeatLabel));
+    if (!GenerateStatementSPIRV(compiler, generator, stat->contents))
+    {
+        generator->AddOp(Format("OpBranch %%%d", repeatLabel));
+    }
 
     // This is the repeat condition
     generator->AddReserved("OpLabel", repeatLabel, "for repeat");
@@ -2608,8 +2806,11 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
     generator->AddOp(Format("OpBranch %%%d", startLabel));
     generator->AddReserved("OpLabel", endLabel, "end of for");
 
-    generator->continueLabel = 0xFFFFFFFF;
-    generator->breakLabel = 0xFFFFFFFF;
+    generator->mergeBlocks[--generator->mergeBlockCounter] =
+    SPIRVGenerator::MergeBlock
+    {
+        0xFFFFFFFF, 0xFFFFFFFF
+    };
 }
 
 //------------------------------------------------------------------------------
@@ -2621,20 +2822,38 @@ GenerateIfStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, IfStatem
     SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
 
     uint32_t ifLabel = generator->ReserveName();
-    uint32_t elseLabel = generator->ReserveName();
     uint32_t endLabel = generator->ReserveName();
 
     generator->AddOp(Format("OpSelectionMerge %%%d None", endLabel));
-    generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", lhsResult.name, ifLabel, elseLabel));
+    if (stat->elseStatement)
+    {
+        uint32_t elseLabel = generator->ReserveName();
 
-    generator->AddReserved("OpLabel", ifLabel, "if");
-    GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
-    generator->AddOp(Format("OpBranch %%%d", endLabel));
+        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", lhsResult.name, ifLabel, elseLabel));
 
-    generator->AddReserved("OpLabel", elseLabel, "else");
-    GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
-    generator->AddOp(Format("OpBranch %%%d", endLabel));
+        generator->AddReserved("OpLabel", ifLabel, stat->condition->EvalString());
+        if (!GenerateStatementSPIRV(compiler, generator, stat->ifStatement))
+        {
+            generator->AddOp(Format("OpBranch %%%d", endLabel));
+        }
 
+        generator->AddReserved("OpLabel", elseLabel, "else");
+        if (!GenerateStatementSPIRV(compiler, generator, stat->elseStatement))
+        {
+            generator->AddOp(Format("OpBranch %%%d", endLabel));
+        }
+    }
+    else
+    {
+        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", lhsResult.name, ifLabel, endLabel));
+
+        generator->AddReserved("OpLabel", ifLabel, stat->condition->EvalString());
+        if (!GenerateStatementSPIRV(compiler, generator, stat->ifStatement))
+        {
+            generator->AddOp(Format("OpBranch %%%d", endLabel));
+        }
+        
+    }
     generator->AddReserved("OpLabel", endLabel, "end of condition");
 }
 
@@ -2647,6 +2866,8 @@ GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Retu
     if (stat->returnValue != nullptr)
     {
         SPIRVResult res = GenerateExpressionSPIRV(compiler, generator, stat->returnValue);
+        if (!res.isValue)
+            res.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", res.typeName, res.name));
         generator->AddOp(Format("OpReturnValue %%%d", res.name));
     }
     else
@@ -2662,26 +2883,74 @@ void
 GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
     SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
+    if (!switchRes.isValue)
+        switchRes.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", switchRes.typeName, switchRes.name));
+
+    uint32_t defaultCase = generator->ReserveName();
+    uint32_t mergeLabel = generator->ReserveName();
+
+    generator->mergeBlocks[generator->mergeBlockCounter++] =
+    SPIRVGenerator::MergeBlock
+    {
+        0xFFFFFFFF, mergeLabel
+    };
 
     // First forward declare our labels and setup the switch
     std::string caseList = "";
     std::vector<uint32_t> reservedCaseLabels;
-    for (Statement* caseStat : stat->caseStatements)
+    for (size_t i = 0; i < stat->caseExpressions.size(); i++)
     {
         uint32_t caseLabel = generator->ReserveName();
-        caseList += Format("%%%d ", caseLabel);
+        int lit;
+        bool res = stat->caseExpressions[i]->EvalInt(lit);
+        assert(res);
+        caseList += Format("%d %%%d ", lit, caseLabel);
         reservedCaseLabels.push_back(caseLabel);
     }
-    uint32_t defaultCase = generator->ReserveName();
+
+    generator->AddOp(Format("OpSelectionMerge %%%d None", mergeLabel));
     generator->AddOp(Format("OpSwitch %%%d %%%d %s", switchRes.name, defaultCase, caseList.c_str()));
 
     for (size_t i = 0; i < stat->caseStatements.size(); i++)
     {
-        generator->AddReserved("OpLabel", reservedCaseLabels[i], stat->caseValues[i]);
-        GenerateStatementSPIRV(compiler, generator, stat->caseStatements[i]);
+        generator->AddReserved("OpLabel", reservedCaseLabels[i], Format("case %s", stat->caseExpressions[i]->EvalString().c_str()));
+        if (stat->caseStatements[i] != nullptr)
+        {
+            if (!GenerateStatementSPIRV(compiler, generator, stat->caseStatements[i]))
+                if (i + 1 < stat->caseStatements.size())
+                    generator->AddOp(Format("OpBranch %%%d", reservedCaseLabels[i + 1]));
+                else
+                    generator->AddOp(Format("OpBranch %%%d", stat->defaultStatement == nullptr ? mergeLabel : defaultCase));
+        }
+        else
+        {
+            if (i + 1 < stat->caseStatements.size())
+                generator->AddOp(Format("OpBranch %%%d", reservedCaseLabels[i + 1]));
+            else
+                generator->AddOp(Format("OpBranch %%%d", stat->defaultStatement == nullptr ? mergeLabel : defaultCase));
+        }
     }
     generator->AddReserved("OpLabel", defaultCase, "case default");
-    GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
+    if (stat->defaultStatement)
+    {
+        if (!GenerateStatementSPIRV(compiler, generator, stat->defaultStatement))
+        {
+            generator->AddOp(Format("OpBranch %%%d", mergeLabel));
+        }
+    }
+    else
+    {
+
+        generator->AddOp(Format("OpBranch %%%d", mergeLabel));
+    }
+    
+    generator->AddReserved("OpLabel", mergeLabel, "end of switch");
+
+    generator->mergeBlocks[--generator->mergeBlockCounter] =
+    SPIRVGenerator::MergeBlock
+    {
+        0xFFFFFFFF, 0xFFFFFFFF
+    };
 }
 
 //------------------------------------------------------------------------------
@@ -2692,11 +2961,15 @@ GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, While
 {
     uint32_t startLabel = generator->ReserveName();
     uint32_t conditionLabel = generator->ReserveName();
+    uint32_t continueLabel = generator->ReserveName();
     uint32_t bodyLabel = generator->ReserveName();
     uint32_t endLabel = generator->ReserveName();
 
-    generator->breakLabel = endLabel;
-    generator->continueLabel = startLabel;
+    generator->mergeBlocks[generator->mergeBlockCounter++] =
+    SPIRVGenerator::MergeBlock
+    {
+        continueLabel, endLabel
+    };
 
     // Initial label to start the loop
     generator->AddOp(Format("OpBranch %%%d", startLabel));
@@ -2705,17 +2978,25 @@ GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, While
     if (stat->isDoWhile)
     {
         // All loops must begin with a loop merge
-        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, bodyLabel));
+        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, continueLabel));
         generator->AddOp(Format("OpBranch %%%d", bodyLabel));
 
         // Decide whether or not to end the loop
         generator->AddReserved("OpLabel", bodyLabel, "while body");
-        GenerateStatementSPIRV(compiler, generator, stat->statement);
+        if (!GenerateStatementSPIRV(compiler, generator, stat->statement))
+            generator->AddOp(Format("OpBranch %%%d", conditionLabel));
 
         // This block is for the condition testing
         generator->AddReserved("OpLabel", conditionLabel, "while condition");
+
         SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
-        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, startLabel, endLabel));
+        if (!cond.isValue)
+            cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
+
+        generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, continueLabel, endLabel));
+
+        generator->AddReserved("OpLabel", continueLabel, "continue");
+        generator->AddOp(Format("OpBranch %%%d", startLabel));
 
         // This is the repeat condition
         generator->AddReserved("OpLabel", endLabel, "end of while");
@@ -2723,40 +3004,56 @@ GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, While
     else
     {
         // All loops must begin with a loop merge
-        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, bodyLabel));
+        generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, continueLabel));
         generator->AddOp(Format("OpBranch %%%d", conditionLabel));
 
-        // This block is for the condition testing
-        generator->AddReserved("OpLabel", conditionLabel, "while condition");
+        // Load from the variable to do the branch condition
+        generator->AddReserved("OpLabel", conditionLabel, "for condition test");
+
         SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
+        if (!cond.isValue)
+            cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
 
         // Decide whether or not to end the loop
         generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
-        generator->AddReserved("OpLabel", bodyLabel, "while body");
-        GenerateStatementSPIRV(compiler, generator, stat->statement);
+        if (stat->statement)
+        {
+            generator->AddReserved("OpLabel", bodyLabel, "while body");
+            if (!GenerateStatementSPIRV(compiler, generator, stat->statement))
+                generator->AddOp(Format("OpBranch %%%d", continueLabel));
+        }
+
+        generator->AddReserved("OpLabel", continueLabel, "continue");
         generator->AddOp(Format("OpBranch %%%d", startLabel));
 
         // This is the repeat condition
         generator->AddReserved("OpLabel", endLabel, "end of while");
     }
 
-    generator->continueLabel = 0xFFFFFFFF;
-    generator->breakLabel = 0xFFFFFFFF;
+    generator->mergeBlocks[--generator->mergeBlockCounter] =
+    SPIRVGenerator::MergeBlock
+    {
+        0xFFFFFFFF, 0xFFFFFFFF
+    };
 }
 
 //------------------------------------------------------------------------------
 /**
+    Generate statement, returns true if statement closes the current block
 */
-void
+bool
 GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement* stat)
 {
+    bool ret = false;
     switch (stat->symbolType)
     {
         case Symbol::BreakStatementType:
             GenerateBreakStatementSPIRV(compiler, generator, static_cast<BreakStatement*>(stat));
+            ret = true;
             break;
         case Symbol::ContinueStatementType:
             GenerateContinueStatementSPIRV(compiler, generator, static_cast<ContinueStatement*>(stat));
+            ret = true;
             break;
         case Symbol::ExpressionStatementType:
             GenerateExpressionSPIRV(compiler, generator, static_cast<ExpressionStatement*>(stat)->expr);
@@ -2769,6 +3066,7 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
             break;
         case Symbol::ReturnStatementType:
             GenerateReturnStatementSPIRV(compiler, generator, static_cast<ReturnStatement*>(stat));
+            ret = true;
             break;
         case Symbol::ScopeStatementType:
         {
@@ -2782,7 +3080,9 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
                 else
                 {
                     Statement* stat = static_cast<Statement*>(symbol);
-                    GenerateStatementSPIRV(compiler, generator, stat);
+                    bool shouldEnd = GenerateStatementSPIRV(compiler, generator, stat);
+                    if (shouldEnd)
+                        break;
                 }
             }
             generator->PopScope();
@@ -2798,6 +3098,7 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
             printf("[SPIR-V Generator]: Not handled symbol '%d' encountered\n", stat->symbolType);
             abort();
     }
+    return ret;
 }
 
 //------------------------------------------------------------------------------
@@ -2808,13 +3109,33 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 {
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
 
-
     // Main scope
     this->PushScope();
 
+    struct Cleanup
+    {
+        Cleanup(SPIRVGenerator* gen) :
+            gen(gen) {}
+
+        ~Cleanup()
+        {
+            gen->scopeStack.clear();
+            gen->header.clear();
+            gen->declarations.clear();
+            gen->decorations.clear();
+            gen->functional.clear();
+            gen->capabilities.clear();
+            gen->extensions.clear();
+            gen->decorationMap.clear();
+            gen->mergeBlockCounter = 0;
+        }
+
+        SPIRVGenerator* gen;
+    };
+
     spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
 
-    static std::map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
+    static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {
         { Program::__Resolved::ProgramEntryType::VertexShader, "Vertex" }
         , { Program::__Resolved::ProgramEntryType::HullShader, "TessellationControl" }
@@ -2832,8 +3153,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         , { Program::__Resolved::ProgramEntryType::RayCallableShader, "CallableKHR" }
     };
 
-
-    static std::map<Program::__Resolved::ProgramEntryType, std::string> extensionMap =
+    static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> extensionMap =
     {
         { Program::__Resolved::ProgramEntryType::VertexShader, "Shader" }
         , { Program::__Resolved::ProgramEntryType::HullShader, "Tessellation" }
@@ -2851,16 +3171,53 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         , { Program::__Resolved::ProgramEntryType::RayCallableShader, "RayTracingKHR" }
     };
 
+    static std::unordered_map<Function::__Resolved::PartitionMethod, std::string> partitionMap =
+    {
+        { Function::__Resolved::PartitionMethod::IntegerSteps, "SpacingEqual" }
+        , { Function::__Resolved::PartitionMethod::FloatEven, "SpacingFractionalEven" }
+        , { Function::__Resolved::PartitionMethod::FloatOdd, "SpacingFractionalOdd" }
+    };
+
+    static std::unordered_map<Function::__Resolved::WindingOrder, std::string> windingOrderMap =
+    {
+        { Function::__Resolved::WindingOrder::Clockwise, "VertexOrderCw" }
+        , { Function::__Resolved::WindingOrder::CounterClockwise, "VertexOrderCcw" }
+    };
+
+    static std::unordered_map<Function::__Resolved::PixelOrigin, std::string> pixelOriginMap =
+    {
+        { Function::__Resolved::PixelOrigin::Center, "VertexOrderCw" }
+        , { Function::__Resolved::PixelOrigin::Upper, "OriginUpperLeft" }
+        , { Function::__Resolved::PixelOrigin::Lower, "OriginLowerLeft" }
+    };
+
+    static std::unordered_map<Function::__Resolved::PrimitiveTopology, std::string> inputPrimitiveTopologyMap =
+    {
+        { Function::__Resolved::PrimitiveTopology::Points, "InputPoints" }
+        , { Function::__Resolved::PrimitiveTopology::Lines, "InputLines" }
+        , { Function::__Resolved::PrimitiveTopology::LinesAdjacency, "InputLinesAdjacency" }
+        , { Function::__Resolved::PrimitiveTopology::Triangles, "Triangles" }
+        , { Function::__Resolved::PrimitiveTopology::TrianglesAdjacency, "InputTrianglesAdjacency" }
+        , { Function::__Resolved::PrimitiveTopology::Quads, "Quads" }
+        , { Function::__Resolved::PrimitiveTopology::Isolines, "Isolines" }
+    };
+
+    static std::unordered_map<Function::__Resolved::PrimitiveTopology, std::string> outputPrimitiveTopologyMap =
+    {
+        { Function::__Resolved::PrimitiveTopology::Points, "OutputPoints" }
+        , { Function::__Resolved::PrimitiveTopology::Lines, "OutputLineStrip" }
+        , { Function::__Resolved::PrimitiveTopology::Triangles, "OutputTriangleStrip" }
+    };
+
     for (auto it : progResolved->programMappings)
     {
         // for each shader, generate code and use it as a binary output
         if (it.first >= Program::__Resolved::VertexShader && it.first <= Program::__Resolved::RayIntersectionShader)
         {
-            this->header.append("; Magic:     0x07230203 (SPIR-V)\n");
+            this->header.append("; Magic:     0x00010500 (Vulkan 1.2)\n");
             this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
             this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
             this->header.append(Format("\t\tOpCapability %s\n", extensionMap[it.first].c_str()));
-            this->header.append("\t\tOpMemoryModel Logical GLSL450\n");
             
             for (Symbol* sym : symbols)
             {
@@ -2880,21 +3237,86 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 
             Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(it.second));
             uint32_t entryFunction = this->GetSymbol(funResolved->name);
-            this->header.append(Format("\t\tOpEntryPoint %s %%%d \"main\"", executionModelMap[it.first].c_str(), entryFunction));
+
+            if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
+                this->header.append("\t\tOpCapability SubgroupDispatch\n");
+            this->header.append("\t\tOpMemoryModel Logical GLSL450\n");
+
+            this->header.append(Format("\t\tOpEntryPoint %s %%%d \"main\"\n", executionModelMap[it.first].c_str(), entryFunction));
+
+            switch (it.first)
+            {
+                case Program::__Resolved::GeometryShader:
+                    this->header.append(Format("\t\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology]));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology]));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                    break;
+                case Program::__Resolved::HullShader:
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod]));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder]));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology]));
+                    this->header.append(Format("\t\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                    break;
+                case Program::__Resolved::PixelShader:
+                    this->header.append(Format("\t\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin]));
+                    if (funResolved->executionModifiers.earlyDepth)
+                        this->header.append(Format("\t\tOpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
+                    break;
+                case Program::__Resolved::ComputeShader:
+                    this->header.append(Format("\t\tOpExecutionMode %%%d LocalSize %d %d %d\n", entryFunction, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]));
+                    if (funResolved->executionModifiers.groupSize != 64)
+                        this->header.append(Format("\t\tOpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
+                    if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
+                        this->header.append(Format("\t\tOpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
+                    break;
+            }
+
 
             // Compose and convert to binary, then validate
-            std::string binary = Format("/// Header\n%s\n\n/// Declarations\n%s\n\n/// Decorations\n%s\n\n/// Functions\n%s\n\n", this->header.c_str(), this->declarations.c_str(), this->decorations.c_str(), this->functional.c_str());
+            std::string binary = Format("; Header\n%s\n\n; Declarations\n%s\n\n; Decorations\n%s\n\n; Functions\n%s\n\n", this->header.c_str(), this->declarations.c_str(), this->decorations.c_str(), this->functions.c_str());
             spv_binary bin = nullptr;
             spv_diagnostic diag = nullptr;
-            spv_result_t res = spvTextToBinary(spvContext, binary.c_str(), binary.size(), &bin, &diag);
-            assert(res == SPV_SUCCESS);
-            spv_const_binary constBin = (spv_const_binary)&bin;
-            res = spvValidate(spvContext, constBin, &diag);
-            assert(res == SPV_SUCCESS);
+            spv_result_t res = spvTextToBinaryWithOptions(spvContext, binary.c_str(), binary.size(), SPV_TEXT_TO_BINARY_OPTION_NONE, &bin, &diag);
+            if (res != SPV_SUCCESS)
+            {
+                compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
+                return false;
+            }
 
+            if (compiler->options.validate)
+            {
+                // Run spv validation for internal consistency and fault testing
+                spv_const_binary_t constBin = { bin->code, bin->wordCount };
+                res = spvValidate(spvContext, &constBin, &diag);
+                if (res != SPV_SUCCESS)
+                {
+                    compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
+                    return false;
+                }
+            }
+
+            std::vector<uint32_t> binaryData(bin->code, bin->code + bin->wordCount);
+            if (compiler->options.optimize)
+            {
+                spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
+                optimizer.RegisterPerformancePasses();
+
+                std::vector<uint32_t> optimized;
+                if (optimizer.Run(bin->code, bin->wordCount, &optimized))
+                {
+                    binaryData = std::move(optimized);
+                }
+            }
+
+            // conversion and optional validation is successful, dump binary in program
+            progResolved->binaries[it.first] = binaryData;
+
+            delete bin;
+            delete diag;
         }
     }
-    return false;
+    return true;
 }
 
 //------------------------------------------------------------------------------
@@ -3093,7 +3515,20 @@ SPIRVGenerator::ReserveName()
 void 
 SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
 {
-    this->functional.append(Format("%%%d = \t\t%s\t\t\t; %s\n", name, op.c_str(), comment.c_str()));
+    this->functional.append(Format("%%%d = \t%s\t\t\t; %s\n", name, op.c_str(), comment.c_str()));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+SPIRVGenerator::AddVariableDeclaration(uint32_t type, uint32_t init, std::string comment)
+{
+    if (init != 0)
+        this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d Function %%%d\t\t\t; %s\n", this->symbolCounter, type, init, comment.c_str()));
+    else
+        this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d Function\t\t\t; %s\n", this->symbolCounter, type, comment.c_str()));
+    return this->symbolCounter++;
 }
 
 //------------------------------------------------------------------------------

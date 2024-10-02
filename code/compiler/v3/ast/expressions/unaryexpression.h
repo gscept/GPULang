@@ -23,7 +23,7 @@ struct UnaryExpression : public Expression
 {
 public:
     /// constructor
-    UnaryExpression(uint32_t op, uint32_t postOp, Expression* expr);
+    UnaryExpression(uint32_t op, bool isPrefix, Expression* expr);
     /// destructor
     virtual ~UnaryExpression();
 
@@ -46,7 +46,7 @@ public:
     std::string EvalString() const override;
 
     uint32_t op;
-    uint32_t postOp;
+    bool isPrefix;
     Expression* expr;
 
     struct __Resolved : public Expression::__Resolved

@@ -13,9 +13,9 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-UnaryExpression::UnaryExpression(uint32_t op, uint32_t postOp, Expression* expr)
+UnaryExpression::UnaryExpression(uint32_t op, bool isPrefix, Expression* expr)
     : op(op)
-    , postOp(postOp)
+    , isPrefix(isPrefix)
     , expr(expr)
 {
     this->resolved = new UnaryExpression::__Resolved;
@@ -41,8 +41,10 @@ UnaryExpression::Resolve(Compiler* compiler)
     if (this->isDeclaration)
         this->expr->isDeclaration = true;
 
+
     this->expr->Resolve(compiler);
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
 
     Type::FullType type;
     this->expr->EvalType(type);
@@ -62,6 +64,9 @@ UnaryExpression::Resolve(Compiler* compiler)
                         thisResolved->fullType = { "function" };
                         return true;
                     }
+                    default:
+                        compiler->Error("Pointer derefence operator only valid on pointers and functions", this);
+                        return false;
                 }
             }
             else
@@ -195,9 +200,10 @@ UnaryExpression::EvalString() const
     std::string expString;
     expString = this->expr->EvalString();
     if (this->op != 0x0)
-        return Format("%s%s", FourCCToString(this->op).c_str(), expString.c_str());
-    else if (this->postOp != 0x0)
-        return Format("%s%s", expString.c_str(), FourCCToString(this->postOp).c_str());
+        if (this->isPrefix)
+            return Format("%s%s", FourCCToString(this->op).c_str(), expString.c_str());
+        else
+            return Format("%s%s", expString.c_str(), FourCCToString(this->op).c_str());
     else
         return Format("%s", expString.c_str());
 }

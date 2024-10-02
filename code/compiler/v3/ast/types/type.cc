@@ -11,14 +11,14 @@ namespace GPULang
 
 Function* activeFunction = nullptr;
 
-#define __BEGIN_TYPES__ std::vector<Symbol*> types; Type* newType = nullptr;
+#define __BEGIN_TYPES__ Type* newType = nullptr;
 
 #define __MAKE_TYPE(typename, typecode)\
 newType = new Type();\
 newType->name = #typename;\
 newType->baseType = typecode;\
 newType->category = Type::VoidCategory;\
-types.push_back(newType);
+DefaultTypes.push_back(newType);
 
 #define __MAKE_RWTEX()\
 newType->category = Type::ReadWriteTextureCategory;
@@ -38,10 +38,9 @@ newType->category = Type::SamplerCategory;
 #define __MAKE_TYPE_CUSTOM(t1, t2)\
 newType = new t2();\
 newType->name = #t1;\
-types.push_back(newType);
+DefaultTypes.push_back(newType);
 
-#define __ADD_LOOKUP(name) types[#name] = newType;
-#define __END_TYPES__ return types;
+#define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
 //------------------------------------------------------------------------------
 /**
@@ -138,7 +137,8 @@ Type::GetSymbols(const std::string str)
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<Symbol*>
+std::vector<Symbol*> DefaultTypes;
+void
 Type::SetupDefaultTypes()
 {
     __BEGIN_TYPES__
@@ -242,7 +242,7 @@ Type::SetupDefaultTypes()
     builtinEnum->labels.push_back("NotEqual"); builtinEnum->values.push_back(nullptr);
     builtinEnum->labels.push_back("GreaterEqual"); builtinEnum->values.push_back(nullptr);
     builtinEnum->labels.push_back("Always"); builtinEnum->values.push_back(nullptr);
-    types.push_back(builtinEnum);
+    DefaultTypes.push_back(builtinEnum);
 
     __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
     __MAKE_TYPE_CUSTOM(renderState, GPULang::RenderStateType);
@@ -260,7 +260,7 @@ Type::SetupDefaultTypes()
     executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
-    types.push_back(executionScopeEnum);
+    DefaultTypes.push_back(executionScopeEnum);
 
     Enumeration* memorySemanticsEnum = new Enumeration();
     memorySemanticsEnum->name = "MemorySemantics";
@@ -275,11 +275,9 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->labels.push_back("DeviceMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x40));
     memorySemanticsEnum->labels.push_back("AtomicCounterMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x80));
     memorySemanticsEnum->labels.push_back("ImageMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x100));
-    types.push_back(memorySemanticsEnum);
+    DefaultTypes.push_back(memorySemanticsEnum);
 
     __MAKE_TYPE(void, TypeCode::Void);
-
-    __END_TYPES__
 }
 
 std::map<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
@@ -331,6 +329,43 @@ uint32_t
 Type::CalculateSize() const
 {
     return this->byteSize * this->columnSize * this->rowSize;
+}
+
+//------------------------------------------------------------------------------
+/**
+    Rounds up to next power of 2
+*/
+__forceinline unsigned int
+roundtopow2(unsigned int val)
+{
+    val--;
+    val |= val >> 1;
+    val |= val >> 2;
+    val |= val >> 4;
+    val |= val >> 8;
+    val |= val >> 16;
+    val++;
+    return val;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+Type::CalculateAlignment() const
+{
+    uint32_t baseAlignment = this->byteSize;
+    uint32_t roundedColumns = roundtopow2(this->columnSize);
+    return baseAlignment * roundedColumns;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+Type::Align(uint32_t alignant, uint32_t alignment)
+{
+    return (alignant + alignment - 1) & ~(alignment - 1);
 }
 
 //------------------------------------------------------------------------------

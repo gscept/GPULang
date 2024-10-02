@@ -25,21 +25,23 @@ Function::Function()
     this->ast = nullptr;
 
     Function::__Resolved* typeResolved = static_cast<Function::__Resolved*>(this->resolved);
-    typeResolved->computeShaderWorkGroupSize[0] = 1;
-    typeResolved->computeShaderWorkGroupSize[1] = 1;
-    typeResolved->computeShaderWorkGroupSize[2] = 1;
-    typeResolved->earlyDepth = false;
-    typeResolved->isShader = false;
+    typeResolved->isEntryPoint = false;
     typeResolved->shaderUsage.bits = 0x0;
-    typeResolved->invocations = Function::__Resolved::INVALID_SIZE;
-    typeResolved->maxOutputVertices = Function::__Resolved::INVALID_SIZE;
-    typeResolved->patchSize = Function::__Resolved::INVALID_SIZE;
-    typeResolved->windingOrder = Function::__Resolved::InvalidWindingOrder;
-    typeResolved->inputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
-    typeResolved->outputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
-    typeResolved->patchType = Function::__Resolved::InvalidPatchType;
-    typeResolved->partitionMethod = Function::__Resolved::InvalidPartitionMethod;
-    typeResolved->pixelOrigin = Function::__Resolved::Lower;
+    typeResolved->executionModifiers.invocations = Function::__Resolved::INVALID_SIZE;
+    typeResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
+    typeResolved->executionModifiers.patchSize = Function::__Resolved::INVALID_SIZE;
+    typeResolved->executionModifiers.windingOrder = Function::__Resolved::InvalidWindingOrder;
+    typeResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
+    typeResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
+    typeResolved->executionModifiers.patchType = Function::__Resolved::InvalidPatchType;
+    typeResolved->executionModifiers.partitionMethod = Function::__Resolved::InvalidPartitionMethod;
+    typeResolved->executionModifiers.pixelOrigin = Function::__Resolved::Lower;
+    typeResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;
+    typeResolved->executionModifiers.computeShaderWorkGroupSize[1] = 1;
+    typeResolved->executionModifiers.computeShaderWorkGroupSize[2] = 1;
+    typeResolved->executionModifiers.groupSize = 64;
+    typeResolved->executionModifiers.groupsPerWorkgroup = 1;
+    typeResolved->executionModifiers.earlyDepth = false;
     typeResolved->isPrototype = false;
 }
 
@@ -113,26 +115,26 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
     return ret;
 }
 
-#define __BEGIN_INTRINSICS__ std::vector<Symbol*> intrinsics; Function* newIntrinsic = nullptr; Variable* newVar = nullptr;
+#define __BEGIN_INTRINSICS__ Function* newIntrinsic = nullptr; Variable* newVar = nullptr;
 
 #define __MAKE_BUILTIN(nm, opcode)\
 newIntrinsic = new Function();\
 newIntrinsic->name = #nm;\
 Intrinsics::opcode## = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);
+DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __MAKE_INTRINSIC(nm, opcode, ty)\
 newIntrinsic = new Function();\
 newIntrinsic->name = #nm;\
 Intrinsics::opcode##_##ty = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);
+DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __MAKE_TEXTURE_LOAD_STORE_INTRINSIC(nm, ty, variant, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = #nm; \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##variant##_texture1D = newIntrinsic; \
-intrinsics.push_back(newIntrinsic);
+DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __ADD_ARG(nm, tp)\
 newVar = new Variable();\
@@ -174,12 +176,11 @@ newIntrinsic->returnType = { #name };
 #define __SET_RET(name)\
 newIntrinsic->returnType = { name };
 
-#define __END_INTRINSICS__ return intrinsics;
-
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<Symbol*> 
+std::vector<Symbol*> DefaultIntrinsics;
+void 
 Function::SetupIntrinsics()
 {
     __BEGIN_INTRINSICS__;
@@ -667,7 +668,7 @@ newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);\
+DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(ty, overload, ret)\
@@ -675,7 +676,7 @@ newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);\
+DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
@@ -683,7 +684,7 @@ newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);\
+DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 __ADD_HANDLE_ARG_LIT(sampler, sampler);
 
@@ -692,7 +693,7 @@ newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
-intrinsics.push_back(newIntrinsic);\
+DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
 __ADD_HANDLE_ARG_LIT(sampler, sampler);
 
@@ -1109,8 +1110,6 @@ OFFSET_REQUIREMENTS
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
-
-    __END_INTRINSICS__
 }
 
 //------------------------------------------------------------------------------

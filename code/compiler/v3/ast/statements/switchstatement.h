@@ -16,12 +16,12 @@ namespace GPULang
 struct SwitchStatement : public Statement
 {
     /// constructor
-    SwitchStatement(Expression* switchExpression, const std::vector<std::string>& caseValues, const std::vector<Statement*>& caseStatements, Statement* defaultStatement);
+    SwitchStatement(Expression* switchExpression, const std::vector<Expression*>& caseExpressions, const std::vector<Statement*>& caseStatements, Statement* defaultStatement);
     /// destructor
     virtual ~SwitchStatement();
 
     Expression* switchExpression;
-    std::vector<std::string> caseValues;
+    std::vector<Expression*> caseExpressions;
     std::vector<Statement*> caseStatements;
     Statement* defaultStatement;
 };

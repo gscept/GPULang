@@ -42,6 +42,7 @@ SymbolExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->symbol = compiler->GetSymbol(this->symbol);
+    thisResolved->text = this->EvalString();
     if (thisResolved->symbol == nullptr)
     {
         compiler->UnrecognizedSymbolError(this->symbol, this);

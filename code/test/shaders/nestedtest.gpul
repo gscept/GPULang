@@ -1,0 +1,23 @@
+
+i32
+Foo()
+{
+    a : i32 = 5;
+    for (; a < 10; a++)
+    {
+        if (a == 8)
+            return 0;
+    }
+}
+
+entry_point
+void
+NestedTest()
+{
+    Foo();
+}
+
+program TestProgram
+{
+    ComputeShader = *NestedTest();
+};

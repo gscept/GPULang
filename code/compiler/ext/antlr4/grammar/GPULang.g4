@@ -157,7 +157,7 @@ preprocess
         Token* start = nullptr;
     }:
     (
-        { start = _input->LT(1); } '#line' line = INTEGERLITERAL path = string { lines.push_back(std::make_tuple(atoi($line.text.c_str()), _input->LT(-1)->getLine(), start->getStartIndex(), _input->LT(1)->getStartIndex(), $path.text)); }
+        { start = _input->LT(1); } '#line' line = INTEGERLITERAL path = string { this->lines.push_back(std::make_tuple(atoi($line.text.c_str()), _input->LT(-1)->getLine(), start->getStartIndex(), _input->LT(1)->getStartIndex(), $path.val)); }
         | .
     )*? EOF;
 
@@ -491,6 +491,7 @@ statement
     | scopeStatement            { $tree = $scopeStatement.tree; }
     | forStatement              { $tree = $forStatement.tree; }
     | whileStatement            { $tree = $whileStatement.tree; }
+    | switchStatement           { $tree = $switchStatement.tree; }
     | returnStatement           { $tree = $returnStatement.tree; }
     | continueStatement         { $tree = $continueStatement.tree; }
     | breakStatement            { $tree = $breakStatement.tree; }
@@ -649,7 +650,7 @@ switchStatement
     {
         $tree = nullptr;
         Expression* switchExpression;
-        std::vector<std::string> caseValues;
+        std::vector<Expression*> caseExpressions;
         std::vector<Statement*> caseStatements;
         Symbol::Location location;
         Statement* defaultStatement = nullptr;
@@ -657,23 +658,22 @@ switchStatement
     'switch' { location = SetupFile(); } '(' expression ')' { switchExpression = $expression.tree; }
     '{'
         (
-            'case' IDENTIFIER ':'
-            statement
+            'case' INTEGERLITERAL ':' { caseExpressions.push_back(new IntExpression(atoi($INTEGERLITERAL.text.c_str()))); caseStatements.push_back(nullptr); }
+            (statement
             { 
-                caseValues.push_back($IDENTIFIER.text); 
-                caseStatements.push_back($statement.tree);
-            }
+                caseStatements.back() = $statement.tree;
+            })?
         )*
         (
             'default' ':'
-            statement
+            (statement
             {
                 defaultStatement = $statement.tree;
-            }
+            })?
         )?
     '}'
     {
-        $tree = new SwitchStatement(switchExpression, caseValues, caseStatements, defaultStatement);
+        $tree = new SwitchStatement(switchExpression, caseExpressions, caseStatements, defaultStatement);
     }
     ;
 
@@ -936,7 +936,7 @@ prefixExpression
         $tree->location = SetupFile();
         for (size_t i = 0; i < ops.size(); i++)
         {
-            $tree = new UnaryExpression(ops[i], 0x0, $tree);
+            $tree = new UnaryExpression(ops[i], true, $tree);
             $tree->location = locations[i];
         }
     }
@@ -962,7 +962,7 @@ suffixExpression
         $tree->location = SetupFile();
         for (size_t i = 0; i < ops.size(); i++)
         {
-            $tree = new UnaryExpression(0x0, ops[i], $tree);
+            $tree = new UnaryExpression(ops[i], false, $tree);
             $tree->location = locations[i];
         }
     }

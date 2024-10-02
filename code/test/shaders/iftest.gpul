@@ -1,4 +1,4 @@
-shader
+entry_point
 void
 IfTest()
 {
@@ -16,4 +16,4 @@ IfTest()
 program TestProgram
 {
     ComputeShader = *IfTest();
-}
+};

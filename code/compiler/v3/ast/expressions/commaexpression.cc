@@ -45,6 +45,7 @@ CommaExpression::Resolve(Compiler* compiler)
         return false;
 
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
     this->left->EvalType(thisResolved->leftType);
     this->right->EvalType(thisResolved->rightType);
 

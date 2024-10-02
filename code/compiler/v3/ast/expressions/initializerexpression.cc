@@ -41,6 +41,7 @@ InitializerExpression::Resolve(Compiler* compiler)
     }
 
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
 
     // Then evaluate type
     Type::FullType inner;

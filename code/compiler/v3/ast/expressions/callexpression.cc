@@ -40,6 +40,7 @@ bool
 CallExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->function->isLhsValue = true;
 

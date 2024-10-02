@@ -13,6 +13,7 @@
 namespace GPULang
 {
 
+extern std::vector<Symbol*> DefaultIntrinsics;
 struct Variable;
 struct Type;
 struct Statement;
@@ -33,7 +34,7 @@ struct Function : public Symbol
 
     static Symbol* MatchOverload(Compiler* compiler, const std::vector<Symbol*>& functions, const std::vector<Type::FullType>& args, bool allowImplicitConversion = false);
 
-    static std::vector<Symbol*> SetupIntrinsics();
+    static void SetupIntrinsics();
 
     /// returns true if functions are compatible
     bool IsCompatible(Function* otherFunction, bool checkReturnType = false);
@@ -44,14 +45,9 @@ struct Function : public Symbol
 
         std::string name;
         std::string signature;
-
-        unsigned int computeShaderWorkGroupSize[3];
-        bool earlyDepth;
-
+        bool hasExplicitReturn;
+        
         static const uint8_t INVALID_SIZE = 0xF;
-        uint32_t invocations;
-        uint32_t maxOutputVertices;
-        uint32_t patchSize;
 
         enum WindingOrder
         {
@@ -71,8 +67,6 @@ struct Function : public Symbol
             return InvalidWindingOrder;
         };
 
-        WindingOrder windingOrder;
-
         enum PrimitiveTopology
         {
             InvalidPrimitiveTopology,
@@ -81,6 +75,8 @@ struct Function : public Symbol
             LinesAdjacency,
             Triangles,
             TrianglesAdjacency,
+            Quads,
+            Isolines
         };
 
         /// convert from string
@@ -96,12 +92,14 @@ struct Function : public Symbol
                 return PrimitiveTopology::Triangles;
             else if (str == "triangles_adjacency")
                 return PrimitiveTopology::TrianglesAdjacency;
+            else if (str == "quads")
+                return PrimitiveTopology::Quads;
+            else if (str == "isolines")
+                return PrimitiveTopology::Isolines;
 
             return InvalidPrimitiveTopology;
         };
 
-        PrimitiveTopology inputPrimitiveTopology;
-        PrimitiveTopology outputPrimitiveTopology;
 
         enum PatchType
         {
@@ -124,7 +122,6 @@ struct Function : public Symbol
             return InvalidPatchType;
         };
 
-        PatchType patchType;
 
         enum PartitionMethod
         {
@@ -146,7 +143,6 @@ struct Function : public Symbol
             return InvalidPartitionMethod;
         };
 
-        PartitionMethod partitionMethod;
 
         enum PixelOrigin
         {
@@ -155,7 +151,6 @@ struct Function : public Symbol
             Upper,      // upper right corner
             Center      // pixel center
         };
-        PixelOrigin pixelOrigin;
 
         static const PixelOrigin PixelOriginFromString(const std::string& str)
         {
@@ -169,7 +164,30 @@ struct Function : public Symbol
             return PixelOrigin::InvalidPixelOrigin;
         }
 
-        bool isShader;
+
+        struct ExecutionModifiers
+        {
+            unsigned int computeShaderWorkGroupSize[3];
+            unsigned int groupSize;
+            unsigned int groupsPerWorkgroup;
+            bool earlyDepth;
+
+            uint32_t invocations;
+
+            uint32_t maxOutputVertices;
+            uint32_t patchSize;
+            PatchType patchType;
+
+            WindingOrder windingOrder;
+            PrimitiveTopology inputPrimitiveTopology;
+            PrimitiveTopology outputPrimitiveTopology;
+
+            PartitionMethod partitionMethod;
+            PixelOrigin pixelOrigin;
+
+        } executionModifiers;
+
+        bool isEntryPoint;
         bool isPrototype;
 
         union ShaderUsage

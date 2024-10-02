@@ -160,7 +160,7 @@ prototype f32x4 DynamicFunction(in i : i32);
 //------------------------------------------------------------------------------
 /**
 */
-shader
+entry_point
 local_size_x(64)
 void
 MyComputeShader()
@@ -180,7 +180,7 @@ program MyProgram
 //------------------------------------------------------------------------------
 /**
 */
-shader
+entry_point
 void
 MyVertexShader(
     binding(0) in position : f32x4
@@ -193,7 +193,7 @@ MyVertexShader(
 //------------------------------------------------------------------------------
 /**
 */
-shader
+entry_point
 void
 MyPixelShader(
     binding(0) in position : f32x4

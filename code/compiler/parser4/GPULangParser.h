@@ -596,6 +596,7 @@ public:
     GPULangParser::ScopeStatementContext *scopeStatementContext = nullptr;;
     GPULangParser::ForStatementContext *forStatementContext = nullptr;;
     GPULangParser::WhileStatementContext *whileStatementContext = nullptr;;
+    GPULangParser::SwitchStatementContext *switchStatementContext = nullptr;;
     GPULangParser::ReturnStatementContext *returnStatementContext = nullptr;;
     GPULangParser::ContinueStatementContext *continueStatementContext = nullptr;;
     GPULangParser::BreakStatementContext *breakStatementContext = nullptr;;
@@ -606,6 +607,7 @@ public:
     ScopeStatementContext *scopeStatement();
     ForStatementContext *forStatement();
     WhileStatementContext *whileStatement();
+    SwitchStatementContext *switchStatement();
     ReturnStatementContext *returnStatement();
     ContinueStatementContext *continueStatement();
     BreakStatementContext *breakStatement();
@@ -761,13 +763,13 @@ public:
   public:
     Statement* tree;
     GPULangParser::ExpressionContext *expressionContext = nullptr;;
-    antlr4::Token *identifierToken = nullptr;;
+    antlr4::Token *integerliteralToken = nullptr;;
     GPULangParser::StatementContext *statementContext = nullptr;;
     SwitchStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
-    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
-    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
+    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
     std::vector<StatementContext *> statement();
     StatementContext* statement(size_t i);
 

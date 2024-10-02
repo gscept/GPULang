@@ -10,9 +10,9 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector<std::string>& caseValues, const std::vector<Statement*>& caseStatements, Statement* defaultStatement)
+SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector<Expression*>& caseExpressions, const std::vector<Statement*>& caseStatements, Statement* defaultStatement)
     : switchExpression(switchExpression)
-    , caseValues(caseValues)
+    , caseExpressions(caseExpressions)
     , caseStatements(caseStatements)
     , defaultStatement(defaultStatement)
 {

@@ -53,6 +53,8 @@ struct Expression : public Symbol
             float f;
             bool b;
         } value;
+
+        std::string text;
     };
 }; 
 } // namespace GPULang

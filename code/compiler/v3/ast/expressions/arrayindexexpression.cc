@@ -41,6 +41,7 @@ bool
 ArrayIndexExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->left->isLhsValue = true;
     if (this->isDeclaration)

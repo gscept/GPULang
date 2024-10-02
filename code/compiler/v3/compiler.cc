@@ -29,35 +29,41 @@ Compiler::Compiler()
     , declareTy(nullptr)
     , declareType(Type::FullType{})
     , ignoreReservedWords(false)
+    , hasErrors(false)
 {
-    Variable::SetupImageFormats();
     this->validator = new Validator;
+    this->options.validate = true;
+    this->options.optimize = false;
+    this->options.warningsAsErrors = false;
+    this->branchReturns = false;
 
     // push global scope for all the builtins
     this->PushScope(Scope::ScopeType::Global);
 
     // setup default types and their lookups
-    const std::vector<Symbol*> defaultTypes = Type::SetupDefaultTypes();
-    auto typeIt = defaultTypes.begin();
-    while (typeIt != defaultTypes.end())
+    if (DefaultTypes.empty())
+        Type::SetupDefaultTypes();
+    auto typeIt = DefaultTypes.begin();
+    while (typeIt != DefaultTypes.end())
     {
         this->validator->ResolveType(this, *typeIt);
         typeIt++;
     }
 
     // Run again but resolve methods this time (needed as forward declaration)
-    typeIt = defaultTypes.begin();
-    while (typeIt != defaultTypes.end())
+    typeIt = DefaultTypes.begin();
+    while (typeIt != DefaultTypes.end())
     {
         this->validator->ResolveTypeMethods(this, *typeIt);
         typeIt++;
     }
 
     // setup intrinsics
-    const std::vector<Symbol*> intrinsics = Function::SetupIntrinsics();
+    if (DefaultIntrinsics.empty())
+        Function::SetupIntrinsics();
     this->ignoreReservedWords = true;
-    auto intrinIt = intrinsics.begin();
-    while (intrinIt != intrinsics.end())
+    auto intrinIt = DefaultIntrinsics.begin();
+    while (intrinIt != DefaultIntrinsics.end())
     {
         this->validator->ResolveFunction(this, *intrinIt);
         intrinIt++;
@@ -82,7 +88,7 @@ Compiler::~Compiler()
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, unsigned int version)
+Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, const std::vector<std::string>& flags, unsigned int version)
 {
     this->lang = lang;
     switch (lang)
@@ -101,7 +107,23 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->generator = new SPIRVGenerator();
         break;
     }
-    this->generator->SetupIntrinsics();
+
+    /// Parse defines
+    for (const auto& flag : flags)
+    {
+        if (flag == "-no-validate")
+        {
+            this->options.validate = false;
+        }
+        else if (flag == "-opt")
+        {
+            this->options.optimize = true;
+        }
+        else if (flag == "-werror")
+        {
+            this->options.warningsAsErrors = true;
+        }
+    }
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
@@ -212,6 +234,7 @@ Compiler::PushScope(Scope::ScopeType type, Symbol* owner)
     this->scopes.push_back(new Scope());
     this->scopes.back()->type = type;
     this->scopes.back()->owningSymbol = owner;
+    this->scopes.back()->unreachable = false;
 }
 
 //------------------------------------------------------------------------------
@@ -275,6 +298,49 @@ Compiler::GetScopeOwner()
 //------------------------------------------------------------------------------
 /**
 */
+Symbol* 
+Compiler::GetParentScopeOwner(Symbol::SymbolType type)
+{
+    auto it = this->scopes.rbegin();
+    while (it != this->scopes.rend())
+    {
+        if ((*it)->owningSymbol != nullptr && (*it)->owningSymbol->symbolType == type)
+            return (*it)->owningSymbol;
+        it++;
+    }
+    return nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+Compiler::MarkScopeUnreachable()
+{
+    this->scopes.back()->unreachable = true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+Compiler::IsUnreachable()
+{
+    return this->scopes.back()->unreachable;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+Compiler::MarkScopeReachable()
+{
+    this->scopes.back()->unreachable = false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter)
 {
@@ -289,7 +355,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     }
 
     // if failed, don't proceed to next step
-    if (!ret || !this->errors.empty())
+    if (!ret || this->hasErrors)
         return false;
 
     // setup potential debug output stream
@@ -318,7 +384,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     }
 
     // if failed, don't proceed to next step
-    if (!ret || !this->errors.empty())
+    if (!ret || this->hasErrors)
         return false;
 
     // output binary if possible
@@ -366,16 +432,17 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 void 
 Compiler::Error(const std::string& msg, const std::string& file, int line, int column)
 {
-    if (line == -1)
+    if (line == -1) 
     {
         std::string err = Format("%s(%s) : internal error error: %s", "?", "?", msg.c_str());
-        this->errors.push_back(err);
+        this->messages.push_back(err);
     }
     else
     {
         std::string err = Format("%s(%d) : error: %s", file.c_str(), line, msg.c_str());
-        this->errors.push_back(err);
+        this->messages.push_back(err);
     }
+    this->hasErrors = true;
 }
 
 //------------------------------------------------------------------------------
@@ -394,7 +461,9 @@ void
 Compiler::Warning(const std::string& msg, const std::string& file, int line, int column)
 {
     std::string err = Format("%s(%d) : warning: %s", file.c_str(), line, msg.c_str());
-    this->warnings.push_back(err);
+    this->messages.push_back(err);
+    if (this->options.warningsAsErrors)
+        this->hasErrors = true;
 }
 
 //------------------------------------------------------------------------------
@@ -412,7 +481,7 @@ Compiler::Warning(const std::string& msg, const Symbol* sym)
 void 
 Compiler::GeneratorError(const std::string& msg)
 {
-    this->errors.push_back(msg);
+    this->messages.push_back(msg);
 }
 
 //------------------------------------------------------------------------------

@@ -9,10 +9,7 @@
 #include "gpulangcompiler.h"
 #include "v3/compiler.h"
 #include "v3/ast/effect.h"
-#include <fstream>
-#include <algorithm>
-#include <locale>
-#include <iostream>
+#include <time.h>
 
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
@@ -31,10 +28,9 @@ using namespace GPULang;
 /**
 */
 bool
-GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, const std::string& vendor, std::string& output)
+GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, std::string& output)
 {
     std::string fileName = file.substr(file.rfind("/")+1, file.length()-1);
-    std::string vend = "-DVENDOR=" + vendor;
 
     std::string folder = file.substr(0, file.rfind("/")+1);
 
@@ -44,7 +40,6 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
         "-W 0",
         "-a",
         "-v",
-        vend.c_str()
     };
     const unsigned numConstArgs = sizeof(constArgs) / sizeof(char*);
     const unsigned numTotalArgs = numConstArgs + defines.size() + 1;
@@ -168,14 +163,16 @@ Error(const std::string message)
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::string& vendor, const std::vector<std::string>& defines, const std::vector<std::string>& flags, GPULangErrorBlob*& errorBuffer)
+GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, const std::vector<std::string>& flags, GPULangErrorBlob*& errorBuffer)
 {
     bool ret = true;
 
     std::string preprocessed;
     errorBuffer = nullptr;
 
-    if (GPULangPreprocess(file, defines, vendor, preprocessed))
+    clock_t start = clock(), preprocessingTime, parsingTime, compilationTime;
+
+    if (GPULangPreprocess(file, defines, preprocessed))
     {
         ANTLRInputStream input;
         input.load(preprocessed);
@@ -201,6 +198,9 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         // setup preprocessor
         parser.preprocess();
+        preprocessingTime = clock() - start;
+        start = clock();
+        preprocessingTime = preprocessingTime * 1000 / CLOCKS_PER_SEC;
 
         // remove all preprocessor crap left by mcpp
         size_t i;
@@ -229,6 +229,10 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         Effect* effect = parser.entry()->returnEffect;
 
+        parsingTime = clock() - start;
+        start = clock();
+        parsingTime = parsingTime * 1000 / CLOCKS_PER_SEC;
+
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
         {
@@ -248,28 +252,35 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         Compiler compiler;
         compiler.debugPath = output;
         compiler.debugOutput = true;
-        compiler.Setup(target, {}, 1);
+        compiler.Setup(target, defines, flags, 1);
 
-        if (compiler.Compile(effect, binaryWriter, headerWriter))
+        bool res = compiler.Compile(effect, binaryWriter, headerWriter);
+
+        compilationTime = clock() - start;
+        start = clock();
+        compilationTime = compilationTime * 1000 / CLOCKS_PER_SEC;
+
+        // convert error list to string
+        if (!compiler.messages.empty())
         {
-            // success!
-            return true;
-        }
-        else
-        {
-            // convert error list to string
             std::string err;
-            for (size_t i = 0; i < compiler.errors.size(); i++)
+            for (size_t i = 0; i < compiler.messages.size(); i++)
             {
                 if (i > 0)
                     err.append("\n");
-                err.append(compiler.errors[i]);
+                err.append(compiler.messages[i]);
             }
-            if (err.empty())
-                err = "PLACEHOLDER COMPILER ERROR";
+            if (err.empty() && compiler.hasErrors)
+                err = "Unhandled internal compiler error";
             errorBuffer = Error(err);
-            return false;
         }
+
+        printf("Preprocessing took %d milliseconds\n", preprocessingTime);
+        printf("Parsing took %d milliseconds\n", parsingTime);
+        printf("Compilation took %d milliseconds\n", compilationTime);
+
+
+        return res;
     }
     return false;
 }

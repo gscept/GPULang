@@ -45,6 +45,7 @@ bool
 BinaryExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
+    thisResolved->text = this->EvalString();
     if (this->isLhsValue || this->op == '=')
         this->left->isLhsValue = true;
     if (this->isDeclaration)

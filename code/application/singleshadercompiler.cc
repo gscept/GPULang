@@ -123,7 +123,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	std::filesystem::path escapedDst(destFile);
 	std::filesystem::path escapedHeader(destHeader);
 
-    bool res = GPULangCompile(sp.string().c_str(), GPULang::Compiler::Language::SPIRV, escapedDst.string().c_str(), escapedHeader.string().c_str(), "Khronos", defines, flags, errors);
+    bool res = GPULangCompile(sp.string().c_str(), GPULang::Compiler::Language::SPIRV, escapedDst.string().c_str(), escapedHeader.string().c_str(), defines, flags, errors);
     if (!res)
     {
         if (errors)

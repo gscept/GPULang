@@ -10,10 +10,32 @@
 #include "annotation.h"
 #include "types/type.h"
 #include <vector>
-#include <map>
+#include <unordered_map>
 namespace GPULang
 {
+enum ImageFormat
+{
+    InvalidImageFormat,
 
+    // byte
+    RGBA16, RGB10_A2, RGBA8, RG16, RG8,
+    R16, R8, RGBA16_SNORM, RGBA8_SNORM, RG16_SNORM, RG8_SNORM,
+    R16_SNORM, R8_SNORM,
+
+    // float
+    RGBA32F, RGBA16F, RG32F, RG16F, R11G11B10F,
+    R32F, R16F,
+
+    // integer
+    RGBA32I, RGBA16I, RGBA8I, RG32I, RG16I, RG8I,
+    R32I, R16I, R8I,
+
+    // unsigned integer
+    RGBA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
+    R32U, R16U, R8U
+};
+
+extern std::unordered_map<std::string, ImageFormat> StringToFormats;
 struct Variable : public Symbol
 {
     /// constructor
@@ -27,32 +49,6 @@ struct Variable : public Symbol
     Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
-
-    enum ImageFormat
-    {
-        InvalidImageFormat,
-
-        // byte
-        RGBA16, RGB10_A2, RGBA8, RG16, RG8,
-        R16, R8, RGBA16_SNORM, RGBA8_SNORM, RG16_SNORM, RG8_SNORM,
-        R16_SNORM, R8_SNORM,
-
-        // float
-        RGBA32F, RGBA16F, RG32F, RG16F, R11G11B10F,
-        R32F, R16F, 
-
-        // integer
-        RGBA32I, RGBA16I, RGBA8I, RG32I, RG16I, RG8I,
-        R32I, R16I, R8I,
-
-        // unsigned integer
-        RGBA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
-        R32U, R16U, R8U
-    };
-
-    
-    static std::map<std::string, ImageFormat> stringToFormats;
-    static void SetupImageFormats();
 
     static ImageFormat StringToImageFormat(const std::string& format);
     static bool IsImageFormatInteger(ImageFormat format);

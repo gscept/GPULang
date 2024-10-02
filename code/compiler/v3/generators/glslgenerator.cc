@@ -570,47 +570,47 @@ std::map<std::string, std::string> typeToGlslType =
     { "void", "void" }
 };
 
-std::map<Variable::ImageFormat, std::string> imageFormatToGlsl =
+std::map<ImageFormat, std::string> imageFormatToGlsl =
 {
-    { Variable::ImageFormat::RGBA16, "rgba16" },
-    { Variable::ImageFormat::RGB10_A2, "rgb10_a2" },
-    { Variable::ImageFormat::RGBA8, "rgba8" },
-    { Variable::ImageFormat::RG16, "rg16" },
-    { Variable::ImageFormat::RG8, "rg8" },
-    { Variable::ImageFormat::R16, "r16" },
-    { Variable::ImageFormat::R8, "r8" },
-    { Variable::ImageFormat::RGBA16_SNORM, "rgba16_snorm" },
-    { Variable::ImageFormat::RGBA8_SNORM, "rgba8_snorm" },
-    { Variable::ImageFormat::RG16_SNORM, "rg16_snorm" },
-    { Variable::ImageFormat::RG8_SNORM, "rg8_snorm" },
-    { Variable::ImageFormat::R16_SNORM, "r16_snorm" },
-    { Variable::ImageFormat::R8_SNORM, "r8_snorm" },
-    { Variable::ImageFormat::RGBA32F, "rgba32f" },
-    { Variable::ImageFormat::RGBA16F, "rgba16f" },
-    { Variable::ImageFormat::RG32F, "rg32f" },
-    { Variable::ImageFormat::RG16F, "rg16f" },
-    { Variable::ImageFormat::R11G11B10F, "r11f_g11f_b10f" },
-    { Variable::ImageFormat::R32F, "r32f" },
-    { Variable::ImageFormat::R16F, "r16f" },
-    { Variable::ImageFormat::RGBA32I, "rga32i" },
-    { Variable::ImageFormat::RGBA16I, "rgba16i" },
-    { Variable::ImageFormat::RGBA8I, "rgba8i" },
-    { Variable::ImageFormat::RG32I, "rg32i" },
-    { Variable::ImageFormat::RG16I, "rg16i" },
-    { Variable::ImageFormat::RG8I, "rg8i" },
-    { Variable::ImageFormat::R32I, "r32i" },
-    { Variable::ImageFormat::R16I, "r16i" },
-    { Variable::ImageFormat::R8I, "r8i" },
-    { Variable::ImageFormat::RGBA32U, "rga32ui" },
-    { Variable::ImageFormat::RGBA16U, "rgba16ui" },
-    { Variable::ImageFormat::RGB10_A2U, "rgb10_a2ui" },
-    { Variable::ImageFormat::RGBA8U, "rgba8ui" },
-    { Variable::ImageFormat::RG32U, "rg32ui" },
-    { Variable::ImageFormat::RG16U, "rg16ui" },
-    { Variable::ImageFormat::RG8U, "rg8ui" },
-    { Variable::ImageFormat::R32U, "r32ui" },
-    { Variable::ImageFormat::R16U, "r16ui" },
-    { Variable::ImageFormat::R8U, "r8ui" }
+    { ImageFormat::RGBA16, "rgba16" }
+    , { ImageFormat::RGB10_A2, "rgb10_a2" }
+    , { ImageFormat::RGBA8, "rgba8" }
+    , { ImageFormat::RG16, "rg16" }
+    , { ImageFormat::RG8, "rg8" }
+    , { ImageFormat::R16, "r16" }
+    , { ImageFormat::R8, "r8" }
+    , { ImageFormat::RGBA16_SNORM, "rgba16_snorm" }
+    , { ImageFormat::RGBA8_SNORM, "rgba8_snorm" }
+    , { ImageFormat::RG16_SNORM, "rg16_snorm" }
+    , { ImageFormat::RG8_SNORM, "rg8_snorm" }
+    , { ImageFormat::R16_SNORM, "r16_snorm" }
+    , { ImageFormat::R8_SNORM, "r8_snorm" }
+    , { ImageFormat::RGBA32F, "rgba32f" }
+    , { ImageFormat::RGBA16F, "rgba16f" }
+    , { ImageFormat::RG32F, "rg32f" }
+    , { ImageFormat::RG16F, "rg16f" }
+    , { ImageFormat::R11G11B10F, "r11f_g11f_b10f" }
+    , { ImageFormat::R32F, "r32f" }
+    , { ImageFormat::R16F, "r16f" }
+    , { ImageFormat::RGBA32I, "rga32i" }
+    , { ImageFormat::RGBA16I, "rgba16i" }
+    , { ImageFormat::RGBA8I, "rgba8i" }
+    , { ImageFormat::RG32I, "rg32i" }
+    , { ImageFormat::RG16I, "rg16i" }
+    , { ImageFormat::RG8I, "rg8i" }
+    , { ImageFormat::R32I, "r32i" }
+    , { ImageFormat::R16I, "r16i" }
+    , { ImageFormat::R8I, "r8i" }
+    , { ImageFormat::RGBA32U, "rga32ui" }
+    , { ImageFormat::RGBA16U, "rgba16ui" }
+    , { ImageFormat::RGB10_A2U, "rgb10_a2ui" }
+    , { ImageFormat::RGBA8U, "rgba8ui" }
+    , { ImageFormat::RG32U, "rg32ui" }
+    , { ImageFormat::RG16U, "rg16ui" }
+    , { ImageFormat::RG8U, "rg8ui" }
+    , { ImageFormat::R32U, "r32ui" }
+    , { ImageFormat::R16U, "r16ui" }
+    , { ImageFormat::R8U, "r8ui" }
 };
 
 void GenerateExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode);
@@ -916,9 +916,11 @@ GenerateSwitchStatementGLSL(Compiler* compiler, Statement* statement, std::strin
     IndentationLevel++;
 
     std::string cases;
-    for (size_t i = 0; i < switchStatement->caseValues.size(); i++)
+    for (size_t i = 0; i < switchStatement->caseExpressions.size(); i++)
     {
-        std::string caseValue = switchStatement->caseValues[i];
+        Expression* caseExpression = switchStatement->caseExpressions[i];
+        std::string caseValue;
+        GenerateExpressionGLSL(compiler, caseExpression, caseValue);
         std::string caseStatement;
         GenerateStatementGLSL(compiler, switchStatement->caseStatements[i], caseStatement);
         std::string indentation = GenerateIndentation();

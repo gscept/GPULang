@@ -78,6 +78,7 @@ this->constructors.push_back(activeFunction);
 namespace GPULang
 {
 
+extern std::vector<Symbol*> DefaultTypes;
 enum class TypeCode
 {
     InvalidType
@@ -194,6 +195,10 @@ struct Type : public Symbol
     const bool IsMatrix() const;
     /// Calculate byte size
     uint32_t CalculateSize() const;
+    /// Calculate alignment
+    uint32_t CalculateAlignment() const;
+
+    static uint32_t Align(uint32_t alignant, uint32_t alignment);
 
     TypeCode baseType;
     uint32_t rowSize;
@@ -272,7 +277,7 @@ struct Type : public Symbol
     std::vector<Symbol*> GetSymbols(const std::string str);
 
     /// setup all default shader types, like float, int, vec4, etc
-    static std::vector<Symbol*> SetupDefaultTypes();
+    static void SetupDefaultTypes();
 
 };
 

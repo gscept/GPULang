@@ -40,7 +40,7 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language
-    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, unsigned int version);
+    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, const std::vector<std::string>& flags, unsigned int version);
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
@@ -63,6 +63,7 @@ struct Compiler
         std::vector<Symbol*> symbols;
         std::multimap<std::string, Symbol*> symbolLookup;
         Symbol* owningSymbol;
+        bool unreachable;
     };
 
     /// create new scope and push it to the stack
@@ -77,6 +78,14 @@ struct Compiler
     bool IsScopeType();
     /// get scope owner
     Symbol* GetScopeOwner();
+    /// Return true if any parent scope is of a certain type
+    Symbol* GetParentScopeOwner(Symbol::SymbolType type);
+    /// Mark scope unreachable for subsequent calls
+    void MarkScopeUnreachable();
+    /// Returns true if scope is unreachable (after return, break or continue statements)
+    bool IsUnreachable();
+    /// Resets the unreachable state of a scope
+    void MarkScopeReachable();
 
     struct LocalScope
     {
@@ -144,8 +153,9 @@ struct Compiler
     void OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
     std::vector<std::string> defines;
-    std::vector<std::string> errors;
-    std::vector<std::string> warnings;
+
+    std::vector<std::string> messages;
+    bool hasErrors;
 
     std::vector<Symbol*> symbols;
     size_t symbolIterator;
@@ -155,6 +165,8 @@ struct Compiler
     Validator* validator = nullptr;
     Generator* generator = nullptr;
     Generator* headerGenerator = nullptr;
+
+    bool branchReturns;
 
     std::vector<Scope*> scopes;
 
@@ -166,6 +178,14 @@ struct Compiler
     bool debugOutput;
 
     bool ignoreReservedWords;
+
+    struct Options
+    {
+        uint8_t warningsAsErrors : 1;
+
+        uint8_t validate : 1;
+        uint8_t optimize : 1;
+    } options;
 };
 
 //------------------------------------------------------------------------------

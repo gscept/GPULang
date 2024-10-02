@@ -9,12 +9,14 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
-#include <map>
+#include "ast/symbol.h"
+#include <unordered_map>
 #include <set>
 #include <stack>
 namespace GPULang
 {
 
+struct Statement;
 struct SPIRVResult
 {
     uint32_t name = 0xFFFFFFFF;
@@ -34,6 +36,8 @@ struct SPIRVResult
         return SPIRVResult(0xFFFFFFFF, 0xFFFFFFFF);
     }
 };
+
+
 
 class SPIRVGenerator : public Generator
 {
@@ -72,18 +76,19 @@ public:
     uint32_t ReserveName();
     /// Add op with reserved name
     void AddReserved(std::string op, uint32_t name, std::string comment = "");
+    /// Add function variable declaration
+    uint32_t AddVariableDeclaration(uint32_t type, uint32_t init, std::string comment = "");
 
     /// Find symbol and assert if fails
     uint32_t FindSymbolMapping(std::string value);
     /// Replace symbol mapping, assumes symbol already exists
     void ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping);
 
-    std::set<std::string> requiredCapabilities;
     uint32_t symbolCounter;
 
     struct Scope
     {
-        std::map<std::string, uint32_t> symbols;
+        std::unordered_map<std::string, uint32_t> symbols;
     };
     std::vector<Scope> scopeStack;
     std::set<std::string> capabilities;
@@ -95,14 +100,24 @@ public:
     std::string decorations;
     std::string declarations;
     std::string header;
+    std::string functions;
+    
     std::string functional;
-    std::map<std::string, uint32_t> extensions;
-    std::map<std::string, std::set<std::string>> decorationMap;
 
-    uint32_t returnLabel, continueLabel, breakLabel;
+
+    std::unordered_map<std::string, uint32_t> extensions;
+    std::unordered_map<std::string, std::set<std::string>> decorationMap;
+
+    std::string variableDeclarations;
+
+    struct MergeBlock
+    {
+        uint32_t continueLabel, breakLabel;
+    } mergeBlocks[256];
+    uint32_t mergeBlockCounter;
 
     using IntrinsicMappingFunction = std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&)>;
-    std::map<Function*, IntrinsicMappingFunction> intrinsicMap;
+    std::unordered_map<Function*, IntrinsicMappingFunction> intrinsicMap;
 };
 
 } // namespace GPULang

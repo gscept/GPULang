@@ -44,92 +44,94 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-std::set<std::string> readWriteAccessFlags =
+static std::set<std::string> readWriteAccessFlags =
 {
     "mutable", "no_read", "atomic", "volatile"
 };
 
-std::set<std::string> readWriteTextureQualifiers =
+static std::set<std::string> readWriteTextureQualifiers =
 {
     "group", "binding"
 };
 
-std::set<std::string> textureQualifiers =
+static std::set<std::string> textureQualifiers =
 {
     "group", "binding"
 };
 
-std::set<std::string> scalarQualifiers =
+static std::set<std::string> scalarQualifiers =
 {
     "const", "workgroup",
 };
 
-std::set<std::string> samplerQualifiers =
+static std::set<std::string> samplerQualifiers =
 {
     "group", "binding"
 };
 
-std::set<std::string> constantBufferQualifiers =
+static std::set<std::string> constantBufferQualifiers =
 {
     "group", "binding"
 };
 
-std::set<std::string> storageBufferAccessFlags =
+static std::set<std::string> storageBufferAccessFlags =
 {
     "mutable", "no_read", "atomic", "volatile"
 };
 
-std::set<std::string> storageBufferQualifiers =
+static std::set<std::string> storageBufferQualifiers =
 {
     "group", "binding"
 };
 
-std::set<std::string> functionAttributes =
+static std::set<std::string> functionAttributes =
 {
-    "shader", "local_size_x", "local_size_y", "local_size_z", "early_depth"
+    "entry_point", "local_size_x", "local_size_y", "local_size_z", "early_depth"
+    , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "topology", "patch_type", "patch_size", "partition",
     "prototype"
 };
 
-std::set<std::string> parameterAccessFlags =
+static std::set<std::string> parameterAccessFlags =
 {
     "in", "out", "in_out"
 };
 
-std::set<std::string> parameterQualifiers =
+static std::set<std::string> parameterQualifiers =
 {
     "patch", "no_interpolate", "no_perspective", "binding", "pixel_origin"
 };
 
-std::set<std::string> structureQualifiers =
+static std::set<std::string> structureQualifiers =
 {
     "group", "binding", "push"
 };
 
-std::set<std::string> pixelShaderInputQualifiers =
+static std::set<std::string> pixelShaderInputQualifiers =
 {
     "binding", "no_interpolate", "no_perspective", "pixel_origin"
 };
 
-std::set<std::string> hullOutputQualifiers =
+static std::set<std::string> hullOutputQualifiers =
 {
     "patch", "domain"
 };
 
-std::set<std::string> domainInputQualifiers =
+static std::set<std::string> domainInputQualifiers =
 {
     "binding", "patch"
 };
 
-std::set<std::string> attributesRequiringEvaluation =
+static std::set<std::string> attributesRequiringEvaluation =
 {
     "binding", "group", "local_size_x", "local_size_y", "local_size_z"
+    , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "topology", "patch_type", "patch_size", "partition"
 };
 
-std::set<std::string> pointerQualifiers =
+static std::set<std::string> pointerQualifiers =
 {
     "uniform", "mutable", "read", "write", "inline", "read_write", "atomic", "volatile"
 };
@@ -145,7 +147,7 @@ Validator::Validator()
     this->allowedReadWriteTextureAttributes.insert(readWriteTextureQualifiers.begin(), readWriteTextureQualifiers.end());
 
     // add formats
-    for (auto it : Variable::stringToFormats)
+    for (auto it : StringToFormats)
     {
         this->allowedReadWriteTextureAttributes.insert(it.first);
     }
@@ -224,6 +226,8 @@ bool
 Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
+    type->symbols.clear();
+    type->lookup.clear();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
     {
@@ -283,11 +287,17 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         }
         else if (sym->symbolType == Symbol::SymbolType::EnumerationType)
         {
+            Enumeration* en = static_cast<Enumeration*>(sym);
+            en->lookup.clear();
+            en->symbols.clear();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
         }
         else if (sym->symbolType == Symbol::SymbolType::StructureType)
         {
+            Structure* struc = static_cast<Structure*>(sym);
+            struc->lookup.clear();
+            struc->symbols.clear();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
         }
@@ -491,44 +501,56 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        if (attr.name == "shader")
+        if (attr.name == "entry_point")
         {
-            funResolved->isShader = true;
+            funResolved->isEntryPoint = true;
         }
         else if (attr.name == "local_size_x")
-            if (!attr.expression->EvalUInt(funResolved->computeShaderWorkGroupSize[0]))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[0]))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
         else if (attr.name == "local_size_y")
-            if (!attr.expression->EvalUInt(funResolved->computeShaderWorkGroupSize[1]))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[1]))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
         else if (attr.name == "local_size_z")
-            if (!attr.expression->EvalUInt(funResolved->computeShaderWorkGroupSize[2]))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[2]))
+            {
+                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                return false;
+            }
+        else if (attr.name == "group_size")
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.groupSize))
+            {
+                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                return false;
+            }
+        else if (attr.name == "groups_per_workgroup")
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.groupsPerWorkgroup))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
         else if (attr.name == "early_depth")
-            funResolved->earlyDepth = true;
+            funResolved->executionModifiers.earlyDepth = true;
         else if (attr.name == "invocations")
-            if (!attr.expression->EvalUInt(funResolved->invocations))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.invocations))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
         else if (attr.name == "max_output_vertices")
-            if (!attr.expression->EvalUInt(funResolved->maxOutputVertices))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.maxOutputVertices))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
         else if (attr.name == "patch_size")
-            if (!attr.expression->EvalUInt(funResolved->patchSize))
+            if (!attr.expression->EvalUInt(funResolved->executionModifiers.patchSize))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
@@ -536,8 +558,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "winding")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->windingOrder = Function::__Resolved::WindingOrderFromString(str);
-            if (funResolved->windingOrder == Function::__Resolved::InvalidWindingOrder)
+            funResolved->executionModifiers.windingOrder = Function::__Resolved::WindingOrderFromString(str);
+            if (funResolved->executionModifiers.windingOrder == Function::__Resolved::InvalidWindingOrder)
             {
                 compiler->Error(Format("Attribute 'winding' supports values: cw/clockwise, ccw/counter_clockwise, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -546,8 +568,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "input_topology")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->inputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
-            if (funResolved->inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+            funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
+            if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
             {
                 compiler->Error(Format("Attribute 'input_topology' supports values: points, lines, lines_adjacency, triangles, triangles_adjacency, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -556,10 +578,10 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "output_topology")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->outputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
-            if (funResolved->outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology 
-                || funResolved->outputPrimitiveTopology == Function::__Resolved::LinesAdjacency
-                || funResolved->outputPrimitiveTopology == Function::__Resolved::TrianglesAdjacency)
+            funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
+            if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology
+                || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::LinesAdjacency
+                || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::TrianglesAdjacency)
             {
                 compiler->Error(Format("Attribute 'output_topology' supports values: points, lines, triangles, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -568,8 +590,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "patch_type")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->patchType = Function::__Resolved::PatchTypeFromString(str);
-            if (funResolved->patchType == Function::__Resolved::InvalidPatchType)
+            funResolved->executionModifiers.patchType = Function::__Resolved::PatchTypeFromString(str);
+            if (funResolved->executionModifiers.patchType == Function::__Resolved::InvalidPatchType)
             {
                 compiler->Error(Format("Attribute 'patch_type' supports values: isolines, triangles, quads, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -578,8 +600,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "partition")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->partitionMethod = Function::__Resolved::PartitionMethodFromString(str);
-            if (funResolved->partitionMethod == Function::__Resolved::InvalidPartitionMethod)
+            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethodFromString(str);
+            if (funResolved->executionModifiers.partitionMethod == Function::__Resolved::InvalidPartitionMethod)
             {
                 compiler->Error(Format("Attribute 'partition' supports values: steps/integer, even/fract_even, odd/fract_odd, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -597,8 +619,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "pixel_origin")
         {
             std::string str = attr.expression->EvalString();
-            funResolved->pixelOrigin = Function::__Resolved::PixelOriginFromString(str);
-            if (funResolved->pixelOrigin == Function::__Resolved::InvalidPixelOrigin)
+            funResolved->executionModifiers.pixelOrigin = Function::__Resolved::PixelOriginFromString(str);
+            if (funResolved->executionModifiers.pixelOrigin == Function::__Resolved::InvalidPixelOrigin)
             {
                 compiler->Error(Format("Attribute 'pixel_origin' supports values: lower/lower_left, upper/upper_left, center, but got '%s'", str.c_str()), symbol);
                 return false;
@@ -607,21 +629,29 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     // validate attributes
-    if (!funResolved->isShader)
+    if (!funResolved->isEntryPoint)
     {
-        if (funResolved->earlyDepth)
+        if (funResolved->executionModifiers.earlyDepth)
         {
             compiler->Error("'early_depth' is only allowed on functions with the 'shader' qualifier", symbol);
             return false;
         }
 
         if (
-            funResolved->computeShaderWorkGroupSize[0] > 1
-            || funResolved->computeShaderWorkGroupSize[1] > 1
-            || funResolved->computeShaderWorkGroupSize[2] > 1
+            funResolved->executionModifiers.computeShaderWorkGroupSize[0] > 1
+            || funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1
+            || funResolved->executionModifiers.computeShaderWorkGroupSize[2] > 1
             )
         {
             compiler->Error("'local_size_(x/y/z)' is only allowed on functions with the 'shader' qualifier", symbol);
+            return false;
+        }
+    }
+    else
+    {
+        if (fun->returnType != Type::FullType{ "void" })
+        {
+            compiler->Error("Entry point may only return 'void'", symbol);
             return false;
         }
     }
@@ -633,8 +663,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     for (Variable* var : fun->parameters)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        varResolved->usageBits.flags.isParameter = !funResolved->isShader;
-        varResolved->usageBits.flags.isShaderParameter = funResolved->isShader;
+        varResolved->usageBits.flags.isParameter = !funResolved->isEntryPoint;
+        varResolved->usageBits.flags.isShaderParameter = funResolved->isEntryPoint;
         this->ResolveVariable(compiler, var);
     }
 
@@ -737,6 +767,14 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         && !this->ResolveStatement(compiler, fun->ast)
         )
     {
+        return false;
+    }
+
+    funResolved->hasExplicitReturn = compiler->branchReturns;
+
+    if (fun->returnType != Type::FullType{ "void" } && fun->ast != nullptr && !funResolved->hasExplicitReturn)
+    {
+        compiler->Error(Format("All paths don't return a value, expected to return value of '%s'", fun->returnType.ToString().c_str()), fun);
         return false;
     }
 
@@ -1601,9 +1639,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
 
         // check image formats
-        if (map_contains(Variable::stringToFormats, attr.name))
+        if (map_contains(StringToFormats, attr.name))
         {
-            varResolved->imageFormat = Variable::stringToFormats[attr.name];
+            varResolved->imageFormat = StringToFormats[attr.name];
         }
     }
 
@@ -1716,7 +1754,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     // check if image formats have been resolved
     if (type->category == Type::ReadWriteTextureCategory 
-        && varResolved->imageFormat == Variable::InvalidImageFormat
+        && varResolved->imageFormat == InvalidImageFormat
         && !varResolved->usageBits.flags.isParameter)
     {
         compiler->Error(Format("readWriteTexture variable '%s' must provide a format qualifier", varResolved->name.c_str()), var);
@@ -1884,37 +1922,38 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 bool 
 Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
 {
+    if (compiler->IsUnreachable())
+    {
+        compiler->Warning(Format("Unreachable code"), symbol);
+    }
+
     switch (symbol->symbolType)
     {
         case Symbol::BreakStatementType:
         {
             auto statement = reinterpret_cast<BreakStatement*>(symbol);
-            Symbol* scopeOwner = compiler->GetScopeOwner();
-            if (scopeOwner == nullptr
-                || !(
-                scopeOwner->symbolType == Symbol::ForStatementType
-                || scopeOwner->symbolType == Symbol::WhileStatementType
-                || scopeOwner->symbolType == Symbol::SwitchStatementType)
-                )
+            Symbol* forOwner = compiler->GetParentScopeOwner(Symbol::ForStatementType);
+            Symbol* whileOwner = compiler->GetParentScopeOwner(Symbol::WhileStatementType);
+            Symbol* switchOwner = compiler->GetParentScopeOwner(Symbol::SwitchStatementType);
+            if (forOwner == nullptr && whileOwner == nullptr && switchOwner == nullptr)
             {
                 compiler->Error(Format("'break' is only valid inside a for, while or switch statement body"), statement);
                 return false;
             }
+            compiler->MarkScopeUnreachable();
             return true;
         }
         case Symbol::ContinueStatementType:
         {
             auto statement = reinterpret_cast<ContinueStatement*>(symbol);
-            Symbol* scopeOwner = compiler->GetScopeOwner();
-            if (scopeOwner == nullptr
-                || !(
-                scopeOwner->symbolType == Symbol::ForStatementType
-                || scopeOwner->symbolType == Symbol::WhileStatementType)
-                )
+            Symbol* forOwner = compiler->GetParentScopeOwner(Symbol::ForStatementType);
+            Symbol* whileOwner = compiler->GetParentScopeOwner(Symbol::WhileStatementType);
+            if (forOwner == nullptr && whileOwner == nullptr)
             {
                 compiler->Error(Format("'continue' is only valid inside a for or while statement body"), statement);
                 return false;
             }
+            compiler->MarkScopeUnreachable();
             return true;
         }
         case Symbol::ExpressionStatementType:
@@ -1951,25 +1990,57 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::IfStatementType:
         {
             auto statement = reinterpret_cast<IfStatement*>(symbol);
-            return statement->condition->Resolve(compiler) 
-                && this->ResolveStatement(compiler, statement->ifStatement) 
-                && statement->elseStatement == nullptr ? true : this->ResolveStatement(compiler, statement->elseStatement);
+            if (!statement->condition->Resolve(compiler))
+                return false;
+            if (!this->ResolveStatement(compiler, statement->ifStatement))
+                return false;
+            bool ifReturns = compiler->branchReturns;
+            compiler->branchReturns = false;
+            if (statement->elseStatement)
+            {
+                if (!this->ResolveStatement(compiler, statement->elseStatement))
+                    return false;
+                ifReturns &= compiler->branchReturns;
+            }
+            compiler->branchReturns = ifReturns;
+            return true;
         }
         case Symbol::ReturnStatementType:
         {
             auto statement = reinterpret_cast<ReturnStatement*>(symbol);
-            Symbol* scopeOwner = compiler->GetScopeOwner();
-            if (scopeOwner == nullptr
-                || scopeOwner->symbolType != Symbol::FunctionType)
+            Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
+            if (scopeOwner == nullptr)
             {
                 compiler->Error(Format("'return' is only valid inside function body"), statement);
                 return false;
             }
+            Function* functionOwner = static_cast<Function*>(scopeOwner);
+            Function::__Resolved* functionOwnerResolved = Symbol::Resolved(functionOwner);
+            compiler->branchReturns = true;
 
+            bool ret = true;
             if (statement->returnValue != nullptr)
-                return statement->returnValue->Resolve(compiler);
-            else 
-                return true;
+            {
+                ret = statement->returnValue->Resolve(compiler);
+                
+                Type::FullType type;
+                statement->returnValue->EvalType(type);
+                if (functionOwner->returnType != type)
+                {
+                    compiler->Error(Format("Function expects return of type '%s', got '%s'", functionOwner->returnType.ToString().c_str(), type.ToString().c_str()), statement);
+                    return false;
+                }
+            }
+            else
+            {
+                if (functionOwner->returnType != Type::FullType{ "void" })
+                {
+                    compiler->Error(Format("Function expects return of type '%s', got 'void'", functionOwner->returnType.ToString().c_str()), statement);
+                    return false;
+                }
+            }
+            compiler->MarkScopeUnreachable();
+            return ret;
         }
         case Symbol::ScopeStatementType:
         {
@@ -1996,13 +2067,6 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             auto statement = reinterpret_cast<SwitchStatement*>(symbol);
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
 
-            for (Symbol* sym : statement->caseStatements)
-            {
-                if (!this->ResolveStatement(compiler, sym))
-                {
-                    return false;
-                }
-            }
             if (statement->switchExpression->Resolve(compiler))
             {
                 Type::FullType type;
@@ -2018,7 +2082,36 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             {
                 return false;
             }
-            return this->ResolveStatement(compiler, statement->defaultStatement);
+
+            bool switchReturns = true;
+            for (size_t i = 0; i < statement->caseExpressions.size(); i++)
+            {
+                if (!statement->caseExpressions[i]->Resolve(compiler))
+                {
+                    return false;
+                }
+
+                compiler->branchReturns = false;
+                if (statement->caseStatements[i] != nullptr)
+                {
+                    if (!this->ResolveStatement(compiler, statement->caseStatements[i]))
+                    {
+                        return false;
+                    }
+                    switchReturns &= compiler->branchReturns;
+                }
+                compiler->branchReturns = false;
+                compiler->MarkScopeReachable();
+            }
+            if (statement->defaultStatement)
+            {
+                if (!this->ResolveStatement(compiler, statement->defaultStatement))
+                    return false;
+                switchReturns &= compiler->branchReturns;
+                compiler->branchReturns = false;
+            }
+            compiler->branchReturns = switchReturns;
+            return true;
         }
         case Symbol::WhileStatementType:
         {
@@ -2106,102 +2199,153 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     }
     else
     {
-        if (funResolved->earlyDepth)
+        if (funResolved->executionModifiers.earlyDepth)
             compiler->Warning(Format("Function '%s' has attribute 'early_depth' but is not used as a pixel shader", fun->name.c_str()), symbol);
     }
 
     if (funResolved->shaderUsage.flags.isHullShader)
     {
-        if (funResolved->patchSize == Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.patchSize == Function::__Resolved::INVALID_SIZE)
         {
-            compiler->Error(Format("Hull shader '%s' is hull/tessellation control shader but does not define 'patch_size'", fun->name.c_str()), symbol);
+            compiler->Error(Format("Hull shader '%s' does not define 'patch_size'", fun->name.c_str()), symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Points)
+        {
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'points", fun->name.c_str()), symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Lines)
+        {
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'lines", fun->name.c_str()), symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::LinesAdjacency)
+        {
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'lines_adjacency", fun->name.c_str()), symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::TrianglesAdjacency)
+        {
+            compiler->Error(Format("Hull shader '%s' doesn't support input topology 'triangles_adjacency", fun->name.c_str()), symbol);
             return false;
         }
     }
     else
     {
-        if (funResolved->patchSize != Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.patchSize != Function::__Resolved::INVALID_SIZE)
             compiler->Warning(Format("Function '%s' has attribute 'patch_size' but is not used as a HullShader/TessellationControlShader", fun->name.c_str()), symbol);
     }
 
     if (funResolved->shaderUsage.flags.isDomainShader)
     {
         // validate required qualifiers
-        if (funResolved->patchType != Function::__Resolved::InvalidPatchType)
+        if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
         {
             compiler->Warning(Format("Domain shader '%s' does not define 'patch_type' for DomainShader/TessellationEvaluationShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->patchType = Function::__Resolved::PatchType::TrianglePatch;
+            funResolved->executionModifiers.patchType = Function::__Resolved::PatchType::TrianglePatch;
         }
-        if (funResolved->partitionMethod != Function::__Resolved::InvalidPartitionMethod)
+        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
         {
             compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'steps'", fun->name.c_str()), symbol);
-            funResolved->partitionMethod = Function::__Resolved::PartitionMethod::IntegerSteps;
+            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethod::IntegerSteps;
         }
     }
     else
     {
-        if (funResolved->patchType != Function::__Resolved::InvalidPatchType)
+        if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
             compiler->Warning(Format("Function '%s' has attribute 'patch_type' but is not used as a DomainShader/TessellationEvaluationShader", fun->name.c_str()), symbol);
-        if (funResolved->partitionMethod != Function::__Resolved::InvalidPartitionMethod)
+        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
             compiler->Warning(Format("Function '%s' has attribute 'partition' but is not used as a DomainShader/TessellationEvaluationShader", fun->name.c_str()), symbol);
     }
 
     if (funResolved->shaderUsage.flags.isGeometryShader)
     {
-        if (funResolved->maxOutputVertices == Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
             compiler->Error(Format("Geometry shader '%s' does not define 'max_output_vertices' for GeometryShader", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
         {
             compiler->Warning(Format("Geometry shader '%s' does not define 'input_topology' for GeometryShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->inputPrimitiveTopology = Function::__Resolved::Triangles;
+            funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::Triangles;
         }
-        if (funResolved->outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
         {
             compiler->Warning(Format("Geometry shader '%s' does not define 'output_topology' for GeometryShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
-            funResolved->outputPrimitiveTopology = Function::__Resolved::Triangles;
+            funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::Triangles;
         }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Quads)
+        {
+            compiler->Error(Format("Geometry shader '%s' doesn't support input topology 'quads", fun->name.c_str()), symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::PrimitiveTopology::Isolines)
+        {
+            compiler->Error(Format("Geometry shader '%s' doesn't support input topology 'isolines", fun->name.c_str()), symbol);
+            return false;
+        }
+
     }
     else
     {
-        if (funResolved->invocations != Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.invocations != Function::__Resolved::INVALID_SIZE)
             compiler->Warning(Format("Function '%s' has attribute 'invocations' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->maxOutputVertices != Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.maxOutputVertices != Function::__Resolved::INVALID_SIZE)
             compiler->Warning(Format("Function '%s' has attribute 'max_output_vertices' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->inputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.inputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
             compiler->Warning(Format("Function '%s' has attribute 'input_topology' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->outputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
+        if (funResolved->executionModifiers.outputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
             compiler->Warning(Format("Function '%s' has attribute 'output_topology' but is not used as a GeometryShader", fun->name.c_str()), symbol);
     }
 
     if (funResolved->shaderUsage.flags.isComputeShader)
     {
-        if (funResolved->computeShaderWorkGroupSize[0] <= 0)
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
             compiler->Error(Format("Compute shader must declare 'local_size_x' bigger than or equal to 1", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->computeShaderWorkGroupSize[1] <= 0)
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] <= 0)
         {
             compiler->Error(Format("Compute shader must declare 'local_size_y' bigger than or equal to 1", fun->name.c_str()), symbol);
             return false;
         }
-        if (funResolved->computeShaderWorkGroupSize[2] <= 0)
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[2] <= 0)
         {
             compiler->Error(Format("Compute shader must declare 'local_size_z' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.groupSize <= 0)
+        {
+            compiler->Error(Format("Compute shader must declare 'group_size' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.groupsPerWorkgroup <= 0)
+        {
+            compiler->Error(Format("Compute shader must declare 'groups_per_workgroup' bigger than or equal to 1", fun->name.c_str()), symbol);
             return false;
         }
     }
     else
     {
-        if (funResolved->computeShaderWorkGroupSize[0] > 1)
-            compiler->Warning(Format("Function '%s' has attribute 'local_size_x' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->computeShaderWorkGroupSize[1] > 1)
-            compiler->Warning(Format("Function '%s' has attribute 'local_size_y' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->computeShaderWorkGroupSize[2] > 1)
-            compiler->Warning(Format("Function '%s' has attribute 'local_size_z' but is not used as a compute shader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] > 1)
+            compiler->Warning(Format("Function '%s' sets attribute 'local_size_x' but is not used as a compute shader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1)
+            compiler->Warning(Format("Function '%s' sets attribute 'local_size_y' but is not used as a compute shader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[2] > 1)
+            compiler->Warning(Format("Function '%s' sets attribute 'local_size_z' but is not used as a compute shader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.groupSize != 64)
+            compiler->Warning(Format("Function '%s' sets attribute 'group_size' but is not used as a compute shader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
+            compiler->Warning(Format("Function '%s' sets attribute 'groups_per_workgroup' but is not used as a compute shader", fun->name.c_str()), symbol);
     }
 
     return true;
