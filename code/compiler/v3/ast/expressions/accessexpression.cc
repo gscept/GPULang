@@ -82,22 +82,22 @@ AccessExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    std::string member;
-    this->right->EvalSymbol(member);
+    this->right->EvalSymbol(thisResolved->rightSymbol);
+    thisResolved->swizzleMask.mask = 0x0;
 
     if (thisResolved->lhsType->IsVector())
     {
         // eval swizzled type, since a vector can expand for example vec2 -> vec4 by using .xxyy;
         Type::SwizzleMask swizzle;
-        if (!Type::StringToSwizzleMask(member, swizzle))
+        if (!Type::StringToSwizzleMask(thisResolved->rightSymbol, swizzle))
         {
-            compiler->Error(Format("Invalid swizzle mask '%s'", member.c_str()), this);
+            compiler->Error(Format("Invalid swizzle mask '%s'", thisResolved->rightSymbol.c_str()), this);
             return false;
         }
         unsigned biggestComponent = Type::SwizzleMaskBiggestComponent(swizzle);
         if (biggestComponent > thisResolved->lhsType->columnSize)
         {
-            compiler->Error(Format("Swizzle '%s' indexes beyond vector column size '%s'", member.c_str(), thisResolved->lhsType->name.c_str()), this);
+            compiler->Error(Format("Swizzle '%s' indexes beyond vector column size '%s'", thisResolved->rightSymbol.c_str(), thisResolved->lhsType->name.c_str()), this);
             return false;
         }
         thisResolved->swizzleMask = swizzle;
@@ -107,10 +107,10 @@ AccessExpression::Resolve(Compiler* compiler)
     }
     else
     {
-        Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(member));
+        Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
         if (memberVar == nullptr)
         {
-            compiler->Error(Format("Type does not have member or method '%s'", member.c_str()), this);
+            compiler->Error(Format("Type does not have member or method '%s'", thisResolved->rightSymbol.c_str()), this);
             return false;
         }
         else

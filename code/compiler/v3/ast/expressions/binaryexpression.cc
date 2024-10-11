@@ -90,6 +90,12 @@ BinaryExpression::Resolve(Compiler* compiler)
     // If assignment, allow if types are identical
     if (thisResolved->leftType != thisResolved->rightType)
     {
+        if (compiler->options.disallowImplicitConversion)
+        {
+            compiler->Error(Format("Implicit conversion between '%s' and '%s' is disallowed. Either turn off 'disallowImplicitConversion' or explicitly convert types", thisResolved->leftType.ToString().c_str(), thisResolved->rightType.ToString().c_str()), this);
+            return false;
+        }
+
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
         std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
         Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);

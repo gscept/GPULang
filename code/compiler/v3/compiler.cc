@@ -35,6 +35,7 @@ Compiler::Compiler()
     this->options.validate = true;
     this->options.optimize = false;
     this->options.warningsAsErrors = false;
+    this->options.emitTimings = false;
     this->branchReturns = false;
 
     // push global scope for all the builtins
@@ -88,7 +89,7 @@ Compiler::~Compiler()
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, const std::vector<std::string>& flags, unsigned int version)
+Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version)
 {
     this->lang = lang;
     switch (lang)
@@ -108,22 +109,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         break;
     }
 
-    /// Parse defines
-    for (const auto& flag : flags)
-    {
-        if (flag == "-no-validate")
-        {
-            this->options.validate = false;
-        }
-        else if (flag == "-opt")
-        {
-            this->options.optimize = true;
-        }
-        else if (flag == "-werror")
-        {
-            this->options.warningsAsErrors = true;
-        }
-    }
+    this->options = options;
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
@@ -348,15 +334,22 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
     this->symbols = root->symbols;
 
+        this->performanceTimer.Start();
+
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
     {
         ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
     }
 
+    this->performanceTimer.Stop();
+
     // if failed, don't proceed to next step
     if (!ret || this->hasErrors)
         return false;
+
+    if (this->options.emitTimings)
+        this->performanceTimer.Print("Type checking");
 
     // setup potential debug output stream
     std::function<void(const std::string&, const std::string&)> writeFunction = nullptr;
@@ -374,6 +367,9 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         };
     }
 
+
+    this->performanceTimer.Start();
+
     // collect programs
     for (Symbol* symbol : this->symbols)
     {
@@ -383,6 +379,11 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         }
     }
 
+    this->performanceTimer.Stop();
+
+    if (this->options.emitTimings)
+        this->performanceTimer.Print("Code generation");
+
     // if failed, don't proceed to next step
     if (!ret || this->hasErrors)
         return false;
@@ -390,6 +391,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     // output binary if possible
     if (binaryWriter.Open())
     {
+        this->performanceTimer.Start();
+
         // write magic
         binaryWriter.WriteInt('AFX3');
 
@@ -406,6 +409,11 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         // write size of dynamic blob at the end
         binaryWriter.WriteUInt(blob.iterator);
         binaryWriter.Close();
+
+        this->performanceTimer.Stop();
+
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Reflection serialization");
     }
     else
     {
@@ -415,12 +423,19 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     // header writing is optional
     if (headerWriter.Open())
     {
+        this->performanceTimer.Start();
+
         ret &= this->headerGenerator->Generate(this, nullptr, this->symbols, [&headerWriter](const std::string& name, const std::string& code)
         {
             headerWriter.WriteString(code);
         });
 
         headerWriter.Close();
+
+        this->performanceTimer.Stop();
+
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Header generation");
     }
 
     return ret;

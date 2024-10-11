@@ -15,6 +15,7 @@ IfStatement::IfStatement(Expression* condition, Statement* ifStatement, Statemen
     , elseStatement(elseStatement)
 {
     this->symbolType = IfStatementType;
+    this->resolved = new IfStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

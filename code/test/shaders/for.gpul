@@ -1,0 +1,16 @@
+entry_point
+void
+ForTest()
+{
+    var a : i32 = 0;
+    for (i : i32 = 0; i < 5; i++)
+    {
+        break;
+        a += i;
+    }
+}
+
+program TestProgram
+{
+    ComputeShader = *ForTest();
+};

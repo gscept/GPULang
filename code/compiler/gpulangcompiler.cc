@@ -153,25 +153,26 @@ Error(const std::string message)
 
 //------------------------------------------------------------------------------
 /**
-    Compiles AnyFX effect.
+    Compiles GPULang file.
 
     @param file			Input file to compile
     @param output		Output destination file
     @param target		Target language
-    @param vendor		GPU vendor name
     @param defines		List of preprocessor definitions
+    @param flags		List of compiler flags
     @param errorBuffer	Buffer containing errors, created in function but must be deleted manually
 */
 bool
-GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, const std::vector<std::string>& flags, GPULangErrorBlob*& errorBuffer)
+GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
     bool ret = true;
 
     std::string preprocessed;
     errorBuffer = nullptr;
 
-    clock_t start = clock(), preprocessingTime, parsingTime, compilationTime;
+    GPULang::Compiler::Timer timer;
 
+    timer.Start();
     if (GPULangPreprocess(file, defines, preprocessed))
     {
         ANTLRInputStream input;
@@ -187,20 +188,21 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         size_t extension = file.rfind('.');
         size_t lastFolder = file.rfind('/') + 1;
         std::string effectName = file.substr(lastFolder, (file.length() - lastFolder) - (file.length() - extension));
-        effectName[0] = std::toupper(effectName[0], loc);
+        effectName[0] = std::toupper(effectName[0]);
         size_t undersc = effectName.find('_');
         while (undersc != std::string::npos)
         {
-            effectName[undersc + 1] = std::toupper(effectName[undersc + 1], loc);
+            effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
             effectName = effectName.erase(undersc, 1);
             undersc = effectName.find('_');
         }
 
         // setup preprocessor
         parser.preprocess();
-        preprocessingTime = clock() - start;
-        start = clock();
-        preprocessingTime = preprocessingTime * 1000 / CLOCKS_PER_SEC;
+
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Preprocessing");
 
         // remove all preprocessor crap left by mcpp
         size_t i;
@@ -217,6 +219,8 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         GPULangParserErrorHandler parserErrorHandler;
         parserErrorHandler.lines = parser.lines;
 
+        timer.Start();
+
         // reload the preprocessed data
         input.reset();
         input.load(preprocessed);
@@ -229,9 +233,9 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         Effect* effect = parser.entry()->returnEffect;
 
-        parsingTime = clock() - start;
-        start = clock();
-        parsingTime = parsingTime * 1000 / CLOCKS_PER_SEC;
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Parsing");
 
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
@@ -252,13 +256,9 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         Compiler compiler;
         compiler.debugPath = output;
         compiler.debugOutput = true;
-        compiler.Setup(target, defines, flags, 1);
+        compiler.Setup(target, defines, options, 1);
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
-
-        compilationTime = clock() - start;
-        start = clock();
-        compilationTime = compilationTime * 1000 / CLOCKS_PER_SEC;
 
         // convert error list to string
         if (!compiler.messages.empty())
@@ -274,11 +274,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
                 err = "Unhandled internal compiler error";
             errorBuffer = Error(err);
         }
-
-        printf("Preprocessing took %d milliseconds\n", preprocessingTime);
-        printf("Parsing took %d milliseconds\n", parsingTime);
-        printf("Compilation took %d milliseconds\n", compilationTime);
-
 
         return res;
     }

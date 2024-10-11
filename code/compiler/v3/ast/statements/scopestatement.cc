@@ -13,6 +13,7 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
     : symbols(contents)
 {
     this->symbolType = ScopeStatementType;
+    this->resolved = new ScopeStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

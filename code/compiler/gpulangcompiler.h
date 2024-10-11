@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------------
 /**
-    AnyFX compiler header
+    GPULang compiler include header
     
-    (C) 2013 Gustav Sterbrant
+    (C) 2024 Gustav Sterbrant
 */
 //------------------------------------------------------------------------------
 #include <string>
@@ -29,5 +29,6 @@ struct GPULangErrorBlob
 	}
 };
 
+
 extern std::vector<std::string> GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
-extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, const std::vector<std::string>& flags, GPULangErrorBlob*& errorBuffer);
+extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);

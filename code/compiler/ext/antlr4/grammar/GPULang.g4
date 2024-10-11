@@ -236,7 +236,7 @@ variables
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
         unsigned initCounter = 0;
-        Type::FullType type;
+        Type::FullType type = { "unknown" };
     }:
     (annotation { annotations.push_back($annotation.annot); })*
     (attribute { attributes.push_back($attribute.attr); })*
@@ -244,14 +244,15 @@ variables
     varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
     (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
     
-    ':' 
-    ( 
-        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
-        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
-                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
-        ']'
-    )* 
-    typeName = IDENTIFIER { type.name = $typeName.text; } 
+    ( ':' 
+        ( 
+            '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
+            '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                    ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+            ']'
+        )* 
+        typeName = IDENTIFIER { type.name = $typeName.text; }
+    )?
     (
         '=' valueExpr = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
         (',' valueExprN = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExprN.tree; } )*
@@ -268,44 +269,6 @@ variables
             var->valueExpression = valueExpressions[i];
             $list.push_back(var);
         }
-    }
-    ;
-
-    // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
-variable
-    returns[ Variable* sym ]
-    @init
-    {
-        std::vector<Annotation> annotations;
-        std::vector<Attribute> attributes;
-        std::string name;
-        Expression* valueExpression = nullptr;
-        Symbol::Location location;
-        Type::FullType type;
-    }:
-    (annotation { annotations.push_back($annotation.annot); })*
-    (attribute { attributes.push_back($attribute.attr); })*
-    
-    varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
-    ':' 
-    ( 
-        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
-        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
-                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
-        ']'
-    )* 
-    typeName = IDENTIFIER { type.name = $typeName.text; } 
-    (
-        '=' valueExpr = assignmentExpression { valueExpression = $valueExpr.tree; } 
-    )?
-    {
-            $sym = new Variable(); 
-            $sym->type = type; 
-            $sym->location = location; 
-            $sym->annotations = annotations; 
-            $sym->attributes = attributes;
-            $sym->name = name;
-            $sym->valueExpression = valueExpression;
     }
     ;
 
@@ -339,10 +302,29 @@ structure
         bool isArray = false;
         Expression* arraySizeExpression = nullptr;
         std::string instanceName;
+        Symbol::Location varLocation;
+        Type::FullType varType;
+        std::string varName;
     }:
     structureDeclaration { $sym = $structureDeclaration.sym; }
     '{' 
-        (variables { for(Variable* var : $variables.list) { members.push_back(var); }} ';')* 
+        (varName = IDENTIFIER { varName = $varName.text; varLocation = SetupFile(); } ':'         
+            ( 
+                '*' { varType.AddModifier(Type::FullType::Modifier::PointerLevel); } |
+                '[' { varType.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                        ( arraySize0 = INTEGERLITERAL { varType.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+                ']'
+            )* 
+            varTypeName = IDENTIFIER { varType.name = $varTypeName.text; } ';'
+            {
+                Variable* var = new Variable(); 
+                var->type = varType; 
+                var->location = varLocation; 
+                var->name = varName;
+                var->valueExpression = nullptr;
+                members.push_back(var);
+            }
+        )*
     '}' 
     // Disable tail as structs can't be created locally (yet)
     // tail, like } myStruct[];
@@ -367,8 +349,9 @@ enumeration
         $sym = nullptr;
         std::vector<std::string> enumLabels;
         std::vector<Expression*> enumValues;
+        Symbol::Location location;
     }:
-    'enum' name = IDENTIFIER
+    'enum' name = IDENTIFIER { location = SetupFile(); }
     '{'
         label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
         {
@@ -380,7 +363,43 @@ enumeration
         $sym = new Enumeration();
         $sym->labels = enumLabels;
         $sym->values = enumValues;
-        $sym->location = SetupFile();
+        $sym->location = location;
+    }
+    ;
+
+// Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
+parameter
+    returns[ Variable* sym ]
+    @init
+    {
+        std::vector<Annotation> annotations;
+        std::vector<Attribute> attributes;
+        std::string name;
+        Expression* valueExpression = nullptr;
+        Symbol::Location location;
+        Type::FullType type = { "unknown" };
+    }:
+    (attribute { attributes.push_back($attribute.attr); })*
+    
+    varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
+    ':' 
+    ( 
+        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
+        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+        ']'
+    )* 
+    typeName = IDENTIFIER { type.name = $typeName.text; }
+    (
+        '=' valueExpr = assignmentExpression { valueExpression = $valueExpr.tree; } 
+    )?
+    {
+            $sym = new Variable(); 
+            $sym->type = type; 
+            $sym->location = location; 
+            $sym->attributes = attributes;
+            $sym->name = name;
+            $sym->valueExpression = valueExpression;
     }
     ;
 
@@ -394,7 +413,7 @@ functionDeclaration
         Symbol::Location location;
     }:
     (attribute { attributes.push_back($attribute.attr); })*
-    returnType = typeDeclaration name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = variable { variables.push_back($arg0.sym); } (',' argn = variable { variables.push_back($argn.sym); })* )? ')' 
+    returnType = typeDeclaration name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = parameter { variables.push_back($arg0.sym); } (',' argn = parameter { variables.push_back($argn.sym); })* )? ')' 
     {
         $sym = new Function(); 
         $sym->hasBody = false;
@@ -464,19 +483,17 @@ state
     @init
     {
         Expression* arrayExpression = nullptr;
-        Symbol::Location location;
         std::vector<Expression*> entries;
     }:
     (
         'sampler_state' { $sym = new SamplerState(); }
         | 'render_state' { $sym = new RenderState(); } 
-    ) name = IDENTIFIER { location = SetupFile(); }
+    ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         (assign = expression { entries.push_back($assign.tree); } ';' )*
     '}'
     {
         $sym->name = $name.text;
-        $sym->location = location;
         $sym->entries = entries;
     }
     ;
@@ -607,8 +624,8 @@ scopeStatement
     }:
     '{' { location = SetupFile(); }
     (
-        statement { contents.push_back($statement.tree); }
-        | variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
+        variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
+        | statement { contents.push_back($statement.tree); }
     )* 
     '}'
     {
@@ -628,6 +645,7 @@ returnStatement
     'return' { location = SetupFile(); } (value = expression { returnValue = $value.tree; })? ';'
     {
         $tree = new ReturnStatement(returnValue);
+        $tree->location = location;
     }
     ;
 
@@ -641,6 +659,7 @@ continueStatement
     'continue' { location = SetupFile(); } ';' 
     {
         $tree = new ContinueStatement();
+        $tree->location = location;
     }
     ;
 
@@ -674,6 +693,7 @@ switchStatement
     '}'
     {
         $tree = new SwitchStatement(switchExpression, caseExpressions, caseStatements, defaultStatement);
+        $tree->location = location;
     }
     ;
 
@@ -684,9 +704,10 @@ breakStatement
         $tree = nullptr;
         Symbol::Location location;
     }: 
-    'break' ';'
+    'break' { location = SetupFile(); } ';'
     {
         $tree = new BreakStatement();
+        $tree->location = location;
     }
     ;
 
@@ -697,7 +718,7 @@ expression
     {
         $tree = nullptr;
     }: 
-    commaExpression { $tree = $commaExpression.tree; }
+    commaExpression { $tree = $commaExpression.tree; $tree->location = SetupFile(); }
     ;
 
 commaExpression
@@ -705,13 +726,14 @@ commaExpression
     @init
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = assignmentExpression { $tree = $e1.tree; }
     (
-        ',' e2 = assignmentExpression
+        ',' { location = SetupFile(); } e2 = assignmentExpression
         {
             CommaExpression* expr = new CommaExpression($tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -723,6 +745,7 @@ assignmentExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = logicalOrExpression { $tree = $e1.tree; } 
     (
@@ -732,10 +755,10 @@ assignmentExpression
             expr->location = SetupFile();
             $tree = expr;
         } 
-        | '?' ifBody = expression ':' elseBody = expression
+        | '?' { location = SetupFile(); } ifBody = expression ':' elseBody = expression
         { 
             TernaryExpression* expr = new TernaryExpression($tree, $ifBody.tree, $elseBody.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -747,13 +770,14 @@ logicalOrExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = logicalAndExpression { $tree = $e1.tree; } 
     (
-        ('||') e2 = logicalAndExpression
+        ('||') { location = SetupFile(); } e2 = logicalAndExpression
         {
             BinaryExpression* expr = new BinaryExpression('||', $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -765,13 +789,15 @@ logicalAndExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
+
     }:
     e1 = orExpression { $tree = $e1.tree; } 
     (
-        ('&&') e2 = orExpression
+        ('&&') { location = SetupFile(); } e2 = orExpression
         {
             BinaryExpression* expr = new BinaryExpression('&&', $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -783,13 +809,15 @@ orExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
+
     }:
     e1 = xorExpression { $tree = $e1.tree; } 
     (
-        ('|') e2 = xorExpression
+        '|' { location = SetupFile(); } e2 = xorExpression
         {
             BinaryExpression* expr = new BinaryExpression('|', $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -801,13 +829,14 @@ xorExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = andExpression { $tree = $e1.tree; } 
     (
-        ('^') e2 = andExpression
+        '^' { location = SetupFile(); } e2 = andExpression
         {
             BinaryExpression* expr = new BinaryExpression('^', $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -819,13 +848,14 @@ andExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = equivalencyExpression { $tree = $e1.tree;	} 
     (
-        ('&') e2 = equivalencyExpression
+        '&' { location = SetupFile(); } e2 = equivalencyExpression
         {
             BinaryExpression* expr = new BinaryExpression('&', $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -837,13 +867,14 @@ equivalencyExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = relationalExpression { $tree = $e1.tree; } 
     (
-        op = ('==' | '!=') e2 = relationalExpression
+        op = ('==' | '!=')  { location = SetupFile(); } e2 = relationalExpression
         {
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -855,13 +886,14 @@ relationalExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = shiftExpression { $tree = $e1.tree; } 
     (
-        op = ('<' | '>' | '<=' | '>=') e2 = shiftExpression
+        op = ('<' | '>' | '<=' | '>=' ) { location = SetupFile(); } e2 = shiftExpression
         {
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -873,13 +905,14 @@ shiftExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = addSubtractExpression { $tree = $e1.tree; } 
     (
-        op = ('<<' | '>>') e2 = addSubtractExpression 
+        op = ('<<' | '>>') { location = SetupFile(); } e2 = addSubtractExpression 
         {
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -891,13 +924,14 @@ addSubtractExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = multiplyDivideExpression { $tree = $e1.tree; } 
     (
-        op = ('+' | '-') e2 = multiplyDivideExpression 
+        op = ('+' | '-') { location = SetupFile(); } e2 = multiplyDivideExpression 
         {
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -909,13 +943,14 @@ multiplyDivideExpression
     @init 
     {
         $tree = nullptr;
+        Symbol::Location location;
     }:
     e1 = prefixExpression { $tree = $e1.tree; }
     (
-        op = ('*' | '/' | '%') e2 = prefixExpression 
+        op = ('*' | '/' | '%') { location = SetupFile(); } e2 = prefixExpression 
         {
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         }
     )*
@@ -1036,11 +1071,12 @@ initializerExpression
     {
         $tree = nullptr;
         std::vector<Expression*> exprs;
+        Symbol::Location location;
     }:
-    '{' ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? '}'
+    '{' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? '}'
     {
         $tree = new InitializerExpression(exprs);
-        $tree->location = SetupFile();
+        $tree->location = location;
     }
     ;
 

@@ -16,6 +16,7 @@ ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression
     , contents(contents)
 {
     this->symbolType = ForStatementType;
+    this->resolved = new ForStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

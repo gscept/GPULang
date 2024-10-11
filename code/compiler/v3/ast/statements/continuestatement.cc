@@ -12,6 +12,7 @@ namespace GPULang
 ContinueStatement::ContinueStatement()
 {
     this->symbolType = ContinueStatementType;
+    this->resolved = new ContinueStatement::__Resolved;
 }
 
 } // namespace GPULang

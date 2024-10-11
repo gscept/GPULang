@@ -34,13 +34,23 @@ struct Compiler
         SPIRV           // target is pure SPIRV
     };
 
+    struct Options
+    {
+        uint8_t warningsAsErrors : 1;
+        uint8_t emitTimings : 1;
+        uint8_t disallowImplicitConversion : 1;
+
+        uint8_t validate : 1;
+        uint8_t optimize : 1;
+    };
+
     /// constructor
     Compiler();
     /// destructor
     ~Compiler();
 
     /// setup compiler with target language
-    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, const std::vector<std::string>& flags, unsigned int version);
+    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version);
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
@@ -179,13 +189,28 @@ struct Compiler
 
     bool ignoreReservedWords;
 
-    struct Options
-    {
-        uint8_t warningsAsErrors : 1;
+    Options options;
 
-        uint8_t validate : 1;
-        uint8_t optimize : 1;
-    } options;
+    struct Timer
+    {
+        clock_t start, delta;
+        float duration;
+
+        void Start()
+        {
+            this->start = clock();
+        }
+
+        void Stop()
+        {
+            this->duration = (clock() - this->start) * 1000 / float(CLOCKS_PER_SEC);
+        }
+
+        void Print(const std::string& message)
+        {
+            printf("%s took %.2f ms\n", message.c_str(), this->duration / 1000.0f);
+        }
+    } performanceTimer;
 };
 
 //------------------------------------------------------------------------------

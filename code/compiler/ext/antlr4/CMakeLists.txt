@@ -16,7 +16,12 @@ LIST(APPEND CODE ${SRC} ${HEAD})
 
 FILE(GLOB SRC "src/dfa/*.cpp")
 FILE(GLOB HEAD "src/dfa/*.h")
-SOURCE_GROUP("antlr4\\dfs" FILES ${SRC} ${HEAD})
+SOURCE_GROUP("antlr4\\dfa" FILES ${SRC} ${HEAD})
+LIST(APPEND CODE ${SRC} ${HEAD})
+
+FILE(GLOB SRC "src/internal/*.cpp")
+FILE(GLOB HEAD "src/internal/*.h")
+SOURCE_GROUP("antlr4\\internal" FILES ${SRC} ${HEAD})
 LIST(APPEND CODE ${SRC} ${HEAD})
 
 FILE(GLOB SRC "src/tree/*.cpp")

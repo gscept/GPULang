@@ -17,6 +17,7 @@ SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector
     , defaultStatement(defaultStatement)
 {
     this->symbolType = SwitchStatementType;
+    this->resolved = new SwitchStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

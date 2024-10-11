@@ -21,7 +21,10 @@ void
 ShaderTest(std::string input, std::string binaryOut, std::string headerOut)
 {
     GPULangErrorBlob* errors;
-    bool res = GPULangCompile(input, GPULang::Compiler::Language::SPIRV, binaryOut, headerOut, {}, {}, errors);
+    GPULang::Compiler::Options options;
+    options.emitTimings = true;
+    options.disallowImplicitConversion = true;
+    bool res = GPULangCompile(input, GPULang::Compiler::Language::SPIRV, binaryOut, headerOut, {}, options, errors);
 
     if (!res)
         printf("%s Compilation failed\n", input.c_str());
@@ -41,12 +44,14 @@ void
 main(const char** argv, int argc)
 {
     //CompleteShaderTest();
-    TEST(nestedtest);
-    TEST(explicitreturntest);
-    TEST(switchtest);
+    TEST(explicitreturn);
+    TEST(computewithstore);
+    TEST(typeinferrence);
+    TEST(nested);
+    TEST(switch);
     
-    TEST(whiletest);
-    TEST(fortest);
-    TEST(breaktest);
-    TEST(iftest);
+    TEST(whilet);
+    TEST(for);
+    TEST(break);
+    TEST(if);
 }

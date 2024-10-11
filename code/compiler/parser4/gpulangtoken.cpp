@@ -1,6 +1,6 @@
 #include "gpulangtoken.h"
 
-const Ref<TokenFactory<CommonToken>> GPULangTokenFactory::DEFAULT = std::make_shared<GPULangTokenFactory>();
+TokenFactory<CommonToken>* GPULangTokenFactory::DEFAULT = new GPULangTokenFactory;
 
 GPULangTokenFactory::GPULangTokenFactory(){
 }

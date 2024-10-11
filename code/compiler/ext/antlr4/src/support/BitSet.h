@@ -9,7 +9,7 @@
 
 namespace antlrcpp {
 
-  class ANTLR4CPP_PUBLIC BitSet : public std::bitset<1024> {
+  class ANTLR4CPP_PUBLIC BitSet : public std::bitset<2048> {
   public:
     size_t nextSetBit(size_t pos) const {
       for (size_t i = pos; i < size(); i++){
@@ -54,7 +54,7 @@ namespace antlrcpp {
       return result;
     }
 
-    std::string toString(){
+    std::string toString() const {
       std::stringstream stream;
       stream << "{";
       bool valueAdded = false;

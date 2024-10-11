@@ -14,12 +14,13 @@
 
 using namespace antlr4;
 using namespace antlr4::atn;
+using namespace antlr4::tree;
 
-RuleContext::RuleContext() {
+RuleContext::RuleContext() : ParseTree(ParseTreeType::RULE) {
   InitializeInstanceFields();
 }
 
-RuleContext::RuleContext(RuleContext *parent_, size_t invokingState_) {
+RuleContext::RuleContext(RuleContext *parent_, size_t invokingState_) : ParseTree(ParseTreeType::RULE) {
   InitializeInstanceFields();
   this->parent = parent_;
   this->invokingState = invokingState_;
@@ -71,20 +72,20 @@ size_t RuleContext::getAltNumber() const {
 void RuleContext::setAltNumber(size_t /*altNumber*/) {
 }
 
-antlrcpp::Any RuleContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any RuleContext::accept(tree::ParseTreeVisitor *visitor) {
   return visitor->visitChildren(this);
 }
 
-std::string RuleContext::toStringTree(Parser *recog) {
-  return tree::Trees::toStringTree(this, recog);
+std::string RuleContext::toStringTree(Parser *recog, bool pretty) {
+  return tree::Trees::toStringTree(this, recog, pretty);
 }
 
-std::string RuleContext::toStringTree(std::vector<std::string> &ruleNames) {
-  return tree::Trees::toStringTree(this, ruleNames);
+std::string RuleContext::toStringTree(std::vector<std::string> &ruleNames, bool pretty) {
+  return tree::Trees::toStringTree(this, ruleNames, pretty);
 }
 
-std::string RuleContext::toStringTree() {
-  return toStringTree(nullptr);
+std::string RuleContext::toStringTree(bool pretty) {
+  return toStringTree(nullptr, pretty);
 }
 
 

@@ -23,18 +23,72 @@ struct SPIRVResult
     uint32_t typeName = 0xFFFFFFFF;
     bool isValue = false;       // If not, then the object needs a load to be read. If it is, doesn't support store
     bool isLiteral = false;     // If true, then the value is a literal value and can be constant constructed
+    enum Scope
+    {
+        Private,
+        WorkGroup,
+        Uniform,
+        UniformConstant,
+        StorageBuffer,
+        PushConstant,
+        Function,
+        Image,
+        Input,
+        Output
+    } scope;
 
-    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isLiteral = false)
+    static std::string ScopeToString(Scope s)
+    {
+        switch (s)
+        {
+            case Scope::Private:
+                return "Private";
+                break;
+            case Scope::WorkGroup:
+                return "WorkGroup";
+                break;
+            case Scope::Uniform:
+                return "Uniform";
+                break;
+            case Scope::UniformConstant:
+                return "UniformConstant";
+                break;
+            case Scope::StorageBuffer:
+                return "StorageBuffer";
+                break;
+            case Scope::PushConstant:
+                return "PushConstant";
+                break;
+            case Scope::Function:
+                return "Function";
+                break;
+            case Scope::Image:
+                return "Image";
+                break;
+            case Scope::Input:
+                return "Input";
+                break;
+            case Scope::Output:
+                return "Output";
+                break;
+        }
+    }
+
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isLiteral = false, Scope scope = Scope::Function)
         : name(name)
         , typeName(type)
         , isValue(isValue)
         , isLiteral(isLiteral)
+        , scope(scope)
     {};
 
     static SPIRVResult Invalid()
     {
         return SPIRVResult(0xFFFFFFFF, 0xFFFFFFFF);
     }
+
+    bool operator!=(const SPIRVResult& rhs) { return this->name != rhs.name || this->typeName != rhs.typeName; }
+    bool operator==(const SPIRVResult& rhs) { return this->name == rhs.name && this->typeName == rhs.typeName; }
 };
 
 
@@ -103,12 +157,13 @@ public:
     std::string functions;
     
     std::string functional;
-
+    std::vector<uint32_t> interfaceVariables;
 
     std::unordered_map<std::string, uint32_t> extensions;
     std::unordered_map<std::string, std::set<std::string>> decorationMap;
 
     std::string variableDeclarations;
+    bool blockOpen;
 
     struct MergeBlock
     {

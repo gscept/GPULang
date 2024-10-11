@@ -54,7 +54,7 @@ public:
 	 * This token factory does not explicitly copy token text when constructing
 	 * tokens.</p>
 	 */
-	static const Ref<TokenFactory<CommonToken>> DEFAULT;
+	static TokenFactory<CommonToken>* DEFAULT;
 
 	virtual std::unique_ptr<CommonToken> create(std::pair<TokenSource*, CharStream*> source, size_t type,
 		const std::string &text, size_t channel, size_t start, size_t stop, size_t line, size_t charPositionInLine) override;

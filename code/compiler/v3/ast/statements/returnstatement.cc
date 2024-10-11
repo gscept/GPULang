@@ -13,6 +13,7 @@ ReturnStatement::ReturnStatement(Expression* returnValue)
     : returnValue(returnValue)
 {
     this->symbolType = ReturnStatementType;
+    this->resolved = new ReturnStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

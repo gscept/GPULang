@@ -61,7 +61,7 @@ static std::set<std::string> textureQualifiers =
 
 static std::set<std::string> scalarQualifiers =
 {
-    "const", "workgroup",
+    "const", "var", "workgroup",
 };
 
 static std::set<std::string> samplerQualifiers =
@@ -664,7 +664,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         varResolved->usageBits.flags.isParameter = !funResolved->isEntryPoint;
-        varResolved->usageBits.flags.isShaderParameter = funResolved->isEntryPoint;
+        varResolved->usageBits.flags.isShaderInput = funResolved->isEntryPoint & varResolved->parameterBits.flags.isIn;
+        varResolved->usageBits.flags.isShaderOutput = funResolved->isEntryPoint & varResolved->parameterBits.flags.isOut;
         this->ResolveVariable(compiler, var);
     }
 
@@ -1414,6 +1415,27 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         compiler->ReservedPrefixError(var->name, "gpl", symbol);
     }
 
+    // resolve array type and names
+    if (var->valueExpression != nullptr)
+    {
+        Expression* expr = var->valueExpression;
+        expr->isDeclaration = true;
+        expr->isLhsValue = false;
+        expr->Resolve(compiler);
+        varResolved->value = var->valueExpression;
+    }
+
+    if (var->type.name == "unknown")
+    {
+        if (var->valueExpression != nullptr)
+            var->valueExpression->EvalType(var->type);
+        else
+        {
+            compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
+            return false;
+        }
+    }
+
     Type* type = (Type*)compiler->GetSymbol(var->type.name);
     if (type == nullptr)
     {
@@ -1430,23 +1452,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (varResolved->usageBits.flags.isStructMember && 
         (type->category != Type::ScalarCategory && type->category != Type::EnumCategory))
     {
-        compiler->Error(Format("Member '%s' may only be scalar type if member of a struct", varResolved->name.c_str()), symbol);
+        compiler->Error(Format("'%s' may only be scalar type if member of a struct", varResolved->name.c_str()), symbol);
         return false;
     }
 
     // Add symbol
     if (!compiler->AddSymbol(var->name, var))
         return false;
-
-    // resolve array type and names
-    if (var->valueExpression != nullptr)
-    {
-        Expression* expr = var->valueExpression;
-        expr->isDeclaration = true;
-        expr->isLhsValue = false;
-        expr->Resolve(compiler);
-        varResolved->value = var->valueExpression;
-    }
 
     // If struct member, only allow sized arrays and no initializers
     if (varResolved->usageBits.flags.isStructMember)
@@ -1517,13 +1529,29 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
         else if (attr.name == "const")
+        {
             varResolved->usageBits.flags.isConst = true;
+            if (varResolved->usageBits.flags.isMutable)
+            {
+                compiler->Error(Format("Variable declared as 'const' can't also be 'mutable' or 'var'"), symbol);
+                return false;
+            }
+        }
+        else if (attr.name == "var")
+        {
+            varResolved->usageBits.flags.isMutable = true;
+            if (varResolved->usageBits.flags.isConst)
+            {
+                compiler->Error(Format("Variable declared as 'var' can't also be 'const'"), symbol);
+                return false;
+            }
+        }
         else if (attr.name == "uniform")
         {
             varResolved->usageBits.flags.isUniform = true;
             if (varResolved->usageBits.flags.isMutable)
             {
-                compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
+                compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable' or 'var'"), symbol);
                 return false;
             }
             if (varResolved->usageBits.flags.isInline)
@@ -1618,7 +1646,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->parameterBits.flags.isOut = true;
             else if (attr.name == "in_out")
             {
-                if (varResolved->usageBits.flags.isShaderParameter)
+                if (varResolved->usageBits.flags.isShaderInput || varResolved->usageBits.flags.isShaderOutput)
                 {
                     compiler->Error(Format("in_out is not supported on shader arguments"), symbol);
                     return false;
@@ -1891,7 +1919,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
             }
             Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
-            generatedStruct->name = varResolved->name;
+            generatedStruct->name = Format("struct(%s)", varResolved->name.c_str()); ;
             generatedStruct->annotations = var->annotations;
             generatedStruct->location = var->location;
             generatedStructResolved->group = varResolved->group;
@@ -1907,8 +1935,16 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 generatedStruct->baseType = TypeCode::UniformBuffer;
             }
 
+            Type::FullType newType{ generatedStruct->name };
+            newType.modifiers = var->type.modifiers;
+            newType.modifierValues = var->type.modifierValues;
+            var->type = newType;
+            varResolved->typeSymbol = generatedStruct;
+            varResolved->type = newType;
+
             // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
             compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
+            compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
             compiler->symbolIterator++;
         }
     }
@@ -1925,6 +1961,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
     if (compiler->IsUnreachable())
     {
         compiler->Warning(Format("Unreachable code"), symbol);
+        Symbol::__Resolved* resolvedSymbol = Symbol::Resolved(symbol);
+        resolvedSymbol->unreachable = true;
+        return true;
     }
 
     switch (symbol->symbolType)
@@ -1998,6 +2037,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             compiler->branchReturns = false;
             if (statement->elseStatement)
             {
+                compiler->MarkScopeReachable();
                 if (!this->ResolveStatement(compiler, statement->elseStatement))
                     return false;
                 ifReturns &= compiler->branchReturns;

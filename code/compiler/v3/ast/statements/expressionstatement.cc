@@ -13,6 +13,7 @@ ExpressionStatement::ExpressionStatement(Expression* expr)
     : expr(expr)
 {
     this->symbolType = ExpressionStatementType;
+    this->resolved = new ExpressionStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

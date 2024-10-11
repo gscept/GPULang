@@ -45,7 +45,7 @@ struct Variable : public Symbol
 
     std::vector<std::string> values;
     Type::FullType type;
-    std::string name;
+    //std::string name;
     Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
@@ -101,7 +101,8 @@ struct Variable : public Symbol
                 uint32_t isUniform : 1;
                 uint32_t isMutable : 1;                 // true if variable is mutable
                 uint32_t isParameter : 1;               // true if variable is passed to a function
-                uint32_t isShaderParameter : 1;         // true if variable is passed to, or exported from, a shader function
+                uint32_t isShaderInput : 1;             // true if variable is an entry point input
+                uint32_t isShaderOutput : 1;            // true if variable is an entry point output
                 uint32_t isStructMember : 1;            // true if variable is the member of a struct
                 uint32_t isGroupShared : 1;             // true if variable is work group shared memory
                 uint32_t isInline : 1;                  // true if variable data is sourced directly from command buffer

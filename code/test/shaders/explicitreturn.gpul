@@ -1,0 +1,25 @@
+
+i32
+Foo()
+{
+    var a : i32 = 5;
+    
+    if (a == 5)
+        return a;
+    else
+        return 3;
+
+    return 9;
+}
+
+entry_point
+void
+ExplicitReturnTest()
+{
+    Foo();
+}
+
+program TestProgram
+{
+    ComputeShader = *ExplicitReturnTest();
+};

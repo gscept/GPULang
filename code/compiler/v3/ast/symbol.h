@@ -105,6 +105,7 @@ struct Symbol
     struct __Resolved
     {
         std::string signature;
+        bool unreachable = false;
     };
     __Resolved* resolved;
 

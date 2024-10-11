@@ -15,6 +15,7 @@ WhileStatement::WhileStatement(Expression* condition, Statement* statement, bool
     , isDoWhile(isDoWhile)
 {
     this->symbolType = WhileStatementType;
+    this->resolved = new WhileStatement::__Resolved;
 }
 
 //------------------------------------------------------------------------------

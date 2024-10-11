@@ -1,0 +1,15 @@
+entry_point
+void
+BreakTest()
+{
+    var a : i32 = 5;
+    while (true)
+    {
+        break;
+    }
+}
+
+program TestProgram
+{
+    ComputeShader = *BreakTest();
+};
