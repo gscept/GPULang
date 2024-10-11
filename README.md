@@ -1,7 +1,7 @@
 GPULang
 =====
 
-GPULang is a frontend shader language meant to serve as a common shader interface for multiple backends. GPULang targets backend platforms directly, by aiming to translate the relatively low level frontend langauge to SPIR-V, WGSL and Metal. GPULang is designed from the bottom up to support certain quality of life features such as enums, aliasing, and fp16, as well as exposing certain hardware level functionality on a native level, such as device addresses (through pointers), shader stage link validation and shader pipeline composition with depth/rasterization/blend states and shader stages combined and validated at compile time.
+GPULang is a frontend shader language meant to serve as a common shader interface for multiple backends. GPULang targets backend platforms directly, by aiming to translate its relatively low level custom frontend language to SPIR-V, WGSL and Metal. GPULang is designed from the bottom up to support certain quality of life features such as enums, aliasing, and fp16, as well as exposing certain hardware level functionality on a native level, such as device addresses (through pointers), shader stage link validation and shader pipeline composition with depth/rasterization/blend states and shader stages combined and validated at compile time.
 
 GPULang also offers a reflection API, which allows a title to reason about the shader resource layout, allowing for a dynamic setup of desciptor sets/root signatures/bind groups/etc...
 
@@ -18,220 +18,54 @@ Objects are annotatable, which allows for the runtime to read information about 
 Below is an example gpulang shader file showing the syntax of the language:
 
 ```rust
-//------------------------------------------------------------------------------
-//  @file completeshader.gpul
-//  @copyright (C) 2024 Individual contributors, see AUTHORS file
-//------------------------------------------------------------------------------
-
-struct MyTestStruct
+uniform Albedo : *texture2D;
+uniform Sampler : *sampler;
+struct Camera
 {
-    f : f32;
-    i : i32;
+    viewProjection : f32x4x4;
+    position : f32x4;
 };
 
-void
-AccessTest()
+uniform camera : *Camera;
+
+struct Object
 {
-    test : MyTestStruct;
-    //test.f = 5;
-    accessTest : f32x4 = f32x4(1);
-    copyTest : f32x4 = accessTest;
-    f2 : f32x2 = accessTest.zy;
-    f : f32 = accessTest.x;
+    model : f32x4x4;
+};
+
+uniform object : *Object;
+
+entry_point
+BasicVertex(
+    in Position : f32x4
+    , in UV : f32x2
+    , out OutUV : f32x2
+) void
+{
+    worldPos = object.model * Position;
+    clipPos = camera.viewProjection * worldPos;
+
+    gplExportVertexCoordinates(clipPos);
+    OutUV = UV;
 }
 
-const arr : [5][2]i32 = { {1,1},{2,2},{3,3},{4,4},{5,5} };
-const ARRAY_VEC4 : []f32x4 = { f32x4(1) };
-struct MyConstantBuffer
+enum Framebuffer : i32
 {
-    NumWorkGroups : i32;
-    ElementPaddedArray : [10]f32x2;
+    Color
 };
 
-@Visibility("CS")
-uniform myConstantBuffer : *MyConstantBuffer;
-
-alias textureHandle as i32;
-const foobar : textureHandle = 5;
-
-const foo : i32 = 5;
-const ARRAY_INIT : [][]i32 = { {1}, {foo}, {3} };
-
-//rgba32f readWriteTexture2D* myReadImage;
-no_read mutable rgb10_a2 myWriteImage : *readWriteTexture2D;
-binding(0) rg16f mutable myReadWriteImage : *readWriteTexture2D;
-volatile r8u myVolatileImage : [5]*readWriteTexture2D;
-atomic r32i myAtomicImage : []*readWriteTexture2D;
-
-@Visibility("CS")
-group(0) MyDynamicSampler : *sampler;
-
-struct MyStruct
+entry_point
+BasicPixel(
+    in UV : f32x2
+) void
 {
-    i : i32;
-    tex : textureHandle;
-};
-
-struct MyStorageBuffer
-{
-    ProvokePadding : i32;
-    Output : f32x3;
-};
-mutable myStorageBuffer : *MyStorageBuffer;
-
-const NUM_FOO : i32 = 5;
-const NUM_BLORF : [2]f32x4  = { f32x4(1,1,1,1), f32x4(2,2,2,2) };
-
-// sampler_states gets converted to ordinary sampler objects, 
-// but is supposed to be read on the receiving side
-sampler_state MyImmutableSampler
-{
-    AddressU = Wrap;
-    AddressV = Clamp;
-    AddressW = Mirror;
-    Filter = Linear;
-    AnisotropicEnabled = true;
-    MaxAnisotropy = 16;
-};
-
-render_state MyRenderState
-{
-    FrontStencil.ReferenceMask = 0xFF;
-    BlendEnabled[0] = true;
-    DepthTestFunction = Greater;
-    DepthWriteEnabled = false;
-};
-
-//------------------------------------------------------------------------------
-/**
-    Test statements
-*/
-i32
-MegaFunction()
-{
-    foo : i32 = 5;
-    {
-        foo : i32 = 5;
-    }
-
-    const arr : [5][2]i32 = { {1,1},{2,2},{3,3},{4,4},{5,5} };
-
-    if (foo > 0)
-    {
-        bar : i32 = 5;
-        if (foo != 0)
-            return bar;
-        else
-            return bar;
-    }
-    else
-    {
-        bar : i32 = 5;
-    }
-
-    while (true)
-    {
-        if (foo == 0)
-            break;
-        foo--;
-    }
-
-    foo = 5;
-    do 
-    {
-        foo--;
-    } while (foo > 0);
-
-    foo = 6;
-    for (i, j : i32 = 0, 1; i < foo; i++, ++j)
-    {
-        if ((i % 2) == 0)
-            continue;
-    }
-
-    return foo == 6 ? 1 : 0;
+    color = textureSample(Albedo, Sampler, UV);
+    gplExportColor(color, Framebuffer.Color);
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-f32x4 
-Function(in f : f32)
+program TestProgram
 {
-    return f32x4(f);
-}
-
-//------------------------------------------------------------------------------
-/**
-    Overload function
-*/
-f32x4
-Function(in i : i32)
-{
-    return f32x4(i);
-}
-
-//------------------------------------------------------------------------------
-/**
-    Per-program bind function
-*/
-prototype f32x4 DynamicFunction(in i : i32);
-
-//------------------------------------------------------------------------------
-/**
-*/
-shader
-local_size_x(64)
-void
-MyComputeShader()
-{
-    textureStore(myReadWriteImage, i32x2(0, 0), Function(myConstantBuffer->NumWorkGroups));
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-@Mask("MyProgram")
-program MyProgram
-{
-    ComputeShader = *MyComputeShader();
+    VertexShader = BasicVertex;
+    PixelShader = BasicPixel;
 };
-
-//------------------------------------------------------------------------------
-/**
-*/
-shader
-void
-MyVertexShader(
-    binding(0) in position : f32x4
-    , binding(0) out Position : f32x4
-)
-{
-    Position = position;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-shader
-void
-MyPixelShader(
-    binding(0) in position : f32x4
-    , binding(0) out Color : f32x4
-)
-{
-    Color = position;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-@Mask("MyGraphicsProgram")
-program MyGraphicsProgram
-{
-    DynamicFunction = *Function(i32);
-    VertexShader = *MyVertexShader(f32x4, f32x4);
-    PixelShader = *MyPixelShader(f32x4, f32x4);
-};
-
 ```
