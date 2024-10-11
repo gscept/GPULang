@@ -1,6 +1,5 @@
 entry_point
-void
-IfTest()
+IfTest() void
 {
     var i : i32 = 5;
     if (i > 5)
@@ -15,5 +14,5 @@ IfTest()
 
 program TestProgram
 {
-    ComputeShader = *IfTest();
+    ComputeShader = IfTest;
 };

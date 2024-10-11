@@ -95,17 +95,27 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     switch (lang)
     {
     case Language::GLSL_SPIRV:
-        this->generator = new GLSLGenerator(GLSLGenerator::VulkanFeatureSet);
+        this->target.name = "GLSL-SPIRV";
+        this->target.generator = new GLSLGenerator(GLSLGenerator::VulkanFeatureSet);
         break;
     case Language::GLSL:
-        this->generator = new GLSLGenerator(GLSLGenerator::OpenGLFeatureSet);
+        this->target.name = "GLSL";
+        this->target.generator = new GLSLGenerator(GLSLGenerator::OpenGLFeatureSet);
         break;
     case Language::HLSL_SPIRV:
     case Language::HLSL:
-        this->generator = new HLSLGenerator();
+        this->target.name = "HLSL";
+        this->target.generator = new HLSLGenerator;
         break;
     case Language::SPIRV:
-        this->generator = new SPIRVGenerator();
+        this->target.name = "SPIRV";
+        this->target.generator = new SPIRVGenerator();
+        this->target.supportsPhysicalAddressing = true;
+        break;
+    case Language::VULKAN_SPIRV:
+        this->target.name = "VULKAN-SPIRV";
+        this->target.generator = new SPIRVGenerator();
+        this->target.supportsPhysicalAddressing = false;
         break;
     }
 
@@ -375,7 +385,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     {
         if (symbol->symbolType == Symbol::ProgramType)
         {
-            ret &= this->generator->Generate(this, static_cast<Program*>(symbol), this->symbols, writeFunction);
+            ret &= this->target.generator->Generate(this, static_cast<Program*>(symbol), this->symbols, writeFunction);
         }
     }
 

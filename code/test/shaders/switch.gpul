@@ -1,6 +1,5 @@
 entry_point
-void
-SwitchTest()
+SwitchTest() void
 {
     var a : i32 = 5;
     switch (a)
@@ -17,5 +16,5 @@ SwitchTest()
 
 program TestProgram
 {
-    ComputeShader = *SwitchTest();
+    ComputeShader = SwitchTest;
 };

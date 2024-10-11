@@ -22,7 +22,7 @@ Bool4::Bool4()
     this->category = Type::ScalarCategory;
 
     // setup constructor for xyzw
-    __IMPLEMENT_GLOBAL(ctor_XYZW, b8x4, b8x4);
+    __IMPLEMENT_CTOR(ctor_XYZW, b8x4, b8x4);
     __ADD_FUNCTION_PARAM(x, b8);
     __ADD_FUNCTION_PARAM(y, b8);
     __ADD_FUNCTION_PARAM(z, b8);
@@ -30,7 +30,7 @@ Bool4::Bool4()
     __ADD_CONSTRUCTOR()
 
     // setup constructor for single component
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, b8x4, b8x4, b8);
+    __IMPLEMENT_CTOR_1(ctorSingleValue, b8x4, b8x4, b8);
     __ADD_CONSTRUCTOR()
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], b8, i32);

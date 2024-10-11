@@ -13,6 +13,7 @@
 #include <unordered_map>
 #include <set>
 #include <stack>
+#include <assert.h>
 namespace GPULang
 {
 
@@ -22,14 +23,28 @@ struct SPIRVResult
     uint32_t name = 0xFFFFFFFF;
     uint32_t typeName = 0xFFFFFFFF;
     bool isValue = false;       // If not, then the object needs a load to be read. If it is, doesn't support store
+    bool isConst = false;       // If true, value is a constant
     bool isLiteral = false;     // If true, then the value is a literal value and can be constant constructed
-    enum Scope
+    std::vector<uint32_t> parentTypes;
+
+    struct LiteralValue
+    {
+        union
+        {
+            float f;
+            int i;
+            uint32_t ui;
+        };
+    } literalValue;
+
+    enum Storage
     {
         Private,
         WorkGroup,
         Uniform,
         UniformConstant,
         StorageBuffer,
+        Sampler,
         PushConstant,
         Function,
         Image,
@@ -37,50 +52,76 @@ struct SPIRVResult
         Output
     } scope;
 
-    static std::string ScopeToString(Scope s)
+    static std::string ScopeToString(Storage s)
     {
         switch (s)
         {
-            case Scope::Private:
+            case Storage::Private:
                 return "Private";
                 break;
-            case Scope::WorkGroup:
+            case Storage::WorkGroup:
                 return "WorkGroup";
                 break;
-            case Scope::Uniform:
+            case Storage::Sampler:
+            case Storage::Uniform:
                 return "Uniform";
                 break;
-            case Scope::UniformConstant:
+            case Storage::UniformConstant:
                 return "UniformConstant";
                 break;
-            case Scope::StorageBuffer:
+            case Storage::StorageBuffer:
                 return "StorageBuffer";
                 break;
-            case Scope::PushConstant:
+            case Storage::PushConstant:
                 return "PushConstant";
                 break;
-            case Scope::Function:
+            case Storage::Function:
                 return "Function";
                 break;
-            case Scope::Image:
+            case Storage::Image:
                 return "Image";
                 break;
-            case Scope::Input:
+            case Storage::Input:
                 return "Input";
                 break;
-            case Scope::Output:
+            case Storage::Output:
                 return "Output";
                 break;
+            default:
+                assert(false);
+                return "";
         }
     }
 
-    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isLiteral = false, Scope scope = Scope::Function)
+    SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isConstant = false, Storage scope = Storage::Function, const std::vector<uint32_t>& parentTypes = {})
         : name(name)
         , typeName(type)
         , isValue(isValue)
-        , isLiteral(isLiteral)
+        , isConst(isConstant)
         , scope(scope)
+        , parentTypes(parentTypes)
     {};
+
+    SPIRVResult(float literal)
+    {
+        this->literalValue.f = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
+
+    SPIRVResult(int literal)
+    {
+        this->literalValue.i = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
+
+    SPIRVResult(uint32_t literal)
+    {
+        this->literalValue.ui = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
 
     static SPIRVResult Invalid()
     {
@@ -131,7 +172,7 @@ public:
     /// Add op with reserved name
     void AddReserved(std::string op, uint32_t name, std::string comment = "");
     /// Add function variable declaration
-    uint32_t AddVariableDeclaration(uint32_t type, uint32_t init, std::string comment = "");
+    uint32_t AddVariableDeclaration(std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
 
     /// Find symbol and assert if fails
     uint32_t FindSymbolMapping(std::string value);
@@ -157,13 +198,16 @@ public:
     std::string functions;
     
     std::string functional;
-    std::vector<uint32_t> interfaceVariables;
+    std::set<uint32_t> interfaceVariables;
 
     std::unordered_map<std::string, uint32_t> extensions;
     std::unordered_map<std::string, std::set<std::string>> decorationMap;
 
     std::string variableDeclarations;
     bool blockOpen;
+    bool literalExtract;
+
+    Function* entryPoint = nullptr;
 
     struct MergeBlock
     {

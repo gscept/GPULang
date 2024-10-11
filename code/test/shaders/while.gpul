@@ -1,6 +1,5 @@
 entry_point
-void
-WhileTest()
+WhileTest() void
 {
     var a : i32 = 5;
     while (a > 0)
@@ -11,5 +10,5 @@ WhileTest()
 
 program TestProgram
 {
-    ComputeShader = *WhileTest();
+    ComputeShader = WhileTest;
 };

@@ -35,7 +35,7 @@ Mat4x4::Mat4x4()
     this->byteSize = 64;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(floatConstructor, f32x4x4, f32x4x4);
+    __IMPLEMENT_CTOR(floatConstructor, f32x4x4, f32x4x4);
     __ADD_FUNCTION_PARAM(m00, f32);
     __ADD_FUNCTION_PARAM(m01, f32);
     __ADD_FUNCTION_PARAM(m02, f32);
@@ -53,7 +53,7 @@ Mat4x4::Mat4x4()
     __ADD_FUNCTION_PARAM(m32, f32);
     __ADD_FUNCTION_PARAM(m33, f32);
 
-    __IMPLEMENT_GLOBAL(vectorConstructor, f32x4x4, f32x4x4);
+    __IMPLEMENT_CTOR(vectorConstructor, f32x4x4, f32x4x4);
     __ADD_FUNCTION_PARAM(r0, f32x4);
     __ADD_FUNCTION_PARAM(r1, f32x4);
     __ADD_FUNCTION_PARAM(r2, f32x4);

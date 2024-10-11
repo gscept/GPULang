@@ -175,7 +175,6 @@ struct Function : public Symbol
             uint32_t invocations;
 
             uint32_t maxOutputVertices;
-            uint32_t patchSize;
             PatchType patchType;
 
             WindingOrder windingOrder;
@@ -213,6 +212,19 @@ struct Function : public Symbol
             uint32_t bits;
         };
         ShaderUsage shaderUsage;
+
+        union SideEffects
+        {
+            struct
+            {
+                uint32_t exportsVertexPosition : 1;
+                uint32_t exportsPixel : 1;
+                uint32_t exportsExplicitDepth : 1;
+                uint32_t setsOutputLayer : 1;
+                uint32_t setsViewport : 1;
+            } flags;
+            uint32_t bits;
+        } sideEffects;
     };
 
     

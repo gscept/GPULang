@@ -1,6 +1,5 @@
 
-i32
-Foo()
+Foo() i32
 {
     var a : i32 = 5;
     
@@ -13,13 +12,12 @@ Foo()
 }
 
 entry_point
-void
-ExplicitReturnTest()
+ExplicitReturnTest() void
 {
     Foo();
 }
 
 program TestProgram
 {
-    ComputeShader = *ExplicitReturnTest();
+    ComputeShader = ExplicitReturnTest;
 };

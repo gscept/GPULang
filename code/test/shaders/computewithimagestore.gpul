@@ -1,0 +1,16 @@
+
+uniform rgba32f InputImage: *mutable texture2D;
+uniform rgba16f OutputImage: *mutable texture2D;
+
+entry_point
+ComputeWithStore() void
+{
+    texel = gplGetLocalInvocationIndices().xy;
+    col = textureLoad(InputImage, i32x2(texel));
+    textureStore(OutputImage, i32x2(0), col);
+}
+
+program TestProgram
+{
+    ComputeShader = ComputeWithStore;
+};

@@ -33,13 +33,13 @@ Mat2x2::Mat2x2()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(floatConstructor, f32x2x2, f32x2x2);
+    __IMPLEMENT_CTOR(floatConstructor, f32x2x2, f32x2x2);
     __ADD_FUNCTION_PARAM(m00, f32);
     __ADD_FUNCTION_PARAM(m01, f32);
     __ADD_FUNCTION_PARAM(m10, f32);
     __ADD_FUNCTION_PARAM(m11, f32);
 
-    __IMPLEMENT_GLOBAL(vectorConstructor, f32x2x2, f32x2x2);
+    __IMPLEMENT_CTOR(vectorConstructor, f32x2x2, f32x2x2);
     __ADD_FUNCTION_PARAM(r0, f32x2);
     __ADD_FUNCTION_PARAM(r1, f32x2);
 

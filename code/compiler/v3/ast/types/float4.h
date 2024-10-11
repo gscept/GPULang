@@ -11,15 +11,46 @@
 namespace GPULang
 {
 
+#define FLOAT4_CTOR_LIST\
+    X(Float4, ctor_SingleValue, i32, 1, 4, 4, None)\
+    X(Float4, ctor_UInt4, u32x4, 1, 1, 4, UIntToFloat)\
+    X(Float4, ctor_Int4, i32x4, 1, 1, 4, IntToFloat)
+
+#define FLOAT4_CTOR2_LIST\
+    X(Float4, ctor_Float3_Float, f32x3, f32)\
+    X(Float4, ctor_Float_Float3, f32, f32x3)\
+    X(Float4, ctor_Float2_Float2, f32x2, f32x2)
+
+#define FLOAT4_CTOR3_LIST\
+    X(Float4, ctor_Float2_Float_Float, f32x2, f32, f32)\
+    X(Float4, ctor_Float_Float_Float2, f32, f32, f32x2)\
+    X(Float4, ctor_Float_Float2_Float, f32, f32x2, f32)
+
+
 struct Float4 : public Type
 {
     /// constructor
     Float4();
 
-    static Function ctor_XYZW;
-    static Function ctorSingleValue;
-    static Function ctor_3_W;
-    static Function ctor_2_ZW;
+    static Function ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    static Function ctor;
+
+    FLOAT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    static Function ctor;
+
+    FLOAT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg3)\
+    static Function ctor;
+
+    FLOAT4_CTOR3_LIST
+#undef X
+
 
     static Function additionOperator;
     static Function subtractionOperator;

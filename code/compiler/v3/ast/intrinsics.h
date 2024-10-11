@@ -65,8 +65,13 @@
     X(texture2DMS, 2)\
     X(texture2DMSArray, 7)\
 
-#define DECLARE_TEXTURE_INTRINSIC(variant, ty) extern Function* Texture##variant##_##ty;
-#define DEFINE_TEXTURE_INTRINSIC(variant, ty) Function* Texture##variant##_##ty;
+#define DECLARE_TEXTURE_INTRINSIC(variant, ty) \
+    extern Function* Texture##variant##_##ty; \
+    extern Function* SampledTexture##variant##_##ty;
+
+#define DEFINE_TEXTURE_INTRINSIC(variant, ty) \
+    Function* Texture##variant##_##ty; \
+    Function* SampledTexture##variant##_##ty;
 
 #define SCALAR_LIST\
     X(f32, 0)\
@@ -278,6 +283,10 @@ extern Function* GetDrawIndex;
 
 extern Function* GetPixelCoordinates;
 extern Function* SetPixelDepth;
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ExportColor, ty)
+    SCALAR_LIST
+#undef X
 
 extern Function* GetLocalInvocationIndices;
 extern Function* GetGlobalInvocationIndices;

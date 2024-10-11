@@ -26,7 +26,7 @@ Variable::Variable()
     typeResolved->usageBits.bits = 0x0;
     typeResolved->group = __Resolved::NOT_BOUND;
     typeResolved->binding = __Resolved::NOT_BOUND;
-    typeResolved->imageFormat = InvalidImageFormat;
+    typeResolved->imageFormat = ImageFormat::Unknown;
     typeResolved->inBinding = 0xF;
     typeResolved->outBinding = 0xF;
     typeResolved->byteSize = 0;
@@ -88,6 +88,7 @@ std::unordered_map<std::string, ImageFormat> StringToFormats =
     , { "r32u", R32U }
     , { "r16u", R16U }
     , { "r8u", R8U }
+    , { "unknown", Unknown }
 };
 
 //------------------------------------------------------------------------------

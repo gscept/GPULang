@@ -49,7 +49,7 @@ InitializerExpression::Resolve(Compiler* compiler)
 
     // Append array level first
     thisResolved->fullType.name = inner.name;
-    thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::ArrayLevel);
+    thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
     thisResolved->fullType.modifierValues.push_back(this->values.size());
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
     thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());

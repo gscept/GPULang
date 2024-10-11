@@ -6,10 +6,25 @@
 namespace GPULang
 {
 
-Function Int4::ctor_XYZW;
-Function Int4::ctorSingleValue;
-Function Int4::ctor_3_W;
-Function Int4::ctor_2_ZW;
+Function Int4::ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    INT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    Function type::ctor;
+
+    INT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    Function type::ctor;
+
+    INT4_CTOR3_LIST
+#undef X
+
 
 Function Int4::andOperator;
 Function Int4::orOperator;
@@ -55,26 +70,35 @@ Int4::Int4()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZW, i32x4, i32x4);
+    __IMPLEMENT_CTOR(ctor, i32x4, i32x4);
     __ADD_FUNCTION_PARAM(x, i32);
     __ADD_FUNCTION_PARAM(y, i32);
     __ADD_FUNCTION_PARAM(z, i32);
     __ADD_FUNCTION_PARAM(w, i32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, i32x4, i32x4, i32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, i32x4, i32x4, val);
 
-    __IMPLEMENT_GLOBAL(ctor_3_W, i32x4, i32x4);
-    __ADD_FUNCTION_PARAM(xyz, i32x3);
-    __ADD_FUNCTION_PARAM(w, i32);
-    __ADD_CONSTRUCTOR()
+    INT4_CTOR_LIST
+#undef X
 
-    __IMPLEMENT_GLOBAL(ctor_2_ZW, i32x4, i32x4);
-    __ADD_FUNCTION_PARAM(xy, i32x2);
-    __ADD_FUNCTION_PARAM(z, i32);
-    __ADD_FUNCTION_PARAM(w, i32);
-    __ADD_CONSTRUCTOR()
+
+#define X(type, ctor, arg0, arg1)\
+    __IMPLEMENT_CTOR(ctor, i32x4, i32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)
+
+    INT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    __IMPLEMENT_CTOR(ctor, i32x4, i32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_FUNCTION_PARAM(arg_2, arg2)
+
+    INT4_CTOR3_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32x4, i32x4);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, i32x4, i32x4);

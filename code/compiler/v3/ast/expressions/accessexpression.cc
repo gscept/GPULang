@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "accessexpression.h"
+#include "v3/ast/expressions/enumexpression.h"
 #include "util.h"
 #include "compiler.h"
 #include "v3/ast/variable.h"
@@ -41,8 +42,6 @@ AccessExpression::Resolve(Compiler* compiler)
     thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->left->isLhsValue = true;
-    if (this->isDeclaration)
-        this->left->isDeclaration = true;
 
     if (!this->left->Resolve(compiler))
         return false;
@@ -52,7 +51,7 @@ AccessExpression::Resolve(Compiler* compiler)
     if (this->deref)
     {
         if (thisResolved->leftType.modifiers.empty()
-            || thisResolved->leftType.modifiers.back() != Type::FullType::Modifier::PointerLevel)
+            || thisResolved->leftType.modifiers.back() != Type::FullType::Modifier::Pointer)
         {
             compiler->Error(Format("Cannot dereference type '%s', did you mean to use '.' instead?", thisResolved->leftType.ToString().c_str()), this);
             return false;
@@ -104,6 +103,11 @@ AccessExpression::Resolve(Compiler* compiler)
         unsigned numComponents = Type::SwizzleMaskComponents(swizzle);
         std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
         thisResolved->returnType = Type::FullType{ vectorType };
+    }
+    else if (thisResolved->lhsType->symbolType == Type::SymbolType::EnumerationType)
+    {
+        EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
+        thisResolved->returnType = expr->type;
     }
     else
     {

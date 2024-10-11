@@ -6,9 +6,19 @@
 namespace GPULang
 {
 
-Function Float3::ctor_XYZ;
-Function Float3::ctor_f32x2_Z;
-Function Float3::ctorSingleValue;
+Function Float3::ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    FLOAT3_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    Function type::ctor;
+
+    FLOAT3_CTOR2_LIST
+#undef X
+
 Function Float3::additionOperator;
 Function Float3::subtractionOperator;
 Function Float3::multiplicationOperator;
@@ -36,19 +46,24 @@ Float3::Float3()
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZ, f32x3, f32x3);
+    __IMPLEMENT_CTOR(ctor, f32x3, f32x3);
     __ADD_FUNCTION_PARAM(x, f32);
     __ADD_FUNCTION_PARAM(y, f32);
     __ADD_FUNCTION_PARAM(z, f32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL(ctor_f32x2_Z, f32x3, f32x3);
-    __ADD_FUNCTION_PARAM(xy, f32x2);
-    __ADD_FUNCTION_PARAM(z, f32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, f32x3, f32x3, val);
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x3, f32x3, f32);
-    __ADD_CONSTRUCTOR()
+    FLOAT3_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    __IMPLEMENT_CTOR(ctor, f32x3, f32x3)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)
+
+    FLOAT3_CTOR2_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x3, f32x3);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x3, f32x3);

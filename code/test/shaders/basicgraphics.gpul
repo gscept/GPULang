@@ -1,0 +1,57 @@
+//------------------------------------------------------------------------------
+//  @file basicgraphics.gpul
+//  @copyright (C) 2024 Individual contributors, see AUTHORS file
+//------------------------------------------------------------------------------
+
+uniform Albedo : *texture2D;
+uniform Material: *sampled texture2D;
+uniform Sampler : *sampler;
+struct Camera
+{
+    viewProjection : f32x4x4;
+    position : f32x4;
+};
+
+uniform camera : *Camera;
+
+struct Object
+{
+    model : f32x4x4;
+};
+
+uniform object : *Object;
+
+entry_point
+BasicVertex(
+    in Position : f32x3
+    , in UV : f32x2
+    , out OutUV : f32x2
+) void
+{
+    worldPos = object.model * f32x4(Position, 1.0f);
+    clipPos = camera.viewProjection * worldPos;
+
+    gplExportVertexCoordinates(clipPos);
+    OutUV = UV;
+}
+
+enum Framebuffer : i32
+{
+    Color
+};
+
+entry_point
+BasicPixel(
+    in UV : f32x2
+) void
+{
+    color = textureSample(Albedo, Sampler, UV);
+    mat = textureSample(Material, UV);
+    gplExportColor(color, Framebuffer.Color);
+}
+
+program TestProgram
+{
+    VertexShader = BasicVertex;
+    PixelShader = BasicPixel;
+};

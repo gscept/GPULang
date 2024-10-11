@@ -18,6 +18,7 @@ struct Enumeration : public Type
 
     std::vector<std::string> labels;
     std::vector<Expression*> values;
+    Type::FullType type;
 
     struct __Resolved : public Type::__Resolved
     {
@@ -25,6 +26,7 @@ struct Enumeration : public Type
         Variable uintAssignArg;
         Function intAssignOperator;
         Variable intAssignArg;
+        Type* typeSymbol;
     };
 };
 

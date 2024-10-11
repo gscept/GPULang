@@ -384,10 +384,21 @@ public:
   class  TypeDeclarationContext : public antlr4::ParserRuleContext {
   public:
     Type::FullType type;
+    antlr4::Token *arraySize0 = nullptr;
     antlr4::Token *identifierToken = nullptr;
+    antlr4::Token *typeName = nullptr;
     TypeDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *IDENTIFIER();
+    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
+    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> MUL_OP();
+    antlr4::tree::TerminalNode* MUL_OP(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> LL();
+    antlr4::tree::TerminalNode* LL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> RR();
+    antlr4::tree::TerminalNode* RR(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
+    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -403,8 +414,7 @@ public:
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
     antlr4::Token *varNameN = nullptr;
-    antlr4::Token *arraySize0 = nullptr;
-    antlr4::Token *typeName = nullptr;
+    GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
     GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;
     GPULangParser::AssignmentExpressionContext *valueExprN = nullptr;
     VariablesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -418,17 +428,10 @@ public:
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
     antlr4::tree::TerminalNode *COL();
+    TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *EQ();
     std::vector<AssignmentExpressionContext *> assignmentExpression();
     AssignmentExpressionContext* assignmentExpression(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> MUL_OP();
-    antlr4::tree::TerminalNode* MUL_OP(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LL();
-    antlr4::tree::TerminalNode* LL(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> RR();
-    antlr4::tree::TerminalNode* RR(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
-    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -496,6 +499,7 @@ public:
   public:
     Enumeration* sym;
     antlr4::Token *name = nullptr;
+    GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
     antlr4::Token *label = nullptr;
     GPULangParser::ExpressionContext *value = nullptr;
     EnumerationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -504,6 +508,8 @@ public:
     antlr4::tree::TerminalNode *RB();
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    antlr4::tree::TerminalNode *COL();
+    TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *EQ();
     ExpressionContext *expression();
 
@@ -519,26 +525,17 @@ public:
     Variable* sym;
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
-    antlr4::Token *arraySize0 = nullptr;
-    antlr4::Token *typeName = nullptr;
+    GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
     GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;
     ParameterContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *COL();
-    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
-    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    TypeDeclarationContext *typeDeclaration();
+    antlr4::tree::TerminalNode *IDENTIFIER();
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> MUL_OP();
-    antlr4::tree::TerminalNode* MUL_OP(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LL();
-    antlr4::tree::TerminalNode* LL(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> RR();
-    antlr4::tree::TerminalNode* RR(size_t i);
     antlr4::tree::TerminalNode *EQ();
     AssignmentExpressionContext *assignmentExpression();
-    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
-    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -551,16 +548,16 @@ public:
   public:
     Function* sym;
     GPULangParser::AttributeContext *attributeContext = nullptr;
-    GPULangParser::TypeDeclarationContext *returnType = nullptr;
     antlr4::Token *name = nullptr;
     GPULangParser::ParameterContext *arg0 = nullptr;
     GPULangParser::ParameterContext *argn = nullptr;
+    GPULangParser::TypeDeclarationContext *returnType = nullptr;
     FunctionDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LP();
     antlr4::tree::TerminalNode *RP();
-    TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *IDENTIFIER();
+    TypeDeclarationContext *typeDeclaration();
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
     std::vector<ParameterContext *> parameter();

@@ -4,16 +4,15 @@ struct Storage
     i : i32;
 };
 
-mutable Output : *Storage;
+uniform Output : *mutable Storage;
 
 entry_point
-void
-ComputeWithStore()
+ComputeWithStore() void
 {
     Output.i = gplGetLocalInvocationIndices().x;
 }
 
 program TestProgram
 {
-    ComputeShader = *ComputeWithStore();
+    ComputeShader = ComputeWithStore;
 };

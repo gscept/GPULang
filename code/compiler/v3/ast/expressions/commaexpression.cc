@@ -36,8 +36,6 @@ CommaExpression::Resolve(Compiler* compiler)
 {
     if (this->isLhsValue)
         this->left->isLhsValue = true;
-    if (this->isDeclaration)
-        this->left->isDeclaration = true;
 
     if (!this->left->Resolve(compiler))
         return false;

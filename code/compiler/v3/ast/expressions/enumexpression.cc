@@ -36,6 +36,7 @@ EnumExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = this->type;
+    thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
     thisResolved->text = this->EvalString();
     return true;

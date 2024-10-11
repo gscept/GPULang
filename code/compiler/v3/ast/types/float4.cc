@@ -6,10 +6,25 @@
 namespace GPULang
 {
 
-Function Float4::ctor_XYZW;
-Function Float4::ctorSingleValue;
-Function Float4::ctor_3_W;
-Function Float4::ctor_2_ZW;
+Function Float4::ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    FLOAT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    Function type::ctor;
+
+    FLOAT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    Function type::ctor;
+
+    FLOAT4_CTOR3_LIST
+#undef X
+
 Function Float4::additionOperator;
 Function Float4::subtractionOperator;
 Function Float4::multiplicationOperator;
@@ -37,26 +52,34 @@ Float4::Float4()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZW, f32x4, f32x4);
+    __IMPLEMENT_CTOR(ctor, f32x4, f32x4);
     __ADD_FUNCTION_PARAM(x, f32);
     __ADD_FUNCTION_PARAM(y, f32);
     __ADD_FUNCTION_PARAM(z, f32);
     __ADD_FUNCTION_PARAM(w, f32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x4, f32x4, f32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, f32x4, f32x4, val);
 
-    __IMPLEMENT_GLOBAL(ctor_3_W, f32x4, f32x4);
-    __ADD_FUNCTION_PARAM(xyz, f32x3);
-    __ADD_FUNCTION_PARAM(w, f32);
-    __ADD_CONSTRUCTOR()
+    FLOAT4_CTOR_LIST
+#undef X
 
-    __IMPLEMENT_GLOBAL(ctor_2_ZW, f32x4, f32x4);
-    __ADD_FUNCTION_PARAM(xy, f32x2);
-    __ADD_FUNCTION_PARAM(z, f32);
-    __ADD_FUNCTION_PARAM(w, f32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, arg0, arg1)\
+    __IMPLEMENT_CTOR(ctor, f32x4, f32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)
+
+    FLOAT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    __IMPLEMENT_CTOR(ctor, f32x4, f32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_FUNCTION_PARAM(arg_2, arg2)
+
+    FLOAT4_CTOR3_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x4, f32x4);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x4, f32x4);

@@ -9,10 +9,10 @@
 #define __ADD_ENUM(val) labels.push_back(#val); expressions.push_back(nullptr);
 #define __ADD_ENUM_EXPL(name, val) labels.push_back(#name); expressions.push_back(new UIntExpression(val));
 #define __IMPL_ENUM_ASSIGN() 
-#define __FINISH_ENUM(val, key) val = Enumeration(); val.labels = labels; val.values = expressions; val.name = #key; this->staticSymbols.push_back(&val);
+#define __FINISH_ENUM(val, key) val = Enumeration(); val.labels = labels; val.values = expressions; val.name = #key; val.type = { "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
 
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; this->staticSymbols.push_back(&val);
-#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::ArrayLevel}, {size} }; this->staticSymbols.push_back(&val);
+#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::Array}, {size} }; this->staticSymbols.push_back(&val);
 
 namespace GPULang
 {

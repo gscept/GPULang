@@ -1,6 +1,5 @@
 entry_point
-void
-ForTest()
+ForTest() void
 {
     var a : i32 = 0;
     for (i : i32 = 0; i < 5; i++)
@@ -12,5 +11,5 @@ ForTest()
 
 program TestProgram
 {
-    ComputeShader = *ForTest();
+    ComputeShader = ForTest;
 };

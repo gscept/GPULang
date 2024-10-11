@@ -8,6 +8,7 @@
 */
 //------------------------------------------------------------------------------
 #include "ast/symbol.h"
+#include "ast/types/type.h"
 #include <set>
 #include <map>
 #include <vector>
@@ -52,16 +53,15 @@ struct Validator
     bool ValidateFunction(Compiler* compiler, Symbol* symbol);
     /// validate program
     bool ValidateProgram(Compiler* compiler, Symbol* symbol);
+    /// validate type
+    bool ValidateType(Compiler* compiler, const Type::FullType& type, Type* typeSymbol, Symbol* sym);
 
-    std::set<std::string> allowedReadWriteTextureAttributes;
     std::set<std::string> allowedTextureAttributes;
     std::set<std::string> allowedSamplerAttributes;
     std::set<std::string> allowedScalarAttributes;
     std::set<std::string> allowedPointerAttributes;
 
     std::set<std::string> allowedSamplerStateAttributes;
-    std::set<std::string> allowedConstantBufferAttributes;
-    std::set<std::string> allowedStorageBufferAttributes;
 
     std::set<std::string> allowedFunctionAttributes;
 

@@ -209,7 +209,7 @@ MyPixelShader(
 @Mask("MyGraphicsProgram")
 program MyGraphicsProgram
 {
-    DynamicFunction = *Function(i32);
-    VertexShader = *MyVertexShader(f32x4, f32x4);
-    PixelShader = *MyPixelShader(f32x4, f32x4);
+    DynamicFunction = Function(i32);
+    VertexShader = MyVertexShader;
+    PixelShader = MyPixelShader;
 };

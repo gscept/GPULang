@@ -38,9 +38,6 @@ UnaryExpression::Resolve(Compiler* compiler)
 {
     if (this->isLhsValue)
         this->expr->isLhsValue = true;
-    if (this->isDeclaration)
-        this->expr->isDeclaration = true;
-
 
     this->expr->Resolve(compiler);
     auto thisResolved = Symbol::Resolved(this);
@@ -50,36 +47,13 @@ UnaryExpression::Resolve(Compiler* compiler)
     this->expr->EvalType(type);
     if (this->op == '*')
     {
-        if (!this->isLhsValue)
+        if (type.modifiers.empty() || type.modifiers.back() != Type::FullType::Modifier::Pointer)
         {
-            if (type.modifiers.empty())
-            {
-                Symbol* sym = compiler->GetSymbol<Symbol>(this->expr->EvalString());
-                switch (sym->symbolType)
-                {
-                    case Symbol::SymbolType::FunctionType:
-                    {
-                        Function* fun = static_cast<Function*>(sym);
-                        thisResolved->dereffedSymbol = sym;
-                        thisResolved->fullType = { "function" };
-                        return true;
-                    }
-                    default:
-                        compiler->Error("Pointer derefence operator only valid on pointers and functions", this);
-                        return false;
-                }
-            }
-            else
-            {
-                type.modifiers.pop_back();
-                type.modifierValues.pop_back();
-            }
+            compiler->Error(Format("Dereferencing is only allowed on a pointer"), this);
+            return false;
         }
-        else
-        {
-            type.modifiers.push_back(Type::FullType::Modifier::PointerLevel);
-            type.modifierValues.push_back(0);
-        }
+        type.modifiers.pop_back();
+        type.modifierValues.pop_back();
     }
     else if (this->isLhsValue)
     {

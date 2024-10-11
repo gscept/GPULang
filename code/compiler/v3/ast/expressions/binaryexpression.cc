@@ -48,9 +48,6 @@ BinaryExpression::Resolve(Compiler* compiler)
     thisResolved->text = this->EvalString();
     if (this->isLhsValue || this->op == '=')
         this->left->isLhsValue = true;
-    if (this->isDeclaration)
-        this->left->isDeclaration = true;
-
     if (!this->left->Resolve(compiler))
         return false;
     if (!this->right->Resolve(compiler))
@@ -72,30 +69,9 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    SymbolExpression* lhs = static_cast<SymbolExpression*>(this->left);
-    if (lhs->symbolType == Symbol::SymbolType::SymbolExpressionType)
-    {
-        Variable* leftSymbol = compiler->GetSymbol<Variable>(lhs->symbol);
-        if (leftSymbol != nullptr)
-        {
-            Variable::__Resolved* leftSymbolResolved = Symbol::Resolved(leftSymbol);
-            if (leftSymbolResolved->usageBits.flags.isConst && !this->left->isDeclaration)
-            {
-                compiler->Error(Format("Invalid operator '%c' on const symbol '%s'", this->op, leftSymbol->name.c_str()), this);
-                return false;
-            }
-        }
-    }
-
     // If assignment, allow if types are identical
-    if (thisResolved->leftType != thisResolved->rightType)
+    if (thisResolved->leftType != thisResolved->rightType && this->op == '=')
     {
-        if (compiler->options.disallowImplicitConversion)
-        {
-            compiler->Error(Format("Implicit conversion between '%s' and '%s' is disallowed. Either turn off 'disallowImplicitConversion' or explicitly convert types", thisResolved->leftType.ToString().c_str(), thisResolved->rightType.ToString().c_str()), this);
-            return false;
-        }
-
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
         std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
         Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
@@ -104,84 +80,30 @@ BinaryExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
             return false;
         }
+        else
+        {
+            if (compiler->options.disallowImplicitConversion)
+            {
+                compiler->Error(Format("Implicit conversion between '%s' and '%s' is disallowed. Either turn off 'disallowImplicitConversion' or explicitly convert types", thisResolved->leftType.ToString().c_str(), thisResolved->rightType.ToString().c_str()), this);
+                return false;
+            }
+        }
         Function* fun = static_cast<Function*>(conversionFunction);
         thisResolved->conversionFunction = static_cast<Function*>(conversionFunction);
         thisResolved->returnType = fun->returnType;
     }
-    else
+    else if (this->op != '=')
     {
-        if (this->op == '+')
+        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
+        Symbol* operatorFunction = thisResolved->lhsType->GetSymbol(functionName);
+        if (operatorFunction == nullptr)
         {
-            thisResolved->returnType = thisResolved->rightType;
+            compiler->Error(Format("'%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
+            return false;
         }
-        else if (this->op == '-')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '*')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '/')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '%')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '^')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '|')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '&')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '>>')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '<<')
-        {
-            thisResolved->returnType = thisResolved->rightType;
-        }
-        else if (this->op == '||')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '&&')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '<')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '>')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '<=')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '>=')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '==')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
-        else if (this->op == '!=')
-        {
-            thisResolved->returnType = Type::FullType{ "b8" };
-        }
+        Function* fun = static_cast<Function*>(operatorFunction);
+        thisResolved->returnType = fun->returnType;
+        thisResolved->conversionFunction = nullptr;
     }
     
     thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);

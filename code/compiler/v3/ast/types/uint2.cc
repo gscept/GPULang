@@ -6,9 +6,13 @@
 namespace GPULang
 {
 
-Function UInt2::ctor_XY;
-Function UInt2::ctorSingleValue;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
 
+    UINT2_CTOR_LIST
+#undef X
+
+Function UInt2::ctor;
 Function UInt2::andOperator;
 Function UInt2::orOperator;
 Function UInt2::xorOperator;
@@ -53,13 +57,15 @@ UInt2::UInt2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XY, u32x2, u32x2);
+    __IMPLEMENT_CTOR(ctor, u32x2, u32x2);
     __ADD_FUNCTION_PARAM(x, u32);
     __ADD_FUNCTION_PARAM(y, u32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, u32x2, u32x2, u32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, u32x2, u32x2, val);
+
+    UINT2_CTOR_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32x2, u32x2);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32x2, u32x2);

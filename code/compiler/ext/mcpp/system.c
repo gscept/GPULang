@@ -4902,12 +4902,18 @@ void    clear_filelist( void)
     const char **   incp;
     INC_LIST *  namep;
 
-    for (incp = incdir; incp < incend; incp++)
-        free( (void *) *incp);
-    free( (void *) incdir);
-    for (namep = fnamelist; namep < fname_end; namep++)
-        free( (void *) namep->name);
-    free( (void *) fnamelist);
+    if (incdir != NULL)
+    {
+        for (incp = incdir; incp < incend; incp++)
+            free((void*)*incp);
+        free((void*)incdir);
+    }
+    if (fnamelist != NULL)
+    {
+        for (namep = fnamelist; namep < fname_end; namep++)
+            free((void*)namep->name);
+        free((void*)fnamelist);
+    }
     if (standard)
         free( (void *) once_list);
 }

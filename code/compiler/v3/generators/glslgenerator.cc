@@ -1210,7 +1210,7 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
     std::string arraySize = "";
     for (int i = varResolved->type.modifierValues.size()-1; i >= 0; i--)
     {
-        if (varResolved->type.modifiers[i] == Type::FullType::Modifier::PointerLevel)
+        if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Pointer)
             continue;
         size_t size = varResolved->type.modifierValues[i];
         if (size > 0)
@@ -1232,15 +1232,10 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
             outCode.append(Format("layout(location=%d) ", varResolved->binding));
         }
 
-        if (varResolved->parameterBits.flags.isIn && varResolved->parameterBits.flags.isOut)
-            outCode.append("inout ");
-        else
-        {
-            if (varResolved->parameterBits.flags.isIn)
-                outCode.append("in ");
-            if (varResolved->parameterBits.flags.isOut)
-                outCode.append("out ");
-        }
+        if (varResolved->storage == Variable::__Resolved::Storage::Input)
+            outCode.append("in ");
+        if (varResolved->storage == Variable::__Resolved::Storage::Output)
+            outCode.append("out ");
 
         if (varResolved->parameterBits.flags.isNoInterpolate)
             outCode.append("flat ");
@@ -1262,7 +1257,7 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
     {
         
         outCode.append(Format("#line %d %s\n", var->location.line, var->location.file.c_str()));
-        if (varResolved->typeSymbol->category == Type::ReadWriteTextureCategory)
+        if (varResolved->typeSymbol->category == Type::TextureCategory && varResolved->type.IsMutable())
         {
             outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, imageFormatToGlsl[varResolved->imageFormat].c_str()));
 
@@ -1289,7 +1284,7 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
                 outCode.append("writeonly ");
         }
 
-        if (varResolved->usageBits.flags.isGroupShared)
+        if (varResolved->storage == Variable::__Resolved::Storage::Workgroup)
             outCode.append("shared ");
 
         /*

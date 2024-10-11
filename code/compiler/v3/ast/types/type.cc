@@ -20,14 +20,9 @@ newType->baseType = typecode;\
 newType->category = Type::VoidCategory;\
 DefaultTypes.push_back(newType);
 
-#define __MAKE_RWTEX()\
-newType->category = Type::ReadWriteTextureCategory;
 
 #define __MAKE_TEX()\
 newType->category = Type::TextureCategory;
-
-#define __MAKE_SAMPTEX()\
-newType->category = Type::SampledTextureCategory;
 
 #define __MAKE_PIXELCACHE()\
 newType->category = Type::PixelCacheCategory;
@@ -83,15 +78,6 @@ const std::map<TypeCode, std::string> codeToStringMapping =
     , { TypeCode::Texture1D, "texture1D" }
     , { TypeCode::PixelCache, "pixelCache" }
     , { TypeCode::PixelCacheMS, "pixelCacheMS" }
-    , { TypeCode::ReadWriteTexture1D, "readWriteTexture1D" }
-    , { TypeCode::ReadWriteTexture2D, "readWriteTexture2D" }
-    , { TypeCode::ReadWriteTexture2DMS, "readWriteTexture2DMS" }
-    , { TypeCode::ReadWriteTexture3D, "readWriteTexture3D" }
-    , { TypeCode::ReadWriteTextureCube, "readWriteTextureCube" }
-    , { TypeCode::ReadWriteTexture1DArray, "readWriteTexture1DArray" }
-    , { TypeCode::ReadWriteTexture2DArray, "readWriteTexture2DArray" }
-    , { TypeCode::ReadWriteTexture2DMSArray, "readWriteTexture2DMSArray" }
-    , { TypeCode::ReadWriteTextureCubeArray, "readWriteTextureCubeArray" }
     , { TypeCode::Sampler, "sampler" }
 };
 
@@ -170,33 +156,6 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE_CUSTOM(f32x4x3, GPULang::Mat4x3);
     __MAKE_TYPE_CUSTOM(f32x4x4, GPULang::Mat4x4);
 
-    __MAKE_TYPE(readWriteTexture1D, TypeCode::ReadWriteTexture1D);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture2D, TypeCode::ReadWriteTexture2D);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture2DMS, TypeCode::ReadWriteTexture2DMS);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture3D, TypeCode::ReadWriteTexture3D);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTextureCube, TypeCode::ReadWriteTextureCube);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture1DArray, TypeCode::ReadWriteTexture1DArray);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture2DArray, TypeCode::ReadWriteTexture2DArray);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTexture2DMSArray, TypeCode::ReadWriteTexture2DMSArray);
-    __MAKE_RWTEX();
-
-    __MAKE_TYPE(readWriteTextureCubeArray, TypeCode::ReadWriteTextureCubeArray);
-    __MAKE_RWTEX();
-
     __MAKE_TYPE(texture1D, TypeCode::Texture1D);
     __MAKE_TEX();
 
@@ -232,6 +191,8 @@ Type::SetupDefaultTypes()
 
     Enumeration* builtinEnum = new Enumeration();
     builtinEnum->name = "CompareMode";
+    builtinEnum->type = { "u32" };
+    builtinEnum->type.literal = true;
     builtinEnum->baseType = GPULang::TypeCode::UInt;
     builtinEnum->labels.push_back("InvalidCompareMode"); builtinEnum->values.push_back(nullptr);
     builtinEnum->labels.push_back("Never"); builtinEnum->values.push_back(nullptr);
@@ -254,6 +215,8 @@ Type::SetupDefaultTypes()
 
     Enumeration* executionScopeEnum = new Enumeration();
     executionScopeEnum->name = "ExecutionScope";
+    executionScopeEnum->type = { "u32" };
+    executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
     executionScopeEnum->labels.push_back("CrossDevice"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("DeviceLocal"); executionScopeEnum->values.push_back(nullptr);
@@ -264,6 +227,8 @@ Type::SetupDefaultTypes()
 
     Enumeration* memorySemanticsEnum = new Enumeration();
     memorySemanticsEnum->name = "MemorySemantics";
+    memorySemanticsEnum->type = { "u32" };
+    memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
     memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(new UIntExpression(0x0));
     memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(new UIntExpression(0x1));
@@ -328,7 +293,7 @@ Type::IsMatrix() const
 uint32_t 
 Type::CalculateSize() const
 {
-    return this->byteSize * this->columnSize * this->rowSize;
+    return this->byteSize;
 }
 
 //------------------------------------------------------------------------------
@@ -357,6 +322,17 @@ Type::CalculateAlignment() const
     uint32_t baseAlignment = this->byteSize;
     uint32_t roundedColumns = roundtopow2(this->columnSize);
     return baseAlignment * roundedColumns;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+uint32_t 
+Type::CalculateStride() const
+{
+    uint32_t baseAlignment = this->byteSize;
+    uint32_t roundedColumns = roundtopow2(this->columnSize);
+    return roundedColumns;
 }
 
 //------------------------------------------------------------------------------
@@ -503,22 +479,14 @@ Type::SwizzleMaskBiggestComponent(SwizzleMask mask)
 std::string 
 Type::FullType::ToString()
 {
-    std::string modifiers = "";
-    for (int i = this->modifiers.size()-1; i >= 0; i--)
-    {
-        uint32_t size = this->modifierValues[i];
-        if (this->modifiers[i] == Type::FullType::Modifier::ArrayLevel)
-            if (size == 0)
-                modifiers.append("[]");
-            else
-            {
-                modifiers.append(Format("[%d]", size));
-            }
-        else if (this->modifiers[i] == Type::FullType::Modifier::PointerLevel)
-            modifiers.append("*");
-    }
-
-    return Format("%s%s", this->name.c_str(), modifiers.c_str());
+    std::string base;
+    if (this->literal)
+        base.append("literal ");
+    if (this->mut)
+        base.append("mutable ");
+    if (this->sampled)
+        base.append("sampled ");
+    return Format("%s%s%s", this->signature.c_str(), base.c_str(), this->name.c_str());
 }
 
 //------------------------------------------------------------------------------
@@ -527,10 +495,45 @@ Type::FullType::ToString()
 const bool 
 Type::FullType::IsPointer() const
 {
-    if (!this->modifiers.empty())
-        return this->modifiers.back() == Type::FullType::Modifier::PointerLevel;
-    else
-        return false;
+    auto it = this->modifiers.crbegin();
+    while (it != this->modifiers.crend())
+    {
+        if (*it == Type::FullType::Modifier::Pointer)
+            return true;
+        else if (*it == Type::FullType::Modifier::Array)
+            return false;
+        it++;
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+const bool 
+Type::FullType::IsMutable() const
+{
+    return this->mut;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+const Type::FullType::Modifier 
+Type::FullType::LastIndirectionModifier() const
+{
+    auto it = this->modifiers.crbegin();
+    while (it != this->modifiers.crend())
+    {
+        switch (*it)
+        {
+            case Type::FullType::Modifier::Array:
+            case Type::FullType::Modifier::Pointer:
+                return *it;
+        }
+        it++;
+    }
+    return Type::FullType::Modifier::Invalid;
 }
 
 } // namespace GPULang

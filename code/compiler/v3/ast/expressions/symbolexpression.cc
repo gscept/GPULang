@@ -78,6 +78,12 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = { "function" };
             return true;
         }
+        else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
+        {
+            Type* type = static_cast<Type*>(thisResolved->symbol);
+            thisResolved->fullType = type->name;
+            return true;
+        }
         else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
         {
             EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->symbol);

@@ -150,6 +150,10 @@ Function* GetDrawIndex;
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
 
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ExportColor, ty)
+    SCALAR_LIST
+#undef X
+
 Function* GetLocalInvocationIndices;
 Function* GetGlobalInvocationIndices;
 Function* GetWorkGroupIndices;

@@ -34,7 +34,7 @@ Mat2x3::Mat2x3()
     this->byteSize = 24;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(floatConstructor, f32x2x3, f32x2x3);
+    __IMPLEMENT_CTOR(floatConstructor, f32x2x3, f32x2x3);
     __ADD_FUNCTION_PARAM(m00, f32);
     __ADD_FUNCTION_PARAM(m01, f32);
     __ADD_FUNCTION_PARAM(m02, f32);
@@ -42,7 +42,7 @@ Mat2x3::Mat2x3()
     __ADD_FUNCTION_PARAM(m11, f32);
     __ADD_FUNCTION_PARAM(m12, f32);
 
-    __IMPLEMENT_GLOBAL(vectorConstructor, f32x2x3, f32x2x3);
+    __IMPLEMENT_CTOR(vectorConstructor, f32x2x3, f32x2x3);
     __ADD_FUNCTION_PARAM(r0, f32x2);
     __ADD_FUNCTION_PARAM(r1, f32x2);
 
@@ -53,7 +53,7 @@ Mat2x3::Mat2x3()
     __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x2x3, f32x2x3);
     __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x2x3, f32x2x3);
 
-    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x2, f32x3);
 
     __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x2x3, f32x2x3);
 

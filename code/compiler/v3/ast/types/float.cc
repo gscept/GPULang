@@ -39,8 +39,8 @@ Float::Float()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor_UInt, f32, f32, u32);
-    __IMPLEMENT_GLOBAL_1(ctor_Int, f32, f32, i32);
+    __IMPLEMENT_CTOR_1(ctor_UInt, f32, f32, u32);
+    __IMPLEMENT_CTOR_1(ctor_Int, f32, f32, i32);
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32, f32);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32, f32);

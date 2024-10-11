@@ -6,8 +6,18 @@
 namespace GPULang
 {
 
-Function Int3::ctor_XYZ;
-Function Int3::ctorSingleValue;
+Function Int3::ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    INT3_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    Function type::ctor;
+
+    INT3_CTOR2_LIST
+#undef X
 
 Function Int3::andOperator;
 Function Int3::orOperator;
@@ -53,14 +63,24 @@ Int3::Int3()
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZ, i32x3, i32x3);
+    __IMPLEMENT_CTOR(ctor, i32x3, i32x3);
     __ADD_FUNCTION_PARAM(x, i32);
     __ADD_FUNCTION_PARAM(y, i32);
     __ADD_FUNCTION_PARAM(z, i32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, i32x3, i32x3, i32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, i32x3, i32x3, val);
+
+    INT3_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    __IMPLEMENT_CTOR(ctor, i32x3, i32x3)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)
+
+    INT3_CTOR2_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32x3, i32x3);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, i32x3, i32x3);

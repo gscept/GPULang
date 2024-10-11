@@ -222,7 +222,14 @@ typeDeclaration
     {
         $type.name = "";
     }:
-    IDENTIFIER { $type.name = $IDENTIFIER.text; } 
+    ( 
+        '*' { $type.AddModifier(Type::FullType::Modifier::Pointer); } |
+        '[' { $type.AddModifier(Type::FullType::Modifier::Array); } 
+                ( arraySize0 = INTEGERLITERAL { $type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+        ']'
+        | IDENTIFIER { $type.AddQualifier($IDENTIFIER.text); }
+    )* 
+    typeName = IDENTIFIER { $type.name = $typeName.text; }
     ;
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
@@ -245,13 +252,7 @@ variables
     (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
     
     ( ':' 
-        ( 
-            '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
-            '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
-                    ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
-            ']'
-        )* 
-        typeName = IDENTIFIER { type.name = $typeName.text; }
+       typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
         '=' valueExpr = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
@@ -310,8 +311,8 @@ structure
     '{' 
         (varName = IDENTIFIER { varName = $varName.text; varLocation = SetupFile(); } ':'         
             ( 
-                '*' { varType.AddModifier(Type::FullType::Modifier::PointerLevel); } |
-                '[' { varType.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
+                '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); } |
+                '[' { varType.AddModifier(Type::FullType::Modifier::Array); } 
                         ( arraySize0 = INTEGERLITERAL { varType.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
                 ']'
             )* 
@@ -349,9 +350,12 @@ enumeration
         $sym = nullptr;
         std::vector<std::string> enumLabels;
         std::vector<Expression*> enumValues;
+        std::string name;
+        Type::FullType type = { "u32" };
         Symbol::Location location;
     }:
-    'enum' name = IDENTIFIER { location = SetupFile(); }
+    'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
+    (':' typeDeclaration { type = $typeDeclaration.type; })?
     '{'
         label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
         {
@@ -361,6 +365,9 @@ enumeration
     '}'
     {
         $sym = new Enumeration();
+        $sym->name = name;
+        type.literal = true;
+        $sym->type = type;
         $sym->labels = enumLabels;
         $sym->values = enumValues;
         $sym->location = location;
@@ -383,13 +390,7 @@ parameter
     
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
     ':' 
-    ( 
-        '*' { type.AddModifier(Type::FullType::Modifier::PointerLevel); } |
-        '[' { type.AddModifier(Type::FullType::Modifier::ArrayLevel); } 
-                ( arraySize0 = INTEGERLITERAL { type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
-        ']'
-    )* 
-    typeName = IDENTIFIER { type.name = $typeName.text; }
+    typeDeclaration { type = $typeDeclaration.type; }
     (
         '=' valueExpr = assignmentExpression { valueExpression = $valueExpr.tree; } 
     )?
@@ -413,7 +414,7 @@ functionDeclaration
         Symbol::Location location;
     }:
     (attribute { attributes.push_back($attribute.attr); })*
-    returnType = typeDeclaration name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = parameter { variables.push_back($arg0.sym); } (',' argn = parameter { variables.push_back($argn.sym); })* )? ')' 
+    name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = parameter { variables.push_back($arg0.sym); } (',' argn = parameter { variables.push_back($argn.sym); })* )? ')' returnType = typeDeclaration
     {
         $sym = new Function(); 
         $sym->hasBody = false;
@@ -486,7 +487,7 @@ state
         std::vector<Expression*> entries;
     }:
     (
-        'sampler_state' { $sym = new SamplerState(); }
+        'sampler' { $sym = new SamplerState(); }
         | 'render_state' { $sym = new RenderState(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'

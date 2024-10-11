@@ -44,11 +44,9 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->left->isLhsValue = true;
-    if (this->isDeclaration)
-        this->left->isDeclaration = true;
 
     // If rhs value, array indexing needs to provide an argument 
-    if (this->right == nullptr && !this->isDeclaration)
+    if (this->right == nullptr)
     {
         compiler->Error(Format("Array access needs index but got '[]'"), this);
         return false;
@@ -88,7 +86,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     }
     else
     {
-        if (thisResolved->returnFullType.modifiers.back() != Type::FullType::Modifier::ArrayLevel)
+        if (thisResolved->returnFullType.modifiers.back() != Type::FullType::Modifier::Array)
         {
             compiler->Error(Format("operator [] not valid on non-array type '%s'", thisResolved->leftFullType.ToString().c_str()), this);
             return false;

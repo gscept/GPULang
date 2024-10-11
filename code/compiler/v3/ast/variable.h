@@ -32,7 +32,10 @@ enum ImageFormat
 
     // unsigned integer
     RGBA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
-    R32U, R16U, R8U
+    R32U, R16U, R8U,
+
+    // Format is not known
+    Unknown
 };
 
 extern std::unordered_map<std::string, ImageFormat> StringToFormats;
@@ -45,7 +48,6 @@ struct Variable : public Symbol
 
     std::vector<std::string> values;
     Type::FullType type;
-    //std::string name;
     Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
@@ -79,8 +81,6 @@ struct Variable : public Symbol
             {}
             struct
             {
-                uint32_t isIn : 1;
-                uint32_t isOut : 1;
                 uint32_t isPatch : 1;
                 uint32_t isNoPerspective : 1;
                 uint32_t isNoInterpolate : 1;
@@ -97,19 +97,27 @@ struct Variable : public Symbol
             {}
             struct
             {
-                uint32_t isConst : 1;                   // true if variable is const
-                uint32_t isUniform : 1;
-                uint32_t isMutable : 1;                 // true if variable is mutable
-                uint32_t isParameter : 1;               // true if variable is passed to a function
-                uint32_t isShaderInput : 1;             // true if variable is an entry point input
-                uint32_t isShaderOutput : 1;            // true if variable is an entry point output
-                uint32_t isStructMember : 1;            // true if variable is the member of a struct
-                uint32_t isGroupShared : 1;             // true if variable is work group shared memory
-                uint32_t isInline : 1;                  // true if variable data is sourced directly from command buffer
+                uint32_t isConst : 1;                   // variable may not change value after initialization
+                uint32_t isParameter : 1;               // variable is a function parameter
+                uint32_t isEntryPointParameter : 1;
+                uint32_t isStructMember : 1;            // variable is a struct member
+                uint32_t isSampled : 1;                 // for variables of image type, this means a sampler has to be associated from the client
             } flags;
             uint32_t bits;
         };
         UsageBits usageBits = 0x0;
+
+        enum class Storage
+        {
+            Default,                                // default storage, on the stack
+            Uniform,                                // variable is uniform (const) across all threads and provided by the CPU
+            Workgroup,                              // variable is shared by workgroup and can be written/read
+            InlineUniform,                          // variable is uniform but read from command buffer
+            Input,                                  // variable is an input from a previous shader stage
+            Output,                                 // variable is an output from the current shader stage
+            Global                                  // variable is global in the shader
+
+        } storage = Storage::Default;
         std::vector<Variable*> siblings;
 
         /// type here is the fully qualified (pointer and array) type

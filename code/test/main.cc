@@ -24,10 +24,13 @@ ShaderTest(std::string input, std::string binaryOut, std::string headerOut)
     GPULang::Compiler::Options options;
     options.emitTimings = true;
     options.disallowImplicitConversion = true;
-    bool res = GPULangCompile(input, GPULang::Compiler::Language::SPIRV, binaryOut, headerOut, {}, options, errors);
+    options.validate = true;
+    bool res = GPULangCompile(input, GPULang::Compiler::Language::VULKAN_SPIRV, binaryOut, headerOut, {}, options, errors);
 
     if (!res)
         printf("%s Compilation failed\n", input.c_str());
+    else
+        printf("%s Compilation successful!\n", input.c_str());
 
     if (errors != nullptr)
     {
@@ -40,18 +43,21 @@ ShaderTest(std::string input, std::string binaryOut, std::string headerOut)
 //------------------------------------------------------------------------------
 /**
 */
-void 
+int 
 main(const char** argv, int argc)
 {
     //CompleteShaderTest();
+    TEST(basicgraphics);
+    TEST(computewithimagestore);
+    TEST(for);
     TEST(explicitreturn);
-    TEST(computewithstore);
-    TEST(typeinferrence);
     TEST(nested);
+    TEST(computewithstore);
+    TEST(typeinference);
     TEST(switch);
     
-    TEST(whilet);
-    TEST(for);
+    TEST(while);
     TEST(break);
     TEST(if);
+    return 0;
 }

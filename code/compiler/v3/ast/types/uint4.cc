@@ -6,10 +6,27 @@
 namespace GPULang
 {
 
-Function UInt4::ctor_XYZW;
-Function UInt4::ctorSingleValue;
-Function UInt4::ctor_3_W;
-Function UInt4::ctor_2_ZW;
+Function UInt4::ctor;
+
+
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    UINT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    Function type::ctor;
+
+    UINT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    Function type::ctor;
+
+    UINT4_CTOR3_LIST
+#undef X
+
 
 Function UInt4::andOperator;
 Function UInt4::orOperator;
@@ -55,26 +72,34 @@ UInt4::UInt4()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XYZW, u32x4, u32x4);
+    __IMPLEMENT_CTOR(ctor, u32x4, u32x4);
     __ADD_FUNCTION_PARAM(x, u32);
     __ADD_FUNCTION_PARAM(y, u32);
     __ADD_FUNCTION_PARAM(z, u32);
     __ADD_FUNCTION_PARAM(w, u32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, u32x4, u32x4, u32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, u32x4, u32x4, val);
 
-    __IMPLEMENT_GLOBAL(ctor_3_W, u32x4, u32x4);
-    __ADD_FUNCTION_PARAM(xyz, u32x3);
-    __ADD_FUNCTION_PARAM(w, u32);
-    __ADD_CONSTRUCTOR()
+    UINT4_CTOR_LIST
+#undef X
 
-    __IMPLEMENT_GLOBAL(ctor_2_ZW, u32x4, u32x4);
-    __ADD_FUNCTION_PARAM(xy, u32x2);
-    __ADD_FUNCTION_PARAM(z, u32);
-    __ADD_FUNCTION_PARAM(w, u32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, arg0, arg1)\
+    __IMPLEMENT_CTOR(ctor, u32x4, u32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)
+
+    UINT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    __IMPLEMENT_CTOR(ctor, u32x4, u32x4)\
+    __ADD_FUNCTION_PARAM(arg_0, arg0)\
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_FUNCTION_PARAM(arg_2, arg2)
+
+    UINT4_CTOR3_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32x4, u32x4);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32x4, u32x4);

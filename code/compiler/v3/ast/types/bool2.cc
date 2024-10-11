@@ -23,13 +23,13 @@ Bool2::Bool2()
     this->category = Type::ScalarCategory;
 
     // setup constructor for xy
-    __IMPLEMENT_GLOBAL(ctor_XY, b8x2, b8x2);
+    __IMPLEMENT_CTOR(ctor_XY, b8x2, b8x2);
     __ADD_FUNCTION_PARAM(x, b8);
     __ADD_FUNCTION_PARAM(y, b8);
     __ADD_CONSTRUCTOR()
 
         // setup constructor for single component
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, b8x2, b8x2, b8);
+    __IMPLEMENT_CTOR_1(ctorSingleValue, b8x2, b8x2, b8);
     __ADD_CONSTRUCTOR()
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], b8, i32);

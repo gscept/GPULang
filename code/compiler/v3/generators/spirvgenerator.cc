@@ -22,6 +22,7 @@
 #include "ast/expressions/commaexpression.h"
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/unaryexpression.h"
+#include "ast/expressions/enumexpression.h"
 
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
@@ -40,6 +41,7 @@
 #include "spirv-tools/optimizer.hpp"
 
 #include <array>
+#include <format>
 
 namespace GPULang
 {
@@ -59,36 +61,16 @@ std::unordered_map<std::string, std::string> typeToSpirvType =
     , { "i16", "OpTypeInt 16 1" }
     , { "u32", "OpTypeInt 32 0" }
     , { "u16", "OpTypeInt 16 0" }
-    , { "readWriteTexture1D", "OpTypeImage %%%d 1D 0 0 0 2 %s %s" }
-    , { "readWriteTexture2D", "OpTypeImage %%%d 2D 0 0 0 2 %s %s" }
-    , { "readWriteTexture2DMS", "OpTypeImage %%%d 2D 0 0 1 2 %s %s" }
-    , { "readWriteTexture3D", "OpTypeImage %%%d 3D 0 0 0 2 %s %s" }
-    , { "readWriteTextureCube", "OpTypeImage %%%d Cube 0 0 0 2 %s %s" }
-    , { "readWriteTexture1DArray", "OpTypeImage %%%d 1D 0 1 0 2 %s %s" }
-    , { "readWriteTexture2DArray", "OpTypeImage %%%d 2D 0 1 0 2 %s %s" }
-    , { "readWriteTexture2DMSArray", "OpTypeImage %%%d 2D 0 1 1 2 %s %s" }
-    , { "readWriteTexture3DArray", "OpTypeImage %%%d 3D 0 1 0 2 %s %s" }
-    , { "readWriteTextureCubeArray", "OpTypeImage %%%d Cube 0 1 0 2 %s %s" }
-    , { "texture1D", "OpTypeImage %%%d 1D 0 0 0 0 %s" }
-    , { "texture2D", "OpTypeImage %%%d 2D 0 0 0 0 %s" }
-    , { "texture2DMS", "OpTypeImage %%%d 2D 0 0 1 0 %s" }
-    , { "texture3D", "OpTypeImage %%%d 3D 0 0 0 0 %s" }
-    , { "textureCube", "OpTypeImage %%%d Cube 0 0 0 0 %s" }
-    , { "texture1DArray", "OpTypeImage %%%d 1D 0 1 0 0 %s" }
-    , { "texture2DArray", "OpTypeImage %%%d 2D 0 1 0 0 %s" }
-    , { "texture2DMSArray", "OpTypeImage %%%d 2D 0 1 1 0 %s" }
-    , { "texture3DArray", "OpTypeImage %%%d 3D 0 1 0 0 %s" }
-    , { "textureCubeArray", "OpTypeImage %%%d Cube 0 1 0 0 %s" }
-    , { "sampledTexture1D", "OpTypeImage %%%d 1D 0 0 0 1 %s" }
-    , { "sampledTexture2D", "OpTypeImage %%%d 2D 0 0 0 1 %s" }
-    , { "sampledTexture2DMS", "OpTypeImage %%%d 2D 0 0 1 1 %s" }
-    , { "sampledTexture3D", "OpTypeImage %%%d 3D 0 0 0 1 %s" }
-    , { "sampledTextureCube", "OpTypeImage %%%d Cube 0 0 0 1 %s" }
-    , { "sampledTexture1DArray", "OpTypeImage %%%d 1D 0 1 0 1 %s" }
-    , { "sampledTexture2DArray", "OpTypeImage %%%d 2D 0 1 0 1 %s" }
-    , { "sampledTexture2DMSArray", "OpTypeImage %%%d 2D 0 1 1 1 %s" }
-    , { "sampledTexture3DArray", "OpTypeImage %%%d 3D 0 1 0 1 %s" }
-    , { "sampledTextureCubeArray", "OpTypeImage %%%d Cube 0 1 0 1 %s" }
+    , { "texture1D", "OpTypeImage %%%d 1D %d 0 0 %d %s" }
+    , { "texture2D", "OpTypeImage %%%d 2D %d 0 0 %d %s" }
+    , { "texture2DMS", "OpTypeImage %%%d 2D %d 0 1 %d %s" }
+    , { "texture3D", "OpTypeImage %%%d 3D %d 0 0 %d %s" }
+    , { "textureCube", "OpTypeImage %%%d Cube %d 0 0 %d %s" }
+    , { "texture1DArray", "OpTypeImage %%%d 1D %d 1 0 %d %s" }
+    , { "texture2DArray", "OpTypeImage %%%d 2D %d 1 0 %d %s" }
+    , { "texture2DMSArray", "OpTypeImage %%%d 2D %d 1 1 %d %s" }
+    , { "texture3DArray", "OpTypeImage %%%d 3D %d 1 0 %d %s" }
+    , { "textureCubeArray", "OpTypeImage %%%d Cube %d 1 0 %d %s" }
     , { "pixelCache", "OpTypeImage %%%d SubpassData 0 0 0 2 Unknown ReadOnly" }
     , { "pixelCacheMS", "OpTypeImage %%%d SubpassData 0 0 1 2 Unknown ReadOnly" }
     , { "sampler", "OpTypeSampler" }
@@ -141,6 +123,8 @@ std::unordered_map<ImageFormat, std::string> imageFormatToSpirvType =
     , { ImageFormat::R32U, "R32ui" }
     , { ImageFormat::R16U, "R16ui" }
     , { ImageFormat::R8U, "R8ui" }
+
+    , { ImageFormat::Unknown, "Unknown" }
 };
 
 //------------------------------------------------------------------------------
@@ -155,11 +139,29 @@ GenerateTypeSPIRV(
     , ImageFormat imageFormat = ImageFormat::InvalidImageFormat
     , Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0)
     , Variable::__Resolved::UsageBits usageBits = Variable::__Resolved::UsageBits(0x0)
+    , Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default
 )
 {
     std::string baseType = Type::CodeToString(typeSymbol->baseType);
     std::string spirvType = typeToSpirvType[baseType];
-    SPIRVResult::Scope scope = SPIRVResult::Scope::Function;
+    SPIRVResult::Storage scope = SPIRVResult::Storage::Function;
+    std::vector<uint32_t> parentType;
+
+    auto reducePointer = [](Compiler* compiler, Type::FullType& type)
+    {
+        if (!compiler->target.supportsPhysicalAddressing)
+        {
+            for (size_t i = 0; i < type.modifiers.size(); i++)
+            {
+                const Type::FullType::Modifier mod = type.modifiers[i];
+                if (mod == Type::FullType::Modifier::Pointer)
+                {
+                    type.modifiers.erase(type.modifiers.begin() + i);
+                    break;
+                }
+            }
+        }
+    };
 
     uint32_t name = 0xFFFFFFFF;
     if (typeSymbol->category == Type::ScalarCategory)
@@ -167,45 +169,50 @@ GenerateTypeSPIRV(
         name = generator->AddSymbol(baseType, spirvType, true);
         if (typeSymbol->IsVector())
         {
+            parentType.push_back(name);
             name = generator->AddSymbol(type.name, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
+            
         }
         else if (typeSymbol->IsMatrix())
         {
             generator->AddCapability("Matrix");
-            baseType = Format("%s(%d", baseType.c_str(), typeSymbol->columnSize);
-            name = generator->AddSymbol(baseType, Format("OpTypeVector %%%d %d", name, typeSymbol->columnSize), true);
-            name = generator->AddSymbol(type.name, Format("OpTypeMatrix %%%d %d", name, typeSymbol->rowSize), true);
+            baseType = Format("%sx%d", baseType.c_str(), typeSymbol->rowSize);
+            parentType.push_back(name);
+            name = generator->AddSymbol(baseType, Format("OpTypeVector %%%d %d", name, typeSymbol->rowSize), true);
+            parentType.push_back(name);
+            name = generator->AddSymbol(type.name, Format("OpTypeMatrix %%%d %d", name, typeSymbol->columnSize), true);
         }
 
-        if (usageBits.flags.isShaderInput)
-            scope = SPIRVResult::Scope::Input;
-        else if (usageBits.flags.isShaderOutput)
-            scope = SPIRVResult::Scope::Output;
-        else if (usageBits.flags.isGroupShared)
-            scope = SPIRVResult::Scope::WorkGroup;
+        if (storage == Variable::__Resolved::Storage::Input)
+            scope = SPIRVResult::Storage::Input;
+        else if (storage == Variable::__Resolved::Storage::Output)
+            scope = SPIRVResult::Storage::Output;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;
     }
-    else if (typeSymbol->category == Type::ReadWriteTextureCategory || typeSymbol->category == Type::TextureCategory || typeSymbol->category == Type::SampledTextureCategory)
+    else if (typeSymbol->category == Type::TextureCategory)
     {
-        Type* vec = compiler->GetSymbol<Type>("f32x4");
-        SPIRVResult vecType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "f32x4" }, vec);
+        Type* vec = compiler->GetSymbol<Type>("f32");
+        SPIRVResult vecType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "f32" }, vec);
         std::string accessPattern = "";
-        if (typeSymbol->category == Type::ReadWriteTextureCategory)
-        {
-            if (accessBits.flags.readAccess && accessBits.flags.writeAccess)
-                accessPattern = "ReadWrite";
-            else if (accessBits.flags.readAccess)
-                accessPattern = "ReadOnly";
-            else if (accessBits.flags.writeAccess)
-                accessPattern = "WriteOnly";
-            std::string spirvFormat = imageFormatToSpirvType[imageFormat];
-            spirvType = Format(spirvType.c_str(), vecType.typeName, spirvFormat.c_str(), accessPattern.c_str());
-        }
+        uint32_t sampleBits, depthBits = 0;
+        if (type.IsMutable())
+            sampleBits = 2;
         else
-        {
-            spirvType = Format(spirvType.c_str(), vecType, "ReadOnly");
-        }
+            sampleBits = 1;
+
+        std::string spirvFormat = imageFormatToSpirvType[imageFormat];
+        spirvType = Format(spirvType.c_str(), vecType.typeName, depthBits, sampleBits, spirvFormat.c_str());
+        baseType = Format("%s,%s,Sample=%d,Depth=%d", spirvFormat.c_str(), baseType.c_str(), sampleBits, depthBits);
         name = generator->AddSymbol(baseType, spirvType, true);
-        scope = SPIRVResult::Scope::Image;
+        if (type.sampled)
+        {
+            baseType = Format("sampledType(%d)", name);
+            name = generator->AddSymbol(baseType, Format("OpTypeSampledImage %%%d", name), true);
+        }
+        scope = SPIRVResult::Storage::Image;
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
@@ -213,7 +220,12 @@ GenerateTypeSPIRV(
         SPIRVResult vecType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "f32x4" }, vec);
         spirvType = Format(spirvType.c_str(), vecType.typeName);
         name = generator->AddSymbol(baseType, spirvType, true);
-        scope = SPIRVResult::Scope::Image;
+        scope = SPIRVResult::Storage::Image;
+    }
+    else if (typeSymbol->category == Type::SamplerCategory)
+    {
+        name = generator->AddSymbol(baseType, spirvType, true);
+        scope = SPIRVResult::Storage::Sampler;
     }
     else if (typeSymbol->category == Type::VoidCategory)
     {
@@ -223,25 +235,32 @@ GenerateTypeSPIRV(
     {
         name = generator->GetSymbol(typeSymbol->name);
         baseType = typeSymbol->name;
-        if (usageBits.flags.isMutable)
-            scope = SPIRVResult::Scope::StorageBuffer;
-        else if (usageBits.flags.isUniform)
-            scope = SPIRVResult::Scope::Uniform;
-        else if (usageBits.flags.isInline)
-            scope = SPIRVResult::Scope::PushConstant;
+        if (type.IsMutable())
+        {
+            scope = SPIRVResult::Storage::StorageBuffer;
+        }
+        else if (storage == Variable::__Resolved::Storage::Uniform)
+        {
+            scope = SPIRVResult::Storage::Uniform;
+        }
+        else if (storage == Variable::__Resolved::Storage::InlineUniform)
+        {
+            scope = SPIRVResult::Storage::PushConstant;
+        }
     }
 
     std::string scopeString = SPIRVResult::ScopeToString(scope);
     for (size_t i = 0; i < type.modifiers.size(); i++)
     {
         const Type::FullType::Modifier& mod = type.modifiers[i];
-        if (mod == Type::FullType::Modifier::PointerLevel)
+        if (mod == Type::FullType::Modifier::Pointer)
         {
             std::string newBase = Format("ptr(%s)%s", baseType.c_str(), scopeString.c_str());
+            parentType.push_back(name);
             name = generator->AddSymbol(newBase, Format("OpTypePointer %s %%%d", scopeString.c_str(), name), true);
             baseType = newBase;
         }
-        else if (mod == Type::FullType::Modifier::ArrayLevel)
+        else if (mod == Type::FullType::Modifier::Array)
         {
             if (type.modifierValues[i] == 0x0)
             {
@@ -255,6 +274,7 @@ GenerateTypeSPIRV(
                 Type* i32 = compiler->GetSymbol<Type>("i32");
                 SPIRVResult intType = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "i32" }, i32);
                 uint32_t arraySizeConstant = generator->AddSymbol(Format("%ds", type.modifierValues[i]), Format("OpConstant %%%d %d", intType.typeName, type.modifierValues[i]), true);
+                parentType.push_back(name);
                 name = generator->AddSymbol(newBase, Format("OpTypeArray %%%d %%%d", name, arraySizeConstant), true);
                 generator->AddDecoration(newBase, name, Format("ArrayStride %d", typeSymbol->CalculateAlignment()));
                 baseType = newBase;
@@ -262,7 +282,7 @@ GenerateTypeSPIRV(
         }
     }
 
-    return SPIRVResult(0xFFFFFFFF, name, false, false, scope);
+    return SPIRVResult(0xFFFFFFFF, name, false, false, scope, parentType);
 }
 
 
@@ -271,9 +291,12 @@ struct ConstantCreationInfo
 {
     enum class Type
     {
-        Float32,
-        Int32,
-        UInt32
+        Float,
+        Float16,
+        Int,
+        Int16,
+        UInt,
+        UInt16,
     } type;
     union
     {
@@ -282,26 +305,50 @@ struct ConstantCreationInfo
         uint32_t ui;
     } data;
 
-    static ConstantCreationInfo Float32(float val)
+    static ConstantCreationInfo Float(float val)
     {
         ConstantCreationInfo ret;
-        ret.type = Type::Float32;
+        ret.type = Type::Float;
         ret.data.f = val;
         return ret;
     }
 
-    static ConstantCreationInfo UInt32(uint32_t val)
+    static ConstantCreationInfo Float16(float val)
     {
         ConstantCreationInfo ret;
-        ret.type = Type::UInt32;
+        ret.type = Type::Float16;
+        ret.data.f = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt(uint32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt;
         ret.data.ui = val;
         return ret;
     }
 
-    static ConstantCreationInfo Int32(int32_t val)
+    static ConstantCreationInfo UInt16(uint16_t val)
     {
         ConstantCreationInfo ret;
-        ret.type = Type::Int32;
+        ret.type = Type::UInt16;
+        ret.data.ui = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int(int32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int;
+        ret.data.i = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int16(int16_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int16;
         ret.data.i = val;
         return ret;
     }
@@ -316,23 +363,44 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
     SPIRVResult res = SPIRVResult::Invalid();
     switch (info.type)
     {
-        case ConstantCreationInfo::Type::UInt32:
+        case ConstantCreationInfo::Type::UInt:
         {
             uint32_t baseType = generator->AddSymbol("u32", "OpTypeInt 32 0", true);
             res.typeName = baseType;
             res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
             break;
         }
-        case ConstantCreationInfo::Type::Int32:
+        case ConstantCreationInfo::Type::UInt16:
+        {
+            uint32_t baseType = generator->AddSymbol("u16", "OpTypeInt 16 0", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Int:
         {
             uint32_t baseType = generator->AddSymbol("i32", "OpTypeInt 32 1", true);
             res.typeName = baseType;
             res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
             break;
         }
-        case ConstantCreationInfo::Type::Float32:
+        case ConstantCreationInfo::Type::Int16:
+        {
+            uint32_t baseType = generator->AddSymbol("i16", "OpTypeInt 16 1", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Float:
         {
             uint32_t baseType = generator->AddSymbol("f32", "OpTypeFloat 32", true);
+            res.typeName = baseType;
+            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %d", baseType, info.data.f), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Float16:
+        {
+            uint32_t baseType = generator->AddSymbol("f16", "OpTypeFloat 16", true);
             res.typeName = baseType;
             res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %d", baseType, info.data.f), true);
             break;
@@ -343,6 +411,7 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
 
 enum class ConversionTable
 {
+    None,
     IntToFloat,
     IntToUInt,
     UIntToFloat,
@@ -351,35 +420,47 @@ enum class ConversionTable
     FloatToInt,
 };
 
-std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, SPIRVResult)>> converters =
+std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t vectorSize, SPIRVResult)>> converters =
 {
-    { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);        
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
-    , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
         if (!value.isValue)
             value.name = g->AddMappedOp(Format("OpLoad %%%d %%%d", value.typeName, value.name));
-        return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
-    , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
         if (!value.isValue)
             value.name = g->AddMappedOp(Format("OpLoad %%%d %%%d", value.typeName, value.name));
-        return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
-    , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
-    , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
-    , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, SPIRVResult value) -> SPIRVResult {
+    , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
-        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true, value.isLiteral);
+        if (vectorSize > 1)
+            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
 };
 
@@ -387,11 +468,11 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
 /**
 */
 void
-GenerateConversionsSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, const std::vector<SPIRVResult>& inArgs, std::vector<SPIRVResult>& outValues)
+GenerateConversionsSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, uint32_t vectorSize, const std::vector<SPIRVResult>& inArgs, std::vector<SPIRVResult>& outValues)
 {
     for (size_t i = 0; i < inArgs.size(); i++)
     {
-        outValues.push_back(converters[conversion](compiler, generator, inArgs[i]));
+        outValues.push_back(converters[conversion](compiler, generator, vectorSize, inArgs[i]));
     }
 }
 
@@ -399,9 +480,9 @@ GenerateConversionsSPIRV(Compiler* compiler, SPIRVGenerator* generator, Conversi
 /**
 */
 SPIRVResult
-GenerateConversionSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, SPIRVResult inArg)
+GenerateConversionSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, uint32_t vectorSize, SPIRVResult inArg)
 {
-    return converters[conversion](compiler, generator, inArg);
+    return converters[conversion](compiler, generator, vectorSize, inArg);
 }
 
 //------------------------------------------------------------------------------
@@ -411,15 +492,18 @@ SPIRVResult
 GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     std::string argList = "";
-    bool isLiteral = true;
+    bool isConst = true;
     for (const SPIRVResult& arg : args)
     {
-        argList.append(Format("%%%d ", arg.name));
-        if (!arg.isLiteral)
-            isLiteral = false;
+        uint32_t value = arg.name;
+        if (!arg.isValue)
+            value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", arg.typeName, arg.name));
+        argList.append(Format("%%%d ", value));
+        if (!arg.isConst)
+            isConst = false;
     }
-    if (isLiteral)
-        return SPIRVResult(generator->AddMappedOp(Format("OpConstantConstruct %%%d %s", returnType, argList.c_str())), returnType, true, true);
+    if (isConst)
+        return SPIRVResult(generator->AddSymbol(Format("%%%d_composite(%s)", returnType, argList.c_str()), Format("OpConstantComposite %%%d %s", returnType, argList.c_str()), true), returnType, true, true);
     else
         return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
 }
@@ -430,7 +514,7 @@ GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t r
 SPIRVResult
 GenerateSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, SPIRVResult arg)
 {
-    std::vector<SPIRVResult> splat(4, arg);
+    std::vector<SPIRVResult> splat(num, arg);
     return GenerateCompositeSPIRV(compiler, generator, returnType, splat);
 }
 
@@ -441,7 +525,7 @@ SPIRVResult
 GenerateConvertAndSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
 {
     std::vector<SPIRVResult> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, args, converted);
+    GenerateConversionsSPIRV(compiler, generator, conversion, 1, args, converted);
     return GenerateSplatCompositeSPIRV(compiler, generator, returnType, 4, converted[0]);
 }
 
@@ -470,7 +554,7 @@ SPIRVResult
 GenerateConvertAndCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
 {
     std::vector<SPIRVResult> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, args, converted);
+    GenerateConversionsSPIRV(compiler, generator, conversion, 1, args, converted);
     return GenerateCompositeSPIRV(compiler, generator, returnType, converted);
 }
 
@@ -492,121 +576,57 @@ SPIRVGenerator::SPIRVGenerator()
 void
 SPIRVGenerator::SetupIntrinsics()
 {
-    this->intrinsicMap[&Float4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Float4::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-    };
-    this->intrinsicMap[&Float4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 2);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Float4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Float3::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Float3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 3);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Float3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-    };
-    this->intrinsicMap[&Float3::ctor_f32x2_Z] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Float2::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Float2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 2);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Float2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
     };
     this->intrinsicMap[&Float::ctor_UInt] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToFloat, args[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToFloat, 1, args[0]);
     };
     this->intrinsicMap[&Float::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::IntToFloat, args[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::IntToFloat, 1, args[0]);
     };
-    this->intrinsicMap[&Int4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Int4::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Int4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-    };
-    this->intrinsicMap[&Int4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 2);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Int4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Int3::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Int3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 3);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Int3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-    };
-    this->intrinsicMap[&Int2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Int2::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&Int2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
     };
     this->intrinsicMap[&Int::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToInt, args[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::UIntToInt, 1, args[0]);
     };
-    this->intrinsicMap[&UInt4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&UInt4::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&UInt4::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-    };
-    this->intrinsicMap[&UInt4::ctor_3_W] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 2);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&UInt4::ctor_2_ZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&UInt3::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 3);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&UInt3::ctor_XYZ] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 3);
-        return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&UInt3::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-    };
-    this->intrinsicMap[&UInt2::ctor_XY] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&UInt2::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
-    };
-    this->intrinsicMap[&UInt2::ctorSingleValue] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        assert(args.size() == 1);
-        return GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
     };
     this->intrinsicMap[&UInt::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
-        return GenerateConversionSPIRV(c, g, ConversionTable::IntToUInt, args[0]);
+        return GenerateConversionSPIRV(c, g, ConversionTable::IntToUInt, 1, args[0]);
     };
     this->intrinsicMap[&Bool4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
@@ -640,6 +660,49 @@ SPIRVGenerator::SetupIntrinsics()
         assert(args.size() == 1);
         return args[0];
     };
+
+#define X(type, ctor, val, argCount, splat, vectorSize, conversion)\
+    this->intrinsicMap[&type::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {\
+        assert(args.size() == argCount);\
+        if constexpr (splat > 1)\
+            return GenerateSplatCompositeSPIRV(c, g, returnType, splat, args[0]);\
+        if constexpr (ConversionTable::conversion != ConversionTable::None)\
+            return GenerateConversionSPIRV(c, g, ConversionTable::conversion, vectorSize, args[0]);\
+    };
+
+    FLOAT2_CTOR_LIST
+    FLOAT3_CTOR_LIST
+    FLOAT4_CTOR_LIST
+    INT2_CTOR_LIST
+    INT3_CTOR_LIST
+    INT4_CTOR_LIST
+    UINT2_CTOR_LIST
+    UINT3_CTOR_LIST
+    UINT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    this->intrinsicMap[&type::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {\
+        return GenerateCompositeSPIRV(c, g, returnType, { args[0], args[1] });\
+    };
+
+    FLOAT3_CTOR2_LIST
+    FLOAT4_CTOR2_LIST
+    INT3_CTOR2_LIST
+    INT4_CTOR2_LIST
+    UINT3_CTOR2_LIST
+    UINT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    this->intrinsicMap[&type::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {\
+        return GenerateCompositeSPIRV(c, g, returnType, { args[0], args[1], args[2] });\
+    };
+
+    FLOAT4_CTOR3_LIST
+    INT4_CTOR3_LIST
+    UINT4_CTOR3_LIST
+#undef X
 
     // For matrix float constructors, we need to first construct the vectors and then compose the matrix from them
     this->intrinsicMap[&Mat2x2::floatConstructor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -916,7 +979,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[std::get<0>(fun)] = [conv = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {
-            return GenerateConversionSPIRV(c, g, conv, args[0]);
+            return GenerateConversionSPIRV(c, g, conv, 1, args[0]);
         };
     }
 
@@ -937,9 +1000,9 @@ SPIRVGenerator::SetupIntrinsics()
         , { &Mat3x2::multiplyAssignOperator, true }
         , { &Mat3x3::multiplyAssignOperator, true }
         , { &Mat3x4::multiplyAssignOperator, true }
-        , { &Mat4x4::multiplyAssignOperator, true }
-        , { &Mat4x3::multiplyAssignOperator, true }
         , { &Mat4x2::multiplyAssignOperator, true }
+        , { &Mat4x3::multiplyAssignOperator, true }
+        , { &Mat4x4::multiplyAssignOperator, true }
     };
     for (auto fun : matrixMultiplicationFunctions)
     {
@@ -1111,51 +1174,7 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
-    std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
-    {
-        { Intrinsics::TextureFetchBase_texture1D, false }
-        , { Intrinsics::TextureFetchBase_texture2D, false }
-        , { Intrinsics::TextureFetchBase_texture2DMS, false }
-        , { Intrinsics::TextureFetchBase_texture3D, false }
-        , { Intrinsics::TextureFetchBase_texture1DArray, false }
-        , { Intrinsics::TextureFetchBase_texture2DArray, false }
-        , { Intrinsics::TextureFetchBase_texture2DMSArray, false }
-        , { Intrinsics::TextureFetchSample_texture2DMS, true }
-        , { Intrinsics::TextureFetchSample_texture2DMSArray, true }
-    };
-    for (auto fun : textureFetchIntrinsics)
-    {
-        this->intrinsicMap[std::get<0>(fun)] = [sample = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            uint32_t ret;
-            if (sample)
-                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d Sample %d", returnType, args[0].name, args[1].name, args[2].name));
-            else
-                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
-            return SPIRVResult(ret, returnType, true);
-        };
-    }
-
-    std::vector<std::tuple<Function*, bool>> textureGatherIntrinsics =
-    {
-        { Intrinsics::TextureGatherBase_texture2D, false }
-        , { Intrinsics::TextureGatherBase_texture2DArray, false }
-        , { Intrinsics::TextureGatherBase_textureCube, false }
-        , { Intrinsics::TextureGatherBase_textureCubeArray, false }
-        , { Intrinsics::TextureGatherOffsets_texture2D, true }
-        , { Intrinsics::TextureGatherOffsets_texture2DArray, true }
-    };
-    for (auto fun : textureGatherIntrinsics)
-    {
-        this->intrinsicMap[std::get<0>(fun)] = [offsets = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            uint32_t ret;
-            if (offsets)
-                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d ConstOffsets %%%d", returnType, args[0].name, args[1].name, args[2].name));
-            else
-                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
-            return SPIRVResult(ret, returnType, true);
-        };
-    }
-
+   
 #define MAKE_SCALAR_INTRINSICS(op)\
       { Intrinsics::##op##_f32, 'F' }\
     , { Intrinsics::##op##_f32x2, 'F' }\
@@ -1169,6 +1188,20 @@ SPIRVGenerator::SetupIntrinsics()
     , { Intrinsics::##op##_u32x2, 'U' }\
     , { Intrinsics::##op##_u32x3, 'U' }\
     , { Intrinsics::##op##_u32x4, 'U' }
+
+#define MAKE_EXPORT_INTRINSICS(op)\
+      { Intrinsics::##op##_f32, TypeCode::Float, 1 }\
+    , { Intrinsics::##op##_f32x2, TypeCode::Float, 2 }\
+    , { Intrinsics::##op##_f32x3, TypeCode::Float, 3 }\
+    , { Intrinsics::##op##_f32x4, TypeCode::Float, 4 }\
+    , { Intrinsics::##op##_i32, TypeCode::Int, 1 }\
+    , { Intrinsics::##op##_i32x2, TypeCode::Int, 2 }\
+    , { Intrinsics::##op##_i32x3, TypeCode::Int, 3 }\
+    , { Intrinsics::##op##_i32x4, TypeCode::Int, 4 }\
+    , { Intrinsics::##op##_u32, TypeCode::UInt, 1 }\
+    , { Intrinsics::##op##_u32x2, TypeCode::UInt, 2 }\
+    , { Intrinsics::##op##_u32x3, TypeCode::UInt, 3 }\
+    , { Intrinsics::##op##_u32x4, TypeCode::UInt, 4 }
 
 #define MAKE_FLOAT_INTRINSICS(op)\
       { Intrinsics::##op##_f32, 'F' }\
@@ -1646,9 +1679,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplOutputLayer", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputLayer", ret, "BuiltIn Layer");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::SetOutputLayer] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1656,10 +1689,10 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Output", Format("OpTypePointer Output %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplOutputLayer", Format("OpVariable %%%d Output", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputLayer", ret, "BuiltIn Layer");
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Output);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
     this->intrinsicMap[Intrinsics::GetOutputViewport] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1667,9 +1700,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplOutputViewport", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputViewport", ret, "BuiltIn ViewportIndex");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::SetOutputViewport] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1677,22 +1710,25 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Output %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplOutputViewport", Format("OpVariable %%%d Output", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputViewport", ret, "BuiltIn ViewportIndex");
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Output);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
     this->intrinsicMap[Intrinsics::ExportVertexCoordinates] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("Shader");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
-        uint32_t typePtr = g->AddSymbol("ptr(f32x4)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplVertexCoordinates", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x4)Input", Format("OpTypePointer Output %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplVertexCoordinates", Format("OpVariable %%%d Output", typePtr), true);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplVertexCoordinates", ret, "BuiltIn Position");
-        g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        uint32_t value = args[0].name;
+        if (!args[0].isValue)
+            value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+        g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplExportVertexCoordinates");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
     this->intrinsicMap[Intrinsics::GetVertexIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1700,9 +1736,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0");
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplVertexIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplVertexIndex", ret, "BuiltIn VertexId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetInstanceIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1710,9 +1746,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplInstanceIndex", ret, "BuiltIn InstanceId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetPixelCoordinates] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1721,9 +1757,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x4)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplPixelCoordinates", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplPixelCoordinates", ret, "BuiltIn FragCoord");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::SetPixelDepth] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1732,20 +1768,81 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x4)Output", Format("OpTypePointer Output %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplPixelDepth", Format("OpVariable %%%d Output", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplPixelDepth", ret, "BuiltIn FragDepth");
-        g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Output);
+        uint32_t value = args[0].name;
+        if (!args[0].isValue)
+            value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+        g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplSetPixelDepth");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
+
+    std::vector<std::tuple<Function*, TypeCode, uint32_t>> colorExportIntrinsics =
+    {
+        MAKE_EXPORT_INTRINSICS(ExportColor)
+    };
+    for (auto fun : colorExportIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [baseTy = std::get<1>(fun), vecSize = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            g->AddCapability("Shader");
+            uint32_t baseType;
+            std::string name;
+            switch (baseTy)
+            {
+                case TypeCode::Float:
+                    baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+                    name = "f32";
+                    break;
+                case TypeCode::Int:
+                    baseType = g->AddSymbol("i32", "OpTypeInt 32 1", true);
+                    name = "i32";
+                    break;
+                case TypeCode::UInt:
+                    baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+                    name = "u32";
+                    break;
+                case TypeCode::Float16:
+                    baseType = g->AddSymbol("f16", "OpTypeFloat 16", true);
+                    name = "f16";
+                    break;
+                case TypeCode::Int16:
+                    baseType = g->AddSymbol("i16", "OpTypeInt 16 1", true);
+                    name = "i16";
+                    break;
+                case TypeCode::UInt16:
+                    baseType = g->AddSymbol("u16", "OpTypeInt 16 0", true);
+                    name = "u16";
+                    break;
+                default:
+                    baseType = -1;
+                    assert(false);
+            }
+            if (vecSize > 1)
+            {
+                name += Format("x%d", vecSize);
+                baseType = g->AddSymbol(name, Format("OpTypeVector %%%d 4", baseType), true);
+            }
+            assert(args[1].isLiteral);
+            uint32_t typePtr = g->AddSymbol(Format("ptr(%s)Output", name.c_str()), Format("OpTypePointer Output %%%d", baseType), true);
+            uint32_t ret = g->AddSymbol("gplExportColor", Format("OpVariable %%%d Output", typePtr), true);
+            g->interfaceVariables.insert(ret);
+            g->AddDecoration("gplExportColor", ret, Format("Index %d", args[1].literalValue.i));
+            uint32_t value = args[0].name;
+            if (!args[0].isValue)
+                value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+            g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplExportColor");
+            return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+        };
+    }
 
     this->intrinsicMap[Intrinsics::GetLocalInvocationIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplLocalInvocationIndices", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplLocalInvocationIndices", ret, "BuiltIn LocalInvocationId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetGlobalInvocationIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1753,9 +1850,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplGlobalInvocationIndices", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplGlobalInvocationIndices", ret, "BuiltIn GlobalInvocationId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetWorkGroupIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1763,9 +1860,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplWorkGroupIndices", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplWorkGroupIndices", ret, "BuiltIn WorkgroupId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetWorkGroupDimensions] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1773,9 +1870,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplWorkGroupDimensions", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplWorkGroupDimensions", ret, "BuiltIn WorkgroupSize");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupId] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1784,9 +1881,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupId", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupId", ret, "BuiltIn SubgroupId");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupSize] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1795,9 +1892,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupSize", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupSize", ret, "BuiltIn SubgroupSize");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetNumSubgroups] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1806,9 +1903,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplNumSubgroups", ret, "BuiltIn NumSubgroups");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1816,9 +1913,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupLocalInvocationMask", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupLocalInvocationMask", ret, "BuiltIn SubgroupEqMask");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationAndLowerMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1826,9 +1923,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupLocalInvocationAndLowerMask", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupLocalInvocationAndLowerMask", ret, "BuiltIn SubgroupLeMask");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupLowerMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1836,9 +1933,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplNumSubgroups", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupLowerMask", ret, "BuiltIn SubgroupLtMask");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupLocalInvocationAndGreaterMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1846,9 +1943,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupLocalInvocationAndGreaterMask", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupLocalInvocationAndGreaterMask", ret, "BuiltIn SubgroupGeMask");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::GetSubgroupGreaterMask] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1856,9 +1953,9 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplSubgroupGreaterMask", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.push_back(ret);
+        g->interfaceVariables.insert(ret);
         g->AddDecoration("gplSubgroupGreaterMask", ret, "BuiltIn SubgroupGtMask");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Scope::Input);
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
     this->intrinsicMap[Intrinsics::SubgroupFirstInvocation] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
@@ -1908,6 +2005,51 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformBallotFindMSB %%%d Subgroup %%%d", returnType, args[0].name));
         return SPIRVResult(ret, returnType);
     };
+
+    std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
+    {
+        { Intrinsics::TextureFetchBase_texture1D, false }
+        , { Intrinsics::TextureFetchBase_texture2D, false }
+        , { Intrinsics::TextureFetchBase_texture2DMS, false }
+        , { Intrinsics::TextureFetchBase_texture3D, false }
+        , { Intrinsics::TextureFetchBase_texture1DArray, false }
+        , { Intrinsics::TextureFetchBase_texture2DArray, false }
+        , { Intrinsics::TextureFetchBase_texture2DMSArray, false }
+        , { Intrinsics::TextureFetchSample_texture2DMS, true }
+        , { Intrinsics::TextureFetchSample_texture2DMSArray, true }
+    };
+    for (auto fun : textureFetchIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [sample = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret;
+            if (sample)
+                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d Sample %d", returnType, args[0].name, args[1].name, args[2].name));
+            else
+                ret = g->AddMappedOp(Format("OpImageFetch %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, bool>> textureGatherIntrinsics =
+    {
+        { Intrinsics::TextureGatherBase_texture2D, false }
+        , { Intrinsics::TextureGatherBase_texture2DArray, false }
+        , { Intrinsics::TextureGatherBase_textureCube, false }
+        , { Intrinsics::TextureGatherBase_textureCubeArray, false }
+        , { Intrinsics::TextureGatherOffsets_texture2D, true }
+        , { Intrinsics::TextureGatherOffsets_texture2DArray, true }
+    };
+    for (auto fun : textureGatherIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [offsets = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret;
+            if (offsets)
+                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d ConstOffsets %%%d", returnType, args[0].name, args[1].name, args[2].name));
+            else
+                ret = g->AddMappedOp(Format("OpImageGather %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
 
     enum SampleOperands : uint8_t
     {
@@ -2019,78 +2161,383 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[std::get<0>(fun)] = [operands = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             uint32_t ret = 0xFFFFFFFF;
+            assert(args[0].parentTypes.size() > 0);
+            uint32_t image = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+            uint32_t sampler = args[1].name;
+            if (!args[1].isConst)
+                sampler = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[1].parentTypes[0], args[1].name));
+            uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", args[0].parentTypes[0]), Format("OpTypeSampledImage %%%d", args[0].parentTypes[0]), true);
+            uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image, sampler));
+
+            std::string format = "";
             if (operands & Lod || operands & Grad)
                 if (operands & Comp)
                     if (operands & Grad)
                         if (operands & Proj)
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d";
                         else
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d";
                     else
                         if (operands & Proj)
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d";
                         else
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name, args[4].name));
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d";
                 else
                     if (operands & Grad)
                         if (operands & Proj)
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d";
                         else
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d";
                     else
                         if (operands & Proj)
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d";
                         else
                             if (operands & Bias)
-                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d";
                             else
-                                ret = g->AddMappedOp(Format("OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d";
             else
                 if (operands & Comp)
                     if (operands & Proj)
                         if (operands & Bias)
-                            ret = g->AddMappedOp(Format("OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            format = "OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d Bias %%%d";
                         else
-                            ret = g->AddMappedOp(Format("OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name, args[2].name));
+                            format = "OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d None";
                     else
                         if (operands & Bias)
-                            ret = g->AddMappedOp(Format("OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d Bias", returnType, args[0].name, args[1].name, args[2].name, args[3].name));
+                            format = "OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d Bias";
                         else
-                            ret = g->AddMappedOp(Format("OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d None", returnType, args[0].name, args[1].name, args[2].name));
+                            format = "OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d None";
                 else
                     if (operands & Proj)
                         if (operands & Bias)
-                            ret = g->AddMappedOp(Format("OpImageSampleProjImplicitLod %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                            format = "OpImageSampleProjImplicitLod %%%d %%%d %%%d Bias %%%d";
                         else
-                            ret = g->AddMappedOp(Format("OpImageSampleProjImplicitLod %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+                            format = "OpImageSampleProjImplicitLod %%%d %%%d %%%d None";
                     else
                         if (operands & Bias)
-                            ret = g->AddMappedOp(Format("OpImageSampleImplicitLod %%%d %%%d %%%d Bias %%%d", returnType, args[0].name, args[1].name, args[2].name));
+                            format = "OpImageSampleImplicitLod %%%d %%%d %%%d Bias %%%d";
                         else
-                            ret = g->AddMappedOp(Format("OpImageSampleImplicitLod %%%d %%%d %%%d None", returnType, args[0].name, args[1].name));
+                            format = "OpImageSampleImplicitLod %%%d %%%d %%%d None";
 
-            return SPIRVResult(ret, returnType);
+            std::vector<uint32_t> newArgs = { returnType, sampledImage };
+            
+            for (auto arg : newArgs)
+            {
+                size_t offset = format.find("%%d");
+                format.replace(offset, 3, Format("%d", arg));
+            }
+            for (size_t i = 2; i < args.size(); i++)
+            {
+                uint32_t argName = args[i].name;
+                if (!args[i].isValue)
+                    argName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[i].typeName, args[i].name));
+                newArgs.push_back(argName);
+                size_t offset = format.find("%%d");
+                format.replace(offset, 3, Format("%d", argName));
+            }
+
+            ret = g->AddMappedOp(format);
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+#define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(op, operands)\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::##operands }
+
+#define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+
+#define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::##operands }
+
+#define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
+
+#define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+
+    std::vector<std::tuple<Function*, uint32_t>> sampledTextureSampleInstructions =
+    {
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(Base, None),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(Lod, Lod),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(LodCompare, LodComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE(LodOffset, LodOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProj, LodProj),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjCompare, LodProjComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjCompareOffset, LodProjCompOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(LodProjOffset, LodProjOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(Bias, Bias),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(BiasCompare, BiasComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(BiasOffset, BiasOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProj, BiasProj),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProjCompare, BiasProjComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(BiasProjOffset, BiasProjOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(Compare, Comp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE(CompareOffset, CompOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(Grad, Grad),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(GradCompare, GradComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(GradOffset, GradOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProj, GradProj),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjCompare, GradProjComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjCompareOffset, GradProjCompOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(GradProjOffset, GradProjOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(Proj, Proj),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjCompare, ProjComp),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjCompareOffset, ProjCompOffset),
+        MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(ProjOffset, ProjOffset)
+    };
+
+    for (auto fun : sampledTextureSampleInstructions)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [operands = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            uint32_t ret = 0xFFFFFFFF;
+            assert(args[0].parentTypes.size() > 0);
+            uint32_t sampledImage = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+
+            std::string format = "";
+            if (operands & Lod || operands & Grad)
+                if (operands & Comp)
+                    if (operands & Grad)
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d";
+                        else
+                            if (operands & Bias)
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Grad %%%d";
+                    else
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias";
+                            else
+                                format = "OpImageSampleProjDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d";
+                        else
+                            if (operands & Bias)
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleDrefExplicitLod %%%d %%%d %%%d %%%d Lod %%%d";
+                else
+                    if (operands & Grad)
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Grad %%%d";
+                        else
+                            if (operands & Bias)
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Grad %%%d";
+                    else
+                        if (operands & Proj)
+                            if (operands & Bias)
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleProjExplicitLod %%%d %%%d %%%d Lod %%%d";
+                        else
+                            if (operands & Bias)
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d Bias %%%d";
+                            else
+                                format = "OpImageSampleExplicitLod %%%d %%%d %%%d Lod %%%d";
+            else
+                if (operands & Comp)
+                    if (operands & Proj)
+                        if (operands & Bias)
+                            format = "OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d Bias %%%d";
+                        else
+                            format = "OpImageSampleProjDrefImplicitLod %%%d %%%d %%%d %%%d None";
+                    else
+                        if (operands & Bias)
+                            format = "OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d Bias";
+                        else
+                            format = "OpImageSampleDrefImplicitLod %%%d %%%d %%%d %%%d None";
+                else
+                    if (operands & Proj)
+                        if (operands & Bias)
+                            format = "OpImageSampleProjImplicitLod %%%d %%%d %%%d Bias %%%d";
+                        else
+                            format = "OpImageSampleProjImplicitLod %%%d %%%d %%%d None";
+                    else
+                        if (operands & Bias)
+                            format = "OpImageSampleImplicitLod %%%d %%%d %%%d Bias %%%d";
+                        else
+                            format = "OpImageSampleImplicitLod %%%d %%%d %%%d None";
+
+            std::vector<uint32_t> newArgs = { returnType, sampledImage };
+
+            for (auto arg : newArgs)
+            {
+                size_t offset = format.find("%%d");
+                format.replace(offset, 3, Format("%d", arg));
+            }
+            for (size_t i = 1; i < args.size(); i++)
+            {
+                uint32_t argName = args[i].name;
+                if (!args[i].isValue)
+                    argName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[i].typeName, args[i].name));
+                newArgs.push_back(argName);
+                size_t offset = format.find("%%d");
+                format.replace(offset, 3, Format("%d", argName));
+            }
+
+            ret = g->AddMappedOp(format);
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+#define MAKE_TEXTURE_LOAD_STORE_INTRINSICS(op, operands, store)\
+      { Intrinsics::Texture##op##_texture1D, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_texture2D, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_texture2DArray, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_texture2DMS, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_texture2DMSArray, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_texture3D, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_textureCube, store, SampleOperands::##operands }\
+    , { Intrinsics::Texture##op##_textureCubeArray, store, SampleOperands::##operands }
+
+    std::vector<std::tuple<Function*, bool, uint32_t>> textureStoreLoadInstructions =
+    {
+        MAKE_TEXTURE_LOAD_STORE_INTRINSICS(StoreBase, None, true),
+        MAKE_TEXTURE_LOAD_STORE_INTRINSICS(StoreMip, Lod, true),
+        MAKE_TEXTURE_LOAD_STORE_INTRINSICS(LoadBase, None, false),
+        MAKE_TEXTURE_LOAD_STORE_INTRINSICS(LoadMip, Lod, false),
+    };
+
+    for (auto fun : textureStoreLoadInstructions)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [store = std::get<1>(fun), operands = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            uint32_t ret = 0xFFFFFFFF;
+            SPIRVResult res = SPIRVResult::Invalid();
+            if (store)
+            {
+                if (operands & Lod)
+                {
+                    assert(args.size() == 4);
+                    assert(args[0].parentTypes.size() > 0);
+                    uint32_t dereffed;
+                    if (c->target.supportsPhysicalAddressing)
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], dereffed));
+                    }
+                    else
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+                    }
+                    uint32_t dataName = args[2].name;
+                    if (!args[2].isValue)
+                        dataName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[2].typeName, args[2].name));
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, args[1].name, dataName, args[3].name));
+                }
+                else
+                {
+                    assert(args.size() == 3);
+                    assert(args[0].parentTypes.size() > 0);
+                    uint32_t dereffed;
+                    if (c->target.supportsPhysicalAddressing)
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], dereffed));
+                    }
+                    else
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+                    }
+                    uint32_t dataName = args[2].name;
+                    if (!args[2].isValue)
+                        dataName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[2].typeName, args[2].name));
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, dataName));
+                }
+            }
+            else
+            {
+                if (operands & Lod)
+                {
+                    assert(args.size() == 3);
+                    assert(args[0].parentTypes.size() > 0);
+                    uint32_t dereffed;
+                    if (c->target.supportsPhysicalAddressing)
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], dereffed));
+                    }
+                    else
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+                    }
+                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d Lod %%%d", returnType, dereffed, args[1].name, args[2].name));
+                    res.isValue = true;
+                }
+                else
+                {
+                    assert(args.size() == 2);
+                    assert(args[0].parentTypes.size() > 0);
+                    uint32_t dereffed;
+                    if (c->target.supportsPhysicalAddressing)
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], dereffed));
+                    }
+                    else
+                    {
+                        dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
+                    }
+                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d", returnType, dereffed, args[1].name));
+                    res.isValue = true;
+                }
+            }
+            res.name = ret;
+            res.typeName = returnType;
+            return res;
         };
     }
 }
@@ -2103,23 +2550,31 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 {
     Function* func = static_cast<Function*>(symbol);
     Function::__Resolved* funcResolved = Symbol::Resolved(func);
+    if (funcResolved->isEntryPoint && generator->entryPoint != func)
+        return;
 
     if (funcResolved->isPrototype)
         return;
     SPIRVResult returnName = GenerateTypeSPIRV(compiler, generator, func->returnType, static_cast<Type*>(funcResolved->returnTypeSymbol));
+
     std::string typeArgs = "";
+
     for (auto& param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
         SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
-        typeArgs.append(Format("%%%d", typeName.typeName));
 
         if (funcResolved->isEntryPoint)
         {
-            GenerateVariableSPIRV(compiler, generator, param, true, false);
+            GenerateVariableSPIRV(compiler, generator, param, true, true);
+        }
+        else
+        {
+            typeArgs.append(Format("%%%d ", typeName.typeName));
         }
     }
-    uint32_t functionType = generator->AddSymbol(Format("type(%s)", funcResolved->name.c_str()), Format("OpTypeFunction %%%d %s", returnName.typeName, typeArgs.c_str()), true);
+    
+    uint32_t functionType = generator->AddSymbol(Format("function(%s) %s", typeArgs.c_str(), func->returnType.ToString().c_str()), Format("OpTypeFunction %%%d %s", returnName.typeName, typeArgs.c_str()), true);
 
     // TODO: Add inline/const/functional
     generator->AddSymbol(funcResolved->name, Format("OpFunction %%%d None %%%d", returnName.typeName, functionType));
@@ -2137,6 +2592,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     generator->functional.clear();
     GenerateStatementSPIRV(compiler, generator, func->ast);
     generator->functions.append(generator->variableDeclarations);
+    generator->variableDeclarations.clear();
     if (generator->blockOpen)
     {
         if (!funcResolved->hasExplicitReturn)
@@ -2183,10 +2639,30 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
             memberTypes.append(Format("%%%d ", varType.typeName));
             offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
             generator->AddMemberDecoration(structName, i, Format("Offset %d", offset));
+            if (varResolved->typeSymbol->IsMatrix())
+            {
+                generator->AddMemberDecoration(structName, i, Format("MatrixStride %d", varResolved->typeSymbol->CalculateStride()));
+                generator->AddMemberDecoration(structName, i, "ColMajor");
+            }
             offset += varResolved->typeSymbol->CalculateSize();
         }
     }
     generator->AddReservedSymbol(struc->name, structName, Format("OpTypeStruct %s", memberTypes.c_str()), true);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
+GenerateEnumSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
+{
+    Enumeration* enumeration = static_cast<Enumeration*>(symbol);
+    Enumeration::__Resolved* enumResolved = Symbol::Resolved(enumeration);
+
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, enumeration->type, enumResolved->typeSymbol);
+    return typeName;
+    //generator->AddReservedSymbol(enumeration->name, typeName.typeName, "", true);
+    //generator->AddSymbol(enumeration->name, "", true);
 }
 
 //------------------------------------------------------------------------------
@@ -2205,28 +2681,51 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
     }
 
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits);
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
     std::string type = varResolved->type.name;
     std::string scope = SPIRVResult::ScopeToString(typeName.scope);
 
-    type = Format("ptr(%s)", type.c_str());
-    uint32_t typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
+    std::vector<uint32_t> parentTypes = { typeName.typeName };
+
+    uint32_t typePtrName = typeName.typeName;
+    // If anything but void, then the type has to be a pointer
+    if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
+    {
+        type = Format("ptr(%d)", typeName.typeName);
+        typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
+    }
+    else
+    {
+        // We implicitly know a pointer was created
+        typeName.typeName = typeName.parentTypes[0];
+    }
 
     uint32_t name = 0xFFFFFFFF;
-    if (initializer != SPIRVResult::Invalid())
-        name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d %s %%%d", typePtrName, scope.c_str(), initializer.name), isGlobal);
+    if (initializer != SPIRVResult::Invalid() && initializer.isConst)
+        name = generator->AddVariableDeclaration(varResolved->name, typePtrName, initializer.name, typeName.scope, isGlobal);
     else
-        name = generator->AddSymbol(varResolved->name, Format("OpVariable %%%d %s", typePtrName, scope.c_str()), isGlobal);
+        name = generator->AddVariableDeclaration(varResolved->name, typePtrName, 0x0, typeName.scope, isGlobal);
 
-    if (typeName.scope == SPIRVResult::Scope::StorageBuffer || typeName.scope == SPIRVResult::Scope::Uniform || typeName.scope == SPIRVResult::Scope::PushConstant)
+    if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
+    {
+        uint32_t initValue = initializer.name;
+        if (!initializer.isValue)
+        {
+            initializer.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", initializer.typeName, initializer.name));
+        }
+        generator->AddOp(Format("OpStore %%%d %%%d", name, initializer.name));
+    }
+
+    if (typeName.scope == SPIRVResult::Storage::StorageBuffer || typeName.scope == SPIRVResult::Storage::Uniform || typeName.scope == SPIRVResult::Storage::PushConstant || typeName.scope == SPIRVResult::Storage::Sampler)
     {
         uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name);
-        generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
+        if (typeName.scope != SPIRVResult::Storage::Sampler)
+            generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
         generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
         generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->group));
-        generator->interfaceVariables.push_back(name);
+        generator->interfaceVariables.insert(name);
     }
-    else if (typeName.scope == SPIRVResult::Scope::Input || typeName.scope == SPIRVResult::Scope::Output)
+    else if (typeName.scope == SPIRVResult::Storage::Input || typeName.scope == SPIRVResult::Storage::Output)
     {
         generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", varResolved->inBinding));
         if (varResolved->parameterBits.flags.isNoInterpolate)
@@ -2237,9 +2736,9 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
             generator->AddDecoration(Format("Patch(%s)", varResolved->name.c_str()), name, "Patch");
         if (varResolved->parameterBits.flags.isCentroid)
             generator->AddDecoration(Format("Centroid(%s)", varResolved->name.c_str()), name, "Centroid");
-        generator->interfaceVariables.push_back(name);
+        generator->interfaceVariables.insert(name);
     }
-    return SPIRVResult(name, typeName.typeName, false, false, typeName.scope);
+    return SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);
 }
 
 //------------------------------------------------------------------------------
@@ -2261,10 +2760,15 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
 
         // Create arg list from argument expressions
         std::string argList = "";
-        for (const auto& param : callExpression->args)
+        for (size_t i = 0; i < callExpression->args.size(); i++)
         {
-            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, param);
+            if (resolvedCall->argumentTypes[i].literal)
+                generator->literalExtract = true;
+
+            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
             argList.append(Format("%%%d ", arg.name));
+
+            generator->literalExtract = false;
         }
 
         // Then call the function
@@ -2275,11 +2779,16 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
         // If there is no symbol matching this function, then we assume it's an intrinsic function
         std::vector<SPIRVResult> args;
 
-        // First step is to get the type of all parameters, and get their SSA mappings
-        for (const auto& param : callExpression->args)
+        // Create arg list from argument expressions
+        for (size_t i = 0; i < callExpression->args.size(); i++)
         {
-            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, param);
+            if (resolvedCall->argumentTypes[i].literal)
+                generator->literalExtract = true;
+
+            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
             args.push_back(arg);
+
+            generator->literalExtract = false;
         }
 
         // Then we walk through all conversions which should be per parameter, or null if the type matches
@@ -2344,7 +2853,7 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
             assert(intrin != generator->intrinsicMap.end());
 
             uint32_t returnPtrType = generator->AddSymbol(Format("ptr(%s)Function", arrayIndexExpressionResolved->returnFullType.ToString().c_str()), Format("OpTypePointer Function %%%d", returnType.typeName), true);
-            SPIRVResult indexConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(index));
+            SPIRVResult indexConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(index));
 
             /// Generate array access
             return intrin->second(compiler, generator, returnPtrType, { leftSymbol, indexConstant });
@@ -2376,10 +2885,10 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     initExpression->values[0]->EvalType(type);
     Symbol* typeSymbol = compiler->GetSymbol(type.name);
     SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
-    SPIRVResult sizeName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(initExpression->values.size()));
+    SPIRVResult sizeName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(initExpression->values.size()));
     typeName.typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName.typeName, sizeName.name), true);
     std::string initializer = "";
-    bool isLiteral = true;
+    bool isConst = true;
     for (SPIRVResult component : composites)
     {
         if (!component.isValue)
@@ -2391,14 +2900,14 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
         {
             initializer.append(Format("%%%d ", component.name));
         }
-        isLiteral &= component.isLiteral;
+        isConst &= component.isConst;
     }
 
-    if (isLiteral)
+    if (isConst)
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
     else
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName.typeName, initializer.c_str()));
-    return SPIRVResult(name, typeName.typeName, true, isLiteral);
+    return SPIRVResult(name, typeName.typeName, true, isConst);
 }
 
 //------------------------------------------------------------------------------
@@ -2441,7 +2950,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     else
     {
 
-        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), leftType.name.c_str());
+        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.name.c_str());
         Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
         assert(fun != nullptr);
@@ -2456,7 +2965,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Get operator 
         auto op = generator->intrinsicMap.find(fun);
         assert(op != generator->intrinsicMap.end());
-        opResult = op->second(compiler, generator, retType.typeName, { leftValue, rightValue, leftValue });
+        opResult = op->second(compiler, generator, retType.typeName, { leftValue, rightValue });
     }
 
     return opResult;
@@ -2478,7 +2987,7 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // If single value, then use an access chain
         if (Type::SwizzleMaskComponents(swizzle) == 1)
         {
-            SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(swizzle.bits.x));
+            SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(swizzle.bits.x));
             SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
             uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
             uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text);
@@ -2511,17 +3020,30 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         accessExpression->left->EvalType(lhsType);
         Type* rhsSymbol = compiler->GetSymbol<Type>(lhsType.name);
 
-        if (rhsSymbol->symbolType == Symbol::StructureType)
+        if (rhsSymbol->symbolType == Symbol::StructureType || rhsSymbol->symbolType == Symbol::EnumerationType)
         {
             for (size_t i = 0; i < rhsSymbol->symbols.size(); i++)
             {
                 Symbol* sym = rhsSymbol->symbols[i];
                 if (sym->name == accessExpressionResolved->rightSymbol)
                 {
-                    SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(i));
-                    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-                    uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
-                    return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text), typeName.typeName);
+                    if (rhsSymbol->symbolType == Symbol::StructureType)
+                    {
+                        SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
+                        SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
+                        uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
+                        return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text), typeName.typeName);
+                    }
+                    else if (rhsSymbol->symbolType == Symbol::EnumerationType)
+                    {
+                        EnumExpression* enumExp = static_cast<EnumExpression*>(sym);
+                        uint32_t val;
+                        enumExp->EvalUInt(val);
+                        if (generator->literalExtract)
+                            return SPIRVResult(val);
+                        else
+                            return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(val));
+                    }
                 }
             }
         }
@@ -2556,7 +3078,7 @@ GenerateTernaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Ex
     SPIRVResult elseResult = GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
     uint32_t ret = generator->AddMappedOp(Format("OpSelect %%%d %%%d %%%d %%%d", ifResult.typeName, lhsResult.name, ifResult.name, elseResult.name), ternaryExpressionResolved->text);
 
-    return SPIRVResult(ret, ifResult.typeName, ifResult.isValue, ifResult.isLiteral);
+    return SPIRVResult(ret, ifResult.typeName, ifResult.isValue, ifResult.isConst);
 }
 
 //------------------------------------------------------------------------------
@@ -2591,16 +3113,16 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             {
                 if (op == 'I')
                 {
-                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int32(1));
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(1));
                 }
                 else
                 {
-                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float32(1));
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(1));
                 }
             }
             else
             {
-                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(1));
+                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
 
             uint32_t value = rhs.name;
@@ -2620,16 +3142,16 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             {
                 if (op == 'I')
                 {
-                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int32(1));
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(1));
                 }
                 else
                 {
-                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float32(1));
+                    constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(1));
                 }
             }
             else
             {
-                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt32(1));
+                constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
 
             uint32_t value = rhs.name;
@@ -2647,7 +3169,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
         {
             Type::FullType newType = unaryExpressionResolved->fullType;
             assert(newType.modifiers.size() > 0);
-            assert(newType.modifiers.back() == Type::FullType::Modifier::PointerLevel);
+            assert(newType.modifiers.back() == Type::FullType::Modifier::Pointer);
             newType.modifiers.pop_back();
             Type* type = compiler->GetSymbol<Type>(newType.name);
             SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, newType, type);
@@ -2698,27 +3220,42 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             float value;
             FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
             floatExpr->EvalFloat(value);
-            uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
-            uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
-            return SPIRVResult(name, typeName, true, true);
+            if (generator->literalExtract)
+                return SPIRVResult(value);
+            else
+            {
+                uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
+                uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
+                return SPIRVResult(name, typeName, true, true); \
+            }
         }
         case Symbol::IntExpressionType:
         {
             int value;
             IntExpression* intExpr = static_cast<IntExpression*>(expr);
             intExpr->EvalInt(value);
-            uint32_t typeName = generator->AddSymbol("i32", Format("OpTypeInt 32 1"), true);
-            uint32_t name = generator->AddSymbol(Format("%ds", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return SPIRVResult(name, typeName, true, true);
+            if (generator->literalExtract)
+                return SPIRVResult(value);
+            else
+            {
+                uint32_t typeName = generator->AddSymbol("i32", Format("OpTypeInt 32 1"), true);
+                uint32_t name = generator->AddSymbol(Format("%ds", value), Format("OpConstant %%%d %d", typeName, value), true);
+                return SPIRVResult(name, typeName, true, true);
+            }
         }
         case Symbol::UIntExpressionType:
         {
             uint32_t value;
             UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
             uintExpr->EvalUInt(value);
-            uint32_t typeName = generator->AddSymbol("u32", Format("OpTypeInt 32 0"), true);
-            uint32_t name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", typeName, value), true);
-            return SPIRVResult(name, typeName, true, true);
+            if (generator->literalExtract)
+                return SPIRVResult(value);
+            else
+            {
+                uint32_t typeName = generator->AddSymbol("u32", Format("OpTypeInt 32 0"), true);
+                uint32_t name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", typeName, value), true);
+                return SPIRVResult(name, typeName, true, true);
+            }
         }
         case Symbol::BoolExpressionType:
         {
@@ -2741,13 +3278,21 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             {
                 Variable* var = static_cast<Variable*>(symResolved->symbol);
                 Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits);
+                type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
+                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type.typeName, false, false, type.scope, type.parentTypes);
+            }
+            else if (symResolved->symbol->symbolType == Symbol::SymbolType::EnumerationType)
+            {
+                Enumeration* enu = static_cast<Enumeration*>(symResolved->symbol);
+                Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
+                type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
+                return SPIRVResult(0xFFFFFFFF, type.typeName, false, false, type.scope, type.parentTypes);
             }
             else
             {
                 type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
+                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type.typeName, false, false, type.scope, type.parentTypes);
             }
-            return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type.typeName, false, false, type.scope);
         }
         case Symbol::AccessExpressionType:
             return GenerateAccessExpressionSPIRV(compiler, generator, expr);
@@ -3158,8 +3703,8 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
                 else
                 {
                     Statement* stat = static_cast<Statement*>(symbol);
-                    bool shouldEnd = GenerateStatementSPIRV(compiler, generator, stat);
-                    if (shouldEnd)
+                    ret = GenerateStatementSPIRV(compiler, generator, stat);
+                    if (ret)
                         break;
                 }
             }
@@ -3187,8 +3732,6 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 {
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
 
-    // Main scope
-    this->PushScope();
 
     struct Cleanup
     {
@@ -3202,16 +3745,19 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             gen->declarations.clear();
             gen->decorations.clear();
             gen->functional.clear();
+            gen->functions.clear();
             gen->capabilities.clear();
             gen->extensions.clear();
             gen->decorationMap.clear();
+            gen->interfaceVariables.clear();
             gen->mergeBlockCounter = 0;
+            gen->symbolCounter = 0;
         }
 
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
+    spv_context spvContext = spvContextCreate(SPV_ENV_UNIVERSAL_1_6);
 
     static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {
@@ -3289,13 +3835,21 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 
     for (auto it : progResolved->programMappings)
     {
+        Cleanup cleanup(this);
+
+        // Main scope
+        this->PushScope();
+
+
         // for each shader, generate code and use it as a binary output
         if (it.first >= Program::__Resolved::VertexShader && it.first <= Program::__Resolved::RayIntersectionShader)
         {
-            this->header.append("; Magic:     0x00010500 (Vulkan 1.2)\n");
+            this->header.append("; Magic:     0x00010500 (SPIRV Universal 1.5)\n");
             this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
             this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
             this->header.append(Format("\tOpCapability %s\n", extensionMap[it.first].c_str()));
+
+            this->entryPoint = static_cast<Function*>(it.second);
             
             for (Symbol* sym : symbols)
             {
@@ -3306,6 +3860,9 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                         break;
                     case Symbol::StructureType:
                         GenerateStructureSPIRV(compiler, this, sym);
+                        break;
+                    case Symbol::EnumerationType:
+                        GenerateEnumSPIRV(compiler, this, sym);
                         break;
                     case Symbol::VariableType:
                         GenerateVariableSPIRV(compiler, this, sym, false, true);
@@ -3318,7 +3875,17 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 
             if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
                 this->header.append("\tOpCapability SubgroupDispatch\n");
-            this->header.append("\tOpMemoryModel Logical GLSL450\n");
+
+            if (compiler->target.supportsPhysicalAddressing)
+            {
+                this->header.append("\tOpCapability Addresses\n");
+                this->header.append("\tOpMemoryModel Physical64 GLSL450\n");
+            }
+            else
+            {
+                this->header.append("\tOpCapability PhysicalStorageBufferAddresses\n");
+                this->header.append("\tOpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
+            }
 
             std::string interfaces = "";
             for (const uint32_t interface : this->interfaceVariables)
@@ -3331,18 +3898,20 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             {
                 case Program::__Resolved::GeometryShader:
                     this->header.append(Format("\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology]));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology]));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology].c_str()));
                     this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
                     break;
                 case Program::__Resolved::HullShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod]));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder]));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology]));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod].c_str()));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder].c_str()));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
                     this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
                     break;
+                case Program::__Resolved::DomainShader:
+                    break;
                 case Program::__Resolved::PixelShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin]));
+                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin].c_str()));
                     if (funResolved->executionModifiers.earlyDepth)
                         this->header.append(Format("\tOpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
                     break;
@@ -3605,13 +4174,44 @@ SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
 /**
 */
 uint32_t 
-SPIRVGenerator::AddVariableDeclaration(uint32_t type, uint32_t init, std::string comment)
+SPIRVGenerator::AddVariableDeclaration(std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage storage, bool global)
 {
-    if (init != 0)
-        this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d Function %%%d\t\t\t; %s\n", this->symbolCounter, type, init, comment.c_str()));
+    auto scope = this->scopeStack.rbegin();
+    while (scope != this->scopeStack.rend())
+    {
+        auto it = scope->symbols.find(name);
+        if (it != scope->symbols.end())
+        {
+            return it->second;
+        }
+        scope++;
+    }
+
+    // If symbol isn't found in scope, create it
+    uint32_t ret = this->symbolCounter;
+    this->scopeStack.back().symbols[name] = ret;
+
+    std::string scopeStr = SPIRVResult::ScopeToString(storage);
+
+    if (!global)
+    {
+        if (init != 0)
+            this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d %s %%%d\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
+        else
+            this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d %s\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
+    }
     else
-        this->variableDeclarations.append(Format("%%%d = \tOpVariable %%%d Function\t\t\t; %s\n", this->symbolCounter, type, comment.c_str()));
+    {
+        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::UniformConstant)
+            this->interfaceVariables.insert(this->symbolCounter);
+
+        if (init != 0)
+            this->declarations.append(Format("%%%d = \tOpVariable %%%d %s %%%d\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
+        else
+            this->declarations.append(Format("%%%d = \tOpVariable %%%d %s\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
+    }
     return this->symbolCounter++;
+
 }
 
 //------------------------------------------------------------------------------

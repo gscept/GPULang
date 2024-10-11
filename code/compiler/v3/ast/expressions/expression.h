@@ -42,7 +42,6 @@ struct Expression : public Symbol
     virtual std::string EvalString() const;
 
     bool isLhsValue;
-    bool isDeclaration;
 
     struct __Resolved : public Symbol::__Resolved
     {

@@ -52,8 +52,7 @@ UInt::UInt()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor, u32, u32, i32);
-    __ADD_CONSTRUCTOR()
+    __IMPLEMENT_CTOR_1(ctor, u32, u32, i32);
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32, u32);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32, u32);

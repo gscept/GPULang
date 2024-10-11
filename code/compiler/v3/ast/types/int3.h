@@ -11,13 +11,32 @@
 namespace GPULang
 {
 
+#define INT3_CTOR_LIST\
+    X(Int3, ctor_SingleValue, i32, 1, 3, 3, None)\
+    X(Int3, ctor_UInt3, u32x3, 1, 1, 3, UIntToInt)\
+    X(Int3, ctor_Float3, f32x3, 1, 1, 3, FloatToUInt)
+
+#define INT3_CTOR2_LIST\
+    X(Int3, ctor_Int2_Int, i32x2, i32)\
+    X(Int3, ctor_Int_Int2, i32, i32x2)
+
 struct Int3 : public Type
 {
     /// constructor
     Int3();
 
-    static Function ctor_XYZ;
-    static Function ctorSingleValue;
+    static Function ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    static Function ctor;
+
+    INT3_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    static Function ctor;
+
+    INT3_CTOR2_LIST
+#undef X
 
     static Function andOperator;
     static Function orOperator;

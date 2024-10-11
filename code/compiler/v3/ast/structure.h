@@ -30,7 +30,6 @@ struct Structure : public Type
         {
             struct
             {
-                bool isPush : 1;
                 bool isUniformBuffer : 1;
                 bool isMutableBuffer : 1;
             } flags;

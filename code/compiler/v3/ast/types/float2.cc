@@ -6,8 +6,14 @@
 namespace GPULang
 {
 
-Function Float2::ctor_XY;
-Function Float2::ctorSingleValue;
+Function Float2::ctor;
+
+#define X(type, ctor, val, args, splat, size, conversion)\
+    Function type::ctor;
+
+    FLOAT2_CTOR_LIST
+#undef X
+
 Function Float2::additionOperator;
 Function Float2::subtractionOperator;
 Function Float2::multiplicationOperator;
@@ -35,13 +41,15 @@ Float2::Float2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL(ctor_XY, f32x2, f32x2);
+    __IMPLEMENT_CTOR(ctor, f32x2, f32x2);
     __ADD_FUNCTION_PARAM(x, f32);
     __ADD_FUNCTION_PARAM(y, f32);
-    __ADD_CONSTRUCTOR()
 
-    __IMPLEMENT_GLOBAL_1(ctorSingleValue, f32x2, f32x2, f32);
-    __ADD_CONSTRUCTOR()
+#define X(type, ctor, val, args, splat, size, conversion)\
+    __IMPLEMENT_CTOR_1(ctor, f32x2, f32x2, val);
+
+    FLOAT2_CTOR_LIST
+#undef X
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2, f32x2);
@@ -52,9 +60,9 @@ Float2::Float2()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x2, f32x2);
 
-    __IMPLEMENT_FUNCTION_1(matrix24Mul, operator*, f32x3, f32x2x4);
-    __IMPLEMENT_FUNCTION_1(matrix23Mul, operator*, f32x3, f32x2x3);
-    __IMPLEMENT_FUNCTION_1(matrix22Mul, operator*, f32x3, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(matrix24Mul, operator*, f32x2, f32x2x4);
+    __IMPLEMENT_FUNCTION_1(matrix23Mul, operator*, f32x2, f32x2x3);
+    __IMPLEMENT_FUNCTION_1(matrix22Mul, operator*, f32x2, f32x2x2);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);

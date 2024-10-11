@@ -7,10 +7,13 @@
 */
 //------------------------------------------------------------------------------
 #include "ast/symbol.h"
+#include "util.h"
 #include <vector>
 #include <map>
 
-#define __IMPLEMENT_GLOBAL_1(method, id, t, argtype)\
+#define STRINGIFY(x) #x
+
+#define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 this->method.name = #id;\
 this->method.returnType = {#t};\
 this->globals.push_back(&this->method);\
@@ -20,13 +23,15 @@ activeFunction = &this->method;\
     var->name = "_arg0"; \
     var->type = { #argtype }; \
     activeFunction->parameters.push_back(var); \
-}
+}\
+this->constructors.push_back(activeFunction);
 
-#define __IMPLEMENT_GLOBAL(method, id, type)\
+#define __IMPLEMENT_CTOR(method, id, type)\
 this->method.name = #id;\
 this->method.returnType = {#type};\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
+this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 this->method.name = #id;\
@@ -104,18 +109,8 @@ enum class TypeCode
     , TextureCubeArray
     , PixelCache
     , PixelCacheMS
-    , ReadWriteTexture1D
-    , ReadWriteTexture2D
-    , ReadWriteTexture2DMS
-    , ReadWriteTexture3D
-    , ReadWriteTextureCube
-    , ReadWriteTexture1DArray
-    , ReadWriteTexture2DArray
-    , ReadWriteTexture2DMSArray
-    , ReadWriteTextureCubeArray
 
-    , UniformBuffer
-    , ReadWriteBuffer
+    , Buffer
 
     /// Sampler
     , Sampler
@@ -144,15 +139,11 @@ struct Type : public Symbol
     enum Category
     {
         InvalidCategory,
-        ReadWriteTextureCategory,
         TextureCategory,
-        SampledTextureCategory,
         PixelCacheCategory,
         ScalarCategory,
         UserTypeCategory,
         EnumCategory,
-        UniformStructureCategory,
-        MutableStructureCategory,
         VoidCategory,
         SamplerCategory
     };
@@ -197,6 +188,8 @@ struct Type : public Symbol
     uint32_t CalculateSize() const;
     /// Calculate alignment
     uint32_t CalculateAlignment() const;
+    /// Calculate stride between elements
+    uint32_t CalculateStride() const;
 
     static uint32_t Align(uint32_t alignant, uint32_t alignment);
 
@@ -208,18 +201,66 @@ struct Type : public Symbol
 
     struct FullType
     {
-        std::string name;
-
         enum class Modifier : uint8_t
         {
-            ArrayLevel,
-            PointerLevel
+            Invalid,
+            Array,
+            Pointer
         };
+
+        FullType()
+        {
+            this->name = "unknown";
+            this->literal = false;
+        }
+        FullType(std::string type)
+        {
+            this->name = type;
+            this->literal = false;
+        }
+        FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<uint32_t>& modifierValues)
+        {
+            this->name = type;
+            this->modifiers = modifiers;
+            this->modifierValues = modifierValues;
+            this->literal = false;
+        }
+        std::string name;
+
 
         void AddModifier(Modifier type, uint32_t value = 0x0)
         {
             this->modifiers.push_back(type);
             this->modifierValues.push_back(value);
+
+            switch (type)
+            {
+                case Type::FullType::Modifier::Array:
+                {
+                    if (value == 0)
+                        this->signature.append("[]");
+                    else
+                    {
+                        this->signature.append(Format("[%d]", value));
+                    }
+                    break;
+                }
+                case Type::FullType::Modifier::Pointer:
+                    this->signature.append("*");
+                    break;
+            }
+        }
+
+        void AddQualifier(std::string identifier)
+        {
+            if (identifier == "mutable")
+                this->mut = true;
+            else if (identifier == "literal")
+                this->literal = true;
+            else if (identifier == "sampled")
+                this->sampled = true;
+            else
+                this->AddModifier(Modifier::Invalid);
         }
 
         void UpdateValue(uint32_t value)
@@ -233,13 +274,27 @@ struct Type : public Symbol
             this->modifierValues.clear();
         }
         
+        struct
+        {
+            uint8_t literal: 1 = false;
+            uint8_t mut: 1 = false;
+            uint8_t sampled: 1 = false;
+        };
+
         std::vector<Modifier> modifiers;
         std::vector<uint32_t> modifierValues;
+        std::string signature;
 
         static const uint32_t UNSIZED_ARRAY = 0;
 
         bool operator==(const FullType& rhs) const
         {
+            if (this->literal && !rhs.literal)
+                return false;
+            if (this->mut != rhs.mut)
+                return false;
+            if (this->sampled != rhs.sampled)
+                return false;
             if (this->modifiers != rhs.modifiers)
                 return false;
             for (size_t i = 0; i < this->modifierValues.size(); i++)
@@ -258,8 +313,14 @@ struct Type : public Symbol
 
         /// Convert to string
         std::string ToString();
-        /// Returns true if type is pointer
+        /// Returns true if top most indirection qualifier is a pointer
         const bool IsPointer() const;
+        /// Returns true if top most access qualifier is mutable
+        const bool IsMutable() const;
+        /// Returns true if top most access qualifier is uniform
+
+        /// Get the last modifier that is an indirectiom modifier
+        const Modifier LastIndirectionModifier() const;
     };
 
     std::vector<Symbol*> globals;

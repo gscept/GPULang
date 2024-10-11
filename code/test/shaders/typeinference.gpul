@@ -1,24 +1,12 @@
 
-i32
-Foo()
+entry_point
+TypeInferrenceTest() void
 {
     var a = 5;
-    if (a == 5)
-        return a;
-    else
-        return 3;
-
-    return 9;
-}
-
-entry_point
-void
-TypeInferrenceTest()
-{
-    Foo();
+    var b = 5u;
 }
 
 program TestProgram
 {
-    ComputeShader = *TypeInferrenceTest();
+    ComputeShader = TypeInferrenceTest;
 };

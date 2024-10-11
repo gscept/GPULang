@@ -22,6 +22,10 @@ fips_begin_app(gpulang_test cmdline)
         apitest.cc
     )
 
+    fips_files_ex(shaders
+        *.gpul
+    )
+
     fips_deps(gpulang_compiler gpulang_reflection)
 
 fips_end_app()

@@ -1,6 +1,5 @@
 
-i32
-Foo()
+Foo() i32
 {
     var a : i32 = 5;
     for (; a < 10; a++)
@@ -8,16 +7,16 @@ Foo()
         if (a == 8)
             return 0;
     }
+    return 1;
 }
 
 entry_point
-void
-NestedTest()
+NestedTest() void
 {
     Foo();
 }
 
 program TestProgram
 {
-    ComputeShader = *NestedTest();
+    ComputeShader = NestedTest;
 };

@@ -44,42 +44,12 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static std::set<std::string> readWriteAccessFlags =
-{
-    "mutable", "no_read", "atomic", "volatile"
-};
-
-static std::set<std::string> readWriteTextureQualifiers =
-{
-    "group", "binding"
-};
-
-static std::set<std::string> textureQualifiers =
-{
-    "group", "binding"
-};
-
 static std::set<std::string> scalarQualifiers =
 {
-    "const", "var", "workgroup",
+    "const", "var"
 };
 
-static std::set<std::string> samplerQualifiers =
-{
-    "group", "binding"
-};
-
-static std::set<std::string> constantBufferQualifiers =
-{
-    "group", "binding"
-};
-
-static std::set<std::string> storageBufferAccessFlags =
-{
-    "mutable", "no_read", "atomic", "volatile"
-};
-
-static std::set<std::string> storageBufferQualifiers =
+static std::set<std::string> bindingQualifiers =
 {
     "group", "binding"
 };
@@ -89,38 +59,29 @@ static std::set<std::string> functionAttributes =
     "entry_point", "local_size_x", "local_size_y", "local_size_z", "early_depth"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
-    , "topology", "patch_type", "patch_size", "partition",
-    "prototype"
+    , "input_topology", "output_topology", "patch_type", "partition"
+    , "pixel_origin"
+    , "prototype"
 };
 
 static std::set<std::string> parameterAccessFlags =
 {
-    "in", "out", "in_out"
+    "in", "out"
 };
 
 static std::set<std::string> parameterQualifiers =
 {
-    "patch", "no_interpolate", "no_perspective", "binding", "pixel_origin"
+    "patch", "no_interpolate", "no_perspective", "binding"
 };
 
 static std::set<std::string> structureQualifiers =
 {
-    "group", "binding", "push"
+    "group", "binding"
 };
 
 static std::set<std::string> pixelShaderInputQualifiers =
 {
-    "binding", "no_interpolate", "no_perspective", "pixel_origin"
-};
-
-static std::set<std::string> hullOutputQualifiers =
-{
-    "patch", "domain"
-};
-
-static std::set<std::string> domainInputQualifiers =
-{
-    "binding", "patch"
+    "binding", "no_interpolate", "no_perspective"
 };
 
 static std::set<std::string> attributesRequiringEvaluation =
@@ -128,12 +89,22 @@ static std::set<std::string> attributesRequiringEvaluation =
     "binding", "group", "local_size_x", "local_size_y", "local_size_z"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
-    , "topology", "patch_type", "patch_size", "partition"
+    , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
 };
 
 static std::set<std::string> pointerQualifiers =
 {
-    "uniform", "mutable", "read", "write", "inline", "read_write", "atomic", "volatile"
+    "no_read", "atomic", "volatile"
+};
+
+static std::set<std::string> storageQualifiers =
+{
+    "uniform", "inline", "workgroup"
+};
+
+static std::set<std::string> textureQualifiers =
+{
+    "sampled"
 };
 
 //------------------------------------------------------------------------------
@@ -143,28 +114,32 @@ Validator::Validator()
     : resourceIndexingMode(ResourceIndexingByGroup)
     , defaultGroup(0)
 {
-    this->allowedReadWriteTextureAttributes.insert(readWriteAccessFlags.begin(), readWriteAccessFlags.end());
-    this->allowedReadWriteTextureAttributes.insert(readWriteTextureQualifiers.begin(), readWriteTextureQualifiers.end());
 
     // add formats
     for (auto it : StringToFormats)
     {
-        this->allowedReadWriteTextureAttributes.insert(it.first);
+        this->allowedTextureAttributes.insert(it.first);
     }
 
+    this->allowedTextureAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
+    this->allowedTextureAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
+    this->allowedTextureAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
     this->allowedTextureAttributes.insert(textureQualifiers.begin(), textureQualifiers.end());
+
     this->allowedScalarAttributes.insert(scalarQualifiers.begin(), scalarQualifiers.end());
-    this->allowedSamplerAttributes.insert(samplerQualifiers.begin(), samplerQualifiers.end());
-    this->allowedConstantBufferAttributes.insert(constantBufferQualifiers.begin(), constantBufferQualifiers.end());
-    this->allowedStorageBufferAttributes.insert(storageBufferAccessFlags.begin(), storageBufferAccessFlags.end());
-    this->allowedStorageBufferAttributes.insert(storageBufferQualifiers.begin(), storageBufferQualifiers.end());
+
+    this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
+    this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
+    this->allowedSamplerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+
     this->allowedPointerAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedPointerAttributes.insert(readWriteAccessFlags.begin(), readWriteAccessFlags.end());
+    this->allowedPointerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedFunctionAttributes.insert(functionAttributes.begin(), functionAttributes.end());
 
     this->allowedParameterAttributes.insert(parameterQualifiers.begin(), parameterQualifiers.end());
     this->allowedParameterAttributes.insert(parameterAccessFlags.begin(), parameterAccessFlags.end());
+    this->allowedParameterAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
 }
 
 //------------------------------------------------------------------------------
@@ -549,12 +524,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
-        else if (attr.name == "patch_size")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.patchSize))
-            {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
-                return false;
-            }
         else if (attr.name == "winding")
         {
             std::string str = attr.expression->EvalString();
@@ -663,9 +632,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     for (Variable* var : fun->parameters)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        varResolved->usageBits.flags.isParameter = !funResolved->isEntryPoint;
-        varResolved->usageBits.flags.isShaderInput = funResolved->isEntryPoint & varResolved->parameterBits.flags.isIn;
-        varResolved->usageBits.flags.isShaderOutput = funResolved->isEntryPoint & varResolved->parameterBits.flags.isOut;
+        varResolved->usageBits.flags.isParameter = true;
+        varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint;
         this->ResolveVariable(compiler, var);
     }
 
@@ -677,11 +645,15 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         // add comma if not first argument
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        if (var != fun->parameters.front())
-            paramList.append(",");
-
-        // finally add type
         paramList.append(varResolved->type.ToString());
+
+        if (varResolved->type.sampled)
+        {
+            int i = 5;
+        }
+
+        if (var != fun->parameters.back())
+            paramList.append(",");
     }
 
     std::string attributeList;
@@ -734,12 +706,21 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     // if we didn't fault, add the symbol
-    if (!compiler->AddSymbol(funResolved->name, fun, true))
+    if (!compiler->AddSymbol(funResolved->name, fun, false))
         return false;
 
     // also add the signature for type lookup
     if (!compiler->AddSymbol(funResolved->signature, fun, false))
         return false;
+
+    // Add just the name if the function isn't a constructor
+    Symbol* constructorType = compiler->GetSymbol<Symbol>(fun->name);
+    if (constructorType == nullptr || constructorType->symbolType == Type::SymbolType::FunctionType)
+    {
+        // also add the signature for type lookup
+        if (!compiler->AddSymbol(fun->name, fun, true))
+            return false;
+    }
 
     Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
     if (type == nullptr)
@@ -762,6 +743,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     this->inParameterIndexCounter = 0;
     this->outParameterIndexCounter = 0;
 
+    compiler->currentFunction = fun;
+
     // validate function body
     if (
         fun->ast != nullptr
@@ -770,6 +753,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         return false;
     }
+
+    compiler->currentFunction = nullptr;
 
     funResolved->hasExplicitReturn = compiler->branchReturns;
 
@@ -806,7 +791,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         }
 
         // only allow symbol assignments
-        if (assignEntry->right->symbolType != Symbol::UnaryExpressionType)
+        if (assignEntry->right->symbolType != Symbol::SymbolExpressionType)
         {
             compiler->Error(Format("Program binds '%s' but it is not an identifier", assignEntry->EvalString().c_str()), symbol);
             return false;
@@ -1309,10 +1294,6 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("binding qualifier has to evaluate to a compile time uint", attr.name.c_str()), symbol);
                     return false;
                 }
-            else if (attr.name == "push")
-            {
-                strucResolved->usageFlags.flags.isPush = true;
-            }
         }
     }
 
@@ -1347,6 +1328,14 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     if (!compiler->AddSymbol(enumeration->name, enumeration))
         return false;
 
+    if (enumeration->type.name != "u32" && enumeration->type.name != "i32" && enumeration->type.name != "u16" && enumeration->type.name != "i16")
+    {
+        compiler->Error(Format("Enumeration can only be either 'u32' 'i32' 'u16' or 'i16'"), symbol);
+        return false;
+    }
+
+    enumResolved->typeSymbol = compiler->GetSymbol<Type>(enumeration->type.name);
+
     uint32_t nextValue = 0;
     for (size_t i = 0; i < enumeration->labels.size(); i++)
     {
@@ -1371,11 +1360,18 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             Type::FullType type;
             expr->EvalType(type);
+            if (type != enumeration->type)
+            {
+                compiler->Error(Format("Enumeration is of type '%s' but label '%s' is of type '%s'", enumeration->type.name.c_str(), str.c_str(), type.name.c_str()), symbol);
+                return false;
+            }
+
             if (type.name == "u32" || type.name == "i32" || type.name == "u16" || type.name == "i16")
             {
                 uint32_t value;
                 expr->EvalUInt(value);
-                sym = new EnumExpression(value, { enumeration->name });
+                
+                sym = new EnumExpression(value, enumeration->type);
                 nextValue = value + 1;
             }
             else
@@ -1386,17 +1382,13 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            sym = new EnumExpression(nextValue++, { enumeration->name });
+            sym = new EnumExpression(nextValue++, enumeration->type);
         }
 
         // Add to type
         sym->name = str;
         enumeration->symbols.push_back(sym);
         enumeration->lookup.insert({ sym->name, sym });
-
-        // Also add to the scope where the enum is declared, as by the enum C rules
-        if (!compiler->AddSymbol(sym->name, sym))
-            return false;
     }
 
     return true;
@@ -1419,7 +1411,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (var->valueExpression != nullptr)
     {
         Expression* expr = var->valueExpression;
-        expr->isDeclaration = true;
         expr->isLhsValue = false;
         expr->Resolve(compiler);
         varResolved->value = var->valueExpression;
@@ -1436,6 +1427,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
+
     Type* type = (Type*)compiler->GetSymbol(var->type.name);
     if (type == nullptr)
     {
@@ -1447,6 +1440,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->type = var->type;
     varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
+
+    if (!this->ValidateType(compiler, var->type, varResolved->typeSymbol, var))
+        return false;
 
     // struct members may only be scalars
     if (varResolved->usageBits.flags.isStructMember && 
@@ -1470,11 +1466,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
 
         for (uint32_t size : varResolved->type.modifierValues)
+        {
             if (size == 0)
             {
                 compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
                 return false;
             }
+        }
     }
 
     // figure out set of allowed attributes
@@ -1485,16 +1483,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         allowedAttributesSet = &this->allowedParameterAttributes;
     else
     {
-        if (type->category == Type::ReadWriteTextureCategory)
-            allowedAttributesSet = &this->allowedReadWriteTextureAttributes;
-        else if (type->category == Type::TextureCategory)
+        if (type->category == Type::TextureCategory)
             allowedAttributesSet = &this->allowedTextureAttributes;
         else if (type->category == Type::ScalarCategory)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
         else if (type->category == Type::UserTypeCategory
-                && varResolved->type.IsPointer())
+                && lastIndirectionModifier == Type::FullType::Modifier::Pointer)
         {
             allowedAttributesSet = &this->allowedPointerAttributes;
         }
@@ -1527,107 +1523,66 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
                 return false;
             }
-        }
-        else if (attr.name == "const")
-        {
-            varResolved->usageBits.flags.isConst = true;
-            if (varResolved->usageBits.flags.isMutable)
+            if (varResolved->usageBits.flags.isStructMember)
             {
-                compiler->Error(Format("Variable declared as 'const' can't also be 'mutable' or 'var'"), symbol);
+                compiler->Error(Format("Qualifier 'binding' illegal for struct members"), symbol);
+                return false;
+            }
+            if (varResolved->usageBits.flags.isParameter && !varResolved->usageBits.flags.isEntryPointParameter)
+            {
+                compiler->Error(Format("Qualifier 'binding' illegal for parameters of non entry_point functions"), symbol);
                 return false;
             }
         }
+        else if (attr.name == "const")
+            varResolved->usageBits.flags.isConst = true;
+        else if (attr.name == "uniform")
+        {
+            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            {
+                compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+            }
+            varResolved->storage = Variable::__Resolved::Storage::Uniform;
+            varResolved->usageBits.flags.isConst = true;
+        }
+        else if (attr.name == "inline")
+        {
+            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            {
+                compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+            }
+            varResolved->storage = Variable::__Resolved::Storage::InlineUniform;
+            varResolved->usageBits.flags.isConst = true;
+        }
+        else if (attr.name == "workgroup")
+        {
+            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            {
+                compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+            }
+            varResolved->storage = Variable::__Resolved::Storage::Workgroup;
+        }
         else if (attr.name == "var")
         {
-            varResolved->usageBits.flags.isMutable = true;
             if (varResolved->usageBits.flags.isConst)
             {
                 compiler->Error(Format("Variable declared as 'var' can't also be 'const'"), symbol);
                 return false;
             }
         }
-        else if (attr.name == "uniform")
+        else if (attr.name == "sampled")
         {
-            varResolved->usageBits.flags.isUniform = true;
-            if (varResolved->usageBits.flags.isMutable)
+            if (varResolved->typeSymbol->category != Type::Category::TextureCategory)
             {
-                compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable' or 'var'"), symbol);
+                compiler->Error(Format("'sampled' is only allowed on texture typed variables"), symbol);
                 return false;
             }
-            if (varResolved->usageBits.flags.isInline)
-            {
-                compiler->Error(Format("Variable declared as 'uniform' can't also be 'inline'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isGroupShared)
-            {
-                compiler->Error(Format("Variable declared as 'uniform' can't also be 'workgroup'"), symbol);
-                return false;
-            }
-        }
-        else if (attr.name == "inline")
-        {
-            varResolved->usageBits.flags.isInline = true;
-            if (varResolved->usageBits.flags.isMutable)
-            {
-                compiler->Error(Format("Variable declared as 'inline' can't also be 'mutable'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isUniform)
-            {
-                compiler->Error(Format("Variable declared as 'inline' can't also be 'uniform'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isGroupShared)
-            {
-                compiler->Error(Format("Variable declared as 'inline' can't also be 'workgroup'"), symbol);
-                return false;
-            }
-        }
-        else if (attr.name == "mutable")
-        {
-            varResolved->usageBits.flags.isMutable = true;
-            varResolved->accessBits.flags.writeAccess = true;
-            if (varResolved->usageBits.flags.isUniform)
-            {
-                compiler->Error(Format("Variable declared as 'mutable' can't also be 'uniform'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isInline)
-            {
-                compiler->Error(Format("Variable declared as 'mutable' can't also be 'inline'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isGroupShared)
-            {
-                compiler->Error(Format("Variable declared as 'mutable' can't also be 'workgroup'"), symbol);
-                return false;
-            }
-
-        }
-        else if (attr.name == "workgroup")
-        {
-            varResolved->usageBits.flags.isGroupShared = true;
-            if (varResolved->usageBits.flags.isMutable)
-            {
-                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'mutable'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isInline)
-            {
-                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'inline'"), symbol);
-                return false;
-            }
-            if (varResolved->usageBits.flags.isUniform)
-            {
-                compiler->Error(Format("Variable declared as 'workgroup' can't also be 'uniform'"), symbol);
-                return false;
-            }
+            varResolved->usageBits.flags.isSampled = true;
         }
         else
         {
             // more complicated lookups
-            if (set_contains(readWriteAccessFlags, attr.name))
+            if (set_contains(pointerQualifiers, attr.name))
             {
                 if (attr.name == "no_read")
                     varResolved->accessBits.flags.readAccess = false;
@@ -1641,18 +1596,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (set_contains(parameterAccessFlags, attr.name))
         {
             if (attr.name == "in")
-                varResolved->parameterBits.flags.isIn = true;
+                varResolved->storage = Variable::__Resolved::Storage::Input;
             else if (attr.name == "out")
-                varResolved->parameterBits.flags.isOut = true;
-            else if (attr.name == "in_out")
-            {
-                if (varResolved->usageBits.flags.isShaderInput || varResolved->usageBits.flags.isShaderOutput)
-                {
-                    compiler->Error(Format("in_out is not supported on shader arguments"), symbol);
-                    return false;
-                }
-                varResolved->parameterBits.flags.isIn = varResolved->parameterBits.flags.isOut = true;
-            }
+                varResolved->storage = Variable::__Resolved::Storage::Output;
         }
         else if (set_contains(parameterQualifiers, attr.name))
         {
@@ -1673,11 +1619,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (varResolved->usageBits.flags.isMutable)
+    if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (varResolved->usageBits.flags.isUniform)
+        if (type->category == Type::UserTypeCategory && varResolved->storage != Variable::__Resolved::Storage::InlineUniform && varResolved->storage != Variable::__Resolved::Storage::Uniform && varResolved->type.IsPointer())
         {
-            compiler->Error(Format("Variable declared as 'uniform' can't also be 'mutable'"), symbol);
+            compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
             return false;
         }
     }
@@ -1690,67 +1636,108 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             uint16_t numPointers = 0;
             for (Type::FullType::Modifier mod : varResolved->type.modifiers)
             {
-                if (mod == Type::FullType::Modifier::ArrayLevel)
+                if (mod == Type::FullType::Modifier::Array)
                     numArrays++;
-                else if (mod == Type::FullType::Modifier::PointerLevel)
+                else if (mod == Type::FullType::Modifier::Pointer)
                     numPointers++;
             }
             if (numArrays > 1)
             {
-                compiler->Error(Format("Global variables may only be single array"), symbol);
+                compiler->Error(Format("Variables of non scalar type in the global scope may only be one dimensional array"), symbol);
                 return false;
             }
             if (numPointers > 1)
             {
-                compiler->Error(Format("Global variables may only be single pointer"), symbol);
+                compiler->Error(Format("Variables of non scalar type in the global scope may only be single pointer"), symbol);
                 return false;
             }
 
-            if (type->category == Type::ReadWriteTextureCategory
-                && !varResolved->type.IsPointer())
+            if (varResolved->storage != Variable::__Resolved::Storage::Uniform && varResolved->storage != Variable::__Resolved::Storage::InlineUniform)
             {
-                compiler->Error(Format("Instance of 'readWriteTexture' must be pointer if in global scope"), symbol);
-                return false;
-            }            
-            else if (type->category == Type::TextureCategory
-                     && !varResolved->type.IsPointer())
-            {
-                compiler->Error(Format("Instance of 'texture' must be pointer if in global scope"), symbol);
-                return false;
-            }
-            else if (type->category == Type::SamplerCategory
-                     && !varResolved->type.IsPointer())
-            {
-                compiler->Error(Format("Instance of 'sampler' must be pointer if in global scope"), symbol);
-                return false;
-            }
-            else if (type->category == Type::UserTypeCategory
-                     && !varResolved->type.IsPointer())
-            {
-                compiler->Error(Format("Instance of '%s' must be pointer if in global scope", type->name.c_str()), symbol);
+                compiler->Error(Format("Variable of non scalar type in the global scope must either use 'uniform' or 'inline' storage", type->name.c_str()), symbol);
                 return false;
             }
         }
         else // scalar
         {
-            if (!varResolved->usageBits.flags.isConst)
-            {
-                compiler->Error(Format("Non-const scalars are not allowed in global scope"), symbol);
-                return false;
-            }
-            else if (varResolved->usageBits.flags.isConst && varResolved->value == nullptr)
+            if (varResolved->usageBits.flags.isConst && varResolved->value == nullptr)
             {
                 // check for variable initialization criteria
                 compiler->Error(Format("Variable declared as const but is never initialized"), symbol);
                 return false;
             }
+            if (varResolved->storage == Variable::__Resolved::Storage::Default)
+                varResolved->storage = Variable::__Resolved::Storage::Global;
         }
     }
     else
     {
-        if (varResolved->type.IsPointer() && !varResolved->usageBits.flags.isParameter)
+        if (lastIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
         {
             compiler->Error(Format("Pointers are only allowed as symbols in the global scope", type->name.c_str()), symbol);
+            return false;
+        }
+
+        if (varResolved->storage == Variable::__Resolved::Storage::Workgroup)
+        {
+            compiler->Error(Format("Variables with 'workgroup' storage may only be global", type->name.c_str()), symbol);
+            return false;
+        }
+    }
+
+    if (type->category == Type::TextureCategory
+        && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+    {
+        compiler->Error(Format("Variable of texture type must be pointer"), symbol);
+        return false;
+    }
+    else if (type->category == Type::SamplerCategory
+        && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+    {
+        compiler->Error(Format("Variable of sampler type must be pointer"), symbol);
+        return false;
+    }
+
+    if (type->category == Type::UserTypeCategory)
+    {
+        if (lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+        {
+            if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+            {
+                compiler->Error(Format("Variable of uniform '%s' type must be pointer", type->name.c_str()), symbol);
+                return false;
+            }
+            else if (varResolved->storage == Variable::__Resolved::Storage::InlineUniform)
+            {
+                compiler->Error(Format("Variable of inline '%s' type must be pointer", type->name.c_str()), symbol);
+                return false;
+            }
+        }
+    }
+
+    // Check that the type can be mutable
+    if (varResolved->type.IsMutable())
+    {
+        varResolved->accessBits.flags.writeAccess = true;
+        if (type->category == Type::SamplerCategory)
+        {
+            compiler->Error(Format("Sampler can not be mutable", type->name.c_str()), symbol);
+            return false;
+        }
+        else if (type->category == Type::PixelCacheCategory)
+        {
+
+            compiler->Error(Format("PixelCache can not be mutable", type->name.c_str()), symbol);
+            return false;
+        }
+        else if (type->category == Type::ScalarCategory)
+        {
+            compiler->Error(Format("Scalar can not be mutable", type->name.c_str()), symbol);
+            return false;
+        }
+        else if (type->category == Type::EnumCategory)
+        {
+            compiler->Error(Format("Enum can not be mutable", type->name.c_str()), symbol);
             return false;
         }
     }
@@ -1766,14 +1753,23 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        Type* lhsType = compiler->GetSymbol<Type>(lhs.name);
-        std::vector<Symbol*> assignmentOperators = lhsType->GetSymbols(Format("operator=(%s)", rhs.name.c_str()));
-        Symbol* fun = Function::MatchOverload(compiler, assignmentOperators, { rhs });
-        if (lhs != rhs
-            && fun == nullptr)
+        if (lhs != rhs)
         {
-            compiler->Error(Format("Type '%s' can't be converted to '%s'", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
-            return false;
+            Type* lhsType = compiler->GetSymbol<Type>(lhs.name);
+            std::vector<Symbol*> assignmentOperators = lhsType->GetSymbols(Format("operator=(%s)", rhs.name.c_str()));
+            Symbol* fun = Function::MatchOverload(compiler, assignmentOperators, { rhs });
+            if (fun == nullptr)
+            {
+                compiler->Error(Format("Type '%s' can't be converted to '%s'", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                return false;
+            }
+
+            if (fun != nullptr
+                && compiler->options.disallowImplicitConversion)
+            {
+                compiler->Error(Format("Initialization not possible because implicit conversions ('%s' to '%s') are not allowed. Either disable implicit conversions or explicitly convert the value.", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                return false;
+            }
         }
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
@@ -1781,11 +1777,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // check if image formats have been resolved
-    if (type->category == Type::ReadWriteTextureCategory 
-        && varResolved->imageFormat == InvalidImageFormat
+    if (type->category == Type::TextureCategory
+        && varResolved->type.mut
+        && (varResolved->imageFormat == InvalidImageFormat || varResolved->imageFormat == Unknown)
         && !varResolved->usageBits.flags.isParameter)
     {
-        compiler->Error(Format("readWriteTexture variable '%s' must provide a format qualifier", varResolved->name.c_str()), var);
+        compiler->Error(Format("Texture type must provide a format qualifier because it's marked as 'mutable'"), var);
         return false;
     }
 
@@ -1794,18 +1791,18 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         // if parameter, resolve in and out bindings
         if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
         {
-            if (varResolved->parameterBits.flags.isIn)
+            if (varResolved->storage == Variable::__Resolved::Storage::Input)
                 varResolved->inBinding = this->inParameterIndexCounter++;
-            if (varResolved->parameterBits.flags.isOut)
+            if (varResolved->storage == Variable::__Resolved::Storage::Output)
                 varResolved->outBinding = this->outParameterIndexCounter++;
         }
         else
         {
             varResolved->inBinding = varResolved->binding;
             varResolved->outBinding = varResolved->binding;
-            if (varResolved->parameterBits.flags.isIn)
+            if (varResolved->storage == Variable::__Resolved::Storage::Input)
                 this->inParameterIndexCounter = varResolved->binding + 1;
-            if (varResolved->parameterBits.flags.isOut)
+            if (varResolved->storage == Variable::__Resolved::Storage::Output)
                 this->outParameterIndexCounter = varResolved->binding + 1;
         }
     }
@@ -1818,39 +1815,19 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (compiler->IsScopeGlobal())
             {
-                if (varResolved->usageBits.flags.isMutable)
-                    cat = Type::Category::MutableStructureCategory;
-                else if (varResolved->usageBits.flags.isUniform)
-                    cat = Type::Category::UniformStructureCategory;
-
-                if (!varResolved->type.IsPointer())
+                if (varResolved->storage == Variable::__Resolved::Storage::Uniform && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
                 {
-                    compiler->Error(Format("Variable of '%s' with qualifier 'uniform' or 'mutable' must be pointer", type->name.c_str()), var);
-                    return false;
-                }
-                else if (cat == Type::Category::UserTypeCategory)
-                {
-                    compiler->Error(Format("Variable of '%s' must be either 'uniform' or 'mutable'", type->name.c_str()), var);
-                    return false;
-                }
-            }
-            else
-            {
-                if (varResolved->usageBits.flags.isMutable || varResolved->usageBits.flags.isUniform)
-                {
-                    compiler->Error(Format("Variable of '%s' with qualifier 'uniform' or 'mutable' are only allowed in the global scope", type->name.c_str()), var);
+                    compiler->Error(Format("Global variable '%s' with storage class 'uniform' must be a pointer", type->name.c_str()), var);
                     return false;
                 }
             }
         }
 
         // if not a parameter, assume resource (these types can't be declared inside functions)
-        if (cat == Type::Category::ReadWriteTextureCategory
-            || cat == Type::Category::TextureCategory
+        if (cat == Type::Category::TextureCategory
             || cat == Type::Category::SamplerCategory
             || cat == Type::Category::PixelCacheCategory
-            || cat == Type::Category::UniformStructureCategory
-            || cat == Type::Category::MutableStructureCategory)
+            || (cat == Type::Category::UserTypeCategory && varResolved->storage == Variable::__Resolved::Storage::Uniform))
         {
             if (varResolved->group == Variable::__Resolved::NOT_BOUND)
             {
@@ -1895,8 +1872,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
 
-        if (cat == Type::Category::MutableStructureCategory
-            || cat == Type::Category::UniformStructureCategory)
+        if (cat == Type::Category::UserTypeCategory && varResolved->storage == Variable::__Resolved::Storage::Uniform)
         {
             // Generate mutable/uniform variant of struct
             Structure* generatedStruct = new Structure;
@@ -1924,15 +1900,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             generatedStruct->location = var->location;
             generatedStructResolved->group = varResolved->group;
             generatedStructResolved->binding = varResolved->binding;
-            if (cat == Type::Category::MutableStructureCategory)
+            if (varResolved->type.IsMutable())
             {
                 generatedStructResolved->usageFlags.flags.isMutableBuffer = true;
-                generatedStruct->baseType = TypeCode::ReadWriteBuffer;
+                generatedStruct->baseType = TypeCode::Buffer;
             }
-            else if (cat == Type::Category::UniformStructureCategory)
+            else
             {
                 generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
-                generatedStruct->baseType = TypeCode::UniformBuffer;
+                generatedStruct->baseType = TypeCode::Buffer;
             }
 
             Type::FullType newType{ generatedStruct->name };
@@ -2016,7 +1992,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
                 if (typeSymbol->baseType != TypeCode::Bool)
                 {
-                    compiler->Error(Format("For condition must evaluate to a boolean value"), statement);
+                    compiler->Error(Format("Loop condition must evaluate to a boolean value"), statement);
                     return false;
                 }
             }
@@ -2041,6 +2017,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 if (!this->ResolveStatement(compiler, statement->elseStatement))
                     return false;
                 ifReturns &= compiler->branchReturns;
+            }
+            else
+            {
+                // If there is no else statement, then the branch won't necessarily return
+                ifReturns = false;
             }
             compiler->branchReturns = ifReturns;
             return true;
@@ -2194,12 +2175,6 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         if (funResolved->shaderUsage.bits != 0x0)
         {
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
-            if (varResolved->parameterBits.flags.isIn
-                && varResolved->parameterBits.flags.isOut)
-            {
-                compiler->Error(Format("Parameter '%s' can not be both 'in' and 'out' or 'in_out' if function '%s' is used as a shader", var->name.c_str(), fun->name.c_str()), var);
-                return false;
-            }
 
             if (varResolved->parameterBits.flags.isPatch
                 && !(funResolved->shaderUsage.flags.isHullShader || funResolved->shaderUsage.flags.isDomainShader))
@@ -2224,18 +2199,21 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    if (funResolved->shaderUsage.flags.isVertexShader)
+    {
+        if (!funResolved->sideEffects.flags.exportsVertexPosition)
+        {
+            compiler->Warning(Format("Function '%s' is used as vertex shader but produces no vertex position", fun->name.c_str()), symbol);
+        }
+    }
+
     // validate function attribute validity
     if (funResolved->shaderUsage.flags.isPixelShader)
     {
-        uint32_t numOutputs = 0;
-        for (Variable* var : fun->parameters)
-        {
-            Variable::__Resolved* varResolved = Symbol::Resolved(var);
-            if (varResolved->parameterBits.flags.isOut)
-                numOutputs++;
-        }
-        if (numOutputs == 0)
+        if (!funResolved->sideEffects.flags.exportsPixel)
             compiler->Warning(Format("Function '%s' is used as pixel shader but produces no color output", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.earlyDepth && funResolved->sideEffects.flags.exportsExplicitDepth)
+            compiler->Warning(Format("Function '%s' uses early depth testing but writes an explicit depth value", fun->name.c_str()), symbol);
     }
     else
     {
@@ -2245,7 +2223,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     if (funResolved->shaderUsage.flags.isHullShader)
     {
-        if (funResolved->executionModifiers.patchSize == Function::__Resolved::INVALID_SIZE)
+        if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
             compiler->Error(Format("Hull shader '%s' does not define 'patch_size'", fun->name.c_str()), symbol);
             return false;
@@ -2274,11 +2252,11 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Hull shader '%s' doesn't support input topology 'triangles_adjacency", fun->name.c_str()), symbol);
             return false;
         }
-    }
-    else
-    {
-        if (funResolved->executionModifiers.patchSize != Function::__Resolved::INVALID_SIZE)
-            compiler->Warning(Format("Function '%s' has attribute 'patch_size' but is not used as a HullShader/TessellationControlShader", fun->name.c_str()), symbol);
+        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
+        {
+            compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'integer'", fun->name.c_str()), symbol);
+            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethod::IntegerSteps;
+        }
     }
 
     if (funResolved->shaderUsage.flags.isDomainShader)
@@ -2289,11 +2267,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Warning(Format("Domain shader '%s' does not define 'patch_type' for DomainShader/TessellationEvaluationShader, defaulting to 'triangles'", fun->name.c_str()), symbol);
             funResolved->executionModifiers.patchType = Function::__Resolved::PatchType::TrianglePatch;
         }
-        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
-        {
-            compiler->Warning(Format("Domain shader '%s' does not define 'partition', defaulting to 'steps'", fun->name.c_str()), symbol);
-            funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethod::IntegerSteps;
-        }
+
     }
     else
     {
@@ -2403,9 +2377,9 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
     for (Variable* var : vars)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        if (varResolved->parameterBits.flags.isIn && in)
+        if (varResolved->storage == Variable::__Resolved::Storage::Input && in)
             ret.push_back(var);
-        else if (varResolved->parameterBits.flags.isOut && !in)
+        else if (varResolved->storage == Variable::__Resolved::Storage::Output && !in)
             ret.push_back(var);
     }
 
@@ -2587,6 +2561,38 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             Function* ps = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::PixelShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ps))
                 return false;
+        }
+    }
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* typeSymbol, Symbol* sym)
+{
+    uint32_t numPointers = 0;
+    for (auto mod : type.modifiers)
+    {
+        if (mod == Type::FullType::Modifier::Invalid)
+        {
+            compiler->Error(Format("Invalid type modifier"), sym);
+            return false;
+        }
+        if (mod == Type::FullType::Modifier::Pointer)
+            numPointers++;
+    }
+
+    if (!compiler->target.supportsPhysicalAddressing)
+    {
+        if (
+            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && numPointers > 0)
+            || (numPointers > 1)
+            )
+        {
+            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler and struct types", compiler->target.name.c_str()), sym);
+            return false;
         }
     }
     return true;

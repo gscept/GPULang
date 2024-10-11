@@ -15,7 +15,6 @@ namespace GPULang
 */
 Expression::Expression() 
     : isLhsValue(false)
-    , isDeclaration(false)
 {
     // empty
 }

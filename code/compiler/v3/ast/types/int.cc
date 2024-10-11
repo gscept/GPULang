@@ -53,8 +53,7 @@ Int::Int()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor, i32, i32, u32)
-    __ADD_CONSTRUCTOR()
+    __IMPLEMENT_CTOR_1(ctor, i32, i32, u32)
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32, i32);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, i32, i32);

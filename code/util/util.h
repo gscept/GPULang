@@ -124,10 +124,13 @@ inline uint32_t
 StringToFourCC(const std::string& str)
 {
     uint32_t fourcc = 0;
-    for (int i = str.size() - 1, shift = 0; i >= 0; i--)
+    uint32_t shift = 0;
+    auto it = str.crbegin();
+    while (it != str.crend())
     {
-        fourcc |= uint32_t(str.c_str()[i]) << shift;
+        fourcc |= uint32_t(*it) << shift;
         shift += 8;
+        it++;
     }
     return fourcc;
 }

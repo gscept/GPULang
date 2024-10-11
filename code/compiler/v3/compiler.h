@@ -31,7 +31,8 @@ struct Compiler
         GLSL_SPIRV,     // uses GLSL as intermediate to generate SPIRV
         HLSL,
         HLSL_SPIRV,     // uses HLSL as intermediate to generate SPIRV
-        SPIRV           // target is pure SPIRV
+        SPIRV,          // target is pure generic SPIRV
+        VULKAN_SPIRV    // target is SPIRV with the Vulkan subset
     };
 
     struct Options
@@ -43,6 +44,14 @@ struct Compiler
         uint8_t validate : 1;
         uint8_t optimize : 1;
     };
+
+    struct Target
+    {
+        Generator* generator;
+        std::string name;
+
+        uint8_t supportsPhysicalAddressing : 1;
+    } target;
 
     /// constructor
     Compiler();
@@ -173,8 +182,9 @@ struct Compiler
 
     Compiler::Language lang;
     Validator* validator = nullptr;
-    Generator* generator = nullptr;
     Generator* headerGenerator = nullptr;
+
+    Function* currentFunction = nullptr;
 
     bool branchReturns;
 

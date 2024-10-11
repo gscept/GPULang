@@ -11,15 +11,44 @@
 namespace GPULang
 {
 
+#define INT4_CTOR_LIST\
+    X(Int4, ctor_SingleValue, i32, 1, 4, 4, None)\
+    X(Int4, ctor_UInt3, u32x4, 1, 1, 4, UIntToInt)\
+    X(Int4, ctor_Float3, f32x4, 1, 1, 4, FloatToUInt)
+
+#define INT4_CTOR2_LIST\
+    X(Int4, ctor_Int3_Int, i32x3, i32)\
+    X(Int4, ctor_Int_Int3, i32, i32x3)\
+    X(Int4, ctor_Int2_Int2, i32x2, i32x2)
+    
+#define INT4_CTOR3_LIST\
+    X(Int4, ctor_Int2_Int_Int, i32x2, i32, i32)\
+    X(Int4, ctor_Int_Int_Int2, i32, i32, i32x2)\
+    X(Int4, ctor_Int_Int2_Int, i32, i32x2, i32)
+
 struct Int4 : public Type
 {
     /// constructor
     Int4();
 
-    static Function ctor_XYZW;
-    static Function ctorSingleValue;
-    static Function ctor_3_W;
-    static Function ctor_2_ZW;
+    static Function ctor;
+#define X(type, ctor, val, args, splat, size, conversion)\
+    static Function ctor;
+
+    INT4_CTOR_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1)\
+    static Function ctor;
+
+    INT4_CTOR2_LIST
+#undef X
+
+#define X(type, ctor, arg0, arg1, arg2)\
+    static Function ctor;
+
+    INT4_CTOR3_LIST
+#undef X
 
     static Function andOperator;
     static Function orOperator;

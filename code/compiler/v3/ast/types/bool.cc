@@ -33,11 +33,11 @@ Bool::Bool()
     this->byteSize = 1;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_GLOBAL_1(ctor_Int, b8, b8, i32);
+    __IMPLEMENT_CTOR_1(ctor_Int, b8, b8, i32);
     __ADD_CONSTRUCTOR()
 
     // setup uint constructor
-    __IMPLEMENT_GLOBAL_1(ctor_UInt, b8, b8, u32);
+    __IMPLEMENT_CTOR_1(ctor_UInt, b8, b8, u32);
     __ADD_CONSTRUCTOR()
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, b8, b8);

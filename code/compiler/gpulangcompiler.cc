@@ -34,41 +34,41 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
 
     std::string folder = file.substr(0, file.rfind("/")+1);
 
-    const char* constArgs[] =
+    std::vector<std::string> args =
     {
-        "",			// first argument is supposed to be application system path, but is omitted since we run mcpp directly
-        "-W 0",
-        "-a",
-        "-v",
+        ""
+        , "-W 0"
+        , "-a"
     };
-    const unsigned numConstArgs = sizeof(constArgs) / sizeof(char*);
-    const unsigned numTotalArgs = numConstArgs + defines.size() + 1;
-    const char** args = new const char*[numConstArgs + defines.size() + 1];
-    memcpy(args, constArgs, sizeof(constArgs));
+    for (const auto def : defines)
+        args.push_back(def);
 
-    unsigned i;
-    for (i = 0; i < defines.size(); i++)
+    args.push_back(file);
+    const char** argArr = new const char*[args.size()];
+    uint32_t counter = 0;
+    for (const auto& arg : args)
     {
-        args[numConstArgs + i] = defines[i].c_str();
+        argArr[counter++] = arg.c_str();
     }
-    args[numTotalArgs-1] = file.c_str();
 
     // run preprocessing
     mcpp_use_mem_buffers(1);
-    int result = mcpp_lib_main(numTotalArgs, (char**)args);
+    int result = mcpp_lib_main(args.size(), (char**)argArr);
     if (result != 0)
     {
-        delete[] args;
+        char* error = mcpp_get_mem_buffer(ERR);
+        printf(error);
+        delete[] argArr;
         return false;
     }
     else
     {
-        char* preprocessed = mcpp_get_mem_buffer((OUTDEST)0);
+        char* preprocessed = mcpp_get_mem_buffer(OUT);
         output.append(preprocessed);
 
         // cleanup mcpp
         mcpp_use_mem_buffers(1);
-        delete[] args;
+        delete[] argArr;
         return true;
     }
 }
