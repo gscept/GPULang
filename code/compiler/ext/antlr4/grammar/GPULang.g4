@@ -246,7 +246,7 @@ variables
         Type::FullType type = { "unknown" };
     }:
     (annotation { annotations.push_back($annotation.annot); })*
-    (attribute { attributes.push_back($attribute.attr); })*
+    (attribute { attributes.push_back($attribute.attr); })+
     
     varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
     (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
@@ -487,7 +487,7 @@ state
         std::vector<Expression*> entries;
     }:
     (
-        'sampler' { $sym = new SamplerState(); }
+        'sampler_state' { $sym = new SamplerState(); }
         | 'render_state' { $sym = new RenderState(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'

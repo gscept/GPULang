@@ -196,4 +196,13 @@ ArrayIndexExpression::EvalString() const
         return Format("%s[]", left.c_str());
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+ArrayIndexExpression::EvalAccessFlags(unsigned& out) const
+{
+    return this->left->EvalAccessFlags(out);
+}
+
 } // namespace GPULang

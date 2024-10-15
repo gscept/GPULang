@@ -253,4 +253,38 @@ SymbolExpression::EvalString() const
     return this->symbol;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+SymbolExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = 0x0;
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->symbol)
+    {
+        switch (thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                if (varResolved->usageBits.flags.isConst)
+                    out |= AccessFlags::Const;
+                return true;
+            }
+            case StringExpressionType:
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                return expr->EvalAccessFlags(out);
+            }
+        }
+    }
+    return false;
+}
+
 } // namespace GPULang

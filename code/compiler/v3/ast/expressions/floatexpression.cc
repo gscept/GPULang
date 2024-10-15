@@ -109,4 +109,14 @@ FloatExpression::EvalString() const
 {
     return Format("%f", this->value);
 }
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+FloatExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = AccessFlags::Const;
+    return true;
+}
 } // namespace GPULang

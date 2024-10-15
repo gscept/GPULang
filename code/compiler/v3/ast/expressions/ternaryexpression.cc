@@ -81,4 +81,17 @@ TernaryExpression::EvalString() const
     return Format("%s ? %s : %s", lhs.c_str(), ifStr.c_str(), elseStr.c_str());
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+TernaryExpression::EvalAccessFlags(unsigned& out) const
+{
+    unsigned left, right;
+    this->ifExpression->EvalAccessFlags(left);
+    this->elseExpression->EvalAccessFlags(right);
+    out = left & right;
+    return true;
+}
+
 } // namespace GPULang

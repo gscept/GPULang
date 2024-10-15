@@ -96,7 +96,7 @@ AccessExpression::Resolve(Compiler* compiler)
         unsigned biggestComponent = Type::SwizzleMaskBiggestComponent(swizzle);
         if (biggestComponent > thisResolved->lhsType->columnSize)
         {
-            compiler->Error(Format("Swizzle '%s' indexes beyond vector column size '%s'", thisResolved->rightSymbol.c_str(), thisResolved->lhsType->name.c_str()), this);
+            compiler->Error(Format("Swizzle '%s' indexes beyond vector size '%s'", thisResolved->rightSymbol.c_str(), thisResolved->lhsType->name.c_str()), this);
             return false;
         }
         thisResolved->swizzleMask = swizzle;
@@ -157,6 +157,19 @@ AccessExpression::EvalString() const
     left = this->left->EvalString();
     right = this->right->EvalString();
     return Format("%s.%s", left.c_str(), right.c_str());
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+AccessExpression::EvalAccessFlags(unsigned& out) const
+{
+    unsigned left, right;
+    this->left->EvalAccessFlags(left);
+    this->right->EvalAccessFlags(right);
+    out = left | right;
+    return true;
 }
 
 } // namespace GPULang

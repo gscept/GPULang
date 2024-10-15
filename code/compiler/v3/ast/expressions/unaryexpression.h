@@ -44,6 +44,8 @@ public:
     bool EvalBool(bool& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
+    /// evaluates access flags
+    bool EvalAccessFlags(unsigned& out) const override;
 
     uint32_t op;
     bool isPrefix;

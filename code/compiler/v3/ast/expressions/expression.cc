@@ -93,6 +93,15 @@ Expression::EvalBool(bool& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+Expression::EvalAccessFlags(unsigned& out) const
+{
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 std::string
 Expression::EvalString() const
 {

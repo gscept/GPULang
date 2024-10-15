@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 #include "generator.h"
 #include "ast/symbol.h"
+#include "ast/types/type.h"
 #include <unordered_map>
 #include <set>
 #include <stack>
@@ -26,6 +27,9 @@ struct SPIRVResult
     bool isConst = false;       // If true, value is a constant
     bool isLiteral = false;     // If true, then the value is a literal value and can be constant constructed
     std::vector<uint32_t> parentTypes;
+
+    Type::SwizzleMask swizzleMask;
+    uint32_t swizzleType = 0xFFFFFFFF;
 
     struct LiteralValue
     {
@@ -100,7 +104,12 @@ struct SPIRVResult
         , isConst(isConstant)
         , scope(scope)
         , parentTypes(parentTypes)
-    {};
+    {
+        this->swizzleMask.bits.x = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.y = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.z = Type::SwizzleMask::Invalid;
+        this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
+    };
 
     SPIRVResult(float literal)
     {
@@ -132,7 +141,11 @@ struct SPIRVResult
     bool operator==(const SPIRVResult& rhs) { return this->name == rhs.name && this->typeName == rhs.typeName; }
 };
 
-
+struct SymbolAssignment
+{
+    Symbol* sym;
+    uint32_t value;
+};
 
 class SPIRVGenerator : public Generator
 {
@@ -152,7 +165,7 @@ public:
     /// Add a symbol for a reserved name
     void AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global = false);
     /// Get symbol
-    uint32_t GetSymbol(std::string name);
+    const SymbolAssignment GetSymbol(std::string name);
     /// Returns true if symbol exists
     bool HasSymbol(std::string name);
     /// Add an op without a mapping
@@ -172,18 +185,13 @@ public:
     /// Add op with reserved name
     void AddReserved(std::string op, uint32_t name, std::string comment = "");
     /// Add function variable declaration
-    uint32_t AddVariableDeclaration(std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
-
-    /// Find symbol and assert if fails
-    uint32_t FindSymbolMapping(std::string value);
-    /// Replace symbol mapping, assumes symbol already exists
-    void ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping);
+    uint32_t AddVariableDeclaration(Symbol* sym, std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
 
     uint32_t symbolCounter;
 
     struct Scope
     {
-        std::unordered_map<std::string, uint32_t> symbols;
+        std::unordered_map<std::string, SymbolAssignment> symbols;
     };
     std::vector<Scope> scopeStack;
     std::set<std::string> capabilities;

@@ -40,6 +40,7 @@ struct Compiler
         uint8_t warningsAsErrors : 1;
         uint8_t emitTimings : 1;
         uint8_t disallowImplicitConversion : 1;
+        uint8_t disallowUninitializedConst : 1;
 
         uint8_t validate : 1;
         uint8_t optimize : 1;
@@ -51,6 +52,7 @@ struct Compiler
         std::string name;
 
         uint8_t supportsPhysicalAddressing : 1;
+        uint8_t supportsInlineSamplers : 1;
     } target;
 
     /// constructor

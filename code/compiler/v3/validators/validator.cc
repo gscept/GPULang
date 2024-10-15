@@ -1536,6 +1536,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else if (attr.name == "const")
             varResolved->usageBits.flags.isConst = true;
+        else if (attr.name == "var")
+            varResolved->usageBits.flags.isVar = true;
         else if (attr.name == "uniform")
         {
             if (varResolved->storage != Variable::__Resolved::Storage::Default)
@@ -1616,6 +1618,31 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (map_contains(StringToFormats, attr.name))
         {
             varResolved->imageFormat = StringToFormats[attr.name];
+        }
+    }
+
+    if (!varResolved->usageBits.flags.isParameter && !varResolved->usageBits.flags.isStructMember && (varResolved->storage == Variable::__Resolved::Storage::Default || varResolved->storage == Variable::__Resolved::Storage::Global))
+    {
+        if (varResolved->usageBits.flags.isVar && varResolved->usageBits.flags.isConst)
+        {
+            compiler->Error(Format("Variable may be either 'var' or 'const' but not both"), var);
+            return false;
+        }
+        else if (!varResolved->usageBits.flags.isVar && !varResolved->usageBits.flags.isConst)
+        {
+            compiler->Error(Format("Variable must be either 'var' or 'const'"), var);
+            return false;
+        }
+
+        if (varResolved->usageBits.flags.isConst && var->valueExpression == nullptr)
+        {
+            if (compiler->options.disallowUninitializedConst)
+            {
+                compiler->Error(Format("Uninitialized 'const' variables are not allowed. Either turn off 'disallowUninitializedConst' or initialize the variable"), var);
+                return false;
+            }
+            else
+                compiler->Warning(Format("Variable is 'const' but uninitialized"), var);
         }
     }
 

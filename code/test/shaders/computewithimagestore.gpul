@@ -5,7 +5,7 @@ uniform rgba16f OutputImage: *mutable texture2D;
 entry_point
 ComputeWithStore() void
 {
-    texel = gplGetLocalInvocationIndices().xy;
+    texel = gplGetLocalInvocationIndex().xy;
     col = textureLoad(InputImage, i32x2(texel));
     textureStore(OutputImage, i32x2(0), col);
 }

@@ -95,4 +95,14 @@ CommaExpression::EvalString() const
     return Format("%s,%s", left.c_str(), right.c_str());
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+CommaExpression::EvalAccessFlags(unsigned& out) const
+{
+    this->right->EvalAccessFlags(out);
+    return true;
+}
+
 } // namespace GPULang

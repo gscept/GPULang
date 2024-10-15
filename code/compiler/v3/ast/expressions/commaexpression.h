@@ -30,6 +30,8 @@ struct CommaExpression : public Expression
     bool EvalSymbol(std::string& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
+    /// evaluates access flags
+    bool EvalAccessFlags(unsigned& out) const override;
 
     Expression* left;
     Expression* right;

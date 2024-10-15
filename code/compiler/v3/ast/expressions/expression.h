@@ -15,6 +15,11 @@
 namespace GPULang
 {
 
+enum AccessFlags
+{
+    Const = 0x1,
+};
+
 struct Compiler;
 struct Expression : public Symbol
 {
@@ -38,6 +43,8 @@ struct Expression : public Symbol
     virtual bool EvalFloat(float& out) const;
     /// evaluates expression as a boolean
     virtual bool EvalBool(bool& out) const;
+    /// evaluates access flags
+    virtual bool EvalAccessFlags(unsigned& out) const;
     /// evaluates expression as a string
     virtual std::string EvalString() const;
 

@@ -93,4 +93,20 @@ InitializerExpression::EvalString() const
     return ret;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+InitializerExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = 0x0;
+    for (Expression* expr : this->values)
+    {
+        unsigned access;
+        expr->EvalAccessFlags(access);
+        out &= access;
+    }
+    return true;
+}
+
 } // namespace GPULang

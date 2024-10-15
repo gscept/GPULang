@@ -98,6 +98,7 @@ struct Variable : public Symbol
             struct
             {
                 uint32_t isConst : 1;                   // variable may not change value after initialization
+                uint32_t isVar : 1;
                 uint32_t isParameter : 1;               // variable is a function parameter
                 uint32_t isEntryPointParameter : 1;
                 uint32_t isStructMember : 1;            // variable is a struct member

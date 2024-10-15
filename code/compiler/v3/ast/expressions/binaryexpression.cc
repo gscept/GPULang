@@ -69,6 +69,16 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
+    unsigned leftAccess;
+    this->left->EvalAccessFlags(leftAccess);
+    if (leftAccess == AccessFlags::Const &&
+        (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
+        )
+    {
+        compiler->Error(Format("Assignment illegal on left hand value of 'const'"), this);
+        return false;
+    }
+
     // If assignment, allow if types are identical
     if (thisResolved->leftType != thisResolved->rightType && this->op == '=')
     {
@@ -412,6 +422,19 @@ BinaryExpression::EvalString() const
     left = this->left->EvalString();
     right = this->right->EvalString();
     return Format("%s %s %s", left.c_str(), FourCCToString(this->op).c_str(), right.c_str());
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+BinaryExpression::EvalAccessFlags(unsigned& out) const
+{
+    unsigned left, right;
+    this->left->EvalAccessFlags(left);
+    this->right->EvalAccessFlags(right);
+    out = left & right;
+    return true;
 }
 
 //------------------------------------------------------------------------------

@@ -9,7 +9,7 @@ uniform Output : *mutable Storage;
 entry_point
 ComputeWithStore() void
 {
-    Output.i = gplGetLocalInvocationIndices().x;
+    Output.i gplGetLocalInvocationIndex().x;
 }
 
 program TestProgram

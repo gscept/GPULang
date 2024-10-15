@@ -111,4 +111,14 @@ IntExpression::EvalString() const
     return Format("%d", this->value);
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+IntExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = AccessFlags::Const;
+    return true;
+}
+
 } // namespace GPULang

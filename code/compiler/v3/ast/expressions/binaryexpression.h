@@ -38,6 +38,8 @@ public:
     bool EvalBool(bool& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
+    /// evaluates access flags
+    bool EvalAccessFlags(unsigned& out) const override;
 
 	/// helper functions for compile time bool evaluations
 	bool EvalBool(int lhs, int rhs) const;

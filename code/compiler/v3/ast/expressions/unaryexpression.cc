@@ -181,4 +181,15 @@ UnaryExpression::EvalString() const
     else
         return Format("%s", expString.c_str());
 }
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+UnaryExpression::EvalAccessFlags(unsigned& out) const
+{
+    this->expr->EvalAccessFlags(out);
+    return true;
+}
+
 } // namespace GPULang

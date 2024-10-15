@@ -506,13 +506,13 @@ FLOAT_LIST
     SCALAR_LIST
 #undef X
 
-    __MAKE_BUILTIN(gplGetLocalInvocationIndices, GetLocalInvocationIndices);
+    __MAKE_BUILTIN(gplGetLocalInvocationIndex, GetLocalInvocationIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(gplGetGlobalInvocationIndices, GetGlobalInvocationIndices);
+    __MAKE_BUILTIN(gplGetGlobalInvocationIndex, GetGlobalInvocationIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(gplGetWorkGroupIndices, GetWorkGroupIndices);
+    __MAKE_BUILTIN(gplGetWorkGroupIndex, GetWorkGroupIndex);
     __SET_RET_LIT(u32x3);
 
     __MAKE_BUILTIN(gplGetWorkGroupDimensions, GetWorkGroupDimensions);
@@ -531,7 +531,7 @@ FLOAT_LIST
     __MAKE_BUILTIN(gplGetSubgroupSize, GetSubgroupSize);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetNumSubgroups, GetNumSubgroups);                       // The size of the subgroup
+    __MAKE_BUILTIN(gplGetNumSubgroups, GetNumSubgroups);                       // The number of subgroups
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(gplGetSubgroupLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
@@ -581,6 +581,30 @@ FLOAT_LIST
     __ADD_ARG_LIT(mask, u32x4);
     __SET_RET_LIT(u32);
 
+#define X(ty, index)\
+    __MAKE_INTRINSIC(subgroupSwapDiagonal, SubgroupSwapDiagonal, ty)\
+    __ADD_ARG(value, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(subgroupSwapVertical, SubgroupSwapVertical, ty)\
+    __ADD_ARG(value, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    SCALAR_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(subgroupSwapHorizontal, SubgroupSwapHorizontal, ty)\
+    __ADD_ARG(value, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    SCALAR_LIST
+#undef X
+
     //------------------------------------------------------------------------------
     /**
         Atomic intrinsics
@@ -597,6 +621,7 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicStore, AtomicStore, ty)\
+    __ADD_ARG_LIT(orig, ty);\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
     __SET_RET_LIT(ty);
@@ -643,29 +668,12 @@ FLOAT_LIST
     __ADD_VALUE_LIT(semantics, MemorySemantics);
     __SET_RET_LIT(void);
 
-#define X(ty, index)\
-    __MAKE_INTRINSIC(subgroupSwapDiagonal, SubgroupSwapDiagonal, ty)\
-    __ADD_ARG(value, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
 
-    SCALAR_LIST
-#undef X
-
-#define X(ty, index)\
-    __MAKE_INTRINSIC(subgroupSwapVertical, SubgroupSwapVertical, ty)\
-    __ADD_ARG(value, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
-
-    SCALAR_LIST
-#undef X
-
-#define X(ty, index)\
-    __MAKE_INTRINSIC(subgroupSwapHorizontal, SubgroupSwapHorizontal, ty)\
-    __ADD_ARG(value, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
-
-    SCALAR_LIST
-#undef X
+    //------------------------------------------------------------------------------
+    /**
+        Texture intrinsics
+    */
+    //------------------------------------------------------------------------------
 
     std::string intCoordinates[] =
     {
@@ -680,11 +688,6 @@ FLOAT_LIST
         , "i32x4"
     };
 
-    //------------------------------------------------------------------------------
-    /**
-        Texture intrinsics
-    */
-    //------------------------------------------------------------------------------
 
 #define STRINGIFY(x) #x
 

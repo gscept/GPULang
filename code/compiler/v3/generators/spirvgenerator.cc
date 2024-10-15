@@ -233,7 +233,7 @@ GenerateTypeSPIRV(
     }
     else if (typeSymbol->category == Type::UserTypeCategory)
     {
-        name = generator->GetSymbol(typeSymbol->name);
+        name = generator->GetSymbol(typeSymbol->name).value;
         baseType = typeSymbol->name;
         if (type.IsMutable())
         {
@@ -357,6 +357,43 @@ struct ConstantCreationInfo
 //------------------------------------------------------------------------------
 /**
 */
+std::string
+SwizzleMaskToIndices(const Type::SwizzleMask mask, bool offset = false)
+{
+    std::string swizzleIndices;
+    if (mask.bits.x != Type::SwizzleMask::Component::Invalid)
+        swizzleIndices.append(Format("%d ", mask.bits.x + (offset ? 4 : 0)));
+    if (mask.bits.y != Type::SwizzleMask::Component::Invalid)
+        swizzleIndices.append(Format("%d ", mask.bits.y + (offset ? 4 : 0)));
+    if (mask.bits.z != Type::SwizzleMask::Component::Invalid)
+        swizzleIndices.append(Format("%d ", mask.bits.z + (offset ? 4 : 0)));
+    if (mask.bits.w != Type::SwizzleMask::Component::Invalid)
+        swizzleIndices.append(Format("%d ", mask.bits.w + (offset ? 4 : 0)));
+    return swizzleIndices;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
+LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
+{
+    uint32_t val = arg.name;
+
+    if (!arg.isValue)
+        val = generator->AddMappedOp(Format("OpLoad %%%d %%%d", arg.typeName, val));
+    
+    if (arg.swizzleMask != Type::SwizzleMask())
+    {
+        std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
+        val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
+    }
+    return SPIRVResult(val, arg.typeName, true, arg.isConst);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 SPIRVResult
 GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info)
 {
@@ -432,16 +469,14 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         if (vectorSize > 1)
             type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
-        if (!value.isValue)
-            value.name = g->AddMappedOp(Format("OpLoad %%%d %%%d", value.typeName, value.name));
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
     , { ConversionTable::UIntToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
         if (vectorSize > 1)
             type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
-        if (!value.isValue)
-            value.name = g->AddMappedOp(Format("OpLoad %%%d %%%d", value.typeName, value.name));
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
     , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
@@ -495,10 +530,8 @@ GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t r
     bool isConst = true;
     for (const SPIRVResult& arg : args)
     {
-        uint32_t value = arg.name;
-        if (!arg.isValue)
-            value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", arg.typeName, arg.name));
-        argList.append(Format("%%%d ", value));
+        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
+        argList.append(Format("%%%d ", loaded.name));
         if (!arg.isConst)
             isConst = false;
     }
@@ -1010,7 +1043,10 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 2);
             uint32_t ret = g->AddMappedOp(Format("OpMatrixTimesMatrix %%%d %%%d %%%d", returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
+            {
+                g->AddOp(Format("OpStore %%%d %%%d", args[2].name, ret));
+                return SPIRVResult(args[2].name, args[2].typeName);
+            }
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -1169,7 +1205,10 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 2);
             uint32_t ret = g->AddMappedOp(Format("Op%s %%%d %%%d %%%d", op, returnType, args[0].name, args[1].name));
             if (assign)
-                g->ReplaceSymbolMapping(args[0].name, ret);
+            {
+                g->AddOp(Format("OpStore %%%d %%%d", args[2].name, ret));
+                return SPIRVResult(args[2].name, args[2].typeName);
+            }
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -1724,10 +1763,8 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = g->AddSymbol("gplVertexCoordinates", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplVertexCoordinates", ret, "BuiltIn Position");
-        uint32_t value = args[0].name;
-        if (!args[0].isValue)
-            value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
-        g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplExportVertexCoordinates");
+        SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+        g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportVertexCoordinates");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
@@ -1770,10 +1807,8 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = g->AddSymbol("gplPixelDepth", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplPixelDepth", ret, "BuiltIn FragDepth");
-        uint32_t value = args[0].name;
-        if (!args[0].isValue)
-            value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
-        g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplSetPixelDepth");
+        SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+        g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplSetPixelDepth");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
@@ -1827,15 +1862,13 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t ret = g->AddSymbol("gplExportColor", Format("OpVariable %%%d Output", typePtr), true);
             g->interfaceVariables.insert(ret);
             g->AddDecoration("gplExportColor", ret, Format("Index %d", args[1].literalValue.i));
-            uint32_t value = args[0].name;
-            if (!args[0].isValue)
-                value = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].typeName, args[0].name));
-            g->AddOp(Format("OpStore %%%d %%%d", ret, value), false, "gplExportColor");
+            SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+            g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportColor");
             return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
         };
     }
 
-    this->intrinsicMap[Intrinsics::GetLocalInvocationIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::GetLocalInvocationIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
@@ -1845,7 +1878,7 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetGlobalInvocationIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::GetGlobalInvocationIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
@@ -1855,7 +1888,7 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetWorkGroupIndices] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::GetWorkGroupIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
@@ -2250,12 +2283,10 @@ SPIRVGenerator::SetupIntrinsics()
             }
             for (size_t i = 2; i < args.size(); i++)
             {
-                uint32_t argName = args[i].name;
-                if (!args[i].isValue)
-                    argName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[i].typeName, args[i].name));
-                newArgs.push_back(argName);
+                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
+                newArgs.push_back(loaded.name);
                 size_t offset = format.find("%%d");
-                format.replace(offset, 3, Format("%d", argName));
+                format.replace(offset, 3, Format("%d", loaded.name));
             }
 
             ret = g->AddMappedOp(format);
@@ -2420,12 +2451,10 @@ SPIRVGenerator::SetupIntrinsics()
             }
             for (size_t i = 1; i < args.size(); i++)
             {
-                uint32_t argName = args[i].name;
-                if (!args[i].isValue)
-                    argName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[i].typeName, args[i].name));
-                newArgs.push_back(argName);
+                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
+                newArgs.push_back(loaded.name);
                 size_t offset = format.find("%%d");
-                format.replace(offset, 3, Format("%d", argName));
+                format.replace(offset, 3, Format("%d", loaded.name));
             }
 
             ret = g->AddMappedOp(format);
@@ -2473,10 +2502,8 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
                     }
-                    uint32_t dataName = args[2].name;
-                    if (!args[2].isValue)
-                        dataName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[2].typeName, args[2].name));
-                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, args[1].name, dataName, args[3].name));
+                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, args[1].name, loaded.name, args[3].name));
                 }
                 else
                 {
@@ -2492,10 +2519,8 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
                     }
-                    uint32_t dataName = args[2].name;
-                    if (!args[2].isValue)
-                        dataName = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[2].typeName, args[2].name));
-                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, dataName));
+                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, loaded.name));
                 }
             }
             else
@@ -2702,23 +2727,19 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 
     uint32_t name = 0xFFFFFFFF;
     if (initializer != SPIRVResult::Invalid() && initializer.isConst)
-        name = generator->AddVariableDeclaration(varResolved->name, typePtrName, initializer.name, typeName.scope, isGlobal);
+        name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, initializer.name, typeName.scope, isGlobal);
     else
-        name = generator->AddVariableDeclaration(varResolved->name, typePtrName, 0x0, typeName.scope, isGlobal);
+        name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, 0x0, typeName.scope, isGlobal);
 
     if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
     {
-        uint32_t initValue = initializer.name;
-        if (!initializer.isValue)
-        {
-            initializer.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", initializer.typeName, initializer.name));
-        }
-        generator->AddOp(Format("OpStore %%%d %%%d", name, initializer.name));
+        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
+        generator->AddOp(Format("OpStore %%%d %%%d", name, loaded.name));
     }
 
     if (typeName.scope == SPIRVResult::Storage::StorageBuffer || typeName.scope == SPIRVResult::Storage::Uniform || typeName.scope == SPIRVResult::Storage::PushConstant || typeName.scope == SPIRVResult::Storage::Sampler)
     {
-        uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name);
+        uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name).value;
         if (typeName.scope != SPIRVResult::Storage::Sampler)
             generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
         generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
@@ -2756,7 +2777,7 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
     uint32_t funName;
     if (generator->HasSymbol(resolvedFunction->name))
     {
-        funName = generator->GetSymbol(resolvedFunction->name);
+        funName = generator->GetSymbol(resolvedFunction->name).value;
 
         // Create arg list from argument expressions
         std::string argList = "";
@@ -2891,16 +2912,9 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     bool isConst = true;
     for (SPIRVResult component : composites)
     {
-        if (!component.isValue)
-        {
-            uint32_t loadedComponent = generator->AddMappedOp(Format("OpLoad %%%d %%%d", component.typeName, component.name));
-            initializer.append(Format("%%%d ", loadedComponent));
-        }
-        else
-        {
-            initializer.append(Format("%%%d ", component.name));
-        }
-        isConst &= component.isConst;
+        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, component);
+        initializer.append(Format("%%%d ", loaded.name));
+        isConst &= loaded.isConst;
     }
 
     if (isConst)
@@ -2924,12 +2938,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 
     SPIRVResult rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right);
     SPIRVResult leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
-
-    if (!rightValue.isValue)
-    {
-        rightValue.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rightValue.typeName, rightValue.name));
-        rightValue.isValue = true;
-    }
+    rightValue = LoadValueSPIRV(compiler, generator, rightValue);
 
     // If there is a conversion function, generate it first
     if (binaryExpressionResolved->conversionFunction)
@@ -2944,7 +2953,44 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     if (leftType == rightType && binaryExpression->op == '=')
     {
         assert(!leftValue.isValue);
+
+        // If left value has a swizzle mask, then swizzle the RIGHT hand value before storing
+        if (leftValue.swizzleMask != Type::SwizzleMask())
+        {
+            // First get the variable so we can get the size of the vector to store to
+            std::string leftSymbol;
+            binaryExpression->left->EvalSymbol(leftSymbol);
+            const SymbolAssignment& sym = generator->GetSymbol(leftSymbol);
+            Variable* var = static_cast<Variable*>(sym.sym);
+            Variable::__Resolved* varRes = Symbol::Resolved(var);
+
+            // Setup a binding table
+            uint32_t slots[4] = { 0, 1, 2, 3 };
+            uint32_t counter = 0;
+
+            // Update the slot mask
+            if (leftValue.swizzleMask.bits.x != Type::SwizzleMask::Invalid)
+                slots[leftValue.swizzleMask.bits.x] = varRes->typeSymbol->columnSize + counter++;
+            if (leftValue.swizzleMask.bits.y != Type::SwizzleMask::Invalid)
+                slots[leftValue.swizzleMask.bits.y] = varRes->typeSymbol->columnSize + counter++;
+            if (leftValue.swizzleMask.bits.z != Type::SwizzleMask::Invalid)
+                slots[leftValue.swizzleMask.bits.z] = varRes->typeSymbol->columnSize + counter++;
+            if (leftValue.swizzleMask.bits.w != Type::SwizzleMask::Invalid)
+                slots[leftValue.swizzleMask.bits.w] = varRes->typeSymbol->columnSize + counter++;
+
+            std::string swizzleMask = "";
+            for (uint32_t i = 0; i < varRes->typeSymbol->columnSize; i++)
+            {
+                swizzleMask.append(Format("%d ", slots[i]));
+            }
+
+            // Make sure to reset the swizzle mask so we don't perform a swizzle load on the left
+            leftValue.swizzleMask = Type::SwizzleMask();
+            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
+            rightValue.name = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", leftValue.typeName, leftLoaded.name, rightValue.name, swizzleMask.c_str()));
+        }
         generator->AddOp(Format("OpStore %%%d %%%d", leftValue.name, rightValue.name));
+
         opResult = leftValue;
     }
     else
@@ -2956,11 +3002,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         assert(fun != nullptr);
 
         SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, fun->returnType, funResolved->returnTypeSymbol);
-        if (!leftValue.isValue)
-        {
-            leftValue.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", leftValue.typeName, leftValue.name));
-            leftValue.isValue = true;
-        }
+        leftValue = LoadValueSPIRV(compiler, generator, leftValue);
 
         // Get operator 
         auto op = generator->intrinsicMap.find(fun);
@@ -2998,18 +3040,11 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
             assert(accessExpressionResolved->lhsType->IsVector());
             SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
             SPIRVResult origType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
-            std::string swizzleIndices;
-            if (swizzle.bits.x != Type::SwizzleMask::Invalid)
-                swizzleIndices.append(Format("%d ", swizzle.bits.x));
-            if (swizzle.bits.y != Type::SwizzleMask::Invalid)
-                swizzleIndices.append(Format("%d ", swizzle.bits.y));
-            if (swizzle.bits.z != Type::SwizzleMask::Invalid)
-                swizzleIndices.append(Format("%d ", swizzle.bits.z));
-            if (swizzle.bits.w != Type::SwizzleMask::Invalid)
-                swizzleIndices.append(Format("%d ", swizzle.bits.w));
-            uint32_t vec = generator->AddMappedOp(Format("OpLoad %%%d %%%d", origType.typeName, lhs.name), Format("Intermediate '%s'", accessExpressionResolved->leftType.name.c_str()));
-            uint32_t shuffledVec = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", retType.typeName, vec, vec, swizzleIndices.c_str()), accessExpressionResolved->text);
-            return SPIRVResult(shuffledVec, retType.typeName, true);
+
+            SPIRVResult ret = SPIRVResult(lhs.name, origType.typeName);
+            ret.swizzleMask = swizzle;
+            ret.swizzleType = retType.typeName;
+            return ret;
         }
         // Generate swizzle access
     }
@@ -3125,15 +3160,13 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
 
-            uint32_t value = rhs.name;
-            if (!rhs.isValue)
-                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
-            uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, rhs.typeName, value, constOne.name), unaryExpressionResolved->text);
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, rhs.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
             else
-                return SPIRVResult(value, rhs.typeName, true);
+                return SPIRVResult(loaded.name, rhs.typeName, true);
         }
         case '--':
         {
@@ -3154,15 +3187,13 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
 
-            uint32_t value = rhs.name;
-            if (!rhs.isValue)
-                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
-            uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, rhs.typeName, value, constOne.name), unaryExpressionResolved->text);
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, rhs.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
             else
-                return SPIRVResult(value, rhs.typeName, true);
+                return SPIRVResult(loaded.name, rhs.typeName, true);
             break;
         }
         case '*':
@@ -3179,27 +3210,21 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
         }
         case '-':
         {
-            uint32_t value = rhs.name;
-            if (!rhs.isValue)
-                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name));
-            uint32_t res = generator->AddMappedOp(Format("Op%cNegate %%%d", op, value), unaryExpressionResolved->text);
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            uint32_t res = generator->AddMappedOp(Format("Op%cNegate %%%d", op, loaded.name), unaryExpressionResolved->text);
             generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
             break;
         }
         case '+':
         {
-            uint32_t value = rhs.name;
-            if (!rhs.isValue)
-                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name), unaryExpressionResolved->text);
-            return SPIRVResult(value, rhs.typeName, true);
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            return SPIRVResult(loaded.name, rhs.typeName, true);
         }
         case '!':
         case '~':
         {
-            uint32_t value = rhs.name;
-            if (!rhs.isValue)
-                value = generator->AddMappedOp(Format("OpLoad %%%d %%%d", rhs.typeName, rhs.name), unaryExpressionResolved->text);
-            uint32_t res = generator->AddMappedOp(Format("OpNot %%%d", value));
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            uint32_t res = generator->AddMappedOp(Format("OpNot %%%d", loaded.name));
             generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));
             break;
         }
@@ -3279,7 +3304,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 Variable* var = static_cast<Variable*>(symResolved->symbol);
                 Variable::__Resolved* varResolved = Symbol::Resolved(var);
                 type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
-                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type.typeName, false, false, type.scope, type.parentTypes);
+                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
             }
             else if (symResolved->symbol->symbolType == Symbol::SymbolType::EnumerationType)
             {
@@ -3291,7 +3316,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             else
             {
                 type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);
-                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol), type.typeName, false, false, type.scope, type.parentTypes);
+                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
             }
         }
         case Symbol::AccessExpressionType:
@@ -3369,8 +3394,7 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
     generator->AddReserved("OpLabel", conditionLabel, "for condition");
     generator->blockOpen = true;
     SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
-    if (!cond.isValue)
-        cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
+    cond = LoadValueSPIRV(compiler, generator, cond);
 
     // Decide whether or not to end the loop
     generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
@@ -3459,8 +3483,7 @@ GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Retu
     if (stat->returnValue != nullptr)
     {
         SPIRVResult res = GenerateExpressionSPIRV(compiler, generator, stat->returnValue);
-        if (!res.isValue)
-            res.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", res.typeName, res.name));
+        res = LoadValueSPIRV(compiler, generator, res);
         generator->AddOp(Format("OpReturnValue %%%d", res.name));
         generator->blockOpen = false;
     }
@@ -3478,8 +3501,7 @@ void
 GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
     SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
-    if (!switchRes.isValue)
-        switchRes.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", switchRes.typeName, switchRes.name));
+    switchRes = LoadValueSPIRV(compiler, generator, switchRes);
 
     uint32_t defaultCase = generator->ReserveName();
     uint32_t mergeLabel = generator->ReserveName();
@@ -3600,8 +3622,7 @@ GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, While
         generator->blockOpen = true;
 
         SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
-        if (!cond.isValue)
-            cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
+        cond = LoadValueSPIRV(compiler, generator, cond);
 
         generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, continueLabel, endLabel));
         generator->blockOpen = false;
@@ -3625,8 +3646,7 @@ GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, While
         generator->blockOpen = true;
 
         SPIRVResult cond = GenerateExpressionSPIRV(compiler, generator, stat->condition);
-        if (!cond.isValue)
-            cond.name = generator->AddMappedOp(Format("OpLoad %%%d %%%d", cond.typeName, cond.name));
+        cond = LoadValueSPIRV(compiler, generator, cond);
 
         // Decide whether or not to end the loop
         generator->AddOp(Format("OpBranchConditional %%%d %%%d %%%d", cond.name, bodyLabel, endLabel));
@@ -3871,7 +3891,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             }
 
             Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(it.second));
-            uint32_t entryFunction = this->GetSymbol(funResolved->name);
+            uint32_t entryFunction = this->GetSymbol(funResolved->name).value;
 
             if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
                 this->header.append("\tOpCapability SubgroupDispatch\n");
@@ -3983,14 +4003,14 @@ SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
         auto it = scope->symbols.find(name);
         if (it != scope->symbols.end())
         {
-            return it->second;
+            return it->second.value;
         }
         scope++;
     }
 
     // If symbol isn't found in scope, create it
     uint32_t ret = this->symbolCounter;
-    this->scopeStack.back().symbols[name] = ret;
+    this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = ret };
 
     std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", ret, declare.c_str(), name.c_str());
     if (global)
@@ -4019,7 +4039,7 @@ SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string
     }
 
     // If symbol isn't found in scope, create it
-    this->scopeStack.back().symbols[name] = object;
+    this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = object };
 
     std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", object, declare.c_str(), name.c_str());
     if (global)
@@ -4031,10 +4051,10 @@ SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t 
+const SymbolAssignment
 SPIRVGenerator::GetSymbol(std::string name)
 {
-    uint32_t ret = 0xFFFFFFFF;
+    SymbolAssignment ret = { .sym = nullptr, .value = 0xFFFFFFFF };
     auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
@@ -4046,7 +4066,7 @@ SPIRVGenerator::GetSymbol(std::string name)
         }
         it++;
     }
-    assert(ret != 0xFFFFFFFF);
+    assert(ret.value != 0xFFFFFFFF);
     return ret;
 }
 
@@ -4056,7 +4076,7 @@ SPIRVGenerator::GetSymbol(std::string name)
 bool
 SPIRVGenerator::HasSymbol(std::string name)
 {
-    uint32_t ret = 0xFFFFFFFF;
+    SymbolAssignment ret = { .sym = nullptr, .value = 0xFFFFFFFF };
     auto it = this->scopeStack.rbegin();
     while (it != this->scopeStack.rend())
     {
@@ -4068,7 +4088,7 @@ SPIRVGenerator::HasSymbol(std::string name)
         }
         it++;
     }
-    return ret != 0xFFFFFFFF;
+    return ret.value != 0xFFFFFFFF;
 }
 
 //------------------------------------------------------------------------------
@@ -4174,7 +4194,7 @@ SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
 /**
 */
 uint32_t 
-SPIRVGenerator::AddVariableDeclaration(std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage storage, bool global)
+SPIRVGenerator::AddVariableDeclaration(Symbol* sym, std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage storage, bool global)
 {
     auto scope = this->scopeStack.rbegin();
     while (scope != this->scopeStack.rend())
@@ -4182,14 +4202,14 @@ SPIRVGenerator::AddVariableDeclaration(std::string name, uint32_t type, uint32_t
         auto it = scope->symbols.find(name);
         if (it != scope->symbols.end())
         {
-            return it->second;
+            return it->second.value;
         }
         scope++;
     }
 
     // If symbol isn't found in scope, create it
     uint32_t ret = this->symbolCounter;
-    this->scopeStack.back().symbols[name] = ret;
+    this->scopeStack.back().symbols[name] = SymbolAssignment{ .sym = sym, .value = ret };
 
     std::string scopeStr = SPIRVResult::ScopeToString(storage);
 
@@ -4212,51 +4232,6 @@ SPIRVGenerator::AddVariableDeclaration(std::string name, uint32_t type, uint32_t
     }
     return this->symbolCounter++;
 
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-uint32_t 
-SPIRVGenerator::FindSymbolMapping(std::string value)
-{
-    uint32_t ret = 0xFFFFFFFF;
-    auto it = this->scopeStack.rbegin();
-    while (it != this->scopeStack.rend())
-    {
-        auto sym = it->symbols.find(value);
-        if (sym != it->symbols.end())
-        {
-            ret = sym->second;
-            break;
-        }
-        it++;
-    }
-    assert(ret != 0xFFFFFFFF);
-    return ret;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void 
-SPIRVGenerator::ReplaceSymbolMapping(uint32_t oldMapping, uint32_t newMapping)
-{
-    auto it = this->scopeStack.rbegin();
-    while (it != this->scopeStack.rend())
-    {
-        auto sym = it->symbols.begin();
-        while (sym != it->symbols.end())
-        {
-            if (sym->second == oldMapping)
-            {
-                sym->second = newMapping;
-                return;
-            }
-            sym++;
-        }
-        it++;
-    }
 }
 
 //------------------------------------------------------------------------------

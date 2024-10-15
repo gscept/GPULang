@@ -95,10 +95,11 @@ CallExpression::Resolve(Compiler* compiler)
     {
         // If the function isn't available, check for any type constructor that might implement it
         std::vector<Symbol*> functionSymbols = compiler->GetSymbols(thisResolved->functionSymbol.c_str());
-        bool conversionFound = false;
+        bool overloadFound = false;
+        bool requiresConversion = false;
         for (auto functionSymbol : functionSymbols)
         {
-            if (conversionFound)
+            if (overloadFound)
                 break;
             if (functionSymbol->symbolType == Type::SymbolType::TypeType)
             {
@@ -111,6 +112,7 @@ CallExpression::Resolve(Compiler* compiler)
                     thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
                     if (ctorFun->parameters.size() == thisResolved->argTypes.size())
                     {
+                        requiresConversion = false;
                         uint32_t numMatches = 0;
                         for (size_t i = 0; i < ctorFun->parameters.size(); i++)
                         {
@@ -126,6 +128,7 @@ CallExpression::Resolve(Compiler* compiler)
                                     break;
                                 }
                                 thisResolved->conversions.push_back(static_cast<Function*>(componentConversionSymbol));
+                                requiresConversion = true;
                             }
                             else
                             {
@@ -136,7 +139,7 @@ CallExpression::Resolve(Compiler* compiler)
                         }
                         if (numMatches == ctorFun->parameters.size())
                         {
-                            conversionFound = true;
+                            overloadFound = true;
                             break;
                         }
                     }
@@ -150,6 +153,7 @@ CallExpression::Resolve(Compiler* compiler)
                 thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
                 if (fun->parameters.size() == thisResolved->argTypes.size())
                 {
+                    requiresConversion = false;
                     uint32_t numMatches = 0;
                     for (size_t i = 0; i < fun->parameters.size(); i++)
                     {
@@ -165,6 +169,7 @@ CallExpression::Resolve(Compiler* compiler)
                                 break;
                             }
                             thisResolved->conversions.push_back(static_cast<Function*>(componentConversionSymbol));
+                            requiresConversion = true;
                         }
                         else
                         {
@@ -175,18 +180,18 @@ CallExpression::Resolve(Compiler* compiler)
                     }
                     if (numMatches == fun->parameters.size())
                     {
-                        conversionFound = true;
+                        overloadFound = true;
                     }
                 }
             }
         }
-        if (!conversionFound)
+        if (!overloadFound)
         {
             compiler->Error(Format("No overload exists for %s", callSignature.c_str()), this);
             thisResolved->function = nullptr;
             return false;
         }
-        else
+        else if (requiresConversion)
         {
             if (compiler->options.disallowImplicitConversion)
             {
@@ -259,6 +264,16 @@ CallExpression::EvalString() const
     }
     std::string fun = this->function->EvalString();
     return Format("%s(%s)", fun.c_str(), args.c_str());
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+CallExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = 0x0;
+    return true;
 }
 
 } // namespace GPULang

@@ -108,4 +108,15 @@ BoolExpression::EvalString() const
 {
     return this->value ? "true" : "false";
 }
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+BoolExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = AccessFlags::Const;
+    return true;
+}
+
 } // namespace GPULang

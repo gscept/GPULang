@@ -74,4 +74,14 @@ StringExpression::EvalString() const
     return this->value;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+StringExpression::EvalAccessFlags(unsigned& out) const
+{
+    out = AccessFlags::Const;
+    return true;
+}
+
 } // namespace GPULang

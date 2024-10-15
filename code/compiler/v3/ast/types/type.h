@@ -60,6 +60,8 @@ this->lookup.insert({ #id, activeFunction });
     Variable* swizzleMember = new Variable;\
     swizzleMember->name = Format(format, __VA_ARGS__);\
     swizzleMember->type = {#retType};\
+    Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
+    resolved->usageBits.flags.isVar = true;\
     this->staticSymbols.push_back(swizzleMember);\
 }
 
@@ -151,7 +153,7 @@ struct Type : public Symbol
     // Per element, the bit defines which other element it should be swizzled to (0, 1, 2, 3)
     struct SwizzleMask
     {
-        enum
+        enum Component
         {
             X = 0,
             Y = 1,
@@ -162,13 +164,31 @@ struct Type : public Symbol
         union
         {
             struct {
-                uint8_t x : 3;
-                uint8_t y : 3;
-                uint8_t z : 3;
-                uint8_t w : 3;
+                uint32_t x : 8;
+                uint32_t y : 8;
+                uint32_t z : 8;
+                uint32_t w : 8;
             } bits;
             uint32_t mask;
         };
+
+        SwizzleMask() 
+        {
+            this->bits.x = SwizzleMask::Invalid;
+            this->bits.y = SwizzleMask::Invalid;
+            this->bits.z = SwizzleMask::Invalid;
+            this->bits.w = SwizzleMask::Invalid;
+        }
+
+        bool operator==(const SwizzleMask& rhs)
+        {
+            return this->mask == rhs.mask;
+        }
+
+        bool operator!=(const SwizzleMask& rhs)
+        {
+            return this->mask != rhs.mask;
+        }
     };
 
     /// convert string to swizzle mask, returns true if possible swizzle mask
