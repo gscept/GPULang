@@ -20,6 +20,25 @@ struct Annotation
 {
     std::string name;
     Expression* value;
+
+    Annotation()
+        : value(nullptr)
+    {}
+
+    ~Annotation()
+    {
+        if (this->value)
+            delete this->value;
+    }
+
+    /// Move constructor
+    Annotation(Annotation&& rhs) noexcept
+    {
+        this->name = rhs.name;
+        this->value = rhs.value;
+        rhs.name = "";
+        rhs.value = nullptr;
+    }
 };
 
 } // namespace GPULang

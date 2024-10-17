@@ -14,6 +14,7 @@ RenderState::RenderState()
 {
     this->symbolType = RenderStateType;
     this->resolved = new RenderState::__Resolved();
+    
 }
 
 const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =

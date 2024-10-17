@@ -50,7 +50,7 @@ public:
 	/// write bytes
 	void WriteBytes(const char* ptr, unsigned numbytes);
     /// write type as bytes
-    template <typename T> void WriteType(const T& data);
+    template <typename T> size_t WriteType(const T& data);
 
 private:
 	std::string path;
@@ -89,10 +89,12 @@ BinWriter::IsOpen() const
 /**
 */
 template <typename T>
-inline void
+inline size_t
 BinWriter::WriteType(const T& data)
 {
+    size_t size = this->output.tellp();
     this->WriteBytes((const char*)&data, sizeof(T));
+    return size;
 }
 
 } // namespace GPULang

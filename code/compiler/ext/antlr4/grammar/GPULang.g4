@@ -245,8 +245,8 @@ variables
         unsigned initCounter = 0;
         Type::FullType type = { "unknown" };
     }:
-    (annotation { annotations.push_back($annotation.annot); })*
-    (attribute { attributes.push_back($attribute.attr); })+
+    (annotation { annotations.push_back(std::move($annotation.annot)); })*
+    (attribute { attributes.push_back(std::move($attribute.attr)); })+
     
     varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
     (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
@@ -264,8 +264,8 @@ variables
             Variable* var = new Variable(); 
             var->type = type; 
             var->location = locations[i]; 
-            var->annotations = annotations; 
-            var->attributes = attributes;
+            var->annotations = std::move(annotations);
+            var->attributes = std::move(attributes);
             var->name = names[i];
             var->valueExpression = valueExpressions[i];
             $list.push_back(var);
@@ -281,15 +281,15 @@ structureDeclaration
         std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
     }:
-    (annotation { annotations.push_back($annotation.annot); })*
+    (annotation { annotations.push_back(std::move($annotation.annot)); })*
     'struct' 
-    (attribute { attributes.push_back($attribute.attr); })*
+    (attribute { attributes.push_back(std::move($attribute.attr)); })*
     name = IDENTIFIER 
     { 
         $sym = new Structure();
         $sym->name = $name.text; 
-        $sym->annotations = annotations;
-        $sym->attributes = attributes;
+        $sym->annotations = std::move(annotations);
+        $sym->attributes = std::move(attributes);
         $sym->location = SetupFile();
     }
     ;
@@ -379,15 +379,13 @@ parameter
     returns[ Variable* sym ]
     @init
     {
-        std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
         Type::FullType type = { "unknown" };
     }:
-    (attribute { attributes.push_back($attribute.attr); })*
-    
+    (attribute { attributes.push_back(std::move($attribute.attr)); })*
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
     ':' 
     typeDeclaration { type = $typeDeclaration.type; }
@@ -398,7 +396,7 @@ parameter
             $sym = new Variable(); 
             $sym->type = type; 
             $sym->location = location; 
-            $sym->attributes = attributes;
+            $sym->attributes = std::move(attributes);
             $sym->name = name;
             $sym->valueExpression = valueExpression;
     }
@@ -413,7 +411,7 @@ functionDeclaration
         std::vector<Attribute> attributes;
         Symbol::Location location;
     }:
-    (attribute { attributes.push_back($attribute.attr); })*
+    (attribute { attributes.push_back(std::move($attribute.attr)); })*
     name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = parameter { variables.push_back($arg0.sym); } (',' argn = parameter { variables.push_back($argn.sym); })* )? ')' returnType = typeDeclaration
     {
         $sym = new Function(); 
@@ -422,7 +420,7 @@ functionDeclaration
         $sym->returnType = $returnType.type; 
         $sym->name = $name.text; 
         $sym->parameters = variables; 
-        $sym->attributes = attributes; 
+        $sym->attributes = std::move(attributes);
     }
     ;
 
@@ -465,7 +463,7 @@ program
         std::vector<Expression*> entries;
         std::vector<Annotation> annotations;
     }:
-    (annotation { annotations.push_back($annotation.annot); })*
+    (annotation { annotations.push_back(std::move($annotation.annot)); })*
     'program' name = IDENTIFIER { location = SetupFile(); }
     '{'
         ( assignment = expression { entries.push_back($assignment.tree); } ';' )*
@@ -474,7 +472,7 @@ program
         $sym = new Program();
         $sym->location = location;
         $sym->name = $name.text;
-        $sym->annotations = annotations;
+        $sym->annotations = std::move(annotations);
         $sym->entries = entries;
     }
     ;
@@ -560,6 +558,7 @@ forStatement
         Expression* conditionExpression = nullptr;
         Expression* loopExpression = nullptr;
         Statement* contents = nullptr;
+        std::vector<Attribute> attributes;
         Symbol::Location location;
     }:
     'for' { location = SetupFile(); }
@@ -567,11 +566,12 @@ forStatement
         (variables { declarations = $variables.list; })? ';'
         (condition = expression { conditionExpression = $condition.tree; })? ';' 
         (loop = expression      { loopExpression = $loop.tree; })?
-    ')'
+    ')' (attribute { attributes.push_back(std::move($attribute.attr)); })*
     content = statement { contents = $content.tree; }
     {
         $tree = new ForStatement(declarations, conditionExpression, loopExpression, contents);
         $tree->location = location;
+        $tree->attributes = std::move(attributes);
     }
     ;
 

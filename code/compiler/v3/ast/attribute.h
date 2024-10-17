@@ -20,6 +20,25 @@ struct Attribute
     std::string name;
     Expression* expression;
 
+    Attribute() 
+        : expression(nullptr)
+    {}
+
+    ~Attribute() 
+    {
+        if (this->expression)
+            delete this->expression;
+    }
+
+    /// Move constructor
+    Attribute(Attribute&& rhs) noexcept
+    {
+        this->name = rhs.name;
+        this->expression = rhs.expression;
+        rhs.name = "";
+        rhs.expression = nullptr;
+    }
+
     /// converts attribute to string
     bool ToString(std::string& out) const;
 };

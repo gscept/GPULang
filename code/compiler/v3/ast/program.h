@@ -82,13 +82,13 @@ struct Program : public Symbol
         };
         ProgramUsage usage;
         std::unordered_map<ProgramEntryType, Symbol*> programMappings;
-        std::map<Function*, Function*> functionOverrides;
-        std::map<ProgramEntryType, std::vector<uint32_t>> binaries;
+        std::unordered_map<Function*, Function*> functionOverrides;
+        std::unordered_map<ProgramEntryType, std::vector<uint32_t>> binaries;
         
     };
 
 };
 
-extern const std::map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
+extern const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
 
 } // namespace GPULang

@@ -288,9 +288,9 @@ extern Function* SetPixelDepth;
     SCALAR_LIST
 #undef X
 
-extern Function* GetLocalInvocationIndices;
-extern Function* GetGlobalInvocationIndices;
-extern Function* GetWorkGroupIndices;
+extern Function* GetLocalInvocationIndex;
+extern Function* GetGlobalInvocationIndex;
+extern Function* GetWorkGroupIndex;
 extern Function* GetWorkGroupDimensions;
 
 extern Function* GetSubgroupId;

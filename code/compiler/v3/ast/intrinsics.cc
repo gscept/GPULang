@@ -154,9 +154,9 @@ Function* SetPixelDepth;
     SCALAR_LIST
 #undef X
 
-Function* GetLocalInvocationIndices;
-Function* GetGlobalInvocationIndices;
-Function* GetWorkGroupIndices;
+Function* GetLocalInvocationIndex;
+Function* GetGlobalInvocationIndex;
+Function* GetWorkGroupIndex;
 Function* GetWorkGroupDimensions;
 
 Function* GetSubgroupId;

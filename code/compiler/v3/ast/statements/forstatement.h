@@ -23,6 +23,8 @@ struct ForStatement : public Statement
     Expression* condition;
     Expression* loop;
     Statement* contents;
+
+    unsigned unrollCount = 0;
 };
 
 } // namespace GPULang

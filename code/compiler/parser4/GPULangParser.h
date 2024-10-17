@@ -726,6 +726,7 @@ public:
     GPULangParser::VariablesContext *variablesContext = nullptr;
     GPULangParser::ExpressionContext *condition = nullptr;
     GPULangParser::ExpressionContext *loop = nullptr;
+    GPULangParser::AttributeContext *attributeContext = nullptr;
     GPULangParser::StatementContext *content = nullptr;
     ForStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -735,6 +736,8 @@ public:
     antlr4::tree::TerminalNode *RP();
     StatementContext *statement();
     VariablesContext *variables();
+    std::vector<AttributeContext *> attribute();
+    AttributeContext* attribute(size_t i);
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
 

@@ -3386,8 +3386,14 @@ GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStat
     generator->AddOp(Format("OpBranch %%%d", startLabel));
     generator->AddReserved("OpLabel", startLabel);
 
+    std::string unroll = "None";
+    if (stat->unrollCount == UINT_MAX)
+        unroll = "Unroll";
+    else if (stat->unrollCount > 0)
+        unroll = Format("PartialCount %d", stat->unrollCount);
+
     // All loops must begin with a loop merge
-    generator->AddOp(Format("OpLoopMerge %%%d %%%d None", endLabel, repeatLabel));
+    generator->AddOp(Format("OpLoopMerge %%%d %%%d %s", endLabel, repeatLabel, unroll.c_str()));
     generator->AddOp(Format("OpBranch %%%d", conditionLabel));
 
     // This block is for the condition testing
@@ -3867,7 +3873,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             this->header.append("; Magic:     0x00010500 (SPIRV Universal 1.5)\n");
             this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
             this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
-            this->header.append(Format("\tOpCapability %s\n", extensionMap[it.first].c_str()));
+            this->AddCapability(extensionMap[it.first]);
 
             this->entryPoint = static_cast<Function*>(it.second);
             
@@ -3894,16 +3900,16 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             uint32_t entryFunction = this->GetSymbol(funResolved->name).value;
 
             if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
-                this->header.append("\tOpCapability SubgroupDispatch\n");
+                this->AddCapability("SubgroupDispatch");
 
             if (compiler->target.supportsPhysicalAddressing)
             {
-                this->header.append("\tOpCapability Addresses\n");
+                this->AddCapability("Addresses");
                 this->header.append("\tOpMemoryModel Physical64 GLSL450\n");
             }
             else
             {
-                this->header.append("\tOpCapability PhysicalStorageBufferAddresses\n");
+                this->AddCapability("PhysicalStorageBufferAddresses");
                 this->header.append("\tOpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
             }
 

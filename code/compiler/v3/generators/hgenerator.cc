@@ -190,7 +190,10 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
         std::string typeStr = typeToHeaderType[var->type.name];
         std::string arrayTypeStr = typeToArraySize[var->type.name];
         std::string initializerStr;
-        GenerateHInitializer(compiler, varResolved->value, initializerStr);
+        if (varResolved->value != nullptr)
+        {
+            GenerateHInitializer(compiler, varResolved->value, initializerStr);
+        }
        
         std::string arraySize = "";
         for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)

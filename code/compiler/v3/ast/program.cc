@@ -17,7 +17,7 @@ Program::Program()
     progResolved->usage.bits = 0x0;
 }
 
-const std::map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =
+const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =
 {
     { "VertexShader", Program::__Resolved::VertexShader }
     , { "HullShader", Program::__Resolved::HullShader }

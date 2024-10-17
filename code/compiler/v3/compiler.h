@@ -19,6 +19,7 @@
 #include "binwriter.h"
 #include "textwriter.h"
 #include "serialize.h"
+#include "ast/renderstate.h"
 namespace GPULang
 {
 
@@ -171,7 +172,7 @@ struct Compiler
     void ReservedPrefixError(const std::string& name, const std::string& word, Symbol* sym);
 
     /// output binary data
-    void OutputBinary(Symbol* symbol, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
+    void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
     std::vector<std::string> defines;
 
@@ -200,6 +201,8 @@ struct Compiler
     bool debugOutput;
 
     bool ignoreReservedWords;
+
+    RenderState defaultRenderState;
 
     Options options;
 

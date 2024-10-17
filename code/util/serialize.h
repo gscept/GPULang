@@ -265,8 +265,9 @@ struct Program : public Serializable
     {
         this->type = ProgramType;
     }
-    size_t renderStateOffset;
-    size_t renderStateLength;
+
+    size_t renderStateNameOffset;
+    size_t renderStateNameLength;
 
     struct Shader
     {
@@ -280,7 +281,7 @@ struct Program : public Serializable
         size_t binaryLength;
     };
 
-    Shader vs, gs, hs, ds, ps, cs, rgs, rms, rhs, rchs, ris, rahs;
+    Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rms, rchs, rahs, rcs, ris;
 };
 
 struct Bindable : public Serializable
@@ -361,109 +362,134 @@ struct DynamicLengthBlob
         this->data = new char[this->capacity];
     }
 
-
+#ifndef min
 #define min(x,y) (x < y ? x : y)
+#endif
+
+#ifndef max
 #define max(x,y) (x > y ? x : y)
+#endif
 
-    //------------------------------------------------------------------------------
-    /**
-        Grow blob
-    */
-    void Grow(size_t size)
+//------------------------------------------------------------------------------
+/**
+    Grow blob
+*/
+void Grow(size_t size)
+{
+    if (this->iterator + size >= this->capacity)
     {
-        if (this->iterator + size >= this->capacity)
-        {
-            size_t growClamped = min(this->capacity << 1, 65535);
-            size_t growBy = max(this->capacity + growClamped, size);
+        size_t growClamped = min(this->capacity << 1, 65535);
+        size_t growBy = max(this->capacity + growClamped, size);
 
-            size_t oldCapacity = this->capacity;
-            char* oldData = this->data;
+        size_t oldCapacity = this->capacity;
+        char* oldData = this->data;
 
-            this->capacity = growClamped + this->capacity;
-            this->data = new char[this->capacity];
-            if (oldCapacity > 0)
-                memcpy(this->data, oldData, oldCapacity);
+        this->capacity = growClamped + this->capacity;
+        this->data = new char[this->capacity];
+        if (oldCapacity > 0)
+            memcpy(this->data, oldData, oldCapacity);
 
-            delete[] oldData;
-        }
+        delete[] oldData;
     }
+}
 #undef min
 #undef max
 
-    //------------------------------------------------------------------------------
-    /**
-        Write block of memory
-    */
-    size_t Write(const char* data, size_t size)
-    {
-        this->Grow(size);
-        memcpy(this->data + this->iterator, data, size);
-        size_t ret = this->iterator;
-        this->iterator += size;
+//------------------------------------------------------------------------------
+/**
+    Write block of memory
+*/
+size_t 
+Write(const char* data, size_t size)
+{
+    this->Grow(size);
+    memcpy(this->data + this->iterator, data, size);
+    size_t ret = this->iterator;
+    this->iterator += size;
 
-        return ret;
-    };
+    return ret;
+};
 
-    //------------------------------------------------------------------------------
-    /**
-        Write type (short hand for writing a block)
-    */
-    template <typename T>
-    size_t Write(const T& data)
-    {
-        return this->Write((const char*)&data, sizeof(T));
-    }
+//------------------------------------------------------------------------------
+/**
+    Write string
+*/
+size_t 
+WriteString(const char* data, size_t size)
+{
+    this->Grow(size + 1);
+    memcpy(this->data + this->iterator, data, size + 1);
+    size_t ret = this->iterator;
+    this->iterator += size + 1;
 
-    //------------------------------------------------------------------------------
-    /**
-        Write array of type (short hand for writing a block)
-    */
-    template <typename T>
-    size_t Write(const T& data, const size_t count)
-    {
-        return this->Write((const char*)&data, sizeof(T) * count);
-    }
+    return ret;
+};
 
-    //------------------------------------------------------------------------------
-    /**
-        Reserve memory without writing
-    */
-    size_t Reserve(size_t size)
-    {
-        this->Grow(size);
-        size_t ret = this->iterator;
-        this->iterator += size;
-        return ret;
-    }
+//------------------------------------------------------------------------------
+/**
+    Write type (short hand for writing a block)
+*/
+template <typename T>
+size_t 
+Write(const T& data)
+{
+    return this->Write((const char*)&data, sizeof(T));
+}
 
-    //------------------------------------------------------------------------------
-    /**
-        Reserve type without writing
-    */
-    template <typename T>
-    size_t Reserve(size_t count)
-    {
-        return this->Reserve(sizeof(T) * count);
-    }
+//------------------------------------------------------------------------------
+/**
+    Write array of type (short hand for writing a block)
+*/
+template <typename T>
+size_t Write(const T& data, const size_t count)
+{
+    return this->Write((const char*)&data, sizeof(T) * count);
+}
 
-    //------------------------------------------------------------------------------
-    /**
-        Write block of memory to reserved memory
-    */
-    void WriteReserved(const char* data, size_t offset, size_t size)
-    {
-        memcpy(this->data + offset, data, size);
-    }
+//------------------------------------------------------------------------------
+/**
+    Reserve memory without writing
+*/
+size_t 
+Reserve(size_t size)
+{
+    this->Grow(size);
+    size_t ret = this->iterator;
+    this->iterator += size;
+    return ret;
+}
 
-    //------------------------------------------------------------------------------
-    /**
-        Write type to reserved memory
-    */
-    template <typename T>
-    void WriteReserved(const T& data, size_t offset)
-    {
-        memcpy(this->data + offset, &data, sizeof(T));
-    }
+//------------------------------------------------------------------------------
+/**
+    Reserve type without writing
+*/
+template <typename T>
+size_t 
+Reserve(size_t count)
+{
+    return this->Reserve(sizeof(T) * count);
+}
+
+//------------------------------------------------------------------------------
+/**
+    Write block of memory to reserved memory
+*/
+void 
+WriteReserved(const char* data, size_t offset, size_t size)
+{
+    memcpy(this->data + offset, data, size);
+}
+
+//------------------------------------------------------------------------------
+/**
+    Write type to reserved memory
+*/
+template <typename T>
+void 
+WriteReserved(const T& data, size_t offset)
+{
+    memcpy(this->data + offset, &data, sizeof(T));
+}
 
 };
 
@@ -491,14 +517,15 @@ struct Annotation
     } data;
 };
 
+
 struct Deserializable
 {
+    Serialize::Type type;
     Annotation* annotations;
     size_t annotationCount;
     const char* name;
     size_t nameLength;
 };
-
 
 struct RenderState : public Deserializable
 {
@@ -523,13 +550,12 @@ struct RenderState : public Deserializable
     StencilState backStencilState;
     bool logicOpEnabled;
     LogicOp logicOp;
-    size_t blendStatesOffset;
-    size_t blendStatesCount;
+    BlendState blendStates[8];
 };
 
 struct Program : public Deserializable
 {
-    RenderState* renderState;
+    const RenderState* renderState;
 
     struct Shader
     {
@@ -539,11 +565,11 @@ struct Program : public Deserializable
             , binaryLength(-1)
         {}
 
-        const char* binary;
+        const uint32_t* binary;
         size_t binaryLength;
     };
 
-    Shader vs, gs, hs, ds, ps, cs, rgs, rms, rhs, rchs, ris, rahs;
+    Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rchs, rahs, rms, ris, rcs;
 };
 
 struct Bindable : public Deserializable

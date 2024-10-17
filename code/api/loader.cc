@@ -3,22 +3,9 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "loader.h"
-#include "serialize.h"
 
 namespace GPULang
 {
-
-//------------------------------------------------------------------------------
-/**
-*/
-Loader::~Loader()
-{
-    auto it = this->nameToObject.begin();
-    while (it != this->nameToObject.end())
-    {
-        delete it->second;
-    }
-}
 
 //------------------------------------------------------------------------------
 /**
@@ -86,7 +73,7 @@ Loader::Load(const char* data, const size_t length)
     size_t backIterator = length;
 
     const uint32_t* magic = reinterpret_cast<const uint32_t*>(data + frontIterator);
-    frontIterator += sizeof(uint32_t);
+    frontIterator += sizeof(int32_t);
     if (*magic != 'AFX3')
         return;
 
@@ -98,13 +85,14 @@ Loader::Load(const char* data, const size_t length)
 
     while (frontIterator != backIterator)
     {
-        const GPULang::Serialize::Serializable* type = ParseAndConsume<GPULang::Serialize::Serializable>(data, frontIterator);
+        const GPULang::Serialize::Serializable* type = Parse<GPULang::Serialize::Serializable>(data, frontIterator);
         switch (type->type)
         {
         case GPULang::Serialize::SamplerStateType:
         {
             const GPULang::Serialize::SamplerState* samplerState = ParseAndConsume<GPULang::Serialize::SamplerState>(data, frontIterator);
             GPULang::Deserialize::SamplerState* deserialized = new GPULang::Deserialize::SamplerState;
+            deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, samplerState->nameOffset);
             deserialized->nameLength = samplerState->nameLength;
             deserialized->binding = samplerState->binding;
@@ -127,8 +115,12 @@ Loader::Load(const char* data, const size_t length)
             deserialized->unnormalizedSamplingEnabled = samplerState->unnormalizedSamplingEnabled;
 
             deserialized->annotationCount = samplerState->annotationsCount;
-            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
-            LoadAnnotations(deserialized->annotationCount, deserialized->annotations, samplerState->annotationsOffset, buf);
+            deserialized->annotations = nullptr;
+            if (deserialized->annotationCount > 0)
+            {
+                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                LoadAnnotations(deserialized->annotationCount, deserialized->annotations, samplerState->annotationsOffset, buf);
+            }
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
@@ -137,6 +129,7 @@ Loader::Load(const char* data, const size_t length)
         {
             const GPULang::Serialize::Variable* var = ParseAndConsume<GPULang::Serialize::Variable>(data, frontIterator);
             GPULang::Deserialize::Variable* deserialized = new GPULang::Deserialize::Variable;
+            deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, var->nameOffset);
             deserialized->nameLength = var->nameLength;
             deserialized->binding = var->binding;
@@ -149,8 +142,12 @@ Loader::Load(const char* data, const size_t length)
             
 
             deserialized->annotationCount = var->annotationsCount;
-            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
-            LoadAnnotations(deserialized->annotationCount, deserialized->annotations, var->annotationsOffset, buf);
+            deserialized->annotations = nullptr;
+            if (deserialized->annotationCount > 0)
+            {
+                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                LoadAnnotations(deserialized->annotationCount, deserialized->annotations, var->annotationsOffset, buf);
+            }
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
@@ -159,7 +156,7 @@ Loader::Load(const char* data, const size_t length)
         {
             const GPULang::Serialize::Structure* struc = ParseAndConsume<GPULang::Serialize::Structure>(data, frontIterator);
             GPULang::Deserialize::Structure* deserialized = new GPULang::Deserialize::Structure;
-
+            deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, struc->nameOffset);
             deserialized->nameLength = struc->nameLength;
             deserialized->variableCount = struc->variablesCount;
@@ -182,8 +179,12 @@ Loader::Load(const char* data, const size_t length)
             }
 
             deserialized->annotationCount = struc->annotationsCount;
-            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
-            LoadAnnotations(deserialized->annotationCount, deserialized->annotations, struc->annotationsOffset, buf);
+            deserialized->annotations = nullptr;
+            if (deserialized->annotationCount > 0)
+            {
+                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                LoadAnnotations(deserialized->annotationCount, deserialized->annotations, struc->annotationsOffset, buf);
+            }
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
@@ -192,37 +193,55 @@ Loader::Load(const char* data, const size_t length)
         {
             const GPULang::Serialize::Program* prog = ParseAndConsume<GPULang::Serialize::Program>(data, frontIterator);
             GPULang::Deserialize::Program* deserialized = new GPULang::Deserialize::Program;
-
+            deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
 
+#define LOAD_SHADER(x) \
+if (prog->##x.binaryOffset != 0)\
+{\
+    deserialized->##x.binary = Parse<uint32_t>(buf, prog->##x.binaryOffset);\
+    deserialized->##x.binaryLength = prog->##x.binaryLength;\
+}\
+else\
+{\
+    deserialized->##x.binary = nullptr;\
+    deserialized->##x.binaryLength = prog->##x.binaryLength;\
+}
+
+            LOAD_SHADER(vs)
+            LOAD_SHADER(hs)
+            LOAD_SHADER(ds)
+            LOAD_SHADER(gs)
+            LOAD_SHADER(ps)
+            LOAD_SHADER(cs)
+            LOAD_SHADER(ts)
+            LOAD_SHADER(ms)
+            LOAD_SHADER(rgs)
+            LOAD_SHADER(rms)
+            LOAD_SHADER(rchs)
+            LOAD_SHADER(ris)
+            LOAD_SHADER(rahs)
+            LOAD_SHADER(rcs)
+
             // load shaders
-            deserialized->vs.binary = Parse<const char>(buf, prog->vs.binaryOffset);
-            deserialized->vs.binaryLength = prog->vs.binaryLength;
-            deserialized->hs.binary = Parse<const char>(buf, prog->hs.binaryOffset);
-            deserialized->hs.binaryLength = prog->hs.binaryLength;
-            deserialized->ds.binary = Parse<const char>(buf, prog->ds.binaryOffset);
-            deserialized->ds.binaryLength = prog->ds.binaryLength;
-            deserialized->gs.binary = Parse<const char>(buf, prog->gs.binaryOffset);
-            deserialized->gs.binaryLength = prog->gs.binaryLength;
-            deserialized->ps.binary = Parse<const char>(buf, prog->ps.binaryOffset);
-            deserialized->ps.binaryLength = prog->ps.binaryLength;
-            deserialized->cs.binary = Parse<const char>(buf, prog->cs.binaryOffset);
-            deserialized->cs.binaryLength = prog->cs.binaryLength;
-            deserialized->rgs.binary = Parse<const char>(buf, prog->rgs.binaryOffset);
-            deserialized->rgs.binaryLength = prog->rgs.binaryLength;
-            deserialized->rms.binary = Parse<const char>(buf, prog->rms.binaryOffset);
-            deserialized->rms.binaryLength = prog->rhs.binaryLength;
-            deserialized->rchs.binary = Parse<const char>(buf, prog->rchs.binaryOffset);
-            deserialized->rchs.binaryLength = prog->rchs.binaryLength;
-            deserialized->ris.binary = Parse<const char>(buf, prog->ris.binaryOffset);
-            deserialized->ris.binaryLength = prog->ris.binaryLength;
-            deserialized->rahs.binary = Parse<const char>(buf, prog->rahs.binaryOffset);
-            deserialized->rahs.binaryLength = prog->rahs.binaryLength;
+            if (prog->renderStateNameOffset != 0)
+            {
+                std::string renderStateName = Parse<const char>(buf, prog->renderStateNameOffset);
+                deserialized->renderState = (GPULang::Deserialize::RenderState*)this->nameToObject[renderStateName];
+            }
+            else
+            {
+                deserialized->renderState = nullptr;
+            }
 
             deserialized->annotationCount = prog->annotationsCount;
-            deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
-            LoadAnnotations(deserialized->annotationCount, deserialized->annotations, prog->annotationsOffset, buf);
+            deserialized->annotations = nullptr;
+            if (deserialized->annotationCount > 0)
+            {
+                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                LoadAnnotations(deserialized->annotationCount, deserialized->annotations, prog->annotationsOffset, buf);
+            }
 
             this->nameToObject[deserialized->name] = deserialized;
             break;
@@ -231,6 +250,42 @@ Loader::Load(const char* data, const size_t length)
         {
             const GPULang::Serialize::RenderState* rend = ParseAndConsume<GPULang::Serialize::RenderState>(data, frontIterator);
             GPULang::Deserialize::RenderState* deserialized = new GPULang::Deserialize::RenderState;
+            deserialized->type = type->type;
+            deserialized->name = Parse<const char>(buf, rend->nameOffset);
+            deserialized->nameLength = rend->nameLength;
+            deserialized->depthClampEnabled = rend->depthClampEnabled;
+            deserialized->noPixels = rend->noPixels;
+            deserialized->polygonMode = rend->polygonMode;
+            deserialized->cullMode = rend->cullMode;
+            deserialized->windingOrderMode = rend->windingOrderMode;
+            deserialized->depthBiasEnabled = rend->depthBiasEnabled;
+            deserialized->depthBiasFactor = rend->depthBiasFactor;
+            deserialized->depthBiasClamp = rend->depthBiasClamp;
+            deserialized->depthBiasSlopeFactor = rend->depthBiasSlopeFactor;
+            deserialized->lineWidth = rend->lineWidth;
+            deserialized->depthTestEnabled = rend->depthTestEnabled;
+            deserialized->depthWriteEnabled = rend->depthWriteEnabled;
+            deserialized->depthCompare = rend->depthCompare;
+            deserialized->depthBoundsTestEnabled = rend->depthBoundsTestEnabled;
+            deserialized->minDepthBounds = rend->minDepthBounds;
+            deserialized->maxDepthBounds = rend->maxDepthBounds;
+            deserialized->stencilEnabled = rend->stencilEnabled;
+            deserialized->frontStencilState = rend->frontStencilState;
+            deserialized->backStencilState = rend->backStencilState;
+            deserialized->logicOpEnabled = rend->logicOp;
+            deserialized->logicOp = rend->logicOp;
+            for (size_t i = 0; i < rend->blendStatesCount; i++)
+            {
+                deserialized->blendStates[i] = *Parse<GPULang::BlendState>(buf, rend->blendStatesOffset + i * sizeof(BlendState));
+            }
+
+            deserialized->annotationCount = rend->annotationsCount;
+            deserialized->annotations = nullptr;
+            if (deserialized->annotationCount > 0)
+            {
+                deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
+                LoadAnnotations(deserialized->annotationCount, deserialized->annotations, rend->annotationsOffset, buf);
+            }
 
             this->nameToObject[deserialized->name] = deserialized;
             break;

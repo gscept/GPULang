@@ -1008,6 +1008,13 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     if (!this->ValidateProgram(compiler, prog))
         return false;
 
+    if (progResolved->usage.flags.hasPixelShader && !progResolved->usage.flags.hasRenderState)
+    {
+        compiler->Warning(Format("Program is general graphics but does not specify a render state, falling back on the default"), symbol);
+        progResolved->programMappings[Program::__Resolved::ProgramEntryType::RenderState] = &compiler->defaultRenderState;
+        progResolved->usage.flags.hasRenderState = true;
+    }
+
     return true;
 }
 
@@ -1923,7 +1930,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
             generatedStruct->name = Format("struct(%s)", varResolved->name.c_str()); ;
-            generatedStruct->annotations = var->annotations;
+            //generatedStruct->annotations = var->annotations;
             generatedStruct->location = var->location;
             generatedStructResolved->group = varResolved->group;
             generatedStructResolved->binding = varResolved->binding;
@@ -2006,6 +2013,27 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::ForStatementType:
         {
             auto statement = reinterpret_cast<ForStatement*>(symbol);
+            for (const auto& attr : statement->attributes)
+            {
+                if (attr.name == "unroll")
+                {
+                    if (attr.expression == nullptr)
+                        statement->unrollCount = UINT_MAX;
+                    else
+                    {
+                        if (!attr.expression->EvalUInt(statement->unrollCount))
+                        {
+                            compiler->Error(Format("Unroll count must evaluate to a literal integer value", attr.name.c_str()), statement);
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    compiler->Error(Format("Invalid loop modifier '%s'", attr.name.c_str()), statement);
+                    return false;
+                }
+            }
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
             for (Variable* var : statement->declarations)
             {
@@ -2482,25 +2510,31 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         return false;
     }
 
-    enum GraphicsProgramTristate
+    enum ProgramType
     {
         NotSet,
         IsGraphics,
-        IsCompute
+        IsCompute,
+        IsRaytracing,
     };
-    GraphicsProgramTristate programType = GraphicsProgramTristate::NotSet;
+    ProgramType programType = ProgramType::NotSet;
 
     // validate program setup as compute or graphics program, do it on a first-come-first-serve basis
     for (auto& it : progResolved->programMappings)
     {
         if (it.first == Program::__Resolved::ComputeShader)
         {
-            if (programType == GraphicsProgramTristate::IsGraphics)
+            if (programType == ProgramType::IsGraphics)
             {
-                compiler->Error(Format("Invalid program setup, program already used as a graphics program, ComputeShader is not allowed"), symbol);
+                compiler->Error(Format("Program may not be both compute and general graphics"), symbol);
                 return false;
             }
-            programType = GraphicsProgramTristate::IsCompute;
+            if (programType == ProgramType::IsRaytracing)
+            {
+                compiler->Error(Format("Program may not be both compute and raytracing"), symbol);
+                return false;
+            }
+            programType = ProgramType::IsCompute;
         }
         else if (it.first == Program::__Resolved::VertexShader
             || it.first == Program::__Resolved::HullShader
@@ -2509,19 +2543,36 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             || it.first == Program::__Resolved::PixelShader
             || it.first == Program::__Resolved::TaskShader
             || it.first == Program::__Resolved::MeshShader
-            || it.first == Program::__Resolved::RayAnyHitShader
-            || it.first == Program::__Resolved::RayCallableShader
-            || it.first == Program::__Resolved::RayIntersectionShader
-            || it.first == Program::__Resolved::RayMissShader
-            || it.first == Program::__Resolved::RenderState
             )
         {
-            if (programType == GraphicsProgramTristate::IsCompute)
+            if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Invalid program setup, program already used with ComputeShader but '%s' was provided", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                compiler->Error(Format("Program may not be both general graphics and compute", Program::__Resolved::EntryTypeToString(it.first)), symbol);
                 return false;
             }
-            programType = GraphicsProgramTristate::IsGraphics;
+            if (programType == ProgramType::IsRaytracing)
+            {
+                compiler->Error(Format("Program may not be both general graphics and ray tracing", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                return false;
+            }
+            programType = ProgramType::IsGraphics;
+        }
+        else if (it.first == Program::__Resolved::RayAnyHitShader
+            || it.first == Program::__Resolved::RayCallableShader
+            || it.first == Program::__Resolved::RayIntersectionShader
+            || it.first == Program::__Resolved::RayMissShader)
+        {
+            if (programType == ProgramType::IsCompute)
+            {
+                compiler->Error(Format("Program may not be both raytracing and compute", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                return false;
+            }
+            if (programType == ProgramType::IsGraphics)
+            {
+                compiler->Error(Format("Program may not be both raytracing and general graphics", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                return false;
+            }
+            programType = ProgramType::IsRaytracing;
         }
     }
 
