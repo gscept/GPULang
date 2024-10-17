@@ -693,6 +693,13 @@ int PLATFORM_MAIN
     VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &frameFences[1]));
     VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &frameFences[2]));
 
+    VkFence presentFences[3];
+
+    fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+    VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[0]));
+    VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[1]));
+    VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[2]));
+
     // Update loop
     VkCommandBuffer frameBuffers[3] = { VK_NULL_HANDLE };
     uint32_t frameBufferCounter = 0;
@@ -791,20 +798,41 @@ int PLATFORM_MAIN
         VERIFY(vkResetFences(device, 1, &frameFences[frameBufferCounter]));
         VERIFY(vkQueueSubmit(queue, 1, &initSubmit, frameFences[frameBufferCounter]));
 
+        VERIFY(vkWaitForFences(device, 1, &presentFences[frameBufferCounter], true, UINT64_MAX));
+        VERIFY(vkResetFences(device, 1, &presentFences[frameBufferCounter]));
+
         uint32_t index = 0;
-        VERIFY(vkAcquireNextImageKHR(device, swapchain, UINT64_MAX, frameSemaphores[frameBufferCounter], VK_NULL_HANDLE, &index));
+        VkResult acquireRes = vkAcquireNextImageKHR(device, swapchain, UINT64_MAX, VK_NULL_HANDLE, presentFences[frameBufferCounter], &index);
+        switch (acquireRes)
+        {
+            case VK_SUCCESS:
+            case VK_ERROR_OUT_OF_DATE_KHR:
+            case VK_SUBOPTIMAL_KHR:
+                break;
+            default:
+                exit(1);
+        }
 
         VkPresentInfoKHR presentInfo =
         {
             .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
             .pNext = nullptr,
-            .waitSemaphoreCount = 1,
-            .pWaitSemaphores = &frameSemaphores[frameBufferCounter],
+            .waitSemaphoreCount = 0,
+            .pWaitSemaphores = nullptr,
             .swapchainCount = 1,
             .pSwapchains = &swapchain,
             .pImageIndices = &index
         };
-        VERIFY(vkQueuePresentKHR(queue, &presentInfo));
+        VkResult presentRes = vkQueuePresentKHR(queue, &presentInfo);
+        switch (presentRes)
+        {
+            case VK_SUCCESS:
+            case VK_ERROR_OUT_OF_DATE_KHR:
+            case VK_SUBOPTIMAL_KHR:
+                break;
+            default:
+                exit(1);
+        }
 
         frameBufferCounter = (frameBufferCounter + 1) % 3;
     }

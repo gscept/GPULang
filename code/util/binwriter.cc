@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <sstream>
 #include <algorithm>
+#include <filesystem>
 
 static char encryptionTable[] = {'A', 'T', 'C', 'G', 'F', 'F', 'W', 'I', 'T', 'C', 'H', 'E', 'R'};
 namespace GPULang
@@ -35,6 +36,9 @@ bool
 BinWriter::Open()
 {
 	assert(this->path.size() > 0);
+	std::filesystem::path path(this->path);
+	path.remove_filename();
+	std::filesystem::create_directories(path);
 	this->output.open(this->path.c_str(), std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
 	this->isOpen = this->output.is_open();
 	return this->isOpen;
