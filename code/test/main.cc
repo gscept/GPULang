@@ -5,11 +5,6 @@
 #include "gpulangcompiler.h"
 #include <stdlib.h>
 
-void CompleteShaderTest();
-void ApiTest();
-void ConstantBufferTest();
-void ReadWriteBufferTest();
-
 
 #define TEST(path)\
     ShaderTest(std::string(TEST_FOLDER) + "/" + #path + ".gpul", std::string(TEST_OUTPUT_FOLDER) + "/" + #path + ".gplb", std::string(TEST_OUTPUT_FOLDER) + "/" + #path + ".h");

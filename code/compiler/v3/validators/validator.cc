@@ -1346,6 +1346,8 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             varResolved->usageBits.flags.isStructMember = true;
             if (!this->ResolveVariable(compiler, var))
                 return false;
+
+            strucResolved->byteSize += varResolved->byteSize;
         }
     }
 
@@ -1476,6 +1478,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->type = var->type;
     varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
+    varResolved->byteSize = type->byteSize;
 
     if (!this->ValidateType(compiler, var->type, varResolved->typeSymbol, var))
         return false;
@@ -1939,6 +1942,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             // Generate mutable/uniform variant of struct
             Structure* generatedStruct = new Structure;
+            uint32_t structSize = 0;
+            uint32_t padCounter = 0;
+            uint32_t offset = 0;
             for (Symbol* sym : type->symbols)
             {
                 if (sym->symbolType == Symbol::VariableType)
@@ -1953,16 +1959,26 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     generatedVarResolved->type = varResolved->type;
                     generatedVarResolved->typeSymbol = varResolved->typeSymbol;
                     generatedVarResolved->name = varResolved->name;
+                    uint32_t size = varResolved->typeSymbol->CalculateSize();
+                    uint32_t alignment = varResolved->typeSymbol->CalculateAlignment();
+                    uint32_t alignedOffset = Type::Align(offset, alignment);
+                    generatedVarResolved->startPadding = alignedOffset - offset;
+                    generatedVarResolved->byteSize = size;
+                    offset += size;
+                    structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                     generatedStruct->symbols.push_back(generatedVar);
                     generatedStruct->lookup.insert({ varResolved->name, generatedVar });
                 }
             }
             Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
-            generatedStruct->name = Format("struct(%s)", varResolved->name.c_str()); ;
+            const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "UniformBuffer";
+            generatedStruct->name = Format("%s_%s", bufferType, varResolved->name.c_str()); ;
             //generatedStruct->annotations = var->annotations;
             generatedStruct->location = var->location;
             generatedStructResolved->group = varResolved->group;
             generatedStructResolved->binding = varResolved->binding;
+            generatedStructResolved->byteSize = structSize;
+            //generatedStructResolved->byteSize = varResolved
             if (varResolved->type.IsMutable())
             {
                 generatedStructResolved->usageFlags.flags.isMutableBuffer = true;

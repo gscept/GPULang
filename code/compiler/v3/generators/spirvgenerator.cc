@@ -3795,7 +3795,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
 
     static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {

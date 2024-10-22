@@ -9,6 +9,7 @@ uniform Sampler : *sampler;
 struct Camera
 {
     viewProjection : f32x4x4;
+    foo : i32;
     position : f32x4;
 };
 

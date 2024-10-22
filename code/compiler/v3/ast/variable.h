@@ -104,6 +104,7 @@ struct Variable : public Symbol
                 uint32_t isEntryPointParameter : 1;
                 uint32_t isStructMember : 1;            // variable is a struct member
                 uint32_t isSampled : 1;                 // for variables of image type, this means a sampler has to be associated from the client
+                uint32_t isPadding : 1;
             } flags;
             uint32_t bits;
         };

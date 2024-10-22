@@ -11,11 +11,17 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+#define STRINGIFY(x) #x
+#define MERGE(x, y) STRINGIFY(x/##y)
+
+#include MERGE(SHADER_HEADER_FOLDER, basicgraphics.h)
+
 #include "GLFW/glfw3.h"
 
 #include <cassert>
 #include <stdio.h>
 #include <cstdlib>
+#include <time.h>
 
 #include <vector>
 #define _IMP_VK_BASE(name) { name = (PFN_##name)vkGetInstanceProcAddr(VK_NULL_HANDLE, #name);assert(name != nullptr); }
@@ -567,8 +573,15 @@ int PLATFORM_MAIN
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
 
-    GLFWwindow* window = glfwCreateWindow(1024, 768, "GPULang app", nullptr, nullptr);
-    glfwSwapInterval(1);
+    uint32_t windowWidth = 1024, windowHeight = 768;
+
+    GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, "GPULang app", nullptr, nullptr);
+    glfwSwapInterval(0);
+
+    float xScale, yScale;
+    glfwGetWindowContentScale(window, &xScale, &yScale);
+    windowWidth = uint32_t(windowWidth * xScale);
+    windowHeight = uint32_t(windowHeight * yScale);
 
     VkSurfaceKHR surface;
     VERIFY(glfwCreateWindowSurface(instance, window, nullptr, &surface));
@@ -599,12 +612,12 @@ int PLATFORM_MAIN
     VkPresentModeKHR presentModes[16];
     VERIFY(vkGetPhysicalDeviceSurfacePresentModesKHR(devices[0], surface, &numPresentModes, presentModes));
 
-    VkPresentModeKHR swapchainPresentMode = VK_PRESENT_MODE_FIFO_KHR;
+    VkPresentModeKHR swapchainPresentMode = VK_PRESENT_MODE_IMMEDIATE_KHR;
     for (uint32_t i = 0; i < numPresentModes; i++)
     {
         switch (presentModes[i])
         {
-            case VK_PRESENT_MODE_FIFO_KHR:
+            case VK_PRESENT_MODE_IMMEDIATE_KHR:
                 numPresentModes = 0;
                 break;
             default:
@@ -615,7 +628,7 @@ int PLATFORM_MAIN
 
     VkSurfaceTransformFlagBitsKHR transform = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
     VkImageUsageFlags usageFlags = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT;
-    VkExtent2D swapchainExtent = { .width = 1024, .height = 768 };
+    VkExtent2D swapchainExtent = { .width = windowWidth, .height = windowHeight };
     VkSwapchainCreateInfoKHR swapchainInfo =
     {
         VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
@@ -770,8 +783,8 @@ int PLATFORM_MAIN
         .alphaToOneEnable = false
     };
 
-    VkViewport viewport = { .width = 1024, .height = 768 };
-    VkRect2D scissor = { .offset = { .x = 0, .y = 0 }, .extent = { .width = 1024, .height = 768 } };
+    VkViewport viewport = { .width = (float)windowWidth, .height =  (float)windowHeight };
+    VkRect2D scissor = { .offset = { .x = 0, .y = 0 }, .extent = { .width = windowWidth, .height = windowHeight } };
     VkPipelineViewportStateCreateInfo viewportInfo =
     {
         .sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
@@ -925,7 +938,7 @@ int PLATFORM_MAIN
         imageBarrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
         imageBarrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
         imageBarrier.subresourceRange = VkImageSubresourceRange{ VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-        vkCmdPipelineBarrier(cmdBuf, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0x0, 0, nullptr, 0, nullptr, 1, &imageBarrier);
+        vkCmdPipelineBarrier(cmdBuf, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT, 0x0, 0, nullptr, 0, nullptr, 1, &imageBarrier);
     }
 
     VkImageViewCreateInfo viewCreate =
@@ -941,6 +954,61 @@ int PLATFORM_MAIN
     };
     VkImageView view;
     VERIFY(vkCreateImageView(device, &viewCreate, nullptr, &view));
+
+    VkImageCreateInfo depthBufferInfo =
+    {
+        .sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,
+        .pNext = nullptr,
+        .flags = 0x0,
+        .imageType = VkImageType::VK_IMAGE_TYPE_2D,
+        .format = VK_FORMAT_D32_SFLOAT_S8_UINT,
+        .extent = { .width = (uint32_t)windowWidth, .height = (uint32_t)windowHeight, .depth = 1 },
+        .mipLevels = 1,
+        .arrayLayers = 1,
+        .samples = VK_SAMPLE_COUNT_1_BIT,
+        .tiling = VK_IMAGE_TILING_OPTIMAL,
+        .usage = VkImageUsageFlagBits::VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
+        .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
+        .queueFamilyIndexCount = 0,
+        .pQueueFamilyIndices = nullptr,
+        .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED
+    };
+    VkImage depthBuffer;
+    VERIFY(vkCreateImage(device, &depthBufferInfo, nullptr, &depthBuffer));
+    {
+        VkMemoryRequirements memReqs;
+        vkGetImageMemoryRequirements(device, depthBuffer, &memReqs);
+        uint64_t offset = Alloc(MemoryHeap::DeviceLocal, memReqs.size, memReqs.alignment);
+        VERIFY(vkBindImageMemory(device, depthBuffer, MemoryHeaps[MemoryHeap::DeviceLocal], offset));
+    }
+    VkImageViewCreateInfo depthBufferViewInfo =
+    {
+        .sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,
+        .pNext = nullptr,
+        .flags = 0x0,
+        .image = depthBuffer,
+        .viewType = VK_IMAGE_VIEW_TYPE_2D,
+        .format = depthBufferInfo.format,
+        .components = VK_COMPONENT_SWIZZLE_IDENTITY,
+        .subresourceRange = { .aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT, .baseMipLevel = 0, .levelCount = 1, .baseArrayLayer = 0, .layerCount = 1 }
+    };
+    VkImageView depthBufferView;
+    VERIFY(vkCreateImageView(device, &depthBufferViewInfo, nullptr, &depthBufferView));
+
+    {
+        VkImageMemoryBarrier imageBarrier;
+        imageBarrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+        imageBarrier.pNext = nullptr;
+        imageBarrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        imageBarrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        imageBarrier.image = depthBuffer;
+        imageBarrier.srcAccessMask = VK_ACCESS_NONE;
+        imageBarrier.dstAccessMask = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
+        imageBarrier.oldLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+        imageBarrier.newLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+        imageBarrier.subresourceRange = VkImageSubresourceRange{ VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT, 0, 1, 0, 1 };
+        vkCmdPipelineBarrier(cmdBuf, VK_PIPELINE_STAGE_HOST_BIT, VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT, 0x0, 0, nullptr, 0, nullptr, 1, &imageBarrier);
+    }
 
     VERIFY(vkEndCommandBuffer(cmdBuf));
 
@@ -989,7 +1057,7 @@ int PLATFORM_MAIN
 
     VkFence presentFences[3];
 
-    fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+    //fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
     VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[0]));
     VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[1]));
     VERIFY(vkCreateFence(device, &fenceInfo, nullptr, &presentFences[2]));
@@ -1044,8 +1112,8 @@ int PLATFORM_MAIN
     VkSampler sampler;
     VERIFY(vkCreateSampler(device, &samplerInfo, nullptr, &sampler));
 
-    uint32_t cameraBufSize = program.loader.Get<GPULang::StructureObject>("camera")->size;
-    uint32_t objectBufSize = program.loader.Get<GPULang::StructureObject>("object")->size;
+    uint32_t cameraBufSize = Basicgraphics::UniformBuffer_camera::SIZE;
+    uint32_t objectBufSize = Basicgraphics::UniformBuffer_object::SIZE;
     VkBufferCreateInfo shaderBufferInfo =
     {
         .sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,
@@ -1117,7 +1185,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = program.loader.Get<GPULang::VariableObject>("Albedo")->binding,
+            .dstBinding = Basicgraphics::Albedo::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
@@ -1129,7 +1197,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = program.loader.Get<GPULang::VariableObject>("Material")->binding,
+            .dstBinding = Basicgraphics::Material::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER,
@@ -1141,7 +1209,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = program.loader.Get<GPULang::VariableObject>("Sampler")->binding,
+            .dstBinding = Basicgraphics::Sampler::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER,
@@ -1153,7 +1221,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = program.loader.Get<GPULang::VariableObject>("camera")->binding,
+            .dstBinding = Basicgraphics::UniformBuffer_camera::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
@@ -1165,7 +1233,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = program.loader.Get<GPULang::VariableObject>("object")->binding,
+            .dstBinding = Basicgraphics::UniformBuffer_object::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
@@ -1188,10 +1256,28 @@ int PLATFORM_MAIN
     uint32_t frameBufferCounter = 0;
 
     float colorShift = 0.0f;
+    clock_t before = clock();
     while (!terminate)
     {
+        clock_t now = clock();
+        float diff = (now - before) * 1000.0f / CLOCKS_PER_SEC;
+        before = now;
+        printf("%f", diff);
+
         glfwPollEvents();
-        terminate = glfwWindowShouldClose(window);
+        terminate |= glfwWindowShouldClose(window);
+
+        uint32_t index = 0;
+        VkResult acquireRes = vkAcquireNextImageKHR(device, swapchain, UINT64_MAX, VK_NULL_HANDLE, presentFences[frameBufferCounter], &index);
+        switch (acquireRes)
+        {
+            case VK_SUCCESS:
+            case VK_ERROR_OUT_OF_DATE_KHR:
+            case VK_SUBOPTIMAL_KHR:
+                break;
+            default:
+                exit(1);
+        }
 
         if (frameBuffers[frameBufferCounter] != VK_NULL_HANDLE)
         {
@@ -1222,7 +1308,7 @@ int PLATFORM_MAIN
         };
         VERIFY(vkBeginCommandBuffer(cmdBuf, &beginInfo));
 
-        colorShift += 0.01f;
+        colorShift += diff / 1000.0f;
         VkClearColorValue clear = { .float32 = { 0.5f + (float)sin(colorShift * 2.0f), 0.5f + (float)sin(colorShift * 0.5f), 0.5f + (float)sin(colorShift), 1.0f } };
         VkImageSubresourceRange range =
         {
@@ -1238,25 +1324,8 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,
             .pNext = nullptr,
             .srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT,
-            .dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT,
-            .oldLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR,
-            .newLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
-            .srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
-            .dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
-            .image = backbufferImages[frameBufferCounter],
-            .subresourceRange = VkImageSubresourceRange{ VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 }
-        };
-        vkCmdPipelineBarrier(cmdBuf, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0x0, 0, nullptr, 0, nullptr, 1, &imageBarrier);
-
-        vkCmdClearColorImage(cmdBuf, backbufferImages[frameBufferCounter], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &clear, 1, &range);
-
-        imageBarrier = 
-        {
-            .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,
-            .pNext = nullptr,
-            .srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT,
             .dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,
-            .oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
+            .oldLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR,
             .newLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
             .srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
             .dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
@@ -1274,23 +1343,35 @@ int PLATFORM_MAIN
             .resolveMode = VK_RESOLVE_MODE_NONE,
             .resolveImageView = VK_NULL_HANDLE,
             .resolveImageLayout = VK_IMAGE_LAYOUT_UNDEFINED,
-            .loadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE,
+            .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
             .storeOp = VK_ATTACHMENT_STORE_OP_STORE,
-            .clearValue = VkClearValue{}
+            .clearValue = VkClearValue{.color = clear }
+        };
+        VkRenderingAttachmentInfo depthAttachment =
+        {
+            .sType = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO,
+            .pNext = nullptr,
+            .imageView = depthBufferView,
+            .imageLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
+            .resolveMode = VK_RESOLVE_MODE_NONE,
+            .resolveImageView = VK_NULL_HANDLE,
+            .resolveImageLayout = VK_IMAGE_LAYOUT_UNDEFINED,
+            .loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR,
+            .storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE,
+            .clearValue = VkClearValue{.depthStencil = {.depth = 1.0f }}
         };
         VkRenderingInfo renderInfo =
         {
             .sType = VK_STRUCTURE_TYPE_RENDERING_INFO,
             .pNext = nullptr,
             .flags = 0x0,
-            .renderArea = VkRect2D{ .offset = { .x = 0, .y = 0 }, .extent = { .width = 1024, .height = 768 } },
+            .renderArea = VkRect2D{ .offset = { .x = 0, .y = 0 }, .extent = { .width = windowWidth, .height = windowHeight } },
             .layerCount = 1,
             .viewMask = 0x1,
             .colorAttachmentCount = 1,
             .pColorAttachments = &colorAttachment,
-            .pDepthAttachment = nullptr,
-            .pStencilAttachment = nullptr
-
+            .pDepthAttachment = &depthAttachment,
+            .pStencilAttachment = &depthAttachment
         };
 
         vkCmdBeginRendering(cmdBuf, &renderInfo);
@@ -1336,18 +1417,6 @@ int PLATFORM_MAIN
 
         VERIFY(vkWaitForFences(device, 1, &presentFences[frameBufferCounter], true, UINT64_MAX));
         VERIFY(vkResetFences(device, 1, &presentFences[frameBufferCounter]));
-
-        uint32_t index = 0;
-        VkResult acquireRes = vkAcquireNextImageKHR(device, swapchain, UINT64_MAX, VK_NULL_HANDLE, presentFences[frameBufferCounter], &index);
-        switch (acquireRes)
-        {
-            case VK_SUCCESS:
-            case VK_ERROR_OUT_OF_DATE_KHR:
-            case VK_SUBOPTIMAL_KHR:
-                break;
-            default:
-                exit(1);
-        }
 
         VkPresentInfoKHR presentInfo =
         {

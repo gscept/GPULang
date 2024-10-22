@@ -15,6 +15,7 @@ target_include_directories(gpulang_app PUBLIC
 )
 
 ADD_DEFINITIONS(-DSHADER_FOLDER="${GPULANG_ROOT}/code/app/shaders")
+ADD_DEFINITIONS(-DSHADER_HEADER_FOLDER=${GPULANG_ROOT}/code/app/shaders)
 ADD_DEFINITIONS(-DTEXTURE_FOLDER="${GPULANG_ROOT}/code/app/textures")
 
 

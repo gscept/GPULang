@@ -18,6 +18,8 @@ bool
 HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     std::string output;
+    output.append(Format("namespace %s\n", compiler->filename.c_str()));
+    output.append("{\n");
     for (Symbol* sym : symbols)
     {
         switch (sym->symbolType)
@@ -30,6 +32,8 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
             break;
         }
     }
+
+    output.append(Format("} // namespace %s\n", compiler->filename.c_str()));
 
     // output header
     if (writerFunc)
@@ -70,31 +74,31 @@ std::map<std::string, std::string> typeToHeaderType =
 
 std::map<std::string, std::string> typeToArraySize =
 {
-    { "float", "" },
-    { "float2", "[2]" },
-    { "float3", "[3]" },
-    { "float4", "[4]" },
-    { "int", "" },
-    { "int2", "[2]" },
-    { "int3", "[3]" },
-    { "int4", "[4]" },
-    { "uint", "" },
-    { "uint2", "[2]" },
-    { "uint3", "[3]" },
-    { "uint4", "[4]" },
-    { "bool", "" },
-    { "bool2", "[2]" },
-    { "bool3", "[3]" },
-    { "bool4", "[4]" },
-    { "float2x2", "[2][2]" },
-    { "float2x3", "[2][3]" },
-    { "float2x4", "[2][4]" },
-    { "float3x2", "[3][2]" },
-    { "float3x3", "[3][3]" },
-    { "float3x4", "[3][4]" },
-    { "float4x2", "[4][2]" },
-    { "float4x3", "[4][3]" },
-    { "float4x4", "[4][4]" },
+    { "f32", "" },
+    { "f32x2", "[2]" },
+    { "f32x3", "[3]" },
+    { "f32x4", "[4]" },
+    { "i32", "" },
+    { "i32x2", "[2]" },
+    { "i32x3", "[3]" },
+    { "i32x4", "[4]" },
+    { "u32", "" },
+    { "u32x2", "[2]" },
+    { "u32x3", "[3]" },
+    { "u32x4", "[4]" },
+    { "b8", "" },
+    { "b8x2", "[2]" },
+    { "b8x3", "[3]" },
+    { "b8x4", "[4]" },
+    { "f32x2x2", "[2][2]" },
+    { "f32x2x3", "[2][3]" },
+    { "f32x2x4", "[2][4]" },
+    { "f32x3x2", "[3][2]" },
+    { "f32x3x3", "[3][3]" },
+    { "f32x3x4", "[3][4]" },
+    { "f32x4x2", "[4][2]" },
+    { "f32x4x3", "[4][3]" },
+    { "f32x4x4", "[4][4]" },
     { "void", "void" }
 };
 
@@ -105,6 +109,7 @@ void
 HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
+    Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
     std::string variables;
     for (Symbol* sym : struc->symbols)
     {
@@ -112,12 +117,20 @@ HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol*
         {
             Variable* var = static_cast<Variable*>(sym);
             this->GenerateVariableSPIRV(compiler, program, var, variables, false);
-            if (var != struc->symbols.back())
                 variables.append("\n");
         }
     }
 
-    outCode.append(Format("struct %s\n{\n%s\n};\n\n", struc->name.c_str(), variables.c_str()));
+    outCode.append(Format("struct %s\n", struc->name.c_str()));
+    outCode.append("{\n");
+    outCode.append(Format("    static const uint32_t SIZE = %d;\n", strucResolved->byteSize));
+    if (strucResolved->binding != Structure::__Resolved::NOT_BOUND)
+        outCode.append(Format("    static const uint32_t BINDING = %d;\n", strucResolved->binding));
+    if (strucResolved->group != Structure::__Resolved::NOT_BOUND)
+        outCode.append(Format("    static const uint32_t GROUP = %d;\n", strucResolved->group));
+    outCode.append("\n");
+    outCode.append(variables);
+    outCode.append("};\n\n");
 }
 
 //------------------------------------------------------------------------------
@@ -187,7 +200,19 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
     }
     else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
     {
-        //outCode.append("static const int %s_
+        if (varResolved->typeSymbol->category == Type::Category::TextureCategory
+            || varResolved->typeSymbol->category == Type::Category::SamplerCategory
+            || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
+        )
+        {
+            outCode.append(Format("struct %s\n", varResolved->name.c_str()));
+            outCode.append("{\n");
+            outCode.append(Format("    static const uint32_t BINDING = %d;\n", varResolved->binding));
+            outCode.append(Format("    static const uint32_t GROUP = %d;\n", varResolved->group));
+            if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->typeSymbol->byteSize));
+            outCode.append("};\n\n");
+        }
     }
     else if (varResolved->usageBits.flags.isConst)
     {
@@ -213,9 +238,9 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
         }
 
         if (varResolved->value != nullptr)
-            outCode.append(Format("const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
+            outCode.append(Format("    static const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
         else
-            outCode.append(Format("const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
+            outCode.append(Format("    static const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
     }
 }
 

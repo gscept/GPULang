@@ -319,7 +319,7 @@ roundtopow2(unsigned int val)
 uint32_t 
 Type::CalculateAlignment() const
 {
-    uint32_t baseAlignment = this->byteSize / this->columnSize;
+    uint32_t baseAlignment = (this->byteSize / this->rowSize) / this->columnSize;
     uint32_t roundedColumns = roundtopow2(this->columnSize);
     return baseAlignment * roundedColumns;
 }

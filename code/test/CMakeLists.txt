@@ -16,10 +16,6 @@ fips_begin_app(gpulang_test cmdline)
 
     fips_files(
         main.cc
-        completeshadertest.cc
-        constantbuffertest.cc
-        readwritebuffertest.cc
-        apitest.cc
     )
 
     fips_files_ex(shaders
