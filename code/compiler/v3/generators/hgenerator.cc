@@ -293,7 +293,7 @@ HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symb
             const Function::__Resolved::ExecutionModifiers& mods = funResolved->executionModifiers;
             outCode.append(Format("    static const uint32_t WORKGROUP_SIZE[] = { %d, %d, %d };\n", mods.computeShaderWorkGroupSize[0], mods.computeShaderWorkGroupSize[1], mods.computeShaderWorkGroupSize[2]));
         }
-        outCode.append("};\n");
+        outCode.append("};\n\n");
     }
 }
 
