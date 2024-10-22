@@ -134,13 +134,14 @@ Loader::Load(const char* data, const size_t length)
             deserialized->nameLength = var->nameLength;
             deserialized->binding = var->binding;
             deserialized->group = var->group;
+            deserialized->visibility.bits = var->visibility.bits;
+
             deserialized->arraySizeCount = var->arraySizesCount;
             deserialized->arraySizes = Parse<uint32_t>(buf, var->arraySizesOffset);
 
             deserialized->structureOffset = var->structureOffset;
             deserialized->byteSize = var->byteSize;
             
-
             deserialized->annotationCount = var->annotationsCount;
             deserialized->annotations = nullptr;
             if (deserialized->annotationCount > 0)
@@ -148,8 +149,11 @@ Loader::Load(const char* data, const size_t length)
                 deserialized->annotations = new GPULang::Deserialize::Annotation[deserialized->annotationCount];
                 LoadAnnotations(deserialized->annotationCount, deserialized->annotations, var->annotationsOffset, buf);
             }
+            deserialized->bindingScope = var->bindingScope;
+            deserialized->bindingType = var->bindingType;
 
             this->nameToObject[deserialized->name] = deserialized;
+            this->variables.push_back(deserialized);
             break;
         }
         case GPULang::Serialize::StructureType:
@@ -197,32 +201,32 @@ Loader::Load(const char* data, const size_t length)
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
 
-#define LOAD_SHADER(x) \
+#define LOAD_SHADER(x, shader) \
 if (prog->##x.binaryOffset != 0)\
 {\
-    deserialized->##x.binary = Parse<uint32_t>(buf, prog->##x.binaryOffset);\
-    deserialized->##x.binaryLength = prog->##x.binaryLength;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binary = Parse<uint32_t>(buf, prog->##x.binaryOffset);\
+    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binaryLength = prog->##x.binaryLength;\
 }\
 else\
 {\
-    deserialized->##x.binary = nullptr;\
-    deserialized->##x.binaryLength = prog->##x.binaryLength;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binary = nullptr;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binaryLength = prog->##x.binaryLength;\
 }
 
-            LOAD_SHADER(vs)
-            LOAD_SHADER(hs)
-            LOAD_SHADER(ds)
-            LOAD_SHADER(gs)
-            LOAD_SHADER(ps)
-            LOAD_SHADER(cs)
-            LOAD_SHADER(ts)
-            LOAD_SHADER(ms)
-            LOAD_SHADER(rgs)
-            LOAD_SHADER(rms)
-            LOAD_SHADER(rchs)
-            LOAD_SHADER(ris)
-            LOAD_SHADER(rahs)
-            LOAD_SHADER(rcs)
+            LOAD_SHADER(vs, VertexShader)
+            LOAD_SHADER(hs, HullShader)
+            LOAD_SHADER(ds, DomainShader)
+            LOAD_SHADER(gs, GeometryShader)
+            LOAD_SHADER(ps, PixelShader)
+            LOAD_SHADER(cs, ComputeShader)
+            LOAD_SHADER(ts, TaskShader)
+            LOAD_SHADER(ms, MeshShader)
+            LOAD_SHADER(rgs, RayGenShader)
+            LOAD_SHADER(rms, RayMissShader)
+            LOAD_SHADER(rchs, RayClosestHitShader)
+            LOAD_SHADER(ris, RayIntersectionShader)
+            LOAD_SHADER(rahs, RayAnyHitShader)
+            LOAD_SHADER(rcs, RayCallableShader)
 
             // load shaders
             if (prog->renderStateNameOffset != 0)
@@ -272,12 +276,17 @@ else\
             deserialized->stencilEnabled = rend->stencilEnabled;
             deserialized->frontStencilState = rend->frontStencilState;
             deserialized->backStencilState = rend->backStencilState;
-            deserialized->logicOpEnabled = rend->logicOp;
+            deserialized->logicOpEnabled = rend->logicOpEnabled;
             deserialized->logicOp = rend->logicOp;
+            
             for (size_t i = 0; i < rend->blendStatesCount; i++)
             {
                 deserialized->blendStates[i] = *Parse<GPULang::BlendState>(buf, rend->blendStatesOffset + i * sizeof(BlendState));
             }
+            deserialized->blendConstants[0] = rend->blendConstants[0];
+            deserialized->blendConstants[1] = rend->blendConstants[1];
+            deserialized->blendConstants[2] = rend->blendConstants[2];
+            deserialized->blendConstants[3] = rend->blendConstants[3];
 
             deserialized->annotationCount = rend->annotationsCount;
             deserialized->annotations = nullptr;

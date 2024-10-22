@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 #include <string>
 #include <vector>
+#include "shaderusage.h"
 namespace GPULang
 {
 
@@ -67,6 +68,7 @@ enum PolygonMode
 enum CullMode
 {
     InvalidCullMode,
+    NoCullMode,
     FrontMode,
     BackMode,
     FrontAndBackMode
@@ -178,6 +180,23 @@ struct BlendState
     uint32_t colorComponentMask;
 };
 
+enum BindingScope
+{
+    VertexInput,        // For vertex attributes
+    Resource            // For images, buffers, atomic counters, acceleration structures
+};
+
+enum BindingType
+{
+    MutableBuffer,
+    Buffer,
+    MutableImage,
+    Image,
+    SampledImage,
+    Sampler,
+    Inline
+};
+
 namespace Serialize
 {
 
@@ -256,6 +275,7 @@ struct RenderState : public Serializable
     LogicOp logicOp;
     size_t blendStatesOffset;
     size_t blendStatesCount;
+    float blendConstants[4];
 };
 
 struct Program : public Serializable
@@ -332,6 +352,10 @@ struct Variable : public Bindable
 
     uint32_t byteSize;
     uint32_t structureOffset;
+
+    BindingScope bindingScope;
+    BindingType bindingType;
+    ShaderUsage visibility;
 };
 
 struct Structure : public Bindable
@@ -441,9 +465,10 @@ Write(const T& data)
     Write array of type (short hand for writing a block)
 */
 template <typename T>
-size_t Write(const T& data, const size_t count)
+size_t 
+Write(const T* data, const size_t count)
 {
-    return this->Write((const char*)&data, sizeof(T) * count);
+    return this->Write((const char*)data, sizeof(T) * count);
 }
 
 //------------------------------------------------------------------------------
@@ -551,6 +576,7 @@ struct RenderState : public Deserializable
     bool logicOpEnabled;
     LogicOp logicOp;
     BlendState blendStates[8];
+    float blendConstants[4];
 };
 
 struct Program : public Deserializable
@@ -569,7 +595,27 @@ struct Program : public Deserializable
         size_t binaryLength;
     };
 
-    Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rchs, rahs, rms, ris, rcs;
+    enum ShaderStages
+    {
+        VertexShader,
+        HullShader,
+        DomainShader,
+        GeometryShader,
+        PixelShader,
+        ComputeShader,
+        TaskShader,
+        MeshShader,
+        RayGenShader,
+        RayAnyHitShader,
+        RayClosestHitShader,
+        RayMissShader,
+        RayIntersectionShader,
+        RayCallableShader,
+
+        NumShaders
+    };
+
+    Shader shaders[ShaderStages::NumShaders];
 };
 
 struct Bindable : public Deserializable
@@ -610,6 +656,10 @@ struct Variable : public Bindable
 
     uint32_t byteSize;
     uint32_t structureOffset;
+
+    BindingScope bindingScope;
+    BindingType bindingType;
+    ShaderUsage visibility;
 };
 
 struct Structure : public Bindable

@@ -698,6 +698,10 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.logicOp = resolved->logicOp;
             output.depthClampEnabled = resolved->depthClampEnabled;
             output.backStencilState = resolved->backStencilState;
+            output.blendConstants[0] = resolved->blendConstants[0];
+            output.blendConstants[1] = resolved->blendConstants[1];
+            output.blendConstants[2] = resolved->blendConstants[2];
+            output.blendConstants[3] = resolved->blendConstants[3];
 
             output.blendStatesOffset = dynamicDataBlob.iterator;
             output.blendStatesCount = 8;
@@ -785,7 +789,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     varOutput.byteSize = resolved->byteSize;
                     varOutput.structureOffset = resolved->structureOffset;
                     varOutput.arraySizesCount = resolved->type.modifierValues.size();
-                    varOutput.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.begin(), resolved->type.modifierValues.size());
+                    varOutput.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
 
                     // write variable
                     dynamicDataBlob.WriteReserved(varOutput, offset);
@@ -815,15 +819,36 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             Serialize::Variable output;
             output.binding = resolved->binding;
             output.group = resolved->group;
+            output.visibility.bits = resolved->visibilityBits.bits;
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
             output.byteSize = resolved->byteSize;
             output.structureOffset = resolved->structureOffset;
             output.arraySizesCount = resolved->type.modifierValues.size();
-            output.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.begin(), resolved->type.modifierValues.size());
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
+            output.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
             output.annotationsCount = var->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
+            output.bindingScope = resolved->usageBits.flags.isEntryPointParameter ? GPULang::BindingScope::VertexInput : GPULang::BindingScope::Resource;
 
+            if (resolved->type.IsMutable())
+            {
+                if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                    output.bindingType = GPULang::BindingType::MutableBuffer;
+                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+                    output.bindingType = GPULang::BindingType::MutableImage;
+            }
+            else
+            {
+                if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                    output.bindingType = GPULang::BindingType::Buffer;
+                else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
+                    if (resolved->type.sampled)
+                        output.bindingType = GPULang::BindingType::SampledImage;
+                    else
+                        output.bindingType = GPULang::BindingType::Image;
+                else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
+                    output.bindingType = GPULang::BindingType::Sampler;
+            }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)
             {

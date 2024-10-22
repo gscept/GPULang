@@ -9,6 +9,7 @@
 #include "attribute.h"
 #include "annotation.h"
 #include "variable.h"
+#include "shaderusage.h"
 #include <vector>
 namespace GPULang
 {
@@ -189,28 +190,6 @@ struct Function : public Symbol
         bool isEntryPoint;
         bool isPrototype;
 
-        union ShaderUsage
-        {
-            struct
-            {
-                uint32_t isVertexShader : 1;
-                uint32_t isHullShader : 1;
-                uint32_t isDomainShader : 1;
-                uint32_t isGeometryShader : 1;
-                uint32_t isPixelShader : 1;
-                uint32_t isComputeShader : 1;
-                uint32_t isTaskShader : 1;
-                uint32_t isMeshShader : 1;
-                uint32_t isRayGenerationShader : 1;
-                uint32_t isRayMissShader : 1;
-                uint32_t isRayClosestHitShader : 1;
-                uint32_t isRayAnyHitShader : 1;
-                uint32_t isRayIntersectionShader : 1;
-                uint32_t isRayCallableShader : 1;
-
-            } flags;
-            uint32_t bits;
-        };
         ShaderUsage shaderUsage;
 
         union SideEffects

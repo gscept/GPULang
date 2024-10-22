@@ -34,6 +34,7 @@ Variable::Variable()
     typeResolved->elementPadding = 0;
     typeResolved->startPadding = 0;
     typeResolved->value = nullptr;
+    typeResolved->visibilityBits.bits = 0x0;
 }
 
 //------------------------------------------------------------------------------

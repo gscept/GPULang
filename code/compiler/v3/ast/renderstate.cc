@@ -14,7 +14,60 @@ RenderState::RenderState()
 {
     this->symbolType = RenderStateType;
     this->resolved = new RenderState::__Resolved();
-    
+    RenderState::__Resolved* typeResolved = static_cast<RenderState::__Resolved*>(this->resolved);
+    typeResolved->depthClampEnabled = false;
+    typeResolved->noPixels = false;
+    typeResolved->polygonMode = PolygonMode::FillMode;
+    typeResolved->cullMode = CullMode::BackMode;
+    typeResolved->windingOrderMode = WindingOrderMode::CounterClockwiseMode;
+    typeResolved->depthBiasEnabled = false;
+    typeResolved->depthBiasFactor = 0.0f;
+    typeResolved->depthBiasClamp = 0.0f;
+    typeResolved->depthBiasSlopeFactor = 0.0f;
+    typeResolved->lineWidth = 1.0f;
+
+    typeResolved->depthTestEnabled = true;
+    typeResolved->depthWriteEnabled = true;
+    typeResolved->depthCompare = CompareMode::LessEqualCompare;
+    typeResolved->depthBoundsTestEnabled = true;
+    typeResolved->minDepthBounds = 0.0f;
+    typeResolved->maxDepthBounds = 1.0f;
+    typeResolved->stencilEnabled = false;
+    typeResolved->logicOpEnabled = false;
+    typeResolved->logicOp = LogicOp::LogicSetOp;
+    BlendState defaultBlend =
+    {
+        .blendEnabled = false,
+        .sourceColorBlendFactor = BlendFactor::OneFactor,
+        .destinationColorBlendFactor = BlendFactor::OneFactor,
+        .sourceAlphaBlendFactor = BlendFactor::OneFactor,
+        .destinationAlphaBlendFactor = BlendFactor::OneFactor,
+        .colorBlendOp = BlendOp::AddOp,
+        .alphaBlendOp = BlendOp::AddOp,
+        .colorComponentMask = 0xFFFFFFFF
+    };
+    typeResolved->blendStates[0] = defaultBlend;
+    typeResolved->blendStates[1] = defaultBlend;
+    typeResolved->blendStates[2] = defaultBlend;
+    typeResolved->blendStates[3] = defaultBlend;
+    typeResolved->blendStates[4] = defaultBlend;
+    typeResolved->blendStates[5] = defaultBlend;
+    typeResolved->blendStates[6] = defaultBlend;
+    typeResolved->blendStates[7] = defaultBlend;
+
+    StencilState defaultStencil =
+    {
+        .fail = StencilOp::StencilKeepOp,
+        .pass = StencilOp::StencilKeepOp,
+        .depthFail = StencilOp::StencilKeepOp,
+        .compare = CompareMode::EqualCompare,
+        .compareMask = 0xFFFFFFFF,
+        .writeMask = 0xFFFFFFFF,
+        .referenceMask = 0xFFFFFFFF
+    };
+    typeResolved->frontStencilState = defaultStencil;
+    typeResolved->backStencilState = defaultStencil;
+
 }
 
 const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
@@ -63,7 +116,8 @@ const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> strin
     { "DestinationAlphaBlend", RenderState::__Resolved::DestinationBlendAlphaFactorType },
     { "BlendOp", RenderState::__Resolved::ColorBlendOpType },
     { "BlendOpAlpha", RenderState::__Resolved::AlphaBlendOpType },
-    { "ColorComponentMask", RenderState::__Resolved::ColorComponentMaskType }
+    { "ColorComponentMask", RenderState::__Resolved::ColorComponentMaskType },
+    { "BlendConstants", RenderState::__Resolved::BlendConstantsType }
 };
 
 //------------------------------------------------------------------------------
@@ -117,6 +171,7 @@ RenderState::__Resolved::StringToPolygonMode(const std::string& str)
 
 const std::map<std::string, CullMode> stringToCullMode =
 {
+    { "None", NoCullMode },
     { "Front", FrontMode },
     { "Back", BackMode },
     { "FrontAndBack", FrontAndBackMode }

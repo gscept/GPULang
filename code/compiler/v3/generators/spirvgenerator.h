@@ -52,6 +52,7 @@ struct SPIRVResult
         PushConstant,
         Function,
         Image,
+        MutableImage,
         Input,
         Output
     } scope;
@@ -66,13 +67,15 @@ struct SPIRVResult
             case Storage::WorkGroup:
                 return "WorkGroup";
                 break;
-            case Storage::Sampler:
             case Storage::Uniform:
                 return "Uniform";
                 break;
+            case Storage::Sampler:
+            case Storage::Image:
             case Storage::UniformConstant:
                 return "UniformConstant";
                 break;
+            case Storage::MutableImage:
             case Storage::StorageBuffer:
                 return "StorageBuffer";
                 break;
@@ -81,9 +84,6 @@ struct SPIRVResult
                 break;
             case Storage::Function:
                 return "Function";
-                break;
-            case Storage::Image:
-                return "Image";
                 break;
             case Storage::Input:
                 return "Input";

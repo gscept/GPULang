@@ -947,52 +947,61 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 switch (entryType)
                 {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
-                    funResolved->shaderUsage.flags.isVertexShader = true;
+                    funResolved->shaderUsage.flags.vertexShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::HullShader:
-                    funResolved->shaderUsage.flags.isHullShader = true;
+                    funResolved->shaderUsage.flags.hullShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::DomainShader:
-                    funResolved->shaderUsage.flags.isDomainShader = true;
+                    funResolved->shaderUsage.flags.domainShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::GeometryShader:
-                    funResolved->shaderUsage.flags.isGeometryShader = true;
+                    funResolved->shaderUsage.flags.geometryShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::PixelShader:
-                    funResolved->shaderUsage.flags.isPixelShader = true;
+                    funResolved->shaderUsage.flags.pixelShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::ComputeShader:
-                    funResolved->shaderUsage.flags.isComputeShader = true;
+                    funResolved->shaderUsage.flags.computeShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::TaskShader:
-                    funResolved->shaderUsage.flags.isTaskShader = true;
+                    funResolved->shaderUsage.flags.taskShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::MeshShader:
-                    funResolved->shaderUsage.flags.isMeshShader = true;
+                    funResolved->shaderUsage.flags.meshShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayGenerationShader:
-                    funResolved->shaderUsage.flags.isRayGenerationShader = true;
+                    funResolved->shaderUsage.flags.rayGenerationShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayMissShader:
-                    funResolved->shaderUsage.flags.isRayMissShader = true;
+                    funResolved->shaderUsage.flags.rayMissShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
-                    funResolved->shaderUsage.flags.isRayClosestHitShader = true;
+                    funResolved->shaderUsage.flags.rayClosestHitShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
-                    funResolved->shaderUsage.flags.isRayAnyHitShader = true;
+                    funResolved->shaderUsage.flags.rayAnyHitShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
-                    funResolved->shaderUsage.flags.isRayIntersectionShader = true;
+                    funResolved->shaderUsage.flags.rayIntersectionShader = true;
                     break;
                 case Program::__Resolved::ProgramEntryType::RayCallableShader:
-                    funResolved->shaderUsage.flags.isRayCallableShader = true;
+                    funResolved->shaderUsage.flags.rayCallableShader = true;
                     break;
                 }
 
                 // when we've set these flags, run function validation to make sure it's properly formatted
                 if (!this->ValidateFunction(compiler, fun))
                     return false;
+
+                // Resolve variable visibility
+                compiler->currentFunction = fun;
+                if (!this->ResolveVisibility(compiler, fun->ast))
+                {
+                    compiler->currentFunction = nullptr;
+                    return false;
+                }
+                compiler->currentFunction = nullptr;
             }
             else
             {
@@ -1188,6 +1197,26 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilReferenceMaskType:
                     assignEntry->right->EvalUInt(state->referenceMask);
                     break;
+            }
+        }
+        else if (entryType == RenderState::__Resolved::BlendConstantsType)
+        {
+            InitializerExpression* init = static_cast<InitializerExpression*>(assignEntry->right);
+            if (init->values.size() != 4)
+            {
+                compiler->Error(Format("Blend constants must be an initializer of 4 values"), symbol);
+                return false;
+            }
+
+            bool result = true;
+            result |= init->values[0]->EvalFloat(stateResolved->blendConstants[0]);
+            result |= init->values[1]->EvalFloat(stateResolved->blendConstants[1]);
+            result |= init->values[2]->EvalFloat(stateResolved->blendConstants[2]);
+            result |= init->values[3]->EvalFloat(stateResolved->blendConstants[3]);
+            if (!result)
+            {
+                compiler->Error(Format("Each value in the initializer must resolve to a compile time literal"), symbol);
+                return false;
             }
         }
         else
@@ -2232,21 +2261,21 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             if (varResolved->parameterBits.flags.isPatch
-                && !(funResolved->shaderUsage.flags.isHullShader || funResolved->shaderUsage.flags.isDomainShader))
+                && !(funResolved->shaderUsage.flags.hullShader || funResolved->shaderUsage.flags.domainShader))
             {
                 compiler->Error(Format("Parameter '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoInterpolate
-                && !funResolved->shaderUsage.flags.isPixelShader)
+                && !funResolved->shaderUsage.flags.pixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoPerspective
-                && !funResolved->shaderUsage.flags.isPixelShader)
+                && !funResolved->shaderUsage.flags.pixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
@@ -2254,7 +2283,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (funResolved->shaderUsage.flags.isVertexShader)
+    if (funResolved->shaderUsage.flags.vertexShader)
     {
         if (!funResolved->sideEffects.flags.exportsVertexPosition)
         {
@@ -2263,7 +2292,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     }
 
     // validate function attribute validity
-    if (funResolved->shaderUsage.flags.isPixelShader)
+    if (funResolved->shaderUsage.flags.pixelShader)
     {
         if (!funResolved->sideEffects.flags.exportsPixel)
             compiler->Warning(Format("Function '%s' is used as pixel shader but produces no color output", fun->name.c_str()), symbol);
@@ -2276,7 +2305,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Warning(Format("Function '%s' has attribute 'early_depth' but is not used as a pixel shader", fun->name.c_str()), symbol);
     }
 
-    if (funResolved->shaderUsage.flags.isHullShader)
+    if (funResolved->shaderUsage.flags.hullShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -2314,7 +2343,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (funResolved->shaderUsage.flags.isDomainShader)
+    if (funResolved->shaderUsage.flags.domainShader)
     {
         // validate required qualifiers
         if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
@@ -2332,7 +2361,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Warning(Format("Function '%s' has attribute 'partition' but is not used as a DomainShader/TessellationEvaluationShader", fun->name.c_str()), symbol);
     }
 
-    if (funResolved->shaderUsage.flags.isGeometryShader)
+    if (funResolved->shaderUsage.flags.geometryShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -2375,7 +2404,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Warning(Format("Function '%s' has attribute 'output_topology' but is not used as a GeometryShader", fun->name.c_str()), symbol);
     }
 
-    if (funResolved->shaderUsage.flags.isComputeShader)
+    if (funResolved->shaderUsage.flags.computeShader)
     {
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
@@ -2674,6 +2703,149 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
         }
     }
     return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
+{
+    bool res = true;
+    switch (symbol->symbolType)
+    {
+        case Symbol::ScopeStatementType:
+        {
+            ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
+            for (auto* statement : scope->symbols)
+            {
+                res |= this->ResolveVisibility(compiler, statement);
+            }
+            break;
+        }
+        case Symbol::ForStatementType:
+        {
+            ForStatement* forStat = static_cast<ForStatement*>(symbol);
+            for (auto* var : forStat->declarations)
+                this->ResolveVisibility(compiler, var);
+            res |= this->ResolveVisibility(compiler, forStat->condition);
+            res |= this->ResolveVisibility(compiler, forStat->loop);
+            res |= this->ResolveVisibility(compiler, forStat->contents);
+            break;
+        }
+        case Symbol::WhileStatementType:
+        {
+            WhileStatement* whileStat = static_cast<WhileStatement*>(symbol);
+            res |= this->ResolveVisibility(compiler, whileStat->condition);
+            res |= this->ResolveVisibility(compiler, whileStat->statement);
+            break;
+        }
+        case Symbol::ReturnStatementType:
+        {
+            ReturnStatement* returnStat = static_cast<ReturnStatement*>(symbol);
+            if (returnStat->returnValue != nullptr)
+                res |= this->ResolveVisibility(compiler, returnStat->returnValue);
+            break;
+        }
+        case Symbol::ExpressionStatementType:
+        {
+            ExpressionStatement* exprStat = static_cast<ExpressionStatement*>(symbol);
+            res |= this->ResolveVisibility(compiler, exprStat->expr);
+            break;
+        }
+        case Symbol::IfStatementType:
+        {
+            IfStatement* ifStat = static_cast<IfStatement*>(symbol);
+            res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
+            if (ifStat->elseStatement != nullptr)
+                res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+            break;
+        }
+        case Symbol::TernaryExpressionType:
+        {
+            TernaryExpression* ternExp = static_cast<TernaryExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, ternExp->lhs);
+            res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
+            res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+            break;
+        }
+        case Symbol::BinaryExpressionType:
+        {
+            BinaryExpression* binExp = static_cast<BinaryExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, binExp->left);
+            res |= this->ResolveVisibility(compiler, binExp->right);
+            break;
+        }
+        case Symbol::AccessExpressionType:
+        {
+            AccessExpression* access = static_cast<AccessExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, access->left);
+            res |= this->ResolveVisibility(compiler, access->right);
+            break;
+        }
+        case Symbol::ArrayIndexExpressionType:
+        {
+            ArrayIndexExpression* arrayExpr = static_cast<ArrayIndexExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, arrayExpr->left);
+            res |= this->ResolveVisibility(compiler, arrayExpr->right);
+            break;
+        }
+        case Symbol::CallExpressionType:
+        {
+            CallExpression* callExpr = static_cast<CallExpression*>(symbol);
+            CallExpression::__Resolved* callResolved = Symbol::Resolved(callExpr);
+            for (auto& arg : callExpr->args)
+                res |= this->ResolveVisibility(compiler, arg);
+            res |= this->ResolveVisibility(compiler, callResolved->function);
+            break;
+        }
+        case Symbol::CommaExpressionType:
+        {
+            CommaExpression* commaExpr = static_cast<CommaExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, commaExpr->left);
+            res |= this->ResolveVisibility(compiler, commaExpr->right);
+        }
+        case Symbol::InitializerExpressionType:
+        {
+            InitializerExpression* init = static_cast<InitializerExpression*>(symbol);
+            for (auto& initializer : init->values)
+                res |= this->ResolveVisibility(compiler, initializer);
+            break;
+        }
+        case Symbol::UnaryExpressionType:
+        {
+            UnaryExpression* unary = static_cast<UnaryExpression*>(symbol);
+            res |= this->ResolveVisibility(compiler, unary->expr);
+        }
+        case Symbol::FunctionType:
+        {
+            Function* fun = static_cast<Function*>(symbol);
+            if (fun->ast != nullptr)
+                res |= this->ResolveVisibility(compiler, fun->ast);
+            break;
+        }
+        case Symbol::SymbolExpressionType:
+        {
+            SymbolExpression* symExpr = static_cast<SymbolExpression*>(symbol);
+            std::string symbol;
+            symExpr->EvalSymbol(symbol);
+            Symbol* newSymbol = compiler->GetSymbol(symbol);
+            if (newSymbol != nullptr)
+                res |= this->ResolveVisibility(compiler, newSymbol);
+            break;
+        }
+        case Symbol::VariableType:
+        {
+            Variable* var = static_cast<Variable*>(symbol);
+            Variable::__Resolved* varResolved = Symbol::Resolved(var);
+            Function::__Resolved* currentFunResolved = Symbol::Resolved(compiler->currentFunction);
+            varResolved->visibilityBits.bits |= currentFunResolved->shaderUsage.bits;
+            if (varResolved->value != nullptr)
+                res |= this->ResolveVisibility(compiler, varResolved->value);
+            break;
+        }
+    }
+    return res;
 }
 
 } // namespace GPULang

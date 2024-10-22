@@ -33,6 +33,7 @@ struct Loader
     template<typename T> T* Get(std::string name);
 
     std::unordered_map<std::string, GPULang::Deserialize::Deserializable*> nameToObject;
+    std::vector<GPULang::Deserialize::Variable*> variables;
 };
 
 //------------------------------------------------------------------------------

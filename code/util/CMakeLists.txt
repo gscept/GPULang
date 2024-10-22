@@ -17,6 +17,7 @@ fips_files(
 	cmdlineargs.cc
 	cmdlineargs.h
 	serialize.h
+    shaderusage.h
 	textwriter.cc
 	textwriter.h
 	types.h

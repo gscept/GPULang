@@ -54,7 +54,8 @@ struct RenderState : public State
             DestinationBlendAlphaFactorType,
             ColorBlendOpType,
             AlphaBlendOpType,
-            ColorComponentMaskType
+            ColorComponentMaskType,
+            BlendConstantsType
         };
 
         /// convert from string to program entry type
@@ -129,6 +130,8 @@ struct RenderState : public State
         static const BlendOp StringToBlendOp(const std::string& str);
 
         BlendState blendStates[8];
+
+        float blendConstants[4];
     };
 };
 

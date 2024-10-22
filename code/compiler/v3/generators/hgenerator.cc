@@ -185,6 +185,10 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
         }
         
     }
+    else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+    {
+        //outCode.append("static const int %s_
+    }
     else if (varResolved->usageBits.flags.isConst)
     {
         std::string typeStr = typeToHeaderType[var->type.name];
@@ -198,14 +202,20 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
         std::string arraySize = "";
         for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
         {
-            size_t size = varResolved->type.modifierValues[i];
-            if (size > 0)
-                arraySize.append(Format("[%d]", size));
-            else
-                arraySize.append(Format("[]"));
+            if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
+            {
+                size_t size = varResolved->type.modifierValues[i];
+                if (size > 0)
+                    arraySize.append(Format("[%d]", size));
+                else
+                    arraySize.append(Format("[]"));
+            }
         }
 
-        outCode.append(Format("const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
+        if (varResolved->value != nullptr)
+            outCode.append(Format("const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
+        else
+            outCode.append(Format("const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
     }
 }
 

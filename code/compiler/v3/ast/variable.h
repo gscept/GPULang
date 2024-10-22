@@ -9,6 +9,7 @@
 #include "attribute.h"
 #include "annotation.h"
 #include "types/type.h"
+#include "shaderusage.h"
 #include <vector>
 #include <unordered_map>
 namespace GPULang
@@ -140,7 +141,8 @@ struct Variable : public Symbol
         uint32_t startPadding;      // padding before variable
 
         ImageFormat imageFormat;    // for read write images, this is the format
-        
+
+        ShaderUsage visibilityBits;
     };
 };
 

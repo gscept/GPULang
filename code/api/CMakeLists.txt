@@ -10,7 +10,6 @@ target_include_directories(gpulang_reflection PUBLIC
 	${GPULANG_ROOT}
 	${GPULANG_ROOT}/code/util
 	${GPULANG_ROOT}/code/api
-	${GPULANG_ROOT}/code/api/lowlevel
 	${VULKAN_INCLUDE_DIR}
 )
 
@@ -25,5 +24,11 @@ fips_dir(reflection)
 		structure.h
 		variable.h
 	)
+
+fips_dir(reflection/vk)
+    fips_files(
+        pipelineassembly.cc
+        pipelineassembly.h
+    )
 
 fips_end_lib()

@@ -1,6 +1,3 @@
-const  Albedo[] = ;
-const  Material[] = ;
-const  Sampler[] = ;
 struct Camera
 {
     float viewProjection;
@@ -13,7 +10,6 @@ struct struct(camera)
     float position;
 };
 
-const  camera[] = ;
 struct Object
 {
     float model;
@@ -24,4 +20,3 @@ struct struct(object)
     float model;
 };
 
-const  object[] = ;

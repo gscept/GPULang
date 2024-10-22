@@ -34,7 +34,7 @@ Function::Function()
     typeResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
     typeResolved->executionModifiers.patchType = Function::__Resolved::InvalidPatchType;
     typeResolved->executionModifiers.partitionMethod = Function::__Resolved::InvalidPartitionMethod;
-    typeResolved->executionModifiers.pixelOrigin = Function::__Resolved::Lower;
+    typeResolved->executionModifiers.pixelOrigin = Function::__Resolved::Upper;
     typeResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;
     typeResolved->executionModifiers.computeShaderWorkGroupSize[1] = 1;
     typeResolved->executionModifiers.computeShaderWorkGroupSize[2] = 1;

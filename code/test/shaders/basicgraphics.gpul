@@ -31,7 +31,6 @@ BasicVertex(
     const worldPos = object.model * f32x4(Position, 1.0f);
     const clipPos = camera.viewProjection * worldPos;
 
-
     gplExportVertexCoordinates(clipPos);
     OutUV = UV;
 }

@@ -49,12 +49,15 @@ struct Validator
     /// Resolve statement
     bool ResolveStatement(Compiler* compiler, Symbol* symbol);
 
-    /// validate function
+    /// Validate function
     bool ValidateFunction(Compiler* compiler, Symbol* symbol);
-    /// validate program
+    /// Validate program
     bool ValidateProgram(Compiler* compiler, Symbol* symbol);
-    /// validate type
+    /// Validate type
     bool ValidateType(Compiler* compiler, const Type::FullType& type, Type* typeSymbol, Symbol* sym);
+
+    /// Resolve variable visibility
+    bool ResolveVisibility(Compiler* compiler, Symbol* symbol);
 
     std::set<std::string> allowedTextureAttributes;
     std::set<std::string> allowedSamplerAttributes;

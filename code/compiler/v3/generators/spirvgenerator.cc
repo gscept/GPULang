@@ -212,7 +212,10 @@ GenerateTypeSPIRV(
             baseType = Format("sampledType(%d)", name);
             name = generator->AddSymbol(baseType, Format("OpTypeSampledImage %%%d", name), true);
         }
-        scope = SPIRVResult::Storage::Image;
+        if (type.mut)
+            scope = SPIRVResult::Storage::MutableImage;
+        else
+            scope = SPIRVResult::Storage::Image;
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
@@ -1747,7 +1750,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::SetOutputViewport] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("ShaderViewportIndex");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
-        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Output %%%d", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Output", Format("OpTypePointer Output %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplOutputViewport", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputViewport", ret, "BuiltIn ViewportIndex");
@@ -1759,7 +1762,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->AddCapability("Shader");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
-        uint32_t typePtr = g->AddSymbol("ptr(f32x4)Input", Format("OpTypePointer Output %%%d", vecType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x4)Output", Format("OpTypePointer Output %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplVertexCoordinates", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplVertexCoordinates", ret, "BuiltIn Position");
@@ -1861,7 +1864,8 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t typePtr = g->AddSymbol(Format("ptr(%s)Output", name.c_str()), Format("OpTypePointer Output %%%d", baseType), true);
             uint32_t ret = g->AddSymbol("gplExportColor", Format("OpVariable %%%d Output", typePtr), true);
             g->interfaceVariables.insert(ret);
-            g->AddDecoration("gplExportColor", ret, Format("Index %d", args[1].literalValue.i));
+            g->AddDecoration(Format("gplExportColorIndex%d", args[1].literalValue.i), ret, Format("Index %d", args[1].literalValue.i));
+            g->AddDecoration(Format("gplExportColorLocation%d", args[1].literalValue.i), ret, Format("Location %d", args[1].literalValue.i));
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
             g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportColor");
             return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
@@ -2743,12 +2747,20 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         if (typeName.scope != SPIRVResult::Storage::Sampler)
             generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
         generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
-        generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->group));
+        generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
+        generator->interfaceVariables.insert(name);
+    }
+    else if (typeName.scope == SPIRVResult::Storage::Image || typeName.scope == SPIRVResult::Storage::MutableImage)
+    {
+        generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+        generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
         generator->interfaceVariables.insert(name);
     }
     else if (typeName.scope == SPIRVResult::Storage::Input || typeName.scope == SPIRVResult::Storage::Output)
     {
-        generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", varResolved->inBinding));
+        uint8_t binding = typeName.scope == SPIRVResult::Storage::Input ? varResolved->inBinding : varResolved->outBinding;
+        generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", binding));
+        generator->AddDecoration(Format("Component(%s)", varResolved->name.c_str()), name, Format("Component 0"));
         if (varResolved->parameterBits.flags.isNoInterpolate)
             generator->AddDecoration(Format("NoInterpolate(%s)", varResolved->name.c_str()), name, "Flat");
         if (varResolved->parameterBits.flags.isNoPerspective)
@@ -3783,7 +3795,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_UNIVERSAL_1_6);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
 
     static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {
@@ -4228,7 +4240,7 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, std::string name, uint32_t t
     }
     else
     {
-        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::UniformConstant)
+        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::MutableImage || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::UniformConstant)
             this->interfaceVariables.insert(this->symbolCounter);
 
         if (init != 0)
