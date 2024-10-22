@@ -1142,7 +1142,7 @@ int PLATFORM_MAIN
     {
         VkMemoryRequirements memReqs;
         vkGetBufferMemoryRequirements(device, cameraBuf, &memReqs);
-        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &cameraData, memReqs.alignment, 20);
+        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &cameraData, memReqs.alignment);
         VERIFY(vkBindBufferMemory(device, cameraBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
@@ -1161,7 +1161,7 @@ int PLATFORM_MAIN
     {
         VkMemoryRequirements memReqs;
         vkGetBufferMemoryRequirements(device, objectBuf, &memReqs);
-        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &objectData, memReqs.alignment, 16);
+        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &objectData, memReqs.alignment);
         VERIFY(vkBindBufferMemory(device, objectBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
