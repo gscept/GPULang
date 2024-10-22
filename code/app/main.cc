@@ -734,22 +734,22 @@ int PLATFORM_MAIN
     VkVertexInputBindingDescription vertexBinding =
     {
         .binding = 0,
-        .stride = sizeof(float) * 5,
+        .stride = Basicgraphics::BasicVertex::VERTEX_STRIDE,
         .inputRate = VK_VERTEX_INPUT_RATE_VERTEX,
     };
     VkVertexInputAttributeDescription vertexAttributes[] =
     {
         {
-            .location = 0,
+            .location = Basicgraphics::BasicVertex::Position_BINDING,
             .binding = 0,
             .format = VK_FORMAT_R32G32B32_SFLOAT,
-            .offset = 0
+            .offset = Basicgraphics::BasicVertex::Position_OFFSET
         },
         {
-            .location = 1,
+            .location = Basicgraphics::BasicVertex::UV_BINDING,
             .binding = 0,
             .format = VK_FORMAT_R32G32_SFLOAT,
-            .offset = sizeof(float) * 3
+            .offset = Basicgraphics::BasicVertex::UV_OFFSET
         }
     };
     VkPipelineVertexInputStateCreateInfo vertexInput =

@@ -68,4 +68,17 @@ struct object
     using STRUCT = UniformBuffer_object;
 };
 
+struct BasicVertex
+{
+    static const uint32_t Position_BINDING = 0;
+    static const uint32_t Position_OFFSET = 0;
+    static const uint32_t Position_SIZE = 12;
+    static const uint32_t UV_BINDING = 1;
+    static const uint32_t UV_OFFSET = 12;
+    static const uint32_t UV_SIZE = 8;
+    static const uint32_t VERTEX_STRIDE = 20;
+};
+struct BasicPixel
+{
+};
 } // namespace Basicgraphics

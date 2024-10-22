@@ -15,10 +15,12 @@ struct HGenerator : public Generator
     /// generate code
     bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
+    /// generate function
+    void GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate structure 
-    void GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
-    void GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
 };
 
 } // namespace GPULang

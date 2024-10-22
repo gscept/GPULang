@@ -5,6 +5,7 @@
 #include "hgenerator.h"
 #include "ast/symbol.h"
 #include "ast/structure.h"
+#include "ast/function.h"
 #include "ast/expressions/initializerexpression.h"
 #include "compiler.h"
 #include "util.h"
@@ -25,10 +26,13 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
         switch (sym->symbolType)
         {
         case Symbol::StructureType:
-            this->GenerateStructureSPIRV(compiler, program, sym, output);
+            this->GenerateStructureH(compiler, program, sym, output);
             break;
         case Symbol::VariableType:
-            this->GenerateVariableSPIRV(compiler, program, sym, output, false);
+            this->GenerateVariableH(compiler, program, sym, output, false);
+            break;
+        case Symbol::FunctionType:
+            this->GenerateFunctionH(compiler, program, sym, output);
             break;
         }
     }
@@ -41,6 +45,8 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
 
     return true;
 }
+
+
 
 std::map<std::string, std::string> typeToHeaderType =
 {
@@ -106,7 +112,7 @@ std::map<std::string, std::string> typeToArraySize =
 /**
 */
 void 
-HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
@@ -118,7 +124,7 @@ HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol*
         {
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
-            this->GenerateVariableSPIRV(compiler, program, var, variables, false);
+            this->GenerateVariableH(compiler, program, var, variables, false);
             variables.append("\n");
 
             offsets.append(Format("    static const uint32_t %s_OFFSET = %d;\n", var->name.c_str(), varResolved->structureOffset));
@@ -171,7 +177,7 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, std::string& outCode)
 /**
 */
 void 
-HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -251,6 +257,43 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
             outCode.append(Format("    static const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
         else
             outCode.append(Format("    static const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+{
+    Function* fun = static_cast<Function*>(symbol);
+    Function::__Resolved* funResolved = Symbol::Resolved(fun);
+    if (funResolved->isEntryPoint)
+    {
+        outCode.append(Format("struct %s\n", fun->name.c_str()));
+        outCode.append("{\n");
+        if (funResolved->shaderUsage.flags.vertexShader)
+        {
+            uint32_t offset = 0;
+            for (Variable* arg : fun->parameters)
+            {
+                Variable::__Resolved* argRes = Symbol::Resolved(arg);
+                if (argRes->usageBits.flags.isEntryPointParameter && argRes->storage == Variable::__Resolved::Storage::Input)
+                {
+                    outCode.append(Format("    static const uint32_t %s_BINDING = %d;\n", argRes->name.c_str(), argRes->inBinding));
+                    outCode.append(Format("    static const uint32_t %s_OFFSET = %d;\n", argRes->name.c_str(), offset));
+                    outCode.append(Format("    static const uint32_t %s_SIZE = %d;\n", argRes->name.c_str(), argRes->byteSize));
+                    offset += argRes->byteSize;
+                }
+            }
+            outCode.append(Format("    static const uint32_t VERTEX_STRIDE = %d;\n", offset));
+        }
+        if (funResolved->shaderUsage.flags.computeShader)
+        {
+            const Function::__Resolved::ExecutionModifiers& mods = funResolved->executionModifiers;
+            outCode.append(Format("    static const uint32_t WORKGROUP_SIZE[] = { %d, %d, %d };\n", mods.computeShaderWorkGroupSize[0], mods.computeShaderWorkGroupSize[1], mods.computeShaderWorkGroupSize[2]));
+        }
+        outCode.append("};\n");
     }
 }
 
