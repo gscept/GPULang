@@ -942,12 +942,6 @@ int PLATFORM_MAIN
     VkImageView view;
     VERIFY(vkCreateImageView(device, &viewCreate, nullptr, &view));
 
-    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-    {
-        if (key == GLFW_KEY_ESCAPE)
-            terminate = true;
-    });
-
     VERIFY(vkEndCommandBuffer(cmdBuf));
 
     VkFenceCreateInfo fenceInfo =
@@ -1030,7 +1024,22 @@ int PLATFORM_MAIN
     {
         .sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO,
         .pNext = nullptr,
-        .flags = 0x0
+        .flags = 0x0,
+        .magFilter = VkFilter::VK_FILTER_LINEAR,
+        .minFilter = VkFilter::VK_FILTER_LINEAR,
+        .mipmapMode = VkSamplerMipmapMode::VK_SAMPLER_MIPMAP_MODE_LINEAR,
+        .addressModeU = VkSamplerAddressMode::VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,
+        .addressModeV = VkSamplerAddressMode::VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,
+        .addressModeW = VkSamplerAddressMode::VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,
+        .mipLodBias = 0.0f,
+        .anisotropyEnable = true,
+        .maxAnisotropy = 16.0f,
+        .compareEnable = false,
+        .compareOp = VkCompareOp::VK_COMPARE_OP_ALWAYS,
+        .minLod = -FLT_MAX,
+        .maxLod = FLT_MAX,
+        .borderColor = VkBorderColor::VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK,
+        .unnormalizedCoordinates = false
     };
     VkSampler sampler;
     VERIFY(vkCreateSampler(device, &samplerInfo, nullptr, &sampler));
@@ -1168,6 +1177,12 @@ int PLATFORM_MAIN
     };
     vkUpdateDescriptorSets(device, 5, writes, 0, nullptr);
 
+    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+    {
+        if (key == GLFW_KEY_ESCAPE)
+            terminate = true;
+    });
+
     // Update loop
     VkCommandBuffer frameBuffers[3] = { VK_NULL_HANDLE };
     uint32_t frameBufferCounter = 0;
@@ -1176,6 +1191,7 @@ int PLATFORM_MAIN
     while (!terminate)
     {
         glfwPollEvents();
+        terminate = glfwWindowShouldClose(window);
 
         if (frameBuffers[frameBufferCounter] != VK_NULL_HANDLE)
         {
