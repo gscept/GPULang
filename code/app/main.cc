@@ -1127,37 +1127,41 @@ int PLATFORM_MAIN
     };
     VkBuffer cameraBuf, objectBuf;
     VERIFY(vkCreateBuffer(device, &shaderBufferInfo, nullptr, &cameraBuf));
-    float cameraData[] = 
-    {
-        // View-Projection
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1,
 
-        // Position
-        0, 0, 0, 1,
+    Basicgraphics::camera::STRUCT cameraData;
+    cameraData =
+    {
+        .viewProjection = {
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        },
+        .position = { 0, 0, 0, 1 }
     };
     {
         VkMemoryRequirements memReqs;
         vkGetBufferMemoryRequirements(device, cameraBuf, &memReqs);
-        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, cameraData, memReqs.alignment, 20);
+        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &cameraData, memReqs.alignment, 20);
         VERIFY(vkBindBufferMemory(device, cameraBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
-    float object[] =
+    Basicgraphics::object::STRUCT objectData =
     {
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1,
+        .model =
+        {
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+        }
     };
     shaderBufferInfo.size = objectBufSize;
     VERIFY(vkCreateBuffer(device, &shaderBufferInfo, nullptr, &objectBuf));
     {
         VkMemoryRequirements memReqs;
         vkGetBufferMemoryRequirements(device, objectBuf, &memReqs);
-        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, object, memReqs.alignment, 16);
+        uint64_t offset = AllocAndUpload(MemoryHeap::Coherent, &objectData, memReqs.alignment, 16);
         VERIFY(vkBindBufferMemory(device, objectBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
@@ -1221,7 +1225,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = Basicgraphics::UniformBuffer_camera::BINDING,
+            .dstBinding = Basicgraphics::camera::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
@@ -1233,7 +1237,7 @@ int PLATFORM_MAIN
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
             .dstSet = descriptors,
-            .dstBinding = Basicgraphics::UniformBuffer_object::BINDING,
+            .dstBinding = Basicgraphics::object::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,

@@ -111,23 +111,30 @@ HGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol*
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
     std::string variables;
+    std::string offsets;
     for (Symbol* sym : struc->symbols)
     {
         if (sym->symbolType == Symbol::SymbolType::VariableType)
         {
             Variable* var = static_cast<Variable*>(sym);
+            Variable::__Resolved* varResolved = Symbol::Resolved(var);
             this->GenerateVariableSPIRV(compiler, program, var, variables, false);
-                variables.append("\n");
+            variables.append("\n");
+
+            offsets.append(Format("    static const uint32_t %s_OFFSET = %d;\n", var->name.c_str(), varResolved->structureOffset));
         }
     }
 
     outCode.append(Format("struct %s\n", struc->name.c_str()));
     outCode.append("{\n");
     outCode.append(Format("    static const uint32_t SIZE = %d;\n", strucResolved->byteSize));
+    outCode.append(offsets);
+    /*
     if (strucResolved->binding != Structure::__Resolved::NOT_BOUND)
         outCode.append(Format("    static const uint32_t BINDING = %d;\n", strucResolved->binding));
     if (strucResolved->group != Structure::__Resolved::NOT_BOUND)
         outCode.append(Format("    static const uint32_t GROUP = %d;\n", strucResolved->group));
+        */
     outCode.append("\n");
     outCode.append(variables);
     outCode.append("};\n\n");
@@ -200,7 +207,8 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
     }
     else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
     {
-        if (varResolved->typeSymbol->category == Type::Category::TextureCategory
+        if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory
+            || varResolved->typeSymbol->category == Type::Category::TextureCategory
             || varResolved->typeSymbol->category == Type::Category::SamplerCategory
             || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
         )
@@ -210,7 +218,9 @@ HGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* 
             outCode.append(Format("    static const uint32_t BINDING = %d;\n", varResolved->binding));
             outCode.append(Format("    static const uint32_t GROUP = %d;\n", varResolved->group));
             if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
-                outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->typeSymbol->byteSize));
+            {
+                outCode.append(Format("    using STRUCT = %s;\n", varResolved->typeSymbol->name.c_str()));
+            }
             outCode.append("};\n\n");
         }
     }

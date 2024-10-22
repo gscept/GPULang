@@ -1337,6 +1337,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, struc);
 
     // validate members
+    uint32_t offset = 0;
     for (Symbol* sym : struc->symbols)
     {
         if (sym->symbolType == Symbol::VariableType)
@@ -1344,8 +1345,10 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
             varResolved->usageBits.flags.isStructMember = true;
+            varResolved->structureOffset = offset;
             if (!this->ResolveVariable(compiler, var))
                 return false;
+            offset += varResolved->byteSize;
 
             strucResolved->byteSize += varResolved->byteSize;
         }
@@ -1964,6 +1967,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     uint32_t alignedOffset = Type::Align(offset, alignment);
                     generatedVarResolved->startPadding = alignedOffset - offset;
                     generatedVarResolved->byteSize = size;
+                    generatedVarResolved->structureOffset = offset;
                     offset += size;
                     structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                     generatedStruct->symbols.push_back(generatedVar);

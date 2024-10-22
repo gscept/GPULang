@@ -640,8 +640,6 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             WRITE_BINARY(RayCallableShader, rcs)
             WRITE_BINARY(RayIntersectionShader, ris)
 
-            
-
             if (resolved->usage.flags.hasRenderState)
             {
                 Symbol* renderState = resolved->programMappings[Program::__Resolved::RenderState];
