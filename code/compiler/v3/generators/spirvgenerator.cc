@@ -379,25 +379,6 @@ SwizzleMaskToIndices(const Type::SwizzleMask mask, bool offset = false)
 /**
 */
 SPIRVResult
-LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
-{
-    uint32_t val = arg.name;
-
-    if (!arg.isValue)
-        val = generator->AddMappedOp(Format("OpLoad %%%d %%%d", arg.typeName, val));
-    
-    if (arg.swizzleMask != Type::SwizzleMask())
-    {
-        std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
-        val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
-    }
-    return SPIRVResult(val, arg.typeName, true, arg.isConst);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-SPIRVResult
 GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info)
 {
     SPIRVResult res = SPIRVResult::Invalid();
@@ -446,8 +427,46 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
             break;
         }
     }
+    res.isConst = true;
     return res;
 }
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
+LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
+{
+    if (arg.isLiteral)
+    {
+        switch (arg.literalValue.type)
+        {
+        case SPIRVResult::LiteralValue::FloatType:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Float(arg.literalValue.f));
+            break;
+        case SPIRVResult::LiteralValue::IntType:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Int(arg.literalValue.i));
+            break;
+        case SPIRVResult::LiteralValue::UIntType:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.ui));
+            break;
+        }
+        return arg;
+    }
+
+    uint32_t val = arg.name;
+
+    if (!arg.isValue)
+        val = generator->AddMappedOp(Format("OpLoad %%%d %%%d", arg.typeName, val));
+    
+    if (arg.swizzleMask != Type::SwizzleMask())
+    {
+        std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
+        val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
+    }
+    return SPIRVResult(val, arg.typeName, true, arg.isConst);
+}
+
 
 enum class ConversionTable
 {
@@ -535,7 +554,7 @@ GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t r
     {
         SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
         argList.append(Format("%%%d ", loaded.name));
-        if (!arg.isConst)
+        if (!loaded.isConst)
             isConst = false;
     }
     if (isConst)
@@ -3263,7 +3282,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             {
                 uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
                 uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
-                return SPIRVResult(name, typeName, true, true); \
+                return SPIRVResult(name, typeName, true, true);
             }
         }
         case Symbol::IntExpressionType:

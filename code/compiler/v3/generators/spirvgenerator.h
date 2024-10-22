@@ -39,6 +39,13 @@ struct SPIRVResult
             int i;
             uint32_t ui;
         };
+
+        enum Type
+        {
+            FloatType,
+            IntType,
+            UIntType
+        } type;
     } literalValue;
 
     enum Storage
@@ -75,9 +82,11 @@ struct SPIRVResult
             case Storage::UniformConstant:
                 return "UniformConstant";
                 break;
-            case Storage::MutableImage:
             case Storage::StorageBuffer:
                 return "StorageBuffer";
+                break;
+            case Storage::MutableImage:
+                return "Image";
                 break;
             case Storage::PushConstant:
                 return "PushConstant";
@@ -113,6 +122,7 @@ struct SPIRVResult
 
     SPIRVResult(float literal)
     {
+        this->literalValue.type = LiteralValue::FloatType;
         this->literalValue.f = literal;
         this->isLiteral = true;
         this->isValue = false;
@@ -120,6 +130,7 @@ struct SPIRVResult
 
     SPIRVResult(int literal)
     {
+        this->literalValue.type = LiteralValue::IntType;
         this->literalValue.i = literal;
         this->isLiteral = true;
         this->isValue = false;
@@ -127,6 +138,7 @@ struct SPIRVResult
 
     SPIRVResult(uint32_t literal)
     {
+        this->literalValue.type = LiteralValue::UIntType;
         this->literalValue.ui = literal;
         this->isLiteral = true;
         this->isValue = false;

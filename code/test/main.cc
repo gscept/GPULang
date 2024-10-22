@@ -43,12 +43,12 @@ main(const char** argv, int argc)
 {
     //CompleteShaderTest();
     TEST(basicgraphics);
-    /*
     TEST(computewithimagestore);
+    TEST(computewithstore);
+    /*
     TEST(for);
     TEST(explicitreturn);
     TEST(nested);
-    TEST(computewithstore);
     TEST(typeinference);
     TEST(switch);
     
