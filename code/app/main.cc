@@ -855,6 +855,17 @@ int PLATFORM_MAIN
         VERIFY(vkBindBufferMemory(device, iboBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
+    bufInfo.size = sizeof(int);
+    bufInfo.usage = VK_BUFFER_USAGE_STORAGE_BUFFER_BIT;
+    VkBuffer storageBuffer;
+    VERIFY(vkCreateBuffer(device, &bufInfo, nullptr, &storageBuffer));
+    {
+        VkMemoryRequirements memReqs;
+        vkGetBufferMemoryRequirements(device, storageBuffer, &memReqs);
+        uint64_t offset = Alloc(MemoryHeap::Coherent, memReqs.size, memReqs.alignment);
+        VERIFY(vkBindBufferMemory(device, storageBuffer, MemoryHeaps[MemoryHeap::Coherent], offset));
+    }
+
     int x, y, comp;
     stbi_uc* image = stbi_load(std::string(std::string(TEXTURE_FOLDER) + "/isolfacion.png").c_str(), &x, &y, &comp, 0);
     VkImageCreateInfo imageInfo =
@@ -1080,19 +1091,29 @@ int PLATFORM_MAIN
         .poolSizeCount = graphicsProgram.pipelineInfo.poolSizeCounter,
         .pPoolSizes = graphicsProgram.pipelineInfo.descriptorPoolSizes
     };
-    VkDescriptorPool descriptorPool;
-    VERIFY(vkCreateDescriptorPool(device, &descriptorPoolInfo, nullptr, &descriptorPool));
+    VkDescriptorPool graphicsDescriptorPool;
+    VERIFY(vkCreateDescriptorPool(device, &descriptorPoolInfo, nullptr, &graphicsDescriptorPool));
+
+    descriptorPoolInfo.poolSizeCount = computeProgram.pipelineInfo.poolSizeCounter;
+    descriptorPoolInfo.pPoolSizes = computeProgram.pipelineInfo.descriptorPoolSizes;
+    VkDescriptorPool computeDescriptorPool;
+    VERIFY(vkCreateDescriptorPool(device, &descriptorPoolInfo, nullptr, &computeDescriptorPool));
 
     VkDescriptorSetAllocateInfo descriptorAlloc =
     {
         .sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO,
         .pNext = nullptr,
-        .descriptorPool = descriptorPool,
+        .descriptorPool = graphicsDescriptorPool,
         .descriptorSetCount = 1,
         .pSetLayouts = &graphicsProgram.pipelineInfo.groupLayouts[0]
     };
-    VkDescriptorSet descriptors;
-    vkAllocateDescriptorSets(device, &descriptorAlloc, &descriptors);
+    VkDescriptorSet graphicsDescriptors;
+    vkAllocateDescriptorSets(device, &descriptorAlloc, &graphicsDescriptors);
+
+    descriptorAlloc.descriptorPool = computeDescriptorPool;
+    descriptorAlloc.pSetLayouts = &computeProgram.pipelineInfo.groupLayouts[0];
+    VkDescriptorSet computeDescriptors;
+    vkAllocateDescriptorSets(device, &descriptorAlloc, &computeDescriptors);
 
     VkSamplerCreateInfo samplerInfo =
     {
@@ -1189,12 +1210,18 @@ int PLATFORM_MAIN
         .offset = 0,
         .range = VK_WHOLE_SIZE
     };
+    VkDescriptorBufferInfo descriptorComputeOutputInfo =
+    {
+        .buffer = storageBuffer,
+        .offset = 0,
+        .range = VK_WHOLE_SIZE
+    };
     VkWriteDescriptorSet writes[] =
     {
         {
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
-            .dstSet = descriptors,
+            .dstSet = graphicsDescriptors,
             .dstBinding = Basicgraphics::Albedo::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
@@ -1206,7 +1233,7 @@ int PLATFORM_MAIN
         {
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
-            .dstSet = descriptors,
+            .dstSet = graphicsDescriptors,
             .dstBinding = Basicgraphics::Material::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
@@ -1218,7 +1245,7 @@ int PLATFORM_MAIN
         {
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
-            .dstSet = descriptors,
+            .dstSet = graphicsDescriptors,
             .dstBinding = Basicgraphics::Sampler::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
@@ -1230,7 +1257,7 @@ int PLATFORM_MAIN
         {
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
-            .dstSet = descriptors,
+            .dstSet = graphicsDescriptors,
             .dstBinding = Basicgraphics::camera::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
@@ -1242,7 +1269,7 @@ int PLATFORM_MAIN
         {
             .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
             .pNext = nullptr,
-            .dstSet = descriptors,
+            .dstSet = graphicsDescriptors,
             .dstBinding = Basicgraphics::object::BINDING,
             .dstArrayElement = 0,
             .descriptorCount = 1,
@@ -1251,9 +1278,21 @@ int PLATFORM_MAIN
             .pBufferInfo = &descriptorObjectBufferInfo,
             .pTexelBufferView = nullptr
         },
+        {
+            .sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET,
+            .pNext = nullptr,
+            .dstSet = computeDescriptors,
+            .dstBinding = Computewithstore::Output::BINDING,
+            .dstArrayElement = 0,
+            .descriptorCount = 1,
+            .descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+            .pImageInfo = nullptr,
+            .pBufferInfo = &descriptorComputeOutputInfo,
+            .pTexelBufferView = nullptr
+        },
         
     };
-    vkUpdateDescriptorSets(device, 5, writes, 0, nullptr);
+    vkUpdateDescriptorSets(device, 6, writes, 0, nullptr);
 
     glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
     {
@@ -1389,9 +1428,13 @@ int PLATFORM_MAIN
         uint64_t offset = 0;
         vkCmdBindVertexBuffers(cmdBuf, 0, 1, &vboBuf, &offset);
         vkCmdBindIndexBuffer(cmdBuf, iboBuf, 0, VK_INDEX_TYPE_UINT32);
-        vkCmdBindDescriptorSets(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsProgram.pipelineInfo.pipelineLayout, 0, 1, &descriptors, 0, nullptr);
+        vkCmdBindDescriptorSets(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsProgram.pipelineInfo.pipelineLayout, 0, 1, &graphicsDescriptors, 0, nullptr);
         vkCmdDraw(cmdBuf, 3, 1, 0, 0);
         vkCmdEndRendering(cmdBuf);
+
+        vkCmdBindPipeline(cmdBuf, VK_PIPELINE_BIND_POINT_COMPUTE, computePipeline);
+        vkCmdBindDescriptorSets(cmdBuf, VK_PIPELINE_BIND_POINT_COMPUTE, computeProgram.pipelineInfo.pipelineLayout, 0, 1, &computeDescriptors, 0, nullptr);
+        vkCmdDispatch(cmdBuf, 1, 1, 1);
 
         imageBarrier =
         {
