@@ -63,6 +63,29 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
     {
         if (prog->shaders[i].binary != nullptr)
         {
+            switch (i)
+            {
+            case Deserialize::Program::ShaderStages::VertexShader:
+            case Deserialize::Program::ShaderStages::HullShader:
+            case Deserialize::Program::ShaderStages::DomainShader:
+            case Deserialize::Program::ShaderStages::GeometryShader:
+            case Deserialize::Program::ShaderStages::PixelShader:
+            case Deserialize::Program::ShaderStages::TaskShader:
+            case Deserialize::Program::ShaderStages::MeshShader:
+                ret.type = VulkanPipelineInfo::PipelineType::Graphics;
+                break;
+            case Deserialize::Program::ShaderStages::ComputeShader:
+                ret.type = VulkanPipelineInfo::PipelineType::Compute;
+                break;
+            case Deserialize::Program::ShaderStages::RayGenShader:
+            case Deserialize::Program::ShaderStages::RayAnyHitShader:
+            case Deserialize::Program::ShaderStages::RayClosestHitShader:
+            case Deserialize::Program::ShaderStages::RayMissShader:
+            case Deserialize::Program::ShaderStages::RayIntersectionShader:
+            case Deserialize::Program::ShaderStages::RayCallableShader:
+                ret.type = VulkanPipelineInfo::PipelineType::Raytracing;
+                break;
+            }
             VkShaderModuleCreateInfo shaderInfo =
             {
                 .sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
@@ -121,7 +144,6 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
     ret.poolSizeCounter = 0;
     VkDescriptorPoolSize poolSizes[8] = {};
 
-    //ret.groupBindingCounter = { 0 };
     for (uint32_t i = 0; i < numVariables; i++)
     {
         GPULang::Deserialize::Variable* var = variables[i];
@@ -194,195 +216,198 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
     };
     functionBindings.vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr, &ret.pipelineLayout);
 
-    ret.tessellationInfo =
+    if (ret.type == VulkanPipelineInfo::PipelineType::Graphics)
     {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO,
-        .pNext = nullptr,
-        .flags = 0x0,
-        .patchControlPoints = 0
-    };
-
-    static const VkPolygonMode polygonModeTable[] =
-    {
-        VK_POLYGON_MODE_MAX_ENUM,
-        VK_POLYGON_MODE_FILL,
-        VK_POLYGON_MODE_LINE,
-        VK_POLYGON_MODE_POINT
-    };
-
-    static const uint32_t cullModeTable[] =
-    {
-        VK_CULL_MODE_FLAG_BITS_MAX_ENUM,
-        VK_CULL_MODE_NONE,
-        VK_CULL_MODE_FRONT_BIT,
-        VK_CULL_MODE_BACK_BIT,
-        VK_CULL_MODE_FRONT_AND_BACK
-    };
-
-    static const VkFrontFace frontFaceTable[] =
-    {
-        VK_FRONT_FACE_MAX_ENUM,
-        VK_FRONT_FACE_CLOCKWISE,
-        VK_FRONT_FACE_COUNTER_CLOCKWISE
-    };
-
-    ret.rasterizationInfo =
-    {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
-        .pNext = nullptr,
-        .flags = 0x0,
-        .depthClampEnable = prog->renderState->depthClampEnabled,
-        .rasterizerDiscardEnable = prog->renderState->noPixels,
-        .polygonMode = polygonModeTable[prog->renderState->polygonMode],
-        .cullMode = cullModeTable[prog->renderState->cullMode],
-        .frontFace = frontFaceTable[prog->renderState->windingOrderMode],
-        .depthBiasEnable = prog->renderState->depthBiasEnabled,
-        .depthBiasConstantFactor = prog->renderState->depthBiasFactor,
-        .depthBiasClamp = prog->renderState->depthBiasClamp,
-        .depthBiasSlopeFactor = prog->renderState->depthBiasSlopeFactor,
-        .lineWidth = prog->renderState->lineWidth
-    };
-
-    static const VkCompareOp compareTable[] =
-    {
-        VK_COMPARE_OP_MAX_ENUM,
-        VK_COMPARE_OP_NEVER,
-        VK_COMPARE_OP_LESS,
-        VK_COMPARE_OP_EQUAL,
-        VK_COMPARE_OP_LESS_OR_EQUAL,
-        VK_COMPARE_OP_GREATER,
-        VK_COMPARE_OP_NOT_EQUAL,
-        VK_COMPARE_OP_GREATER_OR_EQUAL,
-        VK_COMPARE_OP_ALWAYS
-    };
-
-    static const VkStencilOp stencilOpTable[] =
-    {
-        VK_STENCIL_OP_MAX_ENUM,
-        VK_STENCIL_OP_KEEP,
-        VK_STENCIL_OP_ZERO,
-        VK_STENCIL_OP_REPLACE,
-        VK_STENCIL_OP_INCREMENT_AND_CLAMP,
-        VK_STENCIL_OP_DECREMENT_AND_CLAMP,
-        VK_STENCIL_OP_INVERT,
-        VK_STENCIL_OP_INCREMENT_AND_WRAP,
-        VK_STENCIL_OP_DECREMENT_AND_WRAP
-    };
-
-    ret.depthStencilInfo =
-    {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
-        .pNext = nullptr,
-        .flags = 0x0,
-        .depthTestEnable = prog->renderState->depthTestEnabled,
-        .depthWriteEnable = prog->renderState->depthWriteEnabled,
-        .depthCompareOp = compareTable[prog->renderState->depthCompare],
-        .depthBoundsTestEnable = prog->renderState->depthBoundsTestEnabled,
-        .stencilTestEnable = prog->renderState->stencilEnabled,
-        .front = 
+        ret.tessellationInfo =
         {
-            .failOp = stencilOpTable[prog->renderState->frontStencilState.fail],
-            .passOp = stencilOpTable[prog->renderState->frontStencilState.pass],
-            .depthFailOp = stencilOpTable[prog->renderState->frontStencilState.depthFail],
-            .compareOp = compareTable[prog->renderState->frontStencilState.compare],
-            .compareMask = prog->renderState->frontStencilState.compareMask,
-            .writeMask = prog->renderState->frontStencilState.writeMask,
-            .reference = prog->renderState->frontStencilState.referenceMask
-        },
-        .back =
-        {
-            .failOp = stencilOpTable[prog->renderState->backStencilState.fail],
-            .passOp = stencilOpTable[prog->renderState->backStencilState.pass],
-            .depthFailOp = stencilOpTable[prog->renderState->backStencilState.depthFail],
-            .compareOp = compareTable[prog->renderState->backStencilState.compare],
-            .compareMask = prog->renderState->backStencilState.compareMask,
-            .writeMask = prog->renderState->backStencilState.writeMask,
-            .reference = prog->renderState->backStencilState.referenceMask
-        },
-        .minDepthBounds = prog->renderState->minDepthBounds,
-        .maxDepthBounds = prog->renderState->maxDepthBounds,
-    };
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO,
+            .pNext = nullptr,
+            .flags = 0x0,
+            .patchControlPoints = 0
+        };
 
-    static const VkBlendOp blendOpTable[] =
-    {
-        VK_BLEND_OP_MAX_ENUM,
-        VK_BLEND_OP_ADD,
-        VK_BLEND_OP_SUBTRACT,
-        VK_BLEND_OP_REVERSE_SUBTRACT,
-        VK_BLEND_OP_MIN,
-        VK_BLEND_OP_MAX
-    };
-    static const VkBlendFactor blendFactorTable[] =
-    {
-        VK_BLEND_FACTOR_MAX_ENUM,
-        VK_BLEND_FACTOR_ZERO,
-        VK_BLEND_FACTOR_ONE,
-        VK_BLEND_FACTOR_SRC_COLOR,
-        VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR,
-        VK_BLEND_FACTOR_DST_COLOR,
-        VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR,
-        VK_BLEND_FACTOR_SRC_ALPHA,
-        VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA,
-        VK_BLEND_FACTOR_DST_ALPHA,
-        VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA,
-        VK_BLEND_FACTOR_CONSTANT_COLOR,
-        VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR,
-        VK_BLEND_FACTOR_CONSTANT_ALPHA,
-        VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA,
-        VK_BLEND_FACTOR_SRC_ALPHA_SATURATE,
-        VK_BLEND_FACTOR_SRC1_COLOR,
-        VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR,
-        VK_BLEND_FACTOR_SRC1_ALPHA,
-        VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA,
-    };
-
-    for (uint32_t i = 0; i < 8; i++)
-    {
-        ret.attachmentBlendInfo[i] =
+        static const VkPolygonMode polygonModeTable[] =
         {
-            .blendEnable = prog->renderState->blendStates[i].blendEnabled,
-            .srcColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceColorBlendFactor],
-            .dstColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationColorBlendFactor],
-            .colorBlendOp = blendOpTable[prog->renderState->blendStates[i].colorBlendOp],
-            .srcAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceAlphaBlendFactor],
-            .dstAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationAlphaBlendFactor],
-            .alphaBlendOp = blendOpTable[prog->renderState->blendStates[i].alphaBlendOp],
-            .colorWriteMask = prog->renderState->blendStates[i].colorComponentMask
+            VK_POLYGON_MODE_MAX_ENUM,
+            VK_POLYGON_MODE_FILL,
+            VK_POLYGON_MODE_LINE,
+            VK_POLYGON_MODE_POINT
+        };
+
+        static const uint32_t cullModeTable[] =
+        {
+            VK_CULL_MODE_FLAG_BITS_MAX_ENUM,
+            VK_CULL_MODE_NONE,
+            VK_CULL_MODE_FRONT_BIT,
+            VK_CULL_MODE_BACK_BIT,
+            VK_CULL_MODE_FRONT_AND_BACK
+        };
+
+        static const VkFrontFace frontFaceTable[] =
+        {
+            VK_FRONT_FACE_MAX_ENUM,
+            VK_FRONT_FACE_CLOCKWISE,
+            VK_FRONT_FACE_COUNTER_CLOCKWISE
+        };
+
+        ret.rasterizationInfo =
+        {
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
+            .pNext = nullptr,
+            .flags = 0x0,
+            .depthClampEnable = prog->renderState->depthClampEnabled,
+            .rasterizerDiscardEnable = prog->renderState->noPixels,
+            .polygonMode = polygonModeTable[prog->renderState->polygonMode],
+            .cullMode = cullModeTable[prog->renderState->cullMode],
+            .frontFace = frontFaceTable[prog->renderState->windingOrderMode],
+            .depthBiasEnable = prog->renderState->depthBiasEnabled,
+            .depthBiasConstantFactor = prog->renderState->depthBiasFactor,
+            .depthBiasClamp = prog->renderState->depthBiasClamp,
+            .depthBiasSlopeFactor = prog->renderState->depthBiasSlopeFactor,
+            .lineWidth = prog->renderState->lineWidth
+        };
+
+        static const VkCompareOp compareTable[] =
+        {
+            VK_COMPARE_OP_MAX_ENUM,
+            VK_COMPARE_OP_NEVER,
+            VK_COMPARE_OP_LESS,
+            VK_COMPARE_OP_EQUAL,
+            VK_COMPARE_OP_LESS_OR_EQUAL,
+            VK_COMPARE_OP_GREATER,
+            VK_COMPARE_OP_NOT_EQUAL,
+            VK_COMPARE_OP_GREATER_OR_EQUAL,
+            VK_COMPARE_OP_ALWAYS
+        };
+
+        static const VkStencilOp stencilOpTable[] =
+        {
+            VK_STENCIL_OP_MAX_ENUM,
+            VK_STENCIL_OP_KEEP,
+            VK_STENCIL_OP_ZERO,
+            VK_STENCIL_OP_REPLACE,
+            VK_STENCIL_OP_INCREMENT_AND_CLAMP,
+            VK_STENCIL_OP_DECREMENT_AND_CLAMP,
+            VK_STENCIL_OP_INVERT,
+            VK_STENCIL_OP_INCREMENT_AND_WRAP,
+            VK_STENCIL_OP_DECREMENT_AND_WRAP
+        };
+
+        ret.depthStencilInfo =
+        {
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO,
+            .pNext = nullptr,
+            .flags = 0x0,
+            .depthTestEnable = prog->renderState->depthTestEnabled,
+            .depthWriteEnable = prog->renderState->depthWriteEnabled,
+            .depthCompareOp = compareTable[prog->renderState->depthCompare],
+            .depthBoundsTestEnable = prog->renderState->depthBoundsTestEnabled,
+            .stencilTestEnable = prog->renderState->stencilEnabled,
+            .front = 
+            {
+                .failOp = stencilOpTable[prog->renderState->frontStencilState.fail],
+                .passOp = stencilOpTable[prog->renderState->frontStencilState.pass],
+                .depthFailOp = stencilOpTable[prog->renderState->frontStencilState.depthFail],
+                .compareOp = compareTable[prog->renderState->frontStencilState.compare],
+                .compareMask = prog->renderState->frontStencilState.compareMask,
+                .writeMask = prog->renderState->frontStencilState.writeMask,
+                .reference = prog->renderState->frontStencilState.referenceMask
+            },
+            .back =
+            {
+                .failOp = stencilOpTable[prog->renderState->backStencilState.fail],
+                .passOp = stencilOpTable[prog->renderState->backStencilState.pass],
+                .depthFailOp = stencilOpTable[prog->renderState->backStencilState.depthFail],
+                .compareOp = compareTable[prog->renderState->backStencilState.compare],
+                .compareMask = prog->renderState->backStencilState.compareMask,
+                .writeMask = prog->renderState->backStencilState.writeMask,
+                .reference = prog->renderState->backStencilState.referenceMask
+            },
+            .minDepthBounds = prog->renderState->minDepthBounds,
+            .maxDepthBounds = prog->renderState->maxDepthBounds,
+        };
+
+        static const VkBlendOp blendOpTable[] =
+        {
+            VK_BLEND_OP_MAX_ENUM,
+            VK_BLEND_OP_ADD,
+            VK_BLEND_OP_SUBTRACT,
+            VK_BLEND_OP_REVERSE_SUBTRACT,
+            VK_BLEND_OP_MIN,
+            VK_BLEND_OP_MAX
+        };
+        static const VkBlendFactor blendFactorTable[] =
+        {
+            VK_BLEND_FACTOR_MAX_ENUM,
+            VK_BLEND_FACTOR_ZERO,
+            VK_BLEND_FACTOR_ONE,
+            VK_BLEND_FACTOR_SRC_COLOR,
+            VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR,
+            VK_BLEND_FACTOR_DST_COLOR,
+            VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR,
+            VK_BLEND_FACTOR_SRC_ALPHA,
+            VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA,
+            VK_BLEND_FACTOR_DST_ALPHA,
+            VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA,
+            VK_BLEND_FACTOR_CONSTANT_COLOR,
+            VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR,
+            VK_BLEND_FACTOR_CONSTANT_ALPHA,
+            VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA,
+            VK_BLEND_FACTOR_SRC_ALPHA_SATURATE,
+            VK_BLEND_FACTOR_SRC1_COLOR,
+            VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR,
+            VK_BLEND_FACTOR_SRC1_ALPHA,
+            VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA,
+        };
+
+        for (uint32_t i = 0; i < 8; i++)
+        {
+            ret.attachmentBlendInfo[i] =
+            {
+                .blendEnable = prog->renderState->blendStates[i].blendEnabled,
+                .srcColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceColorBlendFactor],
+                .dstColorBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationColorBlendFactor],
+                .colorBlendOp = blendOpTable[prog->renderState->blendStates[i].colorBlendOp],
+                .srcAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].sourceAlphaBlendFactor],
+                .dstAlphaBlendFactor = blendFactorTable[prog->renderState->blendStates[i].destinationAlphaBlendFactor],
+                .alphaBlendOp = blendOpTable[prog->renderState->blendStates[i].alphaBlendOp],
+                .colorWriteMask = prog->renderState->blendStates[i].colorComponentMask
+            };
+        }
+
+        VkLogicOp logicOpTable[] =
+        {
+            VK_LOGIC_OP_MAX_ENUM,
+            VK_LOGIC_OP_CLEAR,
+            VK_LOGIC_OP_AND,
+            VK_LOGIC_OP_AND_REVERSE,
+            VK_LOGIC_OP_COPY,
+            VK_LOGIC_OP_AND_INVERTED,
+            VK_LOGIC_OP_NO_OP,
+            VK_LOGIC_OP_XOR,
+            VK_LOGIC_OP_OR,
+            VK_LOGIC_OP_NOR,
+            VK_LOGIC_OP_EQUIVALENT,
+            VK_LOGIC_OP_INVERT,
+            VK_LOGIC_OP_OR_REVERSE,
+            VK_LOGIC_OP_COPY_INVERTED,
+            VK_LOGIC_OP_OR_INVERTED,
+            VK_LOGIC_OP_NAND,
+            VK_LOGIC_OP_SET
+        };
+
+        ret.blendInfo =
+        {
+            .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
+            .pNext = nullptr,
+            .flags = 0x0,
+            .logicOpEnable = prog->renderState->logicOpEnabled,
+            .logicOp = logicOpTable[prog->renderState->logicOp],
+            .attachmentCount = 8,
+            .pAttachments = ret.attachmentBlendInfo,
+            .blendConstants = { prog->renderState->blendConstants[0], prog->renderState->blendConstants[1], prog->renderState->blendConstants[2], prog->renderState->blendConstants[3] }
         };
     }
-
-    VkLogicOp logicOpTable[] =
-    {
-        VK_LOGIC_OP_MAX_ENUM,
-        VK_LOGIC_OP_CLEAR,
-        VK_LOGIC_OP_AND,
-        VK_LOGIC_OP_AND_REVERSE,
-        VK_LOGIC_OP_COPY,
-        VK_LOGIC_OP_AND_INVERTED,
-        VK_LOGIC_OP_NO_OP,
-        VK_LOGIC_OP_XOR,
-        VK_LOGIC_OP_OR,
-        VK_LOGIC_OP_NOR,
-        VK_LOGIC_OP_EQUIVALENT,
-        VK_LOGIC_OP_INVERT,
-        VK_LOGIC_OP_OR_REVERSE,
-        VK_LOGIC_OP_COPY_INVERTED,
-        VK_LOGIC_OP_OR_INVERTED,
-        VK_LOGIC_OP_NAND,
-        VK_LOGIC_OP_SET
-    };
-
-    ret.blendInfo =
-    {
-        .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
-        .pNext = nullptr,
-        .flags = 0x0,
-        .logicOpEnable = prog->renderState->logicOpEnabled,
-        .logicOp = logicOpTable[prog->renderState->logicOp],
-        .attachmentCount = 8,
-        .pAttachments = ret.attachmentBlendInfo,
-        .blendConstants = { prog->renderState->blendConstants[0], prog->renderState->blendConstants[1], prog->renderState->blendConstants[2], prog->renderState->blendConstants[3] }
-    };
 
     return ret;
 }
@@ -393,6 +418,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
 VkGraphicsPipelineCreateInfo 
 GetGraphicsPipeline(const VulkanPipelineInfo& info)
 {
+    assert(info.type == VulkanPipelineInfo::Graphics);
     return
     {
         .sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
@@ -414,6 +440,26 @@ GetGraphicsPipeline(const VulkanPipelineInfo& info)
         .subpass = 0,
         .basePipelineHandle = VK_NULL_HANDLE,
         .basePipelineIndex = 0
+    };
+}
+
+
+//------------------------------------------------------------------------------
+/**
+*/
+VkComputePipelineCreateInfo 
+GetComputePipeline(const VulkanPipelineInfo& info)
+{
+    assert(info.type == VulkanPipelineInfo::Compute);
+    return
+    {
+        .sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO,
+        .pNext = nullptr,
+        .flags = 0x0,
+        .stage = info.shaderInfos[0],
+        .layout = info.pipelineLayout,
+        .basePipelineHandle = VK_NULL_HANDLE,
+        .basePipelineIndex = -1
     };
 }
 

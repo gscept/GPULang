@@ -34,7 +34,12 @@ struct VulkanPipelineInfo
     uint32_t poolSizeCounter;
     VkDescriptorPoolSize descriptorPoolSizes[8];
 
-    VkGraphicsPipelineCreateInfo pipelineInfo;
+    enum PipelineType
+    {
+        Graphics,
+        Compute,
+        Raytracing
+    } type;
 };
 
 /// Convert a GPULang program to a partially filled in graphics pipeline info
@@ -48,8 +53,10 @@ struct VulkanFunctions
 /// Assemble a program to a vulkan pipeline setup
 VulkanPipelineInfo SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::Deserialize::Variable** variables, uint32_t numVariables, const VulkanFunctions& functionBindings);
 
-/// Finalize and create pipeline create info
+/// Finalize and create a graphics pipeline info
 VkGraphicsPipelineCreateInfo GetGraphicsPipeline(const VulkanPipelineInfo& info);
+/// Finalize and create a compute pipeline
+VkComputePipelineCreateInfo GetComputePipeline(const VulkanPipelineInfo& info);
 
 
 } // namespace GPULang

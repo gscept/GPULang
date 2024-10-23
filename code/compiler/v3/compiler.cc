@@ -32,10 +32,16 @@ Compiler::Compiler()
     , hasErrors(false)
 {
     this->validator = new Validator;
-    this->options.validate = true;
-    this->options.optimize = false;
+
     this->options.warningsAsErrors = false;
     this->options.emitTimings = false;
+    this->options.disallowImplicitConversion = false;
+    this->options.disallowUninitializedConst = true;
+    this->options.warnOnMissingRenderState = false;
+
+    this->options.validate = true;
+    this->options.optimize = false;
+
     this->branchReturns = false;
     this->defaultRenderState.name = "__DefaultRenderState";
 

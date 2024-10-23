@@ -78,7 +78,9 @@ struct BasicVertex
     static const uint32_t UV_SIZE = 8;
     static const uint32_t VERTEX_STRIDE = 20;
 };
+
 struct BasicPixel
 {
 };
+
 } // namespace Basicgraphics

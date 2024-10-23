@@ -15,6 +15,7 @@
 #define MERGE(x, y) STRINGIFY(x/##y)
 
 #include MERGE(SHADER_HEADER_FOLDER, basicgraphics.h)
+#include MERGE(SHADER_HEADER_FOLDER, computewithstore.h)
 
 #include "GLFW/glfw3.h"
 
@@ -515,7 +516,8 @@ int PLATFORM_MAIN
     VkDevice device;
     VERIFY(vkCreateDevice(devices[0], &deviceInfo, nullptr, &device));
 
-    Program program = LoadShader(device, "basicgraphics.gplb");
+    Program graphicsProgram = LoadShader(device, "basicgraphics.gplb");
+    Program computeProgram = LoadShader(device, "computewithstore.gplb");
 
     VkQueue queue;
     vkGetDeviceQueue(device, selectedQueue, 0, &queue);
@@ -720,7 +722,7 @@ int PLATFORM_MAIN
         VERIFY(vkCreateImageView(device, &backbufferViewInfo, nullptr, &backbufferImageViews[i]));
     }
 
-    // Create graphics pipeline
+    // Create graphics graphicsPipeline
     VkPipelineRenderingCreateInfo passInfo =
     {
         .sType = VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO,
@@ -794,17 +796,21 @@ int PLATFORM_MAIN
         .scissorCount = 1,
         .pScissors = &scissor
     };
-    program.pipelineInfo.blendInfo.attachmentCount = passInfo.colorAttachmentCount;
-    VkGraphicsPipelineCreateInfo info = GPULang::GetGraphicsPipeline(program.pipelineInfo);
-    info.pInputAssemblyState = &inputAssembly;
-    info.pVertexInputState = &vertexInput;
-    info.pNext = &passInfo;
-    info.pViewportState = &viewportInfo;
-    info.pMultisampleState = &multiSample;
-    info.basePipelineHandle = VK_NULL_HANDLE;
-    info.basePipelineIndex = -1;
-    VkPipeline pipeline;
-    VERIFY(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &info, nullptr, &pipeline));
+    graphicsProgram.pipelineInfo.blendInfo.attachmentCount = passInfo.colorAttachmentCount;
+    VkGraphicsPipelineCreateInfo gfxPsoInfo = GPULang::GetGraphicsPipeline(graphicsProgram.pipelineInfo);
+    gfxPsoInfo.pInputAssemblyState = &inputAssembly;
+    gfxPsoInfo.pVertexInputState = &vertexInput;
+    gfxPsoInfo.pNext = &passInfo;
+    gfxPsoInfo.pViewportState = &viewportInfo;
+    gfxPsoInfo.pMultisampleState = &multiSample;
+    gfxPsoInfo.basePipelineHandle = VK_NULL_HANDLE;
+    gfxPsoInfo.basePipelineIndex = -1;
+    VkPipeline graphicsPipeline;
+    VERIFY(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &gfxPsoInfo, nullptr, &graphicsPipeline));
+
+    VkComputePipelineCreateInfo cmpPsoInfo = GPULang::GetComputePipeline(computeProgram.pipelineInfo);
+    VkPipeline computePipeline;
+    VERIFY(vkCreateComputePipelines(device, VK_NULL_HANDLE, 1, &cmpPsoInfo, nullptr, &computePipeline));
 
     static bool terminate = false;
 
@@ -1071,8 +1077,8 @@ int PLATFORM_MAIN
         .pNext = nullptr,
         .flags = 0x0,
         .maxSets = 64,
-        .poolSizeCount = program.pipelineInfo.poolSizeCounter,
-        .pPoolSizes = program.pipelineInfo.descriptorPoolSizes
+        .poolSizeCount = graphicsProgram.pipelineInfo.poolSizeCounter,
+        .pPoolSizes = graphicsProgram.pipelineInfo.descriptorPoolSizes
     };
     VkDescriptorPool descriptorPool;
     VERIFY(vkCreateDescriptorPool(device, &descriptorPoolInfo, nullptr, &descriptorPool));
@@ -1083,7 +1089,7 @@ int PLATFORM_MAIN
         .pNext = nullptr,
         .descriptorPool = descriptorPool,
         .descriptorSetCount = 1,
-        .pSetLayouts = &program.pipelineInfo.groupLayouts[0]
+        .pSetLayouts = &graphicsProgram.pipelineInfo.groupLayouts[0]
     };
     VkDescriptorSet descriptors;
     vkAllocateDescriptorSets(device, &descriptorAlloc, &descriptors);
@@ -1379,11 +1385,11 @@ int PLATFORM_MAIN
         };
 
         vkCmdBeginRendering(cmdBuf, &renderInfo);
-        vkCmdBindPipeline(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+        vkCmdBindPipeline(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
         uint64_t offset = 0;
         vkCmdBindVertexBuffers(cmdBuf, 0, 1, &vboBuf, &offset);
         vkCmdBindIndexBuffer(cmdBuf, iboBuf, 0, VK_INDEX_TYPE_UINT32);
-        vkCmdBindDescriptorSets(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, program.pipelineInfo.pipelineLayout, 0, 1, &descriptors, 0, nullptr);
+        vkCmdBindDescriptorSets(cmdBuf, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsProgram.pipelineInfo.pipelineLayout, 0, 1, &descriptors, 0, nullptr);
         vkCmdDraw(cmdBuf, 3, 1, 0, 0);
         vkCmdEndRendering(cmdBuf);
 

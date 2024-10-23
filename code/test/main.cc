@@ -42,9 +42,9 @@ int
 main(const char** argv, int argc)
 {
     //CompleteShaderTest();
+    TEST(computewithstore);
     TEST(basicgraphics);
     TEST(computewithimagestore);
-    TEST(computewithstore);
     /*
     TEST(for);
     TEST(explicitreturn);

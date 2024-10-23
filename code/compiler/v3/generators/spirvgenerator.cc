@@ -2542,7 +2542,7 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
                     }
-                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
                     g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, loaded.name));
                 }
             }

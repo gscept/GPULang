@@ -1019,7 +1019,8 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 
     if (progResolved->usage.flags.hasPixelShader && !progResolved->usage.flags.hasRenderState)
     {
-        compiler->Warning(Format("Program is general graphics but does not specify a render state, falling back on the default"), symbol);
+        if (compiler->options.warnOnMissingRenderState)
+            compiler->Warning(Format("Program is general graphics but does not specify a render state, falling back on the default"), symbol);
         progResolved->programMappings[Program::__Resolved::ProgramEntryType::RenderState] = &compiler->defaultRenderState;
         progResolved->usage.flags.hasRenderState = true;
     }
@@ -1587,7 +1588,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
             }
             varResolved->storage = Variable::__Resolved::Storage::Uniform;
-            varResolved->usageBits.flags.isConst = true;
+            varResolved->usageBits.flags.isConst = true & !varResolved->type.IsMutable();
         }
         else if (attr.name == "inline")
         {
@@ -1978,7 +1979,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "UniformBuffer";
             generatedStruct->name = Format("%s_%s", bufferType, varResolved->name.c_str()); ;
             //generatedStruct->annotations = var->annotations;
-            generatedStruct->location = var->location;
+            
             generatedStructResolved->group = varResolved->group;
             generatedStructResolved->binding = varResolved->binding;
             generatedStructResolved->byteSize = structSize;
@@ -1997,6 +1998,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             Type::FullType newType{ generatedStruct->name };
             newType.modifiers = var->type.modifiers;
             newType.modifierValues = var->type.modifierValues;
+            newType.mut = var->type.mut;
+            newType.literal = var->type.literal;
+            newType.sampled = var->type.sampled;
             var->type = newType;
             varResolved->typeSymbol = generatedStruct;
             varResolved->type = newType;
