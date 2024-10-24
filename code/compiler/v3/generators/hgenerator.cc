@@ -117,7 +117,6 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
     std::string variables;
-    std::string offsets;
     for (Symbol* sym : struc->symbols)
     {
         if (sym->symbolType == Symbol::SymbolType::VariableType)
@@ -126,22 +125,11 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
             this->GenerateVariableH(compiler, program, var, variables, false);
             variables.append("\n");
-
-            offsets.append(Format("    static const uint32_t %s_OFFSET = %d;\n", var->name.c_str(), varResolved->structureOffset));
         }
     }
 
     outCode.append(Format("struct %s\n", struc->name.c_str()));
     outCode.append("{\n");
-    outCode.append(Format("    static const uint32_t SIZE = %d;\n", strucResolved->byteSize));
-    outCode.append(offsets);
-    /*
-    if (strucResolved->binding != Structure::__Resolved::NOT_BOUND)
-        outCode.append(Format("    static const uint32_t BINDING = %d;\n", strucResolved->binding));
-    if (strucResolved->group != Structure::__Resolved::NOT_BOUND)
-        outCode.append(Format("    static const uint32_t GROUP = %d;\n", strucResolved->group));
-        */
-    outCode.append("\n");
     outCode.append(variables);
     outCode.append("};\n\n");
 }

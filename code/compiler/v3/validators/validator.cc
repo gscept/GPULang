@@ -76,7 +76,7 @@ static std::set<std::string> parameterQualifiers =
 
 static std::set<std::string> structureQualifiers =
 {
-    "group", "binding"
+    "packed"
 };
 
 static std::set<std::string> pixelShaderInputQualifiers =
@@ -140,6 +140,8 @@ Validator::Validator()
     this->allowedParameterAttributes.insert(parameterQualifiers.begin(), parameterQualifiers.end());
     this->allowedParameterAttributes.insert(parameterAccessFlags.begin(), parameterAccessFlags.end());
     this->allowedParameterAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
+
+    this->allowedStructureAttributes.insert(structureQualifiers.begin(), structureQualifiers.end());
 }
 
 //------------------------------------------------------------------------------
@@ -1319,18 +1321,8 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
 
         if (set_contains(structureQualifiers, attr.name))
         {
-            if (attr.name == "group")
-                if (!attr.expression->EvalUInt(strucResolved->group))
-                {
-                    compiler->Error(Format("group qualifier has to evaluate to a compile time uint", attr.name.c_str()), symbol);
-                    return false;
-                }
-            else if (attr.name == "binding")
-                if (!attr.expression->EvalUInt(strucResolved->binding))
-                {
-                    compiler->Error(Format("binding qualifier has to evaluate to a compile time uint", attr.name.c_str()), symbol);
-                    return false;
-                }
+            if (attr.name == "packed")
+                strucResolved->packMembers = true;
         }
     }
 
@@ -1346,9 +1338,16 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
             varResolved->usageBits.flags.isStructMember = true;
-            varResolved->structureOffset = offset;
             if (!this->ResolveVariable(compiler, var))
                 return false;
+
+            uint32_t packedOffset = offset;
+            if (!strucResolved->packMembers)
+                offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
+
+            uint32_t diff = offset - packedOffset;
+            varResolved->startPadding = diff;
+            varResolved->structureOffset = offset;
             offset += varResolved->byteSize;
 
             strucResolved->byteSize += varResolved->byteSize;
@@ -1944,71 +1943,77 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         if (cat == Type::Category::UserTypeCategory && varResolved->storage == Variable::__Resolved::Storage::Uniform)
         {
-            // Generate mutable/uniform variant of struct
-            Structure* generatedStruct = new Structure;
-            uint32_t structSize = 0;
-            uint32_t padCounter = 0;
-            uint32_t offset = 0;
-            for (Symbol* sym : type->symbols)
+            Structure* currentStructure = static_cast<Structure*>(varResolved->typeSymbol);
+            Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
+
+            // If the structure is packed, we need to inflate it to adhere to alignment rules
+            if (currentStrucResolved->packMembers)
             {
-                if (sym->symbolType == Symbol::VariableType)
+                 // Generate mutable/uniform variant of struct
+                Structure* generatedStruct = new Structure;
+                uint32_t structSize = 0;
+                uint32_t padCounter = 0;
+                uint32_t offset = 0;
+                for (Symbol* sym : type->symbols)
                 {
-                    Variable* var = static_cast<Variable*>(sym);
-                    Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                    Variable* generatedVar = new Variable;
-                    Variable::__Resolved* generatedVarResolved = Symbol::Resolved(generatedVar);
-                    generatedVar->name = var->name;
-                    generatedVar->type = var->type;
-                    generatedVarResolved->usageBits = varResolved->usageBits;
-                    generatedVarResolved->type = varResolved->type;
-                    generatedVarResolved->typeSymbol = varResolved->typeSymbol;
-                    generatedVarResolved->name = varResolved->name;
-                    uint32_t size = varResolved->typeSymbol->CalculateSize();
-                    uint32_t alignment = varResolved->typeSymbol->CalculateAlignment();
-                    uint32_t alignedOffset = Type::Align(offset, alignment);
-                    generatedVarResolved->startPadding = alignedOffset - offset;
-                    generatedVarResolved->byteSize = size;
-                    generatedVarResolved->structureOffset = offset;
-                    offset += size;
-                    structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
-                    generatedStruct->symbols.push_back(generatedVar);
-                    generatedStruct->lookup.insert({ varResolved->name, generatedVar });
+                    if (sym->symbolType == Symbol::VariableType)
+                    {
+                        Variable* var = static_cast<Variable*>(sym);
+                        Variable::__Resolved* varResolved = Symbol::Resolved(var);
+                        Variable* generatedVar = new Variable;
+                        Variable::__Resolved* generatedVarResolved = Symbol::Resolved(generatedVar);
+                        generatedVar->name = var->name;
+                        generatedVar->type = var->type;
+                        generatedVarResolved->usageBits = varResolved->usageBits;
+                        generatedVarResolved->type = varResolved->type;
+                        generatedVarResolved->typeSymbol = varResolved->typeSymbol;
+                        generatedVarResolved->name = varResolved->name;
+                        uint32_t size = varResolved->typeSymbol->CalculateSize();
+                        uint32_t alignment = varResolved->typeSymbol->CalculateAlignment();
+                        uint32_t alignedOffset = Type::Align(offset, alignment);
+                        generatedVarResolved->startPadding = alignedOffset - offset;
+                        generatedVarResolved->byteSize = size;
+                        generatedVarResolved->structureOffset = alignedOffset;
+                        offset = alignedOffset + size;
+                        structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
+                        generatedStruct->symbols.push_back(generatedVar);
+                        generatedStruct->lookup.insert({ varResolved->name, generatedVar });
+                    }
                 }
-            }
-            Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
-            const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "UniformBuffer";
-            generatedStruct->name = Format("%s_%s", bufferType, varResolved->name.c_str()); ;
-            //generatedStruct->annotations = var->annotations;
+                Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
+                const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
+                generatedStruct->name = Format("gpl%s_%s", bufferType, varResolved->name.c_str()); ;
+                //generatedStruct->annotations = var->annotations;
             
-            generatedStructResolved->group = varResolved->group;
-            generatedStructResolved->binding = varResolved->binding;
-            generatedStructResolved->byteSize = structSize;
-            //generatedStructResolved->byteSize = varResolved
-            if (varResolved->type.IsMutable())
-            {
-                generatedStructResolved->usageFlags.flags.isMutableBuffer = true;
-                generatedStruct->baseType = TypeCode::Buffer;
-            }
-            else
-            {
-                generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
-                generatedStruct->baseType = TypeCode::Buffer;
-            }
+                generatedStructResolved->byteSize = structSize;
+                generatedStructResolved->packMembers = false;
+                //generatedStructResolved->byteSize = varResolved
+                if (varResolved->type.IsMutable())
+                {
+                    generatedStructResolved->usageFlags.flags.isMutableBuffer = true;
+                    generatedStruct->baseType = TypeCode::Buffer;
+                }
+                else
+                {
+                    generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
+                    generatedStruct->baseType = TypeCode::Buffer;
+                }
 
-            Type::FullType newType{ generatedStruct->name };
-            newType.modifiers = var->type.modifiers;
-            newType.modifierValues = var->type.modifierValues;
-            newType.mut = var->type.mut;
-            newType.literal = var->type.literal;
-            newType.sampled = var->type.sampled;
-            var->type = newType;
-            varResolved->typeSymbol = generatedStruct;
-            varResolved->type = newType;
+                Type::FullType newType{ generatedStruct->name };
+                newType.modifiers = var->type.modifiers;
+                newType.modifierValues = var->type.modifierValues;
+                newType.mut = var->type.mut;
+                newType.literal = var->type.literal;
+                newType.sampled = var->type.sampled;
+                var->type = newType;
+                varResolved->typeSymbol = generatedStruct;
+                varResolved->type = newType;
 
-            // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
-            compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
-            compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
-            compiler->symbolIterator++;
+                // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
+                compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
+                compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
+                compiler->symbolIterator++;
+            }
         }
     }
 

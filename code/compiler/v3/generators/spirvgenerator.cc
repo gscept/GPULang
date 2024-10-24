@@ -2685,8 +2685,9 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
             SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
             memberTypes.append(Format("%%%d ", varType.typeName));
-            offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
-            generator->AddMemberDecoration(structName, i, Format("Offset %d", offset));
+
+            // If this struct is generated for binding 
+            generator->AddMemberDecoration(structName, i, Format("Offset %d", varResolved->structureOffset));
             if (varResolved->typeSymbol->IsMatrix())
             {
                 generator->AddMemberDecoration(structName, i, Format("MatrixStride %d", varResolved->typeSymbol->CalculateStride()));

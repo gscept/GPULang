@@ -357,6 +357,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
     {
         ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        if (this->hasErrors)
+            break;
     }
 
     this->performanceTimer.Stop();
@@ -754,8 +756,6 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             Serialize::Structure output;
             output.isUniform = false;
             output.isMutable = false;
-            output.binding = resolved->binding;
-            output.group = resolved->group;
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
             output.size = resolved->byteSize;

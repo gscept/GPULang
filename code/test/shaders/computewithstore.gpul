@@ -1,7 +1,9 @@
 
-struct Storage
+struct packed Storage
 {
+    vec : f32x4;
     i : i32;
+    vec2 : f32x4;
 };
 
 uniform Output : *mutable Storage;

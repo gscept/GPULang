@@ -40,12 +40,14 @@ struct Structure : public Type
         Variable::__Resolved::AccessBits accessBits = 0x0;
 
         static const uint8_t NOT_BOUND = 0xF;
-        uint32_t group;
-        uint32_t binding;
+        //uint32_t group;
+        //uint32_t binding;
 
         // for alignment
         size_t byteSize;
         size_t baseAlignment;
+
+        bool packMembers;
     };
 };
 

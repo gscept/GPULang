@@ -358,7 +358,7 @@ struct Variable : public Bindable
     ShaderUsage visibility;
 };
 
-struct Structure : public Bindable
+struct Structure : public Serializable
 {
     /// constructor
     Structure()

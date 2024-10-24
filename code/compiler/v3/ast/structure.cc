@@ -22,9 +22,9 @@ Structure::Structure()
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;
-    typeResolved->binding = __Resolved::NOT_BOUND;
-    typeResolved->group = __Resolved::NOT_BOUND;
     typeResolved->byteSize = 0;
+    typeResolved->baseAlignment = 0;
+    typeResolved->packMembers = false;
     
 }
 

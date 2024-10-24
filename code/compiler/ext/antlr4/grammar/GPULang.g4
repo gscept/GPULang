@@ -282,8 +282,8 @@ structureDeclaration
         std::vector<Attribute> attributes;
     }:
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
-    'struct' 
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    'struct' 
     name = IDENTIFIER 
     { 
         $sym = new Structure();

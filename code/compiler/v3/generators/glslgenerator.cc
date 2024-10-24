@@ -1174,11 +1174,14 @@ GLSLGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symb
     strucResolved->baseAlignment = alignment;
 
     outCode.append(Format("#line %d %s\n", struc->location.line, struc->location.file.c_str()));
+    /*
     if (strucResolved->usageFlags.flags.isUniformBuffer)
         outCode.append(Format("layout(set=%d, binding=%d) uniform __%s\n{\n%s} %s;\n\n", strucResolved->group, strucResolved->binding, struc->name.c_str(), members.c_str(), struc->name.c_str()));
     else if (strucResolved->usageFlags.flags.isMutableBuffer)
         outCode.append(Format("layout(set=%d, binding=%d) buffer __%s\n{\n%s} %s;\n\n", strucResolved->group, strucResolved->binding, struc->name.c_str(), members.c_str(), struc->name.c_str()));
     else
+        */
+
         outCode.append(Format("struct %s \n{\n%s};\n\n", struc->name.c_str(), members.c_str()));
 }
 
