@@ -2,7 +2,7 @@
 //  @file basicgraphics.gpul
 //  @copyright (C) 2024 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
-
+#include "foobar"
 uniform Albedo : *texture2D;
 uniform Material: *sampled texture2D;
 uniform Sampler : *sampler;
@@ -19,6 +19,7 @@ struct Object
     model : f32x4x4;
 };
 
+@Foobar("test")
 uniform object : *Object;
 
 entry_point

@@ -1,0 +1,25 @@
+{
+  "name": "gpulang",
+  "displayName": "gpulang",
+  "description": "Syntax highlighting for GPULang",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "gpulang",
+      "aliases": ["GPULang", "gpulang"],
+      "extensions": ["gpul"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "gpulang",
+      "scopeName": "source.gpulang",
+      "path": "./syntaxes/gpulang.tmLanguage.json"
+    }]
+  }
+}

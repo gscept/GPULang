@@ -1,0 +1,98 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "GPULang",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#semantics"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "\\b(if|while|for|return|continue|break)\\b"
+				}, {
+					"name": "entity.name.type",
+					"match": "\\b(void|i32|i32x2|i32x3|i32x4|u32|u32x2|u32x3|u32x4|f32|f32x2|f32x3|f32x4|f32x2x2|f32x2x3|f32x2x4|f32x3x2|f32x3x3|f32x3x4|f32x4x2|f32x4x3|f32x4x4|b8|b8x2|b8x3|b8x4|texture1D|texture1DArray|texture2D|texture2DArray|texture2DMS|texture2DMSArray|textureCube|textureCubeArray|texture3D|sampler)\\b"
+				}, {
+					"name": "keyword.other",
+					"match": "\\b(mutable|sampled|literal)\\b"
+				},  {
+					"name": "keyword.other",
+					"match": "\\b(entry_point)\\b"
+				},  {
+					"name": "storage.modifier",
+					"match": "\\b(var|const|uniform|inline|workgroup|in|out)\\b"
+				}, {
+					"name": "support.function",
+					"match": "\\b(gpl(.*)|textureSample|textureLoad|textureStore)\\(\\b"
+				}, {
+					"name": "variable.parameter",
+					"match": "\\b(VertexShader|HullShader|DomainShader|GeometryShader|PixelShader|ComputeShader|TaskShader|MeshShader|RayGenShader|RayAnyHitShader|RayClosestHitShader|RayMissShader|RayIntersectionShader|RayCallableShader)\\b"
+				}, {
+					"name": "entity.name.class",
+					"match": "\\b(struct|enum|render_state|sampler_state|program)\\b"
+				}
+			]
+		},
+		"semantics": {
+			"patterns": [
+				{
+					"name": "meta.annotation",
+					"match": "\\s*@[a-zA-Z]+[a-zA-Z]*\\s*"
+				}, {
+					
+					"match": "^(\\s*\\#\\s*[a-zA-Z_][a-zA-Z0-9]*)\\s*(.*)$",
+					"captures": {
+						"1": {
+							"name": "preprocessor"
+						},
+						"2": {
+							"name": "string"
+						}
+					}
+				}, {
+					"name": "entity.name.function",
+					"match": "\\b[a-zA-Z]+[a-zA-Z]*\\("
+				}, {
+					"name": "entity.name.type",
+					"match": ":\\b[a-zA-Z]+[a-zA-Z]*\\b"
+				}, {
+					"name": "entity.name",
+					"match": "\\b[a-zA-Z]+[a-zA-Z]*\\b"
+				}, {
+					"name": "entity.name.type",
+					"match": "\\b(struct|enum|render_state|sampler_state|program)\\b.*"
+				}
+				
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.gpulang",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.gpulang",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comment": {
+			"name": "comment.line.double-slash",
+			"begin": "//",
+			"end": "\n"
+		}
+	},
+	"scopeName": "source.gpulang"
+}
