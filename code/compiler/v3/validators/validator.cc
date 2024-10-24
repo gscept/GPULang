@@ -335,6 +335,27 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+Validator::ResolveTypeSwizzles(Compiler* compiler, Symbol* symbol)
+{
+    Type* type = static_cast<Type*>(symbol);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, type);
+
+    for (Symbol* sym : type->swizzleSymbols)
+    {
+        if (sym->symbolType == Symbol::SymbolType::VariableType)
+        {
+            Variable* var = static_cast<Variable*>(sym);
+            if (!this->ResolveVariable(compiler, var))
+                return false;
+        }
+    }  
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool
 Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
 {
@@ -888,7 +909,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
-            progResolved->programMappings[entryType] = value;
+            progResolved->mappings[entryType] = value;
 
             switch (entryType)
             {
@@ -1023,7 +1044,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     {
         if (compiler->options.warnOnMissingRenderState)
             compiler->Warning(Format("Program is general graphics but does not specify a render state, falling back on the default"), symbol);
-        progResolved->programMappings[Program::__Resolved::ProgramEntryType::RenderState] = &compiler->defaultRenderState;
+        progResolved->mappings[Program::__Resolved::ProgramEntryType::RenderState] = &compiler->defaultRenderState;
         progResolved->usage.flags.hasRenderState = true;
     }
 
@@ -2578,9 +2599,13 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
     ProgramType programType = ProgramType::NotSet;
 
     // validate program setup as compute or graphics program, do it on a first-come-first-serve basis
-    for (auto& it : progResolved->programMappings)
+    for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
     {
-        if (it.first == Program::__Resolved::ComputeShader)
+        Symbol* object = progResolved->mappings[mapping];
+        if (object == nullptr)
+            continue;
+
+        if (mapping == Program::__Resolved::ComputeShader)
         {
             if (programType == ProgramType::IsGraphics)
             {
@@ -2594,40 +2619,40 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             }
             programType = ProgramType::IsCompute;
         }
-        else if (it.first == Program::__Resolved::VertexShader
-            || it.first == Program::__Resolved::HullShader
-            || it.first == Program::__Resolved::DomainShader
-            || it.first == Program::__Resolved::GeometryShader
-            || it.first == Program::__Resolved::PixelShader
-            || it.first == Program::__Resolved::TaskShader
-            || it.first == Program::__Resolved::MeshShader
+        else if (mapping == Program::__Resolved::VertexShader
+            || mapping == Program::__Resolved::HullShader
+            || mapping == Program::__Resolved::DomainShader
+            || mapping == Program::__Resolved::GeometryShader
+            || mapping == Program::__Resolved::PixelShader
+            || mapping == Program::__Resolved::TaskShader
+            || mapping == Program::__Resolved::MeshShader
             )
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both general graphics and compute", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                compiler->Error(Format("Program may not be both general graphics and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
                 return false;
             }
             if (programType == ProgramType::IsRaytracing)
             {
-                compiler->Error(Format("Program may not be both general graphics and ray tracing", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                compiler->Error(Format("Program may not be both general graphics and ray tracing", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
                 return false;
             }
             programType = ProgramType::IsGraphics;
         }
-        else if (it.first == Program::__Resolved::RayAnyHitShader
-            || it.first == Program::__Resolved::RayCallableShader
-            || it.first == Program::__Resolved::RayIntersectionShader
-            || it.first == Program::__Resolved::RayMissShader)
+        else if (mapping == Program::__Resolved::RayAnyHitShader
+            || mapping == Program::__Resolved::RayCallableShader
+            || mapping == Program::__Resolved::RayIntersectionShader
+            || mapping == Program::__Resolved::RayMissShader)
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both raytracing and compute", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                compiler->Error(Format("Program may not be both raytracing and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
                 return false;
             }
             if (programType == ProgramType::IsGraphics)
             {
-                compiler->Error(Format("Program may not be both raytracing and general graphics", Program::__Resolved::EntryTypeToString(it.first)), symbol);
+                compiler->Error(Format("Program may not be both raytracing and general graphics", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
                 return false;
             }
             programType = ProgramType::IsRaytracing;
@@ -2640,7 +2665,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         Function* lastPrimitiveShader = nullptr;
         if (progResolved->usage.flags.hasVertexShader)
         {
-            Function* vs = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::VertexShader]);
+            Function* vs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::VertexShader]);
             lastPrimitiveShader = vs;
         }
 
@@ -2651,7 +2676,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, HullShader/TessellationControlShader needs a VertexShader"), symbol);
                 return false;
             }
-            Function* hs = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::HullShader]);
+            Function* hs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::HullShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs))
                 return false;
 
@@ -2661,12 +2686,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         if (progResolved->usage.flags.hasDomainShader)
         {
             if (lastPrimitiveShader == nullptr 
-                && map_contains(progResolved->programMappings, Program::__Resolved::HullShader))
+                && progResolved->mappings[Program::__Resolved::HullShader] != nullptr)
             {
                 compiler->Error(Format("Invalid program setup, DomainShader needs a HullShader/TessellationControlShader"), symbol);
                 return false;
             }
-            Function* ds = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::DomainShader]);
+            Function* ds = static_cast<Function*>(progResolved->mappings[Program::__Resolved::DomainShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds))
                 return false;
 
@@ -2680,7 +2705,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, GeometryShader needs either a VertexShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader setup"), symbol);
                 return false;
             }
-            Function* gs = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::GeometryShader]);
+            Function* gs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::GeometryShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs))
                 return false;
 
@@ -2694,7 +2719,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, PixelShader needs either a VertexShader, a VertexShader-GeometryShader, a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader-GeometryShader setup"), symbol);
                 return false;
             }
-            Function* ps = static_cast<Function*>(progResolved->programMappings[Program::__Resolved::PixelShader]);
+            Function* ps = static_cast<Function*>(progResolved->mappings[Program::__Resolved::PixelShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ps))
                 return false;
         }

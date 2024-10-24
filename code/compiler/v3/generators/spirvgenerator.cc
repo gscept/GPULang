@@ -484,13 +484,14 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
     { ConversionTable::IntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);        
         if (vectorSize > 1)
-            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            type = g->AddSymbol(Format("f32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertSToF %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
     , { ConversionTable::IntToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         if (vectorSize > 1)
-            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            type = g->AddSymbol(Format("u32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
         value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
@@ -504,19 +505,22 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
     , { ConversionTable::UIntToFloat, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("f32", "OpTypeFloat 32", true);
         if (vectorSize > 1)
-            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            type = g->AddSymbol(Format("f32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
     , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         if (vectorSize > 1)
-            type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            type = g->AddSymbol(Format("u32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertFToU %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
     , { ConversionTable::FloatToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
         if (vectorSize > 1)
             type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+        value = LoadValueSPIRV(c, g, value);
         return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true, value.isConst);
     } }
 };
@@ -3891,23 +3895,26 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         , { Function::__Resolved::PrimitiveTopology::Triangles, "OutputTriangleStrip" }
     };
 
-    for (auto it : progResolved->programMappings)
+    for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
     {
         Cleanup cleanup(this);
+
+        Symbol* object = progResolved->mappings[mapping];
+        if (object == nullptr)
+            continue;
 
         // Main scope
         this->PushScope();
 
-
         // for each shader, generate code and use it as a binary output
-        if (it.first >= Program::__Resolved::VertexShader && it.first <= Program::__Resolved::RayIntersectionShader)
+        if (mapping >= Program::__Resolved::VertexShader && mapping <= Program::__Resolved::RayIntersectionShader)
         {
             this->header.append("; Magic:     0x00010500 (SPIRV Universal 1.5)\n");
             this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
             this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
-            this->AddCapability(extensionMap[it.first]);
+            this->AddCapability(extensionMap[(Program::__Resolved::ProgramEntryType)mapping]);
 
-            this->entryPoint = static_cast<Function*>(it.second);
+            this->entryPoint = static_cast<Function*>(object);
             
             for (Symbol* sym : symbols)
             {
@@ -3928,7 +3935,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                 }
             }
 
-            Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(it.second));
+            Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(object));
             uint32_t entryFunction = this->GetSymbol(funResolved->name).value;
 
             if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
@@ -3950,9 +3957,9 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             {
                 interfaces.append(Format("%%%d ", interface));
             }
-            this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[it.first].c_str(), entryFunction, interfaces.c_str()));
+            this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
             
-            switch (it.first)
+            switch (mapping)
             {
                 case Program::__Resolved::GeometryShader:
                     this->header.append(Format("\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
@@ -4020,7 +4027,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             }
 
             // conversion and optional validation is successful, dump binary in program
-            progResolved->binaries[it.first] = binaryData;
+            progResolved->binaries[mapping] = binaryData;
 
             delete bin;
             delete diag;

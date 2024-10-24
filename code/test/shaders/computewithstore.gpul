@@ -1,5 +1,5 @@
 
-struct packed Storage
+struct Storage
 {
     vec : f32x4;
     i : i32;
@@ -12,6 +12,7 @@ entry_point
 ComputeWithStore() void
 {
     Output.i = i32(gplGetLocalInvocationIndex().x);
+    Output.vec2 = f32x4(1.0f,2.0f,3.0f,4.0f);
 }
 
 program TestProgram

@@ -102,14 +102,7 @@ Int2::Int2()
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], i32, u32);
 
     char swizzleMask[] = { 'x', 'y' };
-    for (char x = 0; x < 2; x++)
-    {
-        __ADD_SWIZZLE(i32, "%c", swizzleMask[x]);
-        for (char y = 0; y < 2; y++)
-        {
-            __ADD_SWIZZLE(i32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
-        }
-    }
+    __IMPLEMENT_SWIZZLE(i32, 2, swizzleMask)
 }
 
 } // namespace GPULang

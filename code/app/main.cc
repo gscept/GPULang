@@ -855,7 +855,7 @@ int PLATFORM_MAIN
         VERIFY(vkBindBufferMemory(device, iboBuf, MemoryHeaps[MemoryHeap::Coherent], offset));
     }
 
-    bufInfo.size = sizeof(int);
+    bufInfo.size = sizeof(Computewithstore::Storage);
     bufInfo.usage = VK_BUFFER_USAGE_STORAGE_BUFFER_BIT;
     VkBuffer storageBuffer;
     VERIFY(vkCreateBuffer(device, &bufInfo, nullptr, &storageBuffer));
@@ -1139,8 +1139,8 @@ int PLATFORM_MAIN
     VkSampler sampler;
     VERIFY(vkCreateSampler(device, &samplerInfo, nullptr, &sampler));
 
-    uint32_t cameraBufSize = Basicgraphics::UniformBuffer_camera::SIZE;
-    uint32_t objectBufSize = Basicgraphics::UniformBuffer_object::SIZE;
+    uint32_t cameraBufSize = sizeof(Basicgraphics::Camera);
+    uint32_t objectBufSize = sizeof(Basicgraphics::Object);
     VkBufferCreateInfo shaderBufferInfo =
     {
         .sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,

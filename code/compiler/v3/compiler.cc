@@ -58,6 +58,14 @@ Compiler::Compiler()
         typeIt++;
     }
 
+    // Run again to resolve swizzle variables
+    typeIt = DefaultTypes.begin();
+    while (typeIt != DefaultTypes.end())
+    {
+        this->validator->ResolveTypeSwizzles(this, *typeIt);
+        typeIt++;
+    }
+
     // Run again but resolve methods this time (needed as forward declaration)
     typeIt = DefaultTypes.begin();
     while (typeIt != DefaultTypes.end())
@@ -650,7 +658,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             if (resolved->usage.flags.hasRenderState)
             {
-                Symbol* renderState = resolved->programMappings[Program::__Resolved::RenderState];
+                Symbol* renderState = resolved->mappings[Program::__Resolved::RenderState];
                 output.renderStateNameLength = renderState->name.length();
                 output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.length());
             }

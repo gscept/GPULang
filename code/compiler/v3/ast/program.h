@@ -50,7 +50,9 @@ struct Program : public Symbol
             RayAnyHitShader,
             RayIntersectionShader,
             RayCallableShader,
-            RenderState
+            RenderState,
+
+            NumProgramEntries
         };
 
         /// convert from string to program entry type
@@ -79,12 +81,10 @@ struct Program : public Symbol
                 uint32_t hasRenderState : 1;
             } flags;
             uint32_t bits;
-        };
-        ProgramUsage usage;
-        std::unordered_map<ProgramEntryType, Symbol*> programMappings;
+        } usage;
+        Symbol* mappings[ProgramEntryType::NumProgramEntries];
+        std::vector<uint32_t> binaries[ProgramEntryType::NumProgramEntries];
         std::unordered_map<Function*, Function*> functionOverrides;
-        std::unordered_map<ProgramEntryType, std::vector<uint32_t>> binaries;
-        
     };
 
 };

@@ -15,6 +15,8 @@ Program::Program()
     this->resolved = new Program::__Resolved();
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(this->resolved);
     progResolved->usage.bits = 0x0;
+    for (uint32_t i = 0; i < Program::__Resolved::ProgramEntryType::NumProgramEntries; i++)
+        progResolved->mappings[i] = nullptr;
 }
 
 const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =

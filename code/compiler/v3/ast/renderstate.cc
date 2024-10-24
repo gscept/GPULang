@@ -67,7 +67,6 @@ RenderState::RenderState()
     };
     typeResolved->frontStencilState = defaultStencil;
     typeResolved->backStencilState = defaultStencil;
-
 }
 
 const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =

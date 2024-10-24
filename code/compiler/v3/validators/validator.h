@@ -32,6 +32,8 @@ struct Validator
     bool ResolveType(Compiler* compiler, Symbol* symbol);
     /// Resolve type operators
     bool ResolveTypeMethods(Compiler* compiler, Symbol* symbol);
+    /// Resolve swizzles 
+    bool ResolveTypeSwizzles(Compiler* compiler, Symbol* symbol);
     /// Resolve blend state
     bool ResolveSamplerState(Compiler* compiler, Symbol* symbol);
     /// Resolve function

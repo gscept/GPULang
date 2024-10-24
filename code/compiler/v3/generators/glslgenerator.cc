@@ -162,7 +162,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
 {
     SetupDefaultResources();
 
-    static const std::map<Program::__Resolved::ProgramEntryType, EShLanguage> entryToGlslangShaderMappings =
+    static const std::unordered_map<Program::__Resolved::ProgramEntryType, EShLanguage> entryToGlslangShaderMappings =
     {
         { Program::__Resolved::VertexShader, EShLangVertex },
         { Program::__Resolved::HullShader, EShLangTessControl },
@@ -182,13 +182,17 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
 
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
     std::vector<glslang::TShader*> shaders;
-    for (auto it : progResolved->programMappings)
+    for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
     {
+        Symbol* object = progResolved->mappings[mapping];
+        if (object == nullptr)
+            continue;
+
         // for each shader, generate code and use it as a binary output
-        if (it.first >= Program::__Resolved::VertexShader && it.first <= Program::__Resolved::RayIntersectionShader)
+        if (mapping >= Program::__Resolved::VertexShader && mapping <= Program::__Resolved::RayIntersectionShader)
         {
             std::string code;
-            this->mainFunction = static_cast<Function*>(it.second);
+            this->mainFunction = static_cast<Function*>(object);
             for (Symbol* symbol : symbols)
             {
                 switch (symbol->symbolType)
@@ -205,9 +209,9 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
                 }
             }
 
-            if (!map_contains(entryToGlslangShaderMappings, it.first))
+            if (!map_contains(entryToGlslangShaderMappings, (Program::__Resolved::ProgramEntryType)mapping))
             {
-                compiler->Error(Format("Internal error, no known mapping of shader '%s'", Program::__Resolved::EntryTypeToString(it.first).c_str()), program);
+                compiler->Error(Format("Internal error, no known mapping of shader '%s'", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping).c_str()), program);
                 return false;
             }
 
@@ -246,7 +250,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
 #define __VULKAN__\n";
             }
 
-            glslang::TShader* shaderObject = new glslang::TShader(entryToGlslangShaderMappings.at(it.first));
+            glslang::TShader* shaderObject = new glslang::TShader(entryToGlslangShaderMappings.at((Program::__Resolved::ProgramEntryType)mapping));
             const char* sources[] = { header.c_str(), code.c_str() };
             int lengths[] = { (int)header.length(), (int)code.length() };
             shaderObject->setStringsWithLengths(sources, lengths, 2);

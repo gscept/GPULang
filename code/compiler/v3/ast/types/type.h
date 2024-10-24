@@ -62,7 +62,7 @@ this->lookup.insert({ #id, activeFunction });
     swizzleMember->type = {#retType};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
     resolved->usageBits.flags.isVar = true;\
-    this->staticSymbols.push_back(swizzleMember);\
+    this->swizzleSymbols.push_back(swizzleMember);\
 }
 
 #define __ADD_FUNCTION_PARAM(id, t)\
@@ -81,6 +81,23 @@ this->lookup.insert({id, &this->variable});
 #define __ADD_CONSTRUCTOR()\
 this->constructors.push_back(activeFunction);
 
+#define __IMPLEMENT_SWIZZLE(type, size, mask)\
+    for (char x = 0; x < size; x++)\
+    {\
+        __ADD_SWIZZLE(type, "%c", mask[x]);\
+        for (char y = 0; y < size; y++)\
+        {\
+            __ADD_SWIZZLE(type##x2, "%c%c", mask[x], mask[y]);\
+            for (char z = 0; z < size; z++)\
+            {\
+                __ADD_SWIZZLE(type##x3, "%c%c%c", mask[x], mask[y], mask[z]);\
+                for (char w = 0; w < size; w++)\
+                {\
+                    __ADD_SWIZZLE(type##x4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
+                }\
+            }\
+        }\
+    }
 
 namespace GPULang
 {
@@ -345,6 +362,7 @@ struct Type : public Symbol
 
     std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;
+    std::vector<Symbol*> swizzleSymbols;
     std::vector<Symbol*> symbols;
     std::vector<Symbol*> constructors;
     std::multimap<std::string, Symbol*> lookup;

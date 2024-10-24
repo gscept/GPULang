@@ -2,25 +2,17 @@ namespace Computewithstore
 {
 struct Storage
 {
-    static const uint32_t SIZE = 4;
-    static const uint32_t i_OFFSET = 0;
-
+    float vec[4];
     int i;
-};
-
-struct MutableBuffer_Output
-{
-    static const uint32_t SIZE = 4;
-    static const uint32_t i_OFFSET = 0;
-
-    int i;
+    unsigned int pad[3];
+    float vec2[4];
 };
 
 struct Output
 {
     static const uint32_t BINDING = 0;
     static const uint32_t GROUP = 0;
-    using STRUCT = MutableBuffer_Output;
+    using STRUCT = Storage;
 };
 
 struct ComputeWithStore

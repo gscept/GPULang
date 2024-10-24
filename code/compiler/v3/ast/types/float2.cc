@@ -68,14 +68,7 @@ Float2::Float2()
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);
 
     char swizzleMask[] = { 'x', 'y' };
-    for (char x = 0; x < 2; x++)
-    {
-        __ADD_SWIZZLE(f32, "%c", swizzleMask[x]);
-        for (char y = 0; y < 2; y++)
-        {
-            __ADD_SWIZZLE(f32x2, "%c%c", swizzleMask[x], swizzleMask[y]);
-        }
-    }
+    __IMPLEMENT_SWIZZLE(f32, 2, swizzleMask)
 }
 
 } // namespace GPULang

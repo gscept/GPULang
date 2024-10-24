@@ -174,7 +174,8 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
         // add start padding if any
         if (varResolved->startPadding > 0)
         {
-            outCode.append(Format("    unsigned int : %d;\n", varResolved->startPadding));
+            uint32_t numElements = varResolved->startPadding / 4;
+            outCode.append(Format("    unsigned int pad[%d];\n", numElements));
         }
 
         std::string type = typeToHeaderType[var->type.name];
@@ -187,7 +188,10 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             {
                 // don't pad the first element
                 if (i > 0)
-                    outCode.append(Format("    unsigned int : %d;\n", varResolved->elementPadding));
+                {
+                    uint32_t numElements = varResolved->elementPadding / 4;
+                    outCode.append(Format("    unsigned int pad[%d];\n", numElements));
+                }
                 outCode.append(Format("    %s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
                 if (i < varResolved->type.modifierValues[i] - 1)
                     outCode.append("\n");
