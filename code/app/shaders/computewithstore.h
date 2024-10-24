@@ -4,7 +4,9 @@ struct Storage
 {
     float vec[4];
     int i;
-    unsigned int pad[3];
+    unsigned int : 32;
+    unsigned int : 32;
+    unsigned int : 32;
     float vec2[4];
 };
 
