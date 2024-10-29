@@ -5,6 +5,7 @@ struct Storage
     i : i32;
     vec2 : f32x4;
 };
+link_defined foo = 1.0f;
 
 uniform Output : *mutable Storage;
 
@@ -12,7 +13,7 @@ entry_point
 ComputeWithStore() void
 {
     Output.i = i32(gplGetLocalInvocationIndex().x);
-    Output.vec2 = f32x4(1.0f,2.0f,3.0f,4.0f);
+    Output.vec2 = f32x4(1.0f, 2.0f, foo, 4.0f);
 }
 
 program TestProgram

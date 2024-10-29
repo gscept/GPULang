@@ -224,6 +224,14 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             outCode.append("};\n\n");
         }
     }
+    else if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+    {
+        outCode.append(Format("struct %s\n", varResolved->name.c_str()));
+        outCode.append("{\n");
+        outCode.append(Format("    static const uint32_t LINK_BINDING = %d;\n", varResolved->binding));
+        outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->byteSize));
+        outCode.append("};\n\n");
+    }
     else if (varResolved->usageBits.flags.isConst)
     {
         std::string typeStr = typeToHeaderType[var->type.name];

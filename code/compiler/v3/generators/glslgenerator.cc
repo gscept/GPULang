@@ -440,10 +440,10 @@ CalculateLayout(Compiler* compiler, Variable* var, uint32_t arraySize, const boo
     5.  If the member is a column-major matrix with C columns and R rows, the matrix is stored identically to an array of C column vectors with R
         components each, according to rule (4).
     6.  If the member is an array of S column-major matrices with C columns and R rows, the matrix is stored identically to a row of
-        S×C column vectors with R components each, according to rule (4).
+        Sï¿½C column vectors with R components each, according to rule (4).
     7.  If the member is a row-major matrix with C columns and R rows, the matrix is stored identically to an array of R row vectors with C components each,
         according to rule (4).
-    8.  If the member is an array of S row-major matrices with C columns and R rows, the matrix is stored identically to a row of S×R row vectors with C
+    8.  If the member is an array of S row-major matrices with C columns and R rows, the matrix is stored identically to a row of Sï¿½R row vectors with C
         components each, according to rule (4).
     9.  If the member is a structure, the base alignment of the structure is N, where N is the largest base alignment value of any of its members,
         and rounded up to the base alignment of a vec4. The individual members of this sub-structure are then assigned offsets by applying this set of
@@ -576,42 +576,42 @@ std::map<std::string, std::string> typeToGlslType =
 
 std::map<ImageFormat, std::string> imageFormatToGlsl =
 {
-    { ImageFormat::RGBA16, "rgba16" }
-    , { ImageFormat::RGB10_A2, "rgb10_a2" }
-    , { ImageFormat::RGBA8, "rgba8" }
-    , { ImageFormat::RG16, "rg16" }
-    , { ImageFormat::RG8, "rg8" }
+    { ImageFormat::Rgba16, "rgba16" }
+    , { ImageFormat::Rgb10_A2, "rgb10_a2" }
+    , { ImageFormat::Rgba8, "rgba8" }
+    , { ImageFormat::Rg16, "rg16" }
+    , { ImageFormat::Rg8, "rg8" }
     , { ImageFormat::R16, "r16" }
     , { ImageFormat::R8, "r8" }
-    , { ImageFormat::RGBA16_SNORM, "rgba16_snorm" }
-    , { ImageFormat::RGBA8_SNORM, "rgba8_snorm" }
-    , { ImageFormat::RG16_SNORM, "rg16_snorm" }
-    , { ImageFormat::RG8_SNORM, "rg8_snorm" }
-    , { ImageFormat::R16_SNORM, "r16_snorm" }
-    , { ImageFormat::R8_SNORM, "r8_snorm" }
-    , { ImageFormat::RGBA32F, "rgba32f" }
-    , { ImageFormat::RGBA16F, "rgba16f" }
-    , { ImageFormat::RG32F, "rg32f" }
-    , { ImageFormat::RG16F, "rg16f" }
+    , { ImageFormat::Rgba16_Snorm, "rgba16_snorm" }
+    , { ImageFormat::Rgba8_Snorm, "rgba8_snorm" }
+    , { ImageFormat::Rg16_Snorm, "rg16_snorm" }
+    , { ImageFormat::Rg8_Snorm, "rg8_snorm" }
+    , { ImageFormat::R16_Snorm, "r16_snorm" }
+    , { ImageFormat::R8_Snorm, "r8_snorm" }
+    , { ImageFormat::Rgba32F, "rgba32f" }
+    , { ImageFormat::Rgba16F, "rgba16f" }
+    , { ImageFormat::Rg32F, "rg32f" }
+    , { ImageFormat::Rg16F, "rg16f" }
     , { ImageFormat::R11G11B10F, "r11f_g11f_b10f" }
     , { ImageFormat::R32F, "r32f" }
     , { ImageFormat::R16F, "r16f" }
-    , { ImageFormat::RGBA32I, "rga32i" }
-    , { ImageFormat::RGBA16I, "rgba16i" }
-    , { ImageFormat::RGBA8I, "rgba8i" }
-    , { ImageFormat::RG32I, "rg32i" }
-    , { ImageFormat::RG16I, "rg16i" }
-    , { ImageFormat::RG8I, "rg8i" }
+    , { ImageFormat::Rgba32I, "rga32i" }
+    , { ImageFormat::Rgba16I, "rgba16i" }
+    , { ImageFormat::Rgba8I, "rgba8i" }
+    , { ImageFormat::Rg32I, "rg32i" }
+    , { ImageFormat::Rg16I, "rg16i" }
+    , { ImageFormat::Rg8I, "rg8i" }
     , { ImageFormat::R32I, "r32i" }
     , { ImageFormat::R16I, "r16i" }
     , { ImageFormat::R8I, "r8i" }
-    , { ImageFormat::RGBA32U, "rga32ui" }
-    , { ImageFormat::RGBA16U, "rgba16ui" }
-    , { ImageFormat::RGB10_A2U, "rgb10_a2ui" }
-    , { ImageFormat::RGBA8U, "rgba8ui" }
-    , { ImageFormat::RG32U, "rg32ui" }
-    , { ImageFormat::RG16U, "rg16ui" }
-    , { ImageFormat::RG8U, "rg8ui" }
+    , { ImageFormat::Rgba32U, "rga32ui" }
+    , { ImageFormat::Rgba16U, "rgba16ui" }
+    , { ImageFormat::Rgb10_A2U, "rgb10_a2ui" }
+    , { ImageFormat::Rgba8U, "rgba8ui" }
+    , { ImageFormat::Rg32U, "rg32ui" }
+    , { ImageFormat::Rg16U, "rg16ui" }
+    , { ImageFormat::Rg8U, "rg8ui" }
     , { ImageFormat::R32U, "r32ui" }
     , { ImageFormat::R16U, "r16ui" }
     , { ImageFormat::R8U, "r8ui" }

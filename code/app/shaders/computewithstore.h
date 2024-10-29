@@ -10,6 +10,12 @@ struct Storage
     float vec2[4];
 };
 
+struct foo
+{
+    static const uint32_t LINK_BINDING = 0;
+    static const uint32_t SIZE = 4;
+};
+
 struct Output
 {
     static const uint32_t BINDING = 0;

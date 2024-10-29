@@ -9,8 +9,7 @@ struct MyTestStruct
     i : i32;
 };
 
-void
-AccessTest()
+AccessTest() void
 {
     test : MyTestStruct;
     //test.f = 5;
@@ -86,8 +85,7 @@ render_state MyRenderState
 /**
     Test statements
 */
-i32
-MegaFunction()
+MegaFunction() i32
 {
     foo : i32 = 5;
     {
@@ -135,8 +133,7 @@ MegaFunction()
 //------------------------------------------------------------------------------
 /**
 */
-f32x4 
-Function(in f : f32)
+Function(in f : f32) f32x4 
 {
     return f32x4(f);
 }
@@ -145,8 +142,7 @@ Function(in f : f32)
 /**
     Overload function
 */
-f32x4
-Function(in i : i32)
+Function(in i : i32) f32x4
 {
     return f32x4(i);
 }
@@ -162,8 +158,7 @@ prototype f32x4 DynamicFunction(in i : i32);
 */
 entry_point
 local_size_x(64)
-void
-MyComputeShader()
+MyComputeShader() void
 {
     textureStore(myReadWriteImage, i32x2(0, 0), Function(myConstantBuffer->NumWorkGroups));
 }
@@ -174,18 +169,17 @@ MyComputeShader()
 @Mask("MyProgram")
 program MyProgram
 {
-    ComputeShader = *MyComputeShader();
+    ComputeShader = MyComputeShader;
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 entry_point
-void
 MyVertexShader(
     binding(0) in position : f32x4
     , binding(0) out Position : f32x4
-)
+) void
 {
     Position = position;
 }
@@ -194,11 +188,10 @@ MyVertexShader(
 /**
 */
 entry_point
-void
 MyPixelShader(
     binding(0) in position : f32x4
     , binding(0) out Color : f32x4
-)
+) void
 {
     Color = position;
 }

@@ -78,48 +78,48 @@ std::unordered_map<std::string, std::string> typeToSpirvType =
 
 std::unordered_map<ImageFormat, std::string> imageFormatToSpirvType =
 {
-    { ImageFormat::RGBA16, "Rgba16" }
-    , { ImageFormat::RGB10_A2, "Rgb10A2" }
-    , { ImageFormat::RGBA8, "Rgba8" }
-    , { ImageFormat::RG16, "Rg16" }
-    , { ImageFormat::RG8, "Rg8" }
+    { ImageFormat::Rgba16, "Rgba16" }
+    , { ImageFormat::Rgb10_A2, "Rgb10A2" }
+    , { ImageFormat::Rgba8, "Rgba8" }
+    , { ImageFormat::Rg16, "Rg16" }
+    , { ImageFormat::Rg8, "Rg8" }
     , { ImageFormat::R16, "R16" }
     , { ImageFormat::R8, "R8" }
-    , { ImageFormat::RGBA16_SNORM, "Rgba16Snorm" }
-    , { ImageFormat::RGBA8_SNORM, "Rgba8Snorm" }
-    , { ImageFormat::RG16_SNORM, "Rg16Snorm" }
-    , { ImageFormat::RG8_SNORM, "Rg8Snorm" }
-    , { ImageFormat::R16_SNORM, "R16Snorm" }
-    , { ImageFormat::R8_SNORM, "R8Snorm" }
+    , { ImageFormat::Rgba16_Snorm, "Rgba16Snorm" }
+    , { ImageFormat::Rgba8_Snorm, "Rgba8Snorm" }
+    , { ImageFormat::Rg16_Snorm, "Rg16Snorm" }
+    , { ImageFormat::Rg8_Snorm, "Rg8Snorm" }
+    , { ImageFormat::R16_Snorm, "R16Snorm" }
+    , { ImageFormat::R8_Snorm, "R8Snorm" }
 
     // float
-    , { ImageFormat::RGBA32F, "Rgba32f" }
-    , { ImageFormat::RGBA16F, "Rgba16f" }
-    , { ImageFormat::RG32F, "Rg32f" }
-    , { ImageFormat::RG16F, "Rg16f" }
+    , { ImageFormat::Rgba32F, "Rgba32f" }
+    , { ImageFormat::Rgba16F, "Rgba16f" }
+    , { ImageFormat::Rg32F, "Rg32f" }
+    , { ImageFormat::Rg16F, "Rg16f" }
     , { ImageFormat::R11G11B10F, "R11fG11fB10f" }
     , { ImageFormat::R32F, "R32f" }
     , { ImageFormat::R16F, "R16f" }
 
     // integer
-    , { ImageFormat::RGBA32I, "Rgba32i" }
-    , { ImageFormat::RGBA16I, "Rgba16i" }
-    , { ImageFormat::RGBA8I, "Rgba8i" }
-    , { ImageFormat::RG32I, "Rg32i" }
-    , { ImageFormat::RG16I, "Rg16i" }
-    , { ImageFormat::RG8I, "Rg8i" }
+    , { ImageFormat::Rgba32I, "Rgba32i" }
+    , { ImageFormat::Rgba16I, "Rgba16i" }
+    , { ImageFormat::Rgba8I, "Rgba8i" }
+    , { ImageFormat::Rg32I, "Rg32i" }
+    , { ImageFormat::Rg16I, "Rg16i" }
+    , { ImageFormat::Rg8I, "Rg8i" }
     , { ImageFormat::R32I, "R32i" }
     , { ImageFormat::R16I, "R16i" }
     , { ImageFormat::R8I, "R8i" }
 
     // unsigned integer
-    , { ImageFormat::RGBA32U, "Rgba32ui" }
-    , { ImageFormat::RGBA16U, "Rgba16ui" }
-    , { ImageFormat::RGB10_A2U, "Rga10a2ui" }
-    , { ImageFormat::RGBA8U, "Rgba8ui" }
-    , { ImageFormat::RG32U, "Rg32ui" }
-    , { ImageFormat::RG16U, "Rg16ui" }
-    , { ImageFormat::RG8U, "Rg8ui" }
+    , { ImageFormat::Rgba32U, "Rgba32ui" }
+    , { ImageFormat::Rgba16U, "Rgba16ui" }
+    , { ImageFormat::Rgb10_A2U, "Rga10a2ui" }
+    , { ImageFormat::Rgba8U, "Rgba8ui" }
+    , { ImageFormat::Rg32U, "Rg32ui" }
+    , { ImageFormat::Rg16U, "Rg16ui" }
+    , { ImageFormat::Rg8U, "Rg8ui" }
     , { ImageFormat::R32U, "R32ui" }
     , { ImageFormat::R16U, "R16ui" }
     , { ImageFormat::R8U, "R8ui" }
@@ -189,6 +189,8 @@ GenerateTypeSPIRV(
             scope = SPIRVResult::Storage::Output;
         else if (storage == Variable::__Resolved::Storage::Workgroup)
             scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::LinkDefined)
+            scope = SPIRVResult::Storage::UniformConstant;
         else if (storage == Variable::__Resolved::Storage::Global)
             scope = SPIRVResult::Storage::Private;
     }
@@ -300,13 +302,16 @@ struct ConstantCreationInfo
         Int16,
         UInt,
         UInt16,
+        Bool
     } type;
     union
     {
         float f;
         int32_t i;
         uint32_t ui;
+        bool b;
     } data;
+    bool linkDefined = false;
 
     static ConstantCreationInfo Float(float val)
     {
@@ -355,6 +360,14 @@ struct ConstantCreationInfo
         ret.data.i = val;
         return ret;
     }
+
+    static ConstantCreationInfo Bool(bool b)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Bool;
+        ret.data.b = b;
+        return ret;
+    }
 };
 
 //------------------------------------------------------------------------------
@@ -382,52 +395,64 @@ SPIRVResult
 GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info)
 {
     SPIRVResult res = SPIRVResult::Invalid();
+    const char* baseFormat = generator->linkDefineEvaluation ? "OpSpecConstant" : "OpConstant";
     switch (info.type)
     {
         case ConstantCreationInfo::Type::UInt:
         {
             uint32_t baseType = generator->AddSymbol("u32", "OpTypeInt 32 0", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
+            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("%s %%%d %d", baseFormat, baseType, info.data.ui), true);
             break;
         }
         case ConstantCreationInfo::Type::UInt16:
         {
             uint32_t baseType = generator->AddSymbol("u16", "OpTypeInt 16 0", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
+            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("%s %%%d %d", baseFormat, baseType, info.data.ui), true);
             break;
         }
         case ConstantCreationInfo::Type::Int:
         {
             uint32_t baseType = generator->AddSymbol("i32", "OpTypeInt 32 1", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
+            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("%s %%%d %d", baseFormat, baseType, info.data.i), true);
             break;
         }
         case ConstantCreationInfo::Type::Int16:
         {
             uint32_t baseType = generator->AddSymbol("i16", "OpTypeInt 16 1", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
+            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("%s %%%d %d", baseFormat, baseType, info.data.i), true);
             break;
         }
         case ConstantCreationInfo::Type::Float:
         {
             uint32_t baseType = generator->AddSymbol("f32", "OpTypeFloat 32", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %d", baseType, info.data.f), true);
+            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("%s %%%d %f", baseFormat, baseType, info.data.f), true);
             break;
         }
         case ConstantCreationInfo::Type::Float16:
         {
             uint32_t baseType = generator->AddSymbol("f16", "OpTypeFloat 16", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %d", baseType, info.data.f), true);
+            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("%s %%%d %f", baseFormat, baseType, info.data.f), true);
+            break;
+        }
+        case ConstantCreationInfo::Type::Bool:
+        {
+            uint32_t baseType = generator->AddSymbol("b8", "OpTypeBool", true);
+            res.typeName = baseType;
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(info.data.b ? "true" : "false", info.data.b ? "OpSpecConstantTrue" : "OpSpecConstantFalse", true);
+            else
+                res.name = generator->AddSymbol(info.data.b ? "true" : "false", info.data.b ? "OpConstantTrue" : "OpConstantFalse", true);
             break;
         }
     }
     res.isConst = true;
+    res.isSpecialization = generator->linkDefineEvaluation;
     return res;
 }
 
@@ -450,6 +475,9 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
         case SPIRVResult::LiteralValue::UIntType:
             arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::UInt(arg.literalValue.ui));
             break;
+        case SPIRVResult::LiteralValue::BoolType:
+            arg = GenerateConstantSPIRV(compiler, generator, GPULang::ConstantCreationInfo::Bool(arg.literalValue.b));
+            break;
         }
         return arg;
     }
@@ -464,7 +492,11 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
         std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
         val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
     }
-    return SPIRVResult(val, arg.typeName, true, arg.isConst);
+    auto res = SPIRVResult(val, arg.typeName);
+    res.isValue = true;
+    res.isConst = arg.isConst;
+    res.isSpecialization = arg.isSpecialization;
+    return res;
 }
 
 
@@ -554,17 +586,25 @@ GenerateCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t r
 {
     std::string argList = "";
     bool isConst = true;
+    bool isSpecialization = false;
     for (const SPIRVResult& arg : args)
     {
         SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
         argList.append(Format("%%%d ", loaded.name));
         if (!loaded.isConst)
             isConst = false;
+        isSpecialization |= loaded.isSpecialization;
     }
     if (isConst)
-        return SPIRVResult(generator->AddSymbol(Format("%%%d_composite(%s)", returnType, argList.c_str()), Format("OpConstantComposite %%%d %s", returnType, argList.c_str()), true), returnType, true, true);
+        if (isSpecialization)
+            return SPIRVResult(generator->AddSymbol(Format("%%%d_composite(%s)", returnType, argList.c_str()), Format("OpSpecConstantComposite %%%d %s", returnType, argList.c_str()), true), returnType, true, true);
+        else
+            return SPIRVResult(generator->AddSymbol(Format("%%%d_composite(%s)", returnType, argList.c_str()), Format("OpConstantComposite %%%d %s", returnType, argList.c_str()), true), returnType, true, true);
     else
+    {
+        assert(!generator->linkDefineEvaluation);
         return SPIRVResult(generator->AddMappedOp(Format("OpCompositeConstruct %%%d %s", returnType, argList.c_str())), returnType, true);
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -2726,76 +2766,98 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-
-    SPIRVResult initializer = SPIRVResult::Invalid();
-    if (varResolved->value != nullptr)
-    {
-        // Setup initializer
-        initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
-    }
-
+    
     SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
     std::string type = varResolved->type.name;
     std::string scope = SPIRVResult::ScopeToString(typeName.scope);
 
     std::vector<uint32_t> parentTypes = { typeName.typeName };
-
-    uint32_t typePtrName = typeName.typeName;
-    // If anything but void, then the type has to be a pointer
-    if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
-    {
-        type = Format("ptr(%d)", typeName.typeName);
-        typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
-    }
-    else
-    {
-        // We implicitly know a pointer was created
-        typeName.typeName = typeName.parentTypes[0];
-    }
-
     uint32_t name = 0xFFFFFFFF;
-    if (initializer != SPIRVResult::Invalid() && initializer.isConst)
-        name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, initializer.name, typeName.scope, isGlobal);
+
+    SPIRVResult initializer = SPIRVResult::Invalid();
+    if (varResolved->value != nullptr)
+    {
+        // Setup initializer
+        generator->linkDefineEvaluation = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
+        initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
+
+        // If initializer is a literal, make sure to load it
+        if (initializer.isLiteral)
+            initializer = LoadValueSPIRV(compiler, generator, initializer);
+        generator->linkDefineEvaluation = false;
+    }
+
+    if (varResolved->storage != Variable::__Resolved::Storage::LinkDefined)
+    {
+        uint32_t typePtrName = typeName.typeName;
+        // If anything but void, then the type has to be a pointer
+        if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
+        {
+            type = Format("ptr(%d)", typeName.typeName);
+            typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
+        }
+        else
+        {
+            // We implicitly know a pointer was created
+            typeName.typeName = typeName.parentTypes[0];
+        }
+        
+        if (initializer != SPIRVResult::Invalid() && initializer.isConst)
+            name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, initializer.name, typeName.scope, isGlobal);
+        else
+            name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, 0x0, typeName.scope, isGlobal);
+
+        if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
+        {
+            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
+            generator->AddOp(Format("OpStore %%%d %%%d", name, loaded.name));
+        }
+
+        if (typeName.scope == SPIRVResult::Storage::StorageBuffer || typeName.scope == SPIRVResult::Storage::Uniform || typeName.scope == SPIRVResult::Storage::PushConstant || typeName.scope == SPIRVResult::Storage::Sampler)
+        {
+            uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name).value;
+            if (typeName.scope != SPIRVResult::Storage::Sampler)
+                generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
+            generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+            generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
+            generator->interfaceVariables.insert(name);
+        }
+        else if (typeName.scope == SPIRVResult::Storage::Image || typeName.scope == SPIRVResult::Storage::MutableImage)
+        {
+            generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
+            generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
+            generator->interfaceVariables.insert(name);
+        }
+        else if (typeName.scope == SPIRVResult::Storage::Input || typeName.scope == SPIRVResult::Storage::Output)
+        {
+            uint8_t binding = typeName.scope == SPIRVResult::Storage::Input ? varResolved->inBinding : varResolved->outBinding;
+            generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", binding));
+            generator->AddDecoration(Format("Component(%s)", varResolved->name.c_str()), name, Format("Component 0"));
+            if (varResolved->parameterBits.flags.isNoInterpolate)
+                generator->AddDecoration(Format("NoInterpolate(%s)", varResolved->name.c_str()), name, "Flat");
+            if (varResolved->parameterBits.flags.isNoPerspective)
+                generator->AddDecoration(Format("NoPerspective(%s)", varResolved->name.c_str()), name, "NoPerspective");
+            if (varResolved->parameterBits.flags.isPatch)
+                generator->AddDecoration(Format("Patch(%s)", varResolved->name.c_str()), name, "Patch");
+            if (varResolved->parameterBits.flags.isCentroid)
+                generator->AddDecoration(Format("Centroid(%s)", varResolved->name.c_str()), name, "Centroid");
+            generator->interfaceVariables.insert(name);
+        }
+        return SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);
+    }
     else
-        name = generator->AddVariableDeclaration(symbol, varResolved->name, typePtrName, 0x0, typeName.scope, isGlobal);
-
-    if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
     {
-        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
-        generator->AddOp(Format("OpStore %%%d %%%d", name, loaded.name));
+        // If it's a link defined variable, the constant generated by the initializer is sufficient
+        generator->AddMapping(varResolved->name, initializer.name);
+        generator->AddDecoration(Format("SpecId(%d)", varResolved->binding), initializer.name, Format("SpecId %d", varResolved->binding));
+        auto res = SPIRVResult(initializer.name, typeName.typeName);
+        res.isValue = true;
+        res.isConst = true;
+        res.isSpecialization = true;
+        res.scope = typeName.scope;
+        res.parentTypes = parentTypes;
+        return res;
     }
-
-    if (typeName.scope == SPIRVResult::Storage::StorageBuffer || typeName.scope == SPIRVResult::Storage::Uniform || typeName.scope == SPIRVResult::Storage::PushConstant || typeName.scope == SPIRVResult::Storage::Sampler)
-    {
-        uint32_t structSymbol = generator->GetSymbol(varResolved->typeSymbol->name).value;
-        if (typeName.scope != SPIRVResult::Storage::Sampler)
-            generator->AddDecoration(Format("Block(%s)", varResolved->typeSymbol->name.c_str()), structSymbol, "Block");
-        generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
-        generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
-        generator->interfaceVariables.insert(name);
-    }
-    else if (typeName.scope == SPIRVResult::Storage::Image || typeName.scope == SPIRVResult::Storage::MutableImage)
-    {
-        generator->AddDecoration(Format("Set(%s)", varResolved->name.c_str()), name, Format("DescriptorSet %d", varResolved->group));
-        generator->AddDecoration(Format("Binding(%s)", varResolved->name.c_str()), name, Format("Binding %d", varResolved->binding));
-        generator->interfaceVariables.insert(name);
-    }
-    else if (typeName.scope == SPIRVResult::Storage::Input || typeName.scope == SPIRVResult::Storage::Output)
-    {
-        uint8_t binding = typeName.scope == SPIRVResult::Storage::Input ? varResolved->inBinding : varResolved->outBinding;
-        generator->AddDecoration(Format("Location(%s)", varResolved->name.c_str()), name, Format("Location %d", binding));
-        generator->AddDecoration(Format("Component(%s)", varResolved->name.c_str()), name, Format("Component 0"));
-        if (varResolved->parameterBits.flags.isNoInterpolate)
-            generator->AddDecoration(Format("NoInterpolate(%s)", varResolved->name.c_str()), name, "Flat");
-        if (varResolved->parameterBits.flags.isNoPerspective)
-            generator->AddDecoration(Format("NoPerspective(%s)", varResolved->name.c_str()), name, "NoPerspective");
-        if (varResolved->parameterBits.flags.isPatch)
-            generator->AddDecoration(Format("Patch(%s)", varResolved->name.c_str()), name, "Patch");
-        if (varResolved->parameterBits.flags.isCentroid)
-            generator->AddDecoration(Format("Centroid(%s)", varResolved->name.c_str()), name, "Centroid");
-        generator->interfaceVariables.insert(name);
-    }
-    return SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);
 }
 
 //------------------------------------------------------------------------------
@@ -2954,9 +3016,15 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     }
 
     if (isConst)
-        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
+        if (generator->linkDefineEvaluation)
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
+        else
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
     else
+    {
+        assert(!generator->linkDefineEvaluation);
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName.typeName, initializer.c_str()));
+    }
     return SPIRVResult(name, typeName.typeName, true, isConst);
 }
 
@@ -3284,11 +3352,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             if (generator->literalExtract)
                 return SPIRVResult(value);
             else
-            {
-                uint32_t typeName = generator->AddSymbol("f32", Format("OpTypeFloat 32"), true);
-                uint32_t name = generator->AddSymbol(Format("%ff", value), Format("OpConstant %%%d %f", typeName, value), true);
-                return SPIRVResult(name, typeName, true, true);
-            }
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(value));
         }
         case Symbol::IntExpressionType:
         {
@@ -3298,11 +3362,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             if (generator->literalExtract)
                 return SPIRVResult(value);
             else
-            {
-                uint32_t typeName = generator->AddSymbol("i32", Format("OpTypeInt 32 1"), true);
-                uint32_t name = generator->AddSymbol(Format("%ds", value), Format("OpConstant %%%d %d", typeName, value), true);
-                return SPIRVResult(name, typeName, true, true);
-            }
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(value));
         }
         case Symbol::UIntExpressionType:
         {
@@ -3312,20 +3372,17 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             if (generator->literalExtract)
                 return SPIRVResult(value);
             else
-            {
-                uint32_t typeName = generator->AddSymbol("u32", Format("OpTypeInt 32 0"), true);
-                uint32_t name = generator->AddSymbol(Format("%du", value), Format("OpConstant %%%d %d", typeName, value), true);
-                return SPIRVResult(name, typeName, true, true);
-            }
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(value));
         }
         case Symbol::BoolExpressionType:
         {
             bool value;
             BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
             boolExpr->EvalBool(value);
-            uint32_t typeName = generator->AddSymbol("b8", Format("OpTypeBool"), true);
-            uint32_t name = generator->AddSymbol(value ? "true" : "false", value ? Format("OpConstantTrue %%%d", typeName) : Format("OpConstantFalse %%%d", typeName), true);
-            return SPIRVResult(name, typeName, true, true);
+            if (generator->literalExtract)
+                return SPIRVResult(value);
+            else
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(value));
         }
         case Symbol::BinaryExpressionType:
             return GenerateBinaryExpressionSPIRV(compiler, generator, expr);
@@ -3339,8 +3396,15 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             {
                 Variable* var = static_cast<Variable*>(symResolved->symbol);
                 Variable::__Resolved* varResolved = Symbol::Resolved(var);
+                bool isLinkDefined = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
                 type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
-                return SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName, false, false, type.scope, type.parentTypes);
+                SPIRVResult res = SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName);
+                res.isValue = isLinkDefined;
+                res.isConst = isLinkDefined;
+                res.isSpecialization = isLinkDefined;
+                res.scope = type.scope;
+                res.parentTypes = type.parentTypes;
+                return res;
             }
             else if (symResolved->symbol->symbolType == Symbol::SymbolType::EnumerationType)
             {
@@ -3819,7 +3883,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
 
     static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {
@@ -3953,9 +4017,9 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             }
 
             std::string interfaces = "";
-            for (const uint32_t interface : this->interfaceVariables)
+            for (const uint32_t inter : this->interfaceVariables)
             {
-                interfaces.append(Format("%%%d ", interface));
+                interfaces.append(Format("%%%d ", inter));
             }
             this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
             
@@ -4040,7 +4104,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 /**
 */
 uint32_t 
-SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
+SPIRVGenerator::AddSymbol(const std::string& name, const std::string& declare, bool global)
 {
     auto scope = this->scopeStack.rbegin();
     while (scope != this->scopeStack.rend())
@@ -4070,7 +4134,7 @@ SPIRVGenerator::AddSymbol(std::string name, std::string declare, bool global)
 /**
 */
 void
-SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global)
+SPIRVGenerator::AddReservedSymbol(const std::string& name, uint32_t object, const std::string& declare, bool global)
 {
     auto scope = this->scopeStack.rbegin();
     while (scope != this->scopeStack.rend())
@@ -4078,7 +4142,8 @@ SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string
         auto it = scope->symbols.find(name);
         if (it != scope->symbols.end())
         {
-            break;
+            assert(false);
+            //break;
         }
         scope++;
     }
@@ -4097,7 +4162,7 @@ SPIRVGenerator::AddReservedSymbol(std::string name, uint32_t object, std::string
 /**
 */
 const SymbolAssignment
-SPIRVGenerator::GetSymbol(std::string name)
+SPIRVGenerator::GetSymbol(const std::string& name)
 {
     SymbolAssignment ret = { .sym = nullptr, .value = 0xFFFFFFFF };
     auto it = this->scopeStack.rbegin();
@@ -4119,7 +4184,7 @@ SPIRVGenerator::GetSymbol(std::string name)
 /**
 */
 bool
-SPIRVGenerator::HasSymbol(std::string name)
+SPIRVGenerator::HasSymbol(const std::string& name)
 {
     SymbolAssignment ret = { .sym = nullptr, .value = 0xFFFFFFFF };
     auto it = this->scopeStack.rbegin();
@@ -4140,7 +4205,7 @@ SPIRVGenerator::HasSymbol(std::string name)
 /**
 */
 void 
-SPIRVGenerator::AddOp(std::string value, bool global, std::string comment)
+SPIRVGenerator::AddOp(const std::string& value, bool global, std::string comment)
 {
     if (global)
         this->declarations.append(Format("\t\t%s\t\t\t; %s\n", value.c_str(), comment.c_str()));
@@ -4152,7 +4217,7 @@ SPIRVGenerator::AddOp(std::string value, bool global, std::string comment)
 /**
 */
 uint32_t 
-SPIRVGenerator::AddMappedOp(std::string name, std::string comment)
+SPIRVGenerator::AddMappedOp(const std::string& name, std::string comment)
 {
     uint32_t ret = this->symbolCounter;
     this->functional.append(Format("%%%d\t=\t%s\t\t\t; %s\n", ret, name.c_str(), comment.c_str()));
@@ -4164,7 +4229,7 @@ SPIRVGenerator::AddMappedOp(std::string name, std::string comment)
 /**
 */
 void 
-SPIRVGenerator::AddCapability(std::string declare)
+SPIRVGenerator::AddCapability(const std::string& declare)
 {
     if (this->capabilities.find(declare) == this->capabilities.end())
     {
@@ -4177,7 +4242,7 @@ SPIRVGenerator::AddCapability(std::string declare)
 /**
 */
 uint32_t 
-SPIRVGenerator::AddExtension(std::string name)
+SPIRVGenerator::AddExtension(const std::string& name)
 {
     uint32_t ret = 0xFFFFFFFF;
     auto it = this->extensions.find(name);
@@ -4198,7 +4263,7 @@ SPIRVGenerator::AddExtension(std::string name)
 /**
 */
 void 
-SPIRVGenerator::AddDecoration(std::string name, uint32_t object, std::string decorate)
+SPIRVGenerator::AddDecoration(const std::string& name, uint32_t object, const std::string& decorate)
 {
     auto it = this->decorationMap.find(name);
     if (it == this->decorationMap.end())
@@ -4212,9 +4277,30 @@ SPIRVGenerator::AddDecoration(std::string name, uint32_t object, std::string dec
 /**
 */
 void 
-SPIRVGenerator::AddMemberDecoration(uint32_t struc, uint32_t index, std::string decorate)
+SPIRVGenerator::AddMemberDecoration(uint32_t struc, uint32_t index, const std::string& decorate)
 {
     this->decorations.append(Format("\tOpMemberDecorate %%%d %d %s\n", struc, index, decorate.c_str()));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+SPIRVGenerator::AddMapping(const std::string& name, uint32_t object)
+{
+    auto scope = this->scopeStack.rbegin();
+    while (scope != this->scopeStack.rend())
+    {
+        auto it = scope->symbols.find(name);
+        if (it != scope->symbols.end())
+        {
+            assert(false);
+        }
+        scope++;
+    }
+
+    // If symbol isn't found in scope, create it
+    this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = object };
 }
 
 //------------------------------------------------------------------------------
@@ -4230,7 +4316,7 @@ SPIRVGenerator::ReserveName()
 /**
 */
 void 
-SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
+SPIRVGenerator::AddReserved(const std::string& op, uint32_t name, std::string comment)
 {
     this->functional.append(Format("%%%d = \t%s\t\t\t; %s\n", name, op.c_str(), comment.c_str()));
 }
@@ -4239,7 +4325,7 @@ SPIRVGenerator::AddReserved(std::string op, uint32_t name, std::string comment)
 /**
 */
 uint32_t 
-SPIRVGenerator::AddVariableDeclaration(Symbol* sym, std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage storage, bool global)
+SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, SPIRVResult::Storage storage, bool global)
 {
     auto scope = this->scopeStack.rbegin();
     while (scope != this->scopeStack.rend())

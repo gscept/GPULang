@@ -809,6 +809,21 @@ int PLATFORM_MAIN
     VERIFY(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &gfxPsoInfo, nullptr, &graphicsPipeline));
 
     VkComputePipelineCreateInfo cmpPsoInfo = GPULang::GetComputePipeline(computeProgram.pipelineInfo);
+
+    auto var = computeProgram.loader.Get<GPULang::VariableObject>("foo");
+    VkSpecializationMapEntry mapEntry =
+    {
+        .constantID = var->binding,
+        .offset = 0,
+        .size = var->byteSize
+    };
+    VkSpecializationInfo specInfo;
+    specInfo.mapEntryCount = 1;
+    specInfo.pMapEntries = &mapEntry;
+    specInfo.dataSize = sizeof(float);
+    float data = 5.0f;
+    specInfo.pData = &data;
+    cmpPsoInfo.stage.pSpecializationInfo = &specInfo; 
     VkPipeline computePipeline;
     VERIFY(vkCreateComputePipelines(device, VK_NULL_HANDLE, 1, &cmpPsoInfo, nullptr, &computePipeline));
 
@@ -1311,7 +1326,6 @@ int PLATFORM_MAIN
         clock_t now = clock();
         float diff = (now - before) * 1000.0f / CLOCKS_PER_SEC;
         before = now;
-        printf("%f", diff);
 
         glfwPollEvents();
         terminate |= glfwWindowShouldClose(window);

@@ -2,9 +2,11 @@
   "name": "gpulang",
   "displayName": "gpulang",
   "description": "Syntax highlighting for GPULang",
-  "version": "0.0.1",
+  "version": "1.0.4",
+  "publisher": "gustavsterbrant",
+  "icon": "gpulang.png",
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.90.0"
   },
   "categories": [
     "Programming Languages"

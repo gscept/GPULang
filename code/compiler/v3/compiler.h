@@ -189,6 +189,7 @@ struct Compiler
     Generator* headerGenerator = nullptr;
 
     Function* currentFunction = nullptr;
+    uint32_t linkDefineCounter = 0;
 
     bool branchReturns;
 

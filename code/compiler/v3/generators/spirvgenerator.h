@@ -15,6 +15,8 @@
 #include <set>
 #include <stack>
 #include <assert.h>
+#include <dinput.h>
+
 namespace GPULang
 {
 
@@ -23,9 +25,10 @@ struct SPIRVResult
 {
     uint32_t name = 0xFFFFFFFF;
     uint32_t typeName = 0xFFFFFFFF;
-    bool isValue = false;       // If not, then the object needs a load to be read. If it is, doesn't support store
-    bool isConst = false;       // If true, value is a constant
-    bool isLiteral = false;     // If true, then the value is a literal value and can be constant constructed
+    bool isValue = false;           // If not, then the object needs a load to be read. If it is, doesn't support store
+    bool isConst = false;           // If true, value is a constant
+    bool isLiteral = false;         // If true, then the value is a literal value and can be constant constructed
+    bool isSpecialization = false;  // If true, then the value is the product of specialization
     std::vector<uint32_t> parentTypes;
 
     Type::SwizzleMask swizzleMask;
@@ -38,13 +41,15 @@ struct SPIRVResult
             float f;
             int i;
             uint32_t ui;
+            bool b;
         };
 
         enum Type
         {
             FloatType,
             IntType,
-            UIntType
+            UIntType,
+            BoolType
         } type;
     } literalValue;
 
@@ -79,14 +84,12 @@ struct SPIRVResult
                 break;
             case Storage::Sampler:
             case Storage::Image:
+            case Storage::MutableImage:
             case Storage::UniformConstant:
                 return "UniformConstant";
                 break;
             case Storage::StorageBuffer:
                 return "StorageBuffer";
-                break;
-            case Storage::MutableImage:
-                return "Image";
                 break;
             case Storage::PushConstant:
                 return "PushConstant";
@@ -173,31 +176,33 @@ public:
     bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// Add or search for a symbol
-    uint32_t AddSymbol(std::string name, std::string declare, bool global = false);
+    uint32_t AddSymbol(const std::string& name, const std::string& declare, bool global = false);
     /// Add a symbol for a reserved name
-    void AddReservedSymbol(std::string name, uint32_t object, std::string declare, bool global = false);
+    void AddReservedSymbol(const std::string& name, uint32_t object, const std::string& declare, bool global = false);
     /// Get symbol
-    const SymbolAssignment GetSymbol(std::string name);
+    const SymbolAssignment GetSymbol(const std::string& name);
     /// Returns true if symbol exists
-    bool HasSymbol(std::string name);
+    bool HasSymbol(const std::string& name);
     /// Add an op without a mapping
-    void AddOp(std::string name, bool global = false, std::string comment = "");
+    void AddOp(const std::string& name, bool global = false, std::string comment = "");
     /// Add mapped op
-    uint32_t AddMappedOp(std::string name, std::string comment = "");
+    uint32_t AddMappedOp(const std::string& name, std::string comment = "");
     /// Add capability
-    void AddCapability(std::string declare);
+    void AddCapability(const std::string& declare);
     /// Add extension
-    uint32_t AddExtension(std::string name);
+    uint32_t AddExtension(const std::string& name);
     /// Add decoration
-    void AddDecoration(std::string name, uint32_t object, std::string decorate);
+    void AddDecoration(const std::string& name, uint32_t object, const std::string& decorate);
     /// Add member decoration
-    void AddMemberDecoration(uint32_t struc, uint32_t index, std::string decorate);
+    void AddMemberDecoration(uint32_t struc, uint32_t index, const std::string& decorate);
+    /// Add extra mapping for preexisting object
+    void AddMapping(const std::string& name, uint32_t object);
     /// Reserve a name
     uint32_t ReserveName();
     /// Add op with reserved name
-    void AddReserved(std::string op, uint32_t name, std::string comment = "");
+    void AddReserved(const std::string& op, uint32_t name, std::string comment = "");
     /// Add function variable declaration
-    uint32_t AddVariableDeclaration(Symbol* sym, std::string name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
+    uint32_t AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
 
     uint32_t symbolCounter;
 
@@ -224,8 +229,9 @@ public:
     std::unordered_map<std::string, std::set<std::string>> decorationMap;
 
     std::string variableDeclarations;
-    bool blockOpen;
-    bool literalExtract;
+    bool blockOpen = false;
+    bool literalExtract = false;
+    bool linkDefineEvaluation = false;
 
     Function* entryPoint = nullptr;
 

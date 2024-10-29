@@ -356,6 +356,8 @@ bool
 Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter)
 {
     bool ret = true;
+    this->linkDefineCounter = 0;
+    this->currentFunction = nullptr;
 
     this->symbols = root->symbols;
 
@@ -860,6 +862,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                         output.bindingType = GPULang::BindingType::Image;
                 else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
                     output.bindingType = GPULang::BindingType::Sampler;
+                else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
+                    output.bindingType = GPULang::BindingType::LinkDefined;
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)

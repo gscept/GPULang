@@ -194,7 +194,8 @@ enum BindingType
     Image,
     SampledImage,
     Sampler,
-    Inline
+    Inline,
+    LinkDefined
 };
 
 namespace Serialize

@@ -19,20 +19,20 @@ enum ImageFormat
     InvalidImageFormat,
 
     // byte
-    RGBA16, RGB10_A2, RGBA8, RG16, RG8,
-    R16, R8, RGBA16_SNORM, RGBA8_SNORM, RG16_SNORM, RG8_SNORM,
-    R16_SNORM, R8_SNORM,
+    Rgba16, Rgb10_A2, Rgba8, Rg16, Rg8,
+    R16, R8, Rgba16_Snorm, Rgba8_Snorm, Rg16_Snorm, Rg8_Snorm,
+    R16_Snorm, R8_Snorm,
 
     // float
-    RGBA32F, RGBA16F, RG32F, RG16F, R11G11B10F,
+    Rgba32F, Rgba16F, Rg32F, Rg16F, R11G11B10F,
     R32F, R16F,
 
     // integer
-    RGBA32I, RGBA16I, RGBA8I, RG32I, RG16I, RG8I,
+    Rgba32I, Rgba16I, Rgba8I, Rg32I, Rg16I, Rg8I,
     R32I, R16I, R8I,
 
     // unsigned integer
-    RGBA32U, RGBA16U, RGB10_A2U, RGBA8U, RG32U, RG16U, RG8U,
+    Rgba32U, Rgba16U, Rgb10_A2U, Rgba8U, Rg32U, Rg16U, Rg8U,
     R32U, R16U, R8U,
 
     // Format is not known
@@ -103,7 +103,6 @@ struct Variable : public Symbol
                 uint32_t isParameter : 1;               // variable is a function parameter
                 uint32_t isEntryPointParameter : 1;
                 uint32_t isStructMember : 1;            // variable is a struct member
-                uint32_t isSampled : 1;                 // for variables of image type, this means a sampler has to be associated from the client
                 uint32_t isPadding : 1;
             } flags;
             uint32_t bits;
@@ -118,7 +117,8 @@ struct Variable : public Symbol
             InlineUniform,                          // variable is uniform but read from command buffer
             Input,                                  // variable is an input from a previous shader stage
             Output,                                 // variable is an output from the current shader stage
-            Global                                  // variable is global in the shader
+            Global,                                 // variable is global in the shader
+            LinkDefined                             // variable value is defined at link time
 
         } storage = Storage::Default;
         std::vector<Variable*> siblings;

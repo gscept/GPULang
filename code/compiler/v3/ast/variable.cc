@@ -50,42 +50,42 @@ Variable::~Variable()
 
 std::unordered_map<std::string, ImageFormat> StringToFormats =
 {
-    { "rgba16", RGBA16 }
-    , { "rgb10_a2", RGB10_A2 }
-    , { "rgba8", RGBA8 }
-    , { "rg16", RG16 }
-    , { "rg8", RG8 }
+    { "rgba16", Rgba16 }
+    , { "rgb10_a2", Rgb10_A2 }
+    , { "rgba8", Rgba8 }
+    , { "rg16", Rg16 }
+    , { "rg8", Rg8 }
     , { "r16", R16 }
     , { "r8", R8 }
-    , { "rgba16_snorm", RGBA16_SNORM }
-    , { "rgba8_snorm", RGBA8_SNORM }
-    , { "rg16_snorm", RG16_SNORM }
-    , { "rg8_snorm", RG8_SNORM }
-    , { "r16_snorm", R16_SNORM }
-    , { "r8_snorm", R8_SNORM }
-    , { "rgba32f", RGBA32F }
-    , { "rgba16f", RGBA16F }
-    , { "rg32f", RG32F }
-    , { "rg16f", RG16F }
+    , { "rgba16_snorm", Rgba16_Snorm }
+    , { "rgba8_snorm", Rgba8_Snorm }
+    , { "rg16_snorm", Rg16_Snorm }
+    , { "rg8_snorm", Rg8_Snorm }
+    , { "r16_snorm", R16_Snorm }
+    , { "r8_snorm", R8_Snorm }
+    , { "rgba32f", Rgba32F }
+    , { "rgba16f", Rgba16F }
+    , { "rg32f", Rg32F }
+    , { "rg16f", Rg16F }
     , { "r11g11b10f", R11G11B10F }
     , { "r32f", R32F }
     , { "r16f", R16F }
-    , { "rga32i", RGBA32I }
-    , { "rgba16i", RGBA16I }
-    , { "rgba8i", RGBA8I }
-    , { "rg32i", RG32I }
-    , { "rg16i", RG16I }
-    , { "rg8i", RG8I }
+    , { "rga32i", Rgba32I }
+    , { "rgba16i", Rgba16I }
+    , { "rgba8i", Rgba8I }
+    , { "rg32i", Rg32I }
+    , { "rg16i", Rg16I }
+    , { "rg8i", Rg8I }
     , { "r32i", R32I }
     , { "r16i", R16I }
     , { "r8i", R8I }
-    , { "rga32u", RGBA32U }
-    , { "rgba16u", RGBA16U }
-    , { "rgb10_a2u", RGB10_A2U }
-    , { "rgba8u", RGBA8U }
-    , { "rg32u", RG32U }
-    , { "rg16u", RG16U }
-    , { "rg8u", RG8U }
+    , { "rga32u", Rgba32U }
+    , { "rgba16u", Rgba16U }
+    , { "rgb10_a2u", Rgb10_A2U }
+    , { "rgba8u", Rgba8U }
+    , { "rg32u", Rg32U }
+    , { "rg16u", Rg16U }
+    , { "rg8u", Rg8U }
     , { "r32u", R32U }
     , { "r16u", R16U }
     , { "r8u", R8U }
@@ -111,7 +111,7 @@ Variable::StringToImageFormat(const std::string& format)
 bool 
 Variable::IsImageFormatInteger(ImageFormat format)
 {
-    return format >= RGBA32I && format <= R8I;
+    return format >= Rgba32I && format <= R8I;
 }
 
 //------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ Variable::IsImageFormatInteger(ImageFormat format)
 bool 
 Variable::IsImageFormatUnsigned(ImageFormat format)
 {
-    return format >= RGBA32U && format <= R8U;
+    return format >= Rgba32U && format <= R8U;
 }
 
 } // namespace GPULang

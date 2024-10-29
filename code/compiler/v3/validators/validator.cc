@@ -99,7 +99,7 @@ static std::set<std::string> pointerQualifiers =
 
 static std::set<std::string> storageQualifiers =
 {
-    "uniform", "inline", "workgroup"
+    "uniform", "inline", "workgroup", "link_defined"
 };
 
 static std::set<std::string> textureQualifiers =
@@ -127,6 +127,7 @@ Validator::Validator()
     this->allowedTextureAttributes.insert(textureQualifiers.begin(), textureQualifiers.end());
 
     this->allowedScalarAttributes.insert(scalarQualifiers.begin(), scalarQualifiers.end());
+    this->allowedScalarAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
     this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
@@ -1424,7 +1425,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             expr->EvalType(type);
             if (type != enumeration->type)
             {
-                compiler->Error(Format("Enumeration is of type '%s' but label '%s' is of type '%s'", enumeration->type.name.c_str(), str.c_str(), type.name.c_str()), symbol);
+                compiler->Error(Format("Enumeration is of type '%s' but label '%s' is of type '%s'", enumeration->type.ToString().c_str(), str.c_str(), type.ToString().c_str()), symbol);
                 return false;
             }
 
@@ -1467,6 +1468,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (var->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
     {
         compiler->ReservedPrefixError(var->name, "gpl", symbol);
+        return false;
     }
 
     // resolve array type and names
@@ -1601,11 +1603,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->usageBits.flags.isConst = true;
         else if (attr.name == "var")
             varResolved->usageBits.flags.isVar = true;
+        else if (attr.name == "link_defined")
+        {
+            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            {
+                compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                return false;
+            }
+            varResolved->storage = Variable::__Resolved::Storage::LinkDefined;
+            varResolved->binding = compiler->linkDefineCounter++;
+        }
         else if (attr.name == "uniform")
         {
             if (varResolved->storage != Variable::__Resolved::Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                return false;
             }
             varResolved->storage = Variable::__Resolved::Storage::Uniform;
             varResolved->usageBits.flags.isConst = true & !varResolved->type.IsMutable();
@@ -1615,6 +1628,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             if (varResolved->storage != Variable::__Resolved::Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                return false;
             }
             varResolved->storage = Variable::__Resolved::Storage::InlineUniform;
             varResolved->usageBits.flags.isConst = true;
@@ -1624,25 +1638,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             if (varResolved->storage != Variable::__Resolved::Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                return false;
             }
             varResolved->storage = Variable::__Resolved::Storage::Workgroup;
-        }
-        else if (attr.name == "var")
-        {
-            if (varResolved->usageBits.flags.isConst)
-            {
-                compiler->Error(Format("Variable declared as 'var' can't also be 'const'"), symbol);
-                return false;
-            }
-        }
-        else if (attr.name == "sampled")
-        {
-            if (varResolved->typeSymbol->category != Type::Category::TextureCategory)
-            {
-                compiler->Error(Format("'sampled' is only allowed on texture typed variables"), symbol);
-                return false;
-            }
-            varResolved->usageBits.flags.isSampled = true;
         }
         else
         {
@@ -1802,6 +1800,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Variable of inline '%s' type must be pointer", type->name.c_str()), symbol);
                 return false;
             }
+        }
+    }
+
+    if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+    {
+        if (varResolved->typeSymbol->columnSize > 1 || varResolved->typeSymbol->category != Type::Category::ScalarCategory)
+        {
+            compiler->Error(Format("Only scalar types can be 'link_defined'"), symbol);
+            return false;
         }
     }
 
