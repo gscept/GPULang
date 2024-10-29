@@ -21,7 +21,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control",
-					"match": "\\b(if|while|for|return|continue|break)\\b"
+					"match": "\\b(if|else|while|for|return|continue|break)\\b"
 				}, {
 					"name": "entity.name.type",
 					"match": "\\b(void|i32|i32x2|i32x3|i32x4|u32|u32x2|u32x3|u32x4|f32|f32x2|f32x3|f32x4|f32x2x2|f32x2x3|f32x2x4|f32x3x2|f32x3x3|f32x3x4|f32x4x2|f32x4x3|f32x4x4|b8|b8x2|b8x3|b8x4|texture1D|texture1DArray|texture2D|texture2DArray|texture2DMS|texture2DMSArray|textureCube|textureCubeArray|texture3D|sampler)\\b"

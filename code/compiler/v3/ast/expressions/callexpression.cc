@@ -6,6 +6,7 @@
 #include "util.h"
 #include "compiler.h"
 #include "ast/function.h"
+#include "ast/enumeration.h"
 namespace GPULang 
 {
 

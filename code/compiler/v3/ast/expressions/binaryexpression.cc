@@ -72,7 +72,8 @@ BinaryExpression::Resolve(Compiler* compiler)
     unsigned leftAccess;
     this->left->EvalAccessFlags(leftAccess);
     if (leftAccess == AccessFlags::Const &&
-        (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
+        !compiler->currentState.allowConstOverride
+        && (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
         )
     {
         compiler->Error(Format("Assignment illegal on left hand value of 'const'"), this);

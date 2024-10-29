@@ -12,9 +12,10 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-EnumExpression::EnumExpression(int value, Type::FullType type)
+EnumExpression::EnumExpression(int value, Type::FullType type, Type::FullType underlyingType)
     : value(value)
     , type(type)
+    , underlyingType(underlyingType)
 {
     this->resolved = new EnumExpression::__Resolved;
     this->symbolType = EnumExpressionType;

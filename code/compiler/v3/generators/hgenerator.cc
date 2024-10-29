@@ -6,6 +6,7 @@
 #include "ast/symbol.h"
 #include "ast/structure.h"
 #include "ast/function.h"
+#include "ast/enumeration.h"
 #include "ast/expressions/initializerexpression.h"
 #include "compiler.h"
 #include "util.h"
@@ -33,6 +34,9 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
             break;
         case Symbol::FunctionType:
             this->GenerateFunctionH(compiler, program, sym, output);
+            break;
+        case Symbol::EnumerationType:
+            this->GenerateEnumH(compiler, program, sym, output);
             break;
         }
     }
@@ -141,6 +145,7 @@ void
 GenerateHInitializer(Compiler* compiler, Expression* expr, std::string& outCode)
 {
     std::string inner;
+
     InitializerExpression* initExpression = static_cast<InitializerExpression*>(expr);
     for (Expression* expr : initExpression->values)
     {
@@ -232,6 +237,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
         outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->byteSize));
         outCode.append("};\n\n");
     }
+    /*
     else if (varResolved->usageBits.flags.isConst)
     {
         std::string typeStr = typeToHeaderType[var->type.name];
@@ -260,6 +266,35 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
         else
             outCode.append(Format("    static const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
     }
+    */
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+{
+    Enumeration* enu = static_cast<Enumeration*>(symbol);
+    Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
+
+    outCode.append(Format("enum %s\n", enu->name.c_str()));
+    outCode.append("{\n");
+
+    for (size_t i = 0; i < enu->labels.size(); i++)
+    {
+        outCode.append(Format("    %s", enu->labels[i].c_str()));
+        if (enu->values[i] != nullptr)
+        {
+            uint32_t val;
+            enu->values[i]->EvalUInt(val);
+            outCode.append(Format(" = %d", val));
+        }
+        if (i != enu->labels.size() - 1)
+            outCode.append(",");
+        outCode.append("\n");
+    }
+    outCode.append("};\n\n");
 }
 
 //------------------------------------------------------------------------------

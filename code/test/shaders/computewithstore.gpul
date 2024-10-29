@@ -1,3 +1,9 @@
+enum ShaderMode
+{
+    OutputLocalInvocationIndex,
+    OutputSpecializedVector
+};
+const Mode : ShaderMode = ShaderMode.OutputLocalInvocationIndex;
 
 struct Storage
 {
@@ -12,11 +18,14 @@ uniform Output : *mutable Storage;
 entry_point
 ComputeWithStore() void
 {
-    Output.i = i32(gplGetLocalInvocationIndex().x);
-    Output.vec2 = f32x4(1.0f, 2.0f, foo, 4.0f);
+    if (Mode == ShaderMode.OutputLocalInvocationIndex)
+        Output.i = i32(gplGetLocalInvocationIndex().x);
+    else if (Mode == ShaderMode.OutputSpecializedVector)
+        Output.vec2 = f32x4(1.0f, 2.0f, foo, 4.0f);
 }
 
 program TestProgram
 {
     ComputeShader = ComputeWithStore;
+    Mode = ShaderMode.OutputLocalInvocationIndex;
 };

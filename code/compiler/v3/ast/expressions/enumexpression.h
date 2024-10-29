@@ -15,7 +15,7 @@ struct EnumExpression : public Expression
 {
 public:
 	/// constructor
-    EnumExpression(int value, Type::FullType type);
+    EnumExpression(int value, Type::FullType type,  Type::FullType underlyingType);
 	/// destructor
 	virtual ~EnumExpression();
 
@@ -41,6 +41,7 @@ public:
 
 	unsigned int value;
     Type::FullType type;
+    Type::FullType underlyingType;
 
     struct __Resolved : public Expression::__Resolved
     {

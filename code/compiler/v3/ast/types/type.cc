@@ -189,21 +189,22 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(pixelCacheMS, TypeCode::PixelCacheMS);
     __MAKE_PIXELCACHE();
 
-    Enumeration* builtinEnum = new Enumeration();
-    builtinEnum->name = "CompareMode";
-    builtinEnum->type = { "u32" };
-    builtinEnum->type.literal = true;
-    builtinEnum->baseType = GPULang::TypeCode::UInt;
-    builtinEnum->labels.push_back("InvalidCompareMode"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("Never"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("Less"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("Equal"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("LessEqual"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("Greater"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("NotEqual"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("GreaterEqual"); builtinEnum->values.push_back(nullptr);
-    builtinEnum->labels.push_back("Always"); builtinEnum->values.push_back(nullptr);
-    DefaultTypes.push_back(builtinEnum);
+    Enumeration* compareModeEnum = new Enumeration();
+    compareModeEnum->name = "CompareMode";
+    compareModeEnum->type = { "u32" };
+    compareModeEnum->type.literal = true;
+    compareModeEnum->baseType = GPULang::TypeCode::UInt;
+    compareModeEnum->labels.push_back("InvalidCompareMode"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("Never"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("Less"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("Equal"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("LessEqual"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("Greater"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("NotEqual"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("GreaterEqual"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->labels.push_back("Always"); compareModeEnum->values.push_back(nullptr);
+    compareModeEnum->builtin = true;
+    DefaultTypes.push_back(compareModeEnum);
 
     __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
     __MAKE_TYPE_CUSTOM(renderState, GPULang::RenderStateType);
@@ -223,6 +224,7 @@ Type::SetupDefaultTypes()
     executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->builtin = true;
     DefaultTypes.push_back(executionScopeEnum);
 
     Enumeration* memorySemanticsEnum = new Enumeration();
@@ -240,6 +242,7 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->labels.push_back("DeviceMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x40));
     memorySemanticsEnum->labels.push_back("AtomicCounterMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x80));
     memorySemanticsEnum->labels.push_back("ImageMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x100));
+    memorySemanticsEnum->builtin = true;
     DefaultTypes.push_back(memorySemanticsEnum);
 
     __MAKE_TYPE(void, TypeCode::Void);

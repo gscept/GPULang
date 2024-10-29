@@ -357,11 +357,20 @@ enumeration
     'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
     (':' typeDeclaration { type = $typeDeclaration.type; })?
     '{'
-        label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
-        {
-            enumLabels.push_back($label.text);
-            enumValues.push_back(expr);
-        }
+        (
+            label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
+            {
+                enumLabels.push_back($label.text);
+                enumValues.push_back(expr);
+            }
+            (
+                ',' label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
+                {
+                    enumLabels.push_back($label.text);
+                    enumValues.push_back(expr);
+                }
+            )*
+        )?
     '}'
     {
         $sym = new Enumeration();

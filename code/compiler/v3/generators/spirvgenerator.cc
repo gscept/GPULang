@@ -236,6 +236,13 @@ GenerateTypeSPIRV(
     {
         name = generator->AddSymbol("void", "OpTypeVoid", true);
     }
+    else if (typeSymbol->category == Type::EnumCategory)
+    {
+        Type* u32 = compiler->GetSymbol<Type>("u32");
+        name = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "u32" }, u32).typeName;
+        if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;
+    }
     else if (typeSymbol->category == Type::UserTypeCategory)
     {
         name = generator->GetSymbol(typeSymbol->name).value;
@@ -289,8 +296,6 @@ GenerateTypeSPIRV(
 
     return SPIRVResult(0xFFFFFFFF, name, false, false, scope, parentType);
 }
-
-
 
 struct ConstantCreationInfo
 {
@@ -451,6 +456,7 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
             break;
         }
     }
+    res.isValue = true;
     res.isConst = true;
     res.isSpecialization = generator->linkDefineEvaluation;
     return res;
@@ -1925,12 +1931,12 @@ SPIRVGenerator::SetupIntrinsics()
             }
             assert(args[1].isLiteral);
             uint32_t typePtr = g->AddSymbol(Format("ptr(%s)Output", name.c_str()), Format("OpTypePointer Output %%%d", baseType), true);
-            uint32_t ret = g->AddSymbol("gplExportColor", Format("OpVariable %%%d Output", typePtr), true);
+            uint32_t ret = g->AddSymbol(Format("gplExportColor%d", args[1].literalValue.i), Format("OpVariable %%%d Output", typePtr), true);
             g->interfaceVariables.insert(ret);
             g->AddDecoration(Format("gplExportColorIndex%d", args[1].literalValue.i), ret, Format("Index %d", args[1].literalValue.i));
             g->AddDecoration(Format("gplExportColorLocation%d", args[1].literalValue.i), ret, Format("Location %d", args[1].literalValue.i));
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-            g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportColor");
+            g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, Format("gplExportColor%d", args[1].literalValue.i));
             return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
         };
     }
@@ -2680,9 +2686,12 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     generator->blockOpen = true;
     generator->functions.append(generator->functional);
 
-
     generator->functional.clear();
-    GenerateStatementSPIRV(compiler, generator, func->ast);
+    auto functionOverride = generator->evaluatingProgram->functionOverrides.find(func);
+    if (functionOverride != generator->evaluatingProgram->functionOverrides.end())
+        GenerateStatementSPIRV(compiler, generator, functionOverride->second->ast);
+    else
+        GenerateStatementSPIRV(compiler, generator, func->ast);
     generator->functions.append(generator->variableDeclarations);
     generator->variableDeclarations.clear();
     if (generator->blockOpen)
@@ -2752,10 +2761,45 @@ GenerateEnumSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
     Enumeration* enumeration = static_cast<Enumeration*>(symbol);
     Enumeration::__Resolved* enumResolved = Symbol::Resolved(enumeration);
 
+    // Implement 'conversion' functions, which is to just return the argument
+    for (size_t i = 0; i < enumeration->globals.size(); i++)
+    {
+        Symbol* sym = enumeration->globals[i];
+        if (sym->symbolType == Symbol::FunctionType)
+        {
+            Function* fun = static_cast<Function*>(sym);
+            
+                generator->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+                {
+                    return args[0];
+                };
+            
+        }
+    }
+    for (size_t i = 0; i < enumeration->staticSymbols.size(); i++)
+    {
+        Symbol* sym = enumeration->staticSymbols[i];
+        if (sym->symbolType == Symbol::FunctionType)
+        {
+            Function* fun = static_cast<Function*>(sym);
+            if (fun->name == "operator==")
+            {
+                generator->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+                    {
+                        return SPIRVResult(g->AddMappedOp(Format("OpIEqual %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true, true);
+                    };
+            }
+            else if (fun->name == "operator!=")
+            {
+                generator->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+                    {
+                        return SPIRVResult(g->AddMappedOp(Format("OpINotEqual %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true, true);
+                    };
+            }
+        }
+    }
     SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, enumeration->type, enumResolved->typeSymbol);
     return typeName;
-    //generator->AddReservedSymbol(enumeration->name, typeName.typeName, "", true);
-    //generator->AddSymbol(enumeration->name, "", true);
 }
 
 //------------------------------------------------------------------------------
@@ -2775,11 +2819,23 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     uint32_t name = 0xFFFFFFFF;
 
     SPIRVResult initializer = SPIRVResult::Invalid();
-    if (varResolved->value != nullptr)
+
+    Expression* initializerExpression = varResolved->value;
+
+    // Handle overrides
+    if (varResolved->usageBits.flags.isConst)
+    {
+        auto constVariableOverride = generator->evaluatingProgram->constVarInitializationOverrides.find(var);
+        if (constVariableOverride != generator->evaluatingProgram->constVarInitializationOverrides.end())
+            initializerExpression = constVariableOverride->second;
+    }
+
+    if (initializerExpression != nullptr)
     {
         // Setup initializer
         generator->linkDefineEvaluation = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
-        initializer = GenerateExpressionSPIRV(compiler, generator, varResolved->value);
+        initializer = GenerateExpressionSPIRV(compiler, generator, initializerExpression);
+
 
         // If initializer is a literal, make sure to load it
         if (initializer.isLiteral)
@@ -2791,7 +2847,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     {
         uint32_t typePtrName = typeName.typeName;
         // If anything but void, then the type has to be a pointer
-        if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
+        if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::EnumCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
         {
             type = Format("ptr(%d)", typeName.typeName);
             typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
@@ -3053,7 +3109,6 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         rightType = binaryExpressionResolved->conversionFunction->returnType;
     }
 
-    SPIRVResult opResult = SPIRVResult::Invalid();
     if (leftType == rightType && binaryExpression->op == '=')
     {
         assert(!leftValue.isValue);
@@ -3095,7 +3150,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         }
         generator->AddOp(Format("OpStore %%%d %%%d", leftValue.name, rightValue.name));
 
-        opResult = leftValue;
+        return leftValue;
     }
     else
     {
@@ -3111,10 +3166,8 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Get operator 
         auto op = generator->intrinsicMap.find(fun);
         assert(op != generator->intrinsicMap.end());
-        opResult = op->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+        return op->second(compiler, generator, retType.typeName, { leftValue, rightValue });
     }
-
-    return opResult;
 }
 
 //------------------------------------------------------------------------------
@@ -3883,7 +3936,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         SPIRVGenerator* gen;
     };
 
-    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_3);
+    spv_context spvContext = spvContextCreate(SPV_ENV_VULKAN_1_2);
 
     static std::unordered_map<Program::__Resolved::ProgramEntryType, std::string> executionModelMap =
     {
@@ -3959,6 +4012,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         , { Function::__Resolved::PrimitiveTopology::Triangles, "OutputTriangleStrip" }
     };
 
+    this->evaluatingProgram = progResolved;
     for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
     {
         Cleanup cleanup(this);
@@ -4097,6 +4151,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
             delete diag;
         }
     }
+    this->evaluatingProgram = nullptr;
     return true;
 }
 
@@ -4353,7 +4408,13 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
     }
     else
     {
-        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::MutableImage || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::UniformConstant)
+        if (storage == SPIRVResult::Storage::StorageBuffer 
+            || storage == SPIRVResult::Storage::Image 
+            || storage == SPIRVResult::Storage::MutableImage 
+            || storage == SPIRVResult::Storage::Uniform 
+            || storage == SPIRVResult::Storage::UniformConstant
+            || storage == SPIRVResult::Storage::Private
+            )
             this->interfaceVariables.insert(this->symbolCounter);
 
         if (init != 0)

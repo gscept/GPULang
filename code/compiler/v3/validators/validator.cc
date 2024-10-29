@@ -169,7 +169,7 @@ Validator::Resolve(Compiler* compiler, Symbol* symbol)
         return this->ResolveStructure(compiler, symbol);
         break;
     case Symbol::SymbolType::EnumerationType:
-        return this->ResolveEnumeration(compiler, symbol);
+        return this->ResolveEnumeration(compiler, symbol) && this->ResolveTypeMethods(compiler, symbol);
         break;
     case Symbol::SymbolType::VariableType:
         return this->ResolveVariable(compiler, symbol);
@@ -804,20 +804,18 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, progType);
     for (Expression* entry : prog->entries)
     {
+        compiler->currentState.allowConstOverride = true;
         if (!entry->Resolve(compiler))
             return false;
 
+        compiler->currentState.allowConstOverride = false;
+
         const BinaryExpression* assignEntry = static_cast<const BinaryExpression*>(entry);
-        if (entry->symbolType != Symbol::BinaryExpressionType || assignEntry->left->symbolType == Symbol::ArrayIndexExpressionType)
+        BinaryExpression::__Resolved* binExp = Symbol::Resolved(assignEntry);
+
+        if (entry->symbolType != Symbol::BinaryExpressionType)
         {
             compiler->Error(Format("Program entry '%s' must be an assignment expression", assignEntry->EvalString().c_str()), symbol);
-            return false;
-        }
-
-        // only allow symbol assignments
-        if (assignEntry->right->symbolType != Symbol::SymbolExpressionType)
-        {
-            compiler->Error(Format("Program binds '%s' but it is not an identifier", assignEntry->EvalString().c_str()), symbol);
             return false;
         }
 
@@ -825,73 +823,99 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entry);
         if (entryType == Program::__Resolved::InvalidProgramEntryType)
         {
-            // get all functions responding to this function
-            Function* functionStub = static_cast<Function*>(compiler->GetSymbol(entry));
-
-            // check that we actually got a symbol
-            if (functionStub == nullptr)
+            Symbol* overrideSymbol = compiler->GetSymbol(entry);
+            if (overrideSymbol->symbolType == Symbol::FunctionType)
             {
-                compiler->UnrecognizedTypeError(entry, symbol);
-                return false;
-            }
+                // get all functions responding to this function
+                Function* functionStub = static_cast<Function*>(overrideSymbol);
 
-            // check that it's actually a function
-            if (functionStub->symbolType != Symbol::FunctionType)
-            {
-                compiler->Error(Format("Symbol '%s' is not a recognized function", entry.c_str()), symbol);
-                return false;
-            }
-
-            // next up, function to assign
-            std::string functionName;
-            if (!assignEntry->right->EvalSymbol(functionName))
-            {
-                compiler->Error(Format("Expected symbol, but got '%s'", entry.c_str()), symbol);
-                return false;
-            }
-            std::vector<Symbol*> functions = compiler->GetSymbols(functionName);
-
-            // again, check if not null
-            if (functions.empty())
-            {
-                compiler->UnrecognizedTypeError(functionName, symbol);
-                return false;
-            }
-
-            bool matched = false;
-            for (Symbol* sym : functions)
-            {
-                Function* func = static_cast<Function*>(sym);
-
-                // and check that it's actually a function
-                if (func->symbolType != Symbol::FunctionType)
+                // check that we actually got a symbol
+                if (functionStub == nullptr)
                 {
-                    compiler->Error(Format("Symbol '%s' is not a recognized function", functionName.c_str()), symbol);
+                    compiler->UnrecognizedTypeError(entry, symbol);
                     return false;
                 }
 
-                if (functionStub->IsCompatible(func, true))
+                // check that it's actually a function
+                if (functionStub->symbolType != Symbol::FunctionType)
                 {
-                    // if compatible, this is our match
-                    progResolved->functionOverrides[functionStub] = func;
-                    matched = true;
+                    compiler->Error(Format("Symbol '%s' is not a recognized function", entry.c_str()), symbol);
+                    return false;
                 }
-            }
 
-            if (!matched)
-            {
-                std::string candidates;
+                // next up, function to assign
+                std::string functionName;
+                if (!assignEntry->right->EvalSymbol(functionName))
+                {
+                    compiler->Error(Format("Expected symbol, but got '%s'", entry.c_str()), symbol);
+                    return false;
+                }
+                std::vector<Symbol*> functions = compiler->GetSymbols(functionName);
+
+                // again, check if not null
+                if (functions.empty())
+                {
+                    compiler->UnrecognizedTypeError(functionName, symbol);
+                    return false;
+                }
+
+                bool matched = false;
                 for (Symbol* sym : functions)
                 {
                     Function* func = static_cast<Function*>(sym);
-                    Function::__Resolved* res = Symbol::Resolved(func);
 
-                    candidates.append(res->signature);
-                    if (sym != functions.back())
-                        candidates.append(",\n");
+                    // and check that it's actually a function
+                    if (func->symbolType != Symbol::FunctionType)
+                    {
+                        compiler->Error(Format("Symbol '%s' is not a recognized function", functionName.c_str()), symbol);
+                        return false;
+                    }
+
+                    if (functionStub->IsCompatible(func, true))
+                    {
+                        // if compatible, this is our match
+                        progResolved->functionOverrides.insert({ functionStub, func });
+                        matched = true;
+                    }
                 }
-                compiler->Error(Format("Function prototype '%s' can not bind function '%s', possible candidates: \n%s", functionStub->name.c_str(), assignEntry->right->EvalString().c_str(), candidates.c_str()), symbol);
-                return false;
+
+                if (!matched)
+                {
+                    std::string candidates;
+                    for (Symbol* sym : functions)
+                    {
+                        Function* func = static_cast<Function*>(sym);
+                        Function::__Resolved* res = Symbol::Resolved(func);
+
+                        candidates.append(res->signature);
+                        if (sym != functions.back())
+                            candidates.append(",\n");
+                    }
+                    compiler->Error(Format("Function prototype '%s' can not bind function '%s', possible candidates: \n%s", functionStub->name.c_str(), assignEntry->right->EvalString().c_str(), candidates.c_str()), symbol);
+                    return false;
+                }
+            }
+            else if (overrideSymbol->symbolType == Symbol::VariableType)
+            {
+                Variable* var = static_cast<Variable*>(overrideSymbol);
+                Variable::__Resolved* varResolved = Symbol::Resolved(var);
+                if (!varResolved->usageBits.flags.isConst)
+                {
+                    compiler->Error("Only variables declared as 'const' can be overriden in program assembly", var);
+                    return false;
+                }
+                
+                if (!binExp->rightType.literal)
+                {
+                    compiler->Error("Constant overrides must be literal values", var);
+                    return false;
+                }
+                if (varResolved->type != binExp->rightType)
+                {
+                    compiler->Error(Format("Trying to assign a value of type '%s' to a constant of '%s'", binExp->rightType.ToString().c_str(), varResolved->type.ToString().c_str()), var);
+                    return false;
+                }
+                progResolved->constVarInitializationOverrides.insert({ var, assignEntry->right });
             }
         }
         else
@@ -907,6 +931,13 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             if (value->symbolType != Symbol::SymbolType::FunctionType)
             {
                 compiler->Error(Format("Program binds symbol '%s' to '%s' but it is not a recognized function", sym.c_str(), assignEntry->name.c_str()), assignEntry);
+                return false;
+            }
+            Function* fun = static_cast<Function*>(value);
+            Function::__Resolved* funResolved = Symbol::Resolved(fun);
+            if (!funResolved->isEntryPoint)
+            {
+                compiler->Error(Format("Program binds symbol '%s' to '%s' but it is not qualified as 'entry_point'", sym.c_str(), assignEntry->name.c_str()), assignEntry);
                 return false;
             }
 
@@ -1399,6 +1430,83 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     enumResolved->typeSymbol = compiler->GetSymbol<Type>(enumeration->type.name);
 
+    for (auto symbol : enumeration->globals)
+        if (symbol->symbolType == Symbol::FunctionType)
+        {
+            Function* fun = static_cast<Function*>(symbol);
+            delete fun;
+        }
+
+    for (auto symbol : enumeration->staticSymbols)
+        if (symbol->symbolType == Symbol::FunctionType)
+        {
+            Function* fun = static_cast<Function*>(symbol);
+            delete fun;
+        }
+    enumeration->globals.clear();
+    enumeration->staticSymbols.clear();
+
+    // Create constructor from type, and to type
+    Function* fromUnderlyingType = new Function;
+    fromUnderlyingType->name = enumeration->name;
+    fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+    Variable* arg = new Variable;
+    arg->name = "_arg0";
+    arg->type = enumeration->type;
+    arg->type.literal = false;
+    fromUnderlyingType->parameters.push_back(arg);
+    enumeration->globals.push_back(fromUnderlyingType);
+
+    fromUnderlyingType = new Function;
+    fromUnderlyingType->name = enumeration->name;
+    fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+    fromUnderlyingType->returnType.literal = true;
+    arg = new Variable;
+    arg->name = "_arg0";
+    arg->type = enumeration->type;
+    arg->type.literal = true;
+    fromUnderlyingType->parameters.push_back(arg);
+    enumeration->globals.push_back(fromUnderlyingType);
+
+    Function* toUnderlyingType = new Function;
+    toUnderlyingType->name = enumeration->type.name;
+    toUnderlyingType->returnType = enumeration->type;
+    arg = new Variable;
+    arg->name = "_arg0";
+    arg->type = Type::FullType{ enumeration->name };
+    arg->type.literal = false;
+    toUnderlyingType->parameters.push_back(arg);
+    enumeration->globals.push_back(toUnderlyingType);
+
+    toUnderlyingType = new Function;
+    toUnderlyingType->name = enumeration->type.name;
+    toUnderlyingType->returnType = enumeration->type;
+    toUnderlyingType->returnType.literal = true;
+    arg = new Variable;
+    arg->name = "_arg0";
+    arg->type = Type::FullType{ enumeration->name };
+    arg->type.literal = true;
+    toUnderlyingType->parameters.push_back(arg);
+    enumeration->globals.push_back(toUnderlyingType);
+
+    Function* comparison = new Function;
+    comparison->name = "operator==";
+    comparison->returnType = { "b8" };
+    arg = new Variable;
+    arg->name = "rhs";
+    arg->type = Type::FullType{ enumeration->name };
+    comparison->parameters.push_back(arg);
+    enumeration->staticSymbols.push_back(comparison);
+
+    comparison = new Function;
+    comparison->name = "operator!=";
+    comparison->returnType = { "b8" };
+    arg = new Variable;
+    arg->name = "rhs";
+    arg->type = Type::FullType{ enumeration->name };
+    comparison->parameters.push_back(arg);
+    enumeration->staticSymbols.push_back(comparison);
+
     uint32_t nextValue = 0;
     for (size_t i = 0; i < enumeration->labels.size(); i++)
     {
@@ -1414,6 +1522,8 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
         // Setup variable
         EnumExpression* sym = nullptr;
+        Type::FullType expressionType{ enumeration->name };
+        expressionType.literal = true;
 
         // Resolve value
         if (expr != nullptr)
@@ -1433,8 +1543,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             {
                 uint32_t value;
                 expr->EvalUInt(value);
-                
-                sym = new EnumExpression(value, enumeration->type);
+                sym = new EnumExpression(value, expressionType, enumeration->type);
                 nextValue = value + 1;
             }
             else
@@ -1445,7 +1554,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            sym = new EnumExpression(nextValue++, enumeration->type);
+            sym = new EnumExpression(nextValue++, expressionType, enumeration->type);
         }
 
         // Add to type
@@ -1550,7 +1659,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (type->category == Type::TextureCategory)
             allowedAttributesSet = &this->allowedTextureAttributes;
-        else if (type->category == Type::ScalarCategory)
+        else if (type->category == Type::ScalarCategory || type->category == Type::EnumCategory)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
@@ -1718,7 +1827,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (compiler->IsScopeGlobal())
     {
-        if (type->category != Type::ScalarCategory)
+        if (type->category != Type::ScalarCategory && type->category != Type::EnumCategory)
         {
             uint16_t numArrays = 0;
             uint16_t numPointers = 0;

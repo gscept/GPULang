@@ -188,6 +188,10 @@ struct Compiler
     Validator* validator = nullptr;
     Generator* headerGenerator = nullptr;
 
+    struct State
+    {
+        uint8_t allowConstOverride = false;
+    } currentState;
     Function* currentFunction = nullptr;
     uint32_t linkDefineCounter = 0;
 

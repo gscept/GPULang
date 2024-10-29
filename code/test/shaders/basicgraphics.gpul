@@ -46,7 +46,7 @@ BasicPixel(
 ) void
 {
     var color = textureSample(Albedo, Sampler, UV);
-    gplExportColor(color, Framebuffer.Color);
+    gplExportColor(color, i32(Framebuffer.Color));
 }
 
 program TestProgram

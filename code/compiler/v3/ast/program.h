@@ -85,6 +85,7 @@ struct Program : public Symbol
         Symbol* mappings[ProgramEntryType::NumProgramEntries];
         std::vector<uint32_t> binaries[ProgramEntryType::NumProgramEntries];
         std::unordered_map<Function*, Function*> functionOverrides;
+        std::unordered_map<Variable*, Expression*> constVarInitializationOverrides;
     };
 
 };

@@ -11,6 +11,7 @@
 #include "generator.h"
 #include "ast/symbol.h"
 #include "ast/types/type.h"
+#include "ast/program.h"
 #include <unordered_map>
 #include <set>
 #include <stack>
@@ -234,6 +235,7 @@ public:
     bool linkDefineEvaluation = false;
 
     Function* entryPoint = nullptr;
+    Program::__Resolved* evaluatingProgram = nullptr;
 
     struct MergeBlock
     {

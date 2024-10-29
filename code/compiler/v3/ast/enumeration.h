@@ -19,6 +19,7 @@ struct Enumeration : public Type
     std::vector<std::string> labels;
     std::vector<Expression*> values;
     Type::FullType type;
+    bool builtin = false;
 
     struct __Resolved : public Type::__Resolved
     {

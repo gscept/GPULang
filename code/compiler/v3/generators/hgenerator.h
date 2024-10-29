@@ -21,6 +21,8 @@ struct HGenerator : public Generator
     void GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
     void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    /// generate enum
+    void GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
 };
 
 } // namespace GPULang
