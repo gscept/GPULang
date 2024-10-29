@@ -7,6 +7,8 @@
 */
 //------------------------------------------------------------------------------
 #include "generator.h"
+#include "ast/program.h"
+
 namespace GPULang
 {
 
@@ -20,9 +22,13 @@ struct HGenerator : public Generator
     /// generate structure 
     void GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
-    void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument, bool evaluateConstants);
     /// generate enum
     void GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    /// generate program
+    void GenerateProgramH(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::string& outCode);
+
+private:
 };
 
 } // namespace GPULang

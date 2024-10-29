@@ -29,3 +29,9 @@ program TestProgram
     ComputeShader = ComputeWithStore;
     Mode = ShaderMode.OutputLocalInvocationIndex;
 };
+
+program TestProgram2
+{
+    ComputeShader = ComputeWithStore;
+    Mode = ShaderMode.OutputSpecializedVector;
+};

@@ -8,6 +8,12 @@
 #include "ast/function.h"
 #include "ast/enumeration.h"
 #include "ast/expressions/initializerexpression.h"
+#include "ast/expressions/accessexpression.h"
+#include "ast/expressions/floatexpression.h"
+#include "ast/expressions/intexpression.h"
+#include "ast/expressions/uintexpression.h"
+#include "ast/expressions/boolexpression.h"
+#include "ast/expressions/enumexpression.h"
 #include "compiler.h"
 #include "util.h"
 namespace GPULang
@@ -27,17 +33,21 @@ HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Sym
         switch (sym->symbolType)
         {
         case Symbol::StructureType:
-            this->GenerateStructureH(compiler, program, sym, output);
+            this->GenerateStructureH(compiler, nullptr, sym, output);
             break;
         case Symbol::VariableType:
-            this->GenerateVariableH(compiler, program, sym, output, false);
+            this->GenerateVariableH(compiler, nullptr, sym, output, false, false);
             break;
         case Symbol::FunctionType:
-            this->GenerateFunctionH(compiler, program, sym, output);
+            this->GenerateFunctionH(compiler, nullptr, sym, output);
             break;
         case Symbol::EnumerationType:
-            this->GenerateEnumH(compiler, program, sym, output);
+            this->GenerateEnumH(compiler, nullptr, sym, output);
             break;
+        case Symbol::ProgramType:
+            this->GenerateProgramH(compiler, static_cast<Program*>(sym), symbols, output);
+            break;
+
         }
     }
 
@@ -127,7 +137,7 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
         {
             Variable* var = static_cast<Variable*>(sym);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
-            this->GenerateVariableH(compiler, program, var, variables, false);
+            this->GenerateVariableH(compiler, program, var, variables, false, false);
             variables.append("\n");
         }
     }
@@ -144,129 +154,149 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
 void
 GenerateHInitializer(Compiler* compiler, Expression* expr, std::string& outCode)
 {
-    std::string inner;
-
-    InitializerExpression* initExpression = static_cast<InitializerExpression*>(expr);
-    for (Expression* expr : initExpression->values)
+    switch (expr->symbolType)
     {
-        if (expr->symbolType == Symbol::InitializerExpressionType)
-            GenerateHInitializer(compiler, expr, inner);
-        else
+        case Symbol::AccessExpressionType:
         {
-            Type::FullType type;
-            if (!expr->EvalType(type))
-            {
-                compiler->Error(Format("INTERNAL ERROR IN '%s' LINE '%s'", __FILE__, __LINE__), expr);
-            }
-
-            inner = expr->EvalString();
+            AccessExpression* accExpr = static_cast<AccessExpression*>(expr);
+            outCode = Format("%s::%s", accExpr->left->EvalString().c_str(), accExpr->right->EvalString().c_str());
+            break;
         }
+        case Symbol::InitializerExpressionType:
+        {
+            InitializerExpression* initExpr = static_cast<InitializerExpression*>(expr);
+            outCode.append("{");
+            outCode.append(initExpr->EvalString());
+            outCode.append("};");
+            break;
+        }
+        case Symbol::FloatExpressionType:
+        case Symbol::IntExpressionType:
+        case Symbol::UIntExpressionType:
+        case Symbol::BoolExpressionType:
+            outCode = expr->EvalString();
     }
-
-    outCode = Format("{ %s }", inner.c_str());
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 void 
-HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument, bool evaluateConstants)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-    if (varResolved->usageBits.flags.isStructMember)
-    {        
-        // add start padding if any
-        if (varResolved->startPadding > 0)
-        {
-            uint32_t numElements = varResolved->startPadding / 4;
-            for (uint32_t i = 0; i < numElements; i++)
-                outCode.append("    unsigned int : 32;\n");
-        }
 
-        std::string type = typeToHeaderType[var->type.name];
-        std::string arrayType = typeToArraySize[var->type.name];
-
-        // if element padding, we need to split the array into elements where each element is padded
-        if (varResolved->elementPadding > 0)
+    if (evaluateConstants)
+    {
+        if (varResolved->usageBits.flags.isConst)
         {
-            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+            std::string typeStr;
+            auto headerType = typeToHeaderType.find(var->type.name);
+            if (headerType != typeToHeaderType.end())
+                typeStr = headerType->second;
+            else
+                typeStr = var->type.name;
+            std::string arrayTypeStr = typeToArraySize[var->type.name];
+            std::string initializerStr;
+
+            Expression* init = varResolved->value;
+
+            Program::__Resolved* progResolved = Symbol::Resolved(program);
+
+            auto constOverride = progResolved->constVarInitializationOverrides.find(var);
+            if (constOverride != progResolved->constVarInitializationOverrides.end())
+                init = constOverride->second;
+            if (init != nullptr)
             {
-                // don't pad the first element
-                if (i > 0)
+                GenerateHInitializer(compiler, init, initializerStr);
+            }
+
+            std::string arraySize = "";
+            for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
+            {
+                if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
-                    uint32_t numElements = varResolved->elementPadding / 4;
-                    for (uint32_t i = 0; i < numElements; i++)
-                        outCode.append("    unsigned int : 32;\n");
+                    size_t size = varResolved->type.modifierValues[i];
+                    if (size > 0)
+                        arraySize.append(Format("[%d]", size));
+                    else
+                        arraySize.append(Format("[]"));
                 }
-                outCode.append(Format("    %s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
-                if (i < varResolved->type.modifierValues[i] - 1)
-                    outCode.append("\n");
+            }
+
+            if (varResolved->value != nullptr)
+                outCode.append(Format("    static inline const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
+            else
+                outCode.append(Format("    static inline const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
+        }
+    }
+    else
+    {
+        if (varResolved->usageBits.flags.isStructMember)
+        {
+            // add start padding if any
+            if (varResolved->startPadding > 0)
+            {
+                uint32_t numElements = varResolved->startPadding / 4;
+                for (uint32_t i = 0; i < numElements; i++)
+                    outCode.append("    unsigned int : 32;\n");
+            }
+
+            std::string type = typeToHeaderType[var->type.name];
+            std::string arrayType = typeToArraySize[var->type.name];
+
+            // if element padding, we need to split the array into elements where each element is padded
+            if (varResolved->elementPadding > 0)
+            {
+                for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+                {
+                    // don't pad the first element
+                    if (i > 0)
+                    {
+                        uint32_t numElements = varResolved->elementPadding / 4;
+                        for (uint32_t i = 0; i < numElements; i++)
+                            outCode.append("    unsigned int : 32;\n");
+                    }
+                    outCode.append(Format("    %s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
+                    if (i < varResolved->type.modifierValues[i] - 1)
+                        outCode.append("\n");
+                }
+            }
+            else
+            {
+                outCode.append(Format("    %s %s%s;", type.c_str(), var->name.c_str(), arrayType.c_str()));
+            }
+
+        }
+        else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+        {
+            if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory
+                || varResolved->typeSymbol->category == Type::Category::TextureCategory
+                || varResolved->typeSymbol->category == Type::Category::SamplerCategory
+                || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
+                )
+            {
+                outCode.append(Format("struct %s\n", varResolved->name.c_str()));
+                outCode.append("{\n");
+                outCode.append(Format("    static const uint32_t BINDING = %d;\n", varResolved->binding));
+                outCode.append(Format("    static const uint32_t GROUP = %d;\n", varResolved->group));
+                if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                {
+                    outCode.append(Format("    using STRUCT = %s;\n", varResolved->typeSymbol->name.c_str()));
+                }
+                outCode.append("};\n\n");
             }
         }
-        else
-        {
-            outCode.append(Format("    %s %s%s;", type.c_str(), var->name.c_str(), arrayType.c_str()));
-        }
-        
-    }
-    else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
-    {
-        if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory
-            || varResolved->typeSymbol->category == Type::Category::TextureCategory
-            || varResolved->typeSymbol->category == Type::Category::SamplerCategory
-            || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
-        )
+        else if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
         {
             outCode.append(Format("struct %s\n", varResolved->name.c_str()));
             outCode.append("{\n");
-            outCode.append(Format("    static const uint32_t BINDING = %d;\n", varResolved->binding));
-            outCode.append(Format("    static const uint32_t GROUP = %d;\n", varResolved->group));
-            if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
-            {
-                outCode.append(Format("    using STRUCT = %s;\n", varResolved->typeSymbol->name.c_str()));
-            }
+            outCode.append(Format("    static const uint32_t LINK_BINDING = %d;\n", varResolved->binding));
+            outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->byteSize));
             outCode.append("};\n\n");
         }
     }
-    else if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
-    {
-        outCode.append(Format("struct %s\n", varResolved->name.c_str()));
-        outCode.append("{\n");
-        outCode.append(Format("    static const uint32_t LINK_BINDING = %d;\n", varResolved->binding));
-        outCode.append(Format("    static const uint32_t SIZE = %d;\n", varResolved->byteSize));
-        outCode.append("};\n\n");
-    }
-    /*
-    else if (varResolved->usageBits.flags.isConst)
-    {
-        std::string typeStr = typeToHeaderType[var->type.name];
-        std::string arrayTypeStr = typeToArraySize[var->type.name];
-        std::string initializerStr;
-        if (varResolved->value != nullptr)
-        {
-            GenerateHInitializer(compiler, varResolved->value, initializerStr);
-        }
-       
-        std::string arraySize = "";
-        for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
-        {
-            if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
-            {
-                size_t size = varResolved->type.modifierValues[i];
-                if (size > 0)
-                    arraySize.append(Format("[%d]", size));
-                else
-                    arraySize.append(Format("[]"));
-            }
-        }
-
-        if (varResolved->value != nullptr)
-            outCode.append(Format("    static const %s %s%s%s = %s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), initializerStr.c_str()));
-        else
-            outCode.append(Format("    static const %s %s%s%s;\n", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
-    }
-    */
 }
 
 //------------------------------------------------------------------------------
@@ -293,6 +323,26 @@ HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, 
         if (i != enu->labels.size() - 1)
             outCode.append(",");
         outCode.append("\n");
+    }
+    outCode.append("};\n\n");
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+HGenerator::GenerateProgramH(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::string& outCode)
+{
+    outCode.append(Format("struct %s\n", program->name.c_str()));
+    outCode.append("{\n");
+    for (Symbol* sym : symbols)
+    {
+        switch (sym->symbolType)
+        {
+        case Symbol::VariableType:
+            this->GenerateVariableH(compiler, program, sym, outCode, false, true);
+            break;
+        }
     }
     outCode.append("};\n\n");
 }
