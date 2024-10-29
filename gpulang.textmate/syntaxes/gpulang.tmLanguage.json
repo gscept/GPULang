@@ -49,7 +49,7 @@
 		"declarations": {
 			"patterns": [
 				{
-					"match": "\\s*(var|const|uniform|inline|workgroup)\\s*([A-z][A-z0-9]*)\\s*(:\\s*([\\*]*\\s*(mutable|sampled|literal)\\s*[A-z][A-z0-9]*))?",
+					"match": "\\s*(var|const|uniform|inline|workgroup|link_defined)\\s*([A-z][A-z0-9]*)\\s*(:\\s*([\\*]*\\s*(mutable|sampled|literal)\\s*[A-z][A-z0-9]*))?",
 					"captures": {
 						"1": {
 							"name": "storage.modifier"
