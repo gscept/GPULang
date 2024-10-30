@@ -42,8 +42,8 @@ int
 main(const char** argv, int argc)
 {
     //CompleteShaderTest();
-    TEST(basicgraphics);
     TEST(computewithstore);
+    TEST(basicgraphics);
     TEST(computewithimagestore);
     /*
     TEST(for);

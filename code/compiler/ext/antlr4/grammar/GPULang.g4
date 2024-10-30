@@ -687,18 +687,22 @@ switchStatement
     'switch' { location = SetupFile(); } '(' expression ')' { switchExpression = $expression.tree; }
     '{'
         (
-            'case' INTEGERLITERAL ':' { caseExpressions.push_back(new IntExpression(atoi($INTEGERLITERAL.text.c_str()))); caseStatements.push_back(nullptr); }
-            (statement
-            { 
-                caseStatements.back() = $statement.tree;
-            })?
+            'case' expression ':' { caseExpressions.push_back($expression.tree); caseStatements.push_back(nullptr); }
+            (
+                statement
+                { 
+                    caseStatements.back() = $statement.tree;
+                }
+            )?
         )*
         (
             'default' ':'
-            (statement
-            {
-                defaultStatement = $statement.tree;
-            })?
+            (
+                statement
+                {
+                    defaultStatement = $statement.tree;
+                }
+            )?
         )?
     '}'
     {

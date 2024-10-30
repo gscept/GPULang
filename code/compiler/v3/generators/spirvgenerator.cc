@@ -1896,7 +1896,10 @@ SPIRVGenerator::SetupIntrinsics()
 
     this->intrinsicMap[Intrinsics::PixelKill] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
-        g->AddOp("OpDemoteToHelperInvocation");
+        // TODO: This code should use OpDemoteToHelperInvocation or OpTerminateInvocation when using SPIRV 1.6
+        //g->AddCapability("DemoteToHelperInvocation");
+        g->AddOp("OpKill");
+        g->blockOpen = false;
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
@@ -2836,15 +2839,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 
     SPIRVResult initializer = SPIRVResult::Invalid();
 
-    Expression* initializerExpression = varResolved->value;
-
-    // Handle overrides
-    if (varResolved->usageBits.flags.isConst)
-    {
-        auto constVariableOverride = generator->evaluatingProgram->constVarInitializationOverrides.find(var);
-        if (constVariableOverride != generator->evaluatingProgram->constVarInitializationOverrides.end())
-            initializerExpression = constVariableOverride->second;
-    }
+    Expression* initializerExpression = var->valueExpression;
 
     if (initializerExpression != nullptr)
     {
@@ -3532,6 +3527,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
 void
 GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, BreakStatement* stat)
 {
+    if (generator->skipBreakContinue)
+        return;
     assert(generator->mergeBlocks[generator->mergeBlockCounter-1].breakLabel != 0xFFFFFFFF);
     generator->AddOp(Format("OpBranch %%%d", generator->mergeBlocks[generator->mergeBlockCounter - 1].breakLabel), false, "break");
     generator->blockOpen = false;
@@ -3543,6 +3540,8 @@ GenerateBreakStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Break
 void
 GenerateContinueStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ContinueStatement* stat)
 {
+    if (generator->skipBreakContinue)
+        return;
     assert(generator->mergeBlocks[generator->mergeBlockCounter - 1].continueLabel != 0xFFFFFFFF);
     generator->AddOp(Format("OpBranch %%%d", generator->mergeBlocks[generator->mergeBlockCounter - 1].continueLabel), false, "continue");
     generator->blockOpen = false;
@@ -3712,6 +3711,18 @@ GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Retu
 void
 GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
+    uint32_t index;
+    if (stat->switchExpression->EvalUInt(index))
+    {
+        generator->skipBreakContinue = true;
+        if (index < stat->caseExpressions.size())
+            GenerateStatementSPIRV(compiler, generator, stat->caseStatements[index]);
+        else if (stat->defaultStatement != nullptr)
+            GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
+        generator->skipBreakContinue = false;
+        return;
+    }
+    
     SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
     switchRes = LoadValueSPIRV(compiler, generator, switchRes);
 
@@ -4087,132 +4098,144 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         // Main scope
         this->PushScope();
 
-        // for each shader, generate code and use it as a binary output
-        if (mapping >= Program::__Resolved::VertexShader && mapping <= Program::__Resolved::RayIntersectionShader)
+        // Temporarily store original variable values
+        std::unordered_map<Variable*, Expression*> originalVariableValues;
+        auto it = progResolved->constVarInitializationOverrides.begin();
+        for (; it != progResolved->constVarInitializationOverrides.end(); it++)
         {
-            this->header.append("; Magic:     0x00010500 (SPIRV Universal 1.5)\n");
-            this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
-            this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
-            this->AddCapability(extensionMap[(Program::__Resolved::ProgramEntryType)mapping]);
+            originalVariableValues[it->first] = it->first->valueExpression;
+            it->first->valueExpression = it->second;
+        }
+        
+        this->header.append("; Magic:     0x00010500 (SPIRV Universal 1.5)\n");
+        this->header.append("; Version:   0x00010000 (Version: 1.0.0)\n");
+        this->header.append("; Generator: 0x00080001 (GPULang; 1)\n");
+        this->AddCapability(extensionMap[(Program::__Resolved::ProgramEntryType)mapping]);
 
-            this->entryPoint = static_cast<Function*>(object);
-            
-            for (Symbol* sym : symbols)
+        this->entryPoint = static_cast<Function*>(object);
+        
+        for (Symbol* sym : symbols)
+        {
+            switch (sym->symbolType)
             {
-                switch (sym->symbolType)
-                {
-                    case Symbol::FunctionType:
-                        GenerateFunctionSPIRV(compiler, this, sym);
-                        break;
-                    case Symbol::StructureType:
-                        GenerateStructureSPIRV(compiler, this, sym);
-                        break;
-                    case Symbol::EnumerationType:
-                        GenerateEnumSPIRV(compiler, this, sym);
-                        break;
-                    case Symbol::VariableType:
-                        GenerateVariableSPIRV(compiler, this, sym, false, true);
-                        break;
-                }
-            }
-
-            Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(object));
-            uint32_t entryFunction = this->GetSymbol(funResolved->name).value;
-
-            if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
-                this->AddCapability("SubgroupDispatch");
-
-            if (compiler->target.supportsPhysicalAddressing)
-            {
-                this->AddCapability("Addresses");
-                this->header.append("\tOpMemoryModel Physical64 GLSL450\n");
-            }
-            else
-            {
-                this->AddCapability("PhysicalStorageBufferAddresses");
-                this->header.append("\tOpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
-            }
-
-            std::string interfaces = "";
-            for (const uint32_t inter : this->interfaceVariables)
-            {
-                interfaces.append(Format("%%%d ", inter));
-            }
-            this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
-            
-            switch (mapping)
-            {
-                case Program::__Resolved::GeometryShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology].c_str()));
-                    this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                case Symbol::FunctionType:
+                    GenerateFunctionSPIRV(compiler, this, sym);
                     break;
-                case Program::__Resolved::HullShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod].c_str()));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder].c_str()));
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
-                    this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                case Symbol::StructureType:
+                    GenerateStructureSPIRV(compiler, this, sym);
                     break;
-                case Program::__Resolved::DomainShader:
+                case Symbol::EnumerationType:
+                    GenerateEnumSPIRV(compiler, this, sym);
                     break;
-                case Program::__Resolved::PixelShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin].c_str()));
-                    if (funResolved->executionModifiers.earlyDepth)
-                        this->header.append(Format("\tOpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
-                    break;
-                case Program::__Resolved::ComputeShader:
-                    this->header.append(Format("\tOpExecutionMode %%%d LocalSize %d %d %d\n", entryFunction, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]));
-                    if (funResolved->executionModifiers.groupSize != 64)
-                        this->header.append(Format("\tOpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
-                    if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
-                        this->header.append(Format("\tOpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
+                case Symbol::VariableType:
+                    GenerateVariableSPIRV(compiler, this, sym, false, true);
                     break;
             }
-            compiler->shaderValueExpressions[mapping].value = false;
+        }
 
-            // Compose and convert to binary, then validate
-            std::string binary = Format("; Header\n%s\n; Decorations\n%s\n; Declarations\n%s\n; Functions\n%s\n", this->header.c_str(), this->decorations.c_str(), this->declarations.c_str(), this->functions.c_str());
-            spv_binary bin = nullptr;
-            spv_diagnostic diag = nullptr;
-            spv_result_t res = spvTextToBinaryWithOptions(spvContext, binary.c_str(), binary.size(), SPV_TEXT_TO_BINARY_OPTION_NONE, &bin, &diag);
+        Function::__Resolved* funResolved = Symbol::Resolved(static_cast<Function*>(object));
+        uint32_t entryFunction = this->GetSymbol(funResolved->name).value;
+
+        if (funResolved->executionModifiers.groupSize != 64 || funResolved->executionModifiers.groupsPerWorkgroup != 1)
+            this->AddCapability("SubgroupDispatch");
+
+        if (compiler->target.supportsPhysicalAddressing)
+        {
+            this->AddCapability("Addresses");
+            this->header.append("\tOpMemoryModel Physical64 GLSL450\n");
+        }
+        else
+        {
+            this->AddCapability("PhysicalStorageBufferAddresses");
+            this->header.append("\tOpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
+        }
+
+        std::string interfaces = "";
+        for (const uint32_t inter : this->interfaceVariables)
+        {
+            interfaces.append(Format("%%%d ", inter));
+        }
+        this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
+        
+        switch (mapping)
+        {
+            case Program::__Resolved::GeometryShader:
+                this->header.append(Format("\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology].c_str()));
+                this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                break;
+            case Program::__Resolved::HullShader:
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod].c_str()));
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder].c_str()));
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
+                this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                break;
+            case Program::__Resolved::DomainShader:
+                break;
+            case Program::__Resolved::PixelShader:
+                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin].c_str()));
+                if (funResolved->executionModifiers.earlyDepth)
+                    this->header.append(Format("\tOpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
+                break;
+            case Program::__Resolved::ComputeShader:
+                this->header.append(Format("\tOpExecutionMode %%%d LocalSize %d %d %d\n", entryFunction, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]));
+                if (funResolved->executionModifiers.groupSize != 64)
+                    this->header.append(Format("\tOpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
+                if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
+                    this->header.append(Format("\tOpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
+                break;
+        }
+        compiler->shaderValueExpressions[mapping].value = false;
+        
+        // Reset variable values
+        auto it2 = originalVariableValues.begin();
+        for (; it2 != originalVariableValues.end(); it2++)
+        {
+            originalVariableValues[it2->first] = it2->second;
+        }
+
+        // Compose and convert to binary, then validate
+        std::string binary = Format("; Header\n%s\n; Decorations\n%s\n; Declarations\n%s\n; Functions\n%s\n", this->header.c_str(), this->decorations.c_str(), this->declarations.c_str(), this->functions.c_str());
+        spv_binary bin = nullptr;
+        spv_diagnostic diag = nullptr;
+        spv_result_t res = spvTextToBinaryWithOptions(spvContext, binary.c_str(), binary.size(), SPV_TEXT_TO_BINARY_OPTION_NONE, &bin, &diag);
+        if (res != SPV_SUCCESS)
+        {
+            compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
+            return false;
+        }
+
+        if (compiler->options.validate)
+        {
+            // Run spv validation for internal consistency and fault testing
+            spv_const_binary_t constBin = { bin->code, bin->wordCount };
+            res = spvValidate(spvContext, &constBin, &diag);
             if (res != SPV_SUCCESS)
             {
                 compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
                 return false;
             }
-
-            if (compiler->options.validate)
-            {
-                // Run spv validation for internal consistency and fault testing
-                spv_const_binary_t constBin = { bin->code, bin->wordCount };
-                res = spvValidate(spvContext, &constBin, &diag);
-                if (res != SPV_SUCCESS)
-                {
-                    compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
-                    return false;
-                }
-            }
-
-            std::vector<uint32_t> binaryData(bin->code, bin->code + bin->wordCount);
-            if (compiler->options.optimize)
-            {
-                spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
-                optimizer.RegisterPerformancePasses();
-
-                std::vector<uint32_t> optimized;
-                if (optimizer.Run(bin->code, bin->wordCount, &optimized))
-                {
-                    binaryData = std::move(optimized);
-                }
-            }
-
-            // conversion and optional validation is successful, dump binary in program
-            progResolved->binaries[mapping] = binaryData;
-
-            delete bin;
-            delete diag;
         }
+
+        std::vector<uint32_t> binaryData(bin->code, bin->code + bin->wordCount);
+        if (compiler->options.optimize)
+        {
+            spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
+            optimizer.RegisterPerformancePasses();
+
+            std::vector<uint32_t> optimized;
+            if (optimizer.Run(bin->code, bin->wordCount, &optimized))
+            {
+                binaryData = std::move(optimized);
+            }
+        }
+
+        // conversion and optional validation is successful, dump binary in program
+        progResolved->binaries[mapping] = binaryData;
+
+        delete bin;
+        delete diag;
     }
     this->evaluatingProgram = nullptr;
     return true;

@@ -852,17 +852,15 @@ public:
   public:
     Statement* tree;
     GPULangParser::ExpressionContext *expressionContext = nullptr;
-    antlr4::Token *integerliteralToken = nullptr;
     GPULangParser::StatementContext *statementContext = nullptr;
     SwitchStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LP();
-    ExpressionContext *expression();
+    std::vector<ExpressionContext *> expression();
+    ExpressionContext* expression(size_t i);
     antlr4::tree::TerminalNode *RP();
     antlr4::tree::TerminalNode *LB();
     antlr4::tree::TerminalNode *RB();
-    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
-    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
     std::vector<antlr4::tree::TerminalNode *> COL();
     antlr4::tree::TerminalNode* COL(size_t i);
     std::vector<StatementContext *> statement();

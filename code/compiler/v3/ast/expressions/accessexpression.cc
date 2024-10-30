@@ -150,6 +150,66 @@ AccessExpression::EvalSymbol(std::string& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool
+AccessExpression::EvalUInt(unsigned& out) const
+{
+    AccessExpression::__Resolved* thisRes = Symbol::Resolved(this);
+    if (thisRes->lhsType->symbolType == Type::SymbolType::EnumerationType)
+    {
+        EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
+        return expr->EvalUInt(out);
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+AccessExpression::EvalInt(int& out) const
+{
+    AccessExpression::__Resolved* thisRes = Symbol::Resolved(this);
+    if (thisRes->lhsType->symbolType == Type::SymbolType::EnumerationType)
+    {
+        EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
+        return expr->EvalInt(out);
+    }
+    return Expression::EvalInt(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+AccessExpression::EvalFloat(float& out) const
+{
+    AccessExpression::__Resolved* thisRes = Symbol::Resolved(this);
+    if (thisRes->lhsType->symbolType == Type::SymbolType::EnumerationType)
+    {
+        EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
+        return expr->EvalFloat(out);
+    }
+    return Expression::EvalFloat(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+AccessExpression::EvalBool(bool& out) const
+{
+    AccessExpression::__Resolved* thisRes = Symbol::Resolved(this);
+    if (thisRes->lhsType->symbolType == Type::SymbolType::EnumerationType)
+    {
+        EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
+        return expr->EvalBool(out);
+    }
+    return Expression::EvalBool(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 std::string
 AccessExpression::EvalString() const
 {

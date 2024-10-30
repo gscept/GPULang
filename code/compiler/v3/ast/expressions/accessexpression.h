@@ -28,6 +28,14 @@ struct AccessExpression : public Expression
     bool EvalType(Type::FullType& out) const override;
     /// eval symbol
     bool EvalSymbol(std::string& out) const override;
+    /// eval uint
+    bool EvalUInt(unsigned& out) const override;
+    /// eval int
+    bool EvalInt(int& out) const override;
+    /// eval float
+    bool EvalFloat(float& out) const override;
+    /// eval bool
+    bool EvalBool(bool& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
     /// evaluates access flags

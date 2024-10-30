@@ -198,7 +198,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 typeStr = var->type.name;
             std::string arrayTypeStr = typeToArraySize[var->type.name];
 
-            Expression* init = varResolved->value;
+            Expression* init = var->valueExpression;
 
             Program::__Resolved* progResolved = Symbol::Resolved(program);
             HeaderWriter tempWriter;
@@ -206,6 +206,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             auto constOverride = progResolved->constVarInitializationOverrides.find(var);
             if (constOverride != progResolved->constVarInitializationOverrides.end())
                 init = constOverride->second;
+            
             if (init != nullptr)
             {
                 GenerateHInitializer(compiler, init, tempWriter);
@@ -224,7 +225,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 }
             }
 
-            if (varResolved->value != nullptr)
+            if (var->valueExpression != nullptr)
                 writer.WriteLine(Format("static inline const %s %s%s%s = %s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), tempWriter.output.c_str()));
             else
                 writer.WriteLine(Format("static inline const %s %s%s%s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));

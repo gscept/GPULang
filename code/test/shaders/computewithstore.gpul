@@ -18,10 +18,25 @@ uniform Output : *mutable Storage;
 entry_point
 ComputeWithStore() void
 {
+    switch(Mode)
+    {
+        case ShaderMode.OutputLocalInvocationIndex:
+        {
+            Output.i = i32(gplGetLocalInvocationIndex().x);
+            break;
+        }
+        case ShaderMode.OutputSpecializedVector:
+        {
+            Output.vec2 = f32x4(1.0f, 2.0f, foo, 4.0f);
+            break;
+        }
+    }
+    /*
     if (Mode == ShaderMode.OutputLocalInvocationIndex)
         Output.i = i32(gplGetLocalInvocationIndex().x);
     else if (Mode == ShaderMode.OutputSpecializedVector)
         Output.vec2 = f32x4(1.0f, 2.0f, foo, 4.0f);
+    */
 }
 
 program TestProgram

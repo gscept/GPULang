@@ -234,6 +234,8 @@ public:
     bool literalExtract = false;
     bool linkDefineEvaluation = false;
 
+    bool skipBreakContinue = false;
+
     Function* entryPoint = nullptr;
     Program::__Resolved* evaluatingProgram = nullptr;
 

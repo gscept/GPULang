@@ -1000,10 +1000,26 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits = 0x0;
                 compiler->shaderValueExpressions[entryType].value = true;
 
+                // Temporarily store original variable values
+                std::unordered_map<Variable*, Expression*> originalVariableValues;
+                auto it = progResolved->constVarInitializationOverrides.begin();
+                for (; it != progResolved->constVarInitializationOverrides.end(); it++)
+                {
+                    originalVariableValues[it->first] = it->first->valueExpression;
+                    it->first->valueExpression = it->second;
+                }
+
                 // Resolve variable visibility
                 if (!this->ResolveVisibility(compiler, fun->ast))
                 {
                     return false;
+                }
+
+                // Reset variable values
+                auto it2 = originalVariableValues.begin();
+                for (; it2 != originalVariableValues.end(); it2++)
+                {
+                    originalVariableValues[it2->first] = it2->second;
                 }
                 
                 compiler->shaderValueExpressions[entryType].value = false;
@@ -1556,7 +1572,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         Expression* expr = var->valueExpression;
         expr->isLhsValue = false;
         expr->Resolve(compiler);
-        varResolved->value = var->valueExpression;
     }
 
     if (var->type.name == "unknown")
@@ -1603,7 +1618,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     // If struct member, only allow sized arrays and no initializers
     if (varResolved->usageBits.flags.isStructMember)
     {
-        if (varResolved->value != nullptr)
+        if (var->valueExpression != nullptr)
         {
             compiler->Error(Format("'struct' members may not have initializers"), symbol);
             return false;
@@ -1827,7 +1842,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else // scalar
         {
-            if (varResolved->usageBits.flags.isConst && varResolved->value == nullptr)
+            if (varResolved->usageBits.flags.isConst && var->valueExpression == nullptr)
             {
                 // check for variable initialization criteria
                 compiler->Error(Format("Variable declared as const but is never initialized"), symbol);
@@ -1919,11 +1934,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // validate types on both sides of the assignment
-    if (varResolved->value != nullptr)
+    if (var->valueExpression != nullptr)
     {
         Type::FullType lhs = varResolved->type;
         Type::FullType rhs;
-        if (!varResolved->value->EvalType(rhs))
+        if (!var->valueExpression->EvalType(rhs))
         {
             compiler->UnrecognizedTypeError(rhs.name, symbol);
             return false;
@@ -2313,7 +2328,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 Type::FullType type;
                 statement->switchExpression->EvalType(type);
                 Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
-                if (typeSymbol->baseType != TypeCode::Int && typeSymbol->baseType != TypeCode::UInt)
+                if (typeSymbol->baseType != TypeCode::Int && typeSymbol->baseType != TypeCode::UInt && typeSymbol->category != Type::Category::EnumCategory)
                 {
                     compiler->Error(Format("Switch condition must evaluate to an integer value"), statement);
                     return false;
@@ -2891,6 +2906,29 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             }
             break;
         }
+        case Symbol::SwitchStatementType:
+        {
+            SwitchStatement* switchStat = static_cast<SwitchStatement*>(symbol);
+            uint32_t index;
+            if (switchStat->switchExpression->EvalUInt(index))
+            {
+                if (index < switchStat->caseExpressions.size())
+                    res |= this->ResolveVisibility(compiler, switchStat->caseStatements[index]);
+                else if (switchStat->defaultStatement != nullptr)
+                    res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
+            }
+            else
+            {
+                for (uint32_t i = 0; i < switchStat->caseStatements.size(); i++)
+                {
+                    res |= this->ResolveVisibility(compiler, switchStat->caseExpressions[i]);
+                    res |= this->ResolveVisibility(compiler, switchStat->caseStatements[i]);
+                    if (switchStat->defaultStatement != nullptr)
+                        res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);         
+                }
+            }
+            break;
+        }
         case Symbol::BinaryExpressionType:
         {
             BinaryExpression* binExp = static_cast<BinaryExpression*>(symbol);
@@ -2970,6 +3008,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
                 compiler->currentState.sideEffects.flags.killsPixel = true;
+
+                // Pixel kill makes the rest of the scope unreachable
+                compiler->MarkScopeUnreachable();
             }
             
             for (auto& arg : callExpr->args)
@@ -3064,8 +3105,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     assert(false);
             }
                 
-            if (varResolved->value != nullptr)
-                res |= this->ResolveVisibility(compiler, varResolved->value);
+            if (var->valueExpression != nullptr)
+                res |= this->ResolveVisibility(compiler, var->valueExpression);
             break;
         }
     }

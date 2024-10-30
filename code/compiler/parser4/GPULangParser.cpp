@@ -370,7 +370,7 @@ void gpulangParserInitialize() {
   	613,6,26,-1,0,613,53,1,0,0,0,614,615,5,18,0,0,615,616,6,27,-1,0,616,617,
   	5,35,0,0,617,618,6,27,-1,0,618,55,1,0,0,0,619,620,5,19,0,0,620,621,6,
   	28,-1,0,621,622,5,38,0,0,622,623,3,60,30,0,623,624,5,39,0,0,624,625,6,
-  	28,-1,0,625,637,5,40,0,0,626,627,5,20,0,0,627,628,5,75,0,0,628,629,5,
+  	28,-1,0,625,637,5,40,0,0,626,627,5,20,0,0,627,628,3,60,30,0,628,629,5,
   	37,0,0,629,633,6,28,-1,0,630,631,3,38,19,0,631,632,6,28,-1,0,632,634,
   	1,0,0,0,633,630,1,0,0,0,633,634,1,0,0,0,634,636,1,0,0,0,635,626,1,0,0,
   	0,636,639,1,0,0,0,637,635,1,0,0,0,637,638,1,0,0,0,638,647,1,0,0,0,639,
@@ -3972,8 +3972,12 @@ tree::TerminalNode* GPULangParser::SwitchStatementContext::LP() {
   return getToken(GPULangParser::LP, 0);
 }
 
-GPULangParser::ExpressionContext* GPULangParser::SwitchStatementContext::expression() {
-  return getRuleContext<GPULangParser::ExpressionContext>(0);
+std::vector<GPULangParser::ExpressionContext *> GPULangParser::SwitchStatementContext::expression() {
+  return getRuleContexts<GPULangParser::ExpressionContext>();
+}
+
+GPULangParser::ExpressionContext* GPULangParser::SwitchStatementContext::expression(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionContext>(i);
 }
 
 tree::TerminalNode* GPULangParser::SwitchStatementContext::RP() {
@@ -3986,14 +3990,6 @@ tree::TerminalNode* GPULangParser::SwitchStatementContext::LB() {
 
 tree::TerminalNode* GPULangParser::SwitchStatementContext::RB() {
   return getToken(GPULangParser::RB, 0);
-}
-
-std::vector<tree::TerminalNode *> GPULangParser::SwitchStatementContext::INTEGERLITERAL() {
-  return getTokens(GPULangParser::INTEGERLITERAL);
-}
-
-tree::TerminalNode* GPULangParser::SwitchStatementContext::INTEGERLITERAL(size_t i) {
-  return getToken(GPULangParser::INTEGERLITERAL, i);
 }
 
 std::vector<tree::TerminalNode *> GPULangParser::SwitchStatementContext::COL() {
@@ -4070,10 +4066,10 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
       setState(626);
       match(GPULangParser::T__19);
       setState(627);
-      antlrcpp::downCast<SwitchStatementContext *>(_localctx)->integerliteralToken = match(GPULangParser::INTEGERLITERAL);
+      antlrcpp::downCast<SwitchStatementContext *>(_localctx)->expressionContext = expression();
       setState(628);
       match(GPULangParser::COL);
-       caseExpressions.push_back(new IntExpression(atoi((antlrcpp::downCast<SwitchStatementContext *>(_localctx)->integerliteralToken != nullptr ? antlrcpp::downCast<SwitchStatementContext *>(_localctx)->integerliteralToken->getText() : "").c_str()))); caseStatements.push_back(nullptr); 
+       caseExpressions.push_back(antlrcpp::downCast<SwitchStatementContext *>(_localctx)->expressionContext->tree); caseStatements.push_back(nullptr); 
       setState(633);
       _errHandler->sync(this);
 

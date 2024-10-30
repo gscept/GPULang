@@ -127,7 +127,6 @@ struct Variable : public Symbol
         Type* typeSymbol;
         Type::FullType type;
         std::string name;
-        Expression* value;
 
         static const uint8_t NOT_BOUND = 0xF;
         uint32_t group;          // resource group

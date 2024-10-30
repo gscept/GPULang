@@ -137,7 +137,9 @@ SymbolExpression::EvalInt(int& out) const
             {
                 Variable* var = static_cast<Variable*>(thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                return varResolved->value->EvalInt(out);
+                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
+                    return var->valueExpression->EvalInt(out);
+                break;
             }
             case BoolExpressionType:
             case FloatExpressionType:
@@ -167,8 +169,8 @@ SymbolExpression::EvalUInt(unsigned& out) const
             {
                 Variable* var = static_cast<Variable*>(thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                if (varResolved->value && varResolved->usageBits.flags.isConst)
-                    return varResolved->value->EvalUInt(out);
+                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
+                    return var->valueExpression->EvalUInt(out);
                 break;
             }
             case BoolExpressionType:
@@ -199,7 +201,9 @@ SymbolExpression::EvalFloat(float& out) const
             {
                 Variable* var = static_cast<Variable*>(thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                return varResolved->value->EvalFloat(out);
+                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
+                    return var->valueExpression->EvalFloat(out);
+                break;
             }
             case BoolExpressionType:
             case FloatExpressionType:
@@ -229,7 +233,9 @@ SymbolExpression::EvalBool(bool& out) const
             {
                 Variable* var = static_cast<Variable*>(thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                return varResolved->value->EvalBool(out);
+                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
+                    return var->valueExpression->EvalBool(out);
+                break;
             }
             case BoolExpressionType:
             case FloatExpressionType:

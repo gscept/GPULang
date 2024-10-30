@@ -777,10 +777,10 @@ GenerateVariableGLSL(Compiler* compiler, Variable* var, std::string& outCode, bo
             arrays.append("[]");
         }
     }
-    if (varResolved->value != nullptr)
+    if (var->valueExpression != nullptr)
     {
         std::string value;
-        GenerateExpressionGLSL(compiler, varResolved->value, value);
+        GenerateExpressionGLSL(compiler, var->valueExpression, value);
         outCode.append(Format("%s%s %s%s = %s", indentation.c_str(), type.c_str(), varResolved->name.c_str(), arrays.c_str(), value.c_str()));
     }
     else
@@ -1257,7 +1257,7 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
     else if (varResolved->usageBits.flags.isConst)
     {
         std::string initializerStr;
-        GenerateExpressionGLSL(compiler, varResolved->value, initializerStr);
+        GenerateExpressionGLSL(compiler, var->valueExpression, initializerStr);
         outCode.append(Format("const %s %s%s = %s;\n", type.name.c_str(), name.c_str(), arraySize.c_str(), initializerStr.c_str()));
     }
     else if (!varResolved->usageBits.flags.isStructMember)
