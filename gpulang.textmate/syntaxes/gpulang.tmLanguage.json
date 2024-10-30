@@ -35,6 +35,9 @@
 					"beginCaptures": {
 						"1": { "name": "support.function" }
 					}
+				}, {
+					"match": "\\b(gplIs(.*)Shader)\\b",
+					"name": "support.constant"
 				}
 			]
 		},

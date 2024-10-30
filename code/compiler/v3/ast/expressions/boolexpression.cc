@@ -22,6 +22,16 @@ BoolExpression::BoolExpression(bool value) :
 //------------------------------------------------------------------------------
 /**
 */
+BoolExpression::BoolExpression() :
+    value(false)
+{
+    this->resolved = new BoolExpression::__Resolved;
+    this->symbolType = BoolExpressionType;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 BoolExpression::~BoolExpression()
 {
     // empty

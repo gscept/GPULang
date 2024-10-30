@@ -16,6 +16,8 @@ struct BoolExpression : public Expression
 public:
 	/// constructor
 	BoolExpression(bool value);
+	/// Default constructor
+	BoolExpression();
 	/// destructor
 	virtual ~BoolExpression();
 

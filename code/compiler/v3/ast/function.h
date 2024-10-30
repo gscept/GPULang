@@ -189,21 +189,6 @@ struct Function : public Symbol
 
         bool isEntryPoint;
         bool isPrototype;
-
-        ShaderUsage shaderUsage;
-
-        union SideEffects
-        {
-            struct
-            {
-                uint32_t exportsVertexPosition : 1;
-                uint32_t exportsPixel : 1;
-                uint32_t exportsExplicitDepth : 1;
-                uint32_t setsOutputLayer : 1;
-                uint32_t setsViewport : 1;
-            } flags;
-            uint32_t bits;
-        } sideEffects;
     };
 
     

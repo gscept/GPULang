@@ -37,6 +37,7 @@ struct Program : public Symbol
         {
             InvalidProgramEntryType,
             VertexShader,
+            FirstShader = VertexShader,
             HullShader,
             DomainShader,
             GeometryShader,
@@ -50,6 +51,7 @@ struct Program : public Symbol
             RayAnyHitShader,
             RayIntersectionShader,
             RayCallableShader,
+            LastShader = RayCallableShader,
             RenderState,
 
             NumProgramEntries

@@ -766,9 +766,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // before resolving variables (as parameters), reset in and out bindings
     this->inParameterIndexCounter = 0;
     this->outParameterIndexCounter = 0;
-
-    compiler->currentFunction = fun;
-
+    
     // validate function body
     if (
         fun->ast != nullptr
@@ -777,8 +775,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         return false;
     }
-
-    compiler->currentFunction = nullptr;
 
     funResolved->hasExplicitReturn = compiler->branchReturns;
 
@@ -996,67 +992,41 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             if (entryType >= Program::__Resolved::ProgramEntryType::VertexShader
                 && entryType <= Program::__Resolved::ProgramEntryType::RayIntersectionShader)
             {
-                Function* fun = static_cast<Function*>(value);
-                Function::__Resolved* funResolved = Symbol::Resolved(fun);
-
-                switch (entryType)
-                {
-                case Program::__Resolved::ProgramEntryType::VertexShader:
-                    funResolved->shaderUsage.flags.vertexShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::HullShader:
-                    funResolved->shaderUsage.flags.hullShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::DomainShader:
-                    funResolved->shaderUsage.flags.domainShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::GeometryShader:
-                    funResolved->shaderUsage.flags.geometryShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::PixelShader:
-                    funResolved->shaderUsage.flags.pixelShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::ComputeShader:
-                    funResolved->shaderUsage.flags.computeShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::TaskShader:
-                    funResolved->shaderUsage.flags.taskShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::MeshShader:
-                    funResolved->shaderUsage.flags.meshShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
-                    funResolved->shaderUsage.flags.rayGenerationShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayMissShader:
-                    funResolved->shaderUsage.flags.rayMissShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
-                    funResolved->shaderUsage.flags.rayClosestHitShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
-                    funResolved->shaderUsage.flags.rayAnyHitShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
-                    funResolved->shaderUsage.flags.rayIntersectionShader = true;
-                    break;
-                case Program::__Resolved::ProgramEntryType::RayCallableShader:
-                    funResolved->shaderUsage.flags.rayCallableShader = true;
-                    break;
-                }
-
+                compiler->currentState.shaderType = entryType;
                 // when we've set these flags, run function validation to make sure it's properly formatted
                 if (!this->ValidateFunction(compiler, fun))
                     return false;
 
+                compiler->currentState.sideEffects.bits = 0x0;
+                compiler->shaderValueExpressions[entryType].value = true;
+
                 // Resolve variable visibility
-                compiler->currentFunction = fun;
                 if (!this->ResolveVisibility(compiler, fun->ast))
                 {
-                    compiler->currentFunction = nullptr;
                     return false;
                 }
-                compiler->currentFunction = nullptr;
+                
+                compiler->shaderValueExpressions[entryType].value = false;
+
+                if (entryType == Program::__Resolved::VertexShader)
+                {
+                    if (!compiler->currentState.sideEffects.flags.exportsVertexPosition)
+                    {
+                        compiler->Error(Format("Vertex shader must call gplExportVertexCoordinates"), assignEntry);
+                        return false;
+                    }
+                }
+                else if (entryType == Program::__Resolved::PixelShader)
+                {
+                    if (!compiler->currentState.sideEffects.flags.exportsPixel)
+                    {
+                        compiler->Warning(Format("Pixel shader doesn't call gplExportColor"), assignEntry);
+                    }
+                    if (compiler->currentState.sideEffects.flags.exportsExplicitDepth && funResolved->executionModifiers.earlyDepth)
+                    {
+                        compiler->Warning(Format("Pixel shader using 'early_depth' and explicitly setting depth results in undefined behavior"), assignEntry);
+                    }
+                }
             }
             else
             {
@@ -2422,26 +2392,26 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     for (Variable* var : fun->parameters)
     {
         // if function is used for shader, validate parameters with special rules
-        if (funResolved->shaderUsage.bits != 0x0)
+        if (compiler->currentState.shaderType != Program::__Resolved::InvalidProgramEntryType)
         {
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             if (varResolved->parameterBits.flags.isPatch
-                && !(funResolved->shaderUsage.flags.hullShader || funResolved->shaderUsage.flags.domainShader))
+                && !(compiler->currentState.shaderType == Program::__Resolved::HullShader || compiler->currentState.shaderType == Program::__Resolved::DomainShader))
             {
                 compiler->Error(Format("Parameter '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoInterpolate
-                && !funResolved->shaderUsage.flags.pixelShader)
+                && compiler->currentState.shaderType != Program::__Resolved::PixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoPerspective
-                && !funResolved->shaderUsage.flags.pixelShader)
+                && compiler->currentState.shaderType != Program::__Resolved::PixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
@@ -2449,29 +2419,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (funResolved->shaderUsage.flags.vertexShader)
-    {
-        if (!funResolved->sideEffects.flags.exportsVertexPosition)
-        {
-            compiler->Warning(Format("Function '%s' is used as vertex shader but produces no vertex position", fun->name.c_str()), symbol);
-        }
-    }
-
-    // validate function attribute validity
-    if (funResolved->shaderUsage.flags.pixelShader)
-    {
-        if (!funResolved->sideEffects.flags.exportsPixel)
-            compiler->Warning(Format("Function '%s' is used as pixel shader but produces no color output", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.earlyDepth && funResolved->sideEffects.flags.exportsExplicitDepth)
-            compiler->Warning(Format("Function '%s' uses early depth testing but writes an explicit depth value", fun->name.c_str()), symbol);
-    }
-    else
-    {
-        if (funResolved->executionModifiers.earlyDepth)
-            compiler->Warning(Format("Function '%s' has attribute 'early_depth' but is not used as a pixel shader", fun->name.c_str()), symbol);
-    }
-
-    if (funResolved->shaderUsage.flags.hullShader)
+    if (compiler->currentState.shaderType == Program::__Resolved::HullShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -2509,7 +2457,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (funResolved->shaderUsage.flags.domainShader)
+    if (compiler->currentState.shaderType == Program::__Resolved::DomainShader)
     {
         // validate required qualifiers
         if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
@@ -2519,15 +2467,8 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
 
     }
-    else
-    {
-        if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
-            compiler->Warning(Format("Function '%s' has attribute 'patch_type' but is not used as a DomainShader/TessellationEvaluationShader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.partitionMethod != Function::__Resolved::InvalidPartitionMethod)
-            compiler->Warning(Format("Function '%s' has attribute 'partition' but is not used as a DomainShader/TessellationEvaluationShader", fun->name.c_str()), symbol);
-    }
 
-    if (funResolved->shaderUsage.flags.geometryShader)
+    if (compiler->currentState.shaderType == Program::__Resolved::GeometryShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -2558,19 +2499,9 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
 
     }
-    else
-    {
-        if (funResolved->executionModifiers.invocations != Function::__Resolved::INVALID_SIZE)
-            compiler->Warning(Format("Function '%s' has attribute 'invocations' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.maxOutputVertices != Function::__Resolved::INVALID_SIZE)
-            compiler->Warning(Format("Function '%s' has attribute 'max_output_vertices' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.inputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
-            compiler->Warning(Format("Function '%s' has attribute 'input_topology' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.outputPrimitiveTopology != Function::__Resolved::InvalidPrimitiveTopology)
-            compiler->Warning(Format("Function '%s' has attribute 'output_topology' but is not used as a GeometryShader", fun->name.c_str()), symbol);
-    }
 
-    if (funResolved->shaderUsage.flags.computeShader)
+
+    if (compiler->currentState.shaderType == Program::__Resolved::ComputeShader)
     {
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
@@ -2597,19 +2528,6 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Compute shader must declare 'groups_per_workgroup' bigger than or equal to 1", fun->name.c_str()), symbol);
             return false;
         }
-    }
-    else
-    {
-        if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] > 1)
-            compiler->Warning(Format("Function '%s' sets attribute 'local_size_x' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1)
-            compiler->Warning(Format("Function '%s' sets attribute 'local_size_y' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.computeShaderWorkGroupSize[2] > 1)
-            compiler->Warning(Format("Function '%s' sets attribute 'local_size_z' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.groupSize != 64)
-            compiler->Warning(Format("Function '%s' sets attribute 'group_size' but is not used as a compute shader", fun->name.c_str()), symbol);
-        if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
-            compiler->Warning(Format("Function '%s' sets attribute 'groups_per_workgroup' but is not used as a compute shader", fun->name.c_str()), symbol);
     }
 
     return true;
@@ -2896,6 +2814,12 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ForStatementType:
         {
             ForStatement* forStat = static_cast<ForStatement*>(symbol);
+
+            // If condition can be evaluated to false, don't run loop
+            bool b;
+            if (forStat->condition->EvalBool(b) && !b)
+                break;
+            
             for (auto* var : forStat->declarations)
                 this->ResolveVisibility(compiler, var);
             res |= this->ResolveVisibility(compiler, forStat->condition);
@@ -2906,8 +2830,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::WhileStatementType:
         {
             WhileStatement* whileStat = static_cast<WhileStatement*>(symbol);
+
+            // If static evaluation turns out the while is meaningless, end early
+            bool b;
+            if (whileStat->condition->EvalBool(b) && !b)
+                break;
+                
             res |= this->ResolveVisibility(compiler, whileStat->condition);
-            res |= this->ResolveVisibility(compiler, whileStat->statement);
+            res |= this->ResolveVisibility(compiler, whileStat->statement);    
             break;
         }
         case Symbol::ReturnStatementType:
@@ -2926,17 +2856,39 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::IfStatementType:
         {
             IfStatement* ifStat = static_cast<IfStatement*>(symbol);
-            res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
-            if (ifStat->elseStatement != nullptr)
-                res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+            bool b;
+            if (ifStat->condition->EvalBool(b))
+            {
+                if (b)
+                    res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
+                else if (ifStat->elseStatement != nullptr)
+                    res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+            }
+            else
+            {
+                res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
+                if (ifStat->elseStatement != nullptr)
+                    res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
+            }
             break;
         }
         case Symbol::TernaryExpressionType:
         {
             TernaryExpression* ternExp = static_cast<TernaryExpression*>(symbol);
-            res |= this->ResolveVisibility(compiler, ternExp->lhs);
-            res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
-            res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+            bool b;
+            if (ternExp->lhs->EvalBool(b))
+            {
+                if (b)
+                    res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
+                else
+                    res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+            }
+            else
+            {
+                res |= this->ResolveVisibility(compiler, ternExp->lhs);
+                res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
+                res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
+            }
             break;
         }
         case Symbol::BinaryExpressionType:
@@ -2964,6 +2916,62 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             CallExpression* callExpr = static_cast<CallExpression*>(symbol);
             CallExpression::__Resolved* callResolved = Symbol::Resolved(callExpr);
+
+            if (callResolved->functionSymbol.starts_with("gplExportVertexCoordinates"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
+                {
+                    compiler->Error(Format("gplExportVertexCoordinates can only be called from a vertex shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.exportsVertexPosition = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplSetOutputLayer"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
+                {
+                    compiler->Error(Format("gplSetOutputLayer can only be called from a vertex shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.setsOutputLayer = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplSetOutputViewport"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
+                {
+                    compiler->Error(Format("gplSetOutputViewport can only be called from a vertex shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.setsViewport = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplExportColor"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+                {
+                    compiler->Error(Format("gplExportColor can only be called from pixel shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.exportsPixel = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplSetPixelDepth"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+                {
+                    compiler->Error(Format("gplSetPixelDepth can only be called from a pixel shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.exportsExplicitDepth = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplPixelKill"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+                {
+                    compiler->Error(Format("gplPixelKill can only be called from a pixel shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.killsPixel = true;
+            }
+            
             for (auto& arg : callExpr->args)
                 res |= this->ResolveVisibility(compiler, arg);
             res |= this->ResolveVisibility(compiler, callResolved->function);
@@ -3008,8 +3016,54 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             Variable* var = static_cast<Variable*>(symbol);
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
-            Function::__Resolved* currentFunResolved = Symbol::Resolved(compiler->currentFunction);
-            varResolved->visibilityBits.bits |= currentFunResolved->shaderUsage.bits;
+            switch (compiler->currentState.shaderType)
+            {
+                case Program::__Resolved::ProgramEntryType::VertexShader:
+                    varResolved->visibilityBits.flags.vertexShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::HullShader:
+                    varResolved->visibilityBits.flags.hullShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::DomainShader:
+                    varResolved->visibilityBits.flags.domainShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::GeometryShader:
+                    varResolved->visibilityBits.flags.geometryShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::PixelShader:
+                    varResolved->visibilityBits.flags.pixelShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::ComputeShader:
+                    varResolved->visibilityBits.flags.computeShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::TaskShader:
+                    varResolved->visibilityBits.flags.taskShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::MeshShader:
+                    varResolved->visibilityBits.flags.meshShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
+                    varResolved->visibilityBits.flags.rayGenerationShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayMissShader:
+                    varResolved->visibilityBits.flags.rayMissShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
+                    varResolved->visibilityBits.flags.rayClosestHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
+                    varResolved->visibilityBits.flags.rayAnyHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
+                    varResolved->visibilityBits.flags.rayIntersectionShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                    varResolved->visibilityBits.flags.rayCallableShader = true;
+                    break;
+                default:
+                    assert(false);
+            }
+                
             if (varResolved->value != nullptr)
                 res |= this->ResolveVisibility(compiler, varResolved->value);
             break;

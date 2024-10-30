@@ -26,7 +26,6 @@ Function::Function()
 
     Function::__Resolved* typeResolved = static_cast<Function::__Resolved*>(this->resolved);
     typeResolved->isEntryPoint = false;
-    typeResolved->shaderUsage.bits = 0x0;
     typeResolved->executionModifiers.invocations = Function::__Resolved::INVALID_SIZE;
     typeResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
     typeResolved->executionModifiers.windingOrder = Function::__Resolved::InvalidWindingOrder;
@@ -41,7 +40,6 @@ Function::Function()
     typeResolved->executionModifiers.groupSize = 64;
     typeResolved->executionModifiers.groupsPerWorkgroup = 1;
     typeResolved->executionModifiers.earlyDepth = false;
-    typeResolved->sideEffects.bits = 0x0;
     typeResolved->isPrototype = false;
 }
 
@@ -495,6 +493,9 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(gplSetPixelDepth, SetPixelDepth);
     __ADD_ARG_LIT(depth, f32);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(gplPixelKill, PixelKill);
     __SET_RET_LIT(void);
 
 #define X(ty, index)\

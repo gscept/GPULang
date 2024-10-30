@@ -144,6 +144,7 @@ struct Variable : public Symbol
         ImageFormat imageFormat;    // for read write images, this is the format
 
         ShaderUsage visibilityBits;
+        bool builtin = false;
     };
 };
 

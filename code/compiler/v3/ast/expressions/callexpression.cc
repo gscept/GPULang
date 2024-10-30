@@ -47,31 +47,6 @@ CallExpression::Resolve(Compiler* compiler)
 
     this->function->EvalSymbol(thisResolved->functionSymbol);
 
-    if (compiler->currentFunction != nullptr)
-    {
-        Function::__Resolved* owningResolvedFunction = Symbol::Resolved(compiler->currentFunction);
-        if (thisResolved->functionSymbol.starts_with("gplExportVertexCoordinates"))
-        {
-            owningResolvedFunction->sideEffects.flags.exportsVertexPosition = true;
-        }
-        else if (thisResolved->functionSymbol.starts_with("gplExportColor"))
-        {
-            owningResolvedFunction->sideEffects.flags.exportsPixel = true;
-        }
-        else if (thisResolved->functionSymbol.starts_with("gplSetPixelDepth"))
-        {
-            owningResolvedFunction->sideEffects.flags.exportsExplicitDepth = true;
-        }
-        else if (thisResolved->functionSymbol.starts_with("gplSetOutputLayer"))
-        {
-            owningResolvedFunction->sideEffects.flags.setsOutputLayer = true;
-        }
-        else if (thisResolved->functionSymbol.starts_with("gplSetOutputViewport"))
-        {
-            owningResolvedFunction->sideEffects.flags.setsViewport = true;
-        }
-    }
-
     std::string argList = "";
     for (Expression* expr : this->args)
     {

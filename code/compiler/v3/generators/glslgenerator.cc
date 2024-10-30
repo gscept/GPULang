@@ -1025,7 +1025,7 @@ GLSLGenerator::GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbo
     bool isMain = fun == this->mainFunction;
 
     // skip shader functions which are not shaders
-    if (funResolved->shaderUsage.bits != 0x0 && !isMain)
+    if (funResolved->isEntryPoint)
         return;
 
     // convert typename to glsl

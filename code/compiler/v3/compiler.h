@@ -14,6 +14,9 @@
 #include "ast/symbol.h"
 #include "ast/effect.h"
 #include "ast/types/type.h"
+#include "ast/program.h"
+#include "ast/variable.h"
+#include "ast/expressions/boolexpression.h"
 #include "validators/validator.h"
 #include "generators/generator.h"
 #include "binwriter.h"
@@ -191,8 +194,23 @@ struct Compiler
     struct State
     {
         uint8_t allowConstOverride = false;
+
+        Program::__Resolved::ProgramEntryType shaderType;
+        
+        union SideEffects
+        {
+            struct
+            {
+                uint32_t exportsVertexPosition : 1;
+                uint32_t exportsPixel : 1;
+                uint32_t exportsExplicitDepth : 1;
+                uint32_t setsOutputLayer : 1;
+                uint32_t setsViewport : 1;
+                uint32_t killsPixel : 1;
+            } flags;
+            uint32_t bits;
+        } sideEffects;
     } currentState;
-    Function* currentFunction = nullptr;
     uint32_t linkDefineCounter = 0;
 
     bool branchReturns;
@@ -209,6 +227,8 @@ struct Compiler
     bool ignoreReservedWords;
 
     RenderState defaultRenderState;
+    Variable shaderSwitches[Program::__Resolved::ProgramEntryType::NumProgramEntries];
+    BoolExpression shaderValueExpressions[Program::__Resolved::ProgramEntryType::NumProgramEntries];
 
     Options options;
 

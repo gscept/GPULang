@@ -10,6 +10,7 @@
 #include "generators/spirvgenerator.h"
 #include "generators/hgenerator.h"
 #include "util.h"
+#include "ast/expressions/boolexpression.h"
 #include "v3/ast/types/type.h"
 #include "v3/ast/function.h"
 #include "v3/ast/variable.h"
@@ -84,6 +85,32 @@ Compiler::Compiler()
         this->validator->ResolveFunction(this, *intrinIt);
         intrinIt++;
     }
+        
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::VertexShader].name = "gplIsVertexShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::HullShader].name = "gplIsHullShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayMissShader].name = "gplIsRayMissShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayCallableShader].name = "gplIsRayCallableShader";
+
+    for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+    {
+        this->shaderSwitches[i].type = { "b8" };
+        Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
+        res->usageBits.flags.isConst = true;
+        res->builtin = true;
+        this->shaderValueExpressions[i].value = false;
+        this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
+        this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
+    }
+
     this->ignoreReservedWords = false;
 
     // push a new scope for all the parsed symbols
@@ -357,7 +384,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 {
     bool ret = true;
     this->linkDefineCounter = 0;
-    this->currentFunction = nullptr;
 
     this->symbols = root->symbols;
 
