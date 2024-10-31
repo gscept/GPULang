@@ -6,3 +6,4 @@
 ﻿code/compiler/ext/antlr4/grammar/.antlr
 code/test/shaders/output
 *.vsix
+.idea

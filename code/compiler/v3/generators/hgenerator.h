@@ -52,7 +52,7 @@ struct HGenerator : public Generator
     /// generate structure 
     void GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer);
     /// generate variable
-    void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateConstants);
+    void GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables);
     /// generate enum
     void GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer);
     /// generate program

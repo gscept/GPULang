@@ -29,9 +29,9 @@
 					"name": "keyword.other",
 					"match": "\\b(entry_point)\\b"
 				}, {
-					"begin": "\\b(gpl(.*)|textureSample|textureLoad|textureStore)\\(\\b",
+					"begin": "\\b(gpl(.*)|textureSample|textureLoad|textureStore)\\s*\\(",
 					"end": "\\)",
-					"patterns": [ {"include": "#parameters"}],
+					"patterns": [ {"include": "#parameters"}, { "include":  "#keywords"} ],
 					"beginCaptures": {
 						"1": { "name": "support.function" }
 					}
@@ -46,6 +46,10 @@
 				{
 					"name": "constant.numeric",
 					"match": "\\b\\d((\\.\\d*f?)|u?)\\b"
+				},
+				{
+					"name": "constant.language",
+					"match": "\\b(true|false)\\b"
 				}
 			]
 		},
@@ -76,18 +80,18 @@
 					"include": "#constants"
 				},
 				{
-					"match": "\\s*(in|out)?\\s*([A-z][A-z0-9]*)\\s*(:\\s*[\\*]*([A-z][A-z0-9]*))?",
+					"match": "\\s*(in|out)?\\s*([A-z][A-z0-9]*)\\s*(:\\s*[\\*]*(sampled|literal|mutable)?\\s*([A-z][A-z0-9]*))?",
 					"captures": {
-						"1": {
-							"name": "storage.modifier"
-						},
-						"2": {
-							"name": "variable"
-						},
-						"4": {
-							"name": "entity.name.type"
-						}
+						"1": { "name": "storage.modifier" },
+						"2": { "name": "variable" },
+						"4": { "name": "keyword.other" },
+						"5": { "name": "entity.name.type" }
 					}
+				},
+				{
+					"begin": "([A-z][A-z0-9]*)\\s*\\(",
+					"end": "\\)",
+					"name": "entity.name.function.call.argument"
 				},
 				{
 					"match": "([A-z][A-z0-9]*)",
@@ -127,7 +131,7 @@
 						}
 					}
 				}, {
-					"match": "\\s*(render_state|sampler_state|program)\\s*([A-z]+[A-z]*)",
+					"match": "\\s*(render_state|sampler_state|program)\\s*([A-z][A-z0-9]*)",
 					"captures": {
 						"1": {
 							"name": "keyword"
@@ -180,7 +184,7 @@
 							"name": "keyword"
 						},
 						"2": {
-							"name": "entity.name.function"
+							"name": "entity.name.function.pointer"
 						}
 					}
 				}, {
@@ -195,20 +199,20 @@
 					}
 				}, {					
 					"begin": "\\b([A-z][A-z0-9]*)\\s*\\(",
-					"end": "\\s*\\)\\s*([A-z][A-z0-9]*)\\b",
+					"end": "\\)\\s*([A-z][A-z0-9]*)\\b",
 					"patterns": [{ "include": "#parameters"	}],
 					"beginCaptures": {
-						"1": { "name": "entity.name.function" }
+						"1": { "name": "entity.name.function.declaration" }
 					},
 					"endCaptures": {
 						"1": { "name": "entity.name.type" }
 					}
 				},  {					
-					"begin": "\\s*([A-z][A-z0-9]*)\\s*\\(",
-					"end": "\\s*\\)",
+					"begin": "\\s*(?!switch|if|while|for)([A-z][A-z0-9]*)\\s*\\(",
+					"end": "\\)",
 					"patterns": [{ "include": "#parameters"	}],
 					"beginCaptures": {
-						"1": { "name": "entity.name.function" }
+						"1": { "name": "entity.name.function.call" }
 					},
 					"endCaptures": {}
 				}, {
@@ -230,9 +234,18 @@
 			]
 		},
 		"comment": {
-			"name": "comment.line.double-slash",
-			"begin": "//",
-			"end": "\n"
+			"patterns": [
+				{
+					"name": "comment.line.double-slash",
+					"begin": "//",
+					"end": "\n"		
+				},
+				{
+					"name": "comment.block",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
 		}
 	},
 	"scopeName": "source.gpulang"

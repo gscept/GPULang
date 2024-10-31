@@ -407,42 +407,60 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
         {
             uint32_t baseType = generator->AddSymbol("u32", "OpTypeInt 32 0", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("%s %%%d %d", baseFormat, baseType, info.data.ui), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%du_link_defined%d", info.data.ui, generator->linkDefineSlot), Format("OpSpecConstant %%%d %d", baseType, info.data.ui), true);
+            else
+                res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
             break;
         }
         case ConstantCreationInfo::Type::UInt16:
         {
             uint32_t baseType = generator->AddSymbol("u16", "OpTypeInt 16 0", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("%s %%%d %d", baseFormat, baseType, info.data.ui), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%du_link_defined%d", info.data.ui, generator->linkDefineSlot), Format("OpSpecConstant %%%d %d", baseType, info.data.ui), true);
+            else
+                res.name = generator->AddSymbol(Format("%du", info.data.ui), Format("OpConstant %%%d %d", baseType, info.data.ui), true);
             break;
         }
         case ConstantCreationInfo::Type::Int:
         {
             uint32_t baseType = generator->AddSymbol("i32", "OpTypeInt 32 1", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("%s %%%d %d", baseFormat, baseType, info.data.i), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%di_link_defined%d", info.data.i, generator->linkDefineSlot), Format("OpSpecConstant %%%d %d", baseType, info.data.i), true);
+            else
+                res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
             break;
         }
         case ConstantCreationInfo::Type::Int16:
         {
             uint32_t baseType = generator->AddSymbol("i16", "OpTypeInt 16 1", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%di", info.data.i), Format("%s %%%d %d", baseFormat, baseType, info.data.i), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%di_link_defined%d", info.data.i, generator->linkDefineSlot), Format("OpSpecConstant %%%d %d", baseType, info.data.i), true);
+            else
+                res.name = generator->AddSymbol(Format("%di", info.data.i), Format("OpConstant %%%d %d", baseType, info.data.i), true);
             break;
         }
         case ConstantCreationInfo::Type::Float:
         {
             uint32_t baseType = generator->AddSymbol("f32", "OpTypeFloat 32", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("%s %%%d %f", baseFormat, baseType, info.data.f), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%ff_link_defined%d", info.data.f, generator->linkDefineSlot), Format("OpSpecConstant %%%d %f", baseType, info.data.f), true);
+            else
+                res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %f", baseType, info.data.f), true);
             break;
         }
         case ConstantCreationInfo::Type::Float16:
         {
             uint32_t baseType = generator->AddSymbol("f16", "OpTypeFloat 16", true);
             res.typeName = baseType;
-            res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("%s %%%d %f", baseFormat, baseType, info.data.f), true);
+            if (generator->linkDefineEvaluation)
+                res.name = generator->AddSymbol(Format("%ff_link_defined%d", info.data.f, generator->linkDefineSlot), Format("OpSpecConstant %%%d %f", baseType, info.data.f), true);
+            else
+                res.name = generator->AddSymbol(Format("%ff", info.data.f), Format("OpConstant %%%d %f", baseType, info.data.f), true);
             break;
         }
         case ConstantCreationInfo::Type::Bool:
@@ -450,7 +468,7 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
             uint32_t baseType = generator->AddSymbol("b8", "OpTypeBool", true);
             res.typeName = baseType;
             if (generator->linkDefineEvaluation)
-                res.name = generator->AddSymbol(info.data.b ? "true" : "false", info.data.b ? Format("OpSpecConstantTrue %%%d", baseType) : Format("OpSpecConstantFalse %%%d", baseType), true);
+                res.name = generator->AddSymbol(info.data.b ? Format("true_link_defined%d", generator->linkDefineSlot) : Format("false_link_defined%d", generator->linkDefineSlot), info.data.b ? Format("OpSpecConstantTrue %%%d", baseType) : Format("OpSpecConstantFalse %%%d", baseType), true);
             else
                 res.name = generator->AddSymbol(info.data.b ? "true" : "false", info.data.b ? Format("OpConstantTrue %%%d", baseType) : Format("OpConstantFalse %%%d", baseType), true);
             break;
@@ -2845,6 +2863,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     {
         // Setup initializer
         generator->linkDefineEvaluation = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
+        generator->linkDefineSlot = varResolved->binding;
         initializer = GenerateExpressionSPIRV(compiler, generator, initializerExpression);
 
 
@@ -2852,6 +2871,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         if (initializer.isLiteral)
             initializer = LoadValueSPIRV(compiler, generator, initializer);
         generator->linkDefineEvaluation = false;
+        generator->linkDefineSlot = UINT32_MAX;
     }
 
     if (varResolved->storage != Variable::__Resolved::Storage::LinkDefined)
@@ -3075,15 +3095,17 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     typeName.typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName.typeName, sizeName.name), true);
     std::string initializer = "";
     bool isConst = true;
+    bool isLinkDefined = false;
     for (SPIRVResult component : composites)
     {
         SPIRVResult loaded = LoadValueSPIRV(compiler, generator, component);
         initializer.append(Format("%%%d ", loaded.name));
         isConst &= loaded.isConst;
+        isLinkDefined |= loaded.isSpecialization;
     }
 
     if (isConst)
-        if (generator->linkDefineEvaluation)
+        if (isLinkDefined)
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
         else
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
@@ -4260,7 +4282,10 @@ SPIRVGenerator::AddSymbol(const std::string& name, const std::string& declare, b
 
     // If symbol isn't found in scope, create it
     uint32_t ret = this->symbolCounter;
-    this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = ret };
+    if (global)
+        this->scopeStack.front().symbols[name] = { .sym = nullptr, .value = ret };
+    else
+        this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = ret };
 
     std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", ret, declare.c_str(), name.c_str());
     if (global)
@@ -4290,7 +4315,10 @@ SPIRVGenerator::AddReservedSymbol(const std::string& name, uint32_t object, cons
     }
 
     // If symbol isn't found in scope, create it
-    this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = object };
+    if (global)
+        this->scopeStack.front().symbols[name] = { .sym = nullptr, .value = object };
+    else
+        this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = object };
 
     std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", object, declare.c_str(), name.c_str());
     if (global)

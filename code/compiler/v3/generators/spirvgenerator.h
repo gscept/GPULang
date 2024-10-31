@@ -233,6 +233,7 @@ public:
     bool blockOpen = false;
     bool literalExtract = false;
     bool linkDefineEvaluation = false;
+    uint32_t linkDefineSlot = UINT32_MAX;
 
     bool skipBreakContinue = false;
 

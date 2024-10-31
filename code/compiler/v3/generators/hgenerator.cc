@@ -181,14 +181,14 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
 /**
 */
 void 
-HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateConstants)
+HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
-    if (evaluateConstants)
+    if (evaluateLinkDefinedVariables)
     {
-        if (varResolved->usageBits.flags.isConst && varResolved->storage == Variable::__Resolved::Storage::Global)
+        if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
         {
             std::string typeStr;
             auto headerType = typeToHeaderType.find(var->type.name);
@@ -267,7 +267,6 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             {
                 writer.Write(Format("%s %s%s;", type.c_str(), var->name.c_str(), arrayType.c_str()));
             }
-
         }
         else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
         {
@@ -280,8 +279,8 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 writer.WriteLine(Format("struct %s", varResolved->name.c_str()));
                 writer.WriteLine("{");
                 writer.Indent();
-                writer.WriteLine(Format("static const uint32_t BINDING = %d;", varResolved->binding));
-                writer.WriteLine(Format("static const uint32_t GROUP = %d;", varResolved->group));
+                writer.WriteLine(Format("static const unsigned int BINDING = %d;", varResolved->binding));
+                writer.WriteLine(Format("static const unsigned int GROUP = %d;", varResolved->group));
                 if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
                 {
                     writer.WriteLine(Format("using STRUCT = %s;", varResolved->typeSymbol->name.c_str()));
@@ -296,10 +295,23 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             writer.WriteLine(Format("struct %s", varResolved->name.c_str()));
             writer.WriteLine("{");
             writer.Indent();
-            writer.WriteLine(Format("static const uint32_t LINK_BINDING = %d;", varResolved->binding));
-            writer.WriteLine(Format("static const uint32_t SIZE = %d;", varResolved->byteSize));
+            writer.WriteLine(Format("static const unsigned int LINK_BINDING = %d;", varResolved->binding));
+            writer.WriteLine(Format("static const unsigned int SIZE = %d;", varResolved->byteSize));
             writer.Unindent();
             writer.WriteLine("};\n");
+        }
+        else if (varResolved->usageBits.flags.isConst)
+        {
+            HeaderWriter initWriter;
+            if (var->valueExpression != nullptr)
+            {
+                GenerateHInitializer(compiler, var->valueExpression, initWriter);
+                writer.WriteLine(Format("static const %s %s = %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), initWriter.output.c_str()));
+            }
+            else
+            {
+                writer.WriteLine(Format("static const %s %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str()));
+            }
         }
     }
 }
@@ -388,9 +400,9 @@ HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symb
                 Variable::__Resolved* argRes = Symbol::Resolved(arg);
                 if (argRes->usageBits.flags.isEntryPointParameter && argRes->storage == Variable::__Resolved::Storage::Input)
                 {
-                    writer.WriteLine(Format("static const uint32_t %s_BINDING = %d;", argRes->name.c_str(), argRes->inBinding));
-                    writer.WriteLine(Format("static const uint32_t %s_OFFSET = %d;", argRes->name.c_str(), offset));
-                    writer.WriteLine(Format("static const uint32_t %s_SIZE = %d;", argRes->name.c_str(), argRes->byteSize));
+                    writer.WriteLine(Format("static const unsigned int %s_BINDING = %d;", argRes->name.c_str(), argRes->inBinding));
+                    writer.WriteLine(Format("static const unsigned int %s_OFFSET = %d;", argRes->name.c_str(), offset));
+                    writer.WriteLine(Format("static const unsigned int %s_SIZE = %d;", argRes->name.c_str(), argRes->byteSize));
                     offset += argRes->byteSize;
                 }
             }
@@ -399,7 +411,7 @@ HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symb
         if (shaderType == Program::__Resolved::ComputeShader)
         {
             const Function::__Resolved::ExecutionModifiers& mods = funResolved->executionModifiers;
-            writer.WriteLine(Format("static inline const uint32_t WORKGROUP_SIZE[] = { %d, %d, %d };", mods.computeShaderWorkGroupSize[0], mods.computeShaderWorkGroupSize[1], mods.computeShaderWorkGroupSize[2]));
+            writer.WriteLine(Format("static inline const unsigned int WORKGROUP_SIZE[] = { %d, %d, %d };", mods.computeShaderWorkGroupSize[0], mods.computeShaderWorkGroupSize[1], mods.computeShaderWorkGroupSize[2]));
         }
         writer.Unindent();
         writer.WriteLine("};\n");

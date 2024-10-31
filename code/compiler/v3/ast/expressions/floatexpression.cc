@@ -108,7 +108,7 @@ FloatExpression::EvalBool(bool& out) const
 std::string
 FloatExpression::EvalString() const
 {
-    return Format("%f", this->value);
+    return Format("%ff", this->value);
 }
 
 //------------------------------------------------------------------------------

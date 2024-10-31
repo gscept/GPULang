@@ -895,9 +895,9 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             {
                 Variable* var = static_cast<Variable*>(overrideSymbol);
                 Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                if (!varResolved->usageBits.flags.isConst)
+                if (varResolved->storage != Variable::__Resolved::Storage::LinkDefined)
                 {
-                    compiler->Error("Only variables declared as 'const' can be overriden in program assembly", var);
+                    compiler->Error("Only variables declared as 'link_defined' can be overriden in program assembly", var);
                     return false;
                 }
                 
@@ -908,7 +908,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 }
                 if (varResolved->type != binExp->rightType)
                 {
-                    compiler->Error(Format("Trying to assign a value of type '%s' to a constant of '%s'", binExp->rightType.ToString().c_str(), varResolved->type.ToString().c_str()), var);
+                    compiler->Error(Format("Trying to assign a value of type '%s' to a link_defined variable of '%s'", binExp->rightType.ToString().c_str(), varResolved->type.ToString().c_str()), var);
                     return false;
                 }
                 progResolved->constVarInitializationOverrides.insert({ var, assignEntry->right });
@@ -1899,7 +1899,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
     {
-        if (varResolved->typeSymbol->columnSize > 1 || varResolved->typeSymbol->category != Type::Category::ScalarCategory)
+        if (varResolved->typeSymbol->columnSize > 1 ||
+            (varResolved->typeSymbol->category != Type::Category::ScalarCategory && varResolved->typeSymbol->category != Type::Category::EnumCategory)
+        )
         {
             compiler->Error(Format("Only scalar types can be 'link_defined'"), symbol);
             return false;

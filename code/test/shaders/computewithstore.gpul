@@ -3,8 +3,8 @@ enum ShaderMode
     OutputLocalInvocationIndex,
     OutputSpecializedVector
 };
-const Mode : ShaderMode = ShaderMode.OutputLocalInvocationIndex;
-
+link_defined Mode : ShaderMode = ShaderMode.OutputLocalInvocationIndex;
+const ActualConstValue = 1u;
 struct Storage
 {
     vec : f32x4;
