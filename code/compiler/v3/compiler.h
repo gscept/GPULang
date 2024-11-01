@@ -202,6 +202,8 @@ struct Compiler
             struct
             {
                 uint32_t exportsVertexPosition : 1;
+                uint32_t exportsVertex : 1;
+                uint32_t exportsPrimitive : 1;
                 uint32_t exportsPixel : 1;
                 uint32_t exportsExplicitDepth : 1;
                 uint32_t setsOutputLayer : 1;

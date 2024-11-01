@@ -1820,7 +1820,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputLayer", ret, "BuiltIn Layer");
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+        return SPIRVResult::Invalid();
     };
 
     this->intrinsicMap[Intrinsics::GetOutputViewport] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult 
@@ -1843,7 +1843,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputViewport", ret, "BuiltIn ViewportIndex");
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+        return SPIRVResult::Invalid();
     };
 
     this->intrinsicMap[Intrinsics::ExportVertexCoordinates] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -1857,7 +1857,21 @@ SPIRVGenerator::SetupIntrinsics()
         g->AddDecoration("gplVertexCoordinates", ret, "BuiltIn Position");
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportVertexCoordinates");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+        return SPIRVResult::Invalid();
+    };
+
+    this->intrinsicMap[Intrinsics::ExportVertex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("Geometry");
+        g->AddOp("OpEmitVertex");
+        return SPIRVResult::Invalid();
+    };
+
+    this->intrinsicMap[Intrinsics::ExportPrimitive] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("Geometry");
+        g->AddOp("OpEndPrimitive");
+        return SPIRVResult::Invalid();
     };
 
     this->intrinsicMap[Intrinsics::GetVertexIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -1905,7 +1919,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->AddDecoration("gplPixelDepth", ret, "BuiltIn FragDepth");
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplSetPixelDepth");
-        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+        return SPIRVResult::Invalid();
     };
 
     std::vector<std::tuple<Function*, TypeCode, uint32_t>> colorExportIntrinsics =
@@ -1961,7 +1975,7 @@ SPIRVGenerator::SetupIntrinsics()
             g->AddDecoration(Format("gplExportColorLocation%d", args[1].literalValue.i), ret, Format("Location %d", args[1].literalValue.i));
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
             g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, Format("gplExportColor%d", args[1].literalValue.i));
-            return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
+            return SPIRVResult::Invalid();
         };
     }
 

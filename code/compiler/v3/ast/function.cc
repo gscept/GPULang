@@ -472,6 +472,12 @@ FLOAT_LIST
     __MAKE_BUILTIN(gplExportVertexCoordinates, ExportVertexCoordinates);
     __ADD_ARG_LIT(layer, f32x4);
     __SET_RET_LIT(void);
+    
+    __MAKE_BUILTIN(gplExportVertex, ExportVertex);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(gplExportPrimitive, ExportPrimitive);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(gplGetVertexIndex, GetVertexIndex);
     __SET_RET_LIT(u32);

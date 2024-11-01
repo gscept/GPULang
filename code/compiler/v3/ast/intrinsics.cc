@@ -150,6 +150,9 @@ Function* GetDrawIndex;
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
 
+Function* ExportVertex;
+Function* ExportPrimitive;
+
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(ExportColor, ty)
     SCALAR_LIST
 #undef X

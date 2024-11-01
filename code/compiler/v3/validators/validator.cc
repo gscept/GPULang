@@ -3010,6 +3010,24 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 }
                 compiler->currentState.sideEffects.flags.exportsVertexPosition = true;
             }
+            else if (callResolved->functionSymbol.starts_with("gplExportVertex"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::GeometryShader)
+                {
+                    compiler->Error(Format("gplExportVertex can only be called from a geometry shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.exportsVertex = true;
+            }
+            else if (callResolved->functionSymbol.starts_with("gplExportPrimitive"))
+            {
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::GeometryShader)
+                {
+                    compiler->Error(Format("gplExportPrimitive can only be called from a geometry shader"), callExpr);
+                    return false;
+                }
+                compiler->currentState.sideEffects.flags.exportsPrimitive = true;
+            }
             else if (callResolved->functionSymbol.starts_with("gplSetOutputLayer"))
             {
                 if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
