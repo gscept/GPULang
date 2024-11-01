@@ -13,6 +13,14 @@ struct Camera
 
 uniform camera : *Camera;
 
+struct Test
+{
+    f : f32;
+    b : b8;
+};
+
+const Foobar = Test{f = 0.0f, b = false};
+
 struct Object
 {
     model : f32x4x4;
@@ -48,8 +56,6 @@ BasicPixel(
     var color = textureSample(Albedo, Sampler, UV);
     if (gplIsPixelShader)
         gplExportColor(color, i32(Framebuffer.Color));
-        
-    discard;
 }
 
 program TestProgram

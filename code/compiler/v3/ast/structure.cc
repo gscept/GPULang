@@ -25,7 +25,6 @@ Structure::Structure()
     typeResolved->byteSize = 0;
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
-    
 }
 
 } // namespace GPULang

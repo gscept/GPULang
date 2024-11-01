@@ -129,6 +129,7 @@ std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
 #include "ast/expressions/initializerexpression.h"
+#include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
@@ -1083,16 +1084,17 @@ binaryexpatom
     {
         $tree = nullptr;
     }:
-    INTEGERLITERAL          { $tree = new IntExpression(atoi($INTEGERLITERAL.text.c_str())); $tree->location = SetupFile(); }
-    | UINTEGERLITERAL       { $tree = new UIntExpression(strtoul($UINTEGERLITERAL.text.c_str(), nullptr, 10)); $tree->location = SetupFile(); }
-    | FLOATLITERAL          { $tree = new FloatExpression(atof($FLOATLITERAL.text.c_str())); $tree->location = SetupFile(); }
-    | DOUBLELITERAL         { $tree = new FloatExpression(atof($DOUBLELITERAL.text.c_str())); $tree->location = SetupFile(); }
-    | HEX                   { $tree = new UIntExpression(strtoul($HEX.text.c_str(), nullptr, 16)); $tree->location = SetupFile(); }
-    | string                { $tree = new StringExpression($string.val); $tree->location = SetupFile(); }
-    | IDENTIFIER            { $tree = new SymbolExpression($IDENTIFIER.text); $tree->location = SetupFile(); }
-    | boolean               { $tree = new BoolExpression($boolean.val); $tree->location = SetupFile(); }
-    | initializerExpression { $tree = $initializerExpression.tree; }
-    | '(' expression ')'    { $tree = $expression.tree; }
+    INTEGERLITERAL                  { $tree = new IntExpression(atoi($INTEGERLITERAL.text.c_str())); $tree->location = SetupFile(); }
+    | UINTEGERLITERAL               { $tree = new UIntExpression(strtoul($UINTEGERLITERAL.text.c_str(), nullptr, 10)); $tree->location = SetupFile(); }
+    | FLOATLITERAL                  { $tree = new FloatExpression(atof($FLOATLITERAL.text.c_str())); $tree->location = SetupFile(); }
+    | DOUBLELITERAL                 { $tree = new FloatExpression(atof($DOUBLELITERAL.text.c_str())); $tree->location = SetupFile(); }
+    | HEX                           { $tree = new UIntExpression(strtoul($HEX.text.c_str(), nullptr, 16)); $tree->location = SetupFile(); }
+    | string                        { $tree = new StringExpression($string.val); $tree->location = SetupFile(); }
+    | IDENTIFIER                    { $tree = new SymbolExpression($IDENTIFIER.text); $tree->location = SetupFile(); }
+    | boolean                       { $tree = new BoolExpression($boolean.val); $tree->location = SetupFile(); }
+    | initializerExpression         { $tree = $initializerExpression.tree; }
+    | arrayInitializerExpression    { $tree = $arrayInitializerExpression.tree; } 
+    | '(' expression ')'            { $tree = $expression.tree; }
     ;
 
 initializerExpression
@@ -1101,14 +1103,31 @@ initializerExpression
     {
         $tree = nullptr;
         std::vector<Expression*> exprs;
+        std::string type = "";
         Symbol::Location location;
     }:
-    '{' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? '}'
     {
-        $tree = new InitializerExpression(exprs);
+        $tree = new InitializerExpression(exprs, type);
         $tree->location = location;
     }
     ;
+  
+arrayInitializerExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<Expression*> exprs;
+        Symbol::Location location;
+    }:
+    '[' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? ']'
+    {
+        $tree = new ArrayInitializerExpression(exprs);
+        $tree->location = location;
+    }
+    ;
+   
 
 SC: ';';
 CO: ',';

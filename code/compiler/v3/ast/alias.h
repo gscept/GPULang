@@ -7,11 +7,12 @@
 */
 //------------------------------------------------------------------------------
 #include <string>
-#include "symbol.h"
+#include "expressions/expression.h"
+
 namespace GPULang 
 {
 
-struct Alias : public Symbol
+struct Alias : public Expression
 {
     /// constructor
     Alias();
@@ -20,7 +21,7 @@ struct Alias : public Symbol
     std::string type;
 
     /// trigger an end-of-parsing event, this is where objects can setup their compiler contextual states
-    bool EndOfParse(Compiler* compiler);
+    bool Resolve(Compiler* compiler) override;
 };
 
 } // namespace GPULang

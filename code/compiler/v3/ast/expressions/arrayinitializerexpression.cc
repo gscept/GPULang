@@ -2,9 +2,7 @@
 //  @file initializerexpression.cc
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
-#include "initializerexpression.h"
-
-#include "binaryexpression.h"
+#include "arrayinitializerexpression.h"
 #include "util.h"
 #include "compiler.h"
 #include "uintexpression.h"
@@ -14,18 +12,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-InitializerExpression::InitializerExpression(const std::vector<Expression*>& values, const std::string& type)
+ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Expression*>& values)
     : values(values)
-    , explicitType(type)
 {
-    this->symbolType = InitializerExpressionType;
-    this->resolved = new InitializerExpression::__Resolved;
+    this->symbolType = ArrayInitializerExpressionType;
+    this->resolved = new ArrayInitializerExpression::__Resolved;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-InitializerExpression::~InitializerExpression()
+ArrayInitializerExpression::~ArrayInitializerExpression()
 {
     for (Expression* expr : this->values)
         delete expr;
@@ -35,52 +32,40 @@ InitializerExpression::~InitializerExpression()
 /**
 */
 bool 
-InitializerExpression::Resolve(Compiler* compiler)
+ArrayInitializerExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
     Type::FullType inner;
-    Type* ty = compiler->GetSymbol<Type>(this->explicitType);
-    if (ty == nullptr)
-    {
-        compiler->Error(Format("Unrecognized type '%s'", this->explicitType.c_str()), this);
-        return false;
-    }
-    thisResolved->type = ty;
-    inner.name = ty->name;
 
-    if (ty->symbols.size() != this->values.size())
+    for (Expression* expr : this->values)
     {
-        compiler->Error("Struct must be fully initialized", this);
-        return false;
-    }
-
-    compiler->PushScope(Compiler::Scope::ScopeType::Type, ty);
-    for (uint32_t i = 0; i < this->values.size(); i++)
-    {
-        Expression* expr = this->values[i];
-        if (expr->symbolType != Symbol::SymbolType::BinaryExpressionType)
-        {
-            compiler->Error("Initializer may only contain assignment expressions", expr);
-            return false;
-        }
-        BinaryExpression* binExpr = static_cast<BinaryExpression*>(expr);
         if (!expr->Resolve(compiler))
             return false;
 
-        std::string name;
-        binExpr->left->EvalSymbol(name);
-        if (name != ty->symbols[i]->name)
+        Type::FullType valueType;
+        expr->EvalType(valueType);
+        if (inner.name.empty())
+            inner = valueType;
+        else if (valueType != inner)
         {
-            compiler->Error(Format("Initializer may only appear in order, expecting '%s' but got '%s'", ty->symbols[i]->name.c_str(), name.c_str()), expr);
+            compiler->Error(Format("Mismatching types, expected '%s' but got '%s'", inner.name.c_str(), valueType.name.c_str()), expr);
             return false;
         }
     }
-    compiler->PopScope();
+
+    thisResolved->type = compiler->GetSymbol<Type>(inner.name);
+    if (thisResolved->type == nullptr)
+    {
+        compiler->UnrecognizedTypeError(inner.name, this);
+        return false;
+    }
     
     thisResolved->text = this->EvalString();
 
     // Append array level first
     thisResolved->fullType.name = inner.name;
+    thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
+    thisResolved->fullType.modifierValues.push_back(this->values.size());
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
     thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
 
@@ -91,7 +76,7 @@ InitializerExpression::Resolve(Compiler* compiler)
 /**
 */
 bool 
-InitializerExpression::EvalType(Type::FullType& out) const
+ArrayInitializerExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->fullType;
@@ -102,7 +87,7 @@ InitializerExpression::EvalType(Type::FullType& out) const
 /**
 */
 std::string
-InitializerExpression::EvalString() const
+ArrayInitializerExpression::EvalString() const
 {
     std::string ret;
     for (Expression* expr : this->values)
@@ -120,7 +105,7 @@ InitializerExpression::EvalString() const
 /**
 */
 bool 
-InitializerExpression::EvalAccessFlags(unsigned& out) const
+ArrayInitializerExpression::EvalAccessFlags(unsigned& out) const
 {
     out = 0x0;
     for (Expression* expr : this->values)

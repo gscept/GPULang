@@ -47,6 +47,7 @@ struct Symbol
         SymbolExpressionType,
         AccessExpressionType,
         InitializerExpressionType,
+        ArrayInitializerExpressionType,
         ArrayIndexExpressionType,
         CallExpressionType,
         CommaExpressionType,

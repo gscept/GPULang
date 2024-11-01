@@ -161,6 +161,9 @@ public:
   virtual void enterInitializerExpression(GPULangParser::InitializerExpressionContext *ctx) = 0;
   virtual void exitInitializerExpression(GPULangParser::InitializerExpressionContext *ctx) = 0;
 
+  virtual void enterArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext *ctx) = 0;
+  virtual void exitArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext *ctx) = 0;
+
 
 };
 

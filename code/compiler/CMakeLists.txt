@@ -73,6 +73,8 @@ fips_dir(v3/ast/expressions)
         accessexpression.h
         arrayindexexpression.cc
         arrayindexexpression.h
+        arrayinitializerexpression.cc
+        arrayinitializerexpression.h
         binaryexpression.cc
         binaryexpression.h
         boolexpression.cc

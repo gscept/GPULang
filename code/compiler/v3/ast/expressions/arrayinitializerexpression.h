@@ -14,12 +14,12 @@
 namespace GPULang
 {
 
-struct InitializerExpression : public Expression
+struct ArrayInitializerExpression : public Expression
 {
     /// constructor
-    InitializerExpression(const std::vector<Expression*>& values, const std::string& type);
+    ArrayInitializerExpression(const std::vector<Expression*>& values);
     /// Destructor
-    virtual ~InitializerExpression();
+    virtual ~ArrayInitializerExpression();
 
     /// Resolve
     bool Resolve(Compiler* compiler) override;
@@ -32,7 +32,6 @@ struct InitializerExpression : public Expression
     bool EvalAccessFlags(unsigned& out) const override;
 
     std::vector<Expression*> values;
-    std::string explicitType;
 
     struct __Resolved : public Expression::__Resolved
     {

@@ -41,6 +41,7 @@
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
 #include "ast/expressions/initializerexpression.h"
+#include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
@@ -97,7 +98,8 @@ public:
     RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
     RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
     RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
-    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48
+    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
+    RuleArrayInitializerExpression = 49
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -220,7 +222,8 @@ public:
   class SuffixExpressionContext;
   class NamespaceExpressionContext;
   class BinaryexpatomContext;
-  class InitializerExpressionContext; 
+  class InitializerExpressionContext;
+  class ArrayInitializerExpressionContext; 
 
   class  StringContext : public antlr4::ParserRuleContext {
   public:
@@ -1275,6 +1278,7 @@ public:
     antlr4::Token *identifierToken = nullptr;
     GPULangParser::BooleanContext *booleanContext = nullptr;
     GPULangParser::InitializerExpressionContext *initializerExpressionContext = nullptr;
+    GPULangParser::ArrayInitializerExpressionContext *arrayInitializerExpressionContext = nullptr;
     GPULangParser::ExpressionContext *expressionContext = nullptr;
     BinaryexpatomContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1287,6 +1291,7 @@ public:
     antlr4::tree::TerminalNode *IDENTIFIER();
     BooleanContext *boolean();
     InitializerExpressionContext *initializerExpression();
+    ArrayInitializerExpressionContext *arrayInitializerExpression();
     antlr4::tree::TerminalNode *LP();
     ExpressionContext *expression();
     antlr4::tree::TerminalNode *RP();
@@ -1301,12 +1306,14 @@ public:
   class  InitializerExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
+    antlr4::Token *type = nullptr;
     GPULangParser::AssignmentExpressionContext *arg0 = nullptr;
     GPULangParser::AssignmentExpressionContext *argN = nullptr;
     InitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LB();
     antlr4::tree::TerminalNode *RB();
+    antlr4::tree::TerminalNode *IDENTIFIER();
     std::vector<AssignmentExpressionContext *> assignmentExpression();
     AssignmentExpressionContext* assignmentExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
@@ -1318,6 +1325,27 @@ public:
   };
 
   InitializerExpressionContext* initializerExpression();
+
+  class  ArrayInitializerExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    GPULangParser::AssignmentExpressionContext *arg0 = nullptr;
+    GPULangParser::AssignmentExpressionContext *argN = nullptr;
+    ArrayInitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LL();
+    antlr4::tree::TerminalNode *RR();
+    std::vector<AssignmentExpressionContext *> assignmentExpression();
+    AssignmentExpressionContext* assignmentExpression(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  ArrayInitializerExpressionContext* arrayInitializerExpression();
 
 
   // By default the static state used to implement the parser is lazily initialized during the first

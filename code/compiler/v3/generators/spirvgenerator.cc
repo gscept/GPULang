@@ -248,17 +248,13 @@ GenerateTypeSPIRV(
         name = generator->GetSymbol(typeSymbol->name).value;
         baseType = typeSymbol->name;
         if (type.IsMutable())
-        {
             scope = SPIRVResult::Storage::StorageBuffer;
-        }
         else if (storage == Variable::__Resolved::Storage::Uniform)
-        {
             scope = SPIRVResult::Storage::Uniform;
-        }
         else if (storage == Variable::__Resolved::Storage::InlineUniform)
-        {
             scope = SPIRVResult::Storage::PushConstant;
-        }
+        else if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;            
     }
 
     std::string scopeString = SPIRVResult::ScopeToString(scope);
@@ -2739,7 +2735,7 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 //------------------------------------------------------------------------------
 /**
 */
-void
+uint32_t
 GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
     Structure* struc = static_cast<Structure*>(symbol);
@@ -2778,6 +2774,7 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
         }
     }
     generator->AddReservedSymbol(struc->name, structName, Format("OpTypeStruct %s", memberTypes.c_str()), true);
+    return structName;
 }
 
 //------------------------------------------------------------------------------
@@ -2869,7 +2866,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     {
         uint32_t typePtrName = typeName.typeName;
         // If anything but void, then the type has to be a pointer
-        if (varResolved->typeSymbol->category == Type::Category::ScalarCategory || varResolved->typeSymbol->category == Type::Category::EnumCategory || varResolved->typeSymbol->category == Type::Category::VoidCategory)
+        if (!varResolved->type.IsPointer())
         {
             type = Format("ptr(%d)", typeName.typeName);
             typePtrName = generator->AddSymbol(Format("%s%s", type.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), typeName.typeName), true);
@@ -3071,41 +3068,36 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
 {
     uint32_t name = 0xFFFFFFFF;
     InitializerExpression* initExpression = static_cast<InitializerExpression*>(expr);
+    auto initResolved = Symbol::Resolved(initExpression);
+    uint32_t strucType = generator->GetSymbol(initResolved->type->name).value;
 
-    std::vector<SPIRVResult> composites;
-    for (Expression* expr : initExpression->values)
-    {
-        SPIRVResult value = GenerateExpressionSPIRV(compiler, generator, expr);
-        composites.push_back(value);
-    }
-    Type::FullType type;
-    initExpression->values[0]->EvalType(type);
-    Symbol* typeSymbol = compiler->GetSymbol(type.name);
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, type, static_cast<Type*>(typeSymbol));
-    SPIRVResult sizeName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(initExpression->values.size()));
-    typeName.typeName = generator->AddSymbol(Format("%s[%d]", type.name.c_str(), initExpression->values.size()), Format("OpTypeArray %%%d %%%d", typeName.typeName, sizeName.name), true);
-    std::string initializer = "";
+    std::vector<SPIRVResult> values;
     bool isConst = true;
     bool isLinkDefined = false;
-    for (SPIRVResult component : composites)
+    std::string initializer = "";
+    for (Expression* expr : initExpression->values)
     {
-        SPIRVResult loaded = LoadValueSPIRV(compiler, generator, component);
-        initializer.append(Format("%%%d ", loaded.name));
-        isConst &= loaded.isConst;
-        isLinkDefined |= loaded.isSpecialization;
+        BinaryExpression* binExpr = static_cast<BinaryExpression*>(expr);
+        SPIRVResult value = GenerateExpressionSPIRV(compiler, generator, binExpr->right);
+        if (!value.isValue)
+            value = LoadValueSPIRV(compiler, generator, value);
+        initializer.append(Format("%%%d ", value.name));
+        values.push_back(value);
+        isConst &= value.isConst;
+        isLinkDefined |= value.isSpecialization;
     }
-
+    
     if (isConst)
         if (isLinkDefined)
-            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", strucType, initializer.c_str()), true);
         else
-            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", typeName.typeName, initializer.c_str()), true);
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", strucType, initializer.c_str()), true);
     else
     {
         assert(!generator->linkDefineEvaluation);
-        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", typeName.typeName, initializer.c_str()));
+        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", strucType, initializer.c_str()));
     }
-    return SPIRVResult(name, typeName.typeName, true, isConst);
+    return SPIRVResult(name, strucType, true, isConst);
 }
 
 //------------------------------------------------------------------------------

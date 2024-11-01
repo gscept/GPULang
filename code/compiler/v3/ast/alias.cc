@@ -21,7 +21,7 @@ Alias::Alias()
 /**
 */
 bool 
-Alias::EndOfParse(Compiler* compiler)
+Alias::Resolve(Compiler* compiler)
 {
     Symbol* sym = compiler->GetSymbol(this->type);
     if (sym == nullptr)

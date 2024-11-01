@@ -38,6 +38,7 @@
 #include "util.h"
 #include <algorithm>
 
+#include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/statements/discardstatement.h"
 
 namespace GPULang
@@ -1650,10 +1651,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerCategory)
             allowedAttributesSet = &this->allowedSamplerAttributes;
-        else if (type->category == Type::UserTypeCategory
-                && lastIndirectionModifier == Type::FullType::Modifier::Pointer)
+        else if (type->category == Type::UserTypeCategory)
         {
-            allowedAttributesSet = &this->allowedPointerAttributes;
+            if (lastIndirectionModifier == Type::FullType::Modifier::Pointer)
+                allowedAttributesSet = &this->allowedPointerAttributes;
+            else
+                allowedAttributesSet = &this->allowedScalarAttributes;
         }
     }
 
@@ -1814,20 +1817,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (compiler->IsScopeGlobal())
     {
-        if (type->category != Type::ScalarCategory && type->category != Type::EnumCategory)
+        uint16_t numArrays = 0;
+        uint16_t numPointers = 0;
+        for (Type::FullType::Modifier mod : varResolved->type.modifiers)
         {
-            uint16_t numArrays = 0;
-            uint16_t numPointers = 0;
-            for (Type::FullType::Modifier mod : varResolved->type.modifiers)
-            {
-                if (mod == Type::FullType::Modifier::Array)
-                    numArrays++;
-                else if (mod == Type::FullType::Modifier::Pointer)
-                    numPointers++;
-            }
+            if (mod == Type::FullType::Modifier::Array)
+                numArrays++;
+            else if (mod == Type::FullType::Modifier::Pointer)
+                numPointers++;
+        }
+        if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+        {
             if (numArrays > 1)
             {
-                compiler->Error(Format("Variables of non scalar type in the global scope may only be one dimensional array"), symbol);
+                compiler->Error(Format("Variables of non scalar type in the global scope may only be a one dimensional array"), symbol);
                 return false;
             }
             if (numPointers > 1)
@@ -1836,14 +1839,28 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
-            if (varResolved->storage != Variable::__Resolved::Storage::Uniform && varResolved->storage != Variable::__Resolved::Storage::InlineUniform)
+            if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::UserTypeCategory)
             {
-                compiler->Error(Format("Variable of non scalar type in the global scope must either use 'uniform' or 'inline' storage", type->name.c_str()), symbol);
+                compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
                 return false;
             }
         }
-        else // scalar
+        else if (varResolved->storage == Variable::__Resolved::Storage::InlineUniform)
         {
+            if (type->category != Type::UserTypeCategory)
+            {
+                compiler->Error(Format("Variables of storage 'inline_uniform' storage may only be pointers to 'struct' types"), symbol);
+                return false;
+            }
+        }
+        else // Types that are not resources
+        {
+            if (type->category == Type::SamplerCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
+            {
+                compiler->Error(Format("Variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
+                return false;
+            }
+            
             if (varResolved->usageBits.flags.isConst && var->valueExpression == nullptr)
             {
                 // check for variable initialization criteria
@@ -2967,22 +2984,22 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::AccessExpressionType:
         {
-            AccessExpression* access = static_cast<AccessExpression*>(symbol);
+            auto access = static_cast<AccessExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, access->left);
             res |= this->ResolveVisibility(compiler, access->right);
             break;
         }
         case Symbol::ArrayIndexExpressionType:
         {
-            ArrayIndexExpression* arrayExpr = static_cast<ArrayIndexExpression*>(symbol);
+            auto arrayExpr = static_cast<ArrayIndexExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, arrayExpr->left);
             res |= this->ResolveVisibility(compiler, arrayExpr->right);
             break;
         }
         case Symbol::CallExpressionType:
         {
-            CallExpression* callExpr = static_cast<CallExpression*>(symbol);
-            CallExpression::__Resolved* callResolved = Symbol::Resolved(callExpr);
+            auto callExpr = static_cast<CallExpression*>(symbol);
+            auto callResolved = Symbol::Resolved(callExpr);
 
             if (callResolved->functionSymbol.starts_with("gplExportVertexCoordinates"))
             {
@@ -3037,32 +3054,39 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::CommaExpressionType:
         {
-            CommaExpression* commaExpr = static_cast<CommaExpression*>(symbol);
+            auto commaExpr = static_cast<CommaExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, commaExpr->left);
             res |= this->ResolveVisibility(compiler, commaExpr->right);
         }
         case Symbol::InitializerExpressionType:
         {
-            InitializerExpression* init = static_cast<InitializerExpression*>(symbol);
+            auto init = static_cast<InitializerExpression*>(symbol);
+            for (auto& initializer : init->values)
+                res |= this->ResolveVisibility(compiler, initializer);
+            break;
+        }
+        case Symbol::ArrayInitializerExpressionType:
+        {
+            auto init = static_cast<ArrayInitializerExpression*>(symbol);
             for (auto& initializer : init->values)
                 res |= this->ResolveVisibility(compiler, initializer);
             break;
         }
         case Symbol::UnaryExpressionType:
         {
-            UnaryExpression* unary = static_cast<UnaryExpression*>(symbol);
+            auto unary = static_cast<UnaryExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, unary->expr);
         }
         case Symbol::FunctionType:
         {
-            Function* fun = static_cast<Function*>(symbol);
+            auto fun = static_cast<Function*>(symbol);
             if (fun->ast != nullptr)
                 res |= this->ResolveVisibility(compiler, fun->ast);
             break;
         }
         case Symbol::SymbolExpressionType:
         {
-            SymbolExpression* symExpr = static_cast<SymbolExpression*>(symbol);
+            auto symExpr = static_cast<SymbolExpression*>(symbol);
             std::string symbol;
             symExpr->EvalSymbol(symbol);
             Symbol* newSymbol = compiler->GetSymbol(symbol);
@@ -3072,8 +3096,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::VariableType:
         {
-            Variable* var = static_cast<Variable*>(symbol);
-            Variable::__Resolved* varResolved = Symbol::Resolved(var);
+            auto var = static_cast<Variable*>(symbol);
+            auto varResolved = Symbol::Resolved(var);
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:

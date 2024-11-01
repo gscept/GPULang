@@ -163,6 +163,9 @@ public:
   virtual void enterInitializerExpression(GPULangParser::InitializerExpressionContext * /*ctx*/) override { }
   virtual void exitInitializerExpression(GPULangParser::InitializerExpressionContext * /*ctx*/) override { }
 
+  virtual void enterArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext * /*ctx*/) override { }
+  virtual void exitArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext * /*ctx*/) override { }
+
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
   virtual void exitEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
