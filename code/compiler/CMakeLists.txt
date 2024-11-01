@@ -108,6 +108,8 @@ fips_dir(v3/ast/statements)
         breakstatement.h
         continuestatement.cc
         continuestatement.h
+        discardstatement.cc
+        discardstatement.h
         expressionstatement.cc
         expressionstatement.h
         forstatement.cc

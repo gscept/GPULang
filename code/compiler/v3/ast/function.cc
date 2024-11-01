@@ -495,9 +495,6 @@ FLOAT_LIST
     __ADD_ARG_LIT(depth, f32);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(gplPixelKill, PixelKill);
-    __SET_RET_LIT(void);
-
 #define X(ty, index)\
     __MAKE_INTRINSIC(gplExportColor, ExportColor, ty)\
     __ADD_ARG_LIT(color, ty);\

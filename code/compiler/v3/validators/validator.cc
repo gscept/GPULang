@@ -38,6 +38,8 @@
 #include "util.h"
 #include <algorithm>
 
+#include "ast/statements/discardstatement.h"
+
 namespace GPULang
 {
 
@@ -2187,6 +2189,19 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             compiler->MarkScopeUnreachable();
             return true;
         }
+        case Symbol::DiscardStatementType:
+        {
+            auto statement = static_cast<DiscardStatement*>(symbol);
+            Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
+            if (scopeOwner == nullptr)
+            {
+                compiler->Error(Format("'discard' is only valid inside function body"), statement);
+                return false;
+            }
+            compiler->branchReturns = true;
+            compiler->MarkScopeUnreachable();
+            return true;
+        }
         case Symbol::ExpressionStatementType:
         {
             auto statement = reinterpret_cast<ExpressionStatement*>(symbol);
@@ -2864,6 +2879,18 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 res |= this->ResolveVisibility(compiler, returnStat->returnValue);
             break;
         }
+        case Symbol::DiscardStatementType:
+        {
+            auto* stat = static_cast<DiscardStatement*>(symbol);
+            compiler->currentState.sideEffects.flags.killsPixel = true;
+            if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+            {
+                compiler->Error(Format("'discard' can only be used from a pixel shader"), stat);
+                return false;
+            }
+            compiler->MarkScopeUnreachable();
+            break;
+        }
         case Symbol::ExpressionStatementType:
         {
             ExpressionStatement* exprStat = static_cast<ExpressionStatement*>(symbol);
@@ -3001,18 +3028,6 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
                 compiler->currentState.sideEffects.flags.exportsExplicitDepth = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplPixelKill"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
-                {
-                    compiler->Error(Format("gplPixelKill can only be called from a pixel shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.killsPixel = true;
-
-                // Pixel kill makes the rest of the scope unreachable
-                compiler->MarkScopeUnreachable();
             }
             
             for (auto& arg : callExpr->args)

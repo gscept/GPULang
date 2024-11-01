@@ -95,6 +95,9 @@ public:
   virtual void enterReturnStatement(GPULangParser::ReturnStatementContext *ctx) = 0;
   virtual void exitReturnStatement(GPULangParser::ReturnStatementContext *ctx) = 0;
 
+  virtual void enterDiscardStatement(GPULangParser::DiscardStatementContext *ctx) = 0;
+  virtual void exitDiscardStatement(GPULangParser::DiscardStatementContext *ctx) = 0;
+
   virtual void enterContinueStatement(GPULangParser::ContinueStatementContext *ctx) = 0;
   virtual void exitContinueStatement(GPULangParser::ContinueStatementContext *ctx) = 0;
 

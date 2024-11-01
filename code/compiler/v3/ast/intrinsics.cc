@@ -149,7 +149,6 @@ Function* GetDrawIndex;
 
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
-Function* PixelKill;
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(ExportColor, ty)
     SCALAR_LIST

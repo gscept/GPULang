@@ -97,6 +97,9 @@ public:
   virtual void enterReturnStatement(GPULangParser::ReturnStatementContext * /*ctx*/) override { }
   virtual void exitReturnStatement(GPULangParser::ReturnStatementContext * /*ctx*/) override { }
 
+  virtual void enterDiscardStatement(GPULangParser::DiscardStatementContext * /*ctx*/) override { }
+  virtual void exitDiscardStatement(GPULangParser::DiscardStatementContext * /*ctx*/) override { }
+
   virtual void enterContinueStatement(GPULangParser::ContinueStatementContext * /*ctx*/) override { }
   virtual void exitContinueStatement(GPULangParser::ContinueStatementContext * /*ctx*/) override { }
 

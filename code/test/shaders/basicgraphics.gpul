@@ -49,7 +49,7 @@ BasicPixel(
     if (gplIsPixelShader)
         gplExportColor(color, i32(Framebuffer.Color));
         
-    gplPixelKill();
+    discard;
 }
 
 program TestProgram

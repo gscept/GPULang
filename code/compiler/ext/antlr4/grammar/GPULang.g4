@@ -111,6 +111,7 @@ std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
+#include "ast/statements/discardstatement.h"
 #include "ast/statements/expressionstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/ifstatement.h"
@@ -518,6 +519,7 @@ statement
     | whileStatement            { $tree = $whileStatement.tree; }
     | switchStatement           { $tree = $switchStatement.tree; }
     | returnStatement           { $tree = $returnStatement.tree; }
+    | discardStatement          { $tree = $discardStatement.tree; }
     | continueStatement         { $tree = $continueStatement.tree; }
     | breakStatement            { $tree = $breakStatement.tree; }
     | expressionStatement ';'   { $tree = $expressionStatement.tree; }
@@ -655,6 +657,20 @@ returnStatement
     'return' { location = SetupFile(); } (value = expression { returnValue = $value.tree; })? ';'
     {
         $tree = new ReturnStatement(returnValue);
+        $tree->location = location;
+    }
+    ;
+    
+discardStatement
+    returns[ Statement* tree ]
+    @init
+    {
+        $tree = nullptr;
+        Symbol::Location location;
+    }:
+    'discard' { location = SetupFile(); } ';'
+    {
+        $tree = new DiscardStatement();
         $tree->location = location;
     }
     ;

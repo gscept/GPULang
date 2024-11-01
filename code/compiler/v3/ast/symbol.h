@@ -54,6 +54,7 @@ struct Symbol
         UnaryExpressionType,
         BreakStatementType,
         ContinueStatementType,
+        DiscardStatementType,
         ExpressionStatementType,
         ForStatementType,
         IfStatementType,

@@ -1912,15 +1912,6 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Output);
     };
 
-    this->intrinsicMap[Intrinsics::PixelKill] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
-    {
-        // TODO: This code should use OpDemoteToHelperInvocation or OpTerminateInvocation when using SPIRV 1.6
-        //g->AddCapability("DemoteToHelperInvocation");
-        g->AddOp("OpKill");
-        g->blockOpen = false;
-        return SPIRVResult(0xFFFFFFFF, returnType);
-    };
-
     std::vector<std::tuple<Function*, TypeCode, uint32_t>> colorExportIntrinsics =
     {
         MAKE_EXPORT_INTRINSICS(ExportColor)
@@ -3962,6 +3953,11 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
             break;
         case Symbol::ReturnStatementType:
             GenerateReturnStatementSPIRV(compiler, generator, static_cast<ReturnStatement*>(stat));
+            ret = true;
+            break;
+        case Symbol::DiscardStatementType:
+            generator->AddOp("OpKill");
+            generator->blockOpen = false;
             ret = true;
             break;
         case Symbol::ScopeStatementType:
