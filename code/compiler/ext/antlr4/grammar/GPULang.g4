@@ -12,10 +12,6 @@ options {
 
 @lexer::members {
 #include <iostream>
-
-misc::Interval interval;
-std::string currentFile;
-int currentLine = 0;
 }
 
 @lexer::header {
@@ -29,60 +25,34 @@ int currentLine = 0;
 
 }
 
+@parser::declarations {
+friend class GPULangLexerErrorHandler;
+friend class GPULangParserErrorHandler;
+friend class GPULangTokenFactory;
+friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
+static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
+}
+
+@parser::definitions {
+std::vector<std::tuple<size_t, size_t, std::string>> GPULangParser::LineStack;
+}
 @parser::members {
+
 
 // setup function which binds the compiler state to the current AST node
 Symbol::Location
 SetupFile(bool updateLine = true)
 {
     Symbol::Location location;
-    if (this->lines.empty())
-        return location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-    if (updateLine)
-        UpdateLine(_input, -1);
-
     // assume the previous token is the latest file
-    auto tu2 = this->lines[this->currentLine];
-    location.file = std::get<4>(tu2);
-    location.line = lineOffset;
+    location.file = token->file;
+    location.line = token->line;
     location.column = token->getCharPositionInLine();
     return location;
 }
 
-// update and get current line
-void
-UpdateLine(antlr4::TokenStream* stream, int index = -1)
-{
-    ::GPULangToken* token = (::GPULangToken*)stream->LT(index);
-
-      // find the next parsed row which comes after the token
-      int loop = this->currentLine;
-      int tokenLine = token->getLine();
-      while (loop < this->lines.size() - 1)
-      {
-          // look ahead, if the next line is beyond the token, abort
-          if (std::get<1>(this->lines[loop + 1]) > tokenLine)
-              break;
-          else
-              loop++;
-      }
-
-      auto line = this->lines[loop];
-      this->currentLine = loop;
-
-      // where the target compiler expects the output token to be and where we put it may differ
-      // so we calculate a padding between the token and the #line directive output by the preprocessing stage (which includes the #line token line)
-      int padding = (tokenLine - 1) - std::get<1>(line);
-      this->lineOffset = std::get<0>(line) + padding;
-}
-
-
-
-int currentLine = 0;
-int lineOffset = 0;
-std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 }
 
 // parser includes
@@ -97,6 +67,7 @@ std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 #include <tuple>
 
 #include "gpulangtoken.h"
+#include "gpulangcompiler.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -153,16 +124,6 @@ boolean
         $val = false;
     }: 'true' { $val = true; } | 'false' { $val = false; };
 
-// preprocess
-preprocess
-    @init {
-        Token* start = nullptr;
-    }:
-    (
-        { start = _input->LT(1); } '#line' line = INTEGERLITERAL path = string { this->lines.push_back(std::make_tuple(atoi($line.text.c_str()), _input->LT(-1)->getLine(), start->getStartIndex(), _input->LT(1)->getStartIndex(), $path.val)); }
-        | .
-    )*? EOF;
-
 // main entry point
 entry
     returns[ Effect* returnEffect ]:
@@ -179,7 +140,8 @@ effect
     }
     :
     (
-        alias ';'                   { $eff->symbols.push_back($alias.sym); }
+        linePreprocessorEntry
+        | alias ';'                 { $eff->symbols.push_back($alias.sym); }
         | functionDeclaration ';'   { $eff->symbols.push_back($functionDeclaration.sym); }    
         | function                  { $eff->symbols.push_back($function.sym); }    
         | variables ';'             { for (Variable* var : $variables.list) { $eff->symbols.push_back(var); } }
@@ -188,7 +150,16 @@ effect
         | state ';'                 { $eff->symbols.push_back($state.sym); }
         | program ';'               { $eff->symbols.push_back($program.sym); }
     )*?;
-
+    
+linePreprocessorEntry
+    @init
+    {
+        size_t origLine;
+    }
+    :
+    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL path = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $path.text }); }
+    ;
+    
 alias
     returns[ Alias* sym ]
     @init
@@ -780,10 +751,10 @@ assignmentExpression
     }:
     e1 = logicalOrExpression { $tree = $e1.tree; } 
     (
-        op = ('+=' | '-=' | '*=' | '/=' | '%=' | '<<=' | '>>=' | '&=' | '^=' | '|=' | '=') e2 = logicalOrExpression
+        op = ('+=' | '-=' | '*=' | '/=' | '%=' | '<<=' | '>>=' | '&=' | '^=' | '|=' | '=') { location = SetupFile(); } e2 = logicalOrExpression
         { 
             BinaryExpression* expr = new BinaryExpression(StringToFourCC($op.text), $tree, $e2.tree);
-            expr->location = SetupFile();
+            expr->location = location;
             $tree = expr;
         } 
         | '?' { location = SetupFile(); } ifBody = expression ':' elseBody = expression

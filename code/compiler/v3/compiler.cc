@@ -34,6 +34,7 @@ Compiler::Compiler()
 {
     this->validator = new Validator;
 
+    this->options.errorFormat = ErrorFormat::MSVC;
     this->options.warningsAsErrors = false;
     this->options.emitTimings = false;
     this->options.disallowImplicitConversion = false;
@@ -501,14 +502,26 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 void 
 Compiler::Error(const std::string& msg, const std::string& file, int line, int column)
 {
+    static const char* ErrorStrings[] =
+    {
+        "%s(%d,%d): error: %s", // MSVC
+        "%s:%d:%d: error: %s", // GCC
+        "%s:%d:%d: error: %s", // Clang
+    };
+    static const char* InternalErrorStrings[] =
+    {
+        "internal error: %s", // MSVC
+        "internal error: %s", // GCC
+        "internal error: %s", // Clang
+    };
     if (line == -1) 
     {
-        std::string err = Format("%s(%s) : internal error error: %s", "?", "?", msg.c_str());
+        std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.push_back(err);
     }
     else
     {
-        std::string err = Format("%s(%d) : error: %s", file.c_str(), line, msg.c_str());
+        std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.push_back(err);
     }
     this->hasErrors = true;

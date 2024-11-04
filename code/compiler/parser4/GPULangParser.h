@@ -9,6 +9,7 @@
 #include <tuple>
 
 #include "gpulangtoken.h"
+#include "gpulangcompiler.h"
 #include "ast/alias.h"
 #include "ast/annotation.h"
 #include "ast/effect.h"
@@ -84,10 +85,10 @@ public:
   };
 
   enum {
-    RuleString = 0, RuleBoolean = 1, RulePreprocess = 2, RuleEntry = 3, 
-    RuleEffect = 4, RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, 
-    RuleTypeDeclaration = 8, RuleVariables = 9, RuleStructureDeclaration = 10, 
-    RuleStructure = 11, RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
+    RuleString = 0, RuleBoolean = 1, RuleEntry = 2, RuleEffect = 3, RuleLinePreprocessorEntry = 4, 
+    RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, RuleTypeDeclaration = 8, 
+    RuleVariables = 9, RuleStructureDeclaration = 10, RuleStructure = 11, 
+    RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
     RuleCodeblock = 15, RuleFunction = 16, RuleProgram = 17, RuleState = 18, 
     RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
     RuleForStatement = 22, RuleForRangeStatement = 23, RuleWhileStatement = 24, 
@@ -120,65 +121,28 @@ public:
 
 
 
+
   // setup function which binds the compiler state to the current AST node
   Symbol::Location
   SetupFile(bool updateLine = true)
   {
       Symbol::Location location;
-      if (this->lines.empty())
-          return location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-      if (updateLine)
-          UpdateLine(_input, -1);
-
       // assume the previous token is the latest file
-      auto tu2 = this->lines[this->currentLine];
-      location.file = std::get<4>(tu2);
-      location.line = lineOffset;
+      location.file = token->file;
+      location.line = token->line;
       location.column = token->getCharPositionInLine();
       return location;
   }
 
-  // update and get current line
-  void
-  UpdateLine(antlr4::TokenStream* stream, int index = -1)
-  {
-      ::GPULangToken* token = (::GPULangToken*)stream->LT(index);
-
-        // find the next parsed row which comes after the token
-        int loop = this->currentLine;
-        int tokenLine = token->getLine();
-        while (loop < this->lines.size() - 1)
-        {
-            // look ahead, if the next line is beyond the token, abort
-            if (std::get<1>(this->lines[loop + 1]) > tokenLine)
-                break;
-            else
-                loop++;
-        }
-
-        auto line = this->lines[loop];
-        this->currentLine = loop;
-
-        // where the target compiler expects the output token to be and where we put it may differ
-        // so we calculate a padding between the token and the #line directive output by the preprocessing stage (which includes the #line token line)
-        int padding = (tokenLine - 1) - std::get<1>(line);
-        this->lineOffset = std::get<0>(line) + padding;
-  }
-
-
-
-  int currentLine = 0;
-  int lineOffset = 0;
-  std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
 
 
   class StringContext;
   class BooleanContext;
-  class PreprocessContext;
   class EntryContext;
   class EffectContext;
+  class LinePreprocessorEntryContext;
   class AliasContext;
   class AnnotationContext;
   class AttributeContext;
@@ -256,25 +220,6 @@ public:
 
   BooleanContext* boolean();
 
-  class  PreprocessContext : public antlr4::ParserRuleContext {
-  public:
-    antlr4::Token *line = nullptr;
-    GPULangParser::StringContext *path = nullptr;
-    PreprocessContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *EOF();
-    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
-    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
-    std::vector<StringContext *> string();
-    StringContext* string(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  PreprocessContext* preprocess();
-
   class  EntryContext : public antlr4::ParserRuleContext {
   public:
     Effect* returnEffect;
@@ -304,6 +249,8 @@ public:
     GPULangParser::ProgramContext *programContext = nullptr;
     EffectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<AliasContext *> alias();
     AliasContext* alias(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SC();
@@ -329,6 +276,22 @@ public:
   };
 
   EffectContext* effect();
+
+  class  LinePreprocessorEntryContext : public antlr4::ParserRuleContext {
+  public:
+    antlr4::Token *line = nullptr;
+    GPULangParser::StringContext *path = nullptr;
+    LinePreprocessorEntryContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *INTEGERLITERAL();
+    StringContext *string();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  LinePreprocessorEntryContext* linePreprocessorEntry();
 
   class  AliasContext : public antlr4::ParserRuleContext {
   public:
@@ -1354,5 +1317,12 @@ public:
   static void initialize();
 
 private:
+
+  friend class GPULangLexerErrorHandler;
+  friend class GPULangParserErrorHandler;
+  friend class GPULangTokenFactory;
+  friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
+  static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
+
 };
 

@@ -20,14 +20,14 @@ public:
   virtual void enterBoolean(GPULangParser::BooleanContext *ctx) = 0;
   virtual void exitBoolean(GPULangParser::BooleanContext *ctx) = 0;
 
-  virtual void enterPreprocess(GPULangParser::PreprocessContext *ctx) = 0;
-  virtual void exitPreprocess(GPULangParser::PreprocessContext *ctx) = 0;
-
   virtual void enterEntry(GPULangParser::EntryContext *ctx) = 0;
   virtual void exitEntry(GPULangParser::EntryContext *ctx) = 0;
 
   virtual void enterEffect(GPULangParser::EffectContext *ctx) = 0;
   virtual void exitEffect(GPULangParser::EffectContext *ctx) = 0;
+
+  virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;
+  virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;
 
   virtual void enterAlias(GPULangParser::AliasContext *ctx) = 0;
   virtual void exitAlias(GPULangParser::AliasContext *ctx) = 0;

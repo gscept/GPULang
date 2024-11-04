@@ -22,14 +22,14 @@ public:
   virtual void enterBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
   virtual void exitBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
 
-  virtual void enterPreprocess(GPULangParser::PreprocessContext * /*ctx*/) override { }
-  virtual void exitPreprocess(GPULangParser::PreprocessContext * /*ctx*/) override { }
-
   virtual void enterEntry(GPULangParser::EntryContext * /*ctx*/) override { }
   virtual void exitEntry(GPULangParser::EntryContext * /*ctx*/) override { }
 
   virtual void enterEffect(GPULangParser::EffectContext * /*ctx*/) override { }
   virtual void exitEffect(GPULangParser::EffectContext * /*ctx*/) override { }
+
+  virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }
+  virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }
 
   virtual void enterAlias(GPULangParser::AliasContext * /*ctx*/) override { }
   virtual void exitAlias(GPULangParser::AliasContext * /*ctx*/) override { }

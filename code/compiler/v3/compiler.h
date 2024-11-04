@@ -39,16 +39,25 @@ struct Compiler
         VULKAN_SPIRV    // target is SPIRV with the Vulkan subset
     };
 
+    enum class ErrorFormat : uint8_t
+    {
+        MSVC,       // default, output errors according to MSVC
+        GCC,
+        Clang
+    };
+
     struct Options
     {
-        uint8_t warningsAsErrors : 1;
-        uint8_t emitTimings : 1;
-        uint8_t disallowImplicitConversion : 1;
-        uint8_t disallowUninitializedConst : 1;
-        uint8_t warnOnMissingRenderState : 1;
+        uint8_t warningsAsErrors : 1 = 0;
+        uint8_t emitTimings : 1 = 0;
+        uint8_t disallowImplicitConversion : 1 = 0;
+        uint8_t disallowUninitializedConst : 1 = 0;
+        uint8_t warnOnMissingRenderState : 1 = 0;
 
-        uint8_t validate : 1;
-        uint8_t optimize : 1;
+        uint8_t validate : 1 = 0;
+        uint8_t optimize : 1 = 0;
+
+        ErrorFormat errorFormat = ErrorFormat::MSVC;
     };
 
     struct Target

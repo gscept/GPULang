@@ -30,6 +30,7 @@ public:
 	};
 
 	std::string file;
+	size_t line;
 };
 
 class ANTLR4CPP_PUBLIC GPULangTokenFactory : public TokenFactory<CommonToken>

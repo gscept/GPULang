@@ -40,10 +40,6 @@ public:
 
   #include <iostream>
 
-  misc::Interval interval;
-  std::string currentFile;
-  int currentLine = 0;
-
 
   std::string getGrammarFileName() const override;
 

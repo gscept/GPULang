@@ -5,6 +5,7 @@
     (C) 2024 Gustav Sterbrant
 */
 //------------------------------------------------------------------------------
+#pragma once
 #include <string>
 #include <vector>
 #include "compiler.h"

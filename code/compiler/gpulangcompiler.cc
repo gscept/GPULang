@@ -182,6 +182,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         CommonTokenStream tokens(&lexer);
         GPULangParser parser(&tokens);
+        GPULangParser::LineStack.clear();
 
         // get the name of the shader
         std::locale loc;
@@ -198,27 +199,16 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         }
 
         // setup preprocessor
-        parser.preprocess();
+        //parser.preprocess();
 
         timer.Stop();
         if (options.emitTimings)
             timer.Print("Preprocessing");
 
-        // remove all preprocessor crap left by mcpp
-        size_t i;
-        for (i = 0; i < parser.lines.size(); i++)
-        {
-            size_t start = std::get<2>(parser.lines[i]);
-            size_t stop = preprocessed.find('\n', start);
-            std::string fill(stop - start, ' ');
-            preprocessed.replace(start, stop - start, fill);
-        }
+
 
         GPULangLexerErrorHandler lexerErrorHandler;
-        lexerErrorHandler.lines = parser.lines;
         GPULangParserErrorHandler parserErrorHandler;
-        parserErrorHandler.lines = parser.lines;
-
         timer.Start();
 
         // reload the preprocessed data

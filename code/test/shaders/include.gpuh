@@ -1,0 +1,7 @@
+struct Camera
+{
+    viewProjection : f32x4x4;
+    position : f32x4;
+};
+
+uniform camera : *Camera;
