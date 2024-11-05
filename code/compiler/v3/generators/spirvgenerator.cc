@@ -2150,6 +2150,26 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(ret, returnType);
     };
 
+    std::vector<std::tuple<Function*, const char>> subgroupSwapIntrinsics =
+    {
+        MAKE_SCALAR_INTRINSICS(SubgroupSwapDiagonal)
+    };
+    for (auto fun : subgroupSwapIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddMappedOp(Format("OpGroupNonUniformQuadSwap %%%d"))
+        };
+    }
+
+    this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        return SPIRVResult(ret, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::MemoryBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        return SPIRVResult(ret, returnType);
+    }; 
+
     std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
     {
         { Intrinsics::TextureFetchBase_texture1D, false }

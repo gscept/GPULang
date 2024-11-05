@@ -379,7 +379,6 @@ extern Function* SubgroupBallotLastOne;
 extern Function* ExecutionBarrier;
 extern Function* MemoryBarrier;
 
-
 extern Function* PixelCacheLoad;
 extern Function* PixelCacheLoadMS;
 

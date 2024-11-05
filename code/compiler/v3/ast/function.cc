@@ -654,6 +654,95 @@ FLOAT_LIST
     SINGLE_COMPONENT_LIST
 #undef X
 
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicIncrement, AtomicIncrement, ty)\
+    __ADD_ARG_LIT(value, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicDecrement, AtomicDecrement, ty)\
+    __ADD_ARG_LIT(value, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicAdd, AtomicAdd, ty)\
+    __ADD_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(addend, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicSub, AtomicSub, ty)\
+    __ADD_ARG_LIT(value, ty);\
+    __ADD_ARG_LIT(addend, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicMin, AtomicMin, ty)\
+    __ADD_ARG_LIT(value1, ty);\
+    __ADD_ARG_LIT(value2, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicMax, AtomicMax, ty)\
+    __ADD_ARG_LIT(value1, ty);\
+    __ADD_ARG_LIT(value2, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+    
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicAnd, AtomicAnd, ty)\
+    __ADD_ARG_LIT(value1, ty);\
+    __ADD_ARG_LIT(value2, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicOr, AtomicOr, ty)\
+    __ADD_ARG_LIT(value1, ty);\
+    __ADD_ARG_LIT(value2, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atomicXor, AtomicXor, ty)\
+    __ADD_ARG_LIT(value1, ty);\
+    __ADD_ARG_LIT(value2, ty);\
+    __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __SET_RET_LIT(ty);
+
+    INT_SINGLE_LIST
+#undef X
+    
+
 
     //------------------------------------------------------------------------------
     /**
