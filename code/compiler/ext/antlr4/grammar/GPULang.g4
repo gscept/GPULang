@@ -610,6 +610,7 @@ scopeStatement
     (
         variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
         | statement { contents.push_back($statement.tree); }
+        | linePreprocessorEntry
     )* 
     '}'
     {
