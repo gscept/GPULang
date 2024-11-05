@@ -45,7 +45,7 @@
 			"patterns": [
 				{
 					"name": "constant.numeric",
-					"match": "\\b\\d((\\.\\d*f?)|u?)\\b"
+					"match": "\\b\\d*((\\.\\d*f?)|u?)\\b"
 				},
 				{
 					"name": "constant.language",
