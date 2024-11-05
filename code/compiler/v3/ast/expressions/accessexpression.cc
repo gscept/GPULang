@@ -104,6 +104,14 @@ AccessExpression::Resolve(Compiler* compiler)
         std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
         thisResolved->returnType = Type::FullType{ vectorType };
     }
+    else if (thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
+    {
+        if (thisResolved->rightSymbol != "length")
+        {
+            compiler->Error(Format("Invalid member for array '%s'", thisResolved->rightSymbol.c_str()), this);
+            return false;
+        }
+    }
     else if (thisResolved->lhsType->symbolType == Type::SymbolType::EnumerationType)
     {
         EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));

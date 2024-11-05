@@ -3314,23 +3314,29 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Otherwise, find offset of member
         Type::FullType lhsType;
         accessExpression->left->EvalType(lhsType);
-        Type* rhsSymbol = compiler->GetSymbol<Type>(lhsType.name);
+        Type* lhsSymbol = compiler->GetSymbol<Type>(lhsType.name);
 
-        if (rhsSymbol->symbolType == Symbol::StructureType || rhsSymbol->symbolType == Symbol::EnumerationType)
+        if (lhsType.modifiers.front() == Type::FullType::Modifier::Array)
         {
-            for (size_t i = 0; i < rhsSymbol->symbols.size(); i++)
+            assert(accessExpressionResolved->rightSymbol == "length");
+            assert(lhsType.modifierValues.front() > 0);
+            return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(lhsType.modifierValues.front()));
+        }
+        else if (lhsSymbol->symbolType == Symbol::StructureType || lhsSymbol->symbolType == Symbol::EnumerationType)
+        {
+            for (size_t i = 0; i < lhsSymbol->symbols.size(); i++)
             {
-                Symbol* sym = rhsSymbol->symbols[i];
+                Symbol* sym = lhsSymbol->symbols[i];
                 if (sym->name == accessExpressionResolved->rightSymbol)
                 {
-                    if (rhsSymbol->symbolType == Symbol::StructureType)
+                    if (lhsSymbol->symbolType == Symbol::StructureType)
                     {
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
                         SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
                         uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
                         return SPIRVResult(generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text), typeName.typeName);
                     }
-                    else if (rhsSymbol->symbolType == Symbol::EnumerationType)
+                    else if (lhsSymbol->symbolType == Symbol::EnumerationType)
                     {
                         EnumExpression* enumExp = static_cast<EnumExpression*>(sym);
                         uint32_t val;
