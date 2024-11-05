@@ -86,13 +86,21 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     }
     else
     {
-        if (thisResolved->returnFullType.modifiers.back() != Type::FullType::Modifier::Array)
+        bool isArray = false;
+        for (int i = thisResolved->returnFullType.modifiers.size() - 1; i >= 0; i--)
         {
-            compiler->Error(Format("operator [] not valid on non-array type '%s'", thisResolved->leftFullType.ToString().c_str()), this);
+            if (thisResolved->returnFullType.modifiers[i] == Type::FullType::Modifier::Array)
+            {
+                thisResolved->returnFullType.modifiers.erase(thisResolved->returnFullType.modifiers.begin() + i);
+                thisResolved->returnFullType.modifierValues.erase(thisResolved->returnFullType.modifierValues.begin() + i);
+                isArray = true;
+            }
+        }
+        if (!isArray)
+        {
+            compiler->Error(Format("Invalid array access operator '[]' on non-array type"), this);
             return false;
         }
-        thisResolved->returnFullType.modifiers.pop_back();
-        thisResolved->returnFullType.modifierValues.pop_back();
     }
     thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
 

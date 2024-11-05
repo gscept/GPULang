@@ -1266,12 +1266,12 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
         outCode.append(Format("#line %d %s\n", var->location.line, var->location.file.c_str()));
         if (varResolved->typeSymbol->category == Type::TextureCategory && varResolved->type.IsMutable())
         {
-            outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, imageFormatToGlsl[varResolved->imageFormat].c_str()));
+            outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, imageFormatToGlsl[varResolved->type.imageFormat].c_str()));
 
             // if integer or unsigned, format variable
-            if (Variable::IsImageFormatInteger(varResolved->imageFormat))
+            if (Variable::IsImageFormatInteger(varResolved->type.imageFormat))
                 type.name = Format("i%s", type.name.c_str());
-            else if (Variable::IsImageFormatUnsigned(varResolved->imageFormat))
+            else if (Variable::IsImageFormatUnsigned(varResolved->type.imageFormat))
                 type.name = Format("u%s", type.name.c_str());
         }
         else

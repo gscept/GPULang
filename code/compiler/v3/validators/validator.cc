@@ -1773,12 +1773,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             else if (attr.name == "centroid")
                 varResolved->parameterBits.flags.isCentroid = true;
         }
-
-        // check image formats
-        if (map_contains(StringToFormats, attr.name))
-        {
-            varResolved->imageFormat = StringToFormats[attr.name];
-        }
     }
 
     if (!varResolved->usageBits.flags.isParameter && !varResolved->usageBits.flags.isStructMember && (varResolved->storage == Variable::__Resolved::Storage::Default || varResolved->storage == Variable::__Resolved::Storage::Global))
@@ -1991,7 +1985,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     // check if image formats have been resolved
     if (type->category == Type::TextureCategory
         && varResolved->type.mut
-        && (varResolved->imageFormat == InvalidImageFormat || varResolved->imageFormat == Unknown)
+        && (varResolved->type.imageFormat == InvalidImageFormat || varResolved->type.imageFormat == Unknown)
         && !varResolved->usageBits.flags.isParameter)
     {
         compiler->Error(Format("Texture type must provide a format qualifier because it's marked as 'mutable'"), var);

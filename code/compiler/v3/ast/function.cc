@@ -756,7 +756,7 @@ FLOAT_LIST
     __ADD_VALUE_LIT(semantics, MemorySemantics);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(memoryBarrier, MemoryBarrier);
+    __MAKE_BUILTIN(memoryBarrier, MemoryExecutionBarrier);
     __ADD_VALUE_LIT(memoryScope, ExecutionScope);
     __ADD_VALUE_LIT(semantics, MemorySemantics);
     __SET_RET_LIT(void);

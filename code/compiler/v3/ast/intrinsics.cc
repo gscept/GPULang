@@ -233,7 +233,7 @@ Function* SubgroupBallotLastOne;
 #undef X
 
 Function* ExecutionBarrier;
-Function* MemoryBarrier;
+Function* MemoryExecutionBarrier;
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
     SCALAR_LIST

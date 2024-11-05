@@ -136,7 +136,6 @@ GenerateTypeSPIRV(
     , SPIRVGenerator* generator
     , Type::FullType type
     , Type* typeSymbol
-    , ImageFormat imageFormat = ImageFormat::InvalidImageFormat
     , Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0)
     , Variable::__Resolved::UsageBits usageBits = Variable::__Resolved::UsageBits(0x0)
     , Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default
@@ -205,7 +204,7 @@ GenerateTypeSPIRV(
         else
             sampleBits = 1;
 
-        std::string spirvFormat = imageFormatToSpirvType[imageFormat];
+        std::string spirvFormat = imageFormatToSpirvType[type.imageFormat];
         spirvType = Format(spirvType.c_str(), vecType.typeName, depthBits, sampleBits, spirvFormat.c_str());
         baseType = Format("%s,%s,Sample=%d,Depth=%d", spirvFormat.c_str(), baseType.c_str(), sampleBits, depthBits);
         name = generator->AddSymbol(baseType, spirvType, true);
@@ -2158,17 +2157,21 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[std::get<0>(fun)] =  [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {
-            g->AddMappedOp(Format("OpGroupNonUniformQuadSwap %%%d"))
+            assert(args.size() == 1);
+            uint32_t ret = g->AddMappedOp(Format("OpGroupNonUniformQuadSwap %%%d Subgroup %%%d, 2", returnType, args[0].name));
+            return SPIRVResult(ret, returnType);
         };
     }
 
     this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        return SPIRVResult(ret, returnType);
+        g->AddOp(Format("OpControlBarrier %s %s %s"));
+        return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::MemoryBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        return SPIRVResult(ret, returnType);
-    }; 
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddOp(Format("OpMemoryBarrier %s %s %s"));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
 
     std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
     {
@@ -2870,7 +2873,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
     
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
     std::string type = varResolved->type.name;
     std::string scope = SPIRVResult::ScopeToString(typeName.scope);
 
@@ -3059,12 +3062,9 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     Type::FullType leftType, rightType;
     arrayIndexExpression->left->EvalType(leftType);
     arrayIndexExpression->right->EvalType(rightType);
-
-    uint32_t index;
-    bool res = arrayIndexExpression->right->EvalUInt(index);
-    assert(res);
-
+    
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+    SPIRVResult indexConstant = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->right);
 
     // Evaluate the index which has to be a literal or constant value that evaluates at compile time
     if (leftType.modifiers.empty())
@@ -3079,9 +3079,9 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
             /// Get intrinsic
             auto intrin = generator->intrinsicMap.find(func);
             assert(intrin != generator->intrinsicMap.end());
+            assert(indexConstant.isConst);
 
             uint32_t returnPtrType = generator->AddSymbol(Format("ptr(%s)Function", arrayIndexExpressionResolved->returnFullType.ToString().c_str()), Format("OpTypePointer Function %%%d", returnType.typeName), true);
-            SPIRVResult indexConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(index));
 
             /// Generate array access
             return intrin->second(compiler, generator, returnPtrType, { leftSymbol, indexConstant });
@@ -3089,7 +3089,10 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     }
     else
     {
-
+        uint32_t accessChain = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", returnType.typeName, leftSymbol.name, indexConstant.name));
+        SPIRVResult ret = SPIRVResult(accessChain, returnType.typeName);
+        ret.parentTypes = returnType.parentTypes;
+        return ret;
     }
     return SPIRVResult::Invalid();
 }
@@ -3512,7 +3515,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 if (!varResolved->builtin)
                 {
                     bool isLinkDefined = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
-                    type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->imageFormat, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
+                    type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
                     res = SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName);
                     res.isValue = isLinkDefined;
                     res.isConst = isLinkDefined;

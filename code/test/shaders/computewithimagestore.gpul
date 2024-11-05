@@ -1,6 +1,6 @@
 
-uniform rgba32f InputImage: *mutable texture2D;
-uniform rgba16f OutputImage: *mutable texture2D;
+uniform InputImage: *mutable rgba32f texture2D;
+uniform OutputImage: *mutable rgba16f texture2D;
 
 entry_point
 ComputeWithStore() void

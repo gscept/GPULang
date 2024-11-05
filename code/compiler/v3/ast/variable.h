@@ -14,32 +14,7 @@
 #include <unordered_map>
 namespace GPULang
 {
-enum ImageFormat
-{
-    InvalidImageFormat,
 
-    // byte
-    Rgba16, Rgb10_A2, Rgba8, Rg16, Rg8,
-    R16, R8, Rgba16_Snorm, Rgba8_Snorm, Rg16_Snorm, Rg8_Snorm,
-    R16_Snorm, R8_Snorm,
-
-    // float
-    Rgba32F, Rgba16F, Rg32F, Rg16F, R11G11B10F,
-    R32F, R16F,
-
-    // integer
-    Rgba32I, Rgba16I, Rgba8I, Rg32I, Rg16I, Rg8I,
-    R32I, R16I, R8I,
-
-    // unsigned integer
-    Rgba32U, Rgba16U, Rgb10_A2U, Rgba8U, Rg32U, Rg16U, Rg8U,
-    R32U, R16U, R8U,
-
-    // Format is not known
-    Unknown
-};
-
-extern std::unordered_map<std::string, ImageFormat> StringToFormats;
 struct Variable : public Symbol
 {
     /// constructor
@@ -53,7 +28,6 @@ struct Variable : public Symbol
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 
-    static ImageFormat StringToImageFormat(const std::string& format);
     static bool IsImageFormatInteger(ImageFormat format);
     static bool IsImageFormatUnsigned(ImageFormat format);
 
@@ -139,8 +113,6 @@ struct Variable : public Symbol
         uint32_t structureOffset;   // offset within structure
         uint32_t elementPadding;    // padding between elements
         uint32_t startPadding;      // padding before variable
-
-        ImageFormat imageFormat;    // for read write images, this is the format
 
         ShaderUsage visibilityBits;
         bool builtin = false;

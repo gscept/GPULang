@@ -1,0 +1,51 @@
+//------------------------------------------------------------------------------
+//  @file basicgraphics.gpul
+//  @copyright (C) 2024 Individual contributors, see AUTHORS file
+//------------------------------------------------------------------------------
+
+uniform Textures2D : [1024] *texture2D;
+uniform Sampler : *sampler;
+#include "include.gpuh"
+
+struct Object
+{
+    model : f32x4x4;
+};
+
+@Foobar("test")
+uniform object : *Object;
+
+entry_point
+BindlessVertex(
+    in Position : f32x3
+    , in UV : f32x2
+    , out OutUV : f32x2
+) void
+{
+    const worldPos = object.model * f32x4(Position, 1.0f);
+    const clipPos = camera.viewProjection * worldPos;
+
+    gplExportVertexCoordinates(clipPos);
+    OutUV = UV;
+}
+
+enum Framebuffer : i32
+{
+    Color = 0
+};
+
+entry_point
+BindlessPixel(
+    in UV : f32x2
+) void
+{
+    var color = textureSample(Textures2D[0], Sampler, UV);
+    if (gplIsPixelShader)
+        gplExportColor(color, i32(Framebuffer.Color));
+}
+
+program TestProgram
+{
+    VertexShader = BindlessVertex;
+    PixelShader = BindlessPixel;
+};
