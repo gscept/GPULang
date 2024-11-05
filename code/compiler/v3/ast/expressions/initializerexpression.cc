@@ -19,7 +19,8 @@ InitializerExpression::InitializerExpression(const std::vector<Expression*>& val
     , explicitType(type)
 {
     this->symbolType = InitializerExpressionType;
-    this->resolved = new InitializerExpression::__Resolved;
+    auto resolved = new InitializerExpression::__Resolved;
+    this->resolved = resolved;
 }
 
 //------------------------------------------------------------------------------
@@ -66,7 +67,7 @@ InitializerExpression::Resolve(Compiler* compiler)
         BinaryExpression* binExpr = static_cast<BinaryExpression*>(expr);
         if (!expr->Resolve(compiler))
             return false;
-
+        
         std::string name;
         binExpr->left->EvalSymbol(name);
         if (name != ty->symbols[i]->name)
@@ -127,7 +128,10 @@ InitializerExpression::EvalAccessFlags(unsigned& out) const
     {
         unsigned access;
         expr->EvalAccessFlags(access);
-        out &= access;
+        if (access & AccessFlags::Const)
+            out &= AccessFlags::Const;
+        else if (access & AccessFlags::LinkTime)
+            out |= AccessFlags::LinkTime;
     }
     return true;
 }

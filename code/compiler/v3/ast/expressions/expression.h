@@ -18,6 +18,7 @@ namespace GPULang
 enum AccessFlags
 {
     Const = 0x1,
+    LinkTime = 0x2
 };
 
 struct Compiler;

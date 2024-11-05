@@ -16,6 +16,8 @@
 #include "ast/expressions/enumexpression.h"
 #include "compiler.h"
 #include "util.h"
+#include "ast/expressions/arrayinitializerexpression.h"
+
 namespace GPULang
 {
 
@@ -165,7 +167,12 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
         {
             InitializerExpression* initExpr = static_cast<InitializerExpression*>(expr);
             writer.Write("{");
-            writer.Write(initExpr->EvalString());
+            for (Expression* expr : initExpr->values)
+            {
+                writer.Write(expr->EvalString());
+                if (expr != initExpr->values.back())
+                    writer.Write(", ");
+            }
             writer.Write("};");
             break;
         }
@@ -174,6 +181,20 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
         case Symbol::UIntExpressionType:
         case Symbol::BoolExpressionType:
             writer.Write(expr->EvalString());
+            break;
+        case Symbol::ArrayInitializerExpressionType:
+        {
+            auto* initExpr = static_cast<ArrayInitializerExpression*>(expr);
+            writer.Write("{");
+            for (Expression* expr : initExpr->values)
+            {
+                writer.Write(expr->EvalString());
+                if (expr != initExpr->values.back())
+                    writer.Write(", ");
+            }
+            writer.Write("}");
+            break;
+        }
     }
 }
 
@@ -213,7 +234,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             }
 
             std::string arraySize = "";
-            for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
+            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
             {
                 if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
@@ -225,7 +246,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 }
             }
 
-            if (var->valueExpression != nullptr)
+            if (init != nullptr)
                 writer.WriteLine(Format("static inline const %s %s%s%s = %s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), tempWriter.output.c_str()));
             else
                 writer.WriteLine(Format("static inline const %s %s%s%s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
@@ -302,15 +323,33 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
         }
         else if (varResolved->usageBits.flags.isConst)
         {
+            std::string arraySize = "";
+            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+            {
+                if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
+                {
+                    size_t size = varResolved->type.modifierValues[i];
+                    if (size > 0)
+                        arraySize.append(Format("[%d]", size));
+                    else
+                        arraySize.append(Format("[]"));
+                }
+            }
+
+            uint32_t accessFlags;
+            var->valueExpression->EvalAccessFlags(accessFlags);
+            if (accessFlags & AccessFlags::LinkTime)
+                return;
+            
             HeaderWriter initWriter;
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s = %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str(), initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str()));
+                writer.WriteLine(Format("static const %s %s%s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str()));
             }
         }
     }

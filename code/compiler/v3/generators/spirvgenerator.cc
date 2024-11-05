@@ -43,6 +43,8 @@
 #include <array>
 #include <format>
 
+#include "ast/expressions/arrayinitializerexpression.h"
+
 namespace GPULang
 {
 
@@ -2331,7 +2333,7 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args[0].parentTypes.size() > 0);
             uint32_t image = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
             uint32_t sampler = args[1].name;
-            if (!args[1].isConst)
+            if (!args[1].isValue)
                 sampler = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[1].parentTypes[0], args[1].name));
             uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", args[0].parentTypes[0]), Format("OpTypeSampledImage %%%d", args[0].parentTypes[0]), true);
             uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image, sampler));
@@ -3089,7 +3091,11 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     }
     else
     {
-        uint32_t accessChain = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", returnType.typeName, leftSymbol.name, indexConstant.name));
+        std::string scope = SPIRVResult::ScopeToString(leftSymbol.scope);
+        uint32_t ptrType = returnType.typeName;
+        if (!arrayIndexExpressionResolved->returnFullType.IsPointer())
+            ptrType = generator->AddSymbol(Format("ptr(%s)%s", arrayIndexExpressionResolved->returnFullType.name.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), returnType.typeName), true);
+        uint32_t accessChain = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrType, leftSymbol.name, indexConstant.name));
         SPIRVResult ret = SPIRVResult(accessChain, returnType.typeName);
         ret.parentTypes = returnType.parentTypes;
         return ret;
@@ -3125,16 +3131,61 @@ GenerateInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator
     }
     
     if (isConst)
+    {
         if (isLinkDefined)
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", strucType, initializer.c_str()), true);
         else
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", strucType, initializer.c_str()), true);
+    }
     else
     {
         assert(!generator->linkDefineEvaluation);
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", strucType, initializer.c_str()));
     }
     return SPIRVResult(name, strucType, true, isConst);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
+GenerateArrayInitializerExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
+{
+    auto sym = static_cast<ArrayInitializerExpression*>(expr);
+    ArrayInitializerExpression::__Resolved* arrayInitializerExpressionResolved = Symbol::Resolved(sym);
+
+    SPIRVResult type = GenerateTypeSPIRV(compiler, generator, arrayInitializerExpressionResolved->fullType, arrayInitializerExpressionResolved->type);
+
+    uint32_t name = 0xFFFFFFFF;
+    std::vector<SPIRVResult> initResults;
+    bool isConst = true;
+    bool isLinkDefined = false;
+    std::string initializer = "";
+    for (auto value : sym->values)
+    {
+        SPIRVResult res = GenerateExpressionSPIRV(compiler, generator, value);
+        initResults.push_back(res);
+        if (!res.isValue)
+            res = LoadValueSPIRV(compiler, generator, res);
+        initializer.append(Format("%%%d ", res.name));
+        
+        isConst &= res.isConst;
+        isLinkDefined |= res.isSpecialization;
+    }
+
+    if (isConst)
+    {
+        if (isLinkDefined)
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", type.typeName, initializer.c_str()), true);
+        else
+            name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", type.typeName, initializer.c_str()), true);
+    }
+    else
+    {
+        assert(!generator->linkDefineEvaluation);
+        name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", type.typeName, initializer.c_str()));
+    }
+    return SPIRVResult(name, type.typeName, true, isConst);
 }
 
 //------------------------------------------------------------------------------
@@ -3518,7 +3569,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                     type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
                     res = SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName);
                     res.isValue = isLinkDefined;
-                    res.isConst = isLinkDefined;
+                    res.isConst = isLinkDefined | varResolved->usageBits.flags.isConst;
                     res.isSpecialization = isLinkDefined;
                     res.scope = type.scope;
                     res.parentTypes = type.parentTypes;    
@@ -3547,6 +3598,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
             return GenerateAccessExpressionSPIRV(compiler, generator, expr);
         case Symbol::InitializerExpressionType:
             return GenerateInitializerExpressionSPIRV(compiler, generator, expr);
+        case Symbol::ArrayInitializerExpressionType:
+            return GenerateArrayInitializerExpressionSPIRV(compiler, generator, expr);
         case Symbol::ArrayIndexExpressionType:
             return GenerateArrayIndexExpressionSPIRV(compiler, generator, expr);
         case Symbol::CallExpressionType:

@@ -277,6 +277,8 @@ SymbolExpression::EvalAccessFlags(unsigned& out) const
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
                 if (varResolved->usageBits.flags.isConst)
                     out |= AccessFlags::Const;
+                if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+                    out |= AccessFlags::LinkTime;
                 return true;
             }
             case StringExpressionType:

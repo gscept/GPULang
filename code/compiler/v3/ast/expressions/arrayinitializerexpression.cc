@@ -16,7 +16,8 @@ ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Express
     : values(values)
 {
     this->symbolType = ArrayInitializerExpressionType;
-    this->resolved = new ArrayInitializerExpression::__Resolved;
+    auto resolved = new ArrayInitializerExpression::__Resolved;
+    this->resolved = resolved;
 }
 
 //------------------------------------------------------------------------------
@@ -41,10 +42,10 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     {
         if (!expr->Resolve(compiler))
             return false;
-
+        
         Type::FullType valueType;
         expr->EvalType(valueType);
-        if (inner.name.empty())
+        if (inner.name == "unknown")
             inner = valueType;
         else if (valueType != inner)
         {
@@ -112,7 +113,10 @@ ArrayInitializerExpression::EvalAccessFlags(unsigned& out) const
     {
         unsigned access;
         expr->EvalAccessFlags(access);
-        out &= access;
+        if (access & AccessFlags::Const)
+            out &= AccessFlags::Const;
+        else if (access & AccessFlags::LinkTime)
+            out |= AccessFlags::LinkTime;
     }
     return true;
 }

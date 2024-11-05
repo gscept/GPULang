@@ -1,0 +1,43 @@
+enum ShaderMode
+{
+    OutputLocalInvocationIndex,
+    OutputSpecializedVector
+};
+link_defined Mode : ShaderMode = ShaderMode.OutputLocalInvocationIndex;
+struct Storage
+{
+    vec : f32x4;
+    i : i32;
+};
+
+
+link_defined ArraySpecializer = 2;
+const SpecializedArray: [2] i32 = [1, ArraySpecializer];
+
+const InitializedArray: [4] f32 = [1.0f, 2.0f, 3.0f, 4.0f];
+uniform Output : *mutable Storage;
+
+entry_point
+ArrayInitializer() void
+{
+    switch(Mode)
+    {
+        case ShaderMode.OutputLocalInvocationIndex:
+        {
+            Output.i = SpecializedArray[2];
+            break;
+        }
+        case ShaderMode.OutputSpecializedVector:
+        {
+            Output.vec = f32x4(InitializedArray[0], InitializedArray[1], InitializedArray[2], InitializedArray[3]);
+            break;
+        }
+    }
+
+}
+
+program TestProgram
+{
+    ComputeShader = ArrayInitializer;
+    Mode = ShaderMode.OutputLocalInvocationIndex;
+};

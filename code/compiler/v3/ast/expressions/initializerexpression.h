@@ -9,6 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
+#include "ast/variable.h"
 #include <vector>
 
 namespace GPULang

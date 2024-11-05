@@ -11,6 +11,8 @@
 #include "expression.h"
 #include <vector>
 
+#include "ast/variable.h"
+
 namespace GPULang
 {
 
