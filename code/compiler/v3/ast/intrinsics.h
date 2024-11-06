@@ -261,6 +261,18 @@ extern Function* Cross_f32x3;
     FLOAT_LIST
 #undef X
 
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(CastToU32, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(CastToI32, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(CastToF32, ty)
+    INT_LIST
+#undef X
+
 //------------------------------------------------------------------------------
 /**
     Builtins, like:

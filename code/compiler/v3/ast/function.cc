@@ -431,7 +431,7 @@ FLOAT_LIST
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-FLOAT_LIST
+    FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -439,7 +439,7 @@ FLOAT_LIST
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-FLOAT_LIST
+    FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
@@ -447,7 +447,31 @@ FLOAT_LIST
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
-FLOAT_LIST
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(castToU32, CastToU32, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(castToI32, CastToI32, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(castToF32, CastToF32, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    INT_LIST
 #undef X
 
     //------------------------------------------------------------------------------
@@ -618,6 +642,7 @@ FLOAT_LIST
     __MAKE_INTRINSIC(atomicLoad, AtomicLoad, ty)\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
     
     SINGLE_COMPONENT_LIST
@@ -628,6 +653,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(orig, ty);\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     SINGLE_COMPONENT_LIST
@@ -638,6 +664,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(exchange, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     SINGLE_COMPONENT_LIST
@@ -649,6 +676,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(compare, ty);\
     __ADD_ARG_LIT(exchange, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     SINGLE_COMPONENT_LIST
@@ -658,6 +686,7 @@ FLOAT_LIST
     __MAKE_INTRINSIC(atomicIncrement, AtomicIncrement, ty)\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -667,6 +696,7 @@ FLOAT_LIST
     __MAKE_INTRINSIC(atomicDecrement, AtomicDecrement, ty)\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -677,6 +707,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(addend, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -687,6 +718,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(addend, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -697,6 +729,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -707,6 +740,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -717,6 +751,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -727,6 +762,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -737,6 +773,7 @@ FLOAT_LIST
     __ADD_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
+    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST

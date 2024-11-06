@@ -264,11 +264,12 @@ Type::SetupDefaultTypes()
     executionScopeEnum->type = { "u32" };
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
-    executionScopeEnum->labels.push_back("CrossDevice"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("DeviceLocal"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Global"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Device"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
+    executionScopeEnum->labels.push_back("Queue"); executionScopeEnum->values.push_back(nullptr);
     executionScopeEnum->builtin = true;
     DefaultTypes.push_back(executionScopeEnum);
 
