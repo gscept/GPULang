@@ -9,6 +9,7 @@ entry_point
 Atomics() void
 {
     atomicAdd(Uniform.Counter, 2u, MemorySemantics.Relaxed);
+    executionBarrier();
 }
 
 program TestProgram
