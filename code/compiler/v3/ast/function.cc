@@ -139,6 +139,13 @@ newVar->type = { #tp };\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
+#define __ADD_MUTABLE_ARG_LIT(nm, tp)\
+newVar = new Variable();\
+newVar->type = { #tp };\
+newVar->type.mut = true;\
+newVar->name = #nm;\
+newIntrinsic->parameters.push_back(newVar);
+
 #define __ADD_VALUE_LIT(nm, tp)\
 newVar = new Variable();\
 newVar->type = { #tp };\
@@ -642,7 +649,6 @@ FLOAT_LIST
     __MAKE_INTRINSIC(atomicLoad, AtomicLoad, ty)\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
     
     SINGLE_COMPONENT_LIST
@@ -650,10 +656,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicStore, AtomicStore, ty)\
-    __ADD_ARG_LIT(orig, ty);\
+    __ADD_MUTABLE_ARG_LIT(orig, ty);\
     __ADD_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     SINGLE_COMPONENT_LIST
@@ -661,10 +666,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicExchange, AtomicExchange, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(exchange, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     SINGLE_COMPONENT_LIST
@@ -672,21 +676,19 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicCompareExchange, AtomicCompareExchange, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(compare, ty);\
     __ADD_ARG_LIT(exchange, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
-    SINGLE_COMPONENT_LIST
+    INT_SINGLE_LIST
 #undef X
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicIncrement, AtomicIncrement, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -694,9 +696,8 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicDecrement, AtomicDecrement, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -704,10 +705,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicAdd, AtomicAdd, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(addend, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -715,10 +715,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicSub, AtomicSub, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_MUTABLE_ARG_LIT(value, ty);\
     __ADD_ARG_LIT(addend, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -726,10 +725,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicMin, AtomicMin, ty)\
-    __ADD_ARG_LIT(value1, ty);\
+    __ADD_MUTABLE_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -737,10 +735,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicMax, AtomicMax, ty)\
-    __ADD_ARG_LIT(value1, ty);\
+    __ADD_MUTABLE_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -748,10 +745,9 @@ FLOAT_LIST
     
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicAnd, AtomicAnd, ty)\
-    __ADD_ARG_LIT(value1, ty);\
+    __ADD_MUTABLE_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -759,10 +755,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicOr, AtomicOr, ty)\
-    __ADD_ARG_LIT(value1, ty);\
+    __ADD_MUTABLE_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -770,10 +765,9 @@ FLOAT_LIST
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicXor, AtomicXor, ty)\
-    __ADD_ARG_LIT(value1, ty);\
+    __ADD_MUTABLE_ARG_LIT(value1, ty);\
     __ADD_ARG_LIT(value2, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemantics);\
-    __ADD_VALUE_LIT(scope, ExecutionScope);\
     __SET_RET_LIT(ty);
 
     INT_SINGLE_LIST
@@ -788,14 +782,21 @@ FLOAT_LIST
     //------------------------------------------------------------------------------
 
     __MAKE_BUILTIN(executionBarrier, ExecutionBarrier);
-    __ADD_VALUE_LIT(executionScope, ExecutionScope);
-    __ADD_VALUE_LIT(memoryScope, ExecutionScope);
-    __ADD_VALUE_LIT(semantics, MemorySemantics);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(executionBarrierSubgroup, ExecutionBarrierSubgroup);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(executionBarrierWorkgroup, ExecutionBarrierWorkgroup);
     __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(memoryBarrier, MemoryExecutionBarrier);
-    __ADD_VALUE_LIT(memoryScope, ExecutionScope);
-    __ADD_VALUE_LIT(semantics, MemorySemantics);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(memoryBarrierSubgroup, MemoryExecutionBarrierSubgroup);
+    __SET_RET_LIT(void);
+    
+    __MAKE_BUILTIN(memoryBarrierWorkgroup, MemoryExecutionBarrierWorkgroup);
     __SET_RET_LIT(void);
 
 

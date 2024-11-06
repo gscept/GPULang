@@ -104,7 +104,7 @@ AccessExpression::Resolve(Compiler* compiler)
         std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
         thisResolved->returnType = Type::FullType{ vectorType };
     }
-    else if (thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
+    else if (!thisResolved->leftType.modifiers.empty() && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
     {
         if (thisResolved->rightSymbol != "length")
         {
@@ -129,6 +129,7 @@ AccessExpression::Resolve(Compiler* compiler)
         {
             Variable::__Resolved* varResolved = Symbol::Resolved(memberVar);
             thisResolved->returnType = varResolved->type;
+            thisResolved->returnType.mut = thisResolved->leftType.mut;
         }
     }
 

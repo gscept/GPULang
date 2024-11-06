@@ -194,6 +194,8 @@ GenerateTypeSPIRV(
             scope = SPIRVResult::Storage::UniformConstant;
         else if (storage == Variable::__Resolved::Storage::Global)
             scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::TextureCategory)
     {
@@ -243,6 +245,10 @@ GenerateTypeSPIRV(
         name = GenerateTypeSPIRV(compiler, generator, Type::FullType{ "u32" }, u32).typeName;
         if (storage == Variable::__Resolved::Storage::Global)
             scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::UserTypeCategory)
     {
@@ -255,7 +261,11 @@ GenerateTypeSPIRV(
         else if (storage == Variable::__Resolved::Storage::InlineUniform)
             scope = SPIRVResult::Storage::PushConstant;
         else if (storage == Variable::__Resolved::Storage::Global)
-            scope = SPIRVResult::Storage::Private;            
+            scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
     }
 
     std::string scopeString = SPIRVResult::ScopeToString(scope);
@@ -2223,44 +2233,299 @@ SPIRVGenerator::SetupIntrinsics()
         "Invocation",
         "Queue"
     };
-    static const char* SemanticsTable[] =
+    static const uint32_t SemanticsTable[] =
     {
-        "None",
-        "Acquire",
-        "Release",
-        "AcquireRelease",
-        "UniformMemory"
-        "SubgroupMemory",
-        "WorkgroupMemory",
-        "CrossWorkgroupMemory",
-        "AtomicCounterMemory",
-        "ImageMemory"
+        0x0,
+        0x1,
+        0x2,
+        0x4,
+        0x8,
+        0x10,
+        0x20,
+        0x40,
+        0x80,
+        0x100
     };
-    std::vector<std::tuple<Function*, const char>> atomicLoadIntrinsics =
+
+    static auto ScopeToAtomicScope = [](SPIRVResult::Storage scope) -> uint32_t
     {
-        MAKE_SINGLE_COMPONENT_INTRINSICS(AtomicLoad)
+        switch (scope)
+        {
+            case SPIRVResult::Function:
+            case SPIRVResult::Input:
+            case SPIRVResult::Output:
+            case SPIRVResult::PushConstant:
+            case SPIRVResult::Private:
+                return 4;
+            case SPIRVResult::WorkGroup:
+                return 2;
+            case SPIRVResult::Device:
+            case SPIRVResult::Uniform:
+            case SPIRVResult::UniformConstant:
+                return 1;
+            case SPIRVResult::StorageBuffer:
+            case SPIRVResult::Sampler:
+            case SPIRVResult::Image:
+            case SPIRVResult::MutableImage:
+                assert(false);
+        }
+    };
+
+    static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
+    {
+        switch (scope)
+        {
+            case SPIRVResult::WorkGroup:
+                return 0x100; // WorkgroupMemory
+            case SPIRVResult::Uniform:
+            case SPIRVResult::UniformConstant:
+            case SPIRVResult::StorageBuffer:
+            case SPIRVResult::Sampler:
+                return 0x40; // UniformMemory
+            case SPIRVResult::Image:
+            case SPIRVResult::MutableImage:
+                return 0x800; // ImageMemory
+        }
+        return 0x0;
+    };
+
+#define MAKE_ATOMIC_SCALAR_INTRINSICS(op)\
+    { Intrinsics::Atomic##op##_f32, #op }\
+    , { Intrinsics::Atomic##op##_i32, #op }\
+    , { Intrinsics::Atomic##op##_u32, #op }\
+
+#define MAKE_ATOMIC_INT_INTRINSICS(op)\
+    { Intrinsics::Atomic##op##_i32, #op }\
+    , { Intrinsics::Atomic##op##_u32, #op }\
+
+#define MAKE_ATOMIC_SIGNED_INT_INTRINSICS(op)\
+    { Intrinsics::Atomic##op##_i32, 'S', #op }\
+    , { Intrinsics::Atomic##op##_u32, 'U', #op }\
+    
+    std::vector<std::tuple<Function*, const char*>> atomicLoadIntrinsics =
+    {
+        MAKE_ATOMIC_SCALAR_INTRINSICS(Load)
     };
     for (auto fun : atomicLoadIntrinsics)
     {
-        this->intrinsicMap[std::get<0>(fun)] =  [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {
-            assert(args.size() == 1);
+            assert(args.size() == 2);
             assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+            
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%s %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char*>> atomicStoreIntrinsics =
+    {
+        MAKE_ATOMIC_SCALAR_INTRINSICS(Store)
+    };
+    for (auto fun : atomicStoreIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 3);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%s %%%d %%%d %%%d %%%d", op, args[0].name, scopeId.name, semanticsId.name, args[1].name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char*>> atomicExchangeIntrinsics =
+    {
+        MAKE_ATOMIC_SCALAR_INTRINSICS(Exchange)
+    };
+    for (auto fun : atomicExchangeIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 3);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%s %%%d %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name, args[1].name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+    
+    std::vector<std::tuple<Function*, const char*>> atomicCompareExchangeIntrinsics =
+    {
+        MAKE_ATOMIC_INT_INTRINSICS(CompareExchange)
+    };
+    for (auto fun : atomicCompareExchangeIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 3);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%s %%%d %%%d %%%d %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name, semanticsId.name, args[1].name, args[2].name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char*>> atomicIncrementDecrementIntrinsics =
+    {
+        MAKE_ATOMIC_INT_INTRINSICS(Increment)
+        , MAKE_ATOMIC_INT_INTRINSICS(Decrement)
+    };
+    for (auto fun : atomicIncrementDecrementIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 2);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomicI%s %%%d %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char*>> atomicAddSubIntrinsics =
+    {
+        MAKE_ATOMIC_INT_INTRINSICS(Add)
+        , MAKE_ATOMIC_INT_INTRINSICS(Sub)
+    };
+    for (auto fun : atomicAddSubIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 3);
             assert(args[2].isLiteral);
-            const char* scope = ExecutionTable[args[2].literalValue];
-            const char* semantics = SemanticsTable[args[1].literalValue];
-            uint32_t ret = g->AddMappedOp(Format("OpAtomicLoad %%%d %%%d %s %s", returnType, args[0].name, scope, semantics));
+
+            SPIRVResult addend = args[1];
+            if (addend.isLiteral)
+                addend = LoadValueSPIRV(c, g, args[1]);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomicI%s %%%d %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name, addend.name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char, const char*>> atomicMinMaxIntrinsics =
+    {
+        MAKE_ATOMIC_SIGNED_INT_INTRINSICS(Min)
+        , MAKE_ATOMIC_SIGNED_INT_INTRINSICS(Max)
+    };
+    for (auto fun : atomicMinMaxIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [sign = std::get<1>(fun), op = std::get<2>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 2);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%c%s %%%d %%%d %%%d %%%d %%%d", sign, op, returnType, args[0].name, scopeId.name, semanticsId.name, args[1].name));
+            return SPIRVResult(ret, returnType);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char*>> atomicAndOrXorIntrinsics =
+{
+        MAKE_ATOMIC_INT_INTRINSICS(And)
+        , MAKE_ATOMIC_INT_INTRINSICS(Or)
+        , MAKE_ATOMIC_INT_INTRINSICS(Xor)
+    };
+    for (auto fun : atomicAndOrXorIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] =  [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            assert(args.size() == 2);
+            assert(args[1].isLiteral);
+            
+            uint32_t scope = ScopeToAtomicScope(args[0].scope);
+            uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+            semantics |= ScopeToMemorySemantics(args[0].scope);
+
+            SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+            SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+            uint32_t ret = g->AddMappedOp(Format("OpAtomic%s %%%d %%%d %%%d %%%d %%%d", op, returnType, args[0].name, scopeId.name, semanticsId.name, args[1].name));
             return SPIRVResult(ret, returnType);
         };
     }
 
     this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddOp(Format("OpControlBarrier %s %s %s"));
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(1));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+        g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::ExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
+        g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::ExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
+        g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
     this->intrinsicMap[Intrinsics::MemoryExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-        g->AddOp(Format("OpMemoryBarrier %s %s %s"));
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(1));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+        g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
+        g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
+        g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
@@ -3302,7 +3567,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         rightType = binaryExpressionResolved->conversionFunction->returnType;
     }
 
-    if (leftType == rightType && binaryExpression->op == '=')
+    if (leftType.Assignable(rightType) && binaryExpression->op == '=')
     {
         assert(!leftValue.isValue);
 
@@ -3405,7 +3670,7 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         accessExpression->left->EvalType(lhsType);
         Type* lhsSymbol = compiler->GetSymbol<Type>(lhsType.name);
 
-        if (lhsType.modifiers.front() == Type::FullType::Modifier::Array)
+        if (lhsType.modifiers.size() > 0 && lhsType.modifiers.front() == Type::FullType::Modifier::Array)
         {
             assert(accessExpressionResolved->rightSymbol == "length");
             assert(lhsType.modifierValues.front() > 0);

@@ -70,28 +70,32 @@ CallExpression::Resolve(Compiler* compiler)
     }
     std::string callSignature = Format("%s(%s)", thisResolved->functionSymbol.c_str(), argList.c_str());
     Symbol* symbol = compiler->GetSymbol(callSignature);
+
+    struct Candidate
+    {
+        Function* function;
+        bool needsConversion;
+        std::vector<Function*> argumentConversionFunction;
+    };
     if (symbol == nullptr)
     {
         // If the function isn't available, check for any type constructor that might implement it
         std::vector<Symbol*> functionSymbols = compiler->GetSymbols(thisResolved->functionSymbol.c_str());
-        bool overloadFound = false;
-        bool requiresConversion = false;
+        std::vector<Candidate> candidates;
         for (auto functionSymbol : functionSymbols)
         {
-            if (overloadFound)
-                break;
             if (functionSymbol->symbolType == Type::SymbolType::TypeType)
             {
                 Type* type = static_cast<Type*>(functionSymbol);
                 for (Symbol* ctor : type->constructors)
                 {
                     Function* ctorFun = static_cast<Function*>(ctor);
-                    thisResolved->function = ctorFun;
-                    thisResolved->returnType = thisResolved->function->returnType;
-                    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                    Candidate candidate;
+                    candidate.needsConversion = false;
+                    candidate.function = ctorFun;
+
                     if (ctorFun->parameters.size() == thisResolved->argTypes.size())
                     {
-                        requiresConversion = false;
                         uint32_t numMatches = 0;
                         for (size_t i = 0; i < ctorFun->parameters.size(); i++)
                         {
@@ -103,23 +107,21 @@ CallExpression::Resolve(Compiler* compiler)
                                 // No conversion available for this member, skip to next constructor
                                 if (componentConversionSymbol == nullptr)
                                 {
-                                    thisResolved->conversions.clear();
                                     break;
                                 }
-                                thisResolved->conversions.push_back(static_cast<Function*>(componentConversionSymbol));
-                                requiresConversion = true;
+                                candidate.needsConversion = true;
+                                candidate.argumentConversionFunction.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
                             else
                             {
                                 // No conversion needed
-                                thisResolved->conversions.push_back(nullptr);
+                                candidate.argumentConversionFunction.push_back(nullptr);
                             }
                             numMatches++;
                         }
                         if (numMatches == ctorFun->parameters.size())
                         {
-                            overloadFound = true;
-                            break;
+                            candidates.push_back(candidate);
                         }
                     }
                 }
@@ -127,12 +129,11 @@ CallExpression::Resolve(Compiler* compiler)
             else if (functionSymbol->symbolType == Type::SymbolType::FunctionType)
             {
                 Function* fun = static_cast<Function*>(functionSymbol);
-                thisResolved->function = fun;
-                thisResolved->returnType = thisResolved->function->returnType;
-                thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                Candidate candidate;
+                candidate.function = fun;
+                candidate.needsConversion = false;
                 if (fun->parameters.size() == thisResolved->argTypes.size())
                 {
-                    requiresConversion = false;
                     uint32_t numMatches = 0;
                     for (size_t i = 0; i < fun->parameters.size(); i++)
                     {
@@ -144,38 +145,78 @@ CallExpression::Resolve(Compiler* compiler)
                             // No conversion available for this member, skip to next constructor
                             if (componentConversionSymbol == nullptr)
                             {
-                                thisResolved->conversions.clear();
                                 break;
                             }
-                            thisResolved->conversions.push_back(static_cast<Function*>(componentConversionSymbol));
-                            requiresConversion = true;
+                            candidate.needsConversion = true;
+                            candidate.argumentConversionFunction.push_back(static_cast<Function*>(componentConversionSymbol));
                         }
                         else
                         {
                             // No conversion needed
-                            thisResolved->conversions.push_back(nullptr);
+                            candidate.argumentConversionFunction.push_back(nullptr);
                         }
                         numMatches++;
                     }
                     if (numMatches == fun->parameters.size())
                     {
-                        overloadFound = true;
+                        candidates.push_back(candidate);
                     }
                 }
             }
         }
-        if (!overloadFound)
+
+        if (candidates.empty())
         {
             compiler->Error(Format("No overload exists for %s", callSignature.c_str()), this);
             thisResolved->function = nullptr;
             return false;
         }
-        else if (requiresConversion)
+        else
         {
-            if (compiler->options.disallowImplicitConversion)
+            std::vector<Candidate> ambiguousCalls;
+            for (auto& candidate : candidates)
             {
-                compiler->Error(Format("Overload exists for %s but is disallowed. Either disable disallowImplicitConversion or explicitly convert arguments", callSignature.c_str()), this);
-                return false;
+                if (!candidate.needsConversion)
+                {
+                    thisResolved->function = candidate.function;
+                    thisResolved->returnType = thisResolved->function->returnType;
+                    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                    thisResolved->conversions.clear();
+                    ambiguousCalls.clear();
+                    break;
+                }
+                else
+                {
+                    ambiguousCalls.push_back(candidate);
+                }
+            }
+            if (ambiguousCalls.size() > 1)
+            {
+                if (compiler->options.disallowImplicitConversion)
+                {
+                    compiler->Error(Format("Overload exists for %s but is disallowed. Either disable disallowImplicitConversion or explicitly convert arguments", callSignature.c_str()), this);
+                    return false;
+                }
+                else
+                {
+                    std::string fmt = Format("Ambiguous call %s, could be:\n", callSignature.c_str());
+                    for (auto& candidate : ambiguousCalls)
+                    {
+                        fmt.append(Format("%s", Symbol::Resolved(candidate.function)->signature.c_str()));
+                        if (&candidate != &ambiguousCalls.back())
+                            fmt.append(",\n");
+                    }
+                    compiler->Error(fmt, this);
+                    thisResolved->function = nullptr;
+                    return false;
+                }
+            }
+            else if (ambiguousCalls.size() == 1)
+            {
+                thisResolved->function = ambiguousCalls[0].function;
+                thisResolved->conversions = ambiguousCalls[0].argumentConversionFunction;
+                thisResolved->returnType = thisResolved->function->returnType;
+                thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
             }
         }
     }
@@ -183,7 +224,7 @@ CallExpression::Resolve(Compiler* compiler)
     {
         if (symbol->symbolType != Symbol::FunctionType)
         {
-            compiler->Error(Format("'%s' is not a function", thisResolved->functionSymbol.c_str()), this);
+            compiler->Error(Format("Unrecognized function '%s' called", thisResolved->functionSymbol.c_str()), this);
         }
         thisResolved->function = static_cast<Function*>(symbol);
     }

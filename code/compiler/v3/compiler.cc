@@ -154,11 +154,13 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->target.name = "SPIRV";
         this->target.generator = new SPIRVGenerator();
         this->target.supportsPhysicalAddressing = true;
+        this->target.supportsGlobalDeviceStorage = true;
         break;
     case Language::VULKAN_SPIRV:
         this->target.name = "VULKAN-SPIRV";
         this->target.generator = new SPIRVGenerator();
         this->target.supportsPhysicalAddressing = false;
+        this->target.supportsGlobalDeviceStorage = false;
         break;
     }
 

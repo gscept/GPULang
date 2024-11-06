@@ -38,6 +38,7 @@
 #include "util.h"
 #include <algorithm>
 
+#include "../../../app/shaders/computewithstore.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/statements/discardstatement.h"
 
@@ -102,7 +103,7 @@ static std::set<std::string> pointerQualifiers =
 
 static std::set<std::string> storageQualifiers =
 {
-    "uniform", "inline", "workgroup", "link_defined"
+    "uniform", "inline", "workgroup", "device", "link_defined"
 };
 
 static std::set<std::string> textureQualifiers =
@@ -1741,6 +1742,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             varResolved->storage = Variable::__Resolved::Storage::Workgroup;
         }
+        else if (attr.name == "device")
+        {
+            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            {
+                compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                return false;
+            }
+            if (!compiler->target.supportsGlobalDeviceStorage)
+            {
+                compiler->Error(Format("'device' storage not supported by target '%s'", compiler->target.name.c_str()), symbol);
+                return false;
+            }
+            varResolved->storage = Variable::__Resolved::Storage::Device;
+        }
         else
         {
             // more complicated lookups
@@ -1875,7 +1890,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         if (varResolved->storage == Variable::__Resolved::Storage::Workgroup)
         {
-            compiler->Error(Format("Variables with 'workgroup' storage may only be global", type->name.c_str()), symbol);
+            compiler->Error(Format("Variables with 'workgroup' storage may only be globally declared", type->name.c_str()), symbol);
+            return false;
+        }
+        if (varResolved->storage == Variable::__Resolved::Storage::Device)
+        {
+            compiler->Error(Format("Variables with 'device' storage may only be globally declared", type->name.c_str()), symbol);
             return false;
         }
     }
@@ -1934,16 +1954,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
 
             compiler->Error(Format("PixelCache can not be mutable", type->name.c_str()), symbol);
-            return false;
-        }
-        else if (type->category == Type::ScalarCategory)
-        {
-            compiler->Error(Format("Scalar can not be mutable", type->name.c_str()), symbol);
-            return false;
-        }
-        else if (type->category == Type::EnumCategory)
-        {
-            compiler->Error(Format("Enum can not be mutable", type->name.c_str()), symbol);
             return false;
         }
     }

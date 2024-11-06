@@ -282,12 +282,6 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(new UIntExpression(0x1));
     memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(new UIntExpression(0x2));
     memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(new UIntExpression(0x4));
-    memorySemanticsEnum->labels.push_back("UniformMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x8));
-    memorySemanticsEnum->labels.push_back("SubgroupMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x10));
-    memorySemanticsEnum->labels.push_back("WorkgroupMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x20));
-    memorySemanticsEnum->labels.push_back("DeviceMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x40));
-    memorySemanticsEnum->labels.push_back("AtomicCounterMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x80));
-    memorySemanticsEnum->labels.push_back("ImageMemory"); memorySemanticsEnum->values.push_back(new UIntExpression(0x100));
     memorySemanticsEnum->builtin = true;
     DefaultTypes.push_back(memorySemanticsEnum);
 

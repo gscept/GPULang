@@ -349,7 +349,7 @@ extern Function* SubgroupBallotLastOne;
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicCompareExchange, ty)
-    SINGLE_COMPONENT_LIST
+    INT_SINGLE_LIST
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(AtomicIncrement, ty)
@@ -389,7 +389,11 @@ extern Function* SubgroupBallotLastOne;
 #undef X
 
 extern Function* ExecutionBarrier;
+extern Function* ExecutionBarrierSubgroup;
+extern Function* ExecutionBarrierWorkgroup;
 extern Function* MemoryExecutionBarrier;
+extern Function* MemoryExecutionBarrierSubgroup;
+extern Function* MemoryExecutionBarrierWorkgroup;
 
 extern Function* PixelCacheLoad;
 extern Function* PixelCacheLoadMS;

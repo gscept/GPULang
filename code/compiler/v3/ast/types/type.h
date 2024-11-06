@@ -191,7 +191,8 @@ struct Type : public Symbol
         UserTypeCategory,
         EnumCategory,
         VoidCategory,
-        SamplerCategory
+        SamplerCategory,
+        AccelerationStructureCategory
     };
 
     // Per element, the bit defines which other element it should be swizzled to (0, 1, 2, 3)
@@ -356,6 +357,23 @@ struct Type : public Symbol
         std::string signature;
 
         static const uint32_t UNSIZED_ARRAY = 0;
+
+        bool Assignable(const FullType& rhs) const
+        {
+            if (this->literal)
+                return false;
+            if (this->sampled)
+                return false;
+            if (this->modifiers != rhs.modifiers)
+                return false;
+            for (size_t i = 0; i < this->modifierValues.size(); i++)
+                if (this->modifierValues[i] != 0                             // 0 means unsized, and thus it accepts anything
+                    && this->modifierValues[i] != rhs.modifierValues[i])
+                    return false;
+            if (this->name != rhs.name)
+                return false;
+            return true;
+        }
 
         bool operator==(const FullType& rhs) const
         {

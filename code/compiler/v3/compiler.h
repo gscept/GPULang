@@ -67,6 +67,7 @@ struct Compiler
 
         uint8_t supportsPhysicalAddressing : 1;
         uint8_t supportsInlineSamplers : 1;
+        uint8_t supportsGlobalDeviceStorage : 1;
     } target;
 
     /// constructor

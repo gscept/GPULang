@@ -57,6 +57,7 @@ struct SPIRVResult
     enum Storage
     {
         Private,
+        Device,
         WorkGroup,
         Uniform,
         UniformConstant,
@@ -74,36 +75,29 @@ struct SPIRVResult
     {
         switch (s)
         {
+            case Storage::Device:
+                return "CrossWorkgroup";
             case Storage::Private:
                 return "Private";
-                break;
             case Storage::WorkGroup:
                 return "WorkGroup";
-                break;
             case Storage::Uniform:
                 return "Uniform";
-                break;
             case Storage::Sampler:
             case Storage::Image:
             case Storage::MutableImage:
             case Storage::UniformConstant:
                 return "UniformConstant";
-                break;
             case Storage::StorageBuffer:
                 return "StorageBuffer";
-                break;
             case Storage::PushConstant:
                 return "PushConstant";
-                break;
             case Storage::Function:
                 return "Function";
-                break;
             case Storage::Input:
                 return "Input";
-                break;
             case Storage::Output:
                 return "Output";
-                break;
             default:
                 assert(false);
                 return "";

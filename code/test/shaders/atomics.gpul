@@ -1,0 +1,17 @@
+struct Test
+{
+    Counter : u32;
+};
+
+uniform Uniform : *mutable Test;
+
+entry_point
+Atomics() void
+{
+    atomicAdd(Uniform.Counter, 2u, MemorySemantics.Relaxed);
+}
+
+program TestProgram
+{
+    ComputeShader = Atomics;
+};

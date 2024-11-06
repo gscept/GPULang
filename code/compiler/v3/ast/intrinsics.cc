@@ -244,7 +244,11 @@ Function* SubgroupBallotLastOne;
 #undef X
 
 Function* ExecutionBarrier;
+Function* ExecutionBarrierSubgroup;
+Function* ExecutionBarrierWorkgroup;
 Function* MemoryExecutionBarrier;
+Function* MemoryExecutionBarrierSubgroup;
+Function* MemoryExecutionBarrierWorkgroup;
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(SubgroupSwapDiagonal, ty)
     SCALAR_LIST

@@ -88,6 +88,7 @@ struct Variable : public Symbol
             Default,                                // default storage, on the stack
             Uniform,                                // variable is uniform (const) across all threads and provided by the CPU
             Workgroup,                              // variable is shared by workgroup and can be written/read
+            Device,                                 // variable is visible across all workgroups
             InlineUniform,                          // variable is uniform but read from command buffer
             Input,                                  // variable is an input from a previous shader stage
             Output,                                 // variable is an output from the current shader stage

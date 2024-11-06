@@ -81,14 +81,14 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
 
     // If assignment, allow if types are identical
-    if (thisResolved->leftType != thisResolved->rightType && this->op == '=')
+    if (!thisResolved->leftType.Assignable(thisResolved->rightType) && this->op == '=')
     {
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
         std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
         Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
         if (conversionFunction == nullptr)
         {
-            compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str(), thisResolved->rhsType->name.c_str()), this);
+            compiler->Error(Format("Type '%s' does not implement '%s' with '%s'", thisResolved->leftType.ToString().c_str(), functionName.c_str(), thisResolved->rightType.ToString().c_str()), this);
             return false;
         }
         else
