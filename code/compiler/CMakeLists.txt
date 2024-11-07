@@ -13,13 +13,14 @@ target_include_directories(gpulang_compiler PUBLIC
     ${GPULANG_ROOT}/code/compiler
     ${GPULANG_ROOT}/code/compiler/ext/antlr4/src
     ${GPULANG_ROOT}/code/compiler/ext/mcpp
-    ${GPULANG_ROOT}/code/compiler/v3
     )
 
-fips_files(
-    gpulangcompiler.cc
-    gpulangcompiler.h
-)
+    fips_files(
+        compiler.cc
+        compiler.h
+        gpulangcompiler.cc
+        gpulangcompiler.h
+    )
 
 fips_dir(parser4)
     fips_files(
@@ -32,13 +33,8 @@ fips_dir(parser4)
         gpulangtoken.cpp
         gpulangtoken.h
     )
-
-fips_dir(v3)
-    fips_files(
-        compiler.cc
-        compiler.h
-    )
-fips_dir(v3/ast)
+    
+fips_dir(ast)
     fips_files(
         alias.h
         alias.cc
@@ -67,7 +63,7 @@ fips_dir(v3/ast)
         variable.cc
         variable.h
     )
-fips_dir(v3/ast/expressions)
+fips_dir(ast/expressions)
     fips_files(
         accessexpression.cc
         accessexpression.h
@@ -104,7 +100,7 @@ fips_dir(v3/ast/expressions)
         unaryexpression.cc
         unaryexpression.h
     )
-fips_dir(v3/ast/statements)
+fips_dir(ast/statements)
     fips_files(
         breakstatement.cc
         breakstatement.h
@@ -129,7 +125,7 @@ fips_dir(v3/ast/statements)
         whilestatement.cc
         whilestatement.h
     )
-fips_dir(v3/ast/types)
+fips_dir(ast/types)
     fips_files(
         bool.cc
         bool.h
@@ -194,7 +190,7 @@ fips_dir(v3/ast/types)
         type.h
     )
 
-fips_dir(v3/generators)
+fips_dir(generators)
     fips_files(
         generator.cc
         generator.h
@@ -207,7 +203,7 @@ fips_dir(v3/generators)
         spirvgenerator.cc
         spirvgenerator.h
     )
-fips_dir(v3/validators)
+fips_dir(validators)
     fips_files(
         validator.cc
         validator.h

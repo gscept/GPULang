@@ -10,7 +10,7 @@
 */
 //------------------------------------------------------------------------------
 #include "ast/symbol.h"
-#include "v3/ast/types/type.h"
+#include "ast/types/type.h"
 
 namespace GPULang
 {

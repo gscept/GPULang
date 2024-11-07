@@ -3,10 +3,10 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "accessexpression.h"
-#include "v3/ast/expressions/enumexpression.h"
+#include "ast/expressions/enumexpression.h"
 #include "util.h"
 #include "compiler.h"
-#include "v3/ast/variable.h"
+#include "ast/variable.h"
 namespace GPULang 
 {
 

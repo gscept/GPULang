@@ -5,7 +5,7 @@
 #include "expression.h"
 #include "util.h"
 #include "compiler.h"
-#include "v3/ast/types/type.h"
+#include "ast/types/type.h"
 
 namespace GPULang
 {

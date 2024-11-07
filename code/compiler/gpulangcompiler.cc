@@ -7,8 +7,8 @@
 //------------------------------------------------------------------------------
 #include "cmdlineargs.h"
 #include "gpulangcompiler.h"
-#include "v3/compiler.h"
-#include "v3/ast/effect.h"
+#include "compiler.h"
+#include "ast/effect.h"
 #include <time.h>
 
 #include "antlr4-runtime.h"

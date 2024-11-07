@@ -8,9 +8,9 @@
 #include "ast/function.h"
 #include "compiler.h"
 #include "util.h"
-#include "v3/ast/types/type.h"
-#include "v3/ast/structure.h"
-#include "v3/ast/expressions/enumexpression.h"
+#include "ast/types/type.h"
+#include "ast/structure.h"
+#include "ast/expressions/enumexpression.h"
 #include <string>
 
 namespace GPULang

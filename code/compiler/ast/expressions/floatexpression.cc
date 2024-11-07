@@ -5,7 +5,7 @@
 #include "floatexpression.h"
 #include "compiler.h"
 #include "util.h"
-#include "v3/ast/types/type.h"
+#include "ast/types/type.h"
 
 namespace GPULang
 {

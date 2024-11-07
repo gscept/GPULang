@@ -3,7 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "state.h"
-#include "v3/ast/expressions/binaryexpression.h"
+#include "ast/expressions/binaryexpression.h"
 #include <map>
 namespace GPULang
 {

@@ -11,14 +11,14 @@
 #include "generators/hgenerator.h"
 #include "util.h"
 #include "ast/expressions/boolexpression.h"
-#include "v3/ast/types/type.h"
-#include "v3/ast/function.h"
-#include "v3/ast/variable.h"
-#include "v3/ast/renderstate.h"
-#include "v3/ast/samplerstate.h"
-#include "v3/ast/program.h"
-#include "v3/ast/structure.h"
-#include "v3/ast/variable.h"
+#include "ast/types/type.h"
+#include "ast/function.h"
+#include "ast/variable.h"
+#include "ast/renderstate.h"
+#include "ast/samplerstate.h"
+#include "ast/program.h"
+#include "ast/structure.h"
+#include "ast/variable.h"
 namespace GPULang
 {
 

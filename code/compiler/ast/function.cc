@@ -8,8 +8,8 @@
 #include "types/type.h"
 #include "compiler.h"
 #include "intrinsics.h"
-#include "v3/ast/expressions/symbolexpression.h"
-#include "v3/ast/expressions/unaryexpression.h"
+#include "ast/expressions/symbolexpression.h"
+#include "ast/expressions/unaryexpression.h"
 
 namespace GPULang
 {

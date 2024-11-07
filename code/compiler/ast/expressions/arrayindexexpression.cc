@@ -5,8 +5,8 @@
 #include "arrayindexexpression.h"
 #include "util.h"
 #include "compiler.h"
-#include "v3/ast/function.h"
-#include "v3/ast/types/type.h"
+#include "ast/function.h"
+#include "ast/types/type.h"
 namespace GPULang 
 {
 
