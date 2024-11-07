@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.21)
 
+option(BUILD_GPULANG_STANDALONE_COMPILER "Build standalone compiler" ON)
 if(NOT FIPS_IMPORT)
 	project(gpulang)
     get_filename_component(FIPS_ROOT_DIR "../fips" ABSOLUTE)
-    include("${FIPS_ROOT_DIR}/cmake/fips.cmake")
-	SET(BUILD_GPULANG_STANDALONE_COMPILER 1)
+    include("${FIPS_ROOT_DIR}/cmake/fips.cmake")	
+    SET(BUILD_COMPILER 1)
     option(BUILD_GPULANG_APP "Build GPULang with the test app" ON)
 	fips_setup()
 endif()
@@ -29,3 +30,7 @@ ENDIF()
 	get_filename_component(GPULANG_SOURCE_DIR "gpulang" ABSOLUTE)
 
 	add_subdirectory(code)
+	
+IF(BUILD_GPULANG_STANDALONE_COMPILER)
+    add_subdirectory(gpulangcompiler)
+ENDIF()
