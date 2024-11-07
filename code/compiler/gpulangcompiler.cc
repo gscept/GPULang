@@ -9,13 +9,11 @@
 #include "gpulangcompiler.h"
 #include "compiler.h"
 #include "ast/effect.h"
-#include <time.h>
 
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
 #include "parser4/GPULangLexer.h"
 #include "parser4/GPULangParser.h"
-#include "parser4/GPULangBaseListener.h"
 #include "parser4/gpulangerrorhandlers.h"
 
 using namespace antlr4;
