@@ -2269,6 +2269,7 @@ SPIRVGenerator::SetupIntrinsics()
             case SPIRVResult::MutableImage:
                 assert(false);
         }
+        return 0;
     };
 
     static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
