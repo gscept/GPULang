@@ -388,6 +388,12 @@ extern Function* SubgroupBallotLastOne;
     INT_SINGLE_LIST
 #undef X
 
+extern Function* BitInsert;
+extern Function* BitSExtract;
+extern Function* BitUExtract;
+extern Function* BitReverse;
+extern Function* BitCount;
+
 extern Function* ExecutionBarrier;
 extern Function* ExecutionBarrierSubgroup;
 extern Function* ExecutionBarrierWorkgroup;
@@ -397,6 +403,26 @@ extern Function* MemoryExecutionBarrierWorkgroup;
 
 extern Function* PixelCacheLoad;
 extern Function* PixelCacheLoadMS;
+
+#define X(ty, index) DECLARE_TEXTURE_INTRINSIC(GetSize, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DECLARE_TEXTURE_INTRINSIC(GetSizeMip, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DECLARE_TEXTURE_INTRINSIC(GetSampledMip, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DECLARE_TEXTURE_INTRINSIC(GetMips, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DECLARE_TEXTURE_INTRINSIC(GetSamples, ty)
+    TEXTURE_INTRINSIC_ONLY_MS_LIST
+#undef X
 
 #define X(ty, index) DECLARE_TEXTURE_INTRINSIC(LoadBase, ty)
     TEXTURE_INTRINSIC_ALL_LIST

@@ -640,11 +640,11 @@ FLOAT_LIST
     SCALAR_LIST
 #undef X
 
-    //------------------------------------------------------------------------------
-    /**
-        Atomic intrinsics
-    */
-    //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+/**
+    Atomic intrinsics
+*/
+//------------------------------------------------------------------------------
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicLoad, AtomicLoad, ty)\
     __ADD_ARG_LIT(value, ty);\
@@ -773,13 +773,23 @@ FLOAT_LIST
     INT_SINGLE_LIST
 #undef X
     
+//------------------------------------------------------------------------------
+/**
+    Bit intrinsics
+*/
+//------------------------------------------------------------------------------
+    __MAKE_BUILTIN(bitInsert, BitInsert);
+    __ADD_ARG_LIT(base, u32);
+    __ADD_ARG_LIT(insert, u32);
+    __ADD_ARG_LIT(offset, u32);
+    __ADD_ARG_LIT(count, u32);
+    __SET_RET_LIT(u32);
 
-
-    //------------------------------------------------------------------------------
-    /**
-        Barrier intrinsics
-    */
-    //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+/**
+    Barrier intrinsics
+*/
+//------------------------------------------------------------------------------
 
     __MAKE_BUILTIN(executionBarrier, ExecutionBarrier);
     __SET_RET_LIT(void);
@@ -806,7 +816,7 @@ FLOAT_LIST
     */
     //------------------------------------------------------------------------------
 
-    std::string intCoordinates[] =
+    static const char* intCoordinates[] =
     {
         "i32"
         , "i32x2"
@@ -817,6 +827,19 @@ FLOAT_LIST
         , "i32x3"
         , "i32x3"
         , "i32x4"
+    };
+
+    static const char* dimensionality[] =
+    {
+        "u32",
+        "u32x2",
+        "u32x2",
+        "u32x3",
+        "u32x2",
+        "u32x2",
+        "u32x3",
+        "u32x3",
+        "u32x4"
     };
 
 
@@ -854,6 +877,30 @@ Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 
+#define __MAKE_TEXTURE_QUERY_INTRINSIC(ty, overload, index)\
+newIntrinsic = new Function(); \
+newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->returnType = { dimensionality[index] }; \
+Intrinsics::Texture##ty##_##overload = newIntrinsic;\
+DefaultIntrinsics.push_back(newIntrinsic);\
+__ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
+
+#define __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
+newIntrinsic = new Function(); \
+newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->returnType = { #ret }; \
+Intrinsics::Texture##ty##_##overload = newIntrinsic;\
+DefaultIntrinsics.push_back(newIntrinsic);\
+__ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
+
+#define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
+newIntrinsic = new Function(); \
+newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->returnType = { #ret }; \
+Intrinsics::Texture##ty##_##overload = newIntrinsic;\
+DefaultIntrinsics.push_back(newIntrinsic);\
+__ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
+
 #define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
@@ -888,6 +935,38 @@ Intrinsics::SampledTexture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
+#define X(type, index)\
+    __MAKE_TEXTURE_QUERY_INTRINSIC(GetSize, type, index)
+
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(type, index)\
+    __MAKE_TEXTURE_QUERY_INTRINSIC(GetSizeMip, type, index)\
+    __ADD_ARG_LIT(mip, f32);
+
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(type, index)\
+    __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(GetSampledMip, type, f32)\
+    __ADD_HANDLE_ARG_LIT(sampler, sampler);\
+    __ADD_ARG(coords, intCoordinates[index]);
+    
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(type, index)\
+    __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(GetMips, type, u32)\
+        
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(type, index)\
+    __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(GetSamples, type, u32)\
+            
+    TEXTURE_INTRINSIC_ONLY_MS_LIST
+#undef X
 
 #define X(type, index)\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(Load, type, f32x4)\

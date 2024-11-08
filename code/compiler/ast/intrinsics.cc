@@ -243,6 +243,12 @@ Function* SubgroupBallotLastOne;
     INT_SINGLE_LIST
 #undef X
 
+Function* BitInsert;
+Function* BitSExtract;
+Function* BitUExtract;
+Function* BitReverse;
+Function* BitCount;
+
 Function* ExecutionBarrier;
 Function* ExecutionBarrierSubgroup;
 Function* ExecutionBarrierWorkgroup;
@@ -263,20 +269,40 @@ Function* MemoryExecutionBarrierWorkgroup;
 Function* PixelCacheLoad;
 Function* PixelCacheLoadMS;
 
+#define X(ty, index) DEFINE_TEXTURE_INTRINSIC(GetSize, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DEFINE_TEXTURE_INTRINSIC(GetSizeMip, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DEFINE_TEXTURE_INTRINSIC(GetSampledMip, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DEFINE_TEXTURE_INTRINSIC(GetMips, ty)
+    TEXTURE_INTRINSIC_NO_MS_LIST
+#undef X
+
+#define X(ty, index) DEFINE_TEXTURE_INTRINSIC(GetSamples, ty)
+    TEXTURE_INTRINSIC_ONLY_MS_LIST
+#undef X
+
 #define X(ty, index) DEFINE_TEXTURE_INTRINSIC(LoadBase, ty)
-TEXTURE_INTRINSIC_ALL_LIST
+    TEXTURE_INTRINSIC_ALL_LIST
 #undef X
 
 #define X(ty, index) DEFINE_TEXTURE_INTRINSIC(LoadMip, ty)
-TEXTURE_INTRINSIC_ALL_LIST
+    TEXTURE_INTRINSIC_ALL_LIST
 #undef X
 
 #define X(ty, index) DEFINE_TEXTURE_INTRINSIC(StoreBase, ty)
-TEXTURE_INTRINSIC_ALL_LIST
+    TEXTURE_INTRINSIC_ALL_LIST
 #undef X
 
 #define X(ty, index) DEFINE_TEXTURE_INTRINSIC(StoreMip, ty)
-TEXTURE_INTRINSIC_ALL_LIST
+    TEXTURE_INTRINSIC_ALL_LIST
 #undef X
 
 #define X(ty, index) DEFINE_TEXTURE_INTRINSIC(FetchBase, ty)

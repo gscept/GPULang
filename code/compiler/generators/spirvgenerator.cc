@@ -2488,47 +2488,202 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
-    this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::BitInsert] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("BitInstructions");
+        SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+        SPIRVResult insert = LoadValueSPIRV(c, g, args[1]);
+        SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
+        SPIRVResult count = LoadValueSPIRV(c, g, args[3]);
+        uint32_t res = g->AddMappedOp(Format("OpBitFieldInsert %%%d %%%d %%%d %%%d %%%d", returnType, base.name, insert.name, offset.name, count.name));
+        return SPIRVResult(res, returnType);
+    };
+
+    std::vector<std::tuple<Function*, char>> bitExtractFunctions =
+    {
+        { Intrinsics::BitSExtract, 'S' }
+        , { Intrinsics::BitUExtract, 'U' }
+    };
+    for (auto fun : bitExtractFunctions)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [sign = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddCapability("BitInstructions");
+            SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+            SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+            uint32_t res = g->AddMappedOp(Format("OpBitField%cExtract %%%d %%%d %%%d %%%d", sign, returnType, base.name, offset.name, count.name));
+            return SPIRVResult(res, returnType);
+        };
+    }
+
+    this->intrinsicMap[Intrinsics::BitReverse] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("BitInstructions");
+        SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+        uint32_t res = g->AddMappedOp(Format("OpBitReverse %%%d %%%d", returnType, base.name));
+        return SPIRVResult(res, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::BitCount] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("BitInstructions");
+        SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+        uint32_t res = g->AddMappedOp(Format("OpBitCount %%%d %%%d", returnType, base.name));
+        return SPIRVResult(res, returnType);
+    };
+    
+    this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::ExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::ExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult 
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::ExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::ExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::MemoryExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::MemoryExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
         SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
+
+    static auto createSampledImage = [](Compiler* c, SPIRVGenerator* g, SPIRVResult arg0, SPIRVResult arg1) -> SPIRVResult
+    {
+        assert(arg0.parentTypes.size() > 0);
+        uint32_t image = g->AddMappedOp(Format("OpLoad %%%d %%%d", arg0.parentTypes[0], arg0.name));
+        uint32_t sampler = arg1.name;
+        if (!arg1.isValue)
+            sampler = g->AddMappedOp(Format("OpLoad %%%d %%%d", arg1.parentTypes[0], arg1.name));
+        uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", arg0.parentTypes[0]), Format("OpTypeSampledImage %%%d", arg0.parentTypes[0]), true);
+        uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image, sampler));
+        return SPIRVResult(sampledImage, sampledImage, true);
+    };
+
+    std::vector<std::tuple<Function*, bool>> textureGetSizeIntrinsics =
+    {
+        { Intrinsics::TextureGetSize_texture1D, false }
+        , { Intrinsics::TextureGetSize_texture1DArray, false }
+        , { Intrinsics::TextureGetSize_texture2D, false }
+        , { Intrinsics::TextureGetSize_texture2DArray, false }
+        , { Intrinsics::TextureGetSize_textureCube, false }
+        , { Intrinsics::TextureGetSize_textureCubeArray, false }
+        , { Intrinsics::TextureGetSize_texture3D, false }
+        , { Intrinsics::TextureGetSizeMip_texture1D, true }
+        , { Intrinsics::TextureGetSizeMip_texture1DArray, true }
+        , { Intrinsics::TextureGetSizeMip_texture2D, true }
+        , { Intrinsics::TextureGetSizeMip_texture2DArray, true }
+        , { Intrinsics::TextureGetSizeMip_textureCube, true }
+        , { Intrinsics::TextureGetSizeMip_textureCubeArray, true }
+        , { Intrinsics::TextureGetSizeMip_texture3D, true }
+    };
+    for (auto fun : textureGetSizeIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [mip = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddCapability("ImageQuery");
+            uint32_t ret;
+            if (mip)
+                ret = g->AddMappedOp(Format("OpImageQuerySizeLod %%%d %%%d %%%d", returnType, args[0].name, args[1].name));
+            else
+                ret = g->AddMappedOp(Format("OpImageQuerySize %%%d %%%d", returnType, args[0].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*>> textureGetSampledMipIntrinsics =
+    {
+        { Intrinsics::TextureGetSampledMip_texture1D }
+        , { Intrinsics::TextureGetSampledMip_texture1DArray }
+        , { Intrinsics::TextureGetSampledMip_texture2D }
+        , { Intrinsics::TextureGetSampledMip_texture2DArray }
+        , { Intrinsics::TextureGetSampledMip_textureCube }
+        , { Intrinsics::TextureGetSampledMip_textureCubeArray }
+        , { Intrinsics::TextureGetSampledMip_texture3D }
+        , { Intrinsics::TextureGetSampledMip_texture3D }
+    };
+    for (auto fun : textureGetSampledMipIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddCapability("ImageQuery");
+            uint32_t ret;
+            SPIRVResult sampledImage = createSampledImage(c, g, args[0], args[1]);
+            ret = g->AddMappedOp(Format("OpImageQueryLod %%%d %%%d %%%d", returnType, sampledImage.name, args[2].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+    
+    std::vector<std::tuple<Function*>> textureGetMips =
+    {
+        { Intrinsics::TextureGetMips_texture1D }
+        , { Intrinsics::TextureGetMips_texture1DArray }
+        , { Intrinsics::TextureGetMips_texture2D }
+        , { Intrinsics::TextureGetMips_texture2DArray }
+        , { Intrinsics::TextureGetMips_textureCube }
+        , { Intrinsics::TextureGetMips_textureCubeArray }
+        , { Intrinsics::TextureGetMips_texture3D }
+        , { Intrinsics::TextureGetMips_texture3D }
+    };
+    for (auto fun : textureGetSampledMipIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddCapability("ImageQuery");
+            uint32_t ret;
+            ret = g->AddMappedOp(Format("OpImageQueryLevels %%%d %%%d", returnType, args[0].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*>> textureGetSamples =
+    {
+        { Intrinsics::TextureGetSamples_texture2DMS }
+        , { Intrinsics::TextureGetSamples_texture2DMSArray }
+    };
+    for (auto fun : textureGetSampledMipIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->AddCapability("ImageQuery");
+            uint32_t ret;
+            ret = g->AddMappedOp(Format("OpImageQuerySamples %%%d %%%d", returnType, args[0].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
 
     std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
     {
@@ -2685,13 +2840,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         this->intrinsicMap[std::get<0>(fun)] = [operands = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             uint32_t ret = 0xFFFFFFFF;
-            assert(args[0].parentTypes.size() > 0);
-            uint32_t image = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[0].parentTypes[0], args[0].name));
-            uint32_t sampler = args[1].name;
-            if (!args[1].isValue)
-                sampler = g->AddMappedOp(Format("OpLoad %%%d %%%d", args[1].parentTypes[0], args[1].name));
-            uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", args[0].parentTypes[0]), Format("OpTypeSampledImage %%%d", args[0].parentTypes[0]), true);
-            uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image, sampler));
+            SPIRVResult sampledImage = createSampledImage(c, g, args[0], args[1]);
 
             std::string format = "";
             if (operands & Lod || operands & Grad)
@@ -2765,7 +2914,7 @@ SPIRVGenerator::SetupIntrinsics()
                         else
                             format = "OpImageSampleImplicitLod %%%d %%%d %%%d None";
 
-            std::vector<uint32_t> newArgs = { returnType, sampledImage };
+            std::vector<uint32_t> newArgs = { returnType, sampledImage.name };
             
             for (auto arg : newArgs)
             {
