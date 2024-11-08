@@ -14,7 +14,8 @@ namespace GPULang
 #define INT2_CTOR_LIST\
     X(Int2, ctor_SingleValue, i32, 1, 2, 2, None)\
     X(Int2, ctor_UInt2, u32x2, 1, 1, 2, UIntToInt)\
-    X(Int2, ctor_Float2, f32x2, 1, 1, 2, FloatToUInt)
+    X(Int2, ctor_Float2, f32x2, 1, 1, 2, FloatToUInt)\
+    X(Int2, ctor_Int2, i32x2, 1, 1, 2, None)
 
 struct Int2 : public Type
 {

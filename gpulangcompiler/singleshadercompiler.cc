@@ -91,12 +91,10 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
     
     std::vector<std::string> defines;
     std::vector<std::string> flags;
-    std::string define;
 	GPULang::Compiler::Options options;
-	defines.push_back(define);
 
     // first include this folder
-	define = "-I" + folder + "/";
+	std::string define = "-I" + folder + "/";
     defines.push_back(define);
 
     for (auto inc : this->includeDirs)
@@ -106,10 +104,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
     }
 	
     // if using debug, output raw shader code
-    if (!this->debug)
-    {
-    	options.optimize = false;
-    }
+	options.optimize = !this->debug;
 
     GPULangErrorBlob* errors = NULL;
 

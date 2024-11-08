@@ -15,7 +15,7 @@ class ShaderCompilerApp
 {
 public:
     /// run the application
-    void Run();
+    bool Run();
 
     /// parse command line arguments
     bool ParseCmdLineArgs(const char ** argv);    

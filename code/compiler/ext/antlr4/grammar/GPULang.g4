@@ -157,7 +157,7 @@ linePreprocessorEntry
         size_t origLine;
     }
     :
-    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL path = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $path.text }); }
+    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL path = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $path.val }); }
     ;
     
 alias
@@ -198,7 +198,7 @@ typeDeclaration
     ( 
         '*' { $type.AddModifier(Type::FullType::Modifier::Pointer); } |
         '[' { $type.AddModifier(Type::FullType::Modifier::Array); } 
-                ( arraySize0 = INTEGERLITERAL { $type.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+            ( arraySize0 = expression { $type.UpdateValue($arraySize0.tree); } )? 
         ']'
         | IDENTIFIER { $type.AddQualifier($IDENTIFIER.text); }
     )* 
@@ -286,7 +286,7 @@ structure
             ( 
                 '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); } |
                 '[' { varType.AddModifier(Type::FullType::Modifier::Array); } 
-                        ( arraySize0 = INTEGERLITERAL { varType.UpdateValue(atoi($arraySize0.text.c_str())); } )? 
+                    ( arraySize0 = expression { varType.UpdateValue($arraySize0.tree); } )?  
                 ']'
             )* 
             varTypeName = IDENTIFIER { varType.name = $varTypeName.text; } ';'

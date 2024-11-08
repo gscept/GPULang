@@ -10,6 +10,7 @@
 #include "intrinsics.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/unaryexpression.h"
+#include "ast/expressions/uintexpression.h"
 
 namespace GPULang
 {
@@ -157,7 +158,7 @@ newIntrinsic->parameters.push_back(newVar);
 newVar = new Variable();\
 newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Array);\
-newVar->type.UpdateValue(size);\
+newVar->type.UpdateValue(new UIntExpression(size));\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
@@ -208,7 +209,11 @@ Function::SetupIntrinsics()
 
     std::string scalarArgs[] =
     {
-        "i32"
+        "f32"
+        , "f32x2"
+        , "f32x3"
+        , "f32x4"
+        ,"i32"
         , "i32x2"
         , "i32x3"
         , "i32x4"
@@ -216,10 +221,6 @@ Function::SetupIntrinsics()
         , "u32x2"
         , "u32x3"
         , "u32x4"
-        , "f32"
-        , "f32x2"
-        , "f32x3"
-        , "f32x4"
         , "b8"
         , "b8x2"
         , "b8x3"
@@ -336,7 +337,7 @@ Function::SetupIntrinsics()
     __MAKE_INTRINSIC(dot, Dot, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __ADD_ARG(y, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
+    __SET_RET_LIT(f32);
 
     FLOAT_VEC_LIST
 #undef X
@@ -391,6 +392,35 @@ SCALAR_LIST
 #undef X
 
 #define X(ty, index)\
+    __MAKE_INTRINSIC(lerp, Lerp, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __ADD_ARG(y, scalarArgs[index]);\
+    __ADD_ARG(control, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(step, Step, ty)\
+    __ADD_ARG(edge, scalarArgs[index]);\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+    
+    FLOAT_LIST  
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(smoothStep, SmoothStep, ty)\
+    __ADD_ARG(edge0, scalarArgs[index]);\
+    __ADD_ARG(edge1, scalarArgs[index]);\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+    
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
     __MAKE_INTRINSIC(ceil, Ceil, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __ADD_ARG(y, scalarArgs[index]);\
@@ -411,7 +441,6 @@ FLOAT_LIST
 #define X(ty, index)\
     __MAKE_INTRINSIC(fract, Fract, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
 FLOAT_LIST
@@ -903,7 +932,7 @@ newIntrinsic->name = STRINGIFY(texture##ty); \
 newIntrinsic->returnType = { dimensionality[index] }; \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
-__ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
+__ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = new Function(); \
@@ -911,7 +940,7 @@ newIntrinsic->name = STRINGIFY(texture##ty); \
 newIntrinsic->returnType = { #ret }; \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
-__ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
+__ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = new Function(); \

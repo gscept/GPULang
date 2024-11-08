@@ -11,6 +11,7 @@
 #include <vector>
 #include <unordered_map>
 #include <map>
+
 #define STRINGIFY(x) #x
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
@@ -195,6 +196,66 @@ struct Type : public Symbol
         AccelerationStructureCategory
     };
 
+    static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs)
+    {
+        switch (lhs)
+        {
+            case TypeCode::UInt:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::UInt;
+                    case TypeCode::Int:
+                        return TypeCode::Int;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::UInt;
+                }
+                break;
+            case TypeCode::Int:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::Int;
+                    case TypeCode::Int:
+                        return TypeCode::Int;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::Int;
+                }
+                break;
+            case TypeCode::Float:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::Float;
+                    case TypeCode::Int:
+                        return TypeCode::Float;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::InvalidType;
+                }
+                break;
+            case TypeCode::Bool:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::UInt;
+                    case TypeCode::Int:
+                        return TypeCode::Int;
+                    case TypeCode::Float:
+                        return TypeCode::InvalidType;
+                    case TypeCode::Bool:
+                        return TypeCode::Bool;
+                }
+            break;
+        }
+        return TypeCode::InvalidType;
+    }
+
     // Per element, the bit defines which other element it should be swizzled to (0, 1, 2, 3)
     struct SwizzleMask
     {
@@ -283,7 +344,7 @@ struct Type : public Symbol
             this->name = type;
             this->literal = false;
         }
-        FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<uint32_t>& modifierValues)
+        FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
         {
             this->name = type;
             this->modifiers = modifiers;
@@ -293,7 +354,7 @@ struct Type : public Symbol
         std::string name;
         ImageFormat imageFormat = ImageFormat::Unknown;
 
-        void AddModifier(Modifier type, uint32_t value = 0x0)
+        void AddModifier(Modifier type, Expression* value = nullptr)
         {
             this->modifiers.push_back(type);
             this->modifierValues.push_back(value);
@@ -334,7 +395,7 @@ struct Type : public Symbol
             }
         }
 
-        void UpdateValue(uint32_t value)
+        void UpdateValue(Expression* value)
         {
             this->modifierValues.back() = value;
         }
@@ -353,47 +414,14 @@ struct Type : public Symbol
         };
 
         std::vector<Modifier> modifiers;
-        std::vector<uint32_t> modifierValues;
+        std::vector<Expression*> modifierValues;
         std::string signature;
 
         static const uint32_t UNSIZED_ARRAY = 0;
 
-        bool Assignable(const FullType& rhs) const
-        {
-            if (this->literal)
-                return false;
-            if (this->sampled)
-                return false;
-            if (this->modifiers != rhs.modifiers)
-                return false;
-            for (size_t i = 0; i < this->modifierValues.size(); i++)
-                if (this->modifierValues[i] != 0                             // 0 means unsized, and thus it accepts anything
-                    && this->modifierValues[i] != rhs.modifierValues[i])
-                    return false;
-            if (this->name != rhs.name)
-                return false;
-            return true;
-        }
-
-        bool operator==(const FullType& rhs) const
-        {
-            if (this->literal && !rhs.literal)
-                return false;
-            if (this->mut != rhs.mut)
-                return false;
-            if (this->sampled != rhs.sampled)
-                return false;
-            if (this->modifiers != rhs.modifiers)
-                return false;
-            for (size_t i = 0; i < this->modifierValues.size(); i++)
-                if (this->modifierValues[i] != 0                             // 0 means unsized, and thus it accepts anything
-                    && this->modifierValues[i] != rhs.modifierValues[i])
-                    return false;
-            if (this->name != rhs.name)
-                return false;
-            return true;
-        }
-
+        /// Type assignment follows special rules to equality
+        bool Assignable(const FullType& rhs) const;
+        bool operator==(const FullType& rhs) const;
         bool operator!=(const FullType& rhs) const
         {
             return !(*this == rhs);
@@ -410,6 +438,34 @@ struct Type : public Symbol
         /// Get the last modifier that is an indirectiom modifier
         const Modifier LastIndirectionModifier() const;
     };
+
+    static FullType TypeFromCode(const TypeCode code, uint8_t columnSize = 0, uint8_t rowSize = 0)
+    {
+        FullType result;
+        switch (code)
+        {
+            case TypeCode::UInt:
+                result.name = "u32";
+                break;
+            case TypeCode::Int:
+                result.name = "i32";
+                break;
+            case TypeCode::Float:
+                result.name = "f32";
+                break;
+            case TypeCode::Bool:
+                result.name = "b8";
+                break;
+        }
+        if (columnSize > 1)
+        {
+            result.name.append(Format("x%d", columnSize));
+            if (rowSize > 1)
+                result.name.append(Format("x%d", rowSize));
+        }
+        
+        return result;
+    }
 
     std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;

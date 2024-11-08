@@ -75,7 +75,7 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 //------------------------------------------------------------------------------
 /**
 */
-void
+bool
 ShaderCompilerApp::Run()
 {   
 	bool success = false;
@@ -87,7 +87,9 @@ ShaderCompilerApp::Run()
     else
     {
         success = this->shaderCompiler.CompileShader(this->src);
-    }       
+    }
+
+	return success;
 }
 
 //------------------------------------------------------------------------------
@@ -125,6 +127,7 @@ main(int argc, const char** argv)
 	
 	if (app.ParseCmdLineArgs(argv))
 	{
-		app.Run();
+		return app.Run() ? 0 : 1;
 	}
+	return -1;
 }

@@ -738,9 +738,13 @@ SPIRVGenerator::SetupIntrinsics()
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&Int::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&Int::ctor_UInt] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::UIntToInt, 1, args[0]);
+    };
+    this->intrinsicMap[&Int::ctor_Float] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::FloatToInt, 1, args[0]);
     };
     this->intrinsicMap[&UInt4::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
@@ -754,9 +758,13 @@ SPIRVGenerator::SetupIntrinsics()
         assert(args.size() == 2);
         return GenerateCompositeSPIRV(c, g, returnType, args);
     };
-    this->intrinsicMap[&UInt::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[&UInt::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::IntToUInt, 1, args[0]);
+    };
+    this->intrinsicMap[&UInt::ctor_Float] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::FloatToUInt, 1, args[0]);
     };
     this->intrinsicMap[&Bool4::ctor_XYZW] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 4);
@@ -794,6 +802,8 @@ SPIRVGenerator::SetupIntrinsics()
 #define X(type, ctor, val, argCount, splat, vectorSize, conversion)\
     this->intrinsicMap[&type::ctor] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {\
         assert(args.size() == argCount);\
+        if (returnType == args[0].typeName)\
+            return args[0];\
         if constexpr (splat > 1)\
             return GenerateSplatCompositeSPIRV(c, g, returnType, splat, args[0]);\
         if constexpr (ConversionTable::conversion != ConversionTable::None)\
@@ -1657,6 +1667,48 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 3);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cClamp %%%d %%%d %%%d", returnType, ext, op, args[0].name, args[1].name, args[2].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char>> lerpIntrinsics =
+    {
+        MAKE_FLOAT_INTRINSICS(Lerp)    
+    };
+    for (auto fun : lerpIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 3);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d FMix %%%d %%%d %%%d", returnType, ext, args[0].name, args[1].name, args[2].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char>> stepIntrinsics =
+    {
+        MAKE_FLOAT_INTRINSICS(Step)    
+    };
+    for (auto fun : stepIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Step %%%d %%%d", returnType, ext, args[0].name, args[1].name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
+    std::vector<std::tuple<Function*, const char>> smoothStepIntrinsics =
+    {
+        MAKE_FLOAT_INTRINSICS(SmoothStep)    
+    };
+    for (auto fun : smoothStepIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 3);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d SmoothStep %%%d %%%d %%%d", returnType, ext, args[0].name, args[1].name, args[2].name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3397,10 +3449,16 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         generator->linkDefineSlot = varResolved->binding;
         initializer = GenerateExpressionSPIRV(compiler, generator, initializerExpression);
 
-
         // If initializer is a literal, make sure to load it
         if (initializer.isLiteral)
             initializer = LoadValueSPIRV(compiler, generator, initializer);
+
+        if (varResolved->valueConversionFunction != nullptr)
+        {
+            auto it = generator->intrinsicMap.find(varResolved->valueConversionFunction);
+            assert(it != generator->intrinsicMap.end());
+            initializer = it->second(compiler, generator, typeName.typeName, { initializer });
+        }
         generator->linkDefineEvaluation = false;
         generator->linkDefineSlot = UINT32_MAX;
     }
@@ -3706,15 +3764,27 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 
     SPIRVResult rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right);
     SPIRVResult leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
+    SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, binaryExpressionResolved->returnType, binaryExpressionResolved->retType);
     rightValue = LoadValueSPIRV(compiler, generator, rightValue);
 
     // If there is a conversion function, generate it first
-    if (binaryExpressionResolved->conversionFunction)
+    if (binaryExpressionResolved->rightConversion)
     {
-        auto it = generator->intrinsicMap.find(binaryExpressionResolved->conversionFunction);
+        Function::__Resolved* rightConvResolved = Symbol::Resolved(binaryExpressionResolved->rightConversion);
+        SPIRVResult rightConvType = GenerateTypeSPIRV(compiler, generator, binaryExpressionResolved->rightConversion->returnType, rightConvResolved->returnTypeSymbol);
+        auto it = generator->intrinsicMap.find(binaryExpressionResolved->rightConversion);
         assert(it != generator->intrinsicMap.end());
-        rightValue = it->second(compiler, generator, leftValue.typeName, { rightValue });
-        rightType = binaryExpressionResolved->conversionFunction->returnType;
+        rightValue = it->second(compiler, generator, rightConvType.typeName, { rightValue });
+        rightType = binaryExpressionResolved->rightConversion->returnType;
+    }
+    if (binaryExpressionResolved->leftConversion)
+    {
+        Function::__Resolved* leftConvResolved = Symbol::Resolved(binaryExpressionResolved->leftConversion);
+        SPIRVResult leftConvType = GenerateTypeSPIRV(compiler, generator, binaryExpressionResolved->leftConversion->returnType, leftConvResolved->returnTypeSymbol);
+        auto it = generator->intrinsicMap.find(binaryExpressionResolved->leftConversion);
+        assert(it != generator->intrinsicMap.end());
+        leftValue = it->second(compiler, generator, leftConvType.typeName, { rightValue });
+        leftType = binaryExpressionResolved->leftConversion->returnType;
     }
 
     if (leftType.Assignable(rightType) && binaryExpression->op == '=')
@@ -3762,7 +3832,6 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     }
     else
     {
-
         std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.name.c_str());
         Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
@@ -3823,8 +3892,12 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         if (lhsType.modifiers.size() > 0 && lhsType.modifiers.front() == Type::FullType::Modifier::Array)
         {
             assert(accessExpressionResolved->rightSymbol == "length");
-            assert(lhsType.modifierValues.front() > 0);
-            return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(lhsType.modifierValues.front()));
+            uint32_t size = 0;
+            if (lhsType.modifierValues.front() != nullptr)
+                lhsType.modifierValues.front()->EvalUInt(size);
+            assert(size > 0);
+
+            return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(size));
         }
         else if (lhsSymbol->symbolType == Symbol::StructureType || lhsSymbol->symbolType == Symbol::EnumerationType)
         {

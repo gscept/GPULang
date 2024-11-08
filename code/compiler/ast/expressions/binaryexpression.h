@@ -54,7 +54,8 @@ public:
 
     struct __Resolved : public Expression::__Resolved
     {
-        Function* conversionFunction;
+    	Function* leftConversion;
+    	Function* rightConversion;
         Type::FullType leftType;
         Type* lhsType;
         Type::FullType rightType;

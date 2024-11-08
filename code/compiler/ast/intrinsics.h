@@ -221,6 +221,18 @@ extern Function* Cross_f32x3;
     SCALAR_LIST
 #undef X
 
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Lerp, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Step, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SmoothStep, ty)
+    FLOAT_LIST
+#undef X
+
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Ceil, ty)
     FLOAT_LIST
 #undef X

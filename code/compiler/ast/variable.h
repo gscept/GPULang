@@ -115,6 +115,8 @@ struct Variable : public Symbol
         uint32_t elementPadding;    // padding between elements
         uint32_t startPadding;      // padding before variable
 
+        Function* valueConversionFunction = nullptr;
+
         ShaderUsage visibilityBits;
         bool builtin = false;
     };

@@ -1628,8 +1628,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        for (uint32_t size : varResolved->type.modifierValues)
+        for (Expression* expr : varResolved->type.modifierValues)
         {
+            uint32_t size = 0;
+            if (expr != nullptr)
+                expr->EvalUInt(size);
             if (size == 0)
             {
                 compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
@@ -1962,6 +1965,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (var->valueExpression != nullptr)
     {
         Type::FullType lhs = varResolved->type;
+        lhs.literal = false; // Disable literal on variables even if the rhs type is literal
         Type::FullType rhs;
         if (!var->valueExpression->EvalType(rhs))
         {
@@ -1969,23 +1973,25 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        if (lhs != rhs)
+        if (!lhs.Assignable(rhs))
         {
             Type* lhsType = compiler->GetSymbol<Type>(lhs.name);
-            std::vector<Symbol*> assignmentOperators = lhsType->GetSymbols(Format("operator=(%s)", rhs.name.c_str()));
-            Symbol* fun = Function::MatchOverload(compiler, assignmentOperators, { rhs });
-            if (fun == nullptr)
+            std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
+            Function* conv = compiler->GetSymbol<Function>(conversionName);
+            if (conv == nullptr)
             {
-                compiler->Error(Format("Type '%s' can't be converted to '%s'", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                compiler->Error(Format("'%s' can't be converted to '%s'", rhs.ToString().c_str(), lhs.ToString().c_str()), symbol);
                 return false;
             }
-
-            if (fun != nullptr
-                && compiler->options.disallowImplicitConversion)
+            else
             {
-                compiler->Error(Format("Initialization not possible because implicit conversions ('%s' to '%s') are not allowed. Either disable implicit conversions or explicitly convert the value.", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
-                return false;
+                if (compiler->options.disallowImplicitConversion)
+                {
+                    compiler->Error(Format("Initialization not possible because implicit conversions ('%s' to '%s') are not allowed. Either disable implicit conversions or explicitly convert the value.", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                    return false;
+                }
             }
+            varResolved->valueConversionFunction = conv;
         }
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
@@ -2830,6 +2836,19 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
         }
         if (mod == Type::FullType::Modifier::Pointer)
             numPointers++;
+    }
+
+    for (auto expr : type.modifierValues)
+    {
+        if (expr != nullptr)
+        {
+            uint32_t dummy;
+            if (!expr->EvalUInt(dummy))
+            {
+                compiler->Error(Format("Array modifier must be a literal or compile time value"), sym);
+                return false;
+            }
+        }
     }
 
     if (!compiler->target.supportsPhysicalAddressing)

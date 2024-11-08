@@ -51,6 +51,7 @@ struct Compiler
         uint8_t warningsAsErrors : 1 = 0;
         uint8_t emitTimings : 1 = 0;
         uint8_t disallowImplicitConversion : 1 = 0;
+        uint8_t disallowImplicitPromotion : 1 = 0;
         uint8_t disallowUninitializedConst : 1 = 0;
         uint8_t warnOnMissingRenderState : 1 = 0;
 

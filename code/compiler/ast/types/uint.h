@@ -16,7 +16,8 @@ struct UInt : public Type
     /// constructor
     UInt();
 
-    static Function ctor;
+    static Function ctor_Int;
+    static Function ctor_Float;
 
     static Function andOperator;
     static Function orOperator;

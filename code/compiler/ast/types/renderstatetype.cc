@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "renderstatetype.h"
+#include "ast/expressions/uintexpression.h"
 
 #define __BEGIN_ENUMS__() std::vector<std::string> labels; std::vector<Expression*> expressions; Function* assignOperator; Variable* arg;
 #define __START_ENUM() labels.clear(); expressions.clear();
@@ -12,7 +13,7 @@
 #define __FINISH_ENUM(val, key) val = Enumeration(); val.labels = labels; val.values = expressions; val.name = #key; val.type = { "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
 
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; this->staticSymbols.push_back(&val);
-#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::Array}, {size} }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; this->staticSymbols.push_back(&val);
+#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::Array}, {new UIntExpression(size)} }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; this->staticSymbols.push_back(&val);
 
 namespace GPULang
 {
@@ -157,14 +158,14 @@ RenderStateType::RenderStateType()
     __SETUP_MEMBER(this->logicOp, LogicOp, LogicOpMode);
     __SETUP_MEMBER(this->frontStencilState, FrontStencil, StencilState);
     __SETUP_MEMBER(this->backStencilState, BackStencil, StencilState);
-    __SETUP_MEMBER_ARRAY(this->blendEnabled, BlendEnabled, b8, 8);
-    __SETUP_MEMBER_ARRAY(this->sourceBlend, SourceBlend, BlendFactorMode, 8);
-    __SETUP_MEMBER_ARRAY(this->destinationBlend, DestinationBlend, BlendFactorMode, 8);
-    __SETUP_MEMBER_ARRAY(this->sourceAlphaBlend, SourceAlphaBlend, BlendFactorMode, 8);
-    __SETUP_MEMBER_ARRAY(this->destinationAlphaBlend, DestinationAlphaBlend, BlendFactorMode, 8);
-    __SETUP_MEMBER_ARRAY(this->blendOp, BlendOp, BlendOpMode, 8);
-    __SETUP_MEMBER_ARRAY(this->blendOpAlpha, BlendOpAlpha, BlendOpMode, 8);
-    __SETUP_MEMBER_ARRAY(this->colorComponentMask, ColorComponentMask, ColorComponentMaskMode, 8);
+    __SETUP_MEMBER_ARRAY(this->blendEnabled, BlendEnabled, b8, 8u);
+    __SETUP_MEMBER_ARRAY(this->sourceBlend, SourceBlend, BlendFactorMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->destinationBlend, DestinationBlend, BlendFactorMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->sourceAlphaBlend, SourceAlphaBlend, BlendFactorMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->destinationAlphaBlend, DestinationAlphaBlend, BlendFactorMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->blendOp, BlendOp, BlendOpMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->blendOpAlpha, BlendOpAlpha, BlendOpMode, 8u);
+    __SETUP_MEMBER_ARRAY(this->colorComponentMask, ColorComponentMask, ColorComponentMaskMode, 8u);
 }
 
 

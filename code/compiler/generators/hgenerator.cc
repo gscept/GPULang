@@ -238,7 +238,9 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             {
                 if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
-                    size_t size = varResolved->type.modifierValues[i];
+                    uint32_t size = 0;
+                    if (varResolved->type.modifierValues[i] != nullptr)
+                        varResolved->type.modifierValues[i]->EvalUInt(size);
                     if (size > 0)
                         arraySize.append(Format("[%d]", size));
                     else
@@ -279,8 +281,11 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                         for (uint32_t i = 0; i < numElements; i++)
                             writer.WriteLine("unsigned int : 32;");
                     }
+                    uint32_t size = 0;
+                    if (varResolved->type.modifierValues[i] != nullptr)
+                        varResolved->type.modifierValues[i]->EvalUInt(size);
                     writer.Write(Format("%s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
-                    if (i < varResolved->type.modifierValues[i] - 1)
+                    if (i < size - 1)
                         writer.Write("\n");
                 }
             }
@@ -328,7 +333,9 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             {
                 if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
                 {
-                    size_t size = varResolved->type.modifierValues[i];
+                    uint32_t size = 0;
+                    if (varResolved->type.modifierValues[i] != nullptr)
+                        varResolved->type.modifierValues[i]->EvalUInt(size);
                     if (size > 0)
                         arraySize.append(Format("[%d]", size));
                     else

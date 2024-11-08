@@ -12,9 +12,10 @@ namespace GPULang
 {
 
 #define FLOAT3_CTOR_LIST\
-    X(Float3, ctor_SingleValue, i32, 1, 3, 3, None)\
+    X(Float3, ctor_SingleValue, f32, 1, 3, 3, None)\
     X(Float3, ctor_UInt2, u32x3, 1, 1, 3, UIntToFloat)\
-    X(Float3, ctor_Int2, i32x3, 1, 1, 3, IntToFloat)
+    X(Float3, ctor_Int2, i32x3, 1, 1, 3, IntToFloat)\
+    X(Float3, ctor_Float3, f32x3, 1, 1, 3, None)
 
 #define FLOAT3_CTOR2_LIST\
     X(Float3, ctor_Float2_Float, f32x2, f32)\

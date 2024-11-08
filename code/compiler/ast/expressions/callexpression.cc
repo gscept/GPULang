@@ -167,7 +167,20 @@ CallExpression::Resolve(Compiler* compiler)
 
         if (candidates.empty())
         {
-            compiler->Error(Format("No overload exists for %s", callSignature.c_str()), this);
+            std::string potentialHints;
+            for (auto& hint : functionSymbols)
+            {
+                if (hint->symbolType == Type::SymbolType::FunctionType)
+                {
+                    Function* fun = static_cast<Function*>(hint);
+                    Function::__Resolved* res = Symbol::Resolved(fun);
+                    potentialHints.append(Format("\n    %s", res->name.c_str()));
+                }
+            }
+            if (!potentialHints.empty())
+                compiler->Error(Format("No overload exists for %s, maybe you meant:%s", callSignature.c_str(), potentialHints.c_str()), this);
+            else
+                compiler->Error(Format("No overload exists for %s", callSignature.c_str()), this);
             thisResolved->function = nullptr;
             return false;
         }
@@ -199,12 +212,10 @@ CallExpression::Resolve(Compiler* compiler)
                 }
                 else
                 {
-                    std::string fmt = Format("Ambiguous call %s, could be:\n", callSignature.c_str());
+                    std::string fmt = Format("Ambiguous call %s, could be:", callSignature.c_str());
                     for (auto& candidate : ambiguousCalls)
                     {
-                        fmt.append(Format("%s", Symbol::Resolved(candidate.function)->signature.c_str()));
-                        if (&candidate != &ambiguousCalls.back())
-                            fmt.append(",\n");
+                        fmt.append(Format("\n    %s", Symbol::Resolved(candidate.function)->signature.c_str()));
                     }
                     compiler->Error(fmt, this);
                     thisResolved->function = nullptr;

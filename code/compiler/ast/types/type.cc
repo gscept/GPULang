@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "builtins.h"
+#include "ast/expressions/expression.h"
 #include "ast/expressions/uintexpression.h"
 #include <set>
 namespace GPULang
@@ -530,6 +531,66 @@ Type::FullType::ToString()
     if (this->sampled)
         base.append("sampled ");
     return Format("%s%s%s", this->signature.c_str(), base.c_str(), this->name.c_str());
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Type::FullType::Assignable(const Type::FullType& rhs) const
+{
+    if (this->literal)
+        return false;
+    if (this->sampled)
+        return false;
+    if (this->modifiers != rhs.modifiers)
+        return false;
+    for (size_t i = 0; i < this->modifierValues.size(); i++)
+        if (this->modifierValues[i] != rhs.modifierValues[i])
+        {
+            uint32_t lhsSize, rhsSize;
+            if (this->modifierValues[i] != nullptr)
+                this->modifierValues[i]->EvalUInt(lhsSize);
+            if (rhs.modifierValues[i] != nullptr)
+                rhs.modifierValues[i]->EvalUInt(rhsSize);
+            if (lhsSize != rhsSize)
+                return false;
+        }
+        else
+            return false;
+    if (this->name != rhs.name)
+        return false;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Type::FullType::operator==(const FullType& rhs) const
+{
+    if (this->literal && !rhs.literal)
+        return false;
+    if (this->mut != rhs.mut)
+        return false;
+    if (this->sampled != rhs.sampled)
+        return false;
+    if (this->modifiers != rhs.modifiers)
+        return false;
+    for (size_t i = 0; i < this->modifierValues.size(); i++)
+        if (this->modifierValues[i] != rhs.modifierValues[i])
+        {
+            uint32_t lhsSize, rhsSize;
+            if (this->modifierValues[i] != nullptr)
+                this->modifierValues[i]->EvalUInt(lhsSize);
+            if (rhs.modifierValues[i] != nullptr)
+                rhs.modifierValues[i]->EvalUInt(rhsSize);
+            if (lhsSize != rhsSize)
+                return false;
+        }
+    if (this->name != rhs.name)
+        return false;
+    return true;
 }
 
 //------------------------------------------------------------------------------

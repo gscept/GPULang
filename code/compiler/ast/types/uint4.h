@@ -14,7 +14,8 @@ namespace GPULang
 #define UINT4_CTOR_LIST\
     X(UInt4, ctor_SingleValue, u32, 1, 4, 4, None)\
     X(UInt4, ctor_Int4, i32x4, 1, 1, 4, IntToUInt)\
-    X(UInt4, ctor_Float4, f32x4, 1, 1, 4, FloatToUInt)
+    X(UInt4, ctor_Float4, f32x4, 1, 1, 4, FloatToUInt)\
+    X(UInt4, ctor_UInt4, u32x4, 1, 1, 4, None)
 
 #define UINT4_CTOR2_LIST\
     X(UInt4, ctor_UInt3_UInt, u32x3, u32)\

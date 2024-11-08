@@ -767,15 +767,13 @@ GenerateVariableGLSL(Compiler* compiler, Variable* var, std::string& outCode, bo
     std::string arrays = "";
     for (int i = varResolved->type.modifierValues.size() - 1; i >= 0; i--)
     {
-        size_t size = varResolved->type.modifierValues[i];
+        uint32_t size = 0;
+        if (varResolved->type.modifierValues[i] != nullptr)
+            varResolved->type.modifierValues[i]->EvalUInt(size);
         if (size > 0)
-        {
             arrays.append(Format("[%d]", size));
-        }
         else
-        {
             arrays.append("[]");
-        }
     }
     if (var->valueExpression != nullptr)
     {
@@ -1121,8 +1119,13 @@ GenerateAlignedVariables(Compiler* compiler, Structure* struc, StructureAlignmen
             Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
             uint32_t totalArraySize = 1;
-            for (uint32_t sizes : varResolved->type.modifierValues)
-                totalArraySize *= sizes;
+            for (Expression* sizeExpressions : varResolved->type.modifierValues)
+            {
+                uint32_t size = 1;
+                if (sizeExpressions != nullptr)
+                    sizeExpressions->EvalUInt(size);
+                totalArraySize *= size;
+            }
 
             // calculate GLSL alignment
             uint32_t size;
@@ -1219,7 +1222,9 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
     {
         if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Pointer)
             continue;
-        size_t size = varResolved->type.modifierValues[i];
+        uint32_t size = 0;
+        if (varResolved->type.modifierValues[i] != nullptr)
+            varResolved->type.modifierValues[i]->EvalUInt(size);
         if (size > 0)
         {
             arraySize.append(Format("[%d]", size));

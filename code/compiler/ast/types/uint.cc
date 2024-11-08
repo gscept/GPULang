@@ -5,7 +5,8 @@
 #include "uint.h"
 namespace GPULang
 {
-Function UInt::ctor;
+Function UInt::ctor_Int;
+Function UInt::ctor_Float;
 
 Function UInt::andOperator;
 Function UInt::orOperator;
@@ -52,7 +53,8 @@ UInt::UInt()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR_1(ctor, u32, u32, i32);
+    __IMPLEMENT_CTOR_1(ctor_Int, u32, u32, i32);
+    __IMPLEMENT_CTOR_1(ctor_Float, u32, u32, f32);
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32, u32);
     __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32, u32);
