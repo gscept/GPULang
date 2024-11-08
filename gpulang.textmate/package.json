@@ -15,7 +15,7 @@
     "languages": [{
       "id": "gpulang",
       "aliases": ["GPULang", "gpulang"],
-      "extensions": ["gpul"],
+      "extensions": ["gpul", "gpuh"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{

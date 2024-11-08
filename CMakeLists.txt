@@ -8,6 +8,7 @@ if(NOT FIPS_IMPORT)
     SET(BUILD_COMPILER 1)
     option(BUILD_GPULANG_APP "Build GPULang with the test app" OFF)
     option(BUILD_GPULANG_TEST "Build GPULang with test compilation" OFF)
+    option(BUILD_GPULANG_COMPILER "Build GPULang compiler" ON)
 	fips_setup()
 endif()
 

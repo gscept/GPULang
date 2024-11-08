@@ -785,6 +785,26 @@ FLOAT_LIST
     __ADD_ARG_LIT(count, u32);
     __SET_RET_LIT(u32);
 
+    __MAKE_BUILTIN(bitExtract, BitUExtract);
+    __ADD_ARG_LIT(base, u32);
+    __ADD_ARG_LIT(offset, u32);
+    __ADD_ARG_LIT(count, u32);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(bitExtract, BitSExtract);
+    __ADD_ARG_LIT(base, i32);
+    __ADD_ARG_LIT(offset, i32);
+    __ADD_ARG_LIT(count, i32);
+    __SET_RET_LIT(i32);
+
+    __MAKE_BUILTIN(bitReverse, BitReverse);
+    __ADD_ARG_LIT(base, u32);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(bitCount, BitCount);
+    __ADD_ARG_LIT(base, u32);
+    __SET_RET_LIT(u32);
+
 //------------------------------------------------------------------------------
 /**
     Barrier intrinsics
