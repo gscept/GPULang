@@ -1,16 +1,22 @@
 cmake_minimum_required(VERSION 3.21)
 
 option(BUILD_GPULANG_STANDALONE_COMPILER "Build standalone compiler" ON)
+option(BUILD_GPULANG_APP "Build GPULang with the test app" OFF)
+option(BUILD_GPULANG_TEST "Build GPULang with test compilation" OFF)
+option(BUILD_GPULANG_COMPILER "Build GPULang compiler" ON)
+    
 if(NOT FIPS_IMPORT)
 	project(gpulang)
     get_filename_component(FIPS_ROOT_DIR "../fips" ABSOLUTE)
     include("${FIPS_ROOT_DIR}/cmake/fips.cmake")	
-    SET(BUILD_COMPILER 1)
-    option(BUILD_GPULANG_APP "Build GPULang with the test app" OFF)
-    option(BUILD_GPULANG_TEST "Build GPULang with test compilation" OFF)
-    option(BUILD_GPULANG_COMPILER "Build GPULang compiler" ON)
 	fips_setup()
+else()
+    set(BUILD_GPULANG_COMPILER OFF)
+    set(BUILD_GPULANG_TEST OFF)
+    set(BUILD_GPULANG_STANDALONE_COMPILER OFF)
+    set(BUILD_GPULANG_APP OFF)
 endif()
+
 
 IF(WIN32)
     add_definitions(-D__WIN32__)
