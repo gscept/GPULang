@@ -100,7 +100,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         }
         Function* fun = static_cast<Function*>(conversionFunction);
         thisResolved->rightConversion = static_cast<Function*>(conversionFunction);
-        thisResolved->returnType = fun->returnType;
+        thisResolved->returnType = thisResolved->leftType;
     }
     else if (this->op != '=')
     {
@@ -161,6 +161,10 @@ BinaryExpression::Resolve(Compiler* compiler)
             thisResolved->leftConversion = nullptr;
             thisResolved->rightConversion = nullptr;
         }
+    }
+    else
+    {
+        thisResolved->returnType = thisResolved->leftType;
     }
     
     thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);

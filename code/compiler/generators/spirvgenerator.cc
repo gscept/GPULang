@@ -1096,14 +1096,14 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : operatorFunctions)
     {
         this->intrinsicMap[std::get<0>(fun)] = [ty = std::get<1>(fun), op = std::get<2>(fun), assign = std::get<3>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() >= 2);
-            uint32_t ret = g->AddMappedOp(Format("Op%c%s %%%d %%%d %%%d", ty, op, returnType, args[0].name, args[1].name));
+            assert(args.size() == 2);
+            SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+            uint32_t ret = g->AddMappedOp(Format("Op%c%s %%%d %%%d %%%d", ty, op, returnType, lhs.name, rhs.name));
             if (assign)
             {
-                assert(args.size() == 3);
-                assert(!args[2].isValue);
-                g->AddOp(Format("OpStore %%%d %%%d", args[2].name, ret));
-                return SPIRVResult(args[2].name, args[2].typeName);
+                g->AddOp(Format("OpStore %%%d %%%d", args[0].name, ret));
+                return SPIRVResult(args[0].name, args[0].typeName);
             }
             return SPIRVResult(ret, returnType, true);
         };
@@ -1595,7 +1595,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         MAKE_FLOAT_VEC_INTRINSICS(Dot)
     };
-    for (auto fun : madIntrinsics)
+    for (auto fun : dotIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
@@ -1608,7 +1608,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         { Intrinsics::Cross_f32x3, 'F' }
     };
-    for (auto fun : madIntrinsics)
+    for (auto fun : crossIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
@@ -3312,6 +3312,8 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 
     // TODO: Add inline/const/functional
     generator->AddSymbol(funcResolved->name, Format("OpFunction %%%d None %%%d", returnName.typeName, functionType));
+
+    generator->PushScope();
     for (auto& param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -3342,6 +3344,8 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 
     generator->functions.append(generator->functional);
     generator->functional.clear();
+
+    generator->PopScope();
 }
 
 //------------------------------------------------------------------------------
@@ -3790,6 +3794,9 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     binaryExpression->left->EvalType(leftType);
     binaryExpression->right->EvalType(rightType);
 
+    Type* lhsType = binaryExpressionResolved->lhsType;
+    Type* rhsType = binaryExpressionResolved->rhsType;
+
     SPIRVResult rightValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->right);
     SPIRVResult leftValue = GenerateExpressionSPIRV(compiler, generator, binaryExpression->left);
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, binaryExpressionResolved->returnType, binaryExpressionResolved->retType);
@@ -3804,6 +3811,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         assert(it != generator->intrinsicMap.end());
         rightValue = it->second(compiler, generator, rightConvType.typeName, { rightValue });
         rightType = binaryExpressionResolved->rightConversion->returnType;
+        rhsType = rightConvResolved->returnTypeSymbol;
     }
     if (binaryExpressionResolved->leftConversion)
     {
@@ -3813,6 +3821,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         assert(it != generator->intrinsicMap.end());
         leftValue = it->second(compiler, generator, leftConvType.typeName, { rightValue });
         leftType = binaryExpressionResolved->leftConversion->returnType;
+        lhsType = leftConvResolved->returnTypeSymbol;
     }
 
     if (leftType.Assignable(rightType) && binaryExpression->op == '=')
@@ -3861,7 +3870,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     else
     {
         std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.name.c_str());
-        Function* fun = binaryExpressionResolved->lhsType->GetSymbol<Function>(functionName);
+        Function* fun = lhsType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
         assert(fun != nullptr);
 
