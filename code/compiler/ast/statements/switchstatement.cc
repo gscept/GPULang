@@ -17,7 +17,7 @@ SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector
     , defaultStatement(defaultStatement)
 {
     this->symbolType = SwitchStatementType;
-    this->resolved = new SwitchStatement::__Resolved;
+    this->resolved = Alloc<SwitchStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -25,11 +25,6 @@ SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector
 */
 SwitchStatement::~SwitchStatement()
 {
-    delete this->switchExpression;
-    for (Statement* stat : this->caseStatements)
-        delete stat;
-    if (this->defaultStatement != nullptr)
-        delete this->defaultStatement;
 }
 
 } // namespace GPULang

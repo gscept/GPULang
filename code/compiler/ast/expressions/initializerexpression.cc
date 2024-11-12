@@ -19,7 +19,7 @@ InitializerExpression::InitializerExpression(const std::vector<Expression*>& val
     , explicitType(type)
 {
     this->symbolType = InitializerExpressionType;
-    auto resolved = new InitializerExpression::__Resolved;
+    auto resolved = Alloc<InitializerExpression::__Resolved>();
     this->resolved = resolved;
 }
 
@@ -28,8 +28,6 @@ InitializerExpression::InitializerExpression(const std::vector<Expression*>& val
 */
 InitializerExpression::~InitializerExpression()
 {
-    for (Expression* expr : this->values)
-        delete expr;
 }
 
 //------------------------------------------------------------------------------

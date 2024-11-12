@@ -50,6 +50,7 @@
 #include "ast/expressions/uintexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
+#include "memory.h"
 
 using namespace GPULang;
 

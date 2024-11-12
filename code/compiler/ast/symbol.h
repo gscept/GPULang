@@ -14,6 +14,7 @@
 */
 //------------------------------------------------------------------------------
 #include <string>
+#include "memory.h"
 
 #define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute> attributes;
 #define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation> annotations;

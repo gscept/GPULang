@@ -17,7 +17,7 @@ ArrayIndexExpression::ArrayIndexExpression(Expression* left, Expression* right)
     : left(left)
     , right(right)
 {
-    this->resolved = new ArrayIndexExpression::__Resolved;
+    this->resolved = Alloc<ArrayIndexExpression::__Resolved>();
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->lhsType = nullptr;
     thisResolved->rhsType = nullptr;
@@ -29,9 +29,6 @@ ArrayIndexExpression::ArrayIndexExpression(Expression* left, Expression* right)
 */
 ArrayIndexExpression::~ArrayIndexExpression()
 {
-    delete this->left;
-    if (this->right != nullptr)
-        delete this->right;
 }
 
 //------------------------------------------------------------------------------

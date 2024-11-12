@@ -27,17 +27,13 @@ struct Annotation
 
     ~Annotation()
     {
-        if (this->value)
-            delete this->value;
     }
 
-    /// Move constructor
-    Annotation(Annotation&& rhs) noexcept
+    /// Copy constructor
+    Annotation(const Annotation& rhs) noexcept
     {
         this->name = rhs.name;
         this->value = rhs.value;
-        rhs.name = "";
-        rhs.value = nullptr;
     }
 };
 

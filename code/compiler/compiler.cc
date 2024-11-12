@@ -32,7 +32,7 @@ Compiler::Compiler()
     , ignoreReservedWords(false)
     , hasErrors(false)
 {
-    this->validator = new Validator;
+    this->validator = Alloc<Validator>();
 
     this->options.errorFormat = ErrorFormat::MSVC;
     this->options.warningsAsErrors = false;
@@ -123,9 +123,7 @@ Compiler::Compiler()
 */
 Compiler::~Compiler()
 {
-    for (Symbol* sym : this->dynamicSymbols)
-        delete sym;
-    delete this->validator;
+    
 }
 
 //------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
     , left(left)
     , right(right)
 {
-    this->resolved = new BinaryExpression::__Resolved;
+    this->resolved = Alloc<BinaryExpression::__Resolved>();
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->leftConversion = nullptr;
     thisResolved->rightConversion = nullptr;
@@ -35,8 +35,6 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
 */
 BinaryExpression::~BinaryExpression()
 {
-    delete this->left;
-    delete this->right;
 }
 
 //------------------------------------------------------------------------------

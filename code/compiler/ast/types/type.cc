@@ -101,8 +101,6 @@ Type::Type()
 */
 Type::~Type()
 {
-    for (Symbol* sym : this->symbols)
-        delete sym;
 }
 
 const std::map<TypeCode, std::string> codeToStringMapping =

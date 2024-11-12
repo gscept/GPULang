@@ -50,6 +50,7 @@
 #include "ast/expressions/uintexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
+#include "memory.h"
 
 using namespace GPULang;
 
@@ -1646,8 +1647,8 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
                 Variable* var = new Variable(); 
                 var->type = type; 
                 var->location = locations[i]; 
-                var->annotations = std::move(annotations);
-                var->attributes = std::move(attributes);
+                var->annotations = annotations;
+                var->attributes = attributes;
                 var->name = names[i];
                 var->valueExpression = valueExpressions[i];
                 _localctx->list.push_back(var);
@@ -3207,7 +3208,7 @@ GPULangParser::ExpressionStatementContext* GPULangParser::expressionStatement() 
     setState(500);
     antlrcpp::downCast<ExpressionStatementContext *>(_localctx)->expressionContext = expression();
 
-            antlrcpp::downCast<ExpressionStatementContext *>(_localctx)->tree =  new ExpressionStatement(antlrcpp::downCast<ExpressionStatementContext *>(_localctx)->expressionContext->tree);
+            antlrcpp::downCast<ExpressionStatementContext *>(_localctx)->tree =  Alloc<ExpressionStatement>((antlrcpp::downCast<ExpressionStatementContext *>(_localctx)->expressionContext->tree));
             _localctx->tree->location = SetupFile();
         
    

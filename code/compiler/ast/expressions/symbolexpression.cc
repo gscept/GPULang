@@ -22,7 +22,7 @@ namespace GPULang
 SymbolExpression::SymbolExpression(const std::string symbol)
     : symbol(symbol)
 {
-    this->resolved = new SymbolExpression::__Resolved;
+    this->resolved = Alloc<SymbolExpression::__Resolved>();
     this->symbolType = SymbolExpressionType;
 }
 
@@ -88,6 +88,11 @@ SymbolExpression::Resolve(Compiler* compiler)
         {
             EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->symbol);
             thisResolved->fullType = expr->type;
+            return true;
+        }
+        else if (thisResolved->symbol->symbolType == Symbol::RenderStateType)
+        {
+            thisResolved->fullType = { "renderState" };
             return true;
         }
         else

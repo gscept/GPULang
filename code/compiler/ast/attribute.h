@@ -26,17 +26,13 @@ struct Attribute
 
     ~Attribute() 
     {
-        if (this->expression)
-            delete this->expression;
     }
 
-    /// Move constructor
-    Attribute(Attribute&& rhs) noexcept
+    /// Copy constructor
+    Attribute(const Attribute& rhs) noexcept
     {
         this->name = rhs.name;
         this->expression = rhs.expression;
-        rhs.name = "";
-        rhs.expression = nullptr;
     }
 
     /// converts attribute to string

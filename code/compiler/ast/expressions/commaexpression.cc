@@ -15,7 +15,7 @@ CommaExpression::CommaExpression(Expression* left, Expression* right)
     : left(left)
     , right(right)
 {
-    this->resolved = new CommaExpression::__Resolved;
+    this->resolved = Alloc<CommaExpression::__Resolved>();
     this->symbolType = CommaExpressionType;
 }
 
@@ -24,8 +24,6 @@ CommaExpression::CommaExpression(Expression* left, Expression* right)
 */
 CommaExpression::~CommaExpression()
 {
-    delete this->left;
-    delete this->right;
 }
 
 //------------------------------------------------------------------------------

@@ -21,7 +21,7 @@ namespace GPULang
 Function::Function()
 {
     this->symbolType = FunctionType;
-    this->resolved = new Function::__Resolved();
+    this->resolved = Alloc<Function::__Resolved>();
     this->hasBody = false;
     this->ast = nullptr;
 
@@ -49,8 +49,6 @@ Function::Function()
 */
 Function::~Function()
 {
-    for (Variable* var : this->parameters)
-        delete var;
 }
 
 //------------------------------------------------------------------------------
@@ -228,6 +226,15 @@ Function::SetupIntrinsics()
     };
     constexpr uint32_t numScalarArgs = sizeof(scalarArgs) / sizeof(std::string);
 
+#define X(ty, index)\
+    __MAKE_INTRINSIC(pow, Pow, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __ADD_ARG(exp, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+    
 #define X(ty, index)\
     __MAKE_INTRINSIC(sqrt, Sqrt, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
@@ -423,7 +430,6 @@ SCALAR_LIST
 #define X(ty, index)\
     __MAKE_INTRINSIC(ceil, Ceil, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
 FLOAT_LIST
@@ -432,7 +438,6 @@ FLOAT_LIST
 #define X(ty, index)\
     __MAKE_INTRINSIC(floor, Floor, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
 FLOAT_LIST

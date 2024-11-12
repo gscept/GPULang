@@ -16,7 +16,7 @@ ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression
     , contents(contents)
 {
     this->symbolType = ForStatementType;
-    this->resolved = new ForStatement::__Resolved;
+    this->resolved = Alloc<ForStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -24,11 +24,6 @@ ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression
 */
 ForStatement::~ForStatement()
 {
-    for (Variable* var : this->declarations)
-        delete var;
-    delete this->condition;
-    delete this->loop;
-    delete this->contents;
 }
 
 } // namespace GPULang

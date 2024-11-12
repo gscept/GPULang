@@ -9,6 +9,7 @@
 #include "gpulangcompiler.h"
 #include "compiler.h"
 #include "ast/effect.h"
+#include "memory.h"
 
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
@@ -249,6 +250,8 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
 
+        ResetMemory();
+        
         // convert error list to string
         if (!compiler.messages.empty())
         {

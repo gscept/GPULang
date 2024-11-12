@@ -43,6 +43,7 @@
 #include <array>
 #include <format>
 
+#include "ast/samplerstate.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 
 namespace GPULang
@@ -1392,6 +1393,22 @@ SPIRVGenerator::SetupIntrinsics()
     , { Intrinsics::##op##_i32, 'S' }\
     , { Intrinsics::##op##_u32, 'U' }\
 
+    std::vector<std::tuple<Function*, const char>> powIntrinsics =
+{
+        MAKE_FLOAT_INTRINSICS(Pow)
+    };
+    for (auto fun : powIntrinsics)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult exp = LoadValueSPIRV(c, g, args[1]);
+            uint32_t ext = g->AddExtension("GLSL.std.450");
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Pow %%%d %%%d", returnType, ext, base.name, exp.name));
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+
     std::vector<std::tuple<Function*, const char>> sqrtIntrinsics =
     {
         MAKE_FLOAT_INTRINSICS(Sqrt)
@@ -1399,7 +1416,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : sqrtIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Sqrt %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -1413,7 +1430,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : invSqrtIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d InverseSqrt %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -1427,7 +1444,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : logIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Log %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -1441,7 +1458,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : log2Intrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Log2 %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -1455,7 +1472,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : expIntrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Exp %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -1469,7 +1486,7 @@ SPIRVGenerator::SetupIntrinsics()
     for (auto fun : exp2Intrinsics)
     {
         this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
-            assert(args.size() == 3);
+            assert(args.size() == 1);
             uint32_t ext = g->AddExtension("GLSL.std.450");
             uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Exp2 %%%d", returnType, ext, args[0].name));
             return SPIRVResult(ret, returnType, true);
@@ -3375,6 +3392,17 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
 //------------------------------------------------------------------------------
 /**
 */
+uint32_t
+GenerateSamplerSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
+{
+    SamplerState* sampler = static_cast<SamplerState*>(symbol);
+    SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
+    return 0xFFFFFFFF;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 SPIRVResult
 GenerateEnumSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
@@ -4809,6 +4837,9 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                     break;
                 case Symbol::EnumerationType:
                     GenerateEnumSPIRV(compiler, this, sym);
+                    break;
+                case Symbol::SamplerStateType:
+                    GenerateSamplerSPIRV(compiler, this, sym);
                     break;
                 case Symbol::VariableType:
                     GenerateVariableSPIRV(compiler, this, sym, false, true);

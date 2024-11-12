@@ -16,7 +16,7 @@ namespace GPULang
 Variable::Variable()
 {
     this->symbolType = VariableType;
-    this->resolved = new Variable::__Resolved;
+    this->resolved = Alloc<Variable::__Resolved>();
     this->type = { "" };
     this->valueExpression = nullptr;
 
@@ -40,10 +40,6 @@ Variable::Variable()
 */
 Variable::~Variable()
 {
-    Variable::__Resolved* typeResolved = static_cast<Variable::__Resolved*>(this->resolved);
-    for (Variable* sibling : typeResolved->siblings)
-        delete sibling;
-    delete typeResolved;
 }
 
 //------------------------------------------------------------------------------

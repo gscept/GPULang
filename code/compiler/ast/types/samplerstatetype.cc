@@ -23,8 +23,16 @@ SamplerStateType::SamplerStateType()
     __START_ENUM();
     __ADD_ENUM(InvalidFilterMode);
     __ADD_ENUM(Point);
-    __ADD_ENUM(Linear);
     __ADD_ENUM_EXPL(Nearest, 1);
+    __ADD_ENUM(Linear);
+    __ADD_ENUM(MinMagMipLinear);
+    __ADD_ENUM(MinMagLinearMipPoint);
+    __ADD_ENUM(MinLinearMagMipPoint);
+    __ADD_ENUM(MinMagMipPoint);
+    __ADD_ENUM(MinMagPointMipLinear);
+    __ADD_ENUM(MinPointMagMipLinear);
+    __ADD_ENUM(MinLinearMagPointMipLinear);
+    __ADD_ENUM(MinPointMagLinearMipPoint);
     __FINISH_ENUM(this->filterModeEnum, FilterMode);
     
     __START_ENUM();
@@ -48,7 +56,6 @@ SamplerStateType::SamplerStateType()
     __SETUP_MEMBER(this->addressV, AddressV, AddressMode);
     __SETUP_MEMBER(this->addressW, AddressW, AddressMode);
 
-
     __SETUP_MEMBER(this->allFilter, Filter, FilterMode);
     __SETUP_MEMBER(this->minFilter, MinFilter, FilterMode);
     __SETUP_MEMBER(this->magFilter, MagFilter, FilterMode);
@@ -58,7 +65,7 @@ SamplerStateType::SamplerStateType()
     __SETUP_MEMBER(this->anisotropicEnabled, AnisotropicEnabled, b8);
     __SETUP_MEMBER(this->maxAnisotropy, MaxAnisotropy, f32);
 
-    __SETUP_MEMBER(this->compareSamplerEnabled, CompareSamplerEnabled, b8);
+    __SETUP_MEMBER(this->compareSamplerEnabled, CompareEnabled, b8);
     __SETUP_MEMBER(this->compareMode, CompareMode, CompareMode);
 
     __SETUP_MEMBER(this->minLod, MinLod, f32);

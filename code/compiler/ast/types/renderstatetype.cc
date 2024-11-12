@@ -34,9 +34,9 @@ RenderStateType::RenderStateType()
 
     __START_ENUM();
     __ADD_ENUM(InvalidCullMode);
-    __ADD_ENUM(FrontMode);
-    __ADD_ENUM(BackMode);
-    __ADD_ENUM(FrontAndBackMode);
+    __ADD_ENUM(Front);
+    __ADD_ENUM(Back);
+    __ADD_ENUM(FrontAndBack);
     __FINISH_ENUM(this->cullModeEnum, CullMode);
 
     __START_ENUM();

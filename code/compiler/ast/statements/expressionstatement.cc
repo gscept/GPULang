@@ -13,7 +13,7 @@ ExpressionStatement::ExpressionStatement(Expression* expr)
     : expr(expr)
 {
     this->symbolType = ExpressionStatementType;
-    this->resolved = new ExpressionStatement::__Resolved;
+    this->resolved = Alloc<ExpressionStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -21,7 +21,6 @@ ExpressionStatement::ExpressionStatement(Expression* expr)
 */
 ExpressionStatement::~ExpressionStatement()
 {
-    delete this->expr;
 }
 
 } // namespace GPULang

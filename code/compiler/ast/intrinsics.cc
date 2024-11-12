@@ -16,6 +16,10 @@ namespace GPULang
 namespace Intrinsics {
 
 
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Pow, ty)
+    FLOAT_LIST
+#undef X
+
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(Sqrt, ty)
     SCALAR_LIST
 #undef X

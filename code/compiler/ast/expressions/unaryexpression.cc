@@ -18,7 +18,7 @@ UnaryExpression::UnaryExpression(uint32_t op, bool isPrefix, Expression* expr)
     , isPrefix(isPrefix)
     , expr(expr)
 {
-    this->resolved = new UnaryExpression::__Resolved;
+    this->resolved = Alloc<UnaryExpression::__Resolved>();
     this->symbolType = UnaryExpressionType;
 }
 
@@ -27,7 +27,6 @@ UnaryExpression::UnaryExpression(uint32_t op, bool isPrefix, Expression* expr)
 */
 UnaryExpression::~UnaryExpression()
 {
-    delete this->expr;
 }
 
 //------------------------------------------------------------------------------

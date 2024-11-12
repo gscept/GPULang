@@ -18,7 +18,7 @@ AccessExpression::AccessExpression(Expression* left, Expression* right, bool der
     , right(right)
     , deref(deref)
 {
-    this->resolved = new AccessExpression::__Resolved;
+    this->resolved = Alloc<AccessExpression::__Resolved>();
     this->symbolType = AccessExpressionType;
 }
 
@@ -27,9 +27,6 @@ AccessExpression::AccessExpression(Expression* left, Expression* right, bool der
 */
 AccessExpression::~AccessExpression()
 {
-    delete this->resolved;
-    delete this->left;
-    delete this->right;
 }
 
 //------------------------------------------------------------------------------

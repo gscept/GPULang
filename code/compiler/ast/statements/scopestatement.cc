@@ -13,7 +13,7 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
     : symbols(contents)
 {
     this->symbolType = ScopeStatementType;
-    this->resolved = new ScopeStatement::__Resolved;
+    this->resolved = Alloc<ScopeStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -21,8 +21,6 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
 */
 ScopeStatement::~ScopeStatement()
 {
-    for (Symbol* sym : this->symbols)
-        delete sym;
 }
 
 } // namespace GPULang

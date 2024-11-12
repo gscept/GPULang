@@ -15,7 +15,7 @@ WhileStatement::WhileStatement(Expression* condition, Statement* statement, bool
     , isDoWhile(isDoWhile)
 {
     this->symbolType = WhileStatementType;
-    this->resolved = new WhileStatement::__Resolved;
+    this->resolved = Alloc<WhileStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -23,8 +23,6 @@ WhileStatement::WhileStatement(Expression* condition, Statement* statement, bool
 */
 WhileStatement::~WhileStatement()
 {
-    delete this->condition;
-    delete this->statement;
 }
 
 } // namespace GPULang

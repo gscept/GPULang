@@ -16,7 +16,7 @@ TernaryExpression::TernaryExpression(Expression* lhs, Expression* ifExpression, 
     , ifExpression(ifExpression)
     , elseExpression(elseExpression)
 {
-    this->resolved = new TernaryExpression::__Resolved;
+    this->resolved = Alloc<TernaryExpression::__Resolved>();
     this->symbolType = TernaryExpressionType;
 }
 
@@ -25,9 +25,6 @@ TernaryExpression::TernaryExpression(Expression* lhs, Expression* ifExpression, 
 */
 TernaryExpression::~TernaryExpression()
 {
-    delete this->lhs;
-    delete this->ifExpression;
-    delete this->elseExpression;
 }
 
 //------------------------------------------------------------------------------

@@ -15,7 +15,7 @@ IfStatement::IfStatement(Expression* condition, Statement* ifStatement, Statemen
     , elseStatement(elseStatement)
 {
     this->symbolType = IfStatementType;
-    this->resolved = new IfStatement::__Resolved;
+    this->resolved = Alloc<IfStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -23,9 +23,6 @@ IfStatement::IfStatement(Expression* condition, Statement* ifStatement, Statemen
 */
 IfStatement::~IfStatement()
 {
-    delete this->condition;
-    delete this->ifStatement;
-    delete this->elseStatement;
 }
 
 } // namespace GPULang

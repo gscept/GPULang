@@ -16,6 +16,8 @@ fips_files(
 	binwriter.h
 	cmdlineargs.cc
 	cmdlineargs.h
+	memory.cc
+	memory.h
 	serialize.h
     shaderusage.h
 	textwriter.cc

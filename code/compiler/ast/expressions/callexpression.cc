@@ -17,7 +17,7 @@ CallExpression::CallExpression(Expression* function, const std::vector<Expressio
     : function(function)
     , args(args)
 {
-    this->resolved = new CallExpression::__Resolved;
+    this->resolved = Alloc<CallExpression::__Resolved>();
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->function = nullptr;
     thisResolved->retType = nullptr;
@@ -29,9 +29,6 @@ CallExpression::CallExpression(Expression* function, const std::vector<Expressio
 */
 CallExpression::~CallExpression()
 {
-    for (Expression* expr : this->args)
-        delete expr;
-    delete this->function;
 }
 
 //------------------------------------------------------------------------------

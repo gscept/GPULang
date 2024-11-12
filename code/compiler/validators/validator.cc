@@ -134,10 +134,10 @@ Validator::Validator()
     this->allowedScalarAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
     this->allowedSamplerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedPointerAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
+    this->allowedPointerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
     this->allowedPointerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedFunctionAttributes.insert(functionAttributes.begin(), functionAttributes.end());
@@ -918,6 +918,24 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 progResolved->constVarInitializationOverrides.insert({ var, assignEntry->right });
             }
         }
+        else if (entryType == Program::__Resolved::RenderState)
+        {
+            std::string sym;
+            if (!assignEntry->right->EvalSymbol(sym))
+            {
+                compiler->Error(Format("Entry '%s' has to be a symbol", entry.c_str()), symbol);
+                return false;
+            }
+            Symbol* value = compiler->GetSymbol(sym);
+            if (value->symbolType != Symbol::SymbolType::RenderStateType)
+            {
+                compiler->Error(Format("Program binds symbol '%s' to '%s' but it is not a recognized render_state", sym.c_str(), assignEntry->name.c_str()), assignEntry);
+                return false;
+            }
+            RenderState* state = static_cast<RenderState*>(value);
+            RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
+            progResolved->mappings[entryType] = state;
+        }
         else
         {
             // get the symbol for this entry
@@ -1084,10 +1102,10 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
 
     Type* renderStateType = compiler->GetSymbol<Type>("renderState");
 
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, renderStateType);
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
 
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, renderStateType);
     for (Expression* entry : state->entries)
     {
         if (!entry->Resolve(compiler))
@@ -1419,20 +1437,6 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     }
 
     enumResolved->typeSymbol = compiler->GetSymbol<Type>(enumeration->type.name);
-
-    for (auto symbol : enumeration->globals)
-        if (symbol->symbolType == Symbol::FunctionType)
-        {
-            Function* fun = static_cast<Function*>(symbol);
-            delete fun;
-        }
-
-    for (auto symbol : enumeration->staticSymbols)
-        if (symbol->symbolType == Symbol::FunctionType)
-        {
-            Function* fun = static_cast<Function*>(symbol);
-            delete fun;
-        }
     enumeration->globals.clear();
     enumeration->staticSymbols.clear();
 
@@ -1604,14 +1608,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = type->byteSize;
 
+    for (Expression* expr : varResolved->type.modifierValues)
+    {
+        if (expr != nullptr)
+            expr->Resolve(compiler);
+    }
+
     if (!this->ValidateType(compiler, var->type, varResolved->typeSymbol, var))
         return false;
 
     // struct members may only be scalars
     if (varResolved->usageBits.flags.isStructMember && 
-        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory))
+        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::UserTypeCategory))
     {
-        compiler->Error(Format("'%s' may only be scalar type if member of a struct", varResolved->name.c_str()), symbol);
+        compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", varResolved->name.c_str()), symbol);
         return false;
     }
 
@@ -1651,6 +1661,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (type->category == Type::TextureCategory)
             allowedAttributesSet = &this->allowedTextureAttributes;
+        else if (type->category == Type::PixelCacheCategory)
+            allowedAttributesSet = &this->allowedPointerAttributes;
         else if (type->category == Type::ScalarCategory || type->category == Type::EnumCategory)
             allowedAttributesSet = &this->allowedScalarAttributes;
         else if (type->category == Type::SamplerCategory)

@@ -13,7 +13,7 @@ ReturnStatement::ReturnStatement(Expression* returnValue)
     : returnValue(returnValue)
 {
     this->symbolType = ReturnStatementType;
-    this->resolved = new ReturnStatement::__Resolved;
+    this->resolved = Alloc<ReturnStatement::__Resolved>();
 }
 
 //------------------------------------------------------------------------------
@@ -21,7 +21,6 @@ ReturnStatement::ReturnStatement(Expression* returnValue)
 */
 ReturnStatement::~ReturnStatement()
 {
-    delete this->returnValue;
 }
 
 } // namespace GPULang

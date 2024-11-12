@@ -73,8 +73,8 @@ const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> strin
 {
     { "DepthClampEnabled", RenderState::__Resolved::DepthClampEnabledType },
     { "NoPixels", RenderState::__Resolved::NoPixelsType },
-    { "PolygonMode", RenderState::__Resolved::PolygonModeType },
-    { "CullMode", RenderState::__Resolved::CullModeType },
+    { "Polygon", RenderState::__Resolved::PolygonModeType },
+    { "Cull", RenderState::__Resolved::CullModeType },
     { "WindingOrder", RenderState::__Resolved::WindingOrderType },
     { "DepthBiasEnabled", RenderState::__Resolved::DepthBiasEnabledType },
     { "DepthBiasFactor", RenderState::__Resolved::DepthBiasFactorType },

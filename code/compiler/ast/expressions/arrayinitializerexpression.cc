@@ -16,7 +16,7 @@ ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Express
     : values(values)
 {
     this->symbolType = ArrayInitializerExpressionType;
-    auto resolved = new ArrayInitializerExpression::__Resolved;
+    auto resolved = Alloc<ArrayInitializerExpression::__Resolved>();
     this->resolved = resolved;
 }
 
@@ -25,8 +25,6 @@ ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Express
 */
 ArrayInitializerExpression::~ArrayInitializerExpression()
 {
-    for (Expression* expr : this->values)
-        delete expr;
 }
 
 //------------------------------------------------------------------------------
@@ -66,7 +64,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     // Append array level first
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
-    thisResolved->fullType.modifierValues.push_back(new UIntExpression(this->values.size()));
+    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>(this->values.size()));
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
     thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
 

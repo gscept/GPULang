@@ -13,11 +13,6 @@ namespace GPULang
 */
 State::~State()
 {
-    for (Expression* entry : this->entries)
-    {
-        BinaryExpression* assignExpression = static_cast<BinaryExpression*>(entry);
-        delete assignExpression;
-    }
 }
 
 const std::map<std::string, CompareMode> stringToCompareMode =
