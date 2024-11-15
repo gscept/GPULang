@@ -1280,6 +1280,28 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
+    std::vector<Function*> matrixScaleFunctions =
+{
+        &Mat2x2::scaleOperator
+        , &Mat2x3::scaleOperator
+        , &Mat2x4::scaleOperator
+        , &Mat3x2::scaleOperator
+        , &Mat3x3::scaleOperator
+        , &Mat3x4::scaleOperator
+        , &Mat4x2::scaleOperator
+        , &Mat4x3::scaleOperator
+        , &Mat4x4::scaleOperator
+    };
+    for (auto fun : matrixScaleFunctions)
+    {
+        this->intrinsicMap[fun] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+            return SPIRVResult(g->AddMappedOp(Format("OpMatrixTimesScalar %%%d %%%d %%%d", returnType, lhs.name, rhs.name)), returnType, true);
+        };
+    }
+
     std::vector<Function*> matrixVectorTransformFunctions =
     {
         &Mat2x2::vectorTransformOperator
@@ -5065,15 +5087,27 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
 uint32_t 
 SPIRVGenerator::AddSymbol(const std::string& name, const std::string& declare, bool global)
 {
-    auto scope = this->scopeStack.rbegin();
-    while (scope != this->scopeStack.rend())
+    if (global)
     {
-        auto it = scope->symbols.find(name);
-        if (it != scope->symbols.end())
+        auto scope = this->scopeStack.rbegin();
+        while (scope != this->scopeStack.rend())
+        {
+            auto it = scope->symbols.find(name);
+            if (it != scope->symbols.end())
+            {
+                return it->second.value;
+            }
+            scope++;
+        }
+    }
+    else
+    {
+        auto scope = this->scopeStack.back();
+        auto it = scope.symbols.find(name);
+        if (it != scope.symbols.end())
         {
             return it->second.value;
         }
-        scope++;
     }
 
     // If symbol isn't found in scope, create it
@@ -5316,15 +5350,27 @@ SPIRVGenerator::AddReserved(const std::string& op, uint32_t name, std::string co
 uint32_t 
 SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, uint32_t copy, SPIRVResult::Storage storage, bool global)
 {
-    auto scope = this->scopeStack.rbegin();
-    while (scope != this->scopeStack.rend())
+    if (global)
     {
-        auto it = scope->symbols.find(name);
-        if (it != scope->symbols.end())
+        auto scope = this->scopeStack.rbegin();
+        while (scope != this->scopeStack.rend())
+        {
+            auto it = scope->symbols.find(name);
+            if (it != scope->symbols.end())
+            {
+                return it->second.value;
+            }
+            scope++;
+        }
+    }
+    else
+    {
+        auto scope = this->scopeStack.back();
+        auto it = scope.symbols.find(name);
+        if (it != scope.symbols.end())
         {
             return it->second.value;
         }
-        scope++;
     }
 
     // If symbol isn't found in scope, create it
