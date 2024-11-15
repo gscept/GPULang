@@ -298,6 +298,8 @@ structure
                 var->name = varName;
                 var->valueExpression = nullptr;
                 members.push_back(var);
+                
+                varType = Type::FullType();
             }
         )*
     '}' 

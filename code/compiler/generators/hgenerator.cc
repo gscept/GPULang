@@ -144,6 +144,9 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
             writer.WriteLine("");
         }
     }
+    uint32_t numPads = strucResolved->endPadding / 4;
+    for (uint32_t i = 0; i < numPads; i++)
+        writer.WriteLine("unsigned int : 32;");
 
     writer.Unindent();
     writer.WriteLine("};\n");
@@ -326,7 +329,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             writer.Unindent();
             writer.WriteLine("};\n");
         }
-        else if (varResolved->usageBits.flags.isConst)
+        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Variable::__Resolved::Storage::Default)
         {
             std::string arraySize = "";
             for (int i = 0; i < varResolved->type.modifierValues.size(); i++)

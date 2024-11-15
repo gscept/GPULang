@@ -35,6 +35,13 @@ Function Float3::divisionAssignOperator;
 Function Float3::elementAccessOperatorInt;
 Function Float3::elementAccessOperatorUInt;
 
+Function Float3::ltOperator;
+Function Float3::lteOperator;
+Function Float3::gtOperator;
+Function Float3::gteOperator;
+Function Float3::eOperator;
+Function Float3::neOperator;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -80,6 +87,13 @@ Float3::Float3()
     __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x3, f32x3);
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x3, f32x3);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x3, f32x3);
+
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, f32x3);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, f32x3);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, f32x3);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, f32x3);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, f32x3);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, f32x3);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);

@@ -45,6 +45,13 @@ struct Float2 : public Type
     static Function multiplicationAssignOperator;
     static Function divisionAssignOperator;
 
+    static Function ltOperator;
+    static Function lteOperator;
+    static Function gtOperator;
+    static Function gteOperator;
+    static Function eOperator;
+    static Function neOperator;
+
     static Function elementAccessOperatorInt;
     static Function elementAccessOperatorUInt;
 };

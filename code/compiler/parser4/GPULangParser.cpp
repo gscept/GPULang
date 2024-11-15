@@ -891,7 +891,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
   EffectContext *_localctx = _tracker.createInstance<EffectContext>(_ctx, getState());
   enterRule(_localctx, 6, GPULangParser::RuleEffect);
 
-          antlrcpp::downCast<EffectContext *>(_localctx)->eff =  new Effect();
+          antlrcpp::downCast<EffectContext *>(_localctx)->eff =  Alloc<Effect>();
       
 
 #if __cplusplus > 201703L
@@ -1132,7 +1132,7 @@ GPULangParser::AliasContext* GPULangParser::alias() {
     antlrcpp::downCast<AliasContext *>(_localctx)->type = match(GPULangParser::IDENTIFIER);
      name = (antlrcpp::downCast<AliasContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->name->getText() : ""); type = (antlrcpp::downCast<AliasContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->type->getText() : ""); 
 
-            antlrcpp::downCast<AliasContext *>(_localctx)->sym =  new Alias();
+            antlrcpp::downCast<AliasContext *>(_localctx)->sym =  Alloc<Alias>();
             _localctx->sym->name = name;
             _localctx->sym->type = type;
         
@@ -1644,7 +1644,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
 
             for (size_t i = 0; i < names.size(); i++)
             {
-                Variable* var = new Variable(); 
+                Variable* var = Alloc<Variable>(); 
                 var->type = type; 
                 var->location = locations[i]; 
                 var->annotations = annotations;
@@ -1754,7 +1754,7 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
     setState(281);
     antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      
-            antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->sym =  new Structure();
+            antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->sym =  Alloc<Structure>();
             _localctx->sym->name = (antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->name->getText() : ""); 
             _localctx->sym->annotations = std::move(annotations);
             _localctx->sym->attributes = std::move(attributes);
@@ -1949,12 +1949,14 @@ GPULangParser::StructureContext* GPULangParser::structure() {
       setState(307);
       match(GPULangParser::SC);
 
-                      Variable* var = new Variable(); 
+                      Variable* var = Alloc<Variable>(); 
                       var->type = varType; 
                       var->location = varLocation; 
                       var->name = varName;
                       var->valueExpression = nullptr;
                       members.push_back(var);
+                      
+                      varType = Type::FullType();
                   
       setState(313);
       _errHandler->sync(this);
@@ -2145,7 +2147,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
     setState(353);
     match(GPULangParser::RB);
 
-            antlrcpp::downCast<EnumerationContext *>(_localctx)->sym =  new Enumeration();
+            antlrcpp::downCast<EnumerationContext *>(_localctx)->sym =  Alloc<Enumeration>();
             _localctx->sym->name = name;
             type.literal = true;
             _localctx->sym->type = type;
@@ -2270,7 +2272,7 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
        valueExpression = antlrcpp::downCast<ParameterContext *>(_localctx)->valueExpr->tree; 
     }
 
-                antlrcpp::downCast<ParameterContext *>(_localctx)->sym =  new Variable(); 
+                antlrcpp::downCast<ParameterContext *>(_localctx)->sym =  Alloc<Variable>(); 
                 _localctx->sym->type = type; 
                 _localctx->sym->location = location; 
                 _localctx->sym->attributes = std::move(attributes);
@@ -2417,7 +2419,7 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
     setState(402);
     antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->returnType = typeDeclaration();
 
-            antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->sym =  new Function(); 
+            antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->sym =  Alloc<Function>(); 
             _localctx->sym->hasBody = false;
             _localctx->sym->location = location;
             _localctx->sym->returnType = antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->returnType->type; 
@@ -2819,7 +2821,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     setState(443);
     match(GPULangParser::RB);
      
-            antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  new Program();
+            antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  Alloc<Program>();
             _localctx->sym->location = location;
             _localctx->sym->name = (antlrcpp::downCast<ProgramContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<ProgramContext *>(_localctx)->name->getText() : "");
             _localctx->sym->annotations = std::move(annotations);
@@ -2911,14 +2913,14 @@ GPULangParser::StateContext* GPULangParser::state() {
       case GPULangParser::T__8: {
         setState(446);
         match(GPULangParser::T__8);
-         antlrcpp::downCast<StateContext *>(_localctx)->sym =  new SamplerState(); 
+         antlrcpp::downCast<StateContext *>(_localctx)->sym =  Alloc<SamplerState>(); 
         break;
       }
 
       case GPULangParser::T__9: {
         setState(448);
         match(GPULangParser::T__9);
-         antlrcpp::downCast<StateContext *>(_localctx)->sym =  new RenderState(); 
+         antlrcpp::downCast<StateContext *>(_localctx)->sym =  Alloc<RenderState>(); 
         break;
       }
 
@@ -3315,7 +3317,7 @@ GPULangParser::IfStatementContext* GPULangParser::ifStatement() {
       break;
     }
 
-            antlrcpp::downCast<IfStatementContext *>(_localctx)->tree =  new IfStatement(condition, ifBody, elseBody);
+            antlrcpp::downCast<IfStatementContext *>(_localctx)->tree =  Alloc<IfStatement>(condition, ifBody, elseBody);
             _localctx->tree->location = location;
         
    
@@ -3477,7 +3479,7 @@ GPULangParser::ForStatementContext* GPULangParser::forStatement() {
     antlrcpp::downCast<ForStatementContext *>(_localctx)->content = statement();
      contents = antlrcpp::downCast<ForStatementContext *>(_localctx)->content->tree; 
 
-            antlrcpp::downCast<ForStatementContext *>(_localctx)->tree =  new ForStatement(declarations, conditionExpression, loopExpression, contents);
+            antlrcpp::downCast<ForStatementContext *>(_localctx)->tree =  Alloc<ForStatement>(declarations, conditionExpression, loopExpression, contents);
             _localctx->tree->location = location;
             _localctx->tree->attributes = std::move(attributes);
         
@@ -3672,7 +3674,7 @@ GPULangParser::WhileStatementContext* GPULangParser::whileStatement() {
         antlrcpp::downCast<WhileStatementContext *>(_localctx)->content = statement();
          contents = antlrcpp::downCast<WhileStatementContext *>(_localctx)->content->tree; 
 
-                antlrcpp::downCast<WhileStatementContext *>(_localctx)->tree =  new WhileStatement(conditionExpression, contents, isDoWhile);
+                antlrcpp::downCast<WhileStatementContext *>(_localctx)->tree =  Alloc<WhileStatement>(conditionExpression, contents, isDoWhile);
                 _localctx->tree->location = location;
             
         break;
@@ -3698,7 +3700,7 @@ GPULangParser::WhileStatementContext* GPULangParser::whileStatement() {
         setState(584);
         match(GPULangParser::SC);
 
-                antlrcpp::downCast<WhileStatementContext *>(_localctx)->tree =  new WhileStatement(conditionExpression, contents, isDoWhile);
+                antlrcpp::downCast<WhileStatementContext *>(_localctx)->tree =  Alloc<WhileStatement>(conditionExpression, contents, isDoWhile);
                 _localctx->tree->location = location;
             
         break;
@@ -3844,7 +3846,7 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
     setState(604);
     match(GPULangParser::RB);
 
-            antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  new ScopeStatement(contents);
+            antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  Alloc<ScopeStatement>(contents);
             _localctx->tree->location = location;
         
    
@@ -3925,7 +3927,7 @@ GPULangParser::ReturnStatementContext* GPULangParser::returnStatement() {
     setState(614);
     match(GPULangParser::SC);
 
-            antlrcpp::downCast<ReturnStatementContext *>(_localctx)->tree =  new ReturnStatement(returnValue);
+            antlrcpp::downCast<ReturnStatementContext *>(_localctx)->tree =  Alloc<ReturnStatement>(returnValue);
             _localctx->tree->location = location;
         
    
@@ -3989,7 +3991,7 @@ GPULangParser::DiscardStatementContext* GPULangParser::discardStatement() {
     setState(619);
     match(GPULangParser::SC);
 
-            antlrcpp::downCast<DiscardStatementContext *>(_localctx)->tree =  new DiscardStatement();
+            antlrcpp::downCast<DiscardStatementContext *>(_localctx)->tree =  Alloc<DiscardStatement>();
             _localctx->tree->location = location;
         
    
@@ -4053,7 +4055,7 @@ GPULangParser::ContinueStatementContext* GPULangParser::continueStatement() {
     setState(624);
     match(GPULangParser::SC);
 
-            antlrcpp::downCast<ContinueStatementContext *>(_localctx)->tree =  new ContinueStatement();
+            antlrcpp::downCast<ContinueStatementContext *>(_localctx)->tree =  Alloc<ContinueStatement>();
             _localctx->tree->location = location;
         
    
@@ -4218,7 +4220,7 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
     setState(657);
     match(GPULangParser::RB);
 
-            antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  new SwitchStatement(switchExpression, caseExpressions, caseStatements, defaultStatement);
+            antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  Alloc<SwitchStatement>(switchExpression, caseExpressions, caseStatements, defaultStatement);
             _localctx->tree->location = location;
         
    
@@ -4282,7 +4284,7 @@ GPULangParser::BreakStatementContext* GPULangParser::breakStatement() {
     setState(662);
     match(GPULangParser::SC);
 
-            antlrcpp::downCast<BreakStatementContext *>(_localctx)->tree =  new BreakStatement();
+            antlrcpp::downCast<BreakStatementContext *>(_localctx)->tree =  Alloc<BreakStatement>();
             _localctx->tree->location = location;
         
    
@@ -4424,7 +4426,7 @@ GPULangParser::CommaExpressionContext* GPULangParser::commaExpression() {
         setState(672);
         antlrcpp::downCast<CommaExpressionContext *>(_localctx)->e2 = assignmentExpression();
 
-                    CommaExpression* expr = new CommaExpression(_localctx->tree, antlrcpp::downCast<CommaExpressionContext *>(_localctx)->e2->tree);
+                    CommaExpression* expr = Alloc<CommaExpression>(_localctx->tree, antlrcpp::downCast<CommaExpressionContext *>(_localctx)->e2->tree);
                     expr->location = location;
                     antlrcpp::downCast<CommaExpressionContext *>(_localctx)->tree =  expr;
                  
@@ -4587,7 +4589,7 @@ GPULangParser::AssignmentExpressionContext* GPULangParser::assignmentExpression(
             setState(684);
             antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->e2 = logicalOrExpression();
              
-                        BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->e2->tree);
+                        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->e2->tree);
                         expr->location = location;
                         antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->tree =  expr;
                     
@@ -4605,7 +4607,7 @@ GPULangParser::AssignmentExpressionContext* GPULangParser::assignmentExpression(
             setState(691);
             antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->elseBody = expression();
              
-                        TernaryExpression* expr = new TernaryExpression(_localctx->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->ifBody->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->elseBody->tree);
+                        TernaryExpression* expr = Alloc<TernaryExpression>(_localctx->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->ifBody->tree, antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->elseBody->tree);
                         expr->location = location;
                         antlrcpp::downCast<AssignmentExpressionContext *>(_localctx)->tree =  expr;
                     
@@ -4701,7 +4703,7 @@ GPULangParser::LogicalOrExpressionContext* GPULangParser::logicalOrExpression() 
       setState(703);
       antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2 = logicalAndExpression();
 
-                  BinaryExpression* expr = new BinaryExpression('||', _localctx->tree, antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->tree =  expr;
               
@@ -4791,7 +4793,7 @@ GPULangParser::LogicalAndExpressionContext* GPULangParser::logicalAndExpression(
       setState(715);
       antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2 = orExpression();
 
-                  BinaryExpression* expr = new BinaryExpression('&&', _localctx->tree, antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->tree =  expr;
               
@@ -4881,7 +4883,7 @@ GPULangParser::OrExpressionContext* GPULangParser::orExpression() {
       setState(727);
       antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2 = xorExpression();
 
-                  BinaryExpression* expr = new BinaryExpression('|', _localctx->tree, antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<OrExpressionContext *>(_localctx)->tree =  expr;
               
@@ -4970,7 +4972,7 @@ GPULangParser::XorExpressionContext* GPULangParser::xorExpression() {
       setState(739);
       antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2 = andExpression();
 
-                  BinaryExpression* expr = new BinaryExpression('^', _localctx->tree, antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<XorExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5059,7 +5061,7 @@ GPULangParser::AndExpressionContext* GPULangParser::andExpression() {
       setState(751);
       antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2 = equivalencyExpression();
 
-                  BinaryExpression* expr = new BinaryExpression('&', _localctx->tree, antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<AndExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5168,7 +5170,7 @@ GPULangParser::EquivalencyExpressionContext* GPULangParser::equivalencyExpressio
       setState(763);
       antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2 = relationalExpression();
 
-                  BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5291,7 +5293,7 @@ GPULangParser::RelationalExpressionContext* GPULangParser::relationalExpression(
       setState(775);
       antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2 = shiftExpression();
 
-                  BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5384,7 +5386,7 @@ GPULangParser::ShiftExpressionContext* GPULangParser::shiftExpression() {
       setState(787);
       antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2 = addSubtractExpression();
 
-                  BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5493,7 +5495,7 @@ GPULangParser::AddSubtractExpressionContext* GPULangParser::addSubtractExpressio
       setState(799);
       antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2 = multiplyDivideExpression();
 
-                  BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5608,7 +5610,7 @@ GPULangParser::MultiplyDivideExpressionContext* GPULangParser::multiplyDivideExp
       setState(811);
       antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2 = prefixExpression();
 
-                  BinaryExpression* expr = new BinaryExpression(StringToFourCC((antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2->tree);
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2->tree);
                   expr->location = location;
                   antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->tree =  expr;
               
@@ -5741,7 +5743,7 @@ GPULangParser::PrefixExpressionContext* GPULangParser::prefixExpression() {
             _localctx->tree->location = SetupFile();
             for (size_t i = 0; i < ops.size(); i++)
             {
-                antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->tree =  new UnaryExpression(ops[i], true, _localctx->tree);
+                antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(ops[i], true, _localctx->tree);
                 _localctx->tree->location = locations[i];
             }
         
@@ -5922,7 +5924,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               _localctx->tree->location = SetupFile();
               for (size_t i = 0; i < ops.size(); i++)
               {
-                  antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  new UnaryExpression(ops[i], false, _localctx->tree);
+                  antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(ops[i], false, _localctx->tree);
                   _localctx->tree->location = locations[i];
               }
           
@@ -5975,7 +5977,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(856);
               match(GPULangParser::RP);
 
-                          CallExpression* expr = new CallExpression(_localctx->tree, args);
+                          CallExpression* expr = Alloc<CallExpression>(_localctx->tree, args);
                           expr->location = location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       
@@ -5989,7 +5991,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(860);
               antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
 
-                          AccessExpression* expr = new AccessExpression(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, false);
+                          AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, false);
                           expr->location = location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       
@@ -6003,7 +6005,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(865);
               antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
 
-                          AccessExpression* expr = new AccessExpression(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, true);
+                          AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, true);
                           expr->location = location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       
@@ -6028,7 +6030,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(875);
               match(GPULangParser::RR);
 
-                          ArrayIndexExpression* expr = new ArrayIndexExpression(_localctx->tree, arrayIndexExpr);
+                          ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>(_localctx->tree, arrayIndexExpr);
                           expr->location = location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       
@@ -6224,7 +6226,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 1);
       setState(889);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken = match(GPULangParser::INTEGERLITERAL);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new IntExpression(atoi((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<IntExpression>(atoi((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6232,7 +6234,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 2);
       setState(891);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken = match(GPULangParser::UINTEGERLITERAL);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new UIntExpression(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken->getText() : "").c_str(), nullptr, 10)); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<UIntExpression>(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken->getText() : "").c_str(), nullptr, 10)); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6240,7 +6242,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 3);
       setState(893);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken = match(GPULangParser::FLOATLITERAL);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new FloatExpression(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<FloatExpression>(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6248,7 +6250,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 4);
       setState(895);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken = match(GPULangParser::DOUBLELITERAL);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new FloatExpression(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<FloatExpression>(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6256,7 +6258,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 5);
       setState(897);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken = match(GPULangParser::HEX);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new UIntExpression(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken->getText() : "").c_str(), nullptr, 16)); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<UIntExpression>(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken->getText() : "").c_str(), nullptr, 16)); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6264,7 +6266,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 6);
       setState(899);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->stringContext = string();
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new StringExpression(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->stringContext->val); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<StringExpression>(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->stringContext->val); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6272,7 +6274,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 7);
       setState(902);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken = match(GPULangParser::IDENTIFIER);
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new SymbolExpression((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken->getText() : "")); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<SymbolExpression>((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken->getText() : "")); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6280,7 +6282,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
       enterOuterAlt(_localctx, 8);
       setState(904);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->booleanContext = boolean();
-       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  new BoolExpression(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->booleanContext->val); _localctx->tree->location = SetupFile(); 
+       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<BoolExpression>(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->booleanContext->val); _localctx->tree->location = SetupFile(); 
       break;
     }
 
@@ -6430,7 +6432,7 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
     setState(937);
     match(GPULangParser::RB);
 
-            antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->tree =  new InitializerExpression(exprs, type);
+            antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->tree =  Alloc<InitializerExpression>(exprs, type);
             _localctx->tree->location = location;
         
    
@@ -6540,7 +6542,7 @@ GPULangParser::ArrayInitializerExpressionContext* GPULangParser::arrayInitialize
     setState(955);
     match(GPULangParser::RR);
 
-            antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->tree =  new ArrayInitializerExpression(exprs);
+            antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->tree =  Alloc<ArrayInitializerExpression>(exprs);
             _localctx->tree->location = location;
         
    

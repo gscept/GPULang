@@ -45,6 +45,7 @@ struct Structure : public Type
 
         // for alignment
         size_t byteSize;
+        size_t endPadding;
         size_t baseAlignment;
 
         bool packMembers;

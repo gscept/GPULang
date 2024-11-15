@@ -104,7 +104,8 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
     }
 	
     // if using debug, output raw shader code
-	options.optimize = !this->debug;
+	options.optimize = false;//!this->debug;
+	options.validate = true;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
 
     GPULangErrorBlob* errors = NULL;

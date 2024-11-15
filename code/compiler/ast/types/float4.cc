@@ -41,6 +41,13 @@ Function Float4::divisionAssignOperator;
 Function Float4::elementAccessOperatorInt;
 Function Float4::elementAccessOperatorUInt;
 
+Function Float4::ltOperator;
+Function Float4::lteOperator;
+Function Float4::gtOperator;
+Function Float4::gteOperator;
+Function Float4::eOperator;
+Function Float4::neOperator;
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -96,6 +103,13 @@ Float4::Float4()
     __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x4, f32x4);
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x4, f32x4);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x4, f32x4);
+
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, f32x4);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);

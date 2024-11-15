@@ -114,12 +114,14 @@ const std::map<TypeCode, std::string> codeToStringMapping =
     , { TypeCode::UInt16, "u16" }
     , { TypeCode::Bool, "b8" }
     , { TypeCode::Texture1D, "texture1D" }
+    , { TypeCode::Texture1DArray, "texture1DArray" }
     , { TypeCode::Texture2D, "texture2D" }
+    , { TypeCode::Texture2DArray, "texture2DArray" }
     , { TypeCode::Texture2DMS, "texture2DMS" }
+    , { TypeCode::Texture2DMSArray, "texture2DMSArray" }
     , { TypeCode::Texture3D, "texture3D" }
     , { TypeCode::TextureCube, "textureCube" }
-    , { TypeCode::Texture1D, "texture1D" }
-    , { TypeCode::Texture1D, "texture1D" }
+    , { TypeCode::TextureCubeArray, "textureCubeArray" }
     , { TypeCode::PixelCache, "pixelCache" }
     , { TypeCode::PixelCacheMS, "pixelCacheMS" }
     , { TypeCode::Sampler, "sampler" }
@@ -363,7 +365,7 @@ Type::CalculateAlignment() const
 {
     uint32_t baseAlignment = (this->byteSize / this->rowSize) / this->columnSize;
     uint32_t roundedColumns = roundtopow2(this->columnSize);
-    return baseAlignment * roundedColumns;
+    return baseAlignment * roundedColumns;// * this->rowSize;
 }
 
 //------------------------------------------------------------------------------
@@ -374,7 +376,7 @@ Type::CalculateStride() const
 {
     uint32_t baseAlignment = (this->byteSize / this->rowSize) / this->columnSize;
     uint32_t roundedColumns = roundtopow2(this->columnSize);
-    return baseAlignment * roundedColumns;
+    return baseAlignment * roundedColumns * this->rowSize;
 }
 
 //------------------------------------------------------------------------------
@@ -522,13 +524,33 @@ std::string
 Type::FullType::ToString()
 {
     std::string base;
+    for (size_t i = 0; i < this->modifiers.size(); i++)
+    {
+        if (this->modifiers[i] == Modifier::Pointer)
+        {
+            base.append("*");
+        }
+        else if (this->modifiers[i] == Modifier::Array)
+        {
+            if (this->modifierValues[i] == nullptr)
+                base.append("[]");
+            else
+            {
+                uint32_t size;
+                this->modifierValues[i]->EvalUInt(size);
+                base.append(Format("[%d]", size));
+            }
+        }
+    }
     if (this->literal)
         base.append("literal ");
     if (this->mut)
         base.append("mutable ");
     if (this->sampled)
         base.append("sampled ");
-    return Format("%s%s%s", this->signature.c_str(), base.c_str(), this->name.c_str());
+    
+        
+    return Format("%s%s", base.c_str(), this->name.c_str());
 }
 
 //------------------------------------------------------------------------------

@@ -46,13 +46,13 @@ UnaryExpression::Resolve(Compiler* compiler)
     this->expr->EvalType(type);
     if (this->op == '*')
     {
-        if (type.modifiers.empty() || type.modifiers.back() != Type::FullType::Modifier::Pointer)
+        if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
         {
             compiler->Error(Format("Dereferencing is only allowed on a pointer"), this);
             return false;
         }
-        type.modifiers.pop_back();
-        type.modifierValues.pop_back();
+        type.modifiers.erase(type.modifiers.begin());
+        type.modifierValues.erase(type.modifierValues.begin());
     }
     else if (this->isLhsValue)
     {

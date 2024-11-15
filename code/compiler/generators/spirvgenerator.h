@@ -11,10 +11,10 @@
 #include "generator.h"
 #include "ast/symbol.h"
 #include "ast/types/type.h"
+#include "ast/variable.h"
 #include "ast/program.h"
 #include <unordered_map>
 #include <set>
-#include <stack>
 #include <assert.h>
 #include <dinput.h>
 
@@ -70,6 +70,7 @@ struct SPIRVResult
         Input,
         Output
     } scope;
+    Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default;
 
     static std::string ScopeToString(Storage s)
     {
@@ -184,8 +185,10 @@ public:
     uint32_t AddMappedOp(const std::string& name, std::string comment = "");
     /// Add capability
     void AddCapability(const std::string& declare);
+    /// import extension
+    uint32_t ImportExtension(const std::string& name);
     /// Add extension
-    uint32_t AddExtension(const std::string& name);
+    void AddExtension(const std::string& name);
     /// Add decoration
     void AddDecoration(const std::string& name, uint32_t object, const std::string& decorate);
     /// Add member decoration
@@ -197,7 +200,7 @@ public:
     /// Add op with reserved name
     void AddReserved(const std::string& op, uint32_t name, std::string comment = "");
     /// Add function variable declaration
-    uint32_t AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, SPIRVResult::Storage scope, bool global = false);
+    uint32_t AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, uint32_t copy, SPIRVResult::Storage scope, bool global = false);
 
     uint32_t symbolCounter;
 
@@ -206,15 +209,18 @@ public:
         std::unordered_map<std::string, SymbolAssignment> symbols;
     };
     std::vector<Scope> scopeStack;
-    std::set<std::string> capabilities;
+    std::vector<std::string> capabilities;
     /// Push a new scope on the stack
     void PushScope();
     /// Pop scope
     void PopScope();
 
+    std::string header;
+    std::string capability;
+    std::string extension;
+    std::string extImport;
     std::string decorations;
     std::string declarations;
-    std::string header;
     std::string functions;
     
     std::string functional;
@@ -224,6 +230,7 @@ public:
     std::unordered_map<std::string, std::set<std::string>> decorationMap;
 
     std::string variableDeclarations;
+    std::string parameterInitializations;
     bool blockOpen = false;
     bool literalExtract = false;
     bool linkDefineEvaluation = false;

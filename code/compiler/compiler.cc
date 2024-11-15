@@ -472,6 +472,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     }
     else
     {
+        this->messages.push_back(Format("Failed to open file '%s'", binaryWriter.GetPath().c_str()));
+        this->hasErrors = true;
         return false;
     }
 
@@ -491,6 +493,11 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
         if (this->options.emitTimings)
             this->performanceTimer.Print("Header generation");
+    }
+    else
+    {
+        this->messages.push_back(Format("Failed to open file '%s'", headerWriter.GetPath().c_str()));
+        this->hasErrors = true;
     }
 
     return ret;

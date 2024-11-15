@@ -68,15 +68,24 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    unsigned leftAccess;
-    this->left->EvalAccessFlags(leftAccess);
-    if (leftAccess == AccessFlags::Const &&
-        !compiler->currentState.allowConstOverride
-        && (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
-        )
+    if (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
     {
-        compiler->Error(Format("Assignment illegal on left hand value of 'const'"), this);
-        return false;
+        unsigned leftAccess;
+        this->left->EvalAccessFlags(leftAccess);
+        if (leftAccess == AccessFlags::Const &&
+            !compiler->currentState.allowConstOverride)
+        {
+            compiler->Error(Format("Assignment illegal on left hand value of 'const'"), this);
+            return false;
+        }
+
+        Type::FullType leftType;
+        this->left->EvalType(leftType);
+        if (leftType.literal)
+        {
+            compiler->Error(Format("Assignment illegal on literal"), this);
+            return false;
+        }
     }
 
     // If assignment, allow if types are identical

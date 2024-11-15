@@ -63,7 +63,7 @@ Format(const char* format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	char buf[4096];
+	char buf[65535];
 	vsnprintf(buf, sizeof(buf), format, args);
 	std::string retVal(buf);
 	va_end(args);

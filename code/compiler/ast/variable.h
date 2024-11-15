@@ -93,7 +93,8 @@ struct Variable : public Symbol
             Input,                                  // variable is an input from a previous shader stage
             Output,                                 // variable is an output from the current shader stage
             Global,                                 // variable is global in the shader
-            LinkDefined                             // variable value is defined at link time
+            LinkDefined,                            // variable value is defined at link time
+            DynamicArray                            // variable points to an array of dynamic size
 
         } storage = Storage::Default;
         std::vector<Variable*> siblings;

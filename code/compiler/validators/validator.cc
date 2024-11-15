@@ -38,7 +38,6 @@
 #include "util.h"
 #include <algorithm>
 
-#include "../../../app/shaders/computewithstore.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/statements/discardstatement.h"
 
@@ -1402,18 +1401,44 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             if (!this->ResolveVariable(compiler, var))
                 return false;
 
+            uint32_t arraySize = 0;
+            for (Expression* expr : varResolved->type.modifierValues)
+            {
+                if (expr != nullptr)
+                {
+                    uint32_t size;
+                    expr->EvalUInt(size);
+                    arraySize += size;
+                }
+            }
             uint32_t packedOffset = offset;
+            uint32_t varSize = varResolved->byteSize;
             if (!strucResolved->packMembers)
-                offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
+            {
+                if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory)
+                {
+                    Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(varResolved->typeSymbol));
+                    offset = Type::Align(offset, strucRes->byteSize);
+                    varSize = strucRes->byteSize;
+                }
+                else
+                {
+                    offset = Type::Align(offset, varResolved->typeSymbol->CalculateAlignment());
+                }
+            }
+                
 
             uint32_t diff = offset - packedOffset;
             varResolved->startPadding = diff;
             varResolved->structureOffset = offset;
-            offset += varResolved->byteSize;
+            offset += varSize * (arraySize > 0 ? arraySize : 1);
 
-            strucResolved->byteSize += varResolved->byteSize;
         }
     }
+    strucResolved->byteSize = offset;
+    uint32_t alignedSize = Type::Align(strucResolved->byteSize, 16);
+    strucResolved->endPadding = alignedSize - strucResolved->byteSize;
+    strucResolved->byteSize = alignedSize;
 
     return true;
 }
@@ -1863,6 +1888,19 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
+            if (varResolved->type.modifiers.front() == Type::FullType::Modifier::Array)
+            {
+                if (varResolved->type.modifierValues.front() == nullptr)
+                {
+                    if (varResolved->storage != Variable::__Resolved::Storage::Uniform)
+                    {
+                        compiler->Error(Format("Variables of dynamic sized array must be 'uniform'"), symbol);
+                        return false;        
+                    }
+                    varResolved->storage = Variable::__Resolved::Storage::DynamicArray;
+                }
+            }
+
             if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::UserTypeCategory)
             {
                 compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
@@ -1899,7 +1937,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (lastIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
         {
-            compiler->Error(Format("Pointers are only allowed as symbols in the global scope", type->name.c_str()), symbol);
+            compiler->Error(Format("Pointers are only allowed on variables in the global scope", type->name.c_str()), symbol);
             return false;
         }
 
