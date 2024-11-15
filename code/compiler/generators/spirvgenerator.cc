@@ -556,9 +556,17 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
     
     if (arg.swizzleMask != Type::SwizzleMask())
     {
-        std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
-        val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
-        type = arg.swizzleType;
+        if (Type::SwizzleMaskComponents(arg.swizzleMask) == 1)
+        {
+            val = generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", arg.swizzleType, val, arg.swizzleMask.bits.x));
+            type = arg.swizzleType;
+        }
+        else
+        {
+            std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
+            val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
+            type = arg.swizzleType;
+        }
     }
     auto res = SPIRVResult(val, type);
     res.isValue = true;
@@ -3932,6 +3940,8 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
             // Make sure to reset the swizzle mask so we don't perform a swizzle load on the left
             leftValue.swizzleMask = Type::SwizzleMask();
             SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
+            if (!rhsType->IsVector())
+                rightValue = GenerateSplatCompositeSPIRV(compiler, generator, leftValue.typeName, leftValue.unswizzledType->columnSize, rightValue);
             rightValue.name = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", leftValue.typeName, leftLoaded.name, rightValue.name, swizzleMask.c_str()));
         }
         generator->AddOp(Format("OpStore %%%d %%%d", leftValue.name, rightValue.name));
@@ -3967,36 +3977,16 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     Type::SwizzleMask swizzle = accessExpressionResolved->swizzleMask;
     if (swizzle.mask != 0x0)
     {
-        // If single value, then use an access chain
-        if (Type::SwizzleMaskComponents(swizzle) == 1)
-        {
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            if (lhs.isValue)
-            {
-                uint32_t ret = generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", typeName.typeName, lhs.name, swizzle.bits.x));
-                return SPIRVResult(ret, typeName.typeName, true);
-            }
-            else
-            {
-                SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(swizzle.bits.x));
-                uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
-                uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text);
-                return SPIRVResult(ptr, typeName.typeName);    
-            }
-        }
-        else
-        {
-            assert(accessExpressionResolved->lhsType->IsVector());
-            SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            SPIRVResult origType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
+        assert(accessExpressionResolved->lhsType->IsVector());
+        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
+        SPIRVResult origType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
 
-            SPIRVResult ret = SPIRVResult(lhs.name, origType.typeName);
-            ret.swizzleMask = swizzle;
-            ret.swizzleType = retType.typeName;
-            ret.isValue = lhs.isValue;
-            return ret;
-        }
-        // Generate swizzle access
+        SPIRVResult ret = SPIRVResult(lhs.name, origType.typeName);
+        ret.swizzleMask = swizzle;
+        ret.swizzleType = retType.typeName;
+        ret.isValue = lhs.isValue;
+        ret.unswizzledType = accessExpressionResolved->lhsType;
+        return ret;
     }
     else
     {

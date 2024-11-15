@@ -34,6 +34,7 @@ struct SPIRVResult
 
     Type::SwizzleMask swizzleMask;
     uint32_t swizzleType = 0xFFFFFFFF;
+    Type* unswizzledType;
 
     struct LiteralValue
     {
