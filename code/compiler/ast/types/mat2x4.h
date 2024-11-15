@@ -27,7 +27,8 @@ struct Mat2x4 : public Type
     static Function multiplyAssignOperator;
 
     static Function vectorTransformOperator;
-
+    static Function scaleOperator;
+    
     static Function assignOperator;
 
     static Function elementAccessOperatorInt;

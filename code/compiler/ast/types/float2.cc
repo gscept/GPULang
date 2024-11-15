@@ -62,6 +62,8 @@ Float2::Float2()
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(modOperator, operator%, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, f32x2, f32);
     __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x2, f32x2);

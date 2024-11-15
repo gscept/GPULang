@@ -17,6 +17,7 @@ Function Mat2x4::subtractionAssignOperator;
 Function Mat2x4::multiplyAssignOperator;
 
 Function Mat2x4::vectorTransformOperator;
+Function Mat2x4::scaleOperator;
 
 Function Mat2x4::assignOperator;
 
@@ -56,6 +57,7 @@ Mat2x4::Mat2x4()
     __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x2x4, f32x2x4);
 
     __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x2, f32x4);
+    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, f32x2x4, f32);
 
     __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x2x4, f32x2x4);
 
