@@ -128,7 +128,7 @@ BinaryExpression::Resolve(Compiler* compiler)
             {
                 /// Attempt to promote left and right side to the smallest common denominator
                 TypeCode promotedType = Type::PromoteTypes(thisResolved->lhsType->baseType, thisResolved->rhsType->baseType);
-                Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(thisResolved->lhsType->columnSize, thisResolved->rhsType->columnSize));
+                Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(thisResolved->lhsType->columnSize, thisResolved->rhsType->columnSize), max(thisResolved->lhsType->rowSize, thisResolved->rhsType->rowSize));
                 std::string promotedOperatorFunctionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), promotedFullType.name.c_str());
                 Type* promotedLhsType = compiler->GetSymbol<Type>(promotedFullType.name);
                 Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
