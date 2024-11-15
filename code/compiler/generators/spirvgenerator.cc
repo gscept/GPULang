@@ -3970,11 +3970,19 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // If single value, then use an access chain
         if (Type::SwizzleMaskComponents(swizzle) == 1)
         {
-            SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(swizzle.bits.x));
             SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->rightType, accessExpressionResolved->rhsType);
-            uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
-            uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text);
-            return SPIRVResult(ptr, typeName.typeName);
+            if (lhs.isValue)
+            {
+                uint32_t ret = generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", typeName.typeName, lhs.name, swizzle.bits.x));
+                return SPIRVResult(ret, typeName.typeName, true);
+            }
+            else
+            {
+                SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(swizzle.bits.x));
+                uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", accessExpressionResolved->rightType.name.c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
+                uint32_t ptr = generator->AddMappedOp(Format("OpAccessChain %%%d %%%d %%%d", ptrTypeName, lhs.name, indexName.name), accessExpressionResolved->text);
+                return SPIRVResult(ptr, typeName.typeName);    
+            }
         }
         else
         {
