@@ -26,23 +26,39 @@ using namespace GPULang;
 //------------------------------------------------------------------------------
 /**
 */
+std::string
+FixBackslashes(const std::string& path)
+{
+    std::string escaped = path;
+    auto it = escaped.find("\\");
+    while (it != std::string::npos)
+    {
+        escaped.replace(it, 1, "/");
+        it = escaped.find("\\");
+    }
+    return escaped;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool
 GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, std::string& output)
 {
-    std::string fileName = file.substr(file.rfind("/")+1, file.length()-1);
-
-    std::string folder = file.substr(0, file.rfind("/")+1);
-
+    std::string escaped = FixBackslashes(file);
+    std::string fileName = file.substr(escaped.rfind("/")+1, escaped.length()-1);
+    std::string folder = escaped.substr(0, escaped.rfind("/")+1);
     std::vector<std::string> args =
     {
-        ""
+
+        "",
+        escaped
         , "-W 0"
         , "-a"
     };
     for (const auto def : defines)
-        args.push_back(def);
+        args.push_back(FixBackslashes(def));
 
-    args.push_back(file);
     const char** argArr = new const char*[args.size()];
     uint32_t counter = 0;
     for (const auto& arg : args)
