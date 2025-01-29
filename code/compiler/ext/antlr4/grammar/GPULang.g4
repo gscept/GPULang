@@ -149,6 +149,7 @@ effect
         | structure ';'             { $eff->symbols.push_back($structure.sym); }
         | enumeration ';'           { $eff->symbols.push_back($enumeration.sym); }
         | state ';'                 { $eff->symbols.push_back($state.sym); }
+        | sampler ';'                 { $eff->symbols.push_back($sampler.sym); }
         | program ';'               { $eff->symbols.push_back($program.sym); }
     )*?;
     
@@ -461,7 +462,26 @@ program
         $sym->entries = entries;
     }
     ;
-    
+
+sampler
+    returns[ State* sym ]
+    @init
+    {
+        std::vector<Expression*> entries;
+    }:
+    (
+        'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
+        | 'immutable_sampler' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
+    ) name = IDENTIFIER { $sym->location = SetupFile(); }
+    '{'
+        (assign = expression { entries.push_back($assign.tree); } ';' )*
+    '}'
+    {
+        $sym->name = $name.text;
+        $sym->entries = entries;
+    }
+    ;
+        
 state
     returns[ State* sym ]
     @init
@@ -469,8 +489,7 @@ state
         std::vector<Expression*> entries;
     }:
     (
-        'sampler' { $sym = Alloc<SamplerState>(); }
-        | 'render_state' { $sym = Alloc<RenderState>(); } 
+        'render_state' { $sym = Alloc<RenderState>(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         (assign = expression { entries.push_back($assign.tree); } ';' )*

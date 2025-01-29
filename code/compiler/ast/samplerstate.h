@@ -76,7 +76,10 @@ struct SamplerState : public State
         BorderColor borderColor;
 
         bool unnormalizedSamplingEnabled;        // sample as if texture was in dimensions [0..width, 0..height] instead of [0..1, 0..1]
+        bool isInline, isImmutable;
     };
+
+    bool isInline, isImmutable;
 };
 
 } // namespace GPULang

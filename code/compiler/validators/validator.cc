@@ -2338,6 +2338,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 return false;
             if (!this->ResolveStatement(compiler, statement->ifStatement))
                 return false;
+
+            // If the if statement isn't a scope, it might mark the scope as unreachable, which has to reset when we leave the branch
+            if (statement->ifStatement->symbolType != Symbol::ScopeStatementType)
+                compiler->MarkScopeReachable();
+            
             bool ifReturns = compiler->branchReturns;
             compiler->branchReturns = false;
             if (statement->elseStatement)

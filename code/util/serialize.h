@@ -20,7 +20,6 @@ namespace GPULang
 enum AddressMode
 {
     InvalidAddressMode,
-    WrapAddressMode,
     RepeatAddressMode,
     MirrorAddressMode,
     ClampAddressMode,

@@ -8,7 +8,7 @@ null
 'struct'
 'enum'
 'program'
-'sampler'
+'inline_sampler'
 'render_state'
 'if'
 'else'

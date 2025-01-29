@@ -4302,6 +4302,33 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
                 return SPIRVResult(0xFFFFFFFF, type.typeName, false, false, type.scope, type.parentTypes);
             }
+            else if (symResolved->symbol->symbolType == Symbol::SymbolType::SamplerStateType)
+            {
+                SamplerState* sam = static_cast<SamplerState*>(symResolved->symbol);
+                SamplerState::__Resolved* samResolved = Symbol::Resolved(sam);
+
+                // Generate inline sampler
+                if (samResolved->isInline)
+                {
+                    uint32_t samplerName = generator->AddSymbol("sampler", Format("OpTypeSampler"));
+                    static const uint32_t addressingLookup[] =
+                    {
+                        0, // AddressMode::InvalidAddressMode,
+                        3, // AddressMode::RepeatAddressMode,
+                        4, // AddressMode::MirrorAddressMode,
+                        1, // AddressMode::ClampAddressMode,
+                        2, // AddressMode::BorderAddressMode
+                    };
+                    static const uint32_t filterLookup[] =
+                    {
+                        0xFFFFFFFF, // Filter::InvalidFilter,
+                        0, // Filter::PointFilter,
+                        1// Filter::LinearFilter
+                    };
+                    uint32_t name = generator->AddSymbol(sam->name, Format("OpConstantSampler %d %d %d", addressingLookup[samResolved->addressU], samResolved->unnormalizedSamplingEnabled ? 0 : 1, filterLookup[samResolved->magFilter]));
+                    return SPIRVResult(name, samplerName, true, true);
+                }
+            }
             else
             {
                 type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type);

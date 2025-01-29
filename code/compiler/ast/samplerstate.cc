@@ -10,6 +10,8 @@ SamplerState::SamplerState()
 {
     this->symbolType = SamplerStateType;
     this->resolved = new SamplerState::__Resolved();
+    this->isInline = false;
+    this->isImmutable = false;
 
     SamplerState::__Resolved* typeResolved = static_cast<SamplerState::__Resolved*>(this->resolved);
     typeResolved->addressU = typeResolved->addressV = typeResolved->addressW = WrapAddressMode;
@@ -45,6 +47,8 @@ const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> sam
     , { "BorderColor", SamplerState::__Resolved::BorderColorType }
     , { "UnnormalizedCoordinates", SamplerState::__Resolved::UnnormalizedSamplingType }
 };
+
+
 
 //------------------------------------------------------------------------------
 /**
