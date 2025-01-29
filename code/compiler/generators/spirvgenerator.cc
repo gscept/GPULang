@@ -4328,6 +4328,10 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                     uint32_t name = generator->AddSymbol(sam->name, Format("OpConstantSampler %d %d %d", addressingLookup[samResolved->addressU], samResolved->unnormalizedSamplingEnabled ? 0 : 1, filterLookup[samResolved->magFilter]));
                     return SPIRVResult(name, samplerName, true, true);
                 }
+                else
+                {
+                    
+                }
             }
             else
             {

@@ -48,8 +48,6 @@ const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> sam
     , { "UnnormalizedCoordinates", SamplerState::__Resolved::UnnormalizedSamplingType }
 };
 
-
-
 //------------------------------------------------------------------------------
 /**
 */
