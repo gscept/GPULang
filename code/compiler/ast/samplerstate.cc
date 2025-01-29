@@ -14,7 +14,7 @@ SamplerState::SamplerState()
     this->isImmutable = false;
 
     SamplerState::__Resolved* typeResolved = static_cast<SamplerState::__Resolved*>(this->resolved);
-    typeResolved->addressU = typeResolved->addressV = typeResolved->addressW = WrapAddressMode;
+    typeResolved->addressU = typeResolved->addressV = typeResolved->addressW = RepeatAddressMode;
     typeResolved->minFilter = typeResolved->magFilter = typeResolved->mipFilter = LinearFilter;
     typeResolved->mipLodBias = 0.0f;
     typeResolved->anisotropicEnabled = false;
