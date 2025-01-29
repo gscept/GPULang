@@ -124,15 +124,15 @@ void gpulangParserInitialize() {
     },
     std::vector<std::string>{
       "", "'true'", "'false'", "'#line'", "'alias'", "'as'", "'struct'", 
-      "'enum'", "'program'", "'sampler_state'", "'render_state'", "'if'", 
-      "'else'", "'for'", "'..'", "'while'", "'do'", "'return'", "'discard'", 
-      "'continue'", "'switch'", "'case'", "'default'", "'break'", "'+='", 
-      "'-='", "'*='", "'/='", "'%='", "'<<='", "'>>='", "'<<'", "'>>'", 
-      "'++'", "'--'", "'::'", "';'", "','", "':'", "'('", "')'", "'{'", 
-      "'}'", "'['", "']'", "'.'", "'!'", "'='", "'\"'", "'\\u003F'", "'&'", 
-      "'&='", "'|'", "'|='", "'^'", "'^='", "'~'", "'''", "'#'", "'\\'", 
-      "'<'", "'<='", "'>'", "'>='", "'=='", "'!='", "'&&'", "'||'", "'%'", 
-      "'_'", "'@'", "'+'", "'-'", "'/'", "'*'", "'->'"
+      "'enum'", "'program'", "'sampler'", "'render_state'", "'if'", "'else'", 
+      "'for'", "'..'", "'while'", "'do'", "'return'", "'discard'", "'continue'", 
+      "'switch'", "'case'", "'default'", "'break'", "'+='", "'-='", "'*='", 
+      "'/='", "'%='", "'<<='", "'>>='", "'<<'", "'>>'", "'++'", "'--'", 
+      "'::'", "';'", "','", "':'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
+      "'.'", "'!'", "'='", "'\"'", "'\\u003F'", "'&'", "'&='", "'|'", "'|='", 
+      "'^'", "'^='", "'~'", "'''", "'#'", "'\\'", "'<'", "'<='", "'>'", 
+      "'>='", "'=='", "'!='", "'&&'", "'||'", "'%'", "'_'", "'@'", "'+'", 
+      "'-'", "'/'", "'*'", "'->'"
     },
     std::vector<std::string>{
       "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
@@ -2893,7 +2893,6 @@ GPULangParser::StateContext* GPULangParser::state() {
   StateContext *_localctx = _tracker.createInstance<StateContext>(_ctx, getState());
   enterRule(_localctx, 36, GPULangParser::RuleState);
 
-          Expression* arrayExpression = nullptr;
           std::vector<Expression*> entries;
       
   size_t _la = 0;

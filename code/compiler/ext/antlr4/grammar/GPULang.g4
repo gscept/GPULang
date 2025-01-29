@@ -461,16 +461,15 @@ program
         $sym->entries = entries;
     }
     ;
-
+    
 state
     returns[ State* sym ]
     @init
     {
-        Expression* arrayExpression = nullptr;
         std::vector<Expression*> entries;
     }:
     (
-        'sampler_state' { $sym = Alloc<SamplerState>(); }
+        'sampler' { $sym = Alloc<SamplerState>(); }
         | 'render_state' { $sym = Alloc<RenderState>(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
