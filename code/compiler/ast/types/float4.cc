@@ -116,6 +116,9 @@ Float4::Float4()
 
     char swizzleMask[] = { 'x', 'y', 'z', 'w' };
     __IMPLEMENT_SWIZZLE(f32, 4, swizzleMask)
+
+    char colorMask[] = { 'r', 'g', 'b', 'a' };
+    __IMPLEMENT_SWIZZLE(f32, 4, colorMask)
 }
 
 } // namespace GPULang

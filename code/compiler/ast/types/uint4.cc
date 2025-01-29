@@ -137,6 +137,9 @@ UInt4::UInt4()
     char swizzleMask[] = { 'x', 'y', 'z', 'w' };
     __IMPLEMENT_SWIZZLE(u32, 4, swizzleMask)
 
+    char colorMask[] = { 'r', 'g', 'b', 'a' };
+    __IMPLEMENT_SWIZZLE(u32, 4, colorMask)
+
 }
 
 } // namespace GPULang

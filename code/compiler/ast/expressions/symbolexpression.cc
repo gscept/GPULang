@@ -95,6 +95,12 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = { "renderState" };
             return true;
         }
+        else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
+        {
+            thisResolved->fullType = { "sampler" };
+            thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
+            return true;
+        }
         else
         {
             compiler->Error(Format("Symbol is not function, type, variable, enum or structure"), this);
