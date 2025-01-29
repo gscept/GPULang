@@ -81,8 +81,7 @@ SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
 
 const std::map<std::string, AddressMode> stringToAddressMode =
 {
-    { "Wrap", WrapAddressMode }
-    , { "Repeat", RepeatAddressMode }
+    { "Repeat", RepeatAddressMode }
     , { "Mirror", MirrorAddressMode }
     , { "Clamp", ClampAddressMode }
     , { "Border", BorderAddressMode }
