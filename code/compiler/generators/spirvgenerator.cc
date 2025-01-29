@@ -906,6 +906,7 @@ SPIRVGenerator::SetupIntrinsics()
             return GenerateSplatCompositeSPIRV(c, g, returnType, splat, args[0]);\
         if constexpr (ConversionTable::conversion != ConversionTable::None)\
             return GenerateConversionSPIRV(c, g, ConversionTable::conversion, vectorSize, args[0]);\
+        return SPIRVResult::Invalid();\
     };
 
     FLOAT2_CTOR_LIST
