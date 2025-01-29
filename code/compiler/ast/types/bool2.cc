@@ -36,7 +36,10 @@ Bool2::Bool2()
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], b8, u32);
 
     char swizzleMask[] = { 'x', 'y' };
-    __IMPLEMENT_SWIZZLE(b8, 2, swizzleMask) 
+    __IMPLEMENT_SWIZZLE(b8, 2, swizzleMask)
+    
+    char colorMask[] = { 'r', 'g' };
+    __IMPLEMENT_SWIZZLE(b8, 2, colorMask)
 }
 
 } // namespace GPULang

@@ -38,6 +38,9 @@ Bool3::Bool3()
 
     char swizzleMask[] = { 'x', 'y', 'z' };
     __IMPLEMENT_SWIZZLE(b8, 3, swizzleMask)
+    
+    char colorMask[] = { 'r', 'g', 'b' };
+    __IMPLEMENT_SWIZZLE(b8, 3, colorMask)
 }
 
 } // namespace GPULang

@@ -85,6 +85,9 @@ Float2::Float2()
 
     char swizzleMask[] = { 'x', 'y' };
     __IMPLEMENT_SWIZZLE(f32, 2, swizzleMask)
+
+    char colorMask[] = { 'r', 'g' };
+    __IMPLEMENT_SWIZZLE(f32, 2, colorMask)
 }
 
 } // namespace GPULang

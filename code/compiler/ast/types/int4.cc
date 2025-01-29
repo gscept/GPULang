@@ -136,6 +136,9 @@ Int4::Int4()
     char swizzleMask[] = { 'x', 'y', 'z', 'w' };
     __IMPLEMENT_SWIZZLE(i32, 4, swizzleMask)
 
+    char colorMask[] = { 'r', 'g', 'b', 'a' };
+    __IMPLEMENT_SWIZZLE(i32, 4, colorMask)
+
 }
 
 } // namespace GPULang
