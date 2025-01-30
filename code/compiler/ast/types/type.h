@@ -128,6 +128,8 @@ enum ImageFormat
     Unknown
 };
 
+extern bool IsImageFormatInteger(ImageFormat format);
+extern bool IsImageFormatUnsigned(ImageFormat format);
 extern const std::unordered_map<std::string, ImageFormat> StringToFormats;
 
 extern std::vector<Symbol*> DefaultTypes;

@@ -27,10 +27,7 @@ struct Variable : public Symbol
     Expression* valueExpression;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
-
-    static bool IsImageFormatInteger(ImageFormat format);
-    static bool IsImageFormatUnsigned(ImageFormat format);
-
+    
     struct __Resolved : Symbol::__Resolved
     {
         union AccessBits

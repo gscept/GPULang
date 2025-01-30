@@ -42,22 +42,6 @@ Variable::~Variable()
 {
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-Variable::IsImageFormatInteger(ImageFormat format)
-{
-    return format >= Rgba32I && format <= R8I;
-}
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-Variable::IsImageFormatUnsigned(ImageFormat format)
-{
-    return format >= Rgba32U && format <= R8U;
-}
 
 } // namespace GPULang

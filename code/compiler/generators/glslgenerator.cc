@@ -1274,9 +1274,9 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
             outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, imageFormatToGlsl[varResolved->type.imageFormat].c_str()));
 
             // if integer or unsigned, format variable
-            if (Variable::IsImageFormatInteger(varResolved->type.imageFormat))
+            if (IsImageFormatInteger(varResolved->type.imageFormat))
                 type.name = Format("i%s", type.name.c_str());
-            else if (Variable::IsImageFormatUnsigned(varResolved->type.imageFormat))
+            else if (IsImageFormatUnsigned(varResolved->type.imageFormat))
                 type.name = Format("u%s", type.name.c_str());
         }
         else

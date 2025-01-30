@@ -86,6 +86,24 @@ static const std::unordered_map<std::string, ImageFormat> StringToFormats =
 //------------------------------------------------------------------------------
 /**
 */
+bool 
+IsImageFormatInteger(ImageFormat format)
+{
+    return format >= Rgba32I && format <= R8I;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool 
+IsImageFormatUnsigned(ImageFormat format)
+{
+    return format >= Rgba32U && format <= R8U;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 Type::Type()
 {
     this->symbolType = Symbol::TypeType;
