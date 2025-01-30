@@ -21,23 +21,22 @@ SamplerStateType::SamplerStateType()
     __BEGIN_ENUMS__();
 
     __START_ENUM();
-    __ADD_ENUM(InvalidFilterMode);
-    __ADD_ENUM(Point);
-    __ADD_ENUM_EXPL(Nearest, 1);
-    __ADD_ENUM(Linear);
-    __ADD_ENUM(MinMagMipLinear);
-    __ADD_ENUM(MinMagLinearMipPoint);
-    __ADD_ENUM(MinLinearMagMipPoint);
-    __ADD_ENUM(MinMagMipPoint);
-    __ADD_ENUM(MinMagPointMipLinear);
-    __ADD_ENUM(MinPointMagMipLinear);
-    __ADD_ENUM(MinLinearMagPointMipLinear);
-    __ADD_ENUM(MinPointMagLinearMipPoint);
+    __ADD_ENUM_EXPL(InvalidFilterMode, 0xFFFFFFFF);
+    __ADD_ENUM_EXPL(Point, 0x0);
+    __ADD_ENUM_EXPL(Nearest, 0x0);
+    __ADD_ENUM_EXPL(Linear, 0x7);
+    __ADD_ENUM_EXPL(MinMagMipLinear, 0x7);
+    __ADD_ENUM_EXPL(MinMagLinearMipPoint, 0x3);
+    __ADD_ENUM_EXPL(MinLinearMagMipPoint, 0x1);
+    __ADD_ENUM_EXPL(MinMagMipPoint, 0x0);
+    __ADD_ENUM_EXPL(MinMagPointMipLinear, 0x4);
+    __ADD_ENUM_EXPL(MinPointMagMipLinear, 0x6);
+    __ADD_ENUM_EXPL(MinLinearMagPointMipLinear, 0x5);
+    __ADD_ENUM_EXPL(MinPointMagLinearMipPoint, 0x2);
     __FINISH_ENUM(this->filterModeEnum, FilterMode);
     
     __START_ENUM();
     __ADD_ENUM(InvalidAddressMode);
-    __ADD_ENUM(Wrap);
     __ADD_ENUM(Repeat);
     __ADD_ENUM(Mirror);
     __ADD_ENUM(Clamp);

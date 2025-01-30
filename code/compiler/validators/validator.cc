@@ -369,8 +369,49 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
 
+    stateResolved->isInline = state->isInline;
+    stateResolved->isImmutable = state->isImmutable;
+
     Type* samplerStateType = compiler->GetSymbol<Type>("samplerState");
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
+
+    stateResolved->group = 0;
+    if (this->resourceIndexingMode == ResourceIndexingByType)
+    {
+        auto it = this->resourceIndexCounter.find(Type::Category::SamplerCategory);
+        if (it == this->resourceIndexCounter.end())
+        {
+            this->resourceIndexCounter[Type::Category::SamplerCategory] = 0;
+            it = this->resourceIndexCounter.find(stateResolved->group);
+        }
+
+        if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
+        {
+            stateResolved->binding = it->second++;
+        }
+        else
+        {
+            this->resourceIndexCounter[Type::Category::SamplerCategory] = max(it->second, stateResolved->binding + 1);
+        }
+    }
+    else if (this->resourceIndexingMode == ResourceIndexingByGroup)
+    {
+        auto it = this->resourceIndexCounter.find(stateResolved->group);
+        if (it == this->resourceIndexCounter.end())
+        {
+            this->resourceIndexCounter[stateResolved->group] = 0;
+            it = this->resourceIndexCounter.find(stateResolved->group);
+        }
+
+        if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
+        {
+            stateResolved->binding = it->second++;
+        }
+        else
+        {
+            this->resourceIndexCounter[stateResolved->group] = max(it->second, stateResolved->binding + 1);
+        }
+    }
 
     for (Expression* entry : state->entries)
     {
@@ -408,57 +449,134 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             break;
         case SamplerState::__Resolved::AddressUType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
+                return false;
+            }
             stateResolved->addressU = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AddressVType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
+                return false;
+            }
             stateResolved->addressV = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AddressWType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
+                return false;
+            }
             stateResolved->addressW = (GPULang::AddressMode)value;
             break;
         case SamplerState::__Resolved::AllFilterType:
             assignEntry->right->EvalUInt(value);
-            stateResolved->minFilter = stateResolved->magFilter = stateResolved->mipFilter = (GPULang::Filter)value;
+            if (stateResolved->isInline && (value != 0x7 && value != 0x0))
+            {
+                compiler->Error(Format("inline_sampler requires filter mode to either be FilterMode.Linear or FilterMode.Point"), assignEntry);
+                return false;
+            }
+            stateResolved->minFilter = (GPULang::Filter)((value & 0x1) + 1);
+            stateResolved->magFilter = (GPULang::Filter)(((value >> 1) & 0x1) + 1);
+            stateResolved->mipFilter = (GPULang::Filter)(((value >> 2) & 0x1) + 1);
             break;
         case SamplerState::__Resolved::MinFilterType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
+                return false;
+            }
             stateResolved->minFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MagFilterType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
+                return false;
+            }
             stateResolved->magFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MipFilterType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
+                return false;
+            }
             stateResolved->mipFilter = (GPULang::Filter)value;
             break;
         case SamplerState::__Resolved::MipLodBiasType:
             assignEntry->right->EvalFloat(stateResolved->mipLodBias);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support mip lod bias"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::AnisotropicFlagType:
             assignEntry->right->EvalBool(stateResolved->anisotropicEnabled);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::MaxAnisotropyType:
             assignEntry->right->EvalFloat(stateResolved->maxAnisotropy);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::CompareFlagType:
             assignEntry->right->EvalBool(stateResolved->compareSamplerEnabled);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::CompareModeType:
             assignEntry->right->EvalUInt(value);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
+                return false;
+            }
             stateResolved->compareMode = (GPULang::CompareMode)value;
             break;
         case SamplerState::__Resolved::MinLodType:
             assignEntry->right->EvalFloat(stateResolved->minLod);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::MaxLodType:
             assignEntry->right->EvalFloat(stateResolved->maxLod);
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::BorderColorType:
             assignEntry->right->EvalUInt(value);
             stateResolved->borderColor = (GPULang::BorderColor)value;
+            if (stateResolved->isInline)
+            {
+                compiler->Error(Format("inline_sampler doesn't support setting border color"), assignEntry);
+                return false;
+            }
             break;
         case SamplerState::__Resolved::UnnormalizedSamplingType:
             assignEntry->right->EvalBool(stateResolved->unnormalizedSamplingEnabled);
@@ -2140,6 +2258,29 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 else
                 {
                     this->resourceIndexCounter[varResolved->group] = max(it->second, varResolved->binding + 1);
+                }
+                auto it2 = this->resourceTypePerGroupAndBinding.find(varResolved->group);
+                if (it2 == this->resourceTypePerGroupAndBinding.end())
+                {
+                    std::map<uint32_t, Type::Category> table = { {varResolved->binding, varResolved->typeSymbol->category} };
+                    this->resourceTypePerGroupAndBinding.insert({varResolved->group, table});
+                }
+                else
+                {
+                    std::map<uint32_t, Type::Category>& table = it2->second;
+                    auto it3 = table.find(varResolved->binding);
+                    if (it3 == table.end())
+                    {
+                        table.insert({varResolved->binding, varResolved->typeSymbol->category});
+                    }
+                    else
+                    {
+                        if (it3->second != varResolved->typeSymbol->category)
+                        {
+                            compiler->Error(Format("Aliasing is only allowed on resource pointers of same type. First declared as '%s' can't be aliased as '%s'", Type::CategoryToString(varResolved->typeSymbol->category).c_str(), Type::CategoryToString(it3->second).c_str()), var);
+                            return false;
+                        }
+                    }
                 }
             }
         }

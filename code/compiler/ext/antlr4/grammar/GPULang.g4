@@ -464,14 +464,14 @@ program
     ;
 
 sampler
-    returns[ State* sym ]
+    returns[ SamplerState* sym ]
     @init
     {
         std::vector<Expression*> entries;
     }:
     (
-        'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
-        | 'immutable_sampler' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
+        //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
+        'sampler_state' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         (assign = expression { entries.push_back($assign.tree); } ';' )*

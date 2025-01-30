@@ -81,6 +81,7 @@ struct Validator
     };
     ResourceIndexingMode resourceIndexingMode;
     std::map<uint32_t, uint32_t> resourceIndexCounter;
+    std::map<uint32_t, std::map<uint32_t, Type::Category>> resourceTypePerGroupAndBinding;
     uint8_t defaultGroup;
 
 

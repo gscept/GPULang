@@ -68,6 +68,9 @@ public:
   virtual void enterProgram(GPULangParser::ProgramContext *ctx) = 0;
   virtual void exitProgram(GPULangParser::ProgramContext *ctx) = 0;
 
+  virtual void enterSampler(GPULangParser::SamplerContext *ctx) = 0;
+  virtual void exitSampler(GPULangParser::SamplerContext *ctx) = 0;
+
   virtual void enterState(GPULangParser::StateContext *ctx) = 0;
   virtual void exitState(GPULangParser::StateContext *ctx) = 0;
 

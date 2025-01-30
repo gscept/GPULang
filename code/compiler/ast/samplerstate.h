@@ -77,6 +77,9 @@ struct SamplerState : public State
 
         bool unnormalizedSamplingEnabled;        // sample as if texture was in dimensions [0..width, 0..height] instead of [0..1, 0..1]
         bool isInline, isImmutable;
+
+        uint32_t group;
+        uint32_t binding;
     };
 
     bool isInline, isImmutable;

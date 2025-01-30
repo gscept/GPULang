@@ -196,6 +196,8 @@ struct Type : public Symbol
         AccelerationStructureCategory
     };
 
+    static std::string CategoryToString(const Category& cat);
+
     static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs)
     {
         switch (lhs)

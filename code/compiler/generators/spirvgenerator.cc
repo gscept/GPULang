@@ -3465,12 +3465,46 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
 //------------------------------------------------------------------------------
 /**
 */
-uint32_t
+SPIRVResult
 GenerateSamplerSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol)
 {
     SamplerState* sampler = static_cast<SamplerState*>(symbol);
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
-    return 0xFFFFFFFF;
+
+    Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
+    Type::FullType fullType = { "sampler" };
+    fullType.AddModifier(Type::FullType::Modifier::Pointer);
+    SPIRVResult samplerType = GenerateTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol);
+
+    // Generate inline sampler
+    if (samplerResolved->isInline)
+    {
+        static const char* addressingLookup[] =
+        {
+            "None", // AddressMode::InvalidAddressMode,
+            "Repeat", // AddressMode::RepeatAddressMode,
+            "RepeatMirrored", // AddressMode::MirrorAddressMode,
+            "ClampToEdge", // AddressMode::ClampAddressMode,
+            "Clamp", // AddressMode::BorderAddressMode
+        };
+        static const char* filterLookup[] =
+        {
+            "", // Filter::InvalidFilter,
+            "Nearest", // Filter::PointFilter,
+            "Linear"// Filter::LinearFilter
+        };
+        generator->AddCapability("LiteralSampler");
+        uint32_t name = generator->AddSymbol(sampler->name, Format("OpConstantSampler %%%d %s %d %s", samplerType.typeName, addressingLookup[samplerResolved->addressU], samplerResolved->unnormalizedSamplingEnabled ? 0 : 1, filterLookup[samplerResolved->magFilter]), true);
+        return SPIRVResult(name, samplerType.typeName, true, true);
+    }
+    else
+    {
+        // Generate immutable sampler
+        uint32_t name = generator->AddVariableDeclaration(symbol, symbol->name, samplerType.typeName, 0xFFFFFFFF, 0xFFFFFFFF, samplerType.scope, true);
+        generator->AddDecoration(Format("Set(%s)", symbol->name.c_str()), name, Format("DescriptorSet %d", samplerResolved->group));
+        generator->AddDecoration(Format("Binding(%s)", symbol->name.c_str()), name, Format("Binding %d", samplerResolved->binding));
+        return SPIRVResult(name, samplerType.typeName);
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -3731,8 +3765,11 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     arrayIndexExpression->right->EvalType(rightType);
     
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType, 0x0, 0x0, leftSymbol.storage);
-    SPIRVResult indexConstant = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->right);
+    SPIRVResult index = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->right);
 
+    SPIRVResult indexConstant = index;
+    if (!indexConstant.isValue)
+        indexConstant = LoadValueSPIRV(compiler, generator, indexConstant);
     // Evaluate the index which has to be a literal or constant value that evaluates at compile time
     if (leftType.modifiers.empty())
     {
@@ -4301,37 +4338,6 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
                 type = GenerateTypeSPIRV(compiler, generator, enu->type, enuResolved->typeSymbol);
                 return SPIRVResult(0xFFFFFFFF, type.typeName, false, false, type.scope, type.parentTypes);
-            }
-            else if (symResolved->symbol->symbolType == Symbol::SymbolType::SamplerStateType)
-            {
-                SamplerState* sam = static_cast<SamplerState*>(symResolved->symbol);
-                SamplerState::__Resolved* samResolved = Symbol::Resolved(sam);
-
-                // Generate inline sampler
-                if (samResolved->isInline)
-                {
-                    uint32_t samplerName = generator->AddSymbol("sampler", Format("OpTypeSampler"));
-                    static const uint32_t addressingLookup[] =
-                    {
-                        0, // AddressMode::InvalidAddressMode,
-                        3, // AddressMode::RepeatAddressMode,
-                        4, // AddressMode::MirrorAddressMode,
-                        1, // AddressMode::ClampAddressMode,
-                        2, // AddressMode::BorderAddressMode
-                    };
-                    static const uint32_t filterLookup[] =
-                    {
-                        0xFFFFFFFF, // Filter::InvalidFilter,
-                        0, // Filter::PointFilter,
-                        1// Filter::LinearFilter
-                    };
-                    uint32_t name = generator->AddSymbol(sam->name, Format("OpConstantSampler %d %d %d", addressingLookup[samResolved->addressU], samResolved->unnormalizedSamplingEnabled ? 0 : 1, filterLookup[samResolved->magFilter]));
-                    return SPIRVResult(name, samplerName, true, true);
-                }
-                else
-                {
-                    
-                }
             }
             else
             {
@@ -5427,6 +5433,7 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
             || storage == SPIRVResult::Storage::Uniform 
             || storage == SPIRVResult::Storage::UniformConstant
             || storage == SPIRVResult::Storage::Private
+            || storage == SPIRVResult::Storage::Sampler
             )
             this->interfaceVariables.insert(this->symbolCounter);
 

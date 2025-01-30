@@ -100,6 +100,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = { "sampler" };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
+            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
             return true;
         }
         else

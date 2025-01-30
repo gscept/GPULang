@@ -90,18 +90,18 @@ public:
     RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, RuleTypeDeclaration = 8, 
     RuleVariables = 9, RuleStructureDeclaration = 10, RuleStructure = 11, 
     RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
-    RuleCodeblock = 15, RuleFunction = 16, RuleProgram = 17, RuleState = 18, 
-    RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
-    RuleForStatement = 22, RuleForRangeStatement = 23, RuleWhileStatement = 24, 
-    RuleScopeStatement = 25, RuleReturnStatement = 26, RuleDiscardStatement = 27, 
-    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
-    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
-    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
-    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
-    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
-    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
-    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
-    RuleArrayInitializerExpression = 49
+    RuleCodeblock = 15, RuleFunction = 16, RuleProgram = 17, RuleSampler = 18, 
+    RuleState = 19, RuleStatement = 20, RuleExpressionStatement = 21, RuleIfStatement = 22, 
+    RuleForStatement = 23, RuleForRangeStatement = 24, RuleWhileStatement = 25, 
+    RuleScopeStatement = 26, RuleReturnStatement = 27, RuleDiscardStatement = 28, 
+    RuleContinueStatement = 29, RuleSwitchStatement = 30, RuleBreakStatement = 31, 
+    RuleExpression = 32, RuleCommaExpression = 33, RuleAssignmentExpression = 34, 
+    RuleLogicalOrExpression = 35, RuleLogicalAndExpression = 36, RuleOrExpression = 37, 
+    RuleXorExpression = 38, RuleAndExpression = 39, RuleEquivalencyExpression = 40, 
+    RuleRelationalExpression = 41, RuleShiftExpression = 42, RuleAddSubtractExpression = 43, 
+    RuleMultiplyDivideExpression = 44, RulePrefixExpression = 45, RuleSuffixExpression = 46, 
+    RuleNamespaceExpression = 47, RuleBinaryexpatom = 48, RuleInitializerExpression = 49, 
+    RuleArrayInitializerExpression = 50
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -157,6 +157,7 @@ public:
   class CodeblockContext;
   class FunctionContext;
   class ProgramContext;
+  class SamplerContext;
   class StateContext;
   class StatementContext;
   class ExpressionStatementContext;
@@ -247,6 +248,7 @@ public:
     GPULangParser::StructureContext *structureContext = nullptr;
     GPULangParser::EnumerationContext *enumerationContext = nullptr;
     GPULangParser::StateContext *stateContext = nullptr;
+    GPULangParser::SamplerContext *samplerContext = nullptr;
     GPULangParser::ProgramContext *programContext = nullptr;
     EffectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -268,6 +270,8 @@ public:
     EnumerationContext* enumeration(size_t i);
     std::vector<StateContext *> state();
     StateContext* state(size_t i);
+    std::vector<SamplerContext *> sampler();
+    SamplerContext* sampler(size_t i);
     std::vector<ProgramContext *> program();
     ProgramContext* program(size_t i);
 
@@ -602,6 +606,28 @@ public:
   };
 
   ProgramContext* program();
+
+  class  SamplerContext : public antlr4::ParserRuleContext {
+  public:
+    SamplerState* sym;
+    antlr4::Token *name = nullptr;
+    GPULangParser::ExpressionContext *assign = nullptr;
+    SamplerContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LB();
+    antlr4::tree::TerminalNode *RB();
+    antlr4::tree::TerminalNode *IDENTIFIER();
+    std::vector<antlr4::tree::TerminalNode *> SC();
+    antlr4::tree::TerminalNode* SC(size_t i);
+    std::vector<ExpressionContext *> expression();
+    ExpressionContext* expression(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  SamplerContext* sampler();
 
   class  StateContext : public antlr4::ParserRuleContext {
   public:

@@ -140,6 +140,31 @@ Type::CodeToString(const TypeCode& code)
         return it->second;
 }
 
+const std::map<Type::Category, std::string> categoryToStringMapping =
+{
+    { Type::Category::TextureCategory, "Texture" }
+    , { Type::Category::PixelCacheCategory, "PixelCache" }
+    , { Type::Category::ScalarCategory, "Scalar" }
+    , { Type::Category::UserTypeCategory, "Buffer" }
+    , { Type::Category::EnumCategory, "Enum" }
+    , { Type::Category::VoidCategory, "Void" }
+    , { Type::Category::SamplerCategory, "Sampler" }
+    , { Type::Category::AccelerationStructureCategory, "AccelerationStructure" }
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+std::string
+Type::CategoryToString(const Category& cat)
+{
+    auto it = categoryToStringMapping.find(cat);
+    if (it == categoryToStringMapping.end())
+        return "";
+    else
+        return it->second;
+}
+
 //------------------------------------------------------------------------------
 /**
 */

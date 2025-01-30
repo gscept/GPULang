@@ -70,6 +70,9 @@ public:
   virtual void enterProgram(GPULangParser::ProgramContext * /*ctx*/) override { }
   virtual void exitProgram(GPULangParser::ProgramContext * /*ctx*/) override { }
 
+  virtual void enterSampler(GPULangParser::SamplerContext * /*ctx*/) override { }
+  virtual void exitSampler(GPULangParser::SamplerContext * /*ctx*/) override { }
+
   virtual void enterState(GPULangParser::StateContext * /*ctx*/) override { }
   virtual void exitState(GPULangParser::StateContext * /*ctx*/) override { }
 
