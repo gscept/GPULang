@@ -231,9 +231,11 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         input.load(preprocessed);
         lexer.setInputStream(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+        lexer.removeErrorListeners();
         lexer.addErrorListener(&lexerErrorHandler);
         tokens.setTokenSource(&lexer);
         parser.setTokenStream(&tokens);
+        parser.removeErrorListeners();
         parser.addErrorListener(&parserErrorHandler);
 
         Effect* effect = parser.entry()->returnEffect;
