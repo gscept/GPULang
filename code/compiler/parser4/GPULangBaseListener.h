@@ -61,9 +61,6 @@ public:
   virtual void enterFunctionDeclaration(GPULangParser::FunctionDeclarationContext * /*ctx*/) override { }
   virtual void exitFunctionDeclaration(GPULangParser::FunctionDeclarationContext * /*ctx*/) override { }
 
-  virtual void enterCodeblock(GPULangParser::CodeblockContext * /*ctx*/) override { }
-  virtual void exitCodeblock(GPULangParser::CodeblockContext * /*ctx*/) override { }
-
   virtual void enterFunction(GPULangParser::FunctionContext * /*ctx*/) override { }
   virtual void exitFunction(GPULangParser::FunctionContext * /*ctx*/) override { }
 

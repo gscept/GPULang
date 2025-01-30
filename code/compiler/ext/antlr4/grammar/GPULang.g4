@@ -230,8 +230,8 @@ variables
        typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
-        '=' valueExpr = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
-        (',' valueExprN = assignmentExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExprN.tree; } )*
+        '=' valueExpr = logicalOrExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
+        (',' valueExprN = logicalOrExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExprN.tree; } )*
     )?
     {
         for (size_t i = 0; i < names.size(); i++)
@@ -376,7 +376,7 @@ parameter
     ':' 
     typeDeclaration { type = $typeDeclaration.type; }
     (
-        '=' valueExpr = assignmentExpression { valueExpression = $valueExpr.tree; } 
+        '=' valueExpr = logicalOrExpression { valueExpression = $valueExpr.tree; } 
     )?
     {
             $sym = Alloc<Variable>(); 
@@ -409,9 +409,6 @@ functionDeclaration
         $sym->attributes = std::move(attributes);
     }
     ;
-
-// metarule for the code content of a function
-codeblock: '{' (codeblock)* '}' | ~('{' | '}');
 
 function
     returns[ Function* sym ]
@@ -1015,17 +1012,7 @@ suffixExpression
         std::vector<uint32_t> ops;
         std::vector<Symbol::Location> locations;
     }:
-    e1 = binaryexpatom (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
-    {
-        $tree = $e1.tree;
-        $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size(); i++)
-        {
-            $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
-            $tree->location = locations[i];
-        }
-    }
-    | e1 = binaryexpatom
+    e1 = binaryexpatom
     {
         $tree = $e1.tree;
     }
@@ -1055,6 +1042,16 @@ suffixExpression
             $tree = expr;
         }
     )*
+    | e1 = binaryexpatom (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
+    {
+        $tree = $e1.tree;
+        $tree->location = SetupFile();
+        for (size_t i = 0; i < ops.size(); i++)
+        {
+            $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
+            $tree->location = locations[i];
+        }
+    }
     ;
 
 namespaceExpression
@@ -1099,7 +1096,7 @@ initializerExpression
         std::string type = "";
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { exprs.push_back($argN.tree); })* )? '}'
     {
         $tree = Alloc<InitializerExpression>(exprs, type);
         $tree->location = location;
@@ -1114,7 +1111,7 @@ arrayInitializerExpression
         std::vector<Expression*> exprs;
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } ( arg0 = assignmentExpression { exprs.push_back($arg0.tree); } (',' argN = assignmentExpression { exprs.push_back($argN.tree); })* )? ']'
+    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { exprs.push_back($argN.tree); })* )? ']'
     {
         $tree = Alloc<ArrayInitializerExpression>(exprs);
         $tree->location = location;

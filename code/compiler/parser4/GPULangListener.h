@@ -59,9 +59,6 @@ public:
   virtual void enterFunctionDeclaration(GPULangParser::FunctionDeclarationContext *ctx) = 0;
   virtual void exitFunctionDeclaration(GPULangParser::FunctionDeclarationContext *ctx) = 0;
 
-  virtual void enterCodeblock(GPULangParser::CodeblockContext *ctx) = 0;
-  virtual void exitCodeblock(GPULangParser::CodeblockContext *ctx) = 0;
-
   virtual void enterFunction(GPULangParser::FunctionContext *ctx) = 0;
   virtual void exitFunction(GPULangParser::FunctionContext *ctx) = 0;
 

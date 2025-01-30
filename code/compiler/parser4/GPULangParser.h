@@ -90,18 +90,18 @@ public:
     RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, RuleTypeDeclaration = 8, 
     RuleVariables = 9, RuleStructureDeclaration = 10, RuleStructure = 11, 
     RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
-    RuleCodeblock = 15, RuleFunction = 16, RuleProgram = 17, RuleSampler = 18, 
-    RuleState = 19, RuleStatement = 20, RuleExpressionStatement = 21, RuleIfStatement = 22, 
-    RuleForStatement = 23, RuleForRangeStatement = 24, RuleWhileStatement = 25, 
-    RuleScopeStatement = 26, RuleReturnStatement = 27, RuleDiscardStatement = 28, 
-    RuleContinueStatement = 29, RuleSwitchStatement = 30, RuleBreakStatement = 31, 
-    RuleExpression = 32, RuleCommaExpression = 33, RuleAssignmentExpression = 34, 
-    RuleLogicalOrExpression = 35, RuleLogicalAndExpression = 36, RuleOrExpression = 37, 
-    RuleXorExpression = 38, RuleAndExpression = 39, RuleEquivalencyExpression = 40, 
-    RuleRelationalExpression = 41, RuleShiftExpression = 42, RuleAddSubtractExpression = 43, 
-    RuleMultiplyDivideExpression = 44, RulePrefixExpression = 45, RuleSuffixExpression = 46, 
-    RuleNamespaceExpression = 47, RuleBinaryexpatom = 48, RuleInitializerExpression = 49, 
-    RuleArrayInitializerExpression = 50
+    RuleFunction = 15, RuleProgram = 16, RuleSampler = 17, RuleState = 18, 
+    RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
+    RuleForStatement = 22, RuleForRangeStatement = 23, RuleWhileStatement = 24, 
+    RuleScopeStatement = 25, RuleReturnStatement = 26, RuleDiscardStatement = 27, 
+    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
+    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
+    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
+    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
+    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
+    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
+    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
+    RuleArrayInitializerExpression = 49
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -154,7 +154,6 @@ public:
   class EnumerationContext;
   class ParameterContext;
   class FunctionDeclarationContext;
-  class CodeblockContext;
   class FunctionContext;
   class ProgramContext;
   class SamplerContext;
@@ -388,8 +387,8 @@ public:
     antlr4::Token *varName = nullptr;
     antlr4::Token *varNameN = nullptr;
     GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
-    GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;
-    GPULangParser::AssignmentExpressionContext *valueExprN = nullptr;
+    GPULangParser::LogicalOrExpressionContext *valueExpr = nullptr;
+    GPULangParser::LogicalOrExpressionContext *valueExprN = nullptr;
     VariablesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
@@ -403,8 +402,8 @@ public:
     antlr4::tree::TerminalNode *COL();
     TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *EQ();
-    std::vector<AssignmentExpressionContext *> assignmentExpression();
-    AssignmentExpressionContext* assignmentExpression(size_t i);
+    std::vector<LogicalOrExpressionContext *> logicalOrExpression();
+    LogicalOrExpressionContext* logicalOrExpression(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -503,7 +502,7 @@ public:
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
     GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
-    GPULangParser::AssignmentExpressionContext *valueExpr = nullptr;
+    GPULangParser::LogicalOrExpressionContext *valueExpr = nullptr;
     ParameterContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *COL();
@@ -512,7 +511,7 @@ public:
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
     antlr4::tree::TerminalNode *EQ();
-    AssignmentExpressionContext *assignmentExpression();
+    LogicalOrExpressionContext *logicalOrExpression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -548,22 +547,6 @@ public:
   };
 
   FunctionDeclarationContext* functionDeclaration();
-
-  class  CodeblockContext : public antlr4::ParserRuleContext {
-  public:
-    CodeblockContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *LB();
-    antlr4::tree::TerminalNode *RB();
-    std::vector<CodeblockContext *> codeblock();
-    CodeblockContext* codeblock(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  CodeblockContext* codeblock();
 
   class  FunctionContext : public antlr4::ParserRuleContext {
   public:
@@ -1205,11 +1188,11 @@ public:
   public:
     Expression* tree;
     GPULangParser::BinaryexpatomContext *e1 = nullptr;
-    antlr4::Token *op = nullptr;
     GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;
     GPULangParser::LogicalOrExpressionContext *argn = nullptr;
     GPULangParser::SuffixExpressionContext *e2 = nullptr;
     GPULangParser::ExpressionContext *e3 = nullptr;
+    antlr4::Token *op = nullptr;
     SuffixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     BinaryexpatomContext *binaryexpatom();
@@ -1299,15 +1282,15 @@ public:
   public:
     Expression* tree;
     antlr4::Token *type = nullptr;
-    GPULangParser::AssignmentExpressionContext *arg0 = nullptr;
-    GPULangParser::AssignmentExpressionContext *argN = nullptr;
+    GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;
+    GPULangParser::LogicalOrExpressionContext *argN = nullptr;
     InitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LB();
     antlr4::tree::TerminalNode *RB();
     antlr4::tree::TerminalNode *IDENTIFIER();
-    std::vector<AssignmentExpressionContext *> assignmentExpression();
-    AssignmentExpressionContext* assignmentExpression(size_t i);
+    std::vector<LogicalOrExpressionContext *> logicalOrExpression();
+    LogicalOrExpressionContext* logicalOrExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1321,14 +1304,14 @@ public:
   class  ArrayInitializerExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    GPULangParser::AssignmentExpressionContext *arg0 = nullptr;
-    GPULangParser::AssignmentExpressionContext *argN = nullptr;
+    GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;
+    GPULangParser::LogicalOrExpressionContext *argN = nullptr;
     ArrayInitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LL();
     antlr4::tree::TerminalNode *RR();
-    std::vector<AssignmentExpressionContext *> assignmentExpression();
-    AssignmentExpressionContext* assignmentExpression(size_t i);
+    std::vector<LogicalOrExpressionContext *> logicalOrExpression();
+    LogicalOrExpressionContext* logicalOrExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
