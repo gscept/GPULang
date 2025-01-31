@@ -68,12 +68,12 @@ void gpulanglexerLexerInitialize() {
       "T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
       "T__33", "T__34", "SC", "CO", "COL", "LP", "RP", "LB", "RB", "LL", 
       "RR", "DOT", "NOT", "EQ", "QO", "QU", "AND", "ANDSET", "OR", "ORSET", 
-      "XOR", "XORSET", "CONNJUGATE", "Q", "NU", "FORWARDSLASH", "LESS", 
-      "LESSEQ", "GREATER", "GREATEREQ", "LOGICEQ", "NOTEQ", "LOGICAND", 
-      "LOGICOR", "MOD", "UNDERSC", "SOBAKA", "ADD_OP", "SUB_OP", "DIV_OP", 
-      "MUL_OP", "ARROW", "INTEGER", "INTEGERLITERAL", "UINTEGERLITERAL", 
-      "COMMENT", "ML_COMMENT", "FLOATLITERAL", "EXPONENT", "DOUBLELITERAL", 
-      "HEX", "ALPHABET", "IDENTIFIER", "WS"
+      "XOR", "XORSET", "CONJUGATE", "Q", "NU", "FORWARDSLASH", "LESS", "LESSEQ", 
+      "GREATER", "GREATEREQ", "LOGICEQ", "NOTEQ", "LOGICAND", "LOGICOR", 
+      "MOD", "UNDERSC", "SOBAKA", "ADD_OP", "SUB_OP", "DIV_OP", "MUL_OP", 
+      "ARROW", "INTEGER", "INTEGERLITERAL", "UINTEGERLITERAL", "COMMENT", 
+      "ML_COMMENT", "FLOATLITERAL", "EXPONENT", "DOUBLELITERAL", "HEX", 
+      "ALPHABET", "IDENTIFIER", "WS"
     },
     std::vector<std::string>{
       "DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -98,7 +98,7 @@ void gpulanglexerLexerInitialize() {
       "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
       "", "", "SC", "CO", "COL", "LP", "RP", "LB", "RB", "LL", "RR", "DOT", 
       "NOT", "EQ", "QO", "QU", "AND", "ANDSET", "OR", "ORSET", "XOR", "XORSET", 
-      "CONNJUGATE", "Q", "NU", "FORWARDSLASH", "LESS", "LESSEQ", "GREATER", 
+      "CONJUGATE", "Q", "NU", "FORWARDSLASH", "LESS", "LESSEQ", "GREATER", 
       "GREATEREQ", "LOGICEQ", "NOTEQ", "LOGICAND", "LOGICOR", "MOD", "UNDERSC", 
       "SOBAKA", "ADD_OP", "SUB_OP", "DIV_OP", "MUL_OP", "ARROW", "INTEGERLITERAL", 
       "UINTEGERLITERAL", "COMMENT", "ML_COMMENT", "FLOATLITERAL", "EXPONENT", 

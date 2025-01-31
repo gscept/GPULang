@@ -230,8 +230,8 @@ variables
        typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
-        '=' valueExpr = logicalOrExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExpr.tree; } 
-        (',' valueExprN = logicalOrExpression { if (initCounter == names.size()) { valueExpressions.push_back(nullptr); } valueExpressions[initCounter++] = $valueExprN.tree; } )*
+        '=' valueExpr = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
+        (',' valueExprN = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExprN.tree; }; } )*
     )?
     {
         for (size_t i = 0; i < names.size(); i++)
@@ -966,36 +966,15 @@ multiplyDivideExpression
         $tree = nullptr;
         Symbol::Location location;
     }:
-    e1 = prefixExpression { $tree = $e1.tree; }
+    e1 = suffixExpression { $tree = $e1.tree; }
     (
-        op = ('*' | '/' | '%') { location = SetupFile(); } e2 = prefixExpression 
+        op = ('*' | '/' | '%') { location = SetupFile(); } e2 = suffixExpression 
         {
             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
             expr->location = location;
             $tree = expr;
         }
     )*
-    ;
-
-// unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
-prefixExpression
-    returns[ Expression* tree ]
-    @init 
-    {
-        $tree = nullptr;
-        std::vector<uint32_t> ops;
-        std::vector<Symbol::Location> locations;
-    }:
-    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = suffixExpression 
-    {
-        $tree = $e1.tree;
-        $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size(); i++)
-        {
-            $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
-            $tree->location = locations[i];
-        }
-    }
     ;
 
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
@@ -1012,7 +991,7 @@ suffixExpression
         std::vector<uint32_t> ops;
         std::vector<Symbol::Location> locations;
     }:
-    e1 = binaryexpatom
+    e1 = prefixExpression
     {
         $tree = $e1.tree;
     }
@@ -1042,13 +1021,34 @@ suffixExpression
             $tree = expr;
         }
     )*
-    | e1 = binaryexpatom (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
+    | e1 = prefixExpression (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
     {
         $tree = $e1.tree;
         $tree->location = SetupFile();
         for (size_t i = 0; i < ops.size(); i++)
         {
             $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
+            $tree->location = locations[i];
+        }
+    }
+    ;
+    
+// unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
+prefixExpression
+    returns[ Expression* tree ]
+    @init 
+    {
+        $tree = nullptr;
+        std::vector<uint32_t> ops;
+        std::vector<Symbol::Location> locations;
+    }:
+    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = binaryexpatom 
+    {
+        $tree = $e1.tree;
+        $tree->location = SetupFile();
+        for (size_t i = 0; i < ops.size(); i++)
+        {
+            $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
             $tree->location = locations[i];
         }
     }
@@ -1074,7 +1074,10 @@ binaryexpatom
     {
         $tree = nullptr;
     }:
-    INTEGERLITERAL                  { $tree = Alloc<IntExpression>(atoi($INTEGERLITERAL.text.c_str())); $tree->location = SetupFile(); }
+    initializerExpression           { $tree = $initializerExpression.tree; }
+    | arrayInitializerExpression    { $tree = $arrayInitializerExpression.tree; } 
+    | '(' expression ')'            { $tree = $expression.tree; }
+    | INTEGERLITERAL                { $tree = Alloc<IntExpression>(atoi($INTEGERLITERAL.text.c_str())); $tree->location = SetupFile(); }
     | UINTEGERLITERAL               { $tree = Alloc<UIntExpression>(strtoul($UINTEGERLITERAL.text.c_str(), nullptr, 10)); $tree->location = SetupFile(); }
     | FLOATLITERAL                  { $tree = Alloc<FloatExpression>(atof($FLOATLITERAL.text.c_str())); $tree->location = SetupFile(); }
     | DOUBLELITERAL                 { $tree = Alloc<FloatExpression>(atof($DOUBLELITERAL.text.c_str())); $tree->location = SetupFile(); }
@@ -1082,9 +1085,6 @@ binaryexpatom
     | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = SetupFile(); }
     | IDENTIFIER                    { $tree = Alloc<SymbolExpression>($IDENTIFIER.text); $tree->location = SetupFile(); }
     | boolean                       { $tree = Alloc<BoolExpression>($boolean.val); $tree->location = SetupFile(); }
-    | initializerExpression         { $tree = $initializerExpression.tree; }
-    | arrayInitializerExpression    { $tree = $arrayInitializerExpression.tree; } 
-    | '(' expression ')'            { $tree = $expression.tree; }
     ;
 
 initializerExpression
@@ -1139,7 +1139,7 @@ OR: '|';
 ORSET: '|=';
 XOR: '^';
 XORSET: '^=';
-CONNJUGATE: '~';
+CONJUGATE: '~';
 Q: '\'';
 NU: '#';
 FORWARDSLASH: '\\';

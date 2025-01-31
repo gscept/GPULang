@@ -148,11 +148,11 @@ public:
   virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
   virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
 
-  virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
-  virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
-
   virtual void enterSuffixExpression(GPULangParser::SuffixExpressionContext * /*ctx*/) override { }
   virtual void exitSuffixExpression(GPULangParser::SuffixExpressionContext * /*ctx*/) override { }
+
+  virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
+  virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
 
   virtual void enterNamespaceExpression(GPULangParser::NamespaceExpressionContext * /*ctx*/) override { }
   virtual void exitNamespaceExpression(GPULangParser::NamespaceExpressionContext * /*ctx*/) override { }

@@ -77,7 +77,7 @@ public:
     T__32 = 33, T__33 = 34, T__34 = 35, SC = 36, CO = 37, COL = 38, LP = 39, 
     RP = 40, LB = 41, RB = 42, LL = 43, RR = 44, DOT = 45, NOT = 46, EQ = 47, 
     QO = 48, QU = 49, AND = 50, ANDSET = 51, OR = 52, ORSET = 53, XOR = 54, 
-    XORSET = 55, CONNJUGATE = 56, Q = 57, NU = 58, FORWARDSLASH = 59, LESS = 60, 
+    XORSET = 55, CONJUGATE = 56, Q = 57, NU = 58, FORWARDSLASH = 59, LESS = 60, 
     LESSEQ = 61, GREATER = 62, GREATEREQ = 63, LOGICEQ = 64, NOTEQ = 65, 
     LOGICAND = 66, LOGICOR = 67, MOD = 68, UNDERSC = 69, SOBAKA = 70, ADD_OP = 71, 
     SUB_OP = 72, DIV_OP = 73, MUL_OP = 74, ARROW = 75, INTEGERLITERAL = 76, 
@@ -99,7 +99,7 @@ public:
     RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
     RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
     RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
-    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
+    RuleMultiplyDivideExpression = 43, RuleSuffixExpression = 44, RulePrefixExpression = 45, 
     RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
     RuleArrayInitializerExpression = 49
   };
@@ -183,8 +183,8 @@ public:
   class ShiftExpressionContext;
   class AddSubtractExpressionContext;
   class MultiplyDivideExpressionContext;
-  class PrefixExpressionContext;
   class SuffixExpressionContext;
+  class PrefixExpressionContext;
   class NamespaceExpressionContext;
   class BinaryexpatomContext;
   class InitializerExpressionContext;
@@ -1137,13 +1137,13 @@ public:
   class  MultiplyDivideExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    GPULangParser::PrefixExpressionContext *e1 = nullptr;
+    GPULangParser::SuffixExpressionContext *e1 = nullptr;
     antlr4::Token *op = nullptr;
-    GPULangParser::PrefixExpressionContext *e2 = nullptr;
+    GPULangParser::SuffixExpressionContext *e2 = nullptr;
     MultiplyDivideExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<PrefixExpressionContext *> prefixExpression();
-    PrefixExpressionContext* prefixExpression(size_t i);
+    std::vector<SuffixExpressionContext *> suffixExpression();
+    SuffixExpressionContext* suffixExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> MUL_OP();
     antlr4::tree::TerminalNode* MUL_OP(size_t i);
     std::vector<antlr4::tree::TerminalNode *> DIV_OP();
@@ -1158,36 +1158,10 @@ public:
 
   MultiplyDivideExpressionContext* multiplyDivideExpression();
 
-  class  PrefixExpressionContext : public antlr4::ParserRuleContext {
-  public:
-    Expression* tree;
-    antlr4::Token *op = nullptr;
-    GPULangParser::SuffixExpressionContext *e1 = nullptr;
-    PrefixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    SuffixExpressionContext *suffixExpression();
-    std::vector<antlr4::tree::TerminalNode *> SUB_OP();
-    antlr4::tree::TerminalNode* SUB_OP(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> ADD_OP();
-    antlr4::tree::TerminalNode* ADD_OP(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> NOT();
-    antlr4::tree::TerminalNode* NOT(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> CONNJUGATE();
-    antlr4::tree::TerminalNode* CONNJUGATE(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> MUL_OP();
-    antlr4::tree::TerminalNode* MUL_OP(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  PrefixExpressionContext* prefixExpression();
-
   class  SuffixExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    GPULangParser::BinaryexpatomContext *e1 = nullptr;
+    GPULangParser::PrefixExpressionContext *e1 = nullptr;
     GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;
     GPULangParser::LogicalOrExpressionContext *argn = nullptr;
     GPULangParser::SuffixExpressionContext *e2 = nullptr;
@@ -1195,7 +1169,7 @@ public:
     antlr4::Token *op = nullptr;
     SuffixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    BinaryexpatomContext *binaryexpatom();
+    PrefixExpressionContext *prefixExpression();
     std::vector<antlr4::tree::TerminalNode *> LP();
     antlr4::tree::TerminalNode* LP(size_t i);
     std::vector<antlr4::tree::TerminalNode *> RP();
@@ -1224,6 +1198,32 @@ public:
 
   SuffixExpressionContext* suffixExpression();
 
+  class  PrefixExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    antlr4::Token *op = nullptr;
+    GPULangParser::BinaryexpatomContext *e1 = nullptr;
+    PrefixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    BinaryexpatomContext *binaryexpatom();
+    std::vector<antlr4::tree::TerminalNode *> SUB_OP();
+    antlr4::tree::TerminalNode* SUB_OP(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> ADD_OP();
+    antlr4::tree::TerminalNode* ADD_OP(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> NOT();
+    antlr4::tree::TerminalNode* NOT(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CONJUGATE();
+    antlr4::tree::TerminalNode* CONJUGATE(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> MUL_OP();
+    antlr4::tree::TerminalNode* MUL_OP(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  PrefixExpressionContext* prefixExpression();
+
   class  NamespaceExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
@@ -1244,6 +1244,9 @@ public:
   class  BinaryexpatomContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
+    GPULangParser::InitializerExpressionContext *initializerExpressionContext = nullptr;
+    GPULangParser::ArrayInitializerExpressionContext *arrayInitializerExpressionContext = nullptr;
+    GPULangParser::ExpressionContext *expressionContext = nullptr;
     antlr4::Token *integerliteralToken = nullptr;
     antlr4::Token *uintegerliteralToken = nullptr;
     antlr4::Token *floatliteralToken = nullptr;
@@ -1252,11 +1255,13 @@ public:
     GPULangParser::StringContext *stringContext = nullptr;
     antlr4::Token *identifierToken = nullptr;
     GPULangParser::BooleanContext *booleanContext = nullptr;
-    GPULangParser::InitializerExpressionContext *initializerExpressionContext = nullptr;
-    GPULangParser::ArrayInitializerExpressionContext *arrayInitializerExpressionContext = nullptr;
-    GPULangParser::ExpressionContext *expressionContext = nullptr;
     BinaryexpatomContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    InitializerExpressionContext *initializerExpression();
+    ArrayInitializerExpressionContext *arrayInitializerExpression();
+    antlr4::tree::TerminalNode *LP();
+    ExpressionContext *expression();
+    antlr4::tree::TerminalNode *RP();
     antlr4::tree::TerminalNode *INTEGERLITERAL();
     antlr4::tree::TerminalNode *UINTEGERLITERAL();
     antlr4::tree::TerminalNode *FLOATLITERAL();
@@ -1265,11 +1270,6 @@ public:
     StringContext *string();
     antlr4::tree::TerminalNode *IDENTIFIER();
     BooleanContext *boolean();
-    InitializerExpressionContext *initializerExpression();
-    ArrayInitializerExpressionContext *arrayInitializerExpression();
-    antlr4::tree::TerminalNode *LP();
-    ExpressionContext *expression();
-    antlr4::tree::TerminalNode *RP();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
