@@ -434,8 +434,8 @@ void gpulangParserInitialize() {
   	836,6,44,-1,0,836,838,1,0,0,0,837,833,1,0,0,0,838,841,1,0,0,0,839,837,
   	1,0,0,0,839,840,1,0,0,0,840,843,1,0,0,0,841,839,1,0,0,0,842,831,1,0,0,
   	0,842,843,1,0,0,0,843,844,1,0,0,0,844,845,5,40,0,0,845,866,6,44,-1,0,
-  	846,847,5,45,0,0,847,848,6,44,-1,0,848,849,3,68,34,0,849,850,6,44,-1,
-  	0,850,866,1,0,0,0,851,852,5,75,0,0,852,853,6,44,-1,0,853,854,3,68,34,
+  	846,847,5,45,0,0,847,848,6,44,-1,0,848,849,3,88,44,0,849,850,6,44,-1,
+  	0,850,866,1,0,0,0,851,852,5,75,0,0,852,853,6,44,-1,0,853,854,3,88,44,
   	0,854,855,6,44,-1,0,855,866,1,0,0,0,856,857,5,43,0,0,857,861,6,44,-1,
   	0,858,859,3,62,31,0,859,860,6,44,-1,0,860,862,1,0,0,0,861,858,1,0,0,0,
   	861,862,1,0,0,0,862,863,1,0,0,0,863,864,5,44,0,0,864,866,6,44,-1,0,865,
@@ -4600,6 +4600,7 @@ GPULangParser::LogicalOrExpressionContext* GPULangParser::logicalOrExpression() 
           antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->tree =  nullptr;
           Symbol::Location location;
       
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4609,30 +4610,27 @@ GPULangParser::LogicalOrExpressionContext* GPULangParser::logicalOrExpression() 
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(707);
     antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e1 = logicalAndExpression();
      antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e1->tree; 
     setState(716);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 53, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(709);
-        match(GPULangParser::LOGICOR);
-         location = SetupFile(); 
-        setState(711);
-        antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2 = logicalAndExpression();
+    _la = _input->LA(1);
+    while (_la == GPULangParser::LOGICOR) {
+      setState(709);
+      match(GPULangParser::LOGICOR);
+       location = SetupFile(); 
+      setState(711);
+      antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2 = logicalAndExpression();
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->tree =  expr;
-                 
-      }
+                  BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<LogicalOrExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(718);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 53, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -4692,6 +4690,7 @@ GPULangParser::LogicalAndExpressionContext* GPULangParser::logicalAndExpression(
           Symbol::Location location;
 
       
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4701,30 +4700,27 @@ GPULangParser::LogicalAndExpressionContext* GPULangParser::logicalAndExpression(
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(719);
     antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e1 = orExpression();
      antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e1->tree; 
     setState(728);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 54, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(721);
-        match(GPULangParser::LOGICAND);
-         location = SetupFile(); 
-        setState(723);
-        antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2 = orExpression();
+    _la = _input->LA(1);
+    while (_la == GPULangParser::LOGICAND) {
+      setState(721);
+      match(GPULangParser::LOGICAND);
+       location = SetupFile(); 
+      setState(723);
+      antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2 = orExpression();
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->tree =  expr;
-                 
-      }
+                  BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<LogicalAndExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(730);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 54, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -4784,6 +4780,7 @@ GPULangParser::OrExpressionContext* GPULangParser::orExpression() {
           Symbol::Location location;
 
       
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4793,30 +4790,27 @@ GPULangParser::OrExpressionContext* GPULangParser::orExpression() {
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(731);
     antlrcpp::downCast<OrExpressionContext *>(_localctx)->e1 = xorExpression();
      antlrcpp::downCast<OrExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<OrExpressionContext *>(_localctx)->e1->tree; 
     setState(740);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 55, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(733);
-        match(GPULangParser::OR);
-         location = SetupFile(); 
-        setState(735);
-        antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2 = xorExpression();
+    _la = _input->LA(1);
+    while (_la == GPULangParser::OR) {
+      setState(733);
+      match(GPULangParser::OR);
+       location = SetupFile(); 
+      setState(735);
+      antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2 = xorExpression();
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<OrExpressionContext *>(_localctx)->tree =  expr;
-                 
-      }
+                  BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<OrExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<OrExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(742);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 55, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -4875,6 +4869,7 @@ GPULangParser::XorExpressionContext* GPULangParser::xorExpression() {
           antlrcpp::downCast<XorExpressionContext *>(_localctx)->tree =  nullptr;
           Symbol::Location location;
       
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4884,30 +4879,27 @@ GPULangParser::XorExpressionContext* GPULangParser::xorExpression() {
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(743);
     antlrcpp::downCast<XorExpressionContext *>(_localctx)->e1 = andExpression();
      antlrcpp::downCast<XorExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<XorExpressionContext *>(_localctx)->e1->tree; 
     setState(752);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 56, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(745);
-        match(GPULangParser::XOR);
-         location = SetupFile(); 
-        setState(747);
-        antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2 = andExpression();
+    _la = _input->LA(1);
+    while (_la == GPULangParser::XOR) {
+      setState(745);
+      match(GPULangParser::XOR);
+       location = SetupFile(); 
+      setState(747);
+      antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2 = andExpression();
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<XorExpressionContext *>(_localctx)->tree =  expr;
-                 
-      }
+                  BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<XorExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<XorExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(754);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 56, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -4966,6 +4958,7 @@ GPULangParser::AndExpressionContext* GPULangParser::andExpression() {
           antlrcpp::downCast<AndExpressionContext *>(_localctx)->tree =  nullptr;
           Symbol::Location location;
       
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4975,30 +4968,27 @@ GPULangParser::AndExpressionContext* GPULangParser::andExpression() {
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(755);
     antlrcpp::downCast<AndExpressionContext *>(_localctx)->e1 = equivalencyExpression();
      antlrcpp::downCast<AndExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<AndExpressionContext *>(_localctx)->e1->tree;	
     setState(764);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 57, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(757);
-        match(GPULangParser::AND);
-         location = SetupFile(); 
-        setState(759);
-        antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2 = equivalencyExpression();
+    _la = _input->LA(1);
+    while (_la == GPULangParser::AND) {
+      setState(757);
+      match(GPULangParser::AND);
+       location = SetupFile(); 
+      setState(759);
+      antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2 = equivalencyExpression();
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<AndExpressionContext *>(_localctx)->tree =  expr;
-                 
-      }
+                  BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<AndExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<AndExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(766);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 57, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5075,40 +5065,39 @@ GPULangParser::EquivalencyExpressionContext* GPULangParser::equivalencyExpressio
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(767);
     antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e1 = relationalExpression();
      antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e1->tree; 
     setState(776);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 58, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(769);
-        antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op = _input->LT(1);
-        _la = _input->LA(1);
-        if (!(_la == GPULangParser::LOGICEQ
+    _la = _input->LA(1);
+    while (_la == GPULangParser::LOGICEQ
 
-        || _la == GPULangParser::NOTEQ)) {
-          antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-        }
-        else {
-          _errHandler->reportMatch(this);
-          consume();
-        }
-         location = SetupFile(); 
-        setState(771);
-        antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2 = relationalExpression();
+    || _la == GPULangParser::NOTEQ) {
+      setState(769);
+      antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op = _input->LT(1);
+      _la = _input->LA(1);
+      if (!(_la == GPULangParser::LOGICEQ
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->tree =  expr;
-                 
+      || _la == GPULangParser::NOTEQ)) {
+        antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
+      else {
+        _errHandler->reportMatch(this);
+        consume();
+      }
+       location = SetupFile(); 
+      setState(771);
+      antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2 = relationalExpression();
+
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<EquivalencyExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(778);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 58, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5201,39 +5190,37 @@ GPULangParser::RelationalExpressionContext* GPULangParser::relationalExpression(
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(779);
     antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e1 = shiftExpression();
      antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e1->tree; 
     setState(788);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 59, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(781);
-        antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op = _input->LT(1);
-        _la = _input->LA(1);
-        if (!((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & -1152921504606846976) != 0))) {
-          antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-        }
-        else {
-          _errHandler->reportMatch(this);
-          consume();
-        }
-         location = SetupFile(); 
-        setState(783);
-        antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2 = shiftExpression();
-
-                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->tree =  expr;
-                 
+    _la = _input->LA(1);
+    while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & -1152921504606846976) != 0)) {
+      setState(781);
+      antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op = _input->LT(1);
+      _la = _input->LA(1);
+      if (!((((_la & ~ 0x3fULL) == 0) &&
+        ((1ULL << _la) & -1152921504606846976) != 0))) {
+        antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
+      else {
+        _errHandler->reportMatch(this);
+        consume();
+      }
+       location = SetupFile(); 
+      setState(783);
+      antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2 = shiftExpression();
+
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<RelationalExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(790);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 59, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5294,40 +5281,39 @@ GPULangParser::ShiftExpressionContext* GPULangParser::shiftExpression() {
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(791);
     antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e1 = addSubtractExpression();
      antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e1->tree; 
     setState(800);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 60, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(793);
-        antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op = _input->LT(1);
-        _la = _input->LA(1);
-        if (!(_la == GPULangParser::T__30
+    _la = _input->LA(1);
+    while (_la == GPULangParser::T__30
 
-        || _la == GPULangParser::T__31)) {
-          antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-        }
-        else {
-          _errHandler->reportMatch(this);
-          consume();
-        }
-         location = SetupFile(); 
-        setState(795);
-        antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2 = addSubtractExpression();
+    || _la == GPULangParser::T__31) {
+      setState(793);
+      antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op = _input->LT(1);
+      _la = _input->LA(1);
+      if (!(_la == GPULangParser::T__30
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->tree =  expr;
-                 
+      || _la == GPULangParser::T__31)) {
+        antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
+      else {
+        _errHandler->reportMatch(this);
+        consume();
+      }
+       location = SetupFile(); 
+      setState(795);
+      antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2 = addSubtractExpression();
+
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<ShiftExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(802);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 60, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5404,40 +5390,39 @@ GPULangParser::AddSubtractExpressionContext* GPULangParser::addSubtractExpressio
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(803);
     antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e1 = multiplyDivideExpression();
      antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e1->tree; 
     setState(812);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 61, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(805);
-        antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op = _input->LT(1);
-        _la = _input->LA(1);
-        if (!(_la == GPULangParser::ADD_OP
+    _la = _input->LA(1);
+    while (_la == GPULangParser::ADD_OP
 
-        || _la == GPULangParser::SUB_OP)) {
-          antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-        }
-        else {
-          _errHandler->reportMatch(this);
-          consume();
-        }
-         location = SetupFile(); 
-        setState(807);
-        antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2 = multiplyDivideExpression();
+    || _la == GPULangParser::SUB_OP) {
+      setState(805);
+      antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op = _input->LT(1);
+      _la = _input->LA(1);
+      if (!(_la == GPULangParser::ADD_OP
 
-                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->tree =  expr;
-                 
+      || _la == GPULangParser::SUB_OP)) {
+        antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
+      else {
+        _errHandler->reportMatch(this);
+        consume();
+      }
+       location = SetupFile(); 
+      setState(807);
+      antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2 = multiplyDivideExpression();
+
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<AddSubtractExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(814);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 61, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5522,39 +5507,37 @@ GPULangParser::MultiplyDivideExpressionContext* GPULangParser::multiplyDivideExp
     exitRule();
   });
   try {
-    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(815);
     antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e1 = suffixExpression();
      antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e1->tree; 
     setState(824);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 62, _ctx);
-    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-      if (alt == 1) {
-        setState(817);
-        antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op = _input->LT(1);
-        _la = _input->LA(1);
-        if (!(((((_la - 68) & ~ 0x3fULL) == 0) &&
-          ((1ULL << (_la - 68)) & 97) != 0))) {
-          antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-        }
-        else {
-          _errHandler->reportMatch(this);
-          consume();
-        }
-         location = SetupFile(); 
-        setState(819);
-        antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2 = suffixExpression();
-
-                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2->tree);
-                    expr->location = location;
-                    antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->tree =  expr;
-                 
+    _la = _input->LA(1);
+    while (((((_la - 68) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 68)) & 97) != 0)) {
+      setState(817);
+      antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op = _input->LT(1);
+      _la = _input->LA(1);
+      if (!(((((_la - 68) & ~ 0x3fULL) == 0) &&
+        ((1ULL << (_la - 68)) & 97) != 0))) {
+        antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
+      else {
+        _errHandler->reportMatch(this);
+        consume();
+      }
+       location = SetupFile(); 
+      setState(819);
+      antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2 = suffixExpression();
+
+                  BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->e2->tree);
+                  expr->location = location;
+                  antlrcpp::downCast<MultiplyDivideExpressionContext *>(_localctx)->tree =  expr;
+              
       setState(826);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 62, _ctx);
+      _la = _input->LA(1);
     }
    
   }
@@ -5623,6 +5606,14 @@ std::vector<tree::TerminalNode *> GPULangParser::SuffixExpressionContext::RR() {
 
 tree::TerminalNode* GPULangParser::SuffixExpressionContext::RR(size_t i) {
   return getToken(GPULangParser::RR, i);
+}
+
+std::vector<GPULangParser::SuffixExpressionContext *> GPULangParser::SuffixExpressionContext::suffixExpression() {
+  return getRuleContexts<GPULangParser::SuffixExpressionContext>();
+}
+
+GPULangParser::SuffixExpressionContext* GPULangParser::SuffixExpressionContext::suffixExpression(size_t i) {
+  return getRuleContext<GPULangParser::SuffixExpressionContext>(i);
 }
 
 std::vector<GPULangParser::LogicalOrExpressionContext *> GPULangParser::SuffixExpressionContext::logicalOrExpression() {
@@ -5751,7 +5742,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               match(GPULangParser::DOT);
                location = SetupFile(); 
               setState(848);
-              antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = logicalOrExpression();
+              antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
 
                           AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, false);
                           expr->location = location;
@@ -5765,7 +5756,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               match(GPULangParser::ARROW);
                location = SetupFile(); 
               setState(853);
-              antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = logicalOrExpression();
+              antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2 = suffixExpression();
 
                           AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e2->tree, true);
                           expr->location = location;

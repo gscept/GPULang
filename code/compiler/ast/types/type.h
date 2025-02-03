@@ -210,7 +210,7 @@ struct Type : public Symbol
                     case TypeCode::UInt:
                         return TypeCode::UInt;
                     case TypeCode::Int:
-                        return TypeCode::Int;
+                        return TypeCode::UInt;
                     case TypeCode::Float:
                         return TypeCode::Float;
                     case TypeCode::Bool:
@@ -221,7 +221,7 @@ struct Type : public Symbol
                 switch (rhs)
                 {
                     case TypeCode::UInt:
-                        return TypeCode::Int;
+                        return TypeCode::UInt;
                     case TypeCode::Int:
                         return TypeCode::Int;
                     case TypeCode::Float:

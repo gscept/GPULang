@@ -42,6 +42,7 @@
 
 #include <array>
 #include <format>
+#include <vcruntime_startup.h>
 
 #include "ast/samplerstate.h"
 #include "ast/expressions/arrayinitializerexpression.h"
@@ -524,7 +525,7 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
 /**
 */
 SPIRVResult
-LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
+LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, bool loadParentType = false)
 {
     if (arg.isLiteral)
     {
@@ -558,8 +559,10 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
             accessChain = Format("%s %%%d", accessChain.c_str(), index);
         }
         val = generator->AddMappedOp(accessChain);
-        type = arg.parentTypes.back();
     }
+
+    if (loadParentType || !arg.accessChain.empty())
+        type = arg.parentTypes.back();
 
     assert(val != -1);
     if (!arg.isValue)
@@ -584,6 +587,9 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg)
     res.isValue = true;
     res.isConst = arg.isConst;
     res.isSpecialization = arg.isSpecialization;
+    res.parentTypes = arg.parentTypes;
+    if (!res.parentTypes.empty())
+        res.parentTypes.pop_back();
     return res;
 }
 
@@ -2772,12 +2778,10 @@ SPIRVGenerator::SetupIntrinsics()
     static auto createSampledImage = [](Compiler* c, SPIRVGenerator* g, SPIRVResult arg0, SPIRVResult arg1) -> SPIRVResult
     {
         assert(arg0.parentTypes.size() > 0);
-        uint32_t image = g->AddMappedOp(Format("OpLoad %%%d %%%d", arg0.parentTypes[0], arg0.name));
-        uint32_t sampler = arg1.name;
-        if (!arg1.isValue)
-            sampler = g->AddMappedOp(Format("OpLoad %%%d %%%d", arg1.parentTypes[0], arg1.name));
+        SPIRVResult image = LoadValueSPIRV(c, g, arg0, true);
+        SPIRVResult sampler = LoadValueSPIRV(c, g, arg1, true);
         uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", arg0.parentTypes[0]), Format("OpTypeSampledImage %%%d", arg0.parentTypes[0]), true);
-        uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image, sampler));
+        uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image.name, sampler.name));
         return SPIRVResult(sampledImage, sampledImage, true);
     };
 
@@ -3337,11 +3341,11 @@ SPIRVGenerator::SetupIntrinsics()
                     if (c->target.supportsPhysicalAddressing)
                     {
                         SPIRVResult loadedPointer = LoadValueSPIRV(c, g, args[0]);
-                        dereffed = LoadValueSPIRV(c, g, loadedPointer).name;
+                        dereffed = LoadValueSPIRV(c, g, loadedPointer, true).name;
                     }
                     else
                     {
-                        dereffed = LoadValueSPIRV(c, g, args[0]).name;
+                        dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
                     SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
                     g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, args[1].name, loaded.name, args[3].name));
@@ -3354,11 +3358,11 @@ SPIRVGenerator::SetupIntrinsics()
                     if (c->target.supportsPhysicalAddressing)
                     {
                         SPIRVResult loadedPointer = LoadValueSPIRV(c, g, args[0]);
-                        dereffed = LoadValueSPIRV(c, g, loadedPointer).name;
+                        dereffed = LoadValueSPIRV(c, g, loadedPointer, true).name;
                     }
                     else
                     {
-                        dereffed = LoadValueSPIRV(c, g, args[0]).name;
+                        dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
                     SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
                     g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, loaded.name));
@@ -3374,11 +3378,11 @@ SPIRVGenerator::SetupIntrinsics()
                     if (c->target.supportsPhysicalAddressing)
                     {
                         SPIRVResult loadedPointer = LoadValueSPIRV(c, g, args[0]);
-                        dereffed = LoadValueSPIRV(c, g, loadedPointer).name;
+                        dereffed = LoadValueSPIRV(c, g, loadedPointer, true).name;
                     }
                     else
                     {
-                        dereffed = LoadValueSPIRV(c, g, args[0]).name;
+                        dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
                     ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d Lod %%%d", returnType, dereffed, args[1].name, args[2].name));
                     res.isValue = true;
@@ -3391,11 +3395,11 @@ SPIRVGenerator::SetupIntrinsics()
                     if (c->target.supportsPhysicalAddressing)
                     {
                         SPIRVResult loadedPointer = LoadValueSPIRV(c, g, args[0]);
-                        dereffed = LoadValueSPIRV(c, g, loadedPointer).name;
+                        dereffed = LoadValueSPIRV(c, g, loadedPointer, true).name;
                     }
                     else
                     {
-                        dereffed = LoadValueSPIRV(c, g, args[0]).name;
+                        dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
                     ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d", returnType, dereffed, args[1].name));
                     res.isValue = true;
@@ -5198,6 +5202,7 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                 spv_text text;
                 spvBinaryToText(spvContext, bin->code, bin->wordCount, SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES, &text, &diag2);
                 compiler->Error(Format("Internal SPIRV generation error: %s", diag->error), "", -1, -1);
+                compiler->Error(std::string(text->str, text->length), "", diag->position.line, diag->position.column);
                 return false;
             }
             

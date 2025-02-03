@@ -1002,13 +1002,13 @@ suffixExpression
             expr->location = location;
             $tree = expr;
         }
-        | '.' { location = SetupFile(); } e2 = logicalOrExpression
+        | '.' { location = SetupFile(); } e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
             expr->location = location;
             $tree = expr;
         }
-        | '->' { location = SetupFile(); } e2 = logicalOrExpression
+        | '->' { location = SetupFile(); } e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
             expr->location = location;
