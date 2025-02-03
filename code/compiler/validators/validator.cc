@@ -1725,7 +1725,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->Resolve(compiler);
     }
 
-    if (var->type.name == "unknown")
+    if (var->type.name == "<undefined>")
     {
         if (var->valueExpression != nullptr)
             var->valueExpression->EvalType(var->type);
@@ -3313,6 +3313,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto unary = static_cast<UnaryExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, unary->expr);
+            break;
         }
         case Symbol::FunctionType:
         {

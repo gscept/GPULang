@@ -53,6 +53,7 @@ struct AccessExpression : public Expression
         Type* rhsType;
         std::string rightSymbol;
         Type::FullType returnType;
+        Type* retType;
         Type::SwizzleMask swizzleMask;
     };
 };

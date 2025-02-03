@@ -1164,7 +1164,7 @@ public:
     GPULangParser::PrefixExpressionContext *e1 = nullptr;
     GPULangParser::LogicalOrExpressionContext *arg0 = nullptr;
     GPULangParser::LogicalOrExpressionContext *argn = nullptr;
-    GPULangParser::SuffixExpressionContext *e2 = nullptr;
+    GPULangParser::LogicalOrExpressionContext *e2 = nullptr;
     GPULangParser::ExpressionContext *e3 = nullptr;
     antlr4::Token *op = nullptr;
     SuffixExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1182,8 +1182,6 @@ public:
     antlr4::tree::TerminalNode* LL(size_t i);
     std::vector<antlr4::tree::TerminalNode *> RR();
     antlr4::tree::TerminalNode* RR(size_t i);
-    std::vector<SuffixExpressionContext *> suffixExpression();
-    SuffixExpressionContext* suffixExpression(size_t i);
     std::vector<LogicalOrExpressionContext *> logicalOrExpression();
     LogicalOrExpressionContext* logicalOrExpression(size_t i);
     std::vector<ExpressionContext *> expression();

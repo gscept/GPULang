@@ -43,7 +43,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
         
         Type::FullType valueType;
         expr->EvalType(valueType);
-        if (inner.name == "unknown")
+        if (inner.name == "<undefined>")
             inner = valueType;
         else if (valueType != inner)
         {

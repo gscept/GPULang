@@ -13,6 +13,7 @@ namespace GPULang
 
 #define INT3_CTOR_LIST\
     X(Int3, ctor_SingleValue, i32, 1, 3, 3, None)\
+    X(Int3, ctor_SingleUIntValue, u32, 1, 3, 3, UIntToInt)\
     X(Int3, ctor_UInt3, u32x3, 1, 1, 3, UIntToInt)\
     X(Int3, ctor_Float3, f32x3, 1, 1, 3, FloatToUInt)\
     X(Int3, ctor_Int3, i32x3, 1, 1, 3, None)

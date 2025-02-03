@@ -213,6 +213,15 @@ CallExpression::Resolve(Compiler* compiler)
                     for (auto& candidate : ambiguousCalls)
                     {
                         fmt.append(Format("\n    %s", Symbol::Resolved(candidate.function)->signature.c_str()));
+                        if (candidate.needsConversion)
+                            fmt.append("\n      using conversions:");
+                        int counter = 0;
+                        for (auto& conv : candidate.argumentConversionFunction)
+                        {
+                            if (conv != nullptr)
+                                fmt.append(Format("\n          argument %d -> %s", counter, Symbol::Resolved(conv)->name.c_str()));
+                            counter++;
+                        }
                     }
                     compiler->Error(fmt, this);
                     thisResolved->function = nullptr;

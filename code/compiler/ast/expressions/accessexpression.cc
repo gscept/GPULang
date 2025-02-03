@@ -100,6 +100,7 @@ AccessExpression::Resolve(Compiler* compiler)
         unsigned numComponents = Type::SwizzleMaskComponents(swizzle);
         std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
         thisResolved->returnType = Type::FullType{ vectorType };
+        thisResolved->retType = compiler->GetSymbol<Type>(vectorType);
     }
     else if (!thisResolved->leftType.modifiers.empty() && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
     {
@@ -112,10 +113,15 @@ AccessExpression::Resolve(Compiler* compiler)
     else if (thisResolved->lhsType->symbolType == Type::SymbolType::EnumerationType)
     {
         EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
+        EnumExpression::__Resolved* exprRes = Symbol::Resolved(expr);
         thisResolved->returnType = expr->type;
+        thisResolved->retType = exprRes->type;
     }
     else
     {
+        thisResolved->returnType = thisResolved->rightType;
+        thisResolved->retType = thisResolved->rhsType;
+        /*
         Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
         if (memberVar == nullptr)
         {
@@ -128,6 +134,7 @@ AccessExpression::Resolve(Compiler* compiler)
             thisResolved->returnType = varResolved->type;
             thisResolved->returnType.mut = thisResolved->leftType.mut;
         }
+        */
     }
 
     return thisResolved->lhsType != nullptr && thisResolved->rhsType != nullptr;

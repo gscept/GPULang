@@ -36,6 +36,12 @@ struct SPIRVResult
     uint32_t swizzleType = 0xFFFFFFFF;
     Type* unswizzledType;
 
+    std::vector<uint32_t> accessChain;
+    void AddAccessChainLink(std::vector<uint32_t> indices)
+    {
+        accessChain.insert(accessChain.end(), indices.begin(), indices.end());
+    }
+
     struct LiteralValue
     {
         union
@@ -82,7 +88,7 @@ struct SPIRVResult
             case Storage::Private:
                 return "Private";
             case Storage::WorkGroup:
-                return "WorkGroup";
+                return "Workgroup";
             case Storage::Uniform:
                 return "Uniform";
             case Storage::Sampler:
@@ -120,7 +126,7 @@ struct SPIRVResult
         this->swizzleMask.bits.w = Type::SwizzleMask::Invalid;
     };
 
-    SPIRVResult(float literal)
+    explicit SPIRVResult(float literal)
     {
         this->literalValue.type = LiteralValue::FloatType;
         this->literalValue.f = literal;
@@ -128,7 +134,7 @@ struct SPIRVResult
         this->isValue = false;
     }
 
-    SPIRVResult(int literal)
+    explicit SPIRVResult(int literal)
     {
         this->literalValue.type = LiteralValue::IntType;
         this->literalValue.i = literal;
@@ -136,7 +142,7 @@ struct SPIRVResult
         this->isValue = false;
     }
 
-    SPIRVResult(uint32_t literal)
+    explicit SPIRVResult(uint32_t literal)
     {
         this->literalValue.type = LiteralValue::UIntType;
         this->literalValue.ui = literal;
@@ -210,6 +216,14 @@ public:
         std::unordered_map<std::string, SymbolAssignment> symbols;
     };
     std::vector<Scope> scopeStack;
+
+    /// Push a type to the stack
+    void PushAccessChain(const SPIRVResult& chain);
+    /// Pop a type from the stack
+    void PopAccessChain();
+    
+    std::vector<SPIRVResult> accessChain;
+    
     std::vector<std::string> capabilities;
     /// Push a new scope on the stack
     void PushScope();

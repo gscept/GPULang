@@ -218,7 +218,7 @@ variables
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
         unsigned initCounter = 0;
-        Type::FullType type = { "unknown" };
+        Type::FullType type = { "<undefined>" };
     }:
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
     (attribute { attributes.push_back(std::move($attribute.attr)); })+
@@ -1002,13 +1002,13 @@ suffixExpression
             expr->location = location;
             $tree = expr;
         }
-        | '.' { location = SetupFile(); } e2 = suffixExpression
+        | '.' { location = SetupFile(); } e2 = logicalOrExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
             expr->location = location;
             $tree = expr;
         }
-        | '->' { location = SetupFile(); } e2 = suffixExpression
+        | '->' { location = SetupFile(); } e2 = logicalOrExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
             expr->location = location;

@@ -340,7 +340,7 @@ struct Type : public Symbol
 
         FullType()
         {
-            this->name = "unknown";
+            this->name = "<undefined>";
             this->literal = false;
         }
         FullType(std::string type)

@@ -289,6 +289,14 @@ extern Function* Cross_f32x3;
     INT_LIST
 #undef X
 
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Any, ty)
+    BOOL_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(All, ty)
+    BOOL_LIST
+#undef X
+
 //------------------------------------------------------------------------------
 /**
     Builtins, like:

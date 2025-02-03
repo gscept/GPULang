@@ -579,7 +579,7 @@ Compiler::GeneratorError(const std::string& msg)
 void 
 Compiler::UnrecognizedTypeError(const std::string& type, Symbol* sym)
 {
-    this->Error(Format("Unrecognized type '%s'", type.c_str()), sym);
+    this->Error(Format("Unrecognized type '%s' for symbol '%s'", type.c_str(), sym->name.c_str()), sym);
 }
 
 //------------------------------------------------------------------------------

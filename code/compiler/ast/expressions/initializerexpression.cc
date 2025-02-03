@@ -41,7 +41,7 @@ InitializerExpression::Resolve(Compiler* compiler)
     Type* ty = compiler->GetSymbol<Type>(this->explicitType);
     if (ty == nullptr)
     {
-        compiler->Error(Format("Unrecognized type '%s'", this->explicitType.c_str()), this);
+        compiler->UnrecognizedTypeError(this->explicitType, this);
         return false;
     }
     thisResolved->type = ty;

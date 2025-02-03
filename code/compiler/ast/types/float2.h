@@ -13,6 +13,8 @@ namespace GPULang
 
 #define FLOAT2_CTOR_LIST\
     X(Float2, ctor_SingleValue, f32, 1, 2, 2, None)\
+    X(Float2, ctor_SingleUIntValue, u32, 1, 2, 2, UIntToFloat)\
+    X(Float2, ctor_SingleIntValue, i32, 1, 2, 2, IntToFloat)\
     X(Float2, ctor_UInt2, u32x2, 1, 1, 2, UIntToFloat)\
     X(Float2, ctor_Int2, i32x2, 1, 1, 2, IntToFloat)\
     X(Float2, ctor_Float2, f32x2, 1, 1, 2, None)

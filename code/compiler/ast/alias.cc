@@ -26,7 +26,7 @@ Alias::Resolve(Compiler* compiler)
     Symbol* sym = compiler->GetSymbol(this->type);
     if (sym == nullptr)
     {
-        compiler->Error(Format("Unrecognized type '%s'", this->type.c_str()), this);
+        compiler->UnrecognizedTypeError(this->type, this);
         return false;
     }
     return compiler->AddSymbol(this->name, sym);

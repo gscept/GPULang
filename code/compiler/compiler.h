@@ -262,7 +262,7 @@ struct Compiler
 
         void Print(const std::string& message)
         {
-            printf("%s took %.2f ms\n", message.c_str(), this->duration / 1000.0f);
+            printf("%s took %.2f ms\n", message.c_str(), this->duration);
         }
     } performanceTimer;
 };

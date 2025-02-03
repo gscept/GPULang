@@ -515,6 +515,22 @@ FLOAT_LIST
     INT_LIST
 #undef X
 
+#define X(ty, index)\
+    __MAKE_INTRINSIC(any, Any, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET("b8");
+
+    BOOL_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(all, All, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET("b8");
+
+    BOOL_LIST
+#undef X
+
     //------------------------------------------------------------------------------
     /**
         Shader state intrinsics

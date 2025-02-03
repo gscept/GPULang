@@ -161,6 +161,14 @@ Function* Cross_f32x3;
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(CastToF32, ty)
     INT_LIST
 #undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Any, ty)
+    BOOL_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(All, ty)
+    BOOL_LIST
+#undef X
         
 Function* SetOutputLayer;
 Function* GetOutputLayer;
