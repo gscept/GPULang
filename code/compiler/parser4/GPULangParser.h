@@ -24,11 +24,10 @@
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
-#include "ast/statements/discardstatement.h"
 #include "ast/statements/expressionstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/ifstatement.h"
-#include "ast/statements/returnstatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/statement.h"
 #include "ast/statements/switchstatement.h"
@@ -74,15 +73,16 @@ public:
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
-    T__32 = 33, T__33 = 34, T__34 = 35, SC = 36, CO = 37, COL = 38, LP = 39, 
-    RP = 40, LB = 41, RB = 42, LL = 43, RR = 44, DOT = 45, NOT = 46, EQ = 47, 
-    QO = 48, QU = 49, AND = 50, ANDSET = 51, OR = 52, ORSET = 53, XOR = 54, 
-    XORSET = 55, CONJUGATE = 56, Q = 57, NU = 58, FORWARDSLASH = 59, LESS = 60, 
-    LESSEQ = 61, GREATER = 62, GREATEREQ = 63, LOGICEQ = 64, NOTEQ = 65, 
-    LOGICAND = 66, LOGICOR = 67, MOD = 68, UNDERSC = 69, SOBAKA = 70, ADD_OP = 71, 
-    SUB_OP = 72, DIV_OP = 73, MUL_OP = 74, ARROW = 75, INTEGERLITERAL = 76, 
-    UINTEGERLITERAL = 77, COMMENT = 78, ML_COMMENT = 79, FLOATLITERAL = 80, 
-    EXPONENT = 81, DOUBLELITERAL = 82, HEX = 83, IDENTIFIER = 84, WS = 85
+    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, SC = 38, 
+    CO = 39, COL = 40, LP = 41, RP = 42, LB = 43, RB = 44, LL = 45, RR = 46, 
+    DOT = 47, NOT = 48, EQ = 49, QO = 50, QU = 51, AND = 52, ANDSET = 53, 
+    OR = 54, ORSET = 55, XOR = 56, XORSET = 57, CONJUGATE = 58, Q = 59, 
+    NU = 60, FORWARDSLASH = 61, LESS = 62, LESSEQ = 63, GREATER = 64, GREATEREQ = 65, 
+    LOGICEQ = 66, NOTEQ = 67, LOGICAND = 68, LOGICOR = 69, MOD = 70, UNDERSC = 71, 
+    SOBAKA = 72, ADD_OP = 73, SUB_OP = 74, DIV_OP = 75, MUL_OP = 76, ARROW = 77, 
+    INTEGERLITERAL = 78, UINTEGERLITERAL = 79, COMMENT = 80, ML_COMMENT = 81, 
+    FLOATLITERAL = 82, EXPONENT = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, 
+    WS = 87
   };
 
   enum {
@@ -93,15 +93,14 @@ public:
     RuleFunction = 15, RuleProgram = 16, RuleSampler = 17, RuleState = 18, 
     RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
     RuleForStatement = 22, RuleForRangeStatement = 23, RuleWhileStatement = 24, 
-    RuleScopeStatement = 25, RuleReturnStatement = 26, RuleDiscardStatement = 27, 
-    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
-    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
-    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
-    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
-    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
-    RuleMultiplyDivideExpression = 43, RuleSuffixExpression = 44, RulePrefixExpression = 45, 
-    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
-    RuleArrayInitializerExpression = 49
+    RuleScopeStatement = 25, RuleTerminateStatement = 26, RuleContinueStatement = 27, 
+    RuleSwitchStatement = 28, RuleBreakStatement = 29, RuleExpression = 30, 
+    RuleCommaExpression = 31, RuleAssignmentExpression = 32, RuleLogicalOrExpression = 33, 
+    RuleLogicalAndExpression = 34, RuleOrExpression = 35, RuleXorExpression = 36, 
+    RuleAndExpression = 37, RuleEquivalencyExpression = 38, RuleRelationalExpression = 39, 
+    RuleShiftExpression = 40, RuleAddSubtractExpression = 41, RuleMultiplyDivideExpression = 42, 
+    RuleSuffixExpression = 43, RulePrefixExpression = 44, RuleNamespaceExpression = 45, 
+    RuleBinaryexpatom = 46, RuleInitializerExpression = 47, RuleArrayInitializerExpression = 48
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -165,8 +164,7 @@ public:
   class ForRangeStatementContext;
   class WhileStatementContext;
   class ScopeStatementContext;
-  class ReturnStatementContext;
-  class DiscardStatementContext;
+  class TerminateStatementContext;
   class ContinueStatementContext;
   class SwitchStatementContext;
   class BreakStatementContext;
@@ -642,8 +640,7 @@ public:
     GPULangParser::ForStatementContext *forStatementContext = nullptr;
     GPULangParser::WhileStatementContext *whileStatementContext = nullptr;
     GPULangParser::SwitchStatementContext *switchStatementContext = nullptr;
-    GPULangParser::ReturnStatementContext *returnStatementContext = nullptr;
-    GPULangParser::DiscardStatementContext *discardStatementContext = nullptr;
+    GPULangParser::TerminateStatementContext *terminateStatementContext = nullptr;
     GPULangParser::ContinueStatementContext *continueStatementContext = nullptr;
     GPULangParser::BreakStatementContext *breakStatementContext = nullptr;
     GPULangParser::ExpressionStatementContext *expressionStatementContext = nullptr;
@@ -654,8 +651,7 @@ public:
     ForStatementContext *forStatement();
     WhileStatementContext *whileStatement();
     SwitchStatementContext *switchStatement();
-    ReturnStatementContext *returnStatement();
-    DiscardStatementContext *discardStatement();
+    TerminateStatementContext *terminateStatement();
     ContinueStatementContext *continueStatement();
     BreakStatementContext *breakStatement();
     ExpressionStatementContext *expressionStatement();
@@ -800,11 +796,11 @@ public:
 
   ScopeStatementContext* scopeStatement();
 
-  class  ReturnStatementContext : public antlr4::ParserRuleContext {
+  class  TerminateStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
     GPULangParser::ExpressionContext *value = nullptr;
-    ReturnStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    TerminateStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *SC();
     ExpressionContext *expression();
@@ -814,21 +810,7 @@ public:
    
   };
 
-  ReturnStatementContext* returnStatement();
-
-  class  DiscardStatementContext : public antlr4::ParserRuleContext {
-  public:
-    Statement* tree;
-    DiscardStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *SC();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  DiscardStatementContext* discardStatement();
+  TerminateStatementContext* terminateStatement();
 
   class  ContinueStatementContext : public antlr4::ParserRuleContext {
   public:

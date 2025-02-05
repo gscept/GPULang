@@ -220,6 +220,8 @@ struct Compiler
                 uint32_t setsOutputLayer : 1;
                 uint32_t setsViewport : 1;
                 uint32_t killsPixel : 1;
+                uint32_t stopsRay : 1;
+                uint32_t ignoresRay : 1;
             } flags;
             uint32_t bits;
         } sideEffects;

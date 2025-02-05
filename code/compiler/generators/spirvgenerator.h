@@ -75,7 +75,12 @@ struct SPIRVResult
         Image,
         MutableImage,
         Input,
-        Output
+        Output,
+        RayPayload,                             // variable is a ray payload
+        RayPayloadInput,                        // variable is a ray payload input
+        RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
+        CallableData,                           // variable is ray tracing callable data
+        CallableDataInput,                      // variable is ray tracing callable data
     } scope;
     Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default;
 
@@ -106,6 +111,16 @@ struct SPIRVResult
                 return "Input";
             case Storage::Output:
                 return "Output";
+            case Storage::RayPayload:
+                return "RayPayloadKHR";
+            case Storage::RayPayloadInput:
+                return "IncomingRayPayloadKHR";
+            case Storage::RayHitAttribute:
+                return "HitAttributeKHR";
+            case Storage::CallableData:
+                return "CallableDataKHR";
+            case Storage::CallableDataInput:
+                return "IncomingCallableDataKHR";
             default:
                 assert(false);
                 return "";

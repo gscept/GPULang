@@ -91,7 +91,12 @@ struct Variable : public Symbol
             Output,                                 // variable is an output from the current shader stage
             Global,                                 // variable is global in the shader
             LinkDefined,                            // variable value is defined at link time
-            DynamicArray                            // variable points to an array of dynamic size
+            DynamicArray,                           // variable points to an array of dynamic size
+            RayPayload,                             // variable is a ray payload
+            RayPayloadInput,                        // variable is a ray payload input
+            RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
+            CallableData,                           // variable is ray tracing callable data
+            CallableDataInput,                      // variable is ray tracing callable data
 
         } storage = Storage::Default;
         std::vector<Variable*> siblings;

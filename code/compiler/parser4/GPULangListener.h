@@ -92,11 +92,8 @@ public:
   virtual void enterScopeStatement(GPULangParser::ScopeStatementContext *ctx) = 0;
   virtual void exitScopeStatement(GPULangParser::ScopeStatementContext *ctx) = 0;
 
-  virtual void enterReturnStatement(GPULangParser::ReturnStatementContext *ctx) = 0;
-  virtual void exitReturnStatement(GPULangParser::ReturnStatementContext *ctx) = 0;
-
-  virtual void enterDiscardStatement(GPULangParser::DiscardStatementContext *ctx) = 0;
-  virtual void exitDiscardStatement(GPULangParser::DiscardStatementContext *ctx) = 0;
+  virtual void enterTerminateStatement(GPULangParser::TerminateStatementContext *ctx) = 0;
+  virtual void exitTerminateStatement(GPULangParser::TerminateStatementContext *ctx) = 0;
 
   virtual void enterContinueStatement(GPULangParser::ContinueStatementContext *ctx) = 0;
   virtual void exitContinueStatement(GPULangParser::ContinueStatementContext *ctx) = 0;

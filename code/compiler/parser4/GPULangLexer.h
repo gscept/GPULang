@@ -22,15 +22,16 @@ public:
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
-    T__32 = 33, T__33 = 34, T__34 = 35, SC = 36, CO = 37, COL = 38, LP = 39, 
-    RP = 40, LB = 41, RB = 42, LL = 43, RR = 44, DOT = 45, NOT = 46, EQ = 47, 
-    QO = 48, QU = 49, AND = 50, ANDSET = 51, OR = 52, ORSET = 53, XOR = 54, 
-    XORSET = 55, CONJUGATE = 56, Q = 57, NU = 58, FORWARDSLASH = 59, LESS = 60, 
-    LESSEQ = 61, GREATER = 62, GREATEREQ = 63, LOGICEQ = 64, NOTEQ = 65, 
-    LOGICAND = 66, LOGICOR = 67, MOD = 68, UNDERSC = 69, SOBAKA = 70, ADD_OP = 71, 
-    SUB_OP = 72, DIV_OP = 73, MUL_OP = 74, ARROW = 75, INTEGERLITERAL = 76, 
-    UINTEGERLITERAL = 77, COMMENT = 78, ML_COMMENT = 79, FLOATLITERAL = 80, 
-    EXPONENT = 81, DOUBLELITERAL = 82, HEX = 83, IDENTIFIER = 84, WS = 85
+    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, SC = 38, 
+    CO = 39, COL = 40, LP = 41, RP = 42, LB = 43, RB = 44, LL = 45, RR = 46, 
+    DOT = 47, NOT = 48, EQ = 49, QO = 50, QU = 51, AND = 52, ANDSET = 53, 
+    OR = 54, ORSET = 55, XOR = 56, XORSET = 57, CONJUGATE = 58, Q = 59, 
+    NU = 60, FORWARDSLASH = 61, LESS = 62, LESSEQ = 63, GREATER = 64, GREATEREQ = 65, 
+    LOGICEQ = 66, NOTEQ = 67, LOGICAND = 68, LOGICOR = 69, MOD = 70, UNDERSC = 71, 
+    SOBAKA = 72, ADD_OP = 73, SUB_OP = 74, DIV_OP = 75, MUL_OP = 76, ARROW = 77, 
+    INTEGERLITERAL = 78, UINTEGERLITERAL = 79, COMMENT = 80, ML_COMMENT = 81, 
+    FLOATLITERAL = 82, EXPONENT = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, 
+    WS = 87
   };
 
   explicit GPULangLexer(antlr4::CharStream *input);

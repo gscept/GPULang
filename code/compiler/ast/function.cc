@@ -1551,6 +1551,21 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
+
+    __MAKE_BUILTIN(gplTraceRay, TraceRay);
+    __ADD_HANDLE_ARG_LIT(tlas, accelerationStructure);
+    __ADD_ARG_LIT(origin, f32x3);
+    __ADD_ARG_LIT(direction, f32x3);
+    __ADD_ARG_LIT(min, f32);
+    __ADD_ARG_LIT(max, f32);
+    __ADD_ARG_LIT(shaderTableOffset, u32);
+    __ADD_ARG_LIT(shaderTableStride, u32);
+    __ADD_ARG_LIT(missShaderIndex, u32);
+    __ADD_ARG_LIT(flags, u32);
+    __ADD_ARG_LIT(mask, u32);
+    __SET_RET_LIT(void)
+    
+    
 }
 
 //------------------------------------------------------------------------------

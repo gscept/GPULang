@@ -595,6 +595,30 @@ extern Function* PixelCacheLoadMS;
 #define X(ty, index) DECLARE_TEXTURE_INTRINSIC(SampleProjOffset, ty)
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
+
+extern Function* TraceRay;
+extern Function* ExportRayIntersection;
+extern Function* ExecuteCallable;
+
+extern Function* GetRayLaunchIndex;
+extern Function* GetRayLaunchSize;
+extern Function* GetBLASPrimitiveIndex;
+extern Function* GetBLASGeometryIndex;
+extern Function* GetTLASInstanceIndex;
+extern Function* GetTLASInstanceCustomIndex;
+extern Function* GetRayWorldOrigin;
+extern Function* GetRayWorldDirection;
+extern Function* GetRayObjectOrigin;
+extern Function* GetRayObjectDirection;
+extern Function* GetRayMin;
+extern Function* GetRayMax;
+extern Function* GetRayFlags;
+extern Function* GetRayHitDistance;
+extern Function* GetRayHitKind;
+extern Function* GetTLASObjectToWorld;
+extern Function* GetTLASWorldToObject;
+
+
 }
 
 } // namespace GPULang

@@ -29,6 +29,7 @@
 #include "glslang/Include/ResourceLimits.h"
 #include "glslang/Public/ShaderLang.h"
 #define ENABLE_OPT 1
+#include "ast/statements/terminatestatement.h"
 #include "SPIRV/GlslangToSpv.h"
 #include "SPIRV/SpvTools.h"
 #include "spirv-tools/optimizer.hpp"
@@ -860,19 +861,22 @@ GenerateIfStatementGLSL(Compiler* compiler, Statement* statement, std::string& o
 /**
 */
 void
-GenerateReturnStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateTerminateStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
 {
-    ReturnStatement* returnStatement = static_cast<ReturnStatement*>(statement);
+    TerminateStatement* termStatement = static_cast<TerminateStatement*>(statement);
     std::string indentation = GenerateIndentation();
-    if (returnStatement->returnValue != nullptr)
+    if (termStatement->type == TerminateStatement::TerminationType::Return)
     {
-        std::string val;
-        GenerateExpressionGLSL(compiler, returnStatement->returnValue, val);
-        outCode.append(Format("%sreturn %s;", indentation.c_str(), val.c_str()));
-    }
-    else
-    {
-        outCode.append(Format("%sreturn;", indentation.c_str()));
+        if (termStatement->returnValue != nullptr)
+        {
+            std::string val;
+            GenerateExpressionGLSL(compiler, termStatement->returnValue, val);
+            outCode.append(Format("%sreturn %s;", indentation.c_str(), val.c_str()));
+        }
+        else
+        {
+            outCode.append(Format("%sreturn;", indentation.c_str()));
+        }    
     }
 }
 
@@ -993,8 +997,8 @@ GenerateStatementGLSL(Compiler* compiler, Statement* statement, std::string& out
         case Symbol::IfStatementType:
             GenerateIfStatementGLSL(compiler, statement, outCode);
             break;
-        case Symbol::ReturnStatementType:
-            GenerateReturnStatementGLSL(compiler, statement, outCode);
+        case Symbol::TerminateStatementType:
+            GenerateTerminateStatementGLSL(compiler, statement, outCode);
             break;
         case Symbol::ScopeStatementType:
             GenerateScopeStatementGLSL(compiler, statement, outCode);
