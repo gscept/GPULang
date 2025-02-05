@@ -578,9 +578,12 @@ FLOAT_LIST
     __MAKE_BUILTIN(pixelGetCoordinates, GetPixelCoordinates);
     __SET_RET_LIT(f32x4);
 
-    __MAKE_BUILTIN(pixelSetPixelDepth, SetPixelDepth);
+    __MAKE_BUILTIN(pixelSetDepth, SetPixelDepth);
     __ADD_ARG_LIT(depth, f32);
     __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(pixelGetDepth, GetPixelDepth);
+    __SET_RET_LIT(f32);
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(pixelExportColor, ExportColor, ty)\
@@ -1557,7 +1560,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         Raytracing intrinsics
     */
     //------------------------------------------------------------------------------
-    __MAKE_BUILTIN(traceRay, TraceRay);
+    __MAKE_BUILTIN(rayTrace, TraceRay);
     __ADD_HANDLE_ARG_LIT(tlas, accelerationStructure);
     __ADD_ARG_LIT(origin, f32x3);
     __ADD_ARG_LIT(direction, f32x3);
@@ -1569,6 +1572,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_ARG_LIT(flags, u32);
     __ADD_ARG_LIT(mask, u32);
     __SET_RET_LIT(void)
+
+    __MAKE_BUILTIN(rayExportIntersection, ExportRayIntersection);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(rayExecuteCallable, ExecuteCallable);
+    __SET_RET_LIT(void);
 
     __MAKE_BUILTIN(rayGetLaunchIndex, RayLaunchIndex);
     __SET_RET_LIT(u32x3);

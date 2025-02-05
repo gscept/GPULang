@@ -184,6 +184,7 @@ Function* GetDrawIndex;
 
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
+Function* GetPixelDepth;
 
 Function* ExportVertex;
 Function* ExportPrimitive;

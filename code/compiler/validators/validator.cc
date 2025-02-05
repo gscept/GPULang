@@ -596,11 +596,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
-    if (fun->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
-    {
-        compiler->ReservedPrefixError(fun->name, "gpl", symbol);
-    }
-
      // run attribute validation
     for (const Attribute& attr : fun->attributes)
     {
@@ -1485,7 +1480,13 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
-
+    
+    if (struc->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
+    {
+        compiler->ReservedPrefixError(struc->name, "gpl", symbol);
+        return false;
+    }
+    
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
 
@@ -3272,34 +3273,38 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
             static const std::unordered_map<std::string, std::vector<Program::__Resolved::ProgramEntryType>> allowedBuiltins =
             {
-                { "gplExportVertexCoordinates", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "gplExportVertex", { Program::__Resolved::ProgramEntryType::GeometryShader }}
-                , { "gplExportPrimitive", { Program::__Resolved::ProgramEntryType::GeometryShader }}
-                , { "gplSetOutputLayer", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "gplSetOutputViewport", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "gplExportColor", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "gplGetPixelDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "gplSetPixelDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "gplTraceRay", { Program::__Resolved::ProgramEntryType::RayGenerationShader }}
-                , { "gplExportRayIntersection", { Program::__Resolved::ProgramEntryType::RayIntersectionShader }}
-                , { "gplExecuteCallable", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }}
-                , { "gplGetRayLaunchIndex", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayLaunchSize", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetBLASPrimitiveIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetBLASGeometryIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetTLASInstanceIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetTLASInstanceCustomIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayWorldOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayWorldDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayObjectOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayObjectDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayMin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayMax", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayFlags", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetRayHitDistance", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
-                , { "gplGetRayHitKind", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
-                , { "gplGetTLASObjectToWorld", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "gplGetTLASWorldToObject", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                { "vertexExportCoordinates", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "geometryExportVertex", { Program::__Resolved::ProgramEntryType::GeometryShader }}
+                , { "geometryExportPrimitive", { Program::__Resolved::ProgramEntryType::GeometryShader }}
+                , { "computeGetLocalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetGlobalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetWorkGroupIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetWorkGroupDimensions", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "vertexSetOutputLayer", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "vertexSetOutputViewport", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "pixelExportColor", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "pixelGetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "pixelSetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "rayTrace", { Program::__Resolved::ProgramEntryType::RayGenerationShader }}
+                , { "rayExportIntersection", { Program::__Resolved::ProgramEntryType::RayIntersectionShader }}
+                , { "rayExecuteCallable", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }}
+                , { "rayGetLaunchIndex", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetLaunchSize", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "BLASGetPrimitiveIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "BLASGetGeometryIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetInstanceIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetInstanceCustomIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetWorldOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetWorldDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetObjectOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetObjectDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetMin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetMax", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetFlags", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetHitDistance", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "rayGetHitKind", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "TLASGetObjectToWorld", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetWorldToObject", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
             };
 
             const auto it = allowedBuiltins.find(callResolved->functionSymbol);

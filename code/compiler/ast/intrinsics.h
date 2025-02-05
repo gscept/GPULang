@@ -319,6 +319,7 @@ extern Function* GetDrawIndex;
 
 extern Function* GetPixelCoordinates;
 extern Function* SetPixelDepth;
+extern Function* GetPixelDepth;
 
 extern Function* ExportVertex;
 extern Function* ExportPrimitive;
