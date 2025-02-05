@@ -465,23 +465,23 @@ Function* TraceRay;
 Function* ExportRayIntersection;
 Function* ExecuteCallable;
 
-Function* GetRayLaunchIndex;
-Function* GetRayLaunchSize;
-Function* GetBLASPrimitiveIndex;
-Function* GetBLASGeometryIndex;
-Function* GetTLASInstanceIndex;
-Function* GetTLASInstanceCustomIndex;
-Function* GetRayWorldOrigin;
-Function* GetRayWorldDirection;
-Function* GetRayObjectOrigin;
-Function* GetRayObjectDirection;
-Function* GetRayMin;
-Function* GetRayMax;
-Function* GetRayFlags;
-Function* GetRayHitDistance;
-Function* GetRayHitKind;
-Function* GetTLASObjectToWorld;
-Function* GetTLASWorldToObject;
+Function* RayLaunchIndex;
+Function* RayLaunchSize;
+Function* BLASPrimitiveIndex;
+Function* BLASGeometryIndex;
+Function* TLASInstanceIndex;
+Function* TLASInstanceCustomIndex;
+Function* RayWorldOrigin;
+Function* RayWorldDirection;
+Function* RayObjectOrigin;
+Function* RayObjectDirection;
+Function* RayMin;
+Function* RayMax;
+Function* RayFlags;
+Function* RayHitDistance;
+Function* RayHitKind;
+Function* TLASObjectToWorld;
+Function* TLASWorldToObject;
 }
 
 } // namespace GPULang

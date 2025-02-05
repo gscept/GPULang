@@ -600,23 +600,23 @@ extern Function* TraceRay;
 extern Function* ExportRayIntersection;
 extern Function* ExecuteCallable;
 
-extern Function* GetRayLaunchIndex;
-extern Function* GetRayLaunchSize;
-extern Function* GetBLASPrimitiveIndex;
-extern Function* GetBLASGeometryIndex;
-extern Function* GetTLASInstanceIndex;
-extern Function* GetTLASInstanceCustomIndex;
-extern Function* GetRayWorldOrigin;
-extern Function* GetRayWorldDirection;
-extern Function* GetRayObjectOrigin;
-extern Function* GetRayObjectDirection;
-extern Function* GetRayMin;
-extern Function* GetRayMax;
-extern Function* GetRayFlags;
-extern Function* GetRayHitDistance;
-extern Function* GetRayHitKind;
-extern Function* GetTLASObjectToWorld;
-extern Function* GetTLASWorldToObject;
+extern Function* RayLaunchIndex;
+extern Function* RayLaunchSize;
+extern Function* BLASPrimitiveIndex;
+extern Function* BLASGeometryIndex;
+extern Function* TLASInstanceIndex;
+extern Function* TLASInstanceCustomIndex;
+extern Function* RayWorldOrigin;
+extern Function* RayWorldDirection;
+extern Function* RayObjectOrigin;
+extern Function* RayObjectDirection;
+extern Function* RayMin;
+extern Function* RayMax;
+extern Function* RayFlags;
+extern Function* RayHitDistance;
+extern Function* RayHitKind;
+extern Function* TLASObjectToWorld;
+extern Function* TLASWorldToObject;
 
 
 }

@@ -3457,183 +3457,183 @@ SPIRVGenerator::SetupIntrinsics()
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayLaunchIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayLaunchIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
+        g->AddDecoration("gplRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayLaunchSize] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayLaunchSize] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
+        g->AddDecoration("gplRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetBLASPrimitiveIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::BLASPrimitiveIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
+        g->AddDecoration("gplBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetBLASGeometryIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::BLASGeometryIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
+        g->AddDecoration("gplBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetTLASInstanceIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::TLASInstanceIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetTLASInstanceIndex", ret, "BuiltIn InstanceIndex");
+        g->AddDecoration("gplTLASInstanceIndex", ret, "BuiltIn InstanceId");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetTLASInstanceCustomIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::TLASInstanceCustomIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
+        g->AddDecoration("gplTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayWorldOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayWorldOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
+        g->AddDecoration("gplRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayWorldDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayWorldDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
+        g->AddDecoration("gplRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayObjectOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayObjectOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
+        g->AddDecoration("gplRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayObjectDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayObjectDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
+        g->AddDecoration("gplRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayMin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayMin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t typePtr = g->AddSymbol("ptr(f32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayMin", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayMin", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayMin", ret, "BuiltIn RayTminKHR");
+        g->AddDecoration("gplRayMin", ret, "BuiltIn RayTminKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayMax] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayMax] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t typePtr = g->AddSymbol("ptr(f32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayMax", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayMax", ret, "BuiltIn RayTmaxKHR");
+        g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayFlags] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayFlags] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayFlags", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayFlags", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
+        g->AddDecoration("gplRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayHitDistance] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayHitDistance] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayHitDistance", ret, "BuiltIn RayTmaxKHR");
+        g->AddDecoration("gplRayHitDistance", ret, "BuiltIn RayTmaxKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetRayHitKind] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::RayHitKind] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
-        uint32_t ret = g->AddSymbol("gplGetRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetRayHitKind", ret, "BuiltIn HitKindKHR");
+        g->AddDecoration("gplRayHitKind", ret, "BuiltIn HitKindKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetTLASObjectToWorld] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::TLASObjectToWorld] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
         uint32_t matType = g->AddSymbol("f32x4x3", Format("OpTypeMatrix %%%d, 3", vecType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
-        uint32_t ret = g->AddSymbol("gplGetTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
+        g->AddDecoration("gplTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 
-    this->intrinsicMap[Intrinsics::GetTLASWorldToObject] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    this->intrinsicMap[Intrinsics::TLASWorldToObject] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         g->AddCapability("RayTracingKHR");
         uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
         uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
         uint32_t matType = g->AddSymbol("f32x4x3", Format("OpTypeMatrix %%%d, 3", vecType), true);
         uint32_t typePtr = g->AddSymbol("ptr(f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
-        uint32_t ret = g->AddSymbol("gplGetTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
+        uint32_t ret = g->AddSymbol("gplTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
         g->interfaceVariables.insert(ret);
-        g->AddDecoration("gplGetTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
+        g->AddDecoration("gplTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
         return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
     };
 }

@@ -3080,11 +3080,11 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
     if (!compiler->target.supportsPhysicalAddressing)
     {
         if (
-            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && numPointers > 0)
+            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && typeSymbol->category != Type::AccelerationStructureCategory && numPointers > 0)
             || (numPointers > 1)
             )
         {
-            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler and struct types", compiler->target.name.c_str()), sym);
+            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler, accelerationStructure and struct types", compiler->target.name.c_str()), sym);
             return false;
         }
     }
@@ -3283,6 +3283,23 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , { "gplTraceRay", { Program::__Resolved::ProgramEntryType::RayGenerationShader }}
                 , { "gplExportRayIntersection", { Program::__Resolved::ProgramEntryType::RayIntersectionShader }}
                 , { "gplExecuteCallable", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }}
+                , { "gplGetRayLaunchIndex", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayLaunchSize", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetBLASPrimitiveIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetBLASGeometryIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetTLASInstanceIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetTLASInstanceCustomIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayWorldOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayWorldDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayObjectOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayObjectDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayMin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayMax", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayFlags", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetRayHitDistance", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "gplGetRayHitKind", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "gplGetTLASObjectToWorld", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "gplGetTLASWorldToObject", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
             };
 
             const auto it = allowedBuiltins.find(callResolved->functionSymbol);
