@@ -319,6 +319,7 @@ extern Function* GetDrawIndex;
 
 extern Function* GetPixelCoordinates;
 extern Function* SetPixelDepth;
+extern Function* GetPixelDepth;
 
 extern Function* ExportVertex;
 extern Function* ExportPrimitive;
@@ -595,6 +596,30 @@ extern Function* PixelCacheLoadMS;
 #define X(ty, index) DECLARE_TEXTURE_INTRINSIC(SampleProjOffset, ty)
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
+
+extern Function* TraceRay;
+extern Function* ExportRayIntersection;
+extern Function* ExecuteCallable;
+
+extern Function* RayLaunchIndex;
+extern Function* RayLaunchSize;
+extern Function* BLASPrimitiveIndex;
+extern Function* BLASGeometryIndex;
+extern Function* TLASInstanceIndex;
+extern Function* TLASInstanceCustomIndex;
+extern Function* RayWorldOrigin;
+extern Function* RayWorldDirection;
+extern Function* RayObjectOrigin;
+extern Function* RayObjectDirection;
+extern Function* RayMin;
+extern Function* RayMax;
+extern Function* RayFlags;
+extern Function* RayHitDistance;
+extern Function* RayHitKind;
+extern Function* TLASObjectToWorld;
+extern Function* TLASWorldToObject;
+
+
 }
 
 } // namespace GPULang

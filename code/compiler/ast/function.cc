@@ -536,54 +536,57 @@ FLOAT_LIST
         Shader state intrinsics
     */
     //------------------------------------------------------------------------------
-    __MAKE_BUILTIN(gplSetOutputLayer, SetOutputLayer);
+    __MAKE_BUILTIN(vertexSetOutputLayer, SetOutputLayer);
     __ADD_ARG_LIT(layer, u32);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(gplGetOutputLayer, GetOutputLayer);
+    __MAKE_BUILTIN(vertexGetOutputLayer, GetOutputLayer);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplSetOutputViewport, SetOutputViewport);
+    __MAKE_BUILTIN(vertexSetOutputViewport, SetOutputViewport);
     __ADD_ARG_LIT(layer, u32);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(gplGetOutputViewport, GetOutputViewport);
+    __MAKE_BUILTIN(vertexGetOutputViewport, GetOutputViewport);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplExportVertexCoordinates, ExportVertexCoordinates);
+    __MAKE_BUILTIN(vertexExportCoordinates, ExportVertexCoordinates);
     __ADD_ARG_LIT(layer, f32x4);
     __SET_RET_LIT(void);
     
-    __MAKE_BUILTIN(gplExportVertex, ExportVertex);
+    __MAKE_BUILTIN(geometryExportVertex, ExportVertex);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(gplExportPrimitive, ExportPrimitive);
+    __MAKE_BUILTIN(geometryExportPrimitive, ExportPrimitive);
     __SET_RET_LIT(void);
 
-    __MAKE_BUILTIN(gplGetVertexIndex, GetVertexIndex);
+    __MAKE_BUILTIN(vertexGetIndex, GetVertexIndex);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetInstanceIndex, GetInstanceIndex);
+    __MAKE_BUILTIN(vertexGetInstanceIndex, GetInstanceIndex);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetBaseVertexIndex, GetBaseVertexIndex);
+    __MAKE_BUILTIN(vertexGetBaseIndex, GetBaseVertexIndex);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetBaseInstanceIndex, GetBaseInstanceIndex);
+    __MAKE_BUILTIN(vertexGetBaseInstanceIndex, GetBaseInstanceIndex);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetDrawIndex, GetDrawIndex);
+    __MAKE_BUILTIN(vertexGetDrawIndex, GetDrawIndex);
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetPixelCoordinates, GetPixelCoordinates);
+    __MAKE_BUILTIN(pixelGetCoordinates, GetPixelCoordinates);
     __SET_RET_LIT(f32x4);
 
-    __MAKE_BUILTIN(gplSetPixelDepth, SetPixelDepth);
+    __MAKE_BUILTIN(pixelSetDepth, SetPixelDepth);
     __ADD_ARG_LIT(depth, f32);
     __SET_RET_LIT(void);
 
+    __MAKE_BUILTIN(pixelGetDepth, GetPixelDepth);
+    __SET_RET_LIT(f32);
+
 #define X(ty, index)\
-    __MAKE_INTRINSIC(gplExportColor, ExportColor, ty)\
+    __MAKE_INTRINSIC(pixelExportColor, ExportColor, ty)\
     __ADD_ARG_LIT(color, ty);\
     __ADD_VALUE_LIT(index, i32);\
     __SET_RET_LIT(void);
@@ -591,16 +594,16 @@ FLOAT_LIST
     SCALAR_LIST
 #undef X
 
-    __MAKE_BUILTIN(gplGetLocalInvocationIndex, GetLocalInvocationIndex);
+    __MAKE_BUILTIN(computeGetLocalInvocationIndex, GetLocalInvocationIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(gplGetGlobalInvocationIndex, GetGlobalInvocationIndex);
+    __MAKE_BUILTIN(computeGetGlobalInvocationIndex, GetGlobalInvocationIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(gplGetWorkGroupIndex, GetWorkGroupIndex);
+    __MAKE_BUILTIN(computeGetWorkGroupIndex, GetWorkGroupIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(gplGetWorkGroupDimensions, GetWorkGroupDimensions);
+    __MAKE_BUILTIN(computeGetWorkGroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);
     
 
@@ -610,31 +613,31 @@ FLOAT_LIST
     */
     //------------------------------------------------------------------------------
 
-    __MAKE_BUILTIN(gplGetSubgroupId, GetSubgroupId);                       // The id of the subgroup
+    __MAKE_BUILTIN(subgroupGetId, GetSubgroupId);                       // The id of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupSize, GetSubgroupSize);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetSize, GetSubgroupSize);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetNumSubgroups, GetNumSubgroups);                       // The number of subgroups
+    __MAKE_BUILTIN(subgroupGetNum, GetNumSubgroups);                       // The number of subgroups
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupLowerMask, GetSubgroupLowerMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLowerMask, GetSubgroupLowerMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(gplGetSubgroupGreaterMask, GetSubgroupGreaterMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetGreaterMask, GetSubgroupGreaterMask);                       // The size of the subgroup
     __SET_RET_LIT(u32);
 
-    __MAKE_BUILTIN(subgroupFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
+    __MAKE_BUILTIN(subgroupGetFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(subgroupRead, SubgroupRead);                 // Returns value from the invocation with the lowest invocation
@@ -1551,6 +1554,81 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
+    
+    //------------------------------------------------------------------------------
+    /**
+        Raytracing intrinsics
+    */
+    //------------------------------------------------------------------------------
+    __MAKE_BUILTIN(rayTrace, TraceRay);
+    __ADD_HANDLE_ARG_LIT(tlas, accelerationStructure);
+    __ADD_ARG_LIT(origin, f32x3);
+    __ADD_ARG_LIT(direction, f32x3);
+    __ADD_ARG_LIT(min, f32);
+    __ADD_ARG_LIT(max, f32);
+    __ADD_ARG_LIT(shaderTableOffset, u32);
+    __ADD_ARG_LIT(shaderTableStride, u32);
+    __ADD_ARG_LIT(missShaderIndex, u32);
+    __ADD_ARG_LIT(flags, u32);
+    __ADD_ARG_LIT(mask, u32);
+    __SET_RET_LIT(void)
+
+    __MAKE_BUILTIN(rayExportIntersection, ExportRayIntersection);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(rayExecuteCallable, ExecuteCallable);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(rayGetLaunchIndex, RayLaunchIndex);
+    __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(rayGetLaunchSize, RayLaunchSize);
+    __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(BLASGetPrimitiveIndex, BLASPrimitiveIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(BLASGetGeometryIndex, BLASGeometryIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(TLASGetInstanceIndex, TLASInstanceIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(TLASGetInstanceCustomIndex, TLASInstanceCustomIndex);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(rayGetWorldOrigin, RayWorldOrigin);
+    __SET_RET_LIT(f32x3);
+    
+    __MAKE_BUILTIN(rayGetWorldDirection, RayWorldDirection);
+    __SET_RET_LIT(f32x3);
+
+    __MAKE_BUILTIN(rayGetObjectOrigin, RayObjectOrigin);
+    __SET_RET_LIT(f32x3);
+
+    __MAKE_BUILTIN(rayGetObjectDirection, RayObjectDirection);
+    __SET_RET_LIT(f32x3);
+
+    __MAKE_BUILTIN(rayGetMin, RayMin);
+    __SET_RET_LIT(f32);
+
+    __MAKE_BUILTIN(rayGetMax, RayMax);
+    __SET_RET_LIT(f32);
+
+    __MAKE_BUILTIN(rayGetFlags, RayFlags);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(rayGetHitDistance, RayHitDistance);
+    __SET_RET_LIT(f32);
+
+    __MAKE_BUILTIN(rayGetHitKind, RayHitKind);
+    __SET_RET_LIT(u32);
+
+    __MAKE_BUILTIN(TLASGetObjectToWorld, TLASObjectToWorld);
+    __SET_RET_LIT(f32x4x3);
+    
+    __MAKE_BUILTIN(TLASGetWorldToObject, TLASWorldToObject);
+    __SET_RET_LIT(f32x4x3);
 }
 
 //------------------------------------------------------------------------------

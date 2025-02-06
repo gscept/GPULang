@@ -158,6 +158,7 @@ enum class TypeCode
     , TextureCubeArray
     , PixelCache
     , PixelCacheMS
+    , AccelerationStructure
 
     , Buffer
 

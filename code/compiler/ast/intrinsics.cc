@@ -184,6 +184,7 @@ Function* GetDrawIndex;
 
 Function* GetPixelCoordinates;
 Function* SetPixelDepth;
+Function* GetPixelDepth;
 
 Function* ExportVertex;
 Function* ExportPrimitive;
@@ -461,37 +462,27 @@ TEXTURE_INTRINSIC_PLAIN_LIST
 TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
 
-/*
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Base);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Offset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Bias);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(BiasCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(BiasOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(BiasProj);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(BiasProjCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(BiasProjOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Compare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(CompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Grad);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradCompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradProj);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradProjCompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(GradProjOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Lod);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodCompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodProj);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodProjCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodProjCompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(LodProjOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(Proj);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(ProjCompare);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(ProjCompareOffset);
-DEFINE_TEXTURE_SAMPLE_INTRINSIC(ProjOffset);
-*/
+Function* TraceRay;
+Function* ExportRayIntersection;
+Function* ExecuteCallable;
+
+Function* RayLaunchIndex;
+Function* RayLaunchSize;
+Function* BLASPrimitiveIndex;
+Function* BLASGeometryIndex;
+Function* TLASInstanceIndex;
+Function* TLASInstanceCustomIndex;
+Function* RayWorldOrigin;
+Function* RayWorldDirection;
+Function* RayObjectOrigin;
+Function* RayObjectDirection;
+Function* RayMin;
+Function* RayMax;
+Function* RayFlags;
+Function* RayHitDistance;
+Function* RayHitKind;
+Function* TLASObjectToWorld;
+Function* TLASWorldToObject;
 }
 
 } // namespace GPULang

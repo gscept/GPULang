@@ -78,11 +78,10 @@ SetupFile(bool updateLine = true)
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
-#include "ast/statements/discardstatement.h"
 #include "ast/statements/expressionstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/ifstatement.h"
-#include "ast/statements/returnstatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/statement.h"
 #include "ast/statements/switchstatement.h"
@@ -504,8 +503,7 @@ statement
     | forStatement              { $tree = $forStatement.tree; }
     | whileStatement            { $tree = $whileStatement.tree; }
     | switchStatement           { $tree = $switchStatement.tree; }
-    | returnStatement           { $tree = $returnStatement.tree; }
-    | discardStatement          { $tree = $discardStatement.tree; }
+    | terminateStatement        { $tree = $terminateStatement.tree; }
     | continueStatement         { $tree = $continueStatement.tree; }
     | breakStatement            { $tree = $breakStatement.tree; }
     | expressionStatement ';'   { $tree = $expressionStatement.tree; }
@@ -632,9 +630,9 @@ scopeStatement
         $tree->location = location;
     }
     ;
-
-returnStatement
-    returns[ Statement* tree ]
+    
+terminateStatement
+    returns [ Statement* tree ]
     @init
     {
         $tree = nullptr;
@@ -643,25 +641,26 @@ returnStatement
     }:
     'return' { location = SetupFile(); } (value = expression { returnValue = $value.tree; })? ';'
     {
-        $tree = Alloc<ReturnStatement>(returnValue);
+        $tree = Alloc<TerminateStatement>(returnValue, TerminateStatement::TerminationType::Return);
         $tree->location = location;
+    }
+    | 'discard' { location = SetupFile(); } ';'
+    {
+      $tree = Alloc<TerminateStatement>(returnValue, TerminateStatement::TerminationType::Discard);
+      $tree->location = location;
+    }
+    | 'ray_ignore' { location = SetupFile(); } ';'
+    {
+      $tree = Alloc<TerminateStatement>(returnValue, TerminateStatement::TerminationType::RayIgnoreIntersection);
+      $tree->location = location;
+    }
+    | 'ray_terminate' { location = SetupFile(); } ';'
+    {
+      $tree = Alloc<TerminateStatement>(returnValue, TerminateStatement::TerminationType::RayTerminate);
+      $tree->location = location;
     }
     ;
     
-discardStatement
-    returns[ Statement* tree ]
-    @init
-    {
-        $tree = nullptr;
-        Symbol::Location location;
-    }:
-    'discard' { location = SetupFile(); } ';'
-    {
-        $tree = Alloc<DiscardStatement>();
-        $tree->location = location;
-    }
-    ;
-
 continueStatement
     returns[ Statement* tree ]
     @init 

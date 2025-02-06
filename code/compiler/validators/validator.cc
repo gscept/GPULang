@@ -30,6 +30,7 @@
 #include "ast/statements/forstatement.h"
 #include "ast/statements/ifstatement.h"
 #include "ast/statements/returnstatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/switchstatement.h"
 #include "ast/statements/whilestatement.h"
@@ -69,7 +70,7 @@ static std::set<std::string> functionAttributes =
 
 static std::set<std::string> parameterAccessFlags =
 {
-    "in", "out"
+    "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
 };
 
 static std::set<std::string> parameterQualifiers =
@@ -594,11 +595,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
-
-    if (fun->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
-    {
-        compiler->ReservedPrefixError(fun->name, "gpl", symbol);
-    }
 
      // run attribute validation
     for (const Attribute& attr : fun->attributes)
@@ -1484,7 +1480,13 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
-
+    
+    if (struc->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
+    {
+        compiler->ReservedPrefixError(struc->name, "gpl", symbol);
+        return false;
+    }
+    
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
 
@@ -1934,6 +1936,43 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->storage = Variable::__Resolved::Storage::Input;
             else if (attr.name == "out")
                 varResolved->storage = Variable::__Resolved::Storage::Output;
+            else if (attr.name == "ray_payload")
+            {
+                if (varResolved->storage == Variable::__Resolved::Storage::Input)
+                    varResolved->storage = Variable::__Resolved::Storage::RayPayloadInput;
+                else
+                {
+                    if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                    {
+                        compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                        return false;
+                    }
+                    varResolved->storage = Variable::__Resolved::Storage::RayPayload;
+                }
+            }
+            else if (attr.name == "ray_callable_data")
+            {
+                if (varResolved->storage == Variable::__Resolved::Storage::Input)
+                    varResolved->storage = Variable::__Resolved::Storage::CallableDataInput;
+                else
+                {
+                    if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                    {
+                        compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                        return false;
+                    }
+                    varResolved->storage = Variable::__Resolved::Storage::CallableData;
+                }
+            }
+            else if (attr.name == "ray_hit_attribute")
+            {
+                if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                {
+                    compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
+                    return false;
+                }
+                varResolved->storage = Variable::__Resolved::Storage::RayHitAttribute;
+            }
         }
         else if (set_contains(parameterQualifiers, attr.name))
         {
@@ -2407,19 +2446,6 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             compiler->MarkScopeUnreachable();
             return true;
         }
-        case Symbol::DiscardStatementType:
-        {
-            auto statement = static_cast<DiscardStatement*>(symbol);
-            Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
-            if (scopeOwner == nullptr)
-            {
-                compiler->Error(Format("'discard' is only valid inside function body"), statement);
-                return false;
-            }
-            compiler->branchReturns = true;
-            compiler->MarkScopeUnreachable();
-            return true;
-        }
         case Symbol::ExpressionStatementType:
         {
             auto statement = reinterpret_cast<ExpressionStatement*>(symbol);
@@ -2501,42 +2527,47 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             compiler->branchReturns = ifReturns;
             return true;
         }
-        case Symbol::ReturnStatementType:
+        case Symbol::TerminateStatementType:
         {
-            auto statement = reinterpret_cast<ReturnStatement*>(symbol);
+            auto statement = reinterpret_cast<TerminateStatement*>(symbol);
             Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
+            std::string terminationString = TerminateStatement::TerminationTypeToString(statement->type);
             if (scopeOwner == nullptr)
             {
-                compiler->Error(Format("'return' is only valid inside function body"), statement);
+                compiler->Error(Format("'%s' is only valid inside function body", terminationString.c_str()), statement);
                 return false;
             }
-            Function* functionOwner = static_cast<Function*>(scopeOwner);
-            Function::__Resolved* functionOwnerResolved = Symbol::Resolved(functionOwner);
             compiler->branchReturns = true;
 
-            bool ret = true;
-            if (statement->returnValue != nullptr)
+            if (statement->type == TerminateStatement::TerminationType::Return)
             {
-                ret = statement->returnValue->Resolve(compiler);
+                Function* functionOwner = static_cast<Function*>(scopeOwner);
+                Function::__Resolved* functionOwnerResolved = Symbol::Resolved(functionOwner);
+                bool ret = true;
+                if (statement->returnValue != nullptr)
+                {
+                    ret = statement->returnValue->Resolve(compiler);
                 
-                Type::FullType type;
-                statement->returnValue->EvalType(type);
-                if (functionOwner->returnType != type)
-                {
-                    compiler->Error(Format("Function expects return of type '%s', got '%s'", functionOwner->returnType.ToString().c_str(), type.ToString().c_str()), statement);
-                    return false;
+                    Type::FullType type;
+                    statement->returnValue->EvalType(type);
+                    if (functionOwner->returnType != type)
+                    {
+                        compiler->Error(Format("Function expects return of type '%s', got '%s'", functionOwner->returnType.ToString().c_str(), type.ToString().c_str()), statement);
+                        return false;
+                    }
                 }
-            }
-            else
-            {
-                if (functionOwner->returnType != Type::FullType{ "void" })
+                else
                 {
-                    compiler->Error(Format("Function expects return of type '%s', got 'void'", functionOwner->returnType.ToString().c_str()), statement);
-                    return false;
+                    if (functionOwner->returnType != Type::FullType{ "void" })
+                    {
+                        compiler->Error(Format("Function expects return of type '%s', got 'void'", functionOwner->returnType.ToString().c_str()), statement);
+                        return false;
+                    }
                 }
+                compiler->MarkScopeUnreachable();
+                return ret;
             }
             compiler->MarkScopeUnreachable();
-            return ret;
         }
         case Symbol::ScopeStatementType:
         {
@@ -3050,11 +3081,11 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
     if (!compiler->target.supportsPhysicalAddressing)
     {
         if (
-            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && numPointers > 0)
+            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && typeSymbol->category != Type::AccelerationStructureCategory && numPointers > 0)
             || (numPointers > 1)
             )
         {
-            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler and struct types", compiler->target.name.c_str()), sym);
+            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler, accelerationStructure and struct types", compiler->target.name.c_str()), sym);
             return false;
         }
     }
@@ -3108,25 +3139,45 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             res |= this->ResolveVisibility(compiler, whileStat->statement);    
             break;
         }
-        case Symbol::ReturnStatementType:
+        case Symbol::TerminateStatementType:
         {
-            ReturnStatement* returnStat = static_cast<ReturnStatement*>(symbol);
-            if (returnStat->returnValue != nullptr)
-                res |= this->ResolveVisibility(compiler, returnStat->returnValue);
-            break;
-        }
-        case Symbol::DiscardStatementType:
-        {
-            auto* stat = static_cast<DiscardStatement*>(symbol);
-            compiler->currentState.sideEffects.flags.killsPixel = true;
-            if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+            TerminateStatement* termStat = static_cast<TerminateStatement*>(symbol);
+            if (termStat->type == TerminateStatement::TerminationType::Return)
             {
-                compiler->Error(Format("'discard' can only be used from a pixel shader"), stat);
-                return false;
+                if (termStat->returnValue != nullptr)
+                    res |= this->ResolveVisibility(compiler, termStat->returnValue);
+            }
+            else if (termStat->type == TerminateStatement::TerminationType::Discard)
+            {
+                compiler->currentState.sideEffects.flags.killsPixel = true;
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+                {
+                    compiler->Error(Format("'discard' can only be used from a pixel shader"), termStat);
+                    return false;
+                }    
+            }
+            else if (termStat->type == TerminateStatement::TerminationType::RayTerminate)
+            {
+                compiler->currentState.sideEffects.flags.stopsRay = true;
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::RayAnyHitShader)
+                {
+                    compiler->Error(Format("'ray_terminate' can only be used in a ray anyhit shader"), termStat);
+                    return false;
+                }    
+            }
+            else if (termStat->type == TerminateStatement::TerminationType::RayIgnoreIntersection)
+            {
+                compiler->currentState.sideEffects.flags.ignoresRay = true;
+                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::RayAnyHitShader)
+                {
+                    compiler->Error(Format("'ray_ignore' can only be used in a ray anyhit"), termStat);
+                    return false;
+                }    
             }
             compiler->MarkScopeUnreachable();
             break;
         }
+
         case Symbol::ExpressionStatementType:
         {
             ExpressionStatement* exprStat = static_cast<ExpressionStatement*>(symbol);
@@ -3220,68 +3271,60 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto callExpr = static_cast<CallExpression*>(symbol);
             auto callResolved = Symbol::Resolved(callExpr);
 
-            if (callResolved->functionSymbol.starts_with("gplExportVertexCoordinates"))
+            static const std::unordered_map<std::string, std::vector<Program::__Resolved::ProgramEntryType>> allowedBuiltins =
             {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
+                { "vertexExportCoordinates", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "geometryExportVertex", { Program::__Resolved::ProgramEntryType::GeometryShader }}
+                , { "geometryExportPrimitive", { Program::__Resolved::ProgramEntryType::GeometryShader }}
+                , { "computeGetLocalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetGlobalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetWorkGroupIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "computeGetWorkGroupDimensions", { Program::__Resolved::ProgramEntryType::ComputeShader }}
+                , { "vertexSetOutputLayer", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "vertexSetOutputViewport", { Program::__Resolved::ProgramEntryType::VertexShader }}
+                , { "pixelExportColor", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "pixelGetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "pixelSetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
+                , { "rayTrace", { Program::__Resolved::ProgramEntryType::RayGenerationShader }}
+                , { "rayExportIntersection", { Program::__Resolved::ProgramEntryType::RayIntersectionShader }}
+                , { "rayExecuteCallable", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }}
+                , { "rayGetLaunchIndex", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetLaunchSize", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "BLASGetPrimitiveIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "BLASGetGeometryIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetInstanceIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetInstanceCustomIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetWorldOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetWorldDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetObjectOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetObjectDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetMin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetMax", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetFlags", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "rayGetHitDistance", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "rayGetHitKind", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
+                , { "TLASGetObjectToWorld", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                , { "TLASGetWorldToObject", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+            };
+
+            const auto it = allowedBuiltins.find(callResolved->functionSymbol);
+            if (it != allowedBuiltins.end())
+            {
+                bool allowedInShader = false;
+                for (auto shaderType : it->second)
                 {
-                    compiler->Error(Format("gplExportVertexCoordinates can only be called from a vertex shader"), callExpr);
+                    if (shaderType == compiler->currentState.shaderType)
+                    {
+                        allowedInShader = true;
+                        break;
+                    }
+                }
+                if (!allowedInShader)
+                {
+                    const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    compiler->Error(Format("%s can not be called from a %s", it->first.c_str(), shaderString.c_str()), callExpr);
                     return false;
                 }
-                compiler->currentState.sideEffects.flags.exportsVertexPosition = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplExportVertex"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::GeometryShader)
-                {
-                    compiler->Error(Format("gplExportVertex can only be called from a geometry shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.exportsVertex = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplExportPrimitive"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::GeometryShader)
-                {
-                    compiler->Error(Format("gplExportPrimitive can only be called from a geometry shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.exportsPrimitive = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplSetOutputLayer"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
-                {
-                    compiler->Error(Format("gplSetOutputLayer can only be called from a vertex shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.setsOutputLayer = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplSetOutputViewport"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::VertexShader)
-                {
-                    compiler->Error(Format("gplSetOutputViewport can only be called from a vertex shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.setsViewport = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplExportColor"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
-                {
-                    compiler->Error(Format("gplExportColor can only be called from pixel shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.exportsPixel = true;
-            }
-            else if (callResolved->functionSymbol.starts_with("gplSetPixelDepth"))
-            {
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
-                {
-                    compiler->Error(Format("gplSetPixelDepth can only be called from a pixel shader"), callExpr);
-                    return false;
-                }
-                compiler->currentState.sideEffects.flags.exportsExplicitDepth = true;
             }
             
             for (auto& arg : callExpr->args)

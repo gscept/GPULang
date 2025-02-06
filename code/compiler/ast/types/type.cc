@@ -278,6 +278,9 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(pixelCacheMS, TypeCode::PixelCacheMS);
     __MAKE_PIXELCACHE();
 
+    __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
+    newType->category = AccelerationStructureCategory;
+
     Enumeration* compareModeEnum = new Enumeration();
     compareModeEnum->name = "CompareMode";
     compareModeEnum->type = { "u32" };

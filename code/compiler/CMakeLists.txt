@@ -106,22 +106,20 @@ fips_dir(ast/statements)
         breakstatement.h
         continuestatement.cc
         continuestatement.h
-        discardstatement.cc
-        discardstatement.h
         expressionstatement.cc
         expressionstatement.h
         forstatement.cc
         forstatement.h
         ifstatement.cc
         ifstatement.h
-        returnstatement.cc
-        returnstatement.h
         scopestatement.cc
         scopestatement.h
         statement.cc
         statement.h
         switchstatement.cc
         switchstatement.h
+        terminatestatement.cc
+        terminatestatement.h
         whilestatement.cc
         whilestatement.h
     )

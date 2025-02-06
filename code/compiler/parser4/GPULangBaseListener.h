@@ -94,11 +94,8 @@ public:
   virtual void enterScopeStatement(GPULangParser::ScopeStatementContext * /*ctx*/) override { }
   virtual void exitScopeStatement(GPULangParser::ScopeStatementContext * /*ctx*/) override { }
 
-  virtual void enterReturnStatement(GPULangParser::ReturnStatementContext * /*ctx*/) override { }
-  virtual void exitReturnStatement(GPULangParser::ReturnStatementContext * /*ctx*/) override { }
-
-  virtual void enterDiscardStatement(GPULangParser::DiscardStatementContext * /*ctx*/) override { }
-  virtual void exitDiscardStatement(GPULangParser::DiscardStatementContext * /*ctx*/) override { }
+  virtual void enterTerminateStatement(GPULangParser::TerminateStatementContext * /*ctx*/) override { }
+  virtual void exitTerminateStatement(GPULangParser::TerminateStatementContext * /*ctx*/) override { }
 
   virtual void enterContinueStatement(GPULangParser::ContinueStatementContext * /*ctx*/) override { }
   virtual void exitContinueStatement(GPULangParser::ContinueStatementContext * /*ctx*/) override { }

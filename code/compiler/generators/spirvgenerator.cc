@@ -29,6 +29,7 @@
 #include "ast/statements/expressionstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/ifstatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/returnstatement.h"
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/switchstatement.h"
@@ -273,6 +274,16 @@ GenerateTypeSPIRV(
             scope = SPIRVResult::Storage::WorkGroup;
         else if (storage == Variable::__Resolved::Storage::Device)
             scope = SPIRVResult::Storage::Device;
+        else if (storage == Variable::__Resolved::Storage::RayPayload)
+            scope = SPIRVResult::Storage::RayPayload;
+        else if (storage == Variable::__Resolved::Storage::RayPayloadInput)
+            scope = SPIRVResult::Storage::RayPayloadInput;
+        else if (storage == Variable::__Resolved::Storage::RayHitAttribute)
+            scope = SPIRVResult::Storage::RayHitAttribute;
+        else if (storage == Variable::__Resolved::Storage::CallableData)
+            scope = SPIRVResult::Storage::CallableData;
+        else if (storage == Variable::__Resolved::Storage::CallableDataInput)
+            scope = SPIRVResult::Storage::CallableDataInput;
     }
 
     std::string scopeString = SPIRVResult::ScopeToString(scope);
@@ -2414,15 +2425,6 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
-    static const char* ExecutionTable[] =
-    {
-        "CrossDevice",
-        "Device",
-        "Workgroup",
-        "Subgroup",
-        "Invocation",
-        "Queue"
-    };
     static const uint32_t SemanticsTable[] =
     {
         0x0,
@@ -3410,6 +3412,230 @@ SPIRVGenerator::SetupIntrinsics()
             return res;
         };
     }
+    this->intrinsicMap[Intrinsics::TraceRay] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        assert(args.size() == 11);
+        g->AddCapability("RayTracingKHR");
+        // Load acceleration structure with a special parent load type, as it's
+        SPIRVResult acc = SPIRVResult::Invalid();
+        if (c->target.supportsPhysicalAddressing)
+        {
+            // First load pointer
+            acc = LoadValueSPIRV(c, g, args[0]);
+
+            // Then load structure
+            acc = LoadValueSPIRV(c,g, acc, true);
+        }
+        else
+        {
+            acc = LoadValueSPIRV(c, g, args[0], true);
+        }
+        std::string fmt;
+        for (size_t i = 1; i < args.size() - 1; i++)
+        {
+            SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
+            fmt.append(Format("%%%d", loaded.name));
+        }
+        g->AddOp(Format("OpTraceRayKHR %%%d %s", fmt.c_str()));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::ExportRayIntersection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        g->AddCapability("RayTracingKHR");
+        g->AddOp("OpReportIntersectionKHR");
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::ExecuteCallable] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        assert(args.size() == 2);
+        g->AddCapability("RayTracingKHR");
+        SPIRVResult shaderBindingIndex = LoadValueSPIRV(c, g, args[0]);
+        SPIRVResult callableData = LoadValueSPIRV(c, g, args[1]);
+        g->AddOp(Format("OpExecuteCallableKHR %%%d %%%d", shaderBindingIndex.name, callableData.name));
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    this->intrinsicMap[Intrinsics::RayLaunchIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayLaunchSize] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t vecType = g->AddSymbol("u32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::BLASPrimitiveIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::BLASGeometryIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::TLASInstanceIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplTLASInstanceIndex", ret, "BuiltIn InstanceId");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::TLASInstanceCustomIndex] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayWorldOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayWorldDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayObjectOrigin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayObjectDirection] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x3", Format("OpTypeVector %%%d 3", baseType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x3)Input", Format("OpTypePointer Input %%%d", vecType), true);
+        uint32_t ret = g->AddSymbol("gplRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayMin] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplRayMin", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayMin", ret, "BuiltIn RayTminKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayMax] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayFlags] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplRayFlags", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayHitDistance] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayHitDistance", ret, "BuiltIn RayTmaxKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::RayHitKind] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        uint32_t typePtr = g->AddSymbol("ptr(u32)Input", Format("OpTypePointer Input %%%d", baseType), true);
+        uint32_t ret = g->AddSymbol("gplRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplRayHitKind", ret, "BuiltIn HitKindKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::TLASObjectToWorld] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
+        uint32_t matType = g->AddSymbol("f32x4x3", Format("OpTypeMatrix %%%d, 3", vecType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
+        uint32_t ret = g->AddSymbol("gplTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
+
+    this->intrinsicMap[Intrinsics::TLASWorldToObject] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        g->AddCapability("RayTracingKHR");
+        uint32_t baseType = g->AddSymbol("f32", "OpTypeFloat 32", true);
+        uint32_t vecType = g->AddSymbol("f32x4", Format("OpTypeVector %%%d 4", baseType), true);
+        uint32_t matType = g->AddSymbol("f32x4x3", Format("OpTypeMatrix %%%d, 3", vecType), true);
+        uint32_t typePtr = g->AddSymbol("ptr(f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
+        uint32_t ret = g->AddSymbol("gplTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
+        g->interfaceVariables.insert(ret);
+        g->AddDecoration("gplTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
+        return SPIRVResult(ret, returnType, false, false, SPIRVResult::Storage::Input);
+    };
 }
 
 //------------------------------------------------------------------------------
@@ -4646,6 +4872,44 @@ GenerateIfStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, IfStatem
 /**
 */
 void
+GenerateTerminateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, TerminateStatement* stat)
+{
+    if (stat->type == TerminateStatement::TerminationType::Return)
+    {
+        if (stat->returnValue != nullptr)
+        {
+            SPIRVResult res = GenerateExpressionSPIRV(compiler, generator, stat->returnValue);
+            res = LoadValueSPIRV(compiler, generator, res);
+            generator->AddOp(Format("OpReturnValue %%%d", res.name));
+            generator->blockOpen = false;
+        }
+        else
+        {
+            generator->AddOp("OpReturn");
+            generator->blockOpen = false;
+        }
+    }
+    else if (stat->type == TerminateStatement::TerminationType::Discard)
+    {
+        generator->AddOp("OpKill");
+        generator->blockOpen = false;
+    }
+    else if (stat->type == TerminateStatement::TerminationType::RayTerminate)
+    {
+        generator->AddOp("OpTerminateRayKHR");
+        generator->blockOpen = false;
+    }
+    else if (stat->type == TerminateStatement::TerminationType::RayIgnoreIntersection)
+    {
+        generator->AddOp("OpIgnoreIntersectionKHR");
+        generator->blockOpen = false;
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
 GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ReturnStatement* stat)
 {
     if (stat->returnValue != nullptr)
@@ -4895,15 +5159,6 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
         case Symbol::IfStatementType:
             GenerateIfStatementSPIRV(compiler, generator, static_cast<IfStatement*>(stat));
             break;
-        case Symbol::ReturnStatementType:
-            GenerateReturnStatementSPIRV(compiler, generator, static_cast<ReturnStatement*>(stat));
-            ret = true;
-            break;
-        case Symbol::DiscardStatementType:
-            generator->AddOp("OpKill");
-            generator->blockOpen = false;
-            ret = true;
-            break;
         case Symbol::ScopeStatementType:
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(stat);
@@ -4926,6 +5181,10 @@ GenerateStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Statement*
         }
         case Symbol::SwitchStatementType:
             GenerateSwitchStatementSPIRV(compiler, generator, static_cast<SwitchStatement*>(stat));
+            break;
+        case Symbol::TerminateStatementType:
+            GenerateTerminateStatementSPIRV(compiler, generator, static_cast<TerminateStatement*>(stat));
+            ret = true;
             break;
         case Symbol::WhileStatementType:
             GenerateWhileStatementSPIRV(compiler, generator, static_cast<WhileStatement*>(stat));
