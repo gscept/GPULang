@@ -104,12 +104,12 @@ Float4::Float4()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x4, f32x4);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x4, f32x4);
 
-    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, f32x4);
-    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, f32x4);
-    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, f32x4);
-    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, f32x4);
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, f32x4);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, f32x4);
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x4, f32x4);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32, u32);

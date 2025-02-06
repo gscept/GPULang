@@ -605,7 +605,6 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(computeGetWorkGroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);
-    
 
     //------------------------------------------------------------------------------
     /**

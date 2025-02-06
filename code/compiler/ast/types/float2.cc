@@ -69,12 +69,12 @@ Float2::Float2()
     __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, f32x2, f32x2);
     __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, f32x2, f32x2);
 
-    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, f32x2);
-    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, f32x2);
-    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, f32x2);
-    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, f32x2);
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, f32x2);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, f32x2);
+    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x2, f32x2);
 
     __IMPLEMENT_FUNCTION_1(matrix24Mul, operator*, f32x2, f32x2x4);
     __IMPLEMENT_FUNCTION_1(matrix23Mul, operator*, f32x2, f32x2x3);

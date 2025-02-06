@@ -8,12 +8,7 @@ namespace GPULang
 
 Function Bool::ctor_UInt;
 Function Bool::ctor_Int;
-Function Bool::orOperator;
-Function Bool::andOperator;
-Function Bool::xorOperator;
-Function Bool::orAssignOperator;
-Function Bool::andAssignOperator;
-Function Bool::xorAssignOperator;
+
 Function Bool::ororOperator;
 Function Bool::andandOperator;
 Function Bool::eOperator;
@@ -39,13 +34,7 @@ Bool::Bool()
     // setup uint constructor
     __IMPLEMENT_CTOR_1(ctor_UInt, b8, b8, u32);
     __ADD_CONSTRUCTOR()
-
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, b8, b8);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, b8, b8);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, b8, b8);
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, b8, b8);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, b8, b8);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, b8, b8);
+    
     __IMPLEMENT_FUNCTION_1(ororOperator, operator&&, b8, b8);
     __IMPLEMENT_FUNCTION_1(andandOperator, operator||, b8, b8);
 

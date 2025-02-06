@@ -8,6 +8,12 @@ namespace GPULang
 
 Function Bool3::ctor_XYZ;
 Function Bool3::ctorSingleValue;
+
+Function Bool3::ororOperator;
+Function Bool3::andandOperator;
+Function Bool3::eOperator;
+Function Bool3::neOperator;
+
 Function Bool3::elementAccessOperatorInt;
 Function Bool3::elementAccessOperatorUInt;
 
@@ -32,6 +38,11 @@ Bool3::Bool3()
     // setup constructor for single component
     __IMPLEMENT_CTOR_1(ctorSingleValue, b8x3, b8x3, b8);
     __ADD_CONSTRUCTOR()
+    
+    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x3, b8x3);
+    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x3, b8x3);
+    __IMPLEMENT_FUNCTION_1(ororOperator, operator||, b8x3, b8x3);
+    __IMPLEMENT_FUNCTION_1(andandOperator, operator&&, b8x3, b8x3);
 
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], b8, i32);
     __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], b8, u32);

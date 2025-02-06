@@ -18,6 +18,12 @@ struct Bool3 : public Type
 
     static Function ctor_XYZ;
     static Function ctorSingleValue;
+    
+    static Function ororOperator;
+    static Function andandOperator;
+    static Function eOperator;
+    static Function neOperator;
+    
     static Function elementAccessOperatorInt;
     static Function elementAccessOperatorUInt;
 };

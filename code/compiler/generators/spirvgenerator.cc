@@ -1191,7 +1191,7 @@ SPIRVGenerator::SetupIntrinsics()
     , { &ty::##fn##AssignOperator, #op, #inst, true }
 
 #define OPERATOR_INTRINSIC_NO_ASSIGN(ty, fn, op, inst)\
-    { &ty::##fn##Operator, #op, #inst, false }\
+    { &ty::##fn##Operator, #op, #inst, false }
 
     std::vector<std::tuple<Function*, const char*, const char*, bool>> operatorFunctions =
     {
@@ -1359,6 +1359,41 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
+#define BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(ty, fn, size, inst)\
+    { &ty::##fn##Operator, #inst, size, false }
+    
+    std::vector<std::tuple<Function*, const char*, uint32_t, bool>> boolOperatorFunctions =
+    {
+        BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool4, e, 4, Equal)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool3, e, 3, Equal)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool2, e, 2, Equal)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool, e, 1, Equal)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool4, ne, 4, NotEqual)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool3, ne, 3, NotEqual)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool2, ne, 2, NotEqual)
+        , BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(Bool, ne, 1, NotEqual)
+    };
+    for (auto fun : boolOperatorFunctions)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [ty = std::get<1>(fun), size = std::get<2>(fun), assign = std::get<3>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+            SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
+            // First convert from bool to int
+            SPIRVResult converted = GenerateConversionSPIRV(c, g, ConversionTable::BoolToUInt, size, lhs);
+            uint32_t ret = g->AddMappedOp(Format("OpI%s %%%d %%%d %%%d", ty, returnType, converted.name, rhs.name));
+            if (assign)
+            {
+                assert(!args[0].isLiteral);
+                assert(!args[0].isValue);
+                SPIRVResult val(ret, returnType, true);
+                StoreValueSPIRV(c, g, args[0], val);
+                return SPIRVResult(args[0].name, args[0].typeName);
+            }
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+    
     std::vector<std::tuple<Function*, ConversionTable>> assignOperators =
     {
         { &Int::uintAssignOperator, ConversionTable::UIntToInt }
@@ -1537,6 +1572,12 @@ SPIRVGenerator::SetupIntrinsics()
         &UInt3::elementAccessOperatorUInt,
         &UInt2::elementAccessOperatorInt,
         &UInt2::elementAccessOperatorUInt,
+        &Bool2::elementAccessOperatorInt,
+        &Bool2::elementAccessOperatorUInt,
+        &Bool3::elementAccessOperatorInt,
+        &Bool3::elementAccessOperatorUInt,
+        &Bool4::elementAccessOperatorInt,
+        &Bool4::elementAccessOperatorUInt,
         &Mat2x2::elementAccessOperatorInt,
         &Mat2x2::elementAccessOperatorUInt,
         &Mat2x3::elementAccessOperatorInt,
@@ -1620,9 +1661,6 @@ SPIRVGenerator::SetupIntrinsics()
         , BIT_INTRINSIC(UInt3, rightShift, ShiftRightLogical)
         , BIT_INTRINSIC(UInt2, rightShift, ShiftRightLogical)
         , BIT_INTRINSIC(UInt, rightShift, ShiftRightLogical)
-        , BIT_INTRINSIC(Bool, or, BitwiseOr)
-        , BIT_INTRINSIC(Bool, and, BitwiseAnd)
-        , BIT_INTRINSIC(Bool, xor, BitwiseXor)
     };
     for (auto fun : bitwiseOps)
     {
@@ -1644,6 +1682,32 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
+#define NO_ASSIGN_BIT_INTRINSIC(ty, fn, inst)\
+    { &ty::##fn##Operator, #inst, false }\
+    
+    std::vector<std::tuple<Function*, const char*, bool>> noAssignBitwiseOps =
+    {
+        NO_ASSIGN_BIT_INTRINSIC(Bool4, oror, LogicalOr)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool3, oror, LogicalOr)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool2, oror, LogicalOr)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool, oror, LogicalOr)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool4, andand, LogicalAnd)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool3, andand, LogicalAnd)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool2, andand, LogicalAnd)
+        , NO_ASSIGN_BIT_INTRINSIC(Bool, andand, LogicalAnd)
+    };
+    for (auto fun : noAssignBitwiseOps)
+    {
+        this->intrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+            assert(args.size() == 2);
+
+            SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
+            SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
+            uint32_t ret = g->AddMappedOp(Format("Op%s %%%d %%%d %%%d", op, returnType, arg0.name, arg1.name));
+
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
    
 #define MAKE_SCALAR_INTRINSICS(op)\
       { Intrinsics::##op##_f32, 'F' }\
@@ -4167,7 +4231,6 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
             /// Get intrinsic
             auto intrin = generator->intrinsicMap.find(func);
             assert(intrin != generator->intrinsicMap.end());
-            assert(indexConstant.isConst);
 
             /// Generate array access
             return intrin->second(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
@@ -4524,16 +4587,23 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
 
     SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, unaryExpression->expr);
 
-    static std::unordered_map<std::string, std::tuple<const char, bool>> lookupTable =
+    static std::unordered_map<std::string, std::tuple<const char, bool, uint32_t>> lookupTable =
     {
-        { "f32", { 'F', true } }
-        , { "i32", { 'I', true } }
-        , { "u32", { 'I', false } }
+        { "f32", { 'F', true, 1 } }
+        , { "f32x2", { 'F', true, 2 } }
+        , { "f32x3", { 'F', true, 3} }
+        , { "f32x4", { 'F', true, 4 } }
+        , { "i32", { 'I', true, 1 } }
+        , { "i32x2", { 'I', true, 2 } }
+        , { "i32x3", { 'I', true, 3 } }
+        , { "i32x4", { 'I', true, 4 } }
+        , { "u32", { 'I', false, 1 } }
+        , { "u32x2", { 'I', false, 2 } }
+        , { "u32x3", { 'I', false, 3 } }
+        , { "u32x4", { 'I', false, 4 } }
     };
 
     auto value = lookupTable.find(unaryExpressionResolved->fullType.name);
-
-
     switch (unaryExpression->op)
     {
         case '++':
@@ -4541,6 +4611,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             assert(value != lookupTable.end());
             const char op = std::get<0>(value->second);
             bool isSigned = std::get<1>(value->second);
+            uint32_t vectorSize = std::get<2>(value->second);
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (isSigned)
             {
@@ -4569,6 +4640,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             assert(value != lookupTable.end());
             const char op = std::get<0>(value->second);
             bool isSigned = std::get<1>(value->second);
+            uint32_t vectorSize = std::get<2>(value->second);
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (isSigned)
             {
@@ -4605,6 +4677,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             assert(value != lookupTable.end());
             const char op = std::get<0>(value->second);
             bool isSigned = std::get<1>(value->second);
+            uint32_t vectorSize = std::get<2>(value->second);
             if (rhs.isLiteral)
             {
                 switch (op)
@@ -4635,6 +4708,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
             assert(value != lookupTable.end());
             const char op = std::get<0>(value->second);
             bool isSigned = std::get<1>(value->second);
+            uint32_t vectorSize = std::get<2>(value->second);
             if (rhs.isLiteral)
             {
                 return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(!rhs.literalValue.ui));                

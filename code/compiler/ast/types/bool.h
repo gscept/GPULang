@@ -18,16 +18,12 @@ struct Bool : public Type
 
     static Function ctor_UInt;
     static Function ctor_Int;
-    static Function orOperator;
-    static Function andOperator;
-    static Function xorOperator;
-    static Function orAssignOperator;
-    static Function andAssignOperator;
-    static Function xorAssignOperator;
+
     static Function ororOperator;
     static Function andandOperator;
     static Function eOperator;
     static Function neOperator;
+    
     static Function boolAssignOperator;
     static Function intAssignOperator;
     static Function uintAssignOperator;
