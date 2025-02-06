@@ -72,6 +72,7 @@ CallExpression::Resolve(Compiler* compiler)
     {
         Function* function;
         bool needsConversion;
+        bool simpleConversion;
         std::vector<Function*> argumentConversionFunction;
     };
     if (symbol == nullptr)
@@ -89,6 +90,7 @@ CallExpression::Resolve(Compiler* compiler)
                     Function* ctorFun = static_cast<Function*>(ctor);
                     Candidate candidate;
                     candidate.needsConversion = false;
+                    candidate.simpleConversion = false;
                     candidate.function = ctorFun;
 
                     if (ctorFun->parameters.size() == thisResolved->argTypes.size())
@@ -96,7 +98,9 @@ CallExpression::Resolve(Compiler* compiler)
                         uint32_t numMatches = 0;
                         for (size_t i = 0; i < ctorFun->parameters.size(); i++)
                         {
-                            if (ctorFun->parameters[i]->type != thisResolved->argumentTypes[i])
+                            Variable* param = ctorFun->parameters[i];
+                            Variable::__Resolved* paramResolved = Symbol::Resolved(param);
+                            if (param->type != thisResolved->argumentTypes[i])
                             {
                                 std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), thisResolved->argTypes[i]->name.c_str());
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
@@ -107,6 +111,8 @@ CallExpression::Resolve(Compiler* compiler)
                                     break;
                                 }
                                 candidate.needsConversion = true;
+                                if (paramResolved->typeSymbol->columnSize == thisResolved->argTypes[i]->columnSize)
+                                    candidate.simpleConversion = true;
                                 candidate.argumentConversionFunction.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
                             else
@@ -186,7 +192,7 @@ CallExpression::Resolve(Compiler* compiler)
             std::vector<Candidate> ambiguousCalls;
             for (auto& candidate : candidates)
             {
-                if (!candidate.needsConversion)
+                if (!candidate.needsConversion || candidate.simpleConversion)
                 {
                     thisResolved->function = candidate.function;
                     thisResolved->returnType = thisResolved->function->returnType;

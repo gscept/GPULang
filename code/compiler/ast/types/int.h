@@ -17,6 +17,7 @@ struct Int : public Type
     Int();
 
     static Function ctor_UInt;
+    static Function ctor_Bool;
     static Function ctor_Float;
 
     static Function andOperator;

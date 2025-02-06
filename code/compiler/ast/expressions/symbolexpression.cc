@@ -23,6 +23,7 @@ SymbolExpression::SymbolExpression(const std::string symbol)
     : symbol(symbol)
 {
     this->resolved = Alloc<SymbolExpression::__Resolved>();
+    this->thisResolved = Symbol::Resolved(this);
     this->symbolType = SymbolExpressionType;
 }
 

@@ -7,6 +7,7 @@ namespace GPULang
 {
 
 Function Int::ctor_UInt;
+Function Int::ctor_Bool;
 Function Int::ctor_Float;
 
 Function Int::andOperator;
@@ -55,6 +56,7 @@ Int::Int()
     this->category = Type::ScalarCategory;
 
     __IMPLEMENT_CTOR_1(ctor_UInt, i32, i32, u32);
+    __IMPLEMENT_CTOR_1(ctor_Bool, i32, i32, b8);
     __IMPLEMENT_CTOR_1(ctor_Float, i32, i32, f32);
 
     __IMPLEMENT_FUNCTION_1(orOperator, operator|, i32, i32);

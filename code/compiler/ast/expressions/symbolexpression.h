@@ -49,6 +49,7 @@ public:
         Type::FullType fullType;
         Type* type;
     };
+	__Resolved* thisResolved;
 }; 
 } // namespace GPULang
 //------------------------------------------------------------------------------

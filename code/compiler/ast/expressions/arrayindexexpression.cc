@@ -74,11 +74,13 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         Function* accessFunc = static_cast<Function*>(it->second);
         thisResolved->returnFullType = accessFunc->returnType;
         //thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
+        /*
         if (!this->right->EvalUInt(thisResolved->literalAccess))
         {
             compiler->Error(Format("'%s' only allows indexing with a literal or compile time deducable value", thisResolved->leftFullType.ToString().c_str()), this);
             return false;
         }
+        */
         //return true;
     }
     else

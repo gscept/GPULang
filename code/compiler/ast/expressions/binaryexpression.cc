@@ -20,12 +20,12 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
     , right(right)
 {
     this->resolved = Alloc<BinaryExpression::__Resolved>();
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->leftConversion = nullptr;
-    thisResolved->rightConversion = nullptr;
-    thisResolved->lhsType = nullptr;
-    thisResolved->rhsType = nullptr;
-    thisResolved->retType = nullptr;
+    this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved->leftConversion = nullptr;
+    this->thisResolved->rightConversion = nullptr;
+    this->thisResolved->lhsType = nullptr;
+    this->thisResolved->rhsType = nullptr;
+    this->thisResolved->retType = nullptr;
     this->symbolType = Symbol::BinaryExpressionType;
 }
 
@@ -43,8 +43,7 @@ BinaryExpression::~BinaryExpression()
 bool 
 BinaryExpression::Resolve(Compiler* compiler)
 {
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
+    this->thisResolved->text = this->EvalString();
     if (this->isLhsValue || this->op == '=')
         this->left->isLhsValue = true;
     if (!this->left->Resolve(compiler))
@@ -52,19 +51,19 @@ BinaryExpression::Resolve(Compiler* compiler)
     if (!this->right->Resolve(compiler))
         return false;
 
-    this->left->EvalType(thisResolved->leftType);
-    this->right->EvalType(thisResolved->rightType);
+    this->left->EvalType(this->thisResolved->leftType);
+    this->right->EvalType(this->thisResolved->rightType);
 
-    thisResolved->lhsType = compiler->GetSymbol<Type>(thisResolved->leftType.name);
-    if (thisResolved->lhsType == nullptr)
+    this->thisResolved->lhsType = compiler->GetSymbol<Type>(this->thisResolved->leftType.name);
+    if (this->thisResolved->lhsType == nullptr)
     {
-        compiler->UnrecognizedTypeError(thisResolved->leftType.name, this);
+        compiler->UnrecognizedTypeError(this->thisResolved->leftType.name, this);
         return false;
     }
-    thisResolved->rhsType = compiler->GetSymbol<Type>(thisResolved->rightType.name);
-    if (thisResolved->rhsType == nullptr)
+    this->thisResolved->rhsType = compiler->GetSymbol<Type>(this->thisResolved->rightType.name);
+    if (this->thisResolved->rhsType == nullptr)
     {
-        compiler->UnrecognizedTypeError(thisResolved->rightType.name, this);
+        compiler->UnrecognizedTypeError(this->thisResolved->rightType.name, this);
         return false;
     }
 
@@ -89,94 +88,94 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
 
     // If assignment, allow if types are identical
-    if (!thisResolved->leftType.Assignable(thisResolved->rightType) && this->op == '=')
+    if (!this->thisResolved->leftType.Assignable(this->thisResolved->rightType) && this->op == '=')
     {
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
-        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
-        Symbol* conversionFunction = thisResolved->lhsType->GetSymbol(functionName);
+        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.name.c_str());
+        Symbol* conversionFunction = this->thisResolved->lhsType->GetSymbol(functionName);
         if (conversionFunction == nullptr)
         {
-            compiler->Error(Format("Type '%s' does not implement '%s'", thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
+            compiler->Error(Format("Type '%s' does not implement '%s'", this->thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
             return false;
         }
         else
         {
             if (compiler->options.disallowImplicitConversion)
             {
-                compiler->Error(Format("Implicit conversion between '%s' and '%s' is disallowed. Either turn off 'disallowImplicitConversion' or explicitly convert types", thisResolved->leftType.ToString().c_str(), thisResolved->rightType.ToString().c_str()), this);
+                compiler->Error(Format("Implicit conversion between '%s' and '%s' is disallowed. Either turn off 'disallowImplicitConversion' or explicitly convert types", this->thisResolved->leftType.ToString().c_str(), this->thisResolved->rightType.ToString().c_str()), this);
                 return false;
             }
         }
         Function* fun = static_cast<Function*>(conversionFunction);
-        thisResolved->rightConversion = static_cast<Function*>(conversionFunction);
-        thisResolved->returnType = thisResolved->leftType;
+        this->thisResolved->rightConversion = static_cast<Function*>(conversionFunction);
+        this->thisResolved->returnType = this->thisResolved->leftType;
     }
     else if (this->op != '=')
     {
-        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), thisResolved->rightType.name.c_str());
-        Symbol* operatorFunction = thisResolved->lhsType->GetSymbol(functionName);
+        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.name.c_str());
+        Symbol* operatorFunction = this->thisResolved->lhsType->GetSymbol(functionName);
         if (operatorFunction == nullptr)
         {
             if (compiler->options.disallowImplicitPromotion)
             {
-                std::string conversionSignature = Format("%s(%s)", thisResolved->lhsType->name.c_str(), thisResolved->rhsType->name.c_str());
+                std::string conversionSignature = Format("%s(%s)", this->thisResolved->lhsType->name.c_str(), this->thisResolved->rhsType->name.c_str());
                 Symbol* conversionFunction = compiler->GetSymbol(conversionSignature);
-                compiler->Error(Format("'%s' does not implement '%s'", thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
+                compiler->Error(Format("'%s' does not implement '%s'", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
                 return false;
             }
             else
             {
                 /// Attempt to promote left and right side to the smallest common denominator
-                TypeCode promotedType = Type::PromoteTypes(thisResolved->lhsType->baseType, thisResolved->rhsType->baseType);
-                Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(thisResolved->lhsType->columnSize, thisResolved->rhsType->columnSize), max(thisResolved->lhsType->rowSize, thisResolved->rhsType->rowSize));
+                TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
+                Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));
                 std::string promotedOperatorFunctionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), promotedFullType.name.c_str());
                 Type* promotedLhsType = compiler->GetSymbol<Type>(promotedFullType.name);
                 Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
                 if (promotedOperatorFunction == nullptr)
                 {
-                    compiler->Error(Format("'%s' does not implement '%s' when implicitly promoting either side of operator", thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
+                    compiler->Error(Format("'%s' does not implement '%s' when implicitly promoting either side of operator", this->thisResolved->lhsType->name.c_str(), functionName.c_str()), this);
                     return false;
                 }
                 
-                if (promotedFullType != thisResolved->leftType)
+                if (promotedFullType != this->thisResolved->leftType)
                 {
-                    std::string lhsConversion = Format("%s(%s)", promotedFullType.name.c_str(), thisResolved->leftType.name.c_str());
-                    thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
-                    if (thisResolved->leftConversion == nullptr)
+                    std::string lhsConversion = Format("%s(%s)", promotedFullType.name.c_str(), this->thisResolved->leftType.name.c_str());
+                    this->thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
+                    if (this->thisResolved->leftConversion == nullptr)
                     {
-                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.name.c_str(), thisResolved->lhsType->name.c_str()), this);
+                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting left hand", promotedFullType.name.c_str(), this->thisResolved->lhsType->name.c_str()), this);
                         return false;        
                     }
                     
                 }
-                if (promotedFullType != thisResolved->rightType)
+                if (promotedFullType != this->thisResolved->rightType)
                 {
-                    std::string rhsConversion = Format("%s(%s)", promotedFullType.name.c_str(), thisResolved->rightType.name.c_str());
-                    thisResolved->rightConversion = compiler->GetSymbol<Function>(rhsConversion);
-                    if (thisResolved->rightConversion == nullptr)
+                    std::string rhsConversion = Format("%s(%s)", promotedFullType.name.c_str(), this->thisResolved->rightType.name.c_str());
+                    this->thisResolved->rightConversion = compiler->GetSymbol<Function>(rhsConversion);
+                    if (this->thisResolved->rightConversion == nullptr)
                     {
-                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting right hand",  promotedFullType.name.c_str(), thisResolved->rhsType->name.c_str()), this);
+                        compiler->Error(Format("'%s' can't be constructed from '%s' when promoting right hand",  promotedFullType.name.c_str(), this->thisResolved->rhsType->name.c_str()), this);
                         return false;        
                     }
                 }
                 
-                thisResolved->returnType = promotedOperatorFunction->returnType;
+                this->thisResolved->returnType = promotedOperatorFunction->returnType;
             }
         }
         else
         {
             Function* fun = static_cast<Function*>(operatorFunction);
-            thisResolved->returnType = fun->returnType;
-            thisResolved->leftConversion = nullptr;
-            thisResolved->rightConversion = nullptr;
+            this->thisResolved->returnType = fun->returnType;
+            this->thisResolved->leftConversion = nullptr;
+            this->thisResolved->rightConversion = nullptr;
         }
     }
     else
     {
-        thisResolved->returnType = thisResolved->leftType;
+        this->thisResolved->returnType = this->thisResolved->leftType;
     }
     
-    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+    this->thisResolved->retType = compiler->GetSymbol<Type>(this->thisResolved->returnType.name);
     return true;
 }
 

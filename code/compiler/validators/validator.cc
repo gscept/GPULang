@@ -1862,7 +1862,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "const")
             varResolved->usageBits.flags.isConst = true;
         else if (attr.name == "var")
+        {
             varResolved->usageBits.flags.isVar = true;
+            varResolved->type.literal = false;
+        }
         else if (attr.name == "link_defined")
         {
             if (varResolved->storage != Variable::__Resolved::Storage::Default)

@@ -63,6 +63,7 @@ public:
         Type::FullType returnType;
         Type* retType;
     };
+	__Resolved* thisResolved;
 }; 
 
 

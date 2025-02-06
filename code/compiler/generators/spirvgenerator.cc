@@ -632,10 +632,14 @@ enum class ConversionTable
     None,
     IntToFloat,
     IntToUInt,
+    IntToBool,
     UIntToFloat,
     UIntToInt,
+    UIntToBool,
     FloatToUInt,
     FloatToInt,
+    BoolToInt,
+    BoolToUInt
 };
 
 std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGenerator*, uint32_t, SPIRVResult)>> converters =
@@ -660,12 +664,27 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
         if (value.isLiteral)
         {
             assert(vectorSize == 1);
-            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(value.literalValue.i));
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::Bool(value.literalValue.i));
         }
         else
         {
             if (vectorSize > 1)
                 type = g->AddSymbol(Format("u32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            value = LoadValueSPIRV(c, g, value);
+            return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true);
+        }
+    } }
+    , { ConversionTable::IntToBool, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("b8", "OpTypeBool", true);
+        if (value.isLiteral)
+        {
+            assert(vectorSize == 1);
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(value.literalValue.i));
+        }
+        else
+        {
+            if (vectorSize > 1)
+                type = g->AddSymbol(Format("b8x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
             value = LoadValueSPIRV(c, g, value);
             return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true);
         }
@@ -700,6 +719,21 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
             return SPIRVResult(g->AddMappedOp(Format("OpConvertUToF %%%d %%%d", type, value.name)), type, true);
         }
     } }
+    , { ConversionTable::UIntToBool, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("b8", "OpTypeBool", true);
+        if (value.isLiteral)
+        {
+            assert(vectorSize == 1);
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::Bool(value.literalValue.ui));
+        }
+        else
+        {
+            if (vectorSize > 1)
+                type = g->AddSymbol(Format("b8x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            value = LoadValueSPIRV(c, g, value);
+            return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true);
+        }
+    } }
     , { ConversionTable::FloatToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
         uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
         if (value.isLiteral)
@@ -728,6 +762,36 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
                 type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
             value = LoadValueSPIRV(c, g, value);
             return SPIRVResult(g->AddMappedOp(Format("OpConvertFToS %%%d %%%d", type, value.name)), type, true);
+        }
+    } }
+    , { ConversionTable::BoolToInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("i32", "OpTypeInt 32 1", true);
+        if (value.isLiteral)
+        {
+            assert(vectorSize == 1);
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(value.literalValue.b));
+        }
+        else
+        {
+            if (vectorSize > 1)
+                type = g->AddSymbol(Format("i32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            value = LoadValueSPIRV(c, g, value);
+            return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true);
+        }
+    } }
+    , { ConversionTable::BoolToUInt, [](Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {
+        uint32_t type = g->AddSymbol("u32", "OpTypeInt 32 0", true);
+        if (value.isLiteral)
+        {
+            assert(vectorSize == 1);
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(value.literalValue.b));
+        }
+        else
+        {
+            if (vectorSize > 1)
+                type = g->AddSymbol(Format("u32x%d", vectorSize), Format("OpTypeVector %%%d %d", type, vectorSize), true);
+            value = LoadValueSPIRV(c, g, value);
+            return SPIRVResult(g->AddMappedOp(Format("OpBitcast %%%d %%%d", type, value.name)), type, true);
         }
     } }
 };
@@ -886,6 +950,10 @@ SPIRVGenerator::SetupIntrinsics()
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::UIntToInt, 1, args[0]);
     };
+    this->intrinsicMap[&Int::ctor_Bool] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::BoolToInt, 1, args[0]);
+    };
     this->intrinsicMap[&Int::ctor_Float] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::FloatToInt, 1, args[0]);
@@ -905,6 +973,10 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[&UInt::ctor_Int] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
         return GenerateConversionSPIRV(c, g, ConversionTable::IntToUInt, 1, args[0]);
+    };
+    this->intrinsicMap[&UInt::ctor_Bool] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+        assert(args.size() == 1);
+        return GenerateConversionSPIRV(c, g, ConversionTable::BoolToUInt, 1, args[0]);
     };
     this->intrinsicMap[&UInt::ctor_Float] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         assert(args.size() == 1);
