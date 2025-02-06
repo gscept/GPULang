@@ -1,10 +1,5 @@
 grammar GPULang;
 
-options {
-    language = Cpp;
-    backtracking = true;
-}
-
 // Lexer API hooks
 @lexer::apifuncs {
 
@@ -36,6 +31,7 @@ static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 @parser::definitions {
 std::vector<std::tuple<size_t, size_t, std::string>> GPULangParser::LineStack;
 }
+
 @parser::members {
 
 
@@ -1002,13 +998,13 @@ suffixExpression
             expr->location = location;
             $tree = expr;
         }
-        | '.' { location = SetupFile(); } e2 = suffixExpression
+        | '.' { location = SetupFile(); } e2 = assignmentExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
             expr->location = location;
             $tree = expr;
         }
-        | '->' { location = SetupFile(); } e2 = suffixExpression
+        | '->' { location = SetupFile(); } e2 = assignmentExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
             expr->location = location;
@@ -1175,14 +1171,14 @@ ML_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 
 FLOATLITERAL:
     INTEGER+ DOT INTEGER* EXPONENT? 'f'
-    | DOT INTEGER* EXPONENT? 'f'
+    | DOT INTEGER+ EXPONENT? 'f'
     | INTEGER+ EXPONENT? 'f';
 
 EXPONENT: ('e' | 'E') ('+' | '-')? INTEGER+;
 
 DOUBLELITERAL:
     INTEGER+ DOT INTEGER* EXPONENT?
-    | DOT INTEGER EXPONENT?
+    | DOT INTEGER+ EXPONENT?
     | INTEGER+ EXPONENT;
 
 HEX: '0' 'x' ('0' ..'9' | 'a' ..'f' | 'A' .. 'F')* ('u' | 'U')?;
