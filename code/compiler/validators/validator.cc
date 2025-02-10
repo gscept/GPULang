@@ -40,6 +40,7 @@
 #include <algorithm>
 
 #include "ast/expressions/arrayinitializerexpression.h"
+#include "ast/expressions/stringexpression.h"
 #include "ast/statements/discardstatement.h"
 
 namespace GPULang
@@ -145,6 +146,7 @@ Validator::Validator()
     this->allowedParameterAttributes.insert(parameterQualifiers.begin(), parameterQualifiers.end());
     this->allowedParameterAttributes.insert(parameterAccessFlags.begin(), parameterAccessFlags.end());
     this->allowedParameterAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
+    this->allowedParameterAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
 
     this->allowedStructureAttributes.insert(structureQualifiers.begin(), structureQualifiers.end());
 }
@@ -2057,7 +2059,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         compiler->Error(Format("Variables of dynamic sized array must be 'uniform'"), symbol);
                         return false;        
                     }
-                    varResolved->storage = Variable::__Resolved::Storage::DynamicArray;
+                    varResolved->usageBits.flags.isDynamicSizedArray = true;
                 }
             }
 
@@ -2367,8 +2369,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
+                currentStrucResolved = generatedStructResolved;
                 const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
-                generatedStruct->name = Format("gpl%s_%s", bufferType, varResolved->name.c_str()); ;
+                generatedStruct->name = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
                 //generatedStruct->annotations = var->annotations;
             
                 generatedStructResolved->byteSize = structSize;
@@ -2384,7 +2387,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     generatedStructResolved->usageFlags.flags.isUniformBuffer = true;
                     generatedStruct->baseType = TypeCode::Buffer;
                 }
-
+                
                 Type::FullType newType{ generatedStruct->name };
                 newType.modifiers = var->type.modifiers;
                 newType.modifierValues = var->type.modifierValues;
@@ -2395,10 +2398,38 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->typeSymbol = generatedStruct;
                 varResolved->type = newType;
 
+
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
                 compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
                 compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
                 compiler->symbolIterator++;
+            }
+
+            if (varResolved->type.IsMutable() && currentStrucResolved->storageFunction == nullptr)
+            {
+                currentStrucResolved->storageFunction = Alloc<Function>();
+                currentStrucResolved->storageFunction->name = "bufferStore";
+                currentStrucResolved->storageFunction->returnType = { "void" };
+                Variable* arg = Alloc<Variable>();
+                arg->name = "buffer";
+                Attribute attr;
+                attr.name = "uniform";
+                attr.expression = nullptr;
+                arg->attributes.push_back(attr);
+                arg->type = var->type;
+                arg->type.modifiers.clear();
+                arg->type.modifierValues.clear();
+                arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
+                
+                Variable* arg2 = Alloc<Variable>();
+                arg2->name = "value";
+                arg2->type = var->type;
+                arg2->type.modifiers.clear();
+                arg2->type.modifierValues.clear();
+                arg2->type.mut = false;
+                currentStrucResolved->storageFunction->parameters.push_back(arg);
+                currentStrucResolved->storageFunction->parameters.push_back(arg2);
+                this->ResolveFunction(compiler, currentStrucResolved->storageFunction);
             }
         }
     }

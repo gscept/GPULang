@@ -468,6 +468,10 @@ BinaryExpression::EvalBool(bool& out) const
             out = EvalBool(lVal, rVal);
         }
     }
+    else
+    {
+        ret = false;
+    }
     return ret;
 }
 

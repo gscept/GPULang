@@ -72,6 +72,8 @@ AccessExpression::Resolve(Compiler* compiler)
 
     this->right->EvalType(thisResolved->rightType);
     thisResolved->rhsType = compiler->GetSymbol<Type>(thisResolved->rightType.name);
+    thisResolved->swizzleType = thisResolved->rightType;
+    thisResolved->swizzleTypeSymbol = thisResolved->rhsType;
     if (thisResolved->rhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(thisResolved->rightType.name, this);
@@ -99,8 +101,10 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->swizzleMask = swizzle;
         unsigned numComponents = Type::SwizzleMaskComponents(swizzle);
         std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
-        thisResolved->returnType = Type::FullType{ vectorType };
-        thisResolved->retType = compiler->GetSymbol<Type>(vectorType);
+        thisResolved->swizzleType = Type::FullType{ vectorType };
+        thisResolved->swizzleTypeSymbol = compiler->GetSymbol<Type>(vectorType);
+        thisResolved->returnType = thisResolved->swizzleType;
+        thisResolved->retType = thisResolved->swizzleTypeSymbol;
     }
     else if (!thisResolved->leftType.modifiers.empty() && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
     {

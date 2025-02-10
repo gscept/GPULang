@@ -72,6 +72,7 @@ struct Variable : public Symbol
                 uint32_t isConst : 1;                   // variable may not change value after initialization
                 uint32_t isVar : 1;
                 uint32_t isParameter : 1;               // variable is a function parameter
+                uint32_t isDynamicSizedArray : 1;       // variable type is a dynamically sized array
                 uint32_t isEntryPointParameter : 1;
                 uint32_t isStructMember : 1;            // variable is a struct member
                 uint32_t isPadding : 1;
@@ -91,7 +92,6 @@ struct Variable : public Symbol
             Output,                                 // variable is an output from the current shader stage
             Global,                                 // variable is global in the shader
             LinkDefined,                            // variable value is defined at link time
-            DynamicArray,                           // variable points to an array of dynamic size
             RayPayload,                             // variable is a ray payload
             RayPayloadInput,                        // variable is a ray payload input
             RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
@@ -122,7 +122,9 @@ struct Variable : public Symbol
 
         ShaderUsage visibilityBits;
         bool builtin = false;
+
     };
+    __Resolved* thisResolved;
 };
 
 

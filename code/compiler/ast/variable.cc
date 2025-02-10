@@ -33,6 +33,7 @@ Variable::Variable()
     typeResolved->elementPadding = 0;
     typeResolved->startPadding = 0;
     typeResolved->visibilityBits.bits = 0x0;
+    this->thisResolved = Symbol::Resolved(this);
 }
 
 //------------------------------------------------------------------------------

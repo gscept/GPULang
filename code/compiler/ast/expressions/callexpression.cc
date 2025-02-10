@@ -73,7 +73,7 @@ CallExpression::Resolve(Compiler* compiler)
         Function* function;
         bool needsConversion;
         bool simpleConversion;
-        std::vector<Function*> argumentConversionFunction;
+        std::vector<Function*> argumentConversionFunctions;
     };
     if (symbol == nullptr)
     {
@@ -113,12 +113,12 @@ CallExpression::Resolve(Compiler* compiler)
                                 candidate.needsConversion = true;
                                 if (paramResolved->typeSymbol->columnSize == thisResolved->argTypes[i]->columnSize)
                                     candidate.simpleConversion = true;
-                                candidate.argumentConversionFunction.push_back(static_cast<Function*>(componentConversionSymbol));
+                                candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
                             else
                             {
                                 // No conversion needed
-                                candidate.argumentConversionFunction.push_back(nullptr);
+                                candidate.argumentConversionFunctions.push_back(nullptr);
                             }
                             numMatches++;
                         }
@@ -135,11 +135,15 @@ CallExpression::Resolve(Compiler* compiler)
                 Candidate candidate;
                 candidate.function = fun;
                 candidate.needsConversion = false;
+                candidate.simpleConversion = false;
+
                 if (fun->parameters.size() == thisResolved->argTypes.size())
                 {
                     uint32_t numMatches = 0;
                     for (size_t i = 0; i < fun->parameters.size(); i++)
                     {
+                        Variable* param = fun->parameters[i];
+                        Variable::__Resolved* paramResolved = Symbol::Resolved(param);
                         if (fun->parameters[i]->type != thisResolved->argumentTypes[i])
                         {
                             std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), thisResolved->argTypes[i]->name.c_str());
@@ -151,12 +155,14 @@ CallExpression::Resolve(Compiler* compiler)
                                 break;
                             }
                             candidate.needsConversion = true;
-                            candidate.argumentConversionFunction.push_back(static_cast<Function*>(componentConversionSymbol));
+                            if (paramResolved->typeSymbol->columnSize == thisResolved->argTypes[i]->columnSize)
+                                candidate.simpleConversion = true;
+                            candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                         }
                         else
                         {
                             // No conversion needed
-                            candidate.argumentConversionFunction.push_back(nullptr);
+                            candidate.argumentConversionFunctions.push_back(nullptr);
                         }
                         numMatches++;
                     }
@@ -192,12 +198,21 @@ CallExpression::Resolve(Compiler* compiler)
             std::vector<Candidate> ambiguousCalls;
             for (auto& candidate : candidates)
             {
-                if (!candidate.needsConversion || candidate.simpleConversion)
+                if (!candidate.needsConversion)
                 {
                     thisResolved->function = candidate.function;
                     thisResolved->returnType = thisResolved->function->returnType;
                     thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
                     thisResolved->conversions.clear();
+                    ambiguousCalls.clear();
+                    break;
+                }
+                else if (candidate.simpleConversion)
+                {
+                    thisResolved->function = candidate.function;
+                    thisResolved->returnType = thisResolved->function->returnType;
+                    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                    thisResolved->conversions = candidate.argumentConversionFunctions;
                     ambiguousCalls.clear();
                     break;
                 }
@@ -222,7 +237,7 @@ CallExpression::Resolve(Compiler* compiler)
                         if (candidate.needsConversion)
                             fmt.append("\n      using conversions:");
                         int counter = 0;
-                        for (auto& conv : candidate.argumentConversionFunction)
+                        for (auto& conv : candidate.argumentConversionFunctions)
                         {
                             if (conv != nullptr)
                                 fmt.append(Format("\n          argument %d -> %s", counter, Symbol::Resolved(conv)->name.c_str()));
@@ -237,7 +252,7 @@ CallExpression::Resolve(Compiler* compiler)
             else if (ambiguousCalls.size() == 1)
             {
                 thisResolved->function = ambiguousCalls[0].function;
-                thisResolved->conversions = ambiguousCalls[0].argumentConversionFunction;
+                thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
                 thisResolved->returnType = thisResolved->function->returnType;
                 thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
             }

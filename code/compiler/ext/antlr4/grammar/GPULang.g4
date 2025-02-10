@@ -961,9 +961,9 @@ multiplyDivideExpression
         $tree = nullptr;
         Symbol::Location location;
     }:
-    e1 = suffixExpression { $tree = $e1.tree; }
+    e1 = prefixExpression { $tree = $e1.tree; }
     (
-        op = ('*' | '/' | '%') { location = SetupFile(); } e2 = suffixExpression 
+        op = ('*' | '/' | '%') { location = SetupFile(); } e2 = prefixExpression 
         {
             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
             expr->location = location;
@@ -971,7 +971,28 @@ multiplyDivideExpression
         }
     )*
     ;
-
+    
+// unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
+prefixExpression
+    returns[ Expression* tree ]
+    @init 
+    {
+        $tree = nullptr;
+        std::vector<uint32_t> ops;
+        std::vector<Symbol::Location> locations;
+    }:
+    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = suffixExpression 
+    {
+        $tree = $e1.tree;
+        $tree->location = SetupFile();
+        for (size_t i = 0; i < ops.size(); i++)
+        {
+            $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
+            $tree->location = locations[i];
+        }
+    }
+    ;
+    
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
 suffixExpression
     returns[ Expression* tree ]
@@ -986,7 +1007,7 @@ suffixExpression
         std::vector<uint32_t> ops;
         std::vector<Symbol::Location> locations;
     }:
-    e1 = prefixExpression
+    e1 = binaryexpatom
     {
         $tree = $e1.tree;
     }
@@ -1016,34 +1037,13 @@ suffixExpression
             $tree = expr;
         }
     )*
-    | e1 = prefixExpression (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
+    | e1 = binaryexpatom (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
     {
         $tree = $e1.tree;
         $tree->location = SetupFile();
         for (size_t i = 0; i < ops.size(); i++)
         {
             $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
-            $tree->location = locations[i];
-        }
-    }
-    ;
-    
-// unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
-prefixExpression
-    returns[ Expression* tree ]
-    @init 
-    {
-        $tree = nullptr;
-        std::vector<uint32_t> ops;
-        std::vector<Symbol::Location> locations;
-    }:
-    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = binaryexpatom 
-    {
-        $tree = $e1.tree;
-        $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size(); i++)
-        {
-            $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
             $tree->location = locations[i];
         }
     }

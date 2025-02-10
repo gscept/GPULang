@@ -49,6 +49,8 @@ struct Structure : public Type
         size_t baseAlignment;
 
         bool packMembers;
+
+        Function* storageFunction = nullptr;
     };
 };
 

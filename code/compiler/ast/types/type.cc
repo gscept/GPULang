@@ -138,6 +138,7 @@ const std::map<TypeCode, std::string> codeToStringMapping =
     , { TypeCode::Texture2DMS, "texture2DMS" }
     , { TypeCode::Texture2DMSArray, "texture2DMSArray" }
     , { TypeCode::Texture3D, "texture3D" }
+    , { TypeCode::Texture3DArray, "texture3DArray" }
     , { TypeCode::TextureCube, "textureCube" }
     , { TypeCode::TextureCubeArray, "textureCubeArray" }
     , { TypeCode::PixelCache, "pixelCache" }
@@ -255,6 +256,9 @@ Type::SetupDefaultTypes()
     __MAKE_TEX();
 
     __MAKE_TYPE(texture3D, TypeCode::Texture3D);
+    __MAKE_TEX();
+
+    __MAKE_TYPE(texture3DArray, TypeCode::Texture3DArray);
     __MAKE_TEX();
 
     __MAKE_TYPE(textureCube, TypeCode::TextureCube);

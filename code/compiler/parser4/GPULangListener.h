@@ -143,11 +143,11 @@ public:
   virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
   virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
 
-  virtual void enterSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
-  virtual void exitSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
-
   virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
   virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
+
+  virtual void enterSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
+  virtual void exitSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
 
   virtual void enterNamespaceExpression(GPULangParser::NamespaceExpressionContext *ctx) = 0;
   virtual void exitNamespaceExpression(GPULangParser::NamespaceExpressionContext *ctx) = 0;

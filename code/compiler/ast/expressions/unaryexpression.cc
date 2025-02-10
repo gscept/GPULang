@@ -44,20 +44,103 @@ UnaryExpression::Resolve(Compiler* compiler)
 
     Type::FullType type;
     this->expr->EvalType(type);
-    if (this->op == '*')
+    Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+
+    static const std::set<TypeCode> allowedIncrementDecrementTypes =
     {
-        if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
+        TypeCode::Int,
+        TypeCode::Int16,
+        TypeCode::UInt,
+        TypeCode::UInt16,
+    };
+    static const std::set<TypeCode> signedTypes =
+    {
+        TypeCode::Int,
+        TypeCode::Int16,
+        TypeCode::Float,
+        TypeCode::Float16,
+    };
+    static const std::set<TypeCode> negatableTypes =
+    {
+        TypeCode::Int,
+        TypeCode::Int16,
+        TypeCode::UInt,
+        TypeCode::UInt16,
+        TypeCode::Bool,
+    };
+
+    
+    switch (this->op)
+    {
+        case '++':
         {
-            compiler->Error(Format("Dereferencing is only allowed on a pointer"), this);
-            return false;
+            if (allowedIncrementDecrementTypes.find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            {
+                compiler->Error(Format("Unary '++' only allowed on integer types"), this);
+                return false;    
+            }
+            break;
         }
-        type.modifiers.erase(type.modifiers.begin());
-        type.modifierValues.erase(type.modifierValues.begin());
-    }
-    else if (this->isLhsValue)
-    {
-        compiler->Error(Format("Left hand unary operators must be pointer indirection '*'"), this);
-        return false;
+        case '--':
+        {
+            if (allowedIncrementDecrementTypes.find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            {
+                compiler->Error(Format("Unary '++' only allowed on integer types"), this);
+                return false;    
+            }
+            break;
+        }
+        case '*':
+        {
+            if (this->op == '*')
+            {
+                if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
+                {
+                    compiler->Error(Format("Dereferencing is only allowed on a pointer"), this);
+                    return false;
+                }
+                type.modifiers.erase(type.modifiers.begin());
+                type.modifierValues.erase(type.modifierValues.begin());
+            }
+            else if (this->isLhsValue)
+            {
+                compiler->Error(Format("Left hand unary operators must be pointer indirection '*'"), this);
+                return false;
+            }
+            break;
+        }
+        case '-':
+        {
+            if (signedTypes.find(typeSymbol->baseType) == signedTypes.end())
+            {
+                compiler->Error(Format("Unary '-' only allowed on signed types"), this);
+                return false;    
+            }
+            break;
+        }
+        case '+':
+        {
+            // always allowed
+            break;
+        }
+        case '!':
+        {
+            if (negatableTypes.find(typeSymbol->baseType) == negatableTypes.end())
+            {
+                compiler->Error(Format("Unary '!' only allowed on integer and bool types"), this);
+                return false;    
+            }
+            break;
+        }    
+        case '~':
+        {
+            if (negatableTypes.find(typeSymbol->baseType) == negatableTypes.end())
+            {
+                compiler->Error(Format("Unary '~' only allowed on integer and bool types"), this);
+                return false;    
+            }
+            break;
+        }
     }
 
     thisResolved->type = compiler->GetSymbol<Type>(type.name);

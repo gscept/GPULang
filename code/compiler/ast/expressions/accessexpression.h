@@ -55,6 +55,8 @@ struct AccessExpression : public Expression
         Type::FullType returnType;
         Type* retType;
         Type::SwizzleMask swizzleMask;
+        Type::FullType swizzleType;
+        Type* swizzleTypeSymbol;
     };
 };
 

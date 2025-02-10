@@ -155,6 +155,7 @@ enum class TypeCode
     , Texture1DArray
     , Texture2DArray
     , Texture2DMSArray
+    , Texture3DArray
     , TextureCubeArray
     , PixelCache
     , PixelCacheMS
