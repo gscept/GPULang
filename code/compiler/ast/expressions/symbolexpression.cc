@@ -56,14 +56,14 @@ SymbolExpression::Resolve(Compiler* compiler)
             Variable* var = static_cast<Variable*>(thisResolved->symbol);
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = varResolved->type;
-            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
+            thisResolved->type = compiler->GetType(thisResolved->fullType);
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)
         {
             Structure* struc = static_cast<Structure*>(thisResolved->symbol);
             thisResolved->fullType = Type::FullType{ struc->name };
-            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
+            thisResolved->type = compiler->GetType(thisResolved->fullType);
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::TypeType)
@@ -76,13 +76,13 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::FunctionType)
         {
             // If lhs, it means it's a function assignment, therefore function pointer
-            thisResolved->fullType = { "function" };
+            thisResolved->fullType = Type::FullType{ "function" };
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
         {
             Type* type = static_cast<Type*>(thisResolved->symbol);
-            thisResolved->fullType = type->name;
+            thisResolved->fullType = Type::FullType{ type->name };
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
@@ -93,15 +93,15 @@ SymbolExpression::Resolve(Compiler* compiler)
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateType)
         {
-            thisResolved->fullType = { "renderState" };
+            thisResolved->fullType = Type::FullType{ "renderState" };
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
         {
-            thisResolved->fullType = { "sampler" };
+            thisResolved->fullType = Type::FullType{ "sampler" };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
-            thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
+            thisResolved->type = compiler->GetType(thisResolved->fullType);
             return true;
         }
         else

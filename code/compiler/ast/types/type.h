@@ -16,39 +16,39 @@
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 this->method.name = #id;\
-this->method.returnType = {#t};\
+this->method.returnType = Type::FullType{#t};\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
     Variable* var = new Variable; \
     var->name = "_arg0"; \
-    var->type = { #argtype }; \
+    var->type = Type::FullType{ #argtype }; \
     activeFunction->parameters.push_back(var); \
 }\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
 this->method.name = #id;\
-this->method.returnType = {#type};\
+this->method.returnType = Type::FullType{#type};\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 this->method.name = #id;\
-this->method.returnType = {#t};\
+this->method.returnType = Type::FullType{#t};\
 this->staticSymbols.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
     Variable* var = new Variable; \
     var->name = "_arg0"; \
-    var->type = { #argtype }; \
+    var->type = Type::FullType{ #argtype }; \
     activeFunction->parameters.push_back(var); \
 }
 
 #define __IMPLEMENT_FUNCTION(method, id, type)\
 this->method.name = #id;\
-this->method.returnType = {#type};\
+this->method.returnType = Type::FullType{#type};\
 this->staticSymbols.push_back(&this->method);\
 activeFunction = &this->method;\
 
@@ -60,7 +60,7 @@ this->lookup.insert({ #id, activeFunction });
 {\
     Variable* swizzleMember = new Variable;\
     swizzleMember->name = Format(format, __VA_ARGS__);\
-    swizzleMember->type = {#retType};\
+    swizzleMember->type = Type::FullType{#retType};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
     resolved->usageBits.flags.isVar = true;\
     this->swizzleSymbols.push_back(swizzleMember);\
@@ -70,13 +70,13 @@ this->lookup.insert({ #id, activeFunction });
 {\
     Variable* var = new Variable;\
     var->name = #id;\
-    var->type = {#t};\
+    var->type = Type::FullType{#t};\
     activeFunction->parameters.push_back(var);\
 }
 
 #define __ADD_VARIBLE_LOOKUP(variable, id, t)\
 this->variable.name = id;\
-this->variable.type = {#t};\
+this->variable.type = Type::FullType{#t};\
 this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\
@@ -345,12 +345,12 @@ struct Type : public Symbol
             this->name = "<undefined>";
             this->literal = false;
         }
-        FullType(std::string type)
+        explicit FullType(std::string type)
         {
             this->name = type;
             this->literal = false;
         }
-        FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
         {
             this->name = type;
             this->modifiers = modifiers;
@@ -358,7 +358,14 @@ struct Type : public Symbol
             this->literal = false;
         }
         std::string name;
+        std::string swizzleName;
+        Type::SwizzleMask swizzleMask;
         ImageFormat imageFormat = ImageFormat::Unknown;
+
+        const std::string& Name()
+        {
+            return this->swizzleName.empty() ? this->name : this->swizzleName;
+        }
 
         void AddModifier(Modifier type, Expression* value = nullptr)
         {

@@ -44,7 +44,7 @@ UnaryExpression::Resolve(Compiler* compiler)
 
     Type::FullType type;
     this->expr->EvalType(type);
-    Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+    Type* typeSymbol = compiler->GetType(type);
 
     static const std::set<TypeCode> allowedIncrementDecrementTypes =
     {
@@ -143,7 +143,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
     }
 
-    thisResolved->type = compiler->GetSymbol<Type>(type.name);
+    thisResolved->type = compiler->GetType(type);
     thisResolved->fullType = type;
     return true;
 }

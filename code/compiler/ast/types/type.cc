@@ -287,7 +287,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* compareModeEnum = new Enumeration();
     compareModeEnum->name = "CompareMode";
-    compareModeEnum->type = { "u32" };
+    compareModeEnum->type = Type::FullType{ "u32" };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
     compareModeEnum->labels.push_back("InvalidCompareMode"); compareModeEnum->values.push_back(nullptr);
@@ -312,7 +312,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* executionScopeEnum = new Enumeration();
     executionScopeEnum->name = "ExecutionScope";
-    executionScopeEnum->type = { "u32" };
+    executionScopeEnum->type = Type::FullType{ "u32" };
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
     executionScopeEnum->labels.push_back("Global"); executionScopeEnum->values.push_back(nullptr);
@@ -326,7 +326,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* memorySemanticsEnum = new Enumeration();
     memorySemanticsEnum->name = "MemorySemantics";
-    memorySemanticsEnum->type = { "u32" };
+    memorySemanticsEnum->type = Type::FullType{ "u32" };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
     memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(new UIntExpression(0x0));
@@ -599,8 +599,10 @@ Type::FullType::ToString()
     if (this->sampled)
         base.append("sampled ");
     
-        
-    return Format("%s%s", base.c_str(), this->name.c_str());
+    if (!this->swizzleName.empty())
+        return Format("%s%s", base.c_str(), this->swizzleName.c_str());
+    else
+        return Format("%s%s", base.c_str(), this->name.c_str());
 }
 
 //------------------------------------------------------------------------------
@@ -628,7 +630,9 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
         }
         else
             return false;
-    if (this->name != rhs.name)
+    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
+    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    if (lhsName != rhsName)
         return false;
     return true;
 }
@@ -658,7 +662,9 @@ Type::FullType::operator==(const FullType& rhs) const
             if (lhsSize != rhsSize)
                 return false;
         }
-    if (this->name != rhs.name)
+    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
+    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    if (lhsName != rhsName)
         return false;
     return true;
 }

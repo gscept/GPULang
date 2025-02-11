@@ -1567,7 +1567,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
           std::vector<Expression*> valueExpressions;
           std::vector<Symbol::Location> locations;
           unsigned initCounter = 0;
-          Type::FullType type = { "<undefined>" };
+          Type::FullType type = Type::FullType{ "<undefined>" };
       
   size_t _la = 0;
 
@@ -2081,7 +2081,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
           std::vector<std::string> enumLabels;
           std::vector<Expression*> enumValues;
           std::string name;
-          Type::FullType type = { "u32" };
+          Type::FullType type = Type::FullType{ "u32" };
           Symbol::Location location;
       
   size_t _la = 0;
@@ -2246,7 +2246,7 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
           std::string name;
           Expression* valueExpression = nullptr;
           Symbol::Location location;
-          Type::FullType type = { "unknown" };
+          Type::FullType type = Type::FullType{ "unknown" };
       
   size_t _la = 0;
 

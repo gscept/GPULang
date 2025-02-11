@@ -213,7 +213,7 @@ variables
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
         unsigned initCounter = 0;
-        Type::FullType type = { "<undefined>" };
+        Type::FullType type = Type::FullType{ "<undefined>" };
     }:
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
     (attribute { attributes.push_back(std::move($attribute.attr)); })+
@@ -323,7 +323,7 @@ enumeration
         std::vector<std::string> enumLabels;
         std::vector<Expression*> enumValues;
         std::string name;
-        Type::FullType type = { "u32" };
+        Type::FullType type = Type::FullType{ "u32" };
         Symbol::Location location;
     }:
     'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
@@ -364,7 +364,7 @@ parameter
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
-        Type::FullType type = { "unknown" };
+        Type::FullType type = Type::FullType{ "unknown" };
     }:
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 

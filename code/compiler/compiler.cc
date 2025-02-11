@@ -103,7 +103,7 @@ Compiler::Compiler()
 
     for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
     {
-        this->shaderSwitches[i].type = { "b8" };
+        this->shaderSwitches[i].type = Type::FullType{ "b8" };
         Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
         res->usageBits.flags.isConst = true;
         res->builtin = true;

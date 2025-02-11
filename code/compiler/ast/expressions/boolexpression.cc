@@ -46,7 +46,7 @@ BoolExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ "b8" };
     thisResolved->fullType.literal = true;
-    thisResolved->type = compiler->GetSymbol<Type>(thisResolved->fullType.name);
+    thisResolved->type = compiler->GetType(thisResolved->fullType);
     thisResolved->text = this->EvalString();
     return true;
 }

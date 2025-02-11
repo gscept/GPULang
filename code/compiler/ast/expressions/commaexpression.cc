@@ -45,13 +45,13 @@ CommaExpression::Resolve(Compiler* compiler)
     this->left->EvalType(thisResolved->leftType);
     this->right->EvalType(thisResolved->rightType);
 
-    thisResolved->lhsType = compiler->GetSymbol<Type>(thisResolved->leftType.name);
+    thisResolved->lhsType = compiler->GetType(thisResolved->leftType);
     if (thisResolved->lhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(thisResolved->leftType.name, this);
         return false;
     }
-    thisResolved->rhsType = compiler->GetSymbol<Type>(thisResolved->rightType.name);
+    thisResolved->rhsType = compiler->GetType(thisResolved->rightType);
     if (thisResolved->rhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(thisResolved->rightType.name, this);

@@ -77,7 +77,7 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
                 if (allowImplicitConversion)
                 {
                     // types don't match, check if there is a constructor for this argument which matches the input argument
-                    Type* argType = compiler->GetSymbol<Type>(fun->parameters[i]->type.name);
+                    Type* argType = compiler->GetType(fun->parameters[i]->type);
                     std::vector<Symbol*> conversionMethods = argType->GetSymbols(argType->name);
 
                     ret = nullptr;
@@ -128,26 +128,26 @@ DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __ADD_ARG(nm, tp)\
 newVar = new Variable();\
-newVar->type = { tp };\
+newVar->type = Type::FullType{ tp };\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_ARG_LIT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_MUTABLE_ARG_LIT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->type.mut = true;\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_VALUE_LIT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->name = #nm;\
 newVar->type.literal = true;\
 newIntrinsic->parameters.push_back(newVar);
@@ -169,14 +169,14 @@ newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
 newVar->name = #nm;\
@@ -184,17 +184,17 @@ newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
 newVar = new Variable();\
-newVar->type = { #tp };\
+newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __SET_RET_LIT(name)\
-newIntrinsic->returnType = { #name };
+newIntrinsic->returnType = Type::FullType{ #name };
 
 #define __SET_RET(name)\
-newIntrinsic->returnType = { name };
+newIntrinsic->returnType = Type::FullType{ name };
 
 //------------------------------------------------------------------------------
 /**
@@ -920,7 +920,7 @@ FLOAT_LIST
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -928,7 +928,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -936,7 +936,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_MUT(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
@@ -944,7 +944,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
@@ -952,7 +952,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 #define __MAKE_TEXTURE_QUERY_INTRINSIC(ty, overload, index)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { dimensionality[index] }; \
+newIntrinsic->returnType = Type::FullType{ dimensionality[index] }; \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -960,7 +960,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -968,7 +968,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -976,7 +976,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -985,7 +985,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::SampledTexture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -993,7 +993,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1002,7 +1002,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = new Function(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = { #ret }; \
+newIntrinsic->returnType = Type::FullType{ #ret }; \
 Intrinsics::SampledTexture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\

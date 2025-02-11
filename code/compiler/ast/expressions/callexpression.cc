@@ -53,10 +53,10 @@ CallExpression::Resolve(Compiler* compiler)
         Type::FullType fullType;
         expr->EvalType(fullType);
 
-        Type* type = compiler->GetSymbol<Type>(fullType.name);
+        Type* type = compiler->GetType(fullType);
         if (type == nullptr)
         {
-            compiler->UnrecognizedTypeError(fullType.name, this);
+            compiler->UnrecognizedTypeError(fullType.ToString(), this);
             return false;
         }
         thisResolved->argumentTypes.push_back(fullType);
@@ -202,7 +202,7 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     thisResolved->function = candidate.function;
                     thisResolved->returnType = thisResolved->function->returnType;
-                    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                    thisResolved->retType = compiler->GetType(thisResolved->returnType);
                     thisResolved->conversions.clear();
                     ambiguousCalls.clear();
                     break;
@@ -211,7 +211,7 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     thisResolved->function = candidate.function;
                     thisResolved->returnType = thisResolved->function->returnType;
-                    thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                    thisResolved->retType = compiler->GetType(thisResolved->returnType);
                     thisResolved->conversions = candidate.argumentConversionFunctions;
                     ambiguousCalls.clear();
                     break;
@@ -254,7 +254,7 @@ CallExpression::Resolve(Compiler* compiler)
                 thisResolved->function = ambiguousCalls[0].function;
                 thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
                 thisResolved->returnType = thisResolved->function->returnType;
-                thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+                thisResolved->retType = compiler->GetType(thisResolved->returnType);
             }
         }
     }
@@ -270,11 +270,11 @@ CallExpression::Resolve(Compiler* compiler)
     if (thisResolved->function != nullptr)
     {
         thisResolved->returnType = thisResolved->function->returnType;
-        thisResolved->retType = compiler->GetSymbol<Type>(thisResolved->returnType.name);
+        thisResolved->retType = compiler->GetType(thisResolved->returnType);
        
         if (thisResolved->retType == nullptr)
         {
-            compiler->UnrecognizedTypeError(thisResolved->returnType.name, this);
+            compiler->UnrecognizedTypeError(thisResolved->returnType.ToString(), this);
             return false;
         }
         return true;

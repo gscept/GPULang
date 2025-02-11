@@ -52,7 +52,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
         }
     }
 
-    thisResolved->type = compiler->GetSymbol<Type>(inner.name);
+    thisResolved->type = compiler->GetType(inner);
     if (thisResolved->type == nullptr)
     {
         compiler->UnrecognizedTypeError(inner.name, this);

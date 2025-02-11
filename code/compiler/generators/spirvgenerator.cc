@@ -635,7 +635,7 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, b
         std::string accessChain = Format("OpAccessChain %%%d %%%d", type, val);
         for (const auto& index : arg.accessChain)
         {
-            accessChain = Format("%s %%%d", accessChain.c_str(), index);
+            accessChain = Format("%s %%%d", accessChain.c_str(), index.name);
         }
         val = generator->AddMappedOp(accessChain);
     }
@@ -676,22 +676,23 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, b
 /**
 */
 void
-StoreValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult source, SPIRVResult arg)
+StoreValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult target, SPIRVResult source)
 {
-    uint32_t val = source.name;
-    uint32_t type = source.typeName;
-
+    uint32_t val = target.name;
+    uint32_t type = target.typeName;
+    
     /// Resolve access chain
-    if (!source.accessChain.empty())
+    if (!target.accessChain.empty())
     {
         std::string accessChain = Format("OpAccessChain %%%d %%%d", type, val);
-        for (const auto& index : source.accessChain)
+        for (const auto& index : target.accessChain)
         {
-            accessChain = Format("%s %%%d", accessChain.c_str(), index);
+            accessChain = Format("%s %%%d", accessChain.c_str(), index.name);
         }
         val = generator->AddMappedOp(accessChain);
     }
-    generator->AddOp(Format("OpStore %%%d %%%d", val, arg.name));
+
+    generator->AddOp(Format("OpStore %%%d %%%d", val, source.name));
 
 }
 
@@ -941,6 +942,7 @@ SPIRVResult
 GenerateSplatCompositeSPIRV(Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t num, SPIRVResult arg)
 {
     std::vector<SPIRVResult> splat(num, arg);
+    assert(num > 1);
     return GenerateCompositeSPIRV(compiler, generator, returnType, splat);
 }
 
@@ -1689,7 +1691,7 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t ptrType = g->AddSymbol(Format("ptr(%s)%s", funRes->returnTypeSymbol->name.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), args[1].typeName) , true);
             SPIRVResult loadedIndex = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult ret = args[0];
-            ret.AddAccessChainLink({loadedIndex.name});
+            ret.AddAccessChainLink({loadedIndex});
             ret.typeName = ptrType;
             ret.parentTypes.push_back(returnType);
             return ret;
@@ -3958,7 +3960,7 @@ GenerateSamplerSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symb
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
 
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
-    Type::FullType fullType = { "sampler" };
+    Type::FullType fullType = Type::FullType{ "sampler" };
     fullType.AddModifier(Type::FullType::Modifier::Pointer);
     SPIRVResult samplerType = GenerateTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol);
 
@@ -4170,10 +4172,15 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
     SPIRVResult returnTypeName = GenerateTypeSPIRV(compiler, generator, resolvedCall->function->returnType, resolvedFunction->returnTypeSymbol);
 
     uint32_t funName;
-    if (generator->HasSymbol(resolvedFunction->name))
+    const SymbolAssignment& sym = generator->GetSymbol(resolvedFunction->name);
+    if (sym.value != 0xFFFFFFFF)
     {
-        funName = generator->GetSymbol(resolvedFunction->name).value;
+        funName = sym.value;
 
+
+        // If the conversions list is non empty, it means we have to convert every argument
+        bool argumentsNeedsConversion = !resolvedCall->conversions.empty();
+        
         // Create arg list from argument expressions
         std::string argList = "";
         for (size_t i = 0; i < callExpression->args.size(); i++)
@@ -4184,9 +4191,25 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
             if (!resolvedCall->argumentTypes[i].IsPointer())
                 arg = LoadValueSPIRV(compiler,generator, arg);
-            argList.append(Format("%%%d ", arg.name));
+            
 
             generator->literalExtract = false;
+
+            if (argumentsNeedsConversion)
+            {
+                Function* conversion = resolvedCall->conversions[i];
+                if (conversion != nullptr)
+                {
+                    Function::__Resolved* resConversion = Symbol::Resolved(conversion);
+                    uint32_t convertedReturn = GeneratePODTypeSPIRV(compiler, generator, resConversion->returnTypeSymbol->baseType, resConversion->returnTypeSymbol->columnSize, resConversion->returnTypeSymbol->rowSize);
+                    auto conversionIntrinsic = generator->intrinsicMap.find(conversion);
+                    assert(conversionIntrinsic != generator->intrinsicMap.end());
+
+                    arg = conversionIntrinsic->second(compiler, generator, convertedReturn, { arg });
+                }
+            }
+
+            argList.append(Format("%%%d ", arg.name));
         }
 
         // Then call the function
@@ -4251,7 +4274,12 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     arrayIndexExpression->right->EvalType(rightType);
     
     SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+
+    // Temporarily remove the access chain since the index expression doesn't need it
+    std::vector<Type*> accessChain = generator->accessChain;
+    generator->accessChain.clear();
     SPIRVResult index = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->right);
+    generator->accessChain = accessChain;
 
     SPIRVResult indexConstant = index;
     if (!indexConstant.isValue)
@@ -4288,7 +4316,7 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
         if (leftType.modifierValues.front() == nullptr)
         {
             SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
-            ret.AddAccessChainLink({zero.name, indexConstant.name});
+            ret.AddAccessChainLink({zero, indexConstant});
             
             // Remove array index
             ret.parentTypes.pop_back();
@@ -4297,7 +4325,7 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
         }
         else
         {
-            ret.AddAccessChainLink({indexConstant.name});
+            ret.AddAccessChainLink({indexConstant});
             
             // Remove array index
             ret.parentTypes.pop_back();
@@ -4443,12 +4471,11 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // If left value has a swizzle mask, then swizzle the RIGHT hand value before storing
         if (leftValue.swizzleMask != Type::SwizzleMask())
         {
-            // First get the variable so we can get the size of the vector to store to
-            std::string leftSymbol;
-            binaryExpression->left->EvalSymbol(leftSymbol);
-            const SymbolAssignment& sym = generator->GetSymbol(leftSymbol);
-            Variable* var = static_cast<Variable*>(sym.sym);
-            Variable::__Resolved* varRes = Symbol::Resolved(var);
+            // Get the unswizzled type and generate a SPIRV type for it.
+            // Storing to a swizzle value requires an OpStore of the same size, so we are going to shuffle
+            // the vector of the right hand side such that it has the same amount of components and the left hand side
+            Type* vectorType = compiler->GetSymbol<Type>(leftType.name);
+            SPIRVResult vectorTypeName = GenerateTypeSPIRV(compiler, generator, leftType, vectorType);
 
             // Setup a binding table
             uint32_t slots[4] = { 0, 1, 2, 3 };
@@ -4456,33 +4483,42 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 
             // Update the slot mask
             if (leftValue.swizzleMask.bits.x != Type::SwizzleMask::Invalid)
-                slots[leftValue.swizzleMask.bits.x] = varRes->typeSymbol->columnSize + counter++;
+                slots[leftValue.swizzleMask.bits.x] = vectorType->columnSize + counter++;
             if (leftValue.swizzleMask.bits.y != Type::SwizzleMask::Invalid)
-                slots[leftValue.swizzleMask.bits.y] = varRes->typeSymbol->columnSize + counter++;
+                slots[leftValue.swizzleMask.bits.y] = vectorType->columnSize + counter++;
             if (leftValue.swizzleMask.bits.z != Type::SwizzleMask::Invalid)
-                slots[leftValue.swizzleMask.bits.z] = varRes->typeSymbol->columnSize + counter++;
+                slots[leftValue.swizzleMask.bits.z] = vectorType->columnSize + counter++;
             if (leftValue.swizzleMask.bits.w != Type::SwizzleMask::Invalid)
-                slots[leftValue.swizzleMask.bits.w] = varRes->typeSymbol->columnSize + counter++;
+                slots[leftValue.swizzleMask.bits.w] = vectorType->columnSize + counter++;
 
             std::string swizzleMask = "";
-            for (uint32_t i = 0; i < varRes->typeSymbol->columnSize; i++)
+            for (uint32_t i = 0; i < vectorType->columnSize; i++)
             {
                 swizzleMask.append(Format("%d ", slots[i]));
             }
-
-            // Make sure to reset the swizzle mask so we don't perform a swizzle load on the left
+            
             leftValue.swizzleMask = Type::SwizzleMask();
             SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
+
+            // If right hand side is not a vector, make it into a splatted composite
             if (!rhsType->IsVector())
-                rightValue = GenerateSplatCompositeSPIRV(compiler, generator, leftValue.typeName, leftValue.unswizzledType->columnSize, rightValue);
-            rightValue.name = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", leftValue.typeName, leftLoaded.name, rightValue.name, swizzleMask.c_str()));
+            {
+                // If right hand side isn't even a vector, make it one
+                rightValue = GenerateSplatCompositeSPIRV(compiler, generator, leftLoaded.typeName, vectorType->columnSize, rightValue);
+            }
+            if (rhsType->columnSize != vectorType->columnSize)
+            {
+                // Shuffle the values into a single vector
+                rightValue.name = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", vectorTypeName.typeName, leftLoaded.name, rightValue.name, swizzleMask.c_str()));
+                rightValue.typeName = vectorTypeName.typeName;
+            }
         }
         StoreValueSPIRV(compiler, generator, leftValue, rightValue);
         return leftValue;
     }
     else
     {
-        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.name.c_str());
+        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
         Function* fun = lhsType->GetSymbol<Function>(functionName);
         Function::__Resolved* funResolved = Symbol::Resolved(fun);
         assert(fun != nullptr);
@@ -4510,14 +4546,15 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     if (swizzle.mask != 0x0)
     {
         assert(accessExpressionResolved->lhsType->IsVector());
-        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->returnType, accessExpressionResolved->retType);
-        //SPIRVResult origType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->leftType, accessExpressionResolved->lhsType);
+        Type* swizzleType = compiler->GetSymbol<Type>(accessExpressionResolved->returnType.swizzleName);
+        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->returnType, swizzleType);
 
         SPIRVResult ret = lhs;
-        //ret.typeName = origType.typeName;
         ret.swizzleMask = swizzle;
         ret.swizzleType = retType.typeName;
-        ret.unswizzledType = accessExpressionResolved->lhsType;
+        Type::FullType ptrVersion = accessExpressionResolved->returnType;
+        ptrVersion.AddModifier(Type::FullType::Modifier::Pointer);
+        ret.swizzledType = accessExpressionResolved->retType;
         return ret;
     }
     else
@@ -4525,7 +4562,7 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         // Otherwise, find offset of member
         Type::FullType lhsType;
         accessExpression->left->EvalType(lhsType);
-        Type* lhsSymbol = compiler->GetSymbol<Type>(lhsType.name);
+        Type* lhsSymbol = compiler->GetType(lhsType);
 
         if (lhsType.modifiers.size() > 0 && lhsType.modifiers.front() == Type::FullType::Modifier::Array)
         {
@@ -4546,18 +4583,28 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
                 {
                     if (lhsSymbol->symbolType == Symbol::StructureType)
                     {
+                        // Get variable in struct this member corresponds to
                         Variable* mem = lhsSymbol->GetSymbol<Variable>(accessExpressionResolved->rightSymbol);
                         Variable::__Resolved* memResolved = Symbol::Resolved(mem);
+
+                        // Create an index for the offset in the struct, and a type for the type of that member
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
                         SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
+
+                        // Since this is na access chain, we need to be returning a pointer to the type
                         uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", mem->type.ToString().c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
                         SPIRVResult ret = lhs;
                         ret.typeName = ptrTypeName;
                         ret.parentTypes.push_back(typeName.typeName);
-                        ret.AddAccessChainLink({indexName.name});
-                        generator->PushAccessChain(ret);
+                        generator->PushAccessChain(lhsSymbol);
                         SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->right);
-                        return rhs;
+                        generator->PopAccessChain();
+                        ret.swizzleMask = rhs.swizzleMask;
+                        ret.swizzleType = rhs.swizzleType;
+                        ret.swizzledType = rhs.swizzledType;
+                        ret.typeName = rhs.typeName;
+                        ret.accessChain.insert(ret.accessChain.end(), rhs.accessChain.begin(), rhs.accessChain.end());
+                        return ret;
                     }
                     else if (lhsSymbol->symbolType == Symbol::EnumerationType)
                     {
@@ -4846,18 +4893,32 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                     type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
                     if (generator->accessChain.empty())
                     {
-                        res = SPIRVResult(generator->GetSymbol(symbolExpression->symbol).value, type.typeName);
+                        const SymbolAssignment& sym = generator->GetSymbol(symbolExpression->symbol);
+                        res = SPIRVResult(sym.value, type.typeName);
                         res.isValue = isLinkDefined;
                         res.isConst = isLinkDefined;
                         res.isSpecialization = isLinkDefined;
                         res.scope = type.scope;
                         res.parentTypes = type.parentTypes;
-                        res.storage = varResolved->storage;    
+                        res.storage = varResolved->storage;
                     }
                     else
                     {
-                        res = generator->accessChain.back();
-                        generator->accessChain.pop_back();
+                        Type* ty = generator->accessChain.back();
+                        for (size_t i = 0; i < ty->symbols.size(); i++)
+                        {
+                            if (ty->symbols[i]->name == symbolExpression->symbol)
+                            {
+                                Variable* var = static_cast<Variable*>(ty->symbols[i]);
+                                Variable::__Resolved* varRes = Symbol::Resolved(var);
+                                SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
+                                SPIRVResult type = GenerateTypeSPIRV(compiler, generator, varRes->type, varRes->typeSymbol);
+                                res = SPIRVResult::Invalid();
+                                res.typeName = type.typeName;
+                                res.AddAccessChainLink({index});
+                                break;
+                            }
+                        }
                     }
                 }
                 else
@@ -5783,29 +5844,7 @@ SPIRVGenerator::GetSymbol(const std::string& name)
         }
         it++;
     }
-    assert(ret.value != 0xFFFFFFFF);
     return ret;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-SPIRVGenerator::HasSymbol(const std::string& name)
-{
-    SymbolAssignment ret = { .sym = nullptr, .value = 0xFFFFFFFF };
-    auto it = this->scopeStack.rbegin();
-    while (it != this->scopeStack.rend())
-    {
-        auto sym = it->symbols.find(name);
-        if (sym != it->symbols.end())
-        {
-            ret = sym->second;
-            break;
-        }
-        it++;
-    }
-    return ret.value != 0xFFFFFFFF;
 }
 
 //------------------------------------------------------------------------------
@@ -6023,7 +6062,7 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
 /**
 */
 void
-SPIRVGenerator::PushAccessChain(const SPIRVResult& chain)
+SPIRVGenerator::PushAccessChain(Type* chain)
 {
     this->accessChain.push_back(chain);
 }

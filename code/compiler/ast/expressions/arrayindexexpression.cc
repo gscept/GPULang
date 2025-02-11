@@ -73,7 +73,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         // If access operator was found, set the return type of this expression as the result of it
         Function* accessFunc = static_cast<Function*>(it->second);
         thisResolved->returnFullType = accessFunc->returnType;
-        //thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
+        //thisResolved->returnType = compiler->GetType(thisResolved->returnFullType.name);
         /*
         if (!this->right->EvalUInt(thisResolved->literalAccess))
         {
@@ -93,10 +93,10 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         thisResolved->returnFullType.modifiers.erase(thisResolved->returnFullType.modifiers.begin());
         thisResolved->returnFullType.modifierValues.erase(thisResolved->returnFullType.modifierValues.begin());
     }
-    thisResolved->returnType = compiler->GetSymbol<Type>(thisResolved->returnFullType.name);
+    thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
 
     // Return type is the left type with one less modifier
-    thisResolved->lhsType = compiler->GetSymbol<Type>(thisResolved->leftFullType.name);
+    thisResolved->lhsType = compiler->GetType(thisResolved->leftFullType);
     if (thisResolved->lhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(thisResolved->leftFullType.name, this);
@@ -106,10 +106,10 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     // If we have a right expression (array index), get the type and validate
     if (this->right != nullptr)
     {
-        thisResolved->rhsType = compiler->GetSymbol<Type>(thisResolved->rightFullType.name);
+        thisResolved->rhsType = compiler->GetType(thisResolved->rightFullType);
         if (thisResolved->rhsType == nullptr)
         {
-            compiler->UnrecognizedTypeError(thisResolved->rightFullType.name, this);
+            compiler->UnrecognizedTypeError(thisResolved->rightFullType.ToString(), this);
             return false;
         }
 

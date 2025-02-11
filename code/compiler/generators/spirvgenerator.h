@@ -34,12 +34,12 @@ struct SPIRVResult
 
     Type::SwizzleMask swizzleMask;
     uint32_t swizzleType = 0xFFFFFFFF;
-    Type* unswizzledType;
+    Type* swizzledType;
 
-    std::vector<uint32_t> accessChain;
-    void AddAccessChainLink(std::vector<uint32_t> indices)
+    std::vector<SPIRVResult> accessChain;
+    void AddAccessChainLink(std::vector<SPIRVResult> links)
     {
-        accessChain.insert(accessChain.end(), indices.begin(), indices.end());
+        accessChain.insert(accessChain.end(), links.begin(), links.end());
     }
 
     struct LiteralValue
@@ -199,8 +199,6 @@ public:
     void AddReservedSymbol(const std::string& name, uint32_t object, const std::string& declare, bool global = false);
     /// Get symbol
     const SymbolAssignment GetSymbol(const std::string& name);
-    /// Returns true if symbol exists
-    bool HasSymbol(const std::string& name);
     /// Add an op without a mapping
     void AddOp(const std::string& name, bool global = false, std::string comment = "");
     /// Add mapped op
@@ -233,11 +231,11 @@ public:
     std::vector<Scope> scopeStack;
 
     /// Push a type to the stack
-    void PushAccessChain(const SPIRVResult& chain);
+    void PushAccessChain(Type* chain);
     /// Pop a type from the stack
     void PopAccessChain();
     
-    std::vector<SPIRVResult> accessChain;
+    std::vector<Type*> accessChain;
     
     std::vector<std::string> capabilities;
     /// Push a new scope on the stack

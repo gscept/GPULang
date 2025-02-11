@@ -83,6 +83,8 @@ struct Compiler
     bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
     /// get symbol by name
     Symbol* GetSymbol(const std::string& name) const;
+    /// Get type by FullType
+    Type* GetType(const Type::FullType& type) const;
     /// get symbol by name as other type
     template <typename T> T* GetSymbol(const std::string& name) const;
     /// return iterator to first and last symbol matching name
@@ -334,6 +336,18 @@ inline T*
 Compiler::GetSymbol(const std::string& name) const
 {
     return static_cast<T*>(this->GetSymbol(name));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline Type*
+Compiler::GetType(const Type::FullType& type) const
+{
+    if (!type.swizzleName.empty())
+        return static_cast<Type*>(this->GetSymbol(type.swizzleName));
+    else
+        return static_cast<Type*>(this->GetSymbol(type.name));
 }
 
 } // namespace GPULang

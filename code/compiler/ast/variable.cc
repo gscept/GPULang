@@ -17,7 +17,7 @@ Variable::Variable()
 {
     this->symbolType = VariableType;
     this->resolved = Alloc<Variable::__Resolved>();
-    this->type = { "" };
+    this->type = Type::FullType{ "" };
     this->valueExpression = nullptr;
 
     Variable::__Resolved* typeResolved = static_cast<Variable::__Resolved*>(this->resolved);

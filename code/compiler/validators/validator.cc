@@ -1583,7 +1583,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         return false;
     }
 
-    enumResolved->typeSymbol = compiler->GetSymbol<Type>(enumeration->type.name);
+    enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->globals.clear();
     enumeration->staticSymbols.clear();
 
@@ -1632,7 +1632,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     Function* comparison = new Function;
     comparison->name = "operator==";
-    comparison->returnType = { "b8" };
+    comparison->returnType = Type::FullType{ "b8" };
     arg = new Variable;
     arg->name = "rhs";
     arg->type = Type::FullType{ enumeration->name };
@@ -1641,7 +1641,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     comparison = new Function;
     comparison->name = "operator!=";
-    comparison->returnType = { "b8" };
+    comparison->returnType = Type::FullType{ "b8" };
     arg = new Variable;
     arg->name = "rhs";
     arg->type = Type::FullType{ enumeration->name };
@@ -2187,7 +2187,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
         if (!lhs.Assignable(rhs))
         {
-            Type* lhsType = compiler->GetSymbol<Type>(lhs.name);
+            Type* lhsType = compiler->GetType(lhs);
             std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
             Function* conv = compiler->GetSymbol<Function>(conversionName);
             if (conv == nullptr)
@@ -2409,7 +2409,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             {
                 currentStrucResolved->storageFunction = Alloc<Function>();
                 currentStrucResolved->storageFunction->name = "bufferStore";
-                currentStrucResolved->storageFunction->returnType = { "void" };
+                currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
                 Variable* arg = Alloc<Variable>();
                 arg->name = "buffer";
                 Attribute attr;
@@ -2519,7 +2519,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             if (statement->condition->Resolve(compiler))
             {
                 statement->condition->EvalType(type);
-                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                Type* typeSymbol = compiler->GetType(type);
                 if (typeSymbol->baseType != TypeCode::Bool)
                 {
                     compiler->Error(Format("Loop condition must evaluate to a boolean value"), statement);
@@ -2632,7 +2632,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             {
                 Type::FullType type;
                 statement->switchExpression->EvalType(type);
-                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                Type* typeSymbol = compiler->GetType(type);
                 if (typeSymbol->baseType != TypeCode::Int && typeSymbol->baseType != TypeCode::UInt && typeSymbol->category != Type::Category::EnumCategory)
                 {
                     compiler->Error(Format("Switch condition must evaluate to an integer value"), statement);
