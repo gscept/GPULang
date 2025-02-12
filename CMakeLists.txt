@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 
 option(BUILD_GPULANG_STANDALONE_COMPILER "Build standalone compiler" ON)
-option(BUILD_GPULANG_APP "Build GPULang with the test app" OFF)
-option(BUILD_GPULANG_TEST "Build GPULang with test compilation" OFF)
+option(BUILD_GPULANG_APP "Build GPULang with the example app" OFF)
+option(BUILD_GPULANG_TEST "Build GPULang with unit tests" OFF)
 option(BUILD_GPULANG_COMPILER "Build GPULang compiler" ON)
     
 if(NOT FIPS_IMPORT)

@@ -67,7 +67,8 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    if (this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|=')
+    bool isAssignment = this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|='; 
+    if (isAssignment)
     {
         unsigned leftAccess;
         this->left->EvalAccessFlags(leftAccess);
@@ -110,7 +111,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         this->thisResolved->rightConversion = static_cast<Function*>(conversionFunction);
         this->thisResolved->returnType = this->thisResolved->leftType;
     }
-    else if (this->op != '=')
+    else if (this->op != '=') // If not an assignment, allow promotion of either side of the operator
     {
         std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
         Symbol* operatorFunction = this->thisResolved->lhsType->GetSymbol(functionName);
@@ -128,6 +129,14 @@ BinaryExpression::Resolve(Compiler* compiler)
                 /// Attempt to promote left and right side to the smallest common denominator
                 TypeCode promotedType = Type::PromoteTypes(this->thisResolved->lhsType->baseType, this->thisResolved->rhsType->baseType);
                 Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));
+
+                // If we have an assignment, then promotion of the left type is not allowed
+                if (isAssignment && promotedFullType != thisResolved->leftType)
+                {
+                    compiler->Error(Format("Type '%s' does not implement '%s'", this->thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
+                    return false;
+                }
+                
                 std::string promotedOperatorFunctionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), promotedFullType.Name().c_str());
                 Type* promotedLhsType = compiler->GetType(promotedFullType);
                 Function* promotedOperatorFunction = promotedLhsType->GetSymbol<Function>(promotedOperatorFunctionName);
@@ -170,7 +179,7 @@ BinaryExpression::Resolve(Compiler* compiler)
             this->thisResolved->rightConversion = nullptr;
         }
     }
-    else
+    else // directly assignable (same type)
     {
         this->thisResolved->returnType = this->thisResolved->leftType;
     }

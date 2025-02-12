@@ -171,21 +171,25 @@ GenerateBaseTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, TypeCode co
     auto it = scalarTable.find(code);
     assert(it != scalarTable.end());
     uint32_t baseType = generator->AddSymbol(std::get<0>(it->second), std::get<1>(it->second), true);
-    
+    std::string type = std::get<0>(it->second);
     // Matrix
     if (rowSize > 1)
     {
         assert(vectorSize > 1);
-        baseType = generator->AddSymbol(Format("%sx%d", std::get<0>(it->second).c_str(), rowSize), Format("OpTypeVector %%%d %d", baseType, rowSize), true);
-        baseType = generator->AddSymbol(Format("%sx%dx%d", std::get<0>(it->second).c_str(), rowSize, vectorSize), Format("OpTypeMatrix %%%d %d", baseType, vectorSize), true);    
+        std::string vecType = Format("%sx%d", type.c_str(), rowSize);
+        std::string matType = Format("%sx%d", vecType.c_str(), vectorSize);
+        baseType = generator->AddSymbol(vecType, Format("OpTypeVector %%%d %d", baseType, rowSize), true);
+        baseType = generator->AddSymbol(matType, Format("OpTypeMatrix %%%d %d", baseType, vectorSize), true);
+        type = matType;
     }
-    else
+    else if (vectorSize > 1)
     {
         // Vector
-        if (vectorSize > 1)
-            baseType = generator->AddSymbol(Format("%sx%d", std::get<0>(it->second).c_str(), vectorSize), Format("OpTypeVector %%%d %d", baseType, vectorSize), true);
+        std::string vecType = Format("%sx%d", type.c_str(), vectorSize);
+        baseType = generator->AddSymbol(vecType, Format("OpTypeVector %%%d %d", baseType, vectorSize), true);
+        type = vecType;
     }
-    return std::make_tuple(baseType, std::get<0>(it->second));   
+    return std::make_tuple(baseType, type);   
 }
 
 //------------------------------------------------------------------------------
@@ -360,6 +364,7 @@ GenerateTypeSPIRV(
                 typeName = generator->AddSymbol(newBase, Format("OpTypeStruct %%%d", typeName), true);
                 baseType = std::tie(typeName, newBase);
                 generator->AddMemberDecoration(typeName, 0, Format("Offset %d", 0));
+                generator->AddDecoration(Format("Block(%s)", newBase.c_str()), typeName, "Block");
                 scope = SPIRVResult::Storage::StorageBuffer;
                 scopeString = SPIRVResult::ScopeToString(scope);
             }
@@ -640,30 +645,36 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, b
         val = generator->AddMappedOp(accessChain);
     }
 
-    if (loadParentType || !arg.accessChain.empty())
-        type = arg.parentTypes.back();
-
     assert(val != -1);
     if (!arg.isValue)
+    {
+        // The value loaded should be the parent type, as the current type has to be a pointer
+        if (!arg.parentTypes.empty())
+        {
+            type = arg.parentTypes.back();
+            arg.parentTypes.pop_back();
+        }
         val = generator->AddMappedOp(Format("OpLoad %%%d %%%d", type, val));
-    assert(val != -1);
+    }
     
+    assert(val != -1);
     if (arg.swizzleMask != Type::SwizzleMask())
     {
+        uint32_t swizzleType = arg.swizzleType;
         if (Type::SwizzleMaskComponents(arg.swizzleMask) == 1)
         {
-            val = generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", arg.swizzleType, val, arg.swizzleMask.bits.x));
-            type = arg.swizzleType;
+            val = generator->AddMappedOp(Format("OpCompositeExtract %%%d %%%d %d", swizzleType, val, arg.swizzleMask.bits.x));
+            type = swizzleType;
         }
         else
         {
             std::string swizzleIndices = SwizzleMaskToIndices(arg.swizzleMask);
-            val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", arg.swizzleType, val, val, swizzleIndices.c_str()));
-            type = arg.swizzleType;
+            val = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", swizzleType, val, val, swizzleIndices.c_str()));
+            type = swizzleType;
         }
     }
     auto res = SPIRVResult(val, type);
-    res.isValue = true;
+    res.isValue = arg.parentTypes.empty(); // The result is only a value if there are no more parent types (indirections)
     res.isConst = arg.isConst;
     res.isSpecialization = arg.isSpecialization;
     res.parentTypes = arg.parentTypes;
@@ -1688,12 +1699,19 @@ SPIRVGenerator::SetupIntrinsics()
             std::string scope = SPIRVResult::ScopeToString(args[1].scope);
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
-            uint32_t ptrType = g->AddSymbol(Format("ptr(%s)%s", funRes->returnTypeSymbol->name.c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), args[1].typeName) , true);
+
+            // Generate pointer type for return as all index accesses can be used to write and read
+            Type::FullType retTypePtr = fun->returnType;
+            retTypePtr.AddModifier(Type::FullType::Modifier::Pointer);
+            SPIRVResult returnTypePtr = GenerateTypeSPIRV(c, g, retTypePtr, funRes->returnTypeSymbol);
+
+            // Load index
             SPIRVResult loadedIndex = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult ret = args[0];
             ret.AddAccessChainLink({loadedIndex});
-            ret.typeName = ptrType;
+            ret.typeName = returnTypePtr.typeName;
             ret.parentTypes.push_back(returnType);
+            ret.isValue = false;
             return ret;
         };
     }
@@ -3942,7 +3960,8 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
         {
             assert(args.size() == 2);
             assert(!args[0].isValue);
-            StoreValueSPIRV(c, g, args[1], args[0]);
+            SPIRVResult loadedArg = LoadValueSPIRV(c, g, args[1]);
+            StoreValueSPIRV(c, g, args[0], loadedArg);
             return SPIRVResult::Invalid();
         };
     }
@@ -4498,7 +4517,7 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
             }
             
             leftValue.swizzleMask = Type::SwizzleMask();
-            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue);
+            SPIRVResult leftLoaded = LoadValueSPIRV(compiler, generator, leftValue, true);
 
             // If right hand side is not a vector, make it into a splatted composite
             if (!rhsType->IsVector())
@@ -4546,15 +4565,28 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     if (swizzle.mask != 0x0)
     {
         assert(accessExpressionResolved->lhsType->IsVector());
-        Type* swizzleType = compiler->GetSymbol<Type>(accessExpressionResolved->returnType.swizzleName);
-        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->returnType, swizzleType);
 
+        // Get unswizzled type
+        Type::FullType unswizzledReturnType = accessExpressionResolved->returnType;
+        unswizzledReturnType.swizzleName = "";
+        Type* unswizzledType = compiler->GetType(unswizzledReturnType);
+        Type* swizzledType = compiler->GetType(accessExpressionResolved->returnType);
+
+        // Generate type for swizzle load
+        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, unswizzledReturnType, unswizzledType);
+        Type::FullType ptrVersion = unswizzledReturnType;
+        ptrVersion.AddModifier(Type::FullType::Modifier::Pointer);
+        ptrVersion.swizzleName = "";
+
+        // And a type for the variable returned, which is a pointer to the swizzle type
+        SPIRVResult retPtrType = GenerateTypeSPIRV(compiler, generator, ptrVersion, unswizzledType);
+        SPIRVResult swizzleType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->returnType, swizzledType); 
         SPIRVResult ret = lhs;
         ret.swizzleMask = swizzle;
-        ret.swizzleType = retType.typeName;
-        Type::FullType ptrVersion = accessExpressionResolved->returnType;
-        ptrVersion.AddModifier(Type::FullType::Modifier::Pointer);
-        ret.swizzledType = accessExpressionResolved->retType;
+        ret.swizzleType = swizzleType.typeName;
+        ret.typeName = retPtrType.typeName;
+        ret.parentTypes.push_back(retType.typeName);
+        ret.isValue = false;
         return ret;
     }
     else
@@ -4590,19 +4622,17 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
                         // Create an index for the offset in the struct, and a type for the type of that member
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
                         SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
-
+                        
                         // Since this is na access chain, we need to be returning a pointer to the type
-                        uint32_t ptrTypeName = generator->AddSymbol(Format("ptr(%s)%s", mem->type.ToString().c_str(), scopeName.c_str()), Format("OpTypePointer %s %%%d", scopeName.c_str(), typeName.typeName), true);
                         SPIRVResult ret = lhs;
-                        ret.typeName = ptrTypeName;
                         ret.parentTypes.push_back(typeName.typeName);
                         generator->PushAccessChain(lhsSymbol);
                         SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->right);
                         generator->PopAccessChain();
                         ret.swizzleMask = rhs.swizzleMask;
                         ret.swizzleType = rhs.swizzleType;
-                        ret.swizzledType = rhs.swizzledType;
                         ret.typeName = rhs.typeName;
+                        ret.parentTypes.insert(ret.parentTypes.end(), rhs.parentTypes.begin(), rhs.parentTypes.end());
                         ret.accessChain.insert(ret.accessChain.end(), rhs.accessChain.begin(), rhs.accessChain.end());
                         return ret;
                     }
@@ -4912,7 +4942,12 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                                 Variable* var = static_cast<Variable*>(ty->symbols[i]);
                                 Variable::__Resolved* varRes = Symbol::Resolved(var);
                                 SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-                                SPIRVResult type = GenerateTypeSPIRV(compiler, generator, varRes->type, varRes->typeSymbol);
+
+                                // If part of an access chain, generate a pointer version of the type
+                                Type::FullType ptrType = varRes->type;
+                                ptrType.AddModifier(Type::FullType::Modifier::Pointer);
+                                SPIRVResult type = GenerateTypeSPIRV(compiler, generator, ptrType, varRes->typeSymbol);
+                                
                                 res = SPIRVResult::Invalid();
                                 res.typeName = type.typeName;
                                 res.AddAccessChainLink({index});
@@ -5603,12 +5638,12 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         if (compiler->target.supportsPhysicalAddressing)
         {
             this->AddCapability("Addresses");
-            this->header.append("\tOpMemoryModel Physical64 GLSL450\n");
+            this->header.append(" OpMemoryModel Physical64 GLSL450\n");
         }
         else
         {
             this->AddCapability("PhysicalStorageBufferAddresses");
-            this->header.append("\tOpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
+            this->header.append(" OpMemoryModel PhysicalStorageBuffer64 GLSL450\n");
         }
 
 
@@ -5646,35 +5681,35 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         {
             interfaces.append(Format("%%%d ", inter));
         }
-        this->header.append(Format("\tOpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
+        this->header.append(Format(" OpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
         
         switch (mapping)
         {
             case Program::__Resolved::GeometryShader:
-                this->header.append(Format("\tOpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology].c_str()));
-                this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                this->header.append(Format(" OpExecutionMode %%%d Invocations %d\n", entryFunction, funResolved->executionModifiers.invocations));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, outputPrimitiveTopologyMap[funResolved->executionModifiers.outputPrimitiveTopology].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
                 break;
             case Program::__Resolved::HullShader:
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod].c_str()));
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder].c_str()));
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
-                this->header.append(Format("\tOpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, partitionMap[funResolved->executionModifiers.partitionMethod].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, windingOrderMap[funResolved->executionModifiers.windingOrder].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, inputPrimitiveTopologyMap[funResolved->executionModifiers.inputPrimitiveTopology].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d OutputVertices %d\n", entryFunction, funResolved->executionModifiers.maxOutputVertices));
                 break;
             case Program::__Resolved::DomainShader:
                 break;
             case Program::__Resolved::PixelShader:
-                this->header.append(Format("\tOpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin].c_str()));
+                this->header.append(Format(" OpExecutionMode %%%d %s\n", entryFunction, pixelOriginMap[funResolved->executionModifiers.pixelOrigin].c_str()));
                 if (funResolved->executionModifiers.earlyDepth)
-                    this->header.append(Format("\tOpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
+                    this->header.append(Format(" OpExecutionMode %%%d EarlyFragmentTests\n", entryFunction));
                 break;
             case Program::__Resolved::ComputeShader:
-                this->header.append(Format("\tOpExecutionMode %%%d LocalSize %d %d %d\n", entryFunction, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]));
+                this->header.append(Format(" OpExecutionMode %%%d LocalSize %d %d %d\n", entryFunction, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]));
                 if (funResolved->executionModifiers.groupSize != 64)
-                    this->header.append(Format("\tOpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
+                    this->header.append(Format(" OpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
                 if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
-                    this->header.append(Format("\tOpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
+                    this->header.append(Format(" OpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
                 break;
         }
         compiler->shaderValueExpressions[mapping].value = false;
@@ -5786,7 +5821,7 @@ SPIRVGenerator::AddSymbol(const std::string& name, const std::string& declare, b
     else
         this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = ret };
 
-    std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", ret, declare.c_str(), name.c_str());
+    std::string decl = Format("%%%d = %s        ; %s\n", ret, declare.c_str(), name.c_str());
     if (global)
         this->declarations.append(decl);
     else
@@ -5819,7 +5854,7 @@ SPIRVGenerator::AddReservedSymbol(const std::string& name, uint32_t object, cons
     else
         this->scopeStack.back().symbols[name] = { .sym = nullptr, .value = object };
 
-    std::string decl = Format("%%%d\t=\t%s\t\t\t; %s\n", object, declare.c_str(), name.c_str());
+    std::string decl = Format("%%%d = %s        ; %s\n", object, declare.c_str(), name.c_str());
     if (global)
         this->declarations.append(decl);
     else
@@ -5854,9 +5889,9 @@ void
 SPIRVGenerator::AddOp(const std::string& value, bool global, std::string comment)
 {
     if (global)
-        this->declarations.append(Format("\t\t%s\t\t\t; %s\n", value.c_str(), comment.c_str()));
+        this->declarations.append(Format("    %s        ; %s\n", value.c_str(), comment.c_str()));
     else
-        this->functional.append(Format("\t\t%s\t\t\t; %s\n", value.c_str(), comment.c_str()));
+        this->functional.append(Format("    %s        ; %s\n", value.c_str(), comment.c_str()));
 }
 
 //------------------------------------------------------------------------------
@@ -5866,7 +5901,7 @@ uint32_t
 SPIRVGenerator::AddMappedOp(const std::string& name, std::string comment)
 {
     uint32_t ret = this->symbolCounter;
-    this->functional.append(Format("%%%d\t=\t%s\t\t\t; %s\n", ret, name.c_str(), comment.c_str()));
+    this->functional.append(Format("%%%d = %s        ; %s\n", ret, name.c_str(), comment.c_str()));
     this->symbolCounter++;
     return ret;
 }
@@ -5883,7 +5918,7 @@ SPIRVGenerator::AddCapability(const std::string& declare)
             found = true;
     if (!found)
     {
-        this->capability.append(Format("\tOpCapability %s\n", declare.c_str()));
+        this->capability.append(Format(" OpCapability %s\n", declare.c_str()));
         this->capabilities.push_back(declare);
     }
 }
@@ -5918,7 +5953,7 @@ SPIRVGenerator::AddExtension(const std::string& name)
     auto it = this->extensions.find(name);
     if (it == this->extensions.end())
     {
-        this->extension.append(Format("\tOpExtension \"%s\"\n", name.c_str()));
+        this->extension.append(Format(" OpExtension \"%s\"\n", name.c_str()));
         this->extensions[name] = -1;
     }
 }
@@ -5933,7 +5968,7 @@ SPIRVGenerator::AddDecoration(const std::string& name, uint32_t object, const st
     if (it == this->decorationMap.end())
     {
         this->decorationMap[name].insert(decorate);
-        this->decorations.append(Format("\tOpDecorate %%%d %s\n", object, decorate.c_str()));
+        this->decorations.append(Format(" OpDecorate %%%d %s\n", object, decorate.c_str()));
     }
 }
 
@@ -5943,7 +5978,7 @@ SPIRVGenerator::AddDecoration(const std::string& name, uint32_t object, const st
 void 
 SPIRVGenerator::AddMemberDecoration(uint32_t struc, uint32_t index, const std::string& decorate)
 {
-    std::string decorationName = Format("\tOpMemberDecorate %%%d %d %s\n", struc, index, decorate.c_str());
+    std::string decorationName = Format(" OpMemberDecorate %%%d %d %s\n", struc, index, decorate.c_str());
     auto it = this->decorationMap.find(decorationName);
     if (it == this->decorationMap.end())
     {
@@ -5988,7 +6023,7 @@ SPIRVGenerator::ReserveName()
 void 
 SPIRVGenerator::AddReserved(const std::string& op, uint32_t name, std::string comment)
 {
-    this->functional.append(Format("%%%d = \t%s\t\t\t; %s\n", name, op.c_str(), comment.c_str()));
+    this->functional.append(Format("%%%d = %s        ; %s\n", name, op.c_str(), comment.c_str()));
 }
 
 //------------------------------------------------------------------------------
@@ -6029,12 +6064,12 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
     if (!global)
     {
         if (init != 0xFFFFFFFF)
-            this->variableDeclarations.append(Format("%%%d\t=\tOpVariable %%%d %s %%%d\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
+            this->variableDeclarations.append(Format("%%%d = OpVariable %%%d %s %%%d        ; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
         else
-            this->variableDeclarations.append(Format("%%%d\t=\tOpVariable %%%d %s\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
+            this->variableDeclarations.append(Format("%%%d = OpVariable %%%d %s        ; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
 
         if (copy != 0xFFFFFFFF)
-            this->parameterInitializations.append(Format("\tOpStore %%%d %%%d\n", this->symbolCounter, copy));
+            this->parameterInitializations.append(Format(" OpStore %%%d %%%d\n", this->symbolCounter, copy));
     }
     else
     {
@@ -6050,9 +6085,9 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
             this->interfaceVariables.insert(this->symbolCounter);
 
         if (init != 0xFFFFFFFF)
-            this->declarations.append(Format("%%%d\t=\tOpVariable %%%d %s %%%d\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
+            this->declarations.append(Format("%%%d = OpVariable %%%d %s %%%d        ; %s\n", this->symbolCounter, type, scopeStr.c_str(), init, name.c_str()));
         else
-            this->declarations.append(Format("%%%d\t=\tOpVariable %%%d %s\t\t\t; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
+            this->declarations.append(Format("%%%d = OpVariable %%%d %s        ; %s\n", this->symbolCounter, type, scopeStr.c_str(), name.c_str()));
     }
     return this->symbolCounter++;
 

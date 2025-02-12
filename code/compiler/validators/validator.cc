@@ -1742,10 +1742,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
-    Type* type = (Type*)compiler->GetSymbol(var->type.name);
+    Type* type = compiler->GetType(var->type);
     if (type == nullptr)
     {
-        compiler->UnrecognizedTypeError(var->type.name, symbol);
+        compiler->UnrecognizedTypeError(var->type.ToString().c_str(), symbol);
         return false;
     }
     varResolved->typeSymbol = type;
