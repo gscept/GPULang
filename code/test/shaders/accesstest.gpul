@@ -1,0 +1,81 @@
+
+
+struct AccessTestStruct
+{
+    someVec4 : f32x4;
+};
+
+uniform AccessTestWriteResource : *mutable AccessTestStruct;
+uniform AccessTestWriteArrayResource : []*mutable AccessTestStruct;
+ 
+TestExplicitSwizzleExpand(str : AccessTestStruct) void
+{
+    var val = str.someVec4;
+    val /= f32x4(val.w); 
+}
+
+TestSwizzleAssign(str : AccessTestStruct) void
+{
+    var val = str.someVec4;
+    val.xyz = f32x3(1.0f);
+}
+
+TestMutableUniformWrite() void
+{
+    var test : AccessTestStruct;
+    
+    // test splats
+    test.someVec4 = f32x4(1.0f);
+    
+    bufferStore(AccessTestWriteResource, test);  
+}
+
+TestSwizzleAccessReturn(str : AccessTestStruct) f32x3
+{
+    const val = str.someVec4.xyz;
+    return val + f32x3(1.0f);
+} 
+
+TestVectorIndexing(str : AccessTestStruct) void
+{
+    for (var i : u32 = 0; i < 4; i++)
+    {
+        var val = str.someVec4[i];
+        val += 1.0f; 
+    }
+}
+
+
+TestSwizzleAccess(str : AccessTestStruct) void
+{
+    var val = str.someVec4.xyz;
+    val += f32x3(1.0f);
+}
+
+TestMutableUniformArrayWrite(index : u32) void
+{
+    var test : AccessTestStruct;
+    
+    // test splats
+    test.someVec4 = f32x4(1.0f);
+    
+    bufferStore(AccessTestWriteArrayResource[index], test);
+}
+
+
+TestImplicitSwizzleExpand(str : AccessTestStruct) void
+{
+    var val = str.someVec4;
+    val /= val.w; 
+}
+
+entry_point
+AccessTest() void
+{
+    
+}
+
+program AccessTestProgram
+{
+    ComputeShader = AccessTest;
+};
