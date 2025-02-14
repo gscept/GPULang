@@ -3,15 +3,76 @@
 struct AccessTestStruct
 {
     someVec4 : f32x4;
+    somePos : f32x4;
+    someMat : f32x4x4;
 };
 
+uniform AccessTestReadResource : *AccessTestStruct;
 uniform AccessTestWriteResource : *mutable AccessTestStruct;
 uniform AccessTestWriteArrayResource : []*mutable AccessTestStruct;
+
+TestUniformAccess() f32
+{
+    return AccessTestReadResource.someVec4[0];
+}
+
+TestArrayAccess(str : AccessTestStruct) b8
+{
+    var arr : [8]f32x4 = [
+        f32x4(str.someVec4.xyz, 1.0f)                                          // near bottom left
+        , f32x4(str.someVec4.x, str.someVec4.yz, 1.0f)                        // near bottom right
+        , f32x4(str.someVec4.x, str.someVec4.y, str.someVec4.z, 1.0f)        // near top left
+        , f32x4(str.someVec4.xy, str.someVec4.z, 1.0f)                        // near top right
+        , f32x4(str.someVec4.xy, str.someVec4.z, 1.0f)                        // far bottom left
+        , f32x4(str.someVec4.x, str.someVec4.y, str.someVec4.z, 1.0f)        // far bottom right
+        , f32x4(str.someVec4.x, str.someVec4.yz, 1.0f)                        // far top left
+        , f32x4(str.someVec4.xyz, 1.0f)                                        // far top right
+    ];
+    
+    for (var i : i32 = 0; i < 8; i++)
+    {
+        // Transform cluster AABB points to clip space
+        arr[i] = arr[i] * str.someMat;
+
+        // Simply check if intervals overlap with the unit cube
+        if (all((arr[i].xyz > f32x3(-1.0)) == (arr[i].xyz < f32x3(1.0))))
+            return true;
+    }    
+    return false;
+}
+
+TestComponentExtract(str : AccessTestStruct) void
+{
+    var foo = 0.0f;
+    for (var i : i32 = 0; i < 3; i++)
+    {
+        const v = str.somePos[i];
+        if (v < str.someVec4[i]) 
+            foo += pow(str.someVec4[i] - v, 2);
+    }
+}
+
+TestSwizzleAccessReturn(str : AccessTestStruct) f32x3
+{
+    const val = str.someVec4.xyz;
+    return val + f32x3(1.0f);
+} 
+TestMatrixExtraction2(mat : f32x4x4) f32x3
+{
+    const foo = mat[2];
+    const bar = foo[0];
+    return foo.xyz;
+}
+ 
+TestMatrixExtraction(mat : f32x4x4) f32x3
+{
+    return mat[2].xyz;
+}
  
 TestExplicitSwizzleExpand(str : AccessTestStruct) void
 {
     var val = str.someVec4;
-    val /= f32x4(val.w); 
+    val /= val.w; 
 }
 
 TestSwizzleAssign(str : AccessTestStruct) void
@@ -30,11 +91,7 @@ TestMutableUniformWrite() void
     bufferStore(AccessTestWriteResource, test);  
 }
 
-TestSwizzleAccessReturn(str : AccessTestStruct) f32x3
-{
-    const val = str.someVec4.xyz;
-    return val + f32x3(1.0f);
-} 
+
 
 TestVectorIndexing(str : AccessTestStruct) void
 {

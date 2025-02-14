@@ -172,6 +172,7 @@ GenerateBaseTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, TypeCode co
     assert(it != scalarTable.end());
     uint32_t baseType = generator->AddSymbol(std::get<0>(it->second), std::get<1>(it->second), true);
     std::string type = std::get<0>(it->second);
+    
     // Matrix
     if (rowSize > 1)
     {
@@ -195,18 +196,94 @@ GenerateBaseTypeSPIRV(Compiler* compiler, SPIRVGenerator* generator, TypeCode co
 //------------------------------------------------------------------------------
 /**
 */
+SPIRVResult::Storage
+ResolveSPIRVVariableStorage(
+    Type::FullType type
+    , Type* typeSymbol
+    , Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default
+    , Variable::__Resolved::UsageBits usageBits = Variable::__Resolved::UsageBits(0x0)
+    )
+{
+    SPIRVResult::Storage scope = SPIRVResult::Storage::Function;
+    if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
+    {
+        if (storage == Variable::__Resolved::Storage::Input)
+            scope = SPIRVResult::Storage::Input;
+        else if (storage == Variable::__Resolved::Storage::Output)
+            scope = SPIRVResult::Storage::Output;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::LinkDefined)
+            scope = SPIRVResult::Storage::UniformConstant;
+        else if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
+    }
+    else if (typeSymbol->category == Type::TextureCategory)
+    {
+        if (type.mut)
+            scope = SPIRVResult::Storage::MutableImage;
+        else
+            scope = SPIRVResult::Storage::Image;
+    }
+    else if (typeSymbol->category == Type::PixelCacheCategory)
+    {
+        scope = SPIRVResult::Storage::Image;
+    }
+    else if (typeSymbol->category == Type::SamplerCategory)
+    {
+        scope = SPIRVResult::Storage::Sampler;
+    }
+    else if (typeSymbol->category == Type::EnumCategory)
+    {
+        if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
+    }
+    else if (typeSymbol->category == Type::UserTypeCategory)
+    {
+        if (type.IsMutable() || usageBits.flags.isDynamicSizedArray)
+            scope = SPIRVResult::Storage::StorageBuffer;
+        else if (storage == Variable::__Resolved::Storage::Uniform)
+            scope = SPIRVResult::Storage::Uniform;
+        else if (storage == Variable::__Resolved::Storage::InlineUniform)
+            scope = SPIRVResult::Storage::PushConstant;
+        else if (storage == Variable::__Resolved::Storage::Global)
+            scope = SPIRVResult::Storage::Private;
+        else if (storage == Variable::__Resolved::Storage::Workgroup)
+            scope = SPIRVResult::Storage::WorkGroup;
+        else if (storage == Variable::__Resolved::Storage::Device)
+            scope = SPIRVResult::Storage::Device;
+        else if (storage == Variable::__Resolved::Storage::RayPayload)
+            scope = SPIRVResult::Storage::RayPayload;
+        else if (storage == Variable::__Resolved::Storage::RayPayloadInput)
+            scope = SPIRVResult::Storage::RayPayloadInput;
+        else if (storage == Variable::__Resolved::Storage::RayHitAttribute)
+            scope = SPIRVResult::Storage::RayHitAttribute;
+        else if (storage == Variable::__Resolved::Storage::CallableData)
+            scope = SPIRVResult::Storage::CallableData;
+        else if (storage == Variable::__Resolved::Storage::CallableDataInput)
+            scope = SPIRVResult::Storage::CallableDataInput;
+    }
+    return scope;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 SPIRVResult
 GenerateTypeSPIRV(
     Compiler* compiler
     , SPIRVGenerator* generator
     , Type::FullType type
     , Type* typeSymbol
-    , Variable::__Resolved::AccessBits accessBits = Variable::__Resolved::AccessBits(0x0)
-    , Variable::__Resolved::UsageBits usageBits = Variable::__Resolved::UsageBits(0x0)
-    , Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default
+    , SPIRVResult::Storage storage = SPIRVResult::Storage::Function
 )
 {
-    SPIRVResult::Storage scope = SPIRVResult::Storage::Function;
     std::tuple<uint32_t, std::string> baseType;
     std::vector<uint32_t> parentType;
 
@@ -229,18 +306,6 @@ GenerateTypeSPIRV(
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
         baseType = GenerateBaseTypeSPIRV(compiler, generator, typeSymbol->baseType, typeSymbol->columnSize, typeSymbol->rowSize);
-        if (storage == Variable::__Resolved::Storage::Input)
-            scope = SPIRVResult::Storage::Input;
-        else if (storage == Variable::__Resolved::Storage::Output)
-            scope = SPIRVResult::Storage::Output;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
-            scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::LinkDefined)
-            scope = SPIRVResult::Storage::UniformConstant;
-        else if (storage == Variable::__Resolved::Storage::Global)
-            scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Device)
-            scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::TextureCategory)
     {
@@ -269,10 +334,7 @@ GenerateTypeSPIRV(
             name = generator->AddSymbol(gpulangType, Format("OpTypeSampledImage %%%d", name), true);
         }
         baseType = std::tie(name, gpulangType);
-        if (type.mut)
-            scope = SPIRVResult::Storage::MutableImage;
-        else
-            scope = SPIRVResult::Storage::Image;
+
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
@@ -284,7 +346,6 @@ GenerateTypeSPIRV(
         spirvType = Format(spirvType.c_str(), floatType);
         uint32_t name = generator->AddSymbol(gpulangType, spirvType, true);
         baseType = std::tie(name, gpulangType);
-        scope = SPIRVResult::Storage::Image;
     }
     else if (typeSymbol->category == Type::SamplerCategory)
     {
@@ -292,47 +353,18 @@ GenerateTypeSPIRV(
         auto [gpulangType, spirvType] = handleTypeIt->second;
         uint32_t name = generator->AddSymbol(gpulangType, spirvType, true);
         baseType = std::tie(name, gpulangType);
-        scope = SPIRVResult::Storage::Sampler;
     }
     else if (typeSymbol->category == Type::EnumCategory)
     {
         baseType = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
-        if (storage == Variable::__Resolved::Storage::Global)
-            scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
-            scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::Device)
-            scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::UserTypeCategory)
     {
         uint32_t name = generator->GetSymbol(typeSymbol->name).value;
         baseType = std::tie(name, typeSymbol->name);
-        if (type.IsMutable() || usageBits.flags.isDynamicSizedArray)
-            scope = SPIRVResult::Storage::StorageBuffer;
-        else if (storage == Variable::__Resolved::Storage::Uniform)
-            scope = SPIRVResult::Storage::Uniform;
-        else if (storage == Variable::__Resolved::Storage::InlineUniform)
-            scope = SPIRVResult::Storage::PushConstant;
-        else if (storage == Variable::__Resolved::Storage::Global)
-            scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
-            scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::Device)
-            scope = SPIRVResult::Storage::Device;
-        else if (storage == Variable::__Resolved::Storage::RayPayload)
-            scope = SPIRVResult::Storage::RayPayload;
-        else if (storage == Variable::__Resolved::Storage::RayPayloadInput)
-            scope = SPIRVResult::Storage::RayPayloadInput;
-        else if (storage == Variable::__Resolved::Storage::RayHitAttribute)
-            scope = SPIRVResult::Storage::RayHitAttribute;
-        else if (storage == Variable::__Resolved::Storage::CallableData)
-            scope = SPIRVResult::Storage::CallableData;
-        else if (storage == Variable::__Resolved::Storage::CallableDataInput)
-            scope = SPIRVResult::Storage::CallableDataInput;
     }
 
-    std::string scopeString = SPIRVResult::ScopeToString(scope);
+    std::string scopeString = SPIRVResult::ScopeToString(storage);
     for (size_t i = 0; i < type.modifiers.size(); i++)
     {
         auto [typeName, gpulangType] = baseType; 
@@ -365,8 +397,8 @@ GenerateTypeSPIRV(
                 baseType = std::tie(typeName, newBase);
                 generator->AddMemberDecoration(typeName, 0, Format("Offset %d", 0));
                 generator->AddDecoration(Format("Block(%s)", newBase.c_str()), typeName, "Block");
-                scope = SPIRVResult::Storage::StorageBuffer;
-                scopeString = SPIRVResult::ScopeToString(scope);
+                storage = SPIRVResult::Storage::StorageBuffer;
+                scopeString = SPIRVResult::ScopeToString(storage);
             }
             else
             {
@@ -391,8 +423,7 @@ GenerateTypeSPIRV(
         }
     }
 
-    auto ret = SPIRVResult(0xFFFFFFFF, std::get<0>(baseType), false, false, scope, parentType);
-    ret.storage = storage;
+    auto ret = SPIRVResult(0xFFFFFFFF, std::get<0>(baseType), false, false, storage, parentType);
     return ret;
 }
 
@@ -609,6 +640,25 @@ GenerateConstantSPIRV(Compiler* compiler, SPIRVGenerator* generator, ConstantCre
 /**
 */
 SPIRVResult
+GeneratePointerTypeSPIRV(
+    Compiler* compiler
+    , SPIRVGenerator* generator
+    , const Type::FullType& type
+    , Type* typeSymbol
+    , SPIRVResult::Storage storage = SPIRVResult::Storage::Function)
+{
+    Type::FullType returnPtrType = type;
+    if (!type.IsPointer())
+        returnPtrType.AddModifier(Type::FullType::Modifier::Pointer);
+    SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, returnPtrType, typeSymbol, storage);
+
+    return returnType;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SPIRVResult
 LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, bool loadParentType = false)
 {
     if (arg.isLiteral)
@@ -660,6 +710,7 @@ LoadValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult arg, b
     assert(val != -1);
     if (arg.swizzleMask != Type::SwizzleMask())
     {
+        // Can't swizzle a pointer
         uint32_t swizzleType = arg.swizzleType;
         if (Type::SwizzleMaskComponents(arg.swizzleMask) == 1)
         {
@@ -703,7 +754,11 @@ StoreValueSPIRV(Compiler* compiler, SPIRVGenerator* generator, SPIRVResult targe
         val = generator->AddMappedOp(accessChain);
     }
 
-    generator->AddOp(Format("OpStore %%%d %%%d", val, source.name));
+    // Perform OpStore if source is a value, otherwise copy memory
+    if (source.isValue)
+        generator->AddOp(Format("OpStore %%%d %%%d", val, source.name));
+    else
+        generator->AddOp(Format("OpCopyMemory %%%d %%%d", val, source.name));
 
 }
 
@@ -1700,17 +1755,15 @@ SPIRVGenerator::SetupIntrinsics()
 
             Function::__Resolved* funRes = Symbol::Resolved(fun);
 
-            // Generate pointer type for return as all index accesses can be used to write and read
-            Type::FullType retTypePtr = fun->returnType;
-            retTypePtr.AddModifier(Type::FullType::Modifier::Pointer);
-            SPIRVResult returnTypePtr = GenerateTypeSPIRV(c, g, retTypePtr, funRes->returnTypeSymbol);
+            SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, fun->returnType, funRes->returnTypeSymbol, args[0].scope);
 
             // Load index
             SPIRVResult loadedIndex = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult ret = args[0];
             ret.AddAccessChainLink({loadedIndex});
             ret.typeName = returnTypePtr.typeName;
-            ret.parentTypes.push_back(returnType);
+            ret.parentTypes = returnTypePtr.parentTypes;
+            ret.scope = args[0].scope;
             ret.isValue = false;
             return ret;
         };
@@ -2636,22 +2689,22 @@ SPIRVGenerator::SetupIntrinsics()
     {
         switch (scope)
         {
-            case SPIRVResult::Function:
-            case SPIRVResult::Input:
-            case SPIRVResult::Output:
-            case SPIRVResult::PushConstant:
-            case SPIRVResult::Private:
+            case SPIRVResult::Storage::Function:
+            case SPIRVResult::Storage::Input:
+            case SPIRVResult::Storage::Output:
+            case SPIRVResult::Storage::PushConstant:
+            case SPIRVResult::Storage::Private:
                 return 4;
-            case SPIRVResult::WorkGroup:
+            case SPIRVResult::Storage::WorkGroup:
                 return 2;
-            case SPIRVResult::Device:
-            case SPIRVResult::Uniform:
-            case SPIRVResult::UniformConstant:
+            case SPIRVResult::Storage::Device:
+            case SPIRVResult::Storage::Uniform:
+            case SPIRVResult::Storage::UniformConstant:
                 return 1;
-            case SPIRVResult::StorageBuffer:
-            case SPIRVResult::Sampler:
-            case SPIRVResult::Image:
-            case SPIRVResult::MutableImage:
+            case SPIRVResult::Storage::StorageBuffer:
+            case SPIRVResult::Storage::Sampler:
+            case SPIRVResult::Storage::Image:
+            case SPIRVResult::Storage::MutableImage:
                 assert(false);
         }
         return 0;
@@ -2661,15 +2714,15 @@ SPIRVGenerator::SetupIntrinsics()
     {
         switch (scope)
         {
-            case SPIRVResult::WorkGroup:
+            case SPIRVResult::Storage::WorkGroup:
                 return 0x100; // WorkgroupMemory
-            case SPIRVResult::Uniform:
-            case SPIRVResult::UniformConstant:
-            case SPIRVResult::StorageBuffer:
-            case SPIRVResult::Sampler:
+            case SPIRVResult::Storage::Uniform:
+            case SPIRVResult::Storage::UniformConstant:
+            case SPIRVResult::Storage::StorageBuffer:
+            case SPIRVResult::Storage::Sampler:
                 return 0x40; // UniformMemory
-            case SPIRVResult::Image:
-            case SPIRVResult::MutableImage:
+            case SPIRVResult::Storage::Image:
+            case SPIRVResult::Storage::MutableImage:
                 return 0x800; // ImageMemory
         }
         return 0x0;
@@ -3960,8 +4013,7 @@ GenerateStructureSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sy
         {
             assert(args.size() == 2);
             assert(!args[0].isValue);
-            SPIRVResult loadedArg = LoadValueSPIRV(c, g, args[1]);
-            StoreValueSPIRV(c, g, args[0], loadedArg);
+            StoreValueSPIRV(c, g, args[0], args[1]);
             return SPIRVResult::Invalid();
         };
     }
@@ -3980,8 +4032,8 @@ GenerateSamplerSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symb
 
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
     Type::FullType fullType = Type::FullType{ "sampler" };
-    fullType.AddModifier(Type::FullType::Modifier::Pointer);
-    SPIRVResult samplerType = GenerateTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol);
+    SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Variable::__Resolved::Storage::Uniform);
+    SPIRVResult samplerType = GeneratePointerTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol, scope);
 
     // Generate inline sampler
     if (samplerResolved->isInline)
@@ -4072,8 +4124,9 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(varResolved->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
     
-    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
+    SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol, storage);
     std::string type = varResolved->type.name;
     std::string scope = SPIRVResult::ScopeToString(typeName.scope);
 
@@ -4159,7 +4212,6 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
             generator->interfaceVariables.insert(name);
         }
         auto ret = SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);
-        ret.storage = varResolved->storage;
         return ret;
     }
     else
@@ -4173,7 +4225,6 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         res.isSpecialization = true;
         res.scope = typeName.scope;
         res.parentTypes = parentTypes;
-        res.storage = varResolved->storage;
         return res;
     }
 }
@@ -4291,11 +4342,11 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
     Type::FullType leftType, rightType;
     arrayIndexExpression->left->EvalType(leftType);
     arrayIndexExpression->right->EvalType(rightType);
-    
-    SPIRVResult returnType = GenerateTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType);
+
+    SPIRVResult returnType = GeneratePointerTypeSPIRV(compiler, generator, arrayIndexExpressionResolved->returnFullType, arrayIndexExpressionResolved->returnType, leftSymbol.scope);
 
     // Temporarily remove the access chain since the index expression doesn't need it
-    std::vector<Type*> accessChain = generator->accessChain;
+    auto accessChain = generator->accessChain;
     generator->accessChain.clear();
     SPIRVResult index = GenerateExpressionSPIRV(compiler, generator, arrayIndexExpression->right);
     generator->accessChain = accessChain;
@@ -4318,38 +4369,28 @@ GenerateArrayIndexExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator,
             assert(intrin != generator->intrinsicMap.end());
 
             /// Generate array access
-            return intrin->second(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
+            SPIRVResult res = intrin->second(compiler, generator, returnType.typeName, { leftSymbol, indexConstant });
+            assert(res.typeName == returnType.typeName);
+            assert(res.parentTypes == returnType.parentTypes);
+            assert(res.scope == returnType.scope);
+            return res;
         }
     }
     else
     {
-        std::string scope = SPIRVResult::ScopeToString(leftSymbol.scope);
-        uint32_t ptrType = returnType.typeName;
-        bool returnsReference = !arrayIndexExpressionResolved->returnFullType.IsPointer() && !compiler->target.supportsPhysicalAddressing; 
-        if (returnsReference)
-            ptrType = generator->AddSymbol(Format("ptr(%s)%s", arrayIndexExpressionResolved->returnFullType.ToString().c_str(), scope.c_str()), Format("OpTypePointer %s %%%d", scope.c_str(), returnType.typeName), true);
-
         SPIRVResult ret = leftSymbol;
-        ret.typeName = ptrType;
+        ret.typeName = returnType.typeName;
+        ret.parentTypes = returnType.parentTypes;
+        
         // If the left side is an unbound array, it lives in a struct, so access chain must first get the zeroth element
         if (leftType.modifierValues.front() == nullptr)
         {
             SPIRVResult zero = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(0));
             ret.AddAccessChainLink({zero, indexConstant});
-            
-            // Remove array index
-            ret.parentTypes.pop_back();
-            if (returnsReference)
-                ret.parentTypes.push_back(returnType.typeName);
         }
         else
         {
             ret.AddAccessChainLink({indexConstant});
-            
-            // Remove array index
-            ret.parentTypes.pop_back();
-            if (returnsReference)
-                ret.parentTypes.push_back(returnType.typeName);
         }
         return ret;
     }
@@ -4572,21 +4613,11 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
         Type* unswizzledType = compiler->GetType(unswizzledReturnType);
         Type* swizzledType = compiler->GetType(accessExpressionResolved->returnType);
 
-        // Generate type for swizzle load
-        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, unswizzledReturnType, unswizzledType);
-        Type::FullType ptrVersion = unswizzledReturnType;
-        ptrVersion.AddModifier(Type::FullType::Modifier::Pointer);
-        ptrVersion.swizzleName = "";
-
-        // And a type for the variable returned, which is a pointer to the swizzle type
-        SPIRVResult retPtrType = GenerateTypeSPIRV(compiler, generator, ptrVersion, unswizzledType);
+        // And a type for the value returned, which is a pointer to the full vector type, but with a swizzle type appended
         SPIRVResult swizzleType = GenerateTypeSPIRV(compiler, generator, accessExpressionResolved->returnType, swizzledType); 
         SPIRVResult ret = lhs;
         ret.swizzleMask = swizzle;
         ret.swizzleType = swizzleType.typeName;
-        ret.typeName = retPtrType.typeName;
-        ret.parentTypes.push_back(retType.typeName);
-        ret.isValue = false;
         return ret;
     }
     else
@@ -4621,20 +4652,16 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
 
                         // Create an index for the offset in the struct, and a type for the type of that member
                         SPIRVResult indexName = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
-                        SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol);
+                        SPIRVResult typeName = GeneratePointerTypeSPIRV(compiler, generator, mem->type, memResolved->typeSymbol, lhs.scope);
                         
                         // Since this is na access chain, we need to be returning a pointer to the type
-                        SPIRVResult ret = lhs;
-                        ret.parentTypes.push_back(typeName.typeName);
-                        generator->PushAccessChain(lhsSymbol);
+                        generator->PushAccessChain(lhsSymbol, lhs.scope);
                         SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, accessExpression->right);
                         generator->PopAccessChain();
-                        ret.swizzleMask = rhs.swizzleMask;
-                        ret.swizzleType = rhs.swizzleType;
-                        ret.typeName = rhs.typeName;
-                        ret.parentTypes.insert(ret.parentTypes.end(), rhs.parentTypes.begin(), rhs.parentTypes.end());
-                        ret.accessChain.insert(ret.accessChain.end(), rhs.accessChain.begin(), rhs.accessChain.end());
-                        return ret;
+                        rhs.scope = lhs.scope;
+                        rhs.name = lhs.name;
+                        rhs.accessChain.insert(rhs.accessChain.begin(), lhs.accessChain.begin(), lhs.accessChain.end());
+                        return rhs;
                     }
                     else if (lhsSymbol->symbolType == Symbol::EnumerationType)
                     {
@@ -4751,7 +4778,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
-            uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, rhs.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
+            uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, loaded.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
             else
@@ -4780,7 +4807,7 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
-            uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, rhs.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
+            uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, loaded.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
             else
@@ -4920,7 +4947,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 if (!varResolved->builtin)
                 {
                     bool isLinkDefined = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
-                    type = GenerateTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, varResolved->accessBits, varResolved->usageBits, varResolved->storage);
+                    SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(var->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
+                    type = GeneratePointerTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, storage);
                     if (generator->accessChain.empty())
                     {
                         const SymbolAssignment& sym = generator->GetSymbol(symbolExpression->symbol);
@@ -4930,11 +4958,10 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                         res.isSpecialization = isLinkDefined;
                         res.scope = type.scope;
                         res.parentTypes = type.parentTypes;
-                        res.storage = varResolved->storage;
                     }
                     else
                     {
-                        Type* ty = generator->accessChain.back();
+                        auto [ty, accessStorage] = generator->accessChain.back();
                         for (size_t i = 0; i < ty->symbols.size(); i++)
                         {
                             if (ty->symbols[i]->name == symbolExpression->symbol)
@@ -4944,12 +4971,8 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                                 SPIRVResult index = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(i));
 
                                 // If part of an access chain, generate a pointer version of the type
-                                Type::FullType ptrType = varRes->type;
-                                ptrType.AddModifier(Type::FullType::Modifier::Pointer);
-                                SPIRVResult type = GenerateTypeSPIRV(compiler, generator, ptrType, varRes->typeSymbol);
-                                
-                                res = SPIRVResult::Invalid();
-                                res.typeName = type.typeName;
+                                res = GeneratePointerTypeSPIRV(compiler, generator, varRes->type, varRes->typeSymbol, accessStorage);
+                                res.scope = accessStorage;
                                 res.AddAccessChainLink({index});
                                 break;
                             }
@@ -6097,9 +6120,9 @@ SPIRVGenerator::AddVariableDeclaration(Symbol* sym, const std::string& name, uin
 /**
 */
 void
-SPIRVGenerator::PushAccessChain(Type* chain)
+SPIRVGenerator::PushAccessChain(Type* chain, SPIRVResult::Storage scope)
 {
-    this->accessChain.push_back(chain);
+    this->accessChain.push_back(std::make_tuple(chain, scope));
 }
 
 //------------------------------------------------------------------------------

@@ -60,8 +60,9 @@ struct SPIRVResult
         } type;
     } literalValue;
 
-    enum Storage
+    enum class Storage
     {
+        Invalid,
         Private,
         Device,
         WorkGroup,
@@ -81,7 +82,6 @@ struct SPIRVResult
         CallableData,                           // variable is ray tracing callable data
         CallableDataInput,                      // variable is ray tracing callable data
     } scope;
-    Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default;
 
     static std::string ScopeToString(Storage s)
     {
@@ -230,11 +230,11 @@ public:
     std::vector<Scope> scopeStack;
 
     /// Push a type to the stack
-    void PushAccessChain(Type* chain);
+    void PushAccessChain(Type* chain, SPIRVResult::Storage scope = SPIRVResult::Storage::Function);
     /// Pop a type from the stack
     void PopAccessChain();
     
-    std::vector<Type*> accessChain;
+    std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
     
     std::vector<std::string> capabilities;
     /// Push a new scope on the stack
