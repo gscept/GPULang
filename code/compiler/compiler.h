@@ -212,15 +212,28 @@ struct Compiler
         
         union SideEffects
         {
+            enum class Masks
+            {
+                EXPORT_VERTEX_POSITION_BIT = 1 << 0,
+                SET_OUTPUT_LAYER_BIT = 1 << 1,
+                SET_VIEWPORT_BIT = 1 << 2,
+                EXPORT_VERTEX_BIT = 1 << 3,
+                EXPORT_PRIMITIVE_BIT = 1 << 4,
+                EXPORT_PIXEL_BIT = 1 << 5,
+                EXPORT_DEPTH_BIT = 1 << 6,
+                KILL_PIXEL_BIT = 1 << 7,
+                STOP_RAY_BIT = 1 << 8,
+                IGNORE_RAY_BIT = 1 << 9,
+            };
             struct
             {
                 uint32_t exportsVertexPosition : 1;
+                uint32_t setsOutputLayer : 1;
+                uint32_t setsViewport : 1;
                 uint32_t exportsVertex : 1;
                 uint32_t exportsPrimitive : 1;
                 uint32_t exportsPixel : 1;
                 uint32_t exportsExplicitDepth : 1;
-                uint32_t setsOutputLayer : 1;
-                uint32_t setsViewport : 1;
                 uint32_t killsPixel : 1;
                 uint32_t stopsRay : 1;
                 uint32_t ignoresRay : 1;

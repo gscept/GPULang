@@ -21,44 +21,32 @@ StorageToString(Storage storage)
         case Storage::Default:
         case Storage::Global:
             return ""; // Global and default storage means there is no special linkage
-            break;
         case Storage::Uniform:
             return "uniform";
-            break;
         case Storage::Workgroup:
             return "workgroup";
-            break;
         case Storage::Device:
             return "device";
-            break;
         case Storage::InlineUniform:
             return "inline_uniform";
-            break;
         case Storage::Input:
             return "in";
-            break;
         case Storage::Output:
             return "out";
-            break;
         case Storage::LinkDefined:
             return "link_defined";
-            break;
         case Storage::RayPayload:
             return "ray_payload";
-            break;
         case Storage::RayPayloadInput:
             return "in ray_payload";
-            break;
         case Storage::RayHitAttribute:
             return "ray_hit_attributes";
-            break;
         case Storage::CallableData:
             return "ray_callable_data";
-            break;
         case Storage::CallableDataInput:
             return "in ray_callable_data";
-            break;
     }
+    return "";
 }
 
 //------------------------------------------------------------------------------
@@ -67,18 +55,44 @@ StorageToString(Storage storage)
 bool
 IsStorageCompatible(Storage lhs, Storage rhs)
 {
-    if (lhs == Storage::Default || lhs == Storage::Global)
+    if (rhs == Storage::Default || rhs == Storage::Global)
     {
-        if (rhs == Storage::Default || rhs == Storage::Global)
-        {
+        if (lhs == Storage::Default || lhs == Storage::Global || lhs == Storage::Input || lhs == Storage::Output)
             return true;
-        }
         return false;
     }
     else
     {
         return lhs == rhs;
     }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+StorageRequiresSignature(Storage storage)
+{
+    switch (storage)
+    {
+        case Storage::Default:
+        case Storage::InlineUniform:
+        case Storage::Input:
+        case Storage::Output:
+        case Storage::LinkDefined:
+        case Storage::Global:
+            return false;
+        case Storage::Uniform:
+        case Storage::Workgroup:
+        case Storage::Device:
+        case Storage::RayPayload:
+        case Storage::RayPayloadInput:
+        case Storage::RayHitAttribute:
+        case Storage::CallableData:
+        case Storage::CallableDataInput:
+            return true;
+    }
+    return false;
 }
 
 //------------------------------------------------------------------------------

@@ -43,6 +43,8 @@ enum class Storage
 std::string StorageToString(Storage storage);
 /// Check if storage is compatible
 bool IsStorageCompatible(Storage lhs, Storage rhs);
+/// Returns true if storage type needs explicit call signature
+bool StorageRequiresSignature(Storage storage);
 
 struct Compiler;
 struct Expression : public Symbol

@@ -788,7 +788,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         // add comma if not first argument
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        if (varResolved->storage != Storage::Default && varResolved->storage != Storage::Global)
+        if (StorageRequiresSignature(varResolved->storage))
             paramList.append(Format("%s %s", StorageToString(varResolved->storage).c_str(), varResolved->type.ToString().c_str()));
         else
             paramList.append(varResolved->type.ToString());
@@ -1168,7 +1168,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 {
                     if (!compiler->currentState.sideEffects.flags.exportsVertexPosition)
                     {
-                        compiler->Error(Format("Vertex shader must call gplExportVertexCoordinates"), assignEntry);
+                        compiler->Error(Format("Vertex shader must call vertexExportCoordinates"), assignEntry);
                         return false;
                     }
                 }
@@ -1176,7 +1176,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 {
                     if (!compiler->currentState.sideEffects.flags.exportsPixel)
                     {
-                        compiler->Warning(Format("Pixel shader doesn't call gplExportColor"), assignEntry);
+                        compiler->Warning(Format("Pixel shader doesn't call pixelExportColor"), assignEntry);
                     }
                     if (compiler->currentState.sideEffects.flags.exportsExplicitDepth && funResolved->executionModifiers.earlyDepth)
                     {
@@ -2629,6 +2629,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 return ret;
             }
             compiler->MarkScopeUnreachable();
+            return true;
         }
         case Symbol::ScopeStatementType:
         {
@@ -3332,47 +3333,47 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto callExpr = static_cast<CallExpression*>(symbol);
             auto callResolved = Symbol::Resolved(callExpr);
 
-            static const std::unordered_map<std::string, std::vector<Program::__Resolved::ProgramEntryType>> allowedBuiltins =
+            static const std::unordered_map<std::string, std::pair<std::vector<Program::__Resolved::ProgramEntryType>, Compiler::State::SideEffects::Masks>> allowedBuiltins =
             {
-                { "vertexExportCoordinates", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "geometryExportVertex", { Program::__Resolved::ProgramEntryType::GeometryShader }}
-                , { "geometryExportPrimitive", { Program::__Resolved::ProgramEntryType::GeometryShader }}
-                , { "computeGetLocalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
-                , { "computeGetGlobalInvocationIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
-                , { "computeGetWorkGroupIndex", { Program::__Resolved::ProgramEntryType::ComputeShader }}
-                , { "computeGetWorkGroupDimensions", { Program::__Resolved::ProgramEntryType::ComputeShader }}
-                , { "vertexSetOutputLayer", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "vertexSetOutputViewport", { Program::__Resolved::ProgramEntryType::VertexShader }}
-                , { "pixelExportColor", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "pixelGetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "pixelSetDepth", { Program::__Resolved::ProgramEntryType::PixelShader }}
-                , { "rayTrace", { Program::__Resolved::ProgramEntryType::RayGenerationShader }}
-                , { "rayExportIntersection", { Program::__Resolved::ProgramEntryType::RayIntersectionShader }}
-                , { "rayExecuteCallable", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }}
-                , { "rayGetLaunchIndex", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetLaunchSize", { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "BLASGetPrimitiveIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "BLASGetGeometryIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "TLASGetInstanceIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "TLASGetInstanceCustomIndex", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetWorldOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetWorldDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetObjectOrigin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetObjectDirection", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetMin", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetMax", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetFlags", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "rayGetHitDistance", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
-                , { "rayGetHitKind", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }}
-                , { "TLASGetObjectToWorld", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
-                , { "TLASGetWorldToObject", { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }}
+                { "vertexExportCoordinates", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
+                , { "geometryExportVertex", { { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
+                , { "geometryExportPrimitive", { { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
+                , { "computeGetLocalInvocationIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetGlobalInvocationIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetWorkGroupIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetWorkGroupDimensions", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "vertexSetOutputLayer", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
+                , { "vertexSetOutputViewport", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
+                , { "pixelExportColor", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
+                , { "pixelGetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
+                , { "pixelSetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
+                , { "rayTrace", { { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayExportIntersection", { { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayExecuteCallable", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetLaunchIndex", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetLaunchSize", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "blasGetPrimitiveIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "blasGetGeometryIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetInstanceIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetInstanceCustomIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetWorldOrigin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetWorldDirection", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetObjectOrigin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetObjectDirection", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetMin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetMax", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetFlags", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetHitDistance", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetHitKind", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetObjectToWorld", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetWorldToObject", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
             };
 
             const auto it = allowedBuiltins.find(callResolved->functionSymbol);
             if (it != allowedBuiltins.end())
             {
                 bool allowedInShader = false;
-                for (auto shaderType : it->second)
+                for (auto shaderType : std::get<0>(it->second))
                 {
                     if (shaderType == compiler->currentState.shaderType)
                     {
@@ -3386,7 +3387,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("%s can not be called from a %s", it->first.c_str(), shaderString.c_str()), callExpr);
                     return false;
                 }
+                compiler->currentState.sideEffects.bits |= (uint32_t)std::get<1>(it->second);
             }
+            
             
             for (auto& arg : callExpr->args)
                 res |= this->ResolveVisibility(compiler, arg);

@@ -64,7 +64,7 @@ CallExpression::Resolve(Compiler* compiler)
         this->thisResolved->argStorages.push_back(storage);
         this->thisResolved->argumentTypes.push_back(fullType);
         this->thisResolved->argTypes.push_back(type);
-        if (storage != Storage::Default && storage != Storage::Global)
+        if (StorageRequiresSignature(storage))
             argList.append(Format("%s %s", StorageToString(storage).c_str(), fullType.ToString().c_str()));
         else
             argList.append(fullType.ToString());
@@ -109,7 +109,7 @@ CallExpression::Resolve(Compiler* compiler)
                             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                             // There is no help if storage doesn't align
-                            if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
+                            if (!IsStorageCompatible(this->thisResolved->argStorages[i], paramResolved->storage))
                                 continue;
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
@@ -158,7 +158,7 @@ CallExpression::Resolve(Compiler* compiler)
                         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                         // There is no help if storage doesn't align
-                        if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
+                        if (!IsStorageCompatible(this->thisResolved->argStorages[i], paramResolved->storage))
                             continue;
                         
                         if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
