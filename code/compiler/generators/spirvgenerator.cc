@@ -3595,8 +3595,10 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
-                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
-                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, args[1].name, loaded.name, args[3].name));
+                    SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+                    SPIRVResult loadedValue = LoadValueSPIRV(c, g, args[2]);
+                    SPIRVResult loadedMip = LoadValueSPIRV(c, g, args[3]);
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d Lod %%%d", dereffed, loadedCoord.name, loadedValue.name, loadedMip.name));
                 }
                 else
                 {
@@ -3612,8 +3614,9 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
-                    SPIRVResult loaded = LoadValueSPIRV(c, g, args[2]);
-                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, args[1].name, loaded.name));
+                    SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+                    SPIRVResult loadedValue = LoadValueSPIRV(c, g, args[2]);
+                    g->AddOp(Format("OpImageWrite %%%d %%%d %%%d", dereffed, loadedCoord.name, loadedValue.name));
                 }
             }
             else
@@ -3632,7 +3635,9 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
-                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d Lod %%%d", returnType, dereffed, args[1].name, args[2].name));
+                    SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+                    SPIRVResult loadedMip = LoadValueSPIRV(c, g, args[2]);
+                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d Lod %%%d", returnType, dereffed, loadedCoord.name, loadedMip.name));
                     res.isValue = true;
                 }
                 else
@@ -3649,7 +3654,8 @@ SPIRVGenerator::SetupIntrinsics()
                     {
                         dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
-                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d", returnType, dereffed, args[1].name));
+                    SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+                    ret = g->AddMappedOp(Format("OpImageRead %%%d %%%d %%%d", returnType, dereffed, loadedCoord.name));
                     res.isValue = true;
                 }
             }
