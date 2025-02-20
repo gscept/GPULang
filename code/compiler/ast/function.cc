@@ -25,23 +25,24 @@ Function::Function()
     this->hasBody = false;
     this->ast = nullptr;
 
-    Function::__Resolved* typeResolved = static_cast<Function::__Resolved*>(this->resolved);
-    typeResolved->isEntryPoint = false;
-    typeResolved->executionModifiers.invocations = Function::__Resolved::INVALID_SIZE;
-    typeResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
-    typeResolved->executionModifiers.windingOrder = Function::__Resolved::InvalidWindingOrder;
-    typeResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
-    typeResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
-    typeResolved->executionModifiers.patchType = Function::__Resolved::InvalidPatchType;
-    typeResolved->executionModifiers.partitionMethod = Function::__Resolved::InvalidPartitionMethod;
-    typeResolved->executionModifiers.pixelOrigin = Function::__Resolved::Upper;
-    typeResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;
-    typeResolved->executionModifiers.computeShaderWorkGroupSize[1] = 1;
-    typeResolved->executionModifiers.computeShaderWorkGroupSize[2] = 1;
-    typeResolved->executionModifiers.groupSize = 64;
-    typeResolved->executionModifiers.groupsPerWorkgroup = 1;
-    typeResolved->executionModifiers.earlyDepth = false;
-    typeResolved->isPrototype = false;
+    Function::__Resolved* thisResolved = static_cast<Function::__Resolved*>(this->resolved);
+    thisResolved->isEntryPoint = false;
+    thisResolved->executionModifiers.invocations = Function::__Resolved::INVALID_SIZE;
+    thisResolved->executionModifiers.maxOutputVertices = Function::__Resolved::INVALID_SIZE;
+    thisResolved->executionModifiers.windingOrder = Function::__Resolved::InvalidWindingOrder;
+    thisResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
+    thisResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::InvalidPrimitiveTopology;
+    thisResolved->executionModifiers.patchType = Function::__Resolved::InvalidPatchType;
+    thisResolved->executionModifiers.partitionMethod = Function::__Resolved::InvalidPartitionMethod;
+    thisResolved->executionModifiers.pixelOrigin = Function::__Resolved::Upper;
+    thisResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;
+    thisResolved->executionModifiers.computeShaderWorkGroupSize[1] = 1;
+    thisResolved->executionModifiers.computeShaderWorkGroupSize[2] = 1;
+    thisResolved->executionModifiers.groupSize = 64;
+    thisResolved->executionModifiers.groupsPerWorkgroup = 1;
+    thisResolved->executionModifiers.earlyDepth = false;
+    thisResolved->isPrototype = false;
+    thisResolved->returnValueStorage = Storage::Default;
 }
 
 //------------------------------------------------------------------------------
@@ -165,6 +166,7 @@ newVar = new Variable();\
 newVar->type = Type::FullType{ tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
+newVar->attributes.push_back("uniform");\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
@@ -172,6 +174,7 @@ newVar = new Variable();\
 newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
+newVar->attributes.push_back("uniform");\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
@@ -180,6 +183,7 @@ newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
 newVar->name = #nm;\
+newVar->attributes.push_back("uniform");\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
@@ -188,6 +192,7 @@ newVar->type = Type::FullType{ #tp };\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
 newVar->name = #nm;\
+newVar->attributes.push_back("uniform");\
 newIntrinsic->parameters.push_back(newVar);
 
 #define __SET_RET_LIT(name)\

@@ -512,6 +512,17 @@ BinaryExpression::EvalAccessFlags(unsigned& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool
+BinaryExpression::EvalStorage(Storage& out) const
+{
+    // Binary operations that return a value has to be on the stack
+    out = Storage::Default;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 BinaryExpression::EvalBool(int lhs, int rhs) const
 {

@@ -30,6 +30,8 @@ struct CallExpression : public Expression
     std::string EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
+    /// evaluates storage
+    bool EvalStorage(Storage& out) const override;
 
     Expression* function;
     std::vector<Expression*> args;
@@ -44,8 +46,10 @@ struct CallExpression : public Expression
 
         std::vector<Type::FullType> argumentTypes;
         std::vector<Type*> argTypes;
+        std::vector<Storage> argStorages;
         std::vector<Function*> conversions;
     };
+    __Resolved* thisResolved;
 };
 
 } // namespace GPULang

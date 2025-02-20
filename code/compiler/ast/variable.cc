@@ -3,9 +3,6 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "variable.h"
-#include "util.h"
-
-#include <unordered_map>
 namespace GPULang
 {
 

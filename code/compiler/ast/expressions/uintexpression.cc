@@ -121,4 +121,14 @@ UIntExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+UIntExpression::EvalStorage(Storage& out) const
+{
+    out = Storage::Default;
+    return true;
+}
+
 } // namespace GPULang

@@ -84,4 +84,14 @@ StringExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+StringExpression::EvalStorage(Storage& out) const
+{
+    out = Storage::Default;
+    return true;
+}
+
 } // namespace GPULang

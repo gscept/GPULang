@@ -123,4 +123,13 @@ EnumExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+EnumExpression::EvalStorage(Storage& out) const
+{
+    return Expression::EvalStorage(out);
+}
+
 } // namespace GPULang

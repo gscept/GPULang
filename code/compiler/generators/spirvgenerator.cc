@@ -200,24 +200,24 @@ SPIRVResult::Storage
 ResolveSPIRVVariableStorage(
     Type::FullType type
     , Type* typeSymbol
-    , Variable::__Resolved::Storage storage = Variable::__Resolved::Storage::Default
+    , Storage storage = Storage::Default
     , Variable::__Resolved::UsageBits usageBits = Variable::__Resolved::UsageBits(0x0)
     )
 {
     SPIRVResult::Storage scope = SPIRVResult::Storage::Function;
     if (typeSymbol->category == Type::ScalarCategory || typeSymbol->category == Type::VoidCategory)
     {
-        if (storage == Variable::__Resolved::Storage::Input)
+        if (storage == Storage::Input)
             scope = SPIRVResult::Storage::Input;
-        else if (storage == Variable::__Resolved::Storage::Output)
+        else if (storage == Storage::Output)
             scope = SPIRVResult::Storage::Output;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
+        else if (storage == Storage::Workgroup)
             scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::LinkDefined)
+        else if (storage == Storage::LinkDefined)
             scope = SPIRVResult::Storage::UniformConstant;
-        else if (storage == Variable::__Resolved::Storage::Global)
+        else if (storage == Storage::Global)
             scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Device)
+        else if (storage == Storage::Device)
             scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::TextureCategory)
@@ -237,36 +237,36 @@ ResolveSPIRVVariableStorage(
     }
     else if (typeSymbol->category == Type::EnumCategory)
     {
-        if (storage == Variable::__Resolved::Storage::Global)
+        if (storage == Storage::Global)
             scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
+        else if (storage == Storage::Workgroup)
             scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::Device)
+        else if (storage == Storage::Device)
             scope = SPIRVResult::Storage::Device;
     }
     else if (typeSymbol->category == Type::UserTypeCategory)
     {
         if (type.IsMutable() || usageBits.flags.isDynamicSizedArray)
             scope = SPIRVResult::Storage::StorageBuffer;
-        else if (storage == Variable::__Resolved::Storage::Uniform)
+        else if (storage == Storage::Uniform)
             scope = SPIRVResult::Storage::Uniform;
-        else if (storage == Variable::__Resolved::Storage::InlineUniform)
+        else if (storage == Storage::InlineUniform)
             scope = SPIRVResult::Storage::PushConstant;
-        else if (storage == Variable::__Resolved::Storage::Global)
+        else if (storage == Storage::Global)
             scope = SPIRVResult::Storage::Private;
-        else if (storage == Variable::__Resolved::Storage::Workgroup)
+        else if (storage == Storage::Workgroup)
             scope = SPIRVResult::Storage::WorkGroup;
-        else if (storage == Variable::__Resolved::Storage::Device)
+        else if (storage == Storage::Device)
             scope = SPIRVResult::Storage::Device;
-        else if (storage == Variable::__Resolved::Storage::RayPayload)
+        else if (storage == Storage::RayPayload)
             scope = SPIRVResult::Storage::RayPayload;
-        else if (storage == Variable::__Resolved::Storage::RayPayloadInput)
+        else if (storage == Storage::RayPayloadInput)
             scope = SPIRVResult::Storage::RayPayloadInput;
-        else if (storage == Variable::__Resolved::Storage::RayHitAttribute)
+        else if (storage == Storage::RayHitAttribute)
             scope = SPIRVResult::Storage::RayHitAttribute;
-        else if (storage == Variable::__Resolved::Storage::CallableData)
+        else if (storage == Storage::CallableData)
             scope = SPIRVResult::Storage::CallableData;
-        else if (storage == Variable::__Resolved::Storage::CallableDataInput)
+        else if (storage == Storage::CallableDataInput)
             scope = SPIRVResult::Storage::CallableDataInput;
     }
     return scope;
@@ -799,7 +799,7 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(Compiler*, SPIRVGe
         if (value.isLiteral)
         {
             assert(vectorSize == 1);
-            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::Bool(value.literalValue.i));
+            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(value.literalValue.i));
         }
         else
         {
@@ -3901,7 +3901,8 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         }
         else
         {
-            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(paramResolved->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol, storage);
             typeArgs.append(Format("%%%d ", typeName.typeName));
         }
     }
@@ -3917,7 +3918,8 @@ GenerateFunctionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         for (auto& param : func->parameters)
         {
             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol);
+            SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(paramResolved->type, paramResolved->typeSymbol, paramResolved->storage, paramResolved->usageBits);
+            SPIRVResult varType = GenerateTypeSPIRV(compiler, generator, paramResolved->type, paramResolved->typeSymbol, storage);
 
             // If value is not a pointer, generate a copy of the value inside the function
             if (!paramResolved->type.IsPointer())
@@ -4032,7 +4034,7 @@ GenerateSamplerSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* symb
 
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
     Type::FullType fullType = Type::FullType{ "sampler" };
-    SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Variable::__Resolved::Storage::Uniform);
+    SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Storage::Uniform);
     SPIRVResult samplerType = GeneratePointerTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol, scope);
 
     // Generate inline sampler
@@ -4140,7 +4142,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
     if (initializerExpression != nullptr)
     {
         // Setup initializer
-        generator->linkDefineEvaluation = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
+        generator->linkDefineEvaluation = varResolved->storage == Storage::LinkDefined;
         generator->linkDefineSlot = varResolved->binding;
         initializer = GenerateExpressionSPIRV(compiler, generator, initializerExpression);
 
@@ -4158,7 +4160,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         generator->linkDefineSlot = UINT32_MAX;
     }
 
-    if (varResolved->storage != Variable::__Resolved::Storage::LinkDefined)
+    if (varResolved->storage != Storage::LinkDefined)
     {
         uint32_t typePtrName = typeName.typeName;
         // If anything but void, then the type has to be a pointer
@@ -4946,7 +4948,7 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                 SPIRVResult res = SPIRVResult::Invalid();
                 if (!varResolved->builtin)
                 {
-                    bool isLinkDefined = varResolved->storage == Variable::__Resolved::Storage::LinkDefined;
+                    bool isLinkDefined = varResolved->storage == Storage::LinkDefined;
                     SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(var->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
                     type = GeneratePointerTypeSPIRV(compiler, generator, symResolved->fullType, symResolved->type, storage);
                     if (generator->accessChain.empty())

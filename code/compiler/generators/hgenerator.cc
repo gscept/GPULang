@@ -212,7 +212,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
 
     if (evaluateLinkDefinedVariables)
     {
-        if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+        if (varResolved->storage == Storage::LinkDefined)
         {
             std::string typeStr;
             auto headerType = typeToHeaderType.find(var->type.name);
@@ -297,7 +297,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 writer.Write(Format("%s %s%s;", type.c_str(), var->name.c_str(), arrayType.c_str()));
             }
         }
-        else if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+        else if (varResolved->storage == Storage::Uniform)
         {
             if (varResolved->typeSymbol->category == Type::Category::UserTypeCategory
                 || varResolved->typeSymbol->category == Type::Category::TextureCategory
@@ -319,7 +319,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 
             }
         }
-        else if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+        else if (varResolved->storage == Storage::LinkDefined)
         {
             writer.WriteLine(Format("struct %s", varResolved->name.c_str()));
             writer.WriteLine("{");
@@ -329,7 +329,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             writer.Unindent();
             writer.WriteLine("};\n");
         }
-        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Variable::__Resolved::Storage::Default)
+        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Default)
         {
             std::string arraySize = "";
             for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
@@ -447,7 +447,7 @@ HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symb
             for (Variable* arg : fun->parameters)
             {
                 Variable::__Resolved* argRes = Symbol::Resolved(arg);
-                if (argRes->usageBits.flags.isEntryPointParameter && argRes->storage == Variable::__Resolved::Storage::Input)
+                if (argRes->usageBits.flags.isEntryPointParameter && argRes->storage == Storage::Input)
                 {
                     writer.WriteLine(Format("static const unsigned int %s_BINDING = %d;", argRes->name.c_str(), argRes->inBinding));
                     writer.WriteLine(Format("static const unsigned int %s_OFFSET = %d;", argRes->name.c_str(), offset));

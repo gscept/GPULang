@@ -4,7 +4,7 @@
 //------------------------------------------------------------------------------
 #include "programtype.h"
 
-#define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; this->staticSymbols.push_back(&val);
+#define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isProgramMember = true; this->staticSymbols.push_back(&val);
 
 namespace GPULang
 {

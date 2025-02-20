@@ -40,7 +40,9 @@ public:
     std::string EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
-
+	/// evaluates storage
+	bool EvalStorage(Storage& out) const override;
+	
 	/// helper functions for compile time bool evaluations
 	bool EvalBool(int lhs, int rhs) const;
 	bool EvalBool(float lhs, int rhs) const;

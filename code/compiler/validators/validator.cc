@@ -788,7 +788,10 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         // add comma if not first argument
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        paramList.append(varResolved->type.ToString());
+        if (varResolved->storage != Storage::Default && varResolved->storage != Storage::Global)
+            paramList.append(Format("%s %s", StorageToString(varResolved->storage).c_str(), varResolved->type.ToString().c_str()));
+        else
+            paramList.append(varResolved->type.ToString());
 
         if (varResolved->type.sampled)
         {
@@ -1014,7 +1017,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             {
                 Variable* var = static_cast<Variable*>(overrideSymbol);
                 Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                if (varResolved->storage != Variable::__Resolved::Storage::LinkDefined)
+                if (varResolved->storage != Storage::LinkDefined)
                 {
                     compiler->Error("Only variables declared as 'link_defined' can be overriden in program assembly", var);
                     return false;
@@ -1870,46 +1873,46 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else if (attr.name == "link_defined")
         {
-            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            if (varResolved->storage != Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            varResolved->storage = Variable::__Resolved::Storage::LinkDefined;
+            varResolved->storage = Storage::LinkDefined;
             varResolved->binding = compiler->linkDefineCounter++;
         }
         else if (attr.name == "uniform")
         {
-            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            if (varResolved->storage != Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            varResolved->storage = Variable::__Resolved::Storage::Uniform;
+            varResolved->storage = Storage::Uniform;
             varResolved->usageBits.flags.isConst = true & !varResolved->type.IsMutable();
         }
         else if (attr.name == "inline")
         {
-            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            if (varResolved->storage != Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            varResolved->storage = Variable::__Resolved::Storage::InlineUniform;
+            varResolved->storage = Storage::InlineUniform;
             varResolved->usageBits.flags.isConst = true;
         }
         else if (attr.name == "workgroup")
         {
-            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            if (varResolved->storage != Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
             }
-            varResolved->storage = Variable::__Resolved::Storage::Workgroup;
+            varResolved->storage = Storage::Workgroup;
         }
         else if (attr.name == "device")
         {
-            if (varResolved->storage != Variable::__Resolved::Storage::Default)
+            if (varResolved->storage != Storage::Default)
             {
                 compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                 return false;
@@ -1919,7 +1922,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("'device' storage not supported by target '%s'", compiler->target.name.c_str()), symbol);
                 return false;
             }
-            varResolved->storage = Variable::__Resolved::Storage::Device;
+            varResolved->storage = Storage::Device;
         }
         else
         {
@@ -1938,45 +1941,45 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (set_contains(parameterAccessFlags, attr.name))
         {
             if (attr.name == "in")
-                varResolved->storage = Variable::__Resolved::Storage::Input;
+                varResolved->storage = Storage::Input;
             else if (attr.name == "out")
-                varResolved->storage = Variable::__Resolved::Storage::Output;
+                varResolved->storage = Storage::Output;
             else if (attr.name == "ray_payload")
             {
-                if (varResolved->storage == Variable::__Resolved::Storage::Input)
-                    varResolved->storage = Variable::__Resolved::Storage::RayPayloadInput;
+                if (varResolved->storage == Storage::Input)
+                    varResolved->storage = Storage::RayPayloadInput;
                 else
                 {
-                    if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                    if (varResolved->storage != Storage::Default)
                     {
                         compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                         return false;
                     }
-                    varResolved->storage = Variable::__Resolved::Storage::RayPayload;
+                    varResolved->storage = Storage::RayPayload;
                 }
             }
             else if (attr.name == "ray_callable_data")
             {
-                if (varResolved->storage == Variable::__Resolved::Storage::Input)
-                    varResolved->storage = Variable::__Resolved::Storage::CallableDataInput;
+                if (varResolved->storage == Storage::Input)
+                    varResolved->storage = Storage::CallableDataInput;
                 else
                 {
-                    if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                    if (varResolved->storage != Storage::Default)
                     {
                         compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                         return false;
                     }
-                    varResolved->storage = Variable::__Resolved::Storage::CallableData;
+                    varResolved->storage = Storage::CallableData;
                 }
             }
             else if (attr.name == "ray_hit_attribute")
             {
-                if (varResolved->storage != Variable::__Resolved::Storage::Default)
+                if (varResolved->storage != Storage::Default)
                 {
                     compiler->Error(Format("Multiple storage qualifiers are not allowed"), symbol);
                     return false;
                 }
-                varResolved->storage = Variable::__Resolved::Storage::RayHitAttribute;
+                varResolved->storage = Storage::RayHitAttribute;
             }
         }
         else if (set_contains(parameterQualifiers, attr.name))
@@ -1992,7 +1995,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (!varResolved->usageBits.flags.isParameter && !varResolved->usageBits.flags.isStructMember && (varResolved->storage == Variable::__Resolved::Storage::Default || varResolved->storage == Variable::__Resolved::Storage::Global))
+    if (!varResolved->usageBits.flags.isParameter && !varResolved->usageBits.flags.isStructMember && (varResolved->storage == Storage::Default || varResolved->storage == Storage::Global))
     {
         if (varResolved->usageBits.flags.isVar && varResolved->usageBits.flags.isConst)
         {
@@ -2019,7 +2022,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (type->category == Type::UserTypeCategory && varResolved->storage != Variable::__Resolved::Storage::InlineUniform && varResolved->storage != Variable::__Resolved::Storage::Uniform && varResolved->type.IsPointer())
+        if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && varResolved->type.IsPointer())
         {
             compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
             return false;
@@ -2037,7 +2040,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             else if (mod == Type::FullType::Modifier::Pointer)
                 numPointers++;
         }
-        if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+        if (varResolved->storage == Storage::Uniform)
         {
             if (numArrays > 1)
             {
@@ -2054,7 +2057,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             {
                 if (varResolved->type.modifierValues.front() == nullptr)
                 {
-                    if (varResolved->storage != Variable::__Resolved::Storage::Uniform)
+                    if (varResolved->storage != Storage::Uniform)
                     {
                         compiler->Error(Format("Variables of dynamic sized array must be 'uniform'"), symbol);
                         return false;        
@@ -2069,7 +2072,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (varResolved->storage == Variable::__Resolved::Storage::InlineUniform)
+        else if (varResolved->storage == Storage::InlineUniform)
         {
             if (type->category != Type::UserTypeCategory)
             {
@@ -2091,26 +2094,50 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Variable declared as const but is never initialized"), symbol);
                 return false;
             }
-            if (varResolved->storage == Variable::__Resolved::Storage::Default)
-                varResolved->storage = Variable::__Resolved::Storage::Global;
+            if (varResolved->storage == Storage::Default)
+                varResolved->storage = Storage::Global;
         }
     }
-    else
+    else if (varResolved->usageBits.flags.isStructMember)
     {
+        if (varResolved->storage != Storage::Default)
+        {
+            compiler->Error(Format("Storage type not allowed on struct members", type->name.c_str()), symbol);
+            return false;
+        }
+    }
+    else if (varResolved->usageBits.flags.isParameter)
+    {
+        if (varResolved->storage == Storage::Device)
+        {
+            if (!compiler->target.supportsGlobalDeviceStorage)
+            {
+                compiler->Error(Format("Target language %s does not support 'device' storage", compiler->target.name.c_str()), symbol);
+                return false;    
+            }
+        }
+        
+        if (type->category == Type::SamplerCategory || type->category == Type::TextureCategory || type->category == Type::PixelCacheCategory)
+        {
+            if (varResolved->storage != Storage::Uniform)
+            {
+                compiler->Error(Format("Variables of sampler/texture/pixel_cache types must be 'uniform'"), symbol);
+                return false;
+            }
+        }
+    }
+    else // Local variable
+    {
+        // Shouldn't be possible
         if (lastIndirectionModifier == Type::FullType::Modifier::Pointer && !varResolved->usageBits.flags.isParameter)
         {
             compiler->Error(Format("Pointers are only allowed on variables in the global scope", type->name.c_str()), symbol);
             return false;
         }
 
-        if (varResolved->storage == Variable::__Resolved::Storage::Workgroup)
+        if (varResolved->storage != Storage::Default)
         {
-            compiler->Error(Format("Variables with 'workgroup' storage may only be globally declared", type->name.c_str()), symbol);
-            return false;
-        }
-        if (varResolved->storage == Variable::__Resolved::Storage::Device)
-        {
-            compiler->Error(Format("Variables with 'device' storage may only be globally declared", type->name.c_str()), symbol);
+            compiler->Error(Format("Storage type not allowed on local variables", type->name.c_str()), symbol);
             return false;
         }
     }
@@ -2132,12 +2159,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (lastIndirectionModifier != Type::FullType::Modifier::Pointer)
         {
-            if (varResolved->storage == Variable::__Resolved::Storage::Uniform)
+            if (varResolved->storage == Storage::Uniform)
             {
                 compiler->Error(Format("Variable of uniform '%s' type must be pointer", type->name.c_str()), symbol);
                 return false;
             }
-            else if (varResolved->storage == Variable::__Resolved::Storage::InlineUniform)
+            else if (varResolved->storage == Storage::InlineUniform)
             {
                 compiler->Error(Format("Variable of inline '%s' type must be pointer", type->name.c_str()), symbol);
                 return false;
@@ -2145,7 +2172,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+    if (varResolved->storage == Storage::LinkDefined)
     {
         if (varResolved->typeSymbol->columnSize > 1 ||
             (varResolved->typeSymbol->category != Type::Category::ScalarCategory && varResolved->typeSymbol->category != Type::Category::EnumCategory)
@@ -2225,18 +2252,18 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         // if parameter, resolve in and out bindings
         if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
         {
-            if (varResolved->storage == Variable::__Resolved::Storage::Input)
+            if (varResolved->storage == Storage::Input)
                 varResolved->inBinding = this->inParameterIndexCounter++;
-            if (varResolved->storage == Variable::__Resolved::Storage::Output)
+            if (varResolved->storage == Storage::Output)
                 varResolved->outBinding = this->outParameterIndexCounter++;
         }
         else
         {
             varResolved->inBinding = varResolved->binding;
             varResolved->outBinding = varResolved->binding;
-            if (varResolved->storage == Variable::__Resolved::Storage::Input)
+            if (varResolved->storage == Storage::Input)
                 this->inParameterIndexCounter = varResolved->binding + 1;
-            if (varResolved->storage == Variable::__Resolved::Storage::Output)
+            if (varResolved->storage == Storage::Output)
                 this->outParameterIndexCounter = varResolved->binding + 1;
         }
     }
@@ -2249,7 +2276,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             if (compiler->IsScopeGlobal())
             {
-                if (varResolved->storage == Variable::__Resolved::Storage::Uniform && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
+                if (varResolved->storage == Storage::Uniform && lastIndirectionModifier != Type::FullType::Modifier::Pointer)
                 {
                     compiler->Error(Format("Global variable '%s' with storage class 'uniform' must be a pointer", type->name.c_str()), var);
                     return false;
@@ -2261,7 +2288,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         if (cat == Type::Category::TextureCategory
             || cat == Type::Category::SamplerCategory
             || cat == Type::Category::PixelCacheCategory
-            || (cat == Type::Category::UserTypeCategory && varResolved->storage == Variable::__Resolved::Storage::Uniform))
+            || (cat == Type::Category::UserTypeCategory && varResolved->storage == Storage::Uniform))
         {
             if (varResolved->group == Variable::__Resolved::NOT_BOUND)
             {
@@ -2329,7 +2356,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
         }
 
-        if (cat == Type::Category::UserTypeCategory && varResolved->storage == Variable::__Resolved::Storage::Uniform)
+        if (cat == Type::Category::UserTypeCategory && varResolved->storage == Storage::Uniform)
         {
             Structure* currentStructure = static_cast<Structure*>(varResolved->typeSymbol);
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
@@ -2865,9 +2892,9 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
     for (Variable* var : vars)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-        if (varResolved->storage == Variable::__Resolved::Storage::Input && in)
+        if (varResolved->storage == Storage::Input && in)
             ret.push_back(var);
-        else if (varResolved->storage == Variable::__Resolved::Storage::Output && !in)
+        else if (varResolved->storage == Storage::Output && !in)
             ret.push_back(var);
     }
 

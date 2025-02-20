@@ -99,8 +99,16 @@ CommaExpression::EvalString() const
 bool 
 CommaExpression::EvalAccessFlags(unsigned& out) const
 {
-    this->right->EvalAccessFlags(out);
-    return true;
+    return this->right->EvalAccessFlags(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+CommaExpression::EvalStorage(Storage& out) const
+{
+    return this->right->EvalStorage(out);
 }
 
 } // namespace GPULang

@@ -120,4 +120,15 @@ FloatExpression::EvalAccessFlags(unsigned& out) const
     out = AccessFlags::Const;
     return true;
 }
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+FloatExpression::EvalStorage(Storage& out) const
+{
+    out = Storage::Default;
+    return true;
+}
+
 } // namespace GPULang

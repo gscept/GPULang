@@ -119,4 +119,14 @@ ArrayInitializerExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+ArrayInitializerExpression::EvalStorage(Storage& out) const
+{
+    out = Storage::Default;
+    return true;
+}
+
 } // namespace GPULang

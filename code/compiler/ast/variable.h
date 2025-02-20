@@ -11,7 +11,6 @@
 #include "types/type.h"
 #include "shaderusage.h"
 #include <vector>
-#include <unordered_map>
 namespace GPULang
 {
 
@@ -75,30 +74,14 @@ struct Variable : public Symbol
                 uint32_t isDynamicSizedArray : 1;       // variable type is a dynamically sized array
                 uint32_t isEntryPointParameter : 1;
                 uint32_t isStructMember : 1;            // variable is a struct member
+                uint32_t isProgramMember : 1;           // variable is part of a program
                 uint32_t isPadding : 1;
             } flags;
             uint32_t bits;
         };
         UsageBits usageBits = 0x0;
 
-        enum class Storage
-        {
-            Default,                                // default storage, on the stack
-            Uniform,                                // variable is uniform (const) across all threads and provided by the CPU
-            Workgroup,                              // variable is shared by workgroup and can be written/read
-            Device,                                 // variable is visible across all workgroups
-            InlineUniform,                          // variable is uniform but read from command buffer
-            Input,                                  // variable is an input from a previous shader stage
-            Output,                                 // variable is an output from the current shader stage
-            Global,                                 // variable is global in the shader
-            LinkDefined,                            // variable value is defined at link time
-            RayPayload,                             // variable is a ray payload
-            RayPayloadInput,                        // variable is a ray payload input
-            RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
-            CallableData,                           // variable is ray tracing callable data
-            CallableDataInput,                      // variable is ray tracing callable data
-
-        } storage = Storage::Default;
+        Storage storage = Storage::Default;
         std::vector<Variable*> siblings;
 
         /// type here is the fully qualified (pointer and array) type

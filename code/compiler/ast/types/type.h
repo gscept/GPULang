@@ -63,6 +63,7 @@ this->lookup.insert({ #id, activeFunction });
     swizzleMember->type = Type::FullType{#retType};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
     resolved->usageBits.flags.isVar = true;\
+    resolved->usageBits.flags.isStructMember = true;\
     this->swizzleSymbols.push_back(swizzleMember);\
 }
 
@@ -197,7 +198,10 @@ struct Type : public Symbol
         EnumCategory,
         VoidCategory,
         SamplerCategory,
-        AccelerationStructureCategory
+        AccelerationStructureCategory,
+
+        // Special categories
+        RenderStateCategory
     };
 
     static std::string CategoryToString(const Category& cat);

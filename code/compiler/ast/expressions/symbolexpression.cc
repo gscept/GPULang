@@ -280,18 +280,17 @@ bool
 SymbolExpression::EvalAccessFlags(unsigned& out) const
 {
     out = 0x0;
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->symbol)
+    if (this->thisResolved->symbol)
     {
-        switch (thisResolved->symbol->symbolType)
+        switch (this->thisResolved->symbol->symbolType)
         {
             case VariableType:
             {
-                Variable* var = static_cast<Variable*>(thisResolved->symbol);
+                Variable* var = static_cast<Variable*>(this->thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
                 if (varResolved->usageBits.flags.isConst)
                     out |= AccessFlags::Const;
-                if (varResolved->storage == Variable::__Resolved::Storage::LinkDefined)
+                if (varResolved->storage == Storage::LinkDefined)
                     out |= AccessFlags::LinkTime;
                 return true;
             }
@@ -301,9 +300,50 @@ SymbolExpression::EvalAccessFlags(unsigned& out) const
             case IntExpressionType:
             case UIntExpressionType:
             {
-                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
+                Expression* expr = static_cast<Expression*>(this->thisResolved->symbol);
                 return expr->EvalAccessFlags(out);
             }
+            default:
+                break;
+        }
+    }
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalStorage(Storage& out) const
+{
+    out = Storage::Default;
+    if (this->thisResolved->symbol)
+    {
+        switch (this->thisResolved->symbol->symbolType)
+        {
+            case VariableType:
+            {
+                Variable* var = static_cast<Variable*>(this->thisResolved->symbol);
+                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
+                out = varResolved->storage;
+                return true;
+            }
+            case SamplerStateType:
+            {
+                out = Storage::Uniform;
+                return true;
+            }
+            case StringExpressionType:
+            case BoolExpressionType:
+            case FloatExpressionType:
+            case IntExpressionType:
+            case UIntExpressionType:
+            {
+                out = Storage::Default;
+                return true;
+            }
+            default:
+                break;
         }
     }
     return false;

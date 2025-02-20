@@ -1248,9 +1248,9 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
             outCode.append(Format("layout(location=%d) ", varResolved->binding));
         }
 
-        if (varResolved->storage == Variable::__Resolved::Storage::Input)
+        if (varResolved->storage == Storage::Input)
             outCode.append("in ");
-        if (varResolved->storage == Variable::__Resolved::Storage::Output)
+        if (varResolved->storage == Storage::Output)
             outCode.append("out ");
 
         if (varResolved->parameterBits.flags.isNoInterpolate)
@@ -1300,7 +1300,8 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
                 outCode.append("writeonly ");
         }
 
-        if (varResolved->storage == Variable::__Resolved::Storage::Workgroup)
+        if (varResolved->storage == Storage
+::Workgroup)
             outCode.append("shared ");
 
         /*

@@ -274,4 +274,13 @@ UnaryExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+UnaryExpression::EvalStorage(Storage& out) const
+{
+    return this->expr->EvalStorage(out);
+}
+
 } // namespace GPULang

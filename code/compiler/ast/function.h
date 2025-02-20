@@ -43,6 +43,7 @@ struct Function : public Symbol
     struct __Resolved : public Symbol::__Resolved
     {
         Type* returnTypeSymbol;
+        Storage returnValueStorage;
 
         std::string name;
         std::string signature;

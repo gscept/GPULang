@@ -247,4 +247,12 @@ AccessExpression::EvalAccessFlags(unsigned& out) const
     return true;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+AccessExpression::EvalStorage(Storage& out) const
+{
+    return this->right->EvalStorage(out);
+}
 } // namespace GPULang

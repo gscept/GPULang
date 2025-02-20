@@ -18,9 +18,9 @@ CallExpression::CallExpression(Expression* function, const std::vector<Expressio
     , args(args)
 {
     this->resolved = Alloc<CallExpression::__Resolved>();
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->function = nullptr;
-    thisResolved->retType = nullptr;
+    this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved->function = nullptr;
+    this->thisResolved->retType = nullptr;
     this->symbolType = CallExpressionType;
 }
 
@@ -37,12 +37,11 @@ CallExpression::~CallExpression()
 bool 
 CallExpression::Resolve(Compiler* compiler)
 {
-    auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
+    this->thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->function->isLhsValue = true;
 
-    this->function->EvalSymbol(thisResolved->functionSymbol);
+    this->function->EvalSymbol(this->thisResolved->functionSymbol);
 
     std::string argList = "";
     for (Expression* expr : this->args)
@@ -53,19 +52,27 @@ CallExpression::Resolve(Compiler* compiler)
         Type::FullType fullType;
         expr->EvalType(fullType);
 
+        Storage storage;
+        expr->EvalStorage(storage);
+
         Type* type = compiler->GetType(fullType);
         if (type == nullptr)
         {
             compiler->UnrecognizedTypeError(fullType.ToString(), this);
             return false;
         }
-        thisResolved->argumentTypes.push_back(fullType);
-        thisResolved->argTypes.push_back(type);
-        argList.append(fullType.ToString());
+        this->thisResolved->argStorages.push_back(storage);
+        this->thisResolved->argumentTypes.push_back(fullType);
+        this->thisResolved->argTypes.push_back(type);
+        if (storage != Storage::Default && storage != Storage::Global)
+            argList.append(Format("%s %s", StorageToString(storage).c_str(), fullType.ToString().c_str()));
+        else
+            argList.append(fullType.ToString());
+        
         if (expr != this->args.back())
             argList.append(",");
     }
-    std::string callSignature = Format("%s(%s)", thisResolved->functionSymbol.c_str(), argList.c_str());
+    std::string callSignature = Format("%s(%s)", this->thisResolved->functionSymbol.c_str(), argList.c_str());
     Symbol* symbol = compiler->GetSymbol(callSignature);
 
     struct Candidate
@@ -78,7 +85,7 @@ CallExpression::Resolve(Compiler* compiler)
     if (symbol == nullptr)
     {
         // If the function isn't available, check for any type constructor that might implement it
-        std::vector<Symbol*> functionSymbols = compiler->GetSymbols(thisResolved->functionSymbol.c_str());
+        std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol.c_str());
         std::vector<Candidate> candidates;
         for (auto functionSymbol : functionSymbols)
         {
@@ -93,16 +100,21 @@ CallExpression::Resolve(Compiler* compiler)
                     candidate.simpleConversion = false;
                     candidate.function = ctorFun;
 
-                    if (ctorFun->parameters.size() == thisResolved->argTypes.size())
+                    if (ctorFun->parameters.size() == this->thisResolved->argTypes.size())
                     {
                         uint32_t numMatches = 0;
                         for (size_t i = 0; i < ctorFun->parameters.size(); i++)
                         {
                             Variable* param = ctorFun->parameters[i];
                             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-                            if (param->type != thisResolved->argumentTypes[i])
+
+                            // There is no help if storage doesn't align
+                            if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
+                                continue;
+                            
+                            if (param->type != this->thisResolved->argumentTypes[i])
                             {
-                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), thisResolved->argTypes[i]->name.c_str());
+                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                                 // No conversion available for this member, skip to next constructor
@@ -111,7 +123,7 @@ CallExpression::Resolve(Compiler* compiler)
                                     break;
                                 }
                                 candidate.needsConversion = true;
-                                if (paramResolved->typeSymbol->columnSize == thisResolved->argTypes[i]->columnSize)
+                                if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
                                     candidate.simpleConversion = true;
                                 candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                             }
@@ -137,16 +149,21 @@ CallExpression::Resolve(Compiler* compiler)
                 candidate.needsConversion = false;
                 candidate.simpleConversion = false;
 
-                if (fun->parameters.size() == thisResolved->argTypes.size())
+                if (fun->parameters.size() == this->thisResolved->argTypes.size())
                 {
                     uint32_t numMatches = 0;
                     for (size_t i = 0; i < fun->parameters.size(); i++)
                     {
                         Variable* param = fun->parameters[i];
                         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
-                        if (fun->parameters[i]->type != thisResolved->argumentTypes[i])
+
+                        // There is no help if storage doesn't align
+                        if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
+                            continue;
+                        
+                        if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
                         {
-                            std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), thisResolved->argTypes[i]->name.c_str());
+                            std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor
@@ -155,7 +172,7 @@ CallExpression::Resolve(Compiler* compiler)
                                 break;
                             }
                             candidate.needsConversion = true;
-                            if (paramResolved->typeSymbol->columnSize == thisResolved->argTypes[i]->columnSize)
+                            if (paramResolved->typeSymbol->columnSize == this->thisResolved->argTypes[i]->columnSize)
                                 candidate.simpleConversion = true;
                             candidate.argumentConversionFunctions.push_back(static_cast<Function*>(componentConversionSymbol));
                         }
@@ -190,7 +207,7 @@ CallExpression::Resolve(Compiler* compiler)
                 compiler->Error(Format("No overload exists for %s, maybe you meant:%s", callSignature.c_str(), potentialHints.c_str()), this);
             else
                 compiler->Error(Format("No overload exists for %s", callSignature.c_str()), this);
-            thisResolved->function = nullptr;
+            this->thisResolved->function = nullptr;
             return false;
         }
         else
@@ -200,19 +217,19 @@ CallExpression::Resolve(Compiler* compiler)
             {
                 if (!candidate.needsConversion)
                 {
-                    thisResolved->function = candidate.function;
-                    thisResolved->returnType = thisResolved->function->returnType;
-                    thisResolved->retType = compiler->GetType(thisResolved->returnType);
-                    thisResolved->conversions.clear();
+                    this->thisResolved->function = candidate.function;
+                    this->thisResolved->returnType = this->thisResolved->function->returnType;
+                    this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                    this->thisResolved->conversions.clear();
                     ambiguousCalls.clear();
                     break;
                 }
                 else if (candidate.simpleConversion)
                 {
-                    thisResolved->function = candidate.function;
-                    thisResolved->returnType = thisResolved->function->returnType;
-                    thisResolved->retType = compiler->GetType(thisResolved->returnType);
-                    thisResolved->conversions = candidate.argumentConversionFunctions;
+                    this->thisResolved->function = candidate.function;
+                    this->thisResolved->returnType = this->thisResolved->function->returnType;
+                    this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                    this->thisResolved->conversions = candidate.argumentConversionFunctions;
                     ambiguousCalls.clear();
                     break;
                 }
@@ -245,16 +262,16 @@ CallExpression::Resolve(Compiler* compiler)
                         }
                     }
                     compiler->Error(fmt, this);
-                    thisResolved->function = nullptr;
+                    this->thisResolved->function = nullptr;
                     return false;
                 }
             }
             else if (ambiguousCalls.size() == 1)
             {
-                thisResolved->function = ambiguousCalls[0].function;
-                thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
-                thisResolved->returnType = thisResolved->function->returnType;
-                thisResolved->retType = compiler->GetType(thisResolved->returnType);
+                this->thisResolved->function = ambiguousCalls[0].function;
+                this->thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
+                this->thisResolved->returnType = this->thisResolved->function->returnType;
+                this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
             }
         }
     }
@@ -262,19 +279,19 @@ CallExpression::Resolve(Compiler* compiler)
     {
         if (symbol->symbolType != Symbol::FunctionType)
         {
-            compiler->Error(Format("Unrecognized function '%s' called", thisResolved->functionSymbol.c_str()), this);
+            compiler->Error(Format("Unrecognized function '%s' called", this->thisResolved->functionSymbol.c_str()), this);
         }
-        thisResolved->function = static_cast<Function*>(symbol);
+        this->thisResolved->function = static_cast<Function*>(symbol);
     }
 
-    if (thisResolved->function != nullptr)
+    if (this->thisResolved->function != nullptr)
     {
-        thisResolved->returnType = thisResolved->function->returnType;
-        thisResolved->retType = compiler->GetType(thisResolved->returnType);
+        this->thisResolved->returnType = this->thisResolved->function->returnType;
+        this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
        
         if (thisResolved->retType == nullptr)
         {
-            compiler->UnrecognizedTypeError(thisResolved->returnType.ToString(), this);
+            compiler->UnrecognizedTypeError(this->thisResolved->returnType.ToString(), this);
             return false;
         }
         return true;
@@ -292,8 +309,7 @@ CallExpression::Resolve(Compiler* compiler)
 bool
 CallExpression::EvalType(Type::FullType& out) const
 {
-    auto thisResolved = Symbol::Resolved(this);
-    out = thisResolved->returnType;
+    out = this->thisResolved->returnType;
     return true;
 }
 
@@ -331,6 +347,18 @@ bool
 CallExpression::EvalAccessFlags(unsigned& out) const
 {
     out = 0x0;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+CallExpression::EvalStorage(Storage& out) const
+{
+    // Function calls return values on the stack
+    Function::__Resolved* funResolved = Symbol::Resolved(this->thisResolved->function);
+    out = funResolved->returnValueStorage;
     return true;
 }
 

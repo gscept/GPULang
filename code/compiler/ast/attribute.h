@@ -24,6 +24,12 @@ struct Attribute
         : expression(nullptr)
     {}
 
+    Attribute(const char* name)
+        : name(name)
+        , expression(nullptr)
+    {
+    }
+
     ~Attribute() 
     {
     }

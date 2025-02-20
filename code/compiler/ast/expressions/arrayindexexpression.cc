@@ -204,4 +204,12 @@ ArrayIndexExpression::EvalAccessFlags(unsigned& out) const
     return this->left->EvalAccessFlags(out);
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+ArrayIndexExpression::EvalStorage(Storage& out) const
+{
+    return this->left->EvalStorage(out);
+}
 } // namespace GPULang

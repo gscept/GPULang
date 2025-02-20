@@ -27,7 +27,9 @@ struct TernaryExpression : public Expression
     std::string EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
-
+    /// evaluates storage
+    bool EvalStorage(Storage& out) const override;
+    
     Expression* lhs;
     Expression* ifExpression;
     Expression* elseExpression;
