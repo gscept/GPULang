@@ -75,38 +75,13 @@ BoolExpression::EvalSymbol(std::string& out) const
 /**
 */
 bool
-BoolExpression::EvalInt(int& out) const
+BoolExpression::EvalValue(ValueUnion& out) const
 {
-    out = (int)this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-BoolExpression::EvalUInt(unsigned& out) const
-{
-    out = (unsigned) this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-BoolExpression::EvalFloat(float& out) const
-{
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-BoolExpression::EvalBool(bool& out) const
-{
-    out = this->value;
+    out.code = TypeCode::Bool;
+    out.b[0] = this->value;
+    out.columnSize = 1;
+    out.rowSize = 1;
+    out.valid = true;
     return true;
 }
 

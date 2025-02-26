@@ -408,7 +408,7 @@ void Grow(size_t size)
         size_t oldCapacity = this->capacity;
         char* oldData = this->data;
 
-        this->capacity = growClamped + this->capacity;
+        this->capacity = growBy + this->capacity;
         this->data = new char[this->capacity];
         if (oldCapacity > 0)
             memcpy(this->data, oldData, oldCapacity);

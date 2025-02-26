@@ -36,6 +36,13 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     Type::FullType inner;
 
+    if (this->values.empty())
+    {
+        compiler->Error("Array initializer can't be empty", this);
+        return false;
+    }
+
+    bool isLiteral = true;
     for (Expression* expr : this->values)
     {
         if (!expr->Resolve(compiler))
@@ -43,6 +50,8 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
         
         Type::FullType valueType;
         expr->EvalType(valueType);
+        isLiteral &= valueType.literal;
+
         if (inner.name == "<undefined>")
             inner = valueType;
         else if (valueType != inner)
@@ -63,6 +72,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
 
     // Append array level first
     thisResolved->fullType.name = inner.name;
+    thisResolved->fullType.literal = isLiteral;
     thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
     thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>(this->values.size()));
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());

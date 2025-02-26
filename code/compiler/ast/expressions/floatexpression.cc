@@ -64,42 +64,16 @@ FloatExpression::EvalSymbol(std::string& out) const
 
 //------------------------------------------------------------------------------
 /**
-    Convert this float to an integer
-*/
-bool  
-FloatExpression::EvalInt(int& out) const
-{
-    out = (int)this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
 */
 bool
-FloatExpression::EvalUInt(unsigned& out) const
+FloatExpression::EvalValue(ValueUnion& out) const
 {
-    out = (unsigned)this->value;
+    out.code = TypeCode::Float;
+    out.f[0] = this->value;
+    out.columnSize = 1;
+    out.rowSize = 1;
+    out.valid = true;
     return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-FloatExpression::EvalFloat(float& out) const
-{
-    out = this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-FloatExpression::EvalBool(bool& out) const
-{
-    return false;
 }
 
 //------------------------------------------------------------------------------

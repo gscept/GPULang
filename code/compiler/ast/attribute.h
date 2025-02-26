@@ -56,34 +56,28 @@ Attribute::ToString(std::string& out) const
         out.append(Format("%s", this->name.c_str()));
     else
     {
+        ValueUnion value;
+        this->expression->EvalValue(value);
         switch (this->expression->symbolType)
         {
         case Symbol::FloatExpressionType:
         {
-            float f;
-            ret &= this->expression->EvalFloat(f);
-            out.append(Format("%s(%f)", this->name.c_str(), f));
+            out.append(Format("%s(%f)", this->name.c_str(), value.f[0]));
             break;
         }
         case Symbol::UIntExpressionType:
         {
-            unsigned i;
-            ret &= this->expression->EvalUInt(i);
-            out.append(Format("%s(%d)", this->name.c_str(), i));
+            out.append(Format("%s(%d)", this->name.c_str(), value.ui[0]));
             break;
         }
         case Symbol::IntExpressionType:
         {
-            int i;
-            ret &= this->expression->EvalInt(i);
-            out.append(Format("%s(%d)", this->name.c_str(), i));
+            out.append(Format("%s(%d)", this->name.c_str(), value.i[0]));
             break;
         }
         case Symbol::BoolExpressionType:
         {
-            bool b;
-            ret &= this->expression->EvalBool(b);
-            out.append(Format("%s(%d)", this->name.c_str(), b));
+            out.append(Format("%s(%d)", this->name.c_str(), value.b[0]));
             break;
         }
         case Symbol::StringExpressionType:

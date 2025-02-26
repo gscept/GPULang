@@ -26,6 +26,8 @@ struct CallExpression : public Expression
     bool EvalType(Type::FullType& out) const override;
     /// eval symbol
     bool EvalSymbol(std::string& out) const override;
+    /// Evaluate value
+    bool EvalValue(ValueUnion& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
     /// evaluates access flags

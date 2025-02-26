@@ -75,6 +75,8 @@ fips_dir(ast/expressions)
         binaryexpression.h
         boolexpression.cc
         boolexpression.h
+        boolvecexpression.cc
+        boolvecexpression.h
         callexpression.cc
         callexpression.h
         commaexpression.cc
@@ -85,10 +87,14 @@ fips_dir(ast/expressions)
         expression.h
         floatexpression.cc
         floatexpression.h
+        floatvecexpression.cc
+        floatvecexpression.h
         initializerexpression.cc
         initializerexpression.h
         intexpression.cc
         intexpression.h
+        intvecexpression.cc
+        intvecexpression.h
         stringexpression.cc
         stringexpression.h
         symbolexpression.cc
@@ -97,6 +103,8 @@ fips_dir(ast/expressions)
         ternaryexpression.h
         uintexpression.cc
         uintexpression.h
+        uintvecexpression.cc
+        uintvecexpression.h
         unaryexpression.cc
         unaryexpression.h
     )

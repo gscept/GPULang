@@ -90,17 +90,21 @@ SetupFile(bool updateLine = true)
 #include "ast/expressions/arrayindexexpression.h"
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/boolexpression.h"
+//#include "ast/expressions/boolvecexpression.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/commaexpression.h"
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
+//#include "ast/expressions/floatvecexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
+//#include "ast/expressions/intvecexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/uintexpression.h"
+//#include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 #include "memory.h"
@@ -984,11 +988,14 @@ prefixExpression
     (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = suffixExpression 
     {
         $tree = $e1.tree;
-        $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size(); i++)
+        if ($tree != nullptr)
         {
-            $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
-            $tree->location = locations[i];
+            $tree->location = SetupFile();
+            for (size_t i = 0; i < ops.size(); i++)
+            {
+                $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
+                $tree->location = locations[i];
+            }
         }
     }
     ;
@@ -1080,6 +1087,12 @@ binaryexpatom
     | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = SetupFile(); }
     | IDENTIFIER                    { $tree = Alloc<SymbolExpression>($IDENTIFIER.text); $tree->location = SetupFile(); }
     | boolean                       { $tree = Alloc<BoolExpression>($boolean.val); $tree->location = SetupFile(); }
+    //| floatVecLiteralExpression     { $tree = $floatVecLiteralExpression.tree; }
+    //| doubleVecLiteralExpression    { $tree = $doubleVecLiteralExpression.tree; }
+    //| intVecLiteralExpression       { $tree = $intVecLiteralExpression.tree; }
+    //| uintVecLiteralExpression      { $tree = $uintVecLiteralExpression.tree; }
+    //| booleanVecLiteralExpression   { $tree = $booleanVecLiteralExpression.tree; }    
+    | linePreprocessorEntry
     ;
 
 initializerExpression
@@ -1091,7 +1104,7 @@ initializerExpression
         std::string type = "";
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { exprs.push_back($argN.tree); })* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); })* )? '}'
     {
         $tree = Alloc<InitializerExpression>(exprs, type);
         $tree->location = location;
@@ -1106,13 +1119,87 @@ arrayInitializerExpression
         std::vector<Expression*> exprs;
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { exprs.push_back($argN.tree); })* )? ']'
+    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); })* )? ']'
     {
         $tree = Alloc<ArrayInitializerExpression>(exprs);
         $tree->location = location;
     }
     ;
    
+//floatVecLiteralExpression
+//    returns[ Expression* tree ]
+//    @init
+//    {
+//        $tree = nullptr;
+//        std::vector<float> values;
+//        Symbol::Location location;
+//    }:
+//    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+//    {
+//        $tree = Alloc<FloatVecExpression>(values);
+//        $tree->location = location;
+//    }
+//    ;
+//    
+//doubleVecLiteralExpression
+//    returns[ Expression* tree ]
+//    @init
+//    {
+//        $tree = nullptr;
+//        std::vector<float> values;
+//        Symbol::Location location;
+//    }:
+//    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+//    {
+//        $tree = Alloc<FloatVecExpression>(values);
+//        $tree->location = location;
+//    }
+//    ;
+//    
+//intVecLiteralExpression
+//    returns[ Expression* tree ]
+//    @init
+//    {
+//        $tree = nullptr;
+//        std::vector<int> values;
+//        Symbol::Location location;
+//    }:
+//    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+//    {
+//        $tree = Alloc<IntVecExpression>(values);
+//        $tree->location = location;
+//    }
+//    ;
+//    
+//uintVecLiteralExpression
+//    returns[ Expression* tree ]
+//    @init
+//    {
+//        $tree = nullptr;
+//        std::vector<unsigned int> values;
+//        Symbol::Location location;
+//    }:
+//    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+//    {
+//        $tree = Alloc<UIntVecExpression>(values);
+//        $tree->location = location;
+//    }
+//    ;
+//    
+//booleanVecLiteralExpression
+//    returns[ Expression* tree ]
+//    @init
+//    {
+//        $tree = nullptr;
+//        std::vector<bool> values;
+//        Symbol::Location location;
+//    }:
+//    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
+//    {
+//        $tree = Alloc<BoolVecExpression>(values);
+//        $tree->location = location;
+//    }
+//    ;    
 
 SC: ';';
 CO: ',';
@@ -1179,6 +1266,7 @@ DOUBLELITERAL:
     INTEGER+ DOT INTEGER* EXPONENT?
     | DOT INTEGER+ EXPONENT?
     | INTEGER+ EXPONENT;
+    
 
 HEX: '0' 'x' ('0' ..'9' | 'a' ..'f' | 'A' .. 'F')* ('u' | 'U')?;
 

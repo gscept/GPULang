@@ -23,6 +23,7 @@ Function::Function()
     this->symbolType = FunctionType;
     this->resolved = Alloc<Function::__Resolved>();
     this->hasBody = false;
+    this->compileTime = false;
     this->ast = nullptr;
 
     Function::__Resolved* thisResolved = static_cast<Function::__Resolved*>(this->resolved);
@@ -35,6 +36,7 @@ Function::Function()
     thisResolved->executionModifiers.patchType = Function::__Resolved::InvalidPatchType;
     thisResolved->executionModifiers.partitionMethod = Function::__Resolved::InvalidPartitionMethod;
     thisResolved->executionModifiers.pixelOrigin = Function::__Resolved::Upper;
+    thisResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::NoDerivatives;
     thisResolved->executionModifiers.computeShaderWorkGroupSize[0] = 1;
     thisResolved->executionModifiers.computeShaderWorkGroupSize[1] = 1;
     thisResolved->executionModifiers.computeShaderWorkGroupSize[2] = 1;
@@ -605,10 +607,10 @@ FLOAT_LIST
     __MAKE_BUILTIN(computeGetGlobalInvocationIndex, GetGlobalInvocationIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(computeGetWorkGroupIndex, GetWorkGroupIndex);
+    __MAKE_BUILTIN(computeGetWorkgroupIndex, GetWorkGroupIndex);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(computeGetWorkGroupDimensions, GetWorkGroupDimensions);
+    __MAKE_BUILTIN(computeGetWorkgroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);
 
     //------------------------------------------------------------------------------

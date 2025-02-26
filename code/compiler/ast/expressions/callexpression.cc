@@ -43,6 +43,7 @@ CallExpression::Resolve(Compiler* compiler)
 
     this->function->EvalSymbol(this->thisResolved->functionSymbol);
 
+    bool argumentsLiteral = true;
     std::string argList = "";
     for (Expression* expr : this->args)
     {
@@ -61,6 +62,7 @@ CallExpression::Resolve(Compiler* compiler)
             compiler->UnrecognizedTypeError(fullType.ToString(), this);
             return false;
         }
+        argumentsLiteral &= fullType.literal;
         this->thisResolved->argStorages.push_back(storage);
         this->thisResolved->argumentTypes.push_back(fullType);
         this->thisResolved->argTypes.push_back(type);
@@ -68,7 +70,7 @@ CallExpression::Resolve(Compiler* compiler)
             argList.append(Format("%s %s", StorageToString(storage).c_str(), fullType.ToString().c_str()));
         else
             argList.append(fullType.ToString());
-        
+
         if (expr != this->args.back())
             argList.append(",");
     }
@@ -220,7 +222,7 @@ CallExpression::Resolve(Compiler* compiler)
                     this->thisResolved->function = candidate.function;
                     this->thisResolved->returnType = this->thisResolved->function->returnType;
                     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
-                    this->thisResolved->conversions.clear();
+                    std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
                     ambiguousCalls.clear();
                     break;
                 }
@@ -282,11 +284,30 @@ CallExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Unrecognized function '%s' called", this->thisResolved->functionSymbol.c_str()), this);
         }
         this->thisResolved->function = static_cast<Function*>(symbol);
+        this->thisResolved->conversions.resize(this->thisResolved->argTypes.size());
+        std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
     }
 
     if (this->thisResolved->function != nullptr)
     {
+        size_t i = 0;
+        for (; i < this->thisResolved->function->parameters.size(); i++)
+        {
+            Variable* var = thisResolved->function->parameters[i];
+            Variable::__Resolved* varRes = Symbol::Resolved(var);
+            Type::FullType argType = this->thisResolved->argumentTypes[i];
+            if (varRes->type.literal && !argType.literal)
+            {
+                compiler->Error(Format("Function %s expects argument %s to be literal", this->thisResolved->function->name.c_str(), var->name.c_str()), this);;
+                return false;
+            }
+        }
         this->thisResolved->returnType = this->thisResolved->function->returnType;
+
+        // If all arguments are compile time and the function is compile time, then the return type can safely be assumed to be literal
+        if (argumentsLiteral && thisResolved->function->compileTime)
+            this->thisResolved->returnType.literal = true;
+        
         this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
        
         if (thisResolved->retType == nullptr)
@@ -320,6 +341,42 @@ bool
 CallExpression::EvalSymbol(std::string& out) const
 {
     return this->function->EvalSymbol(out);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+CallExpression::EvalValue(ValueUnion& out) const
+{
+    int index = 0;
+    out.SetType(this->thisResolved->retType);
+    bool valid = true;
+    for (Expression* expr : this->args)
+    {
+        ValueUnion value;
+        valid &= expr->EvalValue(value);
+        if (!valid)
+            break;
+        
+        value.Convert(out.code);
+
+        // If evaluated value is just one, but our call returns multiple, assume a splat takes place
+        if (value.columnSize == 1 && value.rowSize == 1)
+        {
+            for (int i = 0; i < out.columnSize; i++)
+            {
+                for (int j = 0; j < out.rowSize; j++)
+                {
+                    out.Assign(value, 0, i * out.rowSize + j);
+                }
+            }
+        }
+        for (uint32_t i = 0; i < value.columnSize; i++)
+            out.Assign(value, i, index++);
+    }
+    out.valid = valid;
+    return valid;
 }
 
 //------------------------------------------------------------------------------

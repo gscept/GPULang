@@ -36,17 +36,21 @@
 #include "ast/expressions/arrayindexexpression.h"
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/boolexpression.h"
+//#include "ast/expressions/boolvecexpression.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/commaexpression.h"
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
+//#include "ast/expressions/floatvecexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
+//#include "ast/expressions/intvecexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/uintexpression.h"
+//#include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 #include "memory.h"
@@ -1252,6 +1256,7 @@ public:
     StringContext *string();
     antlr4::tree::TerminalNode *IDENTIFIER();
     BooleanContext *boolean();
+    LinePreprocessorEntryContext *linePreprocessorEntry();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

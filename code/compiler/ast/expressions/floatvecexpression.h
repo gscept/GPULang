@@ -1,31 +1,23 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class GPULang::UnaryExpression
+    @class GPULang::FloatVecExpression
     
-    A unary expression is a one-sided expression.
-
-    Either
-
-    < op expression >
+    A simple expression which holds a floating point value.
     
-    Or
-
-    < expression op >
-    
-    (C) 2021 Gustav Sterbrant
+    (C) 2013 Gustav Sterbrant
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
 namespace GPULang
 {
-struct UnaryExpression : public Expression
+struct FloatVecExpression : public Expression
 {
 public:
-    /// constructor
-    UnaryExpression(uint32_t op, bool isPrefix, Expression* expr);
-    /// destructor
-    virtual ~UnaryExpression();
+	/// constructor
+	FloatVecExpression(const std::vector<float>& values);
+	/// destructor
+	virtual ~FloatVecExpression();
 
     /// Resolve
     bool Resolve(Compiler* compiler) override;
@@ -34,23 +26,21 @@ public:
     bool EvalType(Type::FullType& out) const override;
     /// eval symbol
     bool EvalSymbol(std::string& out) const override;
-    /// Evaluate value
-    bool EvalValue(ValueUnion& out) const override;
+	/// Evaluate value
+	bool EvalValue(ValueUnion& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
-    /// evaluates storage
-    bool EvalStorage(Storage& out) const override;
-    
-    uint32_t op;
-    bool isPrefix;
-    Expression* expr;
+	/// evaluates storage
+	bool EvalStorage(Storage& out) const override;
+	
+	std::vector<float> values;
+
 
     struct __Resolved : public Expression::__Resolved
     {
         Type::FullType fullType;
-        Symbol* dereffedSymbol = nullptr;
         Type* type;
     };
 }; 

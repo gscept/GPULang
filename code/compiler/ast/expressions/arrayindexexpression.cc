@@ -146,37 +146,10 @@ ArrayIndexExpression::EvalSymbol(std::string& out) const
 //------------------------------------------------------------------------------
 /**
 */
-bool  
-ArrayIndexExpression::EvalInt(int& out) const
+bool
+ArrayIndexExpression::EvalValue(ValueUnion& out) const
 {
-    return this->left->EvalInt(out);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-ArrayIndexExpression::EvalUInt(unsigned& out) const
-{
-    return this->left->EvalUInt(out);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-ArrayIndexExpression::EvalFloat(float& out) const
-{
-    return this->left->EvalFloat(out);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-ArrayIndexExpression::EvalBool(bool& out) const
-{
-    return this->left->EvalBool(out);
+    return this->left->EvalValue(out);
 }
 
 //------------------------------------------------------------------------------

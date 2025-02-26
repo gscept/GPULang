@@ -187,64 +187,86 @@ UnaryExpression::EvalSymbol(std::string& out) const
 /**
 */
 bool
-UnaryExpression::EvalInt(int& out) const
+UnaryExpression::EvalValue(ValueUnion& out) const
 {
-    if (this->op == '-')
-    {
-        return this->expr->EvalInt(out) * -1;
-    }
-    else
-    {
-        return false;
-    }
-}
+#define INVERT_OPERATOR(mem)\
+    out.mem[0] = !out.mem[0];\
+    if (out.columnSize > 1)\
+        out.mem[1] = !out.mem[1];\
+    if (out.columnSize > 2)\
+        out.mem[2] = !out.mem[2];\
+    if (out.columnSize > 3)\
+        out.mem[3] = !out.mem[3];\
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-UnaryExpression::EvalUInt(unsigned& out) const
-{
-    if (this->op == '-')
-    {
-        return this->expr->EvalUInt(out) * -1;
+#define NEG_OPERATOR(mem)\
+    out.mem[0] *= -1;\
+    if (out.columnSize > 1)\
+        out.mem[1] *= -1;\
+    if (out.columnSize > 2)\
+        out.mem[2] *= -1;\
+    if (out.columnSize > 3)\
+        out.mem[3] *= -1;\
+    if (out.rowSize > 1)\
+    {\
+        out.mem[4] *= -1;\
+        if (out.columnSize > 1)\
+            out.mem[5] *= -1;\
+        if (out.columnSize > 2)\
+            out.mem[6] *= -1;\
+        if (out.columnSize > 3)\
+            out.mem[7] *= -1;\
+    }\
+    if (out.rowSize > 2)\
+    {\
+        out.mem[8] *= -1;\
+        if (out.columnSize > 1)\
+            out.mem[9] *= -1;\
+        if (out.columnSize > 2)\
+            out.mem[10] *= -1;\
+        if (out.columnSize > 3)\
+            out.mem[11] *= -1;\
+    }\
+    if (out.rowSize > 3)\
+    {\
+        out.mem[12] *= -1;\
+        if (out.columnSize > 1)\
+            out.mem[13] *= -1;\
+        if (out.columnSize > 2)\
+            out.mem[14] *= -1;\
+        if (out.columnSize > 3)\
+            out.mem[15] *= -1;\
     }
-    else
+    
+    if (this->expr->EvalValue(out))
     {
-        return false;
+        if (this->op == '-')
+        {
+            switch (out.code)
+            {
+                case TypeCode::Bool:
+                    INVERT_OPERATOR(b)
+                    break;
+                case TypeCode::Int:
+                case TypeCode::Int16:
+                    NEG_OPERATOR(i)
+                    break;
+                case TypeCode::UInt:
+                case TypeCode::UInt16:
+                    NEG_OPERATOR(ui)
+                    break;
+                case TypeCode::Float:
+                case TypeCode::Float16:
+                    NEG_OPERATOR(f)
+                    break;
+                default:
+                    assert(false);
+                break;
+            }    
+        }
+        return true;
     }
-}
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-UnaryExpression::EvalFloat(float& out) const
-{
-    if (this->op == '-')
-    {
-        return this->expr->EvalFloat(out) * -1;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-UnaryExpression::EvalBool(bool& out) const
-{
-    if (this->op == '!')
-    {
-        return !this->expr->EvalBool(out);
-    }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 
 //------------------------------------------------------------------------------

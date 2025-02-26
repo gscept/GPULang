@@ -126,6 +126,11 @@ struct SPIRVResult
         }
     }
 
+    SPIRVResult()
+    {
+        *this = SPIRVResult::Invalid();
+    }
+
     SPIRVResult(uint32_t name, uint32_t type, bool isValue = false, bool isConstant = false, Storage scope = Storage::Function, const std::vector<uint32_t>& parentTypes = {})
         : name(name)
         , typeName(type)

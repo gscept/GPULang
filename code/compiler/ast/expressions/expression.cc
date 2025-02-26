@@ -143,34 +143,7 @@ Expression::EvalSymbol(std::string& out) const
 /**
 */
 bool
-Expression::EvalInt(int& out) const
-{
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-Expression::EvalUInt(unsigned& out) const
-{
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-Expression::EvalFloat(float& out) const
-{
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-Expression::EvalBool(bool& out) const
+Expression::EvalValue(ValueUnion& out) const
 {
     return false;
 }

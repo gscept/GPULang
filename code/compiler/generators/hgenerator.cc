@@ -243,7 +243,11 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 {
                     uint32_t size = 0;
                     if (varResolved->type.modifierValues[i] != nullptr)
-                        varResolved->type.modifierValues[i]->EvalUInt(size);
+                    {
+                        ValueUnion val;
+                        varResolved->type.modifierValues[i]->EvalValue(val);
+                        val.Store(size);
+                    }
                     if (size > 0)
                         arraySize.append(Format("[%d]", size));
                     else
@@ -286,7 +290,11 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                     }
                     uint32_t size = 0;
                     if (varResolved->type.modifierValues[i] != nullptr)
-                        varResolved->type.modifierValues[i]->EvalUInt(size);
+                    {
+                        ValueUnion val;
+                        varResolved->type.modifierValues[i]->EvalValue(val);
+                        val.Store(size);
+                    }
                     writer.Write(Format("%s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
                     if (i < size - 1)
                         writer.Write("\n");
@@ -338,7 +346,11 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                 {
                     uint32_t size = 0;
                     if (varResolved->type.modifierValues[i] != nullptr)
-                        varResolved->type.modifierValues[i]->EvalUInt(size);
+                    {
+                        ValueUnion val;
+                        varResolved->type.modifierValues[i]->EvalValue(val);
+                        val.Store(size);
+                    }
                     if (size > 0)
                         arraySize.append(Format("[%d]", size));
                     else
@@ -385,7 +397,9 @@ HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, 
         if (enu->values[i] != nullptr)
         {
             uint32_t val;
-            enu->values[i]->EvalUInt(val);
+            ValueUnion value;
+            enu->values[i]->EvalValue(value);
+            value.Store(val);
             tempWriter.Write(Format(" = %d", val));
         }
         if (i != enu->labels.size() - 1)

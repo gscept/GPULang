@@ -770,7 +770,11 @@ GenerateVariableGLSL(Compiler* compiler, Variable* var, std::string& outCode, bo
     {
         uint32_t size = 0;
         if (varResolved->type.modifierValues[i] != nullptr)
-            varResolved->type.modifierValues[i]->EvalUInt(size);
+        {
+            ValueUnion val;
+            varResolved->type.modifierValues[i]->EvalValue(val);
+            val.Store(size);
+        }
         if (size > 0)
             arrays.append(Format("[%d]", size));
         else
@@ -1127,7 +1131,11 @@ GenerateAlignedVariables(Compiler* compiler, Structure* struc, StructureAlignmen
             {
                 uint32_t size = 1;
                 if (sizeExpressions != nullptr)
-                    sizeExpressions->EvalUInt(size);
+                {
+                    ValueUnion val;
+                    sizeExpressions->EvalValue(val);
+                    val.Store(size);
+                }
                 totalArraySize *= size;
             }
 
@@ -1228,7 +1236,11 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
             continue;
         uint32_t size = 0;
         if (varResolved->type.modifierValues[i] != nullptr)
-            varResolved->type.modifierValues[i]->EvalUInt(size);
+        {
+            ValueUnion val;
+            varResolved->type.modifierValues[i]->EvalValue(val);
+            val.Store(size);
+        }
         if (size > 0)
         {
             arraySize.append(Format("[%d]", size));

@@ -624,8 +624,10 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         case Symbol::IntExpressionType:
         {
             unsigned int i;
-            bool res = annot.value->EvalUInt(i);
+            ValueUnion val;
+            bool res = annot.value->EvalValue(val);
             assert(res == true);
+            val.Store(i);
             output.data.i = i;
             output.type = Serialize::IntType;
             break;
@@ -633,8 +635,10 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         case Symbol::FloatExpressionType:
         {
             float f;
-            bool res = annot.value->EvalFloat(f);
+            ValueUnion val;
+            bool res = annot.value->EvalValue(val);
             assert(res == true);
+            val.Store(f);
             output.data.f = f;
             output.type = Serialize::FloatType;
             break;
@@ -642,8 +646,10 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         case Symbol::BoolExpressionType:
         {
             bool b;
-            bool res = annot.value->EvalBool(b);
+            ValueUnion val;
+            bool res = annot.value->EvalValue(val);
             assert(res == true);
+            val.Store(b);
             output.data.b = b;
             output.type = Serialize::BoolType;
             break;

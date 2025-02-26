@@ -136,11 +136,12 @@ SymbolExpression::EvalSymbol(std::string& out) const
     return true;
 }
 
+
 //------------------------------------------------------------------------------
 /**
 */
 bool
-SymbolExpression::EvalInt(int& out) const
+SymbolExpression::EvalValue(ValueUnion& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     if (thisResolved->symbol)
@@ -152,7 +153,7 @@ SymbolExpression::EvalInt(int& out) const
                 Variable* var = static_cast<Variable*>(thisResolved->symbol);
                 Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
                 if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
-                    return var->valueExpression->EvalInt(out);
+                    return var->valueExpression->EvalValue(out);
                 break;
             }
             case BoolExpressionType:
@@ -161,103 +162,7 @@ SymbolExpression::EvalInt(int& out) const
             case UIntExpressionType:
             {
                 Expression* expr = static_cast<Expression*>(thisResolved->symbol);
-                return expr->EvalInt(out);
-            }
-        }
-    }
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-SymbolExpression::EvalUInt(unsigned& out) const
-{
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->symbol)
-    {
-        switch (thisResolved->symbol->symbolType)
-        {
-            case VariableType:
-            {
-                Variable* var = static_cast<Variable*>(thisResolved->symbol);
-                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
-                    return var->valueExpression->EvalUInt(out);
-                break;
-            }
-            case BoolExpressionType:
-            case FloatExpressionType:
-            case IntExpressionType:
-            case UIntExpressionType:
-            {
-                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
-                return expr->EvalUInt(out);
-            }
-        }
-    }
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-SymbolExpression::EvalFloat(float& out) const
-{
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->symbol != nullptr)
-    {
-        switch (thisResolved->symbol->symbolType)
-        {
-            case VariableType:
-            {
-                Variable* var = static_cast<Variable*>(thisResolved->symbol);
-                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
-                    return var->valueExpression->EvalFloat(out);
-                break;
-            }
-            case BoolExpressionType:
-            case FloatExpressionType:
-            case IntExpressionType:
-            case UIntExpressionType:
-            {
-                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
-                return expr->EvalFloat(out);
-            }
-        }
-    }
-    return false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-SymbolExpression::EvalBool(bool& out) const
-{
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->symbol)
-    {
-        switch (thisResolved->symbol->symbolType)
-        {
-            case VariableType:
-            {
-                Variable* var = static_cast<Variable*>(thisResolved->symbol);
-                Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-                if (var->valueExpression != nullptr && varResolved->usageBits.flags.isConst)
-                    return var->valueExpression->EvalBool(out);
-                break;
-            }
-            case BoolExpressionType:
-            case FloatExpressionType:
-            case IntExpressionType:
-            case UIntExpressionType:
-            {
-                Expression* expr = static_cast<Expression*>(thisResolved->symbol);
-                return expr->EvalBool(out);
+                return expr->EvalValue(out);
             }
         }
     }

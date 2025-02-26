@@ -85,55 +85,57 @@ static const std::unordered_map<TypeCode, std::tuple<std::string, std::string>> 
     , { TypeCode::Void, { "void", "OpTypeVoid" } }
 };
 
-std::unordered_map<ImageFormat, std::string> imageFormatToSpirvType =
+std::unordered_map<ImageFormat, std::pair<std::string, std::string>> imageFormatToSpirvType =
 {
-    { ImageFormat::Rgba16, "Rgba16" }
-    , { ImageFormat::Rgb10_A2, "Rgb10A2" }
-    , { ImageFormat::Rgba8, "Rgba8" }
-    , { ImageFormat::Rg16, "Rg16" }
-    , { ImageFormat::Rg8, "Rg8" }
-    , { ImageFormat::R16, "R16" }
-    , { ImageFormat::R8, "R8" }
-    , { ImageFormat::Rgba16_Snorm, "Rgba16Snorm" }
-    , { ImageFormat::Rgba8_Snorm, "Rgba8Snorm" }
-    , { ImageFormat::Rg16_Snorm, "Rg16Snorm" }
-    , { ImageFormat::Rg8_Snorm, "Rg8Snorm" }
-    , { ImageFormat::R16_Snorm, "R16Snorm" }
-    , { ImageFormat::R8_Snorm, "R8Snorm" }
+    { ImageFormat::Rgba16, { "Rgba16", "" }}
+    , { ImageFormat::Rgb10_A2, { "Rgb10A2", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rgba8, { "Rgba8", "" } }
+    , { ImageFormat::Rg16, { "Rg16", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rg8, { "Rg8", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R16, { "R16", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R8, { "R8", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rgba16_Snorm, { "Rgba16Snorm", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rgba8_Snorm, { "Rgba8Snorm", "" } }
+    , { ImageFormat::Rg16_Snorm, { "Rg16Snorm", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rg8_Snorm, { "Rg8Snorm", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R16_Snorm, { "R16Snorm", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R8_Snorm, { "R8Snorm", "StorageImageExtendedFormats" } }
 
     // float
-    , { ImageFormat::Rgba32F, "Rgba32f" }
-    , { ImageFormat::Rgba16F, "Rgba16f" }
-    , { ImageFormat::Rg32F, "Rg32f" }
-    , { ImageFormat::Rg16F, "Rg16f" }
-    , { ImageFormat::R11G11B10F, "R11fG11fB10f" }
-    , { ImageFormat::R32F, "R32f" }
-    , { ImageFormat::R16F, "R16f" }
+    , { ImageFormat::Rgba32F, { "Rgba32f", "" } }
+    , { ImageFormat::Rgba16F, { "Rgba16f", "" } }
+    , { ImageFormat::Rg32F, { "Rg32f", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rg16F, { "Rg16f", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R11G11B10F, { "R11fG11fB10f", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R32F, { "R32f", "" } }
+    , { ImageFormat::R16F, { "R16f", "StorageImageExtendedFormats" } }
 
     // integer
-    , { ImageFormat::Rgba32I, "Rgba32i" }
-    , { ImageFormat::Rgba16I, "Rgba16i" }
-    , { ImageFormat::Rgba8I, "Rgba8i" }
-    , { ImageFormat::Rg32I, "Rg32i" }
-    , { ImageFormat::Rg16I, "Rg16i" }
-    , { ImageFormat::Rg8I, "Rg8i" }
-    , { ImageFormat::R32I, "R32i" }
-    , { ImageFormat::R16I, "R16i" }
-    , { ImageFormat::R8I, "R8i" }
+    , { ImageFormat::Rgba32I, { "Rgba32i", "" } }
+    , { ImageFormat::Rgba16I, { "Rgba16i", "" } }
+    , { ImageFormat::Rgba8I, { "Rgba8i", ""  } }
+    , { ImageFormat::Rg32I, { "Rg32i", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rg16I, { "Rg16i", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rg8I, { "Rg8i", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R32I, { "R32i", "" } }
+    , { ImageFormat::R16I, { "R16i", "StorageImageExtendedFormats" } }
+    , { ImageFormat::R8I, { "R8i", "StorageImageExtendedFormats" } }
 
     // unsigned integer
-    , { ImageFormat::Rgba32U, "Rgba32ui" }
-    , { ImageFormat::Rgba16U, "Rgba16ui" }
-    , { ImageFormat::Rgb10_A2U, "Rga10a2ui" }
-    , { ImageFormat::Rgba8U, "Rgba8ui" }
-    , { ImageFormat::Rg32U, "Rg32ui" }
-    , { ImageFormat::Rg16U, "Rg16ui" }
-    , { ImageFormat::Rg8U, "Rg8ui" }
-    , { ImageFormat::R32U, "R32ui" }
-    , { ImageFormat::R16U, "R16ui" }
-    , { ImageFormat::R8U, "R8ui" }
+    , { ImageFormat::Rgba32U, { "Rgba32ui", "" } } 
+    , { ImageFormat::Rgba16U, { "Rgba16ui", "" } } 
+    , { ImageFormat::Rgb10_A2U, { "Rga10a2ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::Rgba8U, { "Rgba8ui", "" } } 
+    , { ImageFormat::Rg32U, { "Rg32ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::Rg16U, { "Rg16ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::Rg8U, { "Rg8ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::R32U, { "R32ui", "" } } 
+    , { ImageFormat::R16U, { "R16ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::R8U, { "R8ui", "StorageImageExtendedFormats" } } 
+    , { ImageFormat::R64U, { "R64ui", "Int64ImageEXT" } } 
+    , { ImageFormat::R64I, { "R64i", "Int64ImageEXT" } } 
 
-    , { ImageFormat::Unknown, "Unknown" }
+    , { ImageFormat::Unknown, { "Unknown", "" } }
 };
 
 //------------------------------------------------------------------------------
@@ -323,7 +325,9 @@ GenerateTypeSPIRV(
         if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray)
             generator->AddCapability("Sampled1D");
 
-        std::string spirvFormat = imageFormatToSpirvType[type.imageFormat];
+        auto [spirvFormat, extension] = imageFormatToSpirvType[type.imageFormat];
+        if (!extension.empty())
+            generator->AddCapability(extension);
         spirvType = Format(spirvType.c_str(), floatType, depthBits, sampleBits, spirvFormat.c_str());
         gpulangType = Format("%s,%s,Sample=%d,Depth=%d", spirvFormat.c_str(), gpulangType.c_str(), sampleBits, depthBits);
         uint32_t name = generator->AddSymbol(gpulangType, spirvType, true);
@@ -396,15 +400,16 @@ GenerateTypeSPIRV(
                 typeName = generator->AddSymbol(newBase, Format("OpTypeStruct %%%d", typeName), true);
                 baseType = std::tie(typeName, newBase);
                 generator->AddMemberDecoration(typeName, 0, Format("Offset %d", 0));
-                generator->AddDecoration(Format("Block(%s)", newBase.c_str()), typeName, "Block");
                 storage = SPIRVResult::Storage::StorageBuffer;
                 scopeString = SPIRVResult::ScopeToString(storage);
             }
             else
             {
                 uint32_t size;
-                type.modifierValues[i]->EvalUInt(size);
-                std::string newBase = Format("arr[%d](%s)", size, gpulangType.c_str());
+                ValueUnion val;
+                type.modifierValues[i]->EvalValue(val);
+                val.Store(size);
+                std::string newBase = Format("[%d]%s", size, gpulangType.c_str());
                 parentType.push_back(typeName);
                 uint32_t intType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
                 uint32_t arraySizeConstant = generator->AddSymbol(Format("%di", size), Format("OpConstant %%%d %d", intType, size), true);
@@ -2978,7 +2983,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::ExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -2986,7 +2991,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::ExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult 
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -2994,7 +2999,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::ExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
         g->AddOp(Format("OpControlBarrier %%%d %%%d %%%d", scopeId.name, scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -3002,7 +3007,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::MemoryExecutionBarrier] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -3010,7 +3015,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::MemoryExecutionBarrierSubgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x80));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -3018,7 +3023,7 @@ SPIRVGenerator::SetupIntrinsics()
     this->intrinsicMap[Intrinsics::MemoryExecutionBarrierWorkgroup] = [](Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
         SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
-        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x100));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
         g->AddOp(Format("OpMemoryBarrier %%%d %%%d", scopeId.name, semanticsId.name));
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
@@ -4150,6 +4155,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
         // Setup initializer
         generator->linkDefineEvaluation = varResolved->storage == Storage::LinkDefined;
         generator->linkDefineSlot = varResolved->binding;
+
         initializer = GenerateExpressionSPIRV(compiler, generator, initializerExpression);
 
         // If initializer is a literal, make sure to load it
@@ -4162,6 +4168,7 @@ GenerateVariableSPIRV(Compiler* compiler, SPIRVGenerator* generator, Symbol* sym
             assert(it != generator->intrinsicMap.end());
             initializer = it->second(compiler, generator, typeName.typeName, { initializer });
         }
+
         generator->linkDefineEvaluation = false;
         generator->linkDefineSlot = UINT32_MAX;
     }
@@ -4301,30 +4308,69 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
         // Create arg list from argument expressions
         for (size_t i = 0; i < callExpression->args.size(); i++)
         {
-            if (resolvedCall->argumentTypes[i].literal)
-                generator->literalExtract = true;
+            Variable* var = resolvedCall->function->parameters[i];
+            Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
-            SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
-            args.push_back(arg);
-
-            generator->literalExtract = false;
-        }
-
-        // Then we walk through all conversions which should be per parameter, or null if the type matches
-        for (size_t i = 0; i < resolvedCall->conversions.size(); i++)
-        {
-            Function* converter = resolvedCall->conversions[i];
-            if (converter != nullptr)
+            // If an argument is a literal, evalute it directly 
+            if (resolvedCall->argumentTypes[i].literal && resolvedCall->conversions[i] == nullptr)
             {
-                Function::__Resolved* converterResolved = Symbol::Resolved(converter);
-                auto conv = generator->intrinsicMap.find(converter);
-                assert(conv != generator->intrinsicMap.end());
-                SPIRVResult returnTypeName = GenerateTypeSPIRV(compiler, generator, converter->returnType, converterResolved->returnTypeSymbol);
+                ValueUnion val;
+                callExpression->args[i]->EvalValue(val);
+                val.Convert(varResolved->typeSymbol->baseType);
+                SPIRVResult literalResults[16] = { };
+                uint32_t resultsIterator = 0;
+                SPIRVResult typeName = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
+                
+                #define LITERAL_CONSTRUCT(type, mem)\
+                    case TypeCode::type:\
+                    {\
+                        for (size_t i = 0; i < val.columnSize; i++)\
+                        {\
+                            for (size_t j = 0; j < val.rowSize; j++)\
+                            {\
+                                literalResults[resultsIterator] = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::type(val.mem[resultsIterator]));\
+                                resultsIterator++;\
+                            }\
+                        }\
+                        if (resultsIterator > 1)\
+                            args.push_back(GenerateCompositeSPIRV(compiler, generator, typeName.typeName, std::vector<SPIRVResult>(literalResults, literalResults + resultsIterator)));\
+                        else\
+                            args.push_back(literalResults[0]);\
+                        break;\
+                    }
+                
+                switch (varResolved->typeSymbol->baseType)
+                {
+                    LITERAL_CONSTRUCT(Bool, b)
+                    LITERAL_CONSTRUCT(Float, f)
+                    LITERAL_CONSTRUCT(Float16, f)
+                    LITERAL_CONSTRUCT(Int, i)
+                    LITERAL_CONSTRUCT(Int16, i)
+                    LITERAL_CONSTRUCT(UInt, ui)
+                    LITERAL_CONSTRUCT(UInt16, ui)
+                    default:
+                        assert(false);
+                }
+            }
+            else
+            {
+                // If the value can't be evaluated as a compile time expression, generate an expression 
+                SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
+                args.push_back(arg);
+                
+                Function* converter = resolvedCall->conversions[i];
+                if (converter != nullptr)
+                {
+                    Function::__Resolved* converterResolved = Symbol::Resolved(converter);
+                    auto conv = generator->intrinsicMap.find(converter);
+                    assert(conv != generator->intrinsicMap.end());
+                    SPIRVResult returnTypeName = GenerateTypeSPIRV(compiler, generator, converter->returnType, converterResolved->returnTypeSymbol);
 
-                std::vector<SPIRVResult> tempArgs{ args[i] };
+                    std::vector<SPIRVResult> tempArgs{ args[i] };
 
-                // After conversion the type is changed and the SSA is the value of the conversion being done
-                args[i] = conv->second(compiler, generator, returnTypeName.typeName, tempArgs);
+                    // After conversion the type is changed and the SSA is the value of the conversion being done
+                    args[i] = conv->second(compiler, generator, returnTypeName.typeName, tempArgs);
+                }
             }
         }
 
@@ -4586,17 +4632,22 @@ GenerateBinaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
     }
     else
     {
-        std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
-        Function* fun = lhsType->GetSymbol<Function>(functionName);
-        Function::__Resolved* funResolved = Symbol::Resolved(fun);
-        assert(fun != nullptr);
+        if (binaryExpressionResolved->constValueExpression != nullptr)
+            return GenerateExpressionSPIRV(compiler, generator, binaryExpressionResolved->constValueExpression);
+        else
+        {
+            std::string functionName = Format("operator%s(%s)", FourCCToString(binaryExpression->op).c_str(), rightType.Name().c_str());
+            Function* fun = lhsType->GetSymbol<Function>(functionName);
+            Function::__Resolved* funResolved = Symbol::Resolved(fun);
+            assert(fun != nullptr);
 
-        SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, fun->returnType, funResolved->returnTypeSymbol);
+            SPIRVResult retType = GenerateTypeSPIRV(compiler, generator, fun->returnType, funResolved->returnTypeSymbol);
 
-        // Get operator 
-        auto op = generator->intrinsicMap.find(fun);
-        assert(op != generator->intrinsicMap.end());
-        return op->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+            // Get operator 
+            auto op = generator->intrinsicMap.find(fun);
+            assert(op != generator->intrinsicMap.end());
+            return op->second(compiler, generator, retType.typeName, { leftValue, rightValue });
+        }
     }
 }
 
@@ -4640,7 +4691,11 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
             assert(accessExpressionResolved->rightSymbol == "length");
             uint32_t size = 0;
             if (lhsType.modifierValues.front() != nullptr)
-                lhsType.modifierValues.front()->EvalUInt(size);
+            {
+                ValueUnion val;
+                lhsType.modifierValues.front()->EvalValue(val);
+                val.Store(size);
+            }
             assert(size > 0);
 
             return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(size));
@@ -4675,7 +4730,9 @@ GenerateAccessExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Exp
                     {
                         EnumExpression* enumExp = static_cast<EnumExpression*>(sym);
                         uint32_t val;
-                        enumExp->EvalUInt(val);
+                        ValueUnion value;
+                        enumExp->EvalValue(value);
+                        value.Store(val);
                         if (generator->literalExtract)
                             return SPIRVResult(val);
                         else
@@ -4709,10 +4766,10 @@ GenerateTernaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Ex
     TernaryExpression* ternaryExpression = static_cast<TernaryExpression*>(expr);
     TernaryExpression::__Resolved* ternaryExpressionResolved = Symbol::Resolved(ternaryExpression);
     
-    bool b;
-    if (ternaryExpression->lhs->EvalBool(b))
+    ValueUnion val;
+    if (ternaryExpression->lhs->EvalValue(val))
     {
-        if (b)
+        if (val.b[0])
             return GenerateExpressionSPIRV(compiler, generator, ternaryExpression->ifExpression);
         else
             return GenerateExpressionSPIRV(compiler, generator, ternaryExpression->elseExpression);
@@ -4897,47 +4954,41 @@ GenerateUnaryExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expr
 SPIRVResult
 GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expression* expr)
 {
+    ValueUnion val;
+    expr->EvalValue(val);
     switch (expr->symbolType)
     {
         case Symbol::FloatExpressionType:
         {
-            float value;
             FloatExpression* floatExpr = static_cast<FloatExpression*>(expr);
-            floatExpr->EvalFloat(value);
             if (generator->literalExtract)
-                return SPIRVResult(value);
+                return SPIRVResult(val.f[0]);
             else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(value));
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(val.f[0]));
         }
         case Symbol::IntExpressionType:
         {
-            int value;
             IntExpression* intExpr = static_cast<IntExpression*>(expr);
-            intExpr->EvalInt(value);
             if (generator->literalExtract)
-                return SPIRVResult(value);
+                return SPIRVResult(val.i[0]);
             else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(value));
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(val.i[0]));
         }
         case Symbol::UIntExpressionType:
         {
-            uint32_t value;
             UIntExpression* uintExpr = static_cast<UIntExpression*>(expr);
-            uintExpr->EvalUInt(value);
             if (generator->literalExtract)
-                return SPIRVResult(value);
+                return SPIRVResult(val.ui[0]);
             else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(value));
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(val.ui[0]));
         }
         case Symbol::BoolExpressionType:
         {
-            bool value;
             BoolExpression* boolExpr = static_cast<BoolExpression*>(expr);
-            boolExpr->EvalBool(value);
             if (generator->literalExtract)
-                return SPIRVResult(value);
+                return SPIRVResult(val.b[0]);
             else
-                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(value));
+                return GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(val.b[0]));
         }
         case Symbol::BinaryExpressionType:
             return GenerateBinaryExpressionSPIRV(compiler, generator, expr);
@@ -4960,12 +5011,34 @@ GenerateExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expressio
                     if (generator->accessChain.empty())
                     {
                         const SymbolAssignment& sym = generator->GetSymbol(symbolExpression->symbol);
-                        res = SPIRVResult(sym.value, type.typeName);
-                        res.isValue = isLinkDefined;
-                        res.isConst = isLinkDefined;
-                        res.isSpecialization = isLinkDefined;
-                        res.scope = type.scope;
-                        res.parentTypes = type.parentTypes;
+                        if (generator->literalExtract)
+                        {
+                            if (sym.sym->symbolType == Symbol::SymbolType::VariableType)
+                            {
+                                Variable* var = static_cast<Variable*>(sym.sym);
+                                Variable::__Resolved* varRes = Symbol::Resolved(var);
+                                if (varRes->type.literal && varRes->typeSymbol->columnSize == 1 && varRes->typeSymbol->rowSize == 1)
+                                {
+                                    res = SPIRVResult(0xFFFFFFFF, type.typeName);
+                                    res.isValue = true;
+                                    res.isConst = true;
+                                    res.literalValue = SPIRVResult::LiteralValue();
+                                }
+                            }
+                            else
+                            {
+                                assert(false);
+                            }
+                        }
+                        else
+                        {
+                            res = SPIRVResult(sym.value, type.typeName);
+                            res.isValue = isLinkDefined;
+                            res.isConst = isLinkDefined;
+                            res.isSpecialization = isLinkDefined;
+                            res.scope = type.scope;
+                            res.parentTypes = type.parentTypes;
+                        }
                     }
                     else
                     {
@@ -5062,10 +5135,11 @@ void
 GenerateForStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, ForStatement* stat)
 {
     // Skip for loop generation if condition resolves to false
-    bool b;
-    if (stat->condition->EvalBool(b))
+    ValueUnion val;
+    if (stat->condition->EvalValue(val))
     {
-        if (!b)
+        val.Convert(TypeCode::Bool);
+        if (!val.b[0])
             return;
     }
     
@@ -5136,10 +5210,10 @@ void
 GenerateIfStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, IfStatement* stat)
 {
     // If B evaluates to a constant value, pick a branch and return early
-    bool b;
-    if (stat->condition->EvalBool(b))
+    ValueUnion val;
+    if (stat->condition->EvalValue(val))
     {
-        if (b)
+        if (val.b[0])
             GenerateStatementSPIRV(compiler, generator, stat->ifStatement);
         else
             GenerateStatementSPIRV(compiler, generator, stat->elseStatement);
@@ -5258,12 +5332,12 @@ GenerateReturnStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Retu
 void
 GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, SwitchStatement* stat)
 {
-    uint32_t index;
-    if (stat->switchExpression->EvalUInt(index))
+    ValueUnion val;
+    if (stat->switchExpression->EvalValue(val))
     {
         generator->skipBreakContinue = true;
-        if (index < stat->caseExpressions.size())
-            GenerateStatementSPIRV(compiler, generator, stat->caseStatements[index]);
+        if (val.ui[0] < stat->caseExpressions.size())
+            GenerateStatementSPIRV(compiler, generator, stat->caseStatements[val.ui[0]]);
         else if (stat->defaultStatement != nullptr)
             GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
         generator->skipBreakContinue = false;
@@ -5288,10 +5362,10 @@ GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Swit
     for (size_t i = 0; i < stat->caseExpressions.size(); i++)
     {
         uint32_t caseLabel = generator->ReserveName();
-        int lit;
-        bool res = stat->caseExpressions[i]->EvalInt(lit);
+        ValueUnion val;
+        bool res = stat->caseExpressions[i]->EvalValue(val);
         assert(res);
-        caseList += Format("%d %%%d ", lit, caseLabel);
+        caseList += Format("%d %%%d ", val.i[0], caseLabel);
         reservedCaseLabels.push_back(caseLabel);
     }
 
@@ -5353,11 +5427,11 @@ GenerateSwitchStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, Swit
 void
 GenerateWhileStatementSPIRV(Compiler* compiler, SPIRVGenerator* generator, WhileStatement* stat)
 {
-    // Skip generation if statement resolves to fales
-    bool b;
-    if (stat->condition->EvalBool(b))
+    // Skip generation if statement resolves to false
+    ValueUnion val;
+    if (stat->condition->EvalValue(val))
     {
-        if (!b)
+        if (!val.b[0])
             return;
     }
     
@@ -5741,6 +5815,18 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
                     this->header.append(Format(" OpExecutionMode %%%d SubgroupSize %d\n", entryFunction, funResolved->executionModifiers.groupSize));
                 if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
                     this->header.append(Format(" OpExecutionMode %%%d SubgroupsPerWorkgroup %d\n", entryFunction, funResolved->executionModifiers.groupsPerWorkgroup));
+                if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexLinear)
+                {
+                    this->AddExtension("SPV_KHR_compute_shader_derivatives");
+                    this->AddCapability("ComputeDerivativeGroupLinearKHR");
+                    this->header.append(Format(" OpExecutionMode %%%d DerivativeGroupLinearKHR\n", entryFunction));
+                }
+                else if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexQuad)
+                {
+                    this->AddExtension("SPV_NV_compute_shader_derivatives");
+                    this->AddCapability("ComputeDerivativeGroupQuadsNV");
+                    this->header.append(Format(" OpExecutionMode %%%d DerivativeGroupQuadsNV\n", entryFunction));
+                }
                 break;
         }
         compiler->shaderValueExpressions[mapping].value = false;
@@ -5777,7 +5863,6 @@ SPIRVGenerator::Generate(Compiler* compiler, Program* program, const std::vector
         
         if (compiler->options.validate)
         {
-                        
             // Run spv validation for internal consistency and fault testing
             spv_const_binary_t constBin = { bin->code, bin->wordCount };
             res = spvValidate(spvContext, &constBin, &diag);

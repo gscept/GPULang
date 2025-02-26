@@ -17,6 +17,7 @@
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#t};\
+this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
@@ -30,6 +31,7 @@ this->constructors.push_back(activeFunction);
 #define __IMPLEMENT_CTOR(method, id, type)\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#type};\
+this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 this->constructors.push_back(activeFunction);
@@ -124,6 +126,9 @@ enum ImageFormat
     // unsigned integer
     Rgba32U, Rgba16U, Rgb10_A2U, Rgba8U, Rg32U, Rg16U, Rg8U,
     R32U, R16U, R8U,
+
+    // 64 bit formats
+    R64U, R64I,
 
     // Format is not known
     Unknown
@@ -438,6 +443,8 @@ struct Type : public Symbol
 
         /// Type assignment follows special rules to equality
         bool Assignable(const FullType& rhs) const;
+        /// Type construction follows sliglthy different rules
+        bool Constructible(const FullType& rhs) const;
         bool operator==(const FullType& rhs) const;
         bool operator!=(const FullType& rhs) const
         {
@@ -445,7 +452,7 @@ struct Type : public Symbol
         }
 
         /// Convert to string
-        std::string ToString();
+        std::string ToString(bool omitLiteral = false);
         /// Returns true if top most indirection qualifier is a pointer
         const bool IsPointer() const;
         /// Returns true if top most access qualifier is mutable
@@ -494,8 +501,7 @@ struct Type : public Symbol
     /// return member symbol
     Symbol* GetSymbol(const std::string str);
     /// return member symbol
-    template<typename T>
-    T* GetSymbol(const std::string str);
+    template<typename T> T* GetSymbol(const std::string str);
     /// return member symbols matching string
     std::vector<Symbol*> GetSymbols(const std::string str);
 

@@ -65,40 +65,13 @@ UIntExpression::EvalSymbol(std::string& out) const
 /**
 */
 bool
-UIntExpression::EvalInt(int& out) const
+UIntExpression::EvalValue(ValueUnion& out) const
 {
-    out = (int)this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-UIntExpression::EvalUInt(unsigned& out) const
-{
-    out = this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-    Convert this integer to a float
-*/
-bool
-UIntExpression::EvalFloat(float& out) const
-{
-    out = (float)this->value;
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-bool
-UIntExpression::EvalBool(bool& out) const
-{
-    out = this->value != 0;
+    out.code = TypeCode::UInt;
+    out.ui[0] = this->value;
+    out.columnSize = 1;
+    out.rowSize = 1;
+    out.valid = true;
     return true;
 }
 

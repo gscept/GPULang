@@ -1,8 +1,9 @@
 //------------------------------------------------------------------------------
-//  enumexpression.cc
+//  uintexpression.cc
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
-#include "enumexpression.h"
+#include "uintvecexpression.h"
+
 #include "util.h"
 #include "compiler.h"
 
@@ -12,19 +13,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-EnumExpression::EnumExpression(int value, Type::FullType type, Type::FullType underlyingType)
-    : value(value)
-    , type(type)
-    , underlyingType(underlyingType)
+UIntVecExpression::UIntVecExpression(const std::vector<unsigned int>& values) :
+    values(values)
 {
-    this->resolved = new EnumExpression::__Resolved;
-    this->symbolType = EnumExpressionType;
+    this->resolved = new UIntVecExpression::__Resolved;
+    this->symbolType = UIntVecExpressionType;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-EnumExpression::~EnumExpression()
+UIntVecExpression::~UIntVecExpression()
 {
     // empty
 }
@@ -33,10 +32,10 @@ EnumExpression::~EnumExpression()
 /**
 */
 bool 
-EnumExpression::Resolve(Compiler* compiler)
+UIntVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = this->type;
+    thisResolved->fullType = Type::FullType{ Format("u32x%s", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     thisResolved->text = this->EvalString();
@@ -47,7 +46,7 @@ EnumExpression::Resolve(Compiler* compiler)
 /**
 */
 bool
-EnumExpression::EvalType(Type::FullType& out) const
+UIntVecExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->fullType;
@@ -58,7 +57,7 @@ EnumExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-EnumExpression::EvalSymbol(std::string& out) const
+UIntVecExpression::EvalSymbol(std::string& out) const
 {
     return false;
 }
@@ -67,11 +66,15 @@ EnumExpression::EvalSymbol(std::string& out) const
 /**
 */
 bool
-EnumExpression::EvalValue(ValueUnion& out) const
+UIntVecExpression::EvalValue(ValueUnion& out) const
 {
-    out.code = TypeCode::Int;
-    out.columnSize = 1;
-    out.i[0] = this->value;
+    int index = 0;
+    for (const unsigned int val : this->values)
+        out.ui[index++] = val;
+    out.columnSize = this->values.size();
+    out.rowSize = 1;
+    out.valid = true;
+    out.code = TypeCode::UInt;
     return true;
 }
 
@@ -79,16 +82,21 @@ EnumExpression::EvalValue(ValueUnion& out) const
 /**
 */
 std::string
-EnumExpression::EvalString() const
+UIntVecExpression::EvalString() const
 {
-    return Format("%d", this->value);
+    std::string ret;
+    for (const bool val : this->values)
+    {
+        ret += Format("%d ", val);
+    }
+    return ret;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 bool 
-EnumExpression::EvalAccessFlags(unsigned& out) const
+UIntVecExpression::EvalAccessFlags(unsigned& out) const
 {
     out = AccessFlags::Const;
     return true;
@@ -98,9 +106,10 @@ EnumExpression::EvalAccessFlags(unsigned& out) const
 /**
 */
 bool
-EnumExpression::EvalStorage(Storage& out) const
+UIntVecExpression::EvalStorage(Storage& out) const
 {
-    return Expression::EvalStorage(out);
+    out = Storage::Default;
+    return true;
 }
 
 } // namespace GPULang

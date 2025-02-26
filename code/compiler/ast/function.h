@@ -29,6 +29,7 @@ struct Function : public Symbol
     Type::FullType returnType;
     std::string body;
     bool hasBody;
+    bool compileTime;
     std::vector<Variable*> parameters;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
@@ -166,6 +167,13 @@ struct Function : public Symbol
             return PixelOrigin::InvalidPixelOrigin;
         }
 
+        enum ComputeDerivativeIndexing
+        {
+            NoDerivatives,
+            DerivativeIndexLinear,
+            DerivativeIndexQuad
+        };
+
 
         struct ExecutionModifiers
         {
@@ -185,6 +193,7 @@ struct Function : public Symbol
 
             PartitionMethod partitionMethod;
             PixelOrigin pixelOrigin;
+            ComputeDerivativeIndexing computeDerivativeIndexing;
 
         } executionModifiers;
 

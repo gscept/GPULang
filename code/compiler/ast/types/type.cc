@@ -571,7 +571,7 @@ Type::SwizzleMaskBiggestComponent(SwizzleMask mask)
 /**
 */
 std::string 
-Type::FullType::ToString()
+Type::FullType::ToString(bool omitLiteral)
 {
     std::string base;
     for (size_t i = 0; i < this->modifiers.size(); i++)
@@ -587,13 +587,15 @@ Type::FullType::ToString()
             else
             {
                 uint32_t size;
-                this->modifierValues[i]->EvalUInt(size);
+                ValueUnion value;
+                this->modifierValues[i]->EvalValue(value);
+                value.Store(size);
                 base.append(Format("[%d]", size));
             }
         }
     }
-    if (this->literal)
-        base.append("literal ");
+    //if (this->literal && !omitLiteral)
+    //    base.append("literal ");
     if (this->mut)
         base.append("mutable ");
     if (this->sampled)
@@ -620,13 +622,69 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
     for (size_t i = 0; i < this->modifierValues.size(); i++)
         if (this->modifierValues[i] != rhs.modifierValues[i])
         {
-            uint32_t lhsSize, rhsSize;
+            uint32_t lhsSize = UINT32_MAX, rhsSize;
             if (this->modifierValues[i] != nullptr)
-                this->modifierValues[i]->EvalUInt(lhsSize);
+            {
+                ValueUnion value;
+                this->modifierValues[i]->EvalValue(value);
+                value.Store(lhsSize);
+            }
             if (rhs.modifierValues[i] != nullptr)
-                rhs.modifierValues[i]->EvalUInt(rhsSize);
+            {
+                ValueUnion value;
+                rhs.modifierValues[i]->EvalValue(value);
+                value.Store(rhsSize);
+            }
+
             if (lhsSize != rhsSize)
                 return false;
+        }
+        else
+            return false;
+    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
+    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    if (lhsName != rhsName)
+        return false;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Type::FullType::Constructible(const FullType& rhs) const
+{
+    if (this->literal)
+        return false;
+    if (this->sampled)
+        return false;
+    if (this->modifiers != rhs.modifiers)
+        return false;
+    for (size_t i = 0; i < this->modifierValues.size(); i++)
+        if (this->modifierValues[i] != rhs.modifierValues[i])
+        {
+            uint32_t lhsSize = UINT32_MAX, rhsSize;
+            // If we are constructing an unbound array to a bound sized array, that's fine
+            if (this->modifierValues[i] == nullptr && rhs.modifierValues[i] != nullptr)
+                continue;
+            else
+            {
+                if (this->modifierValues[i] != nullptr)
+                {
+                    ValueUnion value;
+                    this->modifierValues[i]->EvalValue(value);
+                    value.Store(lhsSize);
+                }
+                if (rhs.modifierValues[i] != nullptr)
+                {
+                    ValueUnion value;
+                    rhs.modifierValues[i]->EvalValue(value);
+                    value.Store(rhsSize);
+                }
+
+                if (lhsSize != rhsSize)
+                    return false;    
+            }
         }
         else
             return false;
@@ -656,9 +714,17 @@ Type::FullType::operator==(const FullType& rhs) const
         {
             uint32_t lhsSize, rhsSize;
             if (this->modifierValues[i] != nullptr)
-                this->modifierValues[i]->EvalUInt(lhsSize);
+            {
+                ValueUnion value;
+                this->modifierValues[i]->EvalValue(value);
+                value.Store(lhsSize);
+            }
             if (rhs.modifierValues[i] != nullptr)
-                rhs.modifierValues[i]->EvalUInt(rhsSize);
+            {
+                ValueUnion value;
+                rhs.modifierValues[i]->EvalValue(value);
+                value.Store(rhsSize);
+            }
             if (lhsSize != rhsSize)
                 return false;
         }

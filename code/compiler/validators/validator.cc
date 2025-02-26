@@ -21,7 +21,12 @@
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/accessexpression.h"
 #include "ast/expressions/unaryexpression.h"
+#include "ast/expressions/intexpression.h"
+#include "ast/expressions/intvecexpression.h"
+#include "ast/expressions/floatexpression.h"
+#include "ast/expressions/floatvecexpression.h"
 #include "ast/expressions/uintexpression.h"
+#include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/enumexpression.h"
 
 #include "ast/statements/breakstatement.h"
@@ -40,6 +45,7 @@
 #include <algorithm>
 
 #include "ast/expressions/arrayinitializerexpression.h"
+#include "ast/expressions/boolvecexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/statements/discardstatement.h"
 
@@ -67,6 +73,7 @@ static std::set<std::string> functionAttributes =
     , "input_topology", "output_topology", "patch_type", "partition"
     , "pixel_origin"
     , "prototype"
+    , "derivative_index_linear", "derivative_index_quad"
 };
 
 static std::set<std::string> parameterAccessFlags =
@@ -443,146 +450,137 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        uint32_t value;
+        ValueUnion value;
+        assignEntry->right->EvalValue(value);
         switch (entryType)
         {
         case SamplerState::__Resolved::AllAddressType:
-            assignEntry->right->EvalUInt(value);
-            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (GPULang::AddressMode)value;
+            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (GPULang::AddressMode)value.i[0];
             break;
         case SamplerState::__Resolved::AddressUType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressU = (GPULang::AddressMode)value;
+            stateResolved->addressU = (GPULang::AddressMode)value.i[0];
             break;
         case SamplerState::__Resolved::AddressVType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressV = (GPULang::AddressMode)value;
+            stateResolved->addressV = (GPULang::AddressMode)value.i[0];
             break;
         case SamplerState::__Resolved::AddressWType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressW = (GPULang::AddressMode)value;
+            stateResolved->addressW = (GPULang::AddressMode)value.i[0];
             break;
         case SamplerState::__Resolved::AllFilterType:
-            assignEntry->right->EvalUInt(value);
-            if (stateResolved->isInline && (value != 0x7 && value != 0x0))
+            if (stateResolved->isInline && (value.i[0] != 0x7 && value.i[0] != 0x0))
             {
                 compiler->Error(Format("inline_sampler requires filter mode to either be FilterMode.Linear or FilterMode.Point"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Filter)((value & 0x1) + 1);
-            stateResolved->magFilter = (GPULang::Filter)(((value >> 1) & 0x1) + 1);
-            stateResolved->mipFilter = (GPULang::Filter)(((value >> 2) & 0x1) + 1);
+            stateResolved->minFilter = (GPULang::Filter)((value.i[0] & 0x1) + 1);
+            stateResolved->magFilter = (GPULang::Filter)(((value.i[0] >> 1) & 0x1) + 1);
+            stateResolved->mipFilter = (GPULang::Filter)(((value.i[0] >> 2) & 0x1) + 1);
             break;
         case SamplerState::__Resolved::MinFilterType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Filter)value;
+            stateResolved->minFilter = (GPULang::Filter)value.i[0];
             break;
         case SamplerState::__Resolved::MagFilterType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->magFilter = (GPULang::Filter)value;
+            stateResolved->magFilter = (GPULang::Filter)value.i[0];
             break;
         case SamplerState::__Resolved::MipFilterType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->mipFilter = (GPULang::Filter)value;
+            stateResolved->mipFilter = (GPULang::Filter)value.i[0];
             break;
         case SamplerState::__Resolved::MipLodBiasType:
-            assignEntry->right->EvalFloat(stateResolved->mipLodBias);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support mip lod bias"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->mipLodBias);
             break;
         case SamplerState::__Resolved::AnisotropicFlagType:
-            assignEntry->right->EvalBool(stateResolved->anisotropicEnabled);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->anisotropicEnabled);
             break;
         case SamplerState::__Resolved::MaxAnisotropyType:
-            assignEntry->right->EvalFloat(stateResolved->maxAnisotropy);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->maxAnisotropy);
             break;
         case SamplerState::__Resolved::CompareFlagType:
-            assignEntry->right->EvalBool(stateResolved->compareSamplerEnabled);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->compareSamplerEnabled);
             break;
         case SamplerState::__Resolved::CompareModeType:
-            assignEntry->right->EvalUInt(value);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
                 return false;
             }
-            stateResolved->compareMode = (GPULang::CompareMode)value;
+            stateResolved->compareMode = (GPULang::CompareMode)value.i[0];
             break;
         case SamplerState::__Resolved::MinLodType:
-            assignEntry->right->EvalFloat(stateResolved->minLod);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->minLod);
             break;
         case SamplerState::__Resolved::MaxLodType:
-            assignEntry->right->EvalFloat(stateResolved->maxLod);
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
                 return false;
             }
+            value.Store(stateResolved->maxLod);
             break;
         case SamplerState::__Resolved::BorderColorType:
-            assignEntry->right->EvalUInt(value);
-            stateResolved->borderColor = (GPULang::BorderColor)value;
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting border color"), assignEntry);
                 return false;
             }
+            stateResolved->borderColor = (GPULang::BorderColor)value.i[0];
             break;
         case SamplerState::__Resolved::UnnormalizedSamplingType:
-            assignEntry->right->EvalBool(stateResolved->unnormalizedSamplingEnabled);
+            value.Store(stateResolved->unnormalizedSamplingEnabled);
             break;
         }
     }
@@ -619,54 +617,76 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
+        ValueUnion val;
         if (attr.name == "entry_point")
         {
             funResolved->isEntryPoint = true;
         }
         else if (attr.name == "local_size_x")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[0]))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[0]);
+        }
         else if (attr.name == "local_size_y")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[1]))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[1]);
+        }
         else if (attr.name == "local_size_z")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.computeShaderWorkGroupSize[2]))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
+        }
         else if (attr.name == "group_size")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.groupSize))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.groupSize);
+        }
         else if (attr.name == "groups_per_workgroup")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.groupsPerWorkgroup))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.groupsPerWorkgroup);
+        }
         else if (attr.name == "early_depth")
             funResolved->executionModifiers.earlyDepth = true;
         else if (attr.name == "invocations")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.invocations))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.invocations);
+        }
         else if (attr.name == "max_output_vertices")
-            if (!attr.expression->EvalUInt(funResolved->executionModifiers.maxOutputVertices))
+        {
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
                 return false;
             }
+            val.Store(funResolved->executionModifiers.maxOutputVertices);
+        }
         else if (attr.name == "winding")
         {
             std::string str = attr.expression->EvalString();
@@ -738,6 +758,14 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
+        else if (attr.name == "derivative_index_linear")
+        {
+            funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexLinear;
+        }
+        else if (attr.name == "derivative_index_quad")
+        {
+            funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexQuad;
+        }
     }
 
     // validate attributes
@@ -745,7 +773,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     {
         if (funResolved->executionModifiers.earlyDepth)
         {
-            compiler->Error("'early_depth' is only allowed on functions with the 'shader' qualifier", symbol);
+            compiler->Error("'early_depth' is only allowed on functions with the 'entry_point' qualifier", symbol);
             return false;
         }
 
@@ -755,7 +783,13 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             || funResolved->executionModifiers.computeShaderWorkGroupSize[2] > 1
             )
         {
-            compiler->Error("'local_size_(x/y/z)' is only allowed on functions with the 'shader' qualifier", symbol);
+            compiler->Error("'local_size_(x/y/z)' is only allowed on functions with the 'entry_point' qualifier", symbol);
+            return false;
+        }
+
+        if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+        {
+            compiler->Error("Setting derivative indexing is only allowed on functions with the 'entry_point' qualifier", symbol);
             return false;
         }
     }
@@ -765,6 +799,25 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             compiler->Error("Entry point may only return 'void'", symbol);
             return false;
+        }
+        if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexLinear)
+        {
+            uint32_t numThreads = funResolved->executionModifiers.computeShaderWorkGroupSize[0] * funResolved->executionModifiers.computeShaderWorkGroupSize[1] * funResolved->executionModifiers.computeShaderWorkGroupSize[2];
+            if (numThreads % 4 != 0)
+            {
+                compiler->Error("Work group linear derivatives require the work group size to be a multiple of 4", symbol);
+                return false;
+            }
+        }
+        else if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexQuad)
+        {
+            uint32_t numThreadsX = funResolved->executionModifiers.computeShaderWorkGroupSize[0] % 2;
+            uint32_t numThreadsY = funResolved->executionModifiers.computeShaderWorkGroupSize[1] % 2;
+            if (numThreadsX != 0 && numThreadsY != 0)
+            {
+                compiler->Error("Work group quad derivatives require the work group size to be evenly divisible by 2 in both X and Y", symbol);
+                return false;
+            }
         }
     }
 
@@ -1139,6 +1192,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 
                 compiler->currentState.sideEffects.bits = 0x0;
                 compiler->shaderValueExpressions[entryType].value = true;
+                compiler->currentState.function = fun;
 
                 // Temporarily store original variable values
                 std::unordered_map<Variable*, Expression*> originalVariableValues;
@@ -1163,6 +1217,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 }
                 
                 compiler->shaderValueExpressions[entryType].value = false;
+                compiler->currentState.function = nullptr;
 
                 if (entryType == Program::__Resolved::VertexShader)
                 {
@@ -1290,7 +1345,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             if (assignEntry->left->symbolType == Symbol::ArrayIndexExpressionType)
             {
                 const ArrayIndexExpression* lhs = static_cast<const ArrayIndexExpression*>(assignEntry->left);
-                lhs->right->EvalUInt(index);
+                ValueUnion val;
+                lhs->right->EvalValue(val);
+                val.Store(index);
             }
             else
             {
@@ -1304,38 +1361,41 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
+            ValueUnion val;
+            assignEntry->right->EvalValue(val);
             uint32_t enumValue = 0;
             switch (entryType)
             {
             case RenderState::__Resolved::BlendEnabledType:
-                if (!assignEntry->right->EvalBool(stateResolved->blendStates[index].blendEnabled))
+                if (!val.valid)
                 {
                     compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entry.c_str()), assignEntry);
                     return false;
                 }
+                val.Store(stateResolved->blendStates[index].blendEnabled);
                 break;
             case RenderState::__Resolved::SourceBlendColorFactorType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].sourceColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendColorFactorType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].destinationColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::SourceBlendAlphaFactorType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].sourceAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendAlphaFactorType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].destinationAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::ColorBlendOpType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].colorBlendOp = (GPULang::BlendOp)enumValue;
                 break;
             case RenderState::__Resolved::AlphaBlendOpType:
-                assignEntry->right->EvalUInt(enumValue);
+                val.Store(enumValue);
                 stateResolved->blendStates[index].alphaBlendOp = (GPULang::BlendOp)enumValue;
                 break;
                 
@@ -1352,32 +1412,34 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 state = &stateResolved->frontStencilState;
 
             uint32_t enumValue = 0;
+            ValueUnion val;
+            assignEntry->right->EvalValue(val);
             switch (entryType)
             {
                 case RenderState::__Resolved::StencilFailOpType:
-                    assignEntry->right->EvalUInt(enumValue);
+                    val.Store(enumValue);
                     state->fail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilPassOpType:
-                    assignEntry->right->EvalUInt(enumValue);
+                    val.Store(enumValue);
                     state->pass = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilDepthFailOpType:
-                    assignEntry->right->EvalUInt(enumValue);
+                    val.Store(enumValue);
                     state->depthFail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareModeType:
-                    assignEntry->right->EvalUInt(enumValue);
+                    val.Store(enumValue);
                     state->compare = (GPULang::CompareMode)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareMaskType:
-                    assignEntry->right->EvalUInt(state->compareMask);
+                    val.Store(state->compareMask);
                     break;
                 case RenderState::__Resolved::StencilWriteMaskType:
-                    assignEntry->right->EvalUInt(state->writeMask);
+                    val.Store(state->writeMask);
                     break;
                 case RenderState::__Resolved::StencilReferenceMaskType:
-                    assignEntry->right->EvalUInt(state->referenceMask);
+                    val.Store(state->referenceMask);
                     break;
             }
         }
@@ -1390,83 +1452,89 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
+            ValueUnion values[4];
             bool result = true;
-            result |= init->values[0]->EvalFloat(stateResolved->blendConstants[0]);
-            result |= init->values[1]->EvalFloat(stateResolved->blendConstants[1]);
-            result |= init->values[2]->EvalFloat(stateResolved->blendConstants[2]);
-            result |= init->values[3]->EvalFloat(stateResolved->blendConstants[3]);
+
+            result |= init->values[0]->EvalValue(values[0]);
+            result |= init->values[0]->EvalValue(values[1]);
+            result |= init->values[0]->EvalValue(values[2]);
+            result |= init->values[0]->EvalValue(values[3]);
+
             if (!result)
             {
                 compiler->Error(Format("Each value in the initializer must resolve to a compile time literal"), symbol);
                 return false;
             }
+
+            values[0].Store(stateResolved->blendConstants[0]);
+            values[1].Store(stateResolved->blendConstants[1]);
+            values[2].Store(stateResolved->blendConstants[2]);
+            values[3].Store(stateResolved->blendConstants[3]);
         }
         else
         {
+            ValueUnion value;
+            assignEntry->right->EvalValue(value);
             uint32_t enumValue = 0;
             switch (entryType)
             {
                 case RenderState::__Resolved::DepthClampEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->depthClampEnabled);
+                    
+                    value.Store(stateResolved->depthClampEnabled);
                     break;
                 case RenderState::__Resolved::NoPixelsType:
-                    assignEntry->right->EvalBool(stateResolved->noPixels);
+                    value.Store(stateResolved->noPixels);
                     break;
                 case RenderState::__Resolved::PolygonModeType:
-                    assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->polygonMode = (GPULang::PolygonMode)enumValue;
+                    stateResolved->polygonMode = (GPULang::PolygonMode)value.i[0];
                     break;
                 case RenderState::__Resolved::CullModeType:
-                    assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->cullMode = (GPULang::CullMode)enumValue;
+                    stateResolved->cullMode = (GPULang::CullMode)value.i[0];
                     break;
                 case RenderState::__Resolved::WindingOrderType:
-                    assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->windingOrderMode = (GPULang::WindingOrderMode)enumValue;
+                    stateResolved->windingOrderMode = (GPULang::WindingOrderMode)value.i[0];
                     break;
                 case RenderState::__Resolved::DepthBiasEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->depthBiasEnabled);
+                    value.Store(stateResolved->depthBiasEnabled);
                     break;
                 case RenderState::__Resolved::DepthBiasFactorType:
-                    assignEntry->right->EvalFloat(stateResolved->depthBiasFactor);
+                    value.Store(stateResolved->depthBiasFactor);
                     break;
                 case RenderState::__Resolved::DepthBiasClampType:
-                    assignEntry->right->EvalFloat(stateResolved->depthBiasClamp);
+                    value.Store(stateResolved->depthBiasClamp);
                     break;
                 case RenderState::__Resolved::DepthBiasSlopeFactorType:
-                    assignEntry->right->EvalFloat(stateResolved->depthBiasSlopeFactor);
+                    value.Store(stateResolved->depthBiasSlopeFactor);
                     break;
                 case RenderState::__Resolved::LineWidthType:
-                    assignEntry->right->EvalFloat(stateResolved->lineWidth);
+                    value.Store(stateResolved->lineWidth);
                     break;
                 case RenderState::__Resolved::DepthTestEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->depthTestEnabled);
+                    value.Store(stateResolved->depthTestEnabled);
                     break;
                 case RenderState::__Resolved::DepthWriteEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->depthWriteEnabled);
+                    value.Store(stateResolved->depthWriteEnabled);
                     break;
                 case RenderState::__Resolved::DepthTestFunction:
-                    assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->depthCompare = (GPULang::CompareMode)enumValue;
+                    stateResolved->depthCompare = (GPULang::CompareMode)value.i[0];
                     break;
                 case RenderState::__Resolved::DepthBoundsTestEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->depthBoundsTestEnabled);
+                    value.Store(stateResolved->depthBoundsTestEnabled);
                     break;
                 case RenderState::__Resolved::MinDepthBoundsType:
-                    assignEntry->right->EvalFloat(stateResolved->minDepthBounds);
+                    value.Store(stateResolved->minDepthBounds);
                     break;
                 case RenderState::__Resolved::MaxDepthBoundsType:
-                    assignEntry->right->EvalFloat(stateResolved->maxDepthBounds);
+                    value.Store(stateResolved->maxDepthBounds);
                     break;
                 case RenderState::__Resolved::LogicOpEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->logicOpEnabled);
+                    value.Store(stateResolved->logicOpEnabled);
                     break;
                 case RenderState::__Resolved::StencilEnabledType:
-                    assignEntry->right->EvalBool(stateResolved->stencilEnabled);
+                    value.Store(stateResolved->stencilEnabled);
                     break;
                 case RenderState::__Resolved::LogicOpType:
-                    assignEntry->right->EvalUInt(enumValue);
-                    stateResolved->logicOp = (GPULang::LogicOp)enumValue;
+                    stateResolved->logicOp = (GPULang::LogicOp)value.i[0];
                     break;
                 default:
                     compiler->Error(Format("Unknown render state entry '%s'", entry.c_str()), symbol);
@@ -1532,7 +1600,9 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
                 if (expr != nullptr)
                 {
                     uint32_t size;
-                    expr->EvalUInt(size);
+                    ValueUnion val;
+                    expr->EvalValue(val);
+                    val.Store(size);
                     arraySize += size;
                 }
             }
@@ -1594,42 +1664,20 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     Function* fromUnderlyingType = new Function;
     fromUnderlyingType->name = enumeration->name;
     fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+    fromUnderlyingType->compileTime = true;
     Variable* arg = new Variable;
     arg->name = "_arg0";
     arg->type = enumeration->type;
-    arg->type.literal = false;
-    fromUnderlyingType->parameters.push_back(arg);
-    enumeration->globals.push_back(fromUnderlyingType);
-
-    fromUnderlyingType = new Function;
-    fromUnderlyingType->name = enumeration->name;
-    fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
-    fromUnderlyingType->returnType.literal = true;
-    arg = new Variable;
-    arg->name = "_arg0";
-    arg->type = enumeration->type;
-    arg->type.literal = true;
     fromUnderlyingType->parameters.push_back(arg);
     enumeration->globals.push_back(fromUnderlyingType);
 
     Function* toUnderlyingType = new Function;
     toUnderlyingType->name = enumeration->type.name;
     toUnderlyingType->returnType = enumeration->type;
+    toUnderlyingType->compileTime = true;
     arg = new Variable;
     arg->name = "_arg0";
     arg->type = Type::FullType{ enumeration->name };
-    arg->type.literal = false;
-    toUnderlyingType->parameters.push_back(arg);
-    enumeration->globals.push_back(toUnderlyingType);
-
-    toUnderlyingType = new Function;
-    toUnderlyingType->name = enumeration->type.name;
-    toUnderlyingType->returnType = enumeration->type;
-    toUnderlyingType->returnType.literal = true;
-    arg = new Variable;
-    arg->name = "_arg0";
-    arg->type = Type::FullType{ enumeration->name };
-    arg->type.literal = true;
     toUnderlyingType->parameters.push_back(arg);
     enumeration->globals.push_back(toUnderlyingType);
 
@@ -1685,8 +1733,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             if (type.name == "u32" || type.name == "i32" || type.name == "u16" || type.name == "i16")
             {
+                ValueUnion val;
+                expr->EvalValue(val);
                 uint32_t value;
-                expr->EvalUInt(value);
+                val.Store(value);
                 sym = new EnumExpression(value, expressionType, enumeration->type);
                 nextValue = value + 1;
             }
@@ -1792,7 +1842,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         {
             uint32_t size = 0;
             if (expr != nullptr)
-                expr->EvalUInt(size);
+            {
+                ValueUnion val;
+                expr->EvalValue(val);
+                val.Store(size);
+            }
             if (size == 0)
             {
                 compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
@@ -1837,22 +1891,25 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
+        ValueUnion val;
         // resolve attributes
         if (attr.name == "group")
         {
-            if (!attr.expression->EvalUInt(varResolved->group))
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'group' qualifier"), symbol);
                 return false;
             }
+            val.Store(varResolved->group);
         }
         else if (attr.name == "binding")
         {
-            if (!attr.expression->EvalUInt(varResolved->binding))
+            if (!attr.expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
                 return false;
             }
+            val.Store(varResolved->binding);
             if (varResolved->usageBits.flags.isStructMember)
             {
                 compiler->Error(Format("Qualifier 'binding' illegal for struct members"), symbol);
@@ -2211,26 +2268,81 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->UnrecognizedTypeError(rhs.name, symbol);
             return false;
         }
+        Type* rhsType = compiler->GetType(rhs);
+        Type* lhsType = compiler->GetType(lhs);
 
-        if (!lhs.Assignable(rhs))
+        if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Global)
         {
-            Type* lhsType = compiler->GetType(lhs);
-            std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
-            Function* conv = compiler->GetSymbol<Function>(conversionName);
-            if (conv == nullptr)
+            if (!rhs.literal)
             {
-                compiler->Error(Format("'%s' can't be converted to '%s'", rhs.ToString().c_str(), lhs.ToString().c_str()), symbol);
+                compiler->Error(Format("Global constants must be initialized by a compile time value"), symbol);
                 return false;
+            }
+        }
+        
+        if (!lhs.Constructible(rhs))
+        {
+            // If right hand side value is a literal, attempt to reduce the right hand side to a single expression
+            ValueUnion val;
+            if (rhs.literal && var->valueExpression->EvalValue(val))
+            {
+                switch (lhsType->baseType)
+                {
+                    case TypeCode::Bool:
+                        if (val.columnSize > 1)
+                            var->valueExpression = Alloc<BoolVecExpression>(std::vector<bool>(val.b, val.b + val.columnSize));
+                        else
+                            var->valueExpression = Alloc<BoolExpression>(val.b[0]);
+                        var->valueExpression->Resolve(compiler);
+                        break;
+                    case TypeCode::Float:
+                    case TypeCode::Float16:
+                        if (val.columnSize > 1)
+                            var->valueExpression = Alloc<FloatVecExpression>(std::vector<float>(val.f, val.f + val.columnSize));
+                        else
+                            var->valueExpression = Alloc<FloatExpression>(val.f[0]);
+                        var->valueExpression->Resolve(compiler);
+                        break;
+                    case TypeCode::Int:
+                    case TypeCode::Int16:
+                        if (val.columnSize > 1)
+                            var->valueExpression = Alloc<IntVecExpression>(std::vector<int>(val.i, val.i + val.columnSize));
+                        else
+                            var->valueExpression = Alloc<IntExpression>(val.i[0]);
+                        var->valueExpression->Resolve(compiler);
+                        break;
+                    case TypeCode::UInt:
+                    case TypeCode::UInt16:
+                        if (val.columnSize > 1)
+                            var->valueExpression = Alloc<UIntVecExpression>(std::vector<unsigned int>(val.ui, val.ui + val.columnSize));
+                        else
+                            var->valueExpression = Alloc<UIntExpression>(val.ui[0]);
+                        var->valueExpression->Resolve(compiler);
+                        break;
+                    default:
+                        assert(false); // shouldn't be possible
+                        break;
+                }
             }
             else
             {
-                if (compiler->options.disallowImplicitConversion)
+                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
+                Function* conv = compiler->GetSymbol<Function>(conversionName);
+                if (conv == nullptr)
                 {
-                    compiler->Error(Format("Initialization not possible because implicit conversions ('%s' to '%s') are not allowed. Either disable implicit conversions or explicitly convert the value.", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                    compiler->Error(Format("'%s' can't be converted to '%s'", rhs.ToString().c_str(), lhs.ToString().c_str()), symbol);
                     return false;
                 }
+                else
+                {
+                    if (compiler->options.disallowImplicitConversion)
+                    {
+                        compiler->Error(Format("Initialization not possible because implicit conversions ('%s' to '%s') are not allowed. Either disable implicit conversions or explicitly convert the value.", lhs.ToString().c_str(), rhs.ToString().c_str()), symbol);
+                        return false;
+                    }
+                }
+                varResolved->valueConversionFunction = conv;
             }
-            varResolved->valueConversionFunction = conv;
         }
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
@@ -2523,11 +2635,13 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                         statement->unrollCount = UINT_MAX;
                     else
                     {
-                        if (!attr.expression->EvalUInt(statement->unrollCount))
+                        ValueUnion val;
+                        if (!attr.expression->EvalValue(val))
                         {
                             compiler->Error(Format("Unroll count must evaluate to a literal integer value", attr.name.c_str()), statement);
                             return false;
                         }
+                        val.Store(statement->unrollCount);
                     }
                 }
                 else
@@ -2845,9 +2959,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Geometry shader '%s' doesn't support input topology 'isolines", fun->name.c_str()), symbol);
             return false;
         }
-
     }
-
 
     if (compiler->currentState.shaderType == Program::__Resolved::ComputeShader)
     {
@@ -2878,6 +2990,57 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
+    if (compiler->currentState.shaderType == Program::__Resolved::TaskShader)
+    {
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1)
+        {
+            compiler->Error(Format("Task shader must declare 'local_size_y' as 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[2] > 1)
+        {
+            compiler->Error(Format("Task shader must declare 'local_size_z' as 1", fun->name.c_str()), symbol);
+            return false;
+        }
+    }
+
+    if (compiler->currentState.shaderType == Program::__Resolved::MeshShader)
+    {
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
+        {
+            compiler->Error(Format("Mesh shader must declare 'local_size_x' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] <= 0)
+        {
+            compiler->Error(Format("Mesh shader must declare 'local_size_y' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.computeShaderWorkGroupSize[2] <= 0)
+        {
+            compiler->Error(Format("Mesh shader must declare 'local_size_z' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.groupSize <= 0)
+        {
+            compiler->Error(Format("Mesh shader must declare 'group_size' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.groupsPerWorkgroup <= 0)
+        {
+            compiler->Error(Format("Mesh shader must declare 'groups_per_workgroup' bigger than or equal to 1", fun->name.c_str()), symbol);
+            return false;
+        }
+    }
+
+    if (compiler->currentState.shaderType != Program::__Resolved::ComputeShader && compiler->currentState.shaderType != Program::__Resolved::TaskShader && compiler->currentState.shaderType != Program::__Resolved::MeshShader)
+    {
+        if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+        {
+            compiler->Error("Setting the derivative indexing method is only allowed on shaders with explicit work group sizes", symbol);
+            return false;
+        }
+    }
     return true;
 }
 
@@ -3131,8 +3294,8 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
     {
         if (expr != nullptr)
         {
-            uint32_t dummy;
-            if (!expr->EvalUInt(dummy))
+            ValueUnion dummy;
+            if (!expr->EvalValue(dummy))
             {
                 compiler->Error(Format("Array modifier must be a literal or compile time value"), sym);
                 return false;
@@ -3177,8 +3340,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ForStatement* forStat = static_cast<ForStatement*>(symbol);
 
             // If condition can be evaluated to false, don't run loop
-            bool b;
-            if (forStat->condition->EvalBool(b) && !b)
+            ValueUnion val;
+            if (forStat->condition->EvalValue(val) && !val.b[0])
                 break;
             
             for (auto* var : forStat->declarations)
@@ -3193,8 +3356,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             WhileStatement* whileStat = static_cast<WhileStatement*>(symbol);
 
             // If static evaluation turns out the while is meaningless, end early
-            bool b;
-            if (whileStat->condition->EvalBool(b) && !b)
+            ValueUnion val;
+            if (whileStat->condition->EvalValue(val) && !val.b[0])
                 break;
                 
             res |= this->ResolveVisibility(compiler, whileStat->condition);
@@ -3249,10 +3412,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::IfStatementType:
         {
             IfStatement* ifStat = static_cast<IfStatement*>(symbol);
-            bool b;
-            if (ifStat->condition->EvalBool(b))
+            ValueUnion val;
+            if (ifStat->condition->EvalValue(val))
             {
-                if (b)
+                if (val.b[0])
                     res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
                 else if (ifStat->elseStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
@@ -3268,10 +3431,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::TernaryExpressionType:
         {
             TernaryExpression* ternExp = static_cast<TernaryExpression*>(symbol);
-            bool b;
-            if (ternExp->lhs->EvalBool(b))
+            ValueUnion val;
+            if (ternExp->lhs->EvalValue(val))
             {
-                if (b)
+                if (val.b[0])
                     res |= this->ResolveVisibility(compiler, ternExp->ifExpression);
                 else
                     res |= this->ResolveVisibility(compiler, ternExp->elseExpression);
@@ -3287,11 +3450,11 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::SwitchStatementType:
         {
             SwitchStatement* switchStat = static_cast<SwitchStatement*>(symbol);
-            uint32_t index;
-            if (switchStat->switchExpression->EvalUInt(index))
+            ValueUnion val;
+            if (switchStat->switchExpression->EvalValue(val))
             {
-                if (index < switchStat->caseExpressions.size())
-                    res |= this->ResolveVisibility(compiler, switchStat->caseStatements[index]);
+                if (val.i[0] < switchStat->caseExpressions.size())
+                    res |= this->ResolveVisibility(compiler, switchStat->caseStatements[val.i[0]]);
                 else if (switchStat->defaultStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
             }
@@ -3348,19 +3511,6 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , { "pixelGetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
                 , { "pixelSetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
                 , { "rayTrace", { { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSample", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBias", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBiasCompare", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBiasOffset", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBiasProj", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBiasProjCompare", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleBiasProjOffset", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleCompare", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleCompareOffset", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleProj", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleProjCompare", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleProjCompareOffset", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
-                , { "textureSampleProjOffset", {{ Program::__Resolved::ProgramEntryType::VertexShader, Program::__Resolved::ProgramEntryType::GeometryShader, Program::__Resolved::ProgramEntryType::HullShader, Program::__Resolved::ProgramEntryType::DomainShader, Program::__Resolved::ProgramEntryType::PixelShader, Program::__Resolved::ProgramEntryType::MeshShader }, Compiler::State::SideEffects::Masks() }}
                 , { "rayExportIntersection", { { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
                 , { "rayExecuteCallable", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
                 , { "rayGetLaunchIndex", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
@@ -3402,7 +3552,71 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 }
                 compiler->currentState.sideEffects.bits |= (uint32_t)std::get<1>(it->second);
             }
-            
+
+            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const std::string& fun)
+            {
+                static const std::vector<Program::__Resolved::ProgramEntryType> derivativeProducingShaders =
+                    {
+                        Program::__Resolved::ProgramEntryType::VertexShader
+                        , Program::__Resolved::ProgramEntryType::GeometryShader
+                        , Program::__Resolved::ProgramEntryType::HullShader
+                        , Program::__Resolved::ProgramEntryType::DomainShader
+                        , Program::__Resolved::ProgramEntryType::PixelShader
+                    };
+                for (const auto shader : derivativeProducingShaders)
+                    if (shader == compiler->currentState.shaderType)
+                        return true;
+
+                if (compiler->currentState.shaderType == Program::__Resolved::ComputeShader || compiler->currentState.shaderType == Program::__Resolved::TaskShader || compiler->currentState.shaderType == Program::__Resolved::ProgramEntryType::MeshShader)
+                {
+                    Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
+                    if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
+                        return true;
+                    else
+                    {
+                        const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                        compiler->Error(Format("%s must either specify 'derivative_index_linear' or 'derivative_index_quads' when using derivatives", shaderString.c_str()), expr);
+                        return false;    
+                    }
+                }
+                else
+                {
+                    const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    compiler->Error(Format("%s can not be called from a %s", fun.c_str(), shaderString.c_str()), expr);
+                    return false;
+                }
+                
+                
+                return false;
+            };
+            static const std::unordered_map<std::string, std::function<bool(Compiler* compiler, Expression* expr, const std::string& fun)>> conditionalBuiltins =
+            {
+                { "textureSample", derivativeConditionFunction }
+                , { "textureSampleBias", derivativeConditionFunction }
+                , { "textureSampleBiasCompare", derivativeConditionFunction }
+                , { "textureSampleBiasOffset", derivativeConditionFunction }
+                , { "textureSampleBiasProj", derivativeConditionFunction }
+                , { "textureSampleBiasProjCompare", derivativeConditionFunction }
+                , { "textureSampleBiasProjOffset", derivativeConditionFunction }
+                , { "textureSampleCompare", derivativeConditionFunction }
+                , { "textureSampleCompareOffset", derivativeConditionFunction }
+                , { "textureSampleProj", derivativeConditionFunction }
+                , { "textureSampleProjCompare", derivativeConditionFunction }
+                , { "textureSampleProjCompareOffset", derivativeConditionFunction }
+                , { "textureSampleProjOffset", derivativeConditionFunction }
+                , { "ddx", derivativeConditionFunction }
+                , { "ddy", derivativeConditionFunction }
+                , { "fwidth", derivativeConditionFunction }
+            };
+            const auto it2 = conditionalBuiltins.find(callResolved->functionSymbol);
+            if (it2 != conditionalBuiltins.end())
+            {
+                bool allowedInShader = it2->second(compiler, callExpr, it2->first);
+                if (!allowedInShader)
+                {
+                    return false;
+                }
+            }
             
             for (auto& arg : callExpr->args)
                 res |= this->ResolveVisibility(compiler, arg);

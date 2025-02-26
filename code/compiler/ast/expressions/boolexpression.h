@@ -28,14 +28,8 @@ public:
     bool EvalType(Type::FullType& out) const override;
     /// eval symbol
     bool EvalSymbol(std::string& out) const override;
-    /// evaluates expression as an integer
-    bool EvalInt(int& out) const override;
-    /// evaluates expression as an integer
-    bool EvalUInt(unsigned& out) const override;
-    /// evaulates expression as a float
-    bool EvalFloat(float& out) const override;
-    /// evaluates expression as a boolean
-    bool EvalBool(bool& out) const override;
+	/// Evaluate value
+	bool EvalValue(ValueUnion& out) const override;
     /// evaluates expression as a string
     std::string EvalString() const override;
     /// evaluates access flags

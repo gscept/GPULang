@@ -1,31 +1,23 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    @class GPULang::UnaryExpression
+    @class GPULang::UIntVecExpression
     
-    A unary expression is a one-sided expression.
-
-    Either
-
-    < op expression >
+    An unsigned expression is a simple expression which holds an unsigned integer.
     
-    Or
-
-    < expression op >
-    
-    (C) 2021 Gustav Sterbrant
+    (C) 2013 Gustav Sterbrant
 */
 //------------------------------------------------------------------------------
 #include "expression.h"
 namespace GPULang
 {
-struct UnaryExpression : public Expression
+struct UIntVecExpression : public Expression
 {
 public:
-    /// constructor
-    UnaryExpression(uint32_t op, bool isPrefix, Expression* expr);
-    /// destructor
-    virtual ~UnaryExpression();
+	/// constructor
+    UIntVecExpression(const std::vector<unsigned int>& values);
+	/// destructor
+	virtual ~UIntVecExpression();
 
     /// Resolve
     bool Resolve(Compiler* compiler) override;
@@ -43,14 +35,11 @@ public:
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
     
-    uint32_t op;
-    bool isPrefix;
-    Expression* expr;
+	std::vector<unsigned int> values;
 
     struct __Resolved : public Expression::__Resolved
     {
         Type::FullType fullType;
-        Symbol* dereffedSymbol = nullptr;
         Type* type;
     };
 }; 

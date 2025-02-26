@@ -3,9 +3,13 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "binaryexpression.h"
+
 #include "ast/function.h"
 #include "ast/expressions/symbolexpression.h"
 #include "compiler.h"
+#include "floatexpression.h"
+#include "intexpression.h"
+#include "uintexpression.h"
 #include "util.h"
 
 namespace GPULang
@@ -26,6 +30,7 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
     this->thisResolved->lhsType = nullptr;
     this->thisResolved->rhsType = nullptr;
     this->thisResolved->retType = nullptr;
+    this->thisResolved->constValueExpression = nullptr;
     this->symbolType = Symbol::BinaryExpressionType;
 }
 
@@ -79,9 +84,7 @@ BinaryExpression::Resolve(Compiler* compiler)
             return false;
         }
 
-        Type::FullType leftType;
-        this->left->EvalType(leftType);
-        if (leftType.literal)
+        if (this->thisResolved->leftType.literal)
         {
             compiler->Error(Format("Assignment illegal on literal"), this);
             return false;
@@ -114,7 +117,7 @@ BinaryExpression::Resolve(Compiler* compiler)
     else if (this->op != '=') // If not an assignment, allow promotion of either side of the operator
     {
         std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
-        Symbol* operatorFunction = this->thisResolved->lhsType->GetSymbol(functionName);
+        Function* operatorFunction = this->thisResolved->lhsType->GetSymbol<Function>(functionName);
         if (operatorFunction == nullptr)
         {
             if (compiler->options.disallowImplicitPromotion)
@@ -183,8 +186,17 @@ BinaryExpression::Resolve(Compiler* compiler)
     {
         this->thisResolved->returnType = this->thisResolved->leftType;
     }
-    
     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+
+    // Test if we can evaluate this expression at compile time
+    if (!isAssignment && this->thisResolved->leftType.literal && this->thisResolved->rightType.literal)
+    {
+        ValueUnion value;
+        if (this->EvalValue(value))
+        {
+            thisResolved->returnType.literal = true;
+        }
+    }
     return true;
 }
 
@@ -213,275 +225,123 @@ BinaryExpression::EvalSymbol(std::string& out) const
 //------------------------------------------------------------------------------
 /**
 */
-bool 
-BinaryExpression::EvalInt(int& out) const
-{
-    int lVal, rVal;
-    this->left->EvalInt(lVal);
-    this->right->EvalInt(rVal);
-
-    if (this->op == '+')
-    {
-        out = lVal + rVal;
-    }
-    else if (this->op == '-')
-    {
-        out = lVal - rVal;
-    }
-    else if (this->op == '*')
-    {
-        out = lVal * rVal;
-    }
-    else if (this->op == '/')
-    {
-        out = lVal / rVal;
-    }
-    else if (this->op == '%')
-    {
-        out = lVal % rVal;
-    }
-    else if (this->op == '^')
-    {
-        out = lVal ^ rVal;
-    }
-    else if (this->op == '|')
-    {
-        out = lVal | rVal;
-    }
-    else if (this->op == '&')
-    {
-        out = lVal & rVal;
-    }
-    else if (this->op == '>>')
-    {
-        out = lVal >> rVal;
-    }
-    else if (this->op == '<<')
-    {
-        out = lVal << rVal;
-    }
-    else if (this->op == '||')
-    {
-        out = (int)(lVal || rVal);
-    }
-    else if (this->op == '&&')
-    {
-        out = (int)(lVal & rVal);
-    }
-    else if (this->op == '<')
-    {
-        out = (int)(lVal < rVal);
-    }
-    else if (this->op == '>')
-    {
-        out = (int)(lVal > rVal);
-    }
-    else if (this->op == '<=')
-    {
-        out = (int)(lVal <= rVal);
-    }
-    else if (this->op == '>=')
-    {
-        out = (int)(lVal >= rVal);
-    }
-    else if (this->op == '==')
-    {
-        out = (int)(lVal == rVal);
-    }
-    else if (this->op == '!=')
-    {
-        out = (int)(lVal != rVal);
-    }
-    else
-    {
-        return false;
-    }
-    return true;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
 bool
-BinaryExpression::EvalUInt(unsigned& out) const
+BinaryExpression::EvalValue(ValueUnion& out) const
 {
-    unsigned lVal, rVal;
-    this->left->EvalUInt(lVal);
-    this->right->EvalUInt(rVal);
-
-    if (this->op == '+')
-    {
-        out = lVal + rVal;
-    }
-    else if (this->op == '-')
-    {
-        out = lVal - rVal;
-    }
-    else if (this->op == '*')
-    {
-        out = lVal * rVal;
-    }
-    else if (this->op == '/')
-    {
-        out = lVal / rVal;
-    }
-    else if (this->op == '%')
-    {
-        out = lVal % rVal;
-    }
-    else if (this->op == '^')
-    {
-        out = lVal ^ rVal;
-    }
-    else if (this->op == '|')
-    {
-        out = lVal | rVal;
-    }
-    else if (this->op == '&')
-    {
-        out = lVal & rVal;
-    }
-    else if (this->op == '>>')
-    {
-        out = lVal >> rVal;
-    }
-    else if (this->op == '<<')
-    {
-        out = lVal << rVal;
-    }
-    else if (this->op == '||')
-    {
-        out = (unsigned)(lVal || rVal);
-    }
-    else if (this->op == '&&')
-    {
-        out = (unsigned)(lVal & rVal);
-    }
-    else if (this->op == '<')
-    {
-        out = (unsigned)(lVal < rVal);
-    }
-    else if (this->op == '>')
-    {
-        out = (unsigned)(lVal > rVal);
-    }
-    else if (this->op == '<=')
-    {
-        out = (unsigned)(lVal <= rVal);
-    }
-    else if (this->op == '>=')
-    {
-        out = (unsigned)(lVal >= rVal);
-    }
-    else if (this->op == '==')
-    {
-        out = (unsigned)(lVal == rVal);
-    }
-    else if (this->op == '!=')
-    {
-        out = (unsigned)(lVal != rVal);
-    }
-    else
-    {
+    ValueUnion lval, rval;
+    if (!(this->left->EvalValue(lval) & this->right->EvalValue(rval)))
         return false;
-    }
-    return true;
-}
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-BinaryExpression::EvalFloat(float& out) const
-{
-    float lVal, rVal;
-    this->left->EvalFloat(lVal);
-    this->right->EvalFloat(rVal);
+    lval.Convert(this->thisResolved->retType->baseType);
+    rval.Convert(this->thisResolved->retType->baseType);
+    out.SetType(this->thisResolved->retType);
 
-    if (this->op == '+')
-    {
-        out = lVal + rVal;
+#define OPERATOR_EXECUTE(mem, op)\
+    out.mem[0] = lval.mem[0] op rval.mem[0];\
+    if (lval.columnSize > 1)\
+        out.mem[1] = lval.mem[1] op rval.mem[1];\
+    if (lval.columnSize > 2)\
+        out.mem[2] = lval.mem[2] op rval.mem[2];\
+    if (lval.columnSize > 3)\
+        out.mem[3] = lval.mem[3] op rval.mem[3];\
+    if (lval.rowSize > 1)\
+    {\
+        out.mem[4] = lval.mem[4] op rval.mem[4];\
+        if (lval.columnSize > 1)\
+            out.mem[5] = lval.mem[5] op rval.mem[5];\
+        if (lval.columnSize > 2)\
+            out.mem[6] = lval.mem[6] op rval.mem[6];\
+        if (lval.columnSize > 3)\
+            out.mem[7] = lval.mem[7] op rval.mem[7];\
+    }\
+    if (lval.rowSize > 2)\
+    {\
+        out.mem[8] = lval.mem[8] op rval.mem[8];\
+        if (lval.columnSize > 1)\
+            out.mem[9] = lval.mem[9] op rval.mem[9];\
+        if (lval.columnSize > 2)\
+            out.mem[10] = lval.mem[10] op rval.mem[10];\
+        if (lval.columnSize > 3)\
+            out.mem[11] = lval.mem[11] op rval.mem[11];\
+    }\
+    if (lval.rowSize > 3)\
+    {\
+        out.mem[12] = lval.mem[12] op rval.mem[12];\
+        if (lval.columnSize > 1)\
+            out.mem[13] = lval.mem[13] op rval.mem[13];\
+        if (lval.columnSize > 2)\
+            out.mem[14] = lval.mem[14] op rval.mem[14];\
+        if (lval.columnSize > 3)\
+            out.mem[15] = lval.mem[15] op rval.mem[15];\
     }
-    else if (this->op == '-')
-    {
-        out = lVal - rVal;
-    }
-    else if (this->op == '*')
-    {
-        out = lVal * rVal;
-    }
-    else if (this->op == '/')
-    {
-        out = lVal / rVal;
-    }
-    else
-    {
-        return false;
-    }
-    return true;
-}
 
-//------------------------------------------------------------------------------
-/**
-*/
-bool 
-BinaryExpression::EvalBool(bool& out) const
-{
-    Type::FullType lhsType, rhsType;
-    this->left->EvalType(lhsType);
-    this->right->EvalType(rhsType);
+#define OPERATOR_ALL(label, op) \
+    case label:\
+    {\
+        switch (this->thisResolved->retType->baseType)\
+        {\
+            case TypeCode::Bool:\
+                OPERATOR_EXECUTE(b, op)\
+                return true;\
+            case TypeCode::Float:\
+            case TypeCode::Float16:\
+                OPERATOR_EXECUTE(f, op)\
+                return true;\
+            case TypeCode::Int:\
+            case TypeCode::Int16:\
+                OPERATOR_EXECUTE(i, op)\
+                return true;\
+            case TypeCode::UInt:\
+            case TypeCode::UInt16:\
+                OPERATOR_EXECUTE(ui, op)\
+                return true;\
+            default:\
+                break;\
+        }\
+        break;\
+    }
 
-    bool ret = true;
-    if (lhsType.name == "i32")
-    {
-        int lVal;
-        ret &= this->left->EvalInt(lVal);
-        if (rhsType.name == "f32")
-        {
-            float rVal;
-            ret &= this->right->EvalFloat(rVal);
-            out = EvalBool(lVal, rVal);
-        }
-        else if (rhsType.name == "i32")
-        {
-            int rVal;
-            ret &= this->right->EvalInt(rVal);
-            out = EvalBool(lVal, rVal);
-        }
+    #define OPERATOR_INTEGER(label, op) \
+    case label:\
+    {\
+        switch (this->thisResolved->retType->baseType)\
+        {\
+            case TypeCode::Int:\
+            case TypeCode::Int16:\
+                OPERATOR_EXECUTE(i, op)\
+                return true;\
+            case TypeCode::UInt:\
+            case TypeCode::UInt16:\
+                OPERATOR_EXECUTE(ui, op)\
+                return true;\
+            default:\
+                break;\
+        }\
+        break;\
     }
-    else if (lhsType.name == "f32")
+    
+    switch (this->op)
     {
-        float lVal;
-        ret &= this->left->EvalFloat(lVal);
-        if (rhsType.name == "i32")
-        {
-            int rVal;
-            ret &= this->right->EvalInt(rVal);
-            out = EvalBool(lVal, rVal);
-        }
-        else if (rhsType.name == "f32")
-        {
-            float rVal;
-            ret &= this->right->EvalFloat(rVal);
-            out = EvalBool(lVal, rVal);
-        }
+        OPERATOR_ALL('+', +)
+        OPERATOR_ALL('-', -)
+        OPERATOR_ALL('*', *)
+        OPERATOR_ALL('/', /)
+        OPERATOR_INTEGER('%', %)
+        OPERATOR_INTEGER('^', ^)
+        OPERATOR_INTEGER('|', |)
+        OPERATOR_INTEGER('&', &)
+        OPERATOR_INTEGER('>>', >>)
+        OPERATOR_INTEGER('<<', <<)
+        OPERATOR_INTEGER('||', ||)
+        OPERATOR_INTEGER('&&', &&)
+        OPERATOR_INTEGER('<', <)
+        OPERATOR_INTEGER('>', >)
+        OPERATOR_INTEGER('<=', <=)
+        OPERATOR_INTEGER('>=', >=)
+        OPERATOR_INTEGER('==', ==)
+        OPERATOR_INTEGER('!=', !=)
     }
-    else if (lhsType.name == "b8")
-    {
-        bool lVal;
-        ret &= this->left->EvalBool(lVal);
-        if (rhsType.name == "b8")
-        {
-            bool rVal;
-            ret &= this->right->EvalBool(rVal);
-            out = EvalBool(lVal, rVal);
-        }
-    }
-    else
-    {
-        ret = false;
-    }
-    return ret;
+    return false;
 }
 
 //------------------------------------------------------------------------------

@@ -240,6 +240,7 @@ struct Compiler
             } flags;
             uint32_t bits;
         } sideEffects;
+        Function* function;
     } currentState;
     uint32_t linkDefineCounter = 0;
 
