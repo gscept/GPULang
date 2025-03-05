@@ -4487,6 +4487,7 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
                     {
                         VALUE_UNION_SWITCH()
                     }
+#undef  X
                 }
                 else
                 {
@@ -4521,6 +4522,7 @@ GenerateCallExpressionSPIRV(Compiler* compiler, SPIRVGenerator* generator, Expre
                 {
                     VALUE_UNION_SWITCH()
                 }
+#undef X
             }
         }
 
