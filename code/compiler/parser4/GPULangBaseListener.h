@@ -163,6 +163,21 @@ public:
   virtual void enterArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext * /*ctx*/) override { }
   virtual void exitArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext * /*ctx*/) override { }
 
+  virtual void enterFloatVecLiteralExpression(GPULangParser::FloatVecLiteralExpressionContext * /*ctx*/) override { }
+  virtual void exitFloatVecLiteralExpression(GPULangParser::FloatVecLiteralExpressionContext * /*ctx*/) override { }
+
+  virtual void enterDoubleVecLiteralExpression(GPULangParser::DoubleVecLiteralExpressionContext * /*ctx*/) override { }
+  virtual void exitDoubleVecLiteralExpression(GPULangParser::DoubleVecLiteralExpressionContext * /*ctx*/) override { }
+
+  virtual void enterIntVecLiteralExpression(GPULangParser::IntVecLiteralExpressionContext * /*ctx*/) override { }
+  virtual void exitIntVecLiteralExpression(GPULangParser::IntVecLiteralExpressionContext * /*ctx*/) override { }
+
+  virtual void enterUintVecLiteralExpression(GPULangParser::UintVecLiteralExpressionContext * /*ctx*/) override { }
+  virtual void exitUintVecLiteralExpression(GPULangParser::UintVecLiteralExpressionContext * /*ctx*/) override { }
+
+  virtual void enterBooleanVecLiteralExpression(GPULangParser::BooleanVecLiteralExpressionContext * /*ctx*/) override { }
+  virtual void exitBooleanVecLiteralExpression(GPULangParser::BooleanVecLiteralExpressionContext * /*ctx*/) override { }
+
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
   virtual void exitEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }

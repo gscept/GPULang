@@ -51,6 +51,7 @@ struct Structure : public Type
         bool packMembers;
 
         Function* storageFunction = nullptr;
+        Function* loadFunction = nullptr;
     };
 };
 

@@ -36,21 +36,21 @@
 #include "ast/expressions/arrayindexexpression.h"
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/boolexpression.h"
-//#include "ast/expressions/boolvecexpression.h"
+#include "ast/expressions/boolvecexpression.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/commaexpression.h"
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
-//#include "ast/expressions/floatvecexpression.h"
+#include "ast/expressions/floatvecexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
-//#include "ast/expressions/intvecexpression.h"
+#include "ast/expressions/intvecexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/uintexpression.h"
-//#include "ast/expressions/uintvecexpression.h"
+#include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 #include "memory.h"
@@ -104,7 +104,10 @@ public:
     RuleAndExpression = 37, RuleEquivalencyExpression = 38, RuleRelationalExpression = 39, 
     RuleShiftExpression = 40, RuleAddSubtractExpression = 41, RuleMultiplyDivideExpression = 42, 
     RulePrefixExpression = 43, RuleSuffixExpression = 44, RuleNamespaceExpression = 45, 
-    RuleBinaryexpatom = 46, RuleInitializerExpression = 47, RuleArrayInitializerExpression = 48
+    RuleBinaryexpatom = 46, RuleInitializerExpression = 47, RuleArrayInitializerExpression = 48, 
+    RuleFloatVecLiteralExpression = 49, RuleDoubleVecLiteralExpression = 50, 
+    RuleIntVecLiteralExpression = 51, RuleUintVecLiteralExpression = 52, 
+    RuleBooleanVecLiteralExpression = 53
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -190,7 +193,12 @@ public:
   class NamespaceExpressionContext;
   class BinaryexpatomContext;
   class InitializerExpressionContext;
-  class ArrayInitializerExpressionContext; 
+  class ArrayInitializerExpressionContext;
+  class FloatVecLiteralExpressionContext;
+  class DoubleVecLiteralExpressionContext;
+  class IntVecLiteralExpressionContext;
+  class UintVecLiteralExpressionContext;
+  class BooleanVecLiteralExpressionContext; 
 
   class  StringContext : public antlr4::ParserRuleContext {
   public:
@@ -1308,6 +1316,111 @@ public:
   };
 
   ArrayInitializerExpressionContext* arrayInitializerExpression();
+
+  class  FloatVecLiteralExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    antlr4::Token *arg0 = nullptr;
+    antlr4::Token *argN = nullptr;
+    FloatVecLiteralExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<antlr4::tree::TerminalNode *> FLOATLITERAL();
+    antlr4::tree::TerminalNode* FLOATLITERAL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  FloatVecLiteralExpressionContext* floatVecLiteralExpression();
+
+  class  DoubleVecLiteralExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    antlr4::Token *arg0 = nullptr;
+    antlr4::Token *argN = nullptr;
+    DoubleVecLiteralExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<antlr4::tree::TerminalNode *> DOUBLELITERAL();
+    antlr4::tree::TerminalNode* DOUBLELITERAL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  DoubleVecLiteralExpressionContext* doubleVecLiteralExpression();
+
+  class  IntVecLiteralExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    antlr4::Token *arg0 = nullptr;
+    antlr4::Token *argN = nullptr;
+    IntVecLiteralExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
+    antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  IntVecLiteralExpressionContext* intVecLiteralExpression();
+
+  class  UintVecLiteralExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    antlr4::Token *arg0 = nullptr;
+    antlr4::Token *argN = nullptr;
+    UintVecLiteralExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<antlr4::tree::TerminalNode *> UINTEGERLITERAL();
+    antlr4::tree::TerminalNode* UINTEGERLITERAL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  UintVecLiteralExpressionContext* uintVecLiteralExpression();
+
+  class  BooleanVecLiteralExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    Expression* tree;
+    GPULangParser::BooleanContext *arg0 = nullptr;
+    GPULangParser::BooleanContext *argN = nullptr;
+    BooleanVecLiteralExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<BooleanContext *> boolean();
+    BooleanContext* boolean(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  BooleanVecLiteralExpressionContext* booleanVecLiteralExpression();
 
 
   // By default the static state used to implement the parser is lazily initialized during the first

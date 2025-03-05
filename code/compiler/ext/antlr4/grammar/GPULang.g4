@@ -90,21 +90,21 @@ SetupFile(bool updateLine = true)
 #include "ast/expressions/arrayindexexpression.h"
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/boolexpression.h"
-//#include "ast/expressions/boolvecexpression.h"
+#include "ast/expressions/boolvecexpression.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/commaexpression.h"
 #include "ast/expressions/expression.h"
 #include "ast/expressions/floatexpression.h"
-//#include "ast/expressions/floatvecexpression.h"
+#include "ast/expressions/floatvecexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/intexpression.h"
-//#include "ast/expressions/intvecexpression.h"
+#include "ast/expressions/intvecexpression.h"
 #include "ast/expressions/stringexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/uintexpression.h"
-//#include "ast/expressions/uintvecexpression.h"
+#include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "util.h"
 #include "memory.h"
@@ -1126,80 +1126,80 @@ arrayInitializerExpression
     }
     ;
    
-//floatVecLiteralExpression
-//    returns[ Expression* tree ]
-//    @init
-//    {
-//        $tree = nullptr;
-//        std::vector<float> values;
-//        Symbol::Location location;
-//    }:
-//    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
-//    {
-//        $tree = Alloc<FloatVecExpression>(values);
-//        $tree->location = location;
-//    }
-//    ;
-//    
-//doubleVecLiteralExpression
-//    returns[ Expression* tree ]
-//    @init
-//    {
-//        $tree = nullptr;
-//        std::vector<float> values;
-//        Symbol::Location location;
-//    }:
-//    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
-//    {
-//        $tree = Alloc<FloatVecExpression>(values);
-//        $tree->location = location;
-//    }
-//    ;
-//    
-//intVecLiteralExpression
-//    returns[ Expression* tree ]
-//    @init
-//    {
-//        $tree = nullptr;
-//        std::vector<int> values;
-//        Symbol::Location location;
-//    }:
-//    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
-//    {
-//        $tree = Alloc<IntVecExpression>(values);
-//        $tree->location = location;
-//    }
-//    ;
-//    
-//uintVecLiteralExpression
-//    returns[ Expression* tree ]
-//    @init
-//    {
-//        $tree = nullptr;
-//        std::vector<unsigned int> values;
-//        Symbol::Location location;
-//    }:
-//    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
-//    {
-//        $tree = Alloc<UIntVecExpression>(values);
-//        $tree->location = location;
-//    }
-//    ;
-//    
-//booleanVecLiteralExpression
-//    returns[ Expression* tree ]
-//    @init
-//    {
-//        $tree = nullptr;
-//        std::vector<bool> values;
-//        Symbol::Location location;
-//    }:
-//    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
-//    {
-//        $tree = Alloc<BoolVecExpression>(values);
-//        $tree->location = location;
-//    }
-//    ;    
+floatVecLiteralExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<float> values;
+        Symbol::Location location;
+    }:
+    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    {
+        $tree = Alloc<FloatVecExpression>(values);
+        $tree->location = location;
+    }
+    ;
+    
+doubleVecLiteralExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<float> values;
+        Symbol::Location location;
+    }:
+    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    {
+        $tree = Alloc<FloatVecExpression>(values);
+        $tree->location = location;
+    }
+    ;
+    
+intVecLiteralExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<int> values;
+        Symbol::Location location;
+    }:
+    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    {
+        $tree = Alloc<IntVecExpression>(values);
+        $tree->location = location;
+    }
+    ;
+    
+uintVecLiteralExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<unsigned int> values;
+        Symbol::Location location;
+    }:
+    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    {
+        $tree = Alloc<UIntVecExpression>(values);
+        $tree->location = location;
+    }
+    ;
+    
+booleanVecLiteralExpression
+    returns[ Expression* tree ]
+    @init
+    {
+        $tree = nullptr;
+        std::vector<bool> values;
+        Symbol::Location location;
+    }:
+    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    {
+        $tree = Alloc<BoolVecExpression>(values);
+        $tree->location = location;
+    }
+    ;    
 
 SC: ';';
 CO: ',';

@@ -77,6 +77,9 @@ CallExpression::Resolve(Compiler* compiler)
     std::string callSignature = Format("%s(%s)", this->thisResolved->functionSymbol.c_str(), argList.c_str());
     Symbol* symbol = compiler->GetSymbol(callSignature);
 
+    this->thisResolved->conversions.resize(this->thisResolved->argTypes.size());
+    std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
+
     struct Candidate
     {
         Function* function;
@@ -202,7 +205,7 @@ CallExpression::Resolve(Compiler* compiler)
                 {
                     Function* fun = static_cast<Function*>(hint);
                     Function::__Resolved* res = Symbol::Resolved(fun);
-                    potentialHints.append(Format("\n    %s", res->name.c_str()));
+                    potentialHints.append(Format("\n    %s", res->nameWithVarNames.c_str()));
                 }
             }
             if (!potentialHints.empty())
@@ -231,6 +234,7 @@ CallExpression::Resolve(Compiler* compiler)
                     this->thisResolved->function = candidate.function;
                     this->thisResolved->returnType = this->thisResolved->function->returnType;
                     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
+                    assert(this->thisResolved->conversions.size() == candidate.argumentConversionFunctions.size());
                     this->thisResolved->conversions = candidate.argumentConversionFunctions;
                     ambiguousCalls.clear();
                     break;
@@ -271,6 +275,7 @@ CallExpression::Resolve(Compiler* compiler)
             else if (ambiguousCalls.size() == 1)
             {
                 this->thisResolved->function = ambiguousCalls[0].function;
+                assert(this->thisResolved->conversions.size() ==  ambiguousCalls[0].argumentConversionFunctions.size());
                 this->thisResolved->conversions = ambiguousCalls[0].argumentConversionFunctions;
                 this->thisResolved->returnType = this->thisResolved->function->returnType;
                 this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
@@ -284,8 +289,6 @@ CallExpression::Resolve(Compiler* compiler)
             compiler->Error(Format("Unrecognized function '%s' called", this->thisResolved->functionSymbol.c_str()), this);
         }
         this->thisResolved->function = static_cast<Function*>(symbol);
-        this->thisResolved->conversions.resize(this->thisResolved->argTypes.size());
-        std::fill(this->thisResolved->conversions.begin(), this->thisResolved->conversions.end(), nullptr);
     }
 
     if (this->thisResolved->function != nullptr)
@@ -350,33 +353,38 @@ bool
 CallExpression::EvalValue(ValueUnion& out) const
 {
     int index = 0;
-    out.SetType(this->thisResolved->retType);
-    bool valid = true;
+    if (!out.SetType(this->thisResolved->retType))
+        return false;
+
+    ValueUnion value;
     for (Expression* expr : this->args)
     {
-        ValueUnion value;
-        valid &= expr->EvalValue(value);
-        if (!valid)
-            break;
+        if (!expr->EvalValue(value))
+            return false;
         
         value.Convert(out.code);
 
-        // If evaluated value is just one, but our call returns multiple, assume a splat takes place
-        if (value.columnSize == 1 && value.rowSize == 1)
+        // Call expressions can also be conversions, so we need to expand each argument and store it as 
+        int internalIndex = 0;
+        for (int i = 0; i < value.columnSize; i++)
         {
-            for (int i = 0; i < out.columnSize; i++)
+            for (int j = 0; j < value.rowSize; j++)
             {
-                for (int j = 0; j < out.rowSize; j++)
-                {
-                    out.Assign(value, 0, i * out.rowSize + j);
-                }
+                out.Assign(value, internalIndex++, index++);
             }
         }
-        for (uint32_t i = 0; i < value.columnSize; i++)
-            out.Assign(value, i, index++);
     }
-    out.valid = valid;
-    return valid;
+
+    // Splat the last value to the rest of the output value
+    if (this->args.size() > 0)
+    {
+        for (uint32_t i = index; i < out.columnSize * out.rowSize; i++)
+        {
+            out.Assign(value, 0, i);
+        }    
+    }
+
+    return true;
 }
 
 //------------------------------------------------------------------------------

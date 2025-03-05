@@ -46,6 +46,36 @@ bool IsStorageCompatible(Storage lhs, Storage rhs);
 /// Returns true if storage type needs explicit call signature
 bool StorageRequiresSignature(Storage storage);
 
+
+
+#define VALUE_UNION_SWITCH()\
+case TypeCode::Bool:\
+{\
+X(Bool, b, bool)\
+break;\
+}\
+case TypeCode::Float:\
+case TypeCode::Float16:\
+{\
+X(Float, f, float)\
+break;\
+}\
+case TypeCode::Int:\
+case TypeCode::Int16:\
+{\
+X(Int, i, int)\
+break;\
+}\
+case TypeCode::UInt:\
+case TypeCode::UInt16:\
+{\
+X(UInt, ui, unsigned int)\
+break;\
+default:\
+assert(false);\
+break;\
+}
+
 struct ValueUnion
 {
     union
@@ -187,6 +217,21 @@ struct ValueUnion
         }
     }
 
+    void Expand(int newColumnSize, int newRowSize)
+    {
+        if (this->columnSize < newColumnSize || this->rowSize < newRowSize)
+        {
+            int newSize = (newColumnSize * newRowSize);
+            int oldSize = (this->columnSize * this->rowSize);
+            for (int i = oldSize; i < newSize; i++)
+            {
+                Assign(*this, oldSize - 1, i);
+            }
+            this->columnSize = newColumnSize;
+            this->rowSize = newRowSize;    
+        }
+    }
+
     bool Store(uint32_t& ui)
     {
         this->Convert(TypeCode::UInt);
@@ -212,16 +257,29 @@ struct ValueUnion
         return this->columnSize == 1 && this->rowSize == 1;
     }
 
-    void SetType(const Type* type)
+    bool SetType(const Type* type)
     {
         this->columnSize = type->columnSize;
         this->rowSize = type->rowSize;
         this->code = type->baseType;
+        switch (this->code)
+        {
+            case TypeCode::Bool:
+            case TypeCode::Int:
+            case TypeCode::Int16:
+            case TypeCode::UInt:
+            case TypeCode::UInt16:
+            case TypeCode::Float:
+            case TypeCode::Float16:
+                return true;
+                break;
+            default:
+                return false;
+        }
     }
 
     TypeCode code;
-    int columnSize, rowSize;
-    bool valid = false;
+    int columnSize = 1, rowSize = 1;
 };
 
 struct Compiler;

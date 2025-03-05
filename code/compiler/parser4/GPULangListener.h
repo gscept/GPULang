@@ -161,6 +161,21 @@ public:
   virtual void enterArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext *ctx) = 0;
   virtual void exitArrayInitializerExpression(GPULangParser::ArrayInitializerExpressionContext *ctx) = 0;
 
+  virtual void enterFloatVecLiteralExpression(GPULangParser::FloatVecLiteralExpressionContext *ctx) = 0;
+  virtual void exitFloatVecLiteralExpression(GPULangParser::FloatVecLiteralExpressionContext *ctx) = 0;
+
+  virtual void enterDoubleVecLiteralExpression(GPULangParser::DoubleVecLiteralExpressionContext *ctx) = 0;
+  virtual void exitDoubleVecLiteralExpression(GPULangParser::DoubleVecLiteralExpressionContext *ctx) = 0;
+
+  virtual void enterIntVecLiteralExpression(GPULangParser::IntVecLiteralExpressionContext *ctx) = 0;
+  virtual void exitIntVecLiteralExpression(GPULangParser::IntVecLiteralExpressionContext *ctx) = 0;
+
+  virtual void enterUintVecLiteralExpression(GPULangParser::UintVecLiteralExpressionContext *ctx) = 0;
+  virtual void exitUintVecLiteralExpression(GPULangParser::UintVecLiteralExpressionContext *ctx) = 0;
+
+  virtual void enterBooleanVecLiteralExpression(GPULangParser::BooleanVecLiteralExpressionContext *ctx) = 0;
+  virtual void exitBooleanVecLiteralExpression(GPULangParser::BooleanVecLiteralExpressionContext *ctx) = 0;
+
 
 };
 

@@ -35,7 +35,7 @@ bool
 UIntVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("u32x%s", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("u32x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     thisResolved->text = this->EvalString();
@@ -73,7 +73,6 @@ UIntVecExpression::EvalValue(ValueUnion& out) const
         out.ui[index++] = val;
     out.columnSize = this->values.size();
     out.rowSize = 1;
-    out.valid = true;
     out.code = TypeCode::UInt;
     return true;
 }

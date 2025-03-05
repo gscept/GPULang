@@ -703,7 +703,7 @@ Type::FullType::operator==(const FullType& rhs) const
 {
     if (this->literal && !rhs.literal)
         return false;
-    if (this->mut != rhs.mut)
+    if (this->mut && !rhs.mut)
         return false;
     if (this->sampled != rhs.sampled)
         return false;

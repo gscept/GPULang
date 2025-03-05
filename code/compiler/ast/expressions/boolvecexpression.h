@@ -16,8 +16,6 @@ struct BoolVecExpression : public Expression
 public:
 	/// constructor
 	BoolVecExpression(const std::vector<bool>& values);
-	/// Default constructor
-	BoolVecExpression();
 	/// destructor
 	virtual ~BoolVecExpression();
 

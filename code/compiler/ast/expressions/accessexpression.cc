@@ -123,6 +123,7 @@ AccessExpression::Resolve(Compiler* compiler)
     {
         thisResolved->returnType = thisResolved->rightType;
         thisResolved->retType = thisResolved->rhsType;
+        thisResolved->returnType.mut = thisResolved->leftType.mut;
         /*
         Variable* memberVar = static_cast<Variable*>(thisResolved->lhsType->GetSymbol(thisResolved->rightSymbol));
         if (memberVar == nullptr)
@@ -175,7 +176,6 @@ AccessExpression::EvalValue(ValueUnion& out) const
         return expr->EvalValue(out);
     }
     out.SetType(thisRes->retType);
-    out.valid = false;
     return false;
 }
 

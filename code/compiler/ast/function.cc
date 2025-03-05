@@ -341,7 +341,8 @@ Function::SetupIntrinsics()
 #define X(ty, index)\
     __MAKE_INTRINSIC(mad, Mad, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __ADD_ARG(y, scalarArgs[index]);\
+    __ADD_ARG(product, scalarArgs[index]);\
+    __ADD_ARG(addend, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
 
     SCALAR_LIST
@@ -475,6 +476,22 @@ FLOAT_LIST
 #undef X
 
 #define X(ty, index)\
+    __MAKE_INTRINSIC(abs, Abs, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    SIGN_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(sign, Sign, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    SIGN_LIST
+#undef X
+    
+#define X(ty, index)\
     __MAKE_INTRINSIC(ddx, DDX, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
@@ -498,26 +515,54 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
+    std::string uintTypes[] =
+    {
+        "u32"
+        , "u32x2"
+        , "u32x3"
+        , "u32x4"
+    };
+
 #define X(ty, index)\
     __MAKE_INTRINSIC(castToU32, CastToU32, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
+    __SET_RET(uintTypes[index]);
 
     FLOAT_LIST
 #undef X
+
+    std::string intTypes[] =
+{
+        "i32"
+        , "i32x2"
+        , "i32x3"
+        , "i32x4"
+    };
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(castToI32, CastToI32, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
+    __SET_RET(intTypes[index]);
 
     FLOAT_LIST
 #undef X
 
+    std::string floatTypes[] =
+    {
+        "f32"
+        , "f32x2"
+        , "f32x3"
+        , "f32x4"
+        , "f32"
+        , "f32x2"
+        , "f32x3"
+        , "f32x4"
+    };
+
 #define X(ty, index)\
     __MAKE_INTRINSIC(castToF32, CastToF32, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
-    __SET_RET(scalarArgs[index]);
+    __SET_RET(floatTypes[index-4]);
 
     INT_LIST
 #undef X
@@ -1301,10 +1346,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, Grad, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, Grad, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);
 
     TEXTURE_INTRINSIC_NO_MS_LIST
 #undef X
@@ -1312,11 +1359,13 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradCompare, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(compare, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradCompare, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(compare, f32);
 
     TEXTURE_INTRINSIC_NO_CUBE_MS_LIST
@@ -1325,12 +1374,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradOffset, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradOffset, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
@@ -1340,11 +1391,13 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
@@ -1353,12 +1406,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);
 
@@ -1368,13 +1423,15 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
@@ -1385,12 +1442,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, GradProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG(grad, gradients[index]);\
+    __ADD_ARG(gradX, gradients[index]);\
+    __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);
 

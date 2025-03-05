@@ -30,6 +30,7 @@ struct SPIRVResult
     bool isConst = false;           // If true, value is a constant
     bool isLiteral = false;         // If true, then the value is a literal value and can be constant constructed
     bool isSpecialization = false;  // If true, then the value is the product of specialization
+    uint32_t derefs = 0;
     std::vector<uint32_t> parentTypes;
 
     Type::SwizzleMask swizzleMask;
@@ -157,6 +158,14 @@ struct SPIRVResult
     {
         this->literalValue.type = LiteralValue::IntType;
         this->literalValue.i = literal;
+        this->isLiteral = true;
+        this->isValue = false;
+    }
+
+    explicit SPIRVResult(bool literal)
+    {
+        this->literalValue.type = LiteralValue::BoolType;
+        this->literalValue.b = literal;
         this->isLiteral = true;
         this->isValue = false;
     }

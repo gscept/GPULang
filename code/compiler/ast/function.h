@@ -47,6 +47,7 @@ struct Function : public Symbol
         Storage returnValueStorage;
 
         std::string name;
+        std::string nameWithVarNames;
         std::string signature;
         bool hasExplicitReturn;
         

@@ -34,7 +34,7 @@ bool
 IntVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("i32x%s", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("i32x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     thisResolved->text = this->EvalString();
@@ -72,7 +72,6 @@ IntVecExpression::EvalValue(ValueUnion& out) const
         out.i[index++] = val;
     out.columnSize = this->values.size();
     out.rowSize = 1;
-    out.valid = true;
     out.code = TypeCode::Int;
     return true;
 }

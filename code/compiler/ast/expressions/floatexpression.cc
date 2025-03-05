@@ -72,7 +72,6 @@ FloatExpression::EvalValue(ValueUnion& out) const
     out.f[0] = this->value;
     out.columnSize = 1;
     out.rowSize = 1;
-    out.valid = true;
     return true;
 }
 

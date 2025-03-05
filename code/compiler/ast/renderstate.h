@@ -129,8 +129,8 @@ struct RenderState : public State
         /// convert from string
         static const BlendOp StringToBlendOp(const std::string& str);
 
-        BlendState blendStates[8];
-
+        static const uint8_t NUM_BLEND_STATES = 8;
+        BlendState blendStates[NUM_BLEND_STATES];
         float blendConstants[4];
     };
 };

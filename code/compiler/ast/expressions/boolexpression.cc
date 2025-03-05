@@ -81,7 +81,6 @@ BoolExpression::EvalValue(ValueUnion& out) const
     out.b[0] = this->value;
     out.columnSize = 1;
     out.rowSize = 1;
-    out.valid = true;
     return true;
 }
 

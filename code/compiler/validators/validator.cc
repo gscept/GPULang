@@ -67,7 +67,7 @@ static std::set<std::string> bindingQualifiers =
 
 static std::set<std::string> functionAttributes =
 {
-    "entry_point", "local_size_x", "local_size_y", "local_size_z", "early_depth"
+    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "partition"
@@ -98,7 +98,7 @@ static std::set<std::string> pixelShaderInputQualifiers =
 
 static std::set<std::string> attributesRequiringEvaluation =
 {
-    "binding", "group", "local_size_x", "local_size_y", "local_size_z"
+    "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
@@ -626,7 +626,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[0]);
@@ -635,7 +635,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[1]);
@@ -644,16 +644,33 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
+        }
+        else if (attr.name == "local_size")
+        {
+            if (!attr.expression->EvalValue(val))
+            {
+                compiler->Error(Format("Value '%s' has to be a compile time vector", attr.name.c_str()), symbol);
+                return false;
+            }
+            if (val.columnSize != 3 || val.rowSize != 1)
+            {
+                compiler->Error(Format("Value '%s' has to be a compile time vector of 3", attr.name.c_str()), symbol);
+                return false;
+            }
+            val.Convert(TypeCode::UInt);
+            funResolved->executionModifiers.computeShaderWorkGroupSize[0] = val.ui[0];
+            funResolved->executionModifiers.computeShaderWorkGroupSize[1] = val.ui[1];
+            funResolved->executionModifiers.computeShaderWorkGroupSize[2] = val.ui[2];
         }
         else if (attr.name == "group_size")
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.groupSize);
@@ -662,7 +679,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.groupsPerWorkgroup);
@@ -673,7 +690,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.invocations);
@@ -682,7 +699,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         {
             if (!attr.expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time uint constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.maxOutputVertices);
@@ -837,14 +854,21 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
     // setup our variables and attributes as sets
     std::string paramList;
+    std::string paramListNamed;
     for (Variable* var : fun->parameters)
     {
         // add comma if not first argument
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (StorageRequiresSignature(varResolved->storage))
+        {
+            paramListNamed.append(Format("%s %s : %s", StorageToString(varResolved->storage).c_str(), varResolved->name.c_str(), varResolved->type.ToString().c_str()));
             paramList.append(Format("%s %s", StorageToString(varResolved->storage).c_str(), varResolved->type.ToString().c_str()));
+        }
         else
+        {
+            paramListNamed.append(Format("%s : %s", varResolved->name.c_str(), varResolved->type.ToString().c_str()));
             paramList.append(varResolved->type.ToString());
+        }
 
         if (varResolved->type.sampled)
         {
@@ -852,7 +876,10 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
 
         if (var != fun->parameters.back())
+        {
             paramList.append(",");
+            paramListNamed.append(", ");            
+        }
     }
 
     std::string attributeList;
@@ -873,8 +900,10 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
     // format function with all attributes and parameters
     std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
+    std::string resolvedNameWithParamNames = Format("%s(%s)", fun->name.c_str(), paramListNamed.c_str());
     std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
     funResolved->name = resolvedName;
+    funResolved->nameWithVarNames = resolvedNameWithParamNames;
     funResolved->signature = functionFormatted;
 
     // if prototype, add as an ordinary symbol
@@ -1346,7 +1375,11 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             {
                 const ArrayIndexExpression* lhs = static_cast<const ArrayIndexExpression*>(assignEntry->left);
                 ValueUnion val;
-                lhs->right->EvalValue(val);
+                if (!lhs->right->EvalValue(val))
+                {
+                    compiler->Error(Format("Blend state entry '%s' must evaluate at compile time", assignEntry->EvalString().c_str()), assignEntry);
+                    return false;    
+                }
                 val.Store(index);
             }
             else
@@ -1355,19 +1388,19 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
-            if (index >= 8)
+            if (index >= RenderState::__Resolved::NUM_BLEND_STATES)
             {
-                compiler->Error(Format("Only 8 blend states are allowed"), assignEntry);
+                compiler->Error(Format("Only %d blend states are allowed", RenderState::__Resolved::NUM_BLEND_STATES), assignEntry);
                 return false;
             }
 
             ValueUnion val;
-            assignEntry->right->EvalValue(val);
+            bool valid = assignEntry->right->EvalValue(val);
             uint32_t enumValue = 0;
             switch (entryType)
             {
             case RenderState::__Resolved::BlendEnabledType:
-                if (!val.valid)
+                if (!valid)
                 {
                     compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entry.c_str()), assignEntry);
                     return false;
@@ -1375,26 +1408,56 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 val.Store(stateResolved->blendStates[index].blendEnabled);
                 break;
             case RenderState::__Resolved::SourceBlendColorFactorType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].sourceColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendColorFactorType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].destinationColorBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::SourceBlendAlphaFactorType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].sourceAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::DestinationBlendAlphaFactorType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].destinationAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
                 break;
             case RenderState::__Resolved::ColorBlendOpType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].colorBlendOp = (GPULang::BlendOp)enumValue;
                 break;
             case RenderState::__Resolved::AlphaBlendOpType:
+                if (!valid)
+                {
+                    compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    return false;
+                }
                 val.Store(enumValue);
                 stateResolved->blendStates[index].alphaBlendOp = (GPULang::BlendOp)enumValue;
                 break;
@@ -1413,32 +1476,67 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
 
             uint32_t enumValue = 0;
             ValueUnion val;
-            assignEntry->right->EvalValue(val);
+            bool valid = assignEntry->right->EvalValue(val);
             switch (entryType)
             {
                 case RenderState::__Resolved::StencilFailOpType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(enumValue);
                     state->fail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilPassOpType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(enumValue);
                     state->pass = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilDepthFailOpType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(enumValue);
                     state->depthFail = (GPULang::StencilOp)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareModeType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(enumValue);
                     state->compare = (GPULang::CompareMode)enumValue;
                     break;
                 case RenderState::__Resolved::StencilCompareMaskType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(state->compareMask);
                     break;
                 case RenderState::__Resolved::StencilWriteMaskType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(state->writeMask);
                     break;
                 case RenderState::__Resolved::StencilReferenceMaskType:
+                    if (!valid)
+                    {
+                        compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        return false;
+                    }
                     val.Store(state->referenceMask);
                     break;
             }
@@ -1539,6 +1637,18 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 default:
                     compiler->Error(Format("Unknown render state entry '%s'", entry.c_str()), symbol);
                     return false;
+            }
+        }
+    }
+
+    if (stateResolved->logicOpEnabled != GPULang::LogicOp::InvalidLogicOp)
+    {
+        for (uint8_t i = 0; i < RenderState::__Resolved::NUM_BLEND_STATES; i++)
+        {
+            if (stateResolved->blendStates[i].blendEnabled)
+            {
+                compiler->Error(Format("Blend can't be enabled with a logic op"), symbol);
+                return false;
             }
         }
     }
@@ -1887,7 +1997,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             attr.expression->Resolve(compiler);
         if (allowedAttributesSet == nullptr || (!set_contains(*allowedAttributesSet, attr.name)))
         {
-            compiler->Error(Format("Invalid attribute for type '%s': '%s'", varResolved->name.c_str(), attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for type '%s': '%s'", varResolved->type.ToString().c_str(), attr.name.c_str()), symbol);
             return false;
         }
 
@@ -2286,42 +2396,16 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (rhs.literal && var->valueExpression->EvalValue(val))
             {
+                #define X(Type, type, ty)\
+                    if (val.columnSize > 1)\
+                        var->valueExpression = Alloc<Type##VecExpression>(std::vector<ty>(val.type, val.type + val.columnSize));\
+                    else\
+                        var->valueExpression = Alloc<Type##Expression>(val.type[0]);\
+                        var->valueExpression->Resolve(compiler);
+                
                 switch (lhsType->baseType)
                 {
-                    case TypeCode::Bool:
-                        if (val.columnSize > 1)
-                            var->valueExpression = Alloc<BoolVecExpression>(std::vector<bool>(val.b, val.b + val.columnSize));
-                        else
-                            var->valueExpression = Alloc<BoolExpression>(val.b[0]);
-                        var->valueExpression->Resolve(compiler);
-                        break;
-                    case TypeCode::Float:
-                    case TypeCode::Float16:
-                        if (val.columnSize > 1)
-                            var->valueExpression = Alloc<FloatVecExpression>(std::vector<float>(val.f, val.f + val.columnSize));
-                        else
-                            var->valueExpression = Alloc<FloatExpression>(val.f[0]);
-                        var->valueExpression->Resolve(compiler);
-                        break;
-                    case TypeCode::Int:
-                    case TypeCode::Int16:
-                        if (val.columnSize > 1)
-                            var->valueExpression = Alloc<IntVecExpression>(std::vector<int>(val.i, val.i + val.columnSize));
-                        else
-                            var->valueExpression = Alloc<IntExpression>(val.i[0]);
-                        var->valueExpression->Resolve(compiler);
-                        break;
-                    case TypeCode::UInt:
-                    case TypeCode::UInt16:
-                        if (val.columnSize > 1)
-                            var->valueExpression = Alloc<UIntVecExpression>(std::vector<unsigned int>(val.ui, val.ui + val.columnSize));
-                        else
-                            var->valueExpression = Alloc<UIntExpression>(val.ui[0]);
-                        var->valueExpression->Resolve(compiler);
-                        break;
-                    default:
-                        assert(false); // shouldn't be possible
-                        break;
+                    VALUE_UNION_SWITCH()
                 }
             }
             else
@@ -2544,31 +2628,53 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->symbolIterator++;
             }
 
-            if (varResolved->type.IsMutable() && currentStrucResolved->storageFunction == nullptr)
+            if (varResolved->type.IsMutable())
             {
-                currentStrucResolved->storageFunction = Alloc<Function>();
-                currentStrucResolved->storageFunction->name = "bufferStore";
-                currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
-                Variable* arg = Alloc<Variable>();
-                arg->name = "buffer";
-                Attribute attr;
-                attr.name = "uniform";
-                attr.expression = nullptr;
-                arg->attributes.push_back(attr);
-                arg->type = var->type;
-                arg->type.modifiers.clear();
-                arg->type.modifierValues.clear();
-                arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
+                if (currentStrucResolved->storageFunction == nullptr)
+                {
+                    currentStrucResolved->storageFunction = Alloc<Function>();
+                    currentStrucResolved->storageFunction->name = "bufferStore";
+                    currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
+                    Variable* arg = Alloc<Variable>();
+                    arg->name = "buffer";
+                    Attribute attr;
+                    attr.name = "uniform";
+                    attr.expression = nullptr;
+                    arg->attributes.push_back(attr);
+                    arg->type = var->type;
+                    arg->type.modifiers.clear();
+                    arg->type.modifierValues.clear();
+                    arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
                 
-                Variable* arg2 = Alloc<Variable>();
-                arg2->name = "value";
-                arg2->type = var->type;
-                arg2->type.modifiers.clear();
-                arg2->type.modifierValues.clear();
-                arg2->type.mut = false;
-                currentStrucResolved->storageFunction->parameters.push_back(arg);
-                currentStrucResolved->storageFunction->parameters.push_back(arg2);
-                this->ResolveFunction(compiler, currentStrucResolved->storageFunction);
+                    Variable* arg2 = Alloc<Variable>();
+                    arg2->name = "value";
+                    arg2->type = var->type;
+                    arg2->type.modifiers.clear();
+                    arg2->type.modifierValues.clear();
+                    arg2->type.mut = false;
+                    currentStrucResolved->storageFunction->parameters.push_back(arg);
+                    currentStrucResolved->storageFunction->parameters.push_back(arg2);
+                    this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
+                }
+                if (currentStrucResolved->loadFunction == nullptr)
+                {
+                    currentStrucResolved->loadFunction = Alloc<Function>();
+                    currentStrucResolved->loadFunction->name = "bufferLoad";
+                    currentStrucResolved->loadFunction->returnType = Type::FullType{currentStructure->name};
+                    Variable* arg = Alloc<Variable>();
+                    arg->name = "buffer";
+                    Attribute attr;
+                    attr.name = "uniform";
+                    attr.expression = nullptr;
+                    arg->attributes.push_back(attr);
+                    arg->type = var->type;
+                    arg->type.modifiers.clear();
+                    arg->type.modifierValues.clear();
+                    arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
+                    
+                    currentStrucResolved->loadFunction->parameters.push_back(arg);
+                    this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   
+                }
             }
         }
     }
@@ -3305,12 +3411,9 @@ Validator::ValidateType(Compiler* compiler, const Type::FullType& type, Type* ty
 
     if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (
-            (typeSymbol->category != Type::TextureCategory && typeSymbol->category != Type::PixelCacheCategory && typeSymbol->category != Type::UserTypeCategory && typeSymbol->category != Type::SamplerCategory && typeSymbol->category != Type::AccelerationStructureCategory && numPointers > 0)
-            || (numPointers > 1)
-            )
+        if (numPointers > 1)
         {
-            compiler->Error(Format("Target language %s does not support dereferencing. Only one indirection is allowed and only on texture, pixel cache, sampler, accelerationStructure and struct types", compiler->target.name.c_str()), sym);
+            compiler->Error(Format("Target language %s does not support dereferencing.", compiler->target.name.c_str()), sym);
             return false;
         }
     }

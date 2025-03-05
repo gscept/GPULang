@@ -16,16 +16,7 @@ BoolVecExpression::BoolVecExpression(const std::vector<bool>& values) :
     values(values)
 {
     this->resolved = new BoolVecExpression::__Resolved;
-    this->symbolType = BoolExpressionType;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-BoolVecExpression::BoolVecExpression()
-{
-    this->resolved = new BoolExpression::__Resolved;
-    this->symbolType = BoolExpressionType;
+    this->symbolType = BoolVecExpressionType;
 }
 
 //------------------------------------------------------------------------------
@@ -43,7 +34,7 @@ bool
 BoolVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("b8x%s", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("b8x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     thisResolved->text = this->EvalString();
@@ -81,7 +72,6 @@ BoolVecExpression::EvalValue(ValueUnion& out) const
         out.b[index++] = val;
     out.columnSize = this->values.size();
     out.rowSize = 1;
-    out.valid = true;
     out.code = TypeCode::Bool;
     return true;
 }

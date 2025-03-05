@@ -116,6 +116,11 @@ UnaryExpression::Resolve(Compiler* compiler)
                 compiler->Error(Format("Unary '-' only allowed on signed types"), this);
                 return false;    
             }
+            if (!type.modifiers.empty())
+            {
+                compiler->Error(Format("Unary '-' only allowed on scalar values"), this);
+                return false;
+            }
             break;
         }
         case '+':

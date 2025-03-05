@@ -7,9 +7,14 @@
 #include "ast/function.h"
 #include "ast/expressions/symbolexpression.h"
 #include "compiler.h"
+#include "boolexpression.h"
+#include "boolvecexpression.h"
 #include "floatexpression.h"
+#include "floatvecexpression.h"
 #include "intexpression.h"
+#include "intvecexpression.h"
 #include "uintexpression.h"
+#include "uintvecexpression.h"
 #include "util.h"
 
 namespace GPULang
@@ -58,6 +63,19 @@ BinaryExpression::Resolve(Compiler* compiler)
 
     this->left->EvalType(this->thisResolved->leftType);
     this->right->EvalType(this->thisResolved->rightType);
+
+    // Disallow binary operators on pointers and arrays
+    if (!thisResolved->leftType.modifiers.empty())
+    {
+        compiler->Error(Format("Invalid operator '%c' on type '%s'", this->op, this->thisResolved->leftType.ToString().c_str()), this);
+        return false;
+    }
+    
+    if (!thisResolved->rightType.modifiers.empty())
+    {
+        compiler->Error(Format("Invalid operator '%c' on type '%s'", this->op, this->thisResolved->rightType.ToString().c_str()), this);
+        return false;
+    }
 
     this->thisResolved->lhsType = compiler->GetType(this->thisResolved->leftType);
     if (this->thisResolved->lhsType == nullptr)
@@ -194,7 +212,19 @@ BinaryExpression::Resolve(Compiler* compiler)
         ValueUnion value;
         if (this->EvalValue(value))
         {
-            thisResolved->returnType.literal = true;
+#define X(Type, type, ty)\
+    if (value.columnSize > 1)\
+        this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(std::vector<ty>(value.type, value.type + value.columnSize));\
+    else\
+        this->thisResolved->constValueExpression = Alloc<Type##Expression>(value.type[0]);\
+        this->thisResolved->constValueExpression->Resolve(compiler);
+
+            switch (this->thisResolved->lhsType->baseType)
+            {
+                VALUE_UNION_SWITCH()
+            }
+            
+            this->thisResolved->returnType.literal = true;
         }
     }
     return true;
@@ -234,7 +264,8 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 
     lval.Convert(this->thisResolved->retType->baseType);
     rval.Convert(this->thisResolved->retType->baseType);
-    out.SetType(this->thisResolved->retType);
+    if (!out.SetType(this->thisResolved->retType))
+        return false;
 
 #define OPERATOR_EXECUTE(mem, op)\
     out.mem[0] = lval.mem[0] op rval.mem[0];\
@@ -275,6 +306,28 @@ BinaryExpression::EvalValue(ValueUnion& out) const
             out.mem[15] = lval.mem[15] op rval.mem[15];\
     }
 
+#define OPERATOR_SCALAR(label, op) \
+    case label:\
+    {\
+        switch (this->thisResolved->retType->baseType)\
+        {\
+            case TypeCode::Float:\
+            case TypeCode::Float16:\
+                OPERATOR_EXECUTE(f, op)\
+                return true;\
+            case TypeCode::Int:\
+            case TypeCode::Int16:\
+                OPERATOR_EXECUTE(i, op)\
+                return true;\
+            case TypeCode::UInt:\
+            case TypeCode::UInt16:\
+                OPERATOR_EXECUTE(ui, op)\
+                return true;\
+            default:\
+                return false;\
+        }\
+        break;\
+    }
 #define OPERATOR_ALL(label, op) \
     case label:\
     {\
@@ -296,7 +349,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
                 OPERATOR_EXECUTE(ui, op)\
                 return true;\
             default:\
-                break;\
+                return false;\
         }\
         break;\
     }
@@ -315,7 +368,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
                 OPERATOR_EXECUTE(ui, op)\
                 return true;\
             default:\
-                break;\
+                return false;\
         }\
         break;\
     }
@@ -325,7 +378,7 @@ BinaryExpression::EvalValue(ValueUnion& out) const
         OPERATOR_ALL('+', +)
         OPERATOR_ALL('-', -)
         OPERATOR_ALL('*', *)
-        OPERATOR_ALL('/', /)
+        OPERATOR_SCALAR('/', /)
         OPERATOR_INTEGER('%', %)
         OPERATOR_INTEGER('^', ^)
         OPERATOR_INTEGER('|', |)
