@@ -119,27 +119,7 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(XYZ);
     __ADD_ENUM(XYZW);
     __FINISH_ENUM(this->colorComponentMaskEnum, ColorComponentMask);
-
-    std::vector<Symbol*> stencilStateMembers;
-    Variable* var = nullptr;
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "Fail";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "Pass";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "DepthFail";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "CompareMode" }; var->name = "Compare";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "CompareMask";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "WriteMask";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "ReferenceMask";
-    stencilStateMembers.push_back(var);
-    this->stencilState.symbols = stencilStateMembers;
-    this->stencilState.name = "StencilState";
-    this->staticSymbols.push_back(&this->stencilState);
-
+    
     __SETUP_MEMBER(this->depthClampEnabled, DepthClampEnabled, b8);
     __SETUP_MEMBER(this->noRasterization, NoRasterization, b8);
     __SETUP_MEMBER(this->polygonMode, Fill, PolygonMode);
@@ -159,8 +139,21 @@ RenderStateType::RenderStateType()
     __SETUP_MEMBER(this->stencilEnabled, StencilEnabled, b8);
     __SETUP_MEMBER(this->logicOpEnabled, LogicEnabled, b8);
     __SETUP_MEMBER(this->logicOp, Logic, LogicOp);
-    __SETUP_MEMBER(this->frontStencilState, FrontStencil, StencilState);
-    __SETUP_MEMBER(this->backStencilState, BackStencil, StencilState);
+    __SETUP_MEMBER(this->logicOp, Logic, LogicOp);
+    __SETUP_MEMBER(this->frontStencilFailOp, StencilFrontFailOp, StencilOp);
+    __SETUP_MEMBER(this->frontStencilPassOp, StencilFrontPassOp, StencilOp);
+    __SETUP_MEMBER(this->frontStencilDepthFailOp, StencilFrontDepthFailOp, StencilOp);
+    __SETUP_MEMBER(this->frontStencilCompareMode, StencilFrontCompareMode, CompareMode);
+    __SETUP_MEMBER(this->frontStencilCompareMask, StencilFrontCompareMask, u32);
+    __SETUP_MEMBER(this->frontStencilWriteMask, StencilFrontWriteMask, u32);
+    __SETUP_MEMBER(this->frontStencilReferenceMask, StencilFrontReferenceMask, u32);
+    __SETUP_MEMBER(this->backStencilFailOp, StencilBackFailOp, StencilOp);
+    __SETUP_MEMBER(this->backStencilPassOp, StencilBackPassOp, StencilOp);
+    __SETUP_MEMBER(this->backStencilDepthFailOp, StencilBackDepthFailOp, StencilOp);
+    __SETUP_MEMBER(this->backStencilCompareMode, StencilBackCompareMode, CompareMode);
+    __SETUP_MEMBER(this->backStencilCompareMask, StencilBackCompareMask, u32);
+    __SETUP_MEMBER(this->backStencilWriteMask, StencilBackWriteMask, u32);
+    __SETUP_MEMBER(this->backStencilReferenceMask, StencilBackReferenceMask, u32);
     __SETUP_MEMBER_ARRAY(this->blendEnabled, BlendEnabled, b8, 8u);
     __SETUP_MEMBER_ARRAY(this->sourceBlend, SourceBlend, BlendFactor, 8u);
     __SETUP_MEMBER_ARRAY(this->destinationBlend, DestinationBlend, BlendFactor, 8u);
