@@ -55,20 +55,10 @@ struct RenderStateType : public Type
     Variable blendOp;
     Variable blendOpAlpha;
     Variable colorComponentMask;
-    Variable frontStencilFailOp;
-    Variable frontStencilPassOp;
-    Variable frontStencilDepthFailOp;
-    Variable frontStencilCompareMode;
-    Variable frontStencilCompareMask;
-    Variable frontStencilWriteMask;
-    Variable frontStencilReferenceMask;
-    Variable backStencilFailOp;
-    Variable backStencilPassOp;
-    Variable backStencilDepthFailOp;
-    Variable backStencilCompareMode;
-    Variable backStencilCompareMask;
-    Variable backStencilWriteMask;
-    Variable backStencilReferenceMask;
+    Variable frontStencilState;
+    Variable backStencilState;
+
+    Structure stencilState;
 
 };
 
