@@ -44,7 +44,7 @@ const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> sam
     , { "CompareMode", SamplerState::__Resolved::CompareModeType }
     , { "MinLod", SamplerState::__Resolved::MinLodType }
     , { "MaxLod", SamplerState::__Resolved::MaxLodType }
-    , { "BorderColor", SamplerState::__Resolved::BorderColorType }
+    , { "Border", SamplerState::__Resolved::BorderColorType }
     , { "UnnormalizedCoordinates", SamplerState::__Resolved::UnnormalizedSamplingType }
 };
 

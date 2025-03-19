@@ -20,7 +20,7 @@ struct SamplerStateType : public Type
 
     Enumeration filterModeEnum;
     Enumeration addressModeEnum;
-    Enumeration borderColorEnum;
+    Enumeration colorEnum;
 
     Variable allAddress;
     Variable addressU;

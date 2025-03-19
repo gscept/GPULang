@@ -83,15 +83,36 @@ BinaryExpression::Resolve(Compiler* compiler)
         compiler->UnrecognizedTypeError(this->thisResolved->leftType.name, this);
         return false;
     }
+    if (this->thisResolved->lhsType->name == UNDEFINED_TYPE)
+    {
+        compiler->Error(Format("'%s' can not be used with binary expressions", this->thisResolved->leftType.ToString().c_str()), this);
+        return false;
+    }
+    if (thisResolved->lhsType->name == FUNCTION_TYPE && this->op != '=')
+    {
+        compiler->Error(Format("functions can not be used with operator '%c'", this->op), this);
+        return false;
+    }
+    
     this->thisResolved->rhsType = compiler->GetType(this->thisResolved->rightType);
     if (this->thisResolved->rhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(this->thisResolved->rightType.name, this);
         return false;
     }
+    if (this->thisResolved->rhsType->name == UNDEFINED_TYPE)
+    {
+        compiler->Error(Format("'%s' can not be used with binary expressions", this->thisResolved->rightType.ToString().c_str()), this);
+        return false;
+    }
+    if (thisResolved->rhsType->name == FUNCTION_TYPE && this->op != '=')
+    {
+        compiler->Error(Format("functions can not be used with operator '%c'", this->op), this);
+        return false;
+    }
 
-    bool isAssignment = this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|='; 
-    if (isAssignment)
+    thisResolved->isAssignment = this->op == '=' || this->op == '+=' || this->op == '-=' || this->op == '*=' || this->op == '/=' || this->op == '%=' || this->op == '<<=' || this->op == '>>=' || this->op == '&=' || this->op == '^=' || this->op == '|='; 
+    if (thisResolved->isAssignment)
     {
         unsigned leftAccess;
         this->left->EvalAccessFlags(leftAccess);
@@ -152,7 +173,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                 Type::FullType promotedFullType = Type::TypeFromCode(promotedType, max(this->thisResolved->lhsType->columnSize, this->thisResolved->rhsType->columnSize), max(this->thisResolved->lhsType->rowSize, this->thisResolved->rhsType->rowSize));
 
                 // If we have an assignment, then promotion of the left type is not allowed
-                if (isAssignment && promotedFullType != thisResolved->leftType)
+                if (thisResolved->isAssignment && promotedFullType != thisResolved->leftType)
                 {
                     compiler->Error(Format("Type '%s' does not implement '%s'", this->thisResolved->leftType.ToString().c_str(), functionName.c_str()), this);
                     return false;
@@ -207,7 +228,7 @@ BinaryExpression::Resolve(Compiler* compiler)
     this->thisResolved->retType = compiler->GetType(this->thisResolved->returnType);
 
     // Test if we can evaluate this expression at compile time
-    if (!isAssignment && this->thisResolved->leftType.literal && this->thisResolved->rightType.literal)
+    if (!thisResolved->isAssignment && this->thisResolved->leftType.literal && this->thisResolved->rightType.literal)
     {
         ValueUnion value;
         if (this->EvalValue(value))

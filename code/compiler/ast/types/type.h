@@ -172,7 +172,6 @@ enum class TypeCode
     /// Sampler
     , Sampler
 
-
     /// Other types
     , Void
 };
@@ -182,6 +181,8 @@ struct Function;
 struct Expression;
 struct Compiler;
 extern Function* activeFunction;
+static const char* UNDEFINED_TYPE = "<undefined>";
+static const char* FUNCTION_TYPE = "function";
 
 struct Type : public Symbol
 {
@@ -206,7 +207,8 @@ struct Type : public Symbol
         AccelerationStructureCategory,
 
         // Special categories
-        RenderStateCategory
+        RenderStateCategory,
+        StencilStateCategory
     };
 
     static std::string CategoryToString(const Category& cat);
@@ -349,9 +351,10 @@ struct Type : public Symbol
             Pointer
         };
 
+
         FullType()
         {
-            this->name = "<undefined>";
+            this->name = UNDEFINED_TYPE;
             this->literal = false;
         }
         explicit FullType(std::string type)

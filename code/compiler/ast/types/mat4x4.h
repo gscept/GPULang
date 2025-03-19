@@ -16,6 +16,7 @@ struct Mat4x4 : public Type
     /// constructor
     Mat4x4();
 
+    static Function identityConstructor;
     static Function floatConstructor;
     static Function vectorConstructor;
 

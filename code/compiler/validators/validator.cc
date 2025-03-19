@@ -918,18 +918,21 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
         for (Symbol* matchingFunction : matchingFunctions)
         {
-            Function* otherFunction = static_cast<Function*>(matchingFunction);
+            if (matchingFunction->symbolType == Symbol::FunctionType)
+            {
+                Function* otherFunction = static_cast<Function*>(matchingFunction);
 
-            if (!fun->IsCompatible(otherFunction, false))
-                continue;
+                if (!fun->IsCompatible(otherFunction, false))
+                    continue;
 
-            // if all checks prove these functions are identical, throw error
-            if (fun->returnType != otherFunction->returnType)
-                compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
-            else
-                compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                // if all checks prove these functions are identical, throw error
+                if (fun->returnType != otherFunction->returnType)
+                    compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                else
+                    compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
 
-            return false;
+                return false;
+            }
         }
     }
 
@@ -1469,9 +1472,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             AccessExpression* access = static_cast<AccessExpression*>(assignEntry->left);
             std::string face = access->left->EvalString();
             StencilState* state;
-            if (face == "BackStencil")
+            if (face == "StencilBack")
                 state = &stateResolved->backStencilState;
-            else if (face == "FrontStencil")
+            else if (face == "StencilFront")
                 state = &stateResolved->frontStencilState;
 
             uint32_t enumValue = 0;
@@ -1704,6 +1707,9 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
             if (!this->ResolveVariable(compiler, var))
                 return false;
 
+            if (varResolved->typeSymbol->baseType == TypeCode::Bool)
+                strucResolved->hasBoolMember = true;
+
             uint32_t arraySize = 0;
             for (Expression* expr : varResolved->type.modifierValues)
             {
@@ -1762,13 +1768,14 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     if (enumeration->type.name != "u32" && enumeration->type.name != "i32" && enumeration->type.name != "u16" && enumeration->type.name != "i16")
     {
-        compiler->Error(Format("Enumeration can only be either 'u32' 'i32' 'u16' or 'i16'"), symbol);
+        compiler->Error(Format("Enumeration may only be an integer type of either 32 or 16 bit"), symbol);
         return false;
     }
 
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->globals.clear();
     enumeration->staticSymbols.clear();
+    enumeration->baseType = enumResolved->typeSymbol->baseType;
 
     // Create constructor from type, and to type
     Function* fromUnderlyingType = new Function;
@@ -1927,13 +1934,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (!this->ValidateType(compiler, var->type, varResolved->typeSymbol, var))
         return false;
 
-    // struct members may only be scalars
+    // struct members may only be scalars, or stencil states but they can't be created by the grammar rules
     if (varResolved->usageBits.flags.isStructMember && 
-        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::UserTypeCategory))
+        (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::UserTypeCategory && type->category != Type::StencilStateCategory))
     {
         compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", varResolved->name.c_str()), symbol);
         return false;
-    }
+    }    
+    
 
     // Add symbol
     if (!compiler->AddSymbol(var->name, var))
@@ -1959,8 +1967,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             if (size == 0)
             {
-                compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
-                return false;
+                if (compiler->target.supportsPhysicalBufferAddresses)
+                    varResolved->usageBits.flags.isPhysicalAddress = true;
+                else
+                {
+                    compiler->Error(Format("'struct' array member can't be of dynamic size"), symbol);
+                    return false;    
+                }                
             }
         }
     }
@@ -1997,7 +2010,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             attr.expression->Resolve(compiler);
         if (allowedAttributesSet == nullptr || (!set_contains(*allowedAttributesSet, attr.name)))
         {
-            compiler->Error(Format("Invalid attribute for type '%s': '%s'", varResolved->type.ToString().c_str(), attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for variable of type '%s': '%s'", varResolved->type.ToString().c_str(), attr.name.c_str()), symbol);
             return false;
         }
 
@@ -2036,6 +2049,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         else if (attr.name == "var")
         {
             varResolved->usageBits.flags.isVar = true;
+            var->type.literal = false;
             varResolved->type.literal = false;
         }
         else if (attr.name == "link_defined")
@@ -2046,6 +2060,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             varResolved->storage = Storage::LinkDefined;
+
+            // Uncheck the literal bit if the variable is link-defined
+            var->type.literal = false;
+            varResolved->type.literal = false;
             varResolved->binding = compiler->linkDefineCounter++;
         }
         else if (attr.name == "uniform")
@@ -2171,8 +2189,16 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         }
         else if (!varResolved->usageBits.flags.isVar && !varResolved->usageBits.flags.isConst)
         {
-            compiler->Error(Format("Variable must be either 'var' or 'const'"), var);
-            return false;
+            if (varResolved->storage == Storage::Global)
+            {
+                compiler->Error(Format("Variable must be either 'uniform' or 'const'"), var);
+                return false;
+            }
+            else
+            {
+                compiler->Error(Format("Variable must be either 'var' or 'const'"), var);
+                return false;    
+            }            
         }
 
         if (varResolved->usageBits.flags.isConst && var->valueExpression == nullptr)
@@ -2189,10 +2215,21 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     if (!compiler->target.supportsPhysicalAddressing)
     {
-        if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && varResolved->type.IsPointer())
+        if (varResolved->usageBits.flags.isStructMember && type->category == Type::UserTypeCategory && varResolved->type.IsPointer())
         {
-            compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
-            return false;
+            if (!compiler->target.supportsPhysicalBufferAddresses)
+            {
+                compiler->Error(Format("Struct members may not be pointers if ('%s') does not support physical buffer addresses", compiler->target.name.c_str()), var);
+                return false;
+            }
+        }
+        else
+        {
+            if (type->category == Type::UserTypeCategory && varResolved->storage != Storage::InlineUniform && varResolved->storage != Storage::Uniform && varResolved->type.IsPointer())
+            {
+                compiler->Error(Format("Type may not be pointer if target language ('%s') does not support physical addressing", compiler->target.name.c_str()), var);
+                return false;
+            }    
         }
     }
 
@@ -2233,6 +2270,14 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
             }
 
+            /*
+            if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::UserTypeCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
+            {
+                compiler->Error(Format("Variables in the global scope with storage 'uniform' must be pointers"), symbol);
+                return false;        
+            }
+            */
+
             if (type->category != Type::SamplerCategory && type->category != Type::TextureCategory && type->category != Type::PixelCacheCategory && type->category != Type::UserTypeCategory)
             {
                 compiler->Error(Format("Variables of storage 'uniform' may only be pointers to 'sampler'/'texture'/'pixel_cache'/'struct' types"), symbol);
@@ -2269,9 +2314,18 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     {
         if (varResolved->storage != Storage::Default)
         {
-            compiler->Error(Format("Storage type not allowed on struct members", type->name.c_str()), symbol);
+            compiler->Error(Format("Storage type not allowed on struct member %s", type->name.c_str()), symbol);
             return false;
         }
+
+        /*
+        if (varResolved->typeSymbol->baseType == TypeCode::Bool)
+        {
+            compiler->Warning(Format("Struct member %s of type 'b8' will be automatically promoted to u32", varResolved->name.c_str()), symbol);
+            varResolved->type.name = "u32";
+            varResolved->typeSymbol = compiler->GetType(varResolved->type);
+        }
+        */
     }
     else if (varResolved->usageBits.flags.isParameter)
     {
@@ -2558,8 +2612,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             Structure::__Resolved* currentStrucResolved = Symbol::Resolved(currentStructure);
 
             // If the structure is packed, we need to inflate it to adhere to alignment rules
-            if (currentStrucResolved->packMembers)
+            if (currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember)
             {
+                const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
+                std::string structName = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
+                if (currentStrucResolved->packMembers)
+                    compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
+                if (currentStrucResolved->hasBoolMember)
+                    compiler->Warning(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
+                
                  // Generate mutable/uniform variant of struct
                 Structure* generatedStruct = new Structure;
                 uint32_t structSize = 0;
@@ -2579,6 +2640,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         generatedVarResolved->type = varResolved->type;
                         generatedVarResolved->typeSymbol = varResolved->typeSymbol;
                         generatedVarResolved->name = varResolved->name;
+                        if (generatedVarResolved->typeSymbol->baseType == TypeCode::Bool)
+                        {
+                            generatedVar->type.name = "u32";
+                            generatedVarResolved->type.name = "u32";
+                            generatedVarResolved->typeSymbol = compiler->GetType(generatedVarResolved->type);
+                        }
+                        
                         uint32_t size = varResolved->typeSymbol->CalculateSize();
                         uint32_t alignment = varResolved->typeSymbol->CalculateAlignment();
                         uint32_t alignedOffset = Type::Align(offset, alignment);
@@ -2593,8 +2661,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
                 currentStrucResolved = generatedStructResolved;
-                const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
-                generatedStruct->name = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
+                generatedStruct->name = structName;
                 //generatedStruct->annotations = var->annotations;
             
                 generatedStructResolved->byteSize = structSize;
@@ -2762,15 +2829,28 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 if (!this->ResolveVariable(compiler, var))
                     return false;
             }
-            Type::FullType type;
             if (statement->condition->Resolve(compiler))
             {
-                statement->condition->EvalType(type);
-                Type* typeSymbol = compiler->GetType(type);
+                // Convert condition if not bool
+                Type::FullType conditionType;
+                statement->condition->EvalType(conditionType);
+                Type* typeSymbol = compiler->GetType(conditionType);
                 if (typeSymbol->baseType != TypeCode::Bool)
                 {
-                    compiler->Error(Format("Loop condition must evaluate to a boolean value"), statement);
-                    return false;
+                    Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
+                    if (conversionFunction == nullptr)
+                    {
+                        compiler->Error(Format("Condition of type '%s' must evaluate to a boolean expression", conditionType.ToString().c_str()), statement);
+                        return false;
+                    }
+
+                    // Replace condition with a call expression to the conversion function
+                    std::vector<Expression*> arguments = { statement->condition };
+                    statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+
+                    // Resolve again
+                    if (!statement->condition->Resolve(compiler))
+                        return false;
                 }
             }
             else
@@ -2784,6 +2864,29 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             auto statement = reinterpret_cast<IfStatement*>(symbol);
             if (!statement->condition->Resolve(compiler))
                 return false;
+
+            // Convert condition if not bool
+            Type::FullType conditionType;
+            statement->condition->EvalType(conditionType);
+            Type* typeSymbol = compiler->GetType(conditionType);
+            if (typeSymbol->baseType != TypeCode::Bool)
+            {
+                Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
+                if (conversionFunction == nullptr)
+                {
+                    compiler->Error(Format("Condition of type '%s' must evaluate to a boolean expression", conditionType.ToString().c_str()), statement);
+                    return false;
+                }
+
+                // Replace condition with a call expression to the conversion function
+                std::vector<Expression*> arguments = { statement->condition };
+                statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+
+                // Resolve again
+                if (!statement->condition->Resolve(compiler))
+                    return false;
+            }
+            
             if (!this->ResolveStatement(compiler, statement->ifStatement))
                 return false;
 
@@ -2926,15 +3029,28 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         {
             auto statement = reinterpret_cast<WhileStatement*>(symbol);
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
-            Type::FullType type;
             if (statement->condition->Resolve(compiler))
             {
-                statement->condition->EvalType(type);
-                Type* typeSymbol = compiler->GetSymbol<Type>(type.name);
+                // Convert condition if not bool
+                Type::FullType conditionType;
+                statement->condition->EvalType(conditionType);
+                Type* typeSymbol = compiler->GetType(conditionType);
                 if (typeSymbol->baseType != TypeCode::Bool)
                 {
-                    compiler->Error(Format("While condition has to evaluate to a boolean value"), statement);
-                    return false;
+                    Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
+                    if (conversionFunction == nullptr)
+                    {
+                        compiler->Error(Format("Condition of type '%s' must evaluate to a boolean expression", conditionType.ToString().c_str()), statement);
+                        return false;
+                    }
+
+                    // Replace condition with a call expression to the conversion function
+                    std::vector<Expression*> arguments = { statement->condition };
+                    statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
+
+                    // Resolve again
+                    if (!statement->condition->Resolve(compiler))
+                        return false;
                 }
             }
             else

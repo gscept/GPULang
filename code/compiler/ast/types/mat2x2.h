@@ -16,6 +16,7 @@ struct Mat2x2 : public Type
     /// constructor
     Mat2x2();
 
+    static Function identityConstructor;
     static Function floatConstructor;
     static Function vectorConstructor;
 

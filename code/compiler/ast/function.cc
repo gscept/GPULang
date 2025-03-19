@@ -230,6 +230,15 @@ Function::SetupIntrinsics()
         , "b8x2"
         , "b8x3"
         , "b8x4"
+        , "f32x2x2"
+        , "f32x2x3"
+        , "f32x2x4"
+        , "f32x3x2"
+        , "f32x3x3"
+        , "f32x3x4"
+        , "f32x4x2"
+        , "f32x4x3"
+        , "f32x4x4"
     };
     constexpr uint32_t numScalarArgs = sizeof(scalarArgs) / sizeof(std::string);
 
@@ -339,6 +348,63 @@ Function::SetupIntrinsics()
 #undef X
 
 #define X(ty, index)\
+    __MAKE_INTRINSIC(atan, ATan2, ty)\
+    __ADD_ARG(y, scalarArgs[index]);\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(sinh, SinH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(cosh, CosH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(tanh, TanH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(asinh, ASinH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(acosh, ACosH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(atanh, ATanH, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index)\
     __MAKE_INTRINSIC(mad, Mad, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
     __ADD_ARG(product, scalarArgs[index]);\
@@ -353,6 +419,25 @@ Function::SetupIntrinsics()
     __ADD_ARG(x, scalarArgs[index]);\
     __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET_LIT(f32);
+
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(reflect, Reflect, ty)\
+    __ADD_ARG(incident, scalarArgs[index]);\
+    __ADD_ARG(normal, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(refract, Refract, ty)\
+    __ADD_ARG(incident, scalarArgs[index]);\
+    __ADD_ARG(normal, scalarArgs[index]);\
+    __ADD_ARG_LIT(eta, f32);\
+    __SET_RET(scalarArgs[index]);
 
     FLOAT_VEC_LIST
 #undef X
@@ -373,6 +458,15 @@ __SET_RET_LIT(f32x3);
 #define X(ty, index)\
     __MAKE_INTRINSIC(length, Length, ty)\
     __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET_LIT(f32);
+
+    FLOAT_VEC_LIST
+#undef X
+
+    #define X(ty, index)\
+    __MAKE_INTRINSIC(distance, Distance, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __ADD_ARG(y, scalarArgs[index]);\
     __SET_RET_LIT(f32);
 
     FLOAT_VEC_LIST
@@ -581,6 +675,22 @@ FLOAT_LIST
     __SET_RET("b8");
 
     BOOL_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(transpose, Transpose, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    MATRIX_LIST
+#undef X
+
+#define X(ty, index)\
+    __MAKE_INTRINSIC(inverse, Inverse, ty)\
+    __ADD_ARG(x, scalarArgs[index]);\
+    __SET_RET(scalarArgs[index]);
+
+    MATRIX_LIST
 #undef X
 
     //------------------------------------------------------------------------------
@@ -1251,11 +1361,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, BiasCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, BiasCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(bias, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, BiasCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, BiasCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(bias, f32);\
     __ADD_ARG_LIT(compare, f32);
@@ -1290,12 +1400,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, BiasProjCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, BiasProjCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(bias, f32);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, BiasProjCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, BiasProjCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(bias, f32);\
     __ADD_ARG_LIT(proj, f32);\
@@ -1320,10 +1430,10 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, Compare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, Compare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, Compare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, Compare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(compare, f32);
 
@@ -1331,11 +1441,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, CompareOffset, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, CompareOffset, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, CompareOffset, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, CompareOffset, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
@@ -1357,12 +1467,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, GradCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, GradCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
@@ -1376,13 +1486,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
-    __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradOffset, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
-    __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
     TEXTURE_INTRINSIC_NO_CUBE_MS_LIST
@@ -1404,13 +1512,13 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
@@ -1421,14 +1529,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, GradProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG(gradX, gradients[index]);\
     __ADD_ARG(gradY, gradients[index]);\
@@ -1468,11 +1576,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, LodCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, LodCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodCompare, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(compare, f32);
@@ -1481,12 +1589,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, LodCompareOffset, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, LodCompareOffset, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodCompareOffset, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodCompareOffset, type, f32)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(compare, f32);\
@@ -1522,12 +1630,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(proj, f32);\
@@ -1537,13 +1645,13 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(proj, f32);\
@@ -1580,11 +1688,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompare, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompare, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);
@@ -1593,12 +1701,12 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32x4)\
+    __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
-    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32x4)\
+    __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\

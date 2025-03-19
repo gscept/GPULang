@@ -86,6 +86,9 @@ public:
   virtual void enterForRangeStatement(GPULangParser::ForRangeStatementContext *ctx) = 0;
   virtual void exitForRangeStatement(GPULangParser::ForRangeStatementContext *ctx) = 0;
 
+  virtual void enterForUniformValueStatement(GPULangParser::ForUniformValueStatementContext *ctx) = 0;
+  virtual void exitForUniformValueStatement(GPULangParser::ForUniformValueStatementContext *ctx) = 0;
+
   virtual void enterWhileStatement(GPULangParser::WhileStatementContext *ctx) = 0;
   virtual void exitWhileStatement(GPULangParser::WhileStatementContext *ctx) = 0;
 

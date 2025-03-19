@@ -16,6 +16,14 @@ class SingleShaderCompiler
 {
 public:
 
+	enum Flags : uint32_t
+	{
+		Debug = 0x1,
+		Quiet = 0x2,
+		Validate = 0x4,
+		Profile = 0x8,
+	};
+
 	/// constructor
 	SingleShaderCompiler();
 	/// destructor
@@ -34,12 +42,10 @@ public:
     /// set the root dir
     void SetRootDir(const std::string& rootDir);
 			
-	/// set debugging flag
-	void SetDebugFlag(bool b);
 	/// set additional command line params
 	void SetAdditionalParams(const std::string& params);
-	/// set quiet flag
-	void SetQuietFlag(bool b);
+	/// Append flag bit
+	void SetFlag(const uint32_t f);
 
 	/// compile shader
 	bool CompileShader(const std::string& src);
@@ -59,8 +65,7 @@ private:
 	std::string dstHeader;
     std::string rootDir;
 	std::string language;
-	bool quiet;
-	bool debug;
+	uint32_t flags;
 	std::string additionalParams;
 	std::vector<std::string> includeDirs;
 }; 
@@ -128,16 +133,6 @@ SingleShaderCompiler::AddIncludeDir(const std::string& d)
 	this->includeDirs.push_back(d);
 }
 
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline void
-SingleShaderCompiler::SetDebugFlag(bool b)
-{
-	this->debug = b;
-}
-
 //------------------------------------------------------------------------------
 /**
 */
@@ -145,15 +140,6 @@ inline void
 SingleShaderCompiler::SetAdditionalParams(const std::string& p)
 {
 	this->additionalParams = p;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline void
-SingleShaderCompiler::SetQuietFlag(bool b)
-{
-	this->quiet = b;
 }
 
 //------------------------------------------------------------------------------

@@ -26,8 +26,10 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 
 	this->mode = args["M"];
 
-	this->shaderCompiler.SetDebugFlag(args["debug"]);
-	this->shaderCompiler.SetQuietFlag(args["q"]);
+	this->shaderCompiler.SetFlag(args["debug"] ? SingleShaderCompiler::Debug : 0);
+	this->shaderCompiler.SetFlag(args["q"] ? SingleShaderCompiler::Quiet : 0);
+	this->shaderCompiler.SetFlag(args["validate"] ? SingleShaderCompiler::Validate : 0);
+	this->shaderCompiler.SetFlag(args["profile"] ? SingleShaderCompiler::Profile : 0);
 	std::string buffer;
 	if (args("o") >> buffer)
 	{
@@ -99,17 +101,19 @@ void
 ShaderCompilerApp::PrintHelp()
 {
 	const char* help = "\
-usage: gpulangcompiler [-M] [--help] [-i <file>] [-I <path>]\n\
-                     [-o <path>] [-h <path>] [-q] [-debug]\n\
+usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
+                     [-o <path>] [-h <path>] [-q] [-debug] [-profile] [-validate]\n\
 \n\
--M       Create dependencies\n\
---help   Print this message\n\
--i       Path to input file\n\
--I       Where to search for include headers. This can be repeated multiple times.\n\
--o       Where to output the binaries\n\
--h       Where to place generated C headers\n\
--q     	 Suppress standard output\n\
--debug   Generate debugging information\n\
+-M       		Create dependencies\n\
+--help   		Print this message\n\
+-i       		Path to input file\n\
+-I       		Where to search for include headers. This can be repeated multiple times.\n\
+-o       		Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
+-h       		Where to output generated C headers.\n\
+-q     	 		Suppress standard output.\n\
+-debug   		Generate debugging information and disable optimizations.\n\
+-profile 		Log compilation times.\n\
+-validate		Validate compilation output.\n\
 ";
 
 	fprintf(stdout, help);

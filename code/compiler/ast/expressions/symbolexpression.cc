@@ -76,7 +76,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::FunctionType)
         {
             // If lhs, it means it's a function assignment, therefore function pointer
-            thisResolved->fullType = Type::FullType{ "function" };
+            thisResolved->fullType = Type::FullType{ FUNCTION_TYPE };
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)

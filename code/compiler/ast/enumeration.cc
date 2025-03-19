@@ -14,5 +14,6 @@ Enumeration::Enumeration()
     this->symbolType = Symbol::EnumerationType;
     this->category = Type::Category::EnumCategory;
     this->resolved = new Enumeration::__Resolved;
+    this->baseType = TypeCode::UInt;
 }
 } // namespace GPULang

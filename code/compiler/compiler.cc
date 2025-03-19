@@ -151,12 +151,16 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     case Language::SPIRV:
         this->target.name = "SPIRV";
         this->target.generator = new SPIRVGenerator();
+        this->target.supportsInlineSamplers = true;
+        this->target.supportsPhysicalBufferAddresses = true;
         this->target.supportsPhysicalAddressing = true;
         this->target.supportsGlobalDeviceStorage = true;
         break;
     case Language::VULKAN_SPIRV:
         this->target.name = "VULKAN-SPIRV";
         this->target.generator = new SPIRVGenerator();
+        this->target.supportsInlineSamplers = true;
+        this->target.supportsPhysicalBufferAddresses = true;
         this->target.supportsPhysicalAddressing = false;
         this->target.supportsGlobalDeviceStorage = false;
         break;

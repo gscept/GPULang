@@ -17,9 +17,8 @@ namespace fs = std::filesystem;
 */
 SingleShaderCompiler::SingleShaderCompiler() :
 	language("SPIRV"),        	
-	platform("win32"),	
-	debug(false),
-	quiet(false),
+	platform("win32"),
+	flags(0x0),
 	defaultSet(3)
 {
 	// empty
@@ -36,13 +35,22 @@ SingleShaderCompiler::~SingleShaderCompiler()
 //------------------------------------------------------------------------------
 /**
 */
+void
+SingleShaderCompiler::SetFlag(const uint32_t f)
+{
+	this->flags |= f;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 SingleShaderCompiler::CompileShader(const std::string& src)
 {
 	// check if source
 	if (!fs::exists(src))
 	{
-		fprintf(stderr, "[gpulangcompiler] error: shader source '%s' not found!\n", src.c_str());
+		fprintf(stderr, "[gpulangc] error: shader source '%s' not found!\n", src.c_str());
 		return false;
 	}
 
@@ -51,6 +59,18 @@ SingleShaderCompiler::CompileShader(const std::string& src)
     {
     	fs::path sp(this->dstBinary);
 		fs::create_directories(sp.parent_path());
+
+		// If output is just a folder, then assume binary output is .gplb for the binary and .h for the header to that folder 
+		if (is_directory(sp))
+		{
+			fs::path source(src);
+			
+			this->dstBinary = sp.parent_path().string() + "/" + source.stem().string() + ".gplb";
+			if (this->dstHeader.empty())
+			{
+				this->dstHeader = sp.parent_path().string() + "/" + source.stem().string() + ".h";
+			}
+		}
     }
 	if (!this->dstHeader.empty())
     {
@@ -73,17 +93,17 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	
 	if (this->dstBinary.empty())
 	{
-		if (!this->quiet)
+		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangcompiler] \n Checking for problems:\n   %s\n", src.c_str());
+			fprintf(stderr, "[gpulangc] \n Checking for problems:\n   %s\n", src.c_str());
 		}
 	}
 	else
 	{
 		// compile
-		if (!this->quiet)
+		if (!(this->flags & Flags::Quiet))
 		{
-			fprintf(stderr, "[gpulangcompiler] \n Compiling:\n   %s -> %s", src.c_str(), this->dstBinary.c_str());
+			fprintf(stderr, "[gpulangc] \n Compiling:\n   %s -> %s", src.c_str(), this->dstBinary.c_str());
             if (!this->dstHeader.empty())
 			    fprintf(stderr,"          \n Generating:\n   %s -> %s\n", src.c_str(), this->dstHeader.c_str());
 		}
@@ -104,8 +124,10 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
     }
 	
     // if using debug, output raw shader code
-	options.optimize = false;//!this->debug;
-	options.validate = true;
+	options.quiet = this->flags & Flags::Quiet ? 1 : 0; 
+	options.optimize = this->flags & Flags::Debug ? 0 : 1;
+	options.emitTimings = this->flags & Flags::Profile ? 1 : 0;
+	options.validate = this->flags & Flags::Validate ? 1 : 0;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
 
     GPULangErrorBlob* errors = NULL;
@@ -166,9 +188,9 @@ SingleShaderCompiler::CreateDependencies(const std::string& src)
 	std::string destFile = fs::absolute(folder + "/" + file + ".dep").string();
 
 	// compile
-	if (!this->quiet)
+	if (!(this->flags & Flags::Quiet))
 	{
-		fprintf(stderr, "[anyfxcompiler] \n Analyzing:\n   %s -> %s\n", src.c_str(), destFile.c_str());	
+		fprintf(stderr, "[gpulangc] \n Analyzing:\n   %s -> %s\n", src.c_str(), destFile.c_str());	
 	}
 
 	std::vector<std::string> defines;

@@ -68,11 +68,47 @@ namespace Intrinsics {
     FLOAT_LIST
 #undef X
 
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ATan2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(SinH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(CosH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(TanH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ASinH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ACosH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(ATanH, ty)
+    FLOAT_LIST
+#undef X
+
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(Mad, ty)
     SCALAR_LIST
 #undef X
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(Dot, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Reflect, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Refract, ty)
     FLOAT_VEC_LIST
 #undef X
 
@@ -83,6 +119,10 @@ Function* Cross_f32x3;
 #undef X
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(Length, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Distance, ty)
     FLOAT_VEC_LIST
 #undef X
 
@@ -168,6 +208,14 @@ Function* Cross_f32x3;
 
 #define X(ty, index) DEFINE_SCALAR_INTRINSIC(All, ty)
     BOOL_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Inverse, ty)
+    MATRIX_LIST
+#undef X
+
+#define X(ty, index) DEFINE_SCALAR_INTRINSIC(Transpose, ty)
+    MATRIX_LIST
 #undef X
         
 Function* SetOutputLayer;

@@ -16,8 +16,8 @@ namespace GPULang
     X(Int4, ctor_SingleUIntValue, u32, 1, 4, 4, UIntToInt)\
     X(Int4, ctor_SingleBoolValue, b8, 1, 4, 4, BoolToInt)\
     X(Int4, ctor_UInt4, u32x4, 1, 1, 4, UIntToInt)\
-    X(Int4, ctor_Float4, f32x4, 1, 1, 4, FloatToUInt)\
-    X(Int4, ctor_Bool4, b8x4, 1, 1, 4, BoolToUInt)\
+    X(Int4, ctor_Float4, f32x4, 1, 1, 4, FloatToInt)\
+    X(Int4, ctor_Bool4, b8x4, 1, 1, 4, BoolToInt)\
     X(Int4, ctor_Int4, i32x4, 1, 1, 4, None)
 
 #define INT4_CTOR2_LIST\

@@ -202,6 +202,7 @@ typeDeclaration
             ( arraySize0 = expression { $type.UpdateValue($arraySize0.tree); } )? 
         ']'
         | IDENTIFIER { $type.AddQualifier($IDENTIFIER.text); }
+        | linePreprocessorEntry
     )* 
     typeName = IDENTIFIER { $type.name = $typeName.text; }
     ;
@@ -219,18 +220,20 @@ variables
         unsigned initCounter = 0;
         Type::FullType type = Type::FullType{ "<undefined>" };
     }:
+    (linePreprocessorEntry)*
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
     (attribute { attributes.push_back(std::move($attribute.attr)); })+
     
     varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
-    (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); })*
+    (linePreprocessorEntry)?
+    (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } | linePreprocessorEntry)*
     
     ( ':' 
        typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
         '=' valueExpr = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
-        (',' valueExprN = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExprN.tree; }; } )*
+        (',' valueExprN = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExprN.tree; }; } | linePreprocessorEntry)*
     )?
     {
         for (size_t i = 0; i < names.size(); i++)
@@ -255,6 +258,7 @@ structureDeclaration
         std::vector<Annotation> annotations;
         std::vector<Attribute> attributes;
     }:
+    (linePreprocessorEntry)*
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
     'struct' 
@@ -301,6 +305,7 @@ structure
                 
                 varType = Type::FullType();
             }
+            | linePreprocessorEntry
         )*
     '}' 
     // Disable tail as structs can't be created locally (yet)
@@ -339,13 +344,18 @@ enumeration
                 enumLabels.push_back($label.text);
                 enumValues.push_back(expr);
             }
+            (linePreprocessorEntry)?
             (
                 ',' label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
                 {
                     enumLabels.push_back($label.text);
                     enumValues.push_back(expr);
                 }
+                |
+                linePreprocessorEntry
             )*
+            |
+            linePreprocessorEntry
         )?
     '}'
     {
@@ -370,6 +380,7 @@ parameter
         Symbol::Location location;
         Type::FullType type = Type::FullType{ "unknown" };
     }:
+    (linePreprocessorEntry)*
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
     ':' 
@@ -397,7 +408,11 @@ functionDeclaration
         Symbol::Location location;
     }:
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
-    name = IDENTIFIER { location = SetupFile(); } '(' (arg0 = parameter { variables.push_back($arg0.sym); } (',' argn = parameter { variables.push_back($argn.sym); })* )? ')' returnType = typeDeclaration
+    name = IDENTIFIER { location = SetupFile(); } '(' 
+        (
+            arg0 = parameter { variables.push_back($arg0.sym); } (linePreprocessorEntry)? (',' argn = parameter { variables.push_back($argn.sym); } | linePreprocessorEntry)* 
+        )? 
+        ')' returnType = typeDeclaration
     {
         $sym = Alloc<Function>(); 
         $sym->hasBody = false;
@@ -511,6 +526,7 @@ statement
     | continueStatement         { $tree = $continueStatement.tree; }
     | breakStatement            { $tree = $breakStatement.tree; }
     | expressionStatement ';'   { $tree = $expressionStatement.tree; }
+    //| ';'                       // empty statement
     ;
 
 // expression list as a statement, basically supposing the expression will have a side effect
@@ -586,6 +602,20 @@ forRangeStatement
     content = statement { contents = $content.tree; }
     {
 
+    }
+    ;
+    
+forUniformValueStatement
+    returns [ Statement* tree ]
+    @init
+    {
+        $tree = nullptr;
+        Statement* contents = nullptr;
+        Symbol::Location location;
+    }: 'for_uniform' { location = SetupFile(); } '(' expression ')'
+    content = statement { contents = $content.tree; }
+    {
+    
     }
     ;
 
@@ -741,6 +771,7 @@ expression
     commaExpression { $tree = $commaExpression.tree; $tree->location = SetupFile(); }
     ;
 
+// Series of expressions separated by comma
 commaExpression
     returns[ Expression* tree ]
     @init
@@ -759,7 +790,7 @@ commaExpression
     )*
     ;
 
-// start of with ||
+// assignment or ternary
 assignmentExpression
     returns[ Expression* tree ]
     @init 
@@ -775,12 +806,6 @@ assignmentExpression
             expr->location = location;
             $tree = expr;
         } 
-        | '?' { location = SetupFile(); } ifBody = expression ':' elseBody = expression
-        { 
-            TernaryExpression* expr = Alloc<TernaryExpression>($tree, $ifBody.tree, $elseBody.tree);
-            expr->location = location;
-            $tree = expr;
-        }
     )*
     ;
 
@@ -792,8 +817,15 @@ logicalOrExpression
         $tree = nullptr;
         Symbol::Location location;
     }:
-    e1 = logicalAndExpression { $tree = $e1.tree; } 
+    e1 = logicalAndExpression { $tree = $e1.tree; }
     (
+        '?' { location = SetupFile(); } ifBody = logicalOrExpression ':' elseBody = logicalOrExpression
+        { 
+            TernaryExpression* expr = Alloc<TernaryExpression>($tree, $ifBody.tree, $elseBody.tree);
+            expr->location = location;
+            $tree = expr;
+        }
+        |
         ('||') { location = SetupFile(); } e2 = logicalAndExpression
         {
             BinaryExpression* expr = Alloc<BinaryExpression>('||', $tree, $e2.tree);
@@ -1019,7 +1051,11 @@ suffixExpression
         $tree = $e1.tree;
     }
     (
-        '(' { location = SetupFile(); } (arg0 = logicalOrExpression { args.push_back($arg0.tree); } (',' argn = logicalOrExpression { args.push_back($argn.tree); })* )? ')'
+        '(' { location = SetupFile(); } 
+            (
+                arg0 = logicalOrExpression { args.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { args.push_back($argn.tree); } | linePreprocessorEntry)* 
+            )? 
+        ')'
         {
             CallExpression* expr = Alloc<CallExpression>($tree, args);
             expr->location = location;
@@ -1104,7 +1140,7 @@ initializerExpression
         std::string type = "";
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); })* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); } | linePreprocessorEntry)* )? '}'
     {
         $tree = Alloc<InitializerExpression>(exprs, type);
         $tree->location = location;
@@ -1119,7 +1155,7 @@ arrayInitializerExpression
         std::vector<Expression*> exprs;
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); })* )? ']'
+    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); } | linePreprocessorEntry)* )? ']'
     {
         $tree = Alloc<ArrayInitializerExpression>(exprs);
         $tree->location = location;
@@ -1134,7 +1170,7 @@ floatVecLiteralExpression
         std::vector<float> values;
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); })+ '>'
     {
         $tree = Alloc<FloatVecExpression>(values);
         $tree->location = location;
@@ -1149,7 +1185,7 @@ doubleVecLiteralExpression
         std::vector<float> values;
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<FloatVecExpression>(values);
         $tree->location = location;
@@ -1164,7 +1200,7 @@ intVecLiteralExpression
         std::vector<int> values;
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<IntVecExpression>(values);
         $tree->location = location;
@@ -1179,7 +1215,7 @@ uintVecLiteralExpression
         std::vector<unsigned int> values;
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<UIntVecExpression>(values);
         $tree->location = location;
@@ -1194,7 +1230,7 @@ booleanVecLiteralExpression
         std::vector<bool> values;
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<BoolVecExpression>(values);
         $tree->location = location;
@@ -1255,12 +1291,12 @@ COMMENT: ('//' .*? '\n') -> channel(HIDDEN);
 // multi line comment begins with /* and ends with */
 ML_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 
+fragment EXPONENT: ('e' | 'E') ('+' | '-')? INTEGER+;
+
 FLOATLITERAL:
     INTEGER+ DOT INTEGER* EXPONENT? 'f'
     | DOT INTEGER+ EXPONENT? 'f'
     | INTEGER+ EXPONENT? 'f';
-
-EXPONENT: ('e' | 'E') ('+' | '-')? INTEGER+;
 
 DOUBLELITERAL:
     INTEGER+ DOT INTEGER* EXPONENT?
@@ -1271,7 +1307,7 @@ DOUBLELITERAL:
 HEX: '0' 'x' ('0' ..'9' | 'a' ..'f' | 'A' .. 'F')* ('u' | 'U')?;
 
 // Any alphabetical character, both lower and upper case
-fragment ALPHABET: ('A' ..'Z' | 'a' ..'z');
+fragment ALPHABET: ('A'..'Z' | 'a'..'z');
 
 // Identifier, must begin with alphabetical token, but can be followed by integer literal or underscore
 IDENTIFIER: ('_')* ALPHABET (ALPHABET | INTEGERLITERAL | '_')*;

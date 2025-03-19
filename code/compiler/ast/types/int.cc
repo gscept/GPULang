@@ -43,6 +43,7 @@ Function Int::neOperator;
 
 Function Int::floatAssignOperator;
 Function Int::uintAssignOperator;
+Function Int::boolAssignOperator;
 
 //------------------------------------------------------------------------------
 /**
@@ -92,6 +93,7 @@ Int::Int()
 
     __IMPLEMENT_FUNCTION_1(floatAssignOperator, operator=, i32, f32);
     __IMPLEMENT_FUNCTION_1(uintAssignOperator, operator=, i32, u32);
+    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, i32, b8);
 }
 
 } // namespace GPULang

@@ -53,6 +53,7 @@ struct UInt : public Type
 
     static Function floatAssignOperator;
     static Function intAssignOperator;
+    static Function boolAssignOperator;
 };
 
 } // namespace GPULang

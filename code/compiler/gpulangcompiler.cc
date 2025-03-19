@@ -220,8 +220,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         if (options.emitTimings)
             timer.Print("Preprocessing");
 
-
-
         GPULangLexerErrorHandler lexerErrorHandler;
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
@@ -271,7 +269,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         ResetMemory();
         
         // convert error list to string
-        if (!compiler.messages.empty())
+        if (!compiler.messages.empty() && !compiler.options.quiet)
         {
             std::string err;
             for (size_t i = 0; i < compiler.messages.size(); i++)

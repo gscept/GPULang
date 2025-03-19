@@ -57,11 +57,14 @@ TernaryExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    if (type1.name != type2.name)
+    if (type1 != type2)
     {
         compiler->Error(Format("Ternary results are of different types '%s' and '%s'", type1.name.c_str(), type2.name.c_str()), this);
         return false;
     }
+
+    thisResolved->fullType = type1;
+    thisResolved->type = compiler->GetType(type1);
     return true;
 }
 
@@ -76,6 +79,17 @@ TernaryExpression::EvalString() const
     ifStr = this->ifExpression->EvalString();
     elseStr = this->elseExpression->EvalString();
     return Format("%s ? %s : %s", lhs.c_str(), ifStr.c_str(), elseStr.c_str());
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+TernaryExpression::EvalType(Type::FullType& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->fullType;
+    return true;
 }
 
 //------------------------------------------------------------------------------

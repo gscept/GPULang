@@ -182,6 +182,8 @@ fips_dir(ast/types)
         programtype.h
         renderstatetype.cc
         renderstatetype.h
+        stencilstatetype.cc
+        stencilstatetype.h
         samplerstatetype.cc
         samplerstatetype.h
         uint.cc

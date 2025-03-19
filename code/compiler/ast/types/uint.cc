@@ -42,6 +42,7 @@ Function UInt::neOperator;
 
 Function UInt::floatAssignOperator;
 Function UInt::intAssignOperator;
+Function UInt::boolAssignOperator;
 
 //------------------------------------------------------------------------------
 /**
@@ -91,6 +92,7 @@ UInt::UInt()
 
     __IMPLEMENT_FUNCTION_1(floatAssignOperator, operator=, u32, f32);
     __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, u32, i32);
+    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, u32, b8);
 
 }
 

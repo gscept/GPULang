@@ -35,5 +35,6 @@
 #include "mat4x4.h"
 #include "renderstatetype.h"
 #include "samplerstatetype.h"
+#include "stencilstatetype.h"
 #include "programtype.h"
 #include "functiontype.h"

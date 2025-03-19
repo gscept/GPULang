@@ -88,6 +88,9 @@ public:
   virtual void enterForRangeStatement(GPULangParser::ForRangeStatementContext * /*ctx*/) override { }
   virtual void exitForRangeStatement(GPULangParser::ForRangeStatementContext * /*ctx*/) override { }
 
+  virtual void enterForUniformValueStatement(GPULangParser::ForUniformValueStatementContext * /*ctx*/) override { }
+  virtual void exitForUniformValueStatement(GPULangParser::ForUniformValueStatementContext * /*ctx*/) override { }
+
   virtual void enterWhileStatement(GPULangParser::WhileStatementContext * /*ctx*/) override { }
   virtual void exitWhileStatement(GPULangParser::WhileStatementContext * /*ctx*/) override { }
 

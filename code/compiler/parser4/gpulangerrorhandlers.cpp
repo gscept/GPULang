@@ -37,6 +37,6 @@ void GPULangParserErrorHandler::syntaxError(antlr4::Recognizer* recognizer, antl
 	std::string file = std::get<2>(GPULangParser::LineStack.back());
 	size_t correctLine = std::get<1>(GPULangParser::LineStack.back()) + line - 1 - std::get<0>(GPULangParser::LineStack.back());
 
-	this->errorBuffer += GPULang::Format("%s(%d) syntax error: %s\n", file.c_str(), correctLine, msg.c_str());
+	this->errorBuffer += GPULang::Format("%s(%d): syntax error: %s\n", file.c_str(), correctLine, msg.c_str());
 	this->hasError = true;
 }

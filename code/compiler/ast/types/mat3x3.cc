@@ -6,6 +6,7 @@
 namespace GPULang
 {
 
+Function Mat3x3::identityConstructor;
 Function Mat3x3::floatConstructor;
 Function Mat3x3::vectorConstructor;
 
@@ -34,6 +35,8 @@ Mat3x3::Mat3x3()
     this->columnSize = 3;
     this->byteSize = 36;
     this->category = Type::ScalarCategory;
+
+    __IMPLEMENT_CTOR(identityConstructor, f32x3x3, f32x3x3);
 
     __IMPLEMENT_CTOR(floatConstructor, f32x3x3, f32x3x3);
     __ADD_FUNCTION_PARAM(m00, f32);

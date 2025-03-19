@@ -7,6 +7,7 @@
 #include "ast/expressions/expression.h"
 #include "ast/expressions/uintexpression.h"
 #include <set>
+
 namespace GPULang
 {
 
@@ -285,24 +286,44 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
     newType->category = AccelerationStructureCategory;
 
+#define __ADD_ENUM(val, enum) enum->labels.push_back(#val); enum->values.push_back(nullptr);
+
     Enumeration* compareModeEnum = new Enumeration();
     compareModeEnum->name = "CompareMode";
     compareModeEnum->type = Type::FullType{ "u32" };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    compareModeEnum->labels.push_back("InvalidCompareMode"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("Never"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("Less"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("Equal"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("LessEqual"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("Greater"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("NotEqual"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("GreaterEqual"); compareModeEnum->values.push_back(nullptr);
-    compareModeEnum->labels.push_back("Always"); compareModeEnum->values.push_back(nullptr);
+    __ADD_ENUM(InvalidCompareMode, compareModeEnum);
+    __ADD_ENUM(Never, compareModeEnum);
+    __ADD_ENUM(Less, compareModeEnum);
+    __ADD_ENUM(Equal, compareModeEnum);
+    __ADD_ENUM(LessEqual, compareModeEnum);
+    __ADD_ENUM(Greater, compareModeEnum);
+    __ADD_ENUM(NotEqual, compareModeEnum);
+    __ADD_ENUM(GreaterEqual, compareModeEnum);
+    __ADD_ENUM(Always, compareModeEnum);
     compareModeEnum->builtin = true;
     DefaultTypes.push_back(compareModeEnum);
 
+    Enumeration* stencilOpEnum = new Enumeration();
+    stencilOpEnum->name = "StencilOp";
+    stencilOpEnum->type = Type::FullType{ "u32" };
+    stencilOpEnum->type.literal = true;
+    stencilOpEnum->baseType = GPULang::TypeCode::UInt;
+    __ADD_ENUM(Invalid, stencilOpEnum);
+    __ADD_ENUM(Keep, stencilOpEnum);
+    __ADD_ENUM(Zero, stencilOpEnum);
+    __ADD_ENUM(Replace, stencilOpEnum);
+    __ADD_ENUM(IncrementClamp, stencilOpEnum);
+    __ADD_ENUM(DecrementClamp, stencilOpEnum);
+    __ADD_ENUM(Invert, stencilOpEnum);
+    __ADD_ENUM(IncrementWrap, stencilOpEnum);
+    __ADD_ENUM(DecrementWrap, stencilOpEnum);
+    stencilOpEnum->builtin = true;
+    DefaultTypes.push_back(stencilOpEnum);
+
     __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
+    __MAKE_TYPE_CUSTOM(stencilState, GPULang::StencilStateType);
     __MAKE_TYPE_CUSTOM(renderState, GPULang::RenderStateType);
     __MAKE_TYPE_CUSTOM(samplerState, GPULang::SamplerStateType);
     __MAKE_TYPE_CUSTOM(program, GPULang::ProgramType);

@@ -30,6 +30,7 @@ struct SPIRVResult
     bool isConst = false;           // If true, value is a constant
     bool isLiteral = false;         // If true, then the value is a literal value and can be constant constructed
     bool isSpecialization = false;  // If true, then the value is the product of specialization
+    bool isStructPadded = false;    // If true, the type is padded in a struct and requires an extra access indirection
     uint32_t derefs = 0;
     std::vector<uint32_t> parentTypes;
 
@@ -82,7 +83,7 @@ struct SPIRVResult
         RayHitAttribute,                        // variable ray tracing hit attribute (barycentrics)
         CallableData,                           // variable is ray tracing callable data
         CallableDataInput,                      // variable is ray tracing callable data
-    } scope;
+    } scope = Storage::Function;
 
     static std::string ScopeToString(Storage s)
     {
@@ -191,6 +192,7 @@ struct SymbolAssignment
 {
     Symbol* sym;
     uint32_t value;
+    SPIRVResult type;
 };
 
 class SPIRVGenerator : public Generator
@@ -208,6 +210,8 @@ public:
 
     /// Add or search for a symbol
     uint32_t AddSymbol(const std::string& name, const std::string& declare, bool global = false);
+    /// Add or search for a symbol
+    uint32_t AddSymbol(const std::string& name, const std::string& declare, SPIRVResult type, bool global = false);
     /// Add a symbol for a reserved name
     void AddReservedSymbol(const std::string& name, uint32_t object, const std::string& declare, bool global = false);
     /// Get symbol
@@ -233,7 +237,7 @@ public:
     /// Add op with reserved name
     void AddReserved(const std::string& op, uint32_t name, std::string comment = "");
     /// Add function variable declaration
-    uint32_t AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t type, uint32_t init, uint32_t copy, SPIRVResult::Storage scope, bool global = false);
+    uint32_t AddVariableDeclaration(Symbol* sym, const std::string& name, uint32_t typeName, uint32_t init, uint32_t copy, SPIRVResult::Storage scope, SPIRVResult type, bool global = false);
 
     uint32_t symbolCounter;
 

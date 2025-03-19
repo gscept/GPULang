@@ -25,7 +25,6 @@ struct RenderStateType : public Type
     Enumeration logicOpModeEnum;
     Enumeration blendFactorModeEnum;
     Enumeration blendOpModeEnum;
-    Enumeration stencilOpModeEnum;
     Enumeration colorComponentMaskEnum;
 
     Variable depthClampEnabled;
@@ -57,8 +56,6 @@ struct RenderStateType : public Type
     Variable colorComponentMask;
     Variable frontStencilState;
     Variable backStencilState;
-
-    Structure stencilState;
 
 };
 

@@ -77,16 +77,15 @@ public:
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
-    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, SC = 38, 
-    CO = 39, COL = 40, LP = 41, RP = 42, LB = 43, RB = 44, LL = 45, RR = 46, 
-    DOT = 47, NOT = 48, EQ = 49, QO = 50, QU = 51, AND = 52, ANDSET = 53, 
-    OR = 54, ORSET = 55, XOR = 56, XORSET = 57, CONJUGATE = 58, Q = 59, 
-    NU = 60, FORWARDSLASH = 61, LESS = 62, LESSEQ = 63, GREATER = 64, GREATEREQ = 65, 
-    LOGICEQ = 66, NOTEQ = 67, LOGICAND = 68, LOGICOR = 69, MOD = 70, UNDERSC = 71, 
-    SOBAKA = 72, ADD_OP = 73, SUB_OP = 74, DIV_OP = 75, MUL_OP = 76, ARROW = 77, 
-    INTEGERLITERAL = 78, UINTEGERLITERAL = 79, COMMENT = 80, ML_COMMENT = 81, 
-    FLOATLITERAL = 82, EXPONENT = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, 
-    WS = 87
+    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
+    SC = 39, CO = 40, COL = 41, LP = 42, RP = 43, LB = 44, RB = 45, LL = 46, 
+    RR = 47, DOT = 48, NOT = 49, EQ = 50, QO = 51, QU = 52, AND = 53, ANDSET = 54, 
+    OR = 55, ORSET = 56, XOR = 57, XORSET = 58, CONJUGATE = 59, Q = 60, 
+    NU = 61, FORWARDSLASH = 62, LESS = 63, LESSEQ = 64, GREATER = 65, GREATEREQ = 66, 
+    LOGICEQ = 67, NOTEQ = 68, LOGICAND = 69, LOGICOR = 70, MOD = 71, UNDERSC = 72, 
+    SOBAKA = 73, ADD_OP = 74, SUB_OP = 75, DIV_OP = 76, MUL_OP = 77, ARROW = 78, 
+    INTEGERLITERAL = 79, UINTEGERLITERAL = 80, COMMENT = 81, ML_COMMENT = 82, 
+    FLOATLITERAL = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, WS = 87
   };
 
   enum {
@@ -96,18 +95,18 @@ public:
     RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
     RuleFunction = 15, RuleProgram = 16, RuleSampler = 17, RuleState = 18, 
     RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
-    RuleForStatement = 22, RuleForRangeStatement = 23, RuleWhileStatement = 24, 
-    RuleScopeStatement = 25, RuleTerminateStatement = 26, RuleContinueStatement = 27, 
-    RuleSwitchStatement = 28, RuleBreakStatement = 29, RuleExpression = 30, 
-    RuleCommaExpression = 31, RuleAssignmentExpression = 32, RuleLogicalOrExpression = 33, 
-    RuleLogicalAndExpression = 34, RuleOrExpression = 35, RuleXorExpression = 36, 
-    RuleAndExpression = 37, RuleEquivalencyExpression = 38, RuleRelationalExpression = 39, 
-    RuleShiftExpression = 40, RuleAddSubtractExpression = 41, RuleMultiplyDivideExpression = 42, 
-    RulePrefixExpression = 43, RuleSuffixExpression = 44, RuleNamespaceExpression = 45, 
-    RuleBinaryexpatom = 46, RuleInitializerExpression = 47, RuleArrayInitializerExpression = 48, 
-    RuleFloatVecLiteralExpression = 49, RuleDoubleVecLiteralExpression = 50, 
-    RuleIntVecLiteralExpression = 51, RuleUintVecLiteralExpression = 52, 
-    RuleBooleanVecLiteralExpression = 53
+    RuleForStatement = 22, RuleForRangeStatement = 23, RuleForUniformValueStatement = 24, 
+    RuleWhileStatement = 25, RuleScopeStatement = 26, RuleTerminateStatement = 27, 
+    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
+    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
+    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
+    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
+    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
+    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
+    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
+    RuleArrayInitializerExpression = 49, RuleFloatVecLiteralExpression = 50, 
+    RuleDoubleVecLiteralExpression = 51, RuleIntVecLiteralExpression = 52, 
+    RuleUintVecLiteralExpression = 53, RuleBooleanVecLiteralExpression = 54
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -169,6 +168,7 @@ public:
   class IfStatementContext;
   class ForStatementContext;
   class ForRangeStatementContext;
+  class ForUniformValueStatementContext;
   class WhileStatementContext;
   class ScopeStatementContext;
   class TerminateStatementContext;
@@ -379,6 +379,8 @@ public:
     antlr4::tree::TerminalNode* LL(size_t i);
     std::vector<antlr4::tree::TerminalNode *> RR();
     antlr4::tree::TerminalNode* RR(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
 
@@ -403,6 +405,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<AnnotationContext *> annotation();
     AnnotationContext* annotation(size_t i);
     std::vector<AttributeContext *> attribute();
@@ -431,6 +435,8 @@ public:
     StructureDeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IDENTIFIER();
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<AnnotationContext *> annotation();
     AnnotationContext* annotation(size_t i);
     std::vector<AttributeContext *> attribute();
@@ -459,6 +465,8 @@ public:
     antlr4::tree::TerminalNode* COL(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SC();
     antlr4::tree::TerminalNode* SC(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
     std::vector<antlr4::tree::TerminalNode *> MUL_OP();
@@ -492,6 +500,8 @@ public:
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
     antlr4::tree::TerminalNode *COL();
     TypeDeclarationContext *typeDeclaration();
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> EQ();
     antlr4::tree::TerminalNode* EQ(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
@@ -518,6 +528,8 @@ public:
     antlr4::tree::TerminalNode *COL();
     TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *IDENTIFIER();
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
     antlr4::tree::TerminalNode *EQ();
@@ -548,6 +560,8 @@ public:
     AttributeContext* attribute(size_t i);
     std::vector<ParameterContext *> parameter();
     ParameterContext* parameter(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -763,6 +777,24 @@ public:
 
   ForRangeStatementContext* forRangeStatement();
 
+  class  ForUniformValueStatementContext : public antlr4::ParserRuleContext {
+  public:
+    Statement* tree;
+    GPULangParser::StatementContext *content = nullptr;
+    ForUniformValueStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LP();
+    ExpressionContext *expression();
+    antlr4::tree::TerminalNode *RP();
+    StatementContext *statement();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  ForUniformValueStatementContext* forUniformValueStatement();
+
   class  WhileStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
@@ -917,18 +949,10 @@ public:
     GPULangParser::LogicalOrExpressionContext *e1 = nullptr;
     antlr4::Token *op = nullptr;
     GPULangParser::LogicalOrExpressionContext *e2 = nullptr;
-    GPULangParser::ExpressionContext *ifBody = nullptr;
-    GPULangParser::ExpressionContext *elseBody = nullptr;
     AssignmentExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<LogicalOrExpressionContext *> logicalOrExpression();
     LogicalOrExpressionContext* logicalOrExpression(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> QU();
-    antlr4::tree::TerminalNode* QU(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> COL();
-    antlr4::tree::TerminalNode* COL(size_t i);
-    std::vector<ExpressionContext *> expression();
-    ExpressionContext* expression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> ANDSET();
     antlr4::tree::TerminalNode* ANDSET(size_t i);
     std::vector<antlr4::tree::TerminalNode *> XORSET();
@@ -949,11 +973,19 @@ public:
   public:
     Expression* tree;
     GPULangParser::LogicalAndExpressionContext *e1 = nullptr;
+    GPULangParser::LogicalOrExpressionContext *ifBody = nullptr;
+    GPULangParser::LogicalOrExpressionContext *elseBody = nullptr;
     GPULangParser::LogicalAndExpressionContext *e2 = nullptr;
     LogicalOrExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<LogicalAndExpressionContext *> logicalAndExpression();
     LogicalAndExpressionContext* logicalAndExpression(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> QU();
+    antlr4::tree::TerminalNode* QU(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> COL();
+    antlr4::tree::TerminalNode* COL(size_t i);
+    std::vector<LogicalOrExpressionContext *> logicalOrExpression();
+    LogicalOrExpressionContext* logicalOrExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> LOGICOR();
     antlr4::tree::TerminalNode* LOGICOR(size_t i);
 
@@ -1208,6 +1240,8 @@ public:
     LogicalOrExpressionContext* logicalOrExpression(size_t i);
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1286,6 +1320,8 @@ public:
     antlr4::tree::TerminalNode *IDENTIFIER();
     std::vector<LogicalOrExpressionContext *> logicalOrExpression();
     LogicalOrExpressionContext* logicalOrExpression(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1307,6 +1343,8 @@ public:
     antlr4::tree::TerminalNode *RR();
     std::vector<LogicalOrExpressionContext *> logicalOrExpression();
     LogicalOrExpressionContext* logicalOrExpression(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1328,6 +1366,7 @@ public:
     antlr4::tree::TerminalNode *GREATER();
     std::vector<antlr4::tree::TerminalNode *> FLOATLITERAL();
     antlr4::tree::TerminalNode* FLOATLITERAL(size_t i);
+    LinePreprocessorEntryContext *linePreprocessorEntry();
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1349,6 +1388,7 @@ public:
     antlr4::tree::TerminalNode *GREATER();
     std::vector<antlr4::tree::TerminalNode *> DOUBLELITERAL();
     antlr4::tree::TerminalNode* DOUBLELITERAL(size_t i);
+    LinePreprocessorEntryContext *linePreprocessorEntry();
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1370,6 +1410,7 @@ public:
     antlr4::tree::TerminalNode *GREATER();
     std::vector<antlr4::tree::TerminalNode *> INTEGERLITERAL();
     antlr4::tree::TerminalNode* INTEGERLITERAL(size_t i);
+    LinePreprocessorEntryContext *linePreprocessorEntry();
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1391,6 +1432,7 @@ public:
     antlr4::tree::TerminalNode *GREATER();
     std::vector<antlr4::tree::TerminalNode *> UINTEGERLITERAL();
     antlr4::tree::TerminalNode* UINTEGERLITERAL(size_t i);
+    LinePreprocessorEntryContext *linePreprocessorEntry();
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1412,6 +1454,7 @@ public:
     antlr4::tree::TerminalNode *GREATER();
     std::vector<BooleanContext *> boolean();
     BooleanContext* boolean(size_t i);
+    LinePreprocessorEntryContext *linePreprocessorEntry();
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 

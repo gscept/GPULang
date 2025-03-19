@@ -133,6 +133,17 @@
     X(b8x3, 14)\
     X(b8x4, 15)
 
+#define MATRIX_LIST\
+    X(f32x2x2, 16)\
+    X(f32x2x3, 17)\
+    X(f32x2x4, 18)\
+    X(f32x3x2, 19)\
+    X(f32x3x3, 20)\
+    X(f32x3x4, 21)\
+    X(f32x4x2, 22)\
+    X(f32x4x3, 23)\
+    X(f32x4x4, 24)
+
 #define DECLARE_SCALAR_INTRINSIC(fun, ty) extern Function* fun##_##ty;
 #define DEFINE_SCALAR_INTRINSIC(fun, ty) Function* fun##_##ty;
     
@@ -195,11 +206,47 @@ namespace Intrinsics {
     FLOAT_LIST
 #undef X
 
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ATan2, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(SinH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(CosH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(TanH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ASinH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ACosH, ty)
+    FLOAT_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(ATanH, ty)
+    FLOAT_LIST
+#undef X
+
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Mad, ty)
     SCALAR_LIST
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Dot, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Reflect, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Refract, ty)
     FLOAT_VEC_LIST
 #undef X
 
@@ -210,6 +257,10 @@ extern Function* Cross_f32x3;
 #undef X
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(Length, ty)
+    FLOAT_VEC_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Distance, ty)
     FLOAT_VEC_LIST
 #undef X
 
@@ -295,6 +346,14 @@ extern Function* Cross_f32x3;
 
 #define X(ty, index) DECLARE_SCALAR_INTRINSIC(All, ty)
     BOOL_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Inverse, ty)
+    MATRIX_LIST
+#undef X
+
+#define X(ty, index) DECLARE_SCALAR_INTRINSIC(Transpose, ty)
+    MATRIX_LIST
 #undef X
 
 //------------------------------------------------------------------------------

@@ -60,6 +60,8 @@ public:
         Type* retType;
 
     	Expression* constValueExpression;
+
+    	bool isAssignment;
     };
 	__Resolved* thisResolved;
 }; 

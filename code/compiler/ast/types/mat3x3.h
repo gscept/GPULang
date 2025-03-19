@@ -16,6 +16,7 @@ struct Mat3x3 : public Type
     /// constructor
     Mat3x3();
 
+    static Function identityConstructor;
     static Function floatConstructor;
     static Function vectorConstructor;
 

@@ -10,7 +10,7 @@
 #define __ADD_ENUM(val) labels.push_back(#val); expressions.push_back(nullptr);
 #define __ADD_ENUM_EXPL(name, val) labels.push_back(#name); expressions.push_back(new UIntExpression(val));
 #define __IMPL_ENUM_ASSIGN() 
-#define __FINISH_ENUM(val, key) val = Enumeration(); val.labels = labels; val.values = expressions; val.name = #key; val.type = Type::FullType{ "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
+#define __FINISH_ENUM(val, key) val = Enumeration(); val.labels = labels; val.values = expressions; val.name = #key; val.baseType = TypeCode::UInt; val.type = Type::FullType{ "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
 
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);
 #define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::Array}, {new UIntExpression(size)} }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);
@@ -47,18 +47,6 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(Clockwise);
     __ADD_ENUM(CounterClockwise);
     __FINISH_ENUM(this->windingOrderModeEnum, WindingOrder);
-
-    __START_ENUM();
-    __ADD_ENUM(Invalid);
-    __ADD_ENUM(Keep);
-    __ADD_ENUM(Zero);
-    __ADD_ENUM(Replace);
-    __ADD_ENUM(IncrementClamp);
-    __ADD_ENUM(DecrementClamp);
-    __ADD_ENUM(Invert);
-    __ADD_ENUM(IncrementWrap);
-    __ADD_ENUM(DecrementWrap);
-    __FINISH_ENUM(this->stencilOpModeEnum, StencilOp);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -120,26 +108,6 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(XYZW);
     __FINISH_ENUM(this->colorComponentMaskEnum, ColorComponentMask);
 
-    std::vector<Symbol*> stencilStateMembers;
-    Variable* var = nullptr;
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "Fail";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "Pass";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "StencilOp" }; var->name = "DepthFail";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "CompareMode" }; var->name = "Compare";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "CompareMask";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "WriteMask";
-    stencilStateMembers.push_back(var);
-    var = new Variable(); var->type = Type::FullType{ "u32" }; var->name = "ReferenceMask";
-    stencilStateMembers.push_back(var);
-    this->stencilState.symbols = stencilStateMembers;
-    this->stencilState.name = "StencilState";
-    this->staticSymbols.push_back(&this->stencilState);
-
     __SETUP_MEMBER(this->depthClampEnabled, DepthClampEnabled, b8);
     __SETUP_MEMBER(this->noRasterization, NoRasterization, b8);
     __SETUP_MEMBER(this->polygonMode, Fill, PolygonMode);
@@ -159,8 +127,8 @@ RenderStateType::RenderStateType()
     __SETUP_MEMBER(this->stencilEnabled, StencilEnabled, b8);
     __SETUP_MEMBER(this->logicOpEnabled, LogicEnabled, b8);
     __SETUP_MEMBER(this->logicOp, Logic, LogicOp);
-    __SETUP_MEMBER(this->frontStencilState, FrontStencil, StencilState);
-    __SETUP_MEMBER(this->backStencilState, BackStencil, StencilState);
+    __SETUP_MEMBER(this->frontStencilState, StencilFront, stencilState);
+    __SETUP_MEMBER(this->backStencilState, Stencil, stencilState);
     __SETUP_MEMBER_ARRAY(this->blendEnabled, BlendEnabled, b8, 8u);
     __SETUP_MEMBER_ARRAY(this->sourceBlend, SourceBlend, BlendFactor, 8u);
     __SETUP_MEMBER_ARRAY(this->destinationBlend, DestinationBlend, BlendFactor, 8u);

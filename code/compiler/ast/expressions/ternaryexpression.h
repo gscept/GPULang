@@ -25,6 +25,8 @@ struct TernaryExpression : public Expression
 
     /// evaluates expression as a string
     std::string EvalString() const override;
+    /// eval type
+    bool EvalType(Type::FullType& out) const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage

@@ -48,6 +48,7 @@ struct Compiler
 
     struct Options
     {
+        uint8_t quiet : 1 = 0;
         uint8_t warningsAsErrors : 1 = 0;
         uint8_t emitTimings : 1 = 0;
         uint8_t disallowImplicitConversion : 1 = 0;
@@ -66,6 +67,7 @@ struct Compiler
         Generator* generator;
         std::string name;
 
+        uint8_t supportsPhysicalBufferAddresses : 1;
         uint8_t supportsPhysicalAddressing : 1;
         uint8_t supportsInlineSamplers : 1;
         uint8_t supportsGlobalDeviceStorage : 1;
