@@ -26,14 +26,14 @@ public:
     ~GLSLGenerator();
 
     /// generate GLSL output
-    bool Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
+    bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate function
-    void GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateFunctionSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode);
     /// generate structure 
-    void GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode);
+    void GenerateStructureSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode);
     /// generate variable
-    void GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
+    void GenerateVariableSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument);
 
     LanguageFeatureSet featureSet;
 };

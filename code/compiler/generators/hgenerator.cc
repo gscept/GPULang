@@ -26,7 +26,7 @@ namespace GPULang
 /**
 */
 bool 
-HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+HGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     HeaderWriter writer;
 
@@ -127,7 +127,7 @@ std::map<std::string, std::string> typeToArraySize =
 /**
 */
 void 
-HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateStructureH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
@@ -156,7 +156,7 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
 /**
 */
 void
-GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
+GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& writer)
 {
     switch (expr->symbolType)
     {
@@ -205,7 +205,7 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
 /**
 */
 void 
-HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
+HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -381,7 +381,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
 /**
 */
 void 
-HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
 {
     Enumeration* enu = static_cast<Enumeration*>(symbol);
     Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
@@ -414,7 +414,7 @@ HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, 
 /**
 */
 void 
-HGenerator::GenerateProgramH(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer)
+HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer)
 {
     writer.WriteLine(Format("struct %s", program->name.c_str()));
     writer.WriteLine("{");
@@ -446,7 +446,7 @@ HGenerator::GenerateProgramH(Compiler* compiler, Program* program, const std::ve
 /**
 */
 void 
-HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer)
+HGenerator::GenerateFunctionH(const Compiler* compiler, const Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);

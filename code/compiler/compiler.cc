@@ -19,6 +19,8 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
+#include <thread>
+
 namespace GPULang
 {
 
@@ -130,7 +132,7 @@ Compiler::~Compiler()
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version)
+Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options)
 {
     this->lang = lang;
     switch (lang)
@@ -151,6 +153,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     case Language::SPIRV:
         this->target.name = "SPIRV";
         this->target.generator = new SPIRVGenerator();
+        SPIRVGenerator::SetupIntrinsics();
         this->target.supportsInlineSamplers = true;
         this->target.supportsPhysicalBufferAddresses = true;
         this->target.supportsPhysicalAddressing = true;
@@ -170,6 +173,32 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Generator* 
+Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
+{
+    switch (lang)
+    {
+        case Language::GLSL_SPIRV:
+            return Alloc<GLSLGenerator>(GLSLGenerator::VulkanFeatureSet);
+            break;
+        case Language::GLSL:
+            return Alloc<GLSLGenerator>(GLSLGenerator::OpenGLFeatureSet);
+            break;
+        case Language::HLSL_SPIRV:
+        case Language::HLSL:
+            return Alloc<HLSLGenerator>();
+            break;
+        case Language::SPIRV:
+        case Language::VULKAN_SPIRV:
+            return Alloc<SPIRVGenerator>();
+            break;
+    }
+    return nullptr;
 }
 
 //------------------------------------------------------------------------------
@@ -394,12 +423,17 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
     this->performanceTimer.Start();
 
+    std::vector<Program*> programs;
+
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
     {
         ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
         if (this->hasErrors)
             break;
+
+        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -430,13 +464,32 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
     this->performanceTimer.Start();
 
-    // collect programs
-    for (Symbol* symbol : this->symbols)
+    uint32_t numAvailableThreads = std::thread::hardware_concurrency();
+
+    std::thread* threads = AllocStack<std::thread>(programs.size());
+    bool* returnValues = AllocStack<bool>(programs.size());
+    std::vector<Generator*> generators;
+
+    // Run the code generation per thread
+    for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
-        if (symbol->symbolType == Symbol::ProgramType)
+        Generator* gen = CreateGenerator(this->lang, this->options);
+        generators.push_back(gen);
+        new (&threads[programIndex]) std::thread([this, returnValues, program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
-            ret &= this->target.generator->Generate(this, static_cast<Program*>(symbol), this->symbols, writeFunction);
+            returnValues[programIndex] &= gen->Generate(this, program, symbols, writeFunction);
+        });
+        //ret &= gen->Generate(this, programs[programIndex], this->symbols, writeFunction);
+    }
+
+    for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
+    {
+        threads[programIndex].join();
+        if (!returnValues[programIndex])
+        {
+            this->messages.insert(this->messages.begin(), generators[programIndex]->messages.begin(), generators[programIndex]->messages.end());
         }
+        ret &= returnValues[programIndex];
     }
 
     this->performanceTimer.Stop();

@@ -159,7 +159,7 @@ GLSLGenerator::~GLSLGenerator()
 /**
 */
 bool
-GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     SetupDefaultResources();
 
@@ -212,7 +212,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
 
             if (!map_contains(entryToGlslangShaderMappings, (Program::__Resolved::ProgramEntryType)mapping))
             {
-                compiler->Error(Format("Internal error, no known mapping of shader '%s'", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping).c_str()), program);
+                this->Error(Format("Internal error, no known mapping of shader '%s'", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping).c_str()));
                 return false;
             }
 
@@ -271,7 +271,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
             if (!shaderObject->parse(&DefaultResources, 460, EProfile::ENoProfile, false, true, messages))
             {
                 std::string message = shaderObject->getInfoLog();
-                compiler->GeneratorError(message);
+                this->Error(message);
                 delete shaderObject;
                 return false;
             }
@@ -296,7 +296,7 @@ GLSLGenerator::Generate(Compiler* compiler, Program* program, const std::vector<
     if (!programObject->link(messages))
     {
         std::string message = programObject->getInfoLog();
-        compiler->GeneratorError(message);
+        this->Error(message);
         return false;
     }
 
@@ -423,7 +423,7 @@ RoundToPow2(uint32_t value, uint32_t power)
     Calculate the alignment and byte size for a type
 */
 void
-CalculateLayout(Compiler* compiler, Variable* var, uint32_t arraySize, const bool std140, uint32_t& size, uint32_t& alignment, uint32_t& arrayElementPadding)
+CalculateLayout(const Compiler* compiler, Variable* var, uint32_t arraySize, const bool std140, uint32_t& size, uint32_t& alignment, uint32_t& arrayElementPadding)
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
     TypeDimensions dimensions = typeToDimensions[var->type.name];
@@ -618,13 +618,13 @@ std::map<ImageFormat, std::string> imageFormatToGlsl =
     , { ImageFormat::R8U, "r8ui" }
 };
 
-void GenerateExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode);
+void GenerateExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode);
 
 //------------------------------------------------------------------------------
 /**
 */
 void
-GenerateCallExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode)
+GenerateCallExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     CallExpression* callExpression = static_cast<CallExpression*>(expr);
     std::string fun;
@@ -651,7 +651,7 @@ GenerateCallExpressionGLSL(Compiler* compiler, Expression* expr, std::string& ou
 /**
 */
 void
-GenerateInitializerExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode)
+GenerateInitializerExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     std::string inner;
     InitializerExpression* initExpression = static_cast<InitializerExpression*>(expr);
@@ -662,10 +662,7 @@ GenerateInitializerExpressionGLSL(Compiler* compiler, Expression* expr, std::str
         else
         {
             Type::FullType type;
-            if (!expr->EvalType(type))
-            {
-                compiler->Error(Format("INTERNAL ERROR IN '%s' LINE '%s'", __FILE__, __LINE__), expr);
-            }
+            expr->EvalType(type);
 
             GenerateExpressionGLSL(compiler, expr, inner);
         }
@@ -680,7 +677,7 @@ GenerateInitializerExpressionGLSL(Compiler* compiler, Expression* expr, std::str
 /**
 */
 void 
-GenerateAccessExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode)
+GenerateAccessExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     AccessExpression* accessExpression = static_cast<AccessExpression*>(expr);
     std::string lhs, rhs;
@@ -695,7 +692,7 @@ GenerateAccessExpressionGLSL(Compiler* compiler, Expression* expr, std::string& 
 /**
 */
 void
-GenerateCommaExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode)
+GenerateCommaExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     CommaExpression* commaExpression = static_cast<CommaExpression*>(expr);
     std::string lhs, rhs;
@@ -711,7 +708,7 @@ GenerateCommaExpressionGLSL(Compiler* compiler, Expression* expr, std::string& o
 /**
 */
 void
-GenerateExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCode)
+GenerateExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     switch (expr->symbolType)
     {
@@ -734,7 +731,7 @@ GenerateExpressionGLSL(Compiler* compiler, Expression* expr, std::string& outCod
     }
 }
 
-void GenerateStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode);
+void GenerateStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode);
 uint32_t IndentationLevel = 0;
 
 //------------------------------------------------------------------------------
@@ -752,7 +749,7 @@ GenerateIndentation()
 /**
 */
 void
-GenerateVariableGLSL(Compiler* compiler, Variable* var, std::string& outCode, bool outputType = true)
+GenerateVariableGLSL(const Compiler* compiler, Variable* var, std::string& outCode, bool outputType = true)
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
     std::string indentation = GenerateIndentation();
@@ -796,7 +793,7 @@ GenerateVariableGLSL(Compiler* compiler, Variable* var, std::string& outCode, bo
 /**
 */
 void
-GenerateForStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateForStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     ForStatement* forStatement = static_cast<ForStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -831,7 +828,7 @@ GenerateForStatementGLSL(Compiler* compiler, Statement* statement, std::string& 
 /**
 */
 void
-GenerateIfStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateIfStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     IfStatement* ifStatement = static_cast<IfStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -865,7 +862,7 @@ GenerateIfStatementGLSL(Compiler* compiler, Statement* statement, std::string& o
 /**
 */
 void
-GenerateTerminateStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateTerminateStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     TerminateStatement* termStatement = static_cast<TerminateStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -888,7 +885,7 @@ GenerateTerminateStatementGLSL(Compiler* compiler, Statement* statement, std::st
 /**
 */
 void
-GenerateScopeStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateScopeStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     ScopeStatement* scope = static_cast<ScopeStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -916,7 +913,7 @@ GenerateScopeStatementGLSL(Compiler* compiler, Statement* statement, std::string
 /**
 */
 void
-GenerateSwitchStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateSwitchStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     SwitchStatement* switchStatement = static_cast<SwitchStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -952,7 +949,7 @@ GenerateSwitchStatementGLSL(Compiler* compiler, Statement* statement, std::strin
 /**
 */
 void
-GenerateWhileStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateWhileStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     WhileStatement* whileStatement = static_cast<WhileStatement*>(statement);
     std::string indentation = GenerateIndentation();
@@ -977,7 +974,7 @@ GenerateWhileStatementGLSL(Compiler* compiler, Statement* statement, std::string
 /**
 */
 void
-GenerateStatementGLSL(Compiler* compiler, Statement* statement, std::string& outCode)
+GenerateStatementGLSL(const Compiler* compiler, Statement* statement, std::string& outCode)
 {
     std::string indentation = GenerateIndentation();
     switch (statement->symbolType)
@@ -1020,7 +1017,7 @@ GenerateStatementGLSL(Compiler* compiler, Statement* statement, std::string& out
 /**
 */
 void 
-GLSLGenerator::GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
@@ -1050,7 +1047,7 @@ GLSLGenerator::GenerateFunctionSPIRV(Compiler* compiler, Program* program, Symbo
         else
         {
             body = "";
-            compiler->Warning(Format("Prototype function '%s' is not bound for program '%s'", fun->name.c_str(), program->name.c_str()), fun);
+            this->Warning(Format("Prototype function '%s' is not bound for program '%s'", fun->name.c_str(), program->name.c_str()));
             return;
         }
     }
@@ -1113,7 +1110,7 @@ enum StructureAlignment
 /**
 */
 void
-GenerateAlignedVariables(Compiler* compiler, Structure* struc, StructureAlignment structureAlignment, uint32_t& outSize, uint32_t& outAlignment, std::string& outCode)
+GenerateAlignedVariables(const Compiler* compiler, Structure* struc, StructureAlignment structureAlignment, uint32_t& outSize, uint32_t& outAlignment, std::string& outCode)
 {
     std::string members;
     uint32_t maxAlignment = structureAlignment == StructureAlignment::STD140 ? 16 : 0;
@@ -1179,7 +1176,7 @@ GenerateAlignedVariables(Compiler* compiler, Structure* struc, StructureAlignmen
 /**
 */
 void 
-GLSLGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateStructureSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = static_cast<Structure::__Resolved*>(struc->resolved);
@@ -1208,7 +1205,7 @@ GLSLGenerator::GenerateStructureSPIRV(Compiler* compiler, Program* program, Symb
 /**
 */
 void 
-GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -1223,7 +1220,7 @@ GLSLGenerator::GenerateVariableSPIRV(Compiler* compiler, Program* program, Symbo
         auto it = typeToGlslType.find(type.name);
         if (it == typeToGlslType.end())
         {
-            compiler->Error(Format("INTERNAL ERROR, built-in type '%s' has no GLSL mapping", type.name.c_str()), symbol);
+            this->Error(Format("INTERNAL ERROR, built-in type '%s' has no GLSL mapping", type.name.c_str()));
         }
         type.name = it->second.c_str();
     }

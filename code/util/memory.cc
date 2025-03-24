@@ -56,3 +56,6 @@ ResetMemory()
     }
     InitMemory();
 }
+
+thread_local char ThreadLocalHeap[0xFFFF];
+thread_local size_t ThreadLocalIterator = 0;

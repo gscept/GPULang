@@ -3296,6 +3296,7 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
 
 //------------------------------------------------------------------------------
 /**
+    TODO: Add program to better describe when unused bindings happen. Also add a compiler flag to turning the warnings off
 */
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)

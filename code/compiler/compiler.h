@@ -79,7 +79,9 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language
-    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version);
+    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options);
+    /// Create generator
+    Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);

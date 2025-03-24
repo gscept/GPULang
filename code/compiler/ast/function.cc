@@ -784,19 +784,19 @@ FLOAT_LIST
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(subgroupGetLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
-    __SET_RET_LIT(u32);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_BUILTIN(subgroupGetLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);                       // The size of the subgroup
-    __SET_RET_LIT(u32);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_BUILTIN(subgroupGetLowerMask, GetSubgroupLowerMask);                       // The size of the subgroup
-    __SET_RET_LIT(u32);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_BUILTIN(subgroupGetLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);                       // The size of the subgroup
-    __SET_RET_LIT(u32);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_BUILTIN(subgroupGetGreaterMask, GetSubgroupGreaterMask);                       // The size of the subgroup
-    __SET_RET_LIT(u32);
+    __SET_RET_LIT(u32x4);
 
     __MAKE_BUILTIN(subgroupGetFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
     __SET_RET_LIT(u32);

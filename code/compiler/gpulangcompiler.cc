@@ -262,7 +262,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         compiler.filename = effectName;
         compiler.debugPath = output;
         compiler.debugOutput = true;
-        compiler.Setup(target, defines, options, 1);
+        compiler.Setup(target, defines, options);
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
 
