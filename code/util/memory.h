@@ -208,7 +208,8 @@ inline size_t NumChars(float arg)
 template<typename T>
 inline size_t FragmentSize(T arg)
 {
-    static_assert(false, "Should never enter");
+    assert(false && "Should never enter");
+    //static_assert(false, "Should never enter");
     return 0;
 }
 
@@ -433,7 +434,8 @@ struct TransientString
     template<typename T>
     void Append(T arg) 
     {
-        static_assert(false, "Should never enter");
+        assert(false && "Should never enter");
+        //static_assert(false, "Should never enter");
     }
     
     template<>
