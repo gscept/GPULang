@@ -1620,11 +1620,9 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
@@ -1633,12 +1631,10 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
@@ -1648,13 +1644,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
@@ -1665,12 +1659,10 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
@@ -1679,10 +1671,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, Proj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, Proj, type, f32x4)\
-    __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);
+    __ADD_ARG(coords, projCoordinates[index]);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
@@ -1690,11 +1680,9 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
@@ -1703,12 +1691,10 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG_LIT(compare, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
@@ -1718,11 +1704,9 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_INTRINSIC(Sample, ProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, ProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
-    __ADD_ARG_LIT(proj, f32);\
     __ADD_ARG(offsets, offsets[index]);
 
     TEXTURE_INTRINSIC_PLAIN_LIST
