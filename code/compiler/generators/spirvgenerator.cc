@@ -307,6 +307,7 @@ SPV_INSTRUCTION(OpGroupNonUniformQuadSwap, 366)
 SPV_INSTRUCTION(OpTerminateInvocation, 4416)
 SPV_INSTRUCTION(OpIgnoreIntersectionKHR, 4448)
 SPV_INSTRUCTION(OpTerminateRayKHR, 4449)
+SPV_INSTRUCTION(OpReportIntersectionKHR, 5334);
 
 
 #define SPV_ENUM(name, code) SPVEnum name { .str = #name, .c = code };
@@ -5994,6 +5995,8 @@ SPIRVGenerator::SetupIntrinsics()
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::ExportRayIntersection] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {
+        g->writer->Capability(Capabilities::RayTracingKHR);
+        g->writer->Instruction(OpReportIntersectionKHR, SPVWriter::Section::LocalFunction);
         g->AddCapability("RayTracingKHR");
         g->AddOp("OpReportIntersectionKHR");
         return SPIRVResult(0xFFFFFFFF, returnType);
