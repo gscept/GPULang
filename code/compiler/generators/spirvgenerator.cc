@@ -257,7 +257,7 @@ SPV_INSTRUCTION(OpExtInstImport, 11, 3, true)
 SPV_INSTRUCTION(OpExtInst, 12, 5, true)
 SPV_INSTRUCTION(OpMemoryModel, 14, 3, false)
 SPV_INSTRUCTION(OpEntryPoint, 15, 4, true)
-SPV_INSTRUCTION(OpExecutionMode, 15, 3, true)
+SPV_INSTRUCTION(OpExecutionMode, 16, 3, true)
 SPV_INSTRUCTION(OpCapability, 17, 2, false)
 SPV_INSTRUCTION(OpTypeVoid, 19, 2, false)
 SPV_INSTRUCTION(OpTypeBool, 20, 2, false)
@@ -404,6 +404,7 @@ SPV_INSTRUCTION(OpLabel, 248, 2, false)
 SPV_INSTRUCTION(OpBranch, 249, 2, false)
 SPV_INSTRUCTION(OpBranchConditional, 250, 4, true)
 SPV_INSTRUCTION(OpSwitch, 251, 3, true)
+SPV_INSTRUCTION(OpKill, 252, 1, true)
 SPV_INSTRUCTION(OpReturn, 253, 1, false)
 SPV_INSTRUCTION(OpReturnValue, 254, 2, false)
 SPV_INSTRUCTION(OpUnreachable, 255, 1, false)
@@ -854,11 +855,7 @@ SPV_ENUM(SPV_KHR_bit_instructions, 0xFFFF)
 
 struct SPVWriter
 {
-    enum Mode
-    {
-        Text,
-        Binary
-    } mode;
+    bool outputText = false;
 
     enum class Section : uint32_t
     {
@@ -900,16 +897,13 @@ struct SPVWriter
         header.generatorVersion = generatorVersion;
         header.bound = bound;
         header.schema = 0;
-        if (this->mode == Mode::Binary)
-        {
             
-            this->binaries[(uint32_t)Section::Top].push_back(header.magic);
-            this->binaries[(uint32_t)Section::Top].push_back(header.version.bits);
-            this->binaries[(uint32_t)Section::Top].push_back(header.generatorVersion);
-            this->binaries[(uint32_t)Section::Top].push_back(header.bound);
-            this->binaries[(uint32_t)Section::Top].push_back(header.schema);
-        }
-        else
+        this->binaries[(uint32_t)Section::Top].push_back(header.magic);
+        this->binaries[(uint32_t)Section::Top].push_back(header.version.bits);
+        this->binaries[(uint32_t)Section::Top].push_back(header.generatorVersion);
+        this->binaries[(uint32_t)Section::Top].push_back(header.bound);
+        this->binaries[(uint32_t)Section::Top].push_back(header.schema);
+        if (this->outputText)
         {
             char buf[64];
             uint32_t written = snprintf(buf, 64, "; Magic: 0x%.8lx (SPIRV Universal %d.%d)\n", header.version.bits, spvMajor, spvMinor);
@@ -921,33 +915,30 @@ struct SPVWriter
 
     uint32_t Import(const char* str)
     {
-        uint32_t c = this->counter;
         auto it = this->imports.find(str);
         if (it != this->imports.end())
             return it->second;
 
-        if (this->mode == Mode::Binary)
-        {
-            size_t len = strlen(str) + 1;
-            size_t lenInWords = std::ceil(len / 4.0f);
-            SPVInstruction instr;
-            instr.flags.wordCount = OpExtInstImport.wordCount + lenInWords - 1;
-            instr.flags.code = OpExtInstImport.c;
+        uint32_t c = this->counter++;
+        size_t len = strlen(str) + 1;
+        size_t lenInWords = std::ceil(len / 4.0f);
+        SPVInstruction instr;
+        instr.flags.wordCount = OpExtInstImport.wordCount + lenInWords - 1;
+        instr.flags.code = OpExtInstImport.c;
 
-            this->binaries[(uint32_t)Section::ExtImports].push_back(instr.bits);
-            this->binaries[(uint32_t)Section::ExtImports].push_back(this->counter++);
-            uint32_t* strAsWords = (uint32_t*)str;
-            for (size_t i = 0; i < lenInWords; i++)
-            {
-                this->binaries[(uint32_t)Section::ExtImports].push_back(strAsWords[i]);
-            }
-            char* lastInt = (char*)&this->binaries[(uint32_t)Section::ExtImports].back();
-            lastInt[3] = '\0';
+        this->binaries[(uint32_t)Section::ExtImports].push_back(instr.bits);
+        this->binaries[(uint32_t)Section::ExtImports].push_back(c);
+        uint32_t* strAsWords = (uint32_t*)str;
+        for (size_t i = 0; i < lenInWords; i++)
+        {
+            this->binaries[(uint32_t)Section::ExtImports].push_back(strAsWords[i]);
         }
-        else
+        char* lastInt = (char*)&this->binaries[(uint32_t)Section::ExtImports].back();
+        lastInt[3] = '\0';
+        if (this->outputText)
         {
             TStr extension = TStr::Compact("\"", str, "\"");
-            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(this->counter++), "=", "OpExtInstImport", extension).ToString());
+            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension).ToString());
             this->texts[(uint32_t)Section::ExtImports].Append("\n");
         }
         this->imports[str] = c;
@@ -990,98 +981,95 @@ struct SPVWriter
     template<typename ...ARGS>
     uint32_t MappedInstruction(const SPVOp& op, SPVWriter::Section section, uint32_t type, const ARGS&... args)
     {
-        uint32_t c = this->counter;
+        uint32_t c = this->counter++;
         this->section = section;
-        if (this->mode == Mode::Binary)
-        {
-            SPVInstruction instr;
-            instr.flags.wordCount = op.wordCount;
-            instr.flags.code = op.c;
 
-            if (op.dynamicWords)
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
+
+        if (op.dynamicWords)
+        {
+            uint32_t dynamicWordCount = 0;
+            ([&]
             {
-                uint32_t dynamicWordCount = 0;
-                ([&]
-                {
-                    dynamicWordCount += ArgCount(args);
-                } (), ...);
+                dynamicWordCount += ArgCount(args);
+            } (), ...);
 
-                // Subtract all necessary words
-                dynamicWordCount = dynamicWordCount - (op.wordCount - 3);
-                instr.flags.wordCount += dynamicWordCount;
-            }
-
-            this->binaries[(uint32_t)section].push_back(instr.bits);
-            this->binaries[(uint32_t)section].push_back(type);
-            this->binaries[(uint32_t)section].push_back(this->counter++);
-            (Append(args), ...);
+            // Subtract all necessary words
+            dynamicWordCount = dynamicWordCount - (op.wordCount - 3);
+            instr.flags.wordCount += dynamicWordCount;
         }
-        else
-        {
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(this->counter++), "=", op.str, SPVArg(type)).ToString());
-            (Append(args), ...);
+
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        this->binaries[(uint32_t)section].push_back(type);
+        this->binaries[(uint32_t)section].push_back(c);
+
+        if (this->outputText)
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str, SPVArg(type)).ToString());
+
+        (Append(args), ...);
+
+        if (this->outputText)
             this->texts[(uint32_t)section].Append("\n");
-        }
+
         return c;
     }
 
     template<typename ...ARGS>
     uint32_t MappedInstruction(const SPVOp& op, SPVWriter::Section section, const ARGS&... args)
     {
-        uint32_t c = this->counter;
+        uint32_t c = this->counter++;
         this->section = section;
-        if (this->mode == Mode::Binary)
-        {
-            SPVInstruction instr;
-            instr.flags.wordCount = op.wordCount;
-            instr.flags.code = op.c;
 
-            if (op.dynamicWords)
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
+
+        if (op.dynamicWords)
+        {
+            uint32_t dynamicWordCount = 0;
+            ([&]
             {
-                uint32_t dynamicWordCount = 0;
-                ([&]
-                {
-                    dynamicWordCount += ArgCount(args);
-                } (), ...);
+                dynamicWordCount += ArgCount(args);
+            } (), ...);
 
-                // Subtract all necessary words
-                dynamicWordCount -= (op.wordCount - 2);
-                instr.flags.wordCount += dynamicWordCount;
-            }
-
-            this->binaries[(uint32_t)section].push_back(instr.bits);
-            this->binaries[(uint32_t)section].push_back(this->counter++);
-            (Append(args), ...);
+            // Subtract all necessary words
+            dynamicWordCount -= (op.wordCount - 2);
+            instr.flags.wordCount += dynamicWordCount;
         }
-        else
-        {
-            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(this->counter++), "=", op.str).ToString());
-            (Append(args), ...);
+
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        this->binaries[(uint32_t)section].push_back(c);
+
+        if (this->outputText)
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(c), "=", op.str).ToString());
+
+        (Append(args), ...);
+
+        if (this->outputText)
             this->texts[(uint32_t)section].Append("\n");
-        }
         return c;
     }
 
     void Instruction(const SPVOp& op, SPVWriter::Section section, uint32_t type, std::vector<uint32_t> args)
     {
         this->section = section;
-        if (this->mode == Mode::Binary)
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
+
+        if (op.dynamicWords)
         {
-            SPVInstruction instr;
-            instr.flags.wordCount = op.wordCount;
-            instr.flags.code = op.c;
-
-            if (op.dynamicWords)
-            {
-                uint32_t dynamicWordCount = args.size() - (op.wordCount - 2);
-                instr.flags.wordCount += dynamicWordCount;
-            }
-
-            this->binaries[(uint32_t)section].push_back(instr.bits);
-            this->binaries[(uint32_t)section].push_back(type);
-            this->binaries[(uint32_t)section].insert(binaries[(uint32_t)this->section].end(), args.begin(), args.end());
+            uint32_t dynamicWordCount = args.size() - (op.wordCount - 2);
+            instr.flags.wordCount += dynamicWordCount;
         }
-        else
+
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        this->binaries[(uint32_t)section].push_back(type);
+        this->binaries[(uint32_t)section].insert(binaries[(uint32_t)this->section].end(), args.begin(), args.end());
+
+        if (this->outputText)
         {
             TStr argsStr;
             for (uint32_t arg : args)
@@ -1095,92 +1083,85 @@ struct SPVWriter
     void Instruction(const SPVOp& op, SPVWriter::Section section, const ARGS&... args)
     {
         this->section = section;
-        if (this->mode == Mode::Binary)
-        {
-            SPVInstruction instr;
-            instr.flags.wordCount = op.wordCount;
-            instr.flags.code = op.c;
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
 
-            if (op.dynamicWords)
+        if (op.dynamicWords)
+        {
+            uint32_t dynamicWordCount = 0;
+            ([&]
             {
-                uint32_t dynamicWordCount = 0;
-                ([&]
-                {
-                    dynamicWordCount += ArgCount(args);
-                } (), ...);
+                dynamicWordCount += ArgCount(args);
+            } (), ...);
 
-                // Subtract all necessary words
-                dynamicWordCount -= (op.wordCount - 1);
-                instr.flags.wordCount += dynamicWordCount;
-            }
-            this->binaries[(uint32_t)section].push_back(instr.bits);
-            (Append(args), ...);
+            // Subtract all necessary words
+            dynamicWordCount -= (op.wordCount - 1);
+            instr.flags.wordCount += dynamicWordCount;
         }
-        else
-        {
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        
+        if (this->outputText)
             this->texts[(uint32_t)section].Append(op.str);
-            (Append(args), ...);
+
+        (Append(args), ...);
+
+        if (this->outputText)
             this->texts[(uint32_t)section].Append("\n");
-        }
     }
 
     uint32_t Reserve() { return this->counter++; }
     
     template<typename ...ARGS>
-    uint32_t Reserved(const SPVOp& op, SPVWriter::Section section, uint32_t id, const ARGS&... args)
+    void Reserved(const SPVOp& op, SPVWriter::Section section, uint32_t id, const ARGS&... args)
     {
-        uint32_t c = this->counter;
         this->section = section;
-        if (this->mode == Mode::Binary)
-        {
-            SPVInstruction instr;
-            instr.flags.wordCount = op.wordCount;
-            instr.flags.code = op.c;
 
-            if (op.dynamicWords)
+        SPVInstruction instr;
+        instr.flags.wordCount = op.wordCount;
+        instr.flags.code = op.c;
+
+        if (op.dynamicWords)
+        {
+            uint32_t dynamicWordCount = 0;
+            ([&]
             {
-                uint32_t dynamicWordCount = 0;
-                ([&]
-                {
-                    dynamicWordCount += ArgCount(args);
-                } (), ...);
+                dynamicWordCount += ArgCount(args);
+            } (), ...);
 
-                // Subtract all necessary words
-                dynamicWordCount -= (op.wordCount - 2);
-                instr.flags.wordCount += dynamicWordCount;
-            }
-
-            this->binaries[(uint32_t)section].push_back(instr.bits);
-            this->binaries[(uint32_t)section].push_back(id);
-            (Append(args), ...);
+            // Subtract all necessary words
+            dynamicWordCount -= (op.wordCount - 2);
+            instr.flags.wordCount += dynamicWordCount;
         }
-        else
-        {
+
+        this->binaries[(uint32_t)section].push_back(instr.bits);
+        this->binaries[(uint32_t)section].push_back(id);
+
+        if (this->outputText)
             this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{id}, "=", op.str).ToString());
-            (Append(args), ...);
+
+        (Append(args), ...);
+
+        if (this->outputText)
             this->texts[(uint32_t)section].Append("\n");
-        }
-        return c;
     }
 
     void BeginFunction()
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
-                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
-                , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].begin()
-                , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].end()
-            );
-            this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
-                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
-                , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].begin()
-                , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].end()
-            );
-            this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].clear();
-            this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].clear();
-        }
-        else
+        this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
+            this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
+            , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].begin()
+            , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].end()
+        );
+        this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
+            this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
+            , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].begin()
+            , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].end()
+        );
+        this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].clear();
+        this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].clear();
+
+        if (this->outputText)
         {
             this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::VariableDeclarations]);
             this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::ParameterInitializations]);
@@ -1191,16 +1172,14 @@ struct SPVWriter
 
     void FinishFunction()
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
-                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
-                , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].begin()
-                , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].end()
-            );
-            this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].clear();
-        }
-        else
+        this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
+            this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
+            , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].begin()
+            , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].end()
+        );
+        this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].clear();
+
+        if (this->outputText)
         {
             this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::LocalFunction]);
             this->texts[(uint32_t)SPVWriter::Section::LocalFunction].Clear();
@@ -1216,11 +1195,8 @@ struct SPVWriter
     template<>
     void Append(const SPVArg& arg)
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg.arg);
-        }
-        else
+        this->binaries[(uint32_t)this->section].push_back(arg.arg);
+        if (this->outputText)
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %%%d", arg.arg);
@@ -1230,21 +1206,19 @@ struct SPVWriter
     
     template<>
     void Append(const char* const& str)
-    {
-        if (this->mode == Mode::Binary)
-        {
-            size_t len = strlen(str) + 1;
-            size_t lenInWords = std::ceil(len / 4.0f);
-            uint32_t* strAsWords = (uint32_t*)str;
+    {        
+        size_t len = strlen(str) + 1;
+        size_t lenInWords = std::ceil(len / 4.0f);
+        uint32_t* strAsWords = (uint32_t*)str;
 
-            for (size_t i = 0; i < lenInWords; i++)
-            {
-                this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
-            }
-            char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
-            lastInt[3] = '\0';
+        for (size_t i = 0; i < lenInWords; i++)
+        {
+            this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
         }
-        else
+        char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
+        lastInt[3] = '\0';
+        
+        if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
         }
@@ -1253,17 +1227,15 @@ struct SPVWriter
     template<int SIZE>
     void Append(const char (&str)[SIZE])
     {
-        if (this->mode == Mode::Binary)
+        size_t len = SIZE;
+        size_t lenInWords = std::ceil(len / 4.0f);
+        uint32_t* strAsWords = (uint32_t*)str;
+        for (size_t i = 0; i < lenInWords; i++)
         {
-            size_t len = SIZE;
-            size_t lenInWords = std::ceil(len / 4.0f);
-            uint32_t* strAsWords = (uint32_t*)str;
-            for (size_t i = 0; i < lenInWords; i++)
-            {
-                this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
-            }
+            this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
         }
-        else
+        
+        if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
         }
@@ -1271,12 +1243,9 @@ struct SPVWriter
 
     template<>
     void Append(const int32_t& arg)
-    {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg);
-        }
-        else
+    {    
+        this->binaries[(uint32_t)this->section].push_back(arg);
+        if (this->outputText)
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %d", arg);
@@ -1287,11 +1256,9 @@ struct SPVWriter
     template<>
     void Append(const float& arg)
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg);
-        }
-        else
+        this->binaries[(uint32_t)this->section].push_back(arg);
+        
+        if (this->outputText)
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %f", arg);
@@ -1301,12 +1268,10 @@ struct SPVWriter
 
     template<>
     void Append(const uint32_t& arg)
-    {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg);
-        }
-        else
+    {    
+        this->binaries[(uint32_t)this->section].push_back(arg);
+        
+        if (this->outputText)
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %u", arg);
@@ -1317,11 +1282,9 @@ struct SPVWriter
     template<>
     void Append(const size_t& arg)
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg);
-        }
-        else
+        this->binaries[(uint32_t)this->section].push_back(arg);
+        
+        if (this->outputText)
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %zu", arg);
@@ -1332,11 +1295,8 @@ struct SPVWriter
     template<>
     void Append(const char& arg)
     {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
-        }
-        else
+        this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
+        if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append(arg);
         }
@@ -1344,12 +1304,9 @@ struct SPVWriter
 
     template<>
     void Append(const unsigned char& arg)
-    {
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
-        }
-        else
+    {    
+        this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
+        if (this->outputText)
         {
             char buf[3];
             int numWritten = snprintf(buf, 3, " %hhu", arg);
@@ -1362,11 +1319,8 @@ struct SPVWriter
     {
         if (arg.c == 0xFFFF)
             return;
-        if (this->mode == Mode::Binary)
-        {
-            this->binaries[(uint32_t)this->section].push_back(arg.c);
-        }
-        else
+        this->binaries[(uint32_t)this->section].push_back(arg.c);
+        if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append(" ");
             this->texts[(uint32_t)this->section].Append(arg.str);
@@ -1377,65 +1331,71 @@ struct SPVWriter
     template<>
     void Append(const SPVLiteralList& arg)
     {
-        if (this->mode == Mode::Binary)
+        for (uint8_t it = 0; it < arg.num; it++)
+            this->binaries[(uint32_t)this->section].push_back(arg.vals[it]);
+        if (this->outputText)
         {
             for (uint8_t it = 0; it < arg.num; it++)
-                this->binaries[(uint32_t)this->section].push_back(arg.vals[it]);
-        }
-        else
-        {
-            for (uint8_t it = 0; it < arg.num; it++)
-                this->Append(arg.vals[it]);
+            {
+                this->texts[(uint32_t)this->section].Append(" ");
+                this->texts[(uint32_t)this->section].Append(arg.vals[it]);
+            }
         }
     }
 
     template<>
     void Append(const SPVResultList& arg)
     {
-        if (this->mode == Mode::Binary)
+        for (uint8_t it = 0; it < arg.num; it++)
+            this->binaries[(uint32_t)this->section].push_back(arg.vals[it].name);
+        if (this->outputText)
         {
             for (uint8_t it = 0; it < arg.num; it++)
-                this->binaries[(uint32_t)this->section].push_back(arg.vals[it].name);
-        }
-        else
-        {
-            for (uint8_t it = 0; it < arg.num; it++)
-                this->Append(arg.vals[it]);
+            {
+                char buf[64];
+                uint32_t numWritten = snprintf(buf, 64, " %%%d", arg.vals[it].name);
+                this->texts[(uint32_t)this->section].Append(" ");
+                this->texts[(uint32_t)this->section].Append(buf, numWritten);
+            }
         }
     }
 
     template<>
     void Append(const SPVArgList& arg)
     {
-        if (this->mode == Mode::Binary)
+        for (uint8_t it = 0; it < arg.num; it++)
+            this->binaries[(uint32_t)this->section].push_back(arg.vals[it].arg);
+        if (this->outputText)
         {
             for (uint8_t it = 0; it < arg.num; it++)
-                this->binaries[(uint32_t)this->section].push_back(arg.vals[it].arg);
-        }
-        else
-        {
-            for (uint8_t it = 0; it < arg.num; it++)
-                this->Append(arg.vals[it]);
+            {
+                char buf[64];
+                uint32_t numWritten = snprintf(buf, 64, " %%%d", arg.vals[it].arg);
+                this->texts[(uint32_t)this->section].Append(" ");
+                this->texts[(uint32_t)this->section].Append(buf, numWritten);
+            }
         }
     }
 
     template<>
     void Append(const SPVCaseList& arg)
     {
-        if (this->mode == Mode::Binary)
+        for (uint8_t it = 0; it < arg.num; it++)
         {
-            for (uint8_t it = 0; it < arg.num; it++)
-            {
-                this->binaries[(uint32_t)this->section].push_back(arg.labels[it]);
-                this->binaries[(uint32_t)this->section].push_back(arg.branches[it].arg);
-            }
+            this->binaries[(uint32_t)this->section].push_back(arg.labels[it]);
+            this->binaries[(uint32_t)this->section].push_back(arg.branches[it].arg);
         }
-        else
+        if (this->outputText)
         {
             for (uint8_t it = 0; it < arg.num; it++)
             {
-                this->Append(arg.labels[it]);
-                this->Append(arg.branches[it]);
+                this->texts[(uint32_t)this->section].Append(" ");
+                this->texts[(uint32_t)this->section].Append(arg.labels[it]);
+                char buf[64];
+                uint32_t numWritten = snprintf(buf, 64, " %%%d", arg.branches[it].arg);
+
+                this->texts[(uint32_t)this->section].Append(" ");
+                this->texts[(uint32_t)this->section].Append(buf, numWritten);
             }
         }
     }
@@ -1446,11 +1406,10 @@ struct SPVWriter
         this->Append(SPVArg(arg.name));
     }
 
-
     template<>
     void Append(const SPVComment& arg)
     {
-        if (this->mode == Mode::Text)
+        if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append("\t\t\t; ");
             this->texts[(uint32_t)this->section].Append(arg.str);
@@ -2817,7 +2776,6 @@ SPIRVGenerator::SPIRVGenerator()
     if (SPIRVGenerator::IntrinsicMap.empty())
         SetupIntrinsics();
     this->writer = Alloc<SPVWriter>();
-    this->writer->mode = SPVWriter::Mode::Text;
 }
 
 std::unordered_map<Function*, SPIRVGenerator::FunctionToSPIRVMapping> SPIRVGenerator::IntrinsicMap;
@@ -4575,8 +4533,8 @@ SPIRVGenerator::SetupIntrinsics()
 
             uint32_t typePtr = GPULang::AddType(g, typeSymbolName, OpTypePointer, VariableStorage::Output, SPVArg(baseType));
             uint32_t symbol = GPULang::AddSymbol(g, TStr("gplExportColor", args[1].literalValue.i), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-            g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::Index, args[1].literalValue.i);
-            g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::Location, args[1].literalValue.i);
+            g->writer->Decorate(SPVArg{symbol}, Decorations::Index, args[1].literalValue.i);
+            g->writer->Decorate(SPVArg{symbol}, Decorations::Location, args[1].literalValue.i);
            
             assert(args[1].isLiteral);
             typePtr = g->AddSymbol(typeSymbolName, Format("OpTypePointer Output %%%d", baseType), true);
@@ -4596,7 +4554,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplLocalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::LocalInvocationId);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::LocalInvocationId);
 
         Type::FullType fullType = Type::FullType{ "u32x3" };
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
@@ -4615,7 +4573,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::GlobalInvocationId);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::GlobalInvocationId);
         
         Type::FullType fullType = Type::FullType{ "u32x3" };
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
@@ -4634,7 +4592,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplWorkGroupIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::WorkgroupId);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::WorkgroupId);
         
         Type::FullType fullType = Type::FullType{ "u32x3" };
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
@@ -4653,7 +4611,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplWorkGroupDimensions", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::WorkgroupSize);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::WorkgroupSize);
         
         Type::FullType fullType = Type::FullType{ "u32x3" };
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
@@ -4673,7 +4631,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplSubgroupId", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupId);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupId);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x3" };
@@ -4695,7 +4653,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplSubgroupSize", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupSize);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupSize);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x3" };
@@ -4716,7 +4674,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplNumSubgroups", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::NumSubgroups);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::NumSubgroups);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x3" };
@@ -4737,7 +4695,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
         uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupEqMask);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupEqMask);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x4" };
@@ -4759,7 +4717,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
         uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupLeMask);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupLeMask);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x4" };
@@ -4781,7 +4739,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
         uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupLtMask);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupLtMask);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x4" };
@@ -4802,7 +4760,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
         uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupGeMask);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupGeMask);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x4" };
@@ -4823,7 +4781,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
         uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t symbol = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
-        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Decorations::BuiltIn, Builtins::SubgroupGtMask);
+        g->writer->Decorate(SPVArg{symbol}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
         
         g->AddCapability("GroupNonUniform");
         Type::FullType fullType = Type::FullType{ "u32x4" };
@@ -8335,7 +8293,7 @@ GenerateTerminateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* genera
     }
     else if (stat->type == TerminateStatement::TerminationType::Discard)
     {
-        generator->writer->Instruction(OpTerminateInvocation, SPVWriter::Section::LocalFunction);
+        generator->writer->Instruction(OpKill, SPVWriter::Section::LocalFunction);
         generator->AddOp("OpKill");
         generator->blockOpen = false;
     }
@@ -8717,6 +8675,17 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             gen->capabilities.clear();
             gen->mergeBlockCounter = 0;
             gen->symbolCounter = 0;
+
+            gen->writer->counter = 0;
+            for (auto& binary : gen->writer->binaries)
+                binary.clear();
+            for (auto& text : gen->writer->texts)
+                text.Clear();
+            gen->writer->scopeStack.clear();
+            gen->writer->imports.clear();
+            gen->writer->extensions.clear();
+            gen->writer->decorations.clear();
+            gen->writer->capabilities.clear();
             
         }
 
@@ -8887,7 +8856,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
 
         this->writer->counter++;
         this->symbolCounter++;
-        this->writer->mode = SPVWriter::Binary;
+        this->writer->outputText = true;
 
         // Main scope
         this->PushScope();
@@ -9005,18 +8974,24 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, pixelOriginEnumMap[funResolved->executionModifiers.pixelOrigin]);
                 this->header.Line(" OpExecutionMode", SPVArg(entryFunction), pixelOriginMap[funResolved->executionModifiers.pixelOrigin]);
                 if (funResolved->executionModifiers.earlyDepth)
-                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::EarlyFragmentTests);
+                {
+                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::EarlyFragmentTests);
                     this->header.Line(" OpExecutionMode", SPVArg(entryFunction), "EarlyFragmentTests");
+                }
                 break;
             case Program::__Resolved::ComputeShader:
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::LocalSize, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
                 this->header.Line(" OpExecutionMode", SPVArg(entryFunction), "LocalSize", funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
                 if (funResolved->executionModifiers.groupSize != 64)
-                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::SubgroupSize, funResolved->executionModifiers.groupSize);
+                {
+                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::SubgroupSize, funResolved->executionModifiers.groupSize);
                     this->header.Line(" OpExecutionMode", SPVArg(entryFunction), "SubgroupSize", funResolved->executionModifiers.groupSize);
+                }
                 if (funResolved->executionModifiers.groupsPerWorkgroup != 1)
-                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::SubgroupsPerWorkgroup, funResolved->executionModifiers.groupsPerWorkgroup);
+                {
+                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::SubgroupsPerWorkgroup, funResolved->executionModifiers.groupsPerWorkgroup);
                     this->header.Line(" OpExecutionMode", SPVArg(entryFunction), "SubgroupsPerWorkgroup", funResolved->executionModifiers.groupsPerWorkgroup);
+                }
                 if (funResolved->executionModifiers.computeDerivativeIndexing == Function::__Resolved::DerivativeIndexLinear)
                 {
                     this->writer->Extension(SPV_KHR_compute_shader_derivatives);
@@ -9115,21 +9090,20 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             }
         }
 
-        std::vector<uint32_t> binaryData(bin->code, bin->code + bin->wordCount);
         if (compiler->options.optimize)
         {
             spvtools::Optimizer optimizer(SPV_ENV_VULKAN_1_2);
             optimizer.RegisterPerformancePasses();
 
             std::vector<uint32_t> optimized;
-            if (optimizer.Run(bin->code, bin->wordCount, &optimized))
+            if (optimizer.Run(spvBinary.data(), spvBinary.size(), &optimized))
             {
-                binaryData = std::move(optimized);
+                spvBinary = std::move(optimized);
             }
         }
 
         // conversion and optional validation is successful, dump binary in program
-        progResolved->binaries[mapping] = binaryData;
+        progResolved->binaries[mapping] = spvBinary;
 
         delete bin;
         delete diag;
