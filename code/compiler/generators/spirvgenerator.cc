@@ -79,8 +79,8 @@ union SPVInstruction
 {
     struct
     {
-        uint32_t wordCount : 16;
         uint32_t code : 16;
+        uint32_t wordCount : 16;
     } flags;
     uint32_t bits;
 };
@@ -89,6 +89,8 @@ struct SPVOp
 {
     const char* str = nullptr;
     const uint16_t c = 0xFFFF;
+    const uint16_t wordCount = 1;
+    const bool dynamicWords = false;
 };
 
 struct SPVEnum
@@ -248,180 +250,180 @@ struct ConstantCreationInfo
     }
 };
 
-#define SPV_INSTRUCTION(name, code) SPVOp name { .str = #name, .c = code };
-SPV_INSTRUCTION(OpInvalid, 0xFFFF)
-SPV_INSTRUCTION(OpExtension, 10)
-SPV_INSTRUCTION(OpExtInstImport, 11)
-SPV_INSTRUCTION(OpExtInst, 12)
-SPV_INSTRUCTION(OpMemoryModel, 14)
-SPV_INSTRUCTION(OpEntryPoint, 15)
-SPV_INSTRUCTION(OpExecutionMode, 15)
-SPV_INSTRUCTION(OpCapability, 17)
-SPV_INSTRUCTION(OpTypeVoid, 19)
-SPV_INSTRUCTION(OpTypeBool, 20)
-SPV_INSTRUCTION(OpTypeInt, 21)
-SPV_INSTRUCTION(OpTypeFloat, 22)
-SPV_INSTRUCTION(OpTypeVector, 23)
-SPV_INSTRUCTION(OpTypeMatrix, 24)
-SPV_INSTRUCTION(OpTypeImage, 25)
-SPV_INSTRUCTION(OpTypeSampler, 26)
-SPV_INSTRUCTION(OpTypeSampledImage, 27)
-SPV_INSTRUCTION(OpTypeArray, 28)
-SPV_INSTRUCTION(OpTypeRuntimeArray, 29)
-SPV_INSTRUCTION(OpTypeStruct, 30)
-SPV_INSTRUCTION(OpTypePointer, 32)
-SPV_INSTRUCTION(OpTypeFunction, 33)
-SPV_INSTRUCTION(OpConstantTrue, 41)
-SPV_INSTRUCTION(OpConstantFalse, 42)
-SPV_INSTRUCTION(OpConstant, 43)
-SPV_INSTRUCTION(OpConstantComposite, 44)
-SPV_INSTRUCTION(OpConstantSampler, 45)
-SPV_INSTRUCTION(OpSpecConstantTrue, 48)
-SPV_INSTRUCTION(OpSpecConstantFalse, 49)
-SPV_INSTRUCTION(OpSpecConstant, 50)
-SPV_INSTRUCTION(OpSpecConstantComposite, 51)
-SPV_INSTRUCTION(OpFunction, 54)
-SPV_INSTRUCTION(OpFunctionParameter, 55)
-SPV_INSTRUCTION(OpFunctionEnd, 56)
-SPV_INSTRUCTION(OpFunctionCall, 57)
-SPV_INSTRUCTION(OpVariable, 59)
-SPV_INSTRUCTION(OpAccessChain, 65)
-SPV_INSTRUCTION(OpLoad, 61)
-SPV_INSTRUCTION(OpStore, 62)
-SPV_INSTRUCTION(OpCopyMemory, 63)
-SPV_INSTRUCTION(OpDecorate, 71)
-SPV_INSTRUCTION(OpMemberDecorate, 72)
-SPV_INSTRUCTION(OpVectorShuffle, 79)
-SPV_INSTRUCTION(OpCompositeConstruct, 80)
-SPV_INSTRUCTION(OpCompositeExtract, 81)
-SPV_INSTRUCTION(OpCompositeInsert, 82)
-SPV_INSTRUCTION(OpTranspose, 84)
-SPV_INSTRUCTION(OpSampledImage, 86)
-SPV_INSTRUCTION(OpImageSampleImplicitLod, 87)
-SPV_INSTRUCTION(OpImageSampleExplicitLod, 88)
-SPV_INSTRUCTION(OpImageSampleDrefImplicitLod, 89)
-SPV_INSTRUCTION(OpImageSampleDrefExplicitLod, 90)
-SPV_INSTRUCTION(OpImageSampleProjImplicitLod, 91)
-SPV_INSTRUCTION(OpImageSampleProjExplicitLod, 92)
-SPV_INSTRUCTION(OpImageSampleProjDrefImplicitLod, 93)
-SPV_INSTRUCTION(OpImageSampleProjDrefExplicitLod, 94)
-SPV_INSTRUCTION(OpImageFetch, 95)
-SPV_INSTRUCTION(OpImageGather, 96)
-SPV_INSTRUCTION(OpImageDrefGather, 97)
-SPV_INSTRUCTION(OpImageRead, 98)
-SPV_INSTRUCTION(OpImageWrite, 99)
-SPV_INSTRUCTION(OpImageQuerySizeLod, 103)
-SPV_INSTRUCTION(OpImageQuerySize, 104)
-SPV_INSTRUCTION(OpImageQueryLod, 105)
-SPV_INSTRUCTION(OpImageQueryLevels, 106)
-SPV_INSTRUCTION(OpConvertFToU, 109)
-SPV_INSTRUCTION(OpConvertFToS, 110)
-SPV_INSTRUCTION(OpConvertSToF, 111)
-SPV_INSTRUCTION(OpConvertUToF, 112)
-SPV_INSTRUCTION(OpBitcast, 124)
-SPV_INSTRUCTION(OpSNegate, 126)
-SPV_INSTRUCTION(OpFNegate, 127)
-SPV_INSTRUCTION(OpIAdd, 128)
-SPV_INSTRUCTION(OpFAdd, 129)
-SPV_INSTRUCTION(OpISub, 130)
-SPV_INSTRUCTION(OpFSub, 131)
-SPV_INSTRUCTION(OpIMul, 132)
-SPV_INSTRUCTION(OpFMul, 133)
-SPV_INSTRUCTION(OpUDiv, 134)
-SPV_INSTRUCTION(OpSDiv, 135)
-SPV_INSTRUCTION(OpFDiv, 136)
-SPV_INSTRUCTION(OpUMod, 137)
-SPV_INSTRUCTION(OpSMod, 139)
-SPV_INSTRUCTION(OpFMod, 141)
-SPV_INSTRUCTION(OpVectorTimesScalar, 142)
-SPV_INSTRUCTION(OpMatrixTimesScalar, 143)
-SPV_INSTRUCTION(OpVectorTimesMatrix, 144)
-SPV_INSTRUCTION(OpMatrixTimesVector, 145)
-SPV_INSTRUCTION(OpMatrixTimesMatrix, 146)
-SPV_INSTRUCTION(OpDot, 148)
-SPV_INSTRUCTION(OpAny, 154)
-SPV_INSTRUCTION(OpAll, 155)
-SPV_INSTRUCTION(OpLogicalOr, 166)
-SPV_INSTRUCTION(OpLogicalAnd, 167)
-SPV_INSTRUCTION(OpLogicalNot, 168)
-SPV_INSTRUCTION(OpSelect, 169)
-SPV_INSTRUCTION(OpIEqual, 170)
-SPV_INSTRUCTION(OpINotEqual, 171)
-SPV_INSTRUCTION(OpUGreaterThan, 172)
-SPV_INSTRUCTION(OpSGreaterThan, 173)
-SPV_INSTRUCTION(OpUGreaterThanEqual, 174)
-SPV_INSTRUCTION(OpSGreaterThanEqual, 175)
-SPV_INSTRUCTION(OpULessThan, 176)
-SPV_INSTRUCTION(OpSLessThan, 177)
-SPV_INSTRUCTION(OpULessThanEqual, 178)  
-SPV_INSTRUCTION(OpSLessThanEqual, 179)
-SPV_INSTRUCTION(OpFUnordEqual, 181)
-SPV_INSTRUCTION(OpFUnordNotEqual, 183)
-SPV_INSTRUCTION(OpFUnordLessThan, 185)
-SPV_INSTRUCTION(OpFUnordGreaterThan, 187)
-SPV_INSTRUCTION(OpFUnordLessThanEqual, 189)
-SPV_INSTRUCTION(OpFUnordGreaterThanEqual, 191)
-SPV_INSTRUCTION(OpShiftRightLogical, 194)
-SPV_INSTRUCTION(OpShiftRightArithmetic, 195)
-SPV_INSTRUCTION(OpShiftLeftLogical, 196)
-SPV_INSTRUCTION(OpShiftLeftArithmetic, 197)
-SPV_INSTRUCTION(OpBitwiseOr, 197)
-SPV_INSTRUCTION(OpBitwiseXor, 198)
-SPV_INSTRUCTION(OpBitwiseAnd, 199)
-SPV_INSTRUCTION(OpNot, 200)
-SPV_INSTRUCTION(OpBitFieldInsert, 201)
-SPV_INSTRUCTION(OpBitFieldSExtract, 202)
-SPV_INSTRUCTION(OpBitFieldUExtract, 203)
-SPV_INSTRUCTION(OpBitReverse, 204)
-SPV_INSTRUCTION(OpBitCount, 205)
-SPV_INSTRUCTION(OpDPdx, 207)
-SPV_INSTRUCTION(OpDPdy, 208)
-SPV_INSTRUCTION(OpFwidth, 209)
-SPV_INSTRUCTION(OpEmitVertex, 218)
-SPV_INSTRUCTION(OpEndPrimitive, 219)
-SPV_INSTRUCTION(OpControlBarrier, 224)
-SPV_INSTRUCTION(OpMemoryBarrier, 225)
-SPV_INSTRUCTION(OpAtomicLoad, 227)
-SPV_INSTRUCTION(OpAtomicStore, 228)
-SPV_INSTRUCTION(OpAtomicExchange, 229)
-SPV_INSTRUCTION(OpAtomicCompareExchange, 230)
-SPV_INSTRUCTION(OpAtomicIIncrement, 232)
-SPV_INSTRUCTION(OpAtomicIDecrement, 233)
-SPV_INSTRUCTION(OpAtomicIAdd, 234)
-SPV_INSTRUCTION(OpAtomicISub, 235)
-SPV_INSTRUCTION(OpAtomicSMin, 236)
-SPV_INSTRUCTION(OpAtomicUMin, 237)
-SPV_INSTRUCTION(OpAtomicSMax, 238)
-SPV_INSTRUCTION(OpAtomicUMax, 239)
-SPV_INSTRUCTION(OpAtomicAnd, 240)
-SPV_INSTRUCTION(OpAtomicOr, 241)
-SPV_INSTRUCTION(OpAtomicXor, 242)
-SPV_INSTRUCTION(OpLoopMerge, 246)
-SPV_INSTRUCTION(OpSelectionMerge, 247)
-SPV_INSTRUCTION(OpLabel, 248)
-SPV_INSTRUCTION(OpBranch, 249)
-SPV_INSTRUCTION(OpBranchConditional, 250)
-SPV_INSTRUCTION(OpSwitch, 251)
-SPV_INSTRUCTION(OpReturn, 253)
-SPV_INSTRUCTION(OpReturnValue, 254)
-SPV_INSTRUCTION(OpUnreachable, 255)
-SPV_INSTRUCTION(OpGroupNonUniformElect, 333)
-SPV_INSTRUCTION(OpGroupNonUniformAll, 334)
-SPV_INSTRUCTION(OpGroupNonUniformAny, 335)
-SPV_INSTRUCTION(OpGroupNonUniformAllEqual, 336)
-SPV_INSTRUCTION(OpGroupNonUniformBroadcast, 337)
-SPV_INSTRUCTION(OpGroupNonUniformBroadcastFirst, 338)
-SPV_INSTRUCTION(OpGroupNonUniformBallot, 339)
-SPV_INSTRUCTION(OpGroupNonUniformInverseBallot, 340)
-SPV_INSTRUCTION(OpGroupNonUniformBallotBitExtract, 341)
-SPV_INSTRUCTION(OpGroupNonUniformBallotBitCount, 342)
-SPV_INSTRUCTION(OpGroupNonUniformBallotFindLSB, 343)
-SPV_INSTRUCTION(OpGroupNonUniformBallotFindMSB, 344)
-SPV_INSTRUCTION(OpGroupNonUniformQuadSwap, 366)
-SPV_INSTRUCTION(OpTerminateInvocation, 4416)
-SPV_INSTRUCTION(OpIgnoreIntersectionKHR, 4448)
-SPV_INSTRUCTION(OpTerminateRayKHR, 4449)
-SPV_INSTRUCTION(OpReportIntersectionKHR, 5334);
+#define SPV_INSTRUCTION(name, code, words, dyn) SPVOp name { .str = #name, .c = code, .wordCount = words, .dynamicWords = dyn };
+SPV_INSTRUCTION(OpNop, 0, 1, false)
+SPV_INSTRUCTION(OpExtension, 10, 2, true)
+SPV_INSTRUCTION(OpExtInstImport, 11, 3, true)
+SPV_INSTRUCTION(OpExtInst, 12, 5, true)
+SPV_INSTRUCTION(OpMemoryModel, 14, 3, false)
+SPV_INSTRUCTION(OpEntryPoint, 15, 4, true)
+SPV_INSTRUCTION(OpExecutionMode, 15, 3, true)
+SPV_INSTRUCTION(OpCapability, 17, 2, false)
+SPV_INSTRUCTION(OpTypeVoid, 19, 2, false)
+SPV_INSTRUCTION(OpTypeBool, 20, 2, false)
+SPV_INSTRUCTION(OpTypeInt, 21, 4, false)
+SPV_INSTRUCTION(OpTypeFloat, 22, 3, true)
+SPV_INSTRUCTION(OpTypeVector, 23, 4, false)
+SPV_INSTRUCTION(OpTypeMatrix, 24, 4, false)
+SPV_INSTRUCTION(OpTypeImage, 25, 9, true)
+SPV_INSTRUCTION(OpTypeSampler, 26, 2, false)
+SPV_INSTRUCTION(OpTypeSampledImage, 27, 3, false)
+SPV_INSTRUCTION(OpTypeArray, 28, 4, false)
+SPV_INSTRUCTION(OpTypeRuntimeArray, 29, 3, false)
+SPV_INSTRUCTION(OpTypeStruct, 30, 2, true)
+SPV_INSTRUCTION(OpTypePointer, 32, 4, false)
+SPV_INSTRUCTION(OpTypeFunction, 33, 3, true)
+SPV_INSTRUCTION(OpConstantTrue, 41, 3, false)
+SPV_INSTRUCTION(OpConstantFalse, 42, 3, false)
+SPV_INSTRUCTION(OpConstant, 43, 4, true)
+SPV_INSTRUCTION(OpConstantComposite, 44, 3, true)
+SPV_INSTRUCTION(OpConstantSampler, 45, 6, false)
+SPV_INSTRUCTION(OpSpecConstantTrue, 48, 3, false)
+SPV_INSTRUCTION(OpSpecConstantFalse, 49, 3, false)
+SPV_INSTRUCTION(OpSpecConstant, 50, 4, true)
+SPV_INSTRUCTION(OpSpecConstantComposite, 51, 3, true)
+SPV_INSTRUCTION(OpFunction, 54, 5, false)
+SPV_INSTRUCTION(OpFunctionParameter, 55, 3, false)
+SPV_INSTRUCTION(OpFunctionEnd, 56, 1, false)
+SPV_INSTRUCTION(OpFunctionCall, 57, 4, true)
+SPV_INSTRUCTION(OpVariable, 59, 4, true)
+SPV_INSTRUCTION(OpAccessChain, 65, 4, true)
+SPV_INSTRUCTION(OpLoad, 61, 4, true)
+SPV_INSTRUCTION(OpStore, 62, 3, true)
+SPV_INSTRUCTION(OpCopyMemory, 63, 3, true)
+SPV_INSTRUCTION(OpDecorate, 71, 3, true)
+SPV_INSTRUCTION(OpMemberDecorate, 72, 4, true)
+SPV_INSTRUCTION(OpVectorShuffle, 79, 5, true)
+SPV_INSTRUCTION(OpCompositeConstruct, 80, 3, true)
+SPV_INSTRUCTION(OpCompositeExtract, 81, 4, true)
+SPV_INSTRUCTION(OpCompositeInsert, 82, 5, true)
+SPV_INSTRUCTION(OpTranspose, 84, 4, false)
+SPV_INSTRUCTION(OpSampledImage, 86, 5, false)
+SPV_INSTRUCTION(OpImageSampleImplicitLod, 87, 5, true)
+SPV_INSTRUCTION(OpImageSampleExplicitLod, 88, 7, true)
+SPV_INSTRUCTION(OpImageSampleDrefImplicitLod, 89, 6, true)
+SPV_INSTRUCTION(OpImageSampleDrefExplicitLod, 90, 8, true)
+SPV_INSTRUCTION(OpImageSampleProjImplicitLod, 91, 5, true)
+SPV_INSTRUCTION(OpImageSampleProjExplicitLod, 92, 7, true)
+SPV_INSTRUCTION(OpImageSampleProjDrefImplicitLod, 93, 6, true)
+SPV_INSTRUCTION(OpImageSampleProjDrefExplicitLod, 94, 8, true)
+SPV_INSTRUCTION(OpImageFetch, 95, 5, true)
+SPV_INSTRUCTION(OpImageGather, 96, 6, true)
+SPV_INSTRUCTION(OpImageDrefGather, 97, 6, true)
+SPV_INSTRUCTION(OpImageRead, 98, 5, true)
+SPV_INSTRUCTION(OpImageWrite, 99, 4, true)
+SPV_INSTRUCTION(OpImageQuerySizeLod, 103, 5, false)
+SPV_INSTRUCTION(OpImageQuerySize, 104, 4, false)
+SPV_INSTRUCTION(OpImageQueryLod, 105, 5, false)
+SPV_INSTRUCTION(OpImageQueryLevels, 106, 4, false)
+SPV_INSTRUCTION(OpConvertFToU, 109, 4, false)
+SPV_INSTRUCTION(OpConvertFToS, 110, 4, false)
+SPV_INSTRUCTION(OpConvertSToF, 111, 4, false)
+SPV_INSTRUCTION(OpConvertUToF, 112, 4, false)
+SPV_INSTRUCTION(OpBitcast, 124, 4, false)
+SPV_INSTRUCTION(OpSNegate, 126, 4, false)
+SPV_INSTRUCTION(OpFNegate, 127, 4, false)
+SPV_INSTRUCTION(OpIAdd, 128, 5, false)
+SPV_INSTRUCTION(OpFAdd, 129, 5, false)
+SPV_INSTRUCTION(OpISub, 130, 5, false)
+SPV_INSTRUCTION(OpFSub, 131, 5, false)
+SPV_INSTRUCTION(OpIMul, 132, 5, false)
+SPV_INSTRUCTION(OpFMul, 133, 5, false)
+SPV_INSTRUCTION(OpUDiv, 134, 5, false)
+SPV_INSTRUCTION(OpSDiv, 135, 5, false)
+SPV_INSTRUCTION(OpFDiv, 136, 5, false)
+SPV_INSTRUCTION(OpUMod, 137, 5, false)
+SPV_INSTRUCTION(OpSMod, 139, 5, false)
+SPV_INSTRUCTION(OpFMod, 141, 5, false)
+SPV_INSTRUCTION(OpVectorTimesScalar, 142, 5, false)
+SPV_INSTRUCTION(OpMatrixTimesScalar, 143, 5, false)
+SPV_INSTRUCTION(OpVectorTimesMatrix, 144, 5, false)
+SPV_INSTRUCTION(OpMatrixTimesVector, 145, 5, false)
+SPV_INSTRUCTION(OpMatrixTimesMatrix, 146, 5, false)
+SPV_INSTRUCTION(OpDot, 148, 5, false)
+SPV_INSTRUCTION(OpAny, 154, 4, false)
+SPV_INSTRUCTION(OpAll, 155, 4, false)
+SPV_INSTRUCTION(OpLogicalOr, 166, 5, false)
+SPV_INSTRUCTION(OpLogicalAnd, 167, 5, false)
+SPV_INSTRUCTION(OpLogicalNot, 168, 5, false)
+SPV_INSTRUCTION(OpSelect, 169, 6, false)
+SPV_INSTRUCTION(OpIEqual, 170, 5, false)
+SPV_INSTRUCTION(OpINotEqual, 171, 5, false)
+SPV_INSTRUCTION(OpUGreaterThan, 172, 5, false)
+SPV_INSTRUCTION(OpSGreaterThan, 173, 5, false)
+SPV_INSTRUCTION(OpUGreaterThanEqual, 174, 5, false)
+SPV_INSTRUCTION(OpSGreaterThanEqual, 175, 5, false)
+SPV_INSTRUCTION(OpULessThan, 176, 5, false)
+SPV_INSTRUCTION(OpSLessThan, 177, 5, false)
+SPV_INSTRUCTION(OpULessThanEqual, 178, 5, false)
+SPV_INSTRUCTION(OpSLessThanEqual, 179, 5, false)
+SPV_INSTRUCTION(OpFUnordEqual, 181, 5, false)
+SPV_INSTRUCTION(OpFUnordNotEqual, 183, 5, false)
+SPV_INSTRUCTION(OpFUnordLessThan, 185, 5, false)
+SPV_INSTRUCTION(OpFUnordGreaterThan, 187, 5, false)
+SPV_INSTRUCTION(OpFUnordLessThanEqual, 189, 5, false)
+SPV_INSTRUCTION(OpFUnordGreaterThanEqual, 191, 5, false)
+SPV_INSTRUCTION(OpShiftRightLogical, 194, 5, false)
+SPV_INSTRUCTION(OpShiftRightArithmetic, 195, 5, false)
+SPV_INSTRUCTION(OpShiftLeftLogical, 196, 5, false)
+SPV_INSTRUCTION(OpShiftLeftArithmetic, 197, 5, false)
+SPV_INSTRUCTION(OpBitwiseOr, 197, 5, false)
+SPV_INSTRUCTION(OpBitwiseXor, 198, 5, false)
+SPV_INSTRUCTION(OpBitwiseAnd, 199, 5, false)
+SPV_INSTRUCTION(OpNot, 200, 4, false)
+SPV_INSTRUCTION(OpBitFieldInsert, 201, 7, false)
+SPV_INSTRUCTION(OpBitFieldSExtract, 202, 6, false)
+SPV_INSTRUCTION(OpBitFieldUExtract, 203, 6, false)
+SPV_INSTRUCTION(OpBitReverse, 204, 4, false)
+SPV_INSTRUCTION(OpBitCount, 205, 4, false)
+SPV_INSTRUCTION(OpDPdx, 207, 4, false)
+SPV_INSTRUCTION(OpDPdy, 208, 4, false)
+SPV_INSTRUCTION(OpFwidth, 209, 4, false)
+SPV_INSTRUCTION(OpEmitVertex, 218, 1, false)
+SPV_INSTRUCTION(OpEndPrimitive, 219, 1, false)
+SPV_INSTRUCTION(OpControlBarrier, 224, 4, false)
+SPV_INSTRUCTION(OpMemoryBarrier, 225, 3, false)
+SPV_INSTRUCTION(OpAtomicLoad, 227, 6, false)
+SPV_INSTRUCTION(OpAtomicStore, 228, 5, false)
+SPV_INSTRUCTION(OpAtomicExchange, 229, 7, false)
+SPV_INSTRUCTION(OpAtomicCompareExchange, 230, 9, false)
+SPV_INSTRUCTION(OpAtomicIIncrement, 232, 6, false)
+SPV_INSTRUCTION(OpAtomicIDecrement, 233, 6, false)
+SPV_INSTRUCTION(OpAtomicIAdd, 234, 7, false)
+SPV_INSTRUCTION(OpAtomicISub, 235, 7, false)
+SPV_INSTRUCTION(OpAtomicSMin, 236, 7, false)
+SPV_INSTRUCTION(OpAtomicUMin, 237, 7, false)
+SPV_INSTRUCTION(OpAtomicSMax, 238, 7, false)
+SPV_INSTRUCTION(OpAtomicUMax, 239, 7, false)
+SPV_INSTRUCTION(OpAtomicAnd, 240, 7, false)
+SPV_INSTRUCTION(OpAtomicOr, 241, 7, false)
+SPV_INSTRUCTION(OpAtomicXor, 242, 7, false)
+SPV_INSTRUCTION(OpLoopMerge, 246, 4, true)
+SPV_INSTRUCTION(OpSelectionMerge, 247, 3, true)
+SPV_INSTRUCTION(OpLabel, 248, 2, false)
+SPV_INSTRUCTION(OpBranch, 249, 2, false)
+SPV_INSTRUCTION(OpBranchConditional, 250, 4, true)
+SPV_INSTRUCTION(OpSwitch, 251, 3, true)
+SPV_INSTRUCTION(OpReturn, 253, 1, false)
+SPV_INSTRUCTION(OpReturnValue, 254, 2, false)
+SPV_INSTRUCTION(OpUnreachable, 255, 1, false)
+SPV_INSTRUCTION(OpGroupNonUniformElect, 333, 4, false)
+SPV_INSTRUCTION(OpGroupNonUniformAll, 334, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformAny, 335, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformAllEqual, 336, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformBroadcast, 337, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformBroadcastFirst, 338, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformBallot, 339, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformInverseBallot, 340, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformBallotBitExtract, 341, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformBallotBitCount, 342, 6, false)
+SPV_INSTRUCTION(OpGroupNonUniformBallotFindLSB, 343, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformBallotFindMSB, 344, 5, false)
+SPV_INSTRUCTION(OpGroupNonUniformQuadSwap, 366, 6, false)
+SPV_INSTRUCTION(OpTerminateInvocation, 4416, 1, false)
+SPV_INSTRUCTION(OpIgnoreIntersectionKHR, 4448, 1, false)
+SPV_INSTRUCTION(OpTerminateRayKHR, 4449, 1, false)
+SPV_INSTRUCTION(OpReportIntersectionKHR, 5334, 5, false)
 
 
 #define SPV_ENUM(name, code) SPVEnum name { .str = #name, .c = code };
@@ -861,10 +863,10 @@ struct SPVWriter
     enum class Section : uint32_t
     {
         Top,
-        Header,
         Capabilities,
         Extensions,
         ExtImports,
+        Header,
         Decorations,
         Declarations,
         Functions,
@@ -926,10 +928,10 @@ struct SPVWriter
 
         if (this->mode == Mode::Binary)
         {
-            size_t len = strlen(str);
+            size_t len = strlen(str) + 1;
             size_t lenInWords = std::ceil(len / 4.0f);
             SPVInstruction instr;
-            instr.flags.wordCount = 3 + lenInWords;
+            instr.flags.wordCount = OpExtInstImport.wordCount + lenInWords - 1;
             instr.flags.code = OpExtInstImport.c;
 
             this->binaries[(uint32_t)Section::ExtImports].push_back(instr.bits);
@@ -939,6 +941,8 @@ struct SPVWriter
             {
                 this->binaries[(uint32_t)Section::ExtImports].push_back(strAsWords[i]);
             }
+            char* lastInt = (char*)&this->binaries[(uint32_t)Section::ExtImports].back();
+            lastInt[3] = '\0';
         }
         else
         {
@@ -991,8 +995,21 @@ struct SPVWriter
         if (this->mode == Mode::Binary)
         {
             SPVInstruction instr;
-            instr.flags.wordCount = sizeof...(args) + 3; // +3 for opcode, type and id
+            instr.flags.wordCount = op.wordCount;
             instr.flags.code = op.c;
+
+            if (op.dynamicWords)
+            {
+                uint32_t dynamicWordCount = 0;
+                ([&]
+                {
+                    dynamicWordCount += ArgCount(args);
+                } (), ...);
+
+                // Subtract all necessary words
+                dynamicWordCount = dynamicWordCount - (op.wordCount - 3);
+                instr.flags.wordCount += dynamicWordCount;
+            }
 
             this->binaries[(uint32_t)section].push_back(instr.bits);
             this->binaries[(uint32_t)section].push_back(type);
@@ -1016,8 +1033,21 @@ struct SPVWriter
         if (this->mode == Mode::Binary)
         {
             SPVInstruction instr;
-            instr.flags.wordCount = sizeof...(args) + 3; // +3 for opcode, type and id
+            instr.flags.wordCount = op.wordCount;
             instr.flags.code = op.c;
+
+            if (op.dynamicWords)
+            {
+                uint32_t dynamicWordCount = 0;
+                ([&]
+                {
+                    dynamicWordCount += ArgCount(args);
+                } (), ...);
+
+                // Subtract all necessary words
+                dynamicWordCount -= (op.wordCount - 2);
+                instr.flags.wordCount += dynamicWordCount;
+            }
 
             this->binaries[(uint32_t)section].push_back(instr.bits);
             this->binaries[(uint32_t)section].push_back(this->counter++);
@@ -1038,10 +1068,17 @@ struct SPVWriter
         if (this->mode == Mode::Binary)
         {
             SPVInstruction instr;
-            instr.flags.wordCount = args.size();
+            instr.flags.wordCount = op.wordCount;
             instr.flags.code = op.c;
 
+            if (op.dynamicWords)
+            {
+                uint32_t dynamicWordCount = args.size() - (op.wordCount - 2);
+                instr.flags.wordCount += dynamicWordCount;
+            }
+
             this->binaries[(uint32_t)section].push_back(instr.bits);
+            this->binaries[(uint32_t)section].push_back(type);
             this->binaries[(uint32_t)section].insert(binaries[(uint32_t)this->section].end(), args.begin(), args.end());
         }
         else
@@ -1055,15 +1092,27 @@ struct SPVWriter
     }
 
     template<typename ...ARGS>
-    void Instruction(const SPVOp& op, SPVWriter::Section section, ARGS... args)
+    void Instruction(const SPVOp& op, SPVWriter::Section section, const ARGS&... args)
     {
         this->section = section;
         if (this->mode == Mode::Binary)
         {
             SPVInstruction instr;
-            instr.flags.wordCount = sizeof...(args);
+            instr.flags.wordCount = op.wordCount;
             instr.flags.code = op.c;
 
+            if (op.dynamicWords)
+            {
+                uint32_t dynamicWordCount = 0;
+                ([&]
+                {
+                    dynamicWordCount += ArgCount(args);
+                } (), ...);
+
+                // Subtract all necessary words
+                dynamicWordCount -= (op.wordCount - 1);
+                instr.flags.wordCount += dynamicWordCount;
+            }
             this->binaries[(uint32_t)section].push_back(instr.bits);
             (Append(args), ...);
         }
@@ -1085,8 +1134,21 @@ struct SPVWriter
         if (this->mode == Mode::Binary)
         {
             SPVInstruction instr;
-            instr.flags.wordCount = sizeof...(args) + 3; // +3 for opcode, type and id
+            instr.flags.wordCount = op.wordCount;
             instr.flags.code = op.c;
+
+            if (op.dynamicWords)
+            {
+                uint32_t dynamicWordCount = 0;
+                ([&]
+                {
+                    dynamicWordCount += ArgCount(args);
+                } (), ...);
+
+                // Subtract all necessary words
+                dynamicWordCount -= (op.wordCount - 2);
+                instr.flags.wordCount += dynamicWordCount;
+            }
 
             this->binaries[(uint32_t)section].push_back(instr.bits);
             this->binaries[(uint32_t)section].push_back(id);
@@ -1110,8 +1172,8 @@ struct SPVWriter
                 , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].begin()
                 , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].end()
             );
-            this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].insert(
-                this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].end()
+            this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
+                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
                 , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].begin()
                 , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].end()
             );
@@ -1149,7 +1211,6 @@ struct SPVWriter
     void Append(const T& arg)
     {
         assert(false && "Should never enter");
-        //static_assert(false, "This should never happen");
     }
 
     template<>
@@ -1172,7 +1233,29 @@ struct SPVWriter
     {
         if (this->mode == Mode::Binary)
         {
-            size_t len = strlen(str);
+            size_t len = strlen(str) + 1;
+            size_t lenInWords = std::ceil(len / 4.0f);
+            uint32_t* strAsWords = (uint32_t*)str;
+
+            for (size_t i = 0; i < lenInWords; i++)
+            {
+                this->binaries[(uint32_t)this->section].push_back(strAsWords[i]);
+            }
+            char* lastInt = (char*)&this->binaries[(uint32_t)this->section].back();
+            lastInt[3] = '\0';
+        }
+        else
+        {
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
+        }
+    }
+
+    template<int SIZE>
+    void Append(const char (&str)[SIZE])
+    {
+        if (this->mode == Mode::Binary)
+        {
+            size_t len = SIZE;
             size_t lenInWords = std::ceil(len / 4.0f);
             uint32_t* strAsWords = (uint32_t*)str;
             for (size_t i = 0; i < lenInWords; i++)
@@ -1386,6 +1469,66 @@ struct SPVWriter
     {
         for (const auto& arg : args)
             this->Append(arg);
+    }
+
+    template<typename T>
+    uint32_t ArgCount(const T& arg)
+    {
+        return 1;
+    };
+
+    template<>
+    uint32_t ArgCount(const SPVArgList& args)
+    {
+        return args.num;
+    }
+
+    template<>
+    uint32_t ArgCount(const SPVResultList& args)
+    {
+        return args.num;
+    }
+
+    template<>
+    uint32_t ArgCount(const SPVCaseList& args)
+    {
+        return args.num * 2;
+    }
+
+    template<>
+    uint32_t ArgCount(const SPVLiteralList& args)
+    {
+        return args.num;
+    }
+
+    template<>
+    uint32_t ArgCount(const std::vector<uint32_t>& args)
+    {
+        return args.size();
+    }
+
+    template<>
+    uint32_t ArgCount(const std::vector<SPIRVResult>& args)
+    {
+        return args.size();
+    }
+
+    template<>
+    uint32_t ArgCount(const SPVComment& args)
+    {
+        return 0;
+    }
+
+    template<>
+    uint32_t ArgCount(const char* const& args)
+    {
+        return std::ceil((strlen(args) + 1) / (float)sizeof(uint32_t));
+    }
+
+    template<int SIZE>
+    uint32_t ArgCount(const char (&args)[SIZE])
+    {
+        return std::ceil(SIZE / (float)sizeof(uint32_t));
     }
 
     GrowingString texts[(uint32_t)Section::NumSections];
@@ -5240,7 +5383,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult image = LoadValueSPIRV(c, g, arg0, true);
         SPIRVResult sampler = LoadValueSPIRV(c, g, arg1, true);
         uint32_t typeSymbol = AddType(g, TStr::Compact("sampledImage_", arg0.parentTypes[0]), OpTypeSampledImage, SPVArg{arg0.parentTypes[0]});
-        g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, SPVArg{typeSymbol}, image, sampler);
+        g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);
         uint32_t sampledImageType = g->AddSymbol(Format("sampledType(%d)", arg0.parentTypes[0]), Format("OpTypeSampledImage %%%d", arg0.parentTypes[0]), true);
         uint32_t sampledImage = g->AddMappedOp(Format("OpSampledImage %%%d %%%d %%%d", sampledImageType, image.name, sampler.name));
         return SPIRVResult(sampledImage, sampledImage, true);
@@ -6543,7 +6686,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     }
     
     TStr functionSymbolName = TStr::Compact("function_", typeArgs, "_", func->returnType.ToString());
-    AddSymbol(generator, functionSymbolName, SPVWriter::Section::Declarations, OpTypeFunction, returnName.typeName, SPVArgList(spvTypeArgs));
+    AddType(generator, functionSymbolName, OpTypeFunction, SPVArg{ returnName.typeName }, SPVArgList(spvTypeArgs));
     
     uint32_t functionType = generator->AddSymbol(functionSymbolName, TStr::Separated("OpTypeFunction", SPVArg{returnName.typeName}, spvTypes), returnName, true);
 
@@ -7605,14 +7748,14 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         , { "i32x2", { 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
         , { "i32x3", { 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
         , { "i32x4", { 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
-        , { "u32", { 'U', false, 1, OpIAdd, OpISub, OpInvalid } }
-        , { "u32x2", { 'U', false, 2, OpIAdd, OpISub, OpInvalid } }
-        , { "u32x3", { 'U', false, 3, OpIAdd, OpISub, OpInvalid } }
-        , { "u32x4", { 'U', false, 4, OpIAdd, OpISub, OpInvalid } }
-        , { "b8", { 'B', false, 1, OpInvalid, OpInvalid, OpInvalid } }
-        , { "b8x2", { 'B', false, 2, OpInvalid, OpInvalid, OpInvalid } }
-        , { "b8x3", { 'B', false, 3, OpInvalid, OpInvalid, OpInvalid } }
-        , { "b8x4", { 'B', false, 4, OpInvalid, OpInvalid, OpInvalid } }
+        , { "u32", { 'U', false, 1, OpIAdd, OpISub, OpNop } }
+        , { "u32x2", { 'U', false, 2, OpIAdd, OpISub, OpNop } }
+        , { "u32x3", { 'U', false, 3, OpIAdd, OpISub, OpNop } }
+        , { "u32x4", { 'U', false, 4, OpIAdd, OpISub, OpNop } }
+        , { "b8", { 'B', false, 1, OpNop, OpNop, OpNop } }
+        , { "b8x2", { 'B', false, 2, OpNop, OpNop, OpNop } }
+        , { "b8x3", { 'B', false, 3, OpNop, OpNop, OpNop } }
+        , { "b8x4", { 'B', false, 4, OpNop, OpNop, OpNop } }
     };
 
     auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
@@ -8742,6 +8885,10 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         this->shaderStage = mapping;
         this->shaderValueExpressions[mapping].value = true;
 
+        this->writer->counter++;
+        this->symbolCounter++;
+        this->writer->mode = SPVWriter::Binary;
+
         // Main scope
         this->PushScope();
         this->writer->PushScope();
@@ -8928,10 +9075,21 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Declarations]);
         writerBinary.Append("\n; Functions\n");
         writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Functions]);
+
+        std::vector<uint32_t> spvBinary;
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Top].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Capabilities].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Capabilities].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Extensions].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Extensions].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::ExtImports].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::ExtImports].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Header].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Header].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Decorations].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Decorations].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Declarations].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Declarations].end());
+        spvBinary.insert(spvBinary.end(), this->writer->binaries[(uint32_t)SPVWriter::Section::Functions].begin(), this->writer->binaries[(uint32_t)SPVWriter::Section::Functions].end());
         
         spv_binary bin = nullptr;
-
         spv_diagnostic diag = nullptr;
+        spv_result_t res;
+        /*
         spv_result_t res = spvTextToBinaryWithOptions(spvContext, writerBinary.data, writerBinary.size, SPV_BINARY_TO_TEXT_OPTION_NONE, &bin, &diag);
 
         if (res != SPV_SUCCESS)
@@ -8939,17 +9097,18 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             this->Error(Format("Internal SPIRV generation error: %s", diag->error));
             return false;
         }
+        */
         
         if (compiler->options.validate)
         {
             // Run spv validation for internal consistency and fault testing
-            spv_const_binary_t constBin = { bin->code, bin->wordCount };
+            spv_const_binary_t constBin = { spvBinary.data(), spvBinary.size() };
             res = spvValidate(spvContext, &constBin, &diag);
             if (res != SPV_SUCCESS)
             {
                 spv_diagnostic diag2;
                 spv_text text;
-                spvBinaryToText(spvContext, bin->code, bin->wordCount, SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES, &text, &diag2);
+                spvBinaryToText(spvContext, spvBinary.data(), spvBinary.size(), SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES, &text, &diag2);
                 this->Error(Format("Internal SPIRV generation error: %s", diag->error));
                 this->Error(std::string(text->str, text->length));
                 //return false;
