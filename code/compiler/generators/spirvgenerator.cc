@@ -59,13 +59,18 @@ namespace GPULang
 struct SPVHeader
 {
     uint32_t magic;
-    struct
+    union
     {
-        uint32_t leading : 8;
-        uint32_t major : 8;
-        uint32_t minor : 8;
-        uint32_t trailing : 8;
+        struct
+        {
+            uint32_t leading : 8;
+            uint32_t minor : 8;
+            uint32_t major : 8;
+            uint32_t trailing : 8;
+        } flags;
+        uint32_t bits;
     } version;
+    uint32_t generatorVersion;
     uint32_t bound; // range of IDs generated, the tighter the better
     uint32_t schema;
 };
@@ -89,7 +94,7 @@ struct SPVOp
 struct SPVEnum
 {
     const char* str = nullptr;
-    const uint16_t c = 0xFFFF;
+    uint16_t c = 0xFFFF;
 
     SPVEnum operator|(const SPVEnum& rhs)
     {
@@ -98,12 +103,22 @@ struct SPVEnum
         uint16_t code = this->c | rhs.c;
         return SPVEnum{.str = strdup(buf), .c = code};
     }
+    void operator=(const SPVEnum& rhs)
+    {
+        this->str = rhs.str;
+        this->c = rhs.c;
+    }
 };
 
 bool operator<(const SPVEnum& lhs, const SPVEnum& rhs)
 {
     return lhs.c < rhs.c;
 }
+
+struct SPVComment
+{
+    const char* str = nullptr;
+};
 
 struct SPVArg
 {
@@ -120,12 +135,24 @@ struct SPVResultList
 {
     SPIRVResult* vals = nullptr;
     uint8_t num = 0;
+
+    explicit SPVResultList(const StackArray<SPIRVResult>& stackArr)
+    {
+        this->vals = stackArr.ptr;
+        this->num = (uint8_t)stackArr.size;
+    }
 };
 
 struct SPVArgList
 {
     SPVArg* vals = nullptr;
     uint8_t num = 0;
+
+    explicit SPVArgList(const StackArray<SPVArg>& stackArr)
+    {
+        this->vals = stackArr.ptr;
+        this->num = (uint8_t)stackArr.size;
+    }
 };
 
 struct SPVCaseList
@@ -133,9 +160,96 @@ struct SPVCaseList
     uint32_t* labels = nullptr;
     SPVArg* branches = nullptr;
     uint8_t num = 0;
+
+    explicit SPVCaseList(const StackArray<uint32_t>& labels, const StackArray<SPVArg>& branches)
+    {
+        this->labels = labels.ptr;
+        this->branches = branches.ptr;
+        this->num = (uint8_t)labels.size;
+    }
+};
+
+
+struct ConstantCreationInfo
+{
+    enum class Type
+    {
+        Float,
+        Float16,
+        Int,
+        Int16,
+        UInt,
+        UInt16,
+        Bool
+    } type;
+    union
+    {
+        float f;
+        int32_t i;
+        uint32_t ui;
+        bool b;
+    } data;
+    bool linkDefined = false;
+
+    static ConstantCreationInfo Float(float val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float;
+        ret.data.f = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Float16(float val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float16;
+        ret.data.f = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt(uint32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt;
+        ret.data.ui = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo UInt16(uint16_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt16;
+        ret.data.ui = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int(int32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int;
+        ret.data.i = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Int16(int16_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int16;
+        ret.data.i = val;
+        return ret;
+    }
+
+    static ConstantCreationInfo Bool(bool b)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Bool;
+        ret.data.b = b;
+        return ret;
+    }
 };
 
 #define SPV_INSTRUCTION(name, code) SPVOp name { .str = #name, .c = code };
+SPV_INSTRUCTION(OpInvalid, 0xFFFF)
 SPV_INSTRUCTION(OpExtension, 10)
 SPV_INSTRUCTION(OpExtInstImport, 11)
 SPV_INSTRUCTION(OpExtInst, 12)
@@ -255,9 +369,9 @@ SPV_INSTRUCTION(OpBitwiseOr, 197)
 SPV_INSTRUCTION(OpBitwiseXor, 198)
 SPV_INSTRUCTION(OpBitwiseAnd, 199)
 SPV_INSTRUCTION(OpNot, 200)
-SPV_INSTRUCTION(OpBitfieldInsert, 201)
-SPV_INSTRUCTION(OpBitfieldSExtract, 202)
-SPV_INSTRUCTION(OpBitfieldUExtract, 203)
+SPV_INSTRUCTION(OpBitFieldInsert, 201)
+SPV_INSTRUCTION(OpBitFieldSExtract, 202)
+SPV_INSTRUCTION(OpBitFieldUExtract, 203)
 SPV_INSTRUCTION(OpBitReverse, 204)
 SPV_INSTRUCTION(OpBitCount, 205)
 SPV_INSTRUCTION(OpDPdx, 207)
@@ -311,6 +425,7 @@ SPV_INSTRUCTION(OpReportIntersectionKHR, 5334);
 
 
 #define SPV_ENUM(name, code) SPVEnum name { .str = #name, .c = code };
+#define SPV_ENUM_DIGITED(name, code) SPVEnum _##name { .str = #name, .c = code };
 /// Capabilties
 namespace Capabilities
 {
@@ -321,6 +436,9 @@ SPV_ENUM(Tessellation, 3)
 SPV_ENUM(Addresses, 4)
 SPV_ENUM(ImageBasic, 13)
 SPV_ENUM(ImageReadWrite, 14)
+SPV_ENUM(InputAttachment, 40)
+SPV_ENUM(Sampled1D, 43)
+SPV_ENUM(StorageImageExtendedFormats, 49)
 SPV_ENUM(ImageQuery, 50)
 SPV_ENUM(SubgroupDispatch, 58)
 SPV_ENUM(GroupNonUniform, 61)
@@ -330,8 +448,10 @@ SPV_ENUM(ShaderLayer, 69)
 SPV_ENUM(ShaderViewportIndex, 70)
 SPV_ENUM(MeshShadingEXT, 5283)
 SPV_ENUM(RayTracingKHR, 4479)
+SPV_ENUM(Int64ImageEXT, 5016)
 SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5288)
 SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5230)
+SPV_ENUM(PhysicalStorageBufferAddresses, 5347)
 }
 
 namespace AddressingModels
@@ -457,6 +577,64 @@ SPV_ENUM(Offset, 0x10)
 SPV_ENUM(ConstOffsets, 0x20)
 SPV_ENUM(Sample, 0x40)
 SPV_ENUM(MinLod, 0x80)
+}
+
+namespace ImageDimensions
+{
+SPV_ENUM_DIGITED(1D, 0)
+SPV_ENUM_DIGITED(2D, 1)
+SPV_ENUM_DIGITED(3D, 2)
+SPV_ENUM(Cube, 3)
+SPV_ENUM(Rect, 4)
+SPV_ENUM(Buffer, 5)
+SPV_ENUM(SubpassData, 6)
+}
+
+namespace ImageFormats
+{
+SPV_ENUM(Unknown, 0)
+SPV_ENUM(Rgba32f, 1)
+SPV_ENUM(Rgba16f, 2)
+SPV_ENUM(R32f, 3)
+SPV_ENUM(Rgba8, 4)
+SPV_ENUM(Rgba8Snorm, 5)
+SPV_ENUM(Rg32f, 6)
+SPV_ENUM(Rg16f, 7)
+SPV_ENUM(R11fG11fB10f, 8)
+SPV_ENUM(R16f, 9)
+SPV_ENUM(Rgba16, 10)
+SPV_ENUM(Rgb10A2, 11)
+SPV_ENUM(Rg16, 12)
+SPV_ENUM(Rg8, 13)
+SPV_ENUM(R16, 14)
+SPV_ENUM(R8, 15)
+SPV_ENUM(Rgba16Snorm, 16)
+SPV_ENUM(Rg16Snorm, 17)
+SPV_ENUM(Rg8Snorm, 18)
+SPV_ENUM(R16Snorm, 19)
+SPV_ENUM(R8Snorm, 20)
+SPV_ENUM(Rgba32i, 21)
+SPV_ENUM(Rgba16i, 22)
+SPV_ENUM(Rgba8i, 23)
+SPV_ENUM(R32i, 24)
+SPV_ENUM(Rg32i, 25)
+SPV_ENUM(Rg16i, 26)
+SPV_ENUM(Rg8i, 27)
+SPV_ENUM(R16i, 28)
+SPV_ENUM(R8i, 29)
+SPV_ENUM(Rgba32ui, 30)
+SPV_ENUM(Rgba16ui, 31)
+SPV_ENUM(Rgba8ui, 32)
+SPV_ENUM(R32ui, 33)
+SPV_ENUM(Rgb10a2ui, 34)
+SPV_ENUM(Rg32ui, 35)
+SPV_ENUM(Rg16ui, 36)
+SPV_ENUM(Rg8ui, 37)
+SPV_ENUM(R16ui, 38)
+SPV_ENUM(R8ui, 39)
+SPV_ENUM(R64ui, 40)
+SPV_ENUM(R64i, 41)
+
 }
 
 namespace VariableStorage
@@ -682,6 +860,7 @@ struct SPVWriter
 
     enum class Section : uint32_t
     {
+        Top,
         Header,
         Capabilities,
         Extensions,
@@ -690,6 +869,8 @@ struct SPVWriter
         Declarations,
         Functions,
         LocalFunction,
+        VariableDeclarations,
+        ParameterInitializations,
         FunctionInit,
         FunctionStart,
 
@@ -697,8 +878,43 @@ struct SPVWriter
     } section = Section::Header;
     uint32_t counter = 0;
 
-    void Header(const SPVHeader& header)
+    struct Scope
     {
+        std::unordered_map<std::string, SymbolAssignment> symbols;
+    };
+    std::vector<Scope> scopeStack;
+
+    void PushScope() { this->scopeStack.push_back(Scope()); }
+    void PopScope() { this->scopeStack.pop_back(); }
+
+    void Header(uint32_t spvMajor, uint32_t spvMinor, uint32_t compilerVersion, uint32_t generatorVersion, uint32_t bound)
+    {
+        SPVHeader header;
+        header.magic = 0x07230203;
+        header.version.flags.leading = 0;
+        header.version.flags.major = spvMajor;
+        header.version.flags.minor = spvMinor;
+        header.version.flags.trailing = 0;
+        header.generatorVersion = generatorVersion;
+        header.bound = bound;
+        header.schema = 0;
+        if (this->mode == Mode::Binary)
+        {
+            
+            this->binaries[(uint32_t)Section::Top].push_back(header.magic);
+            this->binaries[(uint32_t)Section::Top].push_back(header.version.bits);
+            this->binaries[(uint32_t)Section::Top].push_back(header.generatorVersion);
+            this->binaries[(uint32_t)Section::Top].push_back(header.bound);
+            this->binaries[(uint32_t)Section::Top].push_back(header.schema);
+        }
+        else
+        {
+            char buf[64];
+            uint32_t written = snprintf(buf, 64, "; Magic: 0x%.8lx (SPIRV Universal %d.%d)\n", header.version.bits, spvMajor, spvMinor);
+            this->texts[(uint32_t)Section::Top].Append(buf, written);
+            written = snprintf(buf, 64, "; Generator: 0x%.8lx (GPULang: %d)\n", 0x00080001, header.generatorVersion);
+            this->texts[(uint32_t)Section::Top].Append(buf, written);
+        }
     }
 
     uint32_t Import(const char* str)
@@ -727,8 +943,8 @@ struct SPVWriter
         else
         {
             TStr extension = TStr::Compact("\"", str, "\"");
-            this->texts[(uint32_t)Section::ExtImports].append(TStr::Separated(SPVArg(this->counter++), "=", "OpExtInstImport", extension).ToString());
-            this->texts[(uint32_t)Section::ExtImports].append("\n");
+            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(this->counter++), "=", "OpExtInstImport", extension).ToString());
+            this->texts[(uint32_t)Section::ExtImports].Append("\n");
         }
         this->imports[str] = c;
         return c;
@@ -753,13 +969,18 @@ struct SPVWriter
     template<typename ...ARGS>
     void Decorate(SPVArg symbol, SPVEnum decoration, const ARGS&... args)
     {
-        this->Instruction(OpDecorate, Section::Decorations, symbol, std::forward<const ARGS&>(args)...);
+        std::string key = TStr(symbol.arg, "_", decoration.str, std::forward<const ARGS&>(args)...).ToString();
+        if (this->decorations.find(key) == this->decorations.end())
+        {
+            this->Instruction(OpDecorate, Section::Decorations, symbol, decoration, std::forward<const ARGS&>(args)...);
+            this->decorations.insert(key);
+        }
     }
 
     template<typename ...ARGS>
     void MemberDecorate(SPVArg type, uint32_t member, SPVEnum decoration, const ARGS&... args)
     {
-        this->Instruction(OpMemberDecorate, Section::Decorations, type, member, std::forward<const ARGS&>(args)...);
+        this->Instruction(OpMemberDecorate, Section::Decorations, type, member, decoration, std::forward<const ARGS&>(args)...);
     }
 
     template<typename ...ARGS>
@@ -780,9 +1001,9 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)section].append(TStr::Separated(SPVArg(this->counter++), "=", op.str, SPVArg(type)).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(this->counter++), "=", op.str, SPVArg(type)).ToString());
             (Append(args), ...);
-            this->texts[(uint32_t)section].append("\n");
+            this->texts[(uint32_t)section].Append("\n");
         }
         return c;
     }
@@ -804,9 +1025,9 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)section].append(TStr::Separated(SPVArg(this->counter++), "=", op.str).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg(this->counter++), "=", op.str).ToString());
             (Append(args), ...);
-            this->texts[(uint32_t)section].append("\n");
+            this->texts[(uint32_t)section].Append("\n");
         }
         return c;
     }
@@ -828,8 +1049,8 @@ struct SPVWriter
             TStr argsStr;
             for (uint32_t arg : args)
                 argsStr.Concatenate<false>(SPVArg(arg), " ");
-            texts[(uint32_t)section].append(TStr::Separated(op.str, SPVArg(type), argsStr).ToString());
-            texts[(uint32_t)section].append("\n");
+            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr).ToString());
+            texts[(uint32_t)section].Append("\n");
         }
     }
 
@@ -848,11 +1069,13 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)section].append(op.str);
+            this->texts[(uint32_t)section].Append(op.str);
             (Append(args), ...);
-            this->texts[(uint32_t)section].append("\n");
+            this->texts[(uint32_t)section].Append("\n");
         }
     }
+
+    uint32_t Reserve() { return this->counter++; }
     
     template<typename ...ARGS>
     uint32_t Reserved(const SPVOp& op, SPVWriter::Section section, uint32_t id, const ARGS&... args)
@@ -871,11 +1094,37 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)section].append(TStr::Separated(SPVArg{id}, "=", op.str).ToString());
+            this->texts[(uint32_t)section].Append(TStr::Separated(SPVArg{id}, "=", op.str).ToString());
             (Append(args), ...);
-            this->texts[(uint32_t)section].append("\n");
+            this->texts[(uint32_t)section].Append("\n");
         }
         return c;
+    }
+
+    void BeginFunction()
+    {
+        if (this->mode == Mode::Binary)
+        {
+            this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
+                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
+                , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].begin()
+                , this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].end()
+            );
+            this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].insert(
+                this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].end()
+                , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].begin()
+                , this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].end()
+            );
+            this->binaries[(uint32_t)SPVWriter::Section::VariableDeclarations].clear();
+            this->binaries[(uint32_t)SPVWriter::Section::ParameterInitializations].clear();
+        }
+        else
+        {
+            this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::VariableDeclarations]);
+            this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::ParameterInitializations]);
+            this->texts[(uint32_t)SPVWriter::Section::VariableDeclarations].Clear();
+            this->texts[(uint32_t)SPVWriter::Section::ParameterInitializations].Clear();
+        }
     }
 
     void FinishFunction()
@@ -883,7 +1132,7 @@ struct SPVWriter
         if (this->mode == Mode::Binary)
         {
             this->binaries[(uint32_t)SPVWriter::Section::Functions].insert(
-                this->binaries[(uint32_t)SPVWriter::Section::Functions].begin()
+                this->binaries[(uint32_t)SPVWriter::Section::Functions].end()
                 , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].begin()
                 , this->binaries[(uint32_t)SPVWriter::Section::LocalFunction].end()
             );
@@ -891,12 +1140,8 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)SPVWriter::Section::Functions].insert(
-                this->texts[(uint32_t)SPVWriter::Section::Functions].begin()
-                , this->texts[(uint32_t)SPVWriter::Section::LocalFunction].begin()
-                , this->texts[(uint32_t)SPVWriter::Section::LocalFunction].end()
-            );
-            this->texts[(uint32_t)SPVWriter::Section::LocalFunction].clear();
+            this->texts[(uint32_t)SPVWriter::Section::Functions].Append(this->texts[(uint32_t)SPVWriter::Section::LocalFunction]);
+            this->texts[(uint32_t)SPVWriter::Section::LocalFunction].Clear();
         }
     }
 
@@ -918,7 +1163,7 @@ struct SPVWriter
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %%%d", arg.arg);
-            this->texts[(uint32_t)this->section].append(buf, numWritten);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
         }
     }
     
@@ -937,13 +1182,12 @@ struct SPVWriter
         }
         else
         {
-            this->texts[(uint32_t)this->section].append(TStr::Compact(" \"", str, "\"").ToString());
-            this->texts[(uint32_t)this->section].append("\n");
+            this->texts[(uint32_t)this->section].Append(TStr::Compact(" \"", str, "\"").ToString());
         }
     }
 
     template<>
-    void Append(const int& arg)
+    void Append(const int32_t& arg)
     {
         if (this->mode == Mode::Binary)
         {
@@ -953,7 +1197,7 @@ struct SPVWriter
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %d", arg);
-            this->texts[(uint32_t)this->section].append(buf, numWritten);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
         }
     }
 
@@ -968,12 +1212,12 @@ struct SPVWriter
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %f", arg);
-            this->texts[(uint32_t)this->section].append(buf, numWritten);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
         }
     }
 
     template<>
-    void Append(const unsigned int& arg)
+    void Append(const uint32_t& arg)
     {
         if (this->mode == Mode::Binary)
         {
@@ -983,23 +1227,69 @@ struct SPVWriter
         {
             char buf[64];
             int numWritten = snprintf(buf, 64, " %u", arg);
-            this->texts[(uint32_t)this->section].append(buf, numWritten);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
+        }
+    }
+
+    template<>
+    void Append(const size_t& arg)
+    {
+        if (this->mode == Mode::Binary)
+        {
+            this->binaries[(uint32_t)this->section].push_back(arg);
+        }
+        else
+        {
+            char buf[64];
+            int numWritten = snprintf(buf, 64, " %zu", arg);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
+        }
+    }
+
+    template<>
+    void Append(const char& arg)
+    {
+        if (this->mode == Mode::Binary)
+        {
+            this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
+        }
+        else
+        {
+            this->texts[(uint32_t)this->section].Append(arg);
+        }
+    }
+
+    template<>
+    void Append(const unsigned char& arg)
+    {
+        if (this->mode == Mode::Binary)
+        {
+            this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
+        }
+        else
+        {
+            char buf[3];
+            int numWritten = snprintf(buf, 3, " %hhu", arg);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
         }
     }
 
     template<>
     void Append(const SPVEnum& arg)
     {
+        if (arg.c == 0xFFFF)
+            return;
         if (this->mode == Mode::Binary)
         {
             this->binaries[(uint32_t)this->section].push_back(arg.c);
         }
         else
         {
-            this->texts[(uint32_t)this->section].append(" ");
-            this->texts[(uint32_t)this->section].append(arg.str);
+            this->texts[(uint32_t)this->section].Append(" ");
+            this->texts[(uint32_t)this->section].Append(arg.str);
         }
     }
+
 
     template<>
     void Append(const SPVLiteralList& arg)
@@ -1073,6 +1363,17 @@ struct SPVWriter
         this->Append(SPVArg(arg.name));
     }
 
+
+    template<>
+    void Append(const SPVComment& arg)
+    {
+        if (this->mode == Mode::Text)
+        {
+            this->texts[(uint32_t)this->section].Append("\t\t\t; ");
+            this->texts[(uint32_t)this->section].Append(arg.str);
+        }
+    }
+
     template<>
     void Append(const std::vector<SPIRVResult>& args)
     {
@@ -1087,20 +1388,21 @@ struct SPVWriter
             this->Append(arg);
     }
 
-    std::string texts[(uint32_t)Section::NumSections];
+    GrowingString texts[(uint32_t)Section::NumSections];
     std::vector<uint32_t> binaries[(uint32_t)Section::NumSections];
 
     std::map<const char*, uint32_t> imports;
     std::set<SPVEnum> capabilities;
     std::set<SPVEnum> extensions;
+    std::set<std::string> decorations;
 };
 
 template<typename ...ARGS>
 uint32_t
 AddType(SPIRVGenerator* gen, const TransientString& name, const SPVOp& op, const ARGS&... args)
 {
-    auto scope = gen->scopeStack.rbegin();
-    while (scope != gen->scopeStack.rend())
+    auto scope = gen->writer->scopeStack.rbegin();
+    while (scope != gen->writer->scopeStack.rend())
     {
         auto it = scope->symbols.find(name.ToString());
         if (it != scope->symbols.end())
@@ -1112,11 +1414,9 @@ AddType(SPIRVGenerator* gen, const TransientString& name, const SPVOp& op, const
 
     // If symbol isn't found in scope, create it
     uint32_t ret = gen->writer->counter;
-    gen->scopeStack.front().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
+    gen->writer->scopeStack.front().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
     gen->writer->section = SPVWriter::Section::Declarations;
-    gen->writer->MappedInstruction(op, SPVWriter::Section::Declarations, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
+    gen->writer->MappedInstruction(op, SPVWriter::Section::Declarations, std::forward<const ARGS&>(args)..., SPVComment{ .str = name.buf });
     return ret;
 }
 
@@ -1124,13 +1424,13 @@ template<typename ...ARGS>
 uint32_t 
 AddSymbol(SPIRVGenerator* gen, const TransientString& name, SPVWriter::Section section, const SPVOp& op, uint32_t type, const ARGS&... args)
 {
-    assert(section == SPVWriter::Section::Declarations || section == SPVWriter::Section::LocalFunction || section == SPVWriter::Section::FunctionInit);
+    assert(section == SPVWriter::Section::Declarations || section == SPVWriter::Section::LocalFunction || section == SPVWriter::Section::Functions || section == SPVWriter::Section::VariableDeclarations);
     uint32_t ret = gen->writer->counter;
 
     if (section == SPVWriter::Section::Declarations)
     {
-        auto scope = gen->scopeStack.rbegin();
-        while (scope != gen->scopeStack.rend())
+        auto scope = gen->writer->scopeStack.rbegin();
+        while (scope != gen->writer->scopeStack.rend())
         {
             auto it = scope->symbols.find(name.ToString());
             if (it != scope->symbols.end())
@@ -1139,22 +1439,20 @@ AddSymbol(SPIRVGenerator* gen, const TransientString& name, SPVWriter::Section s
             }
             scope++;
         }
-        gen->scopeStack.front().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
+        gen->writer->scopeStack.front().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
     }
     else
     {
-        auto& scope = gen->scopeStack.back();
+        auto& scope = gen->writer->scopeStack.back();
         auto it = scope.symbols.find(name.ToString());
         if (it != scope.symbols.end())
         {
             return it->second.value;
         }
-        gen->scopeStack.back().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
+        gen->writer->scopeStack.back().symbols[name.ToString()] = { .sym = nullptr, .value = ret, .type = SPIRVResult::Invalid() };
     }
     gen->writer->section = section;
-    gen->writer->MappedInstruction(op, section, type, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
+    gen->writer->MappedInstruction(op, section, type, std::forward<const ARGS&>(args)..., SPVComment{ .str = name.buf });
     return ret;
 }
 
@@ -1165,8 +1463,6 @@ MappedInstruction(SPIRVGenerator* gen, SPVWriter::Section section, const SPVOp& 
     uint32_t ret = gen->writer->counter;
     gen->writer->section = section;
     gen->writer->MappedInstruction(op, section, type, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
     return ret;
 }
 
@@ -1177,56 +1473,48 @@ MappedInstruction(SPIRVGenerator* gen, SPVWriter::Section section, const SPVOp& 
     uint32_t ret = gen->writer->counter;
     gen->writer->section = section;
     gen->writer->MappedInstruction(op, section, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
     return ret;
 }
 
 template<typename ...ARGS>
-uint32_t 
+void
 Instruction(SPIRVGenerator* gen, SPVWriter::Section section, const SPVOp& op, uint32_t type, const ARGS&... args)
 {
     uint32_t ret = gen->writer->counter;
     gen->writer->section = section;
     gen->writer->Instruction(op, section, type, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
-    return ret;
 }
 
 template<typename ...ARGS>
-uint32_t 
+void 
 Instruction(SPIRVGenerator* gen, SPVWriter::Section section, const SPVOp& op, const ARGS&... args)
 {
     uint32_t ret = gen->writer->counter;
     gen->writer->section = section;
     gen->writer->Instruction(op, section, std::forward<const ARGS&>(args)...);
-
-    gen->writer->counter++;
-    return ret;
 }
 
 } // namespace GPULang
 
 template<>
-void GrowingString::FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg, char* buf, size_t size)
+void FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg, char* buf, size_t size)
 {
     buf[0] = '%';
-    _ultoa_s(arg.arg, buf + 1, size, 10);
+    snprintf(buf + 1, size, "%d", arg.arg);
 }
 
 template<>
-void TransientString::FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg)
+void FragmentString<GPULang::SPVEnum>(GPULang::SPVEnum arg, char* buf, size_t size)
 {
-    this->buf[this->size] = '%';
-    _ultoa(arg.arg, this->buf + this->size + 1, 10);
+    buf[0] = '%';
+    memcpy(buf + 1, arg.str, const_len(arg.str));
 }
 
 template<>
 void TransientString::Append<GPULang::SPVArg>(GPULang::SPVArg arg)
 {
     this->buf[this->size] = '%';
-    _ultoa(arg.arg, this->buf + this->size + 1, 10);
+    snprintf(this->buf + this->size + 1, this->capacity - this->size, "%d", arg.arg);
     this->size += NumChars(arg.arg) + 1;
 }
 
@@ -1245,6 +1533,12 @@ inline size_t FragmentSize<GPULang::SPVArg>(GPULang::SPVArg arg)
             10))))))))) + 1;
 }
 
+template<>
+inline size_t FragmentSize<GPULang::SPVEnum>(GPULang::SPVEnum arg)
+{
+    return const_len(arg.str);
+}
+
 GPULang::SPVArg operator""_spv(unsigned long long arg)
 {
     return GPULang::SPVArg{ (uint32_t)arg };
@@ -1255,8 +1549,10 @@ namespace GPULang
 SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
 SPIRVResult GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 bool GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
+SPIRVResult GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize = 1);
 
 using ImageFormatter = std::function<TransientString(uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format)>;
+using ImageTypeGenerator = std::function<uint32_t(SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format)>;
 
 static const std::unordered_map<TypeCode, std::tuple<ConstantString, ImageFormatter>> handleTable =
 {
@@ -1267,12 +1563,29 @@ static const std::unordered_map<TypeCode, std::tuple<ConstantString, ImageFormat
     , { TypeCode::TextureCube, { "textureCube", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "Cube", depthBits, 0, 0, sampledBits, format); } } }
     , { TypeCode::Texture1DArray, { "texture1DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "1D", depthBits, 1, 0, sampledBits, format); } } }
     , { TypeCode::Texture2DArray, { "texture2DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 1, 0, sampledBits, format); } } }
-    , { TypeCode::Texture2DMSArray, { "texture2DMSArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "1D", depthBits, 1, 1, sampledBits, format); } } }
+    , { TypeCode::Texture2DMSArray, { "texture2DMSArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "2D", depthBits, 1, 1, sampledBits, format); } } }
     , { TypeCode::Texture3DArray, { "texture3DArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "3D", depthBits, 1, 0, sampledBits, format); } } }
     , { TypeCode::TextureCubeArray, { "textureCubeArray", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "Cube", depthBits, 1, 0, sampledBits, format); } } }
-    , { TypeCode::PixelCache, { "pixelCache", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), SPACE, "SubpassData", 0, 0, 0, 2, "Unknown"); } } }
-    , { TypeCode::PixelCacheMS, { "pixelCacheMS", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), SPACE, "SubpassData", 0, 0, 1, 2, "Unknown"); } } }
+    , { TypeCode::PixelCache, { "pixelCache", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "SubpassData", 0, 0, 0, 2, "Unknown"); } } }
+    , { TypeCode::PixelCacheMS, { "pixelCacheMS", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr::Separated("OpTypeImage", SPVArg(type), "SubpassData", 0, 0, 1, 2, "Unknown"); } } }
     , { TypeCode::Sampler, { "sampler", [](uint32_t type, uint32_t depthBits, uint32_t sampledBits, const char* format) { return TStr("OpTypeSampler"); } } }
+};
+
+static const std::unordered_map<TypeCode, ImageTypeGenerator> generators =
+{
+    { TypeCode::Texture1D,          [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_1D, depthBits, 0, 0, sampledBits, format); } }
+    , { TypeCode::Texture2D,        [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_2D, depthBits, 0, 0, sampledBits, format); } }
+    , { TypeCode::Texture2DMS,      [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_2D, depthBits, 0, 1, sampledBits, format); } }
+    , { TypeCode::Texture3D,        [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_3D, depthBits, 0, 0, sampledBits, format); } }
+    , { TypeCode::TextureCube,      [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::Cube, depthBits, 0, 0, sampledBits, format); } }
+    , { TypeCode::Texture1DArray,   [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_1D, depthBits, 1, 0, sampledBits, format); } }
+    , { TypeCode::Texture2DArray,   [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_2D, depthBits, 1, 0, sampledBits, format); } }
+    , { TypeCode::Texture2DMSArray, [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_2D, depthBits, 1, 1, sampledBits, format); } }
+    , { TypeCode::Texture3DArray,   [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::_3D, depthBits, 1, 0, sampledBits, format); } }
+    , { TypeCode::TextureCubeArray, [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::Cube, depthBits, 1, 0, sampledBits, format); } }
+    , { TypeCode::PixelCache,       [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::SubpassData, 0, 0, 0, 2, ImageFormats::Unknown); } }
+    , { TypeCode::PixelCacheMS,     [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeImage, SPVArg{ type }, ImageDimensions::SubpassData, 0, 0, 1, 2, ImageFormats::Unknown); } }
+    , { TypeCode::Sampler,          [](SPIRVGenerator* gen, const TStr& name, uint32_t type, uint32_t depthBits, uint32_t sampledBits, SPVEnum format) { return AddType(gen, name, OpTypeSampler); } }
 };
 
 static const std::unordered_map<TypeCode, std::tuple<ConstantString, ConstantString, SPVOp, std::vector<uint32_t>>> scalarTable =
@@ -1287,58 +1600,59 @@ static const std::unordered_map<TypeCode, std::tuple<ConstantString, ConstantStr
     , { TypeCode::Void, { "void", "OpTypeVoid", OpTypeVoid, { } } }
 };
 
-std::unordered_map<ImageFormat, std::pair<ConstantString, ConstantString>> imageFormatToSpirvType =
+std::unordered_map<ImageFormat, std::tuple<ConstantString, ConstantString, SPVEnum, SPVEnum>> imageFormatToSpirvType =
 {
-    { ImageFormat::Rgba16, { "Rgba16", "" }}
-    , { ImageFormat::Rgb10_A2, { "Rgb10A2", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rgba8, { "Rgba8", "" } }
-    , { ImageFormat::Rg16, { "Rg16", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rg8, { "Rg8", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R16, { "R16", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R8, { "R8", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rgba16_Snorm, { "Rgba16Snorm", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rgba8_Snorm, { "Rgba8Snorm", "" } }
-    , { ImageFormat::Rg16_Snorm, { "Rg16Snorm", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rg8_Snorm, { "Rg8Snorm", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R16_Snorm, { "R16Snorm", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R8_Snorm, { "R8Snorm", "StorageImageExtendedFormats" } }
+    { ImageFormat::Rgba16,          { "Rgba16", "", ImageFormats::Rgba16, SPVEnum() }}
+    , { ImageFormat::Rgb10_A2,      { "Rgb10A2", "StorageImageExtendedFormats", ImageFormats::Rgb10A2, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba8,         { "Rgba8", "", ImageFormats::Rgba8, SPVEnum() } }
+    , { ImageFormat::Rg16,          { "Rg16", "StorageImageExtendedFormats", ImageFormats::Rg16, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg8,           { "Rg8", "StorageImageExtendedFormats", ImageFormats::Rg8, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R16,           { "R16", "StorageImageExtendedFormats", ImageFormats::R16, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R8,            { "R8", "StorageImageExtendedFormats", ImageFormats::R8, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba16_Snorm,  { "Rgba16Snorm", "StorageImageExtendedFormats", ImageFormats::Rgba16Snorm, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba8_Snorm,   { "Rgba8Snorm", "", ImageFormats::Rgba8Snorm, SPVEnum() } }
+    , { ImageFormat::Rg16_Snorm,    { "Rg16Snorm", "StorageImageExtendedFormats", ImageFormats::Rg16Snorm, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg8_Snorm,     { "Rg8Snorm", "StorageImageExtendedFormats", ImageFormats::Rg8Snorm, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R16_Snorm,     { "R16Snorm", "StorageImageExtendedFormats", ImageFormats::R16Snorm, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R8_Snorm,      { "R8Snorm", "StorageImageExtendedFormats", ImageFormats::R8Snorm, Capabilities::StorageImageExtendedFormats } }
 
     // float
-    , { ImageFormat::Rgba32F, { "Rgba32f", "" } }
-    , { ImageFormat::Rgba16F, { "Rgba16f", "" } }
-    , { ImageFormat::Rg32F, { "Rg32f", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rg16F, { "Rg16f", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R11G11B10F, { "R11fG11fB10f", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R32F, { "R32f", "" } }
-    , { ImageFormat::R16F, { "R16f", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rgba32F,       { "Rgba32f", "", ImageFormats::Rgba32f, SPVEnum() } }
+    , { ImageFormat::Rgba16F,       { "Rgba16f", "", ImageFormats::Rgba16f, SPVEnum() } }
+    , { ImageFormat::Rg32F,         { "Rg32f", "StorageImageExtendedFormats", ImageFormats::Rg32f, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg16F,         { "Rg16f", "StorageImageExtendedFormats", ImageFormats::Rg16f, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R11G11B10F,    { "R11fG11fB10f", "StorageImageExtendedFormats", ImageFormats::R11fG11fB10f, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R32F,          { "R32f", "", ImageFormats::R32f, SPVEnum() } }
+    , { ImageFormat::R16F,          { "R16f", "StorageImageExtendedFormats", ImageFormats::R16f, Capabilities::StorageImageExtendedFormats } }
 
     // integer
-    , { ImageFormat::Rgba32I, { "Rgba32i", "" } }
-    , { ImageFormat::Rgba16I, { "Rgba16i", "" } }
-    , { ImageFormat::Rgba8I, { "Rgba8i", ""  } }
-    , { ImageFormat::Rg32I, { "Rg32i", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rg16I, { "Rg16i", "StorageImageExtendedFormats" } }
-    , { ImageFormat::Rg8I, { "Rg8i", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R32I, { "R32i", "" } }
-    , { ImageFormat::R16I, { "R16i", "StorageImageExtendedFormats" } }
-    , { ImageFormat::R8I, { "R8i", "StorageImageExtendedFormats" } }
+    , { ImageFormat::Rgba32I,       { "Rgba32i", "", ImageFormats::Rgba32i, SPVEnum() } }
+    , { ImageFormat::Rgba16I,       { "Rgba16i", "", ImageFormats::Rgba16i, SPVEnum() } }
+    , { ImageFormat::Rgba8I,        { "Rgba8i", "", ImageFormats::Rgba8i, SPVEnum() } }
+    , { ImageFormat::Rg32I,         { "Rg32i", "StorageImageExtendedFormats", ImageFormats::Rg32i, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg16I,         { "Rg16i", "StorageImageExtendedFormats", ImageFormats::Rg16i, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg8I,          { "Rg8i", "StorageImageExtendedFormats", ImageFormats::Rg8i, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R32I,          { "R32i", "", ImageFormats::R32i, SPVEnum() } }
+    , { ImageFormat::R16I,          { "R16i", "StorageImageExtendedFormats", ImageFormats::R16i, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R8I,           { "R8i", "StorageImageExtendedFormats", ImageFormats::R8i, Capabilities::StorageImageExtendedFormats } }
 
     // unsigned integer
-    , { ImageFormat::Rgba32U, { "Rgba32ui", "" } } 
-    , { ImageFormat::Rgba16U, { "Rgba16ui", "" } } 
-    , { ImageFormat::Rgb10_A2U, { "Rga10a2ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::Rgba8U, { "Rgba8ui", "" } } 
-    , { ImageFormat::Rg32U, { "Rg32ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::Rg16U, { "Rg16ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::Rg8U, { "Rg8ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::R32U, { "R32ui", "" } } 
-    , { ImageFormat::R16U, { "R16ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::R8U, { "R8ui", "StorageImageExtendedFormats" } } 
-    , { ImageFormat::R64U, { "R64ui", "Int64ImageEXT" } } 
-    , { ImageFormat::R64I, { "R64i", "Int64ImageEXT" } } 
+    , { ImageFormat::Rgba32U,       { "Rgba32ui", "", ImageFormats::Rgba32ui, SPVEnum() } }
+    , { ImageFormat::Rgba16U,       { "Rgba16ui", "", ImageFormats::Rgba16ui, SPVEnum() } }
+    , { ImageFormat::Rgb10_A2U,     { "Rgb10a2ui", "StorageImageExtendedFormats", ImageFormats::Rgb10a2ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rgba8U,        { "Rgba8ui", "", ImageFormats::Rgba8ui, SPVEnum() } }
+    , { ImageFormat::Rg32U,         { "Rg32ui", "StorageImageExtendedFormats", ImageFormats::Rg32ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg16U,         { "Rg16ui", "StorageImageExtendedFormats", ImageFormats::Rg16ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::Rg8U,          { "Rg8ui", "StorageImageExtendedFormats", ImageFormats::Rg8ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R32U,          { "R32ui", "", ImageFormats::R32ui, SPVEnum() } }
+    , { ImageFormat::R16U,          { "R16ui", "StorageImageExtendedFormats", ImageFormats::R16ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R8U,           { "R8ui", "StorageImageExtendedFormats", ImageFormats::R8ui, Capabilities::StorageImageExtendedFormats } }
+    , { ImageFormat::R64U,          { "R64ui", "Int64ImageEXT", ImageFormats::R64ui, Capabilities::Int64ImageEXT } }
+    , { ImageFormat::R64I,          { "R64i", "Int64ImageEXT", ImageFormats::R64i, Capabilities::Int64ImageEXT } }
 
-    , { ImageFormat::Unknown, { "Unknown", "" } }
+    , { ImageFormat::Unknown,       { "Unknown", "", ImageFormats::Unknown, SPVEnum() } }
 };
+
 
 //------------------------------------------------------------------------------
 /**
@@ -1348,20 +1662,28 @@ GeneratePODTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeCo
 {
     auto it = scalarTable.find(code);
     assert(it != scalarTable.end());
-    uint32_t baseType = generator->AddSymbol(std::get<0>(it->second), std::get<1>(it->second), true);
+    auto [gpuLangType, spirvType, op, args] = it->second;
+    AddType(generator, gpuLangType, op, args);
+    uint32_t baseType = generator->AddSymbol(gpuLangType, spirvType, true);
     
     // Matrix
     if (rowSize > 1)
     {
         assert(vectorSize > 1);
-        baseType = generator->AddSymbol(TStr(std::get<0>(it->second), "x", rowSize), TStr::Separated("OpTypeVector", SPVArg(baseType), rowSize), true);
-        baseType = generator->AddSymbol(TStr(std::get<0>(it->second), "x", rowSize, "x", vectorSize), TStr::Separated("OpTypeMatrix", SPVArg(baseType), vectorSize), true);
+        uint32_t vecTypeArg = AddType(generator, TStr(gpuLangType, "x", rowSize), OpTypeVector, SPVArg{ baseType }, rowSize);
+        AddType(generator, TStr(gpuLangType, "x", rowSize, "x", vectorSize), OpTypeMatrix, SPVArg{ vecTypeArg }, vectorSize);
+
+        baseType = generator->AddSymbol(TStr(gpuLangType, "x", rowSize), TStr::Separated("OpTypeVector", SPVArg(baseType), rowSize), true);
+        baseType = generator->AddSymbol(TStr(gpuLangType, "x", rowSize, "x", vectorSize), TStr::Separated("OpTypeMatrix", SPVArg(baseType), vectorSize), true);
     }
     else
     {
         // Vector
         if (vectorSize > 1)
-            baseType = generator->AddSymbol(TStr(std::get<0>(it->second), "x", vectorSize), TStr::Separated("OpTypeVector", SPVArg(baseType), vectorSize), true);
+        {
+            AddType(generator, TStr(gpuLangType, "x", vectorSize), OpTypeVector, SPVArg{ baseType }, vectorSize);
+            baseType = generator->AddSymbol(TStr(gpuLangType, "x", vectorSize), TStr::Separated("OpTypeVector", SPVArg(baseType), vectorSize), true);
+        }
     }
     return baseType;   
 }
@@ -1376,7 +1698,7 @@ GenerateBaseTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeC
     assert(it != scalarTable.end());
     auto [str, spirvstr, op, args] = it->second;
     uint32_t newBaseType = AddType(generator, str, op, args);
-    uint32_t baseType = generator->AddSymbol(std::get<0>(it->second), std::get<1>(it->second), true);
+    uint32_t baseType = generator->AddSymbol(str, spirvstr, true);
     TStr type = std::get<0>(it->second);
     
     // Matrix
@@ -1386,7 +1708,7 @@ GenerateBaseTypeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, TypeC
         TStr vecType = TStr(type, "x", rowSize);
         TStr matType = TStr(vecType, "x", vectorSize);
         uint32_t vecTypeArg = AddType(generator, vecType, OpTypeVector, SPVArg{baseType}, rowSize);
-        AddType(generator, vecType, OpTypeMatrix, SPVArg{vecTypeArg}, vectorSize);
+        AddType(generator, matType, OpTypeMatrix, SPVArg{vecTypeArg}, vectorSize);
         baseType = generator->AddSymbol(vecType, TStr::Separated("OpTypeVector", SPVArg(baseType), rowSize), true);
         baseType = generator->AddSymbol(matType, TStr::Separated("OpTypeMatrix", SPVArg(baseType), vectorSize), true);
         type = matType;
@@ -1536,14 +1858,27 @@ GenerateTypeSPIRV(
             sampleBits = 1;
 
         if (typeSymbol->baseType == TypeCode::Texture1D || typeSymbol->baseType == TypeCode::Texture1DArray)
+        {
+            generator->writer->Capability(Capabilities::Sampled1D);
             generator->AddCapability("Sampled1D");
+        }
 
-        auto [spirvFormat, extension] = imageFormatToSpirvType[type.imageFormat];
-        if (extension.size > 0)
-            generator->AddCapability(extension);
-        TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
+        auto [spirvFormat, extension, format, cap] = imageFormatToSpirvType[type.imageFormat];
         TStr gpuLangStr = TStr::Compact(spirvFormat, "_", gpulangType, "Sample_", sampleBits, "Depth_", depthBits);
-        uint32_t name = generator->AddSymbol(gpuLangStr, ty, true);
+        if (extension.size > 0)
+        {
+            generator->writer->Capability(cap);
+            generator->AddCapability(extension);
+        }
+        auto handleGenerator = generators.find(typeSymbol->baseType);
+        uint32_t name = handleGenerator->second(generator, gpuLangStr, floatType, depthBits, sampleBits, format);
+        if (type.sampled)
+        {
+            AddType(generator, TStr("sampled_", gpuLangStr), OpTypeSampledImage, SPVArg{ name });
+        }
+
+        TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
+        name = generator->AddSymbol(gpuLangStr, ty, true);
         baseType = std::tie(name, gpulangType);
         if (type.sampled)
         {
@@ -1554,17 +1889,25 @@ GenerateTypeSPIRV(
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
+        generator->writer->Capability(Capabilities::InputAttachment);
         generator->AddCapability("InputAttachment");
         auto [floatType, floatBaseType] = GenerateBaseTypeSPIRV(compiler, generator, TypeCode::Float, 1);
 
+        auto handleGenerator = generators.find(typeSymbol->baseType);
+        handleGenerator->second(generator, typeSymbol->name, floatType, 0, 0, ImageFormats::Unknown);
+
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
+        
         TStr ty = spirvFormatter(floatType, 0, 0, nullptr);
         uint32_t name = generator->AddSymbol(gpulangType, ty, true);
         baseType = std::tie(name, gpulangType);
     }
     else if (typeSymbol->category == Type::SamplerCategory)
     {
+        auto handleGenerator = generators.find(typeSymbol->baseType);
+        handleGenerator->second(generator, typeSymbol->name, 0, 0, 0, ImageFormats::Unknown);
+
         auto handleTypeIt = handleTable.find(typeSymbol->baseType);
         auto [gpulangType, spirvFormatter] = handleTypeIt->second;
         uint32_t name = generator->AddSymbol(gpulangType, spirvFormatter(0, 0, 0, nullptr), true);
@@ -1583,6 +1926,7 @@ GenerateTypeSPIRV(
     bool isStructPadded = false;
 
     ConstantString scopeString = SPIRVResult::ScopeToString(storage);
+    SPVEnum scopeEnum = ScopeToEnum(storage);
     for (size_t i = 0; i < type.modifiers.size(); i++)
     {
         auto [typeName, gpulangType] = baseType; 
@@ -1590,6 +1934,8 @@ GenerateTypeSPIRV(
         if (mod == Type::FullType::Modifier::Pointer)
         {
             TStr newBase = TStr("ptr_", gpulangType, "_", scopeString);
+            AddType(generator, newBase, OpTypePointer, scopeEnum, SPVArg{ typeName });
+
             parentType.push_back(typeName);
             typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypePointer", scopeString, SPVArg(typeName)), true);
             baseType = std::tie(typeName, newBase);
@@ -1599,24 +1945,30 @@ GenerateTypeSPIRV(
             if (type.modifierValues[i] == nullptr)
             {
                 TStr newBase = TStr("[]_", gpulangType, scopeString);
+                AddType(generator, newBase, OpTypeRuntimeArray, SPVArg{ typeName });
                 parentType.push_back(typeName);
                 typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypeRuntimeArray", SPVArg(typeName)), true);
                 if (typeSymbol->category == Type::UserTypeCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
                     generator->AddDecoration(newBase, typeName, TStr::Separated("ArrayStride", strucRes->byteSize));
                 }
                 else
                 {
+                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
                     generator->AddDecoration(newBase, typeName, TStr::Separated("ArrayStride", typeSymbol->CalculateStride()));
                 }
                 newBase = TStr::Compact("struct_", newBase);
+                AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
                 typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypeStruct", SPVArg(typeName)), true);
                 baseType = std::tie(typeName, newBase);
+
                 generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
                 generator->AddMemberDecoration(typeName, 0, "Offset 0");
                 storage = SPIRVResult::Storage::StorageBuffer;
                 scopeString = SPIRVResult::ScopeToString(storage);
+                scopeEnum = ScopeToEnum(storage);
                 isStructPadded = true;
             }
             else
@@ -1628,16 +1980,20 @@ GenerateTypeSPIRV(
                 TStr newBase = TStr("[", size, "]_", gpulangType);
                 parentType.push_back(typeName);
                 uint32_t intType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
-                uint32_t arraySizeConstant = generator->AddSymbol(TStr::Compact(size, "i"), TStr::Separated("OpConstant", SPVArg(intType), size), true);
-                typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypeArray", SPVArg(typeName), SPVArg(arraySizeConstant)), true);
+
+                SPIRVResult arraySizeConstant = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(size));
+                AddType(generator, newBase, OpTypeArray, SPVArg{ typeName }, arraySizeConstant);
+                typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypeArray", SPVArg(typeName), SPVArg{ arraySizeConstant.name }), true);
                 baseType = std::tie(typeName, newBase);
                 if (typeSymbol->category == Type::UserTypeCategory)
                 {
                     Structure::__Resolved* strucRes = Symbol::Resolved(static_cast<Structure*>(typeSymbol));
+                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, strucRes->byteSize);
                     generator->AddDecoration(newBase, typeName, TStr::Separated("ArrayStride", strucRes->byteSize));
                 }
                 else
                 {
+                    generator->writer->Decorate(SPVArg(typeName), Decorations::ArrayStride, typeSymbol->CalculateStride());
                     generator->AddDecoration(newBase, typeName, TStr::Separated("ArrayStride", typeSymbol->CalculateStride()));
                 }
 
@@ -1645,8 +2001,10 @@ GenerateTypeSPIRV(
                 if (isInterface)
                 {
                     newBase = TStr("struct_", newBase);
+                    AddType(generator, newBase, OpTypeStruct, SPVArg{ typeName });
                     typeName = generator->AddSymbol(newBase, TStr::Separated("OpTypeStruct", SPVArg(typeName)), true);
                     baseType = std::tie(typeName, newBase);
+
                     generator->writer->MemberDecorate(SPVArg(typeName), 0, Decorations::Offset, 0);
                     generator->AddMemberDecoration(typeName, 0, "Offset 0");
                     isStructPadded = true;
@@ -1659,84 +2017,6 @@ GenerateTypeSPIRV(
     ret.isStructPadded = isStructPadded;
     return ret;
 }
-
-struct ConstantCreationInfo
-{
-    enum class Type
-    {
-        Float,
-        Float16,
-        Int,
-        Int16,
-        UInt,
-        UInt16,
-        Bool
-    } type;
-    union
-    {
-        float f;
-        int32_t i;
-        uint32_t ui;
-        bool b;
-    } data;
-    bool linkDefined = false;
-
-    static ConstantCreationInfo Float(float val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::Float;
-        ret.data.f = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo Float16(float val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::Float16;
-        ret.data.f = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo UInt(uint32_t val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::UInt;
-        ret.data.ui = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo UInt16(uint16_t val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::UInt16;
-        ret.data.ui = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo Int(int32_t val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::Int;
-        ret.data.i = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo Int16(int16_t val)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::Int16;
-        ret.data.i = val;
-        return ret;
-    }
-
-    static ConstantCreationInfo Bool(bool b)
-    {
-        ConstantCreationInfo ret;
-        ret.type = Type::Bool;
-        ret.data.b = b;
-        return ret;
-    }
-};
 
 //------------------------------------------------------------------------------
 /**
@@ -1777,7 +2057,7 @@ SwizzleMaskIndices(const Type::SwizzleMask mask, uint32_t* indices, uint8_t& num
 /**
 */
 SPIRVResult
-GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize = 1)
+GenerateConstantSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConstantCreationInfo info, uint32_t vectorSize)
 {
     SPIRVResult res = SPIRVResult::Invalid();
     uint32_t baseType;
@@ -1877,17 +2157,25 @@ else\
     }
     if (vectorSize > 1)
     {
+        StackArray<SPVArg> vectorArgs(vectorSize);
         TStr name;
         for (int i = 0; i < vectorSize; i++)
         {
+            vectorArgs.Append(SPVArg{ res.name });
             name.Append(SPVArg(res.name));
             if (i < vectorSize - 1)
                 name.Append(" ");
         }
         if (generator->linkDefineEvaluation)
+        {
+            AddSymbol(generator, TStr("{", name, "}_link_defined"), SPVWriter::Section::Declarations, OpSpecConstantComposite, vecType, SPVArgList{ vectorArgs });
             res.name = generator->AddSymbol(TStr::Compact("{", name, "}"), TStr::Separated("OpSpecConstantComposite", SPVArg(vecType), name), true);
+        }
         else
+        {
+            AddSymbol(generator, TStr("{", name, "}"), SPVWriter::Section::Declarations, OpConstantComposite, vecType, SPVArgList{ vectorArgs });
             res.name = generator->AddSymbol(TStr::Compact("{", name, "}"), TStr::Separated("OpConstantComposite", SPVArg(vecType), name), true);
+        }
     }
     res.isValue = true;
     res.isConst = true;
@@ -2186,6 +2474,7 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(const Compiler*, S
 
             // First, test if integer is either 0 or 1 by comparing it to 
             SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0), vectorSize);
+            g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, type, value, falseValue);
             uint32_t res = g->AddMappedOp(Format("OpINotEqual %%%d %%%d %%%d", type, value.name, falseValue.name));
             return SPIRVResult(res, type, true);
         }
@@ -2290,12 +2579,11 @@ GenerateCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
     TStr argList;
     bool isConst = true;
     bool isSpecialization = false;
-    SPIRVResult* loadedArgs = AllocStack<SPIRVResult>(args.size());
-    uint8_t argCounter = 0;
+    StackArray<SPIRVResult> loadedArgs(args.size());
     for (const SPIRVResult& arg : args)
     {
         SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
-        loadedArgs[argCounter++] = loaded;
+        loadedArgs.Append(loaded);
         argList.Concatenate<false>(SPVArg(loaded.name), " ");
         if (!loaded.isConst)
             isConst = false;
@@ -2303,17 +2591,21 @@ GenerateCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
     }
     if (isConst)
     {
-        DeallocStack(args.size(), loadedArgs);
         if (isSpecialization)
-            return SPIRVResult(generator->AddSymbol(TStr::Compact(SPVArg(returnType), "_", "composite", "_", argList), TStr::Separated("OpSpecConstantComposite", SPVArg(returnType), argList), true), returnType, true, true);
+        {
+            AddSymbol(generator, TStr::Compact(SPVArg(returnType), "_", "composite_link_defined", "_", argList), SPVWriter::Section::Declarations, OpSpecConstantComposite, returnType, SPVResultList(loadedArgs));
+            return SPIRVResult(generator->AddSymbol(TStr::Compact(SPVArg(returnType), "_", "composite_link_defined", "_", argList), TStr::Separated("OpSpecConstantComposite", SPVArg(returnType), argList), true), returnType, true, true);
+        }
         else
+        {
+            AddSymbol(generator, TStr::Compact(SPVArg(returnType), "_", "composite", "_", argList), SPVWriter::Section::Declarations, OpConstantComposite, returnType, SPVResultList(loadedArgs));
             return SPIRVResult(generator->AddSymbol(TStr::Compact(SPVArg(returnType), "_", "composite", "_", argList), TStr::Separated("OpConstantComposite", SPVArg(returnType), argList), true), returnType, true, true);
+        }
     }
     else
     {
         assert(!generator->linkDefineEvaluation);
-        generator->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVResultList{ .vals = loadedArgs, .num = argCounter });
-        DeallocStack(args.size(), loadedArgs);
+        generator->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVResultList(loadedArgs));
         return SPIRVResult(generator->AddMappedOp(TStr::Separated("OpCompositeConstruct", SPVArg(returnType), argList)), returnType, true);
     }
 }
@@ -2898,15 +3190,17 @@ SPIRVGenerator::SetupIntrinsics()
             // We will have to extract each vector from the matrix to do the operation, so we need the vector type
             uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, size);
             TStr opStr = TStr::Compact("Op", ty, op);
+
+            
             TStr intermediateResults;
-            SPVArg* intermediateArgs = AllocStack<SPVArg>(size);
+            StackArray<SPVArg> intermediateArgs(size);
             for (uint32_t i = 0; i < size; i++)
             {
                 // Proceed to extract from the composites
                 uint32_t newLhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, lhs, i);
                 uint32_t newRhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, rhs, i);
                 uint32_t newRes = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, vectorType, SPVArg(newLhsVec), SPVArg(newRhsVec));
-                intermediateArgs[i] = SPVArg(newRes);
+                intermediateArgs.Append(SPVArg(newRes));
 
                 uint32_t lhsVec = g->AddMappedOp(TStr::Separated("OpCompositeExtract", SPVArg(vectorType), SPVArg(lhs.name), i));
                 uint32_t rhsVec = g->AddMappedOp(TStr::Separated("OpCompositeExtract", SPVArg(vectorType), SPVArg(rhs.name), i));
@@ -2917,10 +3211,8 @@ SPIRVGenerator::SetupIntrinsics()
             }
 
             // Finally compose back to a matrix
-            g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList{ .vals = intermediateArgs, .num = (uint8_t)size });
+            g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList(intermediateArgs));
             uint32_t ret = g->AddMappedOp(TStr::Separated("OpCompositeConstruct", SPVArg(returnType), intermediateResults));
-
-            DeallocStack(size, intermediateArgs);
             /*
             if (assign)
             {
@@ -3097,7 +3389,7 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 2);
             SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);
-            g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
+            g->writer->MappedInstruction(OpVectorTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);
             return SPIRVResult(g->AddMappedOp(TStr::Separated("OpVectorTimesScalar", SPVArg(returnType), SPVArg(lhs.name), SPVArg(rhs.name))), returnType, true);
         };
     }
@@ -3443,9 +3735,8 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult exp = LoadValueSPIRV(c, g, args[1]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), en, base, exp);
-            uint32_t ret = g->AddMappedOp(TStr::Separated("OpExtInst", SPVArg(returnType), SPVArg(ext), op, SPVArg(base.name), SPVArg(exp.name)));
+            uint32_t ret = g->AddMappedOp(TStr::Separated("OpExtInst", SPVArg(returnType), SPVArg(g->ImportExtension("GLSL.std.450")), op, SPVArg(base.name), SPVArg(exp.name)));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3483,10 +3774,9 @@ SPIRVGenerator::SetupIntrinsics()
 
             auto [fn, op, en] = fun;
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), en, arg);
 
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %s %%%d", returnType, ext, op, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %s %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3503,9 +3793,8 @@ SPIRVGenerator::SetupIntrinsics()
             auto [fn, op, en] = fun;
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg2 = LoadValueSPIRV(c, g, args[1]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), en, arg1, arg2);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %s %%%d %%%d", returnType, ext, op, arg1.name, arg2.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %s %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg1.name, arg2.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3521,9 +3810,8 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult arg2 = LoadValueSPIRV(c, g, args[2]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fma, arg0, arg1, arg2);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Fma %%%d %%%d %%%d", returnType, ext, arg0.name, arg1.name, arg2.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Fma %%%d %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name, arg2.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3552,11 +3840,10 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Reflect, arg0, arg1);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Reflect %%%d %%%d", returnType, ext, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Reflect %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3569,12 +3856,11 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult arg2 = LoadValueSPIRV(c, g, args[2]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Refract, arg0, arg1, arg2);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Refract %%%d %%%d %%%d", returnType, ext, arg0.name, arg1.name, arg2.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Refract %%%d %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name, arg2.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3587,11 +3873,10 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 2);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Cross, arg0, arg1);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Cross %%%d %%%d", returnType, ext, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Cross %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3605,9 +3890,8 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 1);
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Normalize, arg);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Normalize %%%d", returnType, ext, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Normalize %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3621,9 +3905,8 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [op = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             assert(args.size() == 1);
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Length, arg);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Length %%%d", returnType, ext, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Length %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3638,9 +3921,8 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 1);
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Distance, arg0, arg1);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Distance %%%d %%%d", returnType, ext, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Distance %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3657,8 +3939,7 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), inst, arg0, arg1);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cMin %%%d %%%d", returnType, ext, op, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cMin %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3675,8 +3956,7 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), inst, arg0, arg1);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cMax %%%d %%%d", returnType, ext, op, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cMax %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3695,8 +3975,7 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg2 = LoadValueSPIRV(c, g, args[2]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), inst, arg0, arg1, arg2);
 
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cClamp %%%d %%%d %%%d", returnType, ext, op, arg0.name, arg1.name, arg2.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cClamp %%%d %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg0.name, arg1.name, arg2.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3712,9 +3991,8 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult arg2 = LoadValueSPIRV(c, g, args[2]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FMix, arg0, arg1, arg2);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d FMix %%%d %%%d %%%d", returnType, ext, arg0.name, arg1.name, arg2.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d FMix %%%d %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name, arg2.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3729,9 +4007,8 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 2);
             SPIRVResult arg0 = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult arg1 = LoadValueSPIRV(c, g, args[1]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Step, arg0, arg1);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Step %%%d %%%d", returnType, ext, arg0.name, arg1.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Step %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg0.name, arg1.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3764,7 +4041,6 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args.size() == 1);
 
             auto [fn, op, size] = fun;
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             uint32_t ftype = GeneratePODTypeSPIRV(c, g, TypeCode::Float);
             SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
             SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
@@ -3779,7 +4055,7 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, arg, min, max);
             
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d FClamp %%%d %%%d %%%d", returnType, ext, op, arg.name, min, max));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d FClamp %%%d %%%d %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg.name, min.name, max.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3797,8 +4073,7 @@ SPIRVGenerator::SetupIntrinsics()
             auto [fn, op, inst] = fun;
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), inst, arg);
 
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cAbs %%%d", returnType, ext, op, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d %cAbs %%%d", returnType, g->ImportExtension("GLSL.std.450"), op, arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3816,8 +4091,7 @@ SPIRVGenerator::SetupIntrinsics()
             auto [fn, op, inst] = fun;
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), inst, arg);
 
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Sign %%%d", returnType, ext, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d Sign %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3944,9 +4218,8 @@ SPIRVGenerator::SetupIntrinsics()
         {
             assert(args.size() == 1);
             SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);
-            uint32_t ext = g->ImportExtension("GLSL.std.450");
             g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, arg);
-            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d MatrixInverse %%%d", returnType, ext, arg.name));
+            uint32_t ret = g->AddMappedOp(Format("OpExtInst %%%d %%%d MatrixInverse %%%d", returnType, g->ImportExtension("GLSL.std.450"), arg.name));
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -3982,7 +4255,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = g->AddSymbol("gplOutputLayer", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputLayer", ret, "BuiltIn Layer");
-        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, ret, args[0]);
+        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
         return SPIRVResult::Invalid();
     };
@@ -4020,7 +4293,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = g->AddSymbol("gplOutputViewport", Format("OpVariable %%%d Output", typePtr), true);
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplOutputViewport", ret, "BuiltIn ViewportIndex");
-        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, ret, args[0]);
+        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         g->AddOp(Format("OpStore %%%d %%%d", ret, args[0].name));
         return SPIRVResult::Invalid();
     };
@@ -4040,7 +4313,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->interfaceVariables.insert(ret);
         g->AddDecoration("gplVertexCoordinates", ret, "BuiltIn Position");
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, ret, loaded);
+        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
         g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplExportVertexCoordinates");
         return SPIRVResult::Invalid();
     };
@@ -4139,7 +4412,7 @@ SPIRVGenerator::SetupIntrinsics()
         g->AddDecoration("gplSetPixelDepth", ret, "BuiltIn FragDepth");
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         
-        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, ret, loaded);
+        g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
         g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, "gplSetPixelDepth");
         return SPIRVResult::Invalid();
     };
@@ -4170,7 +4443,7 @@ SPIRVGenerator::SetupIntrinsics()
             g->AddDecoration(Format("gplExportColorLocation%d", args[1].literalValue.i), ret, Format("Location %d", args[1].literalValue.i));
             
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
-            g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, ret, loaded);
+            g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
             g->AddOp(Format("OpStore %%%d %%%d", ret, loaded.name), false, Format("gplExportColor%d", args[1].literalValue.i));
             return SPIRVResult::Invalid();
         };
@@ -4856,7 +5129,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult insert = LoadValueSPIRV(c, g, args[1]);
         SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
         SPIRVResult count = LoadValueSPIRV(c, g, args[3]);
-        g->writer->MappedInstruction(OpBitfieldInsert, SPVWriter::Section::LocalFunction, returnType, base, insert, offset, count);
+        g->writer->MappedInstruction(OpBitFieldInsert, SPVWriter::Section::LocalFunction, returnType, base, insert, offset, count);
 
         uint32_t res = g->AddMappedOp(Format("OpBitFieldInsert %%%d %%%d %%%d %%%d %%%d", returnType, base.name, insert.name, offset.name, count.name));
         return SPIRVResult(res, returnType, true);
@@ -4864,8 +5137,8 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*, char, SPVOp>> bitExtractFunctions =
     {
-        { Intrinsics::BitSExtract, 'S', OpBitfieldSExtract }
-        , { Intrinsics::BitUExtract, 'U', OpBitfieldUExtract }
+        { Intrinsics::BitSExtract, 'S', OpBitFieldSExtract }
+        , { Intrinsics::BitUExtract, 'U', OpBitFieldUExtract }
     };
     for (auto fun : bitExtractFunctions)
     {
@@ -5256,172 +5529,181 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [operands = std::get<1>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             uint32_t ret = 0xFFFFFFFF;
             SPIRVResult sampledImage = createSampledImage(c, g, args[0], args[1]);
-            SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+            SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[2]);
+
+            std::vector<uint32_t> newArgs = { returnType, sampledImage.name, loadedCoord.name };
+
+            std::vector<SPIRVResult> extraArgs;
+            for (size_t i = 3; i < args.size(); i++)
+            {
+                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
+                extraArgs.push_back(loaded);
+            }
 
             if (operands == None)
             {
-                g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord);
+                g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::None);
             }
             else if (operands == Lod)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodComp)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodCompOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == LodOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
 
             }
             else if (operands == LodProj)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodProjComp)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodProjCompOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == LodProjOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Bias)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasComp)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasOffset)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == BiasProj)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasProjComp)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasProjOffset)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Comp)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::None);
             }
             else if (operands == CompOffset)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Grad)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradComp)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == GradProj)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradProjComp)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradProjCompOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[5]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[3]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == GradProjOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Proj)
             {
-                g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord);
+                g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::None);
             }
             else if (operands == ProjComp)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp, ImageOperands::None);
             }
             else if (operands == ProjCompOffset)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == ProjOffset)
             {
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Offset, loadedOffset);
             }
             
@@ -5497,19 +5779,15 @@ SPIRVGenerator::SetupIntrinsics()
                         else
                             format = "OpImageSampleImplicitLod %%%d %%%d %%%d None";
 
-            std::vector<uint32_t> newArgs = { returnType, sampledImage.name };
-            
             for (auto arg : newArgs)
             {
                 size_t offset = format.find("%%d");
                 format.replace(offset, 3, Format("%d", arg));
             }
-            for (size_t i = 2; i < args.size(); i++)
+            for (size_t i = 0; i < extraArgs.size(); i++)
             {
-                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
-                newArgs.push_back(loaded.name);
                 size_t offset = format.find("%%d");
-                format.replace(offset, 3, Format("%d", loaded.name));
+                format.replace(offset, 3, Format("%d", extraArgs[i].name));
             }
 
             ret = g->AddMappedOp(format);
@@ -5593,170 +5871,180 @@ SPIRVGenerator::SetupIntrinsics()
             assert(args[0].parentTypes.size() > 0);
             SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
             SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
+
+            std::vector<uint32_t> newArgs = { returnType, sampledImage.name, loadedCoord.name };
+
+            std::vector<SPIRVResult> extraArgs;
+            for (size_t i = 2; i < args.size(); i++)
+            {
+                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
+                extraArgs.push_back(loaded);
+            }
+
             if (operands == None)
             {
-                g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord);
+                g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::None);
             }
             else if (operands == Lod)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodComp)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodCompOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == LodOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
 
             }
             else if (operands == LodProj)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodProjComp)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod);
             }
             else if (operands == LodProjCompOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == LodProjOffset)
             {
-                SPIRVResult loadedLod = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedLod = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Lod, loadedLod, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Bias)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasComp)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasOffset)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == BiasProj)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasProjComp)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Bias, loadedBias);
             }
             else if (operands == BiasProjOffset)
             {
-                SPIRVResult loadedBias = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedBias = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Bias, loadedBias, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Comp)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::None);
             }
             else if (operands == CompOffset)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Grad)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradComp)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == GradProj)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradProjComp)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY);
             }
             else if (operands == GradProjCompOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[4]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[5]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[2]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[3]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, loadedComp, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == GradProjOffset)
             {
-                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, args[3]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[4]);
+                SPIRVResult loadedGradX = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedGradY = LoadValueSPIRV(c, g, extraArgs[1]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[2]);
                 g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Grad, loadedGradX, loadedGradY, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == Proj)
             {
-                g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord);
+                g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::None);
             }
             else if (operands == ProjComp)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp, ImageOperands::None);
             }
             else if (operands == ProjCompOffset)
             {
-                SPIRVResult loadedComp = LoadValueSPIRV(c, g, args[2]);
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[3]);
+                SPIRVResult loadedComp = LoadValueSPIRV(c, g, extraArgs[0]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[1]);
                 g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedComp, ImageOperands::Offset, loadedOffset);
             }
             else if (operands == ProjOffset)
             {
-                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, args[2]);
+                SPIRVResult loadedOffset = LoadValueSPIRV(c, g, extraArgs[0]);
                 g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, loadedCoord, ImageOperands::Offset, loadedOffset);
             }
 
@@ -5832,19 +6120,15 @@ SPIRVGenerator::SetupIntrinsics()
                         else
                             format = "OpImageSampleImplicitLod %%%d %%%d %%%d None";
 
-            std::vector<uint32_t> newArgs = { returnType, sampledImage.name };
-
             for (auto arg : newArgs)
             {
                 size_t offset = format.find("%%d");
                 format.replace(offset, 3, Format("%d", arg));
             }
-            for (size_t i = 1; i < args.size(); i++)
+            for (size_t i = 0; i < extraArgs.size(); i++)
             {
-                SPIRVResult loaded = LoadValueSPIRV(c, g, args[i]);
-                newArgs.push_back(loaded.name);
                 size_t offset = format.find("%%d");
-                format.replace(offset, 3, Format("%d", loaded.name));
+                format.replace(offset, 3, Format("%d", extraArgs[i].name));
             }
 
             ret = g->AddMappedOp(format);
@@ -6235,9 +6519,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     TStr typeArgs;
     TStr spvTypes;
 
-    uint8_t spvTypeArgIt = 0;
-    SPVArg* spvTypeArgs = AllocStack<SPVArg>(func->parameters.size());
-
+    StackArray<SPVArg> spvTypeArgs(func->parameters.size());
     for (auto param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -6256,21 +6538,21 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
             spvTypes.Append(SPVArg(typeName.typeName));
             spvTypes.Append(" ");
-            spvTypeArgs[spvTypeArgIt++] = SPVArg(typeName.typeName);
+            spvTypeArgs.Append(SPVArg(typeName.typeName));
         }
     }
     
     TStr functionSymbolName = TStr::Compact("function_", typeArgs, "_", func->returnType.ToString());
-    AddSymbol(generator, functionSymbolName, SPVWriter::Section::Declarations, OpTypeFunction, returnName.typeName, SPVArgList{.vals = spvTypeArgs, .num = spvTypeArgIt});
-    DeallocStack(spvTypeArgIt, spvTypeArgs);
+    AddSymbol(generator, functionSymbolName, SPVWriter::Section::Declarations, OpTypeFunction, returnName.typeName, SPVArgList(spvTypeArgs));
     
     uint32_t functionType = generator->AddSymbol(functionSymbolName, TStr::Separated("OpTypeFunction", SPVArg{returnName.typeName}, spvTypes), returnName, true);
 
     // TODO: Add inline/const/functional
-    AddSymbol(generator, funcResolved->name, SPVWriter::Section::LocalFunction, OpFunction, returnName.typeName, FunctionControl::None, SPVArg{functionType});
+    AddSymbol(generator, funcResolved->name, SPVWriter::Section::Functions, OpFunction, returnName.typeName, FunctionControl::None, SPVArg{functionType});
     generator->AddSymbol(funcResolved->name, Format("OpFunction %%%d None %%%d", returnName.typeName, functionType));
 
     generator->PushScope();
+    generator->writer->PushScope();
     if (!funcResolved->isEntryPoint)
     {
         for (auto& param : func->parameters)
@@ -6282,7 +6564,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             // If value is not a pointer, generate a copy of the value inside the function
             if (!paramResolved->type.IsPointer())
             {
-                MappedInstruction(generator, SPVWriter::Section::FunctionInit, OpFunctionParameter, varType.typeName);
+                MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{param->name.c_str()});
                 uint32_t paramName = generator->AddMappedOp(TStr::Separated("OpFunctionParameter", SPVArg(varType.typeName)), param->name);
                 std::string type = paramResolved->type.ToString();
                 ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
@@ -6295,19 +6577,20 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
                 varType.parentTypes.push_back(varType.typeName);
                 varType.typeName = typePtrName;
                 varType.isValue = false;
-                AddSymbol(generator, param->name, SPVWriter::Section::FunctionInit, OpVariable, typePtrName, SPVArg{paramName}, VariableStorage::Function);
+                uint32_t paramSymbol = AddSymbol(generator, param->name, SPVWriter::Section::VariableDeclarations, OpVariable, typePtrName, VariableStorage::Function);
+                generator->writer->Instruction(OpStore, SPVWriter::Section::ParameterInitializations, SPVArg{ paramSymbol }, SPVArg{ paramName });
                 generator->AddVariableDeclaration(param, param->name, typePtrName, 0xFFFFFFFF, paramName, SPIRVResult::Storage::Function, varType, false);
             }
             else
             {
                 // If value is already a pointer, then any stores to it in the function should be visible externally
-                AddSymbol(generator, param->name, SPVWriter::Section::FunctionInit, OpFunctionParameter, varType.typeName);
+                AddSymbol(generator, param->name, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName);
                 generator->AddSymbol(param->name, TStr::Separated("OpFunctionParameter", SPVArg(varType.typeName)), varType);
             }
         }
     }
 
-    generator->writer->MappedInstruction(OpLabel, SPVWriter::Section::LocalFunction);
+    generator->writer->MappedInstruction(OpLabel, SPVWriter::Section::Functions);
     uint32_t label = generator->AddMappedOp("OpLabel");
     generator->blockOpen = true;
     generator->functions.Append(generator->functional);
@@ -6318,6 +6601,8 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         GenerateStatementSPIRV(compiler, generator, functionOverride->second->ast);
     else
         GenerateStatementSPIRV(compiler, generator, func->ast);
+
+    generator->writer->BeginFunction();
     generator->functions.Append(generator->variableDeclarations);
     generator->variableDeclarations.Clear();
     generator->functions.Append(generator->parameterInitializations);
@@ -6344,6 +6629,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     generator->functional.Clear();
 
     generator->PopScope();
+    generator->writer->PopScope();
 }
 
 //------------------------------------------------------------------------------
@@ -6362,9 +6648,10 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             numVariables++;
     }
     uint32_t name = 0xFFFFFFFF;
-    uint32_t* varNames = (uint32_t*)alloca(sizeof(uint32_t) * numVariables);
+    generator->writer->Reserve();
     uint32_t structName = generator->ReserveName();
 
+    StackArray<SPVArg> memberTypeArray(struc->symbols.size());
     uint32_t offset = 0;
     std::string memberTypes = "";
     for (size_t i = 0; i < struc->symbols.size(); i++)
@@ -6385,7 +6672,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
                 varType = GenerateTypeSPIRV(compiler, generator, varResolved->type, varResolved->typeSymbol);
             }
             memberTypes.append(Format("%%%d ", varType.typeName));
-
+            memberTypeArray.Append(SPVArg{ varType.typeName });
 
             // If this struct is generated for binding 
             generator->writer->MemberDecorate(SPVArg{ structName }, i, Decorations::Offset, varResolved->structureOffset);
@@ -6421,6 +6708,8 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
             return LoadValueSPIRV(c, g, args[0]);
         };
     }
+    
+    generator->writer->Reserved(OpTypeStruct, SPVWriter::Section::Declarations, structName, SPVArgList(memberTypeArray), SPVComment{ .str = struc->name.c_str() });
     generator->AddReservedSymbol(struc->name, structName, Format("OpTypeStruct %s", memberTypes.c_str()), true);
     return structName;
 }
@@ -6463,6 +6752,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
     else
     {
         // Generate immutable sampler
+        AddSymbol(generator, symbol->name, SPVWriter::Section::Declarations, OpVariable, samplerType.typeName, ScopeToEnum(samplerType.scope));
         uint32_t name = generator->AddVariableDeclaration(symbol, symbol->name, samplerType.typeName, 0xFFFFFFFF, 0xFFFFFFFF, samplerType.scope, samplerType, true);
         generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, samplerResolved->group);
         generator->writer->Decorate(SPVArg(name), Decorations::Binding, samplerResolved->binding);
@@ -6506,6 +6796,7 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
             {
                 generator->generatorIntrinsics[fun] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
                 {
+                    g->writer->MappedInstruction(OpIEqual, SPVWriter::Section::LocalFunction, returnType, args[0], args[1]);
                     return SPIRVResult(g->AddMappedOp(Format("OpIEqual %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true, true);
                 };
             }
@@ -6513,6 +6804,7 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
             {
                 generator->generatorIntrinsics[fun] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
                 {
+                    g->writer->MappedInstruction(OpINotEqual, SPVWriter::Section::LocalFunction, returnType, args[0], args[1]);
                     return SPIRVResult(g->AddMappedOp(Format("OpINotEqual %%%d %%%d %%%d", returnType, args[0].name, args[1].name)), returnType, true, true);
                 };
             }
@@ -6583,15 +6875,22 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
         if (!varResolved->type.IsPointer())
         {
             TStr ptrType = TStr("ptr_", varResolved->type.ToString());
+            AddType(generator, TStr::Compact(ptrType, "_", scope), OpTypePointer, ScopeToEnum(typeName.scope), SPVArg{ typeName.typeName });
             typePtrName = generator->AddSymbol(std::move(TStr::Compact(ptrType, "_", scope)), std::move(TStr::Separated("OpTypePointer", scope, SPVArg(typeName.typeName))), typeName, true);
             typeName.parentTypes.push_back(typeName.typeName);
             typeName.typeName = typePtrName;
         }
         
         if (initializer != SPIRVResult::Invalid() && initializer.isConst)
+        {
+            AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typePtrName, ScopeToEnum(typeName.scope), SPVArg{ initializer.name });
             name = generator->AddVariableDeclaration(symbol, varResolved->name, typeName.typeName, initializer.name, 0xFFFFFFFF, typeName.scope, typeName, isGlobal);
+        }
         else
+        {
+            AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typePtrName, ScopeToEnum(typeName.scope));
             name = generator->AddVariableDeclaration(symbol, varResolved->name, typeName.typeName, 0xFFFFFFFF, 0xFFFFFFFF, typeName.scope, typeName, isGlobal);
+        }
 
         if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
         {
@@ -6699,8 +6998,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         // Create arg list from argument expressions
         std::string argList = "";
 
-        uint8_t argListIt = 0;
-        SPVArg* argListArray = AllocStack<SPVArg>(callExpression->args.size());
+        StackArray<SPVArg> argListArray(callExpression->args.size());
         for (size_t i = 0; i < callExpression->args.size(); i++)
         {
             // If the function calls for a literal argument, the generator needs to extract the value as a literal result
@@ -6732,12 +7030,12 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
                 }
             }
 
-            argListArray[argListIt++] = SPVArg(arg.name);
+            argListArray.Append(SPVArg(arg.name));
             argList.append(Format("%%%d ", arg.name));
         }
 
         // Then call the function
-        generator->writer->MappedInstruction(OpFunctionCall, SPVWriter::Section::LocalFunction, returnTypeName.typeName, SPVArg(funName), SPVArgList{ .vals = argListArray, .num = argListIt });
+        generator->writer->MappedInstruction(OpFunctionCall, SPVWriter::Section::LocalFunction, returnTypeName.typeName, SPVArg(funName), SPVArgList(argListArray));
         return SPIRVResult(generator->AddMappedOp(Format("OpFunctionCall %%%d %%%d %s", returnTypeName.typeName, funName, argList.c_str()), resolvedFunction->name), returnTypeName.typeName, true);
     }
     else
@@ -6925,8 +7223,8 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     bool isConst = true;
     bool isLinkDefined = false;
 
-    uint8_t argListIt = 0;
-    SPVArg* argList = AllocStack<SPVArg>(initExpression->values.size());
+    StackArray<SPVArg> argList(initExpression->values.size());
+
     std::string initializer = "";
     for (Expression* expr : initExpression->values)
     {
@@ -6938,29 +7236,28 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
         values.push_back(value);
         isConst &= value.isConst;
         isLinkDefined |= value.isSpecialization;
-        argList[argListIt++] = SPVArg(value.name);
+        argList.Append(SPVArg(value.name));
     }
     
     if (isConst)
     {
         if (isLinkDefined)
         {
-            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpSpecConstantComposite, strucType, SPVArgList{.vals = argList, .num = argListIt});
+            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpSpecConstantComposite, strucType, SPVArgList(argList));
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", strucType, initializer.c_str()), true);
         }
         else
         {
-            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpConstantComposite, strucType, SPVArgList{.vals = argList, .num = argListIt});
+            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpConstantComposite, strucType, SPVArgList(argList));
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", strucType, initializer.c_str()), true);
         }
     }
     else
     {
         assert(!generator->linkDefineEvaluation);
-        AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::LocalFunction, OpCompositeConstruct, strucType, SPVArgList{.vals = argList, .num = argListIt});
+        AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::LocalFunction, OpCompositeConstruct, strucType, SPVArgList(argList));
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", strucType, initializer.c_str()));
     }
-    DeallocStack(argListIt, argList);
     return SPIRVResult(name, strucType, true, isConst);
 }
 
@@ -6979,8 +7276,8 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     std::vector<SPIRVResult> initResults;
     bool isConst = true;
     bool isLinkDefined = false;
-    uint8_t argListIt = 0;
-    SPVArg* argList = AllocStack<SPVArg>(sym->values.size());
+
+    StackArray<SPVArg> argList(sym->values.size());
     std::string initializer = "";
     for (auto value : sym->values)
     {
@@ -6992,26 +7289,26 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
         
         isConst &= res.isConst;
         isLinkDefined |= res.isSpecialization;
-        argList[argListIt++] = SPVArg(res.name);
+        argList.Append(SPVArg(res.name));
     }
 
     if (isConst)
     {
         if (isLinkDefined)
         {
-            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpSpecConstantComposite, type.typeName, SPVArgList{.vals = argList, .num = argListIt});
+            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpSpecConstantComposite, type.typeName, SPVArgList(argList));
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpSpecConstantComposite %%%d %s", type.typeName, initializer.c_str()), true);
         }
         else
         {
-            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpConstantComposite, type.typeName, SPVArgList{.vals = argList, .num = argListIt});
+            AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::Declarations, OpConstantComposite, type.typeName, SPVArgList(argList));
             name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpConstantComposite %%%d %s", type.typeName, initializer.c_str()), true);
         }
     }
     else
     {
         assert(!generator->linkDefineEvaluation);
-                AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::LocalFunction, OpCompositeConstruct, type.typeName, SPVArgList{.vals = argList, .num = argListIt});
+        AddSymbol(generator, TStr::Compact("{", initializer, "}"), SPVWriter::Section::LocalFunction, OpCompositeConstruct, type.typeName, SPVArgList(argList));
         name = generator->AddSymbol(Format("{%s}", initializer.c_str()), Format("OpCompositeConstruct %%%d %s", type.typeName, initializer.c_str()));
     }
     return SPIRVResult(name, type.typeName, true, isConst);
@@ -7134,7 +7431,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
             if (rhsType->columnSize != vectorType->columnSize)
             {
                 // Shuffle the values into a single vector
-                generator->writer->MappedInstruction(OpVectorShuffle, SPVWriter::Section::LocalFunction, vectorTypeName.typeName, leftLoaded, rightValue, SPVLiteralList{ .vals = slots, .num = counter });
+                generator->writer->MappedInstruction(OpVectorShuffle, SPVWriter::Section::LocalFunction, vectorTypeName.typeName, leftLoaded, rightValue, SPVLiteralList{ .vals = slots, .num = (uint8_t)vectorType->columnSize });
                 rightValue.name = generator->AddMappedOp(Format("OpVectorShuffle %%%d %%%d %%%d %s", vectorTypeName.typeName, leftLoaded.name, rightValue.name, swizzleMask.c_str()));
                 rightValue.typeName = vectorTypeName.typeName;
             }
@@ -7298,37 +7595,36 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, unaryExpression->expr);
 
     // TODO: Add support for looking up SPVOps as well
-    static std::unordered_map<std::string, std::tuple<const char, bool, uint32_t>> scalarTable =
+    static std::unordered_map<std::string, std::tuple<char, bool, uint32_t, SPVOp, SPVOp, SPVOp>> scalarTable =
     {
-        { "f32", { 'F', true, 1 } }
-        , { "f32x2", { 'F', true, 2 } }
-        , { "f32x3", { 'F', true, 3} }
-        , { "f32x4", { 'F', true, 4 } }
-        , { "i32", { 'S', true, 1 } }
-        , { "i32x2", { 'S', true, 2 } }
-        , { "i32x3", { 'S', true, 3 } }
-        , { "i32x4", { 'S', true, 4 } }
-        , { "u32", { 'U', false, 1 } }
-        , { "u32x2", { 'U', false, 2 } }
-        , { "u32x3", { 'U', false, 3 } }
-        , { "u32x4", { 'U', false, 4 } }
-        , { "b8", { 'B', false, 1 } }
-        , { "b8x2", { 'B', false, 2 } }
-        , { "b8x3", { 'B', false, 3 } }
-        , { "b8x4", { 'B', false, 4 } }
+        { "f32", { 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
+        , { "f32x2", { 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
+        , { "f32x3", { 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
+        , { "f32x4", { 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
+        , { "i32", { 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
+        , { "i32x2", { 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
+        , { "i32x3", { 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
+        , { "i32x4", { 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
+        , { "u32", { 'U', false, 1, OpIAdd, OpISub, OpInvalid } }
+        , { "u32x2", { 'U', false, 2, OpIAdd, OpISub, OpInvalid } }
+        , { "u32x3", { 'U', false, 3, OpIAdd, OpISub, OpInvalid } }
+        , { "u32x4", { 'U', false, 4, OpIAdd, OpISub, OpInvalid } }
+        , { "b8", { 'B', false, 1, OpInvalid, OpInvalid, OpInvalid } }
+        , { "b8x2", { 'B', false, 2, OpInvalid, OpInvalid, OpInvalid } }
+        , { "b8x3", { 'B', false, 3, OpInvalid, OpInvalid, OpInvalid } }
+        , { "b8x4", { 'B', false, 4, OpInvalid, OpInvalid, OpInvalid } }
     };
 
     auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
+    auto [op, sign, vectorSize, addOp, subOp, negOp] = value->second;
     switch (unaryExpression->op)
     {
         case '++':
         {
             assert(value != scalarTable.end());
-            char op = std::get<0>(value->second);
-            bool isSigned = std::get<1>(value->second);
             uint32_t vectorSize = std::get<2>(value->second);
             SPIRVResult constOne = SPIRVResult::Invalid();
-            if (isSigned)
+            if (sign)
             {
                 if (op == 'U' || op == 'S')
                 {
@@ -7345,11 +7641,13 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            generator->writer->MappedInstruction(addOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded, constOne);
             uint32_t res = generator->AddMappedOp(Format("Op%cAdd %%%d %%%d %%%d", op, loaded.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
             else
             {
+                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg{ res });
                 generator->AddOp(Format("OpStore %%%d %%%d", rhs.name, res));   
                 return SPIRVResult(loaded.name, rhs.typeName, true);
             }
@@ -7357,11 +7655,9 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         case '--':
         {
             assert(value != scalarTable.end());
-            char op = std::get<0>(value->second);
-            bool isSigned = std::get<1>(value->second);
             uint32_t vectorSize = std::get<2>(value->second);
             SPIRVResult constOne = SPIRVResult::Invalid();
-            if (isSigned)
+            if (sign)
             {
                 if (op == 'U' || op == 'S')
                 {
@@ -7378,6 +7674,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
                 constOne = GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(1));
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+            generator->writer->MappedInstruction(subOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
             uint32_t res = generator->AddMappedOp(Format("Op%cSub %%%d %%%d %%%d", op, loaded.typeName, loaded.name, constOne.name), unaryExpressionResolved->text);
             if (unaryExpression->isPrefix)
                 return SPIRVResult(res, rhs.typeName, true);
@@ -7419,6 +7716,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             else
             {
                 SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
+                generator->writer->MappedInstruction(negOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
                 uint32_t res = generator->AddMappedOp(Format("Op%cNegate %%%d %%%d", op, loaded.typeName, loaded.name), unaryExpressionResolved->text);
                 return SPIRVResult(res, rhs.typeName, true);
             }
@@ -7708,6 +8006,11 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     for (auto decl : stat->declarations)
         GenerateVariableSPIRV(compiler, generator, decl, false, false);
 
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
     uint32_t startLabel = generator->ReserveName();
     uint32_t conditionLabel = generator->ReserveName();
     uint32_t repeatLabel = generator->ReserveName();
@@ -7734,7 +8037,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
         unroll = Format("PartialCount %d", stat->unrollCount);
 
     // TODO: support unrolling
-    generator->writer->Instruction(OpLoopMerge, SPVWriter::Section::LocalFunction, SPVArg{endLabel}, SPVArg{repeatLabel});
+    generator->writer->Instruction(OpLoopMerge, SPVWriter::Section::LocalFunction, SPVArg{endLabel}, SPVArg{repeatLabel}, LoopControl::None);
     generator->writer->Instruction(OpBranch, SPVWriter::Section::LocalFunction, SPVArg{conditionLabel});
 
     // All loops must begin with a loop merge
@@ -7804,6 +8107,8 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
     SPIRVResult lhsResult = GenerateExpressionSPIRV(compiler, generator, stat->condition);
     lhsResult = LoadValueSPIRV(compiler, generator, lhsResult);
     
+    generator->writer->Reserve();
+    generator->writer->Reserve();
     uint32_t ifLabel = generator->ReserveName();
     uint32_t endLabel = generator->ReserveName();
 
@@ -7811,6 +8116,7 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
     generator->AddOp(Format("OpSelectionMerge %%%d None", endLabel));
     if (stat->elseStatement)
     {
+        generator->writer->Reserve();
         uint32_t elseLabel = generator->ReserveName();
 
         generator->writer->Instruction(OpBranchConditional, SPVWriter::Section::LocalFunction, lhsResult, SPVArg{ifLabel}, SPVArg{elseLabel});
@@ -7925,6 +8231,8 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     SPIRVResult switchRes = GenerateExpressionSPIRV(compiler, generator, stat->switchExpression);
     switchRes = LoadValueSPIRV(compiler, generator, switchRes);
 
+    generator->writer->Reserve();
+    generator->writer->Reserve();
     uint32_t defaultCase = generator->ReserveName();
     uint32_t mergeLabel = generator->ReserveName();
 
@@ -7938,11 +8246,12 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     std::string caseList = "";
     std::vector<uint32_t> reservedCaseLabels;
 
-    uint8_t caseArgIt = 0;
-    SPVArg* branchArgs = AllocStack<SPVArg>(stat->caseExpressions.size());
-    uint32_t* caseArgs = AllocStack<uint32_t>(stat->caseExpressions.size());
+
+    StackArray<uint32_t> caseArgs(stat->caseExpressions.size());
+    StackArray<SPVArg> branchArgs(stat->caseExpressions.size());
     for (size_t i = 0; i < stat->caseExpressions.size(); i++)
     {
+        generator->writer->Reserve();
         uint32_t caseLabel = generator->ReserveName();
         ValueUnion val;
         bool res = stat->caseExpressions[i]->EvalValue(val);
@@ -7950,13 +8259,12 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         caseList += Format("%d %%%d ", val.i[0], caseLabel);
         reservedCaseLabels.push_back(caseLabel);
 
-        branchArgs[caseArgIt] = SPVArg{caseLabel};
-        caseArgs[caseArgIt] = val.ui[0];
-        caseArgIt++;
+        branchArgs.Append(SPVArg{caseLabel});
+        caseArgs.Append(val.ui[0]);
     }
 
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
-    generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList{.labels = caseArgs, .branches = branchArgs, .num = caseArgIt});
+    generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
 
     generator->AddOp(Format("OpSelectionMerge %%%d None", mergeLabel));
     generator->AddOp(Format("OpSwitch %%%d %%%d %s", switchRes.name, defaultCase, caseList.c_str()));
@@ -8040,6 +8348,12 @@ GenerateWhileStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         if (!val.b[0])
             return;
     }
+
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
+    generator->writer->Reserve();
     
     uint32_t startLabel = generator->ReserveName();
     uint32_t conditionLabel = generator->ReserveName();
@@ -8192,6 +8506,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(stat);
             generator->PushScope();
+            generator->writer->PushScope();
             const std::vector<Symbol*>& symbols = scope->symbols;
             for (const auto& symbol : symbols)
             {
@@ -8206,6 +8521,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
                 }
             }
             generator->PopScope();
+            generator->writer->PopScope();
             break;
         }
         case Symbol::SwitchStatementType:
@@ -8428,6 +8744,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
 
         // Main scope
         this->PushScope();
+        this->writer->PushScope();
 
         // Temporarily store original variable values
         std::unordered_map<Variable*, Expression*> originalVariableValues;
@@ -8438,14 +8755,6 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             it->first->valueExpression = it->second;
         }
 
-        SPVHeader header;
-        header.magic = 0x00010500;
-        header.version.leading = 0;
-        header.version.major = 1;
-        header.version.minor = 0;
-        header.version.trailing = 0;
-        header.schema = 0;
-        header.bound = 1000;
 
         this->writer->Capability(extensionEnumMap[(Program::__Resolved::ProgramEntryType)mapping]);
         if (compiler->target.supportsPhysicalAddressing)
@@ -8455,12 +8764,11 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         }
         else
         {
-            this->writer->Capability(Capabilities::Addresses);
+            this->writer->Capability(Capabilities::PhysicalStorageBufferAddresses);
             this->writer->Instruction(OpMemoryModel, SPVWriter::Section::Header, AddressingModels::PhysicalStorageBuffer64, MemoryModels::GLSL450);
         }
         
         this->header.Line("; Magic:     0x00010500 (SPIRV Universal 1.5)");
-        this->header.Line("; Version:   0x00010000 (Version: 1.0.0)");
         this->header.Line("; Generator: 0x00080001 (GPULang; 1)");
         this->AddCapability(extensionMap[(Program::__Resolved::ProgramEntryType)mapping]);
 
@@ -8509,17 +8817,16 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             this->AddCapability("SubgroupDispatch");
         }
         std::string interfaces = "";
-        SPVArg* interfaceVars = (SPVArg*)AllocStack<SPVArg>(this->interfaceVariables.size());
-        uint32_t interfaceVarCounter = 0;
+
+        StackArray<SPVArg> interfaceVars(this->interfaceVariables.size());
         for (const uint32_t inter : this->interfaceVariables)
         {
             interfaces.append(Format("%%%d ", inter));
-            interfaceVars[interfaceVarCounter++] = SPVArg(inter);
+            interfaceVars.Append(SPVArg(inter));
         }
-        this->header.Line(Format(" OpEntryPoint %s %%%d \"main\" %s\n", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
+        this->header.Line(Format(" OpEntryPoint %s %%%d \"main\" %s", executionModelMap[(Program::__Resolved::ProgramEntryType)mapping].c_str(), entryFunction, interfaces.c_str()));
 
-        this->writer->Instruction(OpEntryPoint, SPVWriter::Section::Header, executionModelEnumMap[(Program::__Resolved::ProgramEntryType)mapping], SPVArg(entryFunction), "main", SPVArgList{ .vals = interfaceVars, .num = (uint8_t)interfaceVarCounter });
-        DeallocStack(this->interfaceVariables.size(), interfaceVars);
+        this->writer->Instruction(OpEntryPoint, SPVWriter::Section::Header, executionModelEnumMap[(Program::__Resolved::ProgramEntryType)mapping], SPVArg(entryFunction), "main", SPVArgList(interfaceVars));
         
         switch (mapping)
         {
@@ -8592,9 +8899,10 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             originalVariableValues[it2->first] = it2->second;
         }
 
+        this->writer->Header(1, 5, 1, 1, this->writer->counter);
+
         // Compose and convert to binary, then validate
         GrowingString binary;
-        binary.Line("; Header\n");
         binary.Line("; Entry point", funResolved->name);
         binary.Append(this->capability);
         binary.Append(this->extension);
@@ -8608,8 +8916,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         binary.Append(this->functions);
         
         GrowingString writerBinary;
-        writerBinary.Line("; Header\n");
         writerBinary.Line("; Entry point", funResolved->name);
+        writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Top]);
         writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Capabilities]);
         writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::Extensions]);
         writerBinary.Append(this->writer->texts[(uint32_t)SPVWriter::Section::ExtImports]);
@@ -8624,7 +8932,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         spv_binary bin = nullptr;
 
         spv_diagnostic diag = nullptr;
-        spv_result_t res = spvTextToBinaryWithOptions(spvContext, binary.data, binary.size, SPV_BINARY_TO_TEXT_OPTION_NONE, &bin, &diag);
+        spv_result_t res = spvTextToBinaryWithOptions(spvContext, writerBinary.data, writerBinary.size, SPV_BINARY_TO_TEXT_OPTION_NONE, &bin, &diag);
 
         if (res != SPV_SUCCESS)
         {
@@ -8954,6 +9262,7 @@ SPIRVGenerator::AddMapping(const TransientString& name, uint32_t object)
 //------------------------------------------------------------------------------
 /**
 */
+[[deprecated]]
 uint32_t 
 SPIRVGenerator::ReserveName()
 {

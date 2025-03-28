@@ -248,16 +248,6 @@ public:
     struct Scope
     {
         std::unordered_map<std::string, SymbolAssignment> symbols;
-
-        Scope()
-        {
-
-        };
-
-        ~Scope()
-        {
-
-        };
     };
     std::vector<Scope> scopeStack;
 

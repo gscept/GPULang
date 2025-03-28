@@ -154,6 +154,37 @@ void DeallocStack(size_t count, TYPE* buf)
     ThreadLocalIterator -= count * sizeof(TYPE);
 }
 
+template<typename TYPE>
+struct StackArray
+{
+    TYPE* ptr = nullptr;
+    size_t size = 0;
+    size_t capacity = 0;
+
+    StackArray(size_t count)
+    {
+        if (count != 0)
+        {
+            this->ptr = AllocStack<TYPE>(count);
+            this->capacity = count;
+        }
+    }
+
+    ~StackArray()
+    {
+        if (this->ptr != nullptr)
+            DeallocStack(this->capacity, this->ptr);
+        this->capacity = 0;
+        this->size = 0;
+    }
+
+    void Append(const TYPE& t)
+    {
+        assert(this->size + 1 <= this->capacity);
+        this->ptr[this->size++] = t;
+    }
+};
+
 inline size_t NumChars(int arg)
 {
     int x = abs(arg);
@@ -234,15 +265,21 @@ inline size_t FragmentSize<unsigned int>(unsigned int arg)
 template<>
 inline size_t FragmentSize<char>(char arg)
 {
-    return 1;
+    return NumChars(arg);
+}
+
+
+template<>
+inline size_t FragmentSize<unsigned char>(unsigned char arg)
+{
+    return NumChars(arg);
 }
 
 template<>
 inline size_t FragmentSize<float>(float arg)
 {
     char buf[256];
-    std::to_chars_result res = std::to_chars(buf, buf + NUM_FLOAT_DIGITS, arg);
-    return res.ptr - buf;
+    return snprintf(buf, 256, "%f", arg);
 }
 
 template<>
@@ -275,7 +312,77 @@ inline size_t FragmentSize<ConstantString>(ConstantString str)
     return str.size;
 }
 
-static const char* SPACE = " ";
+
+template<typename T>
+inline void FragmentString(T arg, char* buf, size_t size)
+{
+    assert(false);
+}
+
+template<>
+inline void FragmentString<nullptr_t>(nullptr_t, char* buf, size_t size)
+{
+}
+
+template<>
+inline void FragmentString<int>(int arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%d", arg);
+}
+
+template<>
+inline void FragmentString<unsigned int>(unsigned int arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%lu", arg);
+}
+
+template<>
+inline void FragmentString<char>(char arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%hhd", arg);
+}
+
+template<>
+inline void FragmentString<unsigned char>(unsigned char arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%hhu", arg);
+}
+
+template<>
+inline void FragmentString<float>(float arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%f", arg);
+}
+
+template<>
+inline void FragmentString<size_t>(size_t arg, char* buf, size_t size)
+{
+    snprintf(buf, size, "%zu", arg);
+}
+
+template<>
+inline void FragmentString<const char*>(const char* arg, char* buf, size_t size)
+{
+    memcpy(buf, arg, const_len(arg));
+}
+
+template<>
+inline void FragmentString<const std::string&>(const std::string& arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.c_str(), arg.length());
+}
+
+template<>
+inline void FragmentString<std::string>(std::string arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.c_str(), arg.length());
+}
+
+template<>
+inline void FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.buf, arg.size);
+}
 
 struct TransientString
 {
@@ -399,7 +506,7 @@ struct TransientString
         i = 0;
         ([&]
         {
-            FragmentString(args);
+            FragmentString(args, this->buf + this->size, this->capacity - this->size);
             this->size += subStringLengths[i];
             if constexpr (SPACE_SEPARATED)
             {
@@ -455,7 +562,7 @@ struct TransientString
     template<>
     void Append<int>(int arg)
     {
-        _itoa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
+        snprintf(this->buf + this->size, this->capacity - this->size, "%d", arg);
         this->size += NumChars(arg);
         this->buf[this->size] = '\0';
     }
@@ -471,7 +578,7 @@ struct TransientString
     template<>
     void Append<unsigned int>(unsigned int arg)
     {
-        _ultoa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
+        snprintf(this->buf + this->size, this->capacity - this->size, "%ul", arg);
         this->size += NumChars(arg);
         this->buf[this->size] = '\0';
     }
@@ -479,23 +586,31 @@ struct TransientString
     template<>
     void Append<char>(char arg)
     {
-        this->buf[this->size] = arg;
-        this->size += 1;
+        snprintf(this->buf + this->size, this->capacity - this->size, "%hhd", arg);
+        this->size += NumChars(arg);
+        this->buf[this->size] = '\0';
+    }
+
+    template<>
+    void Append<unsigned char>(unsigned char arg)
+    {
+        snprintf(this->buf + this->size, this->capacity - this->size, "%hhu", arg);
+        this->size += NumChars(arg);
         this->buf[this->size] = '\0';
     }
 
     template<>
     void Append<float>(float arg)
     {
-        std::to_chars_result res = std::to_chars(this->buf + this->size, this->buf + this->size + NUM_FLOAT_DIGITS, arg);
-        this->size += res.ptr - (this->buf + this->size);
+        size_t written = snprintf(this->buf + this->size, this->capacity - this->size, "%f", arg);
+        this->size += written;
         this->buf[this->size] = '\0';
     }
 
     template<>
     void Append<size_t>(size_t arg)
     {
-        _ui64toa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
+        snprintf(this->buf + this->size, this->capacity - this->size, "%zu", arg);
         this->size += NumChars(arg);
         this->buf[this->size] = '\0';
     }
@@ -507,96 +622,6 @@ struct TransientString
     {
         return buf;
     }
-
-    template<typename T>
-    void FragmentString(T arg)
-    {
-        assert(false);
-    }
-
-    template<>
-    void FragmentString<nullptr_t>(nullptr_t)
-    {
-    }
-
-    template<>
-    void FragmentString<int>(int arg)
-    {
-        errno_t err = _itoa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
-        assert(err != EINVAL);
-    }
-
-    template<>
-    void FragmentString<unsigned int>(unsigned int arg)
-    {
-        errno_t err = _ultoa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
-        assert(err != EINVAL);
-    }
-
-    template<>
-    void FragmentString<char>(char arg)
-    {
-        this->buf[this->size] = arg;
-    }
-
-    template<>
-    void FragmentString<float>(float arg)
-    {
-        std::to_chars(this->buf + this->size, this->buf + this->size + NUM_FLOAT_DIGITS, arg);
-    }
-
-    template<>
-    void FragmentString<size_t>(size_t arg)
-    {
-        errno_t err = _ui64toa_s(arg, this->buf + this->size, this->capacity - this->size, 10);
-        assert(err != EINVAL);
-    }
-
-    template<>
-    void FragmentString<const char*>(const char* arg)
-    {
-        if (arg != nullptr)
-            memcpy(this->buf + this->size, arg, const_len(arg));
-    }
-
-    template<>
-    void FragmentString<const std::string&>(const std::string& arg)
-    {
-        memcpy(this->buf + this->size, arg.c_str(), arg.length());
-    }
-
-    template<>
-    void FragmentString<std::string>(std::string arg)
-    {
-        memcpy(this->buf + this->size, arg.c_str(), arg.length());
-    }
-
-    template<>
-    void FragmentString<TransientString>(TransientString arg)
-    {
-        memcpy(this->buf + this->size, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<const TransientString&>(const TransientString& arg)
-    {
-        memcpy(this->buf + this->size, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<ConstantString>(ConstantString arg)
-    {
-        memcpy(this->buf + this->size, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<const ConstantString&>(const ConstantString& arg)
-    {
-        memcpy(this->buf + this->size, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg);
 };
 
 template<>
@@ -609,6 +634,18 @@ template<>
 inline size_t FragmentSize<TransientString>(TransientString str)
 {
     return str.size;
+}
+
+template<>
+inline void FragmentString<TransientString>(TransientString arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.buf, arg.size);
+}
+
+template<>
+inline void FragmentString<const TransientString&>(const TransientString& arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.buf, arg.size);
 }
 
 struct GrowingString
@@ -729,6 +766,24 @@ struct GrowingString
         this->data[this->size] = '\0';
     }
 
+    void Append(const char* str, size_t len)
+    {
+        if (str == nullptr)
+            return;
+        size_t newSize = this->size + len;
+        if (this->capacity <= newSize)
+        {
+            newSize = std::min((size_t)0xFFFFFFFu, newSize << 1);
+            char* newData = (char*)malloc(newSize * sizeof(char) + 2);
+            memcpy(newData, this->data, sizeof(char) * this->size);
+            this->data = newData;
+            this->capacity = newSize;
+        }
+        memcpy(this->data + this->size, str, len * sizeof(char));
+        this->size += len;
+        this->data[this->size] = '\0';
+    }
+
     void Append(const TransientString& arg)
     {
         size_t newSize = this->size + arg.size;
@@ -767,88 +822,7 @@ struct GrowingString
         // Don't free memory
         this->size = 0;
     }
-
-    template<typename T>
-    void FragmentString(T arg, char* buf, size_t size)
-    {
-        assert(false);
-    }
-
-    template<>
-    void FragmentString<nullptr_t>(nullptr_t, char* buf, size_t size)
-    {
-    }
-
-    template<>
-    void FragmentString<int>(int arg, char* buf, size_t size)
-    {
-        _itoa_s(arg, buf, size, 10);
-    }
-
-    template<>
-    void FragmentString<unsigned int>(unsigned int arg, char* buf, size_t size)
-    {
-        _ultoa_s(arg, buf, size, 10);
-    }
-
-    template<>
-    void FragmentString<char>(char arg, char* buf, size_t size)
-    {
-        buf[size] = arg;
-    }
-
-    template<>
-    void FragmentString<float>(float arg, char* buf, size_t size)
-    {
-        std::to_chars(buf, buf + size, arg);
-    }
-
-    template<>
-    void FragmentString<size_t>(size_t arg, char* buf, size_t size)
-    {
-        _ui64toa_s(arg, buf, size, 10);
-    }
-
-    template<>
-    void FragmentString<const char*>(const char* arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg, const_len(arg));
-    }
-
-    template<>
-    void FragmentString<const std::string&>(const std::string& arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg.c_str(), arg.length());
-    }
-
-    template<>
-    void FragmentString<std::string>(std::string arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg.c_str(), arg.length());
-    }
-
-    template<>
-    void FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<TransientString>(TransientString arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<const TransientString&>(const TransientString& arg, char* buf, size_t size)
-    {
-        memcpy(buf, arg.buf, arg.size);
-    }
-
-    template<>
-    void FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg, char* buf, size_t size);
 };
-
 
 using TStr = TransientString;
 using GStr = GrowingString;
