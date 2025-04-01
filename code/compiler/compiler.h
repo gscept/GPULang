@@ -55,6 +55,10 @@ struct Compiler
         uint8_t disallowImplicitPromotion : 1 = 0;
         uint8_t disallowUninitializedConst : 1 = 0;
         uint8_t warnOnMissingRenderState : 1 = 0;
+        uint8_t warnOnMissingColorExport : 1 = 0;
+        uint8_t warnOnImplicitBoolPromotion : 1 = 0;
+        uint8_t warnOnImplicitBufferPadding : 1 = 0;
+        uint8_t warnOnUnusedParameter : 1 = 0;
 
         uint8_t validate : 1 = 0;
         uint8_t optimize : 1 = 0;

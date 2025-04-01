@@ -190,15 +190,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     timer.Start();
     if (GPULangPreprocess(file, defines, preprocessed))
     {
-        ANTLRInputStream input;
-        input.load(preprocessed);
-
-        GPULangLexer lexer(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        CommonTokenStream tokens(&lexer);
-        GPULangParser parser(&tokens);
-        GPULangParser::LineStack.clear();
-
         // get the name of the shader
         std::locale loc;
         size_t extension = file.rfind('.');
@@ -223,6 +214,14 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         GPULangLexerErrorHandler lexerErrorHandler;
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
+
+        ANTLRInputStream input;
+        GPULangLexer lexer(&input);
+        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+        CommonTokenStream tokens(&lexer);
+        GPULangParser parser(&tokens);
+        parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
+        GPULangParser::LineStack.clear();
 
         // reload the preprocessed data
         input.reset();

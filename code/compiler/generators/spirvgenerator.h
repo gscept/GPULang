@@ -210,76 +210,14 @@ public:
     /// generate SPIRV output
     bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
-
-
-    /// Add or search for a symbol
-    uint32_t AddSymbol(const TransientString& name, const TransientString& declare, bool global = false);
-    /// Add or search for a symbol
-    uint32_t AddSymbol(const TransientString& name, const TransientString& declare, SPIRVResult type, bool global = false);
-    /// Add a symbol for a reserved name
-    void AddReservedSymbol(const TransientString& name, uint32_t object, const TransientString& declare, bool global = false);
-    /// Get symbol
-    const SymbolAssignment GetSymbol(const std::string& name);
-    /// Add an op without a mapping
-    void AddOp(const TransientString& name, bool global = false, TransientString comment = TransientString(nullptr));
-    /// Add mapped op
-    uint32_t AddMappedOp(const TransientString& name, TransientString comment = TransientString(nullptr));
-    /// Add capability
-    void AddCapability(const TransientString& declare);
-    /// import extension
-    uint32_t ImportExtension(const TransientString& name);
-    /// Add extension
-    void AddExtension(const TransientString& name);
-    /// Add decoration
-    void AddDecoration(const TransientString& name, uint32_t object, const TransientString& decorate);
-    /// Add member decoration
-    void AddMemberDecoration(uint32_t struc, uint32_t index, const TransientString& decorate);
-    /// Add extra mapping for preexisting object
-    void AddMapping(const TransientString& name, uint32_t object);
-    /// Reserve a name
-    uint32_t ReserveName();
-    /// Add op with reserved name
-    void AddReserved(const TransientString& op, uint32_t name, TransientString comment = TransientString(nullptr));
-    /// Add function variable declaration
-    uint32_t AddVariableDeclaration(Symbol* sym, const TransientString& name, uint32_t typeName, uint32_t init, uint32_t copy, SPIRVResult::Storage scope, SPIRVResult type, bool global = false);
-
-    uint32_t symbolCounter;
-
-    struct Scope
-    {
-        std::unordered_map<std::string, SymbolAssignment> symbols;
-    };
-    std::vector<Scope> scopeStack;
-
     /// Push a type to the stack
     void PushAccessChain(Type* chain, SPIRVResult::Storage scope = SPIRVResult::Storage::Function);
     /// Pop a type from the stack
     void PopAccessChain();
     
     std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
-    
-    std::vector<std::string> capabilities;
-    /// Push a new scope on the stack
-    void PushScope();
-    /// Pop scope
-    void PopScope();
-
-    GrowingString header;
-    GrowingString capability;
-    GrowingString extension;
-    GrowingString extImport;
-    GrowingString decorations;
-    GrowingString declarations;
-    GrowingString functions;
-    
-    GrowingString functional;
     std::set<uint32_t> interfaceVariables;
 
-    std::unordered_map<std::string, uint32_t> extensions;
-    std::unordered_map<std::string, std::set<std::string>> decorationMap;
-
-    GrowingString variableDeclarations;
-    GrowingString parameterInitializations;
     bool blockOpen = false;
     bool literalExtract = false;
     bool linkDefineEvaluation = false;

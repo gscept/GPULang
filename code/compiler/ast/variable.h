@@ -10,6 +10,7 @@
 #include "annotation.h"
 #include "types/type.h"
 #include "shaderusage.h"
+#include <set>
 #include <vector>
 namespace GPULang
 {
@@ -106,7 +107,8 @@ struct Variable : public Symbol
 
         ShaderUsage visibilityBits;
         bool builtin = false;
-
+        
+        std::set<Function*> visibilityMap;
     };
     __Resolved* thisResolved;
 };

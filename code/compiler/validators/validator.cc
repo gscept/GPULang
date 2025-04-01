@@ -1235,11 +1235,14 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     it->first->valueExpression = it->second;
                 }
 
-                // Resolve variable visibility
-                if (!this->ResolveVisibility(compiler, fun->ast))
-                {
+                // Resolve visibility
+                bool ret = true;
+                for (auto& param : fun->parameters)
+                    ret |= this->ResolveVisibility(compiler, param);
+                ret |= this->ResolveVisibility(compiler, fun->ast);
+
+                if (!ret)
                     return false;
-                }
 
                 // Reset variable values
                 auto it2 = originalVariableValues.begin();
@@ -1261,7 +1264,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 }
                 else if (entryType == Program::__Resolved::PixelShader)
                 {
-                    if (!compiler->currentState.sideEffects.flags.exportsPixel)
+                    if (!compiler->currentState.sideEffects.flags.exportsPixel && compiler->options.warnOnMissingColorExport)
                     {
                         compiler->Warning(Format("Pixel shader doesn't call pixelExportColor"), assignEntry);
                     }
@@ -2616,9 +2619,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             {
                 const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
                 std::string structName = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
-                if (currentStrucResolved->packMembers)
+                if (currentStrucResolved->packMembers && compiler->options.warnOnImplicitBufferPadding)
                     compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
-                if (currentStrucResolved->hasBoolMember)
+                if (currentStrucResolved->hasBoolMember && compiler->options.warnOnImplicitBoolPromotion)
                     compiler->Warning(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
                 
                  // Generate mutable/uniform variant of struct
@@ -3310,9 +3313,10 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams[inIterator]);
 
         // if bindings don't match, it means the output will be unused since the parameter sets should be sorted
-        if (outResolved->outBinding != inResolved->inBinding)
+        if ((outResolved->outBinding != inResolved->inBinding))
         {
-            compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            if (compiler->options.warnOnUnusedParameter)
+                compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
         }
         else
         {
@@ -3549,10 +3553,13 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ScopeStatementType:
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
+            //compiler->PushScope(GPULang::Compiler::Scope::ScopeType::Local, scope);
             for (auto* statement : scope->symbols)
             {
+                //compiler->AddSymbol(symbol->name, symbol);
                 res |= this->ResolveVisibility(compiler, statement);
             }
+            //compiler->PopScope();
             break;
         }
         case Symbol::ForStatementType:
@@ -3565,7 +3572,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 break;
             
             for (auto* var : forStat->declarations)
-                this->ResolveVisibility(compiler, var);
+                res |= this->ResolveVisibility(compiler, var);
             res |= this->ResolveVisibility(compiler, forStat->condition);
             res |= this->ResolveVisibility(compiler, forStat->loop);
             res |= this->ResolveVisibility(compiler, forStat->contents);
@@ -3642,6 +3649,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             }
             else
             {
+                res |= this->ResolveVisibility(compiler, ifStat->condition);
+
                 res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
                 if (ifStat->elseStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
@@ -3693,8 +3702,11 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::BinaryExpressionType:
         {
             BinaryExpression* binExp = static_cast<BinaryExpression*>(symbol);
+            auto binExpRes = Symbol::Resolved(binExp);
             res |= this->ResolveVisibility(compiler, binExp->left);
             res |= this->ResolveVisibility(compiler, binExp->right);
+            if (binExpRes->constValueExpression != nullptr)
+                res |= this->ResolveVisibility(compiler, binExpRes->constValueExpression);
             break;
         }
         case Symbol::AccessExpressionType:
@@ -3848,6 +3860,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto commaExpr = static_cast<CommaExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, commaExpr->left);
             res |= this->ResolveVisibility(compiler, commaExpr->right);
+            break;
         }
         case Symbol::InitializerExpressionType:
         {
@@ -3872,6 +3885,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::FunctionType:
         {
             auto fun = static_cast<Function*>(symbol);
+            auto funResolved = Symbol::Resolved(fun);
+
+            // Add this function to the visibility map
+            funResolved->visibilityMap.insert(compiler->currentState.function);
+
+            for (auto& param : fun->parameters)
+                res |= this->ResolveVisibility(compiler, param);
+
             if (fun->ast != nullptr)
                 res |= this->ResolveVisibility(compiler, fun->ast);
             break;
@@ -3890,6 +3911,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto var = static_cast<Variable*>(symbol);
             auto varResolved = Symbol::Resolved(var);
+            varResolved->visibilityMap.insert(compiler->currentState.function);
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:

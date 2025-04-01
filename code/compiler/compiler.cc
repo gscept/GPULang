@@ -460,8 +460,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
             }
         };
     }
-
-
     this->performanceTimer.Start();
 
     uint32_t numAvailableThreads = std::thread::hardware_concurrency();
@@ -477,9 +475,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         generators.push_back(gen);
         new (&threads[programIndex]) std::thread([this, returnValues, program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
-            returnValues[programIndex] &= gen->Generate(this, program, symbols, writeFunction);
+            returnValues[programIndex] = gen->Generate(this, program, symbols, writeFunction);
         });
-        //ret &= gen->Generate(this, programs[programIndex], this->symbols, writeFunction);
     }
 
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
@@ -491,6 +488,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         }
         ret &= returnValues[programIndex];
     }
+    DeallocStack(programs.size(), returnValues);
+    DeallocStack(programs.size(), threads);
 
     this->performanceTimer.Stop();
 
