@@ -18,10 +18,11 @@ public:
 
 	enum Flags : uint32_t
 	{
-		Debug = 0x1,
+		Optimize = 0x1,
 		Quiet = 0x2,
 		Validate = 0x4,
 		Profile = 0x8,
+		Symbols = 0x10
 	};
 
 	/// constructor

@@ -26,10 +26,11 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 
 	this->mode = args["M"];
 
-	this->shaderCompiler.SetFlag(args["debug"] ? SingleShaderCompiler::Debug : 0);
+	this->shaderCompiler.SetFlag(args["optimize"] || args["Ox"] ? SingleShaderCompiler::Optimize : 0);
+	this->shaderCompiler.SetFlag(args["symbols"] || args["s"] ? SingleShaderCompiler::Symbols : 0);
 	this->shaderCompiler.SetFlag(args["q"] ? SingleShaderCompiler::Quiet : 0);
-	this->shaderCompiler.SetFlag(args["validate"] ? SingleShaderCompiler::Validate : 0);
-	this->shaderCompiler.SetFlag(args["profile"] ? SingleShaderCompiler::Profile : 0);
+	this->shaderCompiler.SetFlag(args["validate"] || args["v"] ? SingleShaderCompiler::Validate : 0);
+	this->shaderCompiler.SetFlag(args["profile"] || args["p"] ? SingleShaderCompiler::Profile : 0);
 	std::string buffer;
 	if (args("o") >> buffer)
 	{
@@ -111,9 +112,10 @@ usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
 -o       		Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
 -h       		Where to output generated C headers.\n\
 -q     	 		Suppress standard output.\n\
--debug   		Generate debugging information and disable optimizations.\n\
--profile 		Log compilation times.\n\
--validate		Validate compilation output.\n\
+-optimize/-Ox  	Optimize output.\n\
+-symbols/-s		Generate debug symbols.\n\
+-profile/-p		Log compilation times.\n\
+-validate/-v	Validate compilation output.\n\
 ";
 
 	fprintf(stdout, help);

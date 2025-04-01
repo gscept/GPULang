@@ -62,6 +62,7 @@ struct Compiler
 
         uint8_t validate : 1 = 0;
         uint8_t optimize : 1 = 0;
+        uint8_t symbols : 1 = 0;
 
         ErrorFormat errorFormat = ErrorFormat::MSVC;
     };

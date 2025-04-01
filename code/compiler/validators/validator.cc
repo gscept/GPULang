@@ -20,6 +20,7 @@
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/accessexpression.h"
+#include "ast/expressions/accessexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/intvecexpression.h"
@@ -3962,6 +3963,19 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 
             if (var->valueExpression != nullptr)
                 res |= this->ResolveVisibility(compiler, var->valueExpression);
+
+            // If variable points to a structure, add it to the visibility
+            if (varResolved->typeSymbol->symbolType == Symbol::StructureType)
+            {
+                res |= this->ResolveVisibility(compiler, varResolved->typeSymbol);
+            }
+            break;
+        }
+        case Symbol::StructureType:
+        {
+            auto var = static_cast<Structure*>(symbol);
+            auto varResolved = Symbol::Resolved(var);
+            varResolved->visibilityMap.insert(compiler->currentState.function);
             break;
         }
     }
