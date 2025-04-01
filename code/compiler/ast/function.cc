@@ -756,14 +756,17 @@ FLOAT_LIST
     SCALAR_LIST
 #undef X
 
-    __MAKE_BUILTIN(computeGetLocalInvocationIndex, GetLocalInvocationIndex);
+    __MAKE_BUILTIN(computeGetLocalInvocationIndices, GetLocalInvocationIndices);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(computeGetGlobalInvocationIndex, GetGlobalInvocationIndex);
+    __MAKE_BUILTIN(computeGetGlobalInvocationIndices, GetGlobalInvocationIndices);
     __SET_RET_LIT(u32x3);
 
-    __MAKE_BUILTIN(computeGetWorkgroupIndex, GetWorkGroupIndex);
+    __MAKE_BUILTIN(computeGetWorkgroupIndices, GetWorkGroupIndices);
     __SET_RET_LIT(u32x3);
+
+    __MAKE_BUILTIN(computeGetIndexInWorkgroup, GetIndexInWorkGroup);
+    __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(computeGetWorkgroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);

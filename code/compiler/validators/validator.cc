@@ -1635,6 +1635,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::LogicOpEnabledType:
                     value.Store(stateResolved->logicOpEnabled);
                     break;
+                case RenderState::__Resolved::ScissorEnabledType:
+                    value.Store(stateResolved->scissorEnabled);
+                    break;
                 case RenderState::__Resolved::StencilEnabledType:
                     value.Store(stateResolved->stencilEnabled);
                     break;

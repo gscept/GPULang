@@ -387,9 +387,10 @@ extern Function* ExportPrimitive;
     SCALAR_LIST
 #undef X
 
-extern Function* GetLocalInvocationIndex;
-extern Function* GetGlobalInvocationIndex;
-extern Function* GetWorkGroupIndex;
+extern Function* GetLocalInvocationIndices;
+extern Function* GetGlobalInvocationIndices;
+extern Function* GetWorkGroupIndices;
+extern Function* GetIndexInWorkGroup;
 extern Function* GetWorkGroupDimensions;
 
 extern Function* GetSubgroupId;

@@ -463,7 +463,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     this->performanceTimer.Start();
 
     uint32_t numAvailableThreads = std::thread::hardware_concurrency();
-
     std::thread* threads = AllocStack<std::thread>(programs.size());
     bool* returnValues = AllocStack<bool>(programs.size());
     std::vector<Generator*> generators;
@@ -815,6 +814,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.depthBoundsTestEnabled = resolved->depthBoundsTestEnabled;
             output.minDepthBounds = resolved->minDepthBounds;
             output.maxDepthBounds = resolved->maxDepthBounds;
+            output.scissorEnabled = resolved->scissorEnabled;
             output.stencilEnabled = resolved->stencilEnabled;
             output.frontStencilState = resolved->frontStencilState;
             output.backStencilState = resolved->backStencilState;

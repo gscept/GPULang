@@ -268,6 +268,7 @@ struct RenderState : public Serializable
     bool depthBoundsTestEnabled;
     float minDepthBounds;
     float maxDepthBounds;
+    bool scissorEnabled;
     bool stencilEnabled;
     StencilState frontStencilState;
     StencilState backStencilState;

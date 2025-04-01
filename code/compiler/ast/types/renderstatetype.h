@@ -43,6 +43,7 @@ struct RenderStateType : public Type
     Variable depthBoundsTestEnabled;
     Variable minDepthBounds;
     Variable maxDepthBounds;
+    Variable scissorEnabled;
     Variable stencilEnabled;
     Variable logicOpEnabled;
     Variable logicOp;

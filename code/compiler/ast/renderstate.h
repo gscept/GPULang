@@ -37,6 +37,7 @@ struct RenderState : public State
             DepthBoundsTestEnabledType,
             MinDepthBoundsType,
             MaxDepthBoundsType,
+            ScissorEnabledType,
             StencilEnabledType,
             StencilFailOpType,
             StencilPassOpType,
@@ -102,6 +103,7 @@ struct RenderState : public State
         bool depthBoundsTestEnabled;
         float minDepthBounds;
         float maxDepthBounds;
+        bool scissorEnabled;
         bool stencilEnabled;
 
         /// convert from string

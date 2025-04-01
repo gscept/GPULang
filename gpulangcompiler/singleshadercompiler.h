@@ -46,7 +46,7 @@ public:
 	/// set additional command line params
 	void SetAdditionalParams(const std::string& params);
 	/// Append flag bit
-	void SetFlag(const uint32_t f);
+	bool SetFlag(const uint32_t f);
 
 	/// compile shader
 	bool CompileShader(const std::string& src);

@@ -124,6 +124,7 @@ RenderStateType::RenderStateType()
     __SETUP_MEMBER(this->depthBoundsTestEnabled, DepthBoundsTestEnabled, b8);
     __SETUP_MEMBER(this->minDepthBounds, MinDepthBounds, f32);
     __SETUP_MEMBER(this->maxDepthBounds, MaxDepthBounds, f32);
+    __SETUP_MEMBER(this->scissorEnabled, ScissorEnabled, b8);
     __SETUP_MEMBER(this->stencilEnabled, StencilEnabled, b8);
     __SETUP_MEMBER(this->logicOpEnabled, LogicEnabled, b8);
     __SETUP_MEMBER(this->logicOp, Logic, LogicOp);

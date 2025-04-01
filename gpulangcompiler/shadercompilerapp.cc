@@ -26,9 +26,17 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 
 	this->mode = args["M"];
 
-	this->shaderCompiler.SetFlag(args["optimize"] || args["Ox"] ? SingleShaderCompiler::Optimize : 0);
-	this->shaderCompiler.SetFlag(args["symbols"] || args["s"] ? SingleShaderCompiler::Symbols : 0);
-	this->shaderCompiler.SetFlag(args["q"] ? SingleShaderCompiler::Quiet : 0);
+	if (!this->shaderCompiler.SetFlag(args["optimize"] || args["Ox"] ? SingleShaderCompiler::Optimize : 0))
+	{
+		this->PrintHelp();
+		return false;
+	}
+	if (!this->shaderCompiler.SetFlag(args["symbols"] || args["s"] ? SingleShaderCompiler::Symbols : 0))
+	{
+		this->PrintHelp();
+		return false;
+	}
+	this->shaderCompiler.SetFlag(args["quiet"] || args["q"] ? SingleShaderCompiler::Quiet : 0);
 	this->shaderCompiler.SetFlag(args["validate"] || args["v"] ? SingleShaderCompiler::Validate : 0);
 	this->shaderCompiler.SetFlag(args["profile"] || args["p"] ? SingleShaderCompiler::Profile : 0);
 	std::string buffer;
@@ -111,9 +119,9 @@ usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
 -I       		Where to search for include headers. This can be repeated multiple times.\n\
 -o       		Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
 -h       		Where to output generated C headers.\n\
--q     	 		Suppress standard output.\n\
--optimize/-Ox  	Optimize output.\n\
--symbols/-s		Generate debug symbols.\n\
+-quiet/-q  		Suppress standard output.\n\
+-optimize/-Ox  	Optimize output (not allowed with -symbols/-s).\n\
+-symbols/-s		Generate debug symbols (not allowed with -optimize/-Ox).\n\
 -profile/-p		Log compilation times.\n\
 -validate/-v	Validate compilation output.\n\
 ";
