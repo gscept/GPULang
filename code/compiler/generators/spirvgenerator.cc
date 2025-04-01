@@ -4569,7 +4569,7 @@ SPIRVGenerator::SetupIntrinsics()
         };
     }
 
-    SPIRVGenerator::IntrinsicMap[Intrinsics::GetLocalInvocationIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    SPIRVGenerator::IntrinsicMap[Intrinsics::GetLocalInvocationIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplLocalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -4602,7 +4602,7 @@ SPIRVGenerator::SetupIntrinsics()
         return res;
     };
 
-    SPIRVGenerator::IntrinsicMap[Intrinsics::GetGlobalInvocationIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    SPIRVGenerator::IntrinsicMap[Intrinsics::GetGlobalInvocationIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
 
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
@@ -4620,7 +4620,7 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
 
-    SPIRVGenerator::IntrinsicMap[Intrinsics::GetWorkGroupIndex] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
+    SPIRVGenerator::IntrinsicMap[Intrinsics::GetWorkGroupIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
     
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
