@@ -15,6 +15,9 @@
 #include <stdarg.h>
 #include <charconv>
 
+namespace GPULang
+{
+
 struct MemoryBlock
 {
     MemoryBlock()
@@ -43,10 +46,8 @@ extern bool IsInit;
 
 void Dealloc(void* alloc);
 
-namespace GPULang
-{
+
 struct SPVArg;
-}
 
 //------------------------------------------------------------------------------
 /**
@@ -826,3 +827,5 @@ struct GrowingString
 
 using TStr = TransientString;
 using GStr = GrowingString;
+
+} // namespace GPULang

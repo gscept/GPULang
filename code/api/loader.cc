@@ -66,7 +66,7 @@ LoadAnnotations(size_t annotationCount, GPULang::Deserialize::Annotation* annota
 //------------------------------------------------------------------------------
 /**
 */
-void 
+bool 
 Loader::Load(const char* data, const size_t length)
 {
     size_t frontIterator = 0;
@@ -75,7 +75,7 @@ Loader::Load(const char* data, const size_t length)
     const uint32_t* magic = reinterpret_cast<const uint32_t*>(data + frontIterator);
     frontIterator += sizeof(int32_t);
     if (*magic != 'AFX3')
-        return;
+        return false;
 
     // read the blob at the bottom of the file
     backIterator -= sizeof(uint32_t);
@@ -301,6 +301,7 @@ else\
         }
         }
     }
+    return true;
 }
 
 } // namespace GPULang

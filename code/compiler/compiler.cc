@@ -972,6 +972,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     output.bindingType = GPULang::BindingType::Sampler;
                 else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
                     output.bindingType = GPULang::BindingType::LinkDefined;
+                else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
+                    output.bindingType = GPULang::BindingType::PixelCache;
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)

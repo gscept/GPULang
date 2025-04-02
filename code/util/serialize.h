@@ -33,7 +33,6 @@ enum Filter
     LinearFilter
 };
 
-
 enum BorderColor
 {
     InvalidBorderColor,
@@ -41,7 +40,6 @@ enum BorderColor
     BlackBorder,
     WhiteBorder
 };
-
 
 enum CompareMode
 {
@@ -193,6 +191,7 @@ enum BindingType
     Image,
     SampledImage,
     Sampler,
+    PixelCache,
     Inline,
     LinkDefined
 };

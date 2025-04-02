@@ -1765,8 +1765,6 @@ Instruction(SPIRVGenerator* gen, SPVWriter::Section section, const SPVOp& op, co
     gen->writer->Instruction(op, section, std::forward<const ARGS&>(args)...);
 }
 
-} // namespace GPULang
-
 template<>
 void FragmentString<GPULang::SPVArg>(GPULang::SPVArg arg, char* buf, size_t size)
 {
@@ -1815,8 +1813,7 @@ GPULang::SPVArg operator""_spv(unsigned long long arg)
     return GPULang::SPVArg{ (uint32_t)arg };
 };
 
-namespace GPULang
-{
+
 SPIRVResult GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* symbol, bool isShaderArgument, bool isGlobal);
 SPIRVResult GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Expression* expr);
 bool GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Statement* stat);
