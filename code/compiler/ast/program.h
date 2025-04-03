@@ -64,6 +64,12 @@ struct Program : public Symbol
 
         union ProgramUsage
         {
+            enum ShaderPipelineBits
+            {
+                GraphicsBits = 0xDF,
+                ComputeBits = 0x20,
+                RayTracingBits = 0x3F00,
+            };
             struct
             {
                 uint32_t hasVertexShader : 1;

@@ -200,6 +200,14 @@ Loader::Load(const char* data, const size_t length)
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
+            deserialized->patchSize = prog->patchSize;
+            deserialized->rayHitAttributeSize = prog->rayHitAttributeSize;
+            deserialized->rayPayloadSize = prog->rayPayloadSize;
+            deserialized->vsInputLength = prog->vsInputsLength;
+            if (deserialized->vsInputLength > 0)
+                deserialized->vsInputs = Parse<uint32_t>(buf, prog->vsInputsOffset);
+            else
+                deserialized->vsInputs = nullptr;
 
 #define LOAD_SHADER(x, shader) \
 if (prog->##x.binaryOffset != 0)\

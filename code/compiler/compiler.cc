@@ -736,6 +736,11 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
 
+            output.rayHitAttributeSize = 0;
+            output.rayPayloadSize = 0;
+            output.vsInputsLength = 0;
+            output.patchSize = 0;
+
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
     {\
@@ -764,6 +769,88 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             WRITE_BINARY(RayMissShader, rms)
             WRITE_BINARY(RayCallableShader, rcs)
             WRITE_BINARY(RayIntersectionShader, ris)
+
+            if (resolved->usage.flags.hasVertexShader)
+            {
+                Function* vs = (Function*)resolved->mappings[Program::__Resolved::VertexShader];
+                Function::__Resolved* vsRes = Symbol::Resolved(vs);
+                output.vsInputsLength = 0;
+                output.vsInputsOffset = dynamicDataBlob.iterator;
+                for (const Variable* var : vs->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::Input)
+                    {
+                        output.vsInputsLength++;
+                        dynamicDataBlob.Write(varRes->inBinding);
+                    }
+                }
+            }
+            if (resolved->usage.flags.hasHullShader)
+            {
+                Function* hs = (Function*)resolved->mappings[Program::__Resolved::HullShader];
+                Function::__Resolved* hsRes = Symbol::Resolved(hs);
+                output.patchSize = hsRes->executionModifiers.maxOutputVertices;
+            }
+            if (resolved->usage.flags.hasRayGenerationShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayGenerationShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayAnyHitShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayAnyHitShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                    else if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayClosestHitShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayClosestHitShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                    else if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayMissShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayMissShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayIntersectionShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayIntersectionShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
 
             if (resolved->usage.flags.hasRenderState)
             {
@@ -974,6 +1061,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     output.bindingType = GPULang::BindingType::LinkDefined;
                 else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
                     output.bindingType = GPULang::BindingType::PixelCache;
+                else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
+                    output.bindingType = GPULang::BindingType::AccelerationStructure;
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)

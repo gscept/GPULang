@@ -193,7 +193,8 @@ enum BindingType
     Sampler,
     PixelCache,
     Inline,
-    LinkDefined
+    LinkDefined,
+    AccelerationStructure
 };
 
 namespace Serialize
@@ -302,6 +303,13 @@ struct Program : public Serializable
     };
 
     Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rms, rchs, rahs, rcs, ris;
+
+    size_t vsInputsLength;
+    size_t vsInputsOffset;
+    uint16_t patchSize;                 // Patch size if program contains a hull shader
+    uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
+    uint16_t rayHitAttributeSize;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
+
 };
 
 struct Bindable : public Serializable
@@ -614,6 +622,13 @@ struct Program : public Deserializable
 
         NumShaders
     };
+
+    size_t vsInputLength;
+    const uint32_t* vsInputs;
+
+    uint16_t patchSize;                 // Patch size if program contains a hull shader
+    uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
+    uint16_t rayHitAttributeSize;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
 
     Shader shaders[ShaderStages::NumShaders];
 };

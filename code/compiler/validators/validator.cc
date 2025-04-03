@@ -843,12 +843,28 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
 
     // run validation on parameters
+    bool rayHitAttributeConsumed = false;
+    bool rayPayloadConsumed = false;
     for (Variable* var : fun->parameters)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         varResolved->usageBits.flags.isParameter = true;
         varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint;
         this->ResolveVariable(compiler, var);
+
+
+        if (varResolved->storage == Storage::RayHitAttribute)
+        {
+            if (!rayHitAttributeConsumed)
+                rayHitAttributeConsumed = true;
+            else
+                compiler->Error("Only one parameter is allowed to be of storage class 'ray_hit_attribute'", symbol);
+
+            if (!rayPayloadConsumed)
+                rayPayloadConsumed = true;
+            else
+                compiler->Error("Only one parameter is allowed to be of storage class 'ray_payload'", symbol);
+        }
     }
 
     compiler->PopScope();
