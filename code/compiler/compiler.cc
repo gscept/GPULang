@@ -933,6 +933,9 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             SamplerState::__Resolved* resolved = static_cast<SamplerState::__Resolved*>(symbol->resolved);
             Serialize::SamplerState output;
 
+            output.binding = resolved->binding;
+            output.group = resolved->group;
+
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
             output.addressU = resolved->addressU;
@@ -1033,11 +1036,26 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
             output.byteSize = resolved->byteSize;
             output.structureOffset = resolved->structureOffset;
-            output.arraySizesCount = resolved->type.modifierValues.size();
-            output.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
+            output.arraySizesCount = 0;
+            output.arraySizesOffset = dynamicDataBlob.iterator;
+            for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+            {
+                if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                {
+                    output.arraySizesCount++;
+                    ValueUnion size;
+                    resolved->type.modifierValues[i]->EvalValue(size);
+                    dynamicDataBlob.Write(size.ui);
+                }
+            }
             output.annotationsCount = var->annotations.size();
             output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
-            output.bindingScope = resolved->usageBits.flags.isEntryPointParameter ? GPULang::BindingScope::VertexInput : GPULang::BindingScope::Resource;
+            if (resolved->usageBits.flags.isEntryPointParameter)
+                output.bindingScope = GPULang::BindingScope::VertexInput;
+            else if (resolved->storage == Storage::Global)
+                output.bindingScope = GPULang::BindingScope::Constant;
+            else
+                output.bindingScope = GPULang::BindingScope::Resource;
 
             if (resolved->type.IsMutable())
             {
@@ -1063,6 +1081,14 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     output.bindingType = GPULang::BindingType::PixelCache;
                 else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
                     output.bindingType = GPULang::BindingType::AccelerationStructure;
+            }
+
+            output.structTypeNameLength = 0;
+            output.structTypeNameOffset = 0;
+            if (output.binding == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
+            {
+                output.structTypeNameLength = resolved->type.name.length();
+                output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.length());
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)

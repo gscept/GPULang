@@ -387,12 +387,13 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
 
     stateResolved->group = 0;
+    Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
-        auto it = this->resourceIndexCounter.find(Type::Category::SamplerCategory);
+        auto it = this->resourceIndexCounter.find(cat);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[Type::Category::SamplerCategory] = 0;
+            this->resourceIndexCounter[cat] = 0;
             it = this->resourceIndexCounter.find(stateResolved->group);
         }
 
@@ -402,7 +403,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[Type::Category::SamplerCategory] = max(it->second, stateResolved->binding + 1);
+            this->resourceIndexCounter[cat] = max(it->second, stateResolved->binding + 1);
         }
     }
     else if (this->resourceIndexingMode == ResourceIndexingByGroup)
@@ -421,6 +422,29 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         else
         {
             this->resourceIndexCounter[stateResolved->group] = max(it->second, stateResolved->binding + 1);
+        }
+        auto it2 = this->resourceTypePerGroupAndBinding.find(stateResolved->group);
+        if (it2 == this->resourceTypePerGroupAndBinding.end())
+        {
+            std::map<uint32_t, Type::Category> table = { { stateResolved->binding, samplerStateType->category } };
+            this->resourceTypePerGroupAndBinding.insert({ stateResolved->group, table });
+        }
+        else
+        {
+            std::map<uint32_t, Type::Category>& table = it2->second;
+            auto it3 = table.find(stateResolved->binding);
+            if (it3 == table.end())
+            {
+                table.insert({ stateResolved->binding, samplerStateType->category });
+            }
+            else
+            {
+                if (it3->second != samplerStateType->category)
+                {
+                    compiler->Error(Format("Aliasing is only allowed on resource pointers of same type. First declared as '%s' can't be aliased as '%s'", Type::CategoryToString(samplerStateType->category).c_str(), Type::CategoryToString(it3->second).c_str()), state);
+                    return false;
+                }
+            }
         }
     }
 

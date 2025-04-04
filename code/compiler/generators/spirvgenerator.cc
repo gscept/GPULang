@@ -2135,12 +2135,12 @@ GenerateTypeSPIRV(
         }
 
         TStr ty = spirvFormatter(floatType, depthBits, sampleBits, spirvFormat.buf);
-        baseType = std::tie(name, gpulangType);
+        baseType = std::tie(name, gpuLangStr);
         if (type.sampled)
         {
             TStr sampledImageStr = TStr("sampled_", gpuLangStr);
         }
-        baseType = std::tie(name, gpulangType);
+        baseType = std::tie(name, gpuLangStr);
     }
     else if (typeSymbol->category == Type::PixelCacheCategory)
     {
@@ -4568,7 +4568,7 @@ SPIRVGenerator::SetupIntrinsics()
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::GetLocalInvocationIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplLocalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationId);
 
@@ -4578,14 +4578,14 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::GetIndexInWorkGroup] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
     
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGetIndexInWorkGroup", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
         
@@ -4595,14 +4595,14 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::GetGlobalInvocationIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
 
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::GlobalInvocationId);
         
@@ -4612,7 +4612,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4620,7 +4620,7 @@ SPIRVGenerator::SetupIntrinsics()
     SPIRVGenerator::IntrinsicMap[Intrinsics::GetWorkGroupIndices] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
     
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplWorkGroupIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::WorkgroupId);
         
@@ -4630,14 +4630,14 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::GetWorkGroupDimensions] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
 
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplWorkGroupDimensions", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::WorkgroupSize);
         
@@ -4655,7 +4655,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplSubgroupId", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupId);
         
@@ -4665,7 +4665,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4673,7 +4673,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplSubgroupSize", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupSize);
         
@@ -4683,7 +4683,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4691,7 +4691,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
-        uint32_t typePtr = GPULang::AddType(g, "u32x3", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x3_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplNumSubgroups", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::NumSubgroups);
         
@@ -4701,7 +4701,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4709,7 +4709,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
-        uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x4_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupEqMask);
         
@@ -4719,7 +4719,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4727,7 +4727,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
-        uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x4_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLeMask);
         
@@ -4737,7 +4737,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4745,7 +4745,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
-        uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x4_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLtMask);
         
@@ -4755,7 +4755,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4763,7 +4763,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
-        uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x4_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGeMask);
         
@@ -4773,7 +4773,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 
@@ -4781,7 +4781,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         g->writer->Capability(Capabilities::GroupNonUniform);
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 4);
-        uint32_t typePtr = GPULang::AddType(g, "u32x4", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+        uint32_t typePtr = GPULang::AddType(g, "ptr_u32x4_Input", OpTypePointer, VariableStorage::Input, SPVArg(baseType));
         uint32_t ret = GPULang::AddSymbol(g, "gplGlobalInvocationIndices", SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
         
@@ -4791,7 +4791,7 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
         g->interfaceVariables.insert(ret);
         SPIRVResult res = type;
-        type.name = ret;
+        res.name = ret;
         return res;
     };
 

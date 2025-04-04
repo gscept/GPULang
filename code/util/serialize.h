@@ -177,14 +177,17 @@ struct BlendState
     uint32_t colorComponentMask;
 };
 
-enum BindingScope
+enum class BindingScope
 {
     VertexInput,        // For vertex attributes
-    Resource            // For images, buffers, atomic counters, acceleration structures
+    Resource,           // For images, buffers, atomic counters, acceleration structures
+    Constant,           // For constant shader values
+    Member              // For struct members
 };
 
 enum BindingType
 {
+    None,
     MutableBuffer,
     Buffer,
     MutableImage,
@@ -364,6 +367,9 @@ struct Variable : public Bindable
     BindingScope bindingScope;
     BindingType bindingType;
     ShaderUsage visibility;
+
+    size_t structTypeNameOffset;
+    size_t structTypeNameLength;
 };
 
 struct Structure : public Serializable
@@ -624,7 +630,7 @@ struct Program : public Deserializable
     };
 
     size_t vsInputLength;
-    const uint32_t* vsInputs;
+    const uint8_t* vsInputs;
 
     uint16_t patchSize;                 // Patch size if program contains a hull shader
     uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
@@ -664,6 +670,7 @@ struct SamplerState : public Bindable
     bool unnormalizedSamplingEnabled;
 };
 
+struct Structure;
 struct Variable : public Bindable
 {
     const uint32_t* arraySizes;
@@ -675,13 +682,13 @@ struct Variable : public Bindable
     BindingScope bindingScope;
     BindingType bindingType;
     ShaderUsage visibility;
+
+    const Structure* structType;
 };
 
-struct Structure : public Bindable
+struct Structure : public Deserializable
 {
     /// constructor
-    bool isConst;
-    bool isMutable;
     unsigned int size;
     Variable* variables;
     size_t variableCount;
