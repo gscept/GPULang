@@ -470,6 +470,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     // Run the code generation per thread
     for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
+        auto program = programs[programIndex];
         Generator* gen = CreateGenerator(this->lang, this->options);
         generators.push_back(gen);
         new (&threads[programIndex]) std::thread([this, returnValues, program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
@@ -935,6 +936,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             output.binding = resolved->binding;
             output.group = resolved->group;
+            output.visibility.bits = resolved->visibilityBits.bits;
 
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());

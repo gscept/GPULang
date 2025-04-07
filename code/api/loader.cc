@@ -97,6 +97,7 @@ Loader::Load(const char* data, const size_t length)
             deserialized->nameLength = samplerState->nameLength;
             deserialized->binding = samplerState->binding;
             deserialized->group = samplerState->group;
+            deserialized->visibility.bits = samplerState->visibility.bits;
 
             deserialized->addressU = samplerState->addressU;
             deserialized->addressV = samplerState->addressV;

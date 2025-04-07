@@ -373,7 +373,6 @@ SPV_INSTRUCTION(OpFUnordGreaterThanEqual, 191, 5, false)
 SPV_INSTRUCTION(OpShiftRightLogical, 194, 5, false)
 SPV_INSTRUCTION(OpShiftRightArithmetic, 195, 5, false)
 SPV_INSTRUCTION(OpShiftLeftLogical, 196, 5, false)
-SPV_INSTRUCTION(OpShiftLeftArithmetic, 197, 5, false)
 SPV_INSTRUCTION(OpBitwiseOr, 197, 5, false)
 SPV_INSTRUCTION(OpBitwiseXor, 198, 5, false)
 SPV_INSTRUCTION(OpBitwiseAnd, 199, 5, false)
@@ -1023,6 +1022,13 @@ struct SPVWriter
             dynamicWordCount = dynamicWordCount - (op.wordCount - 3);
             instr.flags.wordCount += dynamicWordCount;
         }
+        else
+        {
+            uint32_t totalArgs = 3;
+            ([&] {totalArgs += ArgCount(args);} (), ...);
+            assert(op.wordCount == totalArgs);        
+        }
+        assert(instr.flags.wordCount >= op.wordCount);
 
         this->binaries[(uint32_t)section].push_back(instr.bits);
         this->binaries[(uint32_t)section].push_back(type);
@@ -1061,6 +1067,14 @@ struct SPVWriter
             dynamicWordCount -= (op.wordCount - 2);
             instr.flags.wordCount += dynamicWordCount;
         }
+        else
+        {
+            uint32_t totalArgs = 2;
+            ([&] {totalArgs += ArgCount(args);} (), ...);
+            assert(op.wordCount == totalArgs);                
+        }
+
+        assert(instr.flags.wordCount >= op.wordCount);
 
         this->binaries[(uint32_t)section].push_back(instr.bits);
         this->binaries[(uint32_t)section].push_back(c);
@@ -1087,7 +1101,13 @@ struct SPVWriter
             uint32_t dynamicWordCount = args.size() - (op.wordCount - 2);
             instr.flags.wordCount += dynamicWordCount;
         }
+        else
+        {
+            uint32_t totalArgs = 2 + args.size();
+            assert(op.wordCount == totalArgs);               
+        }
 
+        assert(instr.flags.wordCount >= op.wordCount);
         this->binaries[(uint32_t)section].push_back(instr.bits);
         this->binaries[(uint32_t)section].push_back(type);
         this->binaries[(uint32_t)section].insert(binaries[(uint32_t)this->section].end(), args.begin(), args.end());
@@ -1122,6 +1142,13 @@ struct SPVWriter
             dynamicWordCount -= (op.wordCount - 1);
             instr.flags.wordCount += dynamicWordCount;
         }
+        else
+        {
+            uint32_t totalArgs = 1;
+            ([&] {totalArgs += ArgCount(args);} (), ...);
+            assert(op.wordCount == totalArgs);            
+        }
+        assert(instr.flags.wordCount >= op.wordCount);
         this->binaries[(uint32_t)section].push_back(instr.bits);
         
         if (this->outputText)
@@ -5185,7 +5212,7 @@ SPIRVGenerator::SetupIntrinsics()
             
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, semanticsId, valueLoaded);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, valueLoaded);
 
             return SPIRVResult(ret, returnType, true);
         };
@@ -6579,7 +6606,9 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
 {
     SamplerState* sampler = static_cast<SamplerState*>(symbol);
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
-
+    if (samplerResolved->visibilityMap.find(generator->entryPoint) == samplerResolved->visibilityMap.end())
+        return SPIRVResult();
+    
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
     Type::FullType fullType = Type::FullType{ "sampler" };
     SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Storage::Uniform);

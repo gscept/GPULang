@@ -4014,11 +4014,68 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             }
             break;
         }
+        case Symbol::SamplerStateType:
+        {
+            auto sampler = static_cast<SamplerState*>(symbol);
+            auto sampResolved = Symbol::Resolved(sampler);
+            sampResolved->visibilityMap.insert(compiler->currentState.function);
+            switch (compiler->currentState.shaderType)
+            {
+                case Program::__Resolved::ProgramEntryType::VertexShader:
+                    sampResolved->visibilityBits.flags.vertexShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::HullShader:
+                    sampResolved->visibilityBits.flags.hullShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::DomainShader:
+                    sampResolved->visibilityBits.flags.domainShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::GeometryShader:
+                    sampResolved->visibilityBits.flags.geometryShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::PixelShader:
+                    sampResolved->visibilityBits.flags.pixelShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::ComputeShader:
+                    sampResolved->visibilityBits.flags.computeShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::TaskShader:
+                    sampResolved->visibilityBits.flags.taskShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::MeshShader:
+                    sampResolved->visibilityBits.flags.meshShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
+                    sampResolved->visibilityBits.flags.rayGenerationShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayMissShader:
+                    sampResolved->visibilityBits.flags.rayMissShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
+                    sampResolved->visibilityBits.flags.rayClosestHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
+                    sampResolved->visibilityBits.flags.rayAnyHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
+                    sampResolved->visibilityBits.flags.rayIntersectionShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                    sampResolved->visibilityBits.flags.rayCallableShader = true;
+                    break;
+                default:
+                    assert(false);
+            }
+            break;
+        }
         case Symbol::StructureType:
         {
-            auto var = static_cast<Structure*>(symbol);
-            auto varResolved = Symbol::Resolved(var);
-            varResolved->visibilityMap.insert(compiler->currentState.function);
+            auto struc = static_cast<Structure*>(symbol);
+            auto strucResolved = Symbol::Resolved(struc);
+            strucResolved->visibilityMap.insert(compiler->currentState.function);
+
+            for (auto mem : struc->symbols)
+                res |= this->ResolveVisibility(compiler, mem);
             break;
         }
     }

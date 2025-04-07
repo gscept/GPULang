@@ -349,6 +349,8 @@ struct SamplerState : public Bindable
     BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
+
+    ShaderUsage visibility;
 };
 
 struct Variable : public Bindable
@@ -668,6 +670,8 @@ struct SamplerState : public Bindable
     BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
+
+    ShaderUsage visibility;
 };
 
 struct Structure;
