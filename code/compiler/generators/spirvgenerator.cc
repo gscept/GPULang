@@ -458,8 +458,8 @@ SPV_ENUM(ShaderViewportIndex, 70)
 SPV_ENUM(MeshShadingEXT, 5283)
 SPV_ENUM(RayTracingKHR, 4479)
 SPV_ENUM(Int64ImageEXT, 5016)
-SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5288)
-SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5230)
+SPV_ENUM(ComputeDerivativeGroupLinearKHR, 5350)
+SPV_ENUM(ComputeDerivativeGroupQuadsKHR, 5288)
 SPV_ENUM(PhysicalStorageBufferAddresses, 5347)
 }
 
@@ -533,7 +533,7 @@ SPV_ENUM(OutputTriangleStrip, 29)
 SPV_ENUM(SubgroupSize, 35)
 SPV_ENUM(SubgroupsPerWorkgroup, 36)
 SPV_ENUM(DerivativeGroupQuadsKHR, 5289)
-SPV_ENUM(DerivativeGroupLinearKHR, 5289)
+SPV_ENUM(DerivativeGroupLinearKHR, 5290)
 }
 
 namespace ExecutionScopes
@@ -6808,15 +6808,19 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
         }
 
-        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::PushConstant || storage == SPIRVResult::Storage::Sampler)
+        if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::PushConstant || storage == SPIRVResult::Storage::UniformConstant || storage == SPIRVResult::Storage::Sampler)
         {
             uint32_t structSymbol = GetSymbol(generator, varResolved->typeSymbol->name).value;
             if (typeName.scope != SPIRVResult::Storage::Sampler && varResolved->type.IsPointer())
             {
                 generator->writer->Decorate(SPVArg(typeName.parentTypes.back()), Decorations::Block);
             }
-            generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, varResolved->group);
-            generator->writer->Decorate(SPVArg(name), Decorations::Binding, varResolved->binding);
+
+            if (storage != SPIRVResult::Storage::PushConstant)
+            {
+                generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, varResolved->group);
+                generator->writer->Decorate(SPVArg(name), Decorations::Binding, varResolved->binding);
+            }
         }
         else if (storage == SPIRVResult::Storage::Image || storage == SPIRVResult::Storage::MutableImage)
         {
@@ -6851,6 +6855,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             || storage == SPIRVResult::Storage::MutableImage
             || storage == SPIRVResult::Storage::Uniform
             || storage == SPIRVResult::Storage::UniformConstant
+            || storage == SPIRVResult::Storage::PushConstant
             || storage == SPIRVResult::Storage::Private
             || storage == SPIRVResult::Storage::Sampler
             || storage == SPIRVResult::Storage::WorkGroup
