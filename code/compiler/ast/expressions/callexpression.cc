@@ -119,7 +119,7 @@ CallExpression::Resolve(Compiler* compiler)
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
                             {
-                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.ToString().c_str(), this->thisResolved->argumentTypes[i].ToString().c_str());
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                                 // No conversion available for this member, skip to next constructor
