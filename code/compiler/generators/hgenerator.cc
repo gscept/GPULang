@@ -273,8 +273,31 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                     writer.WriteLine("unsigned int : 32;");
             }
 
-            std::string type = typeToHeaderType[var->type.name];
+            std::string type = var->type.name;
+            auto it = typeToHeaderType.find(type);
+            if (it != typeToHeaderType.end())
+                type = it->second;
             std::string arrayType = typeToArraySize[var->type.name];
+            auto modIt = var->type.modifiers.rbegin();
+            while (modIt != var->type.modifiers.rend())
+            {
+                if (*modIt == Type::FullType::Modifier::Pointer)
+                    type += "*";
+                else if (*modIt == Type::FullType::Modifier::Array)
+                {
+                    ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
+                    ValueUnion val;
+                    if (var->type.modifierValues[diff]->EvalValue(val))
+                    {
+                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
+                    }
+                    else
+                    {
+                        type += "*";
+                    }
+                }
+                modIt++;
+            }
 
             // if element padding, we need to split the array into elements where each element is padded
             if (varResolved->elementPadding > 0)
