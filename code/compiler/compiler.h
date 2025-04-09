@@ -64,6 +64,8 @@ struct Compiler
         uint8_t optimize : 1 = 0;
         uint8_t symbols : 1 = 0;
 
+        uint8_t defaultGroupBinding = 0;
+
         ErrorFormat errorFormat = ErrorFormat::MSVC;
     };
 

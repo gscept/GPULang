@@ -418,6 +418,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 {
     bool ret = true;
     this->linkDefineCounter = 0;
+    this->validator->defaultGroup = this->options.defaultGroupBinding;
 
     this->symbols = root->symbols;
 

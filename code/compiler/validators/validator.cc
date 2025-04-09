@@ -386,7 +386,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Type* samplerStateType = compiler->GetSymbol<Type>("samplerState");
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
 
-    stateResolved->group = 0;
+    stateResolved->group = this->defaultGroup;
     Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
@@ -2511,7 +2511,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             else
             {
-                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
+                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.ToString().c_str());
                 Function* conv = compiler->GetSymbol<Function>(conversionName);
                 if (conv == nullptr)
                 {

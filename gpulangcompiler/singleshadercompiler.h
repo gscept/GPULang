@@ -47,6 +47,8 @@ public:
 	void SetAdditionalParams(const std::string& params);
 	/// Append flag bit
 	bool SetFlag(const uint32_t f);
+	/// Set default group binding
+	void SetDefaultGroup(const uint8_t g);
 
 	/// compile shader
 	bool CompileShader(const std::string& src);
@@ -67,6 +69,7 @@ private:
     std::string rootDir;
 	std::string language;
 	uint32_t flags;
+	uint8_t defaultGroup = 0;
 	std::string additionalParams;
 	std::vector<std::string> includeDirs;
 }; 

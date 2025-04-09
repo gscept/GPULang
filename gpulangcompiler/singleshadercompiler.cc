@@ -50,6 +50,15 @@ SingleShaderCompiler::SetFlag(const uint32_t f)
 //------------------------------------------------------------------------------
 /**
 */
+void
+SingleShaderCompiler::SetDefaultGroup(const uint8_t g)
+{
+	this->defaultGroup = g;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 SingleShaderCompiler::CompileShader(const std::string& src)
 {
@@ -136,6 +145,7 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	options.validate = this->flags & Flags::Validate ? 1 : 0;
 	options.symbols = this->flags & Flags::Symbols ? 1 : 0;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
+	options.defaultGroupBinding = this->defaultGroup;
 
     GPULangErrorBlob* errors = NULL;
 
