@@ -478,10 +478,14 @@ sampler
     returns[ SamplerState* sym ]
     @init
     {
+        std::vector<Attribute> attributes;
+        std::vector<Annotation> annotations;
         std::vector<Expression*> entries;
     }:
     (
         //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
+        (annotation { annotations.push_back(std::move($annotation.annot)); })*
+        (attribute { attributes.push_back(std::move($attribute.attr)); })*
         'sampler_state' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
@@ -489,6 +493,8 @@ sampler
     '}'
     {
         $sym->name = $name.text;
+        $sym->attributes = attributes;
+        $sym->annotations = annotations;
         $sym->entries = entries;
     }
     ;
