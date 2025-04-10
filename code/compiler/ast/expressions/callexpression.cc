@@ -356,6 +356,7 @@ CallExpression::EvalValue(ValueUnion& out) const
     if (!out.SetType(this->thisResolved->retType))
         return false;
 
+    bool ret = false;
     ValueUnion value;
     for (Expression* expr : this->args)
     {
@@ -371,6 +372,7 @@ CallExpression::EvalValue(ValueUnion& out) const
             for (int j = 0; j < value.rowSize; j++)
             {
                 out.Assign(value, internalIndex++, index++);
+                ret = true;
             }
         }
     }
@@ -381,10 +383,11 @@ CallExpression::EvalValue(ValueUnion& out) const
         for (uint32_t i = index; i < out.columnSize * out.rowSize; i++)
         {
             out.Assign(value, 0, i);
+            ret = true;
         }    
     }
 
-    return true;
+    return ret;
 }
 
 //------------------------------------------------------------------------------

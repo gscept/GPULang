@@ -636,7 +636,10 @@ Compiler::GeneratorError(const std::string& msg)
 void 
 Compiler::UnrecognizedTypeError(const std::string& type, Symbol* sym)
 {
-    this->Error(Format("Unrecognized type '%s' for symbol '%s'", type.c_str(), sym->name.c_str()), sym);
+    if (type == UNDEFINED_TYPE)
+        this->Error(Format("Type not defined or can't inferred for '%s'", sym->name.c_str()), sym);
+    else
+        this->Error(Format("Unrecognized type '%s' for '%s'", type.c_str(), sym->name.c_str()), sym);
 }
 
 //------------------------------------------------------------------------------

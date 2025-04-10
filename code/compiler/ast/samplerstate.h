@@ -8,6 +8,9 @@
 //------------------------------------------------------------------------------
 #include "state.h"
 #include "serialize.h"
+#include "annotation.h"
+#include "attribute.h"
+
 #include <set>
 namespace GPULang
 {
@@ -16,6 +19,9 @@ struct SamplerState : public State
 {
     /// constructor
     SamplerState();
+
+    _IMPLEMENT_ANNOTATIONS();
+    _IMPLEMENT_ATTRIBUTES();
 
     struct __Resolved : public State::__Resolved
     {

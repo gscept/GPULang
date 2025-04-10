@@ -387,6 +387,40 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
 
     stateResolved->group = this->defaultGroup;
+
+    // run attribute validation
+    for (const Attribute& attr : state->attributes)
+    {
+        if (attr.expression != nullptr)
+            attr.expression->Resolve(compiler);
+
+        ValueUnion val;
+        // resolve attributes
+        if (attr.name == "group")
+        {
+            if (!attr.expression->EvalValue(val))
+            {
+                compiler->Error(Format("Expected compile time constant for 'group' qualifier"), symbol);
+                return false;
+            }
+            val.Store(stateResolved->group);
+        }
+        else if (attr.name == "binding")
+        {
+            if (!attr.expression->EvalValue(val))
+            {
+                compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
+                return false;
+            }
+            val.Store(stateResolved->binding);
+        }
+        else
+        {
+            compiler->Error(Format("Invalid sampler_state attribute '%s'", attr.name.c_str()), symbol);
+            return false;
+        }
+    }
+    
     Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
