@@ -43,6 +43,8 @@ Function::Function()
     thisResolved->executionModifiers.groupSize = 64;
     thisResolved->executionModifiers.groupsPerWorkgroup = 1;
     thisResolved->executionModifiers.earlyDepth = false;
+    thisResolved->executionModifiers.depthAlwaysGreater = false;
+    thisResolved->executionModifiers.depthAlwaysLesser = false;
     thisResolved->isPrototype = false;
     thisResolved->returnValueStorage = Storage::Default;
 }

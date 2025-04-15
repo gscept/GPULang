@@ -68,7 +68,7 @@ static std::set<std::string> bindingQualifiers =
 
 static std::set<std::string> functionAttributes =
 {
-    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth"
+    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "partition"
@@ -744,7 +744,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             val.Store(funResolved->executionModifiers.groupsPerWorkgroup);
         }
         else if (attr.name == "early_depth")
-            funResolved->executionModifiers.earlyDepth = true;
+            funResolved->executionModifiers.earlyDepth = 1;
+        else if (attr.name == "depth_greater")
+            funResolved->executionModifiers.depthAlwaysGreater = 1;
+        else if (attr.name == "depth_less")
+            funResolved->executionModifiers.depthAlwaysLesser = 1;
         else if (attr.name == "invocations")
         {
             if (!attr.expression->EvalValue(val))
@@ -850,6 +854,16 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         if (funResolved->executionModifiers.earlyDepth)
         {
             compiler->Error("'early_depth' is only allowed on functions with the 'entry_point' qualifier", symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.depthAlwaysGreater)
+        {
+            compiler->Error("'depth_greater' is only allowed on functions with the 'entry_point' qualifier", symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.depthAlwaysLesser)
+        {
+            compiler->Error("'depth_lesser' is only allowed on functions with the 'entry_point' qualifier", symbol);
             return false;
         }
 
