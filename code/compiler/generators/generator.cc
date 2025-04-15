@@ -32,7 +32,7 @@ Generator::Generate(const Compiler* compiler, const Program* program, const std:
 void 
 Generator::Error(const std::string& msg)
 {
-    this->messages.push_back(Format("Error:", msg.c_str()));
+    this->messages.push_back(Format("Error: %s", msg.c_str()));
     this->hasErrors = true;
 }
 
@@ -42,7 +42,7 @@ Generator::Error(const std::string& msg)
 void 
 Generator::Warning(const std::string& msg)
 {
-    this->messages.push_back(Format("Warning:", msg.c_str()));
+    this->messages.push_back(Format("Warning: %s", msg.c_str()));
 }
 
 

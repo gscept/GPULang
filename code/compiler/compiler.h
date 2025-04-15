@@ -202,6 +202,7 @@ struct Compiler
     /// output binary data
     void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
+    std::string path;
     std::string filename;
     std::vector<std::string> defines;
     std::vector<std::string> messages;

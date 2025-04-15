@@ -258,6 +258,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         headerWriter.SetPath(header_output);
 
         Compiler compiler;
+        compiler.path = file;
         compiler.filename = effectName;
         compiler.debugPath = output;
         compiler.debugOutput = true;

@@ -935,7 +935,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
         }
         else if (symbol->symbolType == Symbol::SamplerStateType)
         {
-            SamplerState::__Resolved* resolved = static_cast<SamplerState::__Resolved*>(symbol->resolved);
+            SamplerState* sampler = static_cast<SamplerState*>(symbol);
+            SamplerState::__Resolved* resolved = Symbol::Resolved(sampler);
             Serialize::SamplerState output;
 
             output.binding = resolved->binding;
@@ -959,6 +960,16 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.maxLod = resolved->maxLod;
             output.borderColor = resolved->borderColor;
             output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
+
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size());
+            output.annotationsCount = sampler->annotations.size();
+
+            size_t annotOffset = output.annotationsOffset;
+            for (const Annotation& annot : sampler->annotations)
+            {
+                WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
+                annotOffset += sizeof(Serialize::Annotation);
+            }
 
             size_t offset = writer.WriteType(output);
             offsetMapping[symbol] = offset;

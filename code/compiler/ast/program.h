@@ -90,6 +90,15 @@ struct Program : public Symbol
             } flags;
             uint32_t bits;
         } usage;
+
+        union ProgramEffects
+        {
+            struct
+            {
+                uint32_t explicitDepth : 1;
+            } flags;
+            uint32_t bits;
+        } effects;
         Symbol* mappings[ProgramEntryType::NumProgramEntries];
         std::vector<uint32_t> binaries[ProgramEntryType::NumProgramEntries];
         std::unordered_map<Function*, Function*> functionOverrides;

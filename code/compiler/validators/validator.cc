@@ -1074,6 +1074,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
     funResolved->hasExplicitReturn = compiler->branchReturns;
 
+    // Reset if the function has a branch return
+    compiler->branchReturns = false;
+
     if (fun->returnType != Type::FullType{ "void" } && fun->ast != nullptr && !funResolved->hasExplicitReturn)
     {
         compiler->Error(Format("All paths don't return a value, expected to return value of '%s'", fun->returnType.ToString().c_str()), fun);
@@ -1357,9 +1360,13 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     {
                         compiler->Warning(Format("Pixel shader doesn't call pixelExportColor"), assignEntry);
                     }
-                    if (compiler->currentState.sideEffects.flags.exportsExplicitDepth && funResolved->executionModifiers.earlyDepth)
+                    if (compiler->currentState.sideEffects.flags.exportsExplicitDepth)
                     {
-                        compiler->Warning(Format("Pixel shader using 'early_depth' and explicitly setting depth results in undefined behavior"), assignEntry);
+                        progResolved->effects.flags.explicitDepth = 1;
+                        if (funResolved->executionModifiers.earlyDepth)
+                        {
+                            compiler->Warning(Format("Pixel shader using 'early_depth' and explicitly setting depth results in undefined behavior"), assignEntry);
+                        }
                     }
                 }
             }

@@ -23,8 +23,8 @@ SamplerState::SamplerState()
     typeResolved->anisotropicEnabled = false;
     typeResolved->maxAnisotropy = 16;   // in case we turn on aniso, make highest quality automatically
     typeResolved->compareSamplerEnabled = false;
-    typeResolved->compareMode = LessCompare;
-    typeResolved->minLod = -FLT_MAX;
+    typeResolved->compareMode = LessEqualCompare;
+    typeResolved->minLod = 0;
     typeResolved->maxLod = FLT_MAX;
     typeResolved->borderColor = BlackBorder;
     typeResolved->unnormalizedSamplingEnabled = false;

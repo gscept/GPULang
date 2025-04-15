@@ -48,7 +48,7 @@
 #include <array>
 #include <complex>
 #include <format>
-#include <vcruntime_startup.h>
+#include <algorithm>
 
 #include "ast/samplerstate.h"
 #include "ast/expressions/arrayinitializerexpression.h"
@@ -772,6 +772,12 @@ SPV_ENUM(IncomingRayFlagsKHR, 5351)
 SPV_ENUM(RayGeometryIndexKHR, 5352)
 }
 
+namespace SourceLanguage
+{
+SPV_ENUM(Unknown, 0)
+SPV_ENUM(GPULang, 14)
+}
+
 SPVEnum ScopeToEnum(SPIRVResult::Storage s)
 {
     switch (s)
@@ -992,6 +998,19 @@ struct SPVWriter
             this->Instruction(OpDecorate, Section::Decorations, symbol, decoration, std::forward<const ARGS&>(args)...);
             this->decorations.insert(key);
         }
+    }
+
+    uint32_t String(const char* str)
+    {
+        auto it = this->strings.find(str);
+        if (it == this->strings.end())
+        {
+            uint32_t ret = this->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, str); 
+            this->strings[str] = ret;
+            return ret;
+        }
+        else
+            return it->second;
     }
 
     template<typename ...ARGS>
@@ -1362,7 +1381,7 @@ struct SPVWriter
     template<>
     void Append(const int32_t& arg)
     {    
-        this->binaries[(uint32_t)this->section].push_back(arg);
+        this->binaries[(uint32_t)this->section].push_back(*reinterpret_cast<const uint32_t*>(&arg));
         if (this->outputText)
         {
             char buf[64];
@@ -1374,7 +1393,7 @@ struct SPVWriter
     template<>
     void Append(const float& arg)
     {
-        this->binaries[(uint32_t)this->section].push_back(arg);
+        this->binaries[(uint32_t)this->section].push_back(*reinterpret_cast<const uint32_t*>(&arg));
         
         if (this->outputText)
         {
@@ -1413,7 +1432,7 @@ struct SPVWriter
     template<>
     void Append(const char& arg)
     {
-        this->binaries[(uint32_t)this->section].push_back((uint32_t)arg);
+        this->binaries[(uint32_t)this->section].push_back(*reinterpret_cast<const uint32_t*>(&arg));
         if (this->outputText)
         {
             this->texts[(uint32_t)this->section].Append(arg);
@@ -1615,6 +1634,7 @@ struct SPVWriter
     std::set<SPVEnum> capabilities;
     std::set<SPVEnum> extensions;
     std::set<std::string> decorations;
+    std::map<std::string, uint32_t> strings;
 };
 
 template<typename ...ARGS>
@@ -6077,7 +6097,7 @@ SPIRVGenerator::SetupIntrinsics()
                     SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
                     SPIRVResult loadedValue = LoadValueSPIRV(c, g, args[2]);
                     SPIRVResult loadedMip = LoadValueSPIRV(c, g, args[3]);
-                    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, dereffed, loadedCoord, loadedValue, ImageOperands::Lod, loadedMip);
+                    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, SPVArg{ dereffed }, loadedCoord, loadedValue, ImageOperands::Lod, loadedMip);
                 }
                 else
                 {
@@ -6095,7 +6115,7 @@ SPIRVGenerator::SetupIntrinsics()
                     }
                     SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
                     SPIRVResult loadedValue = LoadValueSPIRV(c, g, args[2]);
-                    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, dereffed, loadedCoord, loadedValue);
+                    g->writer->Instruction(OpImageWrite, SPVWriter::Section::LocalFunction, SPVArg{ dereffed }, loadedCoord, loadedValue);
                 }
             }
             else
@@ -6116,7 +6136,7 @@ SPIRVGenerator::SetupIntrinsics()
                     }
                     SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
                     SPIRVResult loadedMip = LoadValueSPIRV(c, g, args[2]);
-                    ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, dereffed, loadedCoord, ImageOperands::Lod, loadedMip);
+                    ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, SPVArg{ dereffed }, loadedCoord, ImageOperands::Lod, loadedMip);
                     res.isValue = true;
                 }
                 else
@@ -6134,7 +6154,7 @@ SPIRVGenerator::SetupIntrinsics()
                         dereffed = LoadValueSPIRV(c, g, args[0], true).name;
                     }
                     SPIRVResult loadedCoord = LoadValueSPIRV(c, g, args[1]);
-                    ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, dereffed, loadedCoord);
+                    ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, SPVArg{ dereffed }, loadedCoord);
                     res.isValue = true;
                 }
             }
@@ -6648,6 +6668,10 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
             SamplerFilterModes::Linear
         };
         uint32_t name = AddSymbol(generator, sampler->name, SPVWriter::Section::Declarations, OpConstantSampler, samplerType.typeName, addressingTable[samplerResolved->addressU], samplerResolved->unnormalizedSamplingEnabled ? 0 : 1, filterTable[samplerResolved->magFilter]);
+
+        if (compiler->options.symbols)
+            generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
+        
         return SPIRVResult(name, samplerType.typeName, true, true);
     }
     else
@@ -6655,6 +6679,9 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
         // Generate immutable sampler
         uint32_t name = AddSymbol(generator, symbol->name, SPVWriter::Section::Declarations, OpVariable, samplerType, ScopeToEnum(samplerType.scope));
         generator->interfaceVariables.insert(name);
+
+        if (compiler->options.symbols)
+            generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
 
         generator->writer->Decorate(SPVArg(name), Decorations::DescriptorSet, samplerResolved->group);
         generator->writer->Decorate(SPVArg(name), Decorations::Binding, samplerResolved->binding);
@@ -6951,7 +6978,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 
         if (compiler->options.symbols)
         {
-            uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+            uint32_t name = generator->writer->String(expr->location.file.c_str());
             generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
         }
 
@@ -7046,7 +7073,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 
         if (compiler->options.symbols)
         {
-            uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+            uint32_t name = generator->writer->String(expr->location.file.c_str());
             generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
         }
         // Function is not declared by user code, so must be intrinsic
@@ -7091,7 +7118,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     if (leftType.modifiers.empty())
@@ -7173,7 +7200,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     if (isConst)
@@ -7228,7 +7255,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     if (isConst)
@@ -7274,7 +7301,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
 
@@ -7399,7 +7426,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     if (swizzle.mask != 0x0)
@@ -7521,7 +7548,7 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     SPIRVResult loadedCondition = LoadValueSPIRV(compiler, generator, lhsResult);
@@ -7568,7 +7595,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
@@ -7717,7 +7744,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
 {
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, expr->location.file.c_str());
+        uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
     }
     ValueUnion val;
@@ -7983,7 +8010,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, stat->location.file.c_str());
+        uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
     }
 
@@ -8052,7 +8079,7 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, stat->location.file.c_str());
+        uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{endLabel}, SelectionControl::None);
@@ -8188,7 +8215,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
 
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, stat->location.file.c_str());
+        uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
@@ -8370,7 +8397,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
 {    
     if (compiler->options.symbols)
     {
-        uint32_t name = generator->writer->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, stat->location.file.c_str());
+        uint32_t name = generator->writer->String(stat->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
     }
     bool ret = false;
@@ -8463,6 +8490,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             gen->writer->extensions.clear();
             gen->writer->decorations.clear();
             gen->writer->capabilities.clear();
+            gen->writer->strings.clear();
             
         }
 
@@ -8658,6 +8686,14 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             this->writer->Instruction(OpMemoryModel, SPVWriter::Section::Header, AddressingModels::PhysicalStorageBuffer64, MemoryModels::GLSL450);
         }
 
+        if (compiler->options.symbols)
+        {
+            std::string path = compiler->path;
+            std::replace(path.begin(), path.end(), '\\', '/');
+            uint32_t file = this->writer->String(path.c_str());
+            this->writer->Instruction(OpSource, SPVWriter::Section::DebugNames, SourceLanguage::Unknown, 1, SPVArg{file});
+        }
+
         this->entryPoint = static_cast<Function*>(object);
 
         for (Symbol* sym : symbols)
@@ -8717,12 +8753,36 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         case Program::__Resolved::DomainShader:
             break;
         case Program::__Resolved::PixelShader:
+        {
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, pixelOriginEnumMap[funResolved->executionModifiers.pixelOrigin]);
             if (funResolved->executionModifiers.earlyDepth)
             {
                 this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::EarlyFragmentTests);
             }
+            if (funResolved->executionModifiers.depthAlwaysGreater)
+            {
+                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::DepthGreater);
+            }
+            if (funResolved->executionModifiers.depthAlwaysLesser)
+            {
+                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::DepthLess);
+            }
+            RenderState* state = static_cast<RenderState*>(progResolved->mappings[Program::__Resolved::RenderState]);
+            RenderState::__Resolved* stateRes = Symbol::Resolved(state);
+            if (!stateRes->depthWriteEnabled)
+            {
+                // Set depth to be unchanged if depth is never written
+                this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::DepthUnchanged);
+            }
+            else
+            {
+                if (progResolved->effects.flags.explicitDepth)
+                {
+                    this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{entryFunction}, ExecutionModes::DepthReplacing);
+                }
+            }
             break;
+        }
         case Program::__Resolved::ComputeShader:
             this->writer->Instruction(OpExecutionMode, SPVWriter::Section::Header, SPVArg{ entryFunction }, ExecutionModes::LocalSize, funResolved->executionModifiers.computeShaderWorkGroupSize[0], funResolved->executionModifiers.computeShaderWorkGroupSize[1], funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
             if (funResolved->executionModifiers.groupSize != 64)
