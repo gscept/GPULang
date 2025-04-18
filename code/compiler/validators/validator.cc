@@ -990,7 +990,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // format function with all attributes and parameters
     std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
     std::string resolvedNameWithParamNames = Format("%s(%s)", fun->name.c_str(), paramListNamed.c_str());
-    std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
+    std::string functionFormatted = Format("%s %s %s", attributeList.c_str(), resolvedName.c_str(), fun->returnType.name.c_str());
     funResolved->name = resolvedName;
     funResolved->nameWithVarNames = resolvedNameWithParamNames;
     funResolved->signature = functionFormatted;
@@ -2001,7 +2001,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->Resolve(compiler);
     }
 
-    if (var->type.name == "<undefined>")
+    if (var->type.name == UNDEFINED_TYPE)
     {
         if (var->valueExpression != nullptr)
             var->valueExpression->EvalType(var->type);
@@ -2044,7 +2044,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         return false;
     }    
     
-
     // Add symbol
     if (!compiler->AddSymbol(var->name, var))
         return false;
@@ -2358,19 +2357,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Variables of non scalar type in the global scope may only be single pointer"), symbol);
                 return false;
             }
-
-            if (varResolved->type.modifiers.front() == Type::FullType::Modifier::Array)
-            {
-                if (varResolved->type.modifierValues.front() == nullptr)
-                {
-                    if (varResolved->storage != Storage::Uniform)
-                    {
-                        compiler->Error(Format("Variables of dynamic sized array must be 'uniform'"), symbol);
-                        return false;        
-                    }
-                    varResolved->usageBits.flags.isDynamicSizedArray = true;
-                }
-            }
+            
 
             /*
             if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::UserTypeCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
@@ -2584,6 +2571,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->valueConversionFunction = conv;
             }
         }
+
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
         varResolved->type.modifierValues = rhs.modifierValues;
