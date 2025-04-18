@@ -91,6 +91,11 @@ CallExpression::Resolve(Compiler* compiler)
     {
         // If the function isn't available, check for any type constructor that might implement it
         std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol.c_str());
+        if (functionSymbols.empty())
+        {
+            compiler->UnrecognizedSymbolError(callSignature, this);
+            return false;
+        }
         std::vector<Candidate> candidates;
         for (auto functionSymbol : functionSymbols)
         {
@@ -293,6 +298,47 @@ CallExpression::Resolve(Compiler* compiler)
 
     if (this->thisResolved->function != nullptr)
     {
+        // Check for recursion
+        auto scopeIt = compiler->scopes.crbegin();
+        auto end = compiler->scopes.crend();
+        while (scopeIt != end)
+        {
+            if ((*scopeIt)->owningSymbol == this->thisResolved->function)
+            {
+                std::string message = "Recursions are not allowed, the following callstack produced a recursion:\n";
+                std::vector<std::string> callstack;
+                auto scopeIt2 = compiler->scopes.crbegin();
+                while (scopeIt2 != end)
+                {
+                    Symbol* sym = (*scopeIt2)->owningSymbol;
+                    if (sym != nullptr && sym->symbolType == Symbol::SymbolType::FunctionType)
+                    {
+                        Function* fun = static_cast<Function*>(sym);
+                        Function::__Resolved* res = Symbol::Resolved(fun);
+                        callstack.push_back(res->signature);
+                    }
+                    scopeIt2++;
+                }
+                std::string indent = "";
+                std::string outline = " ";
+                auto callstackIt = callstack.begin();
+                while (callstackIt != callstack.end())
+                {
+                    message += indent + *callstackIt + "\n";
+                    indent += "  ";
+                    outline += "  ";
+                    if (callstackIt != callstack.end() - 1)
+                    {
+                        message += outline + "^\n";
+                    }
+                    callstackIt++;
+                }
+                compiler->Error(message, this);
+                return false;
+            }
+            scopeIt++;
+        }
+        
         size_t i = 0;
         for (; i < this->thisResolved->function->parameters.size(); i++)
         {
