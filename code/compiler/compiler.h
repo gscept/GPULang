@@ -260,10 +260,6 @@ struct Compiler
 
     std::vector<Scope*> scopes;
 
-    // Gargh, ugly hack to push a type being declared before a symbol needing it
-    Type* declareTy;
-    Type::FullType declareType;
-
     std::string debugPath;
     bool debugOutput;
 

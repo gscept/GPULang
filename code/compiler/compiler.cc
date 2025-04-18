@@ -29,8 +29,6 @@ namespace GPULang
 */
 Compiler::Compiler() 
     : debugOutput(false)
-    , declareTy(nullptr)
-    , declareType(Type::FullType{})
     , ignoreReservedWords(false)
     , hasErrors(false)
 {
@@ -1017,8 +1015,18 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.length());
                     varOutput.byteSize = resolved->byteSize;
                     varOutput.structureOffset = resolved->structureOffset;
-                    varOutput.arraySizesCount = resolved->type.modifierValues.size();
-                    varOutput.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
+                    varOutput.arraySizesCount = 0;
+                    varOutput.arraySizesOffset = dynamicDataBlob.iterator;
+                    for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+                    {
+                        if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                        {
+                            varOutput.arraySizesCount++;
+                            ValueUnion size;
+                            resolved->type.modifierValues[i]->EvalValue(size);
+                            dynamicDataBlob.Write(size.ui);
+                        }
+                    }
 
                     // write variable
                     dynamicDataBlob.WriteReserved(varOutput, offset);
@@ -1102,7 +1110,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             output.structTypeNameLength = 0;
             output.structTypeNameOffset = 0;
-            if (output.binding == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
+            if (output.bindingType == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
             {
                 output.structTypeNameLength = resolved->type.name.length();
                 output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.length());
