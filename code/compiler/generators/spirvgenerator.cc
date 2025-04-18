@@ -364,12 +364,12 @@ SPV_INSTRUCTION(OpULessThan, 176, 5, false)
 SPV_INSTRUCTION(OpSLessThan, 177, 5, false)
 SPV_INSTRUCTION(OpULessThanEqual, 178, 5, false)
 SPV_INSTRUCTION(OpSLessThanEqual, 179, 5, false)
-SPV_INSTRUCTION(OpFUnordEqual, 181, 5, false)
-SPV_INSTRUCTION(OpFUnordNotEqual, 183, 5, false)
-SPV_INSTRUCTION(OpFUnordLessThan, 185, 5, false)
-SPV_INSTRUCTION(OpFUnordGreaterThan, 187, 5, false)
-SPV_INSTRUCTION(OpFUnordLessThanEqual, 189, 5, false)
-SPV_INSTRUCTION(OpFUnordGreaterThanEqual, 191, 5, false)
+SPV_INSTRUCTION(OpFOrdEqual, 181, 5, false)
+SPV_INSTRUCTION(OpFOrdNotEqual, 183, 5, false)
+SPV_INSTRUCTION(OpFOrdLessThan, 185, 5, false)
+SPV_INSTRUCTION(OpFOrdGreaterThan, 187, 5, false)
+SPV_INSTRUCTION(OpFOrdLessThanEqual, 189, 5, false)
+SPV_INSTRUCTION(OpFOrdGreaterThanEqual, 191, 5, false)
 SPV_INSTRUCTION(OpShiftRightLogical, 194, 5, false)
 SPV_INSTRUCTION(OpShiftRightArithmetic, 195, 5, false)
 SPV_INSTRUCTION(OpShiftLeftLogical, 196, 5, false)
@@ -3285,30 +3285,30 @@ SPIRVGenerator::SetupIntrinsics()
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, mod, F, Mod)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, mod, F, Mod)
         , OPERATOR_INTRINSIC_NO_ASSIGN(Float, mod, F, Mod)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, lt, FUnord, LessThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, lt, FUnord, LessThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, lt, FUnord, LessThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, lt, FUnord, LessThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, lte, FUnord, LessThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, lte, FUnord, LessThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, lte, FUnord, LessThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, lte, FUnord, LessThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, gt, FUnord, GreaterThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, gt, FUnord, GreaterThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, gt, FUnord, GreaterThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, gt, FUnord, GreaterThan)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, gte, FUnord, GreaterThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, gte, FUnord, GreaterThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, gte, FUnord, GreaterThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, gte, FUnord, GreaterThanEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, e, FUnord, Equal)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, e, FUnord, Equal)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, e, FUnord, Equal)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, e, FUnord, Equal)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, ne, FUnord, NotEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, ne, FUnord, NotEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, ne, FUnord, NotEqual)
-        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, ne, FUnord, NotEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, lt, FOrd, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, lt, FOrd, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, lt, FOrd, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, lt, FOrd, LessThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, lte, FOrd, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, lte, FOrd, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, lte, FOrd, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, lte, FOrd, LessThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, gt, FOrd, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, gt, FOrd, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, gt, FOrd, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, gt, FOrd, GreaterThan)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, gte, FOrd, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, gte, FOrd, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, gte, FOrd, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, gte, FOrd, GreaterThanEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, e, FOrd, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, e, FOrd, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, e, FOrd, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, e, FOrd, Equal)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float4, ne, FOrd, NotEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float3, ne, FOrd, NotEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float2, ne, FOrd, NotEqual)
+        , OPERATOR_INTRINSIC_NO_ASSIGN(Float, ne, FOrd, NotEqual)
         , OPERATOR_INTRINSIC(Int4, addition, I, Add)
         , OPERATOR_INTRINSIC(Int3, addition, I, Add)
         , OPERATOR_INTRINSIC(Int2, addition, I, Add)
@@ -6816,23 +6816,29 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             typeName.typeName = typePtrName;
         }
         
-        if (initializer != SPIRVResult::Invalid() && initializer.isConst)
+        if (initializer != SPIRVResult::Invalid())
         {
-            name = AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope), SPVArg{ initializer.name });
-            if (compiler->options.symbols)
-                generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
+            // Only create the variable with the initializer if it's const and the variable is global
+            if (initializer.isConst && isGlobal)
+            {
+                name = AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope), SPVArg{ initializer.name });
+                if (compiler->options.symbols)
+                    generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
+            }
+            else
+            {
+                name = AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope));
+                if (compiler->options.symbols)
+                    generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
+                SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
+                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
+            }
         }
         else
         {
             name = AddSymbol(generator, varResolved->name, isGlobal ? SPVWriter::Section::Declarations : SPVWriter::Section::VariableDeclarations, OpVariable, typeName, ScopeToEnum(typeName.scope));
             if (compiler->options.symbols)
                 generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, var->name.c_str());
-        }
-
-        if (initializer != SPIRVResult::Invalid() && !initializer.isConst)
-        {
-            SPIRVResult loaded = LoadValueSPIRV(compiler, generator, initializer);
-            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg(name), loaded);
         }
 
         if (storage == SPIRVResult::Storage::StorageBuffer || storage == SPIRVResult::Storage::Uniform || storage == SPIRVResult::Storage::PushConstant || storage == SPIRVResult::Storage::UniformConstant || storage == SPIRVResult::Storage::Sampler)
@@ -7403,8 +7409,10 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
                 rightValue.name = generator->writer->MappedInstruction(OpVectorShuffle, SPVWriter::Section::LocalFunction, vectorTypeName.typeName, leftLoaded, rightValue, SPVLiteralList{ .vals = slots, .num = (uint8_t)vectorType->columnSize });
                 rightValue.typeName = vectorTypeName.typeName;
             }
+            binaryOpResult = rightValue;
+
         }
-        StoreValueSPIRV(compiler, generator, leftValue, rightValue);
+        StoreValueSPIRV(compiler, generator, leftValue, binaryOpResult);
         return leftValue;
     }
     else
@@ -7625,11 +7633,13 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
             uint32_t res = generator->writer->MappedInstruction(addOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded, constOne);
+            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg{ res });
             if (unaryExpression->isPrefix)
+            {
                 return SPIRVResult(res, rhs.typeName, true);
+            }
             else
             {
-                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg{ res });
                 return SPIRVResult(loaded.name, rhs.typeName, true);
             }
         }
@@ -7656,11 +7666,13 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             }
             SPIRVResult loaded = LoadValueSPIRV(compiler, generator, rhs);
             uint32_t res = generator->writer->MappedInstruction(subOp, SPVWriter::Section::LocalFunction, loaded.typeName, loaded);
+            generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg(res));
             if (unaryExpression->isPrefix)
+            {
                 return SPIRVResult(res, rhs.typeName, true);
+            }
             else
             {
-                generator->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, rhs, SPVArg(res));
                 return SPIRVResult(loaded.name, rhs.typeName, true);
             }
         }
@@ -7985,7 +7997,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     
     for (auto decl : stat->declarations)
         GenerateVariableSPIRV(compiler, generator, decl, false, false);
-
+    
     uint32_t startLabel = generator->writer->Reserve();
     uint32_t conditionLabel = generator->writer->Reserve();
     uint32_t repeatLabel = generator->writer->Reserve();
