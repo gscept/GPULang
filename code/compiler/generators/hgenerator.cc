@@ -17,6 +17,8 @@
 #include "compiler.h"
 #include "util.h"
 #include "ast/expressions/arrayinitializerexpression.h"
+#include "ast/expressions/callexpression.h"
+#include <regex>
 
 namespace GPULang
 {
@@ -198,6 +200,32 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
             writer.Write("}");
             break;
         }
+        case Symbol::CallExpressionType:
+        {
+            auto callExpr = static_cast<CallExpression*>(expr);
+            auto res = Symbol::Resolved(callExpr);
+            std::regex re("(f32|i32|u32|b8)(x[0-9])?(x[0-9])?");
+            std::cmatch m;
+            if (std::regex_match(res->function->name.c_str(), m, re))
+            {
+                if (m.length() > 1)
+                {
+                    writer.Write("{");
+                }
+                for (auto& arg : callExpr->args)
+                {
+                    writer.Write(arg->EvalString());
+                    if (arg != callExpr->args.back())
+                        writer.Write(", ");
+                }
+                if (m.length() > 1)
+                {
+                    writer.Write("}");
+                }
+            }
+            res->function->name;
+            break;
+        }
     }
 }
 
@@ -287,7 +315,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
-                    if (var->type.modifierValues[diff]->EvalValue(val))
+                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
                     {
                         arrayType = Format("[%d]", val.ui[0]) + arrayType;
                     }
@@ -360,25 +388,32 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             writer.Unindent();
             writer.WriteLine("};\n");
         }
-        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Default)
+        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Global)
         {
-            std::string arraySize = "";
-            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+            std::string type = var->type.name;
+            auto it = typeToHeaderType.find(type);
+            if (it != typeToHeaderType.end())
+                type = it->second;
+            std::string arrayType = typeToArraySize[var->type.name];
+            auto modIt = var->type.modifiers.rbegin();
+            while (modIt != var->type.modifiers.rend())
             {
-                if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
+                if (*modIt == Type::FullType::Modifier::Pointer)
+                    type += "*";
+                else if (*modIt == Type::FullType::Modifier::Array)
                 {
-                    uint32_t size = 0;
-                    if (varResolved->type.modifierValues[i] != nullptr)
+                    ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
+                    ValueUnion val;
+                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
                     {
-                        ValueUnion val;
-                        varResolved->type.modifierValues[i]->EvalValue(val);
-                        val.Store(size);
+                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
                     }
-                    if (size > 0)
-                        arraySize.append(Format("[%d]", size));
                     else
-                        arraySize.append(Format("[]"));
+                    {
+                        type += "*";
+                    }
                 }
+                modIt++;
             }
 
             uint32_t accessFlags;
@@ -390,11 +425,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str(), initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str(), initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s%s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str()));
+                writer.WriteLine(Format("static const %s %s%s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str()));
             }
         }
     }
