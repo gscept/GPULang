@@ -240,7 +240,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         this->thisResolved->constValueExpression = Alloc<Type##Expression>(value.type[0]);\
         this->thisResolved->constValueExpression->Resolve(compiler);
 
-            switch (this->thisResolved->lhsType->baseType)
+            switch (value.code)
             {
                 VALUE_UNION_SWITCH()
             }
