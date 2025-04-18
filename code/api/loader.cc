@@ -136,6 +136,7 @@ Loader::Load(const char* data, const size_t length)
             deserialized->binding = var->binding;
             deserialized->group = var->group;
             deserialized->visibility.bits = var->visibility.bits;
+            deserialized->structType = nullptr;
 
             deserialized->arraySizeCount = var->arraySizesCount;
             deserialized->arraySizes = nullptr;
