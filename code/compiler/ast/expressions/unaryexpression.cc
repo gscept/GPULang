@@ -52,6 +52,8 @@ UnaryExpression::Resolve(Compiler* compiler)
         TypeCode::Int16,
         TypeCode::UInt,
         TypeCode::UInt16,
+        TypeCode::Float,
+        TypeCode::Float16
     };
     static const std::set<TypeCode> signedTypes =
     {
