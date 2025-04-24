@@ -12,51 +12,83 @@
 
 namespace GPULang
 {
-thread_local uint32_t FreeBlockCounter = 0;
-thread_local uint32_t* FreeBlocks = nullptr;
-thread_local MemoryBlock* Blocks = nullptr;
-thread_local size_t CurrentBlock = 0;
-thread_local size_t BlockSize = 65535;
-thread_local bool IsInit = false;
+
+thread_local Allocator* CurrentAllocator;
+Allocator DefaultAllocator = 
+{
+    .freeBlockCounter = 0,
+    .freeBlocks = nullptr,
+    .blocks = nullptr,
+    .currentBlock = 0,
+    .blockSize = 65535
+};
+bool IsDefaultAllocatorInitialized = false;
 //------------------------------------------------------------------------------
 /**
 */
-void
-InitMemory()
+void 
+InitAllocator(Allocator* alloc)
 {
-    if (FreeBlocks != nullptr)
-        free(FreeBlocks);
-    if (Blocks != nullptr)
-        free(Blocks);
-    FreeBlocks = (uint32_t*)malloc(sizeof(uint32_t) * 2048);
-    Blocks = (MemoryBlock*)malloc(sizeof(MemoryBlock) * 2048);
+    assert(alloc->blockSize > 0);
+    if (alloc->freeBlocks != nullptr)
+        free(alloc->freeBlocks);
+    if (alloc->blocks != nullptr)
+        free(alloc->blocks);
+    alloc->freeBlocks = (uint32_t*)malloc(sizeof(uint32_t) * 2048);
+    alloc->blocks = (MemoryBlock*)malloc(sizeof(MemoryBlock) * 2048);
     for (int32_t i = 2047; i >= 0; i--)
     {
-        Blocks[i] = MemoryBlock();
-        FreeBlocks[2047 - i] = i;
+        alloc->blocks[i] = MemoryBlock();
+        alloc->freeBlocks[2047 - i] = i;
     }
-    FreeBlockCounter = 2047;
-    CurrentBlock = FreeBlocks[FreeBlockCounter];
-    Blocks[CurrentBlock] = MemoryBlock(malloc(BlockSize), CurrentBlock);
-    FreeBlockCounter--;
-    IsInit = true;
+    alloc->freeBlockCounter = 2047;
+    alloc->currentBlock = alloc->freeBlocks[alloc->freeBlockCounter];
+    alloc->blocks[alloc->currentBlock] = MemoryBlock(malloc(alloc->blockSize), alloc->currentBlock);
+    alloc->freeBlockCounter--;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-void
-ResetMemory()
+void 
+DestroyAllocator(Allocator* alloc)
 {
     for (uint32_t i = 0; i < 2048; i++)
     {
-        if (Blocks[i].mem != nullptr)
+        if (alloc->blocks[i].mem != nullptr)
         {
-            free(Blocks[i].mem);
-            Blocks[i] = MemoryBlock();
+            free(alloc->blocks[i].mem);
+            alloc->blocks[i] = MemoryBlock();
         }
     }
-    InitMemory();
+    if (alloc->freeBlocks != nullptr)
+        free(alloc->freeBlocks);
+    if (alloc->blocks != nullptr)
+        free(alloc->blocks);
+
+    alloc->freeBlocks = nullptr;
+    alloc->blocks = nullptr;
+    alloc->freeBlockCounter = 0;
+    alloc->currentBlock = 0;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+MakeAllocatorCurrent(Allocator* alloc)
+{
+    CurrentAllocator = alloc;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+ResetAllocator(Allocator* alloc)
+{
+    DestroyAllocator(alloc);
+    InitAllocator(alloc);
 }
 
 thread_local char ThreadLocalHeap[0xFFFF];

@@ -1880,39 +1880,39 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     enumeration->baseType = enumResolved->typeSymbol->baseType;
 
     // Create constructor from type, and to type
-    Function* fromUnderlyingType = new Function;
+    Function* fromUnderlyingType = Alloc<Function>();
     fromUnderlyingType->name = enumeration->name;
     fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
     fromUnderlyingType->compileTime = true;
-    Variable* arg = new Variable;
+    Variable* arg = Alloc<Variable>();
     arg->name = "_arg0";
     arg->type = enumeration->type;
     fromUnderlyingType->parameters.push_back(arg);
     enumeration->globals.push_back(fromUnderlyingType);
 
-    Function* toUnderlyingType = new Function;
+    Function* toUnderlyingType = Alloc<Function>();
     toUnderlyingType->name = enumeration->type.name;
     toUnderlyingType->returnType = enumeration->type;
     toUnderlyingType->compileTime = true;
-    arg = new Variable;
+    arg = Alloc<Variable>();
     arg->name = "_arg0";
     arg->type = Type::FullType{ enumeration->name };
     toUnderlyingType->parameters.push_back(arg);
     enumeration->globals.push_back(toUnderlyingType);
 
-    Function* comparison = new Function;
+    Function* comparison = Alloc<Function>();
     comparison->name = "operator==";
     comparison->returnType = Type::FullType{ "b8" };
-    arg = new Variable;
+    arg = Alloc<Variable>();
     arg->name = "rhs";
     arg->type = Type::FullType{ enumeration->name };
     comparison->parameters.push_back(arg);
     enumeration->staticSymbols.push_back(comparison);
 
-    comparison = new Function;
+    comparison = Alloc<Function>();
     comparison->name = "operator!=";
     comparison->returnType = Type::FullType{ "b8" };
-    arg = new Variable;
+    arg = Alloc<Variable>();
     arg->name = "rhs";
     arg->type = Type::FullType{ enumeration->name };
     comparison->parameters.push_back(arg);
@@ -1956,7 +1956,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
                 expr->EvalValue(val);
                 uint32_t value;
                 val.Store(value);
-                sym = new EnumExpression(value, expressionType, enumeration->type);
+                sym = Alloc<EnumExpression>(value, expressionType, enumeration->type);
                 nextValue = value + 1;
             }
             else
@@ -1967,7 +1967,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            sym = new EnumExpression(nextValue++, expressionType, enumeration->type);
+            sym = Alloc<EnumExpression>(nextValue++, expressionType, enumeration->type);
         }
 
         // Add to type
@@ -2026,6 +2026,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = type->byteSize;
+    varResolved->storage = Storage::Default;
+    varResolved->parameterBits.bits = 0x0;
 
     for (Expression* expr : varResolved->type.modifierValues)
     {
@@ -2712,7 +2714,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     compiler->Warning(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
                 
                  // Generate mutable/uniform variant of struct
-                Structure* generatedStruct = new Structure;
+                Structure* generatedStruct = Alloc<Structure>();
                 uint32_t structSize = 0;
                 uint32_t padCounter = 0;
                 uint32_t offset = 0;
@@ -2722,7 +2724,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     {
                         Variable* var = static_cast<Variable*>(sym);
                         Variable::__Resolved* varResolved = Symbol::Resolved(var);
-                        Variable* generatedVar = new Variable;
+                        Variable* generatedVar = Alloc<Variable>();
                         Variable::__Resolved* generatedVarResolved = Symbol::Resolved(generatedVar);
                         generatedVar->name = var->name;
                         generatedVar->type = var->type;

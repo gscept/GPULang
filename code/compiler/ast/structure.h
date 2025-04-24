@@ -9,6 +9,7 @@
 #include "attribute.h"
 #include "variable.h"
 #include "types/type.h"
+#include "expressions/expression.h"
 namespace GPULang
 {
 
@@ -36,8 +37,7 @@ struct Structure : public Type
             int bits;
         };
         UsageFlags usageFlags;
-
-        Variable::__Resolved::AccessBits accessBits = 0x0;
+        AccessBits accessBits = 0x0;
 
         static const uint8_t NOT_BOUND = 0xF;
         //uint32_t group;

@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <map>
 
+extern bool SYMBOL_STATIC_ALLOC;
+
 #define STRINGIFY(x) #x
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\

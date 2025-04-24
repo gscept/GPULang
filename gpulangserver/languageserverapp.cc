@@ -54,6 +54,59 @@ public:
     SOCKET sock;
 };
 
+struct ParseContext
+{
+    std::vector<std::string> includePaths;
+    struct ParsedFile
+    {
+        GPULangServerResult result;
+        GPULang::Allocator alloc;
+    };
+    std::map<std::string, ParsedFile> parsedFiles;
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+ParseContext::ParsedFile* 
+ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& messageHandler)
+{
+    auto it = context->parsedFiles.find(path);
+    if (it == context->parsedFiles.end())
+    {
+        it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
+        it->second.alloc = GPULang::CreateAllocator();
+        GPULang::InitAllocator(&it->second.alloc);
+    }
+    GPULang::Compiler::Options options;
+    GPULang::ResetAllocator(&it->second.alloc);
+    GPULang::MakeAllocatorCurrent(&it->second.alloc);
+    GPULangValidate(path, context->includePaths, options, it->second.result);
+    if (!it->second.result.diagnostics.empty())
+    {
+        std::vector<lsp::Diagnostic> diagnostics;
+        for (auto& diagnostic : it->second.result.diagnostics)
+        {
+            diagnostics.push_back(lsp::Diagnostic{
+                .range = {
+                    .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
+                    .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
+                },
+                .message = diagnostic.error
+            });
+        }
+        it->second.result.diagnostics.clear();
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(
+            lsp::notifications::TextDocument_PublishDiagnostics::Params
+            {
+                .uri = path,
+                .diagnostics = diagnostics
+            }
+        );
+    }
+    return &it->second;
+};
+
 
 //------------------------------------------------------------------------------
 /**
@@ -92,15 +145,10 @@ main(int argc, const char** argv)
     //setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout);
 #endif
 
-    struct ParseContext
-    {
-        std::vector<std::string> includePaths;
-        GPULangServerResult result;
-    };
-    std::map<int, ParseContext> parseContexts;
 
     printf("GPULang Language Server Version 1.0\n");
     printf("Waiting for clients...\n");
+    std::map<int, ParseContext> parseContexts;
 
     while (true)
     {
@@ -148,11 +196,43 @@ main(int argc, const char** argv)
                         }
                     }
                 }
+
+                lsp::SemanticTokensLegend legend{
+                    .tokenTypes = {
+                        "type",
+                        "class",
+                        "enum",
+                        "struct",
+                        "parameter",
+                        "variable",
+                        "property",
+                        "enumMember",
+                        "function",
+                        "macro",
+                        "keyword",
+                        "modifier",
+                        "comment",
+                        "string",
+                        "number",
+                        "operator",
+                        "decorator"
+                    },
+                    .tokenModifiers = {
+                        "declaration",
+                        "definition",
+                        "readonly",
+                        "static",
+                        "deprecated",
+                        "documentation",
+                        "defaultLibrary"
+                    }
+                };
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
                 result.capabilities.declarationProvider = lsp::DeclarationOptions{ .workDoneProgress = true };
                 result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
+                result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
                 return result;
             })
@@ -161,26 +241,14 @@ main(int argc, const char** argv)
                 if (params.textDocument.uri.path().ends_with("gpul"))
                 {
                     GPULang::Compiler::Options options;
-                    GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
+                    //GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
                 }
             })
                 .add<lsp::notifications::TextDocument_DidChange>([&context, &messageHandler](lsp::notifications::TextDocument_DidChange::Params&& params)
             {
                 if (params.textDocument.uri.path().ends_with("gpul"))
                 {
-                    context->result.symbols.clear();
-                    GPULang::Compiler::Options options;
-                    GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
-                    if (!context->result.diagnostics.empty())
-                    {
-                        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(
-                            lsp::notifications::TextDocument_PublishDiagnostics::Params
-                            {
-                                .uri = params.textDocument.uri.path(),
-                                .diagnostics = { lsp::Diagnostic{ .message = context->result.messages[0] } }
-                            }
-                        );
-                    }
+                    ParseFile(params.textDocument.uri.path(), context, messageHandler);
                 }
 
             })
@@ -188,41 +256,32 @@ main(int argc, const char** argv)
             {
                 for (auto& event : params.changes)
                 {
-                    context->result.symbols.clear();
                     GPULang::Compiler::Options options;
                     switch (event.type)
                     {
                         case lsp::FileChangeType::Created:
                         case lsp::FileChangeType::Changed:
-                            GPULangValidate(event.uri.path(), context->includePaths, options, context->result);
-                            if (!context->result.diagnostics.empty())
-                            {
-                                std::vector<lsp::Diagnostic> diagnostics;
-                                for (auto& diagnostic : context->result.diagnostics)
-                                {
-                                    diagnostics.push_back(lsp::Diagnostic{
-                                        .range = {
-                                            .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
-                                            .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
-                                        },
-                                        .message = diagnostic.error
-                                    });
-                                }
-                                context->result.diagnostics.clear();
-                                messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(
-                                    lsp::notifications::TextDocument_PublishDiagnostics::Params
-                                    {
-                                        .uri = event.uri.path(),
-                                        .diagnostics = diagnostics
-                                    }
-                                );
-                            }
+                            ParseFile(event.uri.path(), context, messageHandler);
                             break;
                         case lsp::FileChangeType::Deleted:
-                            context->result.symbols.clear();
                             break;
                     }
                 }
+            })
+                .add<lsp::requests::TextDocument_SemanticTokens_Full>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Full::Params&& params)
+            {
+                lsp::requests::TextDocument_SemanticTokens_Full::Result result;
+                const std::string& path = params.textDocument.uri.path();
+                ParseFile(path, context, messageHandler);
+                result = lsp::SemanticTokens{ .data = {0, 0, 0} };
+
+                return result;
+            })
+                .add<lsp::requests::TextDocument_SemanticTokens_Range>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_SemanticTokens_Range::Params&& params)
+            {
+                lsp::requests::TextDocument_SemanticTokens_Range::Result result;
+
+                return result;
             })
                 .add<lsp::requests::TextDocument_Hover>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Hover::Params&& params)
             {
@@ -230,7 +289,7 @@ main(int argc, const char** argv)
                 if (params.textDocument.uri.path().ends_with("gpul"))
                 {
                     GPULang::Compiler::Options options;
-                    GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
+                    //GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
                 }
 
                 return result;

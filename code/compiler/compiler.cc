@@ -646,7 +646,7 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
 void 
 Compiler::Error(const std::string& msg, const Symbol* sym)
 {
-    this->Error(msg, sym->location.file, sym->location.line, sym->location.column, sym->name.length());
+    this->Error(msg, sym->location.file, sym->location.line, sym->location.column, sym->location.end - sym->location.start);
 }
 
 //------------------------------------------------------------------------------

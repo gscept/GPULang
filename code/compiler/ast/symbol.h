@@ -77,6 +77,8 @@ struct Symbol
         int line;
         int column;
 
+        int start, end;
+
         Location()
             : line(-1)
             , column(-1)
@@ -111,6 +113,7 @@ struct Symbol
     struct __Resolved
     {
         std::string signature;
+        bool resolved = false;
         bool unreachable = false;
     };
     __Resolved* resolved;

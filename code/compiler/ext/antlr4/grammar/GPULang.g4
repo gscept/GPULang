@@ -43,9 +43,10 @@ SetupFile(bool updateLine = true)
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
+    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     // assume the previous token is the latest file
-    location.file = token->file;
-    location.line = token->line;
+    location.file = file;
+    location.line = rawLine + token->line - 1 - preprocessedLine;
     location.column = token->getCharPositionInLine();
     return location;
 }

@@ -30,20 +30,6 @@ struct Variable : public Symbol
     
     struct __Resolved : Symbol::__Resolved
     {
-        union AccessBits
-        {
-            AccessBits(uint32_t mask)
-                : bits(mask)
-            {}
-            struct
-            {
-                uint32_t readAccess : 1;
-                uint32_t writeAccess : 1;
-                uint32_t atomicAccess : 1;
-                uint32_t volatileAccess : 1;
-            } flags;
-            uint32_t bits;
-        };
         AccessBits accessBits = 0x0;
 
         union ParameterBits

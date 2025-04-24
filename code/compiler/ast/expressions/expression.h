@@ -39,6 +39,21 @@ enum class Storage
     CallableDataInput,                      // variable is ray tracing callable data
 };
 
+union AccessBits
+{
+    AccessBits(uint32_t mask)
+        : bits(mask)
+    {}
+    struct
+    {
+        uint32_t readAccess : 1;
+        uint32_t writeAccess : 1;
+        uint32_t atomicAccess : 1;
+        uint32_t volatileAccess : 1;
+    } flags;
+    uint32_t bits;
+};
+
 /// Convert storage to string
 std::string StorageToString(Storage storage);
 /// Check if storage is compatible

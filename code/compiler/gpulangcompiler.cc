@@ -182,6 +182,10 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 {
     bool ret = true;
 
+    Allocator alloc = GPULang::CreateAllocator();
+    GPULang::InitAllocator(&alloc);
+    GPULang::MakeAllocatorCurrent(&alloc);
+
     std::string preprocessed;
     errorBuffer = nullptr;
 
@@ -267,7 +271,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
 
-        ResetMemory();
+        GPULang::ResetAllocator(&alloc);
         
         // convert error list to string
         if (!compiler.messages.empty() && !compiler.options.quiet)
@@ -360,6 +364,8 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         timer.Stop();
         if (options.emitTimings)
             timer.Print("Parsing");
+
+        result.diagnostics.clear();
 
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)

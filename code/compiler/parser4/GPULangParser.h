@@ -135,10 +135,13 @@ public:
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
+      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
-      location.file = token->file;
-      location.line = token->line;
+      location.file = file;
+      location.line = preprocessedLine + token->line - 1 - rawLine;
       location.column = token->getCharPositionInLine();
+      location.start = token->getCharPositionInLine();
+      location.end = location.start + token->getText().length();
       return location;
   }
 

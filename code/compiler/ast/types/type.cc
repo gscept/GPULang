@@ -8,6 +8,8 @@
 #include "ast/expressions/uintexpression.h"
 #include <set>
 
+bool SYMBOL_STATIC_ALLOC = false;
+
 namespace GPULang
 {
 
@@ -218,6 +220,7 @@ std::vector<Symbol*> DefaultTypes;
 void
 Type::SetupDefaultTypes()
 {
+    SYMBOL_STATIC_ALLOC = true;
     __BEGIN_TYPES__
 
     __MAKE_TYPE_CUSTOM(i32, GPULang::Int);
@@ -358,6 +361,7 @@ Type::SetupDefaultTypes()
     DefaultTypes.push_back(memorySemanticsEnum);
 
     __MAKE_TYPE(void, TypeCode::Void);
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 std::map<TypeCode, std::vector<std::string>> singleComponentToVectorMap =

@@ -21,7 +21,10 @@ namespace GPULang
 Function::Function()
 {
     this->symbolType = FunctionType;
-    this->resolved = Alloc<Function::__Resolved>();
+    if (SYMBOL_STATIC_ALLOC)
+        this->resolved = new Function::__Resolved();
+    else
+        this->resolved = Alloc<Function::__Resolved>();
     this->hasBody = false;
     this->compileTime = false;
     this->ast = nullptr;
@@ -212,6 +215,7 @@ std::vector<Symbol*> DefaultIntrinsics;
 void 
 Function::SetupIntrinsics()
 {
+    SYMBOL_STATIC_ALLOC = true;
     __BEGIN_INTRINSICS__;
 
     std::string scalarArgs[] =
@@ -1800,6 +1804,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     
     __MAKE_BUILTIN(TLASGetWorldToObject, TLASWorldToObject);
     __SET_RET_LIT(f32x4x3);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 //------------------------------------------------------------------------------

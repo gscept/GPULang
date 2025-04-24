@@ -35,14 +35,36 @@ struct MemoryBlock
     uint32_t blockIndex;
 };
 
-void InitMemory();
-void ResetMemory();
-extern thread_local uint32_t FreeBlockCounter;
-extern thread_local uint32_t* FreeBlocks;
-extern thread_local MemoryBlock* Blocks;
-extern thread_local size_t CurrentBlock;
-extern thread_local size_t BlockSize;
-extern thread_local bool IsInit;
+struct Allocator
+{
+    uint32_t freeBlockCounter;
+    uint32_t* freeBlocks;
+    MemoryBlock* blocks;
+    size_t currentBlock;
+    size_t blockSize;
+};
+
+inline Allocator CreateAllocator()
+{
+    return Allocator
+    {
+        .freeBlockCounter = 0,
+        .freeBlocks = nullptr,
+        .blocks = nullptr,
+        .currentBlock = 0,
+        .blockSize = 65535
+    };
+}
+
+// The default allocator is used for all static initialization
+extern Allocator DefaultAllocator;
+extern bool IsDefaultAllocatorInitialized;
+
+extern thread_local Allocator* CurrentAllocator;
+void InitAllocator(Allocator* alloc);
+void DestroyAllocator(Allocator* alloc);
+void MakeAllocatorCurrent(Allocator* alloc);
+void ResetAllocator(Allocator* alloc);
 
 void Dealloc(void* alloc);
 
@@ -56,17 +78,24 @@ template<typename T, typename ... ARGS>
 inline T*
 Alloc(ARGS... args)
 {
-    if (!IsInit)
-        InitMemory();
-    
-    const size_t size = sizeof(T);
-    MemoryBlock* block = &Blocks[CurrentBlock];
-    if (block->iterator + size > BlockSize)
+    Allocator* Allocator = CurrentAllocator;
+    if (Allocator == nullptr)
     {
-        CurrentBlock = FreeBlocks[FreeBlockCounter--];
-        block = &Blocks[CurrentBlock];
-        block->blockIndex = CurrentBlock;
-        block->mem = malloc(BlockSize);
+        if (!IsDefaultAllocatorInitialized)
+        {
+            InitAllocator(&DefaultAllocator);
+            IsDefaultAllocatorInitialized = true;
+        }
+        Allocator = &DefaultAllocator;
+    }
+    const size_t size = sizeof(T);
+    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
+    if (block->iterator + size > Allocator->blockSize)
+    {
+        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
+        block = &Allocator->blocks[Allocator->currentBlock];
+        block->blockIndex = Allocator->currentBlock;
+        block->mem = malloc(Allocator->blockSize);
     }
     assert(block->blockIndex != -1);
 
@@ -83,17 +112,25 @@ template<typename T, typename ... ARGS>
 inline T*
 AllocArray(std::size_t num)
 {
-    if (!IsInit)
-        InitMemory();
+    Allocator* Allocator = CurrentAllocator;
+    if (Allocator == nullptr)
+    {
+        if (!IsDefaultAllocatorInitialized)
+        {
+            InitAllocator(&DefaultAllocator);
+            IsDefaultAllocatorInitialized = true;
+        }
+        Allocator = &DefaultAllocator;
+    }
 
     const size_t size = sizeof(T) * num;
-    MemoryBlock* block = &Blocks[CurrentBlock];
-    if (block->iterator + size > BlockSize)
+    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
+    if (block->iterator + size > Allocator->blockSize)
     {
-        CurrentBlock = FreeBlocks[FreeBlockCounter--];
-        block = &Blocks[CurrentBlock];
-        block->blockIndex = CurrentBlock;
-        block->mem = malloc(BlockSize);
+        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
+        block = &Allocator->blocks[Allocator->currentBlock];
+        block->blockIndex = Allocator->currentBlock;
+        block->mem = malloc(Allocator->blockSize);
     }
     assert(block->blockIndex != -1);
 
@@ -103,7 +140,11 @@ AllocArray(std::size_t num)
     return (T*)buf;
 }
 
-int constexpr const_len(const char* str)
+//------------------------------------------------------------------------------
+/**
+*/
+int constexpr 
+const_len(const char* str)
 {
     return *str ? 1 + const_len(str + 1) : 0;
 }

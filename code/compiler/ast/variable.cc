@@ -6,14 +6,16 @@
 namespace GPULang
 {
 
-
 //------------------------------------------------------------------------------
 /**
 */
 Variable::Variable()
 {
     this->symbolType = VariableType;
-    this->resolved = Alloc<Variable::__Resolved>();
+    if (SYMBOL_STATIC_ALLOC)
+        this->resolved = new Variable::__Resolved();
+    else
+        this->resolved = Alloc<Variable::__Resolved>();
     this->type = Type::FullType{ "" };
     this->valueExpression = nullptr;
 
