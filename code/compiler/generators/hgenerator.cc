@@ -17,6 +17,8 @@
 #include "compiler.h"
 #include "util.h"
 #include "ast/expressions/arrayinitializerexpression.h"
+#include "ast/expressions/callexpression.h"
+#include <regex>
 
 namespace GPULang
 {
@@ -26,7 +28,7 @@ namespace GPULang
 /**
 */
 bool 
-HGenerator::Generate(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+HGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     HeaderWriter writer;
 
@@ -127,7 +129,7 @@ std::map<std::string, std::string> typeToArraySize =
 /**
 */
 void 
-HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateStructureH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
@@ -156,7 +158,7 @@ HGenerator::GenerateStructureH(Compiler* compiler, Program* program, Symbol* sym
 /**
 */
 void
-GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
+GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& writer)
 {
     switch (expr->symbolType)
     {
@@ -198,6 +200,32 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
             writer.Write("}");
             break;
         }
+        case Symbol::CallExpressionType:
+        {
+            auto callExpr = static_cast<CallExpression*>(expr);
+            auto res = Symbol::Resolved(callExpr);
+            std::regex re("(f32|i32|u32|b8)(x[0-9])?(x[0-9])?");
+            std::cmatch m;
+            if (std::regex_match(res->function->name.c_str(), m, re))
+            {
+                if (m.length() > 1)
+                {
+                    writer.Write("{");
+                }
+                for (auto& arg : callExpr->args)
+                {
+                    writer.Write(arg->EvalString());
+                    if (arg != callExpr->args.back())
+                        writer.Write(", ");
+                }
+                if (m.length() > 1)
+                {
+                    writer.Write("}");
+                }
+            }
+            res->function->name;
+            break;
+        }
     }
 }
 
@@ -205,7 +233,7 @@ GenerateHInitializer(Compiler* compiler, Expression* expr, HeaderWriter& writer)
 /**
 */
 void 
-HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
+HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -273,8 +301,31 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
                     writer.WriteLine("unsigned int : 32;");
             }
 
-            std::string type = typeToHeaderType[var->type.name];
+            std::string type = var->type.name;
+            auto it = typeToHeaderType.find(type);
+            if (it != typeToHeaderType.end())
+                type = it->second;
             std::string arrayType = typeToArraySize[var->type.name];
+            auto modIt = var->type.modifiers.rbegin();
+            while (modIt != var->type.modifiers.rend())
+            {
+                if (*modIt == Type::FullType::Modifier::Pointer)
+                    type += "*";
+                else if (*modIt == Type::FullType::Modifier::Array)
+                {
+                    ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
+                    ValueUnion val;
+                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
+                    {
+                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
+                    }
+                    else
+                    {
+                        type += "*";
+                    }
+                }
+                modIt++;
+            }
 
             // if element padding, we need to split the array into elements where each element is padded
             if (varResolved->elementPadding > 0)
@@ -337,25 +388,32 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             writer.Unindent();
             writer.WriteLine("};\n");
         }
-        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Default)
+        else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Global)
         {
-            std::string arraySize = "";
-            for (int i = 0; i < varResolved->type.modifierValues.size(); i++)
+            std::string type = var->type.name;
+            auto it = typeToHeaderType.find(type);
+            if (it != typeToHeaderType.end())
+                type = it->second;
+            std::string arrayType = typeToArraySize[var->type.name];
+            auto modIt = var->type.modifiers.rbegin();
+            while (modIt != var->type.modifiers.rend())
             {
-                if (varResolved->type.modifiers[i] == Type::FullType::Modifier::Array)
+                if (*modIt == Type::FullType::Modifier::Pointer)
+                    type += "*";
+                else if (*modIt == Type::FullType::Modifier::Array)
                 {
-                    uint32_t size = 0;
-                    if (varResolved->type.modifierValues[i] != nullptr)
+                    ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
+                    ValueUnion val;
+                    if (varResolved->type.modifierValues[diff]->EvalValue(val))
                     {
-                        ValueUnion val;
-                        varResolved->type.modifierValues[i]->EvalValue(val);
-                        val.Store(size);
+                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
                     }
-                    if (size > 0)
-                        arraySize.append(Format("[%d]", size));
                     else
-                        arraySize.append(Format("[]"));
+                    {
+                        type += "*";
+                    }
                 }
+                modIt++;
             }
 
             uint32_t accessFlags;
@@ -367,11 +425,11 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str(), initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str(), initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s%s;", typeToHeaderType[varResolved->type.name].c_str(), varResolved->name.c_str(), arraySize.c_str()));
+                writer.WriteLine(Format("static const %s %s%s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str()));
             }
         }
     }
@@ -381,7 +439,7 @@ HGenerator::GenerateVariableH(Compiler* compiler, Program* program, Symbol* symb
 /**
 */
 void 
-HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
 {
     Enumeration* enu = static_cast<Enumeration*>(symbol);
     Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
@@ -414,7 +472,7 @@ HGenerator::GenerateEnumH(Compiler* compiler, Program* program, Symbol* symbol, 
 /**
 */
 void 
-HGenerator::GenerateProgramH(Compiler* compiler, Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer)
+HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer)
 {
     writer.WriteLine(Format("struct %s", program->name.c_str()));
     writer.WriteLine("{");
@@ -446,7 +504,7 @@ HGenerator::GenerateProgramH(Compiler* compiler, Program* program, const std::ve
 /**
 */
 void 
-HGenerator::GenerateFunctionH(Compiler* compiler, Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer)
+HGenerator::GenerateFunctionH(const Compiler* compiler, const Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);

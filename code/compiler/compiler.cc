@@ -19,6 +19,8 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
+#include <thread>
+
 namespace GPULang
 {
 
@@ -27,8 +29,6 @@ namespace GPULang
 */
 Compiler::Compiler() 
     : debugOutput(false)
-    , declareTy(nullptr)
-    , declareType(Type::FullType{})
     , ignoreReservedWords(false)
     , hasErrors(false)
 {
@@ -130,7 +130,7 @@ Compiler::~Compiler()
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version)
+Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options)
 {
     this->lang = lang;
     switch (lang)
@@ -151,6 +151,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     case Language::SPIRV:
         this->target.name = "SPIRV";
         this->target.generator = new SPIRVGenerator();
+        SPIRVGenerator::SetupIntrinsics();
         this->target.supportsInlineSamplers = true;
         this->target.supportsPhysicalBufferAddresses = true;
         this->target.supportsPhysicalAddressing = true;
@@ -170,6 +171,32 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Generator* 
+Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
+{
+    switch (lang)
+    {
+        case Language::GLSL_SPIRV:
+            return Alloc<GLSLGenerator>(GLSLGenerator::VulkanFeatureSet);
+            break;
+        case Language::GLSL:
+            return Alloc<GLSLGenerator>(GLSLGenerator::OpenGLFeatureSet);
+            break;
+        case Language::HLSL_SPIRV:
+        case Language::HLSL:
+            return Alloc<HLSLGenerator>();
+            break;
+        case Language::SPIRV:
+        case Language::VULKAN_SPIRV:
+            return Alloc<SPIRVGenerator>();
+            break;
+    }
+    return nullptr;
 }
 
 //------------------------------------------------------------------------------
@@ -389,10 +416,13 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 {
     bool ret = true;
     this->linkDefineCounter = 0;
+    this->validator->defaultGroup = this->options.defaultGroupBinding;
 
     this->symbols = root->symbols;
 
     this->performanceTimer.Start();
+
+    std::vector<Program*> programs;
 
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
@@ -400,6 +430,9 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
         if (this->hasErrors)
             break;
+
+        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -426,18 +459,36 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
             }
         };
     }
-
-
     this->performanceTimer.Start();
 
-    // collect programs
-    for (Symbol* symbol : this->symbols)
+    uint32_t numAvailableThreads = std::thread::hardware_concurrency();
+    std::thread* threads = AllocStack<std::thread>(programs.size());
+    bool* returnValues = AllocStack<bool>(programs.size());
+    std::vector<Generator*> generators;
+
+    // Run the code generation per thread
+    for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
     {
-        if (symbol->symbolType == Symbol::ProgramType)
+        auto program = programs[programIndex];
+        Generator* gen = CreateGenerator(this->lang, this->options);
+        generators.push_back(gen);
+        new (&threads[programIndex]) std::thread([this, returnValues, program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
-            ret &= this->target.generator->Generate(this, static_cast<Program*>(symbol), this->symbols, writeFunction);
-        }
+            returnValues[programIndex] = gen->Generate(this, program, symbols, writeFunction);
+        });
     }
+
+    for (size_t programIndex = 0; programIndex < programs.size(); programIndex++)
+    {
+        threads[programIndex].join();
+        if (!returnValues[programIndex])
+        {
+            this->messages.insert(this->messages.begin(), generators[programIndex]->messages.begin(), generators[programIndex]->messages.end());
+        }
+        ret &= returnValues[programIndex];
+    }
+    DeallocStack(programs.size(), returnValues);
+    DeallocStack(programs.size(), threads);
 
     this->performanceTimer.Stop();
 
@@ -583,7 +634,10 @@ Compiler::GeneratorError(const std::string& msg)
 void 
 Compiler::UnrecognizedTypeError(const std::string& type, Symbol* sym)
 {
-    this->Error(Format("Unrecognized type '%s' for symbol '%s'", type.c_str(), sym->name.c_str()), sym);
+    if (type == UNDEFINED_TYPE)
+        this->Error(Format("Type not defined or can't inferred for '%s'", sym->name.c_str()), sym);
+    else
+        this->Error(Format("Unrecognized type '%s' for '%s'", type.c_str(), sym->name.c_str()), sym);
 }
 
 //------------------------------------------------------------------------------
@@ -685,6 +739,11 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
 
+            output.rayHitAttributeSize = 0;
+            output.rayPayloadSize = 0;
+            output.vsInputsLength = 0;
+            output.patchSize = 0;
+
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
     {\
@@ -713,6 +772,88 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             WRITE_BINARY(RayMissShader, rms)
             WRITE_BINARY(RayCallableShader, rcs)
             WRITE_BINARY(RayIntersectionShader, ris)
+
+            if (resolved->usage.flags.hasVertexShader)
+            {
+                Function* vs = (Function*)resolved->mappings[Program::__Resolved::VertexShader];
+                Function::__Resolved* vsRes = Symbol::Resolved(vs);
+                output.vsInputsLength = 0;
+                output.vsInputsOffset = dynamicDataBlob.iterator;
+                for (const Variable* var : vs->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::Input)
+                    {
+                        output.vsInputsLength++;
+                        dynamicDataBlob.Write(varRes->inBinding);
+                    }
+                }
+            }
+            if (resolved->usage.flags.hasHullShader)
+            {
+                Function* hs = (Function*)resolved->mappings[Program::__Resolved::HullShader];
+                Function::__Resolved* hsRes = Symbol::Resolved(hs);
+                output.patchSize = hsRes->executionModifiers.maxOutputVertices;
+            }
+            if (resolved->usage.flags.hasRayGenerationShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayGenerationShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayAnyHitShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayAnyHitShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                    else if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayClosestHitShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayClosestHitShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                    else if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayMissShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayMissShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayPayload || varRes->storage == Storage::RayPayloadInput)
+                        output.rayPayloadSize = max(output.rayPayloadSize, (uint16_t)varRes->byteSize);
+                }
+            }
+            if (resolved->usage.flags.hasRayIntersectionShader)
+            {
+                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayIntersectionShader];
+                Function::__Resolved* shRes = Symbol::Resolved(sh);
+                for (const Variable* var : sh->parameters)
+                {
+                    const Variable::__Resolved* varRes = Symbol::Resolved(var);
+                    if (varRes->storage == Storage::RayHitAttribute)
+                        output.rayHitAttributeSize = max(output.rayHitAttributeSize, (uint16_t)varRes->byteSize);
+                }
+            }
 
             if (resolved->usage.flags.hasRenderState)
             {
@@ -763,6 +904,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.depthBoundsTestEnabled = resolved->depthBoundsTestEnabled;
             output.minDepthBounds = resolved->minDepthBounds;
             output.maxDepthBounds = resolved->maxDepthBounds;
+            output.scissorEnabled = resolved->scissorEnabled;
             output.stencilEnabled = resolved->stencilEnabled;
             output.frontStencilState = resolved->frontStencilState;
             output.backStencilState = resolved->backStencilState;
@@ -791,8 +933,13 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
         }
         else if (symbol->symbolType == Symbol::SamplerStateType)
         {
-            SamplerState::__Resolved* resolved = static_cast<SamplerState::__Resolved*>(symbol->resolved);
+            SamplerState* sampler = static_cast<SamplerState*>(symbol);
+            SamplerState::__Resolved* resolved = Symbol::Resolved(sampler);
             Serialize::SamplerState output;
+
+            output.binding = resolved->binding;
+            output.group = resolved->group;
+            output.visibility.bits = resolved->visibilityBits.bits;
 
             output.nameLength = symbol->name.length();
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
@@ -811,6 +958,16 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.maxLod = resolved->maxLod;
             output.borderColor = resolved->borderColor;
             output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
+
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size());
+            output.annotationsCount = sampler->annotations.size();
+
+            size_t annotOffset = output.annotationsOffset;
+            for (const Annotation& annot : sampler->annotations)
+            {
+                WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
+                annotOffset += sizeof(Serialize::Annotation);
+            }
 
             size_t offset = writer.WriteType(output);
             offsetMapping[symbol] = offset;
@@ -858,8 +1015,18 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.length());
                     varOutput.byteSize = resolved->byteSize;
                     varOutput.structureOffset = resolved->structureOffset;
-                    varOutput.arraySizesCount = resolved->type.modifierValues.size();
-                    varOutput.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
+                    varOutput.arraySizesCount = 0;
+                    varOutput.arraySizesOffset = dynamicDataBlob.iterator;
+                    for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+                    {
+                        if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                        {
+                            varOutput.arraySizesCount++;
+                            ValueUnion size;
+                            resolved->type.modifierValues[i]->EvalValue(size);
+                            dynamicDataBlob.Write(size.ui);
+                        }
+                    }
 
                     // write variable
                     dynamicDataBlob.WriteReserved(varOutput, offset);
@@ -894,11 +1061,26 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
             output.byteSize = resolved->byteSize;
             output.structureOffset = resolved->structureOffset;
-            output.arraySizesCount = resolved->type.modifierValues.size();
-            output.arraySizesOffset = dynamicDataBlob.Write(resolved->type.modifierValues.data(), resolved->type.modifierValues.size());
+            output.arraySizesCount = 0;
+            output.arraySizesOffset = dynamicDataBlob.iterator;
+            for (size_t i = 0; i < resolved->type.modifiers.size(); i++)
+            {
+                if (resolved->type.modifiers[i] == Type::FullType::Modifier::Array && resolved->type.modifierValues[i] != nullptr)
+                {
+                    output.arraySizesCount++;
+                    ValueUnion size;
+                    resolved->type.modifierValues[i]->EvalValue(size);
+                    dynamicDataBlob.Write(size.ui);
+                }
+            }
             output.annotationsCount = var->annotations.size();
             output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
-            output.bindingScope = resolved->usageBits.flags.isEntryPointParameter ? GPULang::BindingScope::VertexInput : GPULang::BindingScope::Resource;
+            if (resolved->usageBits.flags.isEntryPointParameter)
+                output.bindingScope = GPULang::BindingScope::VertexInput;
+            else if (resolved->storage == Storage::Global)
+                output.bindingScope = GPULang::BindingScope::Constant;
+            else
+                output.bindingScope = GPULang::BindingScope::Resource;
 
             if (resolved->type.IsMutable())
             {
@@ -920,6 +1102,18 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     output.bindingType = GPULang::BindingType::Sampler;
                 else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
                     output.bindingType = GPULang::BindingType::LinkDefined;
+                else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
+                    output.bindingType = GPULang::BindingType::PixelCache;
+                else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
+                    output.bindingType = GPULang::BindingType::AccelerationStructure;
+            }
+
+            output.structTypeNameLength = 0;
+            output.structTypeNameOffset = 0;
+            if (output.bindingType == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
+            {
+                output.structTypeNameLength = resolved->type.name.length();
+                output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.length());
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation& annot : var->annotations)

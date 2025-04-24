@@ -66,7 +66,7 @@ LoadAnnotations(size_t annotationCount, GPULang::Deserialize::Annotation* annota
 //------------------------------------------------------------------------------
 /**
 */
-void 
+bool 
 Loader::Load(const char* data, const size_t length)
 {
     size_t frontIterator = 0;
@@ -75,7 +75,7 @@ Loader::Load(const char* data, const size_t length)
     const uint32_t* magic = reinterpret_cast<const uint32_t*>(data + frontIterator);
     frontIterator += sizeof(int32_t);
     if (*magic != 'AFX3')
-        return;
+        return false;
 
     // read the blob at the bottom of the file
     backIterator -= sizeof(uint32_t);
@@ -97,6 +97,7 @@ Loader::Load(const char* data, const size_t length)
             deserialized->nameLength = samplerState->nameLength;
             deserialized->binding = samplerState->binding;
             deserialized->group = samplerState->group;
+            deserialized->visibility.bits = samplerState->visibility.bits;
 
             deserialized->addressU = samplerState->addressU;
             deserialized->addressV = samplerState->addressV;
@@ -135,9 +136,12 @@ Loader::Load(const char* data, const size_t length)
             deserialized->binding = var->binding;
             deserialized->group = var->group;
             deserialized->visibility.bits = var->visibility.bits;
+            deserialized->structType = nullptr;
 
             deserialized->arraySizeCount = var->arraySizesCount;
-            deserialized->arraySizes = Parse<uint32_t>(buf, var->arraySizesOffset);
+            deserialized->arraySizes = nullptr;
+            if (deserialized->arraySizeCount > 0)
+                deserialized->arraySizes = Parse<uint32_t>(buf, var->arraySizesOffset);
 
             deserialized->structureOffset = var->structureOffset;
             deserialized->byteSize = var->byteSize;
@@ -152,6 +156,12 @@ Loader::Load(const char* data, const size_t length)
             deserialized->bindingScope = var->bindingScope;
             deserialized->bindingType = var->bindingType;
 
+            if (deserialized->bindingType == GPULang::BindingType::Buffer || deserialized->bindingType == GPULang::BindingType::MutableBuffer)
+            {
+                std::string structName = Parse<const char>(buf, var->structTypeNameOffset);
+                deserialized->structType = (GPULang::Deserialize::Structure*)this->nameToObject[structName];
+            }
+
             this->nameToObject[deserialized->name] = deserialized;
             this->variables.push_back(deserialized);
             break;
@@ -165,6 +175,7 @@ Loader::Load(const char* data, const size_t length)
             deserialized->nameLength = struc->nameLength;
             deserialized->variableCount = struc->variablesCount;
             deserialized->variables = new GPULang::Deserialize::Variable[deserialized->variableCount];
+            deserialized->size = struc->size;
             size_t variableIterator = struc->variablesOffset;
 
             for (int i = 0; i < struc->variablesCount; i++)
@@ -172,14 +183,23 @@ Loader::Load(const char* data, const size_t length)
                 const GPULang::Serialize::Variable* var = ParseAndConsume<GPULang::Serialize::Variable>(buf, variableIterator);
                 GPULang::Deserialize::Variable& deserializedVar = deserialized->variables[i];
 
+                deserializedVar.type = GPULang::Serialize::Type::VariableType;
+                deserializedVar.annotationCount = 0;
+                deserializedVar.annotations = nullptr;
                 deserializedVar.binding = var->binding;
                 deserializedVar.group = var->group;
                 deserializedVar.arraySizeCount = var->arraySizesCount;
-                deserializedVar.arraySizes = Parse<uint32_t>(buf, var->arraySizesOffset);
+                deserializedVar.arraySizes = nullptr;
+                if (deserializedVar.arraySizeCount > 0)
+                    deserializedVar.arraySizes = Parse<uint32_t>(buf, var->arraySizesOffset);
                 deserializedVar.structureOffset = var->structureOffset;
                 deserializedVar.byteSize = var->byteSize;
                 deserializedVar.name = Parse<const char>(buf, var->nameOffset);
                 deserializedVar.nameLength = var->nameLength;
+                deserializedVar.bindingScope = GPULang::BindingScope::Member;
+                deserializedVar.bindingType = GPULang::BindingType::None;
+                deserializedVar.visibility.bits = 0x0;
+                deserializedVar.structType = nullptr;
             }
 
             deserialized->annotationCount = struc->annotationsCount;
@@ -200,6 +220,14 @@ Loader::Load(const char* data, const size_t length)
             deserialized->type = type->type;
             deserialized->name = Parse<const char>(buf, prog->nameOffset);
             deserialized->nameLength = prog->nameLength;
+            deserialized->patchSize = prog->patchSize;
+            deserialized->rayHitAttributeSize = prog->rayHitAttributeSize;
+            deserialized->rayPayloadSize = prog->rayPayloadSize;
+            deserialized->vsInputLength = prog->vsInputsLength;
+            if (deserialized->vsInputLength > 0)
+                deserialized->vsInputs = Parse<uint8_t>(buf, prog->vsInputsOffset);
+            else
+                deserialized->vsInputs = nullptr;
 
 #define LOAD_SHADER(x, shader) \
 if (prog->##x.binaryOffset != 0)\
@@ -301,6 +329,7 @@ else\
         }
         }
     }
+    return true;
 }
 
 } // namespace GPULang

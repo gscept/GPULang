@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "samplerstate.h"
+#include "variable.h"
 #include <map>
 namespace GPULang
 {
@@ -14,14 +15,16 @@ SamplerState::SamplerState()
     this->isImmutable = false;
 
     SamplerState::__Resolved* typeResolved = static_cast<SamplerState::__Resolved*>(this->resolved);
+    typeResolved->group = Variable::__Resolved::NOT_BOUND;
+    typeResolved->binding = Variable::__Resolved::NOT_BOUND;
     typeResolved->addressU = typeResolved->addressV = typeResolved->addressW = RepeatAddressMode;
     typeResolved->minFilter = typeResolved->magFilter = typeResolved->mipFilter = LinearFilter;
     typeResolved->mipLodBias = 0.0f;
     typeResolved->anisotropicEnabled = false;
     typeResolved->maxAnisotropy = 16;   // in case we turn on aniso, make highest quality automatically
     typeResolved->compareSamplerEnabled = false;
-    typeResolved->compareMode = LessCompare;
-    typeResolved->minLod = -FLT_MAX;
+    typeResolved->compareMode = LessEqualCompare;
+    typeResolved->minLod = 0;
     typeResolved->maxLod = FLT_MAX;
     typeResolved->borderColor = BlackBorder;
     typeResolved->unnormalizedSamplingEnabled = false;

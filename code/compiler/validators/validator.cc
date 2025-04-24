@@ -20,6 +20,7 @@
 #include "ast/expressions/ternaryexpression.h"
 #include "ast/expressions/initializerexpression.h"
 #include "ast/expressions/accessexpression.h"
+#include "ast/expressions/accessexpression.h"
 #include "ast/expressions/unaryexpression.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/intvecexpression.h"
@@ -67,7 +68,7 @@ static std::set<std::string> bindingQualifiers =
 
 static std::set<std::string> functionAttributes =
 {
-    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth"
+    "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
     , "input_vertices", "max_output_vertices", "winding"
     , "input_topology", "output_topology", "patch_type", "partition"
@@ -385,13 +386,48 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Type* samplerStateType = compiler->GetSymbol<Type>("samplerState");
     Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
 
-    stateResolved->group = 0;
+    stateResolved->group = this->defaultGroup;
+
+    // run attribute validation
+    for (const Attribute& attr : state->attributes)
+    {
+        if (attr.expression != nullptr)
+            attr.expression->Resolve(compiler);
+
+        ValueUnion val;
+        // resolve attributes
+        if (attr.name == "group")
+        {
+            if (!attr.expression->EvalValue(val))
+            {
+                compiler->Error(Format("Expected compile time constant for 'group' qualifier"), symbol);
+                return false;
+            }
+            val.Store(stateResolved->group);
+        }
+        else if (attr.name == "binding")
+        {
+            if (!attr.expression->EvalValue(val))
+            {
+                compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
+                return false;
+            }
+            val.Store(stateResolved->binding);
+        }
+        else
+        {
+            compiler->Error(Format("Invalid sampler_state attribute '%s'", attr.name.c_str()), symbol);
+            return false;
+        }
+    }
+    
+    Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
-        auto it = this->resourceIndexCounter.find(Type::Category::SamplerCategory);
+        auto it = this->resourceIndexCounter.find(cat);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[Type::Category::SamplerCategory] = 0;
+            this->resourceIndexCounter[cat] = 0;
             it = this->resourceIndexCounter.find(stateResolved->group);
         }
 
@@ -401,7 +437,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[Type::Category::SamplerCategory] = max(it->second, stateResolved->binding + 1);
+            this->resourceIndexCounter[cat] = max(it->second, stateResolved->binding + 1);
         }
     }
     else if (this->resourceIndexingMode == ResourceIndexingByGroup)
@@ -420,6 +456,29 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         else
         {
             this->resourceIndexCounter[stateResolved->group] = max(it->second, stateResolved->binding + 1);
+        }
+        auto it2 = this->resourceTypePerGroupAndBinding.find(stateResolved->group);
+        if (it2 == this->resourceTypePerGroupAndBinding.end())
+        {
+            std::map<uint32_t, Type::Category> table = { { stateResolved->binding, samplerStateType->category } };
+            this->resourceTypePerGroupAndBinding.insert({ stateResolved->group, table });
+        }
+        else
+        {
+            std::map<uint32_t, Type::Category>& table = it2->second;
+            auto it3 = table.find(stateResolved->binding);
+            if (it3 == table.end())
+            {
+                table.insert({ stateResolved->binding, samplerStateType->category });
+            }
+            else
+            {
+                if (it3->second != samplerStateType->category)
+                {
+                    compiler->Error(Format("Aliasing is only allowed on resource pointers of same type. First declared as '%s' can't be aliased as '%s'", Type::CategoryToString(samplerStateType->category).c_str(), Type::CategoryToString(it3->second).c_str()), state);
+                    return false;
+                }
+            }
         }
     }
 
@@ -685,7 +744,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             val.Store(funResolved->executionModifiers.groupsPerWorkgroup);
         }
         else if (attr.name == "early_depth")
-            funResolved->executionModifiers.earlyDepth = true;
+            funResolved->executionModifiers.earlyDepth = 1;
+        else if (attr.name == "depth_greater")
+            funResolved->executionModifiers.depthAlwaysGreater = 1;
+        else if (attr.name == "depth_less")
+            funResolved->executionModifiers.depthAlwaysLesser = 1;
         else if (attr.name == "invocations")
         {
             if (!attr.expression->EvalValue(val))
@@ -793,6 +856,16 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error("'early_depth' is only allowed on functions with the 'entry_point' qualifier", symbol);
             return false;
         }
+        if (funResolved->executionModifiers.depthAlwaysGreater)
+        {
+            compiler->Error("'depth_greater' is only allowed on functions with the 'entry_point' qualifier", symbol);
+            return false;
+        }
+        if (funResolved->executionModifiers.depthAlwaysLesser)
+        {
+            compiler->Error("'depth_lesser' is only allowed on functions with the 'entry_point' qualifier", symbol);
+            return false;
+        }
 
         if (
             funResolved->executionModifiers.computeShaderWorkGroupSize[0] > 1
@@ -842,12 +915,28 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
 
     // run validation on parameters
+    bool rayHitAttributeConsumed = false;
+    bool rayPayloadConsumed = false;
     for (Variable* var : fun->parameters)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         varResolved->usageBits.flags.isParameter = true;
         varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint;
         this->ResolveVariable(compiler, var);
+
+
+        if (varResolved->storage == Storage::RayHitAttribute)
+        {
+            if (!rayHitAttributeConsumed)
+                rayHitAttributeConsumed = true;
+            else
+                compiler->Error("Only one parameter is allowed to be of storage class 'ray_hit_attribute'", symbol);
+
+            if (!rayPayloadConsumed)
+                rayPayloadConsumed = true;
+            else
+                compiler->Error("Only one parameter is allowed to be of storage class 'ray_payload'", symbol);
+        }
     }
 
     compiler->PopScope();
@@ -901,7 +990,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // format function with all attributes and parameters
     std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
     std::string resolvedNameWithParamNames = Format("%s(%s)", fun->name.c_str(), paramListNamed.c_str());
-    std::string functionFormatted = Format("%s%s %s", attributeList.c_str(), fun->returnType.name.c_str(), resolvedName.c_str());
+    std::string functionFormatted = Format("%s %s %s", attributeList.c_str(), resolvedName.c_str(), fun->returnType.name.c_str());
     funResolved->name = resolvedName;
     funResolved->nameWithVarNames = resolvedNameWithParamNames;
     funResolved->signature = functionFormatted;
@@ -984,6 +1073,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     funResolved->hasExplicitReturn = compiler->branchReturns;
+
+    // Reset if the function has a branch return
+    compiler->branchReturns = false;
 
     if (fun->returnType != Type::FullType{ "void" } && fun->ast != nullptr && !funResolved->hasExplicitReturn)
     {
@@ -1235,11 +1327,14 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     it->first->valueExpression = it->second;
                 }
 
-                // Resolve variable visibility
-                if (!this->ResolveVisibility(compiler, fun->ast))
-                {
+                // Resolve visibility
+                bool ret = true;
+                for (auto& param : fun->parameters)
+                    ret |= this->ResolveVisibility(compiler, param);
+                ret |= this->ResolveVisibility(compiler, fun->ast);
+
+                if (!ret)
                     return false;
-                }
 
                 // Reset variable values
                 auto it2 = originalVariableValues.begin();
@@ -1261,13 +1356,17 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 }
                 else if (entryType == Program::__Resolved::PixelShader)
                 {
-                    if (!compiler->currentState.sideEffects.flags.exportsPixel)
+                    if (!compiler->currentState.sideEffects.flags.exportsPixel && compiler->options.warnOnMissingColorExport)
                     {
                         compiler->Warning(Format("Pixel shader doesn't call pixelExportColor"), assignEntry);
                     }
-                    if (compiler->currentState.sideEffects.flags.exportsExplicitDepth && funResolved->executionModifiers.earlyDepth)
+                    if (compiler->currentState.sideEffects.flags.exportsExplicitDepth)
                     {
-                        compiler->Warning(Format("Pixel shader using 'early_depth' and explicitly setting depth results in undefined behavior"), assignEntry);
+                        progResolved->effects.flags.explicitDepth = 1;
+                        if (funResolved->executionModifiers.earlyDepth)
+                        {
+                            compiler->Warning(Format("Pixel shader using 'early_depth' and explicitly setting depth results in undefined behavior"), assignEntry);
+                        }
                     }
                 }
             }
@@ -1631,6 +1730,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::LogicOpEnabledType:
                     value.Store(stateResolved->logicOpEnabled);
                     break;
+                case RenderState::__Resolved::ScissorEnabledType:
+                    value.Store(stateResolved->scissorEnabled);
+                    break;
                 case RenderState::__Resolved::StencilEnabledType:
                     value.Store(stateResolved->stencilEnabled);
                     break;
@@ -1899,7 +2001,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->Resolve(compiler);
     }
 
-    if (var->type.name == "<undefined>")
+    if (var->type.name == UNDEFINED_TYPE)
     {
         if (var->valueExpression != nullptr)
             var->valueExpression->EvalType(var->type);
@@ -1942,7 +2044,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         return false;
     }    
     
-
     // Add symbol
     if (!compiler->AddSymbol(var->name, var))
         return false;
@@ -2256,19 +2357,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Variables of non scalar type in the global scope may only be single pointer"), symbol);
                 return false;
             }
-
-            if (varResolved->type.modifiers.front() == Type::FullType::Modifier::Array)
-            {
-                if (varResolved->type.modifierValues.front() == nullptr)
-                {
-                    if (varResolved->storage != Storage::Uniform)
-                    {
-                        compiler->Error(Format("Variables of dynamic sized array must be 'uniform'"), symbol);
-                        return false;        
-                    }
-                    varResolved->usageBits.flags.isDynamicSizedArray = true;
-                }
-            }
+            
 
             /*
             if (varResolved->type.modifiers.front() != Type::FullType::Modifier::Pointer && (varResolved->typeSymbol->category == Type::UserTypeCategory || varResolved->typeSymbol->category == Type::ScalarCategory))
@@ -2464,7 +2553,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             else
             {
-                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.name.c_str());
+                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.ToString().c_str());
                 Function* conv = compiler->GetSymbol<Function>(conversionName);
                 if (conv == nullptr)
                 {
@@ -2482,6 +2571,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->valueConversionFunction = conv;
             }
         }
+
 
         // Okay, so now when we're done, we'll copy over the modifier values from rhs to lhs
         varResolved->type.modifierValues = rhs.modifierValues;
@@ -2616,9 +2706,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             {
                 const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
                 std::string structName = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
-                if (currentStrucResolved->packMembers)
+                if (currentStrucResolved->packMembers && compiler->options.warnOnImplicitBufferPadding)
                     compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
-                if (currentStrucResolved->hasBoolMember)
+                if (currentStrucResolved->hasBoolMember && compiler->options.warnOnImplicitBoolPromotion)
                     compiler->Warning(Format("'%s' of type '%s' with 'uniform' storage uses a generated struct '%s' with a promotion of u8 members to u32", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
                 
                  // Generate mutable/uniform variant of struct
@@ -3296,6 +3386,7 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
 
 //------------------------------------------------------------------------------
 /**
+    TODO: Add program to better describe when unused bindings happen. Also add a compiler flag to turning the warnings off
 */
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
@@ -3309,9 +3400,10 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         Variable::__Resolved* inResolved = Symbol::Resolved(inParams[inIterator]);
 
         // if bindings don't match, it means the output will be unused since the parameter sets should be sorted
-        if (outResolved->outBinding != inResolved->inBinding)
+        if ((outResolved->outBinding != inResolved->inBinding))
         {
-            compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+            if (compiler->options.warnOnUnusedParameter)
+                compiler->Warning(Format("Unused parameter '%s' (binding %d) from shader '%s' to '%s'", var->name.c_str(), outResolved->outBinding, outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
         }
         else
         {
@@ -3548,10 +3640,13 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ScopeStatementType:
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
+            //compiler->PushScope(GPULang::Compiler::Scope::ScopeType::Local, scope);
             for (auto* statement : scope->symbols)
             {
+                //compiler->AddSymbol(symbol->name, symbol);
                 res |= this->ResolveVisibility(compiler, statement);
             }
+            //compiler->PopScope();
             break;
         }
         case Symbol::ForStatementType:
@@ -3564,7 +3659,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 break;
             
             for (auto* var : forStat->declarations)
-                this->ResolveVisibility(compiler, var);
+                res |= this->ResolveVisibility(compiler, var);
             res |= this->ResolveVisibility(compiler, forStat->condition);
             res |= this->ResolveVisibility(compiler, forStat->loop);
             res |= this->ResolveVisibility(compiler, forStat->contents);
@@ -3641,6 +3736,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             }
             else
             {
+                res |= this->ResolveVisibility(compiler, ifStat->condition);
+
                 res |= this->ResolveVisibility(compiler, ifStat->ifStatement);
                 if (ifStat->elseStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, ifStat->elseStatement);
@@ -3692,8 +3789,11 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::BinaryExpressionType:
         {
             BinaryExpression* binExp = static_cast<BinaryExpression*>(symbol);
+            auto binExpRes = Symbol::Resolved(binExp);
             res |= this->ResolveVisibility(compiler, binExp->left);
             res |= this->ResolveVisibility(compiler, binExp->right);
+            if (binExpRes->constValueExpression != nullptr)
+                res |= this->ResolveVisibility(compiler, binExpRes->constValueExpression);
             break;
         }
         case Symbol::AccessExpressionType:
@@ -3847,6 +3947,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto commaExpr = static_cast<CommaExpression*>(symbol);
             res |= this->ResolveVisibility(compiler, commaExpr->left);
             res |= this->ResolveVisibility(compiler, commaExpr->right);
+            break;
         }
         case Symbol::InitializerExpressionType:
         {
@@ -3871,6 +3972,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::FunctionType:
         {
             auto fun = static_cast<Function*>(symbol);
+            auto funResolved = Symbol::Resolved(fun);
+
+            // Add this function to the visibility map
+            funResolved->visibilityMap.insert(compiler->currentState.function);
+
+            for (auto& param : fun->parameters)
+                res |= this->ResolveVisibility(compiler, param);
+
             if (fun->ast != nullptr)
                 res |= this->ResolveVisibility(compiler, fun->ast);
             break;
@@ -3889,6 +3998,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto var = static_cast<Variable*>(symbol);
             auto varResolved = Symbol::Resolved(var);
+            varResolved->visibilityMap.insert(compiler->currentState.function);
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -3939,6 +4049,76 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 
             if (var->valueExpression != nullptr)
                 res |= this->ResolveVisibility(compiler, var->valueExpression);
+
+            // If variable points to a structure, add it to the visibility
+            if (varResolved->typeSymbol->symbolType == Symbol::StructureType)
+            {
+                res |= this->ResolveVisibility(compiler, varResolved->typeSymbol);
+            }
+            break;
+        }
+        case Symbol::SamplerStateType:
+        {
+            auto sampler = static_cast<SamplerState*>(symbol);
+            auto sampResolved = Symbol::Resolved(sampler);
+            sampResolved->visibilityMap.insert(compiler->currentState.function);
+            switch (compiler->currentState.shaderType)
+            {
+                case Program::__Resolved::ProgramEntryType::VertexShader:
+                    sampResolved->visibilityBits.flags.vertexShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::HullShader:
+                    sampResolved->visibilityBits.flags.hullShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::DomainShader:
+                    sampResolved->visibilityBits.flags.domainShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::GeometryShader:
+                    sampResolved->visibilityBits.flags.geometryShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::PixelShader:
+                    sampResolved->visibilityBits.flags.pixelShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::ComputeShader:
+                    sampResolved->visibilityBits.flags.computeShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::TaskShader:
+                    sampResolved->visibilityBits.flags.taskShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::MeshShader:
+                    sampResolved->visibilityBits.flags.meshShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
+                    sampResolved->visibilityBits.flags.rayGenerationShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayMissShader:
+                    sampResolved->visibilityBits.flags.rayMissShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
+                    sampResolved->visibilityBits.flags.rayClosestHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
+                    sampResolved->visibilityBits.flags.rayAnyHitShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
+                    sampResolved->visibilityBits.flags.rayIntersectionShader = true;
+                    break;
+                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                    sampResolved->visibilityBits.flags.rayCallableShader = true;
+                    break;
+                default:
+                    assert(false);
+            }
+            break;
+        }
+        case Symbol::StructureType:
+        {
+            auto struc = static_cast<Structure*>(symbol);
+            auto strucResolved = Symbol::Resolved(struc);
+            strucResolved->visibilityMap.insert(compiler->currentState.function);
+
+            for (auto mem : struc->symbols)
+                res |= this->ResolveVisibility(compiler, mem);
             break;
         }
     }

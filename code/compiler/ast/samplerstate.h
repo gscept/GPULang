@@ -8,6 +8,10 @@
 //------------------------------------------------------------------------------
 #include "state.h"
 #include "serialize.h"
+#include "annotation.h"
+#include "attribute.h"
+
+#include <set>
 namespace GPULang
 {
 
@@ -15,6 +19,9 @@ struct SamplerState : public State
 {
     /// constructor
     SamplerState();
+
+    _IMPLEMENT_ANNOTATIONS();
+    _IMPLEMENT_ATTRIBUTES();
 
     struct __Resolved : public State::__Resolved
     {
@@ -80,6 +87,9 @@ struct SamplerState : public State
 
         uint32_t group;
         uint32_t binding;
+
+        std::set<Function*> visibilityMap;
+        ShaderUsage visibilityBits;
     };
 
     bool isInline, isImmutable;

@@ -55,9 +55,16 @@ struct Compiler
         uint8_t disallowImplicitPromotion : 1 = 0;
         uint8_t disallowUninitializedConst : 1 = 0;
         uint8_t warnOnMissingRenderState : 1 = 0;
+        uint8_t warnOnMissingColorExport : 1 = 0;
+        uint8_t warnOnImplicitBoolPromotion : 1 = 0;
+        uint8_t warnOnImplicitBufferPadding : 1 = 0;
+        uint8_t warnOnUnusedParameter : 1 = 0;
 
         uint8_t validate : 1 = 0;
         uint8_t optimize : 1 = 0;
+        uint8_t symbols : 1 = 0;
+
+        uint8_t defaultGroupBinding = 0;
 
         ErrorFormat errorFormat = ErrorFormat::MSVC;
     };
@@ -79,7 +86,9 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language
-    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options, unsigned int version);
+    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options);
+    /// Create generator
+    Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
@@ -193,6 +202,7 @@ struct Compiler
     /// output binary data
     void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
+    std::string path;
     std::string filename;
     std::vector<std::string> defines;
     std::vector<std::string> messages;
@@ -249,10 +259,6 @@ struct Compiler
     bool branchReturns;
 
     std::vector<Scope*> scopes;
-
-    // Gargh, ugly hack to push a type being declared before a symbol needing it
-    Type* declareTy;
-    Type::FullType declareType;
 
     std::string debugPath;
     bool debugOutput;

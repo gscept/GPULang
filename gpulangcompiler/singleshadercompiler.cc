@@ -35,10 +35,25 @@ SingleShaderCompiler::~SingleShaderCompiler()
 //------------------------------------------------------------------------------
 /**
 */
-void
+bool
 SingleShaderCompiler::SetFlag(const uint32_t f)
 {
 	this->flags |= f;
+	if (this->flags & Optimize && this->flags & Symbols)
+	{
+		fprintf(stderr, "[gpulangc] error: -optimize/-Ox not allowed with -symbols/-s\n");
+		return false;
+	}
+	return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+SingleShaderCompiler::SetDefaultGroup(const uint8_t g)
+{
+	this->defaultGroup = g;
 }
 
 //------------------------------------------------------------------------------
@@ -125,10 +140,12 @@ SingleShaderCompiler::CompileSPIRV(const std::string& src)
 	
     // if using debug, output raw shader code
 	options.quiet = this->flags & Flags::Quiet ? 1 : 0; 
-	options.optimize = this->flags & Flags::Debug ? 0 : 1;
+	options.optimize = this->flags & Flags::Optimize ? 1 : 0;
 	options.emitTimings = this->flags & Flags::Profile ? 1 : 0;
 	options.validate = this->flags & Flags::Validate ? 1 : 0;
+	options.symbols = this->flags & Flags::Symbols ? 1 : 0;
 	options.errorFormat = GPULang::Compiler::ErrorFormat::MSVC;
+	options.defaultGroupBinding = this->defaultGroup;
 
     GPULangErrorBlob* errors = NULL;
 

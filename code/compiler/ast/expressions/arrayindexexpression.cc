@@ -95,6 +95,22 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     }
     thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
 
+    if (!thisResolved->leftFullType.modifierValues.empty())
+    {
+        ValueUnion val;
+        if (this->right->EvalValue(val) && thisResolved->leftFullType.modifierValues[0] != nullptr)
+        {
+            ValueUnion val2;
+            if (thisResolved->leftFullType.modifierValues[0]->EvalValue(val2))
+            {
+                if (val.ui[0] > val2.ui[0])
+                {
+                    compiler->Error(Format("Index '%d' is outside of array bounds (%d)", val.ui[0], val2.ui[0]), this);
+                    return false;
+                }
+            }
+        }
+    }
     // Return type is the left type with one less modifier
     thisResolved->lhsType = compiler->GetType(thisResolved->leftFullType);
     if (thisResolved->lhsType == nullptr)

@@ -53,6 +53,8 @@ struct Structure : public Type
 
         Function* storageFunction = nullptr;
         Function* loadFunction = nullptr;
+
+        std::set<Function*> visibilityMap;
     };
 };
 

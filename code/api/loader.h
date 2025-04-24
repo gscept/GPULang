@@ -1,9 +1,9 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    Loader API loads an AnyFX binary
+    Loader API loads an GPULang binary
 
-    (C) 2021 Individual contributors, see AUTHORS file
+    (C) 2025 Individual contributors, see AUTHORS file
 */
 //------------------------------------------------------------------------------
 #include <unordered_map>
@@ -11,7 +11,7 @@
 #include "reflection/program.h"
 #include "reflection/structure.h"
 #include "reflection/variable.h"
-#include "serialize.h"
+#include "util/serialize.h"
 
 namespace GPULang
 {
@@ -28,7 +28,7 @@ struct Deserializable;
 struct Loader
 {
     /// load from byte stream
-    void Load(const char* data, const size_t length);
+    bool Load(const char* data, const size_t length);
     /// Get symbol and cast to it's type
     template<typename T> T* Get(std::string name);
 

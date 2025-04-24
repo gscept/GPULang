@@ -15,10 +15,8 @@ imports:
 exports:
     header-dirs:
     - code
-    - code/api
     - code/compiler
     - code/compiler/ext/antlr4/src
     - code/compiler/ext/mcpp
-    - code/util
     modules:
         code: .

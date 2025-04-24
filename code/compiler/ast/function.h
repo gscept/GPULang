@@ -11,6 +11,8 @@
 #include "variable.h"
 #include "shaderusage.h"
 #include <vector>
+#include <set>
+
 namespace GPULang
 {
 
@@ -181,7 +183,9 @@ struct Function : public Symbol
             unsigned int computeShaderWorkGroupSize[3];
             unsigned int groupSize;
             unsigned int groupsPerWorkgroup;
-            bool earlyDepth;
+            uint32_t earlyDepth : 1;
+            uint32_t depthAlwaysGreater : 1;
+            uint32_t depthAlwaysLesser : 1;
 
             uint32_t invocations;
 
@@ -200,6 +204,8 @@ struct Function : public Symbol
 
         bool isEntryPoint;
         bool isPrototype;
+
+        std::set<Function*> visibilityMap;
     };
 
     

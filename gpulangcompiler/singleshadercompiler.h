@@ -18,10 +18,11 @@ public:
 
 	enum Flags : uint32_t
 	{
-		Debug = 0x1,
+		Optimize = 0x1,
 		Quiet = 0x2,
 		Validate = 0x4,
 		Profile = 0x8,
+		Symbols = 0x10
 	};
 
 	/// constructor
@@ -45,7 +46,9 @@ public:
 	/// set additional command line params
 	void SetAdditionalParams(const std::string& params);
 	/// Append flag bit
-	void SetFlag(const uint32_t f);
+	bool SetFlag(const uint32_t f);
+	/// Set default group binding
+	void SetDefaultGroup(const uint8_t g);
 
 	/// compile shader
 	bool CompileShader(const std::string& src);
@@ -66,6 +69,7 @@ private:
     std::string rootDir;
 	std::string language;
 	uint32_t flags;
+	uint8_t defaultGroup = 0;
 	std::string additionalParams;
 	std::vector<std::string> includeDirs;
 }; 

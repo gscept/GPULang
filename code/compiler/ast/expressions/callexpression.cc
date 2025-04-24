@@ -91,6 +91,11 @@ CallExpression::Resolve(Compiler* compiler)
     {
         // If the function isn't available, check for any type constructor that might implement it
         std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol.c_str());
+        if (functionSymbols.empty())
+        {
+            compiler->UnrecognizedSymbolError(callSignature, this);
+            return false;
+        }
         std::vector<Candidate> candidates;
         for (auto functionSymbol : functionSymbols)
         {
@@ -119,7 +124,7 @@ CallExpression::Resolve(Compiler* compiler)
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
                             {
-                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.ToString().c_str(), this->thisResolved->argumentTypes[i].ToString().c_str());
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                                 // No conversion available for this member, skip to next constructor
@@ -293,6 +298,47 @@ CallExpression::Resolve(Compiler* compiler)
 
     if (this->thisResolved->function != nullptr)
     {
+        // Check for recursion
+        auto scopeIt = compiler->scopes.crbegin();
+        auto end = compiler->scopes.crend();
+        while (scopeIt != end)
+        {
+            if ((*scopeIt)->owningSymbol == this->thisResolved->function)
+            {
+                std::string message = "Recursions are not allowed, the following callstack produced a recursion:\n";
+                std::vector<std::string> callstack;
+                auto scopeIt2 = compiler->scopes.crbegin();
+                while (scopeIt2 != end)
+                {
+                    Symbol* sym = (*scopeIt2)->owningSymbol;
+                    if (sym != nullptr && sym->symbolType == Symbol::SymbolType::FunctionType)
+                    {
+                        Function* fun = static_cast<Function*>(sym);
+                        Function::__Resolved* res = Symbol::Resolved(fun);
+                        callstack.push_back(res->signature);
+                    }
+                    scopeIt2++;
+                }
+                std::string indent = "";
+                std::string outline = " ";
+                auto callstackIt = callstack.begin();
+                while (callstackIt != callstack.end())
+                {
+                    message += indent + *callstackIt + "\n";
+                    indent += "  ";
+                    outline += "  ";
+                    if (callstackIt != callstack.end() - 1)
+                    {
+                        message += outline + "^\n";
+                    }
+                    callstackIt++;
+                }
+                compiler->Error(message, this);
+                return false;
+            }
+            scopeIt++;
+        }
+        
         size_t i = 0;
         for (; i < this->thisResolved->function->parameters.size(); i++)
         {
@@ -356,6 +402,7 @@ CallExpression::EvalValue(ValueUnion& out) const
     if (!out.SetType(this->thisResolved->retType))
         return false;
 
+    bool ret = false;
     ValueUnion value;
     for (Expression* expr : this->args)
     {
@@ -371,6 +418,7 @@ CallExpression::EvalValue(ValueUnion& out) const
             for (int j = 0; j < value.rowSize; j++)
             {
                 out.Assign(value, internalIndex++, index++);
+                ret = true;
             }
         }
     }
@@ -381,10 +429,11 @@ CallExpression::EvalValue(ValueUnion& out) const
         for (uint32_t i = index; i < out.columnSize * out.rowSize; i++)
         {
             out.Assign(value, 0, i);
+            ret = true;
         }    
     }
 
-    return true;
+    return ret;
 }
 
 //------------------------------------------------------------------------------

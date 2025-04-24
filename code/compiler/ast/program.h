@@ -64,6 +64,12 @@ struct Program : public Symbol
 
         union ProgramUsage
         {
+            enum ShaderPipelineBits
+            {
+                GraphicsBits = 0xDF,
+                ComputeBits = 0x20,
+                RayTracingBits = 0x3F00,
+            };
             struct
             {
                 uint32_t hasVertexShader : 1;
@@ -84,6 +90,15 @@ struct Program : public Symbol
             } flags;
             uint32_t bits;
         } usage;
+
+        union ProgramEffects
+        {
+            struct
+            {
+                uint32_t explicitDepth : 1;
+            } flags;
+            uint32_t bits;
+        } effects;
         Symbol* mappings[ProgramEntryType::NumProgramEntries];
         std::vector<uint32_t> binaries[ProgramEntryType::NumProgramEntries];
         std::unordered_map<Function*, Function*> functionOverrides;

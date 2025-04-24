@@ -15,7 +15,7 @@ bool
 ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 {
 	argh::parser args;
-	args.add_params({ "-i", "-o", "-r", "-h" });
+	args.add_params({ "-i", "-o", "-r", "-h", "-g" });
 	args.parse(argv);
 
 	if (args["--help"])
@@ -26,10 +26,22 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 
 	this->mode = args["M"];
 
-	this->shaderCompiler.SetFlag(args["debug"] ? SingleShaderCompiler::Debug : 0);
-	this->shaderCompiler.SetFlag(args["q"] ? SingleShaderCompiler::Quiet : 0);
-	this->shaderCompiler.SetFlag(args["validate"] ? SingleShaderCompiler::Validate : 0);
-	this->shaderCompiler.SetFlag(args["profile"] ? SingleShaderCompiler::Profile : 0);
+	if (!this->shaderCompiler.SetFlag(args["optimize"] || args["Ox"] ? SingleShaderCompiler::Optimize : 0))
+	{
+		this->PrintHelp();
+		return false;
+	}
+	if (!this->shaderCompiler.SetFlag(args["symbols"] || args["s"] ? SingleShaderCompiler::Symbols : 0))
+	{
+		this->PrintHelp();
+		return false;
+	}
+	this->shaderCompiler.SetFlag(args["quiet"] || args["q"] ? SingleShaderCompiler::Quiet : 0);
+	this->shaderCompiler.SetFlag(args["validate"] || args["v"] ? SingleShaderCompiler::Validate : 0);
+	this->shaderCompiler.SetFlag(args["profile"] || args["p"] ? SingleShaderCompiler::Profile : 0);
+	uint32_t defaultGroup;
+	if (args("g") >> defaultGroup)
+		this->shaderCompiler.SetDefaultGroup(defaultGroup);
 	std::string buffer;
 	if (args("o") >> buffer)
 	{
@@ -37,7 +49,7 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 	}
 	else if (this->mode)
 	{
-		fprintf(stderr, "anyfxcompiler error: no output file specified while trying to create dependecies\n");
+		fprintf(stderr, "gpulangc error: no output file specified while trying to create dependencies\n");
 		this->PrintHelp();
 		return false;
 	}
@@ -110,10 +122,12 @@ usage: gpulangc [-M] [--help] [-i <file>] [-I <path>]\n\
 -I       		Where to search for include headers. This can be repeated multiple times.\n\
 -o       		Where to output the binaries. If folder, outputs both binaries and headers to this folder unless -h is provided.\n\
 -h       		Where to output generated C headers.\n\
--q     	 		Suppress standard output.\n\
--debug   		Generate debugging information and disable optimizations.\n\
--profile 		Log compilation times.\n\
--validate		Validate compilation output.\n\
+-g <value>      Default binding group if none is provided.\n\
+-quiet/-q  		Suppress standard output.\n\
+-optimize/-Ox  	Optimize output (not allowed with -symbols/-s).\n\
+-symbols/-s		Generate debug symbols (not allowed with -optimize/-Ox).\n\
+-profile/-p		Log compilation times.\n\
+-validate/-v	Validate compilation output.\n\
 ";
 
 	fprintf(stdout, help);

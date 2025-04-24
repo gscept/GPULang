@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 #include "memory.h"
+
+namespace GPULang
+{
 uint32_t FreeBlockCounter = 0;
 
 uint32_t* FreeBlocks = nullptr;
@@ -56,3 +59,8 @@ ResetMemory()
     }
     InitMemory();
 }
+
+thread_local char ThreadLocalHeap[0xFFFF];
+thread_local size_t ThreadLocalIterator = 0;
+
+} // namespace GPULang

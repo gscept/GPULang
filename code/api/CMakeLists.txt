@@ -8,8 +8,8 @@ fips_deps(gpulang_util)
 
 target_include_directories(gpulang_reflection PUBLIC
 	${GPULANG_ROOT}
-	${GPULANG_ROOT}/code/util
-	${GPULANG_ROOT}/code/api
+	${GPULANG_ROOT}/code
+	${GPULANG_ROOT}/code
 	${VULKAN_INCLUDE_DIR}
 )
 

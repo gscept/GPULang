@@ -18,6 +18,8 @@ namespace GPULang
 {
 SamplerStateType::SamplerStateType()
 {
+    this->category = Type::Category::SamplerCategory;
+
     __BEGIN_ENUMS__();
 
     __START_ENUM();

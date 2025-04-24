@@ -617,6 +617,8 @@ public:
   class  SamplerContext : public antlr4::ParserRuleContext {
   public:
     SamplerState* sym;
+    GPULangParser::AnnotationContext *annotationContext = nullptr;
+    GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *name = nullptr;
     GPULangParser::ExpressionContext *assign = nullptr;
     SamplerContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -628,6 +630,10 @@ public:
     antlr4::tree::TerminalNode* SC(size_t i);
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
+    std::vector<AnnotationContext *> annotation();
+    AnnotationContext* annotation(size_t i);
+    std::vector<AttributeContext *> attribute();
+    AttributeContext* attribute(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

@@ -33,7 +33,6 @@ enum Filter
     LinearFilter
 };
 
-
 enum BorderColor
 {
     InvalidBorderColor,
@@ -41,7 +40,6 @@ enum BorderColor
     BlackBorder,
     WhiteBorder
 };
-
 
 enum CompareMode
 {
@@ -179,22 +177,27 @@ struct BlendState
     uint32_t colorComponentMask;
 };
 
-enum BindingScope
+enum class BindingScope
 {
     VertexInput,        // For vertex attributes
-    Resource            // For images, buffers, atomic counters, acceleration structures
+    Resource,           // For images, buffers, atomic counters, acceleration structures
+    Constant,           // For constant shader values
+    Member              // For struct members
 };
 
 enum BindingType
 {
+    None,
     MutableBuffer,
     Buffer,
     MutableImage,
     Image,
     SampledImage,
     Sampler,
+    PixelCache,
     Inline,
-    LinkDefined
+    LinkDefined,
+    AccelerationStructure
 };
 
 namespace Serialize
@@ -268,6 +271,7 @@ struct RenderState : public Serializable
     bool depthBoundsTestEnabled;
     float minDepthBounds;
     float maxDepthBounds;
+    bool scissorEnabled;
     bool stencilEnabled;
     StencilState frontStencilState;
     StencilState backStencilState;
@@ -302,6 +306,13 @@ struct Program : public Serializable
     };
 
     Shader vs, gs, hs, ds, ps, cs, ts, ms, rgs, rms, rchs, rahs, rcs, ris;
+
+    size_t vsInputsLength;
+    size_t vsInputsOffset;
+    uint16_t patchSize;                 // Patch size if program contains a hull shader
+    uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
+    uint16_t rayHitAttributeSize;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
+
 };
 
 struct Bindable : public Serializable
@@ -338,6 +349,8 @@ struct SamplerState : public Bindable
     BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
+
+    ShaderUsage visibility;
 };
 
 struct Variable : public Bindable
@@ -356,6 +369,9 @@ struct Variable : public Bindable
     BindingScope bindingScope;
     BindingType bindingType;
     ShaderUsage visibility;
+
+    size_t structTypeNameOffset;
+    size_t structTypeNameLength;
 };
 
 struct Structure : public Serializable
@@ -615,6 +631,13 @@ struct Program : public Deserializable
         NumShaders
     };
 
+    size_t vsInputLength;
+    const uint8_t* vsInputs;
+
+    uint16_t patchSize;                 // Patch size if program contains a hull shader
+    uint16_t rayPayloadSize;            // Ray payload size in bytes if program contains a ray tracing shader
+    uint16_t rayHitAttributeSize;       // Ray hit attribute size in bytes if program contains a ray tracing hit shader
+
     Shader shaders[ShaderStages::NumShaders];
 };
 
@@ -647,8 +670,11 @@ struct SamplerState : public Bindable
     BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
+
+    ShaderUsage visibility;
 };
 
+struct Structure;
 struct Variable : public Bindable
 {
     const uint32_t* arraySizes;
@@ -660,13 +686,13 @@ struct Variable : public Bindable
     BindingScope bindingScope;
     BindingType bindingType;
     ShaderUsage visibility;
+
+    const Structure* structType;
 };
 
-struct Structure : public Bindable
+struct Structure : public Deserializable
 {
     /// constructor
-    bool isConst;
-    bool isMutable;
     unsigned int size;
     Variable* variables;
     size_t variableCount;

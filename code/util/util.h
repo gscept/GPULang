@@ -72,6 +72,22 @@ Format(const char* format, ...)
 
 //------------------------------------------------------------------------------
 /**
+    Formats const char* to std::string
+*/
+static std::string
+SmallFormat(const char* format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    char buf[1024];
+    vsnprintf(buf, sizeof(buf), format, args);
+    std::string retVal(buf);
+    va_end(args);
+    return retVal;
+}
+
+//------------------------------------------------------------------------------
+/**
 	Compares const char* with std::string
 */
 static bool

@@ -8,7 +8,7 @@
 */
 //------------------------------------------------------------------------------
 #include <vulkan/vulkan.h>
-#include "serialize.h"
+#include "util/serialize.h"
 namespace GPULang
 {
 

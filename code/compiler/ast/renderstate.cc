@@ -32,6 +32,7 @@ RenderState::RenderState()
     typeResolved->depthBoundsTestEnabled = true;
     typeResolved->minDepthBounds = 0.0f;
     typeResolved->maxDepthBounds = 1.0f;
+    typeResolved->scissorEnabled = false;
     typeResolved->stencilEnabled = false;
     typeResolved->logicOpEnabled = false;
     typeResolved->logicOp = LogicOp::LogicSetOp;
@@ -87,6 +88,7 @@ const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> strin
     { "DepthBoundsTestEnabled", RenderState::__Resolved::DepthBoundsTestEnabledType },
     { "MinDepthBounds", RenderState::__Resolved::MinDepthBoundsType },
     { "MaxDepthBounds", RenderState::__Resolved::MaxDepthBoundsType },
+    { "ScissorEnabled", RenderState::__Resolved::ScissorEnabledType },
     { "StencilEnabled", RenderState::__Resolved::StencilEnabledType },
     { "StencilFront.Fail", RenderState::__Resolved::StencilFailOpType },
     { "StencilFront.Pass", RenderState::__Resolved::StencilPassOpType },
