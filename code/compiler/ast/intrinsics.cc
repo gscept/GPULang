@@ -327,6 +327,9 @@ Function* ExecutionBarrier;
 Function* ExecutionBarrierSubgroup;
 Function* ExecutionBarrierWorkgroup;
 Function* MemoryExecutionBarrier;
+Function* MemoryExecutionBarrierBuffer;
+Function* MemoryExecutionBarrierTexture;
+Function* MemoryExecutionBarrierAtomic;
 Function* MemoryExecutionBarrierSubgroup;
 Function* MemoryExecutionBarrierWorkgroup;
 

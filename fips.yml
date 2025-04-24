@@ -11,6 +11,9 @@ imports:
       fips-glfw:
         git: https://github.com/gscept/fips-glfw.git
         cond: "BUILD_GPULANG_APP"
+      fips-lsp-framework:
+        git: https://github.com/Duttenheim/fips-lsp-framework.git
+        cond: "BUILD_GPULANG_LANGUAGE_SERVER"
 
 exports:
     header-dirs:

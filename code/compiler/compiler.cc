@@ -176,6 +176,15 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
 //------------------------------------------------------------------------------
 /**
 */
+void
+Compiler::Setup(Options options)
+{
+    this->options = options;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 Generator* 
 Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
 {
@@ -561,8 +570,47 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 //------------------------------------------------------------------------------
 /**
 */
+bool
+Compiler::Validate(Effect* root)
+{
+    bool ret = true;
+    this->linkDefineCounter = 0;
+    this->validator->defaultGroup = this->options.defaultGroupBinding;
+
+    this->symbols = root->symbols;
+
+    this->performanceTimer.Start();
+
+    std::vector<Program*> programs;
+
+    // resolves parser state and runs validation
+    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
+    {
+        ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        if (this->hasErrors)
+            break;
+
+        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols[this->symbolIterator]);
+    }
+
+    this->performanceTimer.Stop();
+
+    // if failed, don't proceed to next step
+    if (!ret || this->hasErrors)
+        return false;
+
+    if (this->options.emitTimings)
+        this->performanceTimer.Print("Type checking");
+
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 void 
-Compiler::Error(const std::string& msg, const std::string& file, int line, int column)
+Compiler::Error(const std::string& msg, const std::string& file, int line, int column, int length)
 {
     static const char* ErrorStrings[] =
     {
@@ -580,11 +628,14 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
     {
         std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.push_back(err);
+
+        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
     }
     else
     {
         std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.push_back(err);
+        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }
@@ -595,7 +646,7 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
 void 
 Compiler::Error(const std::string& msg, const Symbol* sym)
 {
-    this->Error(msg, sym->location.file, sym->location.line, sym->location.column);
+    this->Error(msg, sym->location.file, sym->location.line, sym->location.column, sym->name.length());
 }
 
 //------------------------------------------------------------------------------

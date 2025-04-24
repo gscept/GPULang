@@ -37,12 +37,12 @@ struct MemoryBlock
 
 void InitMemory();
 void ResetMemory();
-extern uint32_t FreeBlockCounter;
-extern uint32_t* FreeBlocks;
-extern MemoryBlock* Blocks;
-extern size_t CurrentBlock;
-extern size_t BlockSize;
-extern bool IsInit;
+extern thread_local uint32_t FreeBlockCounter;
+extern thread_local uint32_t* FreeBlocks;
+extern thread_local MemoryBlock* Blocks;
+extern thread_local size_t CurrentBlock;
+extern thread_local size_t BlockSize;
+extern thread_local bool IsInit;
 
 void Dealloc(void* alloc);
 

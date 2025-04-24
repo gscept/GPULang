@@ -12,13 +12,12 @@
 
 namespace GPULang
 {
-uint32_t FreeBlockCounter = 0;
-
-uint32_t* FreeBlocks = nullptr;
-MemoryBlock* Blocks = nullptr;
-size_t CurrentBlock = 0;
-size_t BlockSize = 65535;
-bool IsInit = false;
+thread_local uint32_t FreeBlockCounter = 0;
+thread_local uint32_t* FreeBlocks = nullptr;
+thread_local MemoryBlock* Blocks = nullptr;
+thread_local size_t CurrentBlock = 0;
+thread_local size_t BlockSize = 65535;
+thread_local bool IsInit = false;
 //------------------------------------------------------------------------------
 /**
 */

@@ -1483,6 +1483,7 @@ private:
   friend class GPULangParserErrorHandler;
   friend class GPULangTokenFactory;
   friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
+  friend bool GPULangValidate(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 
 };

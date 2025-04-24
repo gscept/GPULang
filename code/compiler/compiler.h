@@ -26,6 +26,13 @@
 namespace GPULang
 {
 
+struct Diagnostic
+{
+    std::string error;
+    std::string file;
+    int line, column, length;
+};
+
 struct Type;
 struct Compiler
 {
@@ -85,8 +92,10 @@ struct Compiler
     /// destructor
     ~Compiler();
 
-    /// setup compiler with target language
+    /// setup compiler with target language in generation mode
     void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options);
+    /// setup compiler for validation (language server) mode
+    void Setup(Options options);
     /// Create generator
     Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 
@@ -180,9 +189,11 @@ struct Compiler
 
     /// runs the validation and generation steps, returns true if successful, otherwise false and a list of error messages
     bool Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter);
+    /// runs validation without generation
+    bool Validate(Effect* root);
 
     /// produce error in compiler with explicit file, line and column
-    void Error(const std::string& msg, const std::string& file, int line, int column);
+    void Error(const std::string& msg, const std::string& file, int line, int column, int length = 1);
     /// produce error in compiler from symbol
     void Error(const std::string& msg, const Symbol* sym);
     /// produce error in compiler with explicit file, line and column
@@ -205,6 +216,7 @@ struct Compiler
     std::string path;
     std::string filename;
     std::vector<std::string> defines;
+    std::vector<Diagnostic> diagnostics;
     std::vector<std::string> messages;
     bool hasErrors;
 

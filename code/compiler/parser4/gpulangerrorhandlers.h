@@ -2,6 +2,7 @@
 #include "antlr4-runtime.h"
 #include "antlr4-common.h"
 #include "BaseErrorListener.h"
+#include "compiler.h"
 
 class GPULangLexerErrorHandler : public antlr4::BaseErrorListener
 {
@@ -13,6 +14,7 @@ public:
 	std::string errorBuffer;
 	std::string warningBuffer;
 	std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
+    std::vector<GPULang::Diagnostic> diagnostics;
 };
 
 class GPULangParserErrorHandler : public antlr4::BaseErrorListener
@@ -25,4 +27,5 @@ public:
 	std::string errorBuffer;
 	std::string warningBuffer;
 	std::vector<std::tuple<int,size_t, size_t, size_t, std::string>> lines;
+    std::vector<GPULang::Diagnostic> diagnostics;
 };

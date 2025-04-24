@@ -4,6 +4,7 @@ option(BUILD_GPULANG_STANDALONE_COMPILER "Build standalone compiler" ON)
 option(BUILD_GPULANG_APP "Build GPULang with the example app" OFF)
 option(BUILD_GPULANG_TEST "Build GPULang with unit tests" OFF)
 option(BUILD_GPULANG_COMPILER "Build GPULang compiler" ON)
+option(BUILD_GPULANG_LANGUAGE_SERVER "Build GPULang language server" ON)
     
 if(NOT FIPS_IMPORT)
 	project(gpulang)
@@ -41,4 +42,8 @@ ENDIF()
 	
 IF(BUILD_GPULANG_STANDALONE_COMPILER)
     add_subdirectory(gpulangcompiler)
+ENDIF()
+
+IF(BUILD_GPULANG_LANGUAGE_SERVER)
+    add_subdirectory(gpulangserver)
 ENDIF()

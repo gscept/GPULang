@@ -1042,6 +1042,15 @@ FLOAT_LIST
     __MAKE_BUILTIN(memoryBarrier, MemoryExecutionBarrier);
     __SET_RET_LIT(void);
 
+    __MAKE_BUILTIN(memoryBarrierBuffer, MemoryExecutionBarrierBuffer);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(memoryBarrierTexture, MemoryExecutionBarrierTexture);
+    __SET_RET_LIT(void);
+
+    __MAKE_BUILTIN(memoryBarrierAtomic, MemoryExecutionBarrierAtomic);
+    __SET_RET_LIT(void);
+
     __MAKE_BUILTIN(memoryBarrierSubgroup, MemoryExecutionBarrierSubgroup);
     __SET_RET_LIT(void);
     

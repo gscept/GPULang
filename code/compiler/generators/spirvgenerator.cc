@@ -5321,6 +5321,30 @@ SPIRVGenerator::SetupIntrinsics()
         g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
         return SPIRVResult(0xFFFFFFFF, returnType);
     };
+    
+    SPIRVGenerator::IntrinsicMap[Intrinsics::MemoryExecutionBarrierBuffer] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40));
+        g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    SPIRVGenerator::IntrinsicMap[Intrinsics::MemoryExecutionBarrierTexture] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x800));
+        g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
+
+    SPIRVGenerator::IntrinsicMap[Intrinsics::MemoryExecutionBarrierAtomic] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+    {
+        SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+        SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x400));
+        g->writer->Instruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, semanticsId);
+        return SPIRVResult(0xFFFFFFFF, returnType);
+    };
 
     SPIRVGenerator::IntrinsicMap[Intrinsics::MemoryExecutionBarrierSubgroup] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
     {

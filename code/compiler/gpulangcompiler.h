@@ -31,5 +31,14 @@ struct GPULangErrorBlob
 };
 
 
+struct GPULangServerResult
+{
+	std::vector<GPULang::Symbol*> symbols;
+    std::map<std::string, GPULang::Symbol*> lookup;
+    std::vector<GPULang::Diagnostic> diagnostics;
+	std::vector<std::string> messages;	
+};
+
 extern std::vector<std::string> GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
 extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
+extern bool GPULangValidate(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);

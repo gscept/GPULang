@@ -483,6 +483,9 @@ extern Function* ExecutionBarrier;
 extern Function* ExecutionBarrierSubgroup;
 extern Function* ExecutionBarrierWorkgroup;
 extern Function* MemoryExecutionBarrier;
+extern Function* MemoryExecutionBarrierBuffer;
+extern Function* MemoryExecutionBarrierTexture;
+extern Function* MemoryExecutionBarrierAtomic;
 extern Function* MemoryExecutionBarrierSubgroup;
 extern Function* MemoryExecutionBarrierWorkgroup;
 
