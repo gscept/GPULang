@@ -20,6 +20,7 @@ struct Enumeration : public Type
 
     std::vector<std::string> labels;
     std::vector<Expression*> values;
+    std::vector<Symbol::Location> labelLocations;
     Type::FullType type;
     bool builtin = false;
 

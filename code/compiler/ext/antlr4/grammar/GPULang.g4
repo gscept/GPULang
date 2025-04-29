@@ -38,7 +38,7 @@ std::vector<std::tuple<size_t, size_t, std::string>> GPULangParser::LineStack;
 
 // setup function which binds the compiler state to the current AST node
 Symbol::Location
-SetupFile(bool updateLine = true)
+SetupFile()
 {
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
@@ -50,6 +50,30 @@ SetupFile(bool updateLine = true)
     location.column = token->getCharPositionInLine();
     location.start = location.column;
     location.end = location.start + token->getText().length();
+    return location;
+}
+
+Symbol::Location
+BeginLocationRange()
+{
+    Symbol::Location location;
+    ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
+
+    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+    location.file = file;
+    location.line = token->line - rawLine - 1 + preprocessedLine;
+    location.column = token->getCharPositionInLine();
+    location.start = token->begin;
+    location.end = token->end + 1;
+    return location;
+}
+
+Symbol::Location
+EndLocationRange(const Symbol::Location begin)
+{
+    Symbol::Location location = begin;
+    ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
+    location.end = token->end + 1;
     return location;
 }
 
@@ -203,20 +227,23 @@ attribute
     ;
 
 typeDeclaration
-    returns[ Type::FullType type ]
+    returns[ TypeDeclaration type ]
     @init
     {
-        $type.name = "";
+        $type.type.name = "";
+        Symbol::Location typeRange;
     }:
+
+    { typeRange = BeginLocationRange(); }
     ( 
-        '*' { $type.AddModifier(Type::FullType::Modifier::Pointer); } |
-        '[' { $type.AddModifier(Type::FullType::Modifier::Array); } 
-            ( arraySize0 = expression { $type.UpdateValue($arraySize0.tree); } )? 
+        '*' { $type.type.AddModifier(Type::FullType::Modifier::Pointer); } |
+        '[' { $type.type.AddModifier(Type::FullType::Modifier::Array); } 
+            ( arraySize0 = expression { $type.type.UpdateValue($arraySize0.tree); } )? 
         ']'
-        | IDENTIFIER { $type.AddQualifier($IDENTIFIER.text); }
+        | IDENTIFIER { $type.type.AddQualifier($IDENTIFIER.text); }
         | linePreprocessorEntry
     )* 
-    typeName = IDENTIFIER { $type.name = $typeName.text; }
+    typeName = IDENTIFIER { $type.type.name = $typeName.text; $type.location = EndLocationRange(typeRange); }
     ;
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
@@ -230,7 +257,7 @@ variables
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
         unsigned initCounter = 0;
-        Type::FullType type = Type::FullType{ "<undefined>" };
+        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
@@ -251,7 +278,8 @@ variables
         for (size_t i = 0; i < names.size(); i++)
         {
             Variable* var = Alloc<Variable>(); 
-            var->type = type; 
+            var->type = type.type; 
+            var->typeLocation = type.location;
             var->location = locations[i]; 
             var->annotations = annotations;
             var->attributes = attributes;
@@ -295,22 +323,26 @@ structure
         std::string instanceName;
         Symbol::Location varLocation;
         Type::FullType varType;
+        Symbol::Location varTypeLocation;
+        Symbol::Location typeRange;
         std::string varName;
     }:
     structureDeclaration { $sym = $structureDeclaration.sym; }
     '{' 
         (varName = IDENTIFIER { varName = $varName.text; varLocation = SetupFile(); } ':'         
+            { typeRange = BeginLocationRange(); }
             ( 
                 '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); } |
                 '[' { varType.AddModifier(Type::FullType::Modifier::Array); } 
                     ( arraySize0 = expression { varType.UpdateValue($arraySize0.tree); } )?  
                 ']'
             )* 
-            varTypeName = IDENTIFIER { varType.name = $varTypeName.text; } ';'
+            varTypeName = IDENTIFIER { varType.name = $varTypeName.text; varTypeLocation = EndLocationRange(typeRange); } ';'
             {
                 Variable* var = Alloc<Variable>(); 
                 var->type = varType; 
                 var->location = varLocation; 
+                var->typeLocation = varTypeLocation;
                 var->name = varName;
                 var->valueExpression = nullptr;
                 members.push_back(var);
@@ -343,25 +375,29 @@ enumeration
         $sym = nullptr;
         std::vector<std::string> enumLabels;
         std::vector<Expression*> enumValues;
+        std::vector<Symbol::Location> enumLocations;
         std::string name;
-        Type::FullType type = Type::FullType{ "u32" };
+        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
+        Symbol::Location labelLocation;
     }:
     'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
     (':' typeDeclaration { type = $typeDeclaration.type; })?
     '{'
         (
-            label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
+            label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
             {
                 enumLabels.push_back($label.text);
                 enumValues.push_back(expr);
+                enumLocations.push_back(labelLocation);
             }
             (linePreprocessorEntry)?
             (
-                ',' label = IDENTIFIER { Expression* expr = nullptr; } ('=' value = expression { expr = $value.tree; })?
+                ',' label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
                 {
                     enumLabels.push_back($label.text);
                     enumValues.push_back(expr);
+                    enumLocations.push_back(labelLocation);
                 }
                 |
                 linePreprocessorEntry
@@ -373,10 +409,11 @@ enumeration
     {
         $sym = Alloc<Enumeration>();
         $sym->name = name;
-        type.literal = true;
-        $sym->type = type;
+        $sym->type = type.type;
+        $sym->type.literal = true;
         $sym->labels = enumLabels;
         $sym->values = enumValues;
+        $sym->labelLocations = enumLocations;
         $sym->location = location;
     }
     ;
@@ -390,7 +427,7 @@ parameter
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
-        Type::FullType type = Type::FullType{ "unknown" };
+        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
@@ -402,7 +439,8 @@ parameter
     )?
     {
             $sym = Alloc<Variable>(); 
-            $sym->type = type; 
+            $sym->type = type.type; 
+            $sym->typeLocation = type.location;
             $sym->location = location; 
             $sym->attributes = std::move(attributes);
             $sym->name = name;
@@ -429,7 +467,8 @@ functionDeclaration
         $sym = Alloc<Function>(); 
         $sym->hasBody = false;
         $sym->location = location;
-        $sym->returnType = $returnType.type; 
+        $sym->returnType = $returnType.type.type; 
+        $sym->returnTypeLocation = $returnType.type.location;
         $sym->name = $name.text; 
         $sym->parameters = variables; 
         $sym->attributes = std::move(attributes);
@@ -837,17 +876,17 @@ logicalOrExpression
     }:
     e1 = logicalAndExpression { $tree = $e1.tree; }
     (
-        '?' { location = SetupFile(); } ifBody = logicalOrExpression ':' elseBody = logicalOrExpression
+        '?' ifBody = logicalOrExpression ':' elseBody = logicalOrExpression
         { 
             TernaryExpression* expr = Alloc<TernaryExpression>($tree, $ifBody.tree, $elseBody.tree);
-            expr->location = location;
+            expr->location = $e1.tree->location;
             $tree = expr;
         }
         |
-        ('||') { location = SetupFile(); } e2 = logicalAndExpression
+        ('||') e2 = logicalAndExpression
         {
             BinaryExpression* expr = Alloc<BinaryExpression>('||', $tree, $e2.tree);
-            expr->location = location;
+            expr->location = $e1.tree->location;
             $tree = expr;
         }
     )*
@@ -1079,19 +1118,19 @@ suffixExpression
             expr->location = $e1.tree->location;
             $tree = expr;
         }
-        | '.' { $tree->location = SetupFile(); } e2 = suffixExpression
+        | '.' e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
             expr->location = $tree->location;
             $tree = expr;
         }
-        | '->' { $tree->location = SetupFile(); } e2 = suffixExpression
+        | '->' e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
             expr->location = $tree->location;
             $tree = expr;
         }
-        | '[' { $tree->location = SetupFile(); } (e3 = expression { arrayIndexExpr = $e3.tree; })? ']'
+        | '[' (e3 = expression { arrayIndexExpr = $e3.tree; })? ']'
         {
             ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, arrayIndexExpr);
             expr->location = $tree->location;
@@ -1129,6 +1168,7 @@ binaryexpatom
     @init 
     {
         $tree = nullptr;
+        Symbol::Location begin = BeginLocationRange();
     }:
     initializerExpression           { $tree = $initializerExpression.tree; }
     | arrayInitializerExpression    { $tree = $arrayInitializerExpression.tree; } 
@@ -1138,7 +1178,7 @@ binaryexpatom
     | FLOATLITERAL                  { $tree = Alloc<FloatExpression>(atof($FLOATLITERAL.text.c_str())); $tree->location = SetupFile(); }
     | DOUBLELITERAL                 { $tree = Alloc<FloatExpression>(atof($DOUBLELITERAL.text.c_str())); $tree->location = SetupFile(); }
     | HEX                           { $tree = Alloc<UIntExpression>(strtoul($HEX.text.c_str(), nullptr, 16)); $tree->location = SetupFile(); }
-    | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = SetupFile(); }
+    | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = EndLocationRange(begin); }
     | IDENTIFIER                    { $tree = Alloc<SymbolExpression>($IDENTIFIER.text); $tree->location = SetupFile(); }
     | boolean                       { $tree = Alloc<BoolExpression>($boolean.val); $tree->location = SetupFile(); }
     //| floatVecLiteralExpression     { $tree = $floatVecLiteralExpression.tree; }

@@ -759,6 +759,11 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(pixelGetCoordinates, GetPixelCoordinates);
     __SET_RET_LIT(f32x4);
+    __DOCUMENT_INTRINSIC("Returns post clip transformations coordinates as xyzw\n\n\
+        xy is the screen space coordinates in range [0..render_target_width, [0..render_target_height]\n\n\
+        z is the depth value in the range [0..1] as if 'pixelSetDepth' was never called\n\n\
+        w is 1/w from the previous geometry shader.\n\
+        ");
 
     __MAKE_BUILTIN(pixelSetDepth, SetPixelDepth);
     __ADD_ARG_LIT(depth, f32);
@@ -767,29 +772,36 @@ FLOAT_LIST
     __MAKE_BUILTIN(pixelGetDepth, GetPixelDepth);
     __SET_RET_LIT(f32);
 
-#define X(ty, index)\
+#define X(ty, idx)\
     __MAKE_INTRINSIC(pixelExportColor, ExportColor, ty)\
     __ADD_ARG_LIT(color, ty);\
     __ADD_VALUE_LIT(index, i32);\
-    __SET_RET_LIT(void);
+    __SET_RET_LIT(void);\
+    __DOCUMENT_INTRINSIC("Exports a value 'color' of " #ty " to the targeted export destination 'index'.\
+    This is the same using a HLSL **SV_TARGET\\<index\\>** or GLSL fragment shader **out** variable with **binding(index)** and writing to it.");
 
     SCALAR_LIST
 #undef X
 
     __MAKE_BUILTIN(computeGetLocalInvocationIndices, GetLocalInvocationIndices);
     __SET_RET_LIT(u32x3);
+    __DOCUMENT_INTRINSIC("Returns the dispatch group's local indices as a u32x3");
 
     __MAKE_BUILTIN(computeGetGlobalInvocationIndices, GetGlobalInvocationIndices);
     __SET_RET_LIT(u32x3);
+    __DOCUMENT_INTRINSIC("Returns the dispatch global indices as a u32x3");
 
     __MAKE_BUILTIN(computeGetWorkgroupIndices, GetWorkGroupIndices);
     __SET_RET_LIT(u32x3);
+    __DOCUMENT_INTRINSIC("Returns the dispatch workgroup indices as a u32x3");
 
     __MAKE_BUILTIN(computeGetIndexInWorkgroup, GetIndexInWorkGroup);
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Returns the dispatch groups flattened local index as u32");
 
     __MAKE_BUILTIN(computeGetWorkgroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);
+    __DOCUMENT_INTRINSIC("Returns the compute shaders workgroup dimensions as u32x3");
 
     //------------------------------------------------------------------------------
     /**

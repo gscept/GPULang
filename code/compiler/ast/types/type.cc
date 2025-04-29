@@ -596,7 +596,7 @@ Type::SwizzleMaskBiggestComponent(SwizzleMask mask)
 /**
 */
 std::string 
-Type::FullType::ToString(bool omitLiteral)
+Type::FullType::ToString(bool includeLiteral) const
 {
     std::string base;
     for (size_t i = 0; i < this->modifiers.size(); i++)
@@ -619,8 +619,8 @@ Type::FullType::ToString(bool omitLiteral)
             }
         }
     }
-    //if (this->literal && !omitLiteral)
-    //    base.append("literal ");
+    if (this->literal && includeLiteral)
+        base.append("literal ");
     if (this->mut)
         base.append("mutable ");
     if (this->sampled)

@@ -130,7 +130,7 @@ public:
 
   // setup function which binds the compiler state to the current AST node
   Symbol::Location
-  SetupFile(bool updateLine = true)
+  SetupFile()
   {
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
@@ -142,6 +142,30 @@ public:
       location.column = token->getCharPositionInLine();
       location.start = location.column;
       location.end = location.start + token->getText().length();
+      return location;
+  }
+
+  Symbol::Location
+  BeginLocationRange()
+  {
+      Symbol::Location location;
+      ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
+
+      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+      location.file = file;
+      location.line = token->line - rawLine - 1 + preprocessedLine;
+      location.column = token->getCharPositionInLine();
+      location.start = token->begin;
+      location.end = token->end + 1;
+      return location;
+  }
+
+  Symbol::Location
+  EndLocationRange(const Symbol::Location begin)
+  {
+      Symbol::Location location = begin;
+      ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
+      location.end = token->end + 1;
       return location;
   }
 
@@ -368,7 +392,7 @@ public:
 
   class  TypeDeclarationContext : public antlr4::ParserRuleContext {
   public:
-    Type::FullType type;
+    TypeDeclaration type;
     GPULangParser::ExpressionContext *arraySize0 = nullptr;
     antlr4::Token *identifierToken = nullptr;
     antlr4::Token *typeName = nullptr;

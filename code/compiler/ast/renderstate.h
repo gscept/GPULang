@@ -10,6 +10,7 @@
 namespace GPULang
 {
 
+struct RenderStateType;
 struct RenderState : public State
 {
     /// constructor
@@ -18,6 +19,8 @@ struct RenderState : public State
     struct __Resolved : State::__Resolved
     {
         virtual ~__Resolved() {};
+
+        RenderStateType* type;
         enum RenderStateEntryType
         {
             InvalidRenderStateEntryType,

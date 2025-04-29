@@ -12,6 +12,8 @@ std::unique_ptr<CommonToken> GPULangTokenFactory::create(std::pair<TokenSource*,
 	t->line = line;
 	t->setCharPositionInLine(charPositionInLine);
 	t->setText(source.second->getText(antlr4::misc::Interval(start, stop)));
+	t->begin = charPositionInLine;
+	t->end = charPositionInLine + stop - start;
 
 	return t;
 }

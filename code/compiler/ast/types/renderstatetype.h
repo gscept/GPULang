@@ -7,10 +7,8 @@
 */  
 //------------------------------------------------------------------------------
 #include "type.h"
-#include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
-#include "ast/structure.h"
 namespace GPULang
 {
 

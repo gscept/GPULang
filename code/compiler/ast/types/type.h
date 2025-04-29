@@ -27,6 +27,7 @@ activeFunction = &this->method;\
     var->type = Type::FullType{ #argtype }; \
     activeFunction->parameters.push_back(var); \
 }\
+activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
@@ -35,6 +36,7 @@ this->method.returnType = Type::FullType{#type};\
 this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
+activeFunction->documentation = "Constructor for " #type;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
@@ -184,6 +186,7 @@ struct Compiler;
 extern Function* activeFunction;
 static const char* UNDEFINED_TYPE = "<undefined>";
 static const char* FUNCTION_TYPE = "function";
+
 
 struct Type : public Symbol
 {
@@ -455,7 +458,7 @@ struct Type : public Symbol
         }
 
         /// Convert to string
-        std::string ToString(bool omitLiteral = false);
+        std::string ToString(bool includeLiteral = false) const;
         /// Returns true if top most indirection qualifier is a pointer
         const bool IsPointer() const;
         /// Returns true if top most access qualifier is mutable
@@ -526,6 +529,12 @@ Type::GetSymbol(const std::string str)
     else
         return nullptr;
 }
+
+struct TypeDeclaration
+{
+    Type::FullType type;
+    Symbol::Location location;
+};
 
 
 } // namespace GPULang

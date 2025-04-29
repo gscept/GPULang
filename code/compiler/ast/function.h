@@ -29,6 +29,7 @@ struct Function : public Symbol
 
     Statement* ast;
     Type::FullType returnType;
+    Symbol::Location returnTypeLocation;
     std::string body;
     bool hasBody;
     bool compileTime;
