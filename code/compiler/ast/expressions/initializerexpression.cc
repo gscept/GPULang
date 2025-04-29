@@ -28,6 +28,8 @@ InitializerExpression::InitializerExpression(const std::vector<Expression*>& val
 */
 InitializerExpression::~InitializerExpression()
 {
+    for (auto init : this->values)
+        init->~Expression();
 }
 
 //------------------------------------------------------------------------------

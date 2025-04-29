@@ -23,6 +23,8 @@ WhileStatement::WhileStatement(Expression* condition, Statement* statement, bool
 */
 WhileStatement::~WhileStatement()
 {
+    this->condition->~Expression();
+    this->statement->~Statement();
 }
 
 } // namespace GPULang

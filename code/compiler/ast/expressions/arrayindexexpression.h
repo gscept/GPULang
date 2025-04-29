@@ -41,6 +41,7 @@ struct ArrayIndexExpression : public Expression
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() {};
         Type::FullType leftFullType;
         Type* lhsType;
         Type::FullType rightFullType;

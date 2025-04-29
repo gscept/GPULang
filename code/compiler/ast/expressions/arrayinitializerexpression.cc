@@ -25,6 +25,8 @@ ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Express
 */
 ArrayInitializerExpression::~ArrayInitializerExpression()
 {
+    for (auto init : this->values)
+        init->~Expression();
 }
 
 //------------------------------------------------------------------------------

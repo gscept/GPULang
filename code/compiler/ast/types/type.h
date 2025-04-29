@@ -12,7 +12,6 @@
 #include <unordered_map>
 #include <map>
 
-extern bool SYMBOL_STATIC_ALLOC;
 
 #define STRINGIFY(x) #x
 
@@ -23,7 +22,7 @@ this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
-    Variable* var = new Variable; \
+    Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
     activeFunction->parameters.push_back(var); \
@@ -44,7 +43,7 @@ this->method.returnType = Type::FullType{#t};\
 this->staticSymbols.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
-    Variable* var = new Variable; \
+    Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
     activeFunction->parameters.push_back(var); \
@@ -62,7 +61,7 @@ this->lookup.insert({ #id, activeFunction });
 
 #define __ADD_SWIZZLE(retType, format, ...)\
 {\
-    Variable* swizzleMember = new Variable;\
+    Variable* swizzleMember = StaticAlloc<Variable>();\
     swizzleMember->name = Format(format, __VA_ARGS__);\
     swizzleMember->type = Type::FullType{#retType};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
@@ -73,7 +72,7 @@ this->lookup.insert({ #id, activeFunction });
 
 #define __ADD_FUNCTION_PARAM(id, t)\
 {\
-    Variable* var = new Variable;\
+    Variable* var = StaticAlloc<Variable>();\
     var->name = #id;\
     var->type = Type::FullType{#t};\
     activeFunction->parameters.push_back(var);\
@@ -352,7 +351,6 @@ struct Type : public Symbol
             Array,
             Pointer
         };
-
 
         FullType()
         {

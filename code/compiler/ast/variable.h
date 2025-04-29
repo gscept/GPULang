@@ -20,7 +20,7 @@ struct Variable : public Symbol
     /// constructor
     Variable();
     /// destructor
-    ~Variable();
+    virtual ~Variable();
 
     std::vector<std::string> values;
     Type::FullType type;
@@ -30,6 +30,7 @@ struct Variable : public Symbol
     
     struct __Resolved : Symbol::__Resolved
     {
+        virtual ~__Resolved() {};
         AccessBits accessBits = 0x0;
 
         union ParameterBits
@@ -70,7 +71,6 @@ struct Variable : public Symbol
         UsageBits usageBits = 0x0;
 
         Storage storage = Storage::Default;
-        std::vector<Variable*> siblings;
 
         /// type here is the fully qualified (pointer and array) type
         Type* typeSymbol;

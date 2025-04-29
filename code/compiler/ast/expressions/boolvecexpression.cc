@@ -15,7 +15,7 @@ namespace GPULang
 BoolVecExpression::BoolVecExpression(const std::vector<bool>& values) :
     values(values)
 {
-    this->resolved = new BoolVecExpression::__Resolved;
+    this->resolved = Alloc<BoolVecExpression::__Resolved>();
     this->symbolType = BoolVecExpressionType;
 }
 

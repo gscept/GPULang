@@ -15,7 +15,7 @@ namespace GPULang
 IntExpression::IntExpression(int value) :
     value(value)
 {
-    this->resolved = new IntExpression::__Resolved;
+    this->resolved = Alloc<IntExpression::__Resolved>();
     this->symbolType = IntExpressionType;
 }
 

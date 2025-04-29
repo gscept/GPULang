@@ -16,7 +16,7 @@ namespace GPULang
 FloatExpression::FloatExpression(float value) 
     : value(value)
 {
-    this->resolved = new FloatExpression::__Resolved;
+    this->resolved = Alloc<FloatExpression::__Resolved>();
     this->symbolType = FloatExpressionType;
 }
 

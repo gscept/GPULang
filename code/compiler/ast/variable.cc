@@ -13,7 +13,7 @@ Variable::Variable()
 {
     this->symbolType = VariableType;
     if (SYMBOL_STATIC_ALLOC)
-        this->resolved = new Variable::__Resolved();
+        this->resolved = StaticAlloc<Variable::__Resolved>();
     else
         this->resolved = Alloc<Variable::__Resolved>();
     this->type = Type::FullType{ "" };
@@ -40,6 +40,13 @@ Variable::Variable()
 */
 Variable::~Variable()
 {
+    this->CleanupAnnotations();
+    this->CleanupAttributes();
+    if (this->valueExpression != nullptr)
+        this->valueExpression->~Expression();
+    for (auto modifier : this->type.modifierValues)
+        if (modifier != nullptr)
+            modifier->~Expression();
 }
 
 

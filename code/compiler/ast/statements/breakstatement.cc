@@ -12,7 +12,7 @@ namespace GPULang
 BreakStatement::BreakStatement()
 {
     this->symbolType = BreakStatementType;
-    this->resolved = new BreakStatement::__Resolved;
+    this->resolved = Alloc<BreakStatement::__Resolved>();
 }
 
 } // namespace GPULang

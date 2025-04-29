@@ -21,6 +21,7 @@ ExpressionStatement::ExpressionStatement(Expression* expr)
 */
 ExpressionStatement::~ExpressionStatement()
 {
+    this->expr->~Expression();
 }
 
 } // namespace GPULang

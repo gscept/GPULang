@@ -16,8 +16,8 @@
 #include <string>
 #include "memory.h"
 
-#define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute> attributes;
-#define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation> annotations;
+#define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
+#define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
 
 namespace GPULang
 {
@@ -71,6 +71,11 @@ struct Symbol
         NumSymbolTypes
     };
 
+    /// constructor
+    Symbol();
+    /// destructor
+    virtual ~Symbol();
+
     struct Location
     {
         std::string file;
@@ -82,13 +87,12 @@ struct Symbol
         Location()
             : line(-1)
             , column(-1)
-        {}
+            , start(0)
+            , end(0)
+        {
+        }
     };
 
-    /// constructor
-    Symbol();
-    /// destructor
-    virtual ~Symbol();
 
     //------------------------------------------------------------------------------
     /**
@@ -96,6 +100,7 @@ struct Symbol
     */
     //------------------------------------------------------------------------------
     std::string name;
+    std::string documentation;
     SymbolType symbolType;
 
     Location location;
@@ -112,6 +117,7 @@ struct Symbol
     //------------------------------------------------------------------------------
     struct __Resolved
     {
+        virtual ~__Resolved() {};
         std::string signature;
         bool resolved = false;
         bool unreachable = false;

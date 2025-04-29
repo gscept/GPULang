@@ -39,6 +39,12 @@ struct ArrayInitializerExpression : public Expression
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() 
+        {
+            for (auto value : this->fullType.modifierValues)
+                if (value != nullptr)
+                    value->~Expression();
+        };
         Type::FullType fullType;
         Type* type;
     };

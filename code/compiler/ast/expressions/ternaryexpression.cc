@@ -25,6 +25,9 @@ TernaryExpression::TernaryExpression(Expression* lhs, Expression* ifExpression, 
 */
 TernaryExpression::~TernaryExpression()
 {
+    this->lhs->~Expression();
+    this->ifExpression->~Expression();
+    this->elseExpression->~Expression();
 }
 
 //------------------------------------------------------------------------------

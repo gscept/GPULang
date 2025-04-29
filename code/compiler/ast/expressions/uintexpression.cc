@@ -15,7 +15,7 @@ namespace GPULang
 UIntExpression::UIntExpression(int value) :
     value(value)
 {
-    this->resolved = new UIntExpression::__Resolved;
+    this->resolved = Alloc<UIntExpression::__Resolved>();
     this->symbolType = UIntExpressionType;
 }
 

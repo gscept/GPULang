@@ -29,6 +29,9 @@ CallExpression::CallExpression(Expression* function, const std::vector<Expressio
 */
 CallExpression::~CallExpression()
 {
+    this->function->~Expression();
+    for (auto arg : this->args)
+        arg->~Expression();
 }
 
 //------------------------------------------------------------------------------

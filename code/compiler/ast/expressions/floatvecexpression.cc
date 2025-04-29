@@ -16,7 +16,7 @@ namespace GPULang
 FloatVecExpression::FloatVecExpression(const std::vector<float>& values) 
     : values(values)
 {
-    this->resolved = new FloatVecExpression::__Resolved;
+    this->resolved = Alloc<FloatVecExpression::__Resolved>();
     this->symbolType = FloatVecExpressionType;
 }
 

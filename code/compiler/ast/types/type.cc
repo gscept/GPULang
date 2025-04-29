@@ -8,7 +8,6 @@
 #include "ast/expressions/uintexpression.h"
 #include <set>
 
-bool SYMBOL_STATIC_ALLOC = false;
 
 namespace GPULang
 {
@@ -18,7 +17,7 @@ Function* activeFunction = nullptr;
 #define __BEGIN_TYPES__ Type* newType = nullptr;
 
 #define __MAKE_TYPE(typename, typecode)\
-newType = new Type();\
+newType = StaticAlloc<Type>();\
 newType->name = #typename;\
 newType->baseType = typecode;\
 newType->category = Type::VoidCategory;\
@@ -35,7 +34,7 @@ newType->category = Type::PixelCacheCategory;
 newType->category = Type::SamplerCategory;
 
 #define __MAKE_TYPE_CUSTOM(t1, t2)\
-newType = new t2();\
+newType = StaticAlloc<t2>();\
 newType->name = #t1;\
 DefaultTypes.push_back(newType);
 
@@ -115,6 +114,7 @@ Type::Type()
     this->columnSize = 1;
     this->byteSize = 4;
     this->category = Type::InvalidCategory;
+    this->resolved = nullptr;
 }
 
 //------------------------------------------------------------------------------
@@ -291,7 +291,7 @@ Type::SetupDefaultTypes()
 
 #define __ADD_ENUM(val, enum) enum->labels.push_back(#val); enum->values.push_back(nullptr);
 
-    Enumeration* compareModeEnum = new Enumeration();
+    Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = "CompareMode";
     compareModeEnum->type = Type::FullType{ "u32" };
     compareModeEnum->type.literal = true;
@@ -308,7 +308,7 @@ Type::SetupDefaultTypes()
     compareModeEnum->builtin = true;
     DefaultTypes.push_back(compareModeEnum);
 
-    Enumeration* stencilOpEnum = new Enumeration();
+    Enumeration* stencilOpEnum = StaticAlloc<Enumeration>();
     stencilOpEnum->name = "StencilOp";
     stencilOpEnum->type = Type::FullType{ "u32" };
     stencilOpEnum->type.literal = true;
@@ -334,7 +334,7 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(sampler, TypeCode::Sampler);
     __MAKE_SAMPLER();
 
-    Enumeration* executionScopeEnum = new Enumeration();
+    Enumeration* executionScopeEnum = StaticAlloc<Enumeration>();
     executionScopeEnum->name = "ExecutionScope";
     executionScopeEnum->type = Type::FullType{ "u32" };
     executionScopeEnum->type.literal = true;
@@ -348,15 +348,15 @@ Type::SetupDefaultTypes()
     executionScopeEnum->builtin = true;
     DefaultTypes.push_back(executionScopeEnum);
 
-    Enumeration* memorySemanticsEnum = new Enumeration();
+    Enumeration* memorySemanticsEnum = StaticAlloc<Enumeration>();
     memorySemanticsEnum->name = "MemorySemantics";
     memorySemanticsEnum->type = Type::FullType{ "u32" };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
-    memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(new UIntExpression(0x0));
-    memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(new UIntExpression(0x1));
-    memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(new UIntExpression(0x2));
-    memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(new UIntExpression(0x4));
+    memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x0));
+    memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x1));
+    memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x2));
+    memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x4));
     memorySemanticsEnum->builtin = true;
     DefaultTypes.push_back(memorySemanticsEnum);
 

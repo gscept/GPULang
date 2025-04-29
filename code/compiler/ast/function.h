@@ -25,7 +25,7 @@ struct Function : public Symbol
     /// constructor
     Function();
     /// destructor
-    ~Function();
+    virtual ~Function();
 
     Statement* ast;
     Type::FullType returnType;
@@ -45,6 +45,7 @@ struct Function : public Symbol
 
     struct __Resolved : public Symbol::__Resolved
     {
+        virtual ~__Resolved() {};
         Type* returnTypeSymbol;
         Storage returnValueStorage;
 

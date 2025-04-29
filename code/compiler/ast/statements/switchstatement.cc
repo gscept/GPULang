@@ -25,6 +25,14 @@ SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector
 */
 SwitchStatement::~SwitchStatement()
 {
+    this->switchExpression->~Expression();
+    for (size_t i = 0; i < this->caseExpressions.size(); i++)
+    {
+        this->caseExpressions[i]->~Expression();
+        this->caseStatements[i]->~Statement();
+    }
+    if (this->defaultStatement != nullptr)
+        this->defaultStatement->~Statement();
 }
 
 } // namespace GPULang

@@ -15,7 +15,7 @@ namespace GPULang
 BoolExpression::BoolExpression(bool value) :
     value(value)
 {
-    this->resolved = new BoolExpression::__Resolved;
+    this->resolved = Alloc<BoolExpression::__Resolved>();
     this->symbolType = BoolExpressionType;
 }
 
@@ -25,7 +25,7 @@ BoolExpression::BoolExpression(bool value) :
 BoolExpression::BoolExpression() :
     value(false)
 {
-    this->resolved = new BoolExpression::__Resolved;
+    this->resolved = Alloc<BoolExpression::__Resolved>();
     this->symbolType = BoolExpressionType;
 }
 

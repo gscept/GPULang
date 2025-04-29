@@ -22,6 +22,8 @@ TerminateStatement::TerminateStatement(Expression* returnValue, TerminationType 
 */
 TerminateStatement::~TerminateStatement()
 {
+    if (this->returnValue != nullptr)
+        this->returnValue->~Expression();
 }
 
 const std::vector<std::string> terminationTypeLookup =

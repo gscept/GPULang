@@ -123,7 +123,9 @@ Compiler::Compiler()
 */
 Compiler::~Compiler()
 {
-    
+    this->validator->~Validator();
+    for (auto scope : this->scopes)
+        scope->~Scope();
 }
 
 //------------------------------------------------------------------------------
@@ -310,7 +312,7 @@ Compiler::GetSymbols(const std::string& name) const
 void 
 Compiler::PushScope(Scope::ScopeType type, Symbol* owner)
 {
-    this->scopes.push_back(new Scope());
+    this->scopes.push_back(Alloc<Scope>());
     this->scopes.back()->type = type;
     this->scopes.back()->owningSymbol = owner;
     this->scopes.back()->unreachable = false;
@@ -322,7 +324,7 @@ Compiler::PushScope(Scope::ScopeType type, Symbol* owner)
 void 
 Compiler::PushScope(Type* type)
 {
-    this->scopes.push_back(new Scope());
+    this->scopes.push_back(Alloc<Scope>());
     this->scopes.back()->type = Scope::ScopeType::Type;
     this->scopes.back()->owningSymbol = type;
 }
@@ -334,7 +336,7 @@ void
 Compiler::PopScope()
 {
     Scope* currentScope = this->scopes.back();
-    delete currentScope;
+    currentScope->~Scope();
     this->scopes.pop_back();
 }
 
@@ -713,18 +715,18 @@ Compiler::ReservedPrefixError(const std::string& name, const std::string& word, 
 /**
 */
 void
-WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Serialize::DynamicLengthBlob& dynamicDataBlob)
+WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
     Serialize::Annotation output;
-    output.nameLength = annot.name.length();
-    output.nameOffset = dynamicDataBlob.Write(annot.name.c_str(), annot.name.length());
-    if (annot.value != nullptr)
+    output.nameLength = annot->name.length();
+    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.length());
+    if (annot->value != nullptr)
     {
-        switch (annot.value->symbolType)
+        switch (annot->value->symbolType)
         {
         case Symbol::StringExpressionType:
         {
-            std::string str = annot.value->EvalString();
+            std::string str = annot->value->EvalString();
             output.data.s.stringOffset = dynamicDataBlob.Write(str.c_str(), str.length());
             output.data.s.stringLength = str.length();
             output.type = Serialize::StringType;
@@ -734,7 +736,7 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         {
             unsigned int i;
             ValueUnion val;
-            bool res = annot.value->EvalValue(val);
+            bool res = annot->value->EvalValue(val);
             assert(res == true);
             val.Store(i);
             output.data.i = i;
@@ -745,7 +747,7 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         {
             float f;
             ValueUnion val;
-            bool res = annot.value->EvalValue(val);
+            bool res = annot->value->EvalValue(val);
             assert(res == true);
             val.Store(f);
             output.data.f = f;
@@ -756,7 +758,7 @@ WriteAnnotation(Compiler* compiler, const Annotation& annot, size_t offset, Seri
         {
             bool b;
             ValueUnion val;
-            bool res = annot.value->EvalValue(val);
+            bool res = annot->value->EvalValue(val);
             assert(res == true);
             val.Store(b);
             output.data.b = b;
@@ -922,7 +924,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.annotationsCount = program->annotations.size();
 
             size_t offset = output.annotationsOffset;
-            for (const Annotation& annot : program->annotations)
+            for (const Annotation* annot : program->annotations)
             {
                 WriteAnnotation(this, annot, offset, dynamicDataBlob);
                 offset += sizeof(Serialize::Annotation);
@@ -1014,7 +1016,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.annotationsCount = sampler->annotations.size();
 
             size_t annotOffset = output.annotationsOffset;
-            for (const Annotation& annot : sampler->annotations)
+            for (const Annotation* annot : sampler->annotations)
             {
                 WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
                 annotOffset += sizeof(Serialize::Annotation);
@@ -1091,7 +1093,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.annotationsCount = structure->annotations.size();
 
             size_t annotOffset = output.annotationsOffset;
-            for (const Annotation& annot : structure->annotations)
+            for (const Annotation* annot : structure->annotations)
             {
                 WriteAnnotation(this, annot, annotOffset, dynamicDataBlob);
                 annotOffset += sizeof(Serialize::Annotation);
@@ -1167,7 +1169,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.length());
             }
             size_t offset = output.annotationsOffset;
-            for (const Annotation& annot : var->annotations)
+            for (const Annotation* annot : var->annotations)
             {
                 WriteAnnotation(this, annot, offset, dynamicDataBlob);
                 offset += sizeof(Serialize::Annotation);

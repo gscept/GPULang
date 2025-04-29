@@ -7,10 +7,17 @@
 #include <map>
 namespace GPULang
 {
+
+//------------------------------------------------------------------------------
+/**
+*/
 SamplerState::SamplerState()
 {
     this->symbolType = SamplerStateType;
-    this->resolved = new SamplerState::__Resolved();
+    if (SYMBOL_STATIC_ALLOC)
+        this->resolved = StaticAlloc<SamplerState::__Resolved>();
+    else
+        this->resolved = Alloc<SamplerState::__Resolved>();
     this->isInline = false;
     this->isImmutable = false;
 
@@ -28,6 +35,15 @@ SamplerState::SamplerState()
     typeResolved->maxLod = FLT_MAX;
     typeResolved->borderColor = BlackBorder;
     typeResolved->unnormalizedSamplingEnabled = false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+SamplerState::~SamplerState()
+{
+    this->CleanupAnnotations();
+    this->CleanupAttributes();
 }
 
 const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> samplerEntryTypeLookup =

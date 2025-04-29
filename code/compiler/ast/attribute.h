@@ -19,6 +19,7 @@ struct Attribute
 {
     std::string name;
     Expression* expression;
+    Symbol::Location location;
 
     Attribute() 
         : expression(nullptr)
@@ -30,8 +31,19 @@ struct Attribute
     {
     }
 
+    Attribute(Attribute&& rhs) noexcept
+    {
+        this->name = std::move(rhs.name);
+        this->expression = rhs.expression;
+        this->location = rhs.location;
+
+        rhs.expression = nullptr;
+    }
+
     ~Attribute() 
     {
+        if (this->expression != nullptr)
+            this->expression->~Expression();
     }
 
     /// Copy constructor

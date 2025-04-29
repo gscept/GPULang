@@ -21,6 +21,8 @@ struct Program : public Symbol
 {
     /// constructor
     Program();
+    /// destructor
+    virtual ~Program();
 
     struct SubroutineMapping
     {
@@ -33,6 +35,7 @@ struct Program : public Symbol
 
     struct __Resolved : public Symbol::__Resolved
     {
+        virtual ~__Resolved() {};
         enum ProgramEntryType
         {
             InvalidProgramEntryType,

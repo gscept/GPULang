@@ -40,6 +40,7 @@ struct CommaExpression : public Expression
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() {};
         Type::FullType rightType;
         Type* rhsType;
         Type::FullType leftType;

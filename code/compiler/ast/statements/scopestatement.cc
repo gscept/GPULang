@@ -21,6 +21,8 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
 */
 ScopeStatement::~ScopeStatement()
 {
+    for (auto* sym : this->symbols)
+        sym->~Symbol();
 }
 
 } // namespace GPULang

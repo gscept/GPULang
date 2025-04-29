@@ -27,6 +27,8 @@ AccessExpression::AccessExpression(Expression* left, Expression* right, bool der
 */
 AccessExpression::~AccessExpression()
 {
+    this->left->~Expression();
+    this->right->~Expression();
 }
 
 //------------------------------------------------------------------------------

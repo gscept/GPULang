@@ -17,7 +17,7 @@ struct RenderState : public State
 
     struct __Resolved : State::__Resolved
     {
-
+        virtual ~__Resolved() {};
         enum RenderStateEntryType
         {
             InvalidRenderStateEntryType,

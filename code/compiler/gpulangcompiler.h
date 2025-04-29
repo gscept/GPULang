@@ -33,6 +33,7 @@ struct GPULangErrorBlob
 
 struct GPULangServerResult
 {
+    GPULang::Effect* root = nullptr;
 	std::vector<GPULang::Symbol*> symbols;
     std::map<std::string, GPULang::Symbol*> lookup;
     std::vector<GPULang::Diagnostic> diagnostics;

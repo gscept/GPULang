@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Individual contributors, see AUTHORS file
 //------------------------------------------------------------------------------
 #include "forstatement.h"
+#include "../variable.h"
 namespace GPULang
 {
 
@@ -24,6 +25,11 @@ ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression
 */
 ForStatement::~ForStatement()
 {
+    for (auto var : this->declarations)
+        var->~Variable();
+    this->condition->~Expression();
+    this->loop->~Expression();
+    this->contents->~Statement();
 }
 
 } // namespace GPULang

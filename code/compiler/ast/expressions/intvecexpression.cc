@@ -15,7 +15,7 @@ namespace GPULang
 IntVecExpression::IntVecExpression(const std::vector<int>& values) :
     values(values)
 {
-    this->resolved = new IntVecExpression::__Resolved;
+    this->resolved = Alloc<IntVecExpression::__Resolved>();
     this->symbolType = IntVecExpressionType;
 }
 
@@ -24,7 +24,6 @@ IntVecExpression::IntVecExpression(const std::vector<int>& values) :
 */
 IntVecExpression::~IntVecExpression()
 {
-    // empty
 }
 
 //------------------------------------------------------------------------------

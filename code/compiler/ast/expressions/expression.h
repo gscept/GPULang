@@ -334,6 +334,7 @@ struct Expression : public Symbol
 
     struct __Resolved : public Symbol::__Resolved
     {
+        virtual ~__Resolved() {};
         union
         {
             int32_t i;

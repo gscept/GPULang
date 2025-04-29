@@ -23,6 +23,7 @@ struct State : public Symbol
 
     struct __Resolved : Symbol::__Resolved
     {
+        virtual ~__Resolved() {};
         static const CompareMode StringToCompareMode(const std::string& str);
     };
 

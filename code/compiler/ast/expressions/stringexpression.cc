@@ -14,6 +14,7 @@ StringExpression::StringExpression(std::string value) :
     value(value)
 {
     this->symbolType = StringExpressionType;
+    this->resolved = nullptr;
 }
 
 //------------------------------------------------------------------------------

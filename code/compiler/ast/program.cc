@@ -12,11 +12,21 @@ namespace GPULang
 Program::Program()
 {
     this->symbolType = ProgramType;
-    this->resolved = new Program::__Resolved();
+    this->resolved = Alloc<Program::__Resolved>();
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(this->resolved);
     progResolved->usage.bits = 0x0;
     for (uint32_t i = 0; i < Program::__Resolved::ProgramEntryType::NumProgramEntries; i++)
         progResolved->mappings[i] = nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Program::~Program()
+{
+    this->CleanupAnnotations();
+    for (auto entry : this->entries)
+        entry->~Expression();
 }
 
 const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =

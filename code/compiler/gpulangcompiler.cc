@@ -226,7 +226,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         CommonTokenStream tokens(&lexer);
         GPULangParser parser(&tokens);
         parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-        GPULangParser::LineStack.clear();
 
         // reload the preprocessed data
         input.reset();
@@ -241,7 +240,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         parser.addErrorListener(&parserErrorHandler);
 
         Effect* effect = parser.entry()->returnEffect;
-
+        GPULangParser::LineStack.clear();
         timer.Stop();
         if (options.emitTimings)
             timer.Print("Parsing");
@@ -270,7 +269,8 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         compiler.Setup(target, defines, options);
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
-
+        effect->Destroy();
+        effect->~Effect();
         GPULang::ResetAllocator(&alloc);
         
         // convert error list to string
@@ -309,6 +309,8 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;
+
+
 
     timer.Start();
     std::string pperr;
@@ -384,7 +386,9 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         compiler.Setup(options);
 
         bool res = compiler.Validate(effect);
+        effect->~Effect();
 
+        result.root = effect;
         result.symbols = compiler.symbols;
         if (!compiler.diagnostics.empty())
             result.diagnostics = compiler.diagnostics;

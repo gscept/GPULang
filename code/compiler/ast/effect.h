@@ -13,12 +13,8 @@ namespace GPULang
 
 struct Effect
 {
-    ~Effect()
-    {
-        for (Symbol* sym : symbols)
-            delete sym;
-    }
     std::vector<Symbol*> symbols;
+    void Destroy();
 };
 
 } // namespace GPULang

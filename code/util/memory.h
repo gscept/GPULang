@@ -15,6 +15,8 @@
 #include <stdarg.h>
 #include <charconv>
 
+extern bool SYMBOL_STATIC_ALLOC;
+
 namespace GPULang
 {
 
@@ -32,7 +34,7 @@ struct MemoryBlock
     {}
     void* mem;
     size_t iterator;
-    uint32_t blockIndex;
+    size_t blockIndex;
 };
 
 struct Allocator
@@ -76,8 +78,40 @@ struct SPVArg;
 */
 template<typename T, typename ... ARGS>
 inline T*
+StaticAlloc(ARGS... args)
+{
+    if (!IsDefaultAllocatorInitialized)
+    {
+        InitAllocator(&DefaultAllocator);
+        IsDefaultAllocatorInitialized = true;
+    }
+    Allocator* Allocator = &DefaultAllocator;
+    const size_t size = sizeof(T);
+    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
+    if (block->iterator + size > Allocator->blockSize)
+    {
+        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
+        block = &Allocator->blocks[Allocator->currentBlock];
+        block->blockIndex = Allocator->currentBlock;
+        block->mem = malloc(Allocator->blockSize);
+    }
+    assert(block->blockIndex != -1);
+
+    char* buf = (char*)block->mem + block->iterator;
+    block->iterator += size;
+    new (buf) T(args...);
+    return (T*)buf;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T, typename ... ARGS>
+inline T*
 Alloc(ARGS... args)
 {
+    if (SYMBOL_STATIC_ALLOC)
+        return new T(args...);
     Allocator* Allocator = CurrentAllocator;
     if (Allocator == nullptr)
     {
@@ -112,6 +146,8 @@ template<typename T, typename ... ARGS>
 inline T*
 AllocArray(std::size_t num)
 {
+    if (SYMBOL_STATIC_ALLOC)
+        return new T()[num];
     Allocator* Allocator = CurrentAllocator;
     if (Allocator == nullptr)
     {

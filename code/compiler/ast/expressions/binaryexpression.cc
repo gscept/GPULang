@@ -45,6 +45,8 @@ BinaryExpression::BinaryExpression(uint32_t op, Expression* left, Expression* ri
 */
 BinaryExpression::~BinaryExpression()
 {
+    this->left->~Expression();
+    this->right->~Expression();
 }
 
 //------------------------------------------------------------------------------

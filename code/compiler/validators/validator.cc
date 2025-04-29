@@ -389,25 +389,25 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     stateResolved->group = this->defaultGroup;
 
     // run attribute validation
-    for (const Attribute& attr : state->attributes)
+    for (const Attribute* attr : state->attributes)
     {
-        if (attr.expression != nullptr)
-            attr.expression->Resolve(compiler);
+        if (attr->expression != nullptr)
+            attr->expression->Resolve(compiler);
 
         ValueUnion val;
         // resolve attributes
-        if (attr.name == "group")
+        if (attr->name == "group")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'group' qualifier"), symbol);
                 return false;
             }
             val.Store(stateResolved->group);
         }
-        else if (attr.name == "binding")
+        else if (attr->name == "binding")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
                 return false;
@@ -416,7 +416,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            compiler->Error(Format("Invalid sampler_state attribute '%s'", attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid sampler_state attribute '%s'", attr->name.c_str()), symbol);
             return false;
         }
     }
@@ -656,68 +656,68 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
      // run attribute validation
-    for (const Attribute& attr : fun->attributes)
+    for (const Attribute* attr : fun->attributes)
     {
-        if (attr.expression != nullptr)
+        if (attr->expression != nullptr)
         {
-            if (!attr.expression->Resolve(compiler))
+            if (!attr->expression->Resolve(compiler))
                 return false;
         }
-        if (!set_contains(this->allowedFunctionAttributes, attr.name))
+        if (!set_contains(this->allowedFunctionAttributes, attr->name))
         {
-            compiler->Error(Format("Invalid attribute for function: '%s'", attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for function: '%s'", attr->name.c_str()), symbol);
             return false;
         }
 
         // make sure attribute has expression
-        if (attr.expression == nullptr && set_contains(attributesRequiringEvaluation, attr.name))
+        if (attr->expression == nullptr && set_contains(attributesRequiringEvaluation, attr->name))
         {
-            compiler->Error(Format("Attribute '%s' requires value but none provided", attr.name.c_str()), symbol);
+            compiler->Error(Format("Attribute '%s' requires value but none provided", attr->name.c_str()), symbol);
             return false;
         }
 
         ValueUnion val;
-        if (attr.name == "entry_point")
+        if (attr->name == "entry_point")
         {
             funResolved->isEntryPoint = true;
         }
-        else if (attr.name == "local_size_x")
+        else if (attr->name == "local_size_x")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[0]);
         }
-        else if (attr.name == "local_size_y")
+        else if (attr->name == "local_size_y")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[1]);
         }
-        else if (attr.name == "local_size_z")
+        else if (attr->name == "local_size_z")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.computeShaderWorkGroupSize[2]);
         }
-        else if (attr.name == "local_size")
+        else if (attr->name == "local_size")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time vector", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time vector", attr->name.c_str()), symbol);
                 return false;
             }
             if (val.columnSize != 3 || val.rowSize != 1)
             {
-                compiler->Error(Format("Value '%s' has to be a compile time vector of 3", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time vector of 3", attr->name.c_str()), symbol);
                 return false;
             }
             val.Convert(TypeCode::UInt);
@@ -725,51 +725,51 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             funResolved->executionModifiers.computeShaderWorkGroupSize[1] = val.ui[1];
             funResolved->executionModifiers.computeShaderWorkGroupSize[2] = val.ui[2];
         }
-        else if (attr.name == "group_size")
+        else if (attr->name == "group_size")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.groupSize);
         }
-        else if (attr.name == "groups_per_workgroup")
+        else if (attr->name == "groups_per_workgroup")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.groupsPerWorkgroup);
         }
-        else if (attr.name == "early_depth")
+        else if (attr->name == "early_depth")
             funResolved->executionModifiers.earlyDepth = 1;
-        else if (attr.name == "depth_greater")
+        else if (attr->name == "depth_greater")
             funResolved->executionModifiers.depthAlwaysGreater = 1;
-        else if (attr.name == "depth_less")
+        else if (attr->name == "depth_less")
             funResolved->executionModifiers.depthAlwaysLesser = 1;
-        else if (attr.name == "invocations")
+        else if (attr->name == "invocations")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.invocations);
         }
-        else if (attr.name == "max_output_vertices")
+        else if (attr->name == "max_output_vertices")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
-                compiler->Error(Format("Value '%s' has to be a compile time constant", attr.name.c_str()), symbol);
+                compiler->Error(Format("Value '%s' has to be a compile time constant", attr->name.c_str()), symbol);
                 return false;
             }
             val.Store(funResolved->executionModifiers.maxOutputVertices);
         }
-        else if (attr.name == "winding")
+        else if (attr->name == "winding")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.windingOrder = Function::__Resolved::WindingOrderFromString(str);
             if (funResolved->executionModifiers.windingOrder == Function::__Resolved::InvalidWindingOrder)
             {
@@ -777,9 +777,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "input_topology")
+        else if (attr->name == "input_topology")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
             if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
             {
@@ -787,9 +787,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "output_topology")
+        else if (attr->name == "output_topology")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
             if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology
                 || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::LinesAdjacency
@@ -799,9 +799,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "patch_type")
+        else if (attr->name == "patch_type")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.patchType = Function::__Resolved::PatchTypeFromString(str);
             if (funResolved->executionModifiers.patchType == Function::__Resolved::InvalidPatchType)
             {
@@ -809,9 +809,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "partition")
+        else if (attr->name == "partition")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethodFromString(str);
             if (funResolved->executionModifiers.partitionMethod == Function::__Resolved::InvalidPartitionMethod)
             {
@@ -819,7 +819,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "prototype")
+        else if (attr->name == "prototype")
         {
             if (fun->hasBody)
             {
@@ -828,9 +828,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             }
             funResolved->isPrototype = true;
         }
-        else if (attr.name == "pixel_origin")
+        else if (attr->name == "pixel_origin")
         {
-            std::string str = attr.expression->EvalString();
+            std::string str = attr->expression->EvalString();
             funResolved->executionModifiers.pixelOrigin = Function::__Resolved::PixelOriginFromString(str);
             if (funResolved->executionModifiers.pixelOrigin == Function::__Resolved::InvalidPixelOrigin)
             {
@@ -838,11 +838,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "derivative_index_linear")
+        else if (attr->name == "derivative_index_linear")
         {
             funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexLinear;
         }
-        else if (attr.name == "derivative_index_quad")
+        else if (attr->name == "derivative_index_quad")
         {
             funResolved->executionModifiers.computeDerivativeIndexing = Function::__Resolved::DerivativeIndexQuad;
         }
@@ -974,16 +974,16 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     std::string attributeList;
 
     // make a set of all attributes
-    for (const Attribute& attr : fun->attributes)
+    for (const Attribute* attr : fun->attributes)
     {
         std::string attrAsString;
-        if (!attr.ToString(attrAsString))
+        if (!attr->ToString(attrAsString))
         {
-            compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr.name.c_str()), symbol);
+            compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr->name.c_str()), symbol);
             return false;
         }
         attributeList.append(Format("%s ", attrAsString.c_str()));
-        if (attr.name == "prototype")
+        if (attr->name == "prototype")
             funResolved->isPrototype = true;
     }
 
@@ -1779,17 +1779,17 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
         return false;
 
     // run attribute validation
-    for (const Attribute& attr : struc->attributes)
+    for (const Attribute* attr : struc->attributes)
     {
-        if (!set_contains(this->allowedStructureAttributes, attr.name))
+        if (!set_contains(this->allowedStructureAttributes, attr->name))
         {
-            compiler->Error(Format("Invalid attribute for structure '%s': '%s'", struc->name.c_str(), attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for structure '%s': '%s'", struc->name.c_str(), attr->name.c_str()), symbol);
             return false;
         }
 
-        if (set_contains(structureQualifiers, attr.name))
+        if (set_contains(structureQualifiers, attr->name))
         {
-            if (attr.name == "packed")
+            if (attr->name == "packed")
                 strucResolved->packMembers = true;
         }
     }
@@ -1875,48 +1875,96 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     }
 
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
-    enumeration->globals.clear();
-    enumeration->staticSymbols.clear();
     enumeration->baseType = enumResolved->typeSymbol->baseType;
+    enumeration->symbols.clear();
+    enumeration->lookup.clear();
+    if (enumeration->globals.empty())
+    {
+        if (enumeration->builtin)
+        {
+            SYMBOL_STATIC_ALLOC = true;
+            // Create constructor from type, and to type
+            Function* fromUnderlyingType = StaticAlloc<Function>();
+            fromUnderlyingType->name = enumeration->name;
+            fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+            fromUnderlyingType->compileTime = true;
+            Variable* arg = StaticAlloc<Variable>();
+            arg->name = "_arg0";
+            arg->type = enumeration->type;
+            fromUnderlyingType->parameters.push_back(arg);
+            enumeration->globals.push_back(fromUnderlyingType);
 
-    // Create constructor from type, and to type
-    Function* fromUnderlyingType = Alloc<Function>();
-    fromUnderlyingType->name = enumeration->name;
-    fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
-    fromUnderlyingType->compileTime = true;
-    Variable* arg = Alloc<Variable>();
-    arg->name = "_arg0";
-    arg->type = enumeration->type;
-    fromUnderlyingType->parameters.push_back(arg);
-    enumeration->globals.push_back(fromUnderlyingType);
+            Function* toUnderlyingType = StaticAlloc<Function>();
+            toUnderlyingType->name = enumeration->type.name;
+            toUnderlyingType->returnType = enumeration->type;
+            toUnderlyingType->compileTime = true;
+            arg = StaticAlloc<Variable>();
+            arg->name = "_arg0";
+            arg->type = Type::FullType{ enumeration->name };
+            toUnderlyingType->parameters.push_back(arg);
+            enumeration->globals.push_back(toUnderlyingType);
 
-    Function* toUnderlyingType = Alloc<Function>();
-    toUnderlyingType->name = enumeration->type.name;
-    toUnderlyingType->returnType = enumeration->type;
-    toUnderlyingType->compileTime = true;
-    arg = Alloc<Variable>();
-    arg->name = "_arg0";
-    arg->type = Type::FullType{ enumeration->name };
-    toUnderlyingType->parameters.push_back(arg);
-    enumeration->globals.push_back(toUnderlyingType);
+            Function* comparison = StaticAlloc<Function>();
+            comparison->name = "operator==";
+            comparison->returnType = Type::FullType{ "b8" };
+            arg = StaticAlloc<Variable>();
+            arg->name = "rhs";
+            arg->type = Type::FullType{ enumeration->name };
+            comparison->parameters.push_back(arg);
+            enumeration->staticSymbols.push_back(comparison);
 
-    Function* comparison = Alloc<Function>();
-    comparison->name = "operator==";
-    comparison->returnType = Type::FullType{ "b8" };
-    arg = Alloc<Variable>();
-    arg->name = "rhs";
-    arg->type = Type::FullType{ enumeration->name };
-    comparison->parameters.push_back(arg);
-    enumeration->staticSymbols.push_back(comparison);
+            comparison = StaticAlloc<Function>();
+            comparison->name = "operator!=";
+            comparison->returnType = Type::FullType{ "b8" };
+            arg = StaticAlloc<Variable>();
+            arg->name = "rhs";
+            arg->type = Type::FullType{ enumeration->name };
+            comparison->parameters.push_back(arg);
+            enumeration->staticSymbols.push_back(comparison);
+            SYMBOL_STATIC_ALLOC = false;
+        }
+        else
+        {
+            // Create constructor from type, and to type
+            Function* fromUnderlyingType = Alloc<Function>();
+            fromUnderlyingType->name = enumeration->name;
+            fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
+            fromUnderlyingType->compileTime = true;
+            Variable* arg = Alloc<Variable>();
+            arg->name = "_arg0";
+            arg->type = enumeration->type;
+            fromUnderlyingType->parameters.push_back(arg);
+            enumeration->globals.push_back(fromUnderlyingType);
 
-    comparison = Alloc<Function>();
-    comparison->name = "operator!=";
-    comparison->returnType = Type::FullType{ "b8" };
-    arg = Alloc<Variable>();
-    arg->name = "rhs";
-    arg->type = Type::FullType{ enumeration->name };
-    comparison->parameters.push_back(arg);
-    enumeration->staticSymbols.push_back(comparison);
+            Function* toUnderlyingType = Alloc<Function>();
+            toUnderlyingType->name = enumeration->type.name;
+            toUnderlyingType->returnType = enumeration->type;
+            toUnderlyingType->compileTime = true;
+            arg = Alloc<Variable>();
+            arg->name = "_arg0";
+            arg->type = Type::FullType{ enumeration->name };
+            toUnderlyingType->parameters.push_back(arg);
+            enumeration->globals.push_back(toUnderlyingType);
+
+            Function* comparison = Alloc<Function>();
+            comparison->name = "operator==";
+            comparison->returnType = Type::FullType{ "b8" };
+            arg = Alloc<Variable>();
+            arg->name = "rhs";
+            arg->type = Type::FullType{ enumeration->name };
+            comparison->parameters.push_back(arg);
+            enumeration->staticSymbols.push_back(comparison);
+
+            comparison = Alloc<Function>();
+            comparison->name = "operator!=";
+            comparison->returnType = Type::FullType{ "b8" };
+            arg = Alloc<Variable>();
+            arg->name = "rhs";
+            arg->type = Type::FullType{ enumeration->name };
+            comparison->parameters.push_back(arg);
+            enumeration->staticSymbols.push_back(comparison);
+        }
+    }
 
     uint32_t nextValue = 0;
     for (size_t i = 0; i < enumeration->labels.size(); i++)
@@ -2107,30 +2155,30 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // run attribute validation
-    for (const Attribute& attr : var->attributes)
+    for (const Attribute* attr : var->attributes)
     {
-        if (attr.expression != nullptr)
-            attr.expression->Resolve(compiler);
-        if (allowedAttributesSet == nullptr || (!set_contains(*allowedAttributesSet, attr.name)))
+        if (attr->expression != nullptr)
+            attr->expression->Resolve(compiler);
+        if (allowedAttributesSet == nullptr || (!set_contains(*allowedAttributesSet, attr->name)))
         {
-            compiler->Error(Format("Invalid attribute for variable of type '%s': '%s'", varResolved->type.ToString().c_str(), attr.name.c_str()), symbol);
+            compiler->Error(Format("Invalid attribute for variable of type '%s': '%s'", varResolved->type.ToString().c_str(), attr->name.c_str()), symbol);
             return false;
         }
 
         ValueUnion val;
         // resolve attributes
-        if (attr.name == "group")
+        if (attr->name == "group")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'group' qualifier"), symbol);
                 return false;
             }
             val.Store(varResolved->group);
         }
-        else if (attr.name == "binding")
+        else if (attr->name == "binding")
         {
-            if (!attr.expression->EvalValue(val))
+            if (!attr->expression->EvalValue(val))
             {
                 compiler->Error(Format("Expected compile time constant for 'binding' qualifier"), symbol);
                 return false;
@@ -2147,15 +2195,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 return false;
             }
         }
-        else if (attr.name == "const")
+        else if (attr->name == "const")
             varResolved->usageBits.flags.isConst = true;
-        else if (attr.name == "var")
+        else if (attr->name == "var")
         {
             varResolved->usageBits.flags.isVar = true;
             var->type.literal = false;
             varResolved->type.literal = false;
         }
-        else if (attr.name == "link_defined")
+        else if (attr->name == "link_defined")
         {
             if (varResolved->storage != Storage::Default)
             {
@@ -2169,7 +2217,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->type.literal = false;
             varResolved->binding = compiler->linkDefineCounter++;
         }
-        else if (attr.name == "uniform")
+        else if (attr->name == "uniform")
         {
             if (varResolved->storage != Storage::Default)
             {
@@ -2179,7 +2227,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->storage = Storage::Uniform;
             varResolved->usageBits.flags.isConst = true & !varResolved->type.IsMutable();
         }
-        else if (attr.name == "inline")
+        else if (attr->name == "inline")
         {
             if (varResolved->storage != Storage::Default)
             {
@@ -2189,7 +2237,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             varResolved->storage = Storage::InlineUniform;
             varResolved->usageBits.flags.isConst = true;
         }
-        else if (attr.name == "workgroup")
+        else if (attr->name == "workgroup")
         {
             if (varResolved->storage != Storage::Default)
             {
@@ -2198,7 +2246,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             varResolved->storage = Storage::Workgroup;
         }
-        else if (attr.name == "device")
+        else if (attr->name == "device")
         {
             if (varResolved->storage != Storage::Default)
             {
@@ -2215,24 +2263,24 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         else
         {
             // more complicated lookups
-            if (set_contains(pointerQualifiers, attr.name))
+            if (set_contains(pointerQualifiers, attr->name))
             {
-                if (attr.name == "no_read")
+                if (attr->name == "no_read")
                     varResolved->accessBits.flags.readAccess = false;
-                else if (attr.name == "atomic")
+                else if (attr->name == "atomic")
                     varResolved->accessBits.flags.atomicAccess = true;
-                else if (attr.name == "volatile")
+                else if (attr->name == "volatile")
                     varResolved->accessBits.flags.volatileAccess = true;
             }
         }
 
-        if (set_contains(parameterAccessFlags, attr.name))
+        if (set_contains(parameterAccessFlags, attr->name))
         {
-            if (attr.name == "in")
+            if (attr->name == "in")
                 varResolved->storage = Storage::Input;
-            else if (attr.name == "out")
+            else if (attr->name == "out")
                 varResolved->storage = Storage::Output;
-            else if (attr.name == "ray_payload")
+            else if (attr->name == "ray_payload")
             {
                 if (varResolved->storage == Storage::Input)
                     varResolved->storage = Storage::RayPayloadInput;
@@ -2246,7 +2294,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     varResolved->storage = Storage::RayPayload;
                 }
             }
-            else if (attr.name == "ray_callable_data")
+            else if (attr->name == "ray_callable_data")
             {
                 if (varResolved->storage == Storage::Input)
                     varResolved->storage = Storage::CallableDataInput;
@@ -2260,7 +2308,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     varResolved->storage = Storage::CallableData;
                 }
             }
-            else if (attr.name == "ray_hit_attribute")
+            else if (attr->name == "ray_hit_attribute")
             {
                 if (varResolved->storage != Storage::Default)
                 {
@@ -2270,15 +2318,15 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 varResolved->storage = Storage::RayHitAttribute;
             }
         }
-        else if (set_contains(parameterQualifiers, attr.name))
+        else if (set_contains(parameterQualifiers, attr->name))
         {
-            if (attr.name == "patch")
+            if (attr->name == "patch")
                 varResolved->parameterBits.flags.isPatch = true;
-            else if (attr.name == "no_perspective")
+            else if (attr->name == "no_perspective")
                 varResolved->parameterBits.flags.isNoPerspective = true;
-            else if (attr.name == "no_interpolate")
+            else if (attr->name == "no_interpolate")
                 varResolved->parameterBits.flags.isNoInterpolate = true;
-            else if (attr.name == "centroid")
+            else if (attr->name == "centroid")
                 varResolved->parameterBits.flags.isCentroid = true;
         }
     }
@@ -2796,9 +2844,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
-                    Attribute attr;
-                    attr.name = "uniform";
-                    attr.expression = nullptr;
+                    Attribute* attr = Alloc<Attribute>();
+                    attr->name = "uniform";
+                    attr->expression = nullptr;
                     arg->attributes.push_back(attr);
                     arg->type = var->type;
                     arg->type.modifiers.clear();
@@ -2822,9 +2870,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->loadFunction->returnType = Type::FullType{currentStructure->name};
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
-                    Attribute attr;
-                    attr.name = "uniform";
-                    attr.expression = nullptr;
+                    Attribute* attr = Alloc<Attribute>();
+                    attr->name = "uniform";
+                    attr->expression = nullptr;
                     arg->attributes.push_back(attr);
                     arg->type = var->type;
                     arg->type.modifiers.clear();
@@ -2892,18 +2940,18 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::ForStatementType:
         {
             auto statement = reinterpret_cast<ForStatement*>(symbol);
-            for (const auto& attr : statement->attributes)
+            for (const Attribute* attr : statement->attributes)
             {
-                if (attr.name == "unroll")
+                if (attr->name == "unroll")
                 {
-                    if (attr.expression == nullptr)
+                    if (attr->expression == nullptr)
                         statement->unrollCount = UINT_MAX;
                     else
                     {
                         ValueUnion val;
-                        if (!attr.expression->EvalValue(val))
+                        if (!attr->expression->EvalValue(val))
                         {
-                            compiler->Error(Format("Unroll count must evaluate to a literal integer value", attr.name.c_str()), statement);
+                            compiler->Error(Format("Unroll count must evaluate to a literal integer value", attr->name.c_str()), statement);
                             return false;
                         }
                         val.Store(statement->unrollCount);
@@ -2911,7 +2959,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    compiler->Error(Format("Invalid loop modifier '%s'", attr.name.c_str()), statement);
+                    compiler->Error(Format("Invalid loop modifier '%s'", attr->name.c_str()), statement);
                     return false;
                 }
             }

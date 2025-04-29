@@ -29,6 +29,8 @@ ArrayIndexExpression::ArrayIndexExpression(Expression* left, Expression* right)
 */
 ArrayIndexExpression::~ArrayIndexExpression()
 {
+    this->left->~Expression();
+    this->right->~Expression();
 }
 
 //------------------------------------------------------------------------------

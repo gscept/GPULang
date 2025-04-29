@@ -16,7 +16,7 @@ namespace GPULang
 UIntVecExpression::UIntVecExpression(const std::vector<unsigned int>& values) :
     values(values)
 {
-    this->resolved = new UIntVecExpression::__Resolved;
+    this->resolved = Alloc<UIntVecExpression::__Resolved>();
     this->symbolType = UIntVecExpressionType;
 }
 

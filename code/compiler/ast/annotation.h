@@ -27,6 +27,8 @@ struct Annotation
 
     ~Annotation()
     {
+        if (this->value != nullptr)
+            this->value->~Expression();
     }
 
     /// Copy constructor
@@ -34,6 +36,14 @@ struct Annotation
     {
         this->name = rhs.name;
         this->value = rhs.value;
+    }
+
+    Annotation(Annotation&& rhs) noexcept
+    {
+        this->name = std::move(rhs.name);
+        this->value = rhs.value;
+
+        rhs.value = nullptr;
     }
 };
 

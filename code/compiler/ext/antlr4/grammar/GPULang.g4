@@ -46,8 +46,10 @@ SetupFile(bool updateLine = true)
     auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     // assume the previous token is the latest file
     location.file = file;
-    location.line = rawLine + token->line - 1 - preprocessedLine;
+    location.line = token->line - rawLine - 1 + preprocessedLine;
     location.column = token->getCharPositionInLine();
+    location.start = location.column;
+    location.end = location.start + token->getText().length();
     return location;
 }
 
@@ -181,15 +183,23 @@ alias
 
 // metarule for annotation - API layer data to be passed to program reading shader
 annotation
-    returns[ Annotation annot ]:
-        ('@' (name = IDENTIFIER '(' value = expression ')' { $annot.name = $name.text; $annot.value = $value.tree; }))
+    returns[ Annotation* annot ]
+    @init
+    {
+        $annot = nullptr;
+    }:
+        ('@' (name = IDENTIFIER '(' value = expression ')' { $annot = Alloc<Annotation>(); $annot->name = $name.text; $annot->value = $value.tree; }))
     ;
     
 // metarule for attribute - compiler layer data to be passed to target language compiler
 attribute
-    returns[ Attribute attr ]: 
-    name = IDENTIFIER '(' expression ')' { $attr.name = $name.text; $attr.expression = $expression.tree; } 
-    | name = IDENTIFIER { $attr.name = $name.text; $attr.expression = nullptr; }
+    returns[ Attribute* attr ]
+    @init 
+    {
+        $attr = nullptr;
+    }:
+    name = IDENTIFIER { $attr = Alloc<Attribute>(); $attr->location = SetupFile(); $attr->name = $name.text; } '(' expression ')' { $attr->expression = $expression.tree; } 
+    | name = IDENTIFIER { $attr = Alloc<Attribute>(); $attr->location = SetupFile(); $attr->name = $name.text; $attr->expression = nullptr; }
     ;
 
 typeDeclaration
@@ -214,8 +224,8 @@ variables
     returns[ std::vector<Variable*> list ]
     @init
     {
-        std::vector<Annotation> annotations;
-        std::vector<Attribute> attributes;
+        std::vector<Annotation*> annotations;
+        std::vector<Attribute*> attributes;
         std::vector<std::string> names;
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
@@ -257,8 +267,8 @@ structureDeclaration
     @init
     {
         $sym = nullptr;
-        std::vector<Annotation> annotations;
-        std::vector<Attribute> attributes;
+        std::vector<Annotation*> annotations;
+        std::vector<Attribute*> attributes;
     }:
     (linePreprocessorEntry)*
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
@@ -371,12 +381,12 @@ enumeration
     }
     ;
 
-// Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
+// Parameter declaration <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
 parameter
     returns[ Variable* sym ]
     @init
     {
-        std::vector<Attribute> attributes;
+        std::vector<Attribute*> attributes;
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
@@ -406,7 +416,7 @@ functionDeclaration
     {
         $sym = nullptr;
         std::vector<Variable*> variables;
-        std::vector<Attribute> attributes;
+        std::vector<Attribute*> attributes;
         Symbol::Location location;
     }:
     (attribute { attributes.push_back(std::move($attribute.attr)); })*
@@ -460,7 +470,7 @@ program
         Symbol::Location location;
         std::vector<Program::SubroutineMapping> subroutines;
         std::vector<Expression*> entries;
-        std::vector<Annotation> annotations;
+        std::vector<Annotation*> annotations;
     }:
     (annotation { annotations.push_back(std::move($annotation.annot)); })*
     'program' name = IDENTIFIER { location = SetupFile(); }
@@ -480,8 +490,8 @@ sampler
     returns[ SamplerState* sym ]
     @init
     {
-        std::vector<Attribute> attributes;
-        std::vector<Annotation> annotations;
+        std::vector<Attribute*> attributes;
+        std::vector<Annotation*> annotations;
         std::vector<Expression*> entries;
     }:
     (
@@ -495,8 +505,8 @@ sampler
     '}'
     {
         $sym->name = $name.text;
-        $sym->attributes = attributes;
-        $sym->annotations = annotations;
+        $sym->attributes = std::move(attributes);
+        $sym->annotations = std::move(annotations);
         $sym->entries = entries;
     }
     ;
@@ -546,8 +556,8 @@ expressionStatement
     }: 
     expression
     {
-        $tree = Alloc<ExpressionStatement>(($expression.tree));
-        $tree->location = SetupFile();
+        $tree = Alloc<ExpressionStatement>($expression.tree);
+        $tree->location = $expression.tree->location;
     }
     ;
 
@@ -581,7 +591,7 @@ forStatement
         Expression* conditionExpression = nullptr;
         Expression* loopExpression = nullptr;
         Statement* contents = nullptr;
-        std::vector<Attribute> attributes;
+        std::vector<Attribute*> attributes;
         Symbol::Location location;
     }:
     'for' { location = SetupFile(); }
@@ -776,7 +786,7 @@ expression
     {
         $tree = nullptr;
     }: 
-    commaExpression { $tree = $commaExpression.tree; $tree->location = SetupFile(); }
+    commaExpression { $tree = $commaExpression.tree; }
     ;
 
 // Series of expressions separated by comma
@@ -1030,7 +1040,6 @@ prefixExpression
         $tree = $e1.tree;
         if ($tree != nullptr)
         {
-            $tree->location = SetupFile();
             for (size_t i = 0; i < ops.size(); i++)
             {
                 $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
@@ -1057,34 +1066,35 @@ suffixExpression
     e1 = binaryexpatom
     {
         $tree = $e1.tree;
+        $tree->location = SetupFile();
     }
     (
-        '(' { location = SetupFile(); } 
+        '(' 
             (
                 arg0 = logicalOrExpression { args.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { args.push_back($argn.tree); } | linePreprocessorEntry)* 
             )? 
         ')'
         {
             CallExpression* expr = Alloc<CallExpression>($tree, args);
-            expr->location = location;
+            expr->location = $e1.tree->location;
             $tree = expr;
         }
-        | '.' { location = SetupFile(); } e2 = suffixExpression
+        | '.' { $tree->location = SetupFile(); } e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
-            expr->location = location;
+            expr->location = $tree->location;
             $tree = expr;
         }
-        | '->' { location = SetupFile(); } e2 = suffixExpression
+        | '->' { $tree->location = SetupFile(); } e2 = suffixExpression
         {
             AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
-            expr->location = location;
+            expr->location = $tree->location;
             $tree = expr;
         }
-        | '[' { location = SetupFile(); } (e3 = expression { arrayIndexExpr = $e3.tree; })? ']'
+        | '[' { $tree->location = SetupFile(); } (e3 = expression { arrayIndexExpr = $e3.tree; })? ']'
         {
             ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, arrayIndexExpr);
-            expr->location = location;
+            expr->location = $tree->location;
             $tree = expr;
         }
     )*

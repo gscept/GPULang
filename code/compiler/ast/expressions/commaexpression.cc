@@ -24,6 +24,8 @@ CommaExpression::CommaExpression(Expression* left, Expression* right)
 */
 CommaExpression::~CommaExpression()
 {
+    this->left->~Expression();
+    this->right->~Expression();
 }
 
 //------------------------------------------------------------------------------

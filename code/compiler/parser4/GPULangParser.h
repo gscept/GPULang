@@ -138,9 +138,9 @@ public:
       auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
       location.file = file;
-      location.line = preprocessedLine + token->line - 1 - rawLine;
+      location.line = token->line - rawLine - 1 + preprocessedLine;
       location.column = token->getCharPositionInLine();
-      location.start = token->getCharPositionInLine();
+      location.start = location.column;
       location.end = location.start + token->getText().length();
       return location;
   }
@@ -329,7 +329,7 @@ public:
 
   class  AnnotationContext : public antlr4::ParserRuleContext {
   public:
-    Annotation annot;
+    Annotation* annot;
     antlr4::Token *name = nullptr;
     GPULangParser::ExpressionContext *value = nullptr;
     AnnotationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -349,7 +349,7 @@ public:
 
   class  AttributeContext : public antlr4::ParserRuleContext {
   public:
-    Attribute attr;
+    Attribute* attr;
     antlr4::Token *name = nullptr;
     GPULangParser::ExpressionContext *expressionContext = nullptr;
     AttributeContext(antlr4::ParserRuleContext *parent, size_t invokingState);

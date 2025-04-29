@@ -15,6 +15,8 @@ struct Enumeration : public Type
 {
     /// constructor
     Enumeration();
+    /// destructor
+    virtual ~Enumeration();
 
     std::vector<std::string> labels;
     std::vector<Expression*> values;
@@ -23,10 +25,7 @@ struct Enumeration : public Type
 
     struct __Resolved : public Type::__Resolved
     {
-        Function uintAssignOperator;
-        Variable uintAssignArg;
-        Function intAssignOperator;
-        Variable intAssignArg;
+        virtual ~__Resolved() {};
         Type* typeSymbol;
     };
 };

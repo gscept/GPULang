@@ -40,6 +40,7 @@ public:
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() {};
         Type::FullType fullType;
         Type* type;
     };

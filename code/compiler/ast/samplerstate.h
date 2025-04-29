@@ -19,12 +19,15 @@ struct SamplerState : public State
 {
     /// constructor
     SamplerState();
+    /// Destructor
+    ~SamplerState();
 
     _IMPLEMENT_ANNOTATIONS();
     _IMPLEMENT_ATTRIBUTES();
 
     struct __Resolved : public State::__Resolved
     {
+        virtual ~__Resolved() {};
         enum SamplerStateEntryType
         {
             InvalidSamplerStateEntryType,

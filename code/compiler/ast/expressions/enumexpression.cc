@@ -17,7 +17,7 @@ EnumExpression::EnumExpression(int value, Type::FullType type, Type::FullType un
     , type(type)
     , underlyingType(underlyingType)
 {
-    this->resolved = new EnumExpression::__Resolved;
+    this->resolved = Alloc<EnumExpression::__Resolved>();
     this->symbolType = EnumExpressionType;
 }
 

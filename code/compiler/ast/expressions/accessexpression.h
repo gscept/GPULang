@@ -43,6 +43,7 @@ struct AccessExpression : public Expression
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() {};
         Type::FullType leftType;
         Type* lhsType;
         Type::FullType rightType;

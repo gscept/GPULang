@@ -13,7 +13,10 @@ namespace GPULang
 RenderState::RenderState()
 {
     this->symbolType = RenderStateType;
-    this->resolved = new RenderState::__Resolved();
+    if (SYMBOL_STATIC_ALLOC)
+        this->resolved = StaticAlloc<RenderState::__Resolved>();
+    else
+        this->resolved = Alloc<RenderState::__Resolved>();
     RenderState::__Resolved* typeResolved = static_cast<RenderState::__Resolved*>(this->resolved);
     typeResolved->depthClampEnabled = false;
     typeResolved->noPixels = false;

@@ -59,6 +59,12 @@ public:
         Type::FullType returnType;
         Type* retType;
 
+        virtual ~__Resolved()
+        {
+            if (this->constValueExpression != nullptr)
+                this->constValueExpression->~Expression();
+        }
+
     	Expression* constValueExpression;
 
     	bool isAssignment;

@@ -27,6 +27,7 @@ UnaryExpression::UnaryExpression(uint32_t op, bool isPrefix, Expression* expr)
 */
 UnaryExpression::~UnaryExpression()
 {
+    this->expr->~Expression();
 }
 
 //------------------------------------------------------------------------------

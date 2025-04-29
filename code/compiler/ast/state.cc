@@ -13,6 +13,8 @@ namespace GPULang
 */
 State::~State()
 {
+    for (auto entry : this->entries)
+        entry->~Expression();
 }
 
 const std::map<std::string, CompareMode> stringToCompareMode =

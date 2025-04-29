@@ -40,6 +40,7 @@ struct CallExpression : public Expression
 
     struct __Resolved : public Expression::__Resolved
     {
+        virtual ~__Resolved() {};
         std::string functionSymbol;
         Type::FullType returnType;
         Type* retType;

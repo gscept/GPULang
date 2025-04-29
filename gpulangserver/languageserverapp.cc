@@ -3,6 +3,14 @@
 #include "lsp/messagehandler.h"
 #include "lsp/io/standardio.h"
 #include "gpulangcompiler.h"
+#include "ast/function.h"
+#include "ast/variable.h"
+#include "ast/enumeration.h"
+#include "ast/structure.h"
+#include "ast/statements/scopestatement.h"
+#include "ast/statements/expressionstatement.h"
+#include "ast/expressions/callexpression.h"
+#include "ast/expressions/symbolexpression.h"
 
 #if _MSC_VER
 #include <winsock2.h>
@@ -61,6 +69,16 @@ struct ParseContext
     {
         GPULangServerResult result;
         GPULang::Allocator alloc;
+
+
+        struct TextRange
+        {
+            size_t startLine, stopLine;
+            size_t startColumn, stopColumn;
+        };
+
+        std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
+        std::map<size_t, std::vector<std::pair<TextRange, const GPULang::Symbol*>>> symbolsByLine;
     };
     std::map<std::string, ParsedFile> parsedFiles;
 };
@@ -76,7 +94,10 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     {
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
-        GPULang::InitAllocator(&it->second.alloc);
+    }
+    for (auto* symbol : it->second.result.symbols)
+    {
+        symbol->~Symbol();
     }
     GPULang::Compiler::Options options;
     GPULang::ResetAllocator(&it->second.alloc);
@@ -106,6 +127,280 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     }
     return &it->second;
 };
+
+
+//------------------------------------------------------------------------------
+/**
+*/
+ParseContext::ParsedFile*
+GetFile(const std::string path, ParseContext* context, lsp::MessageHandler& messageHandler)
+{
+    auto it = context->parsedFiles.find(path);
+    if (it == context->parsedFiles.end())
+    {
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::CancelRequest>(lsp::notifications::CancelRequest::Params{ "File not parsed on server" });
+        return nullptr;
+    }
+    return &it->second;
+
+}
+
+
+lsp::SemanticTokensLegend legend{
+        .tokenTypes = {
+            "enum",
+            "struct",
+            "parameter",
+            "variable",
+            "property",
+            "enumMember",
+            "function",
+            "macro",
+            "keyword",
+            "modifier",
+            "comment",
+            "string",
+            "number",
+            "operator",
+            "decorator"
+    },
+        .tokenModifiers = {
+            "declaration",
+            "definition",
+            "readonly",
+            "static",
+            "deprecated",
+            "documentation",
+            "defaultLibrary"
+    }
+};
+
+enum class SemanticTypeMapping : uint32_t {
+    Enum
+    , Struct
+    , Parameter
+    , Variable
+    , Property
+    , EnumMember
+    , Function
+    , Macro
+    , Keyword
+    , Modifier
+    , Comment
+    , String
+    , Number
+    , Operator
+    , Decorator
+};
+
+enum class SemanticModifierMapping : uint32_t {
+    Declaration = 0x1
+    , Definition = 0x2
+    , ReadOnly = 0x4
+    , Static = 0x8
+    , Depreacted = 0x10
+    , Documentation = 0x20
+    , DefaultLibrary = 0x40
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Location& loc, SemanticTypeMapping type, uint32_t modifiers, std::vector<uint32_t>& result)
+{
+    uint32_t ret[5];
+    ret[0] = (loc.line - prev.line);
+    ret[1] = loc.line == prev.line ? loc.column - prev.column : loc.column;
+    ret[2] = loc.end - loc.start;
+    ret[3] = (uint32_t)type;
+    ret[4] = modifiers;
+    prev = loc;
+    result.insert(result.end(), ret, ret + 5);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* sym, ParseContext::ParsedFile* file, std::vector<uint32_t>& result)
+{
+    ParseContext::ParsedFile::TextRange range;
+    range.startLine = sym->location.line;
+    range.stopLine = sym->location.line;
+    range.startColumn = sym->location.start;
+    range.stopColumn = sym->location.end;
+    file->symbolsByRange.push_back(std::make_pair(range, sym));
+    file->symbolsByLine[range.startLine-1].push_back(std::make_pair(range, sym));
+
+    switch (sym->symbolType)
+    {
+        case GPULang::Symbol::SymbolType::VariableType:
+        {
+            const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
+            const GPULang::Variable::__Resolved* res = GPULang::Symbol::Resolved(var);
+            for (auto attr : var->attributes)
+            {
+                InsertSemanticToken(prevLoc, attr->location, SemanticTypeMapping::Keyword, 0x0, result);
+            }
+            if (res->usageBits.flags.isParameter)
+                InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Parameter, (uint32_t)SemanticModifierMapping::Definition, result);
+            else
+                InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, (uint32_t)SemanticModifierMapping::Definition, result);
+
+            if (var->valueExpression != nullptr)
+                CreateSemanticToken(prevLoc, var->valueExpression, file, result);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::FunctionType:
+        {
+            const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
+            for (auto attr : fun->attributes)
+            {
+                InsertSemanticToken(prevLoc, attr->location, SemanticTypeMapping::Keyword, 0x0, result);
+            }
+
+            InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Function, (uint32_t)SemanticModifierMapping::Definition, result);
+
+            for (auto var : fun->parameters)
+            {
+                CreateSemanticToken(prevLoc, var, file, result);
+            }
+
+            if (fun->ast != nullptr)
+            {
+                CreateSemanticToken(prevLoc, fun->ast, file, result);
+            }
+            break;
+        }
+        case GPULang::Symbol::SymbolType::EnumerationType:
+        {
+            const GPULang::Enumeration* enu= static_cast<const GPULang::Enumeration*>(sym);
+            InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Enum, (uint32_t)SemanticModifierMapping::Definition, result);
+
+            for (auto mem : enu->labels)
+            {
+
+            }
+            break;
+        }
+        case GPULang::Symbol::SymbolType::ScopeStatementType:
+        {
+            const GPULang::ScopeStatement* scope = static_cast<const GPULang::ScopeStatement*>(sym);
+            for (auto innerSym : scope->symbols)
+                CreateSemanticToken(prevLoc, innerSym, file, result);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::ExpressionStatementType:
+        {
+            const GPULang::ExpressionStatement* stat = static_cast<const GPULang::ExpressionStatement*>(sym);
+            CreateSemanticToken(prevLoc, stat->expr, file, result);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::CallExpressionType:
+        {
+            const GPULang::CallExpression* call = static_cast<const GPULang::CallExpression*>(sym);
+            InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Function, 0x0, result);
+            for (auto var : call->args)
+                CreateSemanticToken(prevLoc, var, file, result);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::SymbolExpressionType:
+        {
+            break;
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+std::string
+CreateMarkdown(const GPULang::Symbol* sym, bool header = false)
+{
+    std::string ret = "";
+    if (header)
+        ret = GPULang::Format("### %s\n", sym->name.c_str());
+    switch (sym->symbolType)
+    {
+        case GPULang::Symbol::SymbolType::VariableType:
+        {
+            const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
+            for (auto attr : var->attributes)
+            {
+                ret += GPULang::Format("*%s*", attr->name.c_str());
+                if (attr->expression != nullptr)
+                    ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
+                else
+                    ret += " ";
+            }
+            ret += "**variable**\n\n";
+            ret += sym->documentation + "\n";
+            break;
+        }
+        case GPULang::Symbol::SymbolType::FunctionType:
+        {
+            const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
+            for (auto attr : fun->attributes)
+            {
+                ret += GPULang::Format("*%s*", attr->name.c_str());
+                if (attr->expression != nullptr)
+                    ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
+                else
+                    ret += " ";
+            }
+            ret += "**function**\n\n";
+            ret += sym->documentation + "\n";
+
+            for (auto var : fun->parameters)
+            {
+                ret += CreateMarkdown(var);
+            }
+            break;
+        }
+        case GPULang::Symbol::SymbolType::EnumerationType:
+        {
+            const GPULang::Enumeration* enu = static_cast<const GPULang::Enumeration*>(sym);
+
+            for (auto mem : enu->labels)
+            {
+
+            }
+            break;
+        }
+        case GPULang::Symbol::SymbolType::StructureType:
+        {
+            const GPULang::Enumeration* enu = static_cast<const GPULang::Enumeration*>(sym);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::ExpressionStatementType:
+        {
+            const GPULang::ExpressionStatement* stat = static_cast<const GPULang::ExpressionStatement*>(sym);
+            ret += CreateMarkdown(stat->expr);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::CallExpressionType:
+        {
+            const GPULang::CallExpression* lookup = static_cast<const GPULang::CallExpression*>(sym);
+            const GPULang::CallExpression::__Resolved* res = GPULang::Symbol::Resolved(lookup);
+            const GPULang::Function::__Resolved* funRes = GPULang::Symbol::Resolved(res->function);
+            ret += funRes->name + "\n";
+            ret += CreateMarkdown(res->function);
+
+            for (auto arg : lookup->args)
+                ret += CreateMarkdown(arg);
+            break;
+        }
+        case GPULang::Symbol::SymbolType::SymbolExpressionType:
+        {
+            const GPULang::SymbolExpression* lookup = static_cast<const GPULang::SymbolExpression*>(sym);
+            const GPULang::SymbolExpression::__Resolved* res = GPULang::Symbol::Resolved(lookup);
+            ret += CreateMarkdown(res->symbol);
+            break;
+        }
+    }
+    return ret;
+}
 
 
 //------------------------------------------------------------------------------
@@ -197,42 +492,13 @@ main(int argc, const char** argv)
                     }
                 }
 
-                lsp::SemanticTokensLegend legend{
-                    .tokenTypes = {
-                        "type",
-                        "class",
-                        "enum",
-                        "struct",
-                        "parameter",
-                        "variable",
-                        "property",
-                        "enumMember",
-                        "function",
-                        "macro",
-                        "keyword",
-                        "modifier",
-                        "comment",
-                        "string",
-                        "number",
-                        "operator",
-                        "decorator"
-                    },
-                    .tokenModifiers = {
-                        "declaration",
-                        "definition",
-                        "readonly",
-                        "static",
-                        "deprecated",
-                        "documentation",
-                        "defaultLibrary"
-                    }
-                };
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
                 result.capabilities.declarationProvider = lsp::DeclarationOptions{ .workDoneProgress = true };
                 result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
+                result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
                 result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
                 return result;
             })
@@ -272,8 +538,29 @@ main(int argc, const char** argv)
             {
                 lsp::requests::TextDocument_SemanticTokens_Full::Result result;
                 const std::string& path = params.textDocument.uri.path();
-                ParseFile(path, context, messageHandler);
-                result = lsp::SemanticTokens{ .data = {0, 0, 0} };
+                ParseContext::ParsedFile* file = ParseFile(path, context, messageHandler);
+                file->symbolsByRange.clear();
+                file->symbolsByLine.clear();
+                std::vector<uint32_t> tokens;
+                GPULang::Symbol::Location prev;
+                prev.line = 1;
+                prev.column = 0;
+                for (auto sym : file->result.symbols)
+                {
+                    if (sym->location.file == path)
+                    {
+                        CreateSemanticToken(prev, sym, file, tokens);
+                    }
+                }
+
+                for (auto lineSymbols : file->symbolsByLine)
+                {
+                    std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& lhs, const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& rhs)
+                    {
+                        return lhs.first.startColumn < rhs.first.startColumn;
+                    });
+                }
+                result = lsp::SemanticTokens{ .data = tokens };
 
                 return result;
             })
@@ -283,20 +570,87 @@ main(int argc, const char** argv)
 
                 return result;
             })
-                .add<lsp::requests::TextDocument_Hover>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Hover::Params&& params)
+                .add<lsp::requests::TextDocument_Hover>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Hover::Params&& params)
             {
                 lsp::requests::TextDocument_Hover::Result result;
-                if (params.textDocument.uri.path().ends_with("gpul"))
+                ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
+                if (file != nullptr)
                 {
-                    GPULang::Compiler::Options options;
-                    //GPULangValidate(params.textDocument.uri.path(), context->includePaths, options, context->result);
+                    ParseContext::ParsedFile::TextRange inputRange;
+                    inputRange.startLine = params.position.line;
+                    inputRange.startColumn = params.position.character;
+                    auto it = file->symbolsByLine.find(params.position.line);
+                    if (it != file->symbolsByLine.end())
+                    {
+                        for (auto& sym : it->second)
+                        {
+                            if (sym.second->location.start <= params.position.character && sym.second->location.end >= params.position.character)
+                            {
+                                result = lsp::requests::TextDocument_Hover::Result {
+                                    lsp::Hover {
+                                        .contents = lsp::MarkupContent{
+                                            .kind = lsp::MarkupKind::Markdown,
+                                            .value = CreateMarkdown(sym.second, true)
+                                        },
+                                        .range = lsp::Range{ 
+                                            .start = { 
+                                                .line = (uint32_t)sym.second->location.line - 1,
+                                                .character = (uint32_t)sym.second->location.start
+                                            }, 
+                                            .end = {
+                                                .line = (uint32_t)sym.second->location.line - 1,
+                                                .character = (uint32_t)sym.second->location.end
+                                            }
+                                        }
+                                    }
+                                };
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 return result;
             })
-                .add<lsp::requests::TextDocument_DocumentHighlight>([&context](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_DocumentHighlight::Params&& params)
+                .add<lsp::requests::TextDocument_DocumentHighlight>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_DocumentHighlight::Params&& params)
             {
                 lsp::requests::TextDocument_DocumentHighlight::Result result;
+                ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
+                if (file != nullptr)
+                {
+                    ParseContext::ParsedFile::TextRange inputRange;
+                    inputRange.startLine = params.position.line;
+                    inputRange.startColumn = params.position.character;
+                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& lhs, const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& rhs)
+                    {
+                        if (lhs.first.startLine == rhs.first.startLine)
+                            return lhs.first.startColumn < rhs.first.startColumn;
+                        else
+                            return lhs.first.startLine < rhs.first.startLine;
+                    });
+                    if (it != file->symbolsByRange.end())
+                    {
+                        result = lsp::requests::TextDocument_DocumentHighlight::Result { 
+                            { 
+                                lsp::DocumentHighlight{ 
+                                    .range = { 
+                                        .start = { 
+                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .character = (uint32_t)it->second->location.start
+                                        }, 
+                                        .end = {
+                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .character = (uint32_t) + it->second->location.end
+                                        }
+                                    },
+                                    .kind = lsp::DocumentHighlightKind::Write
+                                }
+                            }
+                        };
+
+                        int foo = 5;
+                    }
+                }
                 return result;
             })
                 .add<lsp::notifications::Exit>([&running]()

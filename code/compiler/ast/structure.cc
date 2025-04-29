@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "structure.h"
 #include "compiler.h"
+#include "function.h"
 namespace GPULang
 {
 
@@ -14,7 +15,7 @@ Structure::Structure()
 {
     this->symbolType = StructureType;
     this->baseType = TypeCode::InvalidType;
-    this->resolved = new Structure::__Resolved;
+    this->resolved = Alloc<Structure::__Resolved>();
     this->category = Type::Category::UserTypeCategory;
     this->arraySizeExpression = nullptr;
     this->isArray = false;
@@ -26,6 +27,31 @@ Structure::Structure()
     typeResolved->baseAlignment = 0;
     typeResolved->packMembers = false;
     typeResolved->storageFunction = nullptr;
+    typeResolved->loadFunction = nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Structure::~Structure()
+{
+    this->CleanupAnnotations();
+    this->CleanupAttributes();
+    for (auto sym : this->symbols)
+        sym->~Symbol();
+    if (this->arraySizeExpression != nullptr)
+        this->arraySizeExpression->~Expression();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Structure::__Resolved::~__Resolved()
+{
+    if (this->storageFunction)
+        this->storageFunction->~Function();
+    if (this->loadFunction)
+        this->loadFunction->~Function();
 }
 
 } // namespace GPULang

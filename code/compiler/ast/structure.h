@@ -17,6 +17,8 @@ struct Structure : public Type
 {
     /// constructor
     Structure();
+    /// destructor
+    virtual ~Structure();
 
     std::string instanceName;
     Expression* arraySizeExpression;
@@ -27,6 +29,7 @@ struct Structure : public Type
 
     struct __Resolved : public Type::__Resolved
     {
+        virtual ~__Resolved();
         union UsageFlags
         {
             struct

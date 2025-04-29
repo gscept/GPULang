@@ -29,6 +29,11 @@ public:
 		file = ((GPULangToken*)oldToken)->file;
 	};
 
+    ~GPULangToken()
+    {
+
+    }
+
 	std::string file;
 	size_t line;
 };

@@ -23,6 +23,10 @@ IfStatement::IfStatement(Expression* condition, Statement* ifStatement, Statemen
 */
 IfStatement::~IfStatement()
 {
+    this->condition->~Expression();
+    this->ifStatement->~Statement();
+    if (this->elseStatement != nullptr)
+        this->elseStatement->~Statement();
 }
 
 } // namespace GPULang

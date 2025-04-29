@@ -10,6 +10,8 @@
 
 #include "memory.h"
 
+bool SYMBOL_STATIC_ALLOC = false;
+
 namespace GPULang
 {
 
@@ -53,12 +55,15 @@ InitAllocator(Allocator* alloc)
 void 
 DestroyAllocator(Allocator* alloc)
 {
-    for (uint32_t i = 0; i < 2048; i++)
+    if (alloc->blocks != nullptr)
     {
-        if (alloc->blocks[i].mem != nullptr)
+        for (uint32_t i = 0; i < 2048; i++)
         {
-            free(alloc->blocks[i].mem);
-            alloc->blocks[i] = MemoryBlock();
+            if (alloc->blocks[i].mem != nullptr)
+            {
+                free(alloc->blocks[i].mem);
+                alloc->blocks[i] = MemoryBlock();
+            }
         }
     }
     if (alloc->freeBlocks != nullptr)
