@@ -55,7 +55,7 @@ InitializerExpression::Resolve(Compiler* compiler)
         return false;
     }
 
-    compiler->PushScope(Compiler::Scope::ScopeType::Type, ty);
+    compiler->PushScope(&ty->scope);
     for (uint32_t i = 0; i < this->values.size(); i++)
     {
         Expression* expr = this->values[i];

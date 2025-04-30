@@ -219,7 +219,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
     type->symbols.clear();
-    type->lookup.clear();
+    type->scope.symbolLookup.clear();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
     {
@@ -242,7 +242,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
             return false;
     }
 
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, type);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &type->scope);
 
     for (Symbol* sym : type->symbols)
     {
@@ -280,7 +280,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::EnumerationType)
         {
             Enumeration* en = static_cast<Enumeration*>(sym);
-            en->lookup.clear();
+            en->scope.symbolLookup.clear();
             en->symbols.clear();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
@@ -288,7 +288,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::StructureType)
         {
             Structure* struc = static_cast<Structure*>(sym);
-            struc->lookup.clear();
+            struc->scope.symbolLookup.clear();
             struc->symbols.clear();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
@@ -322,7 +322,7 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, type);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &type->scope);
 
     for (Symbol* sym : type->symbols)
     {
@@ -354,7 +354,7 @@ bool
 Validator::ResolveTypeSwizzles(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, type);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &type->scope);
 
     for (Symbol* sym : type->swizzleSymbols)
     {
@@ -384,7 +384,8 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     stateResolved->isImmutable = state->isImmutable;
 
     Type* samplerStateType = compiler->GetSymbol<Type>("samplerState");
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, samplerStateType);
+    stateResolved->typeSymbol = samplerStateType;
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &samplerStateType->scope);
 
     stateResolved->group = this->defaultGroup;
 
@@ -654,6 +655,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
+    funResolved->scope.symbolLookup.clear();
 
      // run attribute validation
     for (const Attribute* attr : fun->attributes)
@@ -911,8 +913,9 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    // Push temporary scope to evaluate variables
-    compiler->PushScope(Compiler::Scope::ScopeType::Local, fun);
+    // Push temporary scope to evaluate parameters
+    funResolved->scope.owningSymbol = fun;
+    compiler->PushScope(&funResolved->scope);
 
     // run validation on parameters
     bool rayHitAttributeConsumed = false;
@@ -990,7 +993,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // format function with all attributes and parameters
     std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
     std::string resolvedNameWithParamNames = Format("%s(%s)", fun->name.c_str(), paramListNamed.c_str());
-    std::string functionFormatted = Format("%s %s %s", attributeList.c_str(), resolvedName.c_str(), fun->returnType.name.c_str());
+    std::string functionFormatted = Format("%s%s %s", (attributeList.empty() ? "" : (attributeList + " ").c_str()), resolvedName.c_str(), fun->returnType.name.c_str());
     funResolved->name = resolvedName;
     funResolved->nameWithVarNames = resolvedNameWithParamNames;
     funResolved->signature = functionFormatted;
@@ -1050,14 +1053,17 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
     funResolved->returnTypeSymbol = type;
 
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, fun);
-
+    
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &funResolved->scope);
+    
+    /*
     // Variables already resolved, just need to add them back to the scope
     for (Variable* var : fun->parameters)
     {
         if (!compiler->AddSymbol(var->name, var))
             return false;
     }
+    */
 
     // before resolving variables (as parameters), reset in and out bindings
     this->inParameterIndexCounter = 0;
@@ -1096,7 +1102,8 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     Program::__Resolved* progResolved = Symbol::Resolved(prog);
 
     Type* progType = compiler->GetSymbol<Type>("program");
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, progType);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
+    progResolved->typeSymbol = progType;
     for (Expression* entry : prog->entries)
     {
         compiler->currentState.allowConstOverride = true;
@@ -1405,11 +1412,11 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
     RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
 
     Type* renderStateType = compiler->GetSymbol<Type>("renderState");
-
+    stateResolved->typeSymbol = renderStateType;
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
 
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, renderStateType);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &renderStateType->scope);
     for (Expression* entry : state->entries)
     {
         if (!entry->Resolve(compiler))
@@ -1795,7 +1802,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
     }
 
     // push scope for struct but not for storage and constant buffers
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, struc);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &struc->scope);
 
     // validate members
     uint32_t offset = 0;
@@ -1877,7 +1884,6 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->baseType = enumResolved->typeSymbol->baseType;
     enumeration->symbols.clear();
-    enumeration->lookup.clear();
     if (enumeration->globals.empty())
     {
         if (enumeration->builtin)
@@ -1973,7 +1979,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         Expression* expr = enumeration->values[i];
 
         // Check of label redefinition
-        if (enumeration->lookup.find(str) != enumeration->lookup.end())
+        if (enumeration->scope.symbolLookup.find(str) != enumeration->scope.symbolLookup.end())
         {
             compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
             return false;
@@ -2021,7 +2027,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         // Add to type
         sym->name = str;
         enumeration->symbols.push_back(sym);
-        enumeration->lookup.insert({ sym->name, sym });
+        enumeration->scope.symbolLookup.insert({ sym->name, sym });
     }
 
     return true;
@@ -2796,7 +2802,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                         generatedStruct->symbols.push_back(generatedVar);
-                        generatedStruct->lookup.insert({ varResolved->name, generatedVar });
+                        generatedStruct->scope.symbolLookup.insert({ varResolved->name, generatedVar });
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
@@ -2940,6 +2946,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::ForStatementType:
         {
             auto statement = reinterpret_cast<ForStatement*>(symbol);
+            auto statementRes = Symbol::Resolved(statement);
             for (const Attribute* attr : statement->attributes)
             {
                 if (attr->name == "unroll")
@@ -2963,7 +2970,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
             }
-            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
+            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
             for (Variable* var : statement->declarations)
             {
                 if (!this->ResolveVariable(compiler, var))
@@ -3097,7 +3104,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::ScopeStatementType:
         {
             auto statement = reinterpret_cast<ScopeStatement*>(symbol);
-            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, compiler->GetScopeOwner());
+            auto statementRes = Symbol::Resolved(statement);
+            statementRes->scope.owningSymbol = compiler->GetScopeOwner();
+            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
 
             for (Symbol* sym : statement->symbols)
             {
@@ -3117,7 +3126,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::SwitchStatementType:
         {
             auto statement = reinterpret_cast<SwitchStatement*>(symbol);
-            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
+            auto statementRes = Symbol::Resolved(statement);
+
+            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
 
             if (statement->switchExpression->Resolve(compiler))
             {
@@ -3168,7 +3179,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::WhileStatementType:
         {
             auto statement = reinterpret_cast<WhileStatement*>(symbol);
-            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, statement);
+            auto statementRes = Symbol::Resolved(statement);
+
+            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
             if (statement->condition->Resolve(compiler))
             {
                 // Convert condition if not bool

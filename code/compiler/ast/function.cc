@@ -50,6 +50,7 @@ Function::Function()
     thisResolved->executionModifiers.depthAlwaysLesser = false;
     thisResolved->isPrototype = false;
     thisResolved->returnValueStorage = Storage::Default;
+    thisResolved->scope.type = Scope::ScopeType::Local;
 }
 
 //------------------------------------------------------------------------------

@@ -18,6 +18,12 @@ struct WhileStatement : public Statement
     /// destructor
     virtual ~WhileStatement();
 
+    struct __Resolved : public Statement::__Resolved
+    {
+        virtual ~__Resolved() {};
+        Scope scope;
+    };
+
     Expression* condition;
     Statement* statement;
     bool isDoWhile;

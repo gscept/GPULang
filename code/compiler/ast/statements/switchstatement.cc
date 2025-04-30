@@ -18,6 +18,8 @@ SwitchStatement::SwitchStatement(Expression* switchExpression, const std::vector
 {
     this->symbolType = SwitchStatementType;
     this->resolved = Alloc<SwitchStatement::__Resolved>();
+    auto thisResolved = Symbol::Resolved(this);
+    thisResolved->scope.type = Scope::ScopeType::Local;
 }
 
 //------------------------------------------------------------------------------

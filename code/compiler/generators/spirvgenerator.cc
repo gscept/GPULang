@@ -7157,7 +7157,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
         if (type->IsVector() || type->IsMatrix())
         {
-            auto it = type->lookup.find(Format("operator[](%s)", rightType.name.c_str()));
+            auto it = type->scope.symbolLookup.find(Format("operator[](%s)", rightType.name.c_str()));
             Function* func = static_cast<Function*>((*it).second);
 
             /// Get intrinsic

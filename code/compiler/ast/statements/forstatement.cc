@@ -18,6 +18,8 @@ ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression
 {
     this->symbolType = ForStatementType;
     this->resolved = Alloc<ForStatement::__Resolved>();
+    auto thisResolved = Symbol::Resolved(this);
+    thisResolved->scope.type = Scope::ScopeType::Local;
 }
 
 //------------------------------------------------------------------------------

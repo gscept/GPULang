@@ -49,6 +49,7 @@ struct Function : public Symbol
         virtual ~__Resolved() {};
         Type* returnTypeSymbol;
         Storage returnValueStorage;
+        Scope scope;
 
         std::string name;
         std::string nameWithVarNames;

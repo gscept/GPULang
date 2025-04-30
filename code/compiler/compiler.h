@@ -23,6 +23,7 @@
 #include "textwriter.h"
 #include "serialize.h"
 #include "ast/renderstate.h"
+
 namespace GPULang
 {
 
@@ -34,6 +35,7 @@ struct Diagnostic
 };
 
 struct Type;
+struct Scope;
 struct Compiler
 {
     enum class Language : uint8_t
@@ -110,25 +112,8 @@ struct Compiler
     /// return iterator to first and last symbol matching name
     std::vector<Symbol*> GetSymbols(const std::string& name) const;
 
-    struct Scope
-    {
-        enum class ScopeType
-        {
-            Global,
-            Local,
-            Type
-        };
-        ScopeType type = ScopeType::Local;
-        std::vector<Symbol*> symbols;
-        std::multimap<std::string, Symbol*> symbolLookup;
-        Symbol* owningSymbol;
-        bool unreachable;
-    };
-
-    /// create new scope and push it to the stack
-    void PushScope(Scope::ScopeType type, Symbol* owner = nullptr);
-    /// create new scope from type
-    void PushScope(Type* type);
+    /// Push a new scope
+    void PushScope(Scope* scope);
     /// pop the scope
     void PopScope();
     /// Is current scope global
@@ -149,21 +134,9 @@ struct Compiler
     struct LocalScope
     {
 
-        static LocalScope MakeLocalScope(Compiler* compiler, Symbol* owner = nullptr)
+        static LocalScope MakeLocalScope(Compiler* compiler, Scope* scope)
         {
-            compiler->PushScope(Scope::ScopeType::Local, owner);
-            return LocalScope(compiler);
-        }
-
-        static LocalScope MakeTypeScope(Compiler* compiler, Symbol* type)
-        {
-            compiler->PushScope(Scope::ScopeType::Type, type);
-            return LocalScope(compiler);
-        }
-
-        static LocalScope MakeGlobalScope(Compiler* compiler)
-        {
-            compiler->PushScope(Scope::ScopeType::Global, nullptr);
+            compiler->PushScope(scope);
             return LocalScope(compiler);
         }
 
@@ -270,6 +243,7 @@ struct Compiler
 
     bool branchReturns;
 
+    Scope* intrinsicScope, *mainScope;
     std::vector<Scope*> scopes;
 
     std::string debugPath;

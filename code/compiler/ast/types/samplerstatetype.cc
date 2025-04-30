@@ -9,7 +9,7 @@
 #define __START_ENUM() labels.clear(); expressions.clear();
 #define __ADD_ENUM(val) labels.push_back(#val); expressions.push_back(nullptr);
 #define __ADD_ENUM_EXPL(name, val) labels.push_back(#name); expressions.push_back(StaticAlloc<UIntExpression>(val));
-#define __FINISH_ENUM(val, key) val = Enumeration(); val.builtin = true; val.labels = labels; val.values = expressions; val.name = #key; val.baseType = TypeCode::UInt; val.type = Type::FullType{ "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
+#define __FINISH_ENUM(val, key) new (&val) Enumeration(); val.builtin = true; val.labels = labels; val.values = expressions; val.name = #key; val.baseType = TypeCode::UInt; val.type = Type::FullType{ "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
 
 #define __SETUP_MEMBER(val, key, ty) val.name = #key; val.type = Type::FullType{ #ty }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);
 #define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = #key; val.type = Type::FullType{ #ty, {Type::FullType::Modifier::Array}, {size} }; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);

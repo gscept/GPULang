@@ -67,7 +67,7 @@ AccessExpression::Resolve(Compiler* compiler)
     }
 
     // Setup type scope and resolve right hand side
-    Compiler::LocalScope scope = Compiler::LocalScope::MakeTypeScope(compiler, thisResolved->lhsType);
+    Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &thisResolved->lhsType->scope);
 
     if (!this->right->Resolve(compiler))
         return false;

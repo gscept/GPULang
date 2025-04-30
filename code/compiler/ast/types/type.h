@@ -502,7 +502,8 @@ struct Type : public Symbol
     std::vector<Symbol*> swizzleSymbols;
     std::vector<Symbol*> symbols;
     std::vector<Symbol*> constructors;
-    std::multimap<std::string, Symbol*> lookup;
+
+    Scope scope;
 
     /// return member symbol
     Symbol* GetSymbol(const std::string str);
@@ -523,8 +524,8 @@ template<typename T>
 inline T*
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->lookup.find(str);
-    if (it != this->lookup.end())
+    auto it = this->scope.symbolLookup.find(str);
+    if (it != this->scope.symbolLookup.end())
         return static_cast<T*>(it->second);
     else
         return nullptr;

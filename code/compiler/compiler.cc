@@ -47,8 +47,14 @@ Compiler::Compiler()
     this->branchReturns = false;
     this->defaultRenderState.name = "__DefaultRenderState";
 
+    // Allocate main scopes
+    this->intrinsicScope = Alloc<Scope>();
+    this->intrinsicScope->type = Scope::ScopeType::Global;
+    this->mainScope = Alloc<Scope>();
+    this->mainScope->type = Scope::ScopeType::Global;
+
     // push global scope for all the builtins
-    this->PushScope(Scope::ScopeType::Global);
+    this->PushScope(this->intrinsicScope);
 
     // setup default types and their lookups
     if (DefaultTypes.empty())
@@ -115,7 +121,7 @@ Compiler::Compiler()
     this->ignoreReservedWords = false;
 
     // push a new scope for all the parsed symbols
-    this->PushScope(Scope::ScopeType::Global);
+    this->PushScope(this->mainScope);
 }
 
 //------------------------------------------------------------------------------
@@ -124,8 +130,6 @@ Compiler::Compiler()
 Compiler::~Compiler()
 {
     this->validator->~Validator();
-    for (auto scope : this->scopes)
-        scope->~Scope();
 }
 
 //------------------------------------------------------------------------------
@@ -224,7 +228,7 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
     if (scope->type == Scope::ScopeType::Type)
     {
         Type* type = static_cast<Type*>(scope->owningSymbol);
-        lookup = &type->lookup;
+        lookup = &type->scope.symbolLookup;
         symbols = &type->symbols;
     }
     else
@@ -261,7 +265,7 @@ Compiler::GetSymbol(const std::string& name) const
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
-            map = &type->lookup;
+            map = &type->scope.symbolLookup;
         }
         else
         {
@@ -291,7 +295,7 @@ Compiler::GetSymbols(const std::string& name) const
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
-            map = &type->lookup;
+            map = &type->scope.symbolLookup;
         }
         else
         {
@@ -309,24 +313,9 @@ Compiler::GetSymbols(const std::string& name) const
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::PushScope(Scope::ScopeType type, Symbol* owner)
+void Compiler::PushScope(Scope* scope)
 {
-    this->scopes.push_back(Alloc<Scope>());
-    this->scopes.back()->type = type;
-    this->scopes.back()->owningSymbol = owner;
-    this->scopes.back()->unreachable = false;
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-void 
-Compiler::PushScope(Type* type)
-{
-    this->scopes.push_back(Alloc<Scope>());
-    this->scopes.back()->type = Scope::ScopeType::Type;
-    this->scopes.back()->owningSymbol = type;
+    this->scopes.push_back(scope);
 }
 
 //------------------------------------------------------------------------------
@@ -336,7 +325,6 @@ void
 Compiler::PopScope()
 {
     Scope* currentScope = this->scopes.back();
-    currentScope->~Scope();
     this->scopes.pop_back();
 }
 

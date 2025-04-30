@@ -271,6 +271,8 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
         effect->Destroy();
         effect->~Effect();
+        compiler.intrinsicScope->~Scope();
+        compiler.mainScope->~Scope();
         GPULang::ResetAllocator(&alloc);
         
         // convert error list to string
@@ -309,8 +311,6 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;
-
-
 
     timer.Start();
     std::string pperr;
@@ -390,6 +390,8 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
 
         result.root = effect;
         result.symbols = compiler.symbols;
+        result.intrinsicScope = compiler.intrinsicScope;
+        result.mainScope = compiler.mainScope;
         if (!compiler.diagnostics.empty())
             result.diagnostics = compiler.diagnostics;
         

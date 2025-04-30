@@ -19,6 +19,12 @@ struct ForStatement : public Statement
     /// destructor
     virtual ~ForStatement();
 
+    struct __Resolved : public Statement::__Resolved
+    {
+        virtual ~__Resolved() {};
+        Scope scope;
+    };
+
     std::vector<Variable*> declarations;
     Expression* condition;
     Expression* loop;

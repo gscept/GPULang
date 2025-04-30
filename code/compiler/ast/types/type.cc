@@ -115,6 +115,8 @@ Type::Type()
     this->byteSize = 4;
     this->category = Type::InvalidCategory;
     this->resolved = nullptr;
+    this->scope.type = Scope::ScopeType::Type;
+    this->scope.owningSymbol = this;
 }
 
 //------------------------------------------------------------------------------
@@ -193,8 +195,8 @@ Type::CategoryToString(const Category& cat)
 Symbol* 
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->lookup.find(str);
-    if (it != this->lookup.end())
+    auto it = this->scope.symbolLookup.find(str);
+    if (it != this->scope.symbolLookup.end())
         return it->second;
     else
         return nullptr;
@@ -207,7 +209,7 @@ std::vector<Symbol*>
 Type::GetSymbols(const std::string str)
 {
     std::vector<Symbol*> ret;
-    auto range = this->lookup.equal_range(str);
+    auto range = this->scope.symbolLookup.equal_range(str);
     for (auto it = range.first; it != range.second; it++)
         ret.push_back((*it).second);
     return ret;

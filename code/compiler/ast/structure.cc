@@ -20,6 +20,9 @@ Structure::Structure()
     this->arraySizeExpression = nullptr;
     this->isArray = false;
 
+    this->scope.owningSymbol = this;
+    this->scope.type = Scope::ScopeType::Type;
+
     Structure::__Resolved* typeResolved = static_cast<Structure::__Resolved*>(this->resolved);
     typeResolved->usageFlags.bits = 0x0;
     typeResolved->accessBits.bits = 0x0;

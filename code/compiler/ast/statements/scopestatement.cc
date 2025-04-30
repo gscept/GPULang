@@ -14,6 +14,8 @@ ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents)
 {
     this->symbolType = ScopeStatementType;
     this->resolved = Alloc<ScopeStatement::__Resolved>();
+    auto thisResolved = Symbol::Resolved(this);
+    thisResolved->scope.type = Scope::ScopeType::Local;
 }
 
 //------------------------------------------------------------------------------

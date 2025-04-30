@@ -35,6 +35,7 @@ struct GPULangServerResult
 {
     GPULang::Effect* root = nullptr;
 	std::vector<GPULang::Symbol*> symbols;
+	GPULang::Scope* intrinsicScope = nullptr, *mainScope = nullptr;
     std::map<std::string, GPULang::Symbol*> lookup;
     std::vector<GPULang::Diagnostic> diagnostics;
 	std::vector<std::string> messages;	

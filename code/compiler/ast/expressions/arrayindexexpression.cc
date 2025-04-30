@@ -65,8 +65,8 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     if (thisResolved->returnFullType.modifiers.empty())
     {
         Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnFullType.name));
-        auto it = type->lookup.find(Format("operator[](%s)", thisResolved->rightFullType.name.c_str()));
-        if (it == type->lookup.end())
+        auto it = type->scope.symbolLookup.find(Format("operator[](%s)", thisResolved->rightFullType.name.c_str()));
+        if (it == type->scope.symbolLookup.end())
         {
             compiler->Error(Format("'%s' does not implement the [] operator", thisResolved->leftFullType.ToString().c_str()), this);
             return false;

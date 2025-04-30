@@ -14,6 +14,7 @@
 */
 //------------------------------------------------------------------------------
 #include <string>
+#include <map>
 #include "memory.h"
 
 #define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
@@ -21,6 +22,7 @@
 
 namespace GPULang
 {
+
 
 struct Compiler;
 struct Symbol
@@ -133,6 +135,22 @@ struct Symbol
         return static_cast<Resolve<T>>(t->resolved);
     }
 }; 
+
+
+struct Scope
+{
+    enum class ScopeType
+    {
+        Global,
+        Local,
+        Type
+    };
+    ScopeType type = ScopeType::Local;
+    std::vector<Symbol*> symbols;
+    std::multimap<std::string, Symbol*> symbolLookup;
+    Symbol* owningSymbol = nullptr;
+    bool unreachable = false;
+};
 
 } // namespace GPULang
 //------------------------------------------------------------------------------

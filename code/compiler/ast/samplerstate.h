@@ -28,6 +28,8 @@ struct SamplerState : public State
     struct __Resolved : public State::__Resolved
     {
         virtual ~__Resolved() {};
+
+        Type* typeSymbol;
         enum SamplerStateEntryType
         {
             InvalidSamplerStateEntryType,

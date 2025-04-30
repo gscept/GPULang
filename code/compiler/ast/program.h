@@ -36,6 +36,7 @@ struct Program : public Symbol
     struct __Resolved : public Symbol::__Resolved
     {
         virtual ~__Resolved() {};
+        Type* typeSymbol;
         enum ProgramEntryType
         {
             InvalidProgramEntryType,

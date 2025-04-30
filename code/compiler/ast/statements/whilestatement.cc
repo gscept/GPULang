@@ -16,6 +16,8 @@ WhileStatement::WhileStatement(Expression* condition, Statement* statement, bool
 {
     this->symbolType = WhileStatementType;
     this->resolved = Alloc<WhileStatement::__Resolved>();
+    auto thisResolved = Symbol::Resolved(this);
+    thisResolved->scope.type = Scope::ScopeType::Local;
 }
 
 //------------------------------------------------------------------------------

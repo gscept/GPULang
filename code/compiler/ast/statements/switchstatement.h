@@ -20,6 +20,12 @@ struct SwitchStatement : public Statement
     /// destructor
     virtual ~SwitchStatement();
 
+    struct __Resolved : public Statement::__Resolved
+    {
+        virtual ~__Resolved() {};
+        Scope scope;
+    };
+
     Expression* switchExpression;
     std::vector<Expression*> caseExpressions;
     std::vector<Statement*> caseStatements;

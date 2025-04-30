@@ -17,6 +17,9 @@ Enumeration::Enumeration()
         this->resolved = StaticAlloc<Enumeration::__Resolved>();
     else
         this->resolved = Alloc<Enumeration::__Resolved>();
+
+    this->scope.owningSymbol = this;
+    this->scope.type = Scope::ScopeType::Type;
     this->baseType = TypeCode::UInt;
 }
 

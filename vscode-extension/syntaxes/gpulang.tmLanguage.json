@@ -10,6 +10,8 @@
 			"include": "#strings"
 		}, {
 			"include": "#constants"
+		}, {
+			"include": "#preprocessor"
 		}
 	],
 	"repository": {
@@ -69,7 +71,7 @@
 				{
 					"begin": "#";
 					"end": "\n";
-					"name": "comment.block.preprocessor"
+					"name": "string.interpolated"
 				}
 			]
 		}
