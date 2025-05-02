@@ -341,7 +341,9 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
 
-        ANTLRInputStream input;
+        std::ifstream stream;
+        stream.open(file);
+        ANTLRInputStream input(stream);
         GPULangLexer lexer(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         CommonTokenStream tokens(&lexer);
@@ -349,9 +351,6 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
         GPULangParser::LineStack.clear();
 
-        // reload the preprocessed data
-        input.reset();
-        input.load(preprocessed);
         lexer.setInputStream(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         lexer.removeErrorListeners();
@@ -377,7 +376,6 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
             errorMessage.append(parserErrorHandler.errorBuffer);
             result.diagnostics.insert(result.diagnostics.end(), lexerErrorHandler.diagnostics.begin(), lexerErrorHandler.diagnostics.end());
             result.diagnostics.insert(result.diagnostics.end(), parserErrorHandler.diagnostics.begin(), parserErrorHandler.diagnostics.end());
-            return false;
         }
 
         Compiler compiler;

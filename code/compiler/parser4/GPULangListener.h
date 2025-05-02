@@ -17,6 +17,9 @@ public:
   virtual void enterString(GPULangParser::StringContext *ctx) = 0;
   virtual void exitString(GPULangParser::StringContext *ctx) = 0;
 
+  virtual void enterPath(GPULangParser::PathContext *ctx) = 0;
+  virtual void exitPath(GPULangParser::PathContext *ctx) = 0;
+
   virtual void enterBoolean(GPULangParser::BooleanContext *ctx) = 0;
   virtual void exitBoolean(GPULangParser::BooleanContext *ctx) = 0;
 
@@ -25,6 +28,9 @@ public:
 
   virtual void enterEffect(GPULangParser::EffectContext *ctx) = 0;
   virtual void exitEffect(GPULangParser::EffectContext *ctx) = 0;
+
+  virtual void enterPreprocessor(GPULangParser::PreprocessorContext *ctx) = 0;
+  virtual void exitPreprocessor(GPULangParser::PreprocessorContext *ctx) = 0;
 
   virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;
   virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;

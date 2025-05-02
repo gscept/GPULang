@@ -19,6 +19,9 @@ public:
   virtual void enterString(GPULangParser::StringContext * /*ctx*/) override { }
   virtual void exitString(GPULangParser::StringContext * /*ctx*/) override { }
 
+  virtual void enterPath(GPULangParser::PathContext * /*ctx*/) override { }
+  virtual void exitPath(GPULangParser::PathContext * /*ctx*/) override { }
+
   virtual void enterBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
   virtual void exitBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
 
@@ -27,6 +30,9 @@ public:
 
   virtual void enterEffect(GPULangParser::EffectContext * /*ctx*/) override { }
   virtual void exitEffect(GPULangParser::EffectContext * /*ctx*/) override { }
+
+  virtual void enterPreprocessor(GPULangParser::PreprocessorContext * /*ctx*/) override { }
+  virtual void exitPreprocessor(GPULangParser::PreprocessorContext * /*ctx*/) override { }
 
   virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }
   virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }

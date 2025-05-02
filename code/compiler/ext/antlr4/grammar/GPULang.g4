@@ -103,6 +103,7 @@ EndLocationRange(const Symbol::Location begin)
 #include "ast/state.h"
 #include "ast/structure.h"
 #include "ast/symbol.h"
+#include "ast/preprocessor.h"
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
@@ -144,7 +145,14 @@ using namespace GPULang;
 string
     returns[ std::string val ]:
     '"' (data = ~'"' { $val.append($data.text); })* '"'
-    | '\'' (data = ~'\'' { $val.append($data.text); })* '\'';
+    | '\'' (data = ~'\'' { $val.append($data.text); })* '\''
+    ;
+
+path
+    returns[ std::string val ]:
+    '"' (data = ~'"' { $val.append($data.text); })* '"'
+    | '<' (data = ~'>' { $val.append($data.text); })* '>'
+    ;
 
 boolean
     returns[ bool val ]
@@ -169,6 +177,7 @@ effect
     :
     (
         linePreprocessorEntry
+        | preprocessor
         | alias ';'                 { $eff->symbols.push_back($alias.sym); }
         | functionDeclaration ';'   { $eff->symbols.push_back($functionDeclaration.sym); }    
         | function                  { $eff->symbols.push_back($function.sym); }    
@@ -176,9 +185,26 @@ effect
         | structure ';'             { $eff->symbols.push_back($structure.sym); }
         | enumeration ';'           { $eff->symbols.push_back($enumeration.sym); }
         | state ';'                 { $eff->symbols.push_back($state.sym); }
-        | sampler ';'                 { $eff->symbols.push_back($sampler.sym); }
+        | sampler ';'               { $eff->symbols.push_back($sampler.sym); }
         | program ';'               { $eff->symbols.push_back($program.sym); }
     )*?;
+
+preprocessor
+    returns [Preprocessor* pp]
+    @init
+    {
+        Symbol::Location location;
+    }
+    :
+    '#' (method = IDENTIFIER) { $pp = Alloc<Preprocessor>(); $pp->method = $method.text; $pp->type = Preprocessor::EndIf; }
+    (
+        (file = path { $pp->args.push_back($file.val); })                                                                                  { $pp->type = Preprocessor::Include; }    // include
+        | '(' (arg0 = IDENTIFIER { $pp->args.push_back($arg0.text); } (',' argn = IDENTIFIER { $pp->args.push_back($argn.text); })* )? ')'  { $pp->type = Preprocessor::Macro; }    // macro
+        | IDENTIFIER                                                                                                                        { $pp->type = Preprocessor::IfDef; }
+        | line = INTEGERLITERAL p = string
+    )
+    ;
+    
     
 linePreprocessorEntry
     @init
@@ -186,7 +212,7 @@ linePreprocessorEntry
         size_t origLine;
     }
     :
-    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL path = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $path.val }); }
+    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL p = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $p.val }); }
     ;
     
 alias

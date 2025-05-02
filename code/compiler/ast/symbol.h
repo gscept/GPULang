@@ -31,6 +31,7 @@ struct Symbol
     {
         InvalidType,
         AliasType,
+        PreprocessorType,
         TypeType,
         ProgramType,
         RenderStateType,

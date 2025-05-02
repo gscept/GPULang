@@ -48,6 +48,8 @@ fips_dir(ast)
         function.h
         intrinsics.cc
         intrinsics.h
+        preprocessor.cc
+        preprocessor.h
         program.cc
         program.h
         renderstate.cc

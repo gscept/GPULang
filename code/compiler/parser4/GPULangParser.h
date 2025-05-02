@@ -21,6 +21,7 @@
 #include "ast/state.h"
 #include "ast/structure.h"
 #include "ast/symbol.h"
+#include "ast/preprocessor.h"
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
@@ -89,24 +90,25 @@ public:
   };
 
   enum {
-    RuleString = 0, RuleBoolean = 1, RuleEntry = 2, RuleEffect = 3, RuleLinePreprocessorEntry = 4, 
-    RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, RuleTypeDeclaration = 8, 
-    RuleVariables = 9, RuleStructureDeclaration = 10, RuleStructure = 11, 
-    RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
-    RuleFunction = 15, RuleProgram = 16, RuleSampler = 17, RuleState = 18, 
-    RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
-    RuleForStatement = 22, RuleForRangeStatement = 23, RuleForUniformValueStatement = 24, 
-    RuleWhileStatement = 25, RuleScopeStatement = 26, RuleTerminateStatement = 27, 
-    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
-    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
-    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
-    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
-    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
-    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
-    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
-    RuleArrayInitializerExpression = 49, RuleFloatVecLiteralExpression = 50, 
-    RuleDoubleVecLiteralExpression = 51, RuleIntVecLiteralExpression = 52, 
-    RuleUintVecLiteralExpression = 53, RuleBooleanVecLiteralExpression = 54
+    RuleString = 0, RulePath = 1, RuleBoolean = 2, RuleEntry = 3, RuleEffect = 4, 
+    RulePreprocessor = 5, RuleLinePreprocessorEntry = 6, RuleAlias = 7, 
+    RuleAnnotation = 8, RuleAttribute = 9, RuleTypeDeclaration = 10, RuleVariables = 11, 
+    RuleStructureDeclaration = 12, RuleStructure = 13, RuleEnumeration = 14, 
+    RuleParameter = 15, RuleFunctionDeclaration = 16, RuleFunction = 17, 
+    RuleProgram = 18, RuleSampler = 19, RuleState = 20, RuleStatement = 21, 
+    RuleExpressionStatement = 22, RuleIfStatement = 23, RuleForStatement = 24, 
+    RuleForRangeStatement = 25, RuleForUniformValueStatement = 26, RuleWhileStatement = 27, 
+    RuleScopeStatement = 28, RuleTerminateStatement = 29, RuleContinueStatement = 30, 
+    RuleSwitchStatement = 31, RuleBreakStatement = 32, RuleExpression = 33, 
+    RuleCommaExpression = 34, RuleAssignmentExpression = 35, RuleLogicalOrExpression = 36, 
+    RuleLogicalAndExpression = 37, RuleOrExpression = 38, RuleXorExpression = 39, 
+    RuleAndExpression = 40, RuleEquivalencyExpression = 41, RuleRelationalExpression = 42, 
+    RuleShiftExpression = 43, RuleAddSubtractExpression = 44, RuleMultiplyDivideExpression = 45, 
+    RulePrefixExpression = 46, RuleSuffixExpression = 47, RuleNamespaceExpression = 48, 
+    RuleBinaryexpatom = 49, RuleInitializerExpression = 50, RuleArrayInitializerExpression = 51, 
+    RuleFloatVecLiteralExpression = 52, RuleDoubleVecLiteralExpression = 53, 
+    RuleIntVecLiteralExpression = 54, RuleUintVecLiteralExpression = 55, 
+    RuleBooleanVecLiteralExpression = 56
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -172,9 +174,11 @@ public:
 
 
   class StringContext;
+  class PathContext;
   class BooleanContext;
   class EntryContext;
   class EffectContext;
+  class PreprocessorContext;
   class LinePreprocessorEntryContext;
   class AliasContext;
   class AnnotationContext;
@@ -245,6 +249,25 @@ public:
 
   StringContext* string();
 
+  class  PathContext : public antlr4::ParserRuleContext {
+  public:
+    std::string val;
+    antlr4::Token *data = nullptr;
+    PathContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<antlr4::tree::TerminalNode *> QO();
+    antlr4::tree::TerminalNode* QO(size_t i);
+    antlr4::tree::TerminalNode *LESS();
+    std::vector<antlr4::tree::TerminalNode *> GREATER();
+    antlr4::tree::TerminalNode* GREATER(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  PathContext* path();
+
   class  BooleanContext : public antlr4::ParserRuleContext {
   public:
     bool val;
@@ -290,6 +313,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
     LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
+    std::vector<PreprocessorContext *> preprocessor();
+    PreprocessorContext* preprocessor(size_t i);
     std::vector<AliasContext *> alias();
     AliasContext* alias(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SC();
@@ -318,10 +343,39 @@ public:
 
   EffectContext* effect();
 
+  class  PreprocessorContext : public antlr4::ParserRuleContext {
+  public:
+    Preprocessor* pp;
+    antlr4::Token *method = nullptr;
+    GPULangParser::PathContext *file = nullptr;
+    antlr4::Token *arg0 = nullptr;
+    antlr4::Token *argn = nullptr;
+    antlr4::Token *line = nullptr;
+    GPULangParser::StringContext *p = nullptr;
+    PreprocessorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *NU();
+    antlr4::tree::TerminalNode *LP();
+    antlr4::tree::TerminalNode *RP();
+    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
+    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
+    antlr4::tree::TerminalNode *INTEGERLITERAL();
+    StringContext *string();
+    PathContext *path();
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  PreprocessorContext* preprocessor();
+
   class  LinePreprocessorEntryContext : public antlr4::ParserRuleContext {
   public:
     antlr4::Token *line = nullptr;
-    GPULangParser::StringContext *path = nullptr;
+    GPULangParser::StringContext *p = nullptr;
     LinePreprocessorEntryContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *INTEGERLITERAL();
