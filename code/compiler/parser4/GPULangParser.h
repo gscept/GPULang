@@ -137,10 +137,10 @@ public:
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+      //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
-      location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
+      location.file = "";
+      location.line = token->line;
       location.column = token->getCharPositionInLine();
       location.start = location.column;
       location.end = location.start + token->getText().length();
@@ -153,9 +153,9 @@ public:
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
 
-      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
-      location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
+      //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+      location.file = "";
+      location.line = token->line;// - rawLine - 1 + preprocessedLine;
       location.column = token->getCharPositionInLine();
       location.start = token->begin;
       location.end = token->end + 1;
@@ -313,8 +313,6 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
     LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<PreprocessorContext *> preprocessor();
-    PreprocessorContext* preprocessor(size_t i);
     std::vector<AliasContext *> alias();
     AliasContext* alias(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SC();
@@ -1565,6 +1563,7 @@ private:
   friend class GPULangTokenFactory;
   friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
   friend bool GPULangValidate(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+  friend bool GPULangPreprocess(const std::string&, const std::vector<std::string>&, std::string&, std::string&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 
 };

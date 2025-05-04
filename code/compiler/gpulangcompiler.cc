@@ -17,6 +17,8 @@
 #include "parser4/GPULangParser.h"
 #include "parser4/gpulangerrorhandlers.h"
 
+#include <regex>
+
 using namespace antlr4;
 using namespace GPULang;
 
@@ -42,12 +44,341 @@ FixBackslashes(const std::string& path)
 //------------------------------------------------------------------------------
 /**
 */
+std::string
+LoadFile(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
+{
+    FILE* f = fopen(path, "r");
+    
+    if (f == nullptr)
+    {
+        for (auto& searchPath : searchPaths)
+        {
+            foundPath = searchPath + std::string(path);
+            f = fopen(foundPath.c_str(), "r");
+            if (f != nullptr)
+                break;
+        }
+    }
+
+    fseek(f, 0, SEEK_END);
+    int size = ftell(f);
+    rewind(f);
+    GPULang::StackArray<char> arr(size);
+    fread(arr.ptr, size, 1, f);
+    fclose(f);
+    return std::string(arr.ptr, arr.ptr + size);
+}
+
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool
 GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, std::string& output, std::string& err)
 {
     std::string escaped = FixBackslashes(file);
     std::string fileName = file.substr(escaped.rfind("/")+1, escaped.length()-1);
     std::string folder = escaped.substr(0, escaped.rfind("/")+1);
+    std::string dummy;
+    std::string f = LoadFile(file.c_str(), {}, dummy);
+    std::map<std::string, std::string> definitions;
+
+    struct FileLevel
+    {
+        int lineCounter;
+        std::string path;
+        std::string contents;
+        char* line;
+
+        FileLevel(const std::string& path, std::string&& contents)
+        {
+            this->path = path;
+            this->contents = contents;
+            this->line = this->contents.data();
+            this->lineCounter = 0;
+        }
+
+        FileLevel(FileLevel&& rhs) noexcept
+        {
+            this->lineCounter = rhs.lineCounter;
+            this->line = rhs.line;
+            this->path = std::move(rhs.path);
+            this->contents = std::move(rhs.contents);
+            rhs.line = nullptr;
+        }
+
+        FileLevel(const FileLevel& rhs)
+        {
+            this->lineCounter = rhs.lineCounter;
+            this->path = rhs.path;
+            this->contents = rhs.contents;
+            this->line = this->contents.data();
+
+        }
+    };
+
+    struct Macro
+    {
+        std::vector<std::string> args;
+    };
+
+    std::vector<bool> ifStack;
+    std::vector<FileLevel> fileStack{ { file, std::move(f) } };
+    std::vector<std::string> searchPaths;
+    for (auto arg : defines)
+    {
+        if (arg[0] == '-')
+        {
+            if (arg[1] == 'I')
+                searchPaths.push_back(arg.substr(2));
+            else if (arg[1] == 'D')
+                definitions[arg.substr(2)] = 1;
+        }
+
+    }
+    FileLevel* level = &fileStack.back();
+    bool comment = false;
+    output.clear();
+    while (!fileStack.empty())
+    {
+        // Match #, if true then create a preprocessor argument
+        const char* eol = strchr(level->line, '\n');
+        if (eol == nullptr)
+            eol = strchr(level->line, '\0');
+        else
+            eol += 1;
+        std::string lineStr(level->line, eol - level->line);
+        std::smatch matches;
+
+        std::regex macrocall("\\s*([A-z]+[A-z|0-9|_]*)\\s*\\(\\s*(([A-z])\\s*(,\\s*([A-z])*))?\\s*\\).*\\u000a");
+        if (std::regex_match(lineStr, matches, macrocall))
+        {
+            auto it = definitions.find(matches[1]);
+            if (it != definitions.end())
+            {
+
+            }
+        }
+
+        if (level->line[0] == '#')
+        {
+            //auto pp = Alloc<Preprocessor>();
+            
+            static std::regex inclRegex("#\\s*include\\s+<([A-z|\/|.]+)>.*\\u000a");
+            static std::regex define("#\\s*define\\s+([A-z|_]+)(\\s+([A-z|_|0-9]+))?.*\\u000a");
+            static std::regex macro("#\\s*define\\s+([A-z]+[A-z|0-9|_]*)\\s*\\(?:([A-z|_])+\\).*\\u000a");
+            static std::regex undefine("#\\s*undef\\s+([A-z|_]+).*\\u000a");
+            static std::regex ifdefRegex("#\\s*ifdef\\s+([A-z|_]+).*\\u000a");
+            static std::regex ifndefRegex("#\\s*ifndef\\s+([A-z|_]+).*\\u000a");
+            static std::regex elifdefRegex("#\\s*elifdef\\s+([A-z|_]+).*\\u000a");
+            static std::regex elifndefRegex("#\\s*elifndef\\s+([A-z|_]+).*\\u000a");
+            static std::regex ifRegex("#\\s*if\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+            static std::regex elifRegex("#\\s*elif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+            static std::regex elseRegex("#\\s*else.*\\u000a");
+            static std::regex endifRegex("#\\s*endif.*\\u000a");
+            
+
+            if (std::regex_match(lineStr, matches, inclRegex))
+            {
+                const std::string& path = matches[1];
+                
+                std::string foundPath;
+                std::string incl = LoadFile(path.c_str(), searchPaths, foundPath);
+                output.append(Format("#line %s %d\n", level->path.c_str(), level->lineCounter));
+                level->line = strchr(level->line, '\n') + 1;
+
+                fileStack.push_back({ foundPath, std::move(incl) });
+                level = &fileStack.back();
+                continue;
+            }
+
+            else if (std::regex_match(lineStr, matches, macro))
+            {
+
+            }
+            else if (std::regex_match(lineStr, matches, define))
+            {
+                if (matches[3].matched != false)
+                    definitions[matches[1]] = matches[3];
+                else
+                    definitions[matches[1]] = "";
+            }
+            else if (std::regex_match(lineStr, matches, undefine))
+            {
+                if (definitions.contains(matches[1]))
+                    definitions.erase(matches[1]);
+            }
+            else if (std::regex_match(lineStr, matches, ifdefRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (it != definitions.end())
+                {
+                    ifStack.push_back(true);
+                }
+                else
+                {
+                    ifStack.push_back(false);
+                }
+            }
+            else if (std::regex_match(lineStr, matches, elifdefRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (it != definitions.end())
+                {
+                    ifStack.back() = true;
+                }
+                else
+                {
+                    ifStack.back() = false;
+                }
+            }
+            else if (std::regex_match(lineStr, matches, ifndefRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (it == definitions.end())
+                {
+                    ifStack.push_back(true);
+                }
+                else
+                {
+                    ifStack.push_back(false);
+                }
+            }
+            else if (std::regex_match(lineStr, matches, elifndefRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (it == definitions.end())
+                {
+                    ifStack.back() = true;
+                }
+                else
+                {
+                    ifStack.back() = false;
+                }
+            }
+            else if (std::regex_match(lineStr, matches, ifRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (matches[2] == "==")
+                {
+                    ifStack.push_back(it->second == matches[3]);
+                }
+                else if (matches[2] == "!=")
+                {
+                    ifStack.push_back(it->second != matches[3]);
+                }
+                else if (matches[2] == ">=")
+                {
+                    ifStack.push_back(std::stoi(it->second) >= std::stoi(matches[3]));
+                }
+                else if (matches[2] == "<=")
+                {
+                    ifStack.push_back(std::stoi(it->second) <= std::stoi(matches[3]));
+                }
+                else if (matches[2] == ">")
+                {
+                    ifStack.push_back(std::stoi(it->second) > std::stoi(matches[3]));
+                }
+                else if (matches[2] == "<")
+                {
+                    ifStack.push_back(std::stoi(it->second) < std::stoi(matches[3]));
+                }
+            }
+            else if (std::regex_match(lineStr, matches, elifRegex))
+            {
+                auto it = definitions.find(matches[1]);
+                if (matches[2] == "==")
+                {
+                    ifStack.back() = it->second == matches[3];
+                }
+                else if (matches[2] == "!=")
+                {
+                    ifStack.back() = it->second != matches[3];
+                }
+                else if (matches[2] == ">=")
+                {
+                    ifStack.back() = std::stoi(it->second) >= std::stoi(matches[3]);
+                }
+                else if (matches[2] == "<=")
+                {
+                    ifStack.back() = std::stoi(it->second) <= std::stoi(matches[3]);
+                }
+                else if (matches[2] == ">")
+                {
+                    ifStack.back() = std::stoi(it->second) > std::stoi(matches[3]);
+                }
+                else if (matches[2] == "<")
+                {
+                    ifStack.back() = std::stoi(it->second) < std::stoi(matches[3]);
+                }
+            }
+            else if (std::regex_match(lineStr, matches, elseRegex))
+            {
+                ifStack.back() = !ifStack.back();
+            }
+            else if (std::regex_match(lineStr, matches, endifRegex))
+            {
+                ifStack.pop_back();
+            }
+            else
+            {
+                err.append(Format("Invalid preprocessor directive '%s'\n", lineStr.c_str()));
+            }
+
+            // Remove line
+            goto next_line;
+        }
+        else if (level->line[0] == '/') // Match comments
+        {
+            if (level->line[1] == '/') // Single line comment
+            {
+                output.push_back('\n');
+                goto next_line;
+            }
+            else if (level->line[1] == '*') // Multi line comment
+                comment = true;
+        }
+        else if (level->line[0] == '*' && level->line[1] == '/') // End of multi line comment
+        {
+            comment = false;
+            output.push_back('\n');
+            goto next_line;
+        }
+        if (comment)
+        {
+            output.push_back('\n');
+            goto next_line;
+        }
+
+        if (!ifStack.empty())
+        {
+            if (!ifStack.back())
+            {
+                output.push_back('\n');
+                goto next_line;
+            }
+        }
+        output.append(lineStr);
+
+next_line:
+        level->line = strchr(level->line, '\n');
+        if (level->line == nullptr)
+        {
+            fileStack.pop_back();
+            if (!fileStack.empty())
+            {
+                level = &fileStack.back();
+            }
+        }
+        else
+        {
+            // move past \n
+            level->line += 1;
+        }
+        level->lineCounter++;
+
+    }
+    
     std::vector<std::string> args =
     {
 

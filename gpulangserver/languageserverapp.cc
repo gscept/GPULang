@@ -106,6 +106,7 @@ struct ParseContext
 
         std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
+        std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
         std::map<std::string, const GPULang::Symbol*> symbolsByName;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
@@ -146,6 +147,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
         if (symbol->symbolType != GPULang::Symbol::SymbolType::InvalidType)
             symbol->~Symbol();
     }
+    result.symbols.clear();
     GPULang::ResetAllocator(&allocator);
 }
 
@@ -155,6 +157,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 void
 WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string contents, lsp::MessageHandler& messageHandler)
 {
+    std::rewind(file->tmpFile);
     std::fputs(contents.c_str(), file->tmpFile);
     std::fflush(file->tmpFile);
 
@@ -371,6 +374,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
             const GPULang::Function::__Resolved* res = GPULang::Symbol::Resolved(fun);
             scopes.push_back(&res->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto annot : fun->annotations)
             {
                 //InsertSemanticToken(prevLoc, annot->location, SemanticTypeMapping::Decorator, 0x0, result);
@@ -414,6 +418,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Enumeration::__Resolved* res = GPULang::Symbol::Resolved(enu);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Enum, (uint32_t)SemanticModifierMapping::Definition, result);
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
 
             for (auto mem : enu->labelLocations)
             {
@@ -430,6 +435,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -447,6 +453,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -461,6 +468,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             scopes.push_back(&struc->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto var : struc->symbols)
             {
                 CreateSemanticToken(prevLoc, var, file, result, scopes);
@@ -481,6 +489,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             }
 
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : prog->entries)
             {
                 CreateSemanticToken(prevLoc, entry, file, result, scopes);
@@ -494,11 +503,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::ScopeStatement* scope = static_cast<const GPULang::ScopeStatement*>(sym);
             const GPULang::ScopeStatement::__Resolved* res = GPULang::Symbol::Resolved(scope);
             scopes.push_back(&res->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             for (auto innerSym : scope->symbols)
             {
                 CreateSemanticToken(prevLoc, innerSym, file, result, scopes);
             }
-            scopes.push_back(&res->scope);
+            scopes.pop_back();
             break;
         }
         case GPULang::Symbol::SymbolType::ExpressionStatementType:
@@ -553,6 +563,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
 
             // Push type on the left
             scopes.push_back(&res->lhsType->scope);
+            file->scopesByLine[range.startLine - 1] = scopes;
             CreateSemanticToken(prevLoc, expr->right, file, result, scopes);
             scopes.pop_back();
             break;
@@ -632,6 +643,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
     std::string ret = "";
     if (lookup.bits == 0x0)
         ret = GPULang::Format("### %s\n", sym->name.c_str());
+
     switch (sym->symbolType)
     {
         case GPULang::Symbol::SymbolType::VariableType:
@@ -926,6 +938,8 @@ main(int argc, const char** argv)
                 result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
+                result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = true, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
+
                 result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
                 return result;
             })
@@ -1125,6 +1139,16 @@ main(int argc, const char** argv)
 
                         int foo = 5;
                     }
+                }
+                return result;
+            })
+                .add<lsp::requests::TextDocument_Completion>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Completion::Params&& params)
+            {
+                lsp::requests::TextDocument_Completion::Result result;
+                ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
+                if (file != nullptr)
+                {
+                    
                 }
                 return result;
             })

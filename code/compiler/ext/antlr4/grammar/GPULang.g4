@@ -26,6 +26,7 @@ friend class GPULangParserErrorHandler;
 friend class GPULangTokenFactory;
 friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
 friend bool GPULangValidate(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+friend bool GPULangPreprocess(const std::string&, const std::vector<std::string>&, std::string&, std::string&);
 static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 }
 
@@ -43,10 +44,10 @@ SetupFile()
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+    //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     // assume the previous token is the latest file
-    location.file = file;
-    location.line = token->line - rawLine - 1 + preprocessedLine;
+    location.file = "";
+    location.line = token->line;
     location.column = token->getCharPositionInLine();
     location.start = location.column;
     location.end = location.start + token->getText().length();
@@ -59,9 +60,9 @@ BeginLocationRange()
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
 
-    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
-    location.file = file;
-    location.line = token->line - rawLine - 1 + preprocessedLine;
+    //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+    location.file = "";
+    location.line = token->line;// - rawLine - 1 + preprocessedLine;
     location.column = token->getCharPositionInLine();
     location.start = token->begin;
     location.end = token->end + 1;
@@ -177,7 +178,7 @@ effect
     :
     (
         linePreprocessorEntry
-        | preprocessor
+        //| preprocessor
         | alias ';'                 { $eff->symbols.push_back($alias.sym); }
         | functionDeclaration ';'   { $eff->symbols.push_back($functionDeclaration.sym); }    
         | function                  { $eff->symbols.push_back($function.sym); }    
