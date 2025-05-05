@@ -81,7 +81,6 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     std::string folder = escaped.substr(0, escaped.rfind("/")+1);
     std::string dummy;
     std::string f = LoadFile(file.c_str(), {}, dummy);
-    std::map<std::string, std::string> definitions;
 
     struct FileLevel
     {
@@ -120,7 +119,9 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     struct Macro
     {
         std::vector<std::string> args;
+        std::string contents;
     };
+    std::map<std::string, Macro> definitions;
 
     std::vector<bool> ifStack;
     std::vector<FileLevel> fileStack{ { file, std::move(f) } };
@@ -132,52 +133,94 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
             if (arg[1] == 'I')
                 searchPaths.push_back(arg.substr(2));
             else if (arg[1] == 'D')
-                definitions[arg.substr(2)] = 1;
+                definitions[arg.substr(2)] = Macro{ .contents = "" };
         }
 
     }
+    static std::regex simple("\\s*([A-z]+)");
+    std::cmatch matches;
+    std::regex_search("  Foobar Blorf    ", matches, simple);
+
+    static std::regex macrocallRegex("\\b([A-z][A-z|0-9|_]*)\\s*(?:\\((\\s*[A-z][A-z|0-9|_]*(?:\\s*,\\s*[A-z][A-z|0-9|_]*)*)?\\s*\\))?");
+    static std::regex inclRegex("#\\binclude\\s+<([A-z|\/|.]+)>.*\\u000a");
+    static std::regex macroRegex("#\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?(.*)\\u000a");
+    static std::regex undefineRegex("#\\bundef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifdefRegex("#\\bifdef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifndefRegex("#\\bifndef\\s+([A-z|_]+).*\\u000a");
+    static std::regex elifdefRegex("#\\belifdef\\s+([A-z|_]+).*\\u000a");
+    static std::regex elifndefRegex("#\\belifndef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifRegex("#\\bif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+    static std::regex elifRegex("#\\belif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+    static std::regex elseRegex("#\\belse.*\\u000a");
+    static std::regex endifRegex("#\\bendif.*\\u000a");
+
     FileLevel* level = &fileStack.back();
+    Macro* macro = nullptr;
     bool comment = false;
+    bool escaping = false;
     output.clear();
     while (!fileStack.empty())
     {
         // Match #, if true then create a preprocessor argument
-        const char* eol = strchr(level->line, '\n');
-        if (eol == nullptr)
-            eol = strchr(level->line, '\0');
+        char* eol = strchr(level->line, '\n');
+
+        // Get escape character, may be null
+        char* escape = strchr(level->line, '\\');
+        char* nextLine = eol;
+
+        if (nextLine == nullptr)
+            nextLine = strchr(level->line, '\0');
         else
-            eol += 1;
-        std::string lineStr(level->line, eol - level->line);
+            nextLine += 1;
+
+        std::string lineStr(level->line, nextLine - level->line);
         std::smatch matches;
 
-        std::regex macrocall("\\s*([A-z]+[A-z|0-9|_]*)\\s*\\(\\s*(([A-z])\\s*(,\\s*([A-z])*))?\\s*\\).*\\u000a");
-        if (std::regex_match(lineStr, matches, macrocall))
+        if (std::regex_search(lineStr, matches, macrocallRegex))
         {
             auto it = definitions.find(matches[1]);
             if (it != definitions.end())
             {
+                // Parse arguments
+                std::string argList = matches[2].str();
+                std::vector<std::string> args;
+                char* arg = argList.data();
+                while (arg != nullptr)
+                {
+                    char* nextArg = strchr(arg, ',');
+                    if (nextArg != nullptr)
+                    {
+                        args.push_back(std::string(arg, nextArg - arg));
+                        arg = nextArg + 1;
+                    }
+                    else
+                    {
+                        args.push_back(arg);
+                        arg = nullptr;
+                    }
+                }
 
+                std::string content = it->second.contents;
+                int argCounter = 0;
+                for (auto& arg : it->second.args)
+                {
+                    if (argCounter > args.size())
+                        break;
+                    content = std::regex_replace(content, std::regex(arg), args[argCounter]);
+                    argCounter++;
+                }
+                output.append(content);
             }
+        }
+
+        if (escaping && macro != nullptr)
+        {
+            macro->contents.append(lineStr);
+            goto next_line;
         }
 
         if (level->line[0] == '#')
         {
-            //auto pp = Alloc<Preprocessor>();
-            
-            static std::regex inclRegex("#\\s*include\\s+<([A-z|\/|.]+)>.*\\u000a");
-            static std::regex define("#\\s*define\\s+([A-z|_]+)(\\s+([A-z|_|0-9]+))?.*\\u000a");
-            static std::regex macro("#\\s*define\\s+([A-z]+[A-z|0-9|_]*)\\s*\\(?:([A-z|_])+\\).*\\u000a");
-            static std::regex undefine("#\\s*undef\\s+([A-z|_]+).*\\u000a");
-            static std::regex ifdefRegex("#\\s*ifdef\\s+([A-z|_]+).*\\u000a");
-            static std::regex ifndefRegex("#\\s*ifndef\\s+([A-z|_]+).*\\u000a");
-            static std::regex elifdefRegex("#\\s*elifdef\\s+([A-z|_]+).*\\u000a");
-            static std::regex elifndefRegex("#\\s*elifndef\\s+([A-z|_]+).*\\u000a");
-            static std::regex ifRegex("#\\s*if\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-            static std::regex elifRegex("#\\s*elif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-            static std::regex elseRegex("#\\s*else.*\\u000a");
-            static std::regex endifRegex("#\\s*endif.*\\u000a");
-            
-
             if (std::regex_match(lineStr, matches, inclRegex))
             {
                 const std::string& path = matches[1];
@@ -192,18 +235,38 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                 continue;
             }
 
-            else if (std::regex_match(lineStr, matches, macro))
+            else if (std::regex_match(lineStr, matches, macroRegex))
             {
+                macro = &definitions[matches[1]];
 
-            }
-            else if (std::regex_match(lineStr, matches, define))
-            {
-                if (matches[3].matched != false)
-                    definitions[matches[1]] = matches[3];
+                // Macro with argument path
+                if (matches[2].matched)
+                {
+                    std::string argList = matches[2].str();
+                    char* arg = argList.data();
+                    while (arg != nullptr)
+                    {
+                        char* nextArg = strchr(arg, ',');
+                        if (nextArg != nullptr)
+                        {
+                            macro->args.push_back(std::string(arg, nextArg - arg));
+                            arg = nextArg + 1;
+                        }
+                        else
+                        {
+                            macro->args.push_back(arg);
+                            arg = nullptr;
+                        }
+                    }
+                    macro->contents = matches[3];
+                }
                 else
-                    definitions[matches[1]] = "";
+                {
+                    // Simple macro to value path
+                    macro->contents = matches[3];
+                }
             }
-            else if (std::regex_match(lineStr, matches, undefine))
+            else if (std::regex_match(lineStr, matches, undefineRegex))
             {
                 if (definitions.contains(matches[1]))
                     definitions.erase(matches[1]);
@@ -261,27 +324,27 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                 auto it = definitions.find(matches[1]);
                 if (matches[2] == "==")
                 {
-                    ifStack.push_back(it->second == matches[3]);
+                    ifStack.push_back(it->second.contents == matches[3]);
                 }
                 else if (matches[2] == "!=")
                 {
-                    ifStack.push_back(it->second != matches[3]);
+                    ifStack.push_back(it->second.contents != matches[3]);
                 }
                 else if (matches[2] == ">=")
                 {
-                    ifStack.push_back(std::stoi(it->second) >= std::stoi(matches[3]));
+                    ifStack.push_back(std::stoi(it->second.contents) >= std::stoi(matches[3]));
                 }
                 else if (matches[2] == "<=")
                 {
-                    ifStack.push_back(std::stoi(it->second) <= std::stoi(matches[3]));
+                    ifStack.push_back(std::stoi(it->second.contents) <= std::stoi(matches[3]));
                 }
                 else if (matches[2] == ">")
                 {
-                    ifStack.push_back(std::stoi(it->second) > std::stoi(matches[3]));
+                    ifStack.push_back(std::stoi(it->second.contents) > std::stoi(matches[3]));
                 }
                 else if (matches[2] == "<")
                 {
-                    ifStack.push_back(std::stoi(it->second) < std::stoi(matches[3]));
+                    ifStack.push_back(std::stoi(it->second.contents) < std::stoi(matches[3]));
                 }
             }
             else if (std::regex_match(lineStr, matches, elifRegex))
@@ -289,27 +352,27 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                 auto it = definitions.find(matches[1]);
                 if (matches[2] == "==")
                 {
-                    ifStack.back() = it->second == matches[3];
+                    ifStack.back() = it->second.contents == matches[3];
                 }
                 else if (matches[2] == "!=")
                 {
-                    ifStack.back() = it->second != matches[3];
+                    ifStack.back() = it->second.contents != matches[3];
                 }
                 else if (matches[2] == ">=")
                 {
-                    ifStack.back() = std::stoi(it->second) >= std::stoi(matches[3]);
+                    ifStack.back() = std::stoi(it->second.contents) >= std::stoi(matches[3]);
                 }
                 else if (matches[2] == "<=")
                 {
-                    ifStack.back() = std::stoi(it->second) <= std::stoi(matches[3]);
+                    ifStack.back() = std::stoi(it->second.contents) <= std::stoi(matches[3]);
                 }
                 else if (matches[2] == ">")
                 {
-                    ifStack.back() = std::stoi(it->second) > std::stoi(matches[3]);
+                    ifStack.back() = std::stoi(it->second.contents) > std::stoi(matches[3]);
                 }
                 else if (matches[2] == "<")
                 {
-                    ifStack.back() = std::stoi(it->second) < std::stoi(matches[3]);
+                    ifStack.back() = std::stoi(it->second.contents) < std::stoi(matches[3]);
                 }
             }
             else if (std::regex_match(lineStr, matches, elseRegex))
@@ -361,7 +424,18 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
         output.append(lineStr);
 
 next_line:
-        level->line = strchr(level->line, '\n');
+
+        // If the newline is escaped, keep just appending to whatever previous macro was started
+        if (escape + 1 == eol)
+        {
+            escaping = true;
+        }
+        else
+        {
+            escaping = false;
+        }
+
+        level->line = nextLine;
         if (level->line == nullptr)
         {
             fileStack.pop_back();
@@ -369,11 +443,6 @@ next_line:
             {
                 level = &fileStack.back();
             }
-        }
-        else
-        {
-            // move past \n
-            level->line += 1;
         }
         level->lineCounter++;
 
