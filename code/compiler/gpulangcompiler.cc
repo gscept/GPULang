@@ -143,19 +143,20 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     std::regex_search("  Foobar Blorf    ", matches, simple);
 
     static std::regex macrocallRegex("\\b([A-z][A-z|0-9|_]*)\\s*(?:\\((\\s*[A-z][A-z|0-9|_]*(?:\\s*,\\s*[A-z][A-z|0-9|_]*)*)?\\s*\\))?");
-    static std::regex inclRegex("#\\binclude\\s+<([A-z|\/|.]+)>.*\\u000a");
-    static std::regex macroRegex("#\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?(.*)\\u000a");
-    static std::regex undefineRegex("#\\bundef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifdefRegex("#\\bifdef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifndefRegex("#\\bifndef\\s+([A-z|_]+).*\\u000a");
-    static std::regex elifdefRegex("#\\belifdef\\s+([A-z|_]+).*\\u000a");
-    static std::regex elifndefRegex("#\\belifndef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifRegex("#\\bif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-    static std::regex elifRegex("#\\belif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-    static std::regex elseRegex("#\\belse.*\\u000a");
-    static std::regex endifRegex("#\\bendif.*\\u000a");
+    static std::regex inclRegex("\\binclude\\s+<([A-z|\/|.]+)>.*\\u000a");
+    static std::regex macroRegex("\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?(.*)\\u000a");
+    static std::regex undefineRegex("\\bundef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifdefRegex("\\bifdef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifndefRegex("\\bifndef\\s+([A-z|_]+).*\\u000a");
+    static std::regex elifdefRegex("\\belifdef\\s+([A-z|_]+).*\\u000a");
+    static std::regex elifndefRegex("\\belifndef\\s+([A-z|_]+).*\\u000a");
+    static std::regex ifRegex("\\bif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+    static std::regex elifRegex("\\belif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
+    static std::regex elseRegex("\\belse.*\\u000a");
+    static std::regex endifRegex("\\bendif.*\\u000a");
     static std::regex directiveStartRegex("\s*#");
-    static std::regex directiveEndRegex("\s*");
+
+    static std::regex endOfLineMatch("(?![\\s\\S]*\\\\n)[\\s\\S]*\\n");
 
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
@@ -165,6 +166,11 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     while (!fileStack.empty())
     {
         // Match #, if true then create a preprocessor argument
+        std::cmatch lineMatch;
+        if (std::regex_search(level->line, lineMatch, endOfLineMatch))
+        {
+
+        }
         char* eol = strchr(level->line, '\n');
 
         // Get escape character, may be null
@@ -222,9 +228,11 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
             goto next_line;
         }
 
-        if (level->line[0] == '#')
+
+        if (std::regex_search(lineStr, matches, directiveStartRegex))
         {
-            if (std::regex_match(lineStr, matches, inclRegex))
+            std::string directiveString = matches.suffix().str();
+            if (std::regex_match(directiveString, matches, inclRegex))
             {
                 const std::string& path = matches[1];
                 
@@ -238,7 +246,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                 continue;
             }
 
-            else if (std::regex_match(lineStr, matches, macroRegex))
+            else if (std::regex_match(directiveString, matches, macroRegex))
             {
                 macro = &definitions[matches[1]];
 
@@ -269,12 +277,12 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     macro->contents = matches[3];
                 }
             }
-            else if (std::regex_match(lineStr, matches, undefineRegex))
+            else if (std::regex_match(directiveString, matches, undefineRegex))
             {
                 if (definitions.contains(matches[1]))
                     definitions.erase(matches[1]);
             }
-            else if (std::regex_match(lineStr, matches, ifdefRegex))
+            else if (std::regex_match(directiveString, matches, ifdefRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (it != definitions.end())
@@ -286,7 +294,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.push_back(false);
                 }
             }
-            else if (std::regex_match(lineStr, matches, elifdefRegex))
+            else if (std::regex_match(directiveString, matches, elifdefRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (it != definitions.end())
@@ -298,7 +306,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = false;
                 }
             }
-            else if (std::regex_match(lineStr, matches, ifndefRegex))
+            else if (std::regex_match(directiveString, matches, ifndefRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (it == definitions.end())
@@ -310,7 +318,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.push_back(false);
                 }
             }
-            else if (std::regex_match(lineStr, matches, elifndefRegex))
+            else if (std::regex_match(directiveString, matches, elifndefRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (it == definitions.end())
@@ -322,7 +330,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = false;
                 }
             }
-            else if (std::regex_match(lineStr, matches, ifRegex))
+            else if (std::regex_match(directiveString, matches, ifRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (matches[2] == "==")
@@ -350,7 +358,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.push_back(std::stoi(it->second.contents) < std::stoi(matches[3]));
                 }
             }
-            else if (std::regex_match(lineStr, matches, elifRegex))
+            else if (std::regex_match(directiveString, matches, elifRegex))
             {
                 auto it = definitions.find(matches[1]);
                 if (matches[2] == "==")
@@ -378,17 +386,17 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = std::stoi(it->second.contents) < std::stoi(matches[3]);
                 }
             }
-            else if (std::regex_match(lineStr, matches, elseRegex))
+            else if (std::regex_match(directiveString, matches, elseRegex))
             {
                 ifStack.back() = !ifStack.back();
             }
-            else if (std::regex_match(lineStr, matches, endifRegex))
+            else if (std::regex_match(directiveString, matches, endifRegex))
             {
                 ifStack.pop_back();
             }
             else
             {
-                err.append(Format("Invalid preprocessor directive '%s'\n", lineStr.c_str()));
+                err.append(Format("Invalid preprocessor directive '%s'\n", directiveString.c_str()));
             }
 
             // Remove line
