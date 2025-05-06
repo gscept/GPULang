@@ -143,38 +143,36 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     std::regex_search("  Foobar Blorf    ", matches, simple);
 
     static std::regex macrocallRegex("\\b([A-z][A-z|0-9|_]*)\\s*(?:\\((\\s*[A-z][A-z|0-9|_]*(?:\\s*,\\s*[A-z][A-z|0-9|_]*)*)?\\s*\\))?");
-    static std::regex inclRegex("\\binclude\\s+<([A-z|\/|.]+)>.*\\u000a");
-    static std::regex macroRegex("\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?(.*)\\u000a");
-    static std::regex undefineRegex("\\bundef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifdefRegex("\\bifdef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifndefRegex("\\bifndef\\s+([A-z|_]+).*\\u000a");
-    static std::regex elifdefRegex("\\belifdef\\s+([A-z|_]+).*\\u000a");
-    static std::regex elifndefRegex("\\belifndef\\s+([A-z|_]+).*\\u000a");
-    static std::regex ifRegex("\\bif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-    static std::regex elifRegex("\\belif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
-    static std::regex elseRegex("\\belse.*\\u000a");
-    static std::regex endifRegex("\\bendif.*\\u000a");
-    static std::regex directiveStartRegex("\s*#");
+    static std::regex inclRegex("\\binclude\\s+<([A-z|\\/|.]+)>");
+    static std::regex macroRegex("\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?([\\s\\S]*)");
+    static std::regex undefineRegex("\\bundef\\s+([A-z|_]+).*");
+    static std::regex ifdefRegex("\\bifdef\\s+([A-z|_]+).*");
+    static std::regex ifndefRegex("\\bifndef\\s+([A-z|_]+).*");
+    static std::regex elifdefRegex("\\belifdef\\s+([A-z|_]+).*");
+    static std::regex elifndefRegex("\\belifndef\\s+([A-z|_]+).*");
+    static std::regex ifRegex("\\bif\\s+([A-z|_]+)\\s*(==|\\!=|>=|<=|<|>)\\s*([0-9]*).*");
+    static std::regex elifRegex("\\belif\\s+([A-z|_]+)\\s*(==|\\!=|>=|<=|<|>)\\s*([0-9]*).*");
+    static std::regex elseRegex("\\belse.*");
+    static std::regex endifRegex("\\bendif.*");
+    static std::regex directiveStartRegex("\\s*#");
 
-    static std::regex endOfLineMatch("(?![\\s\\S]*\\\\n)[\\s\\S]*\\n");
 
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
     bool comment = false;
-    bool escaping = false;
     output.clear();
     while (!fileStack.empty())
     {
-        // Match #, if true then create a preprocessor argument
-        std::cmatch lineMatch;
-        if (std::regex_search(level->line, lineMatch, endOfLineMatch))
-        {
-
-        }
+        // Find next unescaped \n
         char* eol = strchr(level->line, '\n');
+        if (eol != nullptr)
+        {
+            if (eol[-1] == '\\')
+            {
+                eol = strchr(eol + 1, '\n');
+            }
+        }
 
-        // Get escape character, may be null
-        char* escape = strchr(level->line, '\\');
         char* nextLine = eol;
 
         if (nextLine == nullptr)
@@ -220,12 +218,6 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                 }
                 output.append(content);
             }
-        }
-
-        if (escaping && macro != nullptr)
-        {
-            macro->contents.append(lineStr);
-            goto next_line;
         }
 
 
@@ -435,16 +427,6 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
         output.append(lineStr);
 
 next_line:
-
-        // If the newline is escaped, keep just appending to whatever previous macro was started
-        if (escape + 1 == eol)
-        {
-            escaping = true;
-        }
-        else
-        {
-            escaping = false;
-        }
 
         level->line = nextLine;
         if (level->line == nullptr)
