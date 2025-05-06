@@ -137,6 +137,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
         }
 
     }
+
     static std::regex simple("\\s*([A-z]+)");
     std::cmatch matches;
     std::regex_search("  Foobar Blorf    ", matches, simple);
@@ -153,6 +154,8 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     static std::regex elifRegex("#\\belif\\s+([A-z|_]+)\\s*(==|\!=|>=|<=|<|>)\\s*([0-9]*).*\\u000a");
     static std::regex elseRegex("#\\belse.*\\u000a");
     static std::regex endifRegex("#\\bendif.*\\u000a");
+    static std::regex directiveStartRegex("\s*#");
+    static std::regex directiveEndRegex("\s*");
 
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
