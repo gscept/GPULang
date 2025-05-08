@@ -31,9 +31,6 @@ public:
   virtual void enterEffect(GPULangParser::EffectContext * /*ctx*/) override { }
   virtual void exitEffect(GPULangParser::EffectContext * /*ctx*/) override { }
 
-  virtual void enterPreprocessor(GPULangParser::PreprocessorContext * /*ctx*/) override { }
-  virtual void exitPreprocessor(GPULangParser::PreprocessorContext * /*ctx*/) override { }
-
   virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }
   virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext * /*ctx*/) override { }
 

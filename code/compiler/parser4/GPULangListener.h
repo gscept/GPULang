@@ -29,9 +29,6 @@ public:
   virtual void enterEffect(GPULangParser::EffectContext *ctx) = 0;
   virtual void exitEffect(GPULangParser::EffectContext *ctx) = 0;
 
-  virtual void enterPreprocessor(GPULangParser::PreprocessorContext *ctx) = 0;
-  virtual void exitPreprocessor(GPULangParser::PreprocessorContext *ctx) = 0;
-
   virtual void enterLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;
   virtual void exitLinePreprocessorEntry(GPULangParser::LinePreprocessorEntryContext *ctx) = 0;
 

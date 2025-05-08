@@ -44,10 +44,10 @@ SetupFile()
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-    //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     // assume the previous token is the latest file
-    location.file = "";
-    location.line = token->line;
+    location.file = file;
+    location.line = token->line - rawLine - 1 + preprocessedLine;
     location.column = token->getCharPositionInLine();
     location.start = location.column;
     location.end = location.start + token->getText().length();
@@ -60,9 +60,9 @@ BeginLocationRange()
     Symbol::Location location;
     ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
 
-    //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
-    location.file = "";
-    location.line = token->line;// - rawLine - 1 + preprocessedLine;
+    auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+    location.file = file;
+    location.line = token->line - rawLine - 1 + preprocessedLine;
     location.column = token->getCharPositionInLine();
     location.start = token->begin;
     location.end = token->end + 1;
@@ -190,21 +190,22 @@ effect
         | program ';'               { $eff->symbols.push_back($program.sym); }
     )*?;
 
-preprocessor
-    returns [Preprocessor* pp]
-    @init
-    {
-        Symbol::Location location;
-    }
-    :
-    '#' (method = IDENTIFIER) { $pp = Alloc<Preprocessor>(); $pp->method = $method.text; $pp->type = Preprocessor::EndIf; }
-    (
-        (file = path { $pp->args.push_back($file.val); })                                                                                  { $pp->type = Preprocessor::Include; }    // include
-        | '(' (arg0 = IDENTIFIER { $pp->args.push_back($arg0.text); } (',' argn = IDENTIFIER { $pp->args.push_back($argn.text); })* )? ')'  { $pp->type = Preprocessor::Macro; }    // macro
-        | IDENTIFIER                                                                                                                        { $pp->type = Preprocessor::IfDef; }
-        | line = INTEGERLITERAL p = string
-    )
-    ;
+    
+//preprocessor
+//    returns [Preprocessor* pp]
+//    @init
+//    {
+//        Symbol::Location location;
+//    }
+//    :
+//    '#' (method = IDENTIFIER) { $pp = Alloc<Preprocessor>(); $pp->method = $method.text; $pp->type = Preprocessor::EndIf; }
+//    (
+//        (file = path { $pp->args.push_back($file.val); })                                                                                  { $pp->type = Preprocessor::Include; }    // include
+//        | '(' (arg0 = IDENTIFIER { $pp->args.push_back($arg0.text); } (',' argn = IDENTIFIER { $pp->args.push_back($argn.text); })* )? ')'  { $pp->type = Preprocessor::Macro; }    // macro
+//        | IDENTIFIER                                                                                                                        { $pp->type = Preprocessor::IfDef; }
+//        | line = INTEGERLITERAL p = string
+//    )
+//    ;
     
     
 linePreprocessorEntry

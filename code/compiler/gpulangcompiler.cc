@@ -8,6 +8,7 @@
 #include "cmdlineargs.h"
 #include "gpulangcompiler.h"
 #include "compiler.h"
+#include "ast/preprocessor.h"
 #include "ast/effect.h"
 #include "memory.h"
 
@@ -18,7 +19,6 @@
 #include "parser4/gpulangerrorhandlers.h"
 
 #include <regex>
-#include <sys/stat.h>
 
 using namespace antlr4;
 using namespace GPULang;
@@ -45,32 +45,23 @@ FixBackslashes(const std::string& path)
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+FILE*
 LoadFile(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
 {
-    FILE* f = fopen(path, "r");
+    FILE* f = fopen(path, "rb");
     
     if (f == nullptr)
     {
         for (auto& searchPath : searchPaths)
         {
             foundPath = searchPath + std::string(path);
-            f = fopen(foundPath.c_str(), "r");
+            f = fopen(foundPath.c_str(), "rb");
             if (f != nullptr)
                 break;
         }
     }
 
-    int result = fseek(f, 0, SEEK_END);
-    struct _stat stats;
-    _fstat(f, &stat);
-    int size = ftell(f);
-    rewind(f);
-    GPULang::StackArray<char> arr(size);
-    fread(arr.ptr, size, 1, f);
-    fclose(f);
-    std::string ret(arr.ptr, arr.ptr + size);
-    return ret;
+    return f;
 }
 
 
@@ -78,45 +69,45 @@ LoadFile(const char* path, const std::vector<std::string>& searchPaths, std::str
 /**
 */
 bool
-GPULangPreprocess(const std::string& file, const std::vector<std::string>& defines, std::string& output, std::string& err)
+GPULangPreprocess(
+    const std::string& file
+    , const std::vector<std::string>& defines
+    , std::string& output
+    , std::vector<GPULang::Symbol*>& preprocessorSymbols
+    , std::vector<GPULang::Diagnostic>& diagnostics
+)
 {
     std::string escaped = FixBackslashes(file);
     std::string fileName = file.substr(escaped.rfind("/")+1, escaped.length()-1);
     std::string folder = escaped.substr(0, escaped.rfind("/")+1);
     std::string dummy;
-    std::string f = LoadFile(file.c_str(), {}, dummy);
+    FILE* f = LoadFile(file.c_str(), {}, dummy);
 
     struct FileLevel
     {
         int lineCounter;
         std::string path;
-        std::string contents;
-        char* line;
+        FILE* file;
 
-        FileLevel(const std::string& path, std::string&& contents)
+        FileLevel(const std::string& path, FILE* file)
         {
             this->path = path;
-            this->contents = contents;
-            this->line = this->contents.data();
+            this->file = file;
             this->lineCounter = 0;
         }
 
         FileLevel(FileLevel&& rhs) noexcept
         {
             this->lineCounter = rhs.lineCounter;
-            this->line = rhs.line;
+            this->file = rhs.file;
             this->path = std::move(rhs.path);
-            this->contents = std::move(rhs.contents);
-            rhs.line = nullptr;
         }
 
         FileLevel(const FileLevel& rhs)
         {
             this->lineCounter = rhs.lineCounter;
             this->path = rhs.path;
-            this->contents = rhs.contents;
-            this->line = this->contents.data();
-
+            this->file = rhs.file;
         }
     };
 
@@ -128,7 +119,7 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     std::map<std::string, Macro> definitions;
 
     std::vector<bool> ifStack;
-    std::vector<FileLevel> fileStack{ { file, std::move(f) } };
+    std::vector<FileLevel> fileStack{ { file, f } };
     std::vector<std::string> searchPaths;
     for (auto arg : defines)
     {
@@ -146,113 +137,131 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
     std::cmatch matches;
     std::regex_search("  Foobar Blorf    ", matches, simple);
 
-    static std::regex macrocallRegex("\\b([A-z][A-z|0-9|_]*)\\s*(?:\\((\\s*[A-z][A-z|0-9|_]*(?:\\s*,\\s*[A-z][A-z|0-9|_]*)*)?\\s*\\))?");
-    static std::regex inclRegex("\\binclude\\s+<([A-z|\\/|.]+)>.*");
-    static std::regex macroRegex("\\bdefine\\s+([A-z][A-z|0-9|_]*)\\s*(?:\\(([A-z][A-z|_]*(?:\\s*,\\s*[A-z][A-z|_]*)*)\\s*\\)\\s*)?([\\s\\S]*)");
-    static std::regex undefineRegex("\\bundef\\s+([A-z|_]+).*");
-    static std::regex ifdefRegex("\\bifdef\\s+([A-z|_]+).*");
-    static std::regex ifndefRegex("\\bifndef\\s+([A-z|_]+).*");
-    static std::regex elifdefRegex("\\belifdef\\s+([A-z|_]+).*");
-    static std::regex elifndefRegex("\\belifndef\\s+([A-z|_]+).*");
-    static std::regex ifRegex("\\bif\\s+([A-z|_]+)\\s*(==|\\!=|>=|<=|<|>)\\s*([0-9]*).*");
-    static std::regex elifRegex("\\belif\\s+([A-z|_]+)\\s*(==|\\!=|>=|<=|<|>)\\s*([0-9]*).*");
+    static std::regex macrocallRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)\\s*(?:\\((\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*)*)?\\s*\\))?");
+    static std::regex replaceRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)");
+    static std::regex inclRegex("\\binclude\\s+(?:<|\\\")([A-Z|a-z|\\/|.]+)(?:>|\\\").*");
+    static std::regex macroRegex("\\bdefine\\s+([A-Z|a-z][A-Z|a-z|0-9|_]*)\\s*(?:\\(([A-Z|a-z][A-Z|a-z|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|_]*)*)\\s*\\)\\s*)?(.*)");
+    static std::regex undefineRegex("\\bundef\\s+([A-Z|a-z|_]+).*");
+    static std::regex ifdefRegex("\\bifdef\\s+([A-Z|a-z|_]+).*");
+    static std::regex ifndefRegex("\\bifndef\\s+([A-Z|a-z|_]+).*");
+    static std::regex elifdefRegex("\\belifdef\\s+([A-Z|a-z|_]+).*");
+    static std::regex elifndefRegex("\\belifndef\\s+([A-Z|a-z|_]+).*");
+    static std::regex ifRegex("\\bif\\s+([A-Z|a-z|_]+)\\s*((==|\\!=|>=|<=|<|>)\\s*([0-9]*))?.*");
+    static std::regex elifRegex("\\belif\\s+([A-Z|a-z|_]+)\\s*(==|\\!=|>=|<=|<|>)\\s*([0-9]*).*");
     static std::regex elseRegex("\\belse.*");
     static std::regex endifRegex("\\bendif.*");
     static std::regex directiveStartRegex("\\s*#");
-    static std::regex identifierRegex("\\b[A-z][A-z|_|0-9]*");
-
+    static std::regex identifierRegex("\\b[A-Z|a-z][A-Z|a-z|_|0-9]*");
+    static std::regex singleLineCommentRegex("\\s*//");
+    static std::regex startMultilineCommentRegex("\\s*/\\*");
+    static std::regex endMultilineCommentRegex("\\s*\\*/");
 
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
     bool comment = false;
     output.clear();
+    char buf[4096];
+
+#define POP_FILE() \
+            fileStack.pop_back();\
+            if (!fileStack.empty())\
+            {\
+                level = &fileStack.back();\
+                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->path.c_str()));\
+            }\
+            continue;
     while (!fileStack.empty())
     {
         // Find next unescaped \n
-        char* eol = strchr(level->line, '\n');
-        if (eol != nullptr)
+    next_line:
+        char* line = fgets(buf, sizeof(buf), level->file);
+        if (line == nullptr)
         {
-            if (eol > level->line)
-            {
-                escape:
-                if (eol[-1] == '\\')
-                {
-                    eol = strchr(eol + 1, '\n');
-                    goto escape;
-                }
-            }
+            POP_FILE()
         }
-        else
+        level->lineCounter++;
+        std::string lineStr(line);
+        int lineEndingLength = 0;
+        if (lineStr.ends_with("\r\n"))
+            lineEndingLength = 2;
+        else if (lineStr.ends_with("\r") || lineStr.ends_with("\n"))
+            lineEndingLength = 1;
+
+        // Check for valid end of line, meaning the file is corrupt after this point
+        auto charIterator = lineStr.rbegin();
+        if (lineStr.length() >= 3 && (charIterator[2] == '\r' || charIterator[2] == '\n'))
+            lineEndingLength = 0;
+        if (lineEndingLength == 0)
         {
-            eol = strchr(level->line, '\0');
+            diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
+            POP_FILE()
         }
 
-        char* nextLine = eol;
+    escape_newline:
 
-        if (nextLine != nullptr)
-            nextLine += 1;
+        if (lineStr.ends_with("\\\r\n") || lineStr.ends_with("\\\n"))
+        {
+            // Remove escape and newline
+            lineStr.resize(lineStr.length() - lineEndingLength - 1);
+            char* line = fgets(buf, sizeof(buf), level->file);
+            lineStr += std::string(line);
+            level->lineCounter++;
+            goto escape_newline;
+        }
 
-        std::string lineStr(level->line, nextLine - level->line);
+        auto lineIt = lineStr.cbegin();
+        auto lineEnd = lineStr.cend();
+
+#define IFDEFSTACK() \
+        if (!ifStack.empty())\
+        {\
+            if (!ifStack.back())\
+            {\
+                output.push_back('\n');\
+                goto next_line;\
+            }\
+        }
+
+#define SETUP_PP(pp)\
+        pp->location.file = level->path;\
+        pp->location.line = level->lineCounter;\
+        pp->location.start = lineIt - lineStr.cbegin();\
+        pp->location.end = matches.suffix().first - lineStr.cbegin();\
+        preprocessorSymbols.push_back(pp);
+
         std::smatch matches;
 
-        if (std::regex_search(lineStr, matches, macrocallRegex))
+        if (std::regex_search(lineIt, lineEnd, matches, directiveStartRegex))
         {
-            auto it = definitions.find(matches[1]);
-            if (it != definitions.end())
+            auto startOfDirective = matches.suffix().first;
+            auto directiveIt = matches.suffix().first;
+            if (std::regex_search(directiveIt, lineEnd, matches, inclRegex))
             {
-                // Parse arguments
-                if (matches[2].matched)
-                {
-                    std::string argList = matches[2].str();
-                    std::vector<std::string> args;
-                    std::smatch argMatches;
-                    while (std::regex_search(argList, argMatches, identifierRegex))
-                    {
-                        args.push_back(argMatches[0]);
-                        argList = argMatches.suffix();
-                    }
-
-                    std::string content = it->second.contents;
-
-                    // Warn if mismatch
-                    int maxIterations = min(args.size(), it->second.args.size());
-                    int argCounter = 0;
-                    for (auto& arg : it->second.args)
-                    {
-                        if (argCounter > maxIterations)
-                            break;
-                        content = std::regex_replace(content, std::regex(arg), args[argCounter]);
-                        argCounter++;
-                    }
-                    output.append(Format("#line %s %d\n", level->path.c_str(), level->lineCounter));
-                    output.append(content);
-                    goto next_line;
-                }
-
-            }
-        }
-
-
-        if (std::regex_search(lineStr, matches, directiveStartRegex))
-        {
-            std::string directiveString = matches.suffix().str();
-            if (std::regex_search(directiveString, matches, inclRegex))
-            {
+                IFDEFSTACK()
                 const std::string& path = matches[1];
+
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Include;
+                SETUP_PP(pp)
                 
                 std::string foundPath;
-                std::string incl = LoadFile(path.c_str(), searchPaths, foundPath);
-                output.append(Format("#line %s %d\n", level->path.c_str(), level->lineCounter));
-                level->line = strchr(level->line, '\n') + 1;
+                FILE* inc = LoadFile(path.c_str(), searchPaths, foundPath);
+                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->path.c_str()));
 
-                fileStack.push_back({ foundPath, std::move(incl) });
+                fileStack.push_back({ foundPath, inc });
                 level = &fileStack.back();
                 continue;
             }
 
-            else if (std::regex_search(directiveString, matches, macroRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, macroRegex))
             {
+                IFDEFSTACK()
                 macro = &definitions[matches[1]];
+
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Macro;
+                SETUP_PP(pp)
+                pp->location.end = matches[3].first - lineIt;
 
                 // Macro with argument path
                 if (matches[2].matched)
@@ -271,14 +280,24 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     // Simple macro to value path
                     macro->contents = matches[3];
                 }
+                output.append(Format("#line %d \"%s\"", level->lineCounter+1, level->path.c_str()));
             }
-            else if (std::regex_search(directiveString, matches, undefineRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, undefineRegex))
             {
+                IFDEFSTACK()
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Undefine;
+                SETUP_PP(pp)
+
                 if (definitions.contains(matches[1]))
                     definitions.erase(matches[1]);
             }
-            else if (std::regex_search(directiveString, matches, ifdefRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, ifdefRegex))
             {
+                IFDEFSTACK()
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
                 if (it != definitions.end())
                 {
@@ -289,8 +308,11 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.push_back(false);
                 }
             }
-            else if (std::regex_search(directiveString, matches, elifdefRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, elifdefRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
                 if (it != definitions.end())
                 {
@@ -301,8 +323,12 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = false;
                 }
             }
-            else if (std::regex_search(directiveString, matches, ifndefRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, ifndefRegex))
             {
+                IFDEFSTACK()
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
                 if (it == definitions.end())
                 {
@@ -313,8 +339,11 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.push_back(false);
                 }
             }
-            else if (std::regex_search(directiveString, matches, elifndefRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, elifndefRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
                 if (it == definitions.end())
                 {
@@ -325,36 +354,54 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = false;
                 }
             }
-            else if (std::regex_search(directiveString, matches, ifRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, ifRegex))
             {
+                IFDEFSTACK()
+
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
-                if (matches[2] == "==")
+                if (it != definitions.end())
                 {
-                    ifStack.push_back(it->second.contents == matches[3]);
-                }
-                else if (matches[2] == "!=")
-                {
-                    ifStack.push_back(it->second.contents != matches[3]);
-                }
-                else if (matches[2] == ">=")
-                {
-                    ifStack.push_back(std::stoi(it->second.contents) >= std::stoi(matches[3]));
-                }
-                else if (matches[2] == "<=")
-                {
-                    ifStack.push_back(std::stoi(it->second.contents) <= std::stoi(matches[3]));
-                }
-                else if (matches[2] == ">")
-                {
-                    ifStack.push_back(std::stoi(it->second.contents) > std::stoi(matches[3]));
-                }
-                else if (matches[2] == "<")
-                {
-                    ifStack.push_back(std::stoi(it->second.contents) < std::stoi(matches[3]));
+                    if (matches[2].matched)
+                    {
+                        if (matches[2] == "==")
+                        {
+                            ifStack.push_back(it->second.contents == matches[3]);
+                        }
+                        else if (matches[2] == "!=")
+                        {
+                            ifStack.push_back(it->second.contents != matches[3]);
+                        }
+                        else if (matches[2] == ">=")
+                        {
+                            ifStack.push_back(std::stoi(it->second.contents) >= std::stoi(matches[3]));
+                        }
+                        else if (matches[2] == "<=")
+                        {
+                            ifStack.push_back(std::stoi(it->second.contents) <= std::stoi(matches[3]));
+                        }
+                        else if (matches[2] == ">")
+                        {
+                            ifStack.push_back(std::stoi(it->second.contents) > std::stoi(matches[3]));
+                        }
+                        else if (matches[2] == "<")
+                        {
+                            ifStack.push_back(std::stoi(it->second.contents) < std::stoi(matches[3]));
+                        }
+                    }
+                    else
+                    {
+                        ifStack.push_back(it->second.contents == "1");
+                    }
                 }
             }
-            else if (std::regex_search(directiveString, matches, elifRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, elifRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 auto it = definitions.find(matches[1]);
                 if (matches[2] == "==")
                 {
@@ -381,112 +428,137 @@ GPULangPreprocess(const std::string& file, const std::vector<std::string>& defin
                     ifStack.back() = std::stoi(it->second.contents) < std::stoi(matches[3]);
                 }
             }
-            else if (std::regex_search(directiveString, matches, elseRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, elseRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::If;
+                SETUP_PP(pp)
                 ifStack.back() = !ifStack.back();
             }
-            else if (std::regex_search(directiveString, matches, endifRegex))
+            else if (std::regex_search(directiveIt, lineEnd, matches, endifRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::EndIf;
+                SETUP_PP(pp)
                 if (ifStack.empty())
                 {
-                    err.append("Invalid #endif");
+                    diagnostics.push_back(GPULang::Diagnostic{.error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter});
+                    return false;
                 }
                 else
                     ifStack.pop_back();
             }
             else
             {
-                err.append(Format("Invalid preprocessor directive '%s'\n", directiveString.c_str()));
+                diagnostics.push_back(GPULang::Diagnostic{.error = Format("Invalid preprocessor directive '%s'\n", lineStr.c_str()), .file = level->path, .line = level->lineCounter});
+                return false;
             }
+            output.append("\n");
 
             // Remove line
             goto next_line;
         }
-        else if (level->line[0] == '/') // Match comments
+        else // if not a directive
         {
-            if (level->line[1] == '/') // Single line comment
+            IFDEFSTACK()
+match:
+            if (!comment && std::regex_search(lineIt, lineEnd, matches, singleLineCommentRegex))
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Comment;
+                SETUP_PP(pp)
+                pp->location.end = lineEnd - lineIt;
+
+                output.append(matches.prefix());
                 output.push_back('\n');
                 goto next_line;
             }
-            else if (level->line[1] == '*') // Multi line comment
+            else if (!comment && std::regex_search(lineIt, lineEnd, matches, startMultilineCommentRegex))
+            {
                 comment = true;
+                output.append(matches.prefix());
+                // Match the rest of the line for a potential end multiline 
+                std::string rest = matches.suffix().str();
+                if (std::regex_search(rest, matches, endMultilineCommentRegex))
+                {
+                    comment = false;
+                    // Anything that might come after should be output (including newline)
+                    output.append(matches.suffix());
+                    goto next_line;
+                }
+                else
+                    output.push_back('\n');
+                goto next_line;
+            }
+            else if (std::regex_search(lineIt, lineEnd, matches, endMultilineCommentRegex))
+            {
+                comment = false;
+                // Anything that might come after should be output (including newline)
+                output.append(matches.suffix());
+                goto next_line;
+            }
+            else if (!comment && std::regex_search(lineIt, lineEnd, matches, macrocallRegex))
+            {
+                output.append(matches.prefix());
+                auto it = definitions.find(matches[1]);
+                if (it != definitions.end())
+                {
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::Call;
+                    SETUP_PP(pp)
+
+                    // Parse arguments
+                    if (matches[2].matched)
+                    {
+                        std::string argList = matches[2].str();
+                        std::vector<std::string> args;
+                        std::smatch argMatches;
+                        while (std::regex_search(argList, argMatches, identifierRegex))
+                        {
+                            args.push_back(argMatches[0]);
+                            argList = argMatches.suffix();
+                        }
+
+                        std::string content = it->second.contents;
+
+                        // Warn if mismatch
+                        int maxIterations = min(args.size(), it->second.args.size());
+                        int argCounter = 0;
+                        for (auto& arg : it->second.args)
+                        {
+                            if (argCounter >= maxIterations)
+                                break;
+                            content = std::regex_replace(content, std::regex(arg), args[argCounter]);
+                            argCounter++;
+                        }
+                        output.append(content);
+                    }
+                    else
+                    {
+                        auto pp = Alloc<Preprocessor>();
+                        pp->type = Preprocessor::Call;
+                        SETUP_PP(pp)
+                        output.append(it->second.contents);
+                    }
+                }
+                else
+                {
+                    output.append(matches[0]);
+                }
+                lineIt = matches.suffix().first;
+                goto match;
+            }
         }
-        else if (level->line[0] == '*' && level->line[1] == '/') // End of multi line comment
-        {
-            comment = false;
-            output.push_back('\n');
-            goto next_line;
-        }
+
         if (comment)
         {
             output.push_back('\n');
             goto next_line;
         }
 
-        if (!ifStack.empty())
-        {
-            if (!ifStack.back())
-            {
-                output.push_back('\n');
-                goto next_line;
-            }
-        }
-        output.append(lineStr);
-
-next_line:
-
-        level->line = nextLine;
-        if (level->line == nullptr || level->line[0] == '\0')
-        {
-            fileStack.pop_back();
-            if (!fileStack.empty())
-            {
-                level = &fileStack.back();
-            }
-        }
-        level->lineCounter++;
-
+        output.append(lineIt, lineEnd);
     }
-    
-    std::vector<std::string> args =
-    {
-
-        "",
-        escaped
-        , "-W 0"
-        , "-a"
-    };
-    for (const auto def : defines)
-        args.push_back(FixBackslashes(def));
-
-    const char** argArr = new const char*[args.size()];
-    uint32_t counter = 0;
-    for (const auto& arg : args)
-    {
-        argArr[counter++] = arg.c_str();
-    }
-
-    // run preprocessing
-    mcpp_use_mem_buffers(1);
-    int result = mcpp_lib_main(args.size(), (char**)argArr);
-    if (result != 0)
-    {
-        char* error = mcpp_get_mem_buffer(ERR);
-        err = error;
-        delete[] argArr;
-        return false;
-    }
-    else
-    {
-        char* preprocessed = mcpp_get_mem_buffer(OUT);
-        output.append(preprocessed);
-
-        // cleanup mcpp
-        mcpp_use_mem_buffers(1);
-        delete[] argArr;
-        return true;
-    }
+    return true;
 }
 
 //------------------------------------------------------------------------------
@@ -593,8 +665,9 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     GPULang::Compiler::Timer timer;
 
     timer.Start();
-    std::string pperr;
-    if (GPULangPreprocess(file, defines, preprocessed, pperr))
+    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    std::vector<GPULang::Diagnostic> diagnostics;
+    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
         std::locale loc;
@@ -693,7 +766,12 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         return res;
     }
-    errorBuffer = Error(pperr);
+    std::string err;
+    for (auto& diagnostic : diagnostics)
+    {
+        err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
+    }
+    errorBuffer = Error(err);
     return false;
 }
 
@@ -714,8 +792,9 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
     GPULang::Compiler::Timer timer;
 
     timer.Start();
-    std::string pperr;
-    if (GPULangPreprocess(file, defines, preprocessed, pperr))
+    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    std::vector<GPULang::Diagnostic> diagnostics;
+    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
         std::locale loc;
@@ -742,9 +821,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
 
-        std::ifstream stream;
-        stream.open(file);
-        ANTLRInputStream input(stream);
+        ANTLRInputStream input;
         GPULangLexer lexer(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         CommonTokenStream tokens(&lexer);
@@ -752,6 +829,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
         GPULangParser::LineStack.clear();
 
+        input.load(preprocessed);
         lexer.setInputStream(&input);
         lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
         lexer.removeErrorListeners();
@@ -811,26 +889,6 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
 
         return res;
     }
-    std::stringstream ss(pperr);
-    std::string line;
-    while (std::getline(ss, line, '\n'))
-    {
-        std::string remainder = line;
-        size_t messageDelimiter = line.find_last_of(":");
-        if (messageDelimiter == std::string::npos)
-            continue;
-        std::string message = remainder.substr(messageDelimiter+1);
-        remainder = remainder.substr(0, messageDelimiter);
-
-        size_t errorDelimited = remainder.find_last_of(":");
-        remainder = remainder.substr(0, errorDelimited);
-
-        size_t lineDelimiter = remainder.find_last_of(":");
-        int lineNo = atoi(remainder.substr(lineDelimiter + 1).c_str());
-
-        remainder = remainder.substr(0, lineDelimiter);
-        result.diagnostics.push_back(GPULang::Diagnostic{ .error = message, .file = remainder, .line = lineNo, .column = 0 });
-    }
-    result.messages.push_back(pperr);
+    result.diagnostics.insert(result.diagnostics.end(), diagnostics.begin(), diagnostics.end());
     return false;
 }

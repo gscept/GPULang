@@ -91,24 +91,23 @@ public:
 
   enum {
     RuleString = 0, RulePath = 1, RuleBoolean = 2, RuleEntry = 3, RuleEffect = 4, 
-    RulePreprocessor = 5, RuleLinePreprocessorEntry = 6, RuleAlias = 7, 
-    RuleAnnotation = 8, RuleAttribute = 9, RuleTypeDeclaration = 10, RuleVariables = 11, 
-    RuleStructureDeclaration = 12, RuleStructure = 13, RuleEnumeration = 14, 
-    RuleParameter = 15, RuleFunctionDeclaration = 16, RuleFunction = 17, 
-    RuleProgram = 18, RuleSampler = 19, RuleState = 20, RuleStatement = 21, 
-    RuleExpressionStatement = 22, RuleIfStatement = 23, RuleForStatement = 24, 
-    RuleForRangeStatement = 25, RuleForUniformValueStatement = 26, RuleWhileStatement = 27, 
-    RuleScopeStatement = 28, RuleTerminateStatement = 29, RuleContinueStatement = 30, 
-    RuleSwitchStatement = 31, RuleBreakStatement = 32, RuleExpression = 33, 
-    RuleCommaExpression = 34, RuleAssignmentExpression = 35, RuleLogicalOrExpression = 36, 
-    RuleLogicalAndExpression = 37, RuleOrExpression = 38, RuleXorExpression = 39, 
-    RuleAndExpression = 40, RuleEquivalencyExpression = 41, RuleRelationalExpression = 42, 
-    RuleShiftExpression = 43, RuleAddSubtractExpression = 44, RuleMultiplyDivideExpression = 45, 
-    RulePrefixExpression = 46, RuleSuffixExpression = 47, RuleNamespaceExpression = 48, 
-    RuleBinaryexpatom = 49, RuleInitializerExpression = 50, RuleArrayInitializerExpression = 51, 
-    RuleFloatVecLiteralExpression = 52, RuleDoubleVecLiteralExpression = 53, 
-    RuleIntVecLiteralExpression = 54, RuleUintVecLiteralExpression = 55, 
-    RuleBooleanVecLiteralExpression = 56
+    RuleLinePreprocessorEntry = 5, RuleAlias = 6, RuleAnnotation = 7, RuleAttribute = 8, 
+    RuleTypeDeclaration = 9, RuleVariables = 10, RuleStructureDeclaration = 11, 
+    RuleStructure = 12, RuleEnumeration = 13, RuleParameter = 14, RuleFunctionDeclaration = 15, 
+    RuleFunction = 16, RuleProgram = 17, RuleSampler = 18, RuleState = 19, 
+    RuleStatement = 20, RuleExpressionStatement = 21, RuleIfStatement = 22, 
+    RuleForStatement = 23, RuleForRangeStatement = 24, RuleForUniformValueStatement = 25, 
+    RuleWhileStatement = 26, RuleScopeStatement = 27, RuleTerminateStatement = 28, 
+    RuleContinueStatement = 29, RuleSwitchStatement = 30, RuleBreakStatement = 31, 
+    RuleExpression = 32, RuleCommaExpression = 33, RuleAssignmentExpression = 34, 
+    RuleLogicalOrExpression = 35, RuleLogicalAndExpression = 36, RuleOrExpression = 37, 
+    RuleXorExpression = 38, RuleAndExpression = 39, RuleEquivalencyExpression = 40, 
+    RuleRelationalExpression = 41, RuleShiftExpression = 42, RuleAddSubtractExpression = 43, 
+    RuleMultiplyDivideExpression = 44, RulePrefixExpression = 45, RuleSuffixExpression = 46, 
+    RuleNamespaceExpression = 47, RuleBinaryexpatom = 48, RuleInitializerExpression = 49, 
+    RuleArrayInitializerExpression = 50, RuleFloatVecLiteralExpression = 51, 
+    RuleDoubleVecLiteralExpression = 52, RuleIntVecLiteralExpression = 53, 
+    RuleUintVecLiteralExpression = 54, RuleBooleanVecLiteralExpression = 55
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -137,10 +136,10 @@ public:
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(-1);
 
-      //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
-      location.file = "";
-      location.line = token->line;
+      location.file = file;
+      location.line = token->line - rawLine - 1 + preprocessedLine;
       location.column = token->getCharPositionInLine();
       location.start = location.column;
       location.end = location.start + token->getText().length();
@@ -153,9 +152,9 @@ public:
       Symbol::Location location;
       ::GPULangToken* token = (::GPULangToken*)_input->LT(1);
 
-      //auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
-      location.file = "";
-      location.line = token->line;// - rawLine - 1 + preprocessedLine;
+      auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
+      location.file = file;
+      location.line = token->line - rawLine - 1 + preprocessedLine;
       location.column = token->getCharPositionInLine();
       location.start = token->begin;
       location.end = token->end + 1;
@@ -178,7 +177,6 @@ public:
   class BooleanContext;
   class EntryContext;
   class EffectContext;
-  class PreprocessorContext;
   class LinePreprocessorEntryContext;
   class AliasContext;
   class AnnotationContext;
@@ -340,35 +338,6 @@ public:
   };
 
   EffectContext* effect();
-
-  class  PreprocessorContext : public antlr4::ParserRuleContext {
-  public:
-    Preprocessor* pp;
-    antlr4::Token *method = nullptr;
-    GPULangParser::PathContext *file = nullptr;
-    antlr4::Token *arg0 = nullptr;
-    antlr4::Token *argn = nullptr;
-    antlr4::Token *line = nullptr;
-    GPULangParser::StringContext *p = nullptr;
-    PreprocessorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *NU();
-    antlr4::tree::TerminalNode *LP();
-    antlr4::tree::TerminalNode *RP();
-    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
-    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
-    antlr4::tree::TerminalNode *INTEGERLITERAL();
-    StringContext *string();
-    PathContext *path();
-    std::vector<antlr4::tree::TerminalNode *> CO();
-    antlr4::tree::TerminalNode* CO(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  PreprocessorContext* preprocessor();
 
   class  LinePreprocessorEntryContext : public antlr4::ParserRuleContext {
   public:

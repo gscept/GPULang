@@ -20,9 +20,12 @@ struct Preprocessor : public Symbol
     enum Type
     {
         Include,
+        Comment,
         Macro,
+        Undefine,
+        Call,
         Line,
-        IfDef,
+        If,
         EndIf
     } type;
 
