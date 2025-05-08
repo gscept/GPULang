@@ -140,7 +140,7 @@ GPULangPreprocess(
     static std::regex macrocallRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)\\s*(?:\\((\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*)*)?\\s*\\))?");
     static std::regex replaceRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)");
     static std::regex inclRegex("\\binclude\\s+(?:<|\\\")([A-Z|a-z|\\/|.]+)(?:>|\\\").*");
-    static std::regex macroRegex("\\bdefine\\s+([A-Z|a-z][A-Z|a-z|0-9|_]*)\\s*(?:\\(([A-Z|a-z][A-Z|a-z|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|_]*)*)\\s*\\)\\s*)?(.*)");
+    static std::regex macroRegex("\\bdefine\\s+([A-Z|a-z][A-Z|a-z|0-9|_]*)(?:\\(([A-Z|a-z][A-Z|a-z|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|_]*)*)\\s*\\)\\s*)?(.*)");
     static std::regex undefineRegex("\\bundef\\s+([A-Z|a-z|_]+).*");
     static std::regex ifdefRegex("\\bifdef\\s+([A-Z|a-z|_]+).*");
     static std::regex ifndefRegex("\\bifndef\\s+([A-Z|a-z|_]+).*");
@@ -226,6 +226,7 @@ GPULangPreprocess(
         pp->location.file = level->path;\
         pp->location.line = level->lineCounter;\
         pp->location.start = lineIt - lineStr.cbegin();\
+        pp->location.column = pp->location.start;\
         pp->location.end = matches.suffix().first - lineStr.cbegin();\
         preprocessorSymbols.push_back(pp);
 
@@ -261,7 +262,6 @@ GPULangPreprocess(
                 auto pp = Alloc<Preprocessor>();
                 pp->type = Preprocessor::Macro;
                 SETUP_PP(pp)
-                pp->location.end = matches[3].first - lineIt;
 
                 // Macro with argument path
                 if (matches[2].matched)
@@ -867,6 +867,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
 
         result.root = effect;
         result.symbols = compiler.symbols;
+        result.symbols.insert(result.symbols.begin(), preprocessorSymbols.begin(), preprocessorSymbols.end());
         result.intrinsicScope = compiler.intrinsicScope;
         result.mainScope = compiler.mainScope;
         if (!compiler.diagnostics.empty())

@@ -3,6 +3,7 @@
 #include "lsp/messagehandler.h"
 #include "lsp/io/standardio.h"
 #include "gpulangcompiler.h"
+#include "ast/preprocessor.h"
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
@@ -335,6 +336,25 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
 
     switch (sym->symbolType)
     {
+        case GPULang::Symbol::SymbolType::PreprocessorType:
+        {
+            const GPULang::Preprocessor* pp = static_cast<const GPULang::Preprocessor*>(sym);
+            switch (pp->type)
+            {
+            case GPULang::Preprocessor::Comment:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Comment, 0x0, result);
+                break;
+            case GPULang::Preprocessor::If:
+            case GPULang::Preprocessor::EndIf:
+            case GPULang::Preprocessor::Undefine:
+            case GPULang::Preprocessor::Call:
+            case GPULang::Preprocessor::Macro:
+            case GPULang::Preprocessor::Include:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
+                break;
+            }
+            break;
+        }
         case GPULang::Symbol::SymbolType::VariableType:
         {
             const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
