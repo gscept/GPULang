@@ -17,6 +17,7 @@
 #include "ast/statements/ifstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/whilestatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/expressionstatement.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/symbolexpression.h"
@@ -167,6 +168,14 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     GPULang::MakeAllocatorCurrent(&file->alloc);
     GPULang::Compiler::Options options;
     GPULangValidate(file->tmpPath, context->includePaths, options, file->result);
+
+    // sort symbols on line and starting point
+    std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
+    {
+        if (lhs->location.line == rhs->location.line)
+            return lhs->location.start < rhs->location.start;
+        return lhs->location.line < rhs->location.line;
+    });
     std::vector<lsp::Diagnostic> diagnostics;
 
     if (!file->result.diagnostics.empty())
@@ -349,8 +358,11 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             case GPULang::Preprocessor::Undefine:
             case GPULang::Preprocessor::Call:
             case GPULang::Preprocessor::Macro:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                break;                
             case GPULang::Preprocessor::Include:
-                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::String, 0x0, result);
                 break;
             }
             break;
@@ -568,6 +580,14 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 CreateSemanticToken(prevLoc, stat->elseStatement, file, result, scopes);
             break;
         }
+        case GPULang::Symbol::SymbolType::TerminateStatementType:
+        {
+            const GPULang::TerminateStatement* stat = static_cast<const GPULang::TerminateStatement*>(sym);
+            InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Keyword, 0x0, result);
+            if (stat->returnValue != nullptr)
+                CreateSemanticToken(prevLoc, stat->returnValue, file, result, scopes);
+            break;
+        }
         case GPULang::Symbol::SymbolType::BinaryExpressionType:
         {
             const GPULang::BinaryExpression* expr = static_cast<const GPULang::BinaryExpression*>(sym);
@@ -662,10 +682,23 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 {
     std::string ret = "";
     if (lookup.bits == 0x0)
-        ret = GPULang::Format("### %s\n", sym->name.c_str());
+        ret = GPULang::Format("%s\n", sym->name.c_str());
 
     switch (sym->symbolType)
     {
+        case GPULang::Symbol::SymbolType::PreprocessorType:
+        {
+            auto pp = static_cast<const GPULang::Preprocessor*>(sym);
+            if (pp->type == GPULang::Preprocessor::Call)
+            {
+                ret = pp->contents;
+            }
+            else
+            {
+                ret = "";
+            }
+            break;
+        }
         case GPULang::Symbol::SymbolType::VariableType:
         {
             const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
@@ -749,13 +782,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 || (lookup.flags.symbolLookup)
                 )
             {
-                ret += "##### Enum\n";
-                ret += "```gpulang\n";
+                ret += "Enum\n";
                 for (auto mem : enu->labels)
                 {
                     ret += mem + "\n";
                 }
-                ret += "```";
             }
             break;
         }
@@ -764,13 +795,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             if (lookup.flags.typeLookup)
             {
-                ret += "##### Struct\n";
-                ret += "```\n";
+                ret += "Struct\n";
                 for (auto mem : struc->symbols)
                 {
                     ret += CreateMarkdown(mem, lookup);
                 }
-                ret += "```";
             }
             break;
         }
@@ -812,39 +841,33 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             const auto state = static_cast<const GPULang::RenderState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Render State\n";
-            ret += "```\n";
+            ret += "Render State\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::SamplerStateType:
         {
             const auto state = static_cast<const GPULang::SamplerState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Sampler State\n";
-            ret += "```\n";
+            ret += "Sampler State\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::ProgramType:
         {
             const auto state = static_cast<const GPULang::Program*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Program\n";
-            ret += "```\n";
+            ret += "Program\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::IntExpressionType:
@@ -1101,7 +1124,7 @@ main(int argc, const char** argv)
                                 lsp::Hover {
                                     .contents = lsp::MarkupContent{
                                         .kind = lsp::MarkupKind::Markdown,
-                                        .value = CreateMarkdown(closestSymbol, presentationBits)
+                                        .value = GPULang::Format("```gpulang\n%s\n```", CreateMarkdown(closestSymbol, presentationBits).c_str())
                                     },
                                     .range = lsp::Range{ 
                                         .start = { 

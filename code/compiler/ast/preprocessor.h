@@ -31,6 +31,8 @@ struct Preprocessor : public Symbol
 
     std::string method;
     std::vector<std::string> args;
+    std::vector<Symbol::Location> argLocations;
+    std::string contents;
 };
 
 }

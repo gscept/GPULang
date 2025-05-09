@@ -36,7 +36,7 @@ this->method.returnType = Type::FullType{#type};\
 this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
-activeFunction->documentation = "Constructor for " #type;\
+activeFunction->documentation = "Constructor of " #type;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\

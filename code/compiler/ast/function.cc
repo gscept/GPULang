@@ -733,7 +733,7 @@ FLOAT_LIST
     __SET_RET_LIT(u32);
 
     __MAKE_BUILTIN(vertexExportCoordinates, ExportVertexCoordinates);
-    __ADD_ARG_LIT(layer, f32x4);
+    __ADD_ARG_LIT(coordinates, f32x4);
     __SET_RET_LIT(void);
     __DOCUMENT_INTRINSIC("vertexExportCoordinates sends the provided f32x4 to the next step of the pipeline, similar to gl_Position or SV_POSITION");
     
