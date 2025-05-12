@@ -205,7 +205,7 @@ Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
     Symbol* sym = compiler->GetSymbol(alias->type);
     if (sym == nullptr)
     {
-        compiler->UnrecognizedTypeError(alias->type, alias);
+        compiler->UnrecognizedSymbolError(alias->type, alias);
         return false;
     }
     return compiler->AddSymbol(alias->name, sym);

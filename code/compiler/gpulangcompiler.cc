@@ -133,28 +133,107 @@ GPULangPreprocess(
 
     }
 
-    static std::regex simple("\\s*([A-z]+)");
-    std::cmatch matches;
-    std::regex_search("  Foobar Blorf    ", matches, simple);
+    static auto validIdentifierStart = [](const char c) -> bool
+    {
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_'))
+            return true;
+        return false;
+    };
 
-    static std::regex macrocallRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)\\s*(?:\\((\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|0-9|_]*)*)?\\s*\\))?");
-    static std::regex replaceRegex("\\b([A-Z|a-z][A-Z|a-z|0-9|_]*)");
-    static std::regex inclRegex("\\b(include)\\s+(?:<|\\\")([A-Z|a-z|\\/|.]+)(?:>|\\\").*");
-    static std::regex macroRegex("\\b(define)\\s+([A-Z|a-z][A-Z|a-z|0-9|_]*)(?:\\(([A-Z|a-z][A-Z|a-z|_]*(?:\\s*,\\s*[A-Z|a-z][A-Z|a-z|_]*)*)\\s*\\))?\\s*(.*)");
-    static std::regex undefineRegex("\\b(undef)\\s+([A-Z|a-z|_]+).*");
-    static std::regex ifdefRegex("\\b(ifdef)\\s+([A-Z|a-z|_]+).*");
-    static std::regex ifndefRegex("\\b(ifndef)\\s+([A-Z|a-z|_]+).*");
-    static std::regex elifdefRegex("\\b(elifdef)\\s+([A-Z|a-z|_]+).*");
-    static std::regex elifndefRegex("\\b(elifndef)\\s+([A-Z|a-z|_]+).*");
-    static std::regex ifRegex("\\b(if)\\s+([A-Z|a-z|_]+)\\s*((==|\\!=|>=|<=|<|>)\\s*([0-9]*))?.*");
-    static std::regex elifRegex("\\b(elif)\\s+([A-Z|a-z|_]+)\\s*((==|\\!=|>=|<=|<|>)\\s*([0-9]*))?.*");
-    static std::regex elseRegex("\\b(else).*");
-    static std::regex endifRegex("\\b(endif).*");
-    static std::regex directiveStartRegex("\\s*#");
-    static std::regex identifierRegex("\\b[A-Z|a-z][A-Z|a-z|_|0-9]*");
-    static std::regex singleLineCommentRegex("\\s*//");
-    static std::regex startMultilineCommentRegex("\\s*/\\*");
-    static std::regex endMultilineCommentRegex("\\s*\\*/");
+    static auto validIdentifierChar = [](const char c) -> bool
+    {
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (c == '_'))
+            return true;
+        return false;
+    };
+
+    static auto validateIdentifier = [](const char* begin, const char* end) -> bool
+    {
+        if (!validIdentifierStart(begin[0]))
+            return false;
+        const char* start = begin+1;
+        while (start != end)
+        {
+            if (!validIdentifierChar(start[0]))
+                return false;
+            start++;
+        }
+        return true;
+    };
+
+    static auto wordStart = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] != ' ' && start[0] != '\t' && start[0] != '\n' && start[0] != '\r' && start[0] != '\f' && start[0] != '\v')
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto wordEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == ' ' || start[0] == '\t' || start[0] == '\n' || start[0] == '\r' || start[0] == '\f' || start[0] == '\v')
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto identifierBegin = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (validIdentifierStart(start[0]))
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto identifierEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (!validIdentifierChar(start[0]))
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto nextArg = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == ',')
+                return wordStart(start+1, end);
+            if (start[0] == ')')
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto nextComment = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '*' && start[1] == '/')
+                return start;
+            start++;
+        }
+        return end;
+    };
 
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
@@ -162,6 +241,7 @@ GPULangPreprocess(
     output.clear();
     char buf[4096];
     int lineOffset = 1;
+    GPULang::Preprocessor* prevMultiline = nullptr;
 
 #define POP_FILE() \
             fileStack.pop_back();\
@@ -195,7 +275,7 @@ GPULangPreprocess(
             lineEndingLength = -1;
         if (lineEndingLength == -1)
         {
-            diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
+            //diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
             POP_FILE()
         }
 
@@ -214,6 +294,7 @@ GPULangPreprocess(
         auto lineIt = lineStr.cbegin();
         auto lineEnd = lineStr.cend();
 
+        // Macro to eliminate directives and output if an if-scope is inactive
 #define IFDEFSTACK() \
         if (!ifStack.empty())\
         {\
@@ -269,379 +350,453 @@ GPULangPreprocess(
             }\
         }
 
-#define SETUP_PP(pp)\
+#define SETUP_PP2(pp, begin, stop)\
         pp->location.file = level->path;\
         pp->location.line = level->lineCounter;\
-        pp->location.start = lineIt - lineStr.cbegin();\
+        pp->location.start = begin - lineBegin;\
         pp->location.column = pp->location.start;\
-        pp->location.end = (matches[1].first + matches[1].length()) - lineStr.cbegin();\
+        pp->location.end = stop - lineBegin;\
         preprocessorSymbols.push_back(pp);
 
-#define SETUP_ARG(pp, arg)\
+#define SETUP_ARG2(pp, arg, begin, stop)\
         pp->args.push_back(arg);\
         Symbol::Location argLoc;\
         argLoc.file = level->path;\
         argLoc.line = level->lineCounter;\
-        argLoc.start = (arg.first) - lineStr.cbegin();\
+        argLoc.start = begin - lineBegin;\
         argLoc.column = pp->location.start;\
-        argLoc.end = (arg.first + arg.length()) - lineStr.cbegin();\
+        argLoc.end = stop - lineBegin;\
         pp->argLocations.push_back(argLoc);
+
+#define DIAGNOSTIC(message)\
+        GPULang::Diagnostic{.error = message, .file = level->path, .line = level->lineCounter }
 
         std::smatch matches;
 
-        if (std::regex_search(lineIt, lineEnd, matches, directiveStartRegex))
+        const char* lineBegin = &(*lineIt);
+        const char* eol = &(*(lineEnd - 1)) + 1;
+        const char* columnIt = lineBegin;
+        const char* prevColumnIt = columnIt;
+        do 
         {
-            auto startOfDirective = matches.suffix().first;
-            auto directiveIt = matches.suffix().first;
-            if (std::regex_search(directiveIt, lineEnd, matches, inclRegex))
+            // Find beginning of first non-WS character
+            const char* firstWord = wordStart(columnIt, eol);
+            if (firstWord[0] == '#') // Directives
             {
-                IFDEFSTACK()
-                const std::string& path = matches[2];
-
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Include;
-                SETUP_PP(pp)
-                SETUP_ARG(pp, matches[2]);
-                
-                std::string foundPath;
-                FILE* inc = LoadFile(path.c_str(), searchPaths, foundPath);
-                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->path.c_str()));
-
-                fileStack.push_back({ foundPath, inc });
-                level = &fileStack.back();
-                continue;
-            }
-
-            else if (std::regex_search(directiveIt, lineEnd, matches, macroRegex))
-            {
-                IFDEFSTACK()
-                macro = &definitions[matches[2]];
-
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Macro;
-                SETUP_PP(pp)
-
-                // Macro with argument path
-                if (matches[2].matched)
+                firstWord++;
+                const char* startOfDirective = wordStart(firstWord, eol);
+                const char* endOfDirective = wordEnd(firstWord, eol);
+                if (strncmp(startOfDirective, "include", endOfDirective - startOfDirective) == 0) // Include
                 {
-                    std::string argList = matches[3].str();
-                    std::smatch argMatches;
-                    while (std::regex_search(argList, argMatches, identifierRegex))
+                    IFDEFSTACK()
+
+                    const char* startOfPath = wordStart(endOfDirective, eol);
+                    const char* endOfPath = wordEnd(startOfPath, eol);
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::Include;
+                    SETUP_PP2(pp, startOfDirective, endOfDirective);
+
+                    if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
+                        || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
                     {
-                        macro->args.push_back(argMatches[0]);
-                        argList = argMatches.suffix();
-                    }
-                    macro->contents = matches[4];
-                }
-                else
-                {
-                    // Simple macro to value path
-                    macro->contents = matches[4];
-                }
-                output.append(Format("#line %d \"%s\"", level->lineCounter+1, level->path.c_str()));
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, undefineRegex))
-            {
-                IFDEFSTACK()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Undefine;
-                SETUP_PP(pp)
+                        const std::string path = std::string(startOfPath + 1, endOfPath - 1);
+                        SETUP_ARG2(pp, path, startOfPath, endOfPath);
 
-                if (definitions.contains(matches[2]))
-                    definitions.erase(matches[2]);
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, ifdefRegex))
-            {
-                IFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (it != definitions.end())
-                {
-                    ifStack.push_back(true);
-                }
-                else
-                {
-                    ifStack.push_back(false);
-                }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, elifdefRegex))
-            {
-                ELIFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (it != definitions.end())
-                {
-                    ifStack.back() = true;
-                }
-                else
-                {
-                    ifStack.back() = false;
-                }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, ifndefRegex))
-            {
-                IFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (it == definitions.end())
-                {
-                    ifStack.push_back(true);
-                }
-                else
-                {
-                    ifStack.push_back(false);
-                }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, elifndefRegex))
-            {
-                ELIFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (it == definitions.end())
-                {
-                    ifStack.back() = true;
-                }
-                else
-                {
-                    ifStack.back() = false;
-                }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, ifRegex))
-            {
-                IFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (it != definitions.end())
-                {
-                    if (matches[3].matched)
-                    {
-                        if (matches[3] == "==")
+                        std::string foundPath;
+                        FILE* inc = LoadFile(path.c_str(), searchPaths, foundPath);
+                        if (inc == nullptr)
                         {
-                            ifStack.push_back(it->second.contents == matches[4]);
+                            diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", foundPath.c_str())));
+                            return false;
                         }
-                        else if (matches[3] == "!=")
-                        {
-                            ifStack.push_back(it->second.contents != matches[4]);
-                        }
-                        else if (matches[3] == ">=")
-                        {
-                            ifStack.push_back(std::stoi(it->second.contents) >= std::stoi(matches[4]));
-                        }
-                        else if (matches[3] == "<=")
-                        {
-                            ifStack.push_back(std::stoi(it->second.contents) <= std::stoi(matches[4]));
-                        }
-                        else if (matches[3] == ">")
-                        {
-                            ifStack.push_back(std::stoi(it->second.contents) > std::stoi(matches[4]));
-                        }
-                        else if (matches[3] == "<")
-                        {
-                            ifStack.push_back(std::stoi(it->second.contents) < std::stoi(matches[4]));
-                        }
+                        output.append(Format("#line %d \"%s\"\n", level->lineCounter + 1, level->path.c_str()));
+
+                        fileStack.push_back({ foundPath, inc });
+                        level = &fileStack.back();
                     }
                     else
                     {
-                        ifStack.push_back(it->second.contents == "1");
+                        diagnostics.push_back(DIAGNOSTIC("include directory must be provided a path"));
+                        return false;
+                    }
+                    goto next_line;
+                }
+                else if (strncmp(startOfDirective, "define", endOfDirective - startOfDirective) == 0)
+                {
+                    IFDEFSTACK()
+                    const char* startOfDefinition = wordStart(endOfDirective, eol);
+                    if (startOfDefinition == nullptr)
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("define missing identifier"));
+                        return false;
+                    }
+                    const char* endOfDefinition = wordEnd(startOfDefinition, eol);
+                    const char* endOfIdentifier = identifierEnd(startOfDefinition, endOfDefinition);
+
+                    if (!validateIdentifier(startOfDefinition, endOfIdentifier))
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("Invalid macro identifier"));
+                        return false;
+                    }
+
+                    std::string def = std::string(startOfDefinition, endOfIdentifier);
+                    macro = &definitions[def];
+
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::Macro;
+                    SETUP_PP2(pp, startOfDefinition, endOfDefinition)
+
+                    const char* startOfContents = wordStart(endOfDefinition, eol);
+                    
+                    if (endOfIdentifier[0] == '(')
+                    {
+                        // Argument list, start parsing arguments
+                        const char* argumentIt = wordStart(endOfIdentifier+1, endOfDefinition);
+                        while (argumentIt != endOfDefinition)
+                        {
+                            if (argumentIt[0] == ')') // end of list
+                            {
+                                // Move new start to after argument list
+                                startOfContents = wordStart(argumentIt+1, eol);
+                                break;
+                            }
+                            const char* argumentEnd = identifierEnd(argumentIt, endOfDefinition);
+
+                            if (!validateIdentifier(argumentIt, argumentEnd))
+                            {
+                                diagnostics.push_back(DIAGNOSTIC("Invalid argument identifier"));
+                                return false;
+                            }
+
+                            // Identifier validation done, save argument
+                            macro->args.push_back(std::string(argumentIt, argumentEnd));
+                            argumentIt = nextArg(argumentIt, endOfDefinition);
+                        }
+
+                        // append the rest of the contents
+                        macro->contents.append(startOfContents, eol-lineEndingLength);
+                    }
+                    else if (startOfContents != eol)
+                    {
+                        macro->contents = std::string(startOfContents, eol - lineEndingLength);
+                    }               
+                    output.append(Format("#line %d \"%s\"", level->lineCounter + 1, level->path.c_str()));
+                }
+                else if (strncmp(startOfDirective, "undef", endOfDirective - startOfDirective) == 0)
+                {
+                    IFDEFSTACK()
+
+                    const char* startOfDefinition = wordStart(endOfDirective, eol);
+                    if (startOfDefinition == nullptr)
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("undef missing identifier"));
+                        return false;
+                    }
+                    const char* endOfDefinition = wordEnd(startOfDefinition, eol);
+
+                    if (!validateIdentifier(startOfDefinition, endOfDefinition))
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("Invalid undef identifier"));
+                        return false;
+                    }
+
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::Undefine;
+                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+
+                    std::string definition = std::string(startOfDefinition, endOfDefinition);
+                    auto it = definitions.find(definition);
+                    if (it != definitions.end())
+                    {
+                        definitions.erase(definition);
                     }
                 }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, elifRegex))
-            {
-                ELIFDEFSTACKPUSH()
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                auto it = definitions.find(matches[2]);
-                if (matches[3] == "==")
+                else if (strncmp(startOfDirective, "ifdef", endOfDirective - startOfDirective) == 0)
                 {
-                    ifStack.back() = it->second.contents == matches[4];
-                }
-                else if (matches[3] == "!=")
-                {
-                    ifStack.back() = it->second.contents != matches[4];
-                }
-                else if (matches[3] == ">=")
-                {
-                    ifStack.back() = std::stoi(it->second.contents) >= std::stoi(matches[4]);
-                }
-                else if (matches[3] == "<=")
-                {
-                    ifStack.back() = std::stoi(it->second.contents) <= std::stoi(matches[4]);
-                }
-                else if (matches[3] == ">")
-                {
-                    ifStack.back() = std::stoi(it->second.contents) > std::stoi(matches[4]);
-                }
-                else if (matches[3] == "<")
-                {
-                    ifStack.back() = std::stoi(it->second.contents) < std::stoi(matches[4]);
-                }
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, elseRegex))
-            {
-                ELIFDEFSTACKPUSH()
-                auto foo = *(ifStack.rbegin() + 1);
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::If;
-                SETUP_PP(pp)
-                ifStack.back() = !ifStack.back();
-            }
-            else if (std::regex_search(directiveIt, lineEnd, matches, endifRegex))
-            {
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::EndIf;
-                SETUP_PP(pp)
-                if (ifStack.empty())
-                {
-                    diagnostics.push_back(GPULang::Diagnostic{.error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter});
-                    return false;
-                }
-                else
-                    ifStack.pop_back();
-            }
-            else
-            {
-                diagnostics.push_back(GPULang::Diagnostic{.error = Format("Invalid preprocessor directive '%s'\n", lineStr.c_str()), .file = level->path, .line = level->lineCounter});
-                return false;
-            }
-            output.append("\n");
+                    IFDEFSTACKPUSH()
 
-            // Remove line
-            goto next_line;
-        }
-        else // if not a directive
-        {
-            IFDEFSTACK()
-match:
-            if (!comment && std::regex_search(lineIt, lineEnd, matches, singleLineCommentRegex))
+                    const char* startOfDefinition = wordStart(endOfDirective, eol);
+                    if (startOfDefinition == nullptr)
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
+                        return false;
+                    }
+                    const char* endOfDefinition = wordEnd(startOfDefinition, eol);
+
+                    if (!validateIdentifier(startOfDefinition, endOfDefinition))
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
+                        return false;
+                    }
+
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::If;
+                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+
+                    std::string definition = std::string(startOfDefinition, endOfDefinition);
+                    auto it = definitions.find(definition);
+                    if (it != definitions.end())
+                    {
+                        ifStack.push_back(true);
+                    }
+                    else
+                    {
+                        ifStack.push_back(false);
+                    }
+                }
+                else if (strncmp(startOfDirective, "ifndef", endOfDirective - startOfDirective) == 0)
+                {
+                    IFDEFSTACKPUSH()
+
+                    const char* startOfDefinition = wordStart(endOfDirective, eol);
+                    if (startOfDefinition == nullptr)
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
+                        return false;
+                    }
+                    const char* endOfDefinition = wordEnd(startOfDefinition, eol);
+
+                    if (!validateIdentifier(startOfDefinition, endOfDefinition))
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
+                        return false;
+                    }
+
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::If;
+                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+
+                    std::string definition = std::string(startOfDefinition, endOfDefinition);
+                    auto it = definitions.find(definition);
+                    if (it == definitions.end())
+                    {
+                        ifStack.push_back(true);
+                    }
+                    else
+                    {
+                        ifStack.push_back(false);
+                    }
+                }
+                else if (strncmp(startOfDirective, "elif", endOfDirective - startOfDirective) == 0)
+                {
+
+                }
+                else if (strncmp(startOfDirective, "if", endOfDirective - startOfDirective) == 0)
+                {
+
+                }
+                else if (strncmp(startOfDirective, "else", endOfDirective - startOfDirective) == 0)
+                {
+                    ELIFDEFSTACKPUSH()
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::If;
+                    SETUP_PP2(pp, startOfDirective, endOfDirective)
+                    ifStack.back() = !ifStack.back();
+                }
+                else if (strncmp(startOfDirective, "endif", endOfDirective - startOfDirective) == 0)
+                {
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::EndIf;
+                    SETUP_PP2(pp, startOfDirective, endOfDirective)
+                    if (ifStack.empty())
+                    {
+                        diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter });
+                        return false;
+                    }
+                    else
+                        ifStack.pop_back();
+                }
+                output.append("\n");
+                goto next_line;
+            }
+            else if (firstWord[0] == '/' && firstWord[1] == '/')
             {
                 auto pp = Alloc<Preprocessor>();
                 pp->type = Preprocessor::Comment;
-                SETUP_PP(pp)
+                SETUP_PP2(pp, firstWord, eol)
                 pp->location.end = lineEnd - lineIt;
 
-                output.append(matches.prefix());
+                output.append(columnIt, firstWord);
                 output.push_back('\n');
                 goto next_line;
             }
-            else if (!comment && std::regex_search(lineIt, lineEnd, matches, startMultilineCommentRegex))
+            else if (!comment && firstWord[0] == '/' && firstWord[1] == '*')
             {
                 comment = true;
-                output.append(matches.prefix());
+                output.append(columnIt, firstWord);
                 auto pp = Alloc<Preprocessor>();
                 pp->type = Preprocessor::Comment;
-                SETUP_PP(pp)
-
-                // Match the rest of the line for a potential end multiline 
-                std::string rest = matches.suffix().str();
-                if (std::regex_search(rest, matches, endMultilineCommentRegex))
-                {
-                    comment = false;
-
-                    pp->location.end = (matches[0].first + matches[0].length()) - rest.cbegin();
-
-                    // Anything that might come after should be output (including newline)
-                    output.append(matches.suffix());
-                    goto next_line;
-                }
-                else
-                {
-                    pp->location.end = lineEnd - lineStr.cbegin();
-                    output.push_back('\n');
-                }
-                goto next_line;
+                SETUP_PP2(pp, firstWord, eol)
+                columnIt = firstWord + 2;
+                prevMultiline = pp;
             }
-            else if (std::regex_search(lineIt, lineEnd, matches, endMultilineCommentRegex))
+            else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
             {
                 comment = false;
-
-                auto pp = Alloc<Preprocessor>();
-                pp->type = Preprocessor::Comment;
-                SETUP_PP(pp)
-                pp->location.end = matches[0].first + matches[0].length() - lineStr.cbegin();
-
-                // Anything that might come after should be output (including newline)
-                output.append(matches.suffix());
-                goto next_line;
+                assert(prevMultiline != nullptr);
+                auto back = static_cast<GPULang::Preprocessor*>(prevMultiline);
+                back->location.end = firstWord + 2 - lineBegin;
+                prevMultiline = nullptr;
+                columnIt = firstWord + 2;
             }
-            else if (!comment && std::regex_search(lineIt, lineEnd, matches, macrocallRegex))
+            else if (!comment)
             {
-                output.append(matches.prefix());
-                auto it = definitions.find(matches[1]);
+                IFDEFSTACK()
+                const char* startOfWord = wordStart(columnIt, eol);
+                const char* endOfWord = wordEnd(startOfWord, eol);
+
+                const char* startOfIdentifier = identifierBegin(startOfWord, eol);
+                const char* endOfIdentifier = identifierEnd(startOfIdentifier, eol);
+                std::string word = std::string(startOfIdentifier, endOfIdentifier);
+
+                // Add whatever comes before the first identifier
+                output.append(columnIt, startOfWord);
+                auto it = definitions.find(word);
                 if (it != definitions.end())
                 {
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Call;
-                    SETUP_PP(pp)
+                    SETUP_PP2(pp, startOfIdentifier, endOfIdentifier)
 
-                    // Parse arguments
-                    if (matches[2].matched)
+                    if (endOfIdentifier[0] == '(')
                     {
-                        std::string argList = matches[2].str();
+                        const char* argumentIt = wordStart(endOfIdentifier + 1, eol);
                         std::vector<std::string> args;
-                        std::smatch argMatches;
-                        while (std::regex_search(argList, argMatches, identifierRegex))
+                        bool valid = false;
+                        while (argumentIt != eol)
                         {
-                            args.push_back(argMatches[0]);
-                            argList = argMatches.suffix();
-                        }
+                            if (argumentIt[0] == ')') // end of list
+                            {
+                                // Move new start to after argument list
+                                valid = true;
+                                break;
+                            }
+                            const char* argumentEnd = identifierEnd(argumentIt, eol);
 
-                        std::string content = it->second.contents;
+                            // Check argument for validity
+                            if (!validIdentifierStart(argumentIt[0])) // First argument may not be a number
+                            {
+                                diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentIt[0])));
+                                return false;
+                            }
+                            else
+                            {
+                                // If first char is valid, check the rest
+                                const char* argumentCharIt = argumentIt + 1;
+                                while (argumentCharIt != argumentEnd)
+                                {
+                                    if (!validIdentifierChar(argumentCharIt[0]))
+                                    {
+                                        diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentCharIt[0])));
+                                        return false;
+                                    }
+                                    argumentCharIt++;
+                                }
+                            }
+                            args.push_back(std::string(argumentIt, argumentEnd));
+                            argumentIt = nextArg(argumentIt, eol);
+                        }
+                        if (!valid)
+                        {
+                            {
+                                diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
+                                return false;
+                            }
+                        }
+                        endOfWord = argumentIt+1;
+                        std::map<std::string, std::string> argumentMap;
 
                         // Warn if mismatch
                         int maxIterations = min(args.size(), it->second.args.size());
                         int argCounter = 0;
                         for (auto& arg : it->second.args)
                         {
-                            if (argCounter >= maxIterations)
-                                break;
-                            content = std::regex_replace(content, std::regex(arg), args[argCounter]);
-                            argCounter++;
+                            argumentMap[arg] = args[argCounter++];
                         }
-                        output.append(content);
-                        pp->contents = content;
+
+                        const char* macroContentsIt = &(*it->second.contents.begin());
+                        const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+
+                        // Replace macro contents with definitions and arguments
+                        while (macroContentsIt != macroContentsEnd)
+                        {
+                            const char* startOfIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
+                            const char* endOfIdentifier = identifierEnd(startOfIdentifier, macroContentsEnd);
+
+                            // Add whatever comes before the identifier to the output
+                            output.append(macroContentsIt, startOfIdentifier);
+                            if (macroContentsEnd == startOfIdentifier)
+                                break;
+
+                            std::string word(startOfIdentifier, endOfIdentifier);
+
+                            auto argIt = argumentMap.find(word);
+                            if (argIt == argumentMap.end())
+                            {
+                                auto defIt = definitions.find(word);
+                                if (defIt == definitions.end())
+                                {
+                                    output.append(word);
+                                }
+                                else
+                                {
+                                    output.append(defIt->second.contents);
+                                }
+                            }
+                            else
+                            {
+                                output.append(argIt->second);
+                            }
+
+                            macroContentsIt = endOfIdentifier;
+                        }
                     }
                     else
                     {
-                        output.append(it->second.contents);
-                        pp->contents = it->second.contents;
+                        const char* macroContentsIt = &(*it->second.contents.begin());
+                        const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+
+                        // Replace macro contents with definitions and arguments
+                        while (macroContentsIt != macroContentsEnd)
+                        {
+                            const char* startOfIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
+                            const char* endOfIdentifier = identifierEnd(startOfIdentifier, macroContentsEnd);
+
+                            // Add whatever comes before the identifier to the output
+                            output.append(macroContentsIt, startOfIdentifier);
+                            if (macroContentsEnd == startOfIdentifier)
+                                break;
+
+                            std::string word(startOfIdentifier, endOfIdentifier);
+
+                            auto defIt = definitions.find(word);
+                            if (defIt == definitions.end())
+                            {
+                                output.append(word);
+                            }
+                            else
+                            {
+                                output.append(defIt->second.contents);
+                            }
+
+                            macroContentsIt = endOfIdentifier;
+                        }
                     }
                 }
                 else
                 {
-                    output.append(matches[0]);
+                    output.append(startOfWord, endOfWord);
                 }
-                lineIt = matches.suffix().first;
-                goto match;
+                columnIt = endOfWord;
             }
-        }
+            if (comment)
+            {
+                columnIt = nextComment(columnIt, eol);
+            }
 
-        if (comment)
-        {
-            auto pp = Alloc<Preprocessor>();
-            pp->type = Preprocessor::Comment;
-            pp->location.file = level->path;
-            pp->location.line = level->lineCounter;
-            pp->location.column = 0;
-            pp->location.start = 0;
-            pp->location.end = lineStr.length();
-            preprocessorSymbols.push_back(pp);
-            output.push_back('\n');
-            goto next_line;
-        }
-
-        output.append(lineIt, lineEnd);
+            // Go to next non white space word
+            prevColumnIt = columnIt;
+        } while (columnIt != eol);
     }
     return true;
 }
