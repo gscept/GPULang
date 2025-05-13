@@ -110,6 +110,7 @@ struct ParseContext
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
         std::map<std::string, const GPULang::Symbol*> symbolsByName;
+        size_t earliestError = SIZE_MAX;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
         {
@@ -179,27 +180,37 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     });
     std::vector<lsp::Diagnostic> diagnostics;
 
+    file->earliestError = SIZE_MAX;
+    std::map<std::string, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
     if (!file->result.diagnostics.empty())
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
-            diagnostics.push_back(lsp::Diagnostic{
+            auto& it = diagnosticsResults[diagnostic.file];
+            file->earliestError = min(file->earliestError, diagnostic.line);
+            it.uri = diagnostic.file;
+            it.diagnostics.push_back(lsp::Diagnostic{
                 .range = {
                     .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
                     .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
                 },
-                .message = diagnostic.error
+                .message = diagnostic.error,
             });
         }
         file->result.diagnostics.clear();
     }
-    messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(
-        lsp::notifications::TextDocument_PublishDiagnostics::Params
+    if (!diagnosticsResults.empty())
+    {
+        for (auto res : diagnosticsResults)
         {
-            .uri = file->path,
-            .diagnostics = diagnostics
+            messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(std::move(res.second));
         }
-    );
+    }
+    else
+    {
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>({});
+    }
+    
 }
 
 //------------------------------------------------------------------------------
@@ -336,6 +347,9 @@ InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Loca
 void
 CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* sym, ParseContext::ParsedFile* file, std::vector<uint32_t>& result, std::vector<const GPULang::Scope*>& scopes)
 {
+    if (sym->location.line >= file->earliestError)
+        return;
+
     ParseContext::ParsedFile::TextRange range;
     range.startLine = sym->location.line;
     range.stopLine = sym->location.line;
@@ -450,6 +464,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Enumeration* enu = static_cast<const GPULang::Enumeration*>(sym);
             const GPULang::Enumeration::__Resolved* res = GPULang::Symbol::Resolved(enu);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Enum, (uint32_t)SemanticModifierMapping::Definition, result);
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
             file->scopesByLine[range.startLine - 1] = scopes;
 
@@ -467,6 +483,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
             bits = PresentationBits{ { .typeLookup=1 } };
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
             file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : struc->entries)
@@ -485,6 +503,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
             bits = PresentationBits{ { .typeLookup=1 } };
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
             file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : struc->entries)
@@ -520,7 +540,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 if (annot->value != nullptr)
                     CreateSemanticToken(prevLoc, annot->value, file, result, scopes);
             }
-
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
             file->scopesByLine[range.startLine - 1] = scopes;
             for (auto entry : prog->entries)
@@ -603,6 +624,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             CreateSemanticToken(prevLoc, expr->left, file, result, scopes);
 
             // Push type on the left
+            if (res->lhsType == nullptr)
+                return;
             scopes.push_back(&res->lhsType->scope);
             file->scopesByLine[range.startLine - 1] = scopes;
             CreateSemanticToken(prevLoc, expr->right, file, result, scopes);
@@ -691,6 +714,10 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             auto pp = static_cast<const GPULang::Preprocessor*>(sym);
             if (pp->type == GPULang::Preprocessor::Call)
+            {
+                ret = pp->contents;
+            }
+            else if (pp->type == GPULang::Preprocessor::Include)
             {
                 ret = pp->contents;
             }

@@ -26,7 +26,7 @@ struct Enumeration : public Type
 
     struct __Resolved : public Type::__Resolved
     {
-        virtual ~__Resolved() {};
+        virtual ~__Resolved() { typeSymbol = nullptr; };
         Type* typeSymbol;
     };
 };

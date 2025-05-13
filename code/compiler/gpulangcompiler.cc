@@ -61,9 +61,85 @@ LoadFile(const char* path, const std::vector<std::string>& searchPaths, std::str
         }
     }
 
+    if (f != nullptr)
+    {
+        fseek(f, 0, SEEK_END);
+        int size = ftell(f);
+        GPULang::StackArray<char> contents(size);
+        rewind(f);
+        fread(contents.ptr, 1, size, f);
+    }
+
     return f;
 }
 
+struct FileLevel
+{
+    int lineCounter;
+    std::string path;
+    FILE* file;
+    GPULang::StackArray<char> contents;
+    
+    FileLevel()
+    {
+        this->file = nullptr;
+        this->lineCounter = 0;
+    }
+
+    FileLevel(const std::string& path, FILE* file)
+    {
+        this->path = path;
+        this->file = file;
+        this->lineCounter = 0;
+    }
+
+    FileLevel(FileLevel&& rhs) noexcept
+    {
+        this->lineCounter = rhs.lineCounter;
+        this->file = rhs.file;
+        this->path = std::move(rhs.path);
+    }
+
+    FileLevel(const FileLevel& rhs)
+    {
+        this->lineCounter = rhs.lineCounter;
+        this->path = rhs.path;
+        this->file = rhs.file;
+    }
+};
+
+//------------------------------------------------------------------------------
+/**
+*/
+FileLevel&&
+LoadFile2(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
+{
+    FileLevel level;
+    level.file = fopen(path, "rb");
+    
+    if (level.file == nullptr)
+    {
+        for (auto& searchPath : searchPaths)
+        {
+            foundPath = searchPath + std::string(path);
+            level.file = fopen(foundPath.c_str(), "rb");
+            if (level.file != nullptr)
+                break;
+        }
+    }
+
+    if (level.file != nullptr)
+    {
+        fseek(level.file, 0, SEEK_END);
+        int size = ftell(level.file);
+
+        level.contents = GPULang::StackArray<char>(size);
+        rewind(level.file);
+        fread(level.contents.ptr, 1, size, level.file);
+    }
+
+    return std::move(level);
+}
 
 //------------------------------------------------------------------------------
 /**
@@ -82,34 +158,6 @@ GPULangPreprocess(
     std::string folder = escaped.substr(0, escaped.rfind("/")+1);
     std::string dummy;
     FILE* f = LoadFile(file.c_str(), {}, dummy);
-
-    struct FileLevel
-    {
-        int lineCounter;
-        std::string path;
-        FILE* file;
-
-        FileLevel(const std::string& path, FILE* file)
-        {
-            this->path = path;
-            this->file = file;
-            this->lineCounter = 0;
-        }
-
-        FileLevel(FileLevel&& rhs) noexcept
-        {
-            this->lineCounter = rhs.lineCounter;
-            this->file = rhs.file;
-            this->path = std::move(rhs.path);
-        }
-
-        FileLevel(const FileLevel& rhs)
-        {
-            this->lineCounter = rhs.lineCounter;
-            this->path = rhs.path;
-            this->file = rhs.file;
-        }
-    };
 
     struct Macro
     {
@@ -130,7 +178,6 @@ GPULangPreprocess(
             else if (arg[1] == 'D')
                 definitions[arg.substr(2)] = Macro{ .contents = "" };
         }
-
     }
 
     static auto validIdentifierStart = [](const char c) -> bool
@@ -161,12 +208,17 @@ GPULangPreprocess(
         return true;
     };
 
+    static auto whitespace = [](const char c) -> bool
+    {
+        return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v';
+    };
+
     static auto wordStart = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
         while (start != end)
         {
-            if (start[0] != ' ' && start[0] != '\t' && start[0] != '\n' && start[0] != '\r' && start[0] != '\f' && start[0] != '\v')
+            if (!whitespace(start[0]))
                 return start;
             start++;
         }
@@ -178,7 +230,22 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
-            if (start[0] == ' ' || start[0] == '\t' || start[0] == '\n' || start[0] == '\r' || start[0] == '\f' || start[0] == '\v')
+            if (whitespace(start[0]))
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    
+    static auto wordEndOrParanthesis = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '(')
+                return start;
+            if (whitespace(start[0]))
                 return start;
             start++;
         }
@@ -235,6 +302,18 @@ GPULangPreprocess(
         return end;
     };
 
+    static auto lineEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '\n')
+                return start;
+            start++;
+        }
+        return nullptr;
+    };
+
     FileLevel* level = &fileStack.back();
     Macro* macro = nullptr;
     bool comment = false;
@@ -255,6 +334,7 @@ GPULangPreprocess(
     {
         // Find next unescaped \n
     next_line:
+        const char* line2 = lineEnd(level->contents.ptr, level->contents.ptr + level->contents.size);
         char* line = fgets(buf, sizeof(buf), level->file);
         if (line == nullptr)
         {
@@ -277,7 +357,7 @@ GPULangPreprocess(
         {
             //diagnostics.push_back(Diagnostic{ .error = Format("Line is either too long or has corrupt file endings\n%s", lineStr.c_str()), .file = level->path, .line = level->lineCounter });
             POP_FILE()
-        }
+        }        
 
     escape_newline:
 
@@ -371,8 +451,6 @@ GPULangPreprocess(
 #define DIAGNOSTIC(message)\
         GPULang::Diagnostic{.error = message, .file = level->path, .line = level->lineCounter }
 
-        std::smatch matches;
-
         const char* lineBegin = &(*lineIt);
         const char* eol = &(*(lineEnd - 1)) + 1;
         const char* columnIt = lineBegin;
@@ -404,6 +482,7 @@ GPULangPreprocess(
 
                         std::string foundPath;
                         FILE* inc = LoadFile(path.c_str(), searchPaths, foundPath);
+                        pp->contents = foundPath;
                         if (inc == nullptr)
                         {
                             diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", foundPath.c_str())));
@@ -425,21 +504,26 @@ GPULangPreprocess(
                 {
                     IFDEFSTACK()
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
-                    if (startOfDefinition == nullptr)
+                    if (startOfDefinition == eol)
                     {
                         diagnostics.push_back(DIAGNOSTIC("define missing identifier"));
                         return false;
                     }
-                    const char* endOfDefinition = wordEnd(startOfDefinition, eol);
-                    const char* endOfIdentifier = identifierEnd(startOfDefinition, endOfDefinition);
-
-                    if (!validateIdentifier(startOfDefinition, endOfIdentifier))
+                    const char* endOfDefinition = wordEndOrParanthesis(startOfDefinition, eol);
+                    if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("Invalid macro identifier"));
+                        diagnostics.push_back(DIAGNOSTIC("define identifier invalid"));
                         return false;
                     }
 
-                    std::string def = std::string(startOfDefinition, endOfIdentifier);
+                    std::string def = std::string(startOfDefinition, endOfDefinition);
+                    auto prev = definitions.find(def);
+                    if (prev != definitions.end())
+                    {
+                        diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", def.c_str())));
+                        return false;    
+                    }
+
                     macro = &definitions[def];
 
                     auto pp = Alloc<Preprocessor>();
@@ -448,10 +532,10 @@ GPULangPreprocess(
 
                     const char* startOfContents = wordStart(endOfDefinition, eol);
                     
-                    if (endOfIdentifier[0] == '(')
+                    if (endOfDefinition[0] == '(')
                     {
                         // Argument list, start parsing arguments
-                        const char* argumentIt = wordStart(endOfIdentifier+1, endOfDefinition);
+                        const char* argumentIt = wordStart(endOfDefinition+1, endOfDefinition);
                         while (argumentIt != endOfDefinition)
                         {
                             if (argumentIt[0] == ')') // end of list
@@ -480,7 +564,11 @@ GPULangPreprocess(
                     {
                         macro->contents = std::string(startOfContents, eol - lineEndingLength);
                     }               
-                    output.append(Format("#line %d \"%s\"", level->lineCounter + 1, level->path.c_str()));
+                    else
+                    {
+
+                    }
+                    output.append(Format("#line %d \"%s\"", level->lineCounter + lineOffset, level->path.c_str()));
                 }
                 else if (strncmp(startOfDirective, "undef", endOfDirective - startOfDirective) == 0)
                 {
@@ -642,145 +730,161 @@ GPULangPreprocess(
             else if (!comment)
             {
                 IFDEFSTACK()
-                const char* startOfWord = wordStart(columnIt, eol);
-                const char* endOfWord = wordEnd(startOfWord, eol);
-
-                const char* startOfIdentifier = identifierBegin(startOfWord, eol);
-                const char* endOfIdentifier = identifierEnd(startOfIdentifier, eol);
-                std::string word = std::string(startOfIdentifier, endOfIdentifier);
+                const char* startOfWord = identifierBegin(columnIt, eol);
+                const char* endOfWord = identifierEnd(startOfWord, eol);
 
                 // Add whatever comes before the first identifier
                 output.append(columnIt, startOfWord);
-                auto it = definitions.find(word);
-                if (it != definitions.end())
+                if (startOfWord != eol)
                 {
-                    auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::Call;
-                    SETUP_PP2(pp, startOfIdentifier, endOfIdentifier)
-
-                    if (endOfIdentifier[0] == '(')
+                    std::string word = std::string(startOfWord, endOfWord);
+                    auto it = definitions.find(word);
+                    if (it != definitions.end())
                     {
-                        const char* argumentIt = wordStart(endOfIdentifier + 1, eol);
-                        std::vector<std::string> args;
-                        bool valid = false;
-                        while (argumentIt != eol)
-                        {
-                            if (argumentIt[0] == ')') // end of list
-                            {
-                                // Move new start to after argument list
-                                valid = true;
-                                break;
-                            }
-                            const char* argumentEnd = identifierEnd(argumentIt, eol);
+                        auto pp = Alloc<Preprocessor>();
+                        pp->type = Preprocessor::Call;
+                        SETUP_PP2(pp, startOfWord, endOfWord)
 
-                            // Check argument for validity
-                            if (!validIdentifierStart(argumentIt[0])) // First argument may not be a number
+                        if (endOfWord[0] == '(')
+                        {
+                            const char* argumentIt = wordStart(endOfWord + 1, eol);
+                            std::vector<std::string> args;
+                            bool valid = false;
+                            while (argumentIt != eol)
                             {
-                                diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentIt[0])));
-                                return false;
-                            }
-                            else
-                            {
-                                // If first char is valid, check the rest
-                                const char* argumentCharIt = argumentIt + 1;
-                                while (argumentCharIt != argumentEnd)
+                                if (argumentIt[0] == ')') // end of list
                                 {
-                                    if (!validIdentifierChar(argumentCharIt[0]))
-                                    {
-                                        diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentCharIt[0])));
-                                        return false;
-                                    }
-                                    argumentCharIt++;
+                                    // Move new start to after argument list
+                                    valid = true;
+                                    break;
                                 }
-                            }
-                            args.push_back(std::string(argumentIt, argumentEnd));
-                            argumentIt = nextArg(argumentIt, eol);
-                        }
-                        if (!valid)
-                        {
-                            {
-                                diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
-                                return false;
-                            }
-                        }
-                        endOfWord = argumentIt+1;
-                        std::map<std::string, std::string> argumentMap;
+                                const char* argumentEnd = identifierEnd(argumentIt, eol);
 
-                        // Warn if mismatch
-                        int maxIterations = min(args.size(), it->second.args.size());
-                        int argCounter = 0;
-                        for (auto& arg : it->second.args)
-                        {
-                            argumentMap[arg] = args[argCounter++];
-                        }
-
-                        const char* macroContentsIt = &(*it->second.contents.begin());
-                        const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
-
-                        // Replace macro contents with definitions and arguments
-                        while (macroContentsIt != macroContentsEnd)
-                        {
-                            const char* startOfIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
-                            const char* endOfIdentifier = identifierEnd(startOfIdentifier, macroContentsEnd);
-
-                            // Add whatever comes before the identifier to the output
-                            output.append(macroContentsIt, startOfIdentifier);
-                            if (macroContentsEnd == startOfIdentifier)
-                                break;
-
-                            std::string word(startOfIdentifier, endOfIdentifier);
-
-                            auto argIt = argumentMap.find(word);
-                            if (argIt == argumentMap.end())
-                            {
-                                auto defIt = definitions.find(word);
-                                if (defIt == definitions.end())
+                                // Check argument for validity
+                                if (!validIdentifierStart(argumentIt[0])) // First argument may not be a number
                                 {
-                                    output.append(word);
+                                    diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentIt[0])));
+                                    return false;
                                 }
                                 else
                                 {
-                                    output.append(defIt->second.contents);
+                                    // If first char is valid, check the rest
+                                    const char* argumentCharIt = argumentIt + 1;
+                                    while (argumentCharIt != argumentEnd)
+                                    {
+                                        if (!validIdentifierChar(argumentCharIt[0]))
+                                        {
+                                            diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentCharIt[0])));
+                                            return false;
+                                        }
+                                        argumentCharIt++;
+                                    }
+                                }
+                                args.push_back(std::string(argumentIt, argumentEnd));
+                                argumentIt = nextArg(argumentIt, eol);
+                            }
+                            if (!valid)
+                            {
+                                {
+                                    diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
+                                    return false;
                                 }
                             }
-                            else
+                            endOfWord = argumentIt + 1;
+                            std::map<std::string, std::string> argumentMap;
+
+                            // Warn if mismatch
+                            int maxIterations = min(args.size(), it->second.args.size());
+                            int argCounter = 0;
+                            for (auto& arg : it->second.args)
                             {
-                                output.append(argIt->second);
+                                argumentMap[arg] = args[argCounter++];
                             }
 
-                            macroContentsIt = endOfIdentifier;
+                            const char* macroContentsIt = &(*it->second.contents.begin());
+                            const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+
+                            // Replace macro contents with definitions and arguments
+                            while (macroContentsIt != macroContentsEnd)
+                            {
+                                const char* startOfMacroWord = identifierBegin(macroContentsIt, macroContentsEnd);
+                                const char* endOfMacroWord = identifierEnd(startOfMacroWord, macroContentsEnd);
+
+                                // Add whatever comes before the identifier to the output
+                                pp->contents.append(macroContentsIt, startOfMacroWord);
+                                if (macroContentsEnd == startOfMacroWord)
+                                    break;
+
+                                if (startOfMacroWord != macroContentsEnd)
+                                {
+                                    // Add everything leading up to the identifier to the output
+                                    std::string word(startOfMacroWord, endOfMacroWord);
+                                    macroContentsIt = endOfMacroWord;
+
+                                    auto argIt = argumentMap.find(word);
+                                    if (argIt == argumentMap.end())
+                                    {
+                                        auto defIt = definitions.find(word);
+                                        if (defIt == definitions.end())
+                                        {
+                                            pp->contents.append(word);
+                                        }
+                                        else
+                                        {
+                                            pp->contents.append(defIt->second.contents);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        pp->contents.append(argIt->second);
+                                    }
+                                }
+                                else
+                                {
+                                    pp->contents.append(startOfMacroWord, endOfMacroWord);
+                                    macroContentsIt = endOfMacroWord;
+                                }
+
+                            }
                         }
+                        else
+                        {
+                            const char* macroContentsIt = &(*it->second.contents.begin());
+                            const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+
+                            // Replace macro contents with definitions and arguments
+                            while (macroContentsIt != macroContentsEnd)
+                            {
+                                const char* startOfMacroIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
+                                const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, macroContentsEnd);
+
+                                // Add whatever comes before the identifier to the output
+                                pp->contents.append(macroContentsIt, startOfMacroIdentifier);
+                                if (macroContentsEnd == startOfMacroIdentifier)
+                                    break;
+
+                                std::string word(startOfMacroIdentifier, endOfMacroIdentifier);
+
+                                auto defIt = definitions.find(word);
+                                if (defIt == definitions.end())
+                                {
+                                    pp->contents.append(word);
+                                }
+                                else
+                                {
+                                    pp->contents.append(defIt->second.contents);
+                                }
+
+                                macroContentsIt = endOfMacroIdentifier;
+                            }
+                        }
+
+                        // Add summed contents to output
+                        output.append(pp->contents);
                     }
                     else
                     {
-                        const char* macroContentsIt = &(*it->second.contents.begin());
-                        const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
-
-                        // Replace macro contents with definitions and arguments
-                        while (macroContentsIt != macroContentsEnd)
-                        {
-                            const char* startOfIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
-                            const char* endOfIdentifier = identifierEnd(startOfIdentifier, macroContentsEnd);
-
-                            // Add whatever comes before the identifier to the output
-                            output.append(macroContentsIt, startOfIdentifier);
-                            if (macroContentsEnd == startOfIdentifier)
-                                break;
-
-                            std::string word(startOfIdentifier, endOfIdentifier);
-
-                            auto defIt = definitions.find(word);
-                            if (defIt == definitions.end())
-                            {
-                                output.append(word);
-                            }
-                            else
-                            {
-                                output.append(defIt->second.contents);
-                            }
-
-                            macroContentsIt = endOfIdentifier;
-                        }
+                        output.append(startOfWord, endOfWord);
                     }
                 }
                 else
@@ -791,6 +895,7 @@ GPULangPreprocess(
             }
             if (comment)
             {
+                output.append("\n");
                 columnIt = nextComment(columnIt, eol);
             }
 

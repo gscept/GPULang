@@ -248,6 +248,8 @@ struct StackArray
         }
     }
 
+    StackArray() {}
+
     ~StackArray()
     {
         if (this->ptr != nullptr)
