@@ -160,7 +160,9 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 void
 WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string contents, lsp::MessageHandler& messageHandler)
 {
-    std::rewind(file->tmpFile);
+    if (file->tmpFile != nullptr)
+        std::fclose(file->tmpFile);
+    file->tmpFile = std::fopen(file->tmpPath.c_str(), "wb");
     std::fputs(contents.c_str(), file->tmpFile);
     std::fflush(file->tmpFile);
 
@@ -228,7 +230,7 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     it->second.path = path;
 
     // Open file and store in context
-    FILE* f = fopen(path.c_str(), "r");
+    FILE* f = fopen(path.c_str(), "rb");
     assert(f != nullptr);
     fseek(f, 0, SEEK_END);
     int size = ftell(f);
@@ -242,7 +244,6 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     // Create temporary file for the compiler
     it->second.tmpPath = (std::filesystem::temp_directory_path() / std::filesystem::path(std::tmpnam(nullptr))).string();
     std::replace(it->second.tmpPath.begin(), it->second.tmpPath.end(), '\\', '/');
-    it->second.tmpFile = std::fopen(it->second.tmpPath.c_str(), "w");
     WriteFile(&it->second, context, it->second.file, messageHandler);
 
     return &it->second;

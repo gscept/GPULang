@@ -147,7 +147,7 @@ inline T*
 AllocArray(std::size_t num)
 {
     if (SYMBOL_STATIC_ALLOC)
-        return new T()[num];
+        return new T[num];
     Allocator* Allocator = CurrentAllocator;
     if (Allocator == nullptr)
     {
@@ -249,6 +249,15 @@ struct StackArray
     }
 
     StackArray() {}
+    StackArray(StackArray&& rhs) noexcept
+    {
+        this->ptr = rhs.ptr;
+        this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.ptr = nullptr;
+        rhs.size = 0;
+        rhs.capacity = 0;
+    }
 
     ~StackArray()
     {
@@ -256,6 +265,16 @@ struct StackArray
             DeallocStack(this->capacity, this->ptr);
         this->capacity = 0;
         this->size = 0;
+    }
+
+    void operator=(StackArray&& rhs) noexcept
+    {
+        this->ptr = rhs.ptr;
+        this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.ptr = nullptr;
+        rhs.size = 0;
+        rhs.capacity = 0;
     }
 
     void Append(const TYPE& t)

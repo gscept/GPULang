@@ -20,6 +20,11 @@
 
 #include <regex>
 
+#ifdef __WIN32__
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#endif
+
 using namespace antlr4;
 using namespace GPULang;
 
@@ -42,43 +47,37 @@ FixBackslashes(const std::string& path)
     return escaped;
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-FILE*
-LoadFile(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
+struct File
 {
-    FILE* f = fopen(path, "rb");
-    
-    if (f == nullptr)
+    char* contents = nullptr;
+    size_t contentSize = 0;
+
+    File() {};
+
+    File(File&& rhs)
     {
-        for (auto& searchPath : searchPaths)
-        {
-            foundPath = searchPath + std::string(path);
-            f = fopen(foundPath.c_str(), "rb");
-            if (f != nullptr)
-                break;
-        }
+        this->contents = rhs.contents;
+        this->contentSize = rhs.contentSize;
+        rhs.contents = nullptr;
+        rhs.contentSize = 0;
     }
 
-    if (f != nullptr)
+    void operator=(File&& rhs)
     {
-        fseek(f, 0, SEEK_END);
-        int size = ftell(f);
-        GPULang::StackArray<char> contents(size);
-        rewind(f);
-        fread(contents.ptr, 1, size, f);
+        this->contents = rhs.contents;
+        this->contentSize = rhs.contentSize;
+        rhs.contents = nullptr;
+        rhs.contentSize = 0;
     }
 
-    return f;
-}
+};
 
 struct FileLevel
 {
     int lineCounter;
     std::string path;
-    FILE* file;
-    GPULang::StackArray<char> contents;
+    File* file;
+    const char* it;
     
     FileLevel()
     {
@@ -86,17 +85,22 @@ struct FileLevel
         this->lineCounter = 0;
     }
 
-    FileLevel(const std::string& path, FILE* file)
+    FileLevel(const std::string& path, File* file)
     {
         this->path = path;
         this->file = file;
+        this->file = file;
+        this->it = this->file->contents;
         this->lineCounter = 0;
     }
+
 
     FileLevel(FileLevel&& rhs) noexcept
     {
         this->lineCounter = rhs.lineCounter;
         this->file = rhs.file;
+        this->it = rhs.it;
+        rhs.file = nullptr;
         this->path = std::move(rhs.path);
     }
 
@@ -105,40 +109,69 @@ struct FileLevel
         this->lineCounter = rhs.lineCounter;
         this->path = rhs.path;
         this->file = rhs.file;
+        this->it = rhs.it;
     }
+
 };
+
 
 //------------------------------------------------------------------------------
 /**
 */
-FileLevel&&
+File*
 LoadFile2(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
 {
-    FileLevel level;
-    level.file = fopen(path, "rb");
+    File* file = GPULang::Alloc<File>();
+
+    /*
+#if __WIN32__
+    HANDLE hFile = CreateFileA(path, GENERIC_READ, 0xFF, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (hFile == INVALID_HANDLE_VALUE)
+    {
+        DWORD err = GetLastError();
+        return file;
+    }
+    LARGE_INTEGER size;
+    if (!GetFileSizeEx(hFile, &size))
+    {
+        return file;
+    }
+#endif
+*/
+
+    FILE* f = fopen(path, "rb");
     
-    if (level.file == nullptr)
+    if (f == nullptr)
     {
         for (auto& searchPath : searchPaths)
         {
-            foundPath = searchPath + std::string(path);
-            level.file = fopen(foundPath.c_str(), "rb");
-            if (level.file != nullptr)
+            std::string fullPath = searchPath + std::string(path);
+            f = fopen(fullPath.c_str(), "rb");
+            if (f != nullptr)
+            {
+                foundPath = fullPath;
                 break;
+            }
         }
     }
-
-    if (level.file != nullptr)
+    else
     {
-        fseek(level.file, 0, SEEK_END);
-        int size = ftell(level.file);
-
-        level.contents = GPULang::StackArray<char>(size);
-        rewind(level.file);
-        fread(level.contents.ptr, 1, size, level.file);
+        foundPath = path;
     }
 
-    return std::move(level);
+    if (f != nullptr)
+    {
+        fseek(f, 0, SEEK_END);
+        int size = ftell(f);
+
+        file->contents = AllocArray<char>(size);
+        rewind(f);
+        fread(file->contents, 1, size, f);
+        fclose(f);
+        file->contentSize = size;
+    }
+
+    return file;
 }
 
 //------------------------------------------------------------------------------
@@ -146,18 +179,28 @@ LoadFile2(const char* path, const std::vector<std::string>& searchPaths, std::st
 */
 bool
 GPULangPreprocess(
-    const std::string& file
+    const std::string& path
     , const std::vector<std::string>& defines
     , std::string& output
     , std::vector<GPULang::Symbol*>& preprocessorSymbols
     , std::vector<GPULang::Diagnostic>& diagnostics
 )
 {
-    std::string escaped = FixBackslashes(file);
-    std::string fileName = file.substr(escaped.rfind("/")+1, escaped.length()-1);
-    std::string folder = escaped.substr(0, escaped.rfind("/")+1);
+
+#define DIAGNOSTIC(message)\
+        GPULang::Diagnostic{.error = message, .file = level->path, .line = level->lineCounter }
+
+    bool ret = true;
+    std::string escaped = FixBackslashes(path);
+    std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
+    std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
     std::string dummy;
-    FILE* f = LoadFile(file.c_str(), {}, dummy);
+    File* file = LoadFile2(path.c_str(), {}, dummy);
+
+
+    // Insert into file map
+    std::map<std::string, File*> fileMap;
+    fileMap[path] = file;
 
     struct Macro
     {
@@ -167,7 +210,7 @@ GPULangPreprocess(
     std::map<std::string, Macro> definitions;
 
     std::vector<bool> ifStack;
-    std::vector<FileLevel> fileStack{ { file, f } };
+    std::vector<FileLevel> fileStack{ { path, file } };
     std::vector<std::string> searchPaths;
     for (auto arg : defines)
     {
@@ -179,6 +222,27 @@ GPULangPreprocess(
                 definitions[arg.substr(2)] = Macro{ .contents = "" };
         }
     }
+
+    static auto has_char = [](const char* begin, const char* end, char c) -> uint8_t
+    {
+        int len = min(end - begin, 8);
+        static const uint64_t masks[] = {
+            0x0000000000000000ULL,
+            0x00000000000000FFULL,
+            0x000000000000FFFFULL,
+            0x0000000000FFFFFFULL,
+            0x00000000FFFFFFFFULL,
+            0x000000FFFFFFFFFFULL,
+            0x0000FFFFFFFFFFFFULL,
+            0x00FFFFFFFFFFFFFFULL,
+            0xFFFFFFFFFFFFFFFFULL
+        };
+        uint64_t mask = masks[len];
+        uint64_t byte_mask = 0x0101010101010101ULL * c;
+        uint64_t x = c ^ byte_mask;
+
+        return 0;
+    };
 
     static auto validIdentifierStart = [](const char c) -> bool
     {
@@ -218,6 +282,14 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
+            if (start[0] == '*')
+                if (start + 1 != end && start[1] == '/')
+                    return start;
+            if (start[0] == '/')
+                if (start + 1 != end && start[1] == '*')
+                    return start;
+                else if (start + 1 != end && start[1] == '/')
+                    return start;
             if (!whitespace(start[0]))
                 return start;
             start++;
@@ -230,6 +302,14 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
+            if (start[0] == '*')
+                if (start + 1 != end && start[1] == '/')
+                    return start;
+            if (start[0] == '/')
+                if (start + 1 != end && start[1] == '*')
+                    return start;
+                else if (start + 1 != end && start[1] == '/')
+                    return start;
             if (whitespace(start[0]))
                 return start;
             start++;
@@ -247,6 +327,19 @@ GPULangPreprocess(
                 return start;
             if (whitespace(start[0]))
                 return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto commentEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '*')
+                if (start + 1 != end && start[1] == '/')
+                    return start;
             start++;
         }
         return end;
@@ -307,20 +400,33 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
-            if (start[0] == '\n')
+            if (start[0] == '\r')
+            {
+                // Check if \r\n
+                if ((start != (end - 1)) && start[1] == '\n')
+                    return start + 2;
+                return start + 1;
+            }
+            else if (start[0] == '\n')
+                return start + 1;
+            else if (start[0] == '\0')
                 return start;
             start++;
         }
-        return nullptr;
+        return end;
     };
 
     FileLevel* level = &fileStack.back();
+    if (file->contents == nullptr)
+    {
+        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", path.c_str())));
+        return false;
+    }
+    output.clear();
+    output.append(Format("#line 1 \"%s\"\n", path.c_str()));
     Macro* macro = nullptr;
     bool comment = false;
-    output.clear();
-    char buf[4096];
     int lineOffset = 1;
-    GPULang::Preprocessor* prevMultiline = nullptr;
 
 #define POP_FILE() \
             fileStack.pop_back();\
@@ -334,15 +440,17 @@ GPULangPreprocess(
     {
         // Find next unescaped \n
     next_line:
-        const char* line2 = lineEnd(level->contents.ptr, level->contents.ptr + level->contents.size);
-        char* line = fgets(buf, sizeof(buf), level->file);
-        if (line == nullptr)
+        if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
         {
             POP_FILE()
         }
+        const char* endOfLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+
         level->lineCounter += lineOffset;
         lineOffset = 1;
-        std::string lineStr(line);
+        std::string lineStr(level->it, endOfLine);
+        level->it = endOfLine;
+
         int lineEndingLength = 0;
         if (lineStr.ends_with("\r\n"))
             lineEndingLength = 2;
@@ -365,8 +473,9 @@ GPULangPreprocess(
         {
             // Remove escape and newline
             lineStr.resize(lineStr.length() - lineEndingLength - 1);
-            char* line = fgets(buf, sizeof(buf), level->file);
-            lineStr += std::string(line);
+            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+            lineStr += std::string(level->it, startOfNextLine);
+            level->it = startOfNextLine;
             lineOffset++;
             goto escape_newline;
         }
@@ -448,9 +557,6 @@ GPULangPreprocess(
         argLoc.end = stop - lineBegin;\
         pp->argLocations.push_back(argLoc);
 
-#define DIAGNOSTIC(message)\
-        GPULang::Diagnostic{.error = message, .file = level->path, .line = level->lineCounter }
-
         const char* lineBegin = &(*lineIt);
         const char* eol = &(*(lineEnd - 1)) + 1;
         const char* columnIt = lineBegin;
@@ -481,12 +587,23 @@ GPULangPreprocess(
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
 
                         std::string foundPath;
-                        FILE* inc = LoadFile(path.c_str(), searchPaths, foundPath);
+                        File* inc = nullptr;
+                        auto fileIt = fileMap.find(path);
+                        if (fileIt == fileMap.end())
+                        {
+                            inc = LoadFile2(path.c_str(), searchPaths, foundPath);
+                            fileMap[path] = inc;
+                        }
+                        else
+                        {
+                            inc = fileIt->second;
+                        }
                         pp->contents = foundPath;
                         if (inc == nullptr)
                         {
                             diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", foundPath.c_str())));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         output.append(Format("#line %d \"%s\"\n", level->lineCounter + 1, level->path.c_str()));
 
@@ -496,7 +613,8 @@ GPULangPreprocess(
                     else
                     {
                         diagnostics.push_back(DIAGNOSTIC("include directory must be provided a path"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     goto next_line;
                 }
@@ -507,13 +625,15 @@ GPULangPreprocess(
                     if (startOfDefinition == eol)
                     {
                         diagnostics.push_back(DIAGNOSTIC("define missing identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     const char* endOfDefinition = wordEndOrParanthesis(startOfDefinition, eol);
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
                         diagnostics.push_back(DIAGNOSTIC("define identifier invalid"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
 
                     std::string def = std::string(startOfDefinition, endOfDefinition);
@@ -521,7 +641,8 @@ GPULangPreprocess(
                     if (prev != definitions.end())
                     {
                         diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", def.c_str())));
-                        return false;    
+                        ret = false;
+                        goto end;
                     }
 
                     macro = &definitions[def];
@@ -549,7 +670,8 @@ GPULangPreprocess(
                             if (!validateIdentifier(argumentIt, argumentEnd))
                             {
                                 diagnostics.push_back(DIAGNOSTIC("Invalid argument identifier"));
-                                return false;
+                                ret = false;
+                                goto end;
                             }
 
                             // Identifier validation done, save argument
@@ -578,14 +700,16 @@ GPULangPreprocess(
                     if (startOfDefinition == nullptr)
                     {
                         diagnostics.push_back(DIAGNOSTIC("undef missing identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     const char* endOfDefinition = wordEnd(startOfDefinition, eol);
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
                         diagnostics.push_back(DIAGNOSTIC("Invalid undef identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
 
                     auto pp = Alloc<Preprocessor>();
@@ -607,14 +731,16 @@ GPULangPreprocess(
                     if (startOfDefinition == nullptr)
                     {
                         diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     const char* endOfDefinition = wordEnd(startOfDefinition, eol);
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
                         diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
 
                     auto pp = Alloc<Preprocessor>();
@@ -640,14 +766,16 @@ GPULangPreprocess(
                     if (startOfDefinition == nullptr)
                     {
                         diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     const char* endOfDefinition = wordEnd(startOfDefinition, eol);
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
                         diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
-                        return false;
+                        ret = false;
+                        goto end;
                     }
 
                     auto pp = Alloc<Preprocessor>();
@@ -689,7 +817,8 @@ GPULangPreprocess(
                     if (ifStack.empty())
                     {
                         diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter });
-                        return false;
+                        ret = false;
+                        goto end;
                     }
                     else
                         ifStack.pop_back();
@@ -715,17 +844,26 @@ GPULangPreprocess(
                 auto pp = Alloc<Preprocessor>();
                 pp->type = Preprocessor::Comment;
                 SETUP_PP2(pp, firstWord, eol)
-                columnIt = firstWord + 2;
-                prevMultiline = pp;
+
+                const char* endOfComment = commentEnd(columnIt, eol);
+                if (endOfComment != eol)
+                {
+                    pp->location.end = endOfComment + 2 - lineBegin;
+                    columnIt = endOfComment + 2;
+                    comment = false;
+                }
+                else
+                    columnIt = firstWord + 2;
+                continue;
             }
             else if (comment && firstWord[0] == '*' && firstWord[1] == '/')
             {
                 comment = false;
-                assert(prevMultiline != nullptr);
-                auto back = static_cast<GPULang::Preprocessor*>(prevMultiline);
-                back->location.end = firstWord + 2 - lineBegin;
-                prevMultiline = nullptr;
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Comment;
+                SETUP_PP2(pp, columnIt, firstWord+2)
                 columnIt = firstWord + 2;
+                continue;
             }
             else if (!comment)
             {
@@ -764,7 +902,8 @@ GPULangPreprocess(
                                 if (!validIdentifierStart(argumentIt[0])) // First argument may not be a number
                                 {
                                     diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentIt[0])));
-                                    return false;
+                                    ret = false;
+                                    goto end;
                                 }
                                 else
                                 {
@@ -775,7 +914,8 @@ GPULangPreprocess(
                                         if (!validIdentifierChar(argumentCharIt[0]))
                                         {
                                             diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentCharIt[0])));
-                                            return false;
+                                            ret = false;
+                                            goto end;
                                         }
                                         argumentCharIt++;
                                     }
@@ -785,10 +925,9 @@ GPULangPreprocess(
                             }
                             if (!valid)
                             {
-                                {
-                                    diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
-                                    return false;
-                                }
+                                diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
+                                ret = false;
+                                goto end;
                             }
                             endOfWord = argumentIt + 1;
                             std::map<std::string, std::string> argumentMap;
@@ -895,15 +1034,21 @@ GPULangPreprocess(
             }
             if (comment)
             {
+                auto pp = Alloc<Preprocessor>();
+                pp->type = Preprocessor::Comment;
+                SETUP_PP2(pp, lineBegin, eol)
                 output.append("\n");
-                columnIt = nextComment(columnIt, eol);
+                goto next_line;
             }
 
             // Go to next non white space word
             prevColumnIt = columnIt;
         } while (columnIt != eol);
     }
-    return true;
+end:
+    for (auto& file : fileMap)
+        file.second->~File();
+    return ret;
 }
 
 //------------------------------------------------------------------------------
@@ -1137,6 +1282,12 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
     GPULang::Compiler::Timer timer;
 
     timer.Start();
+    for (int i = 0; i < 500; i++)
+    {
+        std::vector<GPULang::Symbol*> preprocessorSymbols;
+        std::vector<GPULang::Diagnostic> diagnostics;
+        GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics);
+    }
     std::vector<GPULang::Symbol*> preprocessorSymbols;
     std::vector<GPULang::Diagnostic> diagnostics;
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
