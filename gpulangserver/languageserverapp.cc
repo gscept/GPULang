@@ -30,6 +30,8 @@
 #include <ws2tcpip.h>
 #else
 #include <sys/socket.h>
+#include <netinet/in.h>
+#define SOCKET int
 #endif
 
 #include <map>
@@ -110,7 +112,6 @@ struct ParseContext
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
         std::map<std::string, const GPULang::Symbol*> symbolsByName;
-        size_t earliestError = SIZE_MAX;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
         {
@@ -182,14 +183,12 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     });
     std::vector<lsp::Diagnostic> diagnostics;
 
-    file->earliestError = SIZE_MAX;
     std::map<std::string, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
     if (!file->result.diagnostics.empty())
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
             auto& it = diagnosticsResults[diagnostic.file];
-            file->earliestError = min(file->earliestError, diagnostic.line);
             it.uri = diagnostic.file;
             it.diagnostics.push_back(lsp::Diagnostic{
                 .range = {
@@ -348,9 +347,6 @@ InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Loca
 void
 CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* sym, ParseContext::ParsedFile* file, std::vector<uint32_t>& result, std::vector<const GPULang::Scope*>& scopes)
 {
-    if (sym->location.line >= file->earliestError)
-        return;
-
     ParseContext::ParsedFile::TextRange range;
     range.startLine = sym->location.line;
     range.stopLine = sym->location.line;
@@ -943,13 +939,6 @@ main(int argc, const char** argv)
     server.sin_port = htons(5007);
     bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
     listen(sock, 5);
-
-
-#if _MSC_VER
-    //DWORD timeout = 1000;
-    //setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout);
-#endif
-
 
     printf("GPULang Language Server Version 1.0\n");
     printf("Waiting for clients...\n");

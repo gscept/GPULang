@@ -8,3 +8,4 @@ code/test/shaders/output
 *.vsix
 .idea
 CMakeUserPresets.json
+*.DS_Store
