@@ -636,7 +636,7 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
 void 
 Compiler::Error(const std::string& msg, const Symbol* sym)
 {
-    this->Error(msg, sym->location.file, sym->location.line, sym->location.column, sym->location.end - sym->location.start);
+    this->Error(msg, sym->location.file, sym->location.line, sym->location.start, sym->location.end - sym->location.start);
 }
 
 //------------------------------------------------------------------------------
@@ -657,7 +657,7 @@ Compiler::Warning(const std::string& msg, const std::string& file, int line, int
 void 
 Compiler::Warning(const std::string& msg, const Symbol* sym)
 {
-    this->Warning(msg, sym->location.file, sym->location.line, sym->location.column);
+    this->Warning(msg, sym->location.file, sym->location.line, sym->location.start);
 }
 
 //------------------------------------------------------------------------------

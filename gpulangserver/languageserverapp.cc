@@ -90,6 +90,11 @@ union PresentationBits
     PresentationBits(Flags flags) : flags(flags) {};
 };
 
+struct SemanticToken
+{
+    uint32_t deltaLine, deltaColumn, length, type, modifiers;
+};
+
 struct ParseContext
 {
     std::vector<std::string> includePaths;
@@ -192,8 +197,8 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
             it.uri = diagnostic.file;
             it.diagnostics.push_back(lsp::Diagnostic{
                 .range = {
-                    .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
-                    .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
+                    .start = { .line = (uint32_t)diagnostic.line+1, .character = (uint32_t)diagnostic.column },
+                    .end = { .line = (uint32_t)diagnostic.line+1, .character = (uint32_t)diagnostic.column + diagnostic.length }
                 },
                 .message = diagnostic.error,
             });
@@ -325,20 +330,21 @@ enum class SemanticModifierMapping : uint32_t {
     , DefaultLibrary = 0x40
 };
 
+
 //------------------------------------------------------------------------------
 /**
 */
 void
 InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Location& loc, SemanticTypeMapping type, uint32_t modifiers, std::vector<uint32_t>& result)
 {
-    uint32_t ret[5];
-    ret[0] = (loc.line - prev.line);
-    ret[1] = loc.line == prev.line ? loc.column - prev.column : loc.column;
-    ret[2] = loc.end - loc.start;
-    ret[3] = (uint32_t)type;
-    ret[4] = modifiers;
+    SemanticToken token;
+    token.deltaLine = loc.line - prev.line;
+    token.deltaColumn = loc.line == prev.line ? loc.start - prev.start : loc.start;
+    token.length = loc.end - loc.start;
+    token.type = (uint32_t)type;
+    token.modifiers = modifiers;
     prev = loc;
-    result.insert(result.end(), ret, ret + 5);
+    result.insert(result.end(), reinterpret_cast<uint32_t*>(&token), reinterpret_cast<uint32_t*>(&token) + 5);
 }
 
 //------------------------------------------------------------------------------
@@ -353,7 +359,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
     range.startColumn = sym->location.start;
     range.stopColumn = sym->location.end;
     file->symbolsByRange.push_back(std::make_pair(range, sym));
-    file->symbolsByLine[range.startLine-1].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
+    file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
 
     switch (sym->symbolType)
     {
@@ -366,16 +372,23 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Comment, 0x0, result);
                 break;
             case GPULang::Preprocessor::If:
-            case GPULang::Preprocessor::EndIf:
             case GPULang::Preprocessor::Undefine:
-            case GPULang::Preprocessor::Call:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
+                break;
             case GPULang::Preprocessor::Macro:
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
                 break;                
             case GPULang::Preprocessor::Include:
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
                 InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::String, 0x0, result);
                 break;
+            case GPULang::Preprocessor::Else:
+            case GPULang::Preprocessor::EndIf:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+            case GPULang::Preprocessor::Call:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
             }
             break;
         }
@@ -407,7 +420,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             range.startColumn = var->typeLocation.start;
             range.stopColumn = var->typeLocation.end;
             file->symbolsByRange.push_back(std::make_pair(range, res->typeSymbol));
-            file->symbolsByLine[range.startLine - 1].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
+            file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
 
             if (var->valueExpression != nullptr)
                 CreateSemanticToken(prevLoc, var->valueExpression, file, result, scopes);
@@ -418,7 +431,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
             const GPULang::Function::__Resolved* res = GPULang::Symbol::Resolved(fun);
             scopes.push_back(&res->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto annot : fun->annotations)
             {
                 //InsertSemanticToken(prevLoc, annot->location, SemanticTypeMapping::Decorator, 0x0, result);
@@ -446,7 +459,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             range.startColumn = fun->returnTypeLocation.start;
             range.stopColumn = fun->returnTypeLocation.end;
             file->symbolsByRange.push_back(std::make_pair(range, res->returnTypeSymbol));
-            file->symbolsByLine[range.startLine - 1].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
+            file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
 
             if (fun->ast != nullptr)
             {
@@ -464,7 +477,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             if (res->typeSymbol == nullptr)
                 return;
             scopes.push_back(&res->typeSymbol->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
 
             for (auto mem : enu->labelLocations)
             {
@@ -478,12 +491,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::RenderState* struc = static_cast<const GPULang::RenderState*>(sym);
             const GPULang::RenderState::__Resolved* res = GPULang::Symbol::Resolved(struc);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             if (res->typeSymbol == nullptr)
                 return;
             scopes.push_back(&res->typeSymbol->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -498,12 +511,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::SamplerState* struc = static_cast<const GPULang::SamplerState*>(sym);
             const GPULang::SamplerState::__Resolved* res = GPULang::Symbol::Resolved(struc);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             if (res->typeSymbol == nullptr)
                 return;
             scopes.push_back(&res->typeSymbol->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -518,7 +531,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             scopes.push_back(&struc->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto var : struc->symbols)
             {
                 CreateSemanticToken(prevLoc, var, file, result, scopes);
@@ -530,7 +543,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
         {
             const GPULang::Program* prog = static_cast<const GPULang::Program*>(sym);
             const auto* res = GPULang::Symbol::Resolved(prog);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             for (auto annot : prog->annotations)
             {
@@ -540,7 +553,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             if (res->typeSymbol == nullptr)
                 return;
             scopes.push_back(&res->typeSymbol->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : prog->entries)
             {
                 CreateSemanticToken(prevLoc, entry, file, result, scopes);
@@ -554,7 +567,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::ScopeStatement* scope = static_cast<const GPULang::ScopeStatement*>(sym);
             const GPULang::ScopeStatement::__Resolved* res = GPULang::Symbol::Resolved(scope);
             scopes.push_back(&res->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             for (auto innerSym : scope->symbols)
             {
                 CreateSemanticToken(prevLoc, innerSym, file, result, scopes);
@@ -624,7 +637,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             if (res->lhsType == nullptr)
                 return;
             scopes.push_back(&res->lhsType->scope);
-            file->scopesByLine[range.startLine - 1] = scopes;
+            file->scopesByLine[range.startLine] = scopes;
             CreateSemanticToken(prevLoc, expr->right, file, result, scopes);
             scopes.pop_back();
             break;
@@ -672,7 +685,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 range.startColumn = sym->location.start;
                 range.stopColumn = sym->location.end;
                 file->symbolsByRange.push_back(std::make_pair(range, foundSym));
-                file->symbolsByLine[range.startLine-1].push_back(std::make_tuple(range, PresentationBits{{.symbolLookup=1}}, foundSym));
+                file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{{.symbolLookup=1}}, foundSym));
             }
             else
                 InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, 0x0, result);
@@ -1013,8 +1026,8 @@ main(int argc, const char** argv)
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     GPULang::Symbol::Location prev;
-                    prev.line = 1;
-                    prev.column = 0;
+                    prev.line = 0;
+                    prev.start = 0;
                     for (auto sym : file->result.symbols)
                     {
                         if (sym->location.file == file->tmpPath)
@@ -1054,7 +1067,7 @@ main(int argc, const char** argv)
                         file->semanticTokens.clear();
                         GPULang::Symbol::Location prev;
                         prev.line = 1;
-                        prev.column = 0;
+                        prev.start = 0;
                         for (auto sym : file->result.symbols)
                         {
                             if (sym->location.file == file->tmpPath)
@@ -1146,11 +1159,11 @@ main(int argc, const char** argv)
                                     },
                                     .range = lsp::Range{ 
                                         .start = { 
-                                            .line = (uint32_t)closestSymbol->location.line - 1,
+                                            .line = (uint32_t)closestSymbol->location.line,
                                             .character = (uint32_t)closestSymbol->location.start
                                         }, 
                                         .end = {
-                                            .line = (uint32_t)closestSymbol->location.line - 1,
+                                            .line = (uint32_t)closestSymbol->location.line,
                                             .character = (uint32_t)closestSymbol->location.end
                                         }
                                     }
@@ -1185,11 +1198,11 @@ main(int argc, const char** argv)
                                 lsp::DocumentHighlight{ 
                                     .range = { 
                                         .start = { 
-                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .line = (uint32_t)it->second->location.line, 
                                             .character = (uint32_t)it->second->location.start
                                         }, 
                                         .end = {
-                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .line = (uint32_t)it->second->location.line, 
                                             .character = (uint32_t) + it->second->location.end
                                         }
                                     },

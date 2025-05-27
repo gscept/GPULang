@@ -119,37 +119,20 @@ struct FileLevel
 /**
 */
 File*
-LoadFile2(const char* path, const std::vector<std::string>& searchPaths, std::string& foundPath)
+LoadFile2(const char* path, const std::vector<std::string_view>& searchPaths, std::string& foundPath)
 {
     File* file = GPULang::Alloc<File>();
-
-    /*
-#if __WIN32__
-    HANDLE hFile = CreateFileA(path, GENERIC_READ, 0xFF, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
-    if (hFile == INVALID_HANDLE_VALUE)
-    {
-        DWORD err = GetLastError();
-        return file;
-    }
-    LARGE_INTEGER size;
-    if (!GetFileSizeEx(hFile, &size))
-    {
-        return file;
-    }
-#endif
-*/
-
     FILE* f = fopen(path, "rb");
     
     if (f == nullptr)
     {
         for (auto& searchPath : searchPaths)
         {
-            std::string fullPath = searchPath + std::string(path);
-            f = fopen(fullPath.c_str(), "rb");
+            TStr fullPath = TStr::Compact(searchPath.data(), path);
+            f = fopen(fullPath.Data(), "rb");
             if (f != nullptr)
             {
-                foundPath = fullPath;
+                foundPath = fullPath.Data();
                 break;
             }
         }
@@ -198,30 +181,45 @@ GPULangPreprocess(
     File* file = LoadFile2(path.c_str(), {}, dummy);
 
 
-    // Insert into file map
-    std::map<std::string, File*> fileMap;
-    fileMap[path] = file;
 
     struct Macro
     {
         std::vector<std::string> args;
         std::string contents;
     };
-    std::map<std::string, Macro> definitions;
+    std::map<std::string_view, Macro> definitions;
 
     std::vector<bool> ifStack;
     std::vector<FileLevel> fileStack{ { path, file } };
-    std::vector<std::string> searchPaths;
-    for (auto arg : defines)
+    std::vector<std::string_view> searchPaths;
+    for (auto& arg : defines)
     {
+        std::string_view argView = arg;
         if (arg[0] == '-')
         {
             if (arg[1] == 'I')
-                searchPaths.push_back(arg.substr(2));
+                searchPaths.push_back(argView.substr(2));
             else if (arg[1] == 'D')
-                definitions[arg.substr(2)] = Macro{ .contents = "" };
+                definitions[argView.substr(2)] = Macro{ .contents = "" };
         }
     }
+
+    // Insert into file map
+    std::map<std::string, File*> fileMap;
+    fileMap[path] = file;
+
+    FileLevel* level = &fileStack.back();
+    if (file->contents == nullptr)
+    {
+        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", path.c_str())));
+        return false;
+    }
+    output.clear();
+    output.reserve(file->contentSize * 1.5f);
+    output.append(Format("#line 0 \"%s\"\n", path.c_str()));
+    Macro* macro = nullptr;
+    bool comment = false;
+    level->lineCounter = 0;
 
     static auto has_char = [](const char* begin, const char* end, char c) -> uint8_t
     {
@@ -258,6 +256,11 @@ GPULangPreprocess(
         return false;
     };
 
+    static auto is_digit = [](const char c) -> bool
+    {
+        return (c >= '0' && c <= '9');
+    };
+
     static auto validateIdentifier = [](const char* begin, const char* end) -> bool
     {
         if (!validIdentifierStart(begin[0]))
@@ -274,7 +277,7 @@ GPULangPreprocess(
 
     static auto whitespace = [](const char c) -> bool
     {
-        return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v';
+        return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\f' || c == '\v';
     };
 
     static auto wordStart = [](const char* begin, const char* end) -> const char*
@@ -416,50 +419,459 @@ GPULangPreprocess(
         return end;
     };
 
-    FileLevel* level = &fileStack.back();
-    if (file->contents == nullptr)
+    static auto fourCCBegin = [](const char* begin, const char* end, const int c) -> const char*
     {
-        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", path.c_str())));
-        return false;
+        const char* start = begin;
+        while (start != end)
+        {
+        retry:
+            // If first byte matches, continue
+            if (start[0] == (c & 0xFF))
+            {
+                const char* ret = start;
+                // Shift by 8 to get the next byte
+                int tc = c >> 8;
+
+                // As long as the copy of the fourcc isn't empty, test
+                while ((tc & 0xFF) != 0x0)
+                {
+                    if (start[0] == (tc & 0xFF))
+                        start++;
+                    else
+                    {
+                        start++;
+                        goto retry;
+                    }
+                    tc >>= 8;
+                }
+
+                // If the copy is empty and we didn't retry, we have a hit!
+                if (tc == 0x0)
+                    return ret;
+            }
+            start++;
+        }
+        return end;
+    };
+
+    enum ExprType : uint8_t
+    {
+        Invalid,
+        Atom,
+        Binary
+    };
+    struct Expr
+    {
+        uint16_t index;
+        ExprType type;
+    };
+    struct BinExpr
+    {
+        Expr left, right;
+        int op;
+    };
+    struct ExprAtom
+    {
+        ExprAtom()
+            : val(-1)
+        {}
+        int val;
+    };
+    StackArray<BinExpr> binExprs(128);
+    StackArray<ExprAtom> atoms(256);
+
+#define MATCH(pred, op, start, stop, ch)\
+    if (!pred) \
+    { \
+        start = (const char*)fourCCBegin(begin, end, ch);\
+        pred |= (start != end); \
+        if (pred) \
+        { \
+            stop = start + (ch & 0xFF ? 1 : 0) + (ch & 0xFF00 ? 1 : 0) + (ch & 0xFF0000 ? 1 : 0) + (ch & 0xFF000000 ? 1 : 0); \
+            op = ch;\
+        }\
     }
-    output.clear();
-    output.append(Format("#line 1 \"%s\"\n", path.c_str()));
-    Macro* macro = nullptr;
-    bool comment = false;
-    int lineOffset = 1;
+
+#define RECURSION()\
+    Expr ret;\
+    recursion_depth_counter++;\
+    if (recursion_depth_counter > 256)\
+    {\
+        diagnostics.push_back(DIAGNOSTIC("Max preprocessor recursion depth limit (256)"));\
+        return ret;\
+    }
+        
+
+    static std::function<int(const Expr& e)> eval = [&binExprs, &atoms](const Expr& e) -> int
+    {
+        if (e.type == ExprType::Atom)
+            return atoms.ptr[e.index].val;
+        else if (e.type == ExprType::Binary)
+        {
+            const BinExpr& bin = binExprs.ptr[e.index];
+            int left = eval(bin.left);
+            int right = eval(bin.right);
+            switch (bin.op)
+            {
+                case '+':
+                    return left + right;
+                case '-':
+                    return left - right;
+                case '*':
+                    return left * right;
+                case '/':
+                    return left / right;
+                case '%':
+                    return left % right;
+                case '<<':
+                    return left << right;
+                case '>>':
+                    return left >> right;
+                case '<':
+                    return left < right;
+                case '>':
+                    return left > right;
+                case '<=':
+                    return left <= right;
+                case '>=':
+                    return left >= right;
+                case '==':
+                    return left == right;
+                case '!=':
+                    return left != right;
+                case '&':
+                    return left & right;
+                case '^':
+                    return left ^ right;
+                case '|':
+                    return left | right;
+                case '&&':
+                    return (left != 0) && (right != 0);
+                case '||':
+                    return (left != 0) || (right != 0);
+            }
+        }
+    };
+
+    static int recursion_depth_counter = 0;
+    static std::function<Expr(const char*, const char*)> operatorsTier0 = nullptr;
+    static auto atom = [&binExprs, &atoms, &diagnostics, &level, &definitions](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        const char* atomBegin = wordStart(begin, end);
+        const char* atomEnd = wordEnd(atomBegin, end);
+
+        if (is_digit(atomBegin[0]))
+        {
+            ExprAtom atomExpr;
+            atomExpr.val = 0;
+            int digit = 1;
+            const char* intBegin = atomBegin;
+            while (intBegin != atomEnd)
+            {
+                if (is_digit(intBegin[0]))
+                {
+                    atomExpr.val += (intBegin[0] - '0') * digit;
+                    digit *= 10;
+                }
+                else
+                {
+                    diagnostics.push_back(DIAGNOSTIC(Format("Invalid value %.*s", atomEnd - atomBegin, atomBegin)));
+                    return ret;
+                }
+                intBegin++;
+            }
+            ret.type = ExprType::Atom;
+            ret.index = atoms.size;
+            atoms.Append(atomExpr);
+        }
+        else // assume identifier
+        {
+            std::string_view def(atomBegin, atomEnd);
+            auto it = definitions.find(def);
+            if (it == definitions.end())
+            {
+                diagnostics.push_back(DIAGNOSTIC(Format("Undefined macro %.*s", atomEnd - atomBegin, atomBegin)));
+            }
+            else
+            {
+                return operatorsTier0(it->second.contents.data(), it->second.contents.data() + it->second.contents.length());
+            }
+        }
+        return ret;
+    };
+
+    static auto operatorsTier9 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '*');
+        MATCH(matched, op, startOfOp, endOfOp, '/');
+        MATCH(matched, op, startOfOp, endOfOp, '%');
+        if (!matched)
+            return atom(begin, end);
+
+        Expr left = atom(begin, startOfOp);
+        Expr right = atom(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier8 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '+');
+        MATCH(matched, op, startOfOp, endOfOp, '-');
+        if (!matched)
+            return operatorsTier9(begin, end);
+
+        Expr left = operatorsTier9(begin, startOfOp);
+        Expr right = operatorsTier9(endOfOp, end);
+
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier7 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '<<');
+        MATCH(matched, op, startOfOp, endOfOp, '>>');
+        if (!matched)
+            return operatorsTier8(begin, end);
+
+        Expr left = operatorsTier8(begin, startOfOp);
+        Expr right = operatorsTier8(endOfOp, end);
+
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier6 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '<');
+        MATCH(matched, op, startOfOp, endOfOp, '>');
+        MATCH(matched, op, startOfOp, endOfOp, '<=');
+        MATCH(matched, op, startOfOp, endOfOp, '>=');
+        if (!matched)
+            return operatorsTier7(begin, end);
+
+        Expr left = operatorsTier7(begin, startOfOp);
+        Expr right = operatorsTier7(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier5 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '==');
+        MATCH(matched, op, startOfOp, endOfOp, '!=');
+        if (!matched)
+            return operatorsTier6(begin, end);
+
+        Expr left = operatorsTier6(begin, startOfOp);
+        Expr right = operatorsTier6(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier4 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '&');
+        if (!matched)
+            return operatorsTier5(begin, end);
+
+        Expr left = operatorsTier5(begin, startOfOp);
+        Expr right = operatorsTier5(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier3 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '^');
+        if (!matched)
+            return operatorsTier4(begin, end);
+
+        Expr left = operatorsTier4(begin, startOfOp);
+        Expr right = operatorsTier4(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier2 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '|');
+        if (!matched)
+            return operatorsTier3(begin, end);
+
+        Expr left = operatorsTier3(begin, startOfOp);
+        Expr right = operatorsTier3(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+
+    static auto operatorsTier1 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '&&');
+        if (!matched)
+            return operatorsTier2(begin, end);
+
+        Expr left = operatorsTier2(begin, startOfOp);
+        Expr right = operatorsTier2(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
+    
+    operatorsTier0 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
+    {
+        RECURSION()
+        bool matched = false;
+        int op;
+        const char* startOfOp = nullptr;
+        const char* endOfOp = nullptr;
+        MATCH(matched, op, startOfOp, endOfOp, '||');
+        if (!matched)
+            return operatorsTier1(begin, end);
+
+        Expr left = operatorsTier1(begin, startOfOp);
+        Expr right = operatorsTier1(endOfOp, end);
+        ret.index = binExprs.size;
+        ret.type = ExprType::Binary;
+        BinExpr expr;
+        expr.left = left;
+        expr.right = right;
+        expr.op = op;
+        binExprs.Append(expr);
+        return ret;
+    };
 
 #define POP_FILE() \
             fileStack.pop_back();\
             if (!fileStack.empty())\
             {\
                 level = &fileStack.back();\
-                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->path.c_str()));\
+                output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->path.c_str()));\
+                level->lineCounter++;\
             }\
             continue;
     while (!fileStack.empty())
     {
         // Find next unescaped \n
-    next_line:
         if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
         {
             POP_FILE()
         }
         const char* endOfLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
 
-        level->lineCounter += lineOffset;
-        lineOffset = 1;
-        std::string lineStr(level->it, endOfLine);
+        std::string_view lineSpan(level->it, endOfLine);
         level->it = endOfLine;
 
         int lineEndingLength = 0;
-        if (lineStr.ends_with("\r\n"))
+        if (lineSpan.ends_with("\r\n"))
             lineEndingLength = 2;
-        else if (lineStr.ends_with("\r") || lineStr.ends_with("\n"))
+        else if (lineSpan.ends_with("\r") || lineSpan.ends_with("\n"))
             lineEndingLength = 1;
 
         // Check for valid end of line, meaning the file is corrupt after this point
-        auto charIterator = lineStr.rbegin();
-        if (lineStr.length() >= 3 && (charIterator[2] == '\r' || charIterator[2] == '\n'))
+        auto charIterator = lineSpan.rbegin();
+        if (lineSpan.length() >= 3 && (charIterator[2] == '\r' || charIterator[2] == '\n'))
             lineEndingLength = -1;
         if (lineEndingLength == -1)
         {
@@ -467,21 +879,34 @@ GPULangPreprocess(
             POP_FILE()
         }        
 
-    escape_newline:
+escape_newline:
 
-        if (lineStr.ends_with("\\\r\n") || lineStr.ends_with("\\\n"))
+        if (lineSpan.ends_with("\\\n"))
         {
-            // Remove escape and newline
-            lineStr.resize(lineStr.length() - lineEndingLength - 1);
+            char* endOfLineMutable = const_cast<char*>(level->it);
+            endOfLineMutable[-1] = ' ';
+            endOfLineMutable[-2] = ' ';
             const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
-            lineStr += std::string(level->it, startOfNextLine);
+            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
             level->it = startOfNextLine;
-            lineOffset++;
+            level->lineCounter++;
+            goto escape_newline;
+        }
+        else if (lineSpan.ends_with("\\\r\n"))
+        {
+            char* endOfLineMutable = const_cast<char*>(level->it);
+            endOfLineMutable[-1] = ' ';
+            endOfLineMutable[-2] = ' ';
+            endOfLineMutable[-3] = ' ';
+            const char* startOfNextLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+            lineSpan = std::string_view(lineSpan.data(), startOfNextLine);
+            level->it = startOfNextLine;
+            level->lineCounter++;
             goto escape_newline;
         }
 
-        auto lineIt = lineStr.cbegin();
-        auto lineEnd = lineStr.cend();
+        auto lineIt = lineSpan.cbegin();
+        auto lineEnd = lineSpan.cend();
 
         // Macro to eliminate directives and output if an if-scope is inactive
 #define IFDEFSTACK() \
@@ -493,9 +918,8 @@ GPULangPreprocess(
                 pp->type = Preprocessor::Comment;\
                 pp->location.file = level->path;\
                 pp->location.line = level->lineCounter;\
-                pp->location.column = 0;\
                 pp->location.start = 0;\
-                pp->location.end = lineStr.length();\
+                pp->location.end = lineSpan.length();\
                 preprocessorSymbols.push_back(pp);\
                 output.push_back('\n');\
                 goto next_line;\
@@ -511,9 +935,8 @@ GPULangPreprocess(
                 pp->type = Preprocessor::Comment;\
                 pp->location.file = level->path;\
                 pp->location.line = level->lineCounter;\
-                pp->location.column = 0;\
                 pp->location.start = 0;\
-                pp->location.end = lineStr.length();\
+                pp->location.end = lineSpan.length();\
                 preprocessorSymbols.push_back(pp);\
                 output.push_back('\n');\
                 ifStack.push_back(false);\
@@ -530,9 +953,8 @@ GPULangPreprocess(
                 pp->type = Preprocessor::Comment;\
                 pp->location.file = level->path;\
                 pp->location.line = level->lineCounter;\
-                pp->location.column = 0;\
                 pp->location.start = 0;\
-                pp->location.end = lineStr.length();\
+                pp->location.end = lineSpan.length();\
                 preprocessorSymbols.push_back(pp);\
                 output.push_back('\n');\
                 goto next_line;\
@@ -543,7 +965,6 @@ GPULangPreprocess(
         pp->location.file = level->path;\
         pp->location.line = level->lineCounter;\
         pp->location.start = begin - lineBegin;\
-        pp->location.column = pp->location.start;\
         pp->location.end = stop - lineBegin;\
         preprocessorSymbols.push_back(pp);
 
@@ -553,7 +974,6 @@ GPULangPreprocess(
         argLoc.file = level->path;\
         argLoc.line = level->lineCounter;\
         argLoc.start = begin - lineBegin;\
-        argLoc.column = pp->location.start;\
         argLoc.end = stop - lineBegin;\
         pp->argLocations.push_back(argLoc);
 
@@ -565,12 +985,19 @@ GPULangPreprocess(
         {
             // Find beginning of first non-WS character
             const char* firstWord = wordStart(columnIt, eol);
+
+            // If empty line, just add it and continue
+            if (firstWord == eol)
+            {
+                output.append(columnIt, eol);
+                goto next_line;
+            }
             if (firstWord[0] == '#') // Directives
             {
                 firstWord++;
                 const char* startOfDirective = wordStart(firstWord, eol);
                 const char* endOfDirective = wordEnd(firstWord, eol);
-                if (strncmp(startOfDirective, "include", endOfDirective - startOfDirective) == 0) // Include
+                if (strncmp(startOfDirective, "include", 7) == 0) // Include
                 {
                     IFDEFSTACK()
 
@@ -578,7 +1005,7 @@ GPULangPreprocess(
                     const char* endOfPath = wordEnd(startOfPath, eol);
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Include;
-                    SETUP_PP2(pp, startOfDirective, endOfDirective);
+                    SETUP_PP2(pp, firstWord-1, endOfDirective);
 
                     if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
                         || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
@@ -605,7 +1032,7 @@ GPULangPreprocess(
                             ret = false;
                             goto end;
                         }
-                        output.append(Format("#line %d \"%s\"\n", level->lineCounter + 1, level->path.c_str()));
+                        output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->path.c_str()));
 
                         fileStack.push_back({ foundPath, inc });
                         level = &fileStack.back();
@@ -616,9 +1043,8 @@ GPULangPreprocess(
                         ret = false;
                         goto end;
                     }
-                    goto next_line;
                 }
-                else if (strncmp(startOfDirective, "define", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "define", 6) == 0)
                 {
                     IFDEFSTACK()
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
@@ -636,11 +1062,11 @@ GPULangPreprocess(
                         goto end;
                     }
 
-                    std::string def = std::string(startOfDefinition, endOfDefinition);
+                    std::string_view def = std::string_view(startOfDefinition, endOfDefinition);
                     auto prev = definitions.find(def);
                     if (prev != definitions.end())
                     {
-                        diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", def.c_str())));
+                        diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", std::string(def).c_str())));
                         ret = false;
                         goto end;
                     }
@@ -649,7 +1075,8 @@ GPULangPreprocess(
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Macro;
-                    SETUP_PP2(pp, startOfDefinition, endOfDefinition)
+                    SETUP_PP2(pp, firstWord-1, endOfDirective)
+                    SETUP_ARG2(pp, std::string(def), startOfDefinition, endOfDefinition);
 
                     const char* startOfContents = wordStart(endOfDefinition, eol);
                     
@@ -662,6 +1089,7 @@ GPULangPreprocess(
                             if (argumentIt[0] == ')') // end of list
                             {
                                 // Move new start to after argument list
+                                pp->argLocations[0].end = argumentIt + 1 - lineBegin;
                                 startOfContents = wordStart(argumentIt+1, eol);
                                 break;
                             }
@@ -680,7 +1108,7 @@ GPULangPreprocess(
                         }
 
                         // append the rest of the contents
-                        macro->contents.append(startOfContents, eol-lineEndingLength);
+                        macro->contents.append(startOfContents, eol - lineEndingLength);
                     }
                     else if (startOfContents != eol)
                     {
@@ -690,9 +1118,9 @@ GPULangPreprocess(
                     {
 
                     }
-                    output.append(Format("#line %d \"%s\"", level->lineCounter + lineOffset, level->path.c_str()));
+                    output.append(Format("#line %d \"%s\"", level->lineCounter, level->path.c_str()));
                 }
-                else if (strncmp(startOfDirective, "undef", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "undef", 5) == 0)
                 {
                     IFDEFSTACK()
 
@@ -712,18 +1140,20 @@ GPULangPreprocess(
                         goto end;
                     }
 
+                    std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Undefine;
-                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+                    SETUP_PP2(pp, firstWord - 1, endOfDirective);
+                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    std::string definition = std::string(startOfDefinition, endOfDefinition);
                     auto it = definitions.find(definition);
                     if (it != definitions.end())
                     {
                         definitions.erase(definition);
                     }
                 }
-                else if (strncmp(startOfDirective, "ifdef", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "ifdef", 5) == 0)
                 {
                     IFDEFSTACKPUSH()
 
@@ -743,11 +1173,13 @@ GPULangPreprocess(
                         goto end;
                     }
 
+                    std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
-                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+                    SETUP_PP2(pp, firstWord - 1, endOfDirective);
+                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    std::string definition = std::string(startOfDefinition, endOfDefinition);
                     auto it = definitions.find(definition);
                     if (it != definitions.end())
                     {
@@ -758,7 +1190,7 @@ GPULangPreprocess(
                         ifStack.push_back(false);
                     }
                 }
-                else if (strncmp(startOfDirective, "ifndef", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "ifndef", 6) == 0)
                 {
                     IFDEFSTACKPUSH()
 
@@ -778,11 +1210,13 @@ GPULangPreprocess(
                         goto end;
                     }
 
+                    std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
-                    SETUP_PP2(pp, startOfDefinition, endOfDefinition);
+                    SETUP_PP2(pp, firstWord - 1, endOfDirective);
+                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    std::string definition = std::string(startOfDefinition, endOfDefinition);
                     auto it = definitions.find(definition);
                     if (it == definitions.end())
                     {
@@ -793,27 +1227,62 @@ GPULangPreprocess(
                         ifStack.push_back(false);
                     }
                 }
-                else if (strncmp(startOfDirective, "elif", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "elif", 4) == 0)
                 {
+                    ELIFDEFSTACKPUSH()
+                    
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::If;
+                    SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
+                    Expr expr = operatorsTier0(endOfDirective, eol);
+                    if (!diagnostics.empty())
+                        return false;
+
+                    if (eval(expr) != 0)
+                    {
+                        ifStack.push_back(true);
+                    }
+                    else
+                    {
+                        ifStack.push_back(false);
+                    }
                 }
-                else if (strncmp(startOfDirective, "if", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
+                    IFDEFSTACKPUSH()
 
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::If;
+                    SETUP_PP2(pp, firstWord - 1, endOfDirective);
+
+                    Expr expr = operatorsTier0(endOfDirective, eol);
+                    if (!diagnostics.empty())
+                        return false;
+
+                    if (eval(expr) != 0)
+                    {
+                        ifStack.push_back(true);
+                    }
+                    else
+                    {
+                        ifStack.push_back(false);
+                    }
                 }
-                else if (strncmp(startOfDirective, "else", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "else", 4) == 0)
                 {
                     ELIFDEFSTACKPUSH()
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::If;
-                    SETUP_PP2(pp, startOfDirective, endOfDirective)
+                    pp->type = Preprocessor::Else;
+                    SETUP_PP2(pp, firstWord-1, endOfDirective)
                     ifStack.back() = !ifStack.back();
+
                 }
-                else if (strncmp(startOfDirective, "endif", endOfDirective - startOfDirective) == 0)
+                else if (strncmp(startOfDirective, "endif", 5) == 0)
                 {
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::EndIf;
-                    SETUP_PP2(pp, startOfDirective, endOfDirective)
+                    SETUP_PP2(pp, firstWord-1, endOfDirective)
                     if (ifStack.empty())
                     {
                         diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter });
@@ -875,7 +1344,7 @@ GPULangPreprocess(
                 output.append(columnIt, startOfWord);
                 if (startOfWord != eol)
                 {
-                    std::string word = std::string(startOfWord, endOfWord);
+                    std::string_view word = std::string_view(startOfWord, endOfWord);
                     auto it = definitions.find(word);
                     if (it != definitions.end())
                     {
@@ -1028,6 +1497,7 @@ GPULangPreprocess(
                 }
                 else
                 {
+                    endOfWord = startOfWord;
                     output.append(startOfWord, endOfWord);
                 }
                 columnIt = endOfWord;
@@ -1044,6 +1514,9 @@ GPULangPreprocess(
             // Go to next non white space word
             prevColumnIt = columnIt;
         } while (columnIt != eol);
+
+next_line:
+        level->lineCounter++;
     }
 end:
     for (auto& file : fileMap)
@@ -1144,7 +1617,6 @@ bool
 GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
     bool ret = true;
-
     Allocator alloc = GPULang::CreateAllocator();
     GPULang::InitAllocator(&alloc);
     GPULang::MakeAllocatorCurrent(&alloc);
@@ -1280,14 +1752,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;
-
     timer.Start();
-    for (int i = 0; i < 500; i++)
-    {
-        std::vector<GPULang::Symbol*> preprocessorSymbols;
-        std::vector<GPULang::Diagnostic> diagnostics;
-        GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics);
-    }
     std::vector<GPULang::Symbol*> preprocessorSymbols;
     std::vector<GPULang::Diagnostic> diagnostics;
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
@@ -1312,6 +1777,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         timer.Stop();
         if (options.emitTimings)
             timer.Print("Preprocessing");
+
 
         GPULangLexerErrorHandler lexerErrorHandler;
         GPULangParserErrorHandler parserErrorHandler;

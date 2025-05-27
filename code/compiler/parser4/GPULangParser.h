@@ -139,9 +139,8 @@ public:
       auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
       location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
-      location.column = token->getCharPositionInLine();
-      location.start = location.column;
+      location.line = token->line - rawLine + preprocessedLine;
+      location.start = token->begin;
       location.end = location.start + token->getText().length();
       return location;
   }
@@ -154,8 +153,7 @@ public:
 
       auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
-      location.column = token->getCharPositionInLine();
+      location.line = token->line - rawLine + preprocessedLine;
       location.start = token->begin;
       location.end = token->end + 1;
       return location;

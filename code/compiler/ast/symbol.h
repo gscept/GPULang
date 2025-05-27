@@ -83,13 +83,10 @@ struct Symbol
     {
         std::string file;
         int line;
-        int column;
-
-        int start, end;
+        uint16_t start, end;
 
         Location()
             : line(-1)
-            , column(-1)
             , start(0)
             , end(0)
         {

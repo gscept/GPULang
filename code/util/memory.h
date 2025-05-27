@@ -111,7 +111,12 @@ inline T*
 Alloc(ARGS... args)
 {
     if (SYMBOL_STATIC_ALLOC)
-        return new T(args...);
+    {
+        void* data = malloc(sizeof(T));
+        new (data) T(args...);
+        return static_cast<T*>(data);
+    }
+
     Allocator* Allocator = CurrentAllocator;
     if (Allocator == nullptr)
     {
@@ -147,7 +152,11 @@ inline T*
 AllocArray(std::size_t num)
 {
     if (SYMBOL_STATIC_ALLOC)
-        return new T[num];
+    {
+        void* data = malloc(sizeof(T) * num);
+        new (data) T[num]();
+        return static_cast<T*>(data);
+    }
     Allocator* Allocator = CurrentAllocator;
     if (Allocator == nullptr)
     {
