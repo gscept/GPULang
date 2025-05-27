@@ -7009,7 +7009,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         if (compiler->options.symbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
-            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
         }
 
         // Then call the function
@@ -7104,7 +7104,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         if (compiler->options.symbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
-            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
         }
         // Function is not declared by user code, so must be intrinsic
         auto it = generator->generatorIntrinsics.find(resolvedCall->function);
@@ -7149,7 +7149,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (leftType.modifiers.empty())
     {
@@ -7231,7 +7231,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (isConst)
     {
@@ -7286,7 +7286,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (isConst)
     {
@@ -7332,7 +7332,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
 
     // If there is a conversion function, generate it first
@@ -7459,7 +7459,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (swizzle.mask != 0x0)
     {
@@ -7581,7 +7581,7 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     SPIRVResult loadedCondition = LoadValueSPIRV(compiler, generator, lhsResult);
     SPIRVResult loadedLeft = LoadValueSPIRV(compiler, generator, ifResult);
@@ -7628,7 +7628,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
     auto [op, sign, vectorSize, addOp, subOp, negOp] = value->second;
@@ -7781,7 +7781,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     ValueUnion val;
     expr->EvalValue(val);
@@ -8047,7 +8047,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
 
     // TODO: support unrolling
@@ -8116,7 +8116,7 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{endLabel}, SelectionControl::None);
     if (stat->elseStatement)
@@ -8252,7 +8252,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
     generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
@@ -8434,7 +8434,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     bool ret = false;
     Symbol::__Resolved* symResolved = Symbol::Resolved(stat);

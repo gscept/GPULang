@@ -26,10 +26,10 @@ struct Preprocessor : public Symbol
         Call,
         Line,
         If,
+        Else,
         EndIf
     } type;
 
-    std::string method;
     std::vector<std::string> args;
     std::vector<Symbol::Location> argLocations;
     std::string contents;

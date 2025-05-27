@@ -31,6 +31,45 @@ struct GPULangErrorBlob
 };
 
 
+static auto GPULangValidIdentifierStart = [](const char c) -> bool
+{
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_'))
+        return true;
+    return false;
+};
+
+static auto GPULangValidIdentifierChar = [](const char c) -> bool
+{
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (c == '_'))
+        return true;
+    return false;
+};
+
+static auto GPULangIdentifierBegin = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (GPULangValidIdentifierStart(start[0]))
+            return start;
+        start++;
+    }
+    return end;
+};
+
+static auto GPULangIdentifierEnd = [](const char* begin, const char* end) -> const char*
+{
+    const char* start = begin;
+    while (start != end)
+    {
+        if (!GPULangValidIdentifierChar(start[0]))
+            return start;
+        start++;
+    }
+    return end;
+};
+
+
 struct GPULangServerResult
 {
     GPULang::Effect* root = nullptr;
