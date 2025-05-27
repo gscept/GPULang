@@ -117,6 +117,7 @@ struct ParseContext
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
         std::map<std::string, const GPULang::Symbol*> symbolsByName;
+        std::map<int, std::string_view> textByLine;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
         {
@@ -171,6 +172,32 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     file->tmpFile = std::fopen(file->tmpPath.c_str(), "wb");
     std::fputs(contents.c_str(), file->tmpFile);
     std::fflush(file->tmpFile);
+
+    file->textByLine.clear();    
+    file->file = contents;
+    const char* start = file->file.data();
+    const char* end = file->file.data() + file->file.length();
+    int lineCounter = 0;
+    while (start != end)
+    {
+        int lineFeedLength = 0;
+        const char* eol = strchr(start, '\r');
+        if (eol == nullptr)
+        {
+            // If not \r\n
+            eol = strchr(start, '\n');
+            lineFeedLength = 1;
+        }
+        else
+        {
+            if (eol[1] == '\n') // \r\n
+                lineFeedLength = 2;
+            else // Apple '\r'
+                lineFeedLength = 1;
+        }
+        file->textByLine[lineCounter++] = std::string_view(start, eol);
+        start = eol + lineFeedLength;
+    }
 
     // Pass it to the compiler
     Clear(file->result, file->alloc);
@@ -244,7 +271,7 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     it->second.file = std::string(data, data + size);
     fclose(f);
     GPULang::DeallocStack(size, data);
-
+   
     // Create temporary file for the compiler
     it->second.tmpPath = (std::filesystem::temp_directory_path() / std::filesystem::path(std::tmpnam(nullptr))).string();
     std::replace(it->second.tmpPath.begin(), it->second.tmpPath.end(), '\\', '/');
@@ -1025,6 +1052,7 @@ main(int argc, const char** argv)
                     file->symbolsByRange.clear();
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
+                    file->textByLine.clear();
                     GPULang::Symbol::Location prev;
                     prev.line = 0;
                     prev.start = 0;
@@ -1066,7 +1094,7 @@ main(int argc, const char** argv)
                         file->symbolsByLine.clear();
                         file->semanticTokens.clear();
                         GPULang::Symbol::Location prev;
-                        prev.line = 1;
+                        prev.line = 0;
                         prev.start = 0;
                         for (auto sym : file->result.symbols)
                         {
@@ -1210,8 +1238,6 @@ main(int argc, const char** argv)
                                 }
                             }
                         };
-
-                        int foo = 5;
                     }
                 }
                 return result;
@@ -1222,7 +1248,21 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    
+                    ParseContext::ParsedFile::TextRange inputRange;
+                    inputRange.startLine = params.position.line;
+                    inputRange.startColumn = params.position.character;
+                    auto it = file->textByLine.find(params.position.line);
+                    if (it != file->textByLine.end())
+                    {
+                        const char* begin = it->second.data() + params.position.character-1;
+                        const char* end = GPULang::identif;
+                        const std::string_view text(begin, end);
+                        //std::string_view text(it->second.data() + params.position.character, it->second.data() + params.position.character + params.)
+                        result = lsp::requests::TextDocument_Completion::Result { 
+                            { 
+                            }
+                        };
+                    }
                 }
                 return result;
             })
