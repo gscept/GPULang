@@ -15,6 +15,8 @@ bool SYMBOL_STATIC_ALLOC = false;
 namespace GPULang
 {
 
+std::recursive_mutex StaticAllocMutex;
+
 thread_local Allocator* CurrentAllocator;
 Allocator DefaultAllocator = 
 {
@@ -25,6 +27,16 @@ Allocator DefaultAllocator =
     .blockSize = 65535
 };
 bool IsDefaultAllocatorInitialized = false;
+
+Allocator StaticAllocator =
+{
+    .freeBlockCounter = 0,
+    .freeBlocks = nullptr,
+    .blocks = nullptr,
+    .currentBlock = 0,
+    .blockSize = 65535
+};
+bool IsStaticAllocatorInitialized = false;
 //------------------------------------------------------------------------------
 /**
 */

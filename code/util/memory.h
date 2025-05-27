@@ -14,6 +14,7 @@
 #include <string>
 #include <stdarg.h>
 #include <charconv>
+#include <mutex>
 
 extern bool SYMBOL_STATIC_ALLOC;
 
@@ -62,7 +63,11 @@ inline Allocator CreateAllocator()
 extern Allocator DefaultAllocator;
 extern bool IsDefaultAllocatorInitialized;
 
+extern Allocator StaticAllocator;
+extern bool IsStaticAllocatorInitialized;
+
 extern thread_local Allocator* CurrentAllocator;
+extern std::recursive_mutex StaticAllocMutex;
 void InitAllocator(Allocator* alloc);
 void DestroyAllocator(Allocator* alloc);
 void MakeAllocatorCurrent(Allocator* alloc);
