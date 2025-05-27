@@ -1255,7 +1255,15 @@ main(int argc, const char** argv)
                     if (it != file->textByLine.end())
                     {
                         const char* begin = it->second.data() + params.position.character-1;
-                        const char* end = GPULang::identif;
+                        const char* eol = it->second.data() + it->second.length();
+                        if (params.context)
+                        {
+                            if (params.context->triggerKind == lsp::CompletionTriggerKind::TriggerCharacter)
+                            {
+
+                            }
+                        }
+                        const char* end = GPULangIdentifierEnd(begin, eol);
                         const std::string_view text(begin, end);
                         //std::string_view text(it->second.data() + params.position.character, it->second.data() + params.position.character + params.)
                         result = lsp::requests::TextDocument_Completion::Result { 
