@@ -23,17 +23,17 @@ namespace GPULang
 struct MemoryBlock
 {
     MemoryBlock()
-        : iterator(0)
+        : iterator(nullptr)
         , blockIndex(-1)
         , mem(nullptr)
     {}
     MemoryBlock(void* mem, uint32_t index)
-        : iterator(0)
+        : iterator(mem)
         , blockIndex(index)
         , mem(mem)
     {}
     void* mem;
-    size_t iterator;
+    void* iterator;
     size_t blockIndex;
 };
 
@@ -78,6 +78,66 @@ struct SPVArg;
 */
 template<typename T, typename ... ARGS>
 inline T*
+__AllocInternal(Allocator* allocator, ARGS... args)
+{
+    const size_t size = sizeof(T);
+    const size_t alignment = alignof(T);
+    MemoryBlock* block = &allocator->blocks[allocator->currentBlock];
+    const char* blockBegin = (char*)block->mem;
+    const char* blockEnd = blockBegin + allocator->blockSize;
+    size_t sizeLeft = blockEnd - (char*)block->iterator;
+    void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
+    if (alignedIterator == nullptr)
+    {
+        allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
+        block = &allocator->blocks[allocator->currentBlock];
+        block->blockIndex = allocator->currentBlock;
+        block->mem = malloc(allocator->blockSize);
+        sizeLeft = allocator->blockSize;
+        alignedIterator = std::align(alignment, size, block->mem, sizeLeft);
+    }
+    assert(block->blockIndex != -1);
+
+    block->iterator = (char*)alignedIterator + size;
+    new (alignedIterator) T(args...);
+    return (T*)alignedIterator;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T>
+inline T*
+__AllocArrayInternal(Allocator* allocator, size_t num)
+{
+    const size_t size = sizeof(T) * num;
+    const size_t alignment = alignof(T);
+    MemoryBlock* block = &allocator->blocks[allocator->currentBlock];
+    const char* blockBegin = (char*)block->mem;
+    const char* blockEnd = blockBegin + allocator->blockSize;
+    size_t sizeLeft = blockEnd - (char*)block->iterator;
+    void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
+    if (alignedIterator == nullptr)
+    {
+        allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
+        block = &allocator->blocks[allocator->currentBlock];
+        block->blockIndex = allocator->currentBlock;
+        block->mem = malloc(allocator->blockSize);
+        sizeLeft = allocator->blockSize;
+        alignedIterator = std::align(alignment, size, block->mem, sizeLeft);
+    }
+    assert(block->blockIndex != -1);
+
+    block->iterator = (char*)alignedIterator + size;
+    new (alignedIterator) T[num];
+    return (T*)alignedIterator;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T, typename ... ARGS>
+inline T*
 StaticAlloc(ARGS... args)
 {
     if (!IsDefaultAllocatorInitialized)
@@ -86,21 +146,7 @@ StaticAlloc(ARGS... args)
         IsDefaultAllocatorInitialized = true;
     }
     Allocator* Allocator = &DefaultAllocator;
-    const size_t size = sizeof(T);
-    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
-    if (block->iterator + size > Allocator->blockSize)
-    {
-        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
-        block = &Allocator->blocks[Allocator->currentBlock];
-        block->blockIndex = Allocator->currentBlock;
-        block->mem = malloc(Allocator->blockSize);
-    }
-    assert(block->blockIndex != -1);
-
-    char* buf = (char*)block->mem + block->iterator;
-    block->iterator += size;
-    new (buf) T(args...);
-    return (T*)buf;
+    return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
 }
 
 //------------------------------------------------------------------------------
@@ -127,27 +173,13 @@ Alloc(ARGS... args)
         }
         Allocator = &DefaultAllocator;
     }
-    const size_t size = sizeof(T);
-    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
-    if (block->iterator + size > Allocator->blockSize)
-    {
-        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
-        block = &Allocator->blocks[Allocator->currentBlock];
-        block->blockIndex = Allocator->currentBlock;
-        block->mem = malloc(Allocator->blockSize);
-    }
-    assert(block->blockIndex != -1);
-
-    char* buf = (char*)block->mem + block->iterator;
-    block->iterator += size;
-    new (buf) T(args...);
-    return (T*)buf;
+    return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-template<typename T, typename ... ARGS>
+template<typename T>
 inline T*
 AllocArray(std::size_t num)
 {
@@ -167,22 +199,7 @@ AllocArray(std::size_t num)
         }
         Allocator = &DefaultAllocator;
     }
-
-    const size_t size = sizeof(T) * num;
-    MemoryBlock* block = &Allocator->blocks[Allocator->currentBlock];
-    if (block->iterator + size > Allocator->blockSize)
-    {
-        Allocator->currentBlock = Allocator->freeBlocks[Allocator->freeBlockCounter--];
-        block = &Allocator->blocks[Allocator->currentBlock];
-        block->blockIndex = Allocator->currentBlock;
-        block->mem = malloc(Allocator->blockSize);
-    }
-    assert(block->blockIndex != -1);
-
-    char* buf = (char*)block->mem + block->iterator;
-    block->iterator += size;
-    new (buf) T();
-    return (T*)buf;
+    return __AllocArrayInternal<T>(Allocator, num);
 }
 
 //------------------------------------------------------------------------------

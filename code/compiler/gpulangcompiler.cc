@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------
+﻿//------------------------------------------------------------------------------
 /**
     AnyFX compiler functions
     
@@ -419,99 +419,109 @@ GPULangPreprocess(
         return end;
     };
 
-    static auto fourCCBegin = [](const char* begin, const char* end, const int c) -> const char*
+    static std::function<int(const char*, const char*, FileLevel*)> eval = [&diagnostics, &definitions](const char* begin, const char* end, FileLevel* level) -> int
     {
-        const char* start = begin;
-        while (start != end)
+        struct Token
         {
-        retry:
-            // If first byte matches, continue
-            if (start[0] == (c & 0xFF))
-            {
-                const char* ret = start;
-                // Shift by 8 to get the next byte
-                int tc = c >> 8;
-
-                // As long as the copy of the fourcc isn't empty, test
-                while ((tc & 0xFF) != 0x0)
-                {
-                    if (start[0] == (tc & 0xFF))
-                        start++;
-                    else
-                    {
-                        start++;
-                        goto retry;
-                    }
-                    tc >>= 8;
-                }
-
-                // If the copy is empty and we didn't retry, we have a hit!
-                if (tc == 0x0)
-                    return ret;
-            }
-            start++;
-        }
-        return end;
-    };
-
-    enum ExprType : uint8_t
-    {
-        Invalid,
-        Atom,
-        Binary
-    };
-    struct Expr
-    {
-        uint16_t index;
-        ExprType type;
-    };
-    struct BinExpr
-    {
-        Expr left, right;
-        int op;
-    };
-    struct ExprAtom
-    {
-        ExprAtom()
-            : val(-1)
-        {}
-        int val;
-    };
-    StackArray<BinExpr> binExprs(128);
-    StackArray<ExprAtom> atoms(256);
-
-#define MATCH(pred, op, start, stop, ch)\
-    if (!pred) \
-    { \
-        start = (const char*)fourCCBegin(begin, end, ch);\
-        pred |= (start != end); \
-        if (pred) \
-        { \
-            stop = start + (ch & 0xFF ? 1 : 0) + (ch & 0xFF00 ? 1 : 0) + (ch & 0xFF0000 ? 1 : 0) + (ch & 0xFF000000 ? 1 : 0); \
-            op = ch;\
-        }\
-    }
-
-#define RECURSION()\
-    Expr ret;\
-    recursion_depth_counter++;\
-    if (recursion_depth_counter > 256)\
-    {\
-        diagnostics.push_back(DIAGNOSTIC("Max preprocessor recursion depth limit (256)"));\
-        return ret;\
-    }
+            int value;
+            bool op;
+        };
+        StackArray<Token> result(256);
+        StackArray<Token> opstack(256);
         
-
-    static std::function<int(const Expr& e)> eval = [&binExprs, &atoms](const Expr& e) -> int
-    {
-        if (e.type == ExprType::Atom)
-            return atoms.ptr[e.index].val;
-        else if (e.type == ExprType::Binary)
+        auto digit = [&diagnostics, &level](const char* begin, const char* end, int& size) -> int
         {
-            const BinExpr& bin = binExprs.ptr[e.index];
-            int left = eval(bin.left);
-            int right = eval(bin.right);
-            switch (bin.op)
+            int val = 0;
+            size = 0;
+            int dec = 1;
+            while (begin != end)
+            {
+                if (begin[0] >= '0' && begin[0] <= '9')
+                {
+                    val += begin[0] - '0' * dec;
+                    size++;
+                    dec *= 10;
+                }
+                else if (dec == 1)
+                    return -1;
+                else
+                    break;
+                    
+                begin++;
+            }
+            return val;
+        };
+        
+        auto op = [](const char* begin, const char* end, int& size) -> int
+        {
+            int val = 0;
+            size = 0;
+            while (begin != end)
+            {
+                if (begin[0] == '+' || begin[0] == '-' || begin[0] == '*' || begin[0] == '/' || begin[0] == '=' || begin[0] == '!' || begin[0] == '>' || begin[0] == '<' || begin[0] == '&' || begin[0] == '^' || begin[0] == '|')
+                {
+                    val |= begin[0] << size*8;
+                    size++;
+                }
+                else if (size == 0)
+                    return -1;
+                else
+                    break;
+                
+                // If the counter is 3 then it's definitely something wrong with the operator
+                if (size == 3)
+                    return -1;
+                begin++;
+            }
+            return val;
+        };
+        
+        auto presedence = [&diagnostics, &level](const int op) -> int
+        {
+            switch(op)
+            {
+                case '||':
+                    return 1;
+                case '&&':
+                    return 2;
+                case '|':
+                    return 3;
+                case '^':
+                    return 4;
+                case '&':
+                    return 5;
+                case '==':
+                case '!=':
+                    return 6;
+                case '>':
+                case '<':
+                case '>=':
+                case '<=':
+                    return 7;
+                case '<<':
+                case '>>':
+                    return 8;
+                case '+':
+                case '-':
+                    return 9;
+                case '*':
+                case '/':
+                case '%':
+                    return 10;
+                case '!':
+                    return 11;
+                case '(':
+                case ')':
+                    return 12;
+                default:
+                    diagnostics.push_back(DIAGNOSTIC(Format("Unknown operator '%c%c%c%c'", op & 0xFF, (op >> 8) & 0xFF, (op >> 16) & 0xFF, (op >> 24) & 0xFF)));
+                    return -1;
+            }
+        };
+
+        auto eval_op = [](int op, int left, int right) -> int
+        {
+            switch (op)
             {
                 case '+':
                     return left + right;
@@ -549,297 +559,125 @@ GPULangPreprocess(
                     return (left != 0) && (right != 0);
                 case '||':
                     return (left != 0) || (right != 0);
+                default:
+                    return INT_MAX;
             }
-        }
-    };
-
-    static int recursion_depth_counter = 0;
-    static std::function<Expr(const char*, const char*)> operatorsTier0 = nullptr;
-    static auto atom = [&binExprs, &atoms, &diagnostics, &level, &definitions](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        const char* atomBegin = wordStart(begin, end);
-        const char* atomEnd = wordEnd(atomBegin, end);
-
-        if (is_digit(atomBegin[0]))
+        };
+        
+        const char* word = begin;
+        int unconsumedIntegers = 0;
+        while (word != end)
         {
-            ExprAtom atomExpr;
-            atomExpr.val = 0;
-            int digit = 1;
-            const char* intBegin = atomBegin;
-            while (intBegin != atomEnd)
+            word = wordStart(word, end);
+            Token t;
+            int stride = 0;
+            if (word == end)
+                break;
+            int val = digit(word, end, stride);
+            if (val == -1)
             {
-                if (is_digit(intBegin[0]))
+                val = op(word, end, stride);
+                if (val == -1)
                 {
-                    atomExpr.val += (intBegin[0] - '0') * digit;
-                    digit *= 10;
+                    const char* identStart = identifierBegin(word, end);
+                    const char* identEnd = identifierEnd(identStart, end);
+                    std::string_view ident(identStart, identEnd);
+                    if (ident.length() > 0)
+                    {
+                        auto defIt = definitions.find(ident);
+                        if (defIt == definitions.end())
+                        {
+                            diagnostics.push_back(DIAGNOSTIC(Format("Unknown identifier *.%s", ident.length(), ident.data())));
+                            return -1;
+                        }
+                        else
+                        {
+                            // If identifier of a macro, evaluate the contents of said macro
+                            t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.length(), level);
+                            t.op = false;
+                            unconsumedIntegers++;
+                            result.Append(t);
+                        }
+                    }
+                    else
+                    {
+                        diagnostics.push_back(DIAGNOSTIC(Format("Invalid token '%c'", word[0])));
+                        return -1;
+                    }
+                    word = identEnd;
                 }
                 else
                 {
-                    diagnostics.push_back(DIAGNOSTIC(Format("Invalid value %.*s", atomEnd - atomBegin, atomBegin)));
-                    return ret;
+                    t.value = val;
+                    t.op = true;
+                    if (unconsumedIntegers < 1)
+                    {
+                        diagnostics.push_back(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
+                        return -1;
+                    }
+
+                    // When two values are consumed by an operator, one gets produced as an outcome, so only reduce this value by 1
+                    unconsumedIntegers -= 1;
+                
+                    // Operator, check presedence
+                    if (opstack.size > 0)
+                    {
+                        int pres = presedence(t.value);
+                        int prevPres = presedence(opstack.ptr[opstack.size-1].value);
+                        if (pres < prevPres)
+                        {
+                            // Flush operators to results
+                            for (int i = opstack.size-1; i >= 0; i--)
+                            {
+                                result.Append(opstack.ptr[i]);
+                            }
+                            opstack.size = 0;
+                        }
+                    }
+                    opstack.Append(t);
                 }
-                intBegin++;
-            }
-            ret.type = ExprType::Atom;
-            ret.index = atoms.size;
-            atoms.Append(atomExpr);
-        }
-        else // assume identifier
-        {
-            std::string_view def(atomBegin, atomEnd);
-            auto it = definitions.find(def);
-            if (it == definitions.end())
-            {
-                diagnostics.push_back(DIAGNOSTIC(Format("Undefined macro %.*s", atomEnd - atomBegin, atomBegin)));
             }
             else
             {
-                return operatorsTier0(it->second.contents.data(), it->second.contents.data() + it->second.contents.length());
+                // Integer, push to results
+                t.value = val;
+                t.op = false;
+                unconsumedIntegers++;
+                result.Append(t);
+            }
+            word += stride;
+        }
+        
+        // If we have dangling ops, push to result
+        if (opstack.size > 0)
+        {
+            // Flush operators to results
+            for (int i = opstack.size-1; i >= 0; i--)
+            {
+                result.Append(opstack.ptr[i]);
+            }
+            opstack.size = 0;
+        }
+
+        // Go through results and evaluate
+        for (int i = 0; i < result.size; i++)
+        {
+            Token& t = result.ptr[i];
+            if (t.op)
+            {
+                const Token& rhs = result.ptr[i - 1];
+                const Token& lhs = result.ptr[i - 2];
+                int res = eval_op(t.value, lhs.value, rhs.value);
+                t.op = false;
+                t.value = res;
+                memmove(&result.ptr[i - 2], &result.ptr[i], (result.size - i) * sizeof(Token));
+                result.size -= 2;
+                i -= 2;
             }
         }
-        return ret;
-    };
-
-    static auto operatorsTier9 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '*');
-        MATCH(matched, op, startOfOp, endOfOp, '/');
-        MATCH(matched, op, startOfOp, endOfOp, '%');
-        if (!matched)
-            return atom(begin, end);
-
-        Expr left = atom(begin, startOfOp);
-        Expr right = atom(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier8 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '+');
-        MATCH(matched, op, startOfOp, endOfOp, '-');
-        if (!matched)
-            return operatorsTier9(begin, end);
-
-        Expr left = operatorsTier9(begin, startOfOp);
-        Expr right = operatorsTier9(endOfOp, end);
-
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier7 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '<<');
-        MATCH(matched, op, startOfOp, endOfOp, '>>');
-        if (!matched)
-            return operatorsTier8(begin, end);
-
-        Expr left = operatorsTier8(begin, startOfOp);
-        Expr right = operatorsTier8(endOfOp, end);
-
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier6 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '<');
-        MATCH(matched, op, startOfOp, endOfOp, '>');
-        MATCH(matched, op, startOfOp, endOfOp, '<=');
-        MATCH(matched, op, startOfOp, endOfOp, '>=');
-        if (!matched)
-            return operatorsTier7(begin, end);
-
-        Expr left = operatorsTier7(begin, startOfOp);
-        Expr right = operatorsTier7(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier5 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '==');
-        MATCH(matched, op, startOfOp, endOfOp, '!=');
-        if (!matched)
-            return operatorsTier6(begin, end);
-
-        Expr left = operatorsTier6(begin, startOfOp);
-        Expr right = operatorsTier6(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier4 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '&');
-        if (!matched)
-            return operatorsTier5(begin, end);
-
-        Expr left = operatorsTier5(begin, startOfOp);
-        Expr right = operatorsTier5(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier3 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '^');
-        if (!matched)
-            return operatorsTier4(begin, end);
-
-        Expr left = operatorsTier4(begin, startOfOp);
-        Expr right = operatorsTier4(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier2 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '|');
-        if (!matched)
-            return operatorsTier3(begin, end);
-
-        Expr left = operatorsTier3(begin, startOfOp);
-        Expr right = operatorsTier3(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-
-    static auto operatorsTier1 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '&&');
-        if (!matched)
-            return operatorsTier2(begin, end);
-
-        Expr left = operatorsTier2(begin, startOfOp);
-        Expr right = operatorsTier2(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
-    };
-    
-    operatorsTier0 = [&binExprs, &atoms, &diagnostics, &level](const char* begin, const char* end) -> Expr
-    {
-        RECURSION()
-        bool matched = false;
-        int op;
-        const char* startOfOp = nullptr;
-        const char* endOfOp = nullptr;
-        MATCH(matched, op, startOfOp, endOfOp, '||');
-        if (!matched)
-            return operatorsTier1(begin, end);
-
-        Expr left = operatorsTier1(begin, startOfOp);
-        Expr right = operatorsTier1(endOfOp, end);
-        ret.index = binExprs.size;
-        ret.type = ExprType::Binary;
-        BinExpr expr;
-        expr.left = left;
-        expr.right = right;
-        expr.op = op;
-        binExprs.Append(expr);
-        return ret;
+        
+        // The last value is the result
+        return result.ptr[0].value;
     };
 
 #define POP_FILE() \
@@ -1235,11 +1073,9 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
-                    Expr expr = operatorsTier0(endOfDirective, eol);
-                    if (!diagnostics.empty())
-                        return false;
+                    int val = eval(endOfDirective, eol, level);
 
-                    if (eval(expr) != 0)
+                    if (val != 0)
                     {
                         ifStack.push_back(true);
                     }
@@ -1256,11 +1092,9 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
-                    Expr expr = operatorsTier0(endOfDirective, eol);
-                    if (!diagnostics.empty())
-                        return false;
+                    int val = eval(endOfDirective, eol, level);
 
-                    if (eval(expr) != 0)
+                    if (val != 0)
                     {
                         ifStack.push_back(true);
                     }
@@ -1276,7 +1110,6 @@ escape_newline:
                     pp->type = Preprocessor::Else;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     ifStack.back() = !ifStack.back();
-
                 }
                 else if (strncmp(startOfDirective, "endif", 5) == 0)
                 {
