@@ -150,7 +150,7 @@ DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __ADD_ARG(nm, tp)\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
+new (&newVar->type) Type::FullType(tp);\
 newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);
 
@@ -184,7 +184,7 @@ newIntrinsic->parameters.push_back(newVar);
 
 #define __ADD_HANDLE_ARG(nm, tp)\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
+new (&newVar->type) Type::FullType(tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\

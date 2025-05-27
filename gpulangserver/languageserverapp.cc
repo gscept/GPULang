@@ -978,8 +978,11 @@ main(int argc, const char** argv)
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_port = htons(5007);
     int res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
-    if (res != 0)
-        printf("Port busy");
+    while (res != 0)
+    {
+        // Add sleep...
+        res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
+    }
     listen(sock, 5);
 
     printf("GPULang Language Server Version 1.0\n");
