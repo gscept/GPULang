@@ -145,12 +145,12 @@ template<typename T, typename ... ARGS>
 inline T*
 StaticAlloc(ARGS... args)
 {
-    if (!IsDefaultAllocatorInitialized)
+    if (!IsStaticAllocatorInitialized)
     {
-        InitAllocator(&DefaultAllocator);
-        IsDefaultAllocatorInitialized = true;
+        InitAllocator(&StaticAllocator);
+        IsStaticAllocatorInitialized = true;
     }
-    Allocator* Allocator = &DefaultAllocator;
+    Allocator* Allocator = &StaticAllocator;
     return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
 }
 

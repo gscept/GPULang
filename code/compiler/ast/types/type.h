@@ -361,28 +361,28 @@ struct Type : public Symbol
             this->literal = false;
         }
         explicit FullType(const char* type)
+            : name(type)
+            , literal(false)
         {
-            this->name = type;
-            this->literal = false;
         }
         explicit FullType(const std::string& type)
+            : name(type)
+            , literal(false)
         {
-            this->name = type;
-            this->literal = false;
         }
         explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
         {
-            this->name = type;
-            this->modifiers = modifiers;
-            this->modifierValues = modifierValues;
-            this->literal = false;
         }
         explicit FullType(const std::string& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
         {
-            this->name = type;
-            this->modifiers = modifiers;
-            this->modifierValues = modifierValues;
-            this->literal = false;
         }
         std::string name;
         std::string swizzleName;

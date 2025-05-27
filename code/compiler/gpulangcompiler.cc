@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 /**
     AnyFX compiler functions
     
@@ -27,9 +27,6 @@
 
 using namespace antlr4;
 using namespace GPULang;
-
-#include "mcpp_lib.h"
-#include "mcpp_out.h"
 
 //------------------------------------------------------------------------------
 /**
@@ -1363,6 +1360,7 @@ GPULangGenerateDependencies(const std::string& file, const std::vector<std::stri
     }
     args[numTotalArgs - 1] = file.c_str();
 
+    /*
     // run preprocessing
     mcpp_use_mem_buffers(1);
     int result = mcpp_lib_main(numTotalArgs, (char**)args);
@@ -1390,7 +1388,7 @@ GPULangGenerateDependencies(const std::string& file, const std::vector<std::stri
         }
     }
     delete[] args;
-
+     */
     return res;
 }
 
