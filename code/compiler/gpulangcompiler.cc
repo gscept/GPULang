@@ -610,14 +610,17 @@ GPULangPreprocess(
                 {
                     t.value = val;
                     t.op = true;
-                    if (unconsumedIntegers < 1)
-                    {
-                        diagnostics.push_back(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
-                        return -1;
-                    }
+                    if (t.value != '!') // unary operator
+                    { 
+                        if (unconsumedIntegers < 1)
+                        {
+                            diagnostics.push_back(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
+                            return -1;
+                        }
 
-                    // When two values are consumed by an operator, one gets produced as an outcome, so only reduce this value by 1
-                    unconsumedIntegers -= 1;
+                        // When two values are consumed by an operator, one gets produced as an outcome, so only reduce this value by 1
+                        unconsumedIntegers -= 1;
+                    }                    
                 
                     // Operator, check presedence
                     if (opstack.size > 0)
@@ -663,16 +666,30 @@ GPULangPreprocess(
         for (int i = 0; i < result.size; i++)
         {
             Token& t = result.ptr[i];
+            
             if (t.op)
             {
-                const Token& rhs = result.ptr[i - 1];
-                const Token& lhs = result.ptr[i - 2];
-                int res = eval_op(t.value, lhs.value, rhs.value);
-                t.op = false;
-                t.value = res;
-                memmove(&result.ptr[i - 2], &result.ptr[i], (result.size - i) * sizeof(Token));
-                result.size -= 2;
-                i -= 2;
+                if (t.value == '!') // unary operator
+                {
+                    const Token& rhs = result.ptr[i - 1];
+                    int res = !rhs.value;
+                    t.op = false;
+                    t.value = res;
+                    memmove(&result.ptr[i - 1], &result.ptr[i], (result.size - i) * sizeof(Token));
+                    result.size -= 1;
+                    i -= 1;
+                }
+                else
+                {
+                    const Token& rhs = result.ptr[i - 1];
+                    const Token& lhs = result.ptr[i - 2];
+                    int res = eval_op(t.value, lhs.value, rhs.value);
+                    t.op = false;
+                    t.value = res;
+                    memmove(&result.ptr[i - 2], &result.ptr[i], (result.size - i) * sizeof(Token));
+                    result.size -= 2;
+                    i -= 2;
+                }
             }
         }
         
@@ -1074,6 +1091,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     int val = eval(endOfDirective, eol, level);
+                    SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
 
                     if (val != 0)
                     {
@@ -1093,6 +1111,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     int val = eval(endOfDirective, eol, level);
+                    SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
 
                     if (val != 0)
                     {
