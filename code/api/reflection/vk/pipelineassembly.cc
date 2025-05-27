@@ -28,7 +28,7 @@ FirstOne(uint32_t mask)
     DWORD count = 0;
     _BitScanReverse(&count, mask);
 #else
-    int count = 31 - __builtin_clz(size);
+    int count = 31 - __builtin_clz(mask);
 #endif
     return count;
 }
@@ -165,7 +165,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
 
         VkDescriptorSetLayoutBinding& binding = ret.groupBindings[var->group][ret.groupBindingCounter[var->group]++];
         binding.binding = var->binding;
-        binding.descriptorCount = max(1u, var->arraySizes[var->arraySizeCount - 1]);
+        binding.descriptorCount = std::max(1u, var->arraySizes[var->arraySizeCount - 1]);
         binding.descriptorType = descriptorTypeTable[var->bindingType];
         
         binding.stageFlags = accessBits;
@@ -198,7 +198,7 @@ SetupVulkan(const VkDevice device, const Deserialize::Program* prog, GPULang::De
                 .pBindings = ret.groupBindings[i]
             };
             functionBindings.vkCreateDescriptorSetLayout(device, &layoutInfo, nullptr, &ret.groupLayouts[i]);
-            ret.groupLayoutCounter = max(ret.groupLayoutCounter, i + 1);
+            ret.groupLayoutCounter = std::max(ret.groupLayoutCounter, i + 1);
         }
         else
         {

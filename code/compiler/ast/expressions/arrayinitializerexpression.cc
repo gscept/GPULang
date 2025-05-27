@@ -76,7 +76,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.literal = isLiteral;
     thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
-    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>(this->values.size()));
+    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>((uint32_t)this->values.size()));
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
     thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
 

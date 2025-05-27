@@ -45,17 +45,6 @@ Emit(const char* msg, ...)
 
 //------------------------------------------------------------------------------
 /**
-    Simple cout for error
-*/
-static void
-Error(const char* msg)
-{
-	Emit("error: %s\n", msg);
-	abort();
-}
-
-//------------------------------------------------------------------------------
-/**
 	Formats const char* to std::string
 */
 static std::string
@@ -68,32 +57,6 @@ Format(const char* format, ...)
 	std::string retVal(buf);
 	va_end(args);
 	return retVal;
-}
-
-//------------------------------------------------------------------------------
-/**
-    Formats const char* to std::string
-*/
-static std::string
-SmallFormat(const char* format, ...)
-{
-    va_list args;
-    va_start(args, format);
-    char buf[1024];
-    vsnprintf(buf, sizeof(buf), format, args);
-    std::string retVal(buf);
-    va_end(args);
-    return retVal;
-}
-
-//------------------------------------------------------------------------------
-/**
-	Compares const char* with std::string
-*/
-static bool
-operator==(const char* lhs, const std::string& rhs)
-{
-	return rhs.compare(lhs) == 0;
 }
 
 //------------------------------------------------------------------------------

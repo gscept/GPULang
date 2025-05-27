@@ -8,7 +8,11 @@
 #include "ast/expressions/uintexpression.h"
 #include <set>
 
-
+#if __WIN32__
+#define forceinline __forceinline
+#else
+#define forceinline __attribute__((always_inline))
+#endif
 namespace GPULang
 {
 
@@ -40,7 +44,7 @@ DefaultTypes.push_back(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
-static const std::unordered_map<std::string, ImageFormat> StringToFormats =
+const std::unordered_map<std::string, ImageFormat> StringToFormats =
 {
     { "rgba16", Rgba16 }
     , { "rgb10_a2", Rgb10_A2 }
@@ -421,7 +425,7 @@ Type::CalculateSize() const
 /**
     Rounds up to next power of 2
 */
-__forceinline unsigned int
+forceinline unsigned int
 roundtopow2(unsigned int val)
 {
     val--;

@@ -788,7 +788,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
     {\
-        const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::##x];\
+        const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::x];\
         output.y.binaryOffset = dynamicDataBlob.Write((const char*)binary.data(), binary.size() * sizeof(uint32_t));\
         output.y.binaryLength = binary.size() * sizeof(uint32_t);\
     }\

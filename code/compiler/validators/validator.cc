@@ -1121,11 +1121,11 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        std::string entry = assignEntry->left->EvalString();
-        Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entry);
+        std::string entryStr = assignEntry->left->EvalString();
+        Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entryStr);
         if (entryType == Program::__Resolved::InvalidProgramEntryType)
         {
-            Symbol* overrideSymbol = compiler->GetSymbol(entry);
+            Symbol* overrideSymbol = compiler->GetSymbol(entryStr);
             if (overrideSymbol->symbolType == Symbol::FunctionType)
             {
                 // get all functions responding to this function
@@ -1134,14 +1134,14 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 // check that we actually got a symbol
                 if (functionStub == nullptr)
                 {
-                    compiler->UnrecognizedTypeError(entry, symbol);
+                    compiler->UnrecognizedTypeError(entryStr, symbol);
                     return false;
                 }
 
                 // check that it's actually a function
                 if (functionStub->symbolType != Symbol::FunctionType)
                 {
-                    compiler->Error(Format("Symbol '%s' is not a recognized function", entry.c_str()), symbol);
+                    compiler->Error(Format("Symbol '%s' is not a recognized function", entryStr.c_str()), symbol);
                     return false;
                 }
 
@@ -1149,7 +1149,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 std::string functionName;
                 if (!assignEntry->right->EvalSymbol(functionName))
                 {
-                    compiler->Error(Format("Expected symbol, but got '%s'", entry.c_str()), symbol);
+                    compiler->Error(Format("Expected symbol, but got '%s'", entryStr.c_str()), symbol);
                     return false;
                 }
                 std::vector<Symbol*> functions = compiler->GetSymbols(functionName);
@@ -1225,7 +1225,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             std::string sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
-                compiler->Error(Format("Entry '%s' has to be a symbol", entry.c_str()), symbol);
+                compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
                 return false;
             }
             Symbol* value = compiler->GetSymbol(sym);
@@ -1244,7 +1244,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             std::string sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
-                compiler->Error(Format("Entry '%s' has to be a symbol", entry.c_str()), symbol);
+                compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
                 return false;
             }
             Symbol* value = compiler->GetSymbol(sym);
@@ -1428,8 +1428,8 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Render state entry '%s' must be assignment", assignEntry->EvalString().c_str()), entry);
             return false;
         }
-
-        std::string entry;
+        
+        std::string entryStr;
 
         // if left is binary, then validate it is an array expression
         if (assignEntry->left->symbolType == Symbol::ArrayIndexExpressionType)
@@ -1451,11 +1451,11 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Render state array entry '%s' must be a valid identifier", lhs->left->EvalString().c_str()), assignEntry);
                 return false;
             }
-            entry = lhs->left->EvalString();
+            entryStr = lhs->left->EvalString();
         }
         else if (assignEntry->left->symbolType == Symbol::AccessExpressionType)
         {
-            entry = assignEntry->left->EvalString();
+            entryStr = assignEntry->left->EvalString();
         }
         else
         {
@@ -1464,13 +1464,13 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Render state entry '%s' must be a valid identifier", assignEntry->left->EvalString().c_str()), assignEntry);
                 return false;
             }
-            entry = assignEntry->left->EvalString();
+            entryStr = assignEntry->left->EvalString();
         }
 
-        RenderState::__Resolved::RenderStateEntryType entryType = RenderState::__Resolved::StringToEntryType(entry);
+        RenderState::__Resolved::RenderStateEntryType entryType = RenderState::__Resolved::StringToEntryType(entryStr);
         if (entryType == RenderState::__Resolved::InvalidRenderStateEntryType)
         {
-            compiler->Error(Format("Invalid render state entry '%s'", entry.c_str()), assignEntry);
+            compiler->Error(Format("Invalid render state entry '%s'", entryStr.c_str()), assignEntry);
             return false;
         }
 
@@ -1511,7 +1511,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::BlendEnabledType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(stateResolved->blendStates[index].blendEnabled);
@@ -1519,7 +1519,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::SourceBlendColorFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1528,7 +1528,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::DestinationBlendColorFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1537,7 +1537,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::SourceBlendAlphaFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1546,7 +1546,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::DestinationBlendAlphaFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1555,7 +1555,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::ColorBlendOpType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1564,7 +1564,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::AlphaBlendOpType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1591,7 +1591,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilFailOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1600,7 +1600,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilPassOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1609,7 +1609,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilDepthFailOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1618,7 +1618,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilCompareModeType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1627,7 +1627,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilCompareMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->compareMask);
@@ -1635,7 +1635,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilWriteMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->writeMask);
@@ -1643,7 +1643,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilReferenceMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->referenceMask);
@@ -1747,7 +1747,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     stateResolved->logicOp = (GPULang::LogicOp)value.i[0];
                     break;
                 default:
-                    compiler->Error(Format("Unknown render state entry '%s'", entry.c_str()), symbol);
+                    compiler->Error(Format("Unknown render state entry '%s'", entryStr.c_str()), symbol);
                     return false;
             }
         }
@@ -3552,12 +3552,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both general graphics and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both general graphics and compute", symbol);
                 return false;
             }
             if (programType == ProgramType::IsRaytracing)
             {
-                compiler->Error(Format("Program may not be both general graphics and ray tracing", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both general graphics and ray tracing", symbol);
                 return false;
             }
             programType = ProgramType::IsGraphics;
@@ -3569,12 +3569,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both raytracing and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both raytracing and compute", symbol);
                 return false;
             }
             if (programType == ProgramType::IsGraphics)
             {
-                compiler->Error(Format("Program may not be both raytracing and general graphics", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both raytracing and general graphics", symbol);
                 return false;
             }
             programType = ProgramType::IsRaytracing;

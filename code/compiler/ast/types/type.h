@@ -89,16 +89,16 @@ this->lookup.insert({id, &this->variable});
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_SWIZZLE(type, size, mask)\
-    for (char x = 0; x < size; x++)\
+    for (uint8_t x = 0; x < size; x++)\
     {\
         __ADD_SWIZZLE(type, "%c", mask[x]);\
-        for (char y = 0; y < size; y++)\
+        for (uint8_t y = 0; y < size; y++)\
         {\
             __ADD_SWIZZLE(type##x2, "%c%c", mask[x], mask[y]);\
-            for (char z = 0; z < size; z++)\
+            for (uint8_t z = 0; z < size; z++)\
             {\
                 __ADD_SWIZZLE(type##x3, "%c%c%c", mask[x], mask[y], mask[z]);\
-                for (char w = 0; w < size; w++)\
+                for (uint8_t w = 0; w < size; w++)\
                 {\
                     __ADD_SWIZZLE(type##x4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
                 }\
@@ -360,12 +360,24 @@ struct Type : public Symbol
             this->name = UNDEFINED_TYPE;
             this->literal = false;
         }
-        explicit FullType(std::string type)
+        explicit FullType(const char* type)
         {
             this->name = type;
             this->literal = false;
         }
-        explicit FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const std::string& type)
+        {
+            this->name = type;
+            this->literal = false;
+        }
+        explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        {
+            this->name = type;
+            this->modifiers = modifiers;
+            this->modifierValues = modifierValues;
+            this->literal = false;
+        }
+        explicit FullType(const std::string& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
         {
             this->name = type;
             this->modifiers = modifiers;

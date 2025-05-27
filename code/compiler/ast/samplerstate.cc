@@ -5,6 +5,7 @@
 #include "samplerstate.h"
 #include "variable.h"
 #include <map>
+#include <float.h>
 namespace GPULang
 {
 

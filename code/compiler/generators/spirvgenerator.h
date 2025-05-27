@@ -16,7 +16,6 @@
 #include <unordered_map>
 #include <set>
 #include <assert.h>
-#include <dinput.h>
 
 
 

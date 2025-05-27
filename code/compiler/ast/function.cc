@@ -139,7 +139,7 @@ newIntrinsic->documentation = str;
 #define __MAKE_BUILTIN(nm, opcode)\
 newIntrinsic = StaticAlloc<Function>();\
 newIntrinsic->name = #nm;\
-Intrinsics::opcode## = newIntrinsic;\
+Intrinsics::opcode = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);
 
 #define __MAKE_INTRINSIC(nm, opcode, ty)\
