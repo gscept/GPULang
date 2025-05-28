@@ -59,6 +59,7 @@ public:
     {
         int size = recv(this->sock, this->buf, sizeof(buf), 0);
         this->setg(this->buf, this->buf, this->buf + size);
+        printf("underflow\n");
         this->bytesAvail = size;
         return size;
     }
@@ -118,10 +119,7 @@ struct ParseContext
         GPULang::Allocator alloc;
 
         std::string path;
-        std::string file;
-        std::FILE* tmpFile;
-        std::string tmpPath;
-
+        GPULangFile* f;
 
         std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
@@ -144,9 +142,9 @@ struct ParseContext
             return nullptr;
         }
 
-        static const std::vector<GPULang::Symbol*> FindSymbols(const std::string_view& name, const std::vector<const GPULang::Scope*> scopes)
+        static const std::set<GPULang::Symbol*> FindSymbols(const std::string_view& name, const std::vector<const GPULang::Scope*> scopes)
         {
-            std::vector<GPULang::Symbol*> ret;
+            std::set<GPULang::Symbol*> ret;
 
             struct Comp
             {
@@ -162,7 +160,7 @@ struct ParseContext
                 {
                     if (symIt->first.starts_with(name))
                     {
-                        ret.push_back(symIt->second);
+                        ret.insert(symIt->second);
                         startMatch = true;
                     }
                     else if (startMatch)
@@ -210,16 +208,18 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 void
 WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string contents, lsp::MessageHandler& messageHandler)
 {
-    if (file->tmpFile != nullptr)
-        std::fclose(file->tmpFile);
-    file->tmpFile = std::fopen(file->tmpPath.c_str(), "wb");
-    std::fputs(contents.c_str(), file->tmpFile);
-    std::fflush(file->tmpFile);
+    if (!contents.empty())
+    {
+        if (file->f->contents)
+            free(file->f->contents);
+        file->f->contents = (char*)malloc(contents.length());
+        file->f->contentSize = contents.length();
+        memcpy(file->f->contents, contents.data(), contents.length());
+    }
 
-    file->textByLine.clear();    
-    file->file = contents;
-    const char* start = file->file.data();
-    const char* end = file->file.data() + file->file.length();
+    file->textByLine.clear();
+    const char* start = file->f->contents;
+    const char* end = file->f->contents + file->f->contentSize;
     int lineCounter = 0;
     while (start != end)
     {
@@ -246,8 +246,9 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     Clear(file->result, file->alloc);
     GPULang::MakeAllocatorCurrent(&file->alloc);
     GPULang::Compiler::Options options;
-    options.emitTimings = true;
-    GPULangValidate(file->tmpPath, context->includePaths, options, file->result);
+    //options.emitTimings = true;
+    
+    GPULangValidate(file->f, context->includePaths, options, file->result);
 
     // sort symbols on line and starting point
     std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
@@ -284,7 +285,7 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     }
     else
     {
-        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>({});
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(lsp::PublishDiagnosticsParams{ .uri = file->f->path });
     }
     
 }
@@ -300,25 +301,12 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     {
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
+        it->second.f = GPULangLoadFile(path.c_str(), {});
+        it->second.path = path;
     }
-    it->second.path = path;
 
-    // Open file and store in context
-    FILE* f = fopen(path.c_str(), "rb");
-    assert(f != nullptr);
-    fseek(f, 0, SEEK_END);
-    int size = ftell(f);
-    char* data = GPULang::AllocStack<char>(size);
-    rewind(f);
-    fread(data, size, 1, f);
-    it->second.file = std::string(data, data + size);
-    fclose(f);
-    GPULang::DeallocStack(size, data);
-   
     // Create temporary file for the compiler
-    it->second.tmpPath = (std::filesystem::temp_directory_path() / std::filesystem::path(std::tmpnam(nullptr))).string();
-    std::replace(it->second.tmpPath.begin(), it->second.tmpPath.end(), '\\', '/');
-    WriteFile(&it->second, context, it->second.file, messageHandler);
+    WriteFile(&it->second, context, "", messageHandler);
 
     return &it->second;
 };
@@ -337,7 +325,6 @@ GetFile(const std::string path, ParseContext* context, lsp::MessageHandler& mess
         return nullptr;
     }
     return &it->second;
-
 }
 
 
@@ -1107,13 +1094,12 @@ main(int argc, const char** argv)
                     file->symbolsByRange.clear();
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
-                    file->textByLine.clear();
                     GPULang::Symbol::Location prev;
                     prev.line = 0;
                     prev.start = 0;
                     for (auto sym : file->result.symbols)
                     {
-                        if (sym->location.file == file->tmpPath)
+                        if (sym->location.file == file->f->path)
                         {
                             std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                             CreateSemanticToken(prev, sym, file, file->semanticTokens, scopes);
@@ -1155,7 +1141,7 @@ main(int argc, const char** argv)
                         prev.start = 0;
                         for (auto sym : file->result.symbols)
                         {
-                            if (sym->location.file == file->tmpPath)
+                            if (sym->location.file == file->f->path)
                             {
                                 std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                                 CreateSemanticToken(prev, sym, file, file->semanticTokens, scopes);
@@ -1355,7 +1341,7 @@ main(int argc, const char** argv)
                             const char* identifierBegin = reverse_identifier_search(it->second.data(), begin-1);
                             ident = std::string_view (identifierBegin, begin);
                          
-                            const std::vector<GPULang::Symbol*> symbols = ParseContext::ParsedFile::FindSymbols(ident, *scopes);
+                            const std::set<GPULang::Symbol*> symbols = ParseContext::ParsedFile::FindSymbols(ident, *scopes);
                             std::vector<lsp::CompletionItem> items;
                             for (auto& sym : symbols)
                             {

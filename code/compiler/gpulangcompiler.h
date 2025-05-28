@@ -56,6 +56,44 @@ struct GPULangServerResult
 	std::vector<std::string> messages;	
 };
 
+struct GPULangFile
+{
+    std::string path;
+    char* contents = nullptr;
+    size_t contentSize = 0;
+
+    GPULangFile() {};
+
+    ~GPULangFile()
+    {
+        if (this->contents != nullptr)
+            free(this->contents);
+        this->contentSize = 0;
+    }
+
+    GPULangFile(GPULangFile&& rhs) noexcept
+    {
+        this->path = std::move(rhs.path);
+        this->contents = rhs.contents;
+        this->contentSize = rhs.contentSize;
+        rhs.contents = nullptr;
+        rhs.contentSize = 0;
+    }
+
+    void operator=(GPULangFile&& rhs) noexcept
+    {
+        this->path = std::move(rhs.path);
+        this->contents = rhs.contents;
+        this->contentSize = rhs.contentSize;
+        
+        rhs.contents = nullptr;
+        rhs.contentSize = 0;
+    }
+
+};
+
 extern std::vector<std::string> GPULangGenerateDependencies(const std::string& file, const std::vector<std::string>& defines);
 extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
-extern bool GPULangValidate(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
+extern bool GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
+extern bool GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
+extern GPULangFile* GPULangLoadFile(const char* path, const std::vector<std::string_view>& searchPaths);

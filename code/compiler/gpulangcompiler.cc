@@ -44,36 +44,10 @@ FixBackslashes(const std::string& path)
     return escaped;
 }
 
-struct File
-{
-    char* contents = nullptr;
-    size_t contentSize = 0;
-
-    File() {};
-
-    File(File&& rhs)
-    {
-        this->contents = rhs.contents;
-        this->contentSize = rhs.contentSize;
-        rhs.contents = nullptr;
-        rhs.contentSize = 0;
-    }
-
-    void operator=(File&& rhs)
-    {
-        this->contents = rhs.contents;
-        this->contentSize = rhs.contentSize;
-        rhs.contents = nullptr;
-        rhs.contentSize = 0;
-    }
-
-};
-
 struct FileLevel
 {
     int lineCounter;
-    std::string path;
-    File* file;
+    GPULangFile* file;
     const char* it;
     
     FileLevel()
@@ -82,15 +56,12 @@ struct FileLevel
         this->lineCounter = 0;
     }
 
-    FileLevel(const std::string& path, File* file)
+    FileLevel(GPULangFile* file)
     {
-        this->path = path;
-        this->file = file;
         this->file = file;
         this->it = this->file->contents;
         this->lineCounter = 0;
     }
-
 
     FileLevel(FileLevel&& rhs) noexcept
     {
@@ -98,13 +69,11 @@ struct FileLevel
         this->file = rhs.file;
         this->it = rhs.it;
         rhs.file = nullptr;
-        this->path = std::move(rhs.path);
     }
 
     FileLevel(const FileLevel& rhs)
     {
         this->lineCounter = rhs.lineCounter;
-        this->path = rhs.path;
         this->file = rhs.file;
         this->it = rhs.it;
     }
@@ -115,10 +84,10 @@ struct FileLevel
 //------------------------------------------------------------------------------
 /**
 */
-File*
-LoadFile2(const char* path, const std::vector<std::string_view>& searchPaths, std::string& foundPath)
+GPULangFile*
+GPULangLoadFile(const char* path, const std::vector<std::string_view>& searchPaths)
 {
-    File* file = GPULang::Alloc<File>();
+    GPULangFile* file = nullptr;
     FILE* f = fopen(path, "rb");
     
     if (f == nullptr)
@@ -129,22 +98,24 @@ LoadFile2(const char* path, const std::vector<std::string_view>& searchPaths, st
             f = fopen(fullPath.Data(), "rb");
             if (f != nullptr)
             {
-                foundPath = fullPath.Data();
+                file = new GPULangFile();
+                file->path = fullPath.buf;
                 break;
             }
         }
     }
     else
     {
-        foundPath = path;
+        file = new GPULangFile();
+        file->path = path;
     }
 
-    if (f != nullptr)
+    if (file != nullptr)
     {
         fseek(f, 0, SEEK_END);
         int size = ftell(f);
 
-        file->contents = AllocArray<char>(size);
+        file->contents = (char*)malloc(size);
         rewind(f);
         fread(file->contents, 1, size, f);
         fclose(f);
@@ -159,7 +130,7 @@ LoadFile2(const char* path, const std::vector<std::string_view>& searchPaths, st
 */
 bool
 GPULangPreprocess(
-    const std::string& path
+    GPULangFile* file
     , const std::vector<std::string>& defines
     , std::string& output
     , std::vector<GPULang::Symbol*>& preprocessorSymbols
@@ -168,17 +139,9 @@ GPULangPreprocess(
 {
 
 #define DIAGNOSTIC(message)\
-        GPULang::Diagnostic{.error = message, .file = level->path, .line = level->lineCounter }
+        GPULang::Diagnostic{.error = message, .file = level->file->path, .line = level->lineCounter }
 
     bool ret = true;
-    std::string escaped = FixBackslashes(path);
-    std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
-    std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
-    std::string dummy;
-    File* file = LoadFile2(path.c_str(), {}, dummy);
-
-
-
     struct Macro
     {
         std::vector<std::string> args;
@@ -187,7 +150,7 @@ GPULangPreprocess(
     std::map<std::string_view, Macro> definitions;
 
     std::vector<bool> ifStack;
-    std::vector<FileLevel> fileStack{ { path, file } };
+    std::vector<FileLevel> fileStack{ { file } };
     std::vector<std::string_view> searchPaths;
     for (auto& arg : defines)
     {
@@ -202,18 +165,17 @@ GPULangPreprocess(
     }
 
     // Insert into file map
-    std::map<std::string, File*> fileMap;
-    fileMap[path] = file;
+    std::map<std::string, GPULangFile*> fileMap;
 
     FileLevel* level = &fileStack.back();
     if (file->contents == nullptr)
     {
-        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", path.c_str())));
+        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", file->path.c_str())));
         return false;
     }
     output.clear();
     output.reserve(file->contentSize * 1.5f);
-    output.append(Format("#line 0 \"%s\"\n", path.c_str()));
+    output.append(Format("#line 0 \"%s\"\n", file->path.c_str()));
     Macro* macro = nullptr;
     bool comment = false;
     level->lineCounter = 0;
@@ -686,7 +648,7 @@ GPULangPreprocess(
             if (!fileStack.empty())\
             {\
                 level = &fileStack.back();\
-                output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->path.c_str()));\
+                output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));\
                 level->lineCounter++;\
             }\
             continue;
@@ -755,7 +717,7 @@ escape_newline:
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
-                pp->location.file = level->path;\
+                pp->location.file = level->file->path;\
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
@@ -772,7 +734,7 @@ escape_newline:
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
-                pp->location.file = level->path;\
+                pp->location.file = level->file->path;\
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
@@ -790,7 +752,7 @@ escape_newline:
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
-                pp->location.file = level->path;\
+                pp->location.file = level->file->path;\
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
@@ -801,7 +763,7 @@ escape_newline:
         }
 
 #define SETUP_PP2(pp, begin, stop)\
-        pp->location.file = level->path;\
+        pp->location.file = level->file->path;\
         pp->location.line = level->lineCounter;\
         pp->location.start = begin - lineBegin;\
         pp->location.end = stop - lineBegin;\
@@ -810,7 +772,7 @@ escape_newline:
 #define SETUP_ARG2(pp, arg, begin, stop)\
         pp->args.push_back(arg);\
         Symbol::Location argLoc;\
-        argLoc.file = level->path;\
+        argLoc.file = level->file->path;\
         argLoc.line = level->lineCounter;\
         argLoc.start = begin - lineBegin;\
         argLoc.end = stop - lineBegin;\
@@ -852,28 +814,27 @@ escape_newline:
                         const std::string path = std::string(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
 
-                        std::string foundPath;
-                        File* inc = nullptr;
+                        GPULangFile* inc = nullptr;
                         auto fileIt = fileMap.find(path);
                         if (fileIt == fileMap.end())
                         {
-                            inc = LoadFile2(path.c_str(), searchPaths, foundPath);
+                            inc = GPULangLoadFile(path.c_str(), searchPaths);
                             fileMap[path] = inc;
                         }
                         else
                         {
                             inc = fileIt->second;
                         }
-                        pp->contents = foundPath;
+                        pp->contents = inc->path;
                         if (inc == nullptr)
                         {
-                            diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", foundPath.c_str())));
+                            diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", inc->path.c_str())));
                             ret = false;
                             goto end;
                         }
-                        output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->path.c_str()));
+                        output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
 
-                        fileStack.push_back({ foundPath, inc });
+                        fileStack.push_back({ inc });
                         level = &fileStack.back();
                     }
                     else
@@ -957,7 +918,7 @@ escape_newline:
                     {
 
                     }
-                    output.append(Format("#line %d \"%s\"", level->lineCounter, level->path.c_str()));
+                    output.append(Format("#line %d \"%s\"", level->lineCounter, level->file->path.c_str()));
                 }
                 else if (strncmp(startOfDirective, "undef", 5) == 0)
                 {
@@ -1121,7 +1082,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     if (ifStack.empty())
                     {
-                        diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->path, .line = level->lineCounter });
+                        diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
@@ -1356,7 +1317,32 @@ next_line:
     }
 end:
     for (auto& file : fileMap)
-        file.second->~File();
+    {
+        delete file.second;
+    }
+    return ret;
+}
+
+//------------------------------------------------------------------------------
+/**
+    Preprocess a file
+*/
+bool
+GPULangPreprocessFile(
+    const std::string& path
+    , const std::vector<std::string>& defines
+    , std::string& output
+    , std::vector<GPULang::Symbol*>& preprocessorSymbols
+    , std::vector<GPULang::Diagnostic>& diagnostics
+)
+{
+    std::string escaped = FixBackslashes(path);
+    std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
+    std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
+    std::string dummy;
+    GPULangFile* file = GPULangLoadFile(path.c_str(), {});
+    bool ret = GPULangPreprocess(file, defines, output, preprocessorSymbols, diagnostics);
+    delete file;
     return ret;
 }
 
@@ -1466,7 +1452,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     timer.Start();
     std::vector<GPULang::Symbol*> preprocessorSymbols;
     std::vector<GPULang::Diagnostic> diagnostics;
-    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
+    if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
         std::locale loc;
@@ -1576,13 +1562,10 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
 //------------------------------------------------------------------------------
 /**
-    Compiles GPULang file.
-
-    @param file			Input file to compile
-    @param flags		List of compiler flags
+    Runs compilation without output
 */
 bool
-GPULangValidate(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
+GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
     bool ret = true;
 
@@ -1590,9 +1573,10 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
 
     GPULang::Compiler::Timer timer;
     timer.Start();
+
     std::vector<GPULang::Symbol*> preprocessorSymbols;
     std::vector<GPULang::Diagnostic> diagnostics;
-    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
+    if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
         std::locale loc;
@@ -1638,15 +1622,7 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         parser.removeErrorListeners();
         parser.addErrorListener(&parserErrorHandler);
 
-        Effect* effect = nullptr;
-        try
-        { 
-            effect = parser.entry()->returnEffect;
-        }
-        catch (std::exception e)
-        {
-            
-        }
+        Effect* effect = parser.entry()->returnEffect;
 
         timer.Stop();
         if (options.emitTimings)
@@ -1666,6 +1642,123 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
 
         Compiler compiler;
         compiler.path = file;
+        compiler.filename = effectName;
+        compiler.Setup(options);
+
+        bool res = compiler.Validate(effect);
+        effect->~Effect();
+
+        result.root = effect;
+        result.symbols = compiler.symbols;
+        result.symbols.insert(result.symbols.begin(), preprocessorSymbols.begin(), preprocessorSymbols.end());
+        result.intrinsicScope = compiler.intrinsicScope;
+        result.mainScope = compiler.mainScope;
+        if (!compiler.diagnostics.empty())
+            result.diagnostics = compiler.diagnostics;
+        
+        // convert error list to string
+        if (!compiler.messages.empty() && !compiler.options.quiet)
+        {
+            std::string err;
+            for (size_t i = 0; i < compiler.messages.size(); i++)
+            {
+                if (i > 0)
+                    err.append("\n");
+                err.append(compiler.messages[i]);
+            }
+            if (err.empty() && compiler.hasErrors)
+                err = "Unhandled internal compiler error";
+            result.messages.push_back(err);
+        }
+
+        return res;
+    }
+    result.diagnostics.insert(result.diagnostics.end(), diagnostics.begin(), diagnostics.end());
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+    Runs compilation without output
+*/
+bool
+GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
+{
+    bool ret = true;
+
+    std::string preprocessed;
+
+    GPULang::Compiler::Timer timer;
+    timer.Start();
+
+    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    std::vector<GPULang::Diagnostic> diagnostics;
+    if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
+    {
+        // get the name of the shader
+        std::locale loc;
+        size_t extension = file->path.rfind('.');
+        size_t lastFolder = file->path.rfind('/') + 1;
+        std::string effectName = file->path.substr(lastFolder, (file->path.length() - lastFolder) - (file->path.length() - extension));
+        effectName[0] = std::toupper(effectName[0]);
+        size_t undersc = effectName.find('_');
+        while (undersc != std::string::npos)
+        {
+            effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
+            effectName = effectName.erase(undersc, 1);
+            undersc = effectName.find('_');
+        }
+
+        // setup preprocessor
+        //parser.preprocess();
+
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Preprocessing");
+
+
+        GPULangLexerErrorHandler lexerErrorHandler;
+        GPULangParserErrorHandler parserErrorHandler;
+        timer.Start();
+
+        ANTLRInputStream input;
+        GPULangLexer lexer(&input);
+        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+        CommonTokenStream tokens(&lexer);
+        GPULangParser parser(&tokens);
+        parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
+        GPULangParser::LineStack.clear();
+
+        input.load(preprocessed);
+        lexer.setInputStream(&input);
+        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(&lexerErrorHandler);
+        tokens.setTokenSource(&lexer);
+        parser.setTokenStream(&tokens);
+        parser.removeErrorListeners();
+        parser.addErrorListener(&parserErrorHandler);
+
+        Effect* effect = parser.entry()->returnEffect;
+
+        timer.Stop();
+        if (options.emitTimings)
+            timer.Print("Parsing");
+
+        result.diagnostics.clear();
+
+        // if we have any lexer or parser error, return early
+        if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
+        {
+            std::string errorMessage;
+            errorMessage.append(lexerErrorHandler.errorBuffer);
+            errorMessage.append(parserErrorHandler.errorBuffer);
+            result.diagnostics.insert(result.diagnostics.end(), lexerErrorHandler.diagnostics.begin(), lexerErrorHandler.diagnostics.end());
+            result.diagnostics.insert(result.diagnostics.end(), parserErrorHandler.diagnostics.begin(), parserErrorHandler.diagnostics.end());
+        }
+
+        Compiler compiler;
+        compiler.path = file->path;
         compiler.filename = effectName;
         compiler.Setup(options);
 
