@@ -723,6 +723,7 @@ scopeStatement
     {
         $tree = nullptr;
         std::vector<Symbol*> contents;
+	std::vector<Expression*> unfinished;
         Symbol::Location location;
         Symbol::Location ends;
     }:
@@ -731,11 +732,11 @@ scopeStatement
         variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
         | statement { contents.push_back($statement.tree); }
         | linePreprocessorEntry
-        | IDENTIFIER // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
+        | expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
     )* 
     '}' { ends = SetupFile(); } 
     {
-        $tree = Alloc<ScopeStatement>(contents);
+        $tree = Alloc<ScopeStatement>(contents, unfinished);
         $tree->ends = ends;
         $tree->location = location;
     }

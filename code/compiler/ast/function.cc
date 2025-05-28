@@ -238,7 +238,7 @@ Function::SetupIntrinsics()
         , "f32x2"
         , "f32x3"
         , "f32x4"
-        ,"i32"
+        , "i32"
         , "i32x2"
         , "i32x3"
         , "i32x4"

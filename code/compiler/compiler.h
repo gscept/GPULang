@@ -291,6 +291,16 @@ set_contains(const std::set<K>& set, const K& key)
 //------------------------------------------------------------------------------
 /**
 */
+template <typename T, typename K> inline bool
+set_contains(const std::set<T>& set, const K& key)
+{
+    using T_const = const T;
+    return set.find(T_const(key)) != set.end();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 template <typename K> inline bool
 set_contains(const std::set<K>& set, const std::set<K>& otherSet)
 {

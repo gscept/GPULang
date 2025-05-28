@@ -56,17 +56,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static std::set<std::string> scalarQualifiers =
+static std::set<StaticString> scalarQualifiers =
 {
     "const", "var"
 };
 
-static std::set<std::string> bindingQualifiers =
+static std::set<StaticString> bindingQualifiers =
 {
     "group", "binding"
 };
 
-static std::set<std::string> functionAttributes =
+static std::set<StaticString> functionAttributes =
 {
     "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
@@ -77,27 +77,27 @@ static std::set<std::string> functionAttributes =
     , "derivative_index_linear", "derivative_index_quad"
 };
 
-static std::set<std::string> parameterAccessFlags =
+static std::set<StaticString> parameterAccessFlags =
 {
     "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
 };
 
-static std::set<std::string> parameterQualifiers =
+static std::set<StaticString> parameterQualifiers =
 {
     "patch", "no_interpolate", "no_perspective", "binding"
 };
 
-static std::set<std::string> structureQualifiers =
+static std::set<StaticString> structureQualifiers =
 {
     "packed"
 };
 
-static std::set<std::string> pixelShaderInputQualifiers =
+static std::set<StaticString> pixelShaderInputQualifiers =
 {
     "binding", "no_interpolate", "no_perspective"
 };
 
-static std::set<std::string> attributesRequiringEvaluation =
+static std::set<StaticString> attributesRequiringEvaluation =
 {
     "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
     , "group_size", "groups_per_workgroup"
@@ -105,17 +105,17 @@ static std::set<std::string> attributesRequiringEvaluation =
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
 };
 
-static std::set<std::string> pointerQualifiers =
+static std::set<StaticString> pointerQualifiers =
 {
     "no_read", "atomic", "volatile"
 };
 
-static std::set<std::string> storageQualifiers =
+static std::set<StaticString> storageQualifiers =
 {
     "uniform", "inline", "workgroup", "device", "link_defined"
 };
 
-static std::set<std::string> textureQualifiers =
+static std::set<StaticString> textureQualifiers =
 {
     "sampled"
 };
@@ -131,7 +131,7 @@ Validator::Validator()
     // add formats
     for (auto it : StringToFormats)
     {
-        this->allowedTextureAttributes.insert(it.first);
+        this->allowedTextureAttributes.insert(FixedString(it.first));
     }
 
     this->allowedTextureAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
@@ -2136,7 +2136,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // figure out set of allowed attributes
-    std::set<std::string>* allowedAttributesSet = nullptr;
+    std::set<FixedString>* allowedAttributesSet = nullptr;
     if (varResolved->usageBits.flags.isStructMember)
         allowedAttributesSet = nullptr;
     else if (varResolved->usageBits.flags.isParameter)
@@ -3120,6 +3120,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     if (!this->ResolveStatement(compiler, sym))
                         return false;
                 }
+            }
+            for (Expression* expr : statement->unfinished)
+            {
+                if (!expr->Resolve(compiler))
+                    return false;
             }
             return true;
         }

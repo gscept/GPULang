@@ -86,7 +86,8 @@ struct Symbol
         uint16_t start, end;
 
         Location()
-            : line(-1)
+            : file("")
+            , line(-1)
             , start(0)
             , end(0)
         {

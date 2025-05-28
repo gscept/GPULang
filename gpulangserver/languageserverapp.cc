@@ -216,6 +216,25 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
         file->f->contentSize = contents.length();
         memcpy(file->f->contents, contents.data(), contents.length());
     }
+    
+    static auto find_eol = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '\r')
+            {
+                if ((start+1) != end && start[1] == '\n')
+                    return start + 2;
+                else
+                    return start + 1;
+            }
+            else if (start[0] == '\n')
+                return start+1;
+            start++;
+        }
+        return end;
+    };
 
     file->textByLine.clear();
     const char* start = file->f->contents;
@@ -223,23 +242,9 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     int lineCounter = 0;
     while (start != end)
     {
-        int lineFeedLength = 0;
-        const char* eol = strchr(start, '\r');
-        if (eol == nullptr)
-        {
-            // If not \r\n
-            eol = strchr(start, '\n');
-            lineFeedLength = 1;
-        }
-        else
-        {
-            if (eol[1] == '\n') // \r\n
-                lineFeedLength = 2;
-            else // Apple '\r'
-                lineFeedLength = 1;
-        }
+        const char* eol = find_eol(start, end);
         file->textByLine[lineCounter++] = std::string_view(start, eol);
-        start = eol + lineFeedLength;
+        start = eol;
     }
 
     // Pass it to the compiler

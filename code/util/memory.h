@@ -65,6 +65,7 @@ extern bool IsDefaultAllocatorInitialized;
 
 extern Allocator StaticAllocator;
 extern bool IsStaticAllocatorInitialized;
+extern bool IsStaticAllocating;
 
 extern thread_local Allocator* CurrentAllocator;
 extern std::recursive_mutex StaticAllocMutex;
@@ -151,7 +152,10 @@ StaticAlloc(ARGS... args)
         IsStaticAllocatorInitialized = true;
     }
     Allocator* Allocator = &StaticAllocator;
-    return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
+    IsStaticAllocating = true;
+    T* ret = __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
+    IsStaticAllocating = false;
+    return ret;
 }
 
 //------------------------------------------------------------------------------
@@ -169,14 +173,21 @@ Alloc(ARGS... args)
     }
 
     Allocator* Allocator = CurrentAllocator;
-    if (Allocator == nullptr)
+    if (IsStaticAllocating)
     {
-        if (!IsDefaultAllocatorInitialized)
+        Allocator = &StaticAllocator;
+    }
+    else
+    {
+        if (Allocator == nullptr)
         {
-            InitAllocator(&DefaultAllocator);
-            IsDefaultAllocatorInitialized = true;
+            if (!IsDefaultAllocatorInitialized)
+            {
+                InitAllocator(&DefaultAllocator);
+                IsDefaultAllocatorInitialized = true;
+            }
+            Allocator = &DefaultAllocator;
         }
-        Allocator = &DefaultAllocator;
     }
     return __AllocInternal<T>(Allocator, std::forward<ARGS>(args)...);
 }
@@ -195,16 +206,42 @@ AllocArray(std::size_t num)
         return static_cast<T*>(data);
     }
     Allocator* Allocator = CurrentAllocator;
-    if (Allocator == nullptr)
+    if (IsStaticAllocating)
     {
-        if (!IsDefaultAllocatorInitialized)
+        Allocator = &StaticAllocator;
+    }
+    else
+    {
+        if (Allocator == nullptr)
         {
-            InitAllocator(&DefaultAllocator);
-            IsDefaultAllocatorInitialized = true;
+            if (!IsDefaultAllocatorInitialized)
+            {
+                InitAllocator(&DefaultAllocator);
+                IsDefaultAllocatorInitialized = true;
+            }
+            Allocator = &DefaultAllocator;
         }
-        Allocator = &DefaultAllocator;
     }
     return __AllocArrayInternal<T>(Allocator, num);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T>
+inline T*
+StaticAllocArray(std::size_t num)
+{
+    if (!IsStaticAllocatorInitialized)
+    {
+        InitAllocator(&StaticAllocator);
+        IsStaticAllocatorInitialized = true;
+    }
+    Allocator* Allocator = &StaticAllocator;
+    IsStaticAllocating = true;
+    T* ret = __AllocArrayInternal<T>(Allocator, num);
+    IsStaticAllocating = false;
+    return ret;
 }
 
 //------------------------------------------------------------------------------
@@ -952,6 +989,173 @@ struct GrowingString
         // Don't free memory
         this->size = 0;
     }
+};
+
+struct StaticString
+{
+    StaticString()
+        : buf(nullptr)
+        , len(0)
+    {}
+    
+    StaticString(const char* buf)
+    {
+        size_t len = strlen(buf)+1;
+        this->buf = StaticAllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, buf, len-1);
+        this->buf[len] = '\0';
+    }
+    
+    explicit StaticString(const std::string& str)
+    {
+        size_t len = str.length();
+        this->buf = StaticAllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, str.data(), len);
+    }
+    
+    explicit StaticString(const StaticString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+    
+    void operator=(const StaticString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+    
+    StaticString(StaticString&& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+    
+    void operator=(StaticString&& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+    
+    bool operator==(const char* cmp) const
+    {
+        return strcmp(this->buf, cmp) == 0;
+    }
+
+    bool operator<(const StaticString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf);
+    }
+    
+    const char* c_str() const { return this->buf; }
+    
+    char* buf;
+    size_t len;
+};
+
+struct FixedString
+{
+    FixedString()
+        : buf(nullptr)
+        , len(0)
+    {}
+    
+    FixedString(const char* buf)
+    {
+        size_t len = strlen(buf) + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, buf, len-1);
+        this->buf[len] = '\0';
+    }
+    
+    explicit FixedString(const std::string& str)
+    {
+        size_t len = str.length();
+        this->buf = AllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, str.data(), len);
+    }
+    
+    explicit FixedString(const StaticString& str)
+    {
+        this->buf = str.buf;
+        this->len = str.len;
+    }
+    
+    FixedString(const FixedString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+    
+    void operator=(const FixedString& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+    }
+    
+    void operator=(const char* buf)
+    {
+        size_t len = strlen(buf) + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, buf, len-1);
+        this->buf[len] = '\0';
+    }
+    
+    void operator=(const std::string& str)
+    {
+        size_t len = str.length();
+        this->buf = AllocArray<char>(len);
+        this->len = len;
+        memcpy(this->buf, str.data(), len);
+    }
+    
+    FixedString(FixedString&& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+    
+    void operator=(FixedString&& rhs)
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
+        rhs.buf = nullptr;
+        rhs.len = 0;
+    }
+    
+    bool operator==(const char* cmp) const
+    {
+        return strcmp(this->buf, cmp) == 0;
+    }
+    
+    bool operator<(const FixedString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf);
+    }
+    
+    operator StaticString() const
+    {
+        StaticString ret;
+        ret.buf = this->buf;
+        ret.len = this->len;
+        return ret;
+    }
+    
+    const char* c_str() const { return this->buf; }
+    
+    char* buf;
+    size_t len;
 };
 
 using TStr = TransientString;

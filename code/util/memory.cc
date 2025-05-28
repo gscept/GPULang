@@ -37,6 +37,7 @@ Allocator StaticAllocator =
     .blockSize = 65535
 };
 bool IsStaticAllocatorInitialized = false;
+bool IsStaticAllocating = false;
 //------------------------------------------------------------------------------
 /**
 */
