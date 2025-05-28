@@ -25,6 +25,7 @@ struct ScopeStatement : public Statement
     };
 
     std::vector<Symbol*> symbols;
+    Symbol::Location ends;
 
 };
 

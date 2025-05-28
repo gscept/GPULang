@@ -506,22 +506,10 @@ function
     @init
     {
         $sym = nullptr;
-        Token* startToken = nullptr;
-        Token* endToken = nullptr;
     }:
     functionDeclaration { $sym = $functionDeclaration.sym; }
-    {
-        startToken = _input->LT(2);
-    }
     scopeStatement
     {
-        endToken = _input->LT(-2);
-
-        // extract code from between tokens
-        antlr4::misc::Interval interval;
-        interval.a = startToken->getTokenIndex();
-        interval.b = endToken->getTokenIndex();
-        $sym->body = _input->getText(interval);
         $sym->hasBody = true;
         $sym->ast = $scopeStatement.tree;
     } 
@@ -728,22 +716,25 @@ whileStatement
     ;
 
 scopeStatement
-    returns[ Statement* tree ]
+    returns[ ScopeStatement* tree ]
     @init
     {
         $tree = nullptr;
         std::vector<Symbol*> contents;
         Symbol::Location location;
+        Symbol::Location ends;
     }:
     '{' { location = SetupFile(); }
     (
         variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
         | statement { contents.push_back($statement.tree); }
         | linePreprocessorEntry
+        | IDENTIFIER // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
     )* 
-    '}'
+    '}' { ends = SetupFile(); } 
     {
         $tree = Alloc<ScopeStatement>(contents);
+        $tree->ends = ends;
         $tree->location = location;
     }
     ;
