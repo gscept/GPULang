@@ -95,6 +95,20 @@ struct SemanticToken
     uint32_t deltaLine, deltaColumn, length, type, modifiers;
 };
 
+struct TextRange
+{
+    size_t startLine, stopLine;
+    size_t startColumn, stopColumn;
+
+    bool operator<(const TextRange& rhs) const
+    {
+        if (this->startLine == rhs.startLine)
+            return this->startColumn < rhs.startColumn;
+        else
+            return this->startLine < rhs.startLine;
+    }
+};
+
 struct ParseContext
 {
     std::vector<std::string> includePaths;
@@ -107,16 +121,12 @@ struct ParseContext
         std::string file;
         std::FILE* tmpFile;
         std::string tmpPath;
-        struct TextRange
-        {
-            size_t startLine, stopLine;
-            size_t startColumn, stopColumn;
-        };
+
 
         std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
+        std::map<TextRange, std::vector<const GPULang::Scope*>> scopesByRange;
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
-        std::map<std::string, const GPULang::Symbol*> symbolsByName;
         std::map<int, std::string_view> textByLine;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
@@ -132,6 +142,39 @@ struct ParseContext
                 scopeIt++;
             }
             return nullptr;
+        }
+
+        static const std::vector<GPULang::Symbol*> FindSymbols(const std::string_view& name, const std::vector<const GPULang::Scope*> scopes)
+        {
+            std::vector<GPULang::Symbol*> ret;
+
+            struct Comp
+            {
+                bool operator()(const std::string_view& lhs, const std::pair<std::string, const GPULang::Symbol*>& rhs) const { return rhs.first.starts_with(lhs); }
+                bool operator()(const std::pair<std::string, const GPULang::Symbol*>& rhs, const std::string_view& lhs) const { return rhs.first.starts_with(lhs); }
+            };
+            auto scopeIt = scopes.rbegin();
+            while (scopeIt != scopes.rend())
+            {
+                auto symIt = (*scopeIt)->symbolLookup.begin();
+                bool startMatch = false;
+                while (symIt != (*scopeIt)->symbolLookup.end())
+                {
+                    if (symIt->first.starts_with(name))
+                    {
+                        ret.push_back(symIt->second);
+                        startMatch = true;
+                    }
+                    else if (startMatch)
+                        break;
+                    if (ret.size() == 32)
+                        goto escape;
+                    symIt++;
+                }
+                scopeIt++;
+            }
+            escape:
+            return ret;
         }
 
         std::vector<uint32_t> semanticTokens;
@@ -380,7 +423,7 @@ InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Loca
 void
 CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* sym, ParseContext::ParsedFile* file, std::vector<uint32_t>& result, std::vector<const GPULang::Scope*>& scopes)
 {
-    ParseContext::ParsedFile::TextRange range;
+    TextRange range;
     range.startLine = sym->location.line;
     range.stopLine = sym->location.line;
     range.startColumn = sym->location.start;
@@ -441,7 +484,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, (uint32_t)SemanticModifierMapping::Definition, result);
 
             InsertSemanticToken(prevLoc, var->typeLocation, SemanticTypeMapping::Type, 0x0, result);
-            ParseContext::ParsedFile::TextRange range;
+            TextRange range;
             range.startLine = var->typeLocation.line;
             range.stopLine = var->typeLocation.line;
             range.startColumn = var->typeLocation.start;
@@ -459,6 +502,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Function::__Resolved* res = GPULang::Symbol::Resolved(fun);
             scopes.push_back(&res->scope);
             file->scopesByLine[range.startLine] = scopes;
+            file->scopesByRange[range] = scopes;
             for (auto annot : fun->annotations)
             {
                 //InsertSemanticToken(prevLoc, annot->location, SemanticTypeMapping::Decorator, 0x0, result);
@@ -480,7 +524,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             }
 
             InsertSemanticToken(prevLoc, fun->returnTypeLocation, SemanticTypeMapping::Type, 0x0, result);
-            ParseContext::ParsedFile::TextRange range;
+            TextRange range;
             range.startLine = fun->returnTypeLocation.line;
             range.stopLine = fun->returnTypeLocation.line;
             range.startColumn = fun->returnTypeLocation.start;
@@ -595,6 +639,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::ScopeStatement::__Resolved* res = GPULang::Symbol::Resolved(scope);
             scopes.push_back(&res->scope);
             file->scopesByLine[range.startLine] = scopes;
+
+            TextRange scopeRange = range;
+            scopeRange.stopLine = scope->ends.line;
+            scopeRange.stopColumn = scope->ends.start;
+            file->scopesByRange[scopeRange] = scopes;
+
             for (auto innerSym : scope->symbols)
             {
                 CreateSemanticToken(prevLoc, innerSym, file, result, scopes);
@@ -706,7 +756,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                     default:
                         InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, 0x0, result);
                 }
-                ParseContext::ParsedFile::TextRange range;
+                TextRange range;
                 range.startLine = sym->location.line;
                 range.stopLine = sym->location.line;
                 range.startColumn = sym->location.start;
@@ -1044,7 +1094,7 @@ main(int argc, const char** argv)
                 result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
-                result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = true, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
+                result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = false, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
 
                 result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
                 return result;
@@ -1072,7 +1122,7 @@ main(int argc, const char** argv)
 
                     for (auto& lineSymbols : file->symbolsByLine)
                     {
-                        std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
+                        std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
                         {
                             auto& [lrange, _0, _1] = lhs;
                             auto& [rrange, _2, _3] = rhs;
@@ -1098,6 +1148,8 @@ main(int argc, const char** argv)
                         file->symbolsByRange.clear();
                         file->symbolsByLine.clear();
                         file->semanticTokens.clear();
+                        file->scopesByLine.clear();
+                        file->scopesByRange.clear();
                         GPULang::Symbol::Location prev;
                         prev.line = 0;
                         prev.start = 0;
@@ -1112,7 +1164,7 @@ main(int argc, const char** argv)
 
                         for (auto& lineSymbols : file->symbolsByLine)
                         {
-                            std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
+                            std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
                             {
                                 auto& [lrange, _0, _1] = lhs;
                                 auto& [rrange, _2, _3] = rhs;
@@ -1162,7 +1214,7 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    ParseContext::ParsedFile::TextRange inputRange;
+                    TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
                     auto it = file->symbolsByLine.find(params.position.line);
@@ -1214,10 +1266,10 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    ParseContext::ParsedFile::TextRange inputRange;
+                    TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
-                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& lhs, const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& rhs)
+                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<TextRange, const GPULang::Symbol*>& lhs, const std::pair<TextRange, const GPULang::Symbol*>& rhs)
                     {
                         if (lhs.first.startLine == rhs.first.startLine)
                             return lhs.first.startColumn < rhs.first.startColumn;
@@ -1251,30 +1303,89 @@ main(int argc, const char** argv)
             {
                 lsp::requests::TextDocument_Completion::Result result;
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
+
+                static auto reverse_identifier_search = [](const char* begin, const char* end) -> const char*
+                {
+                    const char* start = end;
+                    while (start != begin)
+                    {
+                        if (!GPULangValidIdentifierChar(start[0]))
+                            return start+1;
+                        start--;
+                    }
+                    return end;
+                };
+                
+                static auto forward_identifier_search = [](const char* begin, const char* end) -> const char*
+                {
+                    const char* start = begin;
+                    while (start != end)
+                    {
+                        if (!GPULangValidIdentifierChar(start[0]))
+                            return start;
+                        start++;
+                    }
+                    return end;
+                };
+                    
                 if (file != nullptr)
                 {
-                    ParseContext::ParsedFile::TextRange inputRange;
+                    TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
                     auto it = file->textByLine.find(params.position.line);
                     if (it != file->textByLine.end())
                     {
-                        const char* begin = it->second.data() + params.position.character-1;
-                        const char* eol = it->second.data() + it->second.length();
-                        if (params.context)
+                        auto scopeIt = file->scopesByRange.begin();
+                        std::vector<const GPULang::Scope*>* scopes = nullptr;
+                        while (scopeIt != file->scopesByRange.end())
                         {
-                            if (params.context->triggerKind == lsp::CompletionTriggerKind::TriggerCharacter)
+                            if (scopeIt->first.startLine <= params.position.line && scopeIt->first.stopLine >= params.position.line)
                             {
-
+                                scopes = &scopeIt->second;
+                                break;
                             }
+                            scopeIt++;
                         }
-                        const char* end = GPULangIdentifierEnd(begin, eol);
-                        const std::string_view text(begin, end);
-                        //std::string_view text(it->second.data() + params.position.character, it->second.data() + params.position.character + params.)
-                        result = lsp::requests::TextDocument_Completion::Result { 
-                            { 
+                        if (scopes != nullptr)
+                        {
+                            const char* begin = it->second.data() + params.position.character;
+                            const char* eol = it->second.data() + it->second.length();
+                            std::string_view ident;
+                            const char* identifierBegin = reverse_identifier_search(it->second.data(), begin-1);
+                            ident = std::string_view (identifierBegin, begin);
+                         
+                            const std::vector<GPULang::Symbol*> symbols = ParseContext::ParsedFile::FindSymbols(ident, *scopes);
+                            std::vector<lsp::CompletionItem> items;
+                            for (auto& sym : symbols)
+                            {
+                                switch (sym->symbolType)
+                                {
+                                case GPULang::Symbol::SymbolType::FunctionType:
+                                {
+                                    auto fun = static_cast<GPULang::Function*>(sym);
+                                    auto res = GPULang::Symbol::Resolved(fun);
+                                    items.push_back(lsp::CompletionItem{ .label = res->name, .insertText = sym->name, .commitCharacters = {{"("}} });
+                                    break;
+                                }
+                                case GPULang::Symbol::SymbolType::VariableType:
+                                {
+                                    auto fun = static_cast<GPULang::Variable*>(sym);
+                                    auto res = GPULang::Symbol::Resolved(fun);
+                                    items.push_back(lsp::CompletionItem{ .label = sym->name, .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name}, .commitCharacters = {{"."}} });
+                                    break;
+                                }
+                                default:
+                                    items.push_back(lsp::CompletionItem{.label = sym->name});
+                                }
+                                
                             }
-                        };
+                        
+                            //std::string_view text(it->second.data() + params.position.character, it->second.data() + params.position.character + params.)
+                            result = lsp::requests::TextDocument_Completion::Result { 
+                                    items
+                            };
+                        }
                     }
                 }
                 return result;

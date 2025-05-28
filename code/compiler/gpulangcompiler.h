@@ -45,30 +45,6 @@ static auto GPULangValidIdentifierChar = [](const char c) -> bool
     return false;
 };
 
-static auto GPULangIdentifierBegin = [](const char* begin, const char* end) -> const char*
-{
-    const char* start = begin;
-    while (start != end)
-    {
-        if (GPULangValidIdentifierStart(start[0]))
-            return start;
-        start++;
-    }
-    return end;
-};
-
-static auto GPULangIdentifierEnd = [](const char* begin, const char* end) -> const char*
-{
-    const char* start = begin;
-    while (start != end)
-    {
-        if (!GPULangValidIdentifierChar(start[0]))
-            return start;
-        start++;
-    }
-    return end;
-};
-
 
 struct GPULangServerResult
 {

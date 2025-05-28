@@ -378,6 +378,31 @@ GPULangPreprocess(
         return end;
     };
 
+    
+    static auto identifierBegin = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (GPULangValidIdentifierStart(start[0]))
+                return start;
+            start++;
+        }
+        return end;
+    };
+
+    static auto identifierEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (!GPULangValidIdentifierChar(start[0]))
+                return start;
+            start++;
+        }
+        return end;
+    };
+
     static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, std::map<std::string_view, Macro>&)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, std::map<std::string_view, Macro>& definitions) -> int
     {
         struct Token
@@ -538,8 +563,8 @@ GPULangPreprocess(
                 val = op(word, end, stride);
                 if (val == -1)
                 {
-                    const char* identStart = GPULangIdentifierBegin(word, end);
-                    const char* identEnd = GPULangIdentifierEnd(identStart, end);
+                    const char* identStart = identifierBegin(word, end);
+                    const char* identEnd = identifierEnd(identStart, end);
                     std::string_view ident(identStart, identEnd);
                     if (ident.length() > 0)
                     {
@@ -907,7 +932,7 @@ escape_newline:
                                 startOfContents = wordStart(argumentIt+1, eol);
                                 break;
                             }
-                            const char* argumentEnd = GPULangIdentifierEnd(argumentIt, endOfDefinition);
+                            const char* argumentEnd = identifierEnd(argumentIt, endOfDefinition);
 
                             if (!validateIdentifier(argumentIt, argumentEnd))
                             {
@@ -1148,8 +1173,8 @@ escape_newline:
             else if (!comment)
             {
                 IFDEFSTACK()
-                const char* startOfWord = GPULangIdentifierBegin(columnIt, eol);
-                const char* endOfWord = GPULangIdentifierEnd(startOfWord, eol);
+                const char* startOfWord = identifierBegin(columnIt, eol);
+                const char* endOfWord = identifierEnd(startOfWord, eol);
 
                 // Add whatever comes before the first identifier
                 output.append(columnIt, startOfWord);
@@ -1176,7 +1201,7 @@ escape_newline:
                                     valid = true;
                                     break;
                                 }
-                                const char* argumentEnd = GPULangIdentifierEnd(argumentIt, eol);
+                                const char* argumentEnd = identifierEnd(argumentIt, eol);
 
                                 // Check argument for validity
                                 if (!GPULangValidIdentifierStart(argumentIt[0])) // First argument may not be a number
@@ -1226,8 +1251,8 @@ escape_newline:
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
                             {
-                                const char* startOfMacroWord = GPULangIdentifierBegin(macroContentsIt, macroContentsEnd);
-                                const char* endOfMacroWord = GPULangIdentifierEnd(startOfMacroWord, macroContentsEnd);
+                                const char* startOfMacroWord = identifierBegin(macroContentsIt, macroContentsEnd);
+                                const char* endOfMacroWord = identifierEnd(startOfMacroWord, macroContentsEnd);
 
                                 // Add whatever comes before the identifier to the output
                                 pp->contents.append(macroContentsIt, startOfMacroWord);
@@ -1274,8 +1299,8 @@ escape_newline:
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
                             {
-                                const char* startOfMacroIdentifier = GPULangIdentifierBegin(macroContentsIt, macroContentsEnd);
-                                const char* endOfMacroIdentifier = GPULangIdentifierEnd(startOfMacroIdentifier, macroContentsEnd);
+                                const char* startOfMacroIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
+                                const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, macroContentsEnd);
 
                                 // Add whatever comes before the identifier to the output
                                 pp->contents.append(macroContentsIt, startOfMacroIdentifier);
@@ -1613,7 +1638,15 @@ GPULangValidate(const std::string& file, const std::vector<std::string>& defines
         parser.removeErrorListeners();
         parser.addErrorListener(&parserErrorHandler);
 
-        Effect* effect = parser.entry()->returnEffect;
+        Effect* effect = nullptr;
+        try
+        { 
+            effect = parser.entry()->returnEffect;
+        }
+        catch (std::exception e)
+        {
+            
+        }
 
         timer.Stop();
         if (options.emitTimings)
