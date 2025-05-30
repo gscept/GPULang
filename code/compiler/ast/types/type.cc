@@ -44,7 +44,7 @@ DefaultTypes.push_back(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
-const std::unordered_map<std::string, ImageFormat> StringToFormats =
+const std::unordered_map<StaticString, ImageFormat> StringToFormats =
 {
     { "rgba16", Rgba16 }
     , { "rgb10_a2", Rgb10_A2 }

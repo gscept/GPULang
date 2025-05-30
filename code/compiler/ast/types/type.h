@@ -139,7 +139,7 @@ enum ImageFormat
 
 extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
-extern const std::unordered_map<std::string, ImageFormat> StringToFormats;
+extern const std::unordered_map<StaticString, ImageFormat> StringToFormats;
 
 extern std::vector<Symbol*> DefaultTypes;
 enum class TypeCode
@@ -394,7 +394,7 @@ struct Type : public Symbol
             return this->swizzleName.empty() ? this->name : this->swizzleName;
         }
 
-        void AddModifier(Modifier type, Expression* value = nullptr)
+        void AddModifier(const Modifier& type, Expression* value = nullptr)
         {
             this->modifiers.push_back(type);
             this->modifierValues.push_back(value);
@@ -417,7 +417,7 @@ struct Type : public Symbol
             }
         }
         
-        void AddQualifier(std::string identifier)
+        void AddQualifier(const FixedString& identifier)
         {
             if (identifier == "mutable")
                 this->mut = true;

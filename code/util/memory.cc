@@ -37,7 +37,7 @@ Allocator StaticAllocator =
     .blockSize = 65535
 };
 bool IsStaticAllocatorInitialized = false;
-bool IsStaticAllocating = false;
+thread_local bool IsStaticAllocating = false;
 //------------------------------------------------------------------------------
 /**
 */
@@ -109,7 +109,8 @@ ResetAllocator(Allocator* alloc)
     InitAllocator(alloc);
 }
 
-thread_local char ThreadLocalHeap[0xFFFF];
+thread_local char ThreadLocalHeap[ThreadLocalHeapSize];
+thread_local void* ThreadLocalHeapPtr = ThreadLocalHeap;
 thread_local size_t ThreadLocalIterator = 0;
 
 } // namespace GPULang

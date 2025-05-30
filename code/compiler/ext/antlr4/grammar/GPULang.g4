@@ -268,7 +268,7 @@ typeDeclaration
         '[' { $type.type.AddModifier(Type::FullType::Modifier::Array); } 
             ( arraySize0 = expression { $type.type.UpdateValue($arraySize0.tree); } )? 
         ']'
-        | IDENTIFIER { $type.type.AddQualifier($IDENTIFIER.text); }
+        | IDENTIFIER { $type.type.AddQualifier(FixedString($IDENTIFIER.text)); }
         | linePreprocessorEntry
     )* 
     typeName = IDENTIFIER { $type.type.name = $typeName.text; $type.location = EndLocationRange(typeRange); }
@@ -732,7 +732,7 @@ scopeStatement
         variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
         | statement { contents.push_back($statement.tree); }
         | linePreprocessorEntry
-        | expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
+        //| expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
     )* 
     '}' { ends = SetupFile(); } 
     {

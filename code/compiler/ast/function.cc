@@ -137,84 +137,106 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
 newIntrinsic->documentation = str;
 
 #define __MAKE_BUILTIN(nm, opcode)\
+{\
 newIntrinsic = StaticAlloc<Function>();\
 newIntrinsic->name = #nm;\
 Intrinsics::opcode = newIntrinsic;\
-DefaultIntrinsics.push_back(newIntrinsic);
+DefaultIntrinsics.push_back(newIntrinsic);\
+}
 
 #define __MAKE_INTRINSIC(nm, opcode, ty)\
+{\
 newIntrinsic = StaticAlloc<Function>();\
 newIntrinsic->name = #nm;\
 Intrinsics::opcode##_##ty = newIntrinsic;\
-DefaultIntrinsics.push_back(newIntrinsic);
+DefaultIntrinsics.push_back(newIntrinsic);\
+}
 
 #define __ADD_ARG(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(tp);\
 newVar->name = #nm;\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_ARG_LIT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->name = #nm;\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_MUTABLE_ARG_LIT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->type.mut = true;\
 newVar->name = #nm;\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_VALUE_LIT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->name = #nm;\
 newVar->type.literal = true;\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_ARG_ARR_LIT(nm, tp, size)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Array);\
 newVar->type.UpdateValue(StaticAlloc<UIntExpression>(size));\
 newVar->name = #nm;\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_HANDLE_ARG(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
 newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
+{\
 newVar = StaticAlloc<Variable>();\
 new (&newVar->type) Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
 newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);
+newIntrinsic->parameters.push_back(newVar);\
+}
 
 #define __SET_RET_LIT(name)\
 new (&newIntrinsic->returnType) Type::FullType(#name);
@@ -1127,7 +1149,7 @@ FLOAT_LIST
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1135,7 +1157,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1143,7 +1165,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_MUT(ty, variant, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
@@ -1151,7 +1173,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
@@ -1159,7 +1181,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 #define __MAKE_TEXTURE_QUERY_INTRINSIC(ty, overload, index)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ dimensionality[index] }; \
+new (&newIntrinsic->returnType) Type::FullType(dimensionality[index]);\
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1167,7 +1189,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1175,7 +1197,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -1183,7 +1205,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1192,7 +1214,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC(ty, variant, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty##variant); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::SampledTexture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -1200,7 +1222,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_TEXTURE_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_HANDLE_ARG_LIT(texture, overload);\
@@ -1209,7 +1231,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC_BASE(ty, overload, ret)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = STRINGIFY(texture##ty); \
-newIntrinsic->returnType = Type::FullType{ #ret }; \
+new (&newIntrinsic->returnType) Type::FullType(#ret);\
 Intrinsics::SampledTexture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -1649,6 +1671,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
+{\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodOffset, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
@@ -1656,23 +1679,27 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodOffset, type, f32x4)\
     __ADD_ARG(coords, normCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG(offsets, offsets[index]);
+    __ADD_ARG(offsets, offsets[index]);\
+}
 
     TEXTURE_INTRINSIC_NO_CUBE_LIST
 #undef X
 
 #define X(type, index)\
+{\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProj, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
+}
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
 
 #define X(type, index)\
+{\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
@@ -1680,12 +1707,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjCompare, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG_LIT(compare, f32);
+    __ADD_ARG_LIT(compare, f32);\
+}
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
 
 #define X(type, index)\
+{\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjCompareOffset, type, f32)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
@@ -1695,12 +1724,14 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
     __ADD_ARG_LIT(compare, f32);\
-    __ADD_ARG(offsets, offsets[index]);
+    __ADD_ARG(offsets, offsets[index]);\
+}
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X
 
 #define X(type, index)\
+{\
     __MAKE_TEXTURE_INTRINSIC(Sample, LodProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
@@ -1708,7 +1739,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_SAMPLEDTEXTURE_INTRINSIC(Sample, LodProjOffset, type, f32x4)\
     __ADD_ARG(coords, projCoordinates[index]);\
     __ADD_ARG_LIT(lod, f32);\
-    __ADD_ARG(offsets, offsets[index]);
+    __ADD_ARG(offsets, offsets[index]);\
+}
 
     TEXTURE_INTRINSIC_PLAIN_LIST
 #undef X

@@ -872,7 +872,6 @@ public:
     ScopeStatement* tree;
     GPULangParser::VariablesContext *variablesContext = nullptr;
     GPULangParser::StatementContext *statementContext = nullptr;
-    GPULangParser::ExpressionContext *expressionContext = nullptr;
     ScopeStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LB();
@@ -885,8 +884,6 @@ public:
     StatementContext* statement(size_t i);
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
     LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<ExpressionContext *> expression();
-    ExpressionContext* expression(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

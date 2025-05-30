@@ -65,7 +65,7 @@ extern bool IsDefaultAllocatorInitialized;
 
 extern Allocator StaticAllocator;
 extern bool IsStaticAllocatorInitialized;
-extern bool IsStaticAllocating;
+extern thread_local bool IsStaticAllocating;
 
 extern thread_local Allocator* CurrentAllocator;
 extern std::recursive_mutex StaticAllocMutex;
@@ -93,6 +93,7 @@ __AllocInternal(Allocator* allocator, ARGS... args)
     const char* blockEnd = blockBegin + allocator->blockSize;
     size_t sizeLeft = blockEnd - (char*)block->iterator;
     void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
+    assert(size <= allocator->blockSize);
     if (alignedIterator == nullptr)
     {
         allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
@@ -123,6 +124,7 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
     const char* blockEnd = blockBegin + allocator->blockSize;
     size_t sizeLeft = blockEnd - (char*)block->iterator;
     void* alignedIterator = std::align(alignment, size, block->iterator, sizeLeft);
+    assert(size <= allocator->blockSize);
     if (alignedIterator == nullptr)
     {
         allocator->currentBlock = allocator->freeBlocks[allocator->freeBlockCounter--];
@@ -165,13 +167,6 @@ template<typename T, typename ... ARGS>
 inline T*
 Alloc(ARGS... args)
 {
-    if (SYMBOL_STATIC_ALLOC)
-    {
-        void* data = malloc(sizeof(T));
-        new (data) T(args...);
-        return static_cast<T*>(data);
-    }
-
     Allocator* Allocator = CurrentAllocator;
     if (IsStaticAllocating)
     {
@@ -199,12 +194,6 @@ template<typename T>
 inline T*
 AllocArray(std::size_t num)
 {
-    if (SYMBOL_STATIC_ALLOC)
-    {
-        void* data = malloc(sizeof(T) * num);
-        new (data) T[num]();
-        return static_cast<T*>(data);
-    }
     Allocator* Allocator = CurrentAllocator;
     if (IsStaticAllocating)
     {
@@ -280,24 +269,33 @@ struct ConstantString
     }
 };
 
+static const size_t ThreadLocalHeapSize = 0xFFFF;
 extern thread_local char ThreadLocalHeap[];
-extern thread_local size_t ThreadLocalIterator;
+extern thread_local void* ThreadLocalHeapPtr;
 
 template<typename TYPE>
 TYPE* AllocStack(size_t count)
 {
-    TYPE* ptr = (TYPE*)(ThreadLocalHeap + ThreadLocalIterator);
-    ThreadLocalIterator += count * sizeof(TYPE);
-    memset(ptr, 0x0, count * sizeof(TYPE));
-    return ptr;
+    const char* HeapStart = (const char*)ThreadLocalHeap;
+    const char* HeapEnd = HeapStart + ThreadLocalHeapSize;
+    const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
+    size_t alignment = alignof(TYPE);
+    size_t size = sizeof(TYPE) * count;
+    size_t sizeLeft = HeapEnd - HeapPtr;
+    void* alignedPtr = std::align(alignment, size, ThreadLocalHeapPtr, sizeLeft);
+    assert(alignedPtr != nullptr);
+    ThreadLocalHeapPtr = (char*)alignedPtr + count * sizeof(TYPE);
+    memset(alignedPtr, 0x0, size);
+    return (TYPE*)alignedPtr;
 }
 
 template<typename TYPE>
 void DeallocStack(size_t count, TYPE* buf)
 {
-    TYPE* topPtr = (TYPE*)(ThreadLocalHeap + ThreadLocalIterator - count * sizeof(TYPE));
+    const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
+    TYPE* topPtr = (TYPE*)(HeapPtr - count * sizeof(TYPE));
     assert(topPtr == buf);
-    ThreadLocalIterator -= count * sizeof(TYPE);
+    ThreadLocalHeapPtr = topPtr;
 }
 
 template<typename TYPE>
@@ -1053,6 +1051,11 @@ struct StaticString
         return strcmp(this->buf, rhs.buf);
     }
     
+    bool operator==(const StaticString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
+    }
+    
     const char* c_str() const { return this->buf; }
     
     char* buf;
@@ -1144,6 +1147,11 @@ struct FixedString
         return strcmp(this->buf, rhs.buf);
     }
     
+    bool operator==(const FixedString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
+    }
+    
     operator StaticString() const
     {
         StaticString ret;
@@ -1162,3 +1170,21 @@ using TStr = TransientString;
 using GStr = GrowingString;
 
 } // namespace GPULang
+
+template<>
+struct std::hash<GPULang::FixedString>
+{
+    std::size_t operator()(const GPULang::FixedString& str) const noexcept
+    {
+        return std::hash<std::string_view>{}(std::string_view(str.buf, str.buf + str.len));
+    }
+};
+
+template<>
+struct std::hash<GPULang::StaticString>
+{
+    std::size_t operator()(const GPULang::StaticString& str) const noexcept
+    {
+        return std::hash<std::string_view>{}(std::string_view(str.buf, str.buf + str.len));
+    }
+};
