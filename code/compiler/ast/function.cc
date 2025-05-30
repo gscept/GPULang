@@ -155,33 +155,33 @@ DefaultIntrinsics.push_back(newIntrinsic);\
 #define __ADD_ARG(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(tp);\
 newVar->name = #nm;\
+newVar->type = Type::FullType(tp);\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
 #define __ADD_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
 newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
 #define __ADD_MUTABLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
-newVar->type.mut = true;\
 newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
+newVar->type.mut = true;\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
 #define __ADD_VALUE_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
 newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
 newVar->type.literal = true;\
 newIntrinsic->parameters.push_back(newVar);\
 }
@@ -189,19 +189,19 @@ newIntrinsic->parameters.push_back(newVar);\
 #define __ADD_ARG_ARR_LIT(nm, tp, size)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
+newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Array);\
 newVar->type.UpdateValue(StaticAlloc<UIntExpression>(size));\
-newVar->name = #nm;\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
 #define __ADD_HANDLE_ARG(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(tp);\
-newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
+newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
@@ -209,9 +209,9 @@ newIntrinsic->parameters.push_back(newVar);\
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
-newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
+newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
@@ -219,10 +219,10 @@ newIntrinsic->parameters.push_back(newVar);\
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
+newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
-newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
@@ -230,19 +230,19 @@ newIntrinsic->parameters.push_back(newVar);\
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-new (&newVar->type) Type::FullType(#tp);\
+newVar->name = #nm;\
+newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
-newVar->name = #nm;\
 newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
 #define __SET_RET_LIT(name)\
-new (&newIntrinsic->returnType) Type::FullType(#name);
+{ newIntrinsic->returnType = Type::FullType(#name); }
 
 #define __SET_RET(name)\
-new (&newIntrinsic->returnType) Type::FullType(name);
+{ newIntrinsic->returnType = Type::FullType(name); }
 
 //------------------------------------------------------------------------------
 /**
