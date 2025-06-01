@@ -10,11 +10,13 @@
 
 #include "memory.h"
 
+
 bool SYMBOL_STATIC_ALLOC = false;
 
 namespace GPULang
 {
 
+size_t LeakedFixedArrayBytes = 0;
 std::recursive_mutex StaticAllocMutex;
 
 thread_local Allocator* CurrentAllocator;

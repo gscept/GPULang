@@ -1809,8 +1809,8 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
   VariablesContext *_localctx = _tracker.createInstance<VariablesContext>(_ctx, getState());
   enterRule(_localctx, 20, GPULangParser::RuleVariables);
 
-          std::vector<Annotation*> annotations;
-          std::vector<Attribute*> attributes;
+          StackArray<Annotation*> annotations(32);
+          StackArray<Attribute*> attributes(32);
           std::vector<std::string> names;
           std::vector<Expression*> valueExpressions;
           std::vector<Symbol::Location> locations;
@@ -1845,7 +1845,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
     while (_la == GPULangParser::SOBAKA) {
       setState(262);
       antlrcpp::downCast<VariablesContext *>(_localctx)->annotationContext = annotation();
-       annotations.push_back(std::move(antlrcpp::downCast<VariablesContext *>(_localctx)->annotationContext->annot)); 
+       if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move(antlrcpp::downCast<VariablesContext *>(_localctx)->annotationContext->annot)); 
       setState(269);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -1858,7 +1858,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
         case 1: {
               setState(270);
               antlrcpp::downCast<VariablesContext *>(_localctx)->attributeContext = attribute();
-               attributes.push_back(std::move(antlrcpp::downCast<VariablesContext *>(_localctx)->attributeContext->attr)); 
+               if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move(antlrcpp::downCast<VariablesContext *>(_localctx)->attributeContext->attr)); 
               break;
             }
 
@@ -2440,7 +2440,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
   enterRule(_localctx, 26, GPULangParser::RuleEnumeration);
 
           antlrcpp::downCast<EnumerationContext *>(_localctx)->sym =  nullptr;
-          std::vector<std::string> enumLabels;
+          StackArray<FixedString> enumLabels(256);
           std::vector<Expression*> enumValues;
           std::vector<Symbol::Location> enumLocations;
           std::string name;
@@ -2496,7 +2496,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
            expr = antlrcpp::downCast<EnumerationContext *>(_localctx)->value->tree; 
         }
 
-                        enumLabels.push_back((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : ""));
+                        enumLabels.Append(FixedString((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : "")));
                         enumValues.push_back(expr);
                         enumLocations.push_back(labelLocation);
                     
@@ -2540,7 +2540,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
                  expr = antlrcpp::downCast<EnumerationContext *>(_localctx)->value->tree; 
               }
 
-                                  enumLabels.push_back((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : ""));
+                                  enumLabels.Append(FixedString((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : "")));
                                   enumValues.push_back(expr);
                                   enumLocations.push_back(labelLocation);
                               

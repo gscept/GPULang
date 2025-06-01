@@ -18,9 +18,9 @@ struct Enumeration : public Type
     /// destructor
     virtual ~Enumeration();
 
-    std::vector<std::string> labels;
-    std::vector<Expression*> values;
-    std::vector<Symbol::Location> labelLocations;
+    FixedArray<FixedString> labels;
+    FixedArray<Expression*> values;
+    FixedArray<Symbol::Location> labelLocations;
     Type::FullType type;
     bool builtin = false;
 

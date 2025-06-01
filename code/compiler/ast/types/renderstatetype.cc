@@ -5,10 +5,10 @@
 #include "renderstatetype.h"
 #include "ast/expressions/uintexpression.h"
 
-#define __BEGIN_ENUMS__() std::vector<std::string> labels; std::vector<Expression*> expressions; Function* assignOperator; Variable* arg;
-#define __START_ENUM() labels.clear(); expressions.clear();
-#define __ADD_ENUM(val) labels.push_back(#val); expressions.push_back(nullptr);
-#define __ADD_ENUM_EXPL(name, val) labels.push_back(#name); expressions.push_back(StaticAlloc<UIntExpression>(val));
+#define __BEGIN_ENUMS__() StackArray<FixedString> labels(32); StackArray<Expression*> expressions(32); Function* assignOperator; Variable* arg;
+#define __START_ENUM() labels.Clear(); expressions.Clear();
+#define __ADD_ENUM(val) labels.Append(#val); expressions.Append(nullptr);
+#define __ADD_ENUM_EXPL(name, val) labels.Append(#name); expressions.Append(StaticAlloc<UIntExpression>(val));
 #define __IMPL_ENUM_ASSIGN() 
 #define __FINISH_ENUM(val, key) new (&val) Enumeration(); val.builtin = true; val.labels = labels; val.values = expressions; val.name = #key; val.baseType = TypeCode::UInt; val.type = Type::FullType{ "u32" }; val.type.literal = true; this->staticSymbols.push_back(&val);
 

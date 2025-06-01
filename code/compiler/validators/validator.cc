@@ -1973,13 +1973,13 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     }
 
     uint32_t nextValue = 0;
-    for (size_t i = 0; i < enumeration->labels.size(); i++)
+    for (size_t i = 0; i < enumeration->labels.len; i++)
     {
-        const std::string& str = enumeration->labels[i];
-        Expression* expr = enumeration->values[i];
+        const FixedString& str = enumeration->labels.buf[i];
+        Expression* expr = enumeration->values.buf[i];
 
         // Check of label redefinition
-        if (enumeration->scope.symbolLookup.find(str) != enumeration->scope.symbolLookup.end())
+        if (enumeration->scope.symbolLookup.find(str.c_str()) != enumeration->scope.symbolLookup.end())
         {
             compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
             return false;
@@ -2025,7 +2025,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
 
         // Add to type
-        sym->name = str;
+        sym->name = str.c_str();
         enumeration->symbols.push_back(sym);
         enumeration->scope.symbolLookup.insert({ sym->name, sym });
     }
@@ -2853,7 +2853,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.push_back(attr);
+                    arg->attributes.Append(attr);
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();
@@ -2879,7 +2879,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.push_back(attr);
+                    arg->attributes.Append(attr);
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();

@@ -4,6 +4,7 @@
 //------------------------------------------------------------------------------
 #include "pipelineassembly.h"
 #include <assert.h>
+#include <algorithm>
 
 #if __WIN32__
 #ifndef WIN32_LEAN_AND_MEAN
@@ -12,6 +13,14 @@
 
 #define _WIN32_WINNT 0x0601
 #include <windows.h>
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifdef min
+#undef min
 #endif
 
 namespace GPULang

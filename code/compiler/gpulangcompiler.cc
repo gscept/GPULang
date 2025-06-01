@@ -1038,6 +1038,14 @@ escape_newline:
                     int val = eval(endOfDirective, eol, level, diagnostics, definitions);
                     SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
 
+                    if (ifStack.empty())
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
+                        ret = false;
+                        goto end;
+                    }
+
+                    ifStack.pop_back();
                     if (val != 0)
                     {
                         ifStack.push_back(true);

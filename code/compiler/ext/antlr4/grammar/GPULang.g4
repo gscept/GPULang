@@ -279,8 +279,8 @@ variables
     returns[ std::vector<Variable*> list ]
     @init
     {
-        std::vector<Annotation*> annotations;
-        std::vector<Attribute*> attributes;
+        StackArray<Annotation*> annotations(32);
+        StackArray<Attribute*> attributes(32);
         std::vector<std::string> names;
         std::vector<Expression*> valueExpressions;
         std::vector<Symbol::Location> locations;
@@ -288,8 +288,8 @@ variables
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
-    (annotation { annotations.push_back(std::move($annotation.annot)); })*
-    (attribute { attributes.push_back(std::move($attribute.attr)); })+
+    (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
+    (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })+
     
     varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
     (linePreprocessorEntry)?
@@ -401,7 +401,7 @@ enumeration
     @init
     {
         $sym = nullptr;
-        std::vector<std::string> enumLabels;
+        StackArray<FixedString> enumLabels(256);
         std::vector<Expression*> enumValues;
         std::vector<Symbol::Location> enumLocations;
         std::string name;
@@ -415,7 +415,7 @@ enumeration
         (
             label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
             {
-                enumLabels.push_back($label.text);
+                enumLabels.Append(FixedString($label.text));
                 enumValues.push_back(expr);
                 enumLocations.push_back(labelLocation);
             }
@@ -423,7 +423,7 @@ enumeration
             (
                 ',' label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
                 {
-                    enumLabels.push_back($label.text);
+                    enumLabels.Append(FixedString($label.text));
                     enumValues.push_back(expr);
                     enumLocations.push_back(labelLocation);
                 }

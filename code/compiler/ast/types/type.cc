@@ -295,22 +295,26 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
     newType->category = AccelerationStructureCategory;
 
-#define __ADD_ENUM(val, enum) enum->labels.push_back(#val); enum->values.push_back(nullptr);
+#define __ADD_ENUM(val) labels.Append(FixedString(#val)); values.Append(nullptr);
+#define __FINISH_ENUM(enum) enum->labels = labels; enum->values = values; labels.size = 0; values.size = 0;
 
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = "CompareMode";
     compareModeEnum->type = Type::FullType{ "u32" };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(InvalidCompareMode, compareModeEnum);
-    __ADD_ENUM(Never, compareModeEnum);
-    __ADD_ENUM(Less, compareModeEnum);
-    __ADD_ENUM(Equal, compareModeEnum);
-    __ADD_ENUM(LessEqual, compareModeEnum);
-    __ADD_ENUM(Greater, compareModeEnum);
-    __ADD_ENUM(NotEqual, compareModeEnum);
-    __ADD_ENUM(GreaterEqual, compareModeEnum);
-    __ADD_ENUM(Always, compareModeEnum);
+    StackArray<StaticString> labels(32);
+    StackArray<Expression*> values(32);
+    __ADD_ENUM(InvalidCompareMode);
+    __ADD_ENUM(Never);
+    __ADD_ENUM(Less);
+    __ADD_ENUM(Equal);
+    __ADD_ENUM(LessEqual);
+    __ADD_ENUM(Greater);
+    __ADD_ENUM(NotEqual);
+    __ADD_ENUM(GreaterEqual);
+    __ADD_ENUM(Always);
+    __FINISH_ENUM(compareModeEnum);
     compareModeEnum->builtin = true;
     DefaultTypes.push_back(compareModeEnum);
 
@@ -319,15 +323,16 @@ Type::SetupDefaultTypes()
     stencilOpEnum->type = Type::FullType{ "u32" };
     stencilOpEnum->type.literal = true;
     stencilOpEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(Invalid, stencilOpEnum);
-    __ADD_ENUM(Keep, stencilOpEnum);
-    __ADD_ENUM(Zero, stencilOpEnum);
-    __ADD_ENUM(Replace, stencilOpEnum);
-    __ADD_ENUM(IncrementClamp, stencilOpEnum);
-    __ADD_ENUM(DecrementClamp, stencilOpEnum);
-    __ADD_ENUM(Invert, stencilOpEnum);
-    __ADD_ENUM(IncrementWrap, stencilOpEnum);
-    __ADD_ENUM(DecrementWrap, stencilOpEnum);
+    __ADD_ENUM(Invalid);
+    __ADD_ENUM(Keep);
+    __ADD_ENUM(Zero);
+    __ADD_ENUM(Replace);
+    __ADD_ENUM(IncrementClamp);
+    __ADD_ENUM(DecrementClamp);
+    __ADD_ENUM(Invert);
+    __ADD_ENUM(IncrementWrap);
+    __ADD_ENUM(DecrementWrap);
+    __FINISH_ENUM(stencilOpEnum);
     stencilOpEnum->builtin = true;
     DefaultTypes.push_back(stencilOpEnum);
 
@@ -345,12 +350,13 @@ Type::SetupDefaultTypes()
     executionScopeEnum->type = Type::FullType{ "u32" };
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
-    executionScopeEnum->labels.push_back("Global"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Device"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Queue"); executionScopeEnum->values.push_back(nullptr);
+    __ADD_ENUM(Global)
+    __ADD_ENUM(Device)
+    __ADD_ENUM(Workgroup)
+    __ADD_ENUM(Subgroup)
+    __ADD_ENUM(Invocation)
+    __ADD_ENUM(Queue)
+    __FINISH_ENUM(executionScopeEnum);
     executionScopeEnum->builtin = true;
     DefaultTypes.push_back(executionScopeEnum);
 
@@ -359,10 +365,11 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->type = Type::FullType{ "u32" };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
-    memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x0));
-    memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x1));
-    memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x2));
-    memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x4));
+    labels.Append("Relaxed"); values.Append(StaticAlloc<UIntExpression>(0x0));
+    labels.Append("Acquire"); values.Append(StaticAlloc<UIntExpression>(0x1));
+    labels.Append("Release"); values.Append(StaticAlloc<UIntExpression>(0x2));
+    labels.Append("AcquireRelease"); values.Append(StaticAlloc<UIntExpression>(0x4));
+    __FINISH_ENUM(memorySemanticsEnum);
     memorySemanticsEnum->builtin = true;
     DefaultTypes.push_back(memorySemanticsEnum);
 

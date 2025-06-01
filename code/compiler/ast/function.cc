@@ -202,7 +202,8 @@ newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
-newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
+newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
@@ -212,7 +213,8 @@ newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
-newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
+newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
@@ -223,7 +225,8 @@ newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
-newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
+newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
 
@@ -234,7 +237,8 @@ newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
-newVar->attributes.push_back(StaticAlloc<Attribute>("uniform"));\
+newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 newIntrinsic->parameters.push_back(newVar);\
 }
 

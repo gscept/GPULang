@@ -448,19 +448,19 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
     writer.WriteLine("{");
     writer.Indent();
 
-    for (size_t i = 0; i < enu->labels.size(); i++)
+    for (size_t i = 0; i < enu->labels.len; i++)
     {
         HeaderWriter tempWriter;
-        tempWriter.Write(Format("%s", enu->labels[i].c_str()));
-        if (enu->values[i] != nullptr)
+        tempWriter.Write(Format("%s", enu->labels.buf[i].c_str()));
+        if (enu->values.buf[i] != nullptr)
         {
             uint32_t val;
             ValueUnion value;
-            enu->values[i]->EvalValue(value);
+            enu->values.buf[i]->EvalValue(value);
             value.Store(val);
             tempWriter.Write(Format(" = %d", val));
         }
-        if (i != enu->labels.size() - 1)
+        if (i != enu->labels.len - 1)
             tempWriter.Write(",");
         writer.WriteLine(tempWriter.output);
     }

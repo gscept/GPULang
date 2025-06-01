@@ -600,7 +600,7 @@ Compiler::Validate(Effect* root)
 /**
 */
 void 
-Compiler::Error(const std::string& msg, const std::string& file, int line, int column, int length)
+Compiler::Error(const std::string& msg, const FixedString& file, int line, int column, int length)
 {
     static const char* ErrorStrings[] =
     {
@@ -619,13 +619,13 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
         std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.push_back(err);
 
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     else
     {
         std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.push_back(err);
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }
@@ -643,7 +643,7 @@ Compiler::Error(const std::string& msg, const Symbol* sym)
 /**
 */
 void 
-Compiler::Warning(const std::string& msg, const std::string& file, int line, int column)
+Compiler::Warning(const std::string& msg, const FixedString& file, int line, int column)
 {
     std::string err = Format("%s(%d) : warning: %s", file.c_str(), line, msg.c_str());
     this->messages.push_back(err);
@@ -706,8 +706,8 @@ void
 WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
     Serialize::Annotation output;
-    output.nameLength = annot->name.length();
-    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.length());
+    output.nameLength = annot->name.len;
+    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.len);
     if (annot->value != nullptr)
     {
         switch (annot->value->symbolType)
@@ -908,8 +908,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 output.renderStateNameOffset = 0;
             }
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size());
-            output.annotationsCount = program->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.len);
+            output.annotationsCount = program->annotations.len;
 
             size_t offset = output.annotationsOffset;
             for (const Annotation* annot : program->annotations)
@@ -1000,8 +1000,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.borderColor = resolved->borderColor;
             output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size());
-            output.annotationsCount = sampler->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.len);
+            output.annotationsCount = sampler->annotations.len;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : sampler->annotations)
@@ -1077,8 +1077,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             // end serializing variables
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size());
-            output.annotationsCount = structure->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.len);
+            output.annotationsCount = structure->annotations.len;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : structure->annotations)
@@ -1114,8 +1114,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     dynamicDataBlob.Write(size.ui);
                 }
             }
-            output.annotationsCount = var->annotations.size();
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
+            output.annotationsCount = var->annotations.len;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.len);
             if (resolved->usageBits.flags.isEntryPointParameter)
                 output.bindingScope = GPULang::BindingScope::VertexInput;
             else if (resolved->storage == Storage::Global)

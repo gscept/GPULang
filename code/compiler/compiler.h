@@ -166,11 +166,11 @@ struct Compiler
     bool Validate(Effect* root);
 
     /// produce error in compiler with explicit file, line and column
-    void Error(const std::string& msg, const std::string& file, int line, int column, int length = 1);
+    void Error(const std::string& msg, const FixedString& file, int line, int column, int length = 1);
     /// produce error in compiler from symbol
     void Error(const std::string& msg, const Symbol* sym);
     /// produce error in compiler with explicit file, line and column
-    void Warning(const std::string& msg, const std::string& file, int line, int column);
+    void Warning(const std::string& msg, const FixedString& file, int line, int column);
     /// produce error in compiler from symbol
     void Warning(const std::string& msg, const Symbol* sym);
     /// produce an internal generator error

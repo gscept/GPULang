@@ -59,7 +59,6 @@ public:
     {
         int size = recv(this->sock, this->buf, sizeof(buf), 0);
         this->setg(this->buf, this->buf, this->buf + size);
-        printf("underflow\n");
         this->bytesAvail = size;
         return size;
     }
@@ -892,7 +891,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += "Enum\n";
                 for (auto mem : enu->labels)
                 {
-                    ret += mem + "\n";
+                    ret += std::string(mem.c_str()) + "\n";
                 }
             }
             break;

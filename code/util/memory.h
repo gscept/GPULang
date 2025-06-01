@@ -15,6 +15,7 @@
 #include <stdarg.h>
 #include <charconv>
 #include <mutex>
+#include <type_traits>
 
 extern bool SYMBOL_STATIC_ALLOC;
 
@@ -347,6 +348,42 @@ struct StackArray
     {
         assert(this->size + 1 <= this->capacity);
         this->ptr[this->size++] = t;
+    }
+
+    void Clear()
+    {
+        this->size = 0;
+    }
+
+    bool Full()
+    {
+        return this->size == this->capacity;
+    }
+
+    TYPE* begin()
+    {
+        return this->ptr;
+    }
+
+    TYPE* end()
+    {
+        if (this->ptr == nullptr)
+            return nullptr;
+        else
+            return this->ptr + this->size;
+    }
+
+    const TYPE* begin() const
+    {
+        return this->ptr;
+    }
+
+    const TYPE* end() const
+    {
+        if (this->ptr == nullptr)
+            return nullptr;
+        else
+            return this->ptr + this->size;
     }
 };
 
@@ -998,19 +1035,20 @@ struct StaticString
     
     StaticString(const char* buf)
     {
-        size_t len = strlen(buf)+1;
+        size_t len = strlen(buf) + 1;
         this->buf = StaticAllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, buf, len-1);
-        this->buf[len] = '\0';
+        this->len = len-1;
+        memcpy(this->buf, buf, len - 1);
+        this->buf[this->len] = '\0';
     }
     
     explicit StaticString(const std::string& str)
     {
-        size_t len = str.length();
+        size_t len = str.length() + 1;
         this->buf = StaticAllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, str.data(), len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
     }
     
     explicit StaticString(const StaticString& rhs)
@@ -1025,7 +1063,7 @@ struct StaticString
         this->len = rhs.len;
     }
     
-    StaticString(StaticString&& rhs)
+    StaticString(StaticString&& rhs) noexcept
     {
         this->buf = rhs.buf;
         this->len = rhs.len;
@@ -1033,7 +1071,7 @@ struct StaticString
         rhs.len = 0;
     }
     
-    void operator=(StaticString&& rhs)
+    void operator=(StaticString&& rhs) noexcept
     {
         this->buf = rhs.buf;
         this->len = rhs.len;
@@ -1048,7 +1086,15 @@ struct StaticString
 
     bool operator<(const StaticString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf);
+        int res = strcmp(this->buf, rhs.buf);
+        if (res == 0)
+        {
+            if (this->len < rhs.len)
+                res = -1;
+            else if (this->len > rhs.len)
+                res = 1;
+        }
+        return res < 0;
     }
     
     bool operator==(const StaticString& rhs) const
@@ -1073,23 +1119,30 @@ struct FixedString
     {
         size_t len = strlen(buf) + 1;
         this->buf = AllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, buf, len-1);
-        this->buf[len] = '\0';
+        this->len = len - 1;
+        memcpy(this->buf, buf, len - 1);
+        this->buf[this->len] = '\0';
     }
     
     explicit FixedString(const std::string& str)
     {
-        size_t len = str.length();
+        size_t len = str.length() + 1;
         this->buf = AllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, str.data(), len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
     }
     
     explicit FixedString(const StaticString& str)
     {
         this->buf = str.buf;
         this->len = str.len;
+    }
+
+    void operator=(const StaticString& rhs) noexcept
+    {
+        this->buf = rhs.buf;
+        this->len = rhs.len;
     }
     
     FixedString(const FixedString& rhs)
@@ -1108,20 +1161,21 @@ struct FixedString
     {
         size_t len = strlen(buf) + 1;
         this->buf = AllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, buf, len-1);
-        this->buf[len] = '\0';
+        this->len = len - 1;
+        memcpy(this->buf, buf, len - 1);
+        this->buf[this->len] = '\0';
     }
     
     void operator=(const std::string& str)
     {
-        size_t len = str.length();
+        size_t len = str.length() + 1;
         this->buf = AllocArray<char>(len);
-        this->len = len;
-        memcpy(this->buf, str.data(), len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
     }
     
-    FixedString(FixedString&& rhs)
+    FixedString(FixedString&& rhs) noexcept
     {
         this->buf = rhs.buf;
         this->len = rhs.len;
@@ -1129,27 +1183,40 @@ struct FixedString
         rhs.len = 0;
     }
     
-    void operator=(FixedString&& rhs)
+    void operator=(FixedString&& rhs) noexcept
     {
         this->buf = rhs.buf;
         this->len = rhs.len;
         rhs.buf = nullptr;
         rhs.len = 0;
     }
-    
+
     bool operator==(const char* cmp) const
     {
         return strcmp(this->buf, cmp) == 0;
     }
     
-    bool operator<(const FixedString& rhs) const
+    int operator<(const FixedString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf);
+        int res = strcmp(this->buf, rhs.buf);
+        if (res == 0)
+        {
+            if (this->len < rhs.len)
+                res = -1;
+            else if (this->len > rhs.len)
+                res = 1;
+        }
+        return res < 0;
     }
     
     bool operator==(const FixedString& rhs) const
     {
         return strcmp(this->buf, rhs.buf) == 0;
+    }
+
+    bool operator==(const std::string& rhs) const
+    {
+        return rhs.compare(0, this->len, this->buf) == 0;
     }
     
     operator StaticString() const
@@ -1164,6 +1231,270 @@ struct FixedString
     
     char* buf;
     size_t len;
+};
+
+extern size_t LeakedFixedArrayBytes;
+
+template<typename T>
+struct FixedArray
+{
+    T* buf = nullptr;
+    size_t cap = 0;
+    size_t len = 0;
+
+    FixedArray() {}
+
+    FixedArray(const size_t size)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = size;
+        this->len = 0;
+        this->buf = AllocArray<T>(size);
+    }
+
+    FixedArray(const std::vector<T>& vec)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.size();
+        this->buf = AllocArray<T>(vec.size());
+
+        if (!vec.empty())
+        {
+            // If mempcy suffices, do it
+            if (std::is_trivially_copy_constructible<T>::value)
+            {
+                this->len = vec.size();
+                memcpy(this->buf, vec.data(), vec.size() * sizeof(T));
+            }
+            else
+            {
+                // Otherwise, run copy constructors for every element
+                for (auto& v : vec)
+                {
+                    this->buf[this->len++] = v;
+                }
+            }
+        }
+    }
+
+    FixedArray(FixedArray<T>&& rhs)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = rhs.cap;
+        this->len = rhs.len;
+        this->buf = rhs.buf;
+        rhs.buf = nullptr;
+        rhs.cap = 0;
+        rhs.len = 0;
+    }
+
+    FixedArray(const FixedArray<T>& vec)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.len;
+        this->buf = AllocArray<T>(vec.len);
+
+        // If mempcy suffices, do it
+        if (std::is_trivially_copy_constructible<T>::value)
+        {
+            this->len = vec.len;
+            memcpy(this->buf, vec.buf, vec.len * sizeof(T));
+        }
+        else
+        {
+            // Otherwise, run copy constructors for every element
+            for (auto& v : vec)
+            {
+                this->buf[this->len++] = v;
+            }
+        }
+    }
+
+    void operator=(const FixedArray<T>& vec)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.cap;
+        this->buf = AllocArray<T>(vec.cap);
+
+        if (vec.len > 0)
+        {
+            // If mempcy suffices, do it
+            if (std::is_trivially_copy_constructible<T>::value)
+            {
+                this->len = vec.len;
+                memcpy(this->buf, vec.buf, vec.len * sizeof(T));
+            }
+            else
+            {
+                // Otherwise, run copy constructors for every element
+                for (auto& v : vec)
+                {
+                    this->buf[this->len++] = v;
+                }
+            }
+        }
+    }
+
+    FixedArray(const StackArray<T>& vec)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.capacity;
+        this->buf = AllocArray<T>(vec.capacity);
+
+        if (vec.size > 0)
+        {
+            // If mempcy suffices, do it
+            if (std::is_trivially_copy_constructible<T>::value)
+            {
+                this->len = vec.size;
+                memcpy(this->buf, vec.ptr, vec.size * sizeof(T));
+            }
+            else
+            {
+                // Otherwise, run copy constructors for every element
+                for (auto& v : vec)
+                {
+                    this->buf[this->len++] = v;
+                }
+            }
+        }
+    }
+
+    void operator=(const StackArray<T>& vec)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.size;
+        this->buf = AllocArray<T>(vec.size);
+
+        if (vec.size > 0)
+        {
+            // If mempcy suffices, do it
+            if (std::is_trivially_copy_constructible<T>::value)
+            {
+                this->len = vec.size;
+                memcpy(this->buf, vec.ptr, vec.size * sizeof(T));
+            }
+            else
+            {
+                // Otherwise, run copy constructors for every element
+                for (auto& v : vec)
+                {
+                    this->buf[this->len++] = v;
+                }
+            }
+        }
+    }
+
+    template<typename U>
+    void operator=(const StackArray<U>& vec)
+    {
+        static_assert(std::is_assignable<T, U>::value, "No explicit assignment exists between types");
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+        this->cap = vec.size;
+        this->buf = AllocArray<T>(vec.size);
+
+        if (vec.size > 0)
+        {
+            // Otherwise, run copy constructors for every element
+            for (auto& v : vec)
+            {
+                this->buf[this->len++] = v;
+            }
+        }
+    }
+
+    ~FixedArray()
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->cap;
+        }
+    }
+
+    void Append(const T& t)
+    {
+        assert(this->len < this->cap);
+        this->buf[this->len++] = t;
+    }
+
+    // Allow stack allocated arrays to insert themselves, given enough space is available
+    void Append(const StackArray<T>& vec)
+    {
+        assert(this->len + vec.size < this->cap);
+        // If mempcy suffices, do it
+        if (std::is_trivially_copy_constructible<T>::value)
+        {
+            this->len = vec.size();
+            memcpy(this->buf, vec.data(), vec.size() * sizeof(T));
+        }
+        else
+        {
+            // Otherwise, run copy constructors for every element
+            for (auto& v : vec)
+            {
+                this->buf[this->len++] = v;
+            }
+        }
+    }
+
+    T* begin()
+    {
+        return this->buf;
+    }
+
+    T* end()
+    {
+        if (this->buf == nullptr)
+            return nullptr;
+        else
+            return this->buf + this->len;
+    }
+
+    const T* begin() const
+    {
+        return this->buf;
+    }
+
+    const T* end() const
+    {
+        if (this->buf == nullptr)
+            return nullptr;
+        else
+            return this->buf + this->len;
+    }
 };
 
 using TStr = TransientString;

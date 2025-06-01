@@ -17,8 +17,8 @@
 #include <map>
 #include "memory.h"
 
-#define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
-#define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
+#define _IMPLEMENT_ATTRIBUTES() FixedArray<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
+#define _IMPLEMENT_ANNOTATIONS() FixedArray<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
 
 namespace GPULang
 {
@@ -81,7 +81,7 @@ struct Symbol
 
     struct Location
     {
-        std::string file;
+        FixedString file;
         int line;
         uint16_t start, end;
 
