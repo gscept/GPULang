@@ -61,18 +61,18 @@ struct Validator
     /// Resolve variable visibility
     bool ResolveVisibility(Compiler* compiler, Symbol* symbol);
 
-    std::set<FixedString> allowedTextureAttributes;
-    std::set<FixedString> allowedSamplerAttributes;
-    std::set<FixedString> allowedScalarAttributes;
-    std::set<FixedString> allowedPointerAttributes;
+    PinnedSet<FixedString> allowedTextureAttributes = 0xFF;
+    PinnedSet<FixedString> allowedSamplerAttributes = 0xFF;
+    PinnedSet<FixedString> allowedScalarAttributes = 0xFF;
+    PinnedSet<FixedString> allowedPointerAttributes = 0xFF;
 
-    std::set<FixedString> allowedSamplerStateAttributes;
+    PinnedSet<FixedString> allowedSamplerStateAttributes = 0xFF;
 
-    std::set<FixedString> allowedFunctionAttributes;
+    PinnedSet<FixedString> allowedFunctionAttributes = 0xFF;
 
-    std::set<FixedString> allowedParameterAttributes;
+    PinnedSet<FixedString> allowedParameterAttributes = 0xFF;
 
-    std::set<FixedString> allowedStructureAttributes;
+    PinnedSet<FixedString> allowedStructureAttributes = 0xFF;
 
     enum ResourceIndexingMode
     {

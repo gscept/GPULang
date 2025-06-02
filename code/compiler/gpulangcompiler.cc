@@ -18,11 +18,11 @@
 #include "parser4/GPULangParser.h"
 #include "parser4/gpulangerrorhandlers.h"
 
-#include <regex>
-
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#else
+#include <unistd.h>
 #endif
 
 using namespace antlr4;
@@ -133,7 +133,7 @@ GPULangPreprocess(
     GPULangFile* file
     , const std::vector<std::string>& defines
     , std::string& output
-    , std::vector<GPULang::Symbol*>& preprocessorSymbols
+    , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
     , std::vector<GPULang::Diagnostic>& diagnostics
 )
 {
@@ -147,7 +147,7 @@ GPULangPreprocess(
         std::vector<std::string> args;
         std::string contents;
     };
-    std::map<std::string_view, Macro> definitions;
+    PinnedMap<std::string_view, Macro> definitions(0xFFFF);
 
     std::vector<bool> ifStack;
     std::vector<FileLevel> fileStack{ { file } };
@@ -160,7 +160,7 @@ GPULangPreprocess(
             if (arg[1] == 'I')
                 searchPaths.push_back(argView.substr(2));
             else if (arg[1] == 'D')
-                definitions[argView.substr(2)] = Macro{ .contents = "" };
+                definitions.Insert(argView.substr(2), Macro{ .contents = "" });
         }
     }
 
@@ -365,7 +365,7 @@ GPULangPreprocess(
         return end;
     };
 
-    static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, std::map<std::string_view, Macro>&)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, std::map<std::string_view, Macro>& definitions) -> int
+    static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions) -> int
     {
         struct Token
         {
@@ -530,7 +530,7 @@ GPULangPreprocess(
                     std::string_view ident(identStart, identEnd);
                     if (ident.length() > 0)
                     {
-                        auto defIt = definitions.find(ident);
+                        auto defIt = definitions.Find(ident);
                         if (defIt == definitions.end())
                         {
                             diagnostics.push_back(DIAGNOSTIC(Format("Unknown identifier *.%s", ident.length(), ident.data())));
@@ -721,7 +721,7 @@ escape_newline:
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
-                preprocessorSymbols.push_back(pp);\
+                preprocessorSymbols.Append(pp);\
                 output.push_back('\n');\
                 goto next_line;\
             }\
@@ -738,7 +738,7 @@ escape_newline:
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
-                preprocessorSymbols.push_back(pp);\
+                preprocessorSymbols.Append(pp);\
                 output.push_back('\n');\
                 ifStack.push_back(false);\
                 goto next_line;\
@@ -756,7 +756,7 @@ escape_newline:
                 pp->location.line = level->lineCounter;\
                 pp->location.start = 0;\
                 pp->location.end = lineSpan.length();\
-                preprocessorSymbols.push_back(pp);\
+                preprocessorSymbols.Append(pp);\
                 output.push_back('\n');\
                 goto next_line;\
             }\
@@ -767,7 +767,7 @@ escape_newline:
         pp->location.line = level->lineCounter;\
         pp->location.start = begin - lineBegin;\
         pp->location.end = stop - lineBegin;\
-        preprocessorSymbols.push_back(pp);
+        preprocessorSymbols.Append(pp);
 
 #define SETUP_ARG2(pp, arg, begin, stop)\
         pp->args.push_back(arg);\
@@ -863,7 +863,7 @@ escape_newline:
                     }
 
                     std::string_view def = std::string_view(startOfDefinition, endOfDefinition);
-                    auto prev = definitions.find(def);
+                    auto prev = definitions.Find(def);
                     if (prev != definitions.end())
                     {
                         diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", std::string(def).c_str())));
@@ -871,7 +871,7 @@ escape_newline:
                         goto end;
                     }
 
-                    macro = &definitions[def];
+                    macro = &definitions.Emplace(def)->second;
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Macro;
@@ -947,10 +947,10 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    auto it = definitions.find(definition);
+                    auto it = definitions.Find(definition);
                     if (it != definitions.end())
                     {
-                        definitions.erase(definition);
+                        definitions.Erase(definition);
                     }
                 }
                 else if (strncmp(startOfDirective, "ifdef", 5) == 0)
@@ -980,7 +980,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    auto it = definitions.find(definition);
+                    auto it = definitions.Find(definition);
                     if (it != definitions.end())
                     {
                         ifStack.push_back(true);
@@ -1017,7 +1017,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
 
-                    auto it = definitions.find(definition);
+                    auto it = definitions.Find(definition);
                     if (it == definitions.end())
                     {
                         ifStack.push_back(true);
@@ -1150,7 +1150,7 @@ escape_newline:
                 if (startOfWord != eol)
                 {
                     std::string_view word = std::string_view(startOfWord, endOfWord);
-                    auto it = definitions.find(word);
+                    auto it = definitions.Find(word);
                     if (it != definitions.end())
                     {
                         auto pp = Alloc<Preprocessor>();
@@ -1237,7 +1237,7 @@ escape_newline:
                                     auto argIt = argumentMap.find(word);
                                     if (argIt == argumentMap.end())
                                     {
-                                        auto defIt = definitions.find(word);
+                                        auto defIt = definitions.Find(word);
                                         if (defIt == definitions.end())
                                         {
                                             pp->contents.append(word);
@@ -1262,8 +1262,8 @@ escape_newline:
                         }
                         else
                         {
-                            const char* macroContentsIt = &(*it->second.contents.begin());
-                            const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+                            const char* macroContentsIt = it->second.contents.data();
+                            const char* macroContentsEnd = it->second.contents.data() + it->second.contents.size();
 
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
@@ -1278,7 +1278,7 @@ escape_newline:
 
                                 std::string word(startOfMacroIdentifier, endOfMacroIdentifier);
 
-                                auto defIt = definitions.find(word);
+                                auto defIt = definitions.Find(word);
                                 if (defIt == definitions.end())
                                 {
                                     pp->contents.append(word);
@@ -1340,7 +1340,7 @@ GPULangPreprocessFile(
     const std::string& path
     , const std::vector<std::string>& defines
     , std::string& output
-    , std::vector<GPULang::Symbol*>& preprocessorSymbols
+    , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
     , std::vector<GPULang::Diagnostic>& diagnostics
 )
 {
@@ -1447,6 +1447,7 @@ Error(const std::string message)
 bool
 GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer)
 {
+    SetupSystem();
     bool ret = true;
     Allocator alloc = GPULang::CreateAllocator();
     GPULang::InitAllocator(&alloc);
@@ -1458,7 +1459,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     GPULang::Compiler::Timer timer;
 
     timer.Start();
-    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     std::vector<GPULang::Diagnostic> diagnostics;
     if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
@@ -1575,14 +1576,14 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 bool
 GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
+    SetupSystem();
     bool ret = true;
-
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;
     timer.Start();
 
-    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     std::vector<GPULang::Diagnostic> diagnostics;
     if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
@@ -1658,7 +1659,7 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
 
         result.root = effect;
         result.symbols = compiler.symbols;
-        result.symbols.insert(result.symbols.begin(), preprocessorSymbols.begin(), preprocessorSymbols.end());
+        result.symbols.Prepend(preprocessorSymbols);
         result.intrinsicScope = compiler.intrinsicScope;
         result.mainScope = compiler.mainScope;
         if (!compiler.diagnostics.empty())
@@ -1692,14 +1693,24 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
 bool
 GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result)
 {
+    SetupSystem();
     bool ret = true;
+
+    PinnedMap<FixedString, Symbol*> testMap = 0xFFFFF;
+    testMap.BeginBulkAdd();
+    testMap.Insert("test", new IntExpression(1));
+    testMap.Insert("test2", new IntExpression(2));
+    testMap.Insert("test3", new IntExpression(3));
+    testMap.EndBulkAdd();
+
+    auto test = testMap.Find("test2");
 
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;
     timer.Start();
 
-    std::vector<GPULang::Symbol*> preprocessorSymbols;
+    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     std::vector<GPULang::Diagnostic> diagnostics;
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
@@ -1775,7 +1786,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
 
         result.root = effect;
         result.symbols = compiler.symbols;
-        result.symbols.insert(result.symbols.begin(), preprocessorSymbols.begin(), preprocessorSymbols.end());
+        result.symbols.Prepend(preprocessorSymbols);
         result.intrinsicScope = compiler.intrinsicScope;
         result.mainScope = compiler.mainScope;
         if (!compiler.diagnostics.empty())

@@ -1152,7 +1152,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->aliasContext = alias();
           setState(164);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->aliasContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->aliasContext->sym); 
           break;
         }
 
@@ -1161,14 +1161,14 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->functionDeclarationContext = functionDeclaration();
           setState(168);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->functionDeclarationContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->functionDeclarationContext->sym); 
           break;
         }
 
         case 4: {
           setState(171);
           antlrcpp::downCast<EffectContext *>(_localctx)->functionContext = function();
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->functionContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->functionContext->sym); 
           break;
         }
 
@@ -1177,7 +1177,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->variablesContext = variables();
           setState(175);
           match(GPULangParser::SC);
-           for (Variable* var : antlrcpp::downCast<EffectContext *>(_localctx)->variablesContext->list) { _localctx->eff->symbols.push_back(var); } 
+           for (Variable* var : antlrcpp::downCast<EffectContext *>(_localctx)->variablesContext->list) { _localctx->eff->symbols.Append(var); } 
           break;
         }
 
@@ -1186,7 +1186,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->structureContext = structure();
           setState(179);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->structureContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->structureContext->sym); 
           break;
         }
 
@@ -1195,7 +1195,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->enumerationContext = enumeration();
           setState(183);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->enumerationContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->enumerationContext->sym); 
           break;
         }
 
@@ -1204,7 +1204,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->stateContext = state();
           setState(187);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->stateContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->stateContext->sym); 
           break;
         }
 
@@ -1213,7 +1213,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->samplerContext = sampler();
           setState(191);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->samplerContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->samplerContext->sym); 
           break;
         }
 
@@ -1222,7 +1222,7 @@ GPULangParser::EffectContext* GPULangParser::effect() {
           antlrcpp::downCast<EffectContext *>(_localctx)->programContext = program();
           setState(195);
           match(GPULangParser::SC);
-           _localctx->eff->symbols.push_back(antlrcpp::downCast<EffectContext *>(_localctx)->programContext->sym); 
+           _localctx->eff->symbols.Append(antlrcpp::downCast<EffectContext *>(_localctx)->programContext->sym); 
           break;
         }
 

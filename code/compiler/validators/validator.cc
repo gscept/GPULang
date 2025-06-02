@@ -56,17 +56,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static std::set<StaticString> scalarQualifiers =
+static StaticSet<StaticString> scalarQualifiers =
 {
     "const", "var"
 };
 
-static std::set<StaticString> bindingQualifiers =
+static StaticSet<StaticString> bindingQualifiers =
 {
     "group", "binding"
 };
 
-static std::set<StaticString> functionAttributes =
+static StaticSet<StaticString> functionAttributes =
 {
     "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
@@ -77,27 +77,27 @@ static std::set<StaticString> functionAttributes =
     , "derivative_index_linear", "derivative_index_quad"
 };
 
-static std::set<StaticString> parameterAccessFlags =
+static StaticSet<StaticString> parameterAccessFlags =
 {
     "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
 };
 
-static std::set<StaticString> parameterQualifiers =
+static StaticSet<StaticString> parameterQualifiers =
 {
     "patch", "no_interpolate", "no_perspective", "binding"
 };
 
-static std::set<StaticString> structureQualifiers =
+static StaticSet<StaticString> structureQualifiers =
 {
     "packed"
 };
 
-static std::set<StaticString> pixelShaderInputQualifiers =
+static StaticSet<StaticString> pixelShaderInputQualifiers =
 {
     "binding", "no_interpolate", "no_perspective"
 };
 
-static std::set<StaticString> attributesRequiringEvaluation =
+static StaticSet<StaticString> attributesRequiringEvaluation =
 {
     "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
     , "group_size", "groups_per_workgroup"
@@ -105,17 +105,17 @@ static std::set<StaticString> attributesRequiringEvaluation =
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
 };
 
-static std::set<StaticString> pointerQualifiers =
+static StaticSet<StaticString> pointerQualifiers =
 {
     "no_read", "atomic", "volatile"
 };
 
-static std::set<StaticString> storageQualifiers =
+static StaticSet<StaticString> storageQualifiers =
 {
     "uniform", "inline", "workgroup", "device", "link_defined"
 };
 
-static std::set<StaticString> textureQualifiers =
+static StaticSet<StaticString> textureQualifiers =
 {
     "sampled"
 };
@@ -131,32 +131,32 @@ Validator::Validator()
     // add formats
     for (auto it : StringToFormats)
     {
-        this->allowedTextureAttributes.insert(FixedString(it.first));
+        this->allowedTextureAttributes.Insert(FixedString(it.first));
     }
 
-    this->allowedTextureAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedTextureAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedTextureAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
-    this->allowedTextureAttributes.insert(textureQualifiers.begin(), textureQualifiers.end());
+    this->allowedTextureAttributes.Insert(bindingQualifiers);
+    this->allowedTextureAttributes.Insert(pointerQualifiers);
+    this->allowedTextureAttributes.Insert(storageQualifiers);
+    this->allowedTextureAttributes.Insert(textureQualifiers);
 
-    this->allowedScalarAttributes.insert(scalarQualifiers.begin(), scalarQualifiers.end());
-    this->allowedScalarAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedScalarAttributes.Insert(scalarQualifiers);
+    this->allowedScalarAttributes.Insert(storageQualifiers);
 
-    this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedSamplerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedSamplerAttributes.Insert(bindingQualifiers);
+    this->allowedSamplerAttributes.Insert(storageQualifiers);
 
-    this->allowedPointerAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedPointerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedPointerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedPointerAttributes.Insert(pointerQualifiers);
+    this->allowedPointerAttributes.Insert(bindingQualifiers);
+    this->allowedPointerAttributes.Insert(storageQualifiers);
 
-    this->allowedFunctionAttributes.insert(functionAttributes.begin(), functionAttributes.end());
+    this->allowedFunctionAttributes.Insert(functionAttributes);
 
-    this->allowedParameterAttributes.insert(parameterQualifiers.begin(), parameterQualifiers.end());
-    this->allowedParameterAttributes.insert(parameterAccessFlags.begin(), parameterAccessFlags.end());
-    this->allowedParameterAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedParameterAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedParameterAttributes.Insert(parameterQualifiers);
+    this->allowedParameterAttributes.Insert(parameterAccessFlags);
+    this->allowedParameterAttributes.Insert(pointerQualifiers);
+    this->allowedParameterAttributes.Insert(storageQualifiers);
 
-    this->allowedStructureAttributes.insert(structureQualifiers.begin(), structureQualifiers.end());
+    this->allowedStructureAttributes.Insert(structureQualifiers);
 }
 
 //------------------------------------------------------------------------------
@@ -2136,7 +2136,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // figure out set of allowed attributes
-    std::set<FixedString>* allowedAttributesSet = nullptr;
+    PinnedSet<FixedString>* allowedAttributesSet = nullptr;
     if (varResolved->usageBits.flags.isStructMember)
         allowedAttributesSet = nullptr;
     else if (varResolved->usageBits.flags.isParameter)
@@ -2836,7 +2836,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
 
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
-                compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
+                compiler->symbols.Insert(generatedStruct, compiler->symbolIterator);
                 compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
                 compiler->symbolIterator++;
             }
@@ -4043,7 +4043,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto funResolved = Symbol::Resolved(fun);
 
             // Add this function to the visibility map
-            funResolved->visibilityMap.insert(compiler->currentState.function);
+            funResolved->visibilityMap.Insert(compiler->currentState.function);
 
             for (auto& param : fun->parameters)
                 res |= this->ResolveVisibility(compiler, param);
@@ -4066,7 +4066,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto var = static_cast<Variable*>(symbol);
             auto varResolved = Symbol::Resolved(var);
-            varResolved->visibilityMap.insert(compiler->currentState.function);
+            varResolved->visibilityMap.Insert(compiler->currentState.function);
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4129,7 +4129,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto sampler = static_cast<SamplerState*>(symbol);
             auto sampResolved = Symbol::Resolved(sampler);
-            sampResolved->visibilityMap.insert(compiler->currentState.function);
+            sampResolved->visibilityMap.Insert(compiler->currentState.function);
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4183,7 +4183,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto struc = static_cast<Structure*>(symbol);
             auto strucResolved = Symbol::Resolved(struc);
-            strucResolved->visibilityMap.insert(compiler->currentState.function);
+            strucResolved->visibilityMap.Insert(compiler->currentState.function);
 
             for (auto mem : struc->symbols)
                 res |= this->ResolveVisibility(compiler, mem);

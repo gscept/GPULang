@@ -57,7 +57,7 @@ struct Structure : public Type
         Function* storageFunction = nullptr;
         Function* loadFunction = nullptr;
 
-        std::set<Function*> visibilityMap;
+        PinnedSet<Function*> visibilityMap = 0xFFFF;
     };
 };
 

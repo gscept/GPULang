@@ -424,14 +424,14 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     std::vector<Program*> programs;
 
     // resolves parser state and runs validation
-    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
+    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
-        ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
         if (this->hasErrors)
             break;
 
-        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
-            programs.push_back((Program*)this->symbols[this->symbolIterator]);
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -574,14 +574,14 @@ Compiler::Validate(Effect* root)
     std::vector<Program*> programs;
 
     // resolves parser state and runs validation
-    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
+    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
-        ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
         if (this->hasErrors)
             break;
 
-        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
-            programs.push_back((Program*)this->symbols[this->symbolIterator]);
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();

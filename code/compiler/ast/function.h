@@ -207,7 +207,7 @@ struct Function : public Symbol
         bool isEntryPoint;
         bool isPrototype;
 
-        std::set<Function*> visibilityMap;
+        PinnedSet<Function*> visibilityMap = 0xFFFF;
     };
 
     

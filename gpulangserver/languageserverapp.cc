@@ -197,7 +197,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
         if (symbol->symbolType != GPULang::Symbol::SymbolType::InvalidType)
             symbol->~Symbol();
     }
-    result.symbols.clear();
+    result.symbols.Clear();
     GPULang::ResetAllocator(&allocator);
 }
 

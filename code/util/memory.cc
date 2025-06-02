@@ -1,22 +1,21 @@
 //------------------------------------------------------------------------------
-/**
-    @file memory.h
-
-    Memory management
-
-    2024 Gustav Sterbrant
-*/
+// @file memory.cc
 //------------------------------------------------------------------------------
 
 #include "memory.h"
 
+#if __WIN32__
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#undef min
+#undef max
+#endif
 
 bool SYMBOL_STATIC_ALLOC = false;
 
 namespace GPULang
 {
 
-size_t LeakedFixedArrayBytes = 0;
 std::recursive_mutex StaticAllocMutex;
 
 thread_local Allocator* CurrentAllocator;
@@ -111,8 +110,86 @@ ResetAllocator(Allocator* alloc)
     InitAllocator(alloc);
 }
 
+void SetupSystem()
+{
+#if __WIN32__
+    SYSTEM_INFO sysInfo;
+    GetSystemInfo(&sysInfo);
+    SystemPageSize = sysInfo.dwPageSize;
+#else
+    SystemPageSize = getpagesize();
+#endif
+}
+
 thread_local char ThreadLocalHeap[ThreadLocalHeapSize];
 thread_local void* ThreadLocalHeapPtr = ThreadLocalHeap;
 thread_local size_t ThreadLocalIterator = 0;
+size_t SystemPageSize;
+
+//------------------------------------------------------------------------------
+/**
+*/
+void*
+vmalloc(size_t size)
+{
+#if __WIN32__
+    void* ret = VirtualAlloc(nullptr, size, MEM_RESERVE, PAGE_NOACCESS);
+    assert(ret != nullptr);
+    return ret;
+#else
+    void* ret = mmap(nullptr, size, PROT_NONE, MAP_ANON | MAP_PRIVATE, 0, 0);
+    assert(ret != nullptr);
+    return ret;
+#endif
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+vfree(void* buf, size_t size)
+{
+#if __WIN32__
+    bool res = VirtualFree(buf, 0, MEM_RELEASE);
+    assert(res);
+#else
+    int res = madvise(ptr, size, MADV_DONTNEED);
+    assert(res == 0);
+    res = munmap(ptr, size);
+    assert(res == 0);
+#endif
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+vcommit(void* data, size_t size)
+{
+#if __WIN32__
+    bool res = VirtualAlloc(data, size, MEM_COMMIT, PAGE_READWRITE);
+    assert(res != 0);
+#else
+    int res = mprotect(data, size, PROT_READ | PROT_WRITE);
+    assert(res == 0);
+#endif
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void
+vdecommit(void* data, size_t size)
+{
+#if __WIN32__
+    bool res = VirtualFree(data, size, MEM_DECOMMIT);
+    assert(res != 0);
+#else
+    int res = madvise(data, size, MADV_DONTNEED);
+    assert(res == 0);
+    res = mprotect(ptr, size, PROT_NONE);
+    assert(res == 0);
+#endif
+}
 
 } // namespace GPULang

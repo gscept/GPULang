@@ -179,15 +179,15 @@ effect
     (
         linePreprocessorEntry
         //| preprocessor
-        | alias ';'                 { $eff->symbols.push_back($alias.sym); }
-        | functionDeclaration ';'   { $eff->symbols.push_back($functionDeclaration.sym); }    
-        | function                  { $eff->symbols.push_back($function.sym); }    
-        | variables ';'             { for (Variable* var : $variables.list) { $eff->symbols.push_back(var); } }
-        | structure ';'             { $eff->symbols.push_back($structure.sym); }
-        | enumeration ';'           { $eff->symbols.push_back($enumeration.sym); }
-        | state ';'                 { $eff->symbols.push_back($state.sym); }
-        | sampler ';'               { $eff->symbols.push_back($sampler.sym); }
-        | program ';'               { $eff->symbols.push_back($program.sym); }
+        | alias ';'                 { $eff->symbols.Append($alias.sym); }
+        | functionDeclaration ';'   { $eff->symbols.Append($functionDeclaration.sym); }    
+        | function                  { $eff->symbols.Append($function.sym); }    
+        | variables ';'             { for (Variable* var : $variables.list) { $eff->symbols.Append(var); } }
+        | structure ';'             { $eff->symbols.Append($structure.sym); }
+        | enumeration ';'           { $eff->symbols.Append($enumeration.sym); }
+        | state ';'                 { $eff->symbols.Append($state.sym); }
+        | sampler ';'               { $eff->symbols.Append($sampler.sym); }
+        | program ';'               { $eff->symbols.Append($program.sym); }
     )*?;
 
     

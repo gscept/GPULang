@@ -73,7 +73,7 @@ RenderState::RenderState()
     typeResolved->backStencilState = defaultStencil;
 }
 
-const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
+const StaticMap<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
 {
     { "DepthClampEnabled", RenderState::__Resolved::DepthClampEnabledType },
     { "NoPixels", RenderState::__Resolved::NoPixelsType },
@@ -130,7 +130,7 @@ const std::map<std::string, RenderState::__Resolved::RenderStateEntryType> strin
 const RenderState::__Resolved::RenderStateEntryType
 RenderState::__Resolved::StringToEntryType(const std::string& str)
 {
-    auto it = stringToRenderStateEntryType.find(str);
+    auto it = stringToRenderStateEntryType.Find(str);
     if (it != stringToRenderStateEntryType.end())
         return it->second;
     else
@@ -153,7 +153,7 @@ RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
     return def;
 }
 
-const std::map<std::string, PolygonMode> stringToPolygonMode =
+const StaticMap<std::string, PolygonMode> stringToPolygonMode =
 {
     { "Fill" , FillMode },
     { "Line" , LineMode },
@@ -166,14 +166,14 @@ const std::map<std::string, PolygonMode> stringToPolygonMode =
 const PolygonMode
 RenderState::__Resolved::StringToPolygonMode(const std::string& str)
 {
-    auto it = stringToPolygonMode.find(str);
+    auto it = stringToPolygonMode.Find(str);
     if (it != stringToPolygonMode.end())
         return it->second;
     else
         return InvalidPolygonMode;
 }
 
-const std::map<std::string, CullMode> stringToCullMode =
+const StaticMap<std::string, CullMode> stringToCullMode =
 {
     { "None", NoCullMode },
     { "Front", FrontMode },
@@ -187,14 +187,14 @@ const std::map<std::string, CullMode> stringToCullMode =
 const CullMode
 RenderState::__Resolved::StringToCullMode(const std::string& str)
 {
-    auto it = stringToCullMode.find(str);
+    auto it = stringToCullMode.Find(str);
     if (it != stringToCullMode.end())
         return it->second;
     else
         return InvalidCullMode;
 }
 
-const std::map<std::string, WindingOrderMode> stringToWindingOrderMode =
+const StaticMap<std::string, WindingOrderMode> stringToWindingOrderMode =
 {
     { "Clockwise", ClockwiseMode },
     { "CounterClockwise", CounterClockwiseMode }
@@ -206,14 +206,14 @@ const std::map<std::string, WindingOrderMode> stringToWindingOrderMode =
 const WindingOrderMode
 RenderState::__Resolved::StringToWindingOrderMode(const std::string& str)
 {
-    auto it = stringToWindingOrderMode.find(str);
+    auto it = stringToWindingOrderMode.Find(str);
     if (it != stringToWindingOrderMode.end())
         return it->second;
     else
         return InvalidWindingOrderMode;
 }
 
-const std::map<std::string, LogicOp> stringToLogicOp =
+const StaticMap<std::string, LogicOp> stringToLogicOp =
 {
     { "Clear", LogicClearOp },
     { "And", LogicAndOp },
@@ -239,14 +239,14 @@ const std::map<std::string, LogicOp> stringToLogicOp =
 const LogicOp
 RenderState::__Resolved::StringToLogicOp(const std::string& str)
 {
-    auto it = stringToLogicOp.find(str);
+    auto it = stringToLogicOp.Find(str);
     if (it != stringToLogicOp.end())
         return it->second;
     else
         return InvalidLogicOp;
 }
 
-const std::map<std::string, StencilOp> stringToStencilOp =
+const StaticMap<std::string, StencilOp> stringToStencilOp =
 {
     { "Keep", StencilKeepOp },
     { "Zero", StencilZeroOp },
@@ -264,14 +264,14 @@ const std::map<std::string, StencilOp> stringToStencilOp =
 const StencilOp
 RenderState::__Resolved::StringToStencilOp(const std::string& str)
 {
-    auto it = stringToStencilOp.find(str);
+    auto it = stringToStencilOp.Find(str);
     if (it != stringToStencilOp.end())
         return it->second;
     else
         return InvalidStencilOp;
 }
 
-const std::map<std::string, BlendFactor> stringToBlendFactor =
+const StaticMap<std::string, BlendFactor> stringToBlendFactor =
 {
     { "Zero", ZeroFactor },
     { "One", OneFactor },
@@ -300,14 +300,14 @@ const std::map<std::string, BlendFactor> stringToBlendFactor =
 const BlendFactor
 RenderState::__Resolved::StringToBlendFactor(const std::string& str)
 {
-    auto it = stringToBlendFactor.find(str);
+    auto it = stringToBlendFactor.Find(str);
     if (it != stringToBlendFactor.end())
         return it->second;
     else
         return InvalidBlendFactor;
 }
 
-const std::map<std::string, BlendOp> stringToBlendOp =
+const StaticMap<std::string, BlendOp> stringToBlendOp =
 {
     { "Add", AddOp },
     { "Subtract", SubtractOp },
@@ -322,7 +322,7 @@ const std::map<std::string, BlendOp> stringToBlendOp =
 const BlendOp
 RenderState::__Resolved::StringToBlendOp(const std::string& str)
 {
-    auto it = stringToBlendOp.find(str);
+    auto it = stringToBlendOp.Find(str);
     if (it != stringToBlendOp.end())
         return it->second;
     else

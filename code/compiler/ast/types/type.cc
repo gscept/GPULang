@@ -130,7 +130,7 @@ Type::~Type()
 {
 }
 
-const std::map<TypeCode, std::string> codeToStringMapping =
+const StaticMap<TypeCode, std::string> codeToStringMapping =
 {
     { TypeCode::Void, "void" }
     , { TypeCode::Float, "f32" }
@@ -161,14 +161,14 @@ const std::map<TypeCode, std::string> codeToStringMapping =
 std::string 
 Type::CodeToString(const TypeCode& code)
 {
-    auto it = codeToStringMapping.find(code);
+    auto it = codeToStringMapping.Find(code);
     if (it == codeToStringMapping.end())
         return "";
     else
         return it->second;
 }
 
-const std::map<Type::Category, std::string> categoryToStringMapping =
+const StaticMap<Type::Category, std::string> categoryToStringMapping =
 {
     { Type::Category::TextureCategory, "Texture" }
     , { Type::Category::PixelCacheCategory, "PixelCache" }
@@ -186,7 +186,7 @@ const std::map<Type::Category, std::string> categoryToStringMapping =
 std::string
 Type::CategoryToString(const Category& cat)
 {
-    auto it = categoryToStringMapping.find(cat);
+    auto it = categoryToStringMapping.Find(cat);
     if (it == categoryToStringMapping.end())
         return "";
     else
@@ -295,8 +295,8 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
     newType->category = AccelerationStructureCategory;
 
-#define __ADD_ENUM(val) labels.Append(FixedString(#val)); values.Append(nullptr);
-#define __FINISH_ENUM(enum) enum->labels = labels; enum->values = values; labels.size = 0; values.size = 0;
+#define __ADD_ENUM(val) labels.Append(#val); values.Append(nullptr);
+#define __FINISH_ENUM(enum) enum->labels = StaticArray<FixedString>(labels); enum->values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
 
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = "CompareMode";
@@ -377,7 +377,7 @@ Type::SetupDefaultTypes()
     SYMBOL_STATIC_ALLOC = false;
 }
 
-std::map<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
+StaticMap<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
 {
     { TypeCode::Float,      { "f32",    "f32x2",    "f32x3",    "f32x4" } }
     , { TypeCode::Float16,  { "f16",    "f16x2",    "f16x3",    "f16x4" } }
@@ -398,7 +398,7 @@ Type::ToVector(const TypeCode baseType, unsigned members)
     if (members > 4)
         return "";
     else
-        return singleComponentToVectorMap[baseType][members - 1];
+        return singleComponentToVectorMap.Find(baseType)->second[members - 1];
 }
 
 //------------------------------------------------------------------------------

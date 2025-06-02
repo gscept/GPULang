@@ -943,7 +943,7 @@ struct SPVWriter
 
     uint32_t Import(const char* str)
     {
-        auto it = this->imports.find(str);
+        auto it = this->imports.Find(str);
         if (it != this->imports.end())
             return it->second;
 
@@ -969,44 +969,44 @@ struct SPVWriter
             this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension).ToString());
             this->texts[(uint32_t)Section::ExtImports].Append("\n");
         }
-        this->imports[str] = c;
+        this->imports.Insert(str, c);
         return c;
     }
 
     void Capability(SPVEnum cap)
     {
-        if (this->capabilities.contains(cap))
+        if (set_contains(this->capabilities, cap))
             return;
         this->Instruction(OpCapability, Section::Capabilities, cap);
-        this->capabilities.insert(cap);
+        this->capabilities.Insert(cap);
     }
 
     void Extension(SPVEnum extension)
     {
-        if (this->extensions.contains(extension))
+        if (set_contains(this->extensions, extension))
             return;
         this->Instruction(OpExtension, Section::Extensions, extension.str);
-        this->extensions.insert(extension);
+        this->extensions.Insert(extension);
     }
 
     template<typename ...ARGS>
     void Decorate(SPVArg symbol, SPVEnum decoration, const ARGS&... args)
     {
         std::string key = TStr(symbol.arg, "_", decoration.str, std::forward<const ARGS&>(args)...).ToString();
-        if (this->decorations.find(key) == this->decorations.end())
+        if (this->decorations.Find(key) == this->decorations.end())
         {
             this->Instruction(OpDecorate, Section::Decorations, symbol, decoration, std::forward<const ARGS&>(args)...);
-            this->decorations.insert(key);
+            this->decorations.Insert(key);
         }
     }
 
     uint32_t String(const char* str)
     {
-        auto it = this->strings.find(str);
+        auto it = this->strings.Find(str);
         if (it == this->strings.end())
         {
             uint32_t ret = this->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, str); 
-            this->strings[str] = ret;
+            this->strings.Insert(str, ret);
             return ret;
         }
         else
@@ -1630,11 +1630,11 @@ struct SPVWriter
     GrowingString texts[(uint32_t)Section::NumSections];
     std::vector<uint32_t> binaries[(uint32_t)Section::NumSections];
 
-    std::map<const char*, uint32_t> imports;
-    std::set<SPVEnum> capabilities;
-    std::set<SPVEnum> extensions;
-    std::set<std::string> decorations;
-    std::map<std::string, uint32_t> strings;
+    PinnedMap<const char*, uint32_t> imports;
+    PinnedSet<SPVEnum> capabilities;
+    PinnedSet<SPVEnum> extensions;
+    PinnedSet<std::string> decorations;
+    PinnedMap<std::string, uint32_t> strings;
 };
 
 template<typename ...ARGS>
@@ -4449,7 +4449,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4463,7 +4463,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         return SPIRVResult::Invalid();
     };
@@ -4477,7 +4477,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplInputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4492,7 +4492,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         return SPIRVResult::Invalid();
     };
@@ -4506,7 +4506,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
         return SPIRVResult::Invalid();
@@ -4535,7 +4535,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::VertexId);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4550,7 +4550,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InstanceId);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4565,7 +4565,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
         return res;
@@ -4580,7 +4580,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetPixelDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
@@ -4605,7 +4605,7 @@ SPIRVGenerator::SetupIntrinsics()
             g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
            
             assert(args[1].isLiteral);
-            g->interfaceVariables.insert(ret);
+            g->interfaceVariables.Insert(ret);
             
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
             g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
@@ -4623,7 +4623,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4640,7 +4640,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4657,7 +4657,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4675,7 +4675,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4692,7 +4692,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         type.name = ret;
         return res;
@@ -4710,7 +4710,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4728,7 +4728,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4746,7 +4746,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4764,7 +4764,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4782,7 +4782,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4800,7 +4800,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4818,7 +4818,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4836,7 +4836,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -6241,7 +6241,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6253,7 +6253,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6265,7 +6265,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6277,7 +6277,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6289,7 +6289,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASInstanceIndex", ret, "BuiltIn InstanceId");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6301,7 +6301,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6313,7 +6313,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6325,7 +6325,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6337,7 +6337,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6349,7 +6349,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6361,7 +6361,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayMin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayMin", ret, "BuiltIn RayTminKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6373,7 +6373,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6385,7 +6385,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayFlags", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6397,7 +6397,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayHitDistance", ret, "BuiltIn RayTmaxKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6409,7 +6409,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayHitKind", ret, "BuiltIn HitKindKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6421,7 +6421,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
         uint32_t ret = g->AddSymbol("gplTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(matType);
@@ -6433,7 +6433,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
         uint32_t ret = g->AddSymbol("gplTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(matType);
@@ -6452,7 +6452,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Function::__Resolved* funcResolved = Symbol::Resolved(func);
     if (func != generator->entryPoint)
     {
-        if (funcResolved->visibilityMap.find(generator->entryPoint) == funcResolved->visibilityMap.end())
+        if (funcResolved->visibilityMap.Find(generator->entryPoint) == funcResolved->visibilityMap.end())
             return;
     }
 
@@ -6565,7 +6565,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
 
-    if (strucResolved->visibilityMap.find(generator->entryPoint) == strucResolved->visibilityMap.end())
+    if (strucResolved->visibilityMap.Find(generator->entryPoint) == strucResolved->visibilityMap.end())
         return 0xFFFFFFFF;
 
     uint32_t numVariables = 0;
@@ -6650,7 +6650,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
 {
     SamplerState* sampler = static_cast<SamplerState*>(symbol);
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
-    if (samplerResolved->visibilityMap.find(generator->entryPoint) == samplerResolved->visibilityMap.end())
+    if (samplerResolved->visibilityMap.Find(generator->entryPoint) == samplerResolved->visibilityMap.end())
         return SPIRVResult();
     
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
@@ -6702,7 +6702,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
     {
         // Generate immutable sampler
         uint32_t name = AddSymbol(generator, symbol->name, SPVWriter::Section::Declarations, OpVariable, samplerType, ScopeToEnum(samplerType.scope));
-        generator->interfaceVariables.insert(name);
+        generator->interfaceVariables.Insert(name);
 
         if (compiler->options.symbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
@@ -6776,7 +6776,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
     //if (varResolved->storage == Storage::Global)
     //{
-        if (varResolved->visibilityMap.find(generator->entryPoint) == varResolved->visibilityMap.end())
+        if (varResolved->visibilityMap.Find(generator->entryPoint) == varResolved->visibilityMap.end())
             return SPIRVResult::Invalid();
     //}
 
@@ -6919,7 +6919,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             || storage == SPIRVResult::Storage::Input
             || storage == SPIRVResult::Storage::Output
             )
-            generator->interfaceVariables.insert(name);
+            generator->interfaceVariables.Insert(name);
         
         auto ret = SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);\
         ret.isStructPadded = typeName.isStructPadded;
@@ -8500,7 +8500,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
 /**
 */
 bool 
-SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
 
@@ -8511,7 +8511,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
 
         ~Cleanup()
         {
-            gen->interfaceVariables.clear();
+            gen->interfaceVariables.Clear();
             gen->accessChain.clear();
             gen->mergeBlockCounter = 0;
             gen->linkDefineSlot = 0;
@@ -8522,11 +8522,11 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             for (auto& text : gen->writer->texts)
                 text.Clear();
             gen->writer->scopeStack.clear();
-            gen->writer->imports.clear();
-            gen->writer->extensions.clear();
-            gen->writer->decorations.clear();
-            gen->writer->capabilities.clear();
-            gen->writer->strings.clear();
+            gen->writer->imports.Clear();
+            gen->writer->extensions.Clear();
+            gen->writer->decorations.Clear();
+            gen->writer->capabilities.Clear();
+            gen->writer->strings.Clear();
             
         }
 

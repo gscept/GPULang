@@ -16,6 +16,8 @@
 #include <string>
 #include <map>
 #include "memory.h"
+#include "strings.h"
+#include "containers.h"
 
 #define _IMPLEMENT_ATTRIBUTES() FixedArray<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
 #define _IMPLEMENT_ANNOTATIONS() FixedArray<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
