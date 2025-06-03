@@ -2441,8 +2441,8 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
 
           antlrcpp::downCast<EnumerationContext *>(_localctx)->sym =  nullptr;
           StackArray<FixedString> enumLabels(256);
-          std::vector<Expression*> enumValues;
-          std::vector<Symbol::Location> enumLocations;
+          StackArray<Expression*> enumValues(256);
+          StackArray<Symbol::Location> enumLocations(256);
           std::string name;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
           Symbol::Location location;
@@ -2497,8 +2497,8 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
         }
 
                         enumLabels.Append(FixedString((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : "")));
-                        enumValues.push_back(expr);
-                        enumLocations.push_back(labelLocation);
+                        enumValues.Append(expr);
+                        enumLocations.Append(labelLocation);
                     
         setState(395);
         _errHandler->sync(this);
@@ -2527,7 +2527,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
               match(GPULangParser::CO);
               setState(398);
               antlrcpp::downCast<EnumerationContext *>(_localctx)->label = match(GPULangParser::IDENTIFIER);
-               Expression* expr = nullptr; labelLocation = SetupFile(); 
+               if (enumLabels.Full()) throw IndexOutOfBoundsException("Maximum of 256 enum labels"); Expression* expr = nullptr; labelLocation = SetupFile(); 
               setState(404);
               _errHandler->sync(this);
 
@@ -2541,8 +2541,8 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
               }
 
                                   enumLabels.Append(FixedString((antlrcpp::downCast<EnumerationContext *>(_localctx)->label != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->label->getText() : "")));
-                                  enumValues.push_back(expr);
-                                  enumLocations.push_back(labelLocation);
+                                  enumValues.Append(expr);
+                                  enumLocations.Append(labelLocation);
                               
               break;
             }
@@ -2818,8 +2818,8 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
   enterRule(_localctx, 30, GPULangParser::RuleFunctionDeclaration);
 
           antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->sym =  nullptr;
-          std::vector<Variable*> variables;
-          std::vector<Attribute*> attributes;
+          StackArray<Variable*> variables(32);
+          StackArray<Attribute*> attributes(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -2841,7 +2841,7 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
       if (alt == 1) {
         setState(446);
         antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->attributeContext = attribute();
-         attributes.push_back(std::move(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->attributeContext->attr));  
+         attributes.Append(std::move(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->attributeContext->attr));  
       }
       setState(453);
       _errHandler->sync(this);
@@ -2859,7 +2859,7 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
     if (_la == GPULangParser::T__2 || _la == GPULangParser::IDENTIFIER) {
       setState(457);
       antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->arg0 = parameter();
-       variables.push_back(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->arg0->sym); 
+       variables.Append(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->arg0->sym); 
       setState(460);
       _errHandler->sync(this);
 
@@ -2887,7 +2887,7 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
             match(GPULangParser::CO);
             setState(463);
             antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->argn = parameter();
-             variables.push_back(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->argn->sym); 
+             if (variables.Full()) throw IndexOutOfBoundsException("Maximum of 32 variables reached"); variables.Append(antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->argn->sym); 
             break;
           }
 

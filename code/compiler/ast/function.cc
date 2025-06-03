@@ -84,19 +84,19 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
             continue;
 
         Function* fun = static_cast<Function*>(sym);
-        if (fun->parameters.size() != args.size())
+        if (fun->parameters.len != args.size())
             continue;
 
         ret = sym;
         for (size_t i = 0; i < args.size() && ret != nullptr; i++)
         {
-            Variable::__Resolved* paramResolved = Symbol::Resolved(fun->parameters[i]);
+            Variable::__Resolved* paramResolved = Symbol::Resolved(fun->parameters.buf[i]);
             if (args[i] != paramResolved->type)
             {
                 if (allowImplicitConversion)
                 {
                     // types don't match, check if there is a constructor for this argument which matches the input argument
-                    Type* argType = compiler->GetType(fun->parameters[i]->type);
+                    Type* argType = compiler->GetType(fun->parameters.buf[i]->type);
                     std::vector<Symbol*> conversionMethods = argType->GetSymbols(argType->name);
 
                     ret = nullptr;
@@ -106,10 +106,10 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
                         if (conv->symbolType != SymbolType::FunctionType)
                             continue;
 
-                        if (conv->parameters.size() != 1)
+                        if (conv->parameters.len != 1)
                             continue;
 
-                        if (conv->parameters[0]->type == args[i])
+                        if (conv->parameters.buf[0]->type == args[i])
                         {
                             // okay, conversion found so move to next argument in outer loop
                             ret = sym;
@@ -157,7 +157,7 @@ DefaultIntrinsics.push_back(newIntrinsic);\
 newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(tp);\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_ARG_LIT(nm, tp)\
@@ -165,7 +165,7 @@ newIntrinsic->parameters.push_back(newVar);\
 newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_MUTABLE_ARG_LIT(nm, tp)\
@@ -174,7 +174,7 @@ newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.mut = true;\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_VALUE_LIT(nm, tp)\
@@ -183,7 +183,7 @@ newVar = StaticAlloc<Variable>();\
 newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.literal = true;\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_ARG_ARR_LIT(nm, tp, size)\
@@ -193,7 +193,7 @@ newVar->name = #nm;\
 newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Array);\
 newVar->type.UpdateValue(StaticAlloc<UIntExpression>(size));\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_HANDLE_ARG(nm, tp)\
@@ -204,7 +204,7 @@ newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->attributes = FixedArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
@@ -215,7 +215,7 @@ newVar->type = Type::FullType(#tp);\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->attributes = FixedArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
@@ -227,7 +227,7 @@ newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
 newVar->attributes = FixedArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
@@ -239,7 +239,7 @@ newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
 newVar->attributes = FixedArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
-newIntrinsic->parameters.push_back(newVar);\
+newIntrinsic->parameters.Append(newVar);\
 }
 
 #define __SET_RET_LIT(name)\
@@ -1885,14 +1885,14 @@ Function::IsCompatible(Function* otherFunction, bool checkReturnType)
     }
 
     // no match if amount of parameters differ
-    if (otherFunction->parameters.size() != this->parameters.size())
+    if (otherFunction->parameters.len != this->parameters.len)
         return false;
 
     // go through parameters
-    for (size_t i = 0; i < this->parameters.size(); i++)
+    for (size_t i = 0; i < this->parameters.len; i++)
     {
-        Variable* ourParameter = this->parameters[i];
-        Variable* otherParameter = otherFunction->parameters[i];
+        Variable* ourParameter = this->parameters.buf[i];
+        Variable* otherParameter = otherFunction->parameters.buf[i];
 
         if (ourParameter->type != otherParameter->type)
             return false;

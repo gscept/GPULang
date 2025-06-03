@@ -74,7 +74,7 @@ struct PinnedArray
 
     void Grow(size_t numNeededMoreElements)
     {
-        assert(this->size < this->memspace / sizeof(TYPE));
+        assert((this->size < this->memspace / sizeof(TYPE)) && "PinnedArray over allocation is not allowed");
         if (this->size + numNeededMoreElements > this->capacity)
         {
             size_t numCommitedPages = ceil((this->capacity * sizeof(TYPE)) / (float)SystemPageSize);

@@ -32,7 +32,7 @@ struct Function : public Symbol
     Symbol::Location returnTypeLocation;
     bool hasBody;
     bool compileTime;
-    std::vector<Variable*> parameters;
+    FixedArray<Variable*> parameters;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 

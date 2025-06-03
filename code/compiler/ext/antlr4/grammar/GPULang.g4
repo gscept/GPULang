@@ -402,8 +402,8 @@ enumeration
     {
         $sym = nullptr;
         StackArray<FixedString> enumLabels(256);
-        std::vector<Expression*> enumValues;
-        std::vector<Symbol::Location> enumLocations;
+        StackArray<Expression*> enumValues(256);
+        StackArray<Symbol::Location> enumLocations(256);
         std::string name;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
@@ -416,16 +416,16 @@ enumeration
             label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
             {
                 enumLabels.Append(FixedString($label.text));
-                enumValues.push_back(expr);
-                enumLocations.push_back(labelLocation);
+                enumValues.Append(expr);
+                enumLocations.Append(labelLocation);
             }
             (linePreprocessorEntry)?
             (
-                ',' label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
+                ',' label = IDENTIFIER { if (enumLabels.Full()) throw IndexOutOfBoundsException("Maximum of 256 enum labels"); Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
                 {
                     enumLabels.Append(FixedString($label.text));
-                    enumValues.push_back(expr);
-                    enumLocations.push_back(labelLocation);
+                    enumValues.Append(expr);
+                    enumLocations.Append(labelLocation);
                 }
                 |
                 linePreprocessorEntry
@@ -481,14 +481,14 @@ functionDeclaration
     @init
     {
         $sym = nullptr;
-        std::vector<Variable*> variables;
-        std::vector<Attribute*> attributes;
+        StackArray<Variable*> variables(32);
+        StackArray<Attribute*> attributes(32);
         Symbol::Location location;
     }:
-    (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    (attribute { attributes.Append(std::move($attribute.attr)); })*
     name = IDENTIFIER { location = SetupFile(); } '(' 
         (
-            arg0 = parameter { variables.push_back($arg0.sym); } (linePreprocessorEntry)? (',' argn = parameter { variables.push_back($argn.sym); } | linePreprocessorEntry)* 
+            arg0 = parameter { variables.Append($arg0.sym); } (linePreprocessorEntry)? (',' argn = parameter { if (variables.Full()) throw IndexOutOfBoundsException("Maximum of 32 variables reached"); variables.Append($argn.sym); } | linePreprocessorEntry)* 
         )? 
         ')' returnType = typeDeclaration
     {

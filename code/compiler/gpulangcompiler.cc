@@ -1696,15 +1696,6 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     SetupSystem();
     bool ret = true;
 
-    PinnedMap<FixedString, Symbol*> testMap = 0xFFFFF;
-    testMap.BeginBulkAdd();
-    testMap.Insert("test", new IntExpression(1));
-    testMap.Insert("test2", new IntExpression(2));
-    testMap.Insert("test3", new IntExpression(3));
-    testMap.EndBulkAdd();
-
-    auto test = testMap.Find("test2");
-
     std::string preprocessed;
 
     GPULang::Compiler::Timer timer;

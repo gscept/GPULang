@@ -215,7 +215,7 @@ public:
     void PopAccessChain();
     
     std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
-    PinnedSet<uint32_t> interfaceVariables;
+    PinnedSet<uint32_t> interfaceVariables = 0xFFFF;
 
     bool blockOpen = false;
     bool literalExtract = false;

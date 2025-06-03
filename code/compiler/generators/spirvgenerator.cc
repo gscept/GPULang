@@ -1630,11 +1630,11 @@ struct SPVWriter
     GrowingString texts[(uint32_t)Section::NumSections];
     std::vector<uint32_t> binaries[(uint32_t)Section::NumSections];
 
-    PinnedMap<const char*, uint32_t> imports;
-    PinnedSet<SPVEnum> capabilities;
-    PinnedSet<SPVEnum> extensions;
-    PinnedSet<std::string> decorations;
-    PinnedMap<std::string, uint32_t> strings;
+    PinnedMap<const char*, uint32_t> imports = 0xFFF;
+    PinnedSet<SPVEnum> capabilities = 0xFFF;
+    PinnedSet<SPVEnum> extensions = 0xFFF;
+    PinnedSet<std::string> decorations = 0xFFF;
+    PinnedMap<std::string, uint32_t> strings = 0xFFFF;
 };
 
 template<typename ...ARGS>
