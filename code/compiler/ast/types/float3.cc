@@ -47,6 +47,7 @@ Function Float3::neOperator;
 */
 Float3::Float3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->columnSize = 3;
     this->rowSize = 1;

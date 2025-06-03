@@ -448,7 +448,7 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
     writer.WriteLine("{");
     writer.Indent();
 
-    for (size_t i = 0; i < enu->labels.len; i++)
+    for (size_t i = 0; i < enu->labels.size; i++)
     {
         HeaderWriter tempWriter;
         tempWriter.Write(Format("%s", enu->labels.buf[i].c_str()));
@@ -460,7 +460,7 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
             value.Store(val);
             tempWriter.Write(Format(" = %d", val));
         }
-        if (i != enu->labels.len - 1)
+        if (i != enu->labels.size - 1)
             tempWriter.Write(",");
         writer.WriteLine(tempWriter.output);
     }

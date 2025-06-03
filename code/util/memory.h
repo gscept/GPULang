@@ -52,6 +52,15 @@ struct Allocator
     MemoryBlock* blocks;
     size_t currentBlock;
     size_t blockSize;
+
+    struct VAlloc
+    {
+        void* mem;
+        size_t index;
+        size_t size;
+    };
+    VAlloc* virtualMem;
+    size_t virtualMemCounter;
 };
 
 inline Allocator CreateAllocator()
@@ -62,9 +71,18 @@ inline Allocator CreateAllocator()
         .freeBlocks = nullptr,
         .blocks = nullptr,
         .currentBlock = 0,
-        .blockSize = 65535
+        .blockSize = 65535,
+        .virtualMem = nullptr,
+        .virtualMemCounter = 0
     };
 }
+
+// Virtual memory interface
+void* vmalloc(size_t size);
+void vfree(void* buf, size_t size);
+void vcommit(void* data, size_t size);
+void vdecommit(void* data, size_t size);
+
 
 // The default allocator is used for all static initialization
 extern Allocator DefaultAllocator;
@@ -191,6 +209,67 @@ Dealloc(Allocator* allocator, void* mem)
 //------------------------------------------------------------------------------
 /**
 */
+template<typename T>
+inline T*
+AllocVirtual(size_t num)
+{
+    Allocator* Allocator = CurrentAllocator;
+    if (IsStaticAllocating)
+    {
+        Allocator = &StaticAllocator;
+    }
+    else
+    {
+        if (Allocator == nullptr)
+        {
+            if (!IsDefaultAllocatorInitialized)
+            {
+                InitAllocator(&DefaultAllocator);
+                IsDefaultAllocatorInitialized = true;
+            }
+            Allocator = &DefaultAllocator;
+        }
+    }
+    assert(Allocator->virtualMemCounter < 4096);
+    T* obj = (T*)vmalloc(num * sizeof(T));
+    Allocator->virtualMem[Allocator->virtualMemCounter].mem = obj;
+    Allocator->virtualMem[Allocator->virtualMemCounter].index = Allocator->virtualMemCounter;
+    Allocator->virtualMem[Allocator->virtualMemCounter].size = num * sizeof(T);
+    Allocator->virtualMemCounter++;
+    return obj;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline void
+DeallocVirtual(void* alloc)
+{
+    Allocator* Allocator = CurrentAllocator;
+    if (IsStaticAllocating)
+    {
+        Allocator = &StaticAllocator;
+    }
+    else
+    {
+        if (Allocator == nullptr)
+        {
+            if (!IsDefaultAllocatorInitialized)
+            {
+                InitAllocator(&DefaultAllocator);
+                IsDefaultAllocatorInitialized = true;
+            }
+            Allocator = &DefaultAllocator;
+        }
+    }
+    auto al = (Allocator::VAlloc*)alloc;
+    vfree(Allocator->virtualMem[al->index].mem, Allocator->virtualMem[al->index].size);
+    Allocator->virtualMem[al->index].mem = nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 template<typename T, typename ... ARGS>
 inline T*
 StaticAlloc(ARGS... args)
@@ -309,9 +388,5 @@ void DeallocStack(size_t count, TYPE* buf)
     ThreadLocalHeapPtr = topPtr;
 }
 
-void* vmalloc(size_t size);
-void vfree(void* buf, size_t size);
-void vcommit(void* data, size_t size);
-void vdecommit(void* data, size_t size);
 
 } // namespace GPULang

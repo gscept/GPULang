@@ -147,7 +147,7 @@ struct Scope
         Type
     };
     ScopeType type = ScopeType::Local;
-    std::vector<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols;
     std::multimap<std::string, Symbol*> symbolLookup;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;

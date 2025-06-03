@@ -49,6 +49,7 @@ Function UInt::boolAssignOperator;
 */
 UInt::UInt()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 1;
     this->rowSize = 1;

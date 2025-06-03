@@ -16,6 +16,130 @@ namespace GPULang
 
 //------------------------------------------------------------------------------
 /**
+    A StackArray lives on the thread-local 'stack' buffer which allows for dirt cheap linear allocation.
+
+    Frees its memory at destruction
+*/
+template<typename TYPE>
+struct StackArray
+{
+    TYPE* ptr = nullptr;
+    size_t size = 0;
+    size_t capacity = 0;
+    StackArray() {}
+    StackArray(size_t count)
+    {
+        if (count != 0)
+        {
+            this->ptr = AllocStack<TYPE>(count);
+            this->capacity = count;
+        }
+    }
+
+    StackArray(StackArray&& rhs) noexcept
+    {
+        this->ptr = rhs.ptr;
+        this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.ptr = nullptr;
+        rhs.size = 0;
+        rhs.capacity = 0;
+    }
+
+    ~StackArray()
+    {
+        if (this->ptr != nullptr)
+            DeallocStack(this->capacity, this->ptr);
+        this->capacity = 0;
+        this->size = 0;
+    }
+
+    void operator=(StackArray&& rhs) noexcept
+    {
+        this->ptr = rhs.ptr;
+        this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.ptr = nullptr;
+        rhs.size = 0;
+        rhs.capacity = 0;
+    }
+
+    void Append(const TYPE& t)
+    {
+        assert(this->size + 1 <= this->capacity);
+        this->ptr[this->size++] = t;
+    }
+
+    const TYPE& operator[](const size_t index) const
+    {
+        return this->ptr[index];
+    }
+
+    TYPE& operator[](const size_t index)
+    {
+        return this->ptr[index];
+    }
+
+    void Clear()
+    {
+        this->size = 0;
+    }
+
+    bool Full()
+    {
+        return this->size == this->capacity;
+    }
+
+    const TYPE& front() const
+    {
+        return this->buf[0];
+    }
+
+    TYPE& front()
+    {
+        return this->buf[0];
+    }
+
+    const TYPE& back() const
+    {
+        return this->ptr[this->size - 1];
+    }
+
+    TYPE& back()
+    {
+        return this->ptr[this->size - 1];
+    }
+
+    TYPE* begin()
+    {
+        return this->ptr;
+    }
+
+    TYPE* end()
+    {
+        if (this->ptr == nullptr)
+            return nullptr;
+        else
+            return this->ptr + this->size;
+    }
+
+    const TYPE* begin() const
+    {
+        return this->ptr;
+    }
+
+    const TYPE* end() const
+    {
+        if (this->ptr == nullptr)
+            return nullptr;
+        else
+            return this->ptr + this->size;
+    }
+};
+
+
+//------------------------------------------------------------------------------
+/**
     A PinnedArray is an array which can grow in size and retain pointer validity by using virtual memory
     to commit new pages as it needs them.
 
@@ -37,20 +161,61 @@ struct PinnedArray
         : size(0)
         , capacity(0)
     {
-        this->data = (TYPE*)vmalloc(sizeof(TYPE) * maxAllocationCount);
+        this->data = (TYPE*)AllocVirtual<TYPE>(maxAllocationCount);
         this->memspace = sizeof(TYPE) * maxAllocationCount;
+    }
+
+    PinnedArray(const PinnedArray<TYPE>& rhs)
+    {
+        this->data = (TYPE*)vmalloc(rhs.memspace);
+        this->memspace = rhs.memspace;
+        this->Grow(rhs.size);
+        if (std::is_trivially_copyable<TYPE>::value)
+        {
+            memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
+            this->size += rhs.size;
+        }
+        else
+        {
+            for (const auto& elem : rhs)
+            {
+                this->data[this->size++] = elem;
+            }
+        }
+    }
+
+    PinnedArray(PinnedArray<TYPE>&& rhs)
+    {
+        this->data = rhs.data;
+        this->memspace = rhs.memspace;
+        this->size = rhs.size;
+        rhs.data = nullptr;
+        rhs.memspace = 0;
+        rhs.size = 0;
     }
 
     ~PinnedArray()
     {
+        /*
         // If not trivially destructible, run destructors for every item
         if (!std::is_trivially_destructible<TYPE>::value)
         {
             for (auto& val : *this)
                 (&val)->~TYPE();
         }
-        if (this->data != nullptr)
-            vfree(this->data, this->memspace);
+        /if (this->data != nullptr)
+            DeallocVirtual(this->data);
+        */
+    }
+
+    void operator=(PinnedArray<TYPE>&& rhs)
+    {
+        this->data = rhs.data;
+        this->memspace = rhs.memspace;
+        this->size = rhs.size;
+        rhs.data = nullptr;
+        rhs.memspace = 0;
+        rhs.size = 0;
     }
 
     void operator=(const PinnedArray<TYPE>& rhs)
@@ -61,6 +226,25 @@ struct PinnedArray
         if (std::is_trivially_copyable<TYPE>::value)
         {
             memcpy(this->data + this->size, rhs.data, rhs.size * sizeof(TYPE));
+            this->size += rhs.size;
+        }
+        else
+        {
+            for (const auto& elem : rhs)
+            {
+                this->data[this->size++] = elem;
+            }
+        }
+    }
+
+    void operator=(const StackArray<TYPE>& rhs)
+    {
+        this->data = (TYPE*)vmalloc(rhs.size * sizeof(TYPE));
+        this->memspace = rhs.size * sizeof(TYPE);
+        this->Grow(rhs.size);
+        if (std::is_trivially_copyable<TYPE>::value)
+        {
+            memcpy(this->data + this->size, rhs.ptr, rhs.size * sizeof(TYPE));
             this->size += rhs.size;
         }
         else
@@ -84,7 +268,7 @@ struct PinnedArray
                 size_t numBytesToCommit = align((numNeededPages - numCommitedPages) * sizeof(TYPE), SystemPageSize);
                 if (numBytesToCommit > 0)
                 {
-                    vcommit(this->data + this->capacity * sizeof(TYPE), numBytesToCommit);
+                    vcommit(this->data + this->capacity, numBytesToCommit);
                     this->capacity += numBytesToCommit / sizeof(TYPE);
                 }
             }
@@ -153,6 +337,16 @@ struct PinnedArray
         this->size++;
     }
 
+    const TYPE& operator[](const size_t index) const
+    {
+        return this->data[index];
+    }
+
+    TYPE& operator[](const size_t index)
+    {
+        return this->data[index];
+    }
+
     TYPE* begin()
     {
         return this->data;
@@ -186,100 +380,6 @@ struct PinnedArray
 
 //------------------------------------------------------------------------------
 /**
-    A StackArray lives on the thread-local 'stack' buffer which allows for dirt cheap linear allocation.
-
-    Frees its memory at destruction
-*/
-template<typename TYPE>
-struct StackArray
-{
-    TYPE* ptr = nullptr;
-    size_t size = 0;
-    size_t capacity = 0;
-
-    StackArray(size_t count)
-    {
-        if (count != 0)
-        {
-            this->ptr = AllocStack<TYPE>(count);
-            this->capacity = count;
-        }
-    }
-
-    StackArray() {}
-    StackArray(StackArray&& rhs) noexcept
-    {
-        this->ptr = rhs.ptr;
-        this->size = rhs.size;
-        this->capacity = rhs.capacity;
-        rhs.ptr = nullptr;
-        rhs.size = 0;
-        rhs.capacity = 0;
-    }
-
-    ~StackArray()
-    {
-        if (this->ptr != nullptr)
-            DeallocStack(this->capacity, this->ptr);
-        this->capacity = 0;
-        this->size = 0;
-    }
-
-    void operator=(StackArray&& rhs) noexcept
-    {
-        this->ptr = rhs.ptr;
-        this->size = rhs.size;
-        this->capacity = rhs.capacity;
-        rhs.ptr = nullptr;
-        rhs.size = 0;
-        rhs.capacity = 0;
-    }
-
-    void Append(const TYPE& t)
-    {
-        assert(this->size + 1 <= this->capacity);
-        this->ptr[this->size++] = t;
-    }
-
-    void Clear()
-    {
-        this->size = 0;
-    }
-
-    bool Full()
-    {
-        return this->size == this->capacity;
-    }
-
-    TYPE* begin()
-    {
-        return this->ptr;
-    }
-
-    TYPE* end()
-    {
-        if (this->ptr == nullptr)
-            return nullptr;
-        else
-            return this->ptr + this->size;
-    }
-
-    const TYPE* begin() const
-    {
-        return this->ptr;
-    }
-
-    const TYPE* end() const
-    {
-        if (this->ptr == nullptr)
-            return nullptr;
-        else
-            return this->ptr + this->size;
-    }
-};
-
-//------------------------------------------------------------------------------
-/**
     StaticArray allocates it's memory from the global Static allocator, use with objects with permanent life time.
     The StaticArray can be initialized by size or from a StackArray.
 
@@ -290,8 +390,8 @@ template<typename T>
 struct StaticArray
 {
     T* buf = nullptr;
-    size_t cap = 0;
-    size_t len = 0;
+    size_t capacity = 0;
+    size_t size = 0;
 
     StaticArray() {}
 
@@ -300,10 +400,10 @@ struct StaticArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedStaticArrayBytes += this->cap;
+            LeakedStaticArrayBytes += this->capacity;
         }
-        this->cap = size;
-        this->len = 0;
+        this->capacity = size;
+        this->size = 0;
         this->buf = StaticAllocArray<T>(size);
     }
 
@@ -312,9 +412,9 @@ struct StaticArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedStaticArrayBytes += this->cap;
+            LeakedStaticArrayBytes += this->capacity;
         }
-        this->cap = vec.size;
+        this->capacity = vec.size;
         this->buf = StaticAllocArray<T>(vec.size);
 
         if (vec.size > 0)
@@ -322,7 +422,7 @@ struct StaticArray
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<T>::value)
             {
-                this->len = vec.size;
+                this->size = vec.size;
                 memcpy(this->buf, vec.ptr, vec.size * sizeof(T));
             }
             else
@@ -330,7 +430,7 @@ struct StaticArray
                 // Otherwise, run copy constructors for every element
                 for (auto& v : vec)
                 {
-                    this->buf[this->len++] = v;
+                    this->buf[this->size++] = v;
                 }
             }
         }
@@ -348,9 +448,9 @@ struct StaticArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedStaticArrayBytes += this->cap;
+            LeakedStaticArrayBytes += this->capacity;
         }
-        this->cap = vec.capacity;
+        this->capacity = vec.capacity;
         this->buf = StaticAllocArray<T>(vec.capacity);
 
         if (vec.size > 0)
@@ -358,9 +458,19 @@ struct StaticArray
             // Otherwise, run copy constructors for every element
             for (auto& v : vec)
             {
-                this->buf[this->len++] = v;
+                this->buf[this->size++] = v;
             }
         }
+    }
+
+    const T& operator[](const size_t index) const
+    {
+        return this->buf[index];
+    }
+
+    T& operator[](const size_t index)
+    {
+        return this->buf[index];
     }
 
     T* begin()
@@ -373,7 +483,7 @@ struct StaticArray
         if (this->buf == nullptr)
             return nullptr;
         else
-            return this->buf + this->len;
+            return this->buf + this->size;
     }
 
     const T* begin() const
@@ -386,7 +496,7 @@ struct StaticArray
         if (this->buf == nullptr)
             return nullptr;
         else
-            return this->buf + this->len;
+            return this->buf + this->size;
     }
 };
 
@@ -405,8 +515,8 @@ template<typename T>
 struct FixedArray
 {
     T* buf = nullptr;
-    size_t cap = 0;
-    size_t len = 0;
+    size_t capacity = 0;
+    size_t size = 0;
 
     FixedArray() {}
 
@@ -415,10 +525,10 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = size;
-        this->len = 0;
+        this->capacity = size;
+        this->size = 0;
         this->buf = AllocArray<T>(size);
     }
 
@@ -427,9 +537,9 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = vec.size();
+        this->capacity = vec.size();
         this->buf = AllocArray<T>(vec.size());
 
         if (!vec.empty())
@@ -437,7 +547,7 @@ struct FixedArray
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<T>::value)
             {
-                this->len = vec.size();
+                this->size = vec.size();
                 memcpy(this->buf, vec.data(), vec.size() * sizeof(T));
             }
             else
@@ -445,7 +555,7 @@ struct FixedArray
                 // Otherwise, run copy constructors for every element
                 for (auto& v : vec)
                 {
-                    this->buf[this->len++] = v;
+                    this->buf[this->size++] = v;
                 }
             }
         }
@@ -456,14 +566,14 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = rhs.cap;
-        this->len = rhs.len;
+        this->capacity = rhs.capacity;
+        this->size = rhs.size;
         this->buf = rhs.buf;
         rhs.buf = nullptr;
-        rhs.cap = 0;
-        rhs.len = 0;
+        rhs.capacity = 0;
+        rhs.size = 0;
     }
 
     FixedArray(const FixedArray<T>& vec)
@@ -476,25 +586,25 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = vec.cap;
-        this->buf = AllocArray<T>(vec.cap);
+        this->capacity = vec.capacity;
+        this->buf = AllocArray<T>(vec.capacity);
 
-        if (vec.len > 0)
+        if (vec.size > 0)
         {
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<T>::value)
             {
-                this->len = vec.len;
-                memcpy(this->buf, vec.buf, vec.len * sizeof(T));
+                this->size = vec.size;
+                memcpy(this->buf, vec.buf, vec.size * sizeof(T));
             }
             else
             {
                 // Otherwise, run copy constructors for every element
                 for (auto& v : vec)
                 {
-                    this->buf[this->len++] = v;
+                    this->buf[this->size++] = v;
                 }
             }
         }
@@ -503,8 +613,8 @@ struct FixedArray
     void operator=(const StaticArray<T>& vec)
     {
         this->buf = vec.buf;
-        this->len = vec.len;
-        this->cap = vec.len; // intentional to avoid more appending
+        this->size = vec.size;
+        this->capacity = vec.size; // intentional to avoid more appending
     }
 
     void operator=(const StackArray<T>& vec)
@@ -512,9 +622,9 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = vec.size;
+        this->capacity = vec.size;
         this->buf = AllocArray<T>(vec.size);
 
         if (vec.size > 0)
@@ -522,7 +632,7 @@ struct FixedArray
             // If mempcy suffices, do it
             if (std::is_trivially_copy_constructible<T>::value)
             {
-                this->len = vec.size;
+                this->size = vec.size;
                 memcpy(this->buf, vec.ptr, vec.size * sizeof(T));
             }
             else
@@ -530,7 +640,7 @@ struct FixedArray
                 // Otherwise, run copy constructors for every element
                 for (auto& v : vec)
                 {
-                    this->buf[this->len++] = v;
+                    this->buf[this->size++] = v;
                 }
             }
         }
@@ -548,9 +658,9 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
-        this->cap = vec.size;
+        this->capacity = vec.size;
         this->buf = AllocArray<T>(vec.size);
 
         if (vec.size > 0)
@@ -558,7 +668,7 @@ struct FixedArray
             // Otherwise, run copy constructors for every element
             for (auto& v : vec)
             {
-                this->buf[this->len++] = v;
+                this->buf[this->size++] = v;
             }
         }
     }
@@ -568,24 +678,24 @@ struct FixedArray
         if (this->buf != nullptr)
         {
             // leak memory
-            LeakedFixedArrayBytes += this->cap;
+            LeakedFixedArrayBytes += this->capacity;
         }
     }
 
     void Append(const T& t)
     {
-        assert(this->len < this->cap);
-        this->buf[this->len++] = t;
+        assert(this->size < this->capacity);
+        this->buf[this->size++] = t;
     }
 
     // Allow stack allocated arrays to insert themselves, given enough space is available
     void Append(const StackArray<T>& vec)
     {
-        assert(this->len + vec.size < this->cap);
+        assert(this->size + vec.size < this->capacity);
         // If mempcy suffices, do it
         if (std::is_trivially_copy_constructible<T>::value)
         {
-            this->len = vec.size();
+            this->size = vec.size();
             memcpy(this->buf, vec.data(), vec.size() * sizeof(T));
         }
         else
@@ -593,9 +703,39 @@ struct FixedArray
             // Otherwise, run copy constructors for every element
             for (auto& v : vec)
             {
-                this->buf[this->len++] = v;
+                this->buf[this->size++] = v;
             }
         }
+    }
+
+    const T& operator[](const size_t index) const
+    {
+        return this->buf[index];
+    }
+
+    T& operator[](const size_t index)
+    {
+        return this->buf[index];
+    }
+
+    const T& front() const
+    {
+        return this->buf[0];
+    }
+
+    T& front()
+    {
+        return this->buf[0];
+    }
+
+    const T& back() const
+    {
+        return this->buf[this->size - 1];
+    }
+
+    T& back()
+    {
+        return this->buf[this->size - 1];
     }
 
     T* begin()
@@ -608,7 +748,7 @@ struct FixedArray
         if (this->buf == nullptr)
             return nullptr;
         else
-            return this->buf + this->len;
+            return this->buf + this->size;
     }
 
     const T* begin() const
@@ -621,7 +761,7 @@ struct FixedArray
         if (this->buf == nullptr)
             return nullptr;
         else
-            return this->buf + this->len;
+            return this->buf + this->size;
     }
 };
 

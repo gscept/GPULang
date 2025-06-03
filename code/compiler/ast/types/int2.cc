@@ -52,6 +52,7 @@ Function Int2::elementAccessOperatorUInt;
 */
 Int2::Int2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Int;
     this->columnSize = 2;
     this->rowSize = 1;

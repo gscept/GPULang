@@ -64,6 +64,7 @@ Function Int4::elementAccessOperatorUInt;
 */
 Int4::Int4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Int;
     this->columnSize = 4;
     this->rowSize = 1;

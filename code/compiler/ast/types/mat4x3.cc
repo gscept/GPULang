@@ -30,6 +30,7 @@ Function Mat4x3::elementAccessOperatorUInt;
 */
 Mat4x3::Mat4x3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->rowSize = 3;
     this->columnSize = 4;

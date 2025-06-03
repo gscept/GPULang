@@ -1811,9 +1811,10 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
 
           StackArray<Annotation*> annotations(32);
           StackArray<Attribute*> attributes(32);
-          std::vector<std::string> names;
-          std::vector<Expression*> valueExpressions;
-          std::vector<Symbol::Location> locations;
+          StackArray<std::string> names(256);
+          StackArray<Expression*> valueExpressions(256);
+          StackArray<Symbol::Location> locations(256);
+          antlrcpp::downCast<VariablesContext *>(_localctx)->list =  256; // Allocate 256 elements
           unsigned initCounter = 0;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
       
@@ -1871,7 +1872,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
     } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
     setState(277);
     antlrcpp::downCast<VariablesContext *>(_localctx)->varName = match(GPULangParser::IDENTIFIER);
-     names.push_back((antlrcpp::downCast<VariablesContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varName->getText() : "")); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); 
+     names.Append((antlrcpp::downCast<VariablesContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varName->getText() : "")); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
     setState(280);
     _errHandler->sync(this);
 
@@ -1899,7 +1900,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
           match(GPULangParser::CO);
           setState(283);
           antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN = match(GPULangParser::IDENTIFIER);
-           names.push_back((antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN->getText() : "")); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); 
+           if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append((antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN->getText() : "")); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
           break;
         }
 
@@ -1936,7 +1937,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
       match(GPULangParser::EQ);
       setState(298);
       antlrcpp::downCast<VariablesContext *>(_localctx)->valueExpr = logicalOrExpression();
-       if (initCounter < names.size()) { valueExpressions[initCounter++] = antlrcpp::downCast<VariablesContext *>(_localctx)->valueExpr->tree; }  
+       if (initCounter < names.size) { valueExpressions[initCounter++] = antlrcpp::downCast<VariablesContext *>(_localctx)->valueExpr->tree; }  
       setState(307);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -1951,7 +1952,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
             match(GPULangParser::CO);
             setState(301);
             antlrcpp::downCast<VariablesContext *>(_localctx)->valueExprN = logicalOrExpression();
-             if (initCounter < names.size()) { valueExpressions[initCounter++] = antlrcpp::downCast<VariablesContext *>(_localctx)->valueExprN->tree; }; 
+             if (initCounter < names.size) { valueExpressions[initCounter++] = antlrcpp::downCast<VariablesContext *>(_localctx)->valueExprN->tree; }; 
             break;
           }
 
@@ -1970,7 +1971,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
       }
     }
 
-            for (size_t i = 0; i < names.size(); i++)
+            for (size_t i = 0; i < names.size; i++)
             {
                 Variable* var = Alloc<Variable>(); 
                 var->type = type.type; 
@@ -1980,7 +1981,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
                 var->attributes = attributes;
                 var->name = names[i];
                 var->valueExpression = valueExpressions[i];
-                _localctx->list.push_back(var);
+                _localctx->list.Append(var);
             }
         
    
@@ -2050,8 +2051,8 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
   enterRule(_localctx, 22, GPULangParser::RuleStructureDeclaration);
 
           antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->sym =  nullptr;
-          std::vector<Annotation*> annotations;
-          std::vector<Attribute*> attributes;
+          StackArray<Annotation*> annotations(32);
+          StackArray<Attribute*> attributes(32);
       
   size_t _la = 0;
 
@@ -2080,7 +2081,7 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
     while (_la == GPULangParser::SOBAKA) {
       setState(320);
       antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->annotationContext = annotation();
-       annotations.push_back(std::move(antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->annotationContext->annot)); 
+       if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move(antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->annotationContext->annot)); 
       setState(327);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -2091,7 +2092,7 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
     while (_la == GPULangParser::IDENTIFIER) {
       setState(328);
       antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->attributeContext = attribute();
-       attributes.push_back(std::move(antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->attributeContext->attr)); 
+       if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move(antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->attributeContext->attr)); 
       setState(335);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -2103,8 +2104,8 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
      
             antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->sym =  Alloc<Structure>();
             _localctx->sym->name = (antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->name->getText() : ""); 
-            _localctx->sym->annotations = std::move(annotations);
-            _localctx->sym->attributes = std::move(attributes);
+            _localctx->sym->annotations = annotations;
+            _localctx->sym->attributes = attributes;
             _localctx->sym->location = SetupFile();
         
    
@@ -2222,7 +2223,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
   enterRule(_localctx, 24, GPULangParser::RuleStructure);
 
           antlrcpp::downCast<StructureContext *>(_localctx)->sym =  nullptr;
-          std::vector<Symbol*> members;
+          StackArray<Symbol*> members(1024);
           bool isArray = false;
           Expression* arraySizeExpression = nullptr;
           std::string instanceName;
@@ -2307,7 +2308,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
           }
           setState(362);
           antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName = match(GPULangParser::IDENTIFIER);
-           varType.name = (antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName->getText() : ""); varTypeLocation = EndLocationRange(typeRange); 
+           if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = (antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varTypeName->getText() : ""); varTypeLocation = EndLocationRange(typeRange); 
           setState(364);
           match(GPULangParser::SC);
 
@@ -2317,7 +2318,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
                           var->typeLocation = varTypeLocation;
                           var->name = varName;
                           var->valueExpression = nullptr;
-                          members.push_back(var);
+                          members.Append(var);
                           
                           varType = Type::FullType();
                       
@@ -2527,7 +2528,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
               match(GPULangParser::CO);
               setState(398);
               antlrcpp::downCast<EnumerationContext *>(_localctx)->label = match(GPULangParser::IDENTIFIER);
-               if (enumLabels.Full()) throw IndexOutOfBoundsException("Maximum of 256 enum labels"); Expression* expr = nullptr; labelLocation = SetupFile(); 
+               if (enumLabels.Full()) { throw IndexOutOfBoundsException("Maximum of 256 enum labels"); } Expression* expr = nullptr; labelLocation = SetupFile(); 
               setState(404);
               _errHandler->sync(this);
 
@@ -2917,7 +2918,7 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
             _localctx->sym->returnTypeLocation = antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->returnType->type.location;
             _localctx->sym->name = (antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->name->getText() : ""); 
             _localctx->sym->parameters = variables; 
-            _localctx->sym->attributes = std::move(attributes);
+            _localctx->sym->attributes = attributes;
         
    
   }
@@ -3062,9 +3063,8 @@ GPULangParser::ProgramContext* GPULangParser::program() {
 
           antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  nullptr;
           Symbol::Location location;
-          std::vector<Program::SubroutineMapping> subroutines;
-          std::vector<Expression*> entries;
-          std::vector<Annotation*> annotations;
+          StackArray<Expression*> entries(32);
+          StackArray<Annotation*> annotations(32);
       
   size_t _la = 0;
 
@@ -3083,7 +3083,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     while (_la == GPULangParser::SOBAKA) {
       setState(483);
       antlrcpp::downCast<ProgramContext *>(_localctx)->annotationContext = annotation();
-       annotations.push_back(std::move(antlrcpp::downCast<ProgramContext *>(_localctx)->annotationContext->annot)); 
+       if (annotations.Full()) throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); annotations.Append(std::move(antlrcpp::downCast<ProgramContext *>(_localctx)->annotationContext->annot)); 
       setState(490);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -3103,7 +3103,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
       ((1ULL << (_la - 74)) & 7787) != 0)) {
       setState(495);
       antlrcpp::downCast<ProgramContext *>(_localctx)->assignment = expression();
-       entries.push_back(antlrcpp::downCast<ProgramContext *>(_localctx)->assignment->tree); 
+       if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append(antlrcpp::downCast<ProgramContext *>(_localctx)->assignment->tree); 
       setState(497);
       match(GPULangParser::SC);
       setState(503);
@@ -3116,7 +3116,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
             antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  Alloc<Program>();
             _localctx->sym->location = location;
             _localctx->sym->name = (antlrcpp::downCast<ProgramContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<ProgramContext *>(_localctx)->name->getText() : "");
-            _localctx->sym->annotations = std::move(annotations);
+            _localctx->sym->annotations = annotations;
             _localctx->sym->entries = entries;
         
    
@@ -3201,9 +3201,9 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
   SamplerContext *_localctx = _tracker.createInstance<SamplerContext>(_ctx, getState());
   enterRule(_localctx, 36, GPULangParser::RuleSampler);
 
-          std::vector<Attribute*> attributes;
-          std::vector<Annotation*> annotations;
-          std::vector<Expression*> entries;
+          StackArray<Attribute*> attributes(32);
+          StackArray<Annotation*> annotations(32);
+          StackArray<Expression*> entries(32);
       
   size_t _la = 0;
 
@@ -3222,7 +3222,7 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
     while (_la == GPULangParser::SOBAKA) {
       setState(507);
       antlrcpp::downCast<SamplerContext *>(_localctx)->annotationContext = annotation();
-       annotations.push_back(std::move(antlrcpp::downCast<SamplerContext *>(_localctx)->annotationContext->annot)); 
+       if (annotations.Full()) throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); annotations.Append(std::move(antlrcpp::downCast<SamplerContext *>(_localctx)->annotationContext->annot)); 
       setState(514);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -3233,7 +3233,7 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
     while (_la == GPULangParser::IDENTIFIER) {
       setState(515);
       antlrcpp::downCast<SamplerContext *>(_localctx)->attributeContext = attribute();
-       attributes.push_back(std::move(antlrcpp::downCast<SamplerContext *>(_localctx)->attributeContext->attr)); 
+       if (attributes.Full()) throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); attributes.Append(std::move(antlrcpp::downCast<SamplerContext *>(_localctx)->attributeContext->attr)); 
       setState(522);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -3254,7 +3254,7 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
       ((1ULL << (_la - 74)) & 7787) != 0)) {
       setState(529);
       antlrcpp::downCast<SamplerContext *>(_localctx)->assign = expression();
-       entries.push_back(antlrcpp::downCast<SamplerContext *>(_localctx)->assign->tree); 
+       if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append(antlrcpp::downCast<SamplerContext *>(_localctx)->assign->tree); 
       setState(531);
       match(GPULangParser::SC);
       setState(537);
@@ -3265,8 +3265,8 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
     match(GPULangParser::RB);
 
             _localctx->sym->name = (antlrcpp::downCast<SamplerContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<SamplerContext *>(_localctx)->name->getText() : "");
-            _localctx->sym->attributes = std::move(attributes);
-            _localctx->sym->annotations = std::move(annotations);
+            _localctx->sym->attributes = attributes;
+            _localctx->sym->annotations = annotations;
             _localctx->sym->entries = entries;
         
    
@@ -3335,7 +3335,7 @@ GPULangParser::StateContext* GPULangParser::state() {
   StateContext *_localctx = _tracker.createInstance<StateContext>(_ctx, getState());
   enterRule(_localctx, 38, GPULangParser::RuleState);
 
-          std::vector<Expression*> entries;
+          StackArray<Expression*> entries(32);
       
   size_t _la = 0;
 
@@ -3364,7 +3364,7 @@ GPULangParser::StateContext* GPULangParser::state() {
       ((1ULL << (_la - 74)) & 7787) != 0)) {
       setState(547);
       antlrcpp::downCast<StateContext *>(_localctx)->assign = expression();
-       entries.push_back(antlrcpp::downCast<StateContext *>(_localctx)->assign->tree); 
+       if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append(antlrcpp::downCast<StateContext *>(_localctx)->assign->tree); 
       setState(549);
       match(GPULangParser::SC);
       setState(555);
@@ -3815,7 +3815,7 @@ GPULangParser::ForStatementContext* GPULangParser::forStatement() {
   enterRule(_localctx, 46, GPULangParser::RuleForStatement);
 
           antlrcpp::downCast<ForStatementContext *>(_localctx)->tree =  nullptr;
-          std::vector<Variable*> declarations;
+          FixedArray<Variable*> declarations;
           Expression* conditionExpression = nullptr;
           Expression* loopExpression = nullptr;
           Statement* contents = nullptr;
@@ -4287,8 +4287,8 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
   enterRule(_localctx, 54, GPULangParser::RuleScopeStatement);
 
           antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  nullptr;
-          std::vector<Symbol*> contents;
-  	std::vector<Expression*> unfinished;
+          PinnedArray<Symbol*> contents;
+  	    std::vector<Expression*> unfinished;
           Symbol::Location location;
           Symbol::Location ends;
       
@@ -4320,14 +4320,14 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
         antlrcpp::downCast<ScopeStatementContext *>(_localctx)->variablesContext = variables();
         setState(690);
         match(GPULangParser::SC);
-         for(Variable* var : antlrcpp::downCast<ScopeStatementContext *>(_localctx)->variablesContext->list) { contents.push_back(var); } 
+         for(Variable* var : antlrcpp::downCast<ScopeStatementContext *>(_localctx)->variablesContext->list) { contents.Append(var); } 
         break;
       }
 
       case 2: {
         setState(693);
         antlrcpp::downCast<ScopeStatementContext *>(_localctx)->statementContext = statement();
-         contents.push_back(antlrcpp::downCast<ScopeStatementContext *>(_localctx)->statementContext->tree); 
+         contents.Append(antlrcpp::downCast<ScopeStatementContext *>(_localctx)->statementContext->tree); 
         break;
       }
 
@@ -4348,7 +4348,7 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
     match(GPULangParser::RB);
      ends = SetupFile(); 
 
-            antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  Alloc<ScopeStatement>(contents, unfinished);
+            antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  Alloc<ScopeStatement>(std::move(contents), unfinished);
             _localctx->tree->ends = ends;
             _localctx->tree->location = location;
         
@@ -4629,8 +4629,8 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
 
           antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  nullptr;
           Expression* switchExpression;
-          std::vector<Expression*> caseExpressions;
-          std::vector<Statement*> caseStatements;
+          StackArray<Expression*> caseExpressions(256);
+          StackArray<Statement*> caseStatements(256);
           Symbol::Location location;
           Statement* defaultStatement = nullptr;
       
@@ -4667,7 +4667,7 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
       antlrcpp::downCast<SwitchStatementContext *>(_localctx)->expressionContext = expression();
       setState(743);
       match(GPULangParser::COL);
-       caseExpressions.push_back(antlrcpp::downCast<SwitchStatementContext *>(_localctx)->expressionContext->tree); caseStatements.push_back(nullptr); 
+       if (caseExpressions.Full()) { throw IndexOutOfBoundsException("Maximum of 256 case expressions reached"); } caseExpressions.Append(antlrcpp::downCast<SwitchStatementContext *>(_localctx)->expressionContext->tree); caseStatements.Append(nullptr); 
       setState(748);
       _errHandler->sync(this);
 
@@ -4711,7 +4711,7 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
     setState(764);
     match(GPULangParser::RB);
 
-            antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  Alloc<SwitchStatement>(switchExpression, caseExpressions, caseStatements, defaultStatement);
+            antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  Alloc<SwitchStatement>(switchExpression, std::move(caseExpressions), std::move(caseStatements), defaultStatement);
             _localctx->tree->location = location;
         
    
@@ -6180,8 +6180,8 @@ GPULangParser::PrefixExpressionContext* GPULangParser::prefixExpression() {
   enterRule(_localctx, 90, GPULangParser::RulePrefixExpression);
 
           antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<uint32_t> ops;
-          std::vector<Symbol::Location> locations;
+          StackArray<uint32_t> ops(32);
+          StackArray<Symbol::Location> locations(32);
       
   size_t _la = 0;
 
@@ -6210,7 +6210,7 @@ GPULangParser::PrefixExpressionContext* GPULangParser::prefixExpression() {
         _errHandler->reportMatch(this);
         consume();
       }
-       ops.push_back(StringToFourCC((antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->op->getText() : ""))); locations.push_back(SetupFile()); 
+       if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 prefix expressions reached"); } ops.Append(StringToFourCC((antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->op->getText() : ""))); locations.Append(SetupFile()); 
       setState(930);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -6221,7 +6221,7 @@ GPULangParser::PrefixExpressionContext* GPULangParser::prefixExpression() {
             antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->e1->tree;
             if (_localctx->tree != nullptr)
             {
-                for (size_t i = 0; i < ops.size(); i++)
+                for (size_t i = 0; i < ops.size; i++)
                 {
                     antlrcpp::downCast<PrefixExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(ops[i], true, _localctx->tree);
                     _localctx->tree->location = locations[i];
@@ -6361,11 +6361,11 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  nullptr;
 
           Symbol::Location location;
-          std::vector<Expression*> args;
+          StackArray<Expression*> args(256);
           Expression* arrayIndexExpr = nullptr;
 
-          std::vector<uint32_t> ops;
-          std::vector<Symbol::Location> locations;
+          StackArray<uint32_t> ops(32);
+          StackArray<Symbol::Location> locations(32);
       
   size_t _la = 0;
 
@@ -6409,7 +6409,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
                 ((1ULL << (_la - 74)) & 7787) != 0)) {
                 setState(937);
                 antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->arg0 = logicalOrExpression();
-                 args.push_back(antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->arg0->tree); 
+                 args.Append(antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->arg0->tree); 
                 setState(940);
                 _errHandler->sync(this);
 
@@ -6437,7 +6437,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
                       match(GPULangParser::CO);
                       setState(943);
                       antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->argn = logicalOrExpression();
-                       args.push_back(antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->argn->tree); 
+                       if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append(antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->argn->tree); 
                       break;
                     }
 
@@ -6458,7 +6458,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(954);
               match(GPULangParser::RP);
 
-                          CallExpression* expr = Alloc<CallExpression>(_localctx->tree, args);
+                          CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(args));
                           expr->location = antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e1->tree->location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       
@@ -6548,7 +6548,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
           _errHandler->reportMatch(this);
           consume();
         }
-         ops.push_back(StringToFourCC((antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->op->getText() : ""))); locations.push_back(SetupFile()); 
+         if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 suffix expressions reached"); } ops.Append(StringToFourCC((antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->op->getText() : ""))); locations.Append(SetupFile()); 
         setState(984);
         _errHandler->sync(this);
         _la = _input->LA(1);
@@ -6556,7 +6556,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
 
               antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e1->tree;
               _localctx->tree->location = SetupFile();
-              for (size_t i = 0; i < ops.size(); i++)
+              for (size_t i = 0; i < ops.size; i++)
               {
                   antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(ops[i], false, _localctx->tree);
                   _localctx->tree->location = locations[i];

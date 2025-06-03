@@ -50,6 +50,7 @@ Function Int::boolAssignOperator;
 */
 Int::Int()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Int;
     this->columnSize = 1;
     this->rowSize = 1;

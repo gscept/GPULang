@@ -15,7 +15,10 @@
 
 #define STRINGIFY(x) #x
 
+#define __BEGIN_TYPE() StackArray<Variable*> parameters(32);
+
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#t};\
 this->method.compileTime = true;\
@@ -25,12 +28,14 @@ activeFunction = &this->method;\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
-    activeFunction->parameters.push_back(var); \
+    parameters.Append(var); \
+    activeFunction->parameters = parameters;\
 }\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#type};\
 this->method.compileTime = true;\
@@ -40,6 +45,7 @@ activeFunction->documentation = "Constructor of " #type;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#t};\
 this->staticSymbols.push_back(&this->method);\
@@ -48,18 +54,9 @@ activeFunction = &this->method;\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
-    activeFunction->parameters.push_back(var); \
+    parameters.Append(var); \
+    activeFunction->parameters = parameters;\
 }
-
-#define __IMPLEMENT_FUNCTION(method, id, type)\
-this->method.name = #id;\
-this->method.returnType = Type::FullType{#type};\
-this->staticSymbols.push_back(&this->method);\
-activeFunction = &this->method;\
-
-
-#define __ADD_FUNCTION_LOOKUP(id)\
-this->lookup.insert({ #id, activeFunction });
 
 #define __ADD_SWIZZLE(retType, format, ...)\
 {\
@@ -77,7 +74,7 @@ this->lookup.insert({ #id, activeFunction });
     Variable* var = StaticAlloc<Variable>();\
     var->name = #id;\
     var->type = Type::FullType{#t};\
-    activeFunction->parameters.push_back(var);\
+    parameters.Append(var);\
 }
 
 #define __ADD_VARIBLE_LOOKUP(variable, id, t)\
@@ -86,6 +83,7 @@ this->variable.type = Type::FullType{#t};\
 this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\
+activeFunction->parameters = parameters;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_SWIZZLE(type, size, mask)\
@@ -512,7 +510,7 @@ struct Type : public Symbol
     std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;
     std::vector<Symbol*> swizzleSymbols;
-    std::vector<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols;
     std::vector<Symbol*> constructors;
 
     Scope scope;

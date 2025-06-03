@@ -22,6 +22,7 @@ Function Bool::uintAssignOperator;
 */
 Bool::Bool()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Bool;
     this->rowSize = 1;
     this->columnSize = 1;

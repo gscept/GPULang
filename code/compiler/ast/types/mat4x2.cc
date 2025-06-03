@@ -29,6 +29,7 @@ Function Mat4x2::elementAccessOperatorUInt;
 */
 Mat4x2::Mat4x2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->rowSize = 2;
     this->columnSize = 4;

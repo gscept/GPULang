@@ -439,7 +439,7 @@ public:
 
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
-    std::vector<Variable*> list;
+    StackArray<Variable*> list;
     GPULangParser::AnnotationContext *annotationContext = nullptr;
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
@@ -1532,7 +1532,7 @@ private:
   friend bool GPULangValidate(GPULangFile*, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
   friend bool GPULangValidateFile(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
   friend bool GPULangPreprocess(GPULangFile*, const std::string&, const std::vector<std::string>&, std::string&, std::string&);
-  friend GPULangFile* GPULangLoadFile(const char*, const std::vector<std::string_view>&);
+  friend GPULangFile* GPULangLoadFile(const std::string_view&, const std::vector<std::string_view>&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 
 };

@@ -42,6 +42,7 @@ Function Float2::neOperator;
 */
 Float2::Float2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->columnSize = 2;
     this->rowSize = 1;

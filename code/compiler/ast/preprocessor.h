@@ -30,9 +30,9 @@ struct Preprocessor : public Symbol
         EndIf
     } type;
 
-    std::vector<std::string> args;
-    std::vector<Symbol::Location> argLocations;
-    std::string contents;
+    FixedArray<FixedString> args;
+    FixedArray<Symbol::Location> argLocations;
+    FixedString contents;
 };
 
 }

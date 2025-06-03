@@ -218,7 +218,7 @@ bool
 Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
-    type->symbols.clear();
+    type->symbols.Clear();
     type->scope.symbolLookup.clear();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
@@ -281,7 +281,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         {
             Enumeration* en = static_cast<Enumeration*>(sym);
             en->scope.symbolLookup.clear();
-            en->symbols.clear();
+            en->symbols.Clear();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
         }
@@ -289,7 +289,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         {
             Structure* struc = static_cast<Structure*>(sym);
             struc->scope.symbolLookup.clear();
-            struc->symbols.clear();
+            struc->symbols.Clear();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
         }
@@ -1883,12 +1883,14 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->baseType = enumResolved->typeSymbol->baseType;
-    enumeration->symbols.clear();
+    enumeration->symbols.Clear();
     if (enumeration->globals.empty())
     {
         if (enumeration->builtin)
         {
+            StackArray<Variable*> parameters(1);
             SYMBOL_STATIC_ALLOC = true;
+
             // Create constructor from type, and to type
             Function* fromUnderlyingType = StaticAlloc<Function>();
             fromUnderlyingType->name = enumeration->name;
@@ -1897,7 +1899,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Variable* arg = StaticAlloc<Variable>();
             arg->name = "_arg0";
             arg->type = enumeration->type;
-            fromUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            fromUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(fromUnderlyingType);
 
             Function* toUnderlyingType = StaticAlloc<Function>();
@@ -1907,7 +1911,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "_arg0";
             arg->type = Type::FullType{ enumeration->name };
-            toUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            toUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = StaticAlloc<Function>();
@@ -1916,7 +1922,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = StaticAlloc<Function>();
@@ -1925,12 +1933,16 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
             SYMBOL_STATIC_ALLOC = false;
         }
         else
         {
+            StackArray<Variable*> parameters(1);
+
             // Create constructor from type, and to type
             Function* fromUnderlyingType = Alloc<Function>();
             fromUnderlyingType->name = enumeration->name;
@@ -1939,7 +1951,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Variable* arg = Alloc<Variable>();
             arg->name = "_arg0";
             arg->type = enumeration->type;
-            fromUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            fromUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(fromUnderlyingType);
 
             Function* toUnderlyingType = Alloc<Function>();
@@ -1949,7 +1963,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "_arg0";
             arg->type = Type::FullType{ enumeration->name };
-            toUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            toUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = Alloc<Function>();
@@ -1958,7 +1974,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = Alloc<Function>();
@@ -1967,13 +1985,15 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
         }
     }
 
     uint32_t nextValue = 0;
-    for (size_t i = 0; i < enumeration->labels.len; i++)
+    for (size_t i = 0; i < enumeration->labels.size; i++)
     {
         const FixedString& str = enumeration->labels.buf[i];
         Expression* expr = enumeration->values.buf[i];
@@ -2026,7 +2046,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
         // Add to type
         sym->name = str.c_str();
-        enumeration->symbols.push_back(sym);
+        enumeration->symbols.Append(sym);
         enumeration->scope.symbolLookup.insert({ sym->name, sym });
     }
 
@@ -2801,7 +2821,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         generatedVarResolved->structureOffset = alignedOffset;
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
-                        generatedStruct->symbols.push_back(generatedVar);
+                        generatedStruct->symbols.Append(generatedVar);
                         generatedStruct->scope.symbolLookup.insert({ varResolved->name, generatedVar });
                     }
                 }
@@ -2848,6 +2868,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->storageFunction = Alloc<Function>();
                     currentStrucResolved->storageFunction->name = "bufferStore";
                     currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
+
+                    StackArray<Variable*> args(2);
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
@@ -2865,8 +2887,9 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg2->type.modifiers.clear();
                     arg2->type.modifierValues.clear();
                     arg2->type.mut = false;
-                    currentStrucResolved->storageFunction->parameters.push_back(arg);
-                    currentStrucResolved->storageFunction->parameters.push_back(arg2);
+                    args.Append(arg);
+                    args.Append(arg2);
+                    currentStrucResolved->storageFunction->parameters = args;
                     this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
                 }
                 if (currentStrucResolved->loadFunction == nullptr)
@@ -2874,6 +2897,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->loadFunction = Alloc<Function>();
                     currentStrucResolved->loadFunction->name = "bufferLoad";
                     currentStrucResolved->loadFunction->returnType = Type::FullType{currentStructure->name};
+
+                    StackArray<Variable*> args(1);
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
@@ -2885,7 +2910,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg->type.modifierValues.clear();
                     arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
                     
-                    currentStrucResolved->loadFunction->parameters.push_back(arg);
+                    args.Append(arg);
+                    currentStrucResolved->loadFunction->parameters = args;
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   
                 }
             }
@@ -3152,7 +3178,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             }
 
             bool switchReturns = true;
-            for (size_t i = 0; i < statement->caseExpressions.size(); i++)
+            for (size_t i = 0; i < statement->caseExpressions.size; i++)
             {
                 if (!statement->caseExpressions[i]->Resolve(compiler))
                 {
@@ -3429,17 +3455,17 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     First filters parameters based on in/out qualifiers, then sorts within that set
     based on either inBinding or outBinding respectively
 */
-std::vector<Variable*>
-SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
+StackArray<Variable*>
+SortAndFilterParameters(const FixedArray<Variable*>& vars, bool in)
 {
-    std::vector<Variable*> ret;
+    StackArray<Variable*> ret(vars.size);
     for (Variable* var : vars)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (varResolved->storage == Storage::Input && in)
-            ret.push_back(var);
+            ret.Append(var);
         else if (varResolved->storage == Storage::Output && !in)
-            ret.push_back(var);
+            ret.Append(var);
     }
 
     // sort based on in or out binding respectively
@@ -3459,13 +3485,13 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
 {
-    std::vector<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
-    std::vector<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
+    StackArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
+    StackArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
     size_t inIterator = 0;
     for (Variable* var : outParams)
     {
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
-        Variable::__Resolved* inResolved = Symbol::Resolved(inParams[inIterator]);
+        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[inIterator]);
 
         // if bindings don't match, it means the output will be unused since the parameter sets should be sorted
         if ((outResolved->outBinding != inResolved->inBinding))
@@ -3475,9 +3501,9 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         }
         else
         {
-            if (var->type != inParams[inIterator]->type)
+            if (var->type != inParams.ptr[inIterator]->type)
             {
-                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams[inIterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams.ptr[inIterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
                 return false;
             }
         }
@@ -3837,14 +3863,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (switchStat->switchExpression->EvalValue(val))
             {
-                if (val.i[0] < switchStat->caseExpressions.size())
+                if (val.i[0] < switchStat->caseExpressions.size)
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[val.i[0]]);
                 else if (switchStat->defaultStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
             }
             else
             {
-                for (uint32_t i = 0; i < switchStat->caseStatements.size(); i++)
+                for (uint32_t i = 0; i < switchStat->caseStatements.size; i++)
                 {
                     res |= this->ResolveVisibility(compiler, switchStat->caseExpressions[i]);
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[i]);

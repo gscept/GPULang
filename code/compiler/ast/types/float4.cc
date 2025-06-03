@@ -53,6 +53,7 @@ Function Float4::neOperator;
 */
 Float4::Float4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->columnSize = 4;
     this->rowSize = 1;

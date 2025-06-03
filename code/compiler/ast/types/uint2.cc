@@ -51,6 +51,7 @@ Function UInt2::elementAccessOperatorUInt;
 */
 UInt2::UInt2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 2;
     this->rowSize = 1;

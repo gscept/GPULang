@@ -923,7 +923,7 @@ GenerateSwitchStatementGLSL(const Compiler* compiler, Statement* statement, std:
     IndentationLevel++;
 
     std::string cases;
-    for (size_t i = 0; i < switchStatement->caseExpressions.size(); i++)
+    for (size_t i = 0; i < switchStatement->caseExpressions.size; i++)
     {
         Expression* caseExpression = switchStatement->caseExpressions[i];
         std::string caseValue;

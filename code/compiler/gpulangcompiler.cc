@@ -85,10 +85,10 @@ struct FileLevel
 /**
 */
 GPULangFile*
-GPULangLoadFile(const char* path, const std::vector<std::string_view>& searchPaths)
+GPULangLoadFile(const std::string_view& path, const std::vector<std::string_view>& searchPaths)
 {
     GPULangFile* file = nullptr;
-    FILE* f = fopen(path, "rb");
+    FILE* f = fopen(TStr(path).Data(), "rb");
     
     if (f == nullptr)
     {
@@ -144,8 +144,8 @@ GPULangPreprocess(
     bool ret = true;
     struct Macro
     {
-        std::vector<std::string> args;
-        std::string contents;
+        FixedArray<std::string_view> args;
+        std::string_view contents;
     };
     PinnedMap<std::string_view, Macro> definitions(0xFFFF);
 
@@ -165,7 +165,7 @@ GPULangPreprocess(
     }
 
     // Insert into file map
-    std::map<std::string, GPULangFile*> fileMap;
+    std::map<std::string_view, GPULangFile*> fileMap;
 
     FileLevel* level = &fileStack.back();
     if (file->contents == nullptr)
@@ -539,7 +539,7 @@ GPULangPreprocess(
                         else
                         {
                             // If identifier of a macro, evaluate the contents of said macro
-                            t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.length(), level, diagnostics, definitions);
+                            t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), level, diagnostics, definitions);
                             t.op = false;
                             unconsumedIntegers++;
                             result.Append(t);
@@ -770,13 +770,13 @@ escape_newline:
         preprocessorSymbols.Append(pp);
 
 #define SETUP_ARG2(pp, arg, begin, stop)\
-        pp->args.push_back(arg);\
+        args.Append(arg);\
         Symbol::Location argLoc;\
         argLoc.file = level->file->path;\
         argLoc.line = level->lineCounter;\
         argLoc.start = begin - lineBegin;\
         argLoc.end = stop - lineBegin;\
-        pp->argLocations.push_back(argLoc);
+        argLocs.Append(argLoc);
 
         const char* lineBegin = &(*lineIt);
         const char* eol = &(*(lineEnd - 1)) + 1;
@@ -808,17 +808,20 @@ escape_newline:
                     pp->type = Preprocessor::Include;
                     SETUP_PP2(pp, firstWord-1, endOfDirective);
 
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
                         || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
                     {
-                        const std::string path = std::string(startOfPath + 1, endOfPath - 1);
+                        const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
 
                         GPULangFile* inc = nullptr;
                         auto fileIt = fileMap.find(path);
                         if (fileIt == fileMap.end())
                         {
-                            inc = GPULangLoadFile(path.c_str(), searchPaths);
+                            inc = GPULangLoadFile(path, searchPaths);
                             fileMap[path] = inc;
                         }
                         else
@@ -843,6 +846,8 @@ escape_newline:
                         ret = false;
                         goto end;
                     }
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "define", 6) == 0)
                 {
@@ -873,6 +878,9 @@ escape_newline:
 
                     macro = &definitions.Emplace(def)->second;
 
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Macro;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
@@ -880,6 +888,7 @@ escape_newline:
 
                     const char* startOfContents = wordStart(endOfDefinition, eol);
                     
+                    StackArray<std::string_view> macroArgs(32);
                     if (endOfDefinition[0] == '(')
                     {
                         // Argument list, start parsing arguments
@@ -889,7 +898,7 @@ escape_newline:
                             if (argumentIt[0] == ')') // end of list
                             {
                                 // Move new start to after argument list
-                                pp->argLocations[0].end = argumentIt + 1 - lineBegin;
+                                argLocs[0].end = argumentIt + 1 - lineBegin;
                                 startOfContents = wordStart(argumentIt+1, eol);
                                 break;
                             }
@@ -903,21 +912,24 @@ escape_newline:
                             }
 
                             // Identifier validation done, save argument
-                            macro->args.push_back(std::string(argumentIt, argumentEnd));
+                            macroArgs.Append(std::string_view(argumentIt, argumentEnd));
                             argumentIt = nextArg(argumentIt, endOfDefinition);
                         }
 
                         // append the rest of the contents
-                        macro->contents.append(startOfContents, eol - lineEndingLength);
+                        macro->args = macroArgs;
+                        macro->contents = std::string_view(startOfContents, eol - lineEndingLength);
                     }
                     else if (startOfContents != eol)
                     {
-                        macro->contents = std::string(startOfContents, eol - lineEndingLength);
+                        macro->contents = std::string_view(startOfContents, eol - lineEndingLength);
                     }               
                     else
                     {
 
                     }
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                     output.append(Format("#line %d \"%s\"", level->lineCounter, level->file->path.c_str()));
                 }
                 else if (strncmp(startOfDirective, "undef", 5) == 0)
@@ -942,6 +954,9 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Undefine;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
@@ -952,6 +967,9 @@ escape_newline:
                     {
                         definitions.Erase(definition);
                     }
+
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "ifdef", 5) == 0)
                 {
@@ -975,6 +993,9 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
@@ -989,6 +1010,8 @@ escape_newline:
                     {
                         ifStack.push_back(false);
                     }
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "ifndef", 6) == 0)
                 {
@@ -1012,6 +1035,9 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
@@ -1026,11 +1052,16 @@ escape_newline:
                     {
                         ifStack.push_back(false);
                     }
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "elif", 4) == 0)
                 {
                     ELIFDEFSTACKPUSH()
                     
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
+
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
@@ -1054,10 +1085,16 @@ escape_newline:
                     {
                         ifStack.push_back(false);
                     }
+
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
                     IFDEFSTACKPUSH()
+
+                    StackArray<Symbol::Location> argLocs(1);
+                    StackArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
@@ -1074,6 +1111,9 @@ escape_newline:
                     {
                         ifStack.push_back(false);
                     }
+
+                    pp->args = args;
+                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "else", 4) == 0)
                 {
@@ -1160,7 +1200,7 @@ escape_newline:
                         if (endOfWord[0] == '(')
                         {
                             const char* argumentIt = wordStart(endOfWord + 1, eol);
-                            std::vector<std::string> args;
+                            StackArray<std::string_view> args(32);
                             bool valid = false;
                             while (argumentIt != eol)
                             {
@@ -1194,7 +1234,7 @@ escape_newline:
                                         argumentCharIt++;
                                     }
                                 }
-                                args.push_back(std::string(argumentIt, argumentEnd));
+                                args.Append(std::string_view(argumentIt, argumentEnd));
                                 argumentIt = nextArg(argumentIt, eol);
                             }
                             if (!valid)
@@ -1204,18 +1244,20 @@ escape_newline:
                                 goto end;
                             }
                             endOfWord = argumentIt + 1;
-                            std::map<std::string, std::string> argumentMap;
+                            std::map<std::string_view, std::string_view> argumentMap;
 
                             // Warn if mismatch
-                            int maxIterations = min(args.size(), it->second.args.size());
+                            size_t maxIterations = min(args.size, it->second.args.size);
                             int argCounter = 0;
                             for (auto& arg : it->second.args)
                             {
                                 argumentMap[arg] = args[argCounter++];
                             }
 
-                            const char* macroContentsIt = &(*it->second.contents.begin());
-                            const char* macroContentsEnd = &(*(it->second.contents.end() - 1)) + 1;
+                            const char* macroContentsIt = it->second.contents.data();
+                            const char* macroContentsEnd = it->second.contents.data() + it->second.contents.size();
+
+                            GStr contents;
 
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
@@ -1224,46 +1266,50 @@ escape_newline:
                                 const char* endOfMacroWord = identifierEnd(startOfMacroWord, macroContentsEnd);
 
                                 // Add whatever comes before the identifier to the output
-                                pp->contents.append(macroContentsIt, startOfMacroWord);
+                                contents.Append(macroContentsIt, startOfMacroWord);
                                 if (macroContentsEnd == startOfMacroWord)
                                     break;
 
                                 if (startOfMacroWord != macroContentsEnd)
                                 {
                                     // Add everything leading up to the identifier to the output
-                                    std::string word(startOfMacroWord, endOfMacroWord);
+                                    GrowingString word;
+                                    word.Append(startOfMacroWord, endOfMacroWord);
                                     macroContentsIt = endOfMacroWord;
 
-                                    auto argIt = argumentMap.find(word);
+                                    auto argIt = argumentMap.find(word.ToView());
                                     if (argIt == argumentMap.end())
                                     {
-                                        auto defIt = definitions.Find(word);
+                                        auto defIt = definitions.Find(word.ToView());
                                         if (defIt == definitions.end())
                                         {
-                                            pp->contents.append(word);
+                                            contents.Append(word);
                                         }
                                         else
                                         {
-                                            pp->contents.append(defIt->second.contents);
+                                            contents.Append(defIt->second.contents);
                                         }
                                     }
                                     else
                                     {
-                                        pp->contents.append(argIt->second);
+                                        contents.Append(argIt->second);
                                     }
                                 }
                                 else
                                 {
-                                    pp->contents.append(startOfMacroWord, endOfMacroWord);
+                                    contents.Append(startOfMacroWord, endOfMacroWord);
                                     macroContentsIt = endOfMacroWord;
                                 }
-
                             }
+
+                            pp->contents = contents;
                         }
                         else
                         {
                             const char* macroContentsIt = it->second.contents.data();
                             const char* macroContentsEnd = it->second.contents.data() + it->second.contents.size();
+
+                            GrowingString contents;
 
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
@@ -1272,28 +1318,31 @@ escape_newline:
                                 const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, macroContentsEnd);
 
                                 // Add whatever comes before the identifier to the output
-                                pp->contents.append(macroContentsIt, startOfMacroIdentifier);
+                                contents.Append(macroContentsIt, startOfMacroIdentifier);
                                 if (macroContentsEnd == startOfMacroIdentifier)
                                     break;
 
-                                std::string word(startOfMacroIdentifier, endOfMacroIdentifier);
+                                GrowingString word;
+                                word.Append(startOfMacroIdentifier, endOfMacroIdentifier);
 
-                                auto defIt = definitions.Find(word);
+                                auto defIt = definitions.Find(word.ToView());
                                 if (defIt == definitions.end())
                                 {
-                                    pp->contents.append(word);
+                                    contents.Append(word);
                                 }
                                 else
                                 {
-                                    pp->contents.append(defIt->second.contents);
+                                    contents.Append(defIt->second.contents);
                                 }
 
                                 macroContentsIt = endOfMacroIdentifier;
                             }
+
+                            pp->contents = contents;
                         }
 
                         // Add summed contents to output
-                        output.append(pp->contents);
+                        output.append(pp->contents.c_str());
                     }
                     else
                     {

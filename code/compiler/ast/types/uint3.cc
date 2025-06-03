@@ -58,6 +58,7 @@ Function UInt3::elementAccessOperatorUInt;
 */
 UInt3::UInt3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 3;
     this->rowSize = 1;

@@ -14,7 +14,7 @@ namespace GPULang
 struct ScopeStatement : public Statement
 {
     /// constructor
-    ScopeStatement(const std::vector<Symbol*>& contents, const std::vector<Expression*>& unfinished);
+    ScopeStatement(const PinnedArray<Symbol*>& contents, const std::vector<Expression*>& unfinished);
     /// destructor
     virtual ~ScopeStatement();
 
@@ -24,7 +24,7 @@ struct ScopeStatement : public Statement
         Scope scope;
     };
 
-    std::vector<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols;
     std::vector<Expression*> unfinished;
     Symbol::Location ends;
 

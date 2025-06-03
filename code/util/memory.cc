@@ -25,7 +25,9 @@ Allocator DefaultAllocator =
     .freeBlocks = nullptr,
     .blocks = nullptr,
     .currentBlock = 0,
-    .blockSize = 65535
+    .blockSize = 65535,
+    .virtualMem = nullptr,
+    .virtualMemCounter = 0
 };
 bool IsDefaultAllocatorInitialized = false;
 
@@ -35,7 +37,9 @@ Allocator StaticAllocator =
     .freeBlocks = nullptr,
     .blocks = nullptr,
     .currentBlock = 0,
-    .blockSize = 65535
+    .blockSize = 65535,
+    .virtualMem = nullptr,
+    .virtualMemCounter = 0
 };
 bool IsStaticAllocatorInitialized = false;
 thread_local bool IsStaticAllocating = false;
@@ -61,6 +65,8 @@ InitAllocator(Allocator* alloc)
     alloc->currentBlock = alloc->freeBlocks[alloc->freeBlockCounter];
     alloc->blocks[alloc->currentBlock] = MemoryBlock(malloc(alloc->blockSize), alloc->currentBlock);
     alloc->freeBlockCounter--;
+    alloc->virtualMemCounter = 0;
+    alloc->virtualMem = (Allocator::VAlloc*)malloc(sizeof(Allocator::VAlloc) * 4096);
 }
 
 //------------------------------------------------------------------------------
@@ -89,6 +95,13 @@ DestroyAllocator(Allocator* alloc)
     alloc->blocks = nullptr;
     alloc->freeBlockCounter = 0;
     alloc->currentBlock = 0;
+
+    // Free up any dangling virtual memory ranges
+    for (size_t i = 0; i < alloc->virtualMemCounter; i++)
+    {
+        if (alloc->virtualMem[i].mem != nullptr)
+            vfree(alloc->virtualMem[i].mem, alloc->virtualMem[i].size);
+    }
 }
 
 //------------------------------------------------------------------------------

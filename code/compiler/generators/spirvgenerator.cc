@@ -6466,7 +6466,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     TStr typeArgs;
     TStr spvTypes;
 
-    StackArray<SPVArg> spvTypeArgs(func->parameters.size());
+    StackArray<SPVArg> spvTypeArgs(func->parameters.size);
     for (auto param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -6580,10 +6580,10 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     if (compiler->options.symbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
 
-    StackArray<SPVArg> memberTypeArray(struc->symbols.size());
+    StackArray<SPVArg> memberTypeArray(struc->symbols.size);
     uint32_t offset = 0;
     std::string memberTypes = "";
-    for (size_t i = 0; i < struc->symbols.size(); i++)
+    for (size_t i = 0; i < struc->symbols.size; i++)
     {
         Symbol* sym = struc->symbols[i];
         if (sym->symbolType == Symbol::SymbolType::VariableType)
@@ -6970,11 +6970,11 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         // Create arg list from argument expressions
         std::string argList = "";
 
-        StackArray<SPVArg> argListArray(callExpression->args.size());
-        for (size_t i = 0; i < callExpression->args.size(); i++)
+        StackArray<SPVArg> argListArray(callExpression->args.size);
+        for (size_t i = 0; i < callExpression->args.size; i++)
         {
             // If the function calls for a literal argument, the generator needs to extract the value as a literal result
-            if (resolvedCall->function->parameters[i]->type.literal)
+            if (resolvedCall->function->parameters.buf[i]->type.literal)
                 generator->literalExtract = true;
 
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
@@ -7022,9 +7022,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         std::vector<SPIRVResult> args;
 
         // Create arg list from argument expressions
-        for (size_t i = 0; i < callExpression->args.size(); i++)
+        for (size_t i = 0; i < callExpression->args.size; i++)
         {
-            Variable* var = resolvedCall->function->parameters[i];
+            Variable* var = resolvedCall->function->parameters.buf[i];
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             // If an argument is a literal, evalute it directly
@@ -7501,7 +7501,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         }
         else if (lhsSymbol->symbolType == Symbol::StructureType || lhsSymbol->symbolType == Symbol::EnumerationType)
         {
-            for (size_t i = 0; i < lhsSymbol->symbols.size(); i++)
+            for (size_t i = 0; i < lhsSymbol->symbols.size; i++)
             {
                 Symbol* sym = lhsSymbol->symbols[i];
                 if (sym->name == accessExpressionResolved->rightSymbol)
@@ -7919,7 +7919,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     else
                     {
                         auto [ty, accessStorage] = generator->accessChain.back();
-                        for (size_t i = 0; i < ty->symbols.size(); i++)
+                        for (size_t i = 0; i < ty->symbols.size; i++)
                         {
                             if (ty->symbols[i]->name == symbolExpression->symbol)
                             {
@@ -8209,7 +8209,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (stat->switchExpression->EvalValue(val))
     {
         generator->skipBreakContinue = true;
-        if (val.ui[0] < stat->caseExpressions.size())
+        if (val.ui[0] < stat->caseExpressions.size)
             GenerateStatementSPIRV(compiler, generator, stat->caseStatements[val.ui[0]]);
         else if (stat->defaultStatement != nullptr)
             GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
@@ -8234,9 +8234,9 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     std::vector<uint32_t> reservedCaseLabels;
 
 
-    StackArray<uint32_t> caseArgs(stat->caseExpressions.size());
-    StackArray<SPVArg> branchArgs(stat->caseExpressions.size());
-    for (size_t i = 0; i < stat->caseExpressions.size(); i++)
+    StackArray<uint32_t> caseArgs(stat->caseExpressions.size);
+    StackArray<SPVArg> branchArgs(stat->caseExpressions.size);
+    for (size_t i = 0; i < stat->caseExpressions.size; i++)
     {
         uint32_t caseLabel = generator->writer->Reserve();
         ValueUnion val;
@@ -8257,14 +8257,14 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
     generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
 
-    for (size_t i = 0; i < stat->caseStatements.size(); i++)
+    for (size_t i = 0; i < stat->caseStatements.size; i++)
     {
         generator->writer->Reserved(OpLabel, SPVWriter::Section::LocalFunction, reservedCaseLabels[i]);
         generator->blockOpen = true;
         if (stat->caseStatements[i] != nullptr)
         {
             if (!GenerateStatementSPIRV(compiler, generator, stat->caseStatements[i]))
-                if (i + 1 < stat->caseStatements.size())
+                if (i + 1 < stat->caseStatements.size)
                 {
                     generator->writer->Instruction(OpBranch, SPVWriter::Section::LocalFunction, SPVArg{reservedCaseLabels[i+1]});
                 }
@@ -8276,7 +8276,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         else
         {
-            if (i + 1 < stat->caseStatements.size())
+            if (i + 1 < stat->caseStatements.size)
             {
                 generator->writer->Instruction(OpBranch, SPVWriter::Section::LocalFunction, SPVArg{reservedCaseLabels[i+1]});
             }
@@ -8463,7 +8463,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(stat);
             generator->writer->PushScope();
-            const std::vector<Symbol*>& symbols = scope->symbols;
+            const PinnedArray<Symbol*>& symbols = scope->symbols;
             for (const auto& symbol : symbols)
             {
                 if (symbol->symbolType == GPULang::Symbol::SymbolType::VariableType)

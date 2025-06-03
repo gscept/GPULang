@@ -13,7 +13,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-CallExpression::CallExpression(Expression* function, const std::vector<Expression*>& args)
+CallExpression::CallExpression(Expression* function, const FixedArray<Expression*>& args)
     : function(function)
     , args(args)
 {
@@ -113,12 +113,12 @@ CallExpression::Resolve(Compiler* compiler)
                     candidate.simpleConversion = false;
                     candidate.function = ctorFun;
 
-                    if (ctorFun->parameters.len == this->thisResolved->argTypes.size())
+                    if (ctorFun->parameters.size == this->thisResolved->argTypes.size())
                     {
                         uint32_t numMatches = 0;
-                        for (size_t i = 0; i < ctorFun->parameters.len; i++)
+                        for (size_t i = 0; i < ctorFun->parameters.size; i++)
                         {
-                            Variable* param = ctorFun->parameters.buf[i];
+                            Variable* param = ctorFun->parameters[i];
                             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                             // There is no help if storage doesn't align
@@ -127,7 +127,7 @@ CallExpression::Resolve(Compiler* compiler)
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
                             {
-                                std::string conversion = Format("%s(%s)", ctorFun->parameters.buf[i]->type.ToString().c_str(), this->thisResolved->argumentTypes[i].ToString().c_str());
+                                std::string conversion = Format("%s(%s)", ctorFun->parameters[i]->type.ToString().c_str(), this->thisResolved->argumentTypes[i].ToString().c_str());
                                 Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                                 // No conversion available for this member, skip to next constructor
@@ -147,7 +147,7 @@ CallExpression::Resolve(Compiler* compiler)
                             }
                             numMatches++;
                         }
-                        if (numMatches == ctorFun->parameters.len)
+                        if (numMatches == ctorFun->parameters.size)
                         {
                             candidates.push_back(candidate);
                         }
@@ -162,21 +162,21 @@ CallExpression::Resolve(Compiler* compiler)
                 candidate.needsConversion = false;
                 candidate.simpleConversion = false;
 
-                if (fun->parameters.len == this->thisResolved->argTypes.size())
+                if (fun->parameters.size == this->thisResolved->argTypes.size())
                 {
                     uint32_t numMatches = 0;
-                    for (size_t i = 0; i < fun->parameters.len; i++)
+                    for (size_t i = 0; i < fun->parameters.size; i++)
                     {
-                        Variable* param = fun->parameters.buf[i];
+                        Variable* param = fun->parameters[i];
                         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                         // There is no help if storage doesn't align
                         if (!IsStorageCompatible(this->thisResolved->argStorages[i], paramResolved->storage))
                             continue;
                         
-                        if (fun->parameters.buf[i]->type != this->thisResolved->argumentTypes[i])
+                        if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
                         {
-                            std::string conversion = Format("%s(%s)", fun->parameters.buf[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
+                            std::string conversion = Format("%s(%s)", fun->parameters[i]->type.name.c_str(), this->thisResolved->argTypes[i]->name.c_str());
                             Symbol* componentConversionSymbol = compiler->GetSymbol(conversion);
 
                             // No conversion available for this member, skip to next constructor
@@ -196,7 +196,7 @@ CallExpression::Resolve(Compiler* compiler)
                         }
                         numMatches++;
                     }
-                    if (numMatches == fun->parameters.len)
+                    if (numMatches == fun->parameters.size)
                     {
                         candidates.push_back(candidate);
                     }
@@ -343,7 +343,7 @@ CallExpression::Resolve(Compiler* compiler)
         }
         
         size_t i = 0;
-        for (; i < this->thisResolved->function->parameters.len; i++)
+        for (; i < this->thisResolved->function->parameters.size; i++)
         {
             Variable* var = thisResolved->function->parameters.buf[i];
             Variable::__Resolved* varRes = Symbol::Resolved(var);
@@ -427,7 +427,7 @@ CallExpression::EvalValue(ValueUnion& out) const
     }
 
     // Splat the last value to the rest of the output value
-    if (this->args.size() > 0)
+    if (this->args.size > 0)
     {
         for (uint32_t i = index; i < out.columnSize * out.rowSize; i++)
         {

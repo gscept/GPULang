@@ -66,6 +66,7 @@ Function UInt4::elementAccessOperatorUInt;
 */
 UInt4::UInt4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 4;
     this->rowSize = 1;

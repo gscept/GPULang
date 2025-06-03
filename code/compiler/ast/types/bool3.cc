@@ -22,6 +22,7 @@ Function Bool3::elementAccessOperatorUInt;
 */
 Bool3::Bool3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Bool;
     this->columnSize = 3;
     this->rowSize = 1;

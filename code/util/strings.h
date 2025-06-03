@@ -173,6 +173,12 @@ inline size_t FragmentSize<std::string>(std::string str)
 }
 
 template<>
+inline size_t FragmentSize<std::string_view>(std::string_view str)
+{
+    return str.length();
+}
+
+template<>
 inline size_t FragmentSize<ConstantString>(ConstantString str)
 {
     return str.size;
@@ -230,6 +236,18 @@ template<>
 inline void FragmentString<const char*>(const char* arg, char* buf, size_t size)
 {
     memcpy(buf, arg, const_len(arg));
+}
+
+template<>
+inline void FragmentString<const std::string_view&>(const std::string_view& arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.data(), arg.length());
+}
+
+template<>
+inline void FragmentString<std::string_view>(std::string_view arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.data(), arg.length());
 }
 
 template<>
@@ -447,6 +465,14 @@ struct TransientString
     }
 
     template<>
+    void Append<std::string_view>(std::string_view arg)
+    {
+        memcpy(this->buf + this->size, arg.data(), arg.size());
+        this->size += arg.size();
+        this->buf[this->size] = '\0';
+    }
+
+    template<>
     void Append<unsigned int>(unsigned int arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%ul", arg);
@@ -638,6 +664,11 @@ struct GrowingString
         this->data[this->size] = '\0';
     }
 
+    std::string_view ToView()
+    {
+        return std::string_view(this->data, this->size);
+    }
+
     void Append(const char* str, size_t len)
     {
         if (str == nullptr)
@@ -654,6 +685,26 @@ struct GrowingString
         }
         memcpy(this->data + this->size, str, len * sizeof(char));
         this->size += len;
+        this->data[this->size] = '\0';
+    }
+
+    void Append(const char* begin, const char* end)
+    {
+        if (begin == nullptr)
+            return;
+        size_t strlen = (end - begin);
+        size_t newSize = this->size + strlen;
+        if (this->capacity <= newSize)
+        {
+            newSize = std::min((size_t)0xFFFFFFFu, newSize << 1);
+            char* newData = (char*)malloc(newSize * sizeof(char) + 2);
+            assert(newData != nullptr);
+            memcpy(newData, this->data, sizeof(char) * this->size);
+            this->data = newData;
+            this->capacity = newSize;
+        }
+        memcpy(this->data + this->size, begin, strlen * sizeof(char));
+        this->size += strlen;
         this->data[this->size] = '\0';
     }
 
@@ -696,6 +747,11 @@ struct GrowingString
     {
         // Don't free memory
         this->size = 0;
+    }
+
+    ~GrowingString()
+    {
+        free(this->data);
     }
 };
 
@@ -796,6 +852,15 @@ struct FixedString
         this->buf[this->len] = '\0';
     }
 
+    FixedString(const char* start, const char* end)
+    {
+        size_t len = (end - start) + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, start, len - 1);
+        this->buf[this->len] = '\0';
+    }
+
     explicit FixedString(const std::string& str)
     {
         size_t len = str.length() + 1;
@@ -844,6 +909,24 @@ struct FixedString
         this->buf = AllocArray<char>(len);
         this->len = len - 1;
         memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    void operator=(const TransientString& str)
+    {
+        size_t len = str.size + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.buf, len - 1);
+        this->buf[this->len] = '\0';
+    }
+
+    void operator=(const GrowingString& str)
+    {
+        size_t len = str.size + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data, len - 1);
         this->buf[this->len] = '\0';
     }
 

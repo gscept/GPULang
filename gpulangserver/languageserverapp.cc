@@ -793,11 +793,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             auto pp = static_cast<const GPULang::Preprocessor*>(sym);
             if (pp->type == GPULang::Preprocessor::Call)
             {
-                ret = pp->contents;
+                ret = pp->contents.c_str();
             }
             else if (pp->type == GPULang::Preprocessor::Include)
             {
-                ret = pp->contents;
+                ret = pp->contents.c_str();
             }
             else
             {

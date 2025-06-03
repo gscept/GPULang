@@ -33,6 +33,7 @@ Function Float::uintAssignOperator;
 */
 Float::Float()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->columnSize = 1;
     this->rowSize = 1;

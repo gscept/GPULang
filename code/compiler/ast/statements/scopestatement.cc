@@ -9,7 +9,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-ScopeStatement::ScopeStatement(const std::vector<Symbol*>& contents, const std::vector<Expression*>& unfinished)
+ScopeStatement::ScopeStatement(const PinnedArray<Symbol*>& contents, const std::vector<Expression*>& unfinished)
     : symbols(contents)
     , unfinished(unfinished)
 {

@@ -57,6 +57,7 @@ Function Int3::elementAccessOperatorUInt;
 */
 Int3::Int3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Int;
     this->columnSize = 3;
     this->rowSize = 1;

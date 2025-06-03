@@ -49,7 +49,7 @@ InitializerExpression::Resolve(Compiler* compiler)
     thisResolved->type = ty;
     inner.name = ty->name;
 
-    if (ty->symbols.size() != this->values.size())
+    if (ty->symbols.size != this->values.size())
     {
         compiler->Error("Struct must be fully initialized", this);
         return false;

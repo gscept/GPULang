@@ -224,7 +224,7 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
     if (bypass)
         scope = *(this->scopes.end() - 1);
     std::multimap<std::string, Symbol*>* lookup;
-    std::vector<Symbol*>* symbols;
+    PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
         Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -247,7 +247,7 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
     lookup->insert({ name, symbol });
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
     if (scope->type != Scope::ScopeType::Type)
-        symbols->push_back(symbol);
+        symbols->Append(symbol);
     return true;
 }
 
@@ -908,8 +908,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 output.renderStateNameOffset = 0;
             }
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.len);
-            output.annotationsCount = program->annotations.len;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size);
+            output.annotationsCount = program->annotations.size;
 
             size_t offset = output.annotationsOffset;
             for (const Annotation* annot : program->annotations)
@@ -1000,8 +1000,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.borderColor = resolved->borderColor;
             output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.len);
-            output.annotationsCount = sampler->annotations.len;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size);
+            output.annotationsCount = sampler->annotations.size;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : sampler->annotations)
@@ -1077,8 +1077,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             // end serializing variables
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.len);
-            output.annotationsCount = structure->annotations.len;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size);
+            output.annotationsCount = structure->annotations.size;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : structure->annotations)
@@ -1114,8 +1114,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     dynamicDataBlob.Write(size.ui);
                 }
             }
-            output.annotationsCount = var->annotations.len;
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.len);
+            output.annotationsCount = var->annotations.size;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size);
             if (resolved->usageBits.flags.isEntryPointParameter)
                 output.bindingScope = GPULang::BindingScope::VertexInput;
             else if (resolved->storage == Storage::Global)

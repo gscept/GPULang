@@ -21,6 +21,7 @@ Function Bool2::elementAccessOperatorUInt;
 */
 Bool2::Bool2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Bool;
     this->rowSize = 1;
     this->columnSize = 2;
