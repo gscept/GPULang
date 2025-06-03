@@ -9,6 +9,9 @@
 #include <Windows.h>
 #undef min
 #undef max
+#else
+#include <unistd.h>
+#include <sys/mman.h>
 #endif
 
 bool SYMBOL_STATIC_ALLOC = false;
@@ -123,6 +126,9 @@ ResetAllocator(Allocator* alloc)
     InitAllocator(alloc);
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
 void SetupSystem()
 {
 #if __WIN32__
@@ -160,15 +166,15 @@ vmalloc(size_t size)
 /**
 */
 void
-vfree(void* buf, size_t size)
+vfree(void* data, size_t size)
 {
 #if __WIN32__
-    bool res = VirtualFree(buf, 0, MEM_RELEASE);
+    bool res = VirtualFree(data, 0, MEM_RELEASE);
     assert(res);
 #else
-    int res = madvise(ptr, size, MADV_DONTNEED);
+    int res = madvise(data, size, MADV_DONTNEED);
     assert(res == 0);
-    res = munmap(ptr, size);
+    res = munmap(data, size);
     assert(res == 0);
 #endif
 }
@@ -200,7 +206,7 @@ vdecommit(void* data, size_t size)
 #else
     int res = madvise(data, size, MADV_DONTNEED);
     assert(res == 0);
-    res = mprotect(ptr, size, PROT_NONE);
+    res = mprotect(data, size, PROT_NONE);
     assert(res == 0);
 #endif
 }

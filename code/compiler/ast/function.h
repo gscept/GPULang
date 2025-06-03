@@ -20,6 +20,8 @@ extern std::vector<Symbol*> DefaultIntrinsics;
 struct Variable;
 struct Type;
 struct Statement;
+struct Structure;
+struct Enumeration;
 struct Function : public Symbol
 {
     /// constructor
@@ -206,8 +208,8 @@ struct Function : public Symbol
 
         bool isEntryPoint;
         bool isPrototype;
-
-        PinnedSet<Function*> visibilityMap = 0xFFFF;
+        
+        PinnedSet<Symbol*> visibleSymbols;
     };
 
     

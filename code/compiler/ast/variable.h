@@ -94,8 +94,6 @@ struct Variable : public Symbol
 
         ShaderUsage visibilityBits;
         bool builtin = false;
-        
-        PinnedSet<Function*> visibilityMap = 0xFFFF;
     };
     __Resolved* thisResolved;
 };

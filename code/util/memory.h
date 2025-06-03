@@ -23,6 +23,33 @@ extern bool SYMBOL_STATIC_ALLOC;
 namespace GPULang
 {
 
+//------------------------------------------------------------------------------
+/**
+*/
+constexpr size_t
+operator"" _KB(const unsigned long long val)
+{
+    return val * 1024;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+constexpr size_t
+operator"" _MB(const unsigned long long val)
+{
+    return val * 1024 * 1024;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+constexpr size_t
+operator"" _GB(const unsigned long long val)
+{
+    return val * 1024 * 1024 * 1024;
+}
+
 struct MemoryBlock
 {
     MemoryBlock()
@@ -122,7 +149,7 @@ struct SPVArg;
 */
 template<typename T, typename ... ARGS>
 inline T*
-__AllocInternal(Allocator* allocator, ARGS... args)
+__AllocInternal(Allocator* allocator, ARGS&&... args)
 {
     const size_t size = sizeof(T);
     const size_t alignment = alignof(T);
@@ -145,7 +172,7 @@ __AllocInternal(Allocator* allocator, ARGS... args)
     block->allocs++;
 
     block->iterator = (char*)alignedIterator + size;
-    new (alignedIterator) T(args...);
+    new (alignedIterator) T(std::forward<ARGS>(args)...);
     return (T*)alignedIterator;
 }
 
@@ -272,7 +299,7 @@ DeallocVirtual(void* alloc)
 */
 template<typename T, typename ... ARGS>
 inline T*
-StaticAlloc(ARGS... args)
+StaticAlloc(ARGS&&... args)
 {
     if (!IsStaticAllocatorInitialized)
     {
@@ -291,7 +318,7 @@ StaticAlloc(ARGS... args)
 */
 template<typename T, typename ... ARGS>
 inline T*
-Alloc(ARGS... args)
+Alloc(ARGS&&... args)
 {
     Allocator* Allocator = CurrentAllocator;
     if (IsStaticAllocating)
@@ -359,10 +386,13 @@ StaticAllocArray(std::size_t num)
     return ret;
 }
 
-static const size_t ThreadLocalHeapSize = 0xFFFF;
+static const size_t ThreadLocalHeapSize = 16_MB;
 extern thread_local char ThreadLocalHeap[];
 extern thread_local void* ThreadLocalHeapPtr;
 
+//------------------------------------------------------------------------------
+/**
+*/
 template<typename TYPE>
 TYPE* AllocStack(size_t count)
 {
@@ -379,6 +409,9 @@ TYPE* AllocStack(size_t count)
     return (TYPE*)alignedPtr;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
 template<typename TYPE>
 void DeallocStack(size_t count, TYPE* buf)
 {
