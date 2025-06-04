@@ -7214,7 +7214,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(initExpression->values.size());
+    StackArray<SPVArg> argList(initExpression->values.size);
 
     std::string initializer = "";
     for (Expression* expr : initExpression->values)
@@ -7270,7 +7270,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(sym->values.size());
+    StackArray<SPVArg> argList(sym->values.size);
     std::string initializer = "";
     for (auto value : sym->values)
     {

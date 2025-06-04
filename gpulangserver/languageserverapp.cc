@@ -250,8 +250,8 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     Clear(file->result, file->alloc);
     GPULang::MakeAllocatorCurrent(&file->alloc);
     GPULang::Compiler::Options options;
-    //options.emitTimings = true;
-    
+    options.emitTimings = true;
+
     GPULangValidate(file->f, context->includePaths, options, file->result);
 
     // sort symbols on line and starting point
