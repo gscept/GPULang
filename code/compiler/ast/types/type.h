@@ -42,7 +42,6 @@ this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 activeFunction->documentation = "Constructor of " #type;\
-this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 parameters.Clear();\
@@ -84,6 +83,7 @@ this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\
 activeFunction->parameters = parameters;\
+if (!this->constructors.empty()) { assert(this->constructors.back() != activeFunction && "Constructor added twice"); }\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_SWIZZLE(type, size, mask)\
@@ -510,7 +510,7 @@ struct Type : public Symbol
     std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;
     std::vector<Symbol*> swizzleSymbols;
-    PinnedArray<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols = 0xFFF;
     std::vector<Symbol*> constructors;
 
     Scope scope;

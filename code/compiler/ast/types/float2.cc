@@ -52,6 +52,7 @@ Float2::Float2()
     __IMPLEMENT_CTOR(ctor, f32x2, f32x2);
     __ADD_FUNCTION_PARAM(x, f32);
     __ADD_FUNCTION_PARAM(y, f32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, f32x2, f32x2, val);

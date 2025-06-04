@@ -49,12 +49,14 @@ Mat3x4::Mat3x4()
     __ADD_FUNCTION_PARAM(m21, f32);
     __ADD_FUNCTION_PARAM(m22, f32);
     __ADD_FUNCTION_PARAM(m23, f32);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_CTOR(vectorConstructor, f32x3x4, f32x3x4);
     __ADD_FUNCTION_PARAM(r0, f32x3);
     __ADD_FUNCTION_PARAM(r1, f32x3);
     __ADD_FUNCTION_PARAM(r2, f32x3);
     __ADD_FUNCTION_PARAM(r3, f32x3);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x3x4, f32x3x4);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x3x4, f32x3x4);

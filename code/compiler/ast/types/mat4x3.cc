@@ -50,11 +50,13 @@ Mat4x3::Mat4x3()
     __ADD_FUNCTION_PARAM(m30, f32);
     __ADD_FUNCTION_PARAM(m31, f32);
     __ADD_FUNCTION_PARAM(m32, f32);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_CTOR(vectorConstructor, f32x4x3, f32x4x3);
     __ADD_FUNCTION_PARAM(r0, f32x4);
     __ADD_FUNCTION_PARAM(r1, f32x4);
     __ADD_FUNCTION_PARAM(r2, f32x4);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x4x3, f32x4x3);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x4x3, f32x4x3);

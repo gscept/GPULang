@@ -439,7 +439,7 @@ public:
 
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
-    StackArray<Variable*> list = 256;
+    FixedArray<Variable*> vars;
     GPULangParser::AnnotationContext *annotationContext = nullptr;
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;

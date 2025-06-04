@@ -30,11 +30,9 @@ Bool::Bool()
     this->category = Type::ScalarCategory;
 
     __IMPLEMENT_CTOR_1(ctor_Int, b8, b8, i32);
-    __ADD_CONSTRUCTOR()
 
     // setup uint constructor
     __IMPLEMENT_CTOR_1(ctor_UInt, b8, b8, u32);
-    __ADD_CONSTRUCTOR()
     
     __IMPLEMENT_FUNCTION_1(ororOperator, operator||, b8, b8);
     __IMPLEMENT_FUNCTION_1(andandOperator, operator&&, b8, b8);

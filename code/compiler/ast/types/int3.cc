@@ -68,6 +68,7 @@ Int3::Int3()
     __ADD_FUNCTION_PARAM(x, i32);
     __ADD_FUNCTION_PARAM(y, i32);
     __ADD_FUNCTION_PARAM(z, i32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, i32x3, i32x3, val);
@@ -78,7 +79,8 @@ Int3::Int3()
 #define X(type, ctor, arg0, arg1)\
     __IMPLEMENT_CTOR(ctor, i32x3, i32x3)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
-    __ADD_FUNCTION_PARAM(arg_1, arg1)
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_CONSTRUCTOR();
 
     INT3_CTOR2_LIST
 #undef X

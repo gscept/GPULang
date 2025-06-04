@@ -61,6 +61,7 @@ UInt2::UInt2()
     __IMPLEMENT_CTOR(ctor, u32x2, u32x2);
     __ADD_FUNCTION_PARAM(x, u32);
     __ADD_FUNCTION_PARAM(y, u32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, u32x2, u32x2, val);

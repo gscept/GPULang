@@ -19,7 +19,7 @@ namespace GPULang
 struct ArrayInitializerExpression : public Expression
 {
     /// constructor
-    ArrayInitializerExpression(const std::vector<Expression*>& values);
+    ArrayInitializerExpression(const FixedArray<Expression*>& values);
     /// Destructor
     virtual ~ArrayInitializerExpression();
 
@@ -35,7 +35,7 @@ struct ArrayInitializerExpression : public Expression
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
     
-    std::vector<Expression*> values;
+    FixedArray<Expression*> values;
 
     struct __Resolved : public Expression::__Resolved
     {

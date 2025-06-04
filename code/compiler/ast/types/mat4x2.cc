@@ -45,10 +45,12 @@ Mat4x2::Mat4x2()
     __ADD_FUNCTION_PARAM(m21, f32);
     __ADD_FUNCTION_PARAM(m30, f32);
     __ADD_FUNCTION_PARAM(m31, f32);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_CTOR(vectorConstructor, f32x4x2, f32x4x2);
     __ADD_FUNCTION_PARAM(r0, f32x4);
     __ADD_FUNCTION_PARAM(r1, f32x4);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x4x2, f32x4x2);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x4x2, f32x4x2);

@@ -150,26 +150,31 @@ template<typename TYPE>
 struct PinnedArray
 {
     PinnedArray()
-    : data(nullptr)
-    , memspace(0)
-    , size(0)
-    , capacity(0)
+        : data(nullptr)
+        , maxAllocationCount(0)
+        , size(0)
+        , capacity(0)
     {
         
     }
     
     PinnedArray(size_t maxAllocationCount)
-    : size(0)
-    , capacity(0)
+        : size(0)
+        , capacity(0)
     {
-        this->data = (TYPE*)AllocVirtual<TYPE>(maxAllocationCount);
-        this->memspace = sizeof(TYPE) * maxAllocationCount;
+        this->alloc = AllocVirtual<TYPE>(maxAllocationCount);
+        this->data = (TYPE*)this->alloc->mem;
+        this->maxAllocationCount = maxAllocationCount;
     }
     
     PinnedArray(const PinnedArray<TYPE>& rhs)
     {
-        this->data = (TYPE*)vmalloc(rhs.memspace);
-        this->memspace = rhs.memspace;
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = AllocVirtual<TYPE>(rhs.maxAllocationCount);
+        if (rhs.alloc != nullptr)
+            this->data = (TYPE*)this->alloc->mem;
+        this->maxAllocationCount = rhs.maxAllocationCount;
         this->capacity = 0;
         this->size = 0;
         this->Grow(rhs.size);
@@ -189,42 +194,54 @@ struct PinnedArray
     
     PinnedArray(PinnedArray<TYPE>&& rhs)
     {
-        this->data = rhs.data;
-        this->memspace = rhs.memspace;
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = rhs.alloc;
+        if (rhs.alloc != nullptr)
+            this->data = (TYPE*)this->alloc->mem;
+        this->maxAllocationCount = rhs.maxAllocationCount;
         this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.alloc = nullptr;
         rhs.data = nullptr;
-        rhs.memspace = 0;
+        rhs.maxAllocationCount = 0;
         rhs.size = 0;
+        rhs.capacity = 0;
     }
     
     ~PinnedArray()
     {
-        /*
-         // If not trivially destructible, run destructors for every item
-         if (!std::is_trivially_destructible<TYPE>::value)
-         {
-         for (auto& val : *this)
-         (&val)->~TYPE();
-         }
-         /if (this->data != nullptr)
-         DeallocVirtual(this->data);
-         */
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->data = nullptr;
     }
     
     void operator=(PinnedArray<TYPE>&& rhs)
     {
-        this->data = rhs.data;
-        this->memspace = rhs.memspace;
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = rhs.alloc;
+        if (rhs.alloc != nullptr)
+            this->data = (TYPE*)this->alloc->mem;
+        this->maxAllocationCount = rhs.maxAllocationCount;
         this->size = rhs.size;
+        this->capacity = rhs.capacity;
+        rhs.alloc = nullptr;
         rhs.data = nullptr;
-        rhs.memspace = 0;
+        rhs.maxAllocationCount = 0;
         rhs.size = 0;
+        rhs.capacity = 0;
     }
     
     void operator=(const PinnedArray<TYPE>& rhs)
     {
-        this->data = (TYPE*)vmalloc(rhs.memspace);
-        this->memspace = rhs.memspace;
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = AllocVirtual<TYPE>(rhs.maxAllocationCount);
+        if (rhs.alloc != nullptr)
+            this->data = (TYPE*)this->alloc->mem;
+        this->capacity = 0;
+        this->maxAllocationCount = rhs.maxAllocationCount;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
         {
@@ -242,8 +259,12 @@ struct PinnedArray
     
     void operator=(const StackArray<TYPE>& rhs)
     {
-        this->data = (TYPE*)vmalloc(rhs.size * sizeof(TYPE));
-        this->memspace = rhs.size * sizeof(TYPE);
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = AllocVirtual<TYPE>(rhs.size);
+        this->data = (TYPE*)this->alloc->mem;
+        this->maxAllocationCount = rhs.size * sizeof(TYPE);
+        this->capacity = 0;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
         {
@@ -261,18 +282,19 @@ struct PinnedArray
     
     void Grow(size_t numNeededMoreElements)
     {
-        assert((this->size < this->memspace / sizeof(TYPE)) && "PinnedArray over allocation is not allowed");
+        assert(this->maxAllocationCount > 0 && "PinnedArray not initialized");
+        assert((this->size < this->maxAllocationCount) && "PinnedArray over allocation is not allowed");
         if (this->size + numNeededMoreElements > this->capacity)
         {
             size_t numCommitedPages = ceil((this->capacity * sizeof(TYPE)) / (float)SystemPageSize);
             size_t numNeededPages = ceil(((this->capacity + numNeededMoreElements) * sizeof(TYPE)) / (float)SystemPageSize);
             if (numNeededPages > numCommitedPages)
             {
-                size_t numBytesToCommit = align((numNeededPages - numCommitedPages) * sizeof(TYPE), SystemPageSize);
+                size_t numBytesToCommit = (numNeededPages - numCommitedPages) * SystemPageSize;
                 if (numBytesToCommit > 0)
                 {
                     vcommit(this->data + this->capacity, numBytesToCommit);
-                    this->capacity += numBytesToCommit / sizeof(TYPE);
+                    this->capacity = (numNeededPages * SystemPageSize) / sizeof(TYPE);
                 }
             }
         }
@@ -376,9 +398,10 @@ struct PinnedArray
             return this->data + this->size;
     }
     
-    size_t memspace;
+    size_t maxAllocationCount;
     size_t size, capacity;
-    TYPE* data;
+    TYPE* data = nullptr;
+    Allocator::VAlloc* alloc = nullptr;
 };
 
 //------------------------------------------------------------------------------

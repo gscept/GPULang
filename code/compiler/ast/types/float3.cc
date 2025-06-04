@@ -58,6 +58,7 @@ Float3::Float3()
     __ADD_FUNCTION_PARAM(x, f32);
     __ADD_FUNCTION_PARAM(y, f32);
     __ADD_FUNCTION_PARAM(z, f32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, f32x3, f32x3, val);
@@ -68,7 +69,8 @@ Float3::Float3()
 #define X(type, ctor, arg0, arg1)\
     __IMPLEMENT_CTOR(ctor, f32x3, f32x3)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
-    __ADD_FUNCTION_PARAM(arg_1, arg1)
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_CONSTRUCTOR();
 
     FLOAT3_CTOR2_LIST
 #undef X

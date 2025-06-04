@@ -38,7 +38,6 @@ Bool3::Bool3()
 
     // setup constructor for single component
     __IMPLEMENT_CTOR_1(ctorSingleValue, b8x3, b8x3, b8);
-    __ADD_CONSTRUCTOR()
     
     __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x3, b8x3);
     __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x3, b8x3);

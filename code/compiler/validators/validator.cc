@@ -1657,7 +1657,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
         else if (entryType == RenderState::__Resolved::BlendConstantsType)
         {
             InitializerExpression* init = static_cast<InitializerExpression*>(assignEntry->right);
-            if (init->values.size() != 4)
+            if (init->values.size != 4)
             {
                 compiler->Error(Format("Blend constants must be an initializer of 4 values"), symbol);
                 return false;

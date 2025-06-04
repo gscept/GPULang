@@ -82,12 +82,14 @@ struct Allocator
 
     struct VAlloc
     {
-        void* mem;
-        size_t index;
-        size_t size;
+        void* mem = nullptr;
+        uint32_t index = 0;
+        size_t size = 0;
+        Allocator* alloc;
     };
     VAlloc* virtualMem;
-    size_t virtualMemCounter;
+    uint32_t freeVirtualMemSlotCounter;
+    uint32_t* freeVirtualMemSlots;
 };
 
 inline Allocator CreateAllocator()
@@ -100,7 +102,8 @@ inline Allocator CreateAllocator()
         .currentBlock = 0,
         .blockSize = 65535,
         .virtualMem = nullptr,
-        .virtualMemCounter = 0
+        .freeVirtualMemSlotCounter = 0,
+        .freeVirtualMemSlots = nullptr
     };
 }
 
@@ -172,7 +175,10 @@ __AllocInternal(Allocator* allocator, ARGS&&... args)
     block->allocs++;
 
     block->iterator = (char*)alignedIterator + size;
-    new (alignedIterator) T(std::forward<ARGS>(args)...);
+    if (std::is_trivially_constructible<T>::value)
+        memset(alignedIterator, 0x0, sizeof(T));
+    else
+        new (alignedIterator) T(std::forward<ARGS>(args)...);
     return (T*)alignedIterator;
 }
 
@@ -204,7 +210,10 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
     block->allocs++;
 
     block->iterator = (char*)alignedIterator + size;
-    new (alignedIterator) T[num];
+    if (std::is_trivially_constructible<T>::value)
+        memset(alignedIterator, 0x0, sizeof(T) * num);
+    else
+        new (alignedIterator) T[num];
     return (T*)alignedIterator;
 }
 
@@ -237,9 +246,11 @@ Dealloc(Allocator* allocator, void* mem)
 /**
 */
 template<typename T>
-inline T*
+inline Allocator::VAlloc*
 AllocVirtual(size_t num)
 {
+    if (num == 0)
+        return nullptr;
     Allocator* Allocator = CurrentAllocator;
     if (IsStaticAllocating)
     {
@@ -257,41 +268,27 @@ AllocVirtual(size_t num)
             Allocator = &DefaultAllocator;
         }
     }
-    assert(Allocator->virtualMemCounter < 4096);
-    T* obj = (T*)vmalloc(num * sizeof(T));
-    Allocator->virtualMem[Allocator->virtualMemCounter].mem = obj;
-    Allocator->virtualMem[Allocator->virtualMemCounter].index = Allocator->virtualMemCounter;
-    Allocator->virtualMem[Allocator->virtualMemCounter].size = num * sizeof(T);
-    Allocator->virtualMemCounter++;
-    return obj;
+    assert(Allocator->freeVirtualMemSlotCounter > 0);
+    uint32_t vmemIndex = Allocator->freeVirtualMemSlots[Allocator->freeVirtualMemSlotCounter--];
+    Allocator::VAlloc* ret = &Allocator->virtualMem[vmemIndex];
+    ret->mem = (T*)vmalloc(num * sizeof(T));
+    ret->index = vmemIndex;
+    ret->size = num * sizeof(T);
+    ret->alloc = Allocator;
+    return ret;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 inline void
-DeallocVirtual(void* alloc)
+DeallocVirtual(Allocator::VAlloc* alloc)
 {
-    Allocator* Allocator = CurrentAllocator;
-    if (IsStaticAllocating)
-    {
-        Allocator = &StaticAllocator;
-    }
-    else
-    {
-        if (Allocator == nullptr)
-        {
-            if (!IsDefaultAllocatorInitialized)
-            {
-                InitAllocator(&DefaultAllocator);
-                IsDefaultAllocatorInitialized = true;
-            }
-            Allocator = &DefaultAllocator;
-        }
-    }
-    auto al = (Allocator::VAlloc*)alloc;
-    vfree(Allocator->virtualMem[al->index].mem, Allocator->virtualMem[al->index].size);
-    Allocator->virtualMem[al->index].mem = nullptr;
+    Allocator* Allocator = alloc->alloc;
+    assert(alloc->mem != nullptr);
+    Allocator->freeVirtualMemSlots[++Allocator->freeVirtualMemSlotCounter] = alloc->index;
+    vfree(alloc->mem, alloc->size);
+    *alloc = Allocator::VAlloc();
 }
 
 //------------------------------------------------------------------------------
@@ -405,8 +402,12 @@ TYPE* AllocStack(size_t count)
     void* alignedPtr = std::align(alignment, size, ThreadLocalHeapPtr, sizeLeft);
     assert(alignedPtr != nullptr);
     ThreadLocalHeapPtr = (char*)alignedPtr + count * sizeof(TYPE);
-    memset(alignedPtr, 0x0, size);
-    return (TYPE*)alignedPtr;
+    TYPE* ret = (TYPE*)alignedPtr;
+    if (std::is_trivially_constructible<TYPE>::value)
+        memset(ret, 0x0, sizeof(TYPE) * count);
+    else
+        new (ret) TYPE[count];
+    return ret;
 }
 
 //------------------------------------------------------------------------------

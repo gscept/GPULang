@@ -34,11 +34,10 @@ Bool4::Bool4()
     __ADD_FUNCTION_PARAM(y, b8);
     __ADD_FUNCTION_PARAM(z, b8);
     __ADD_FUNCTION_PARAM(w, b8);
-    __ADD_CONSTRUCTOR()
+    __ADD_CONSTRUCTOR();
 
     // setup constructor for single component
     __IMPLEMENT_CTOR_1(ctorSingleValue, b8x4, b8x4, b8);
-    __ADD_CONSTRUCTOR()
     
     __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x4, b8x4);
     __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x4, b8x4);
