@@ -1273,14 +1273,13 @@ escape_newline:
                                 if (startOfMacroWord != macroContentsEnd)
                                 {
                                     // Add everything leading up to the identifier to the output
-                                    GrowingString word;
-                                    word.Append(startOfMacroWord, endOfMacroWord);
+                                    std::string_view word(startOfMacroWord, endOfMacroWord);
                                     macroContentsIt = endOfMacroWord;
 
-                                    auto argIt = argumentMap.find(word.ToView());
+                                    auto argIt = argumentMap.find(word);
                                     if (argIt == argumentMap.end())
                                     {
-                                        auto defIt = definitions.Find(word.ToView());
+                                        auto defIt = definitions.Find(word);
                                         if (defIt == definitions.end())
                                         {
                                             contents.Append(word);
@@ -1322,10 +1321,8 @@ escape_newline:
                                 if (macroContentsEnd == startOfMacroIdentifier)
                                     break;
 
-                                GrowingString word;
-                                word.Append(startOfMacroIdentifier, endOfMacroIdentifier);
-
-                                auto defIt = definitions.Find(word.ToView());
+                                std::string_view word(startOfMacroIdentifier, endOfMacroIdentifier);
+                                auto defIt = definitions.Find(word);
                                 if (defIt == definitions.end())
                                 {
                                     contents.Append(word);
