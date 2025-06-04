@@ -14,7 +14,7 @@ namespace GPULang
 struct ScopeStatement : public Statement
 {
     /// constructor
-    ScopeStatement(const PinnedArray<Symbol*>& contents, const std::vector<Expression*>& unfinished);
+    ScopeStatement(PinnedArray<Symbol*>&& contents, const std::vector<Expression*>& unfinished);
     /// destructor
     virtual ~ScopeStatement();
 

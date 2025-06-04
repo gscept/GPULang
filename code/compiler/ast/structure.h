@@ -56,8 +56,6 @@ struct Structure : public Type
 
         Function* storageFunction = nullptr;
         Function* loadFunction = nullptr;
-
-        PinnedSet<Function*> visibilityMap = 0xFFFF;
     };
 };
 

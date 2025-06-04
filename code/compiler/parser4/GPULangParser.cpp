@@ -1814,7 +1814,6 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
           StackArray<std::string> names(256);
           StackArray<Expression*> valueExpressions(256);
           StackArray<Symbol::Location> locations(256);
-          antlrcpp::downCast<VariablesContext *>(_localctx)->list =  256; // Allocate 256 elements
           unsigned initCounter = 0;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
       
@@ -4287,8 +4286,8 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
   enterRule(_localctx, 54, GPULangParser::RuleScopeStatement);
 
           antlrcpp::downCast<ScopeStatementContext *>(_localctx)->tree =  nullptr;
-          PinnedArray<Symbol*> contents;
-  	    std::vector<Expression*> unfinished;
+          PinnedArray<Symbol*> contents(0xFFFFFF);
+  	std::vector<Expression*> unfinished;
           Symbol::Location location;
           Symbol::Location ends;
       
@@ -6458,7 +6457,7 @@ GPULangParser::SuffixExpressionContext* GPULangParser::suffixExpression() {
               setState(954);
               match(GPULangParser::RP);
 
-                          CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(args));
+                          CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(FixedArray<Expression*>(args)));
                           expr->location = antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->e1->tree->location;
                           antlrcpp::downCast<SuffixExpressionContext *>(_localctx)->tree =  expr;
                       

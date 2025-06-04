@@ -6452,7 +6452,8 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Function::__Resolved* funcResolved = Symbol::Resolved(func);
     if (func != generator->entryPoint)
     {
-        if (funcResolved->visibilityMap.Find(generator->entryPoint) == funcResolved->visibilityMap.end())
+        Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+        if (entryRes->visibleSymbols.Find(func) == entryRes->visibleSymbols.end())
             return;
     }
 
@@ -6565,9 +6566,10 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
 
-    if (strucResolved->visibilityMap.Find(generator->entryPoint) == strucResolved->visibilityMap.end())
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(struc) == entryRes->visibleSymbols.end())
         return 0xFFFFFFFF;
-
+    
     uint32_t numVariables = 0;
     for (Symbol* sym : struc->symbols)
     {
@@ -6650,8 +6652,10 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
 {
     SamplerState* sampler = static_cast<SamplerState*>(symbol);
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
-    if (samplerResolved->visibilityMap.Find(generator->entryPoint) == samplerResolved->visibilityMap.end())
-        return SPIRVResult();
+    
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(sampler) == entryRes->visibleSymbols.end())
+        return SPIRVResult::Invalid();
     
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
     Type::FullType fullType = Type::FullType{ "sampler" };
@@ -6774,11 +6778,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
-    //if (varResolved->storage == Storage::Global)
-    //{
-        if (varResolved->visibilityMap.Find(generator->entryPoint) == varResolved->visibilityMap.end())
-            return SPIRVResult::Invalid();
-    //}
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(var) == entryRes->visibleSymbols.end())
+        return SPIRVResult::Invalid();
 
     SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(varResolved->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
     

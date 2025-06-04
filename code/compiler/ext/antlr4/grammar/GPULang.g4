@@ -276,7 +276,7 @@ typeDeclaration
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
 variables
-    returns[ StackArray<Variable*> list ]
+    returns[ StackArray<Variable*> list = 256 ]
     @init
     {
         StackArray<Annotation*> annotations(32);
@@ -284,7 +284,6 @@ variables
         StackArray<std::string> names(256);
         StackArray<Expression*> valueExpressions(256);
         StackArray<Symbol::Location> locations(256);
-        $list = 256; // Allocate 256 elements
         unsigned initCounter = 0;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
@@ -722,8 +721,8 @@ scopeStatement
     @init
     {
         $tree = nullptr;
-        PinnedArray<Symbol*> contents;
-	    std::vector<Expression*> unfinished;
+        PinnedArray<Symbol*> contents(0xFFFFFF);
+	std::vector<Expression*> unfinished;
         Symbol::Location location;
         Symbol::Location ends;
     }:
@@ -1134,7 +1133,7 @@ suffixExpression
             )? 
         ')'
         {
-            CallExpression* expr = Alloc<CallExpression>($tree, std::move(args));
+            CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
             expr->location = $e1.tree->location;
             $tree = expr;
         }

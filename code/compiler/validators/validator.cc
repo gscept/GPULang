@@ -1324,6 +1324,10 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits = 0x0;
                 compiler->shaderValueExpressions[entryType].value = true;
                 compiler->currentState.function = fun;
+                
+                Function::__Resolved* funRes = Symbol::Resolved(fun);
+                if (funRes->visibleSymbols.data.capacity == 0)
+                    funRes->visibleSymbols = 0xFFFFFF; // initialize lookup
 
                 // Temporarily store original variable values
                 std::unordered_map<Variable*, Expression*> originalVariableValues;
@@ -3734,13 +3738,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ScopeStatementType:
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
-            //compiler->PushScope(GPULang::Compiler::Scope::ScopeType::Local, scope);
             for (auto* statement : scope->symbols)
             {
-                //compiler->AddSymbol(symbol->name, symbol);
                 res |= this->ResolveVisibility(compiler, statement);
             }
-            //compiler->PopScope();
             break;
         }
         case Symbol::ForStatementType:
@@ -4069,7 +4070,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto funResolved = Symbol::Resolved(fun);
 
             // Add this function to the visibility map
-            funResolved->visibilityMap.Insert(compiler->currentState.function);
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(fun);
 
             for (auto& param : fun->parameters)
                 res |= this->ResolveVisibility(compiler, param);
@@ -4092,7 +4094,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto var = static_cast<Variable*>(symbol);
             auto varResolved = Symbol::Resolved(var);
-            varResolved->visibilityMap.Insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(var);
+            
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4155,7 +4160,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto sampler = static_cast<SamplerState*>(symbol);
             auto sampResolved = Symbol::Resolved(sampler);
-            sampResolved->visibilityMap.Insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(sampler);
+            
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4209,7 +4217,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto struc = static_cast<Structure*>(symbol);
             auto strucResolved = Symbol::Resolved(struc);
-            strucResolved->visibilityMap.Insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(struc);
 
             for (auto mem : struc->symbols)
                 res |= this->ResolveVisibility(compiler, mem);

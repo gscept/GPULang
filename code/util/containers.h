@@ -16,10 +16,10 @@ namespace GPULang
 
 //------------------------------------------------------------------------------
 /**
-    A StackArray lives on the thread-local 'stack' buffer which allows for dirt cheap linear allocation.
-
-    Frees its memory at destruction
-*/
+ A StackArray lives on the thread-local 'stack' buffer which allows for dirt cheap linear allocation.
+ 
+ Frees its memory at destruction
+ */
 template<typename TYPE>
 struct StackArray
 {
@@ -35,7 +35,7 @@ struct StackArray
             this->capacity = count;
         }
     }
-
+    
     StackArray(StackArray&& rhs) noexcept
     {
         this->ptr = rhs.ptr;
@@ -45,15 +45,16 @@ struct StackArray
         rhs.size = 0;
         rhs.capacity = 0;
     }
-
+    
     ~StackArray()
     {
         if (this->ptr != nullptr)
             DeallocStack(this->capacity, this->ptr);
+        this->ptr = nullptr;
         this->capacity = 0;
         this->size = 0;
     }
-
+    
     void operator=(StackArray&& rhs) noexcept
     {
         this->ptr = rhs.ptr;
@@ -63,58 +64,58 @@ struct StackArray
         rhs.size = 0;
         rhs.capacity = 0;
     }
-
+    
     void Append(const TYPE& t)
     {
         assert(this->size + 1 <= this->capacity);
         this->ptr[this->size++] = t;
     }
-
+    
     const TYPE& operator[](const size_t index) const
     {
         return this->ptr[index];
     }
-
+    
     TYPE& operator[](const size_t index)
     {
         return this->ptr[index];
     }
-
+    
     void Clear()
     {
         this->size = 0;
     }
-
+    
     bool Full()
     {
         return this->size == this->capacity;
     }
-
+    
     const TYPE& front() const
     {
         return this->buf[0];
     }
-
+    
     TYPE& front()
     {
         return this->buf[0];
     }
-
+    
     const TYPE& back() const
     {
         return this->ptr[this->size - 1];
     }
-
+    
     TYPE& back()
     {
         return this->ptr[this->size - 1];
     }
-
+    
     TYPE* begin()
     {
         return this->ptr;
     }
-
+    
     TYPE* end()
     {
         if (this->ptr == nullptr)
@@ -122,12 +123,12 @@ struct StackArray
         else
             return this->ptr + this->size;
     }
-
+    
     const TYPE* begin() const
     {
         return this->ptr;
     }
-
+    
     const TYPE* end() const
     {
         if (this->ptr == nullptr)
@@ -140,35 +141,37 @@ struct StackArray
 
 //------------------------------------------------------------------------------
 /**
-    A PinnedArray is an array which can grow in size and retain pointer validity by using virtual memory
-    to commit new pages as it needs them.
-
-    Frees its memory at destruction.
-*/
+ A PinnedArray is an array which can grow in size and retain pointer validity by using virtual memory
+ to commit new pages as it needs them.
+ 
+ Frees its memory at destruction.
+ */
 template<typename TYPE>
 struct PinnedArray
 {
     PinnedArray()
-        : data(nullptr)
-        , memspace(0)
-        , size(0)
-        , capacity(0)
+    : data(nullptr)
+    , memspace(0)
+    , size(0)
+    , capacity(0)
     {
-
+        
     }
-
+    
     PinnedArray(size_t maxAllocationCount)
-        : size(0)
-        , capacity(0)
+    : size(0)
+    , capacity(0)
     {
         this->data = (TYPE*)AllocVirtual<TYPE>(maxAllocationCount);
         this->memspace = sizeof(TYPE) * maxAllocationCount;
     }
-
+    
     PinnedArray(const PinnedArray<TYPE>& rhs)
     {
         this->data = (TYPE*)vmalloc(rhs.memspace);
         this->memspace = rhs.memspace;
+        this->capacity = 0;
+        this->size = 0;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
         {
@@ -183,7 +186,7 @@ struct PinnedArray
             }
         }
     }
-
+    
     PinnedArray(PinnedArray<TYPE>&& rhs)
     {
         this->data = rhs.data;
@@ -193,21 +196,21 @@ struct PinnedArray
         rhs.memspace = 0;
         rhs.size = 0;
     }
-
+    
     ~PinnedArray()
     {
         /*
-        // If not trivially destructible, run destructors for every item
-        if (!std::is_trivially_destructible<TYPE>::value)
-        {
-            for (auto& val : *this)
-                (&val)->~TYPE();
-        }
-        /if (this->data != nullptr)
-            DeallocVirtual(this->data);
-        */
+         // If not trivially destructible, run destructors for every item
+         if (!std::is_trivially_destructible<TYPE>::value)
+         {
+         for (auto& val : *this)
+         (&val)->~TYPE();
+         }
+         /if (this->data != nullptr)
+         DeallocVirtual(this->data);
+         */
     }
-
+    
     void operator=(PinnedArray<TYPE>&& rhs)
     {
         this->data = rhs.data;
@@ -217,7 +220,7 @@ struct PinnedArray
         rhs.memspace = 0;
         rhs.size = 0;
     }
-
+    
     void operator=(const PinnedArray<TYPE>& rhs)
     {
         this->data = (TYPE*)vmalloc(rhs.memspace);
@@ -236,7 +239,7 @@ struct PinnedArray
             }
         }
     }
-
+    
     void operator=(const StackArray<TYPE>& rhs)
     {
         this->data = (TYPE*)vmalloc(rhs.size * sizeof(TYPE));
@@ -255,7 +258,7 @@ struct PinnedArray
             }
         }
     }
-
+    
     void Grow(size_t numNeededMoreElements)
     {
         assert((this->size < this->memspace / sizeof(TYPE)) && "PinnedArray over allocation is not allowed");
@@ -274,13 +277,13 @@ struct PinnedArray
             }
         }
     }
-
+    
     void Append(const TYPE& element)
     {
         this->Grow(1);
         this->data[this->size++] = element;
     }
-
+    
     void Append(const PinnedArray<TYPE>& elements)
     {
         this->Grow(elements.size);
@@ -297,13 +300,13 @@ struct PinnedArray
             }
         }
     }
-
+    
     void Erase(TYPE* it)
     {
         assert(it >= this->data && it <= this->data + this->size);
         memmove(it, it + 1, this->size - (this->data + this->size - it));
     }
-
+    
     void Prepend(const PinnedArray<TYPE>& elements)
     {
         this->Grow(elements.size);
@@ -322,12 +325,12 @@ struct PinnedArray
             }
         }
     }
-
+    
     void Clear()
     {
         this->size = 0;
     }
-
+    
     void Insert(const TYPE& element, size_t index)
     {
         assert(index < this->size);
@@ -336,22 +339,22 @@ struct PinnedArray
         this->data[index] = element;
         this->size++;
     }
-
+    
     const TYPE& operator[](const size_t index) const
     {
         return this->data[index];
     }
-
+    
     TYPE& operator[](const size_t index)
     {
         return this->data[index];
     }
-
+    
     TYPE* begin()
     {
         return this->data;
     }
-
+    
     TYPE* end()
     {
         if (this->data == nullptr)
@@ -359,12 +362,12 @@ struct PinnedArray
         else
             return this->data + this->size;
     }
-
+    
     const TYPE* begin() const
     {
         return this->data;
     }
-
+    
     const TYPE* end() const
     {
         if (this->data == nullptr)
@@ -372,7 +375,7 @@ struct PinnedArray
         else
             return this->data + this->size;
     }
-
+    
     size_t memspace;
     size_t size, capacity;
     TYPE* data;
@@ -380,11 +383,11 @@ struct PinnedArray
 
 //------------------------------------------------------------------------------
 /**
-    StaticArray allocates it's memory from the global Static allocator, use with objects with permanent life time.
-    The StaticArray can be initialized by size or from a StackArray.
-
-    Does not need to free its memory.
-*/
+ StaticArray allocates it's memory from the global Static allocator, use with objects with permanent life time.
+ The StaticArray can be initialized by size or from a StackArray.
+ 
+ Does not need to free its memory.
+ */
 extern size_t LeakedStaticArrayBytes;
 template<typename T>
 struct StaticArray
@@ -392,9 +395,9 @@ struct StaticArray
     T* buf = nullptr;
     size_t capacity = 0;
     size_t size = 0;
-
+    
     StaticArray() {}
-
+    
     StaticArray(const size_t size)
     {
         if (this->buf != nullptr)
@@ -406,7 +409,7 @@ struct StaticArray
         this->size = 0;
         this->buf = StaticAllocArray<T>(size);
     }
-
+    
     void operator=(const StackArray<T>& vec)
     {
         if (this->buf != nullptr)
@@ -416,7 +419,7 @@ struct StaticArray
         }
         this->capacity = vec.size;
         this->buf = StaticAllocArray<T>(vec.size);
-
+        
         if (vec.size > 0)
         {
             // If mempcy suffices, do it
@@ -435,12 +438,12 @@ struct StaticArray
             }
         }
     }
-
+    
     StaticArray(const StackArray<T>& vec)
     {
         *this = vec;
     }
-
+    
     template <typename U>
     StaticArray(const StackArray<U>& vec)
     {
@@ -452,7 +455,7 @@ struct StaticArray
         }
         this->capacity = vec.capacity;
         this->buf = StaticAllocArray<T>(vec.capacity);
-
+        
         if (vec.size > 0)
         {
             // Otherwise, run copy constructors for every element
@@ -462,22 +465,22 @@ struct StaticArray
             }
         }
     }
-
+    
     const T& operator[](const size_t index) const
     {
         return this->buf[index];
     }
-
+    
     T& operator[](const size_t index)
     {
         return this->buf[index];
     }
-
+    
     T* begin()
     {
         return this->buf;
     }
-
+    
     T* end()
     {
         if (this->buf == nullptr)
@@ -485,12 +488,12 @@ struct StaticArray
         else
             return this->buf + this->size;
     }
-
+    
     const T* begin() const
     {
         return this->buf;
     }
-
+    
     const T* end() const
     {
         if (this->buf == nullptr)
@@ -502,14 +505,14 @@ struct StaticArray
 
 //------------------------------------------------------------------------------
 /**
-    FixedArray is an array of fixed size (not growing, like PinnedArray) which can be used to consume
-    either a StackArray or a StaticArray.
-
-    Consumption of a StaticArray is free in terms of memory, and will make this FixedArray point to 
-    memory allocated with the Static allocator.
-
-    Does not need to free its memory explicitly.
-*/
+ FixedArray is an array of fixed size (not growing, like PinnedArray) which can be used to consume
+ either a StackArray or a StaticArray.
+ 
+ Consumption of a StaticArray is free in terms of memory, and will make this FixedArray point to
+ memory allocated with the Static allocator.
+ 
+ Does not need to free its memory explicitly.
+ */
 extern size_t LeakedFixedArrayBytes;
 template<typename T>
 struct FixedArray
@@ -517,9 +520,9 @@ struct FixedArray
     T* buf = nullptr;
     size_t capacity = 0;
     size_t size = 0;
-
+    
     FixedArray() {}
-
+    
     FixedArray(const size_t size)
     {
         if (this->buf != nullptr)
@@ -531,7 +534,7 @@ struct FixedArray
         this->size = 0;
         this->buf = AllocArray<T>(size);
     }
-
+    
     FixedArray(const std::vector<T>& vec)
     {
         if (this->buf != nullptr)
@@ -541,7 +544,7 @@ struct FixedArray
         }
         this->capacity = vec.size();
         this->buf = AllocArray<T>(vec.size());
-
+        
         if (!vec.empty())
         {
             // If mempcy suffices, do it
@@ -560,7 +563,7 @@ struct FixedArray
             }
         }
     }
-
+    
     FixedArray(FixedArray<T>&& rhs)
     {
         if (this->buf != nullptr)
@@ -575,12 +578,12 @@ struct FixedArray
         rhs.capacity = 0;
         rhs.size = 0;
     }
-
+    
     FixedArray(const FixedArray<T>& vec)
     {
         *this = vec;
     }
-
+    
     void operator=(const FixedArray<T>& vec)
     {
         if (this->buf != nullptr)
@@ -590,7 +593,7 @@ struct FixedArray
         }
         this->capacity = vec.capacity;
         this->buf = AllocArray<T>(vec.capacity);
-
+        
         if (vec.size > 0)
         {
             // If mempcy suffices, do it
@@ -609,14 +612,14 @@ struct FixedArray
             }
         }
     }
-
+    
     void operator=(const StaticArray<T>& vec)
     {
         this->buf = vec.buf;
         this->size = vec.size;
         this->capacity = vec.size; // intentional to avoid more appending
     }
-
+    
     void operator=(const StackArray<T>& vec)
     {
         if (this->buf != nullptr)
@@ -626,7 +629,7 @@ struct FixedArray
         }
         this->capacity = vec.size;
         this->buf = AllocArray<T>(vec.size);
-
+        
         if (vec.size > 0)
         {
             // If mempcy suffices, do it
@@ -645,12 +648,12 @@ struct FixedArray
             }
         }
     }
-
+    
     FixedArray(const StackArray<T>& vec)
     {
         *this = vec;
     }
-
+    
     template<typename U>
     void operator=(const StackArray<U>& vec)
     {
@@ -662,7 +665,7 @@ struct FixedArray
         }
         this->capacity = vec.size;
         this->buf = AllocArray<T>(vec.size);
-
+        
         if (vec.size > 0)
         {
             // Otherwise, run copy constructors for every element
@@ -672,7 +675,7 @@ struct FixedArray
             }
         }
     }
-
+    
     ~FixedArray()
     {
         if (this->buf != nullptr)
@@ -681,13 +684,13 @@ struct FixedArray
             LeakedFixedArrayBytes += this->capacity;
         }
     }
-
+    
     void Append(const T& t)
     {
         assert(this->size < this->capacity);
         this->buf[this->size++] = t;
     }
-
+    
     // Allow stack allocated arrays to insert themselves, given enough space is available
     void Append(const StackArray<T>& vec)
     {
@@ -707,42 +710,42 @@ struct FixedArray
             }
         }
     }
-
+    
     const T& operator[](const size_t index) const
     {
         return this->buf[index];
     }
-
+    
     T& operator[](const size_t index)
     {
         return this->buf[index];
     }
-
+    
     const T& front() const
     {
         return this->buf[0];
     }
-
+    
     T& front()
     {
         return this->buf[0];
     }
-
+    
     const T& back() const
     {
         return this->buf[this->size - 1];
     }
-
+    
     T& back()
     {
         return this->buf[this->size - 1];
     }
-
+    
     T* begin()
     {
         return this->buf;
     }
-
+    
     T* end()
     {
         if (this->buf == nullptr)
@@ -750,12 +753,12 @@ struct FixedArray
         else
             return this->buf + this->size;
     }
-
+    
     const T* begin() const
     {
         return this->buf;
     }
-
+    
     const T* end() const
     {
         if (this->buf == nullptr)
@@ -767,27 +770,27 @@ struct FixedArray
 
 //------------------------------------------------------------------------------
 /**
-    Much like PinnedArray, a PinnedMap implements a binary search and sort for it's items,
-    which are stored as key-value pairs.
-
-    Frees its memory upon destruction.
-*/
+ Much like PinnedArray, a PinnedMap implements a binary search and sort for it's items,
+ which are stored as key-value pairs.
+ 
+ Frees its memory upon destruction.
+ */
 template <typename K, typename V>
 struct PinnedMap
 {
     using item = std::pair<K, V>;
     PinnedMap()
-        : searchValid(true)
+    : searchValid(true)
     {
-
+        
     }
-
+    
     PinnedMap(size_t maxAllocationCount)
-        : searchValid(true)
+    : searchValid(true)
     {
         this->data = PinnedArray<item>(maxAllocationCount);
     }
-
+    
     void Insert(const K& key, const V& value)
     {
         this->data.Append(std::make_pair(key, value));
@@ -796,7 +799,7 @@ struct PinnedMap
             this->Sort();
         }
     }
-
+    
     item* Emplace(const K& key)
     {
         assert(this->searchValid);
@@ -804,32 +807,32 @@ struct PinnedMap
         this->Sort();
         return this->Find(key);
     }
-
+    
     void Erase(const K& key)
     {
         auto it = this->Find(key);
         this->data.Erase(it);
     }
-
+    
     void BeginBulkAdd()
     {
         this->searchValid = false;
     }
-
+    
     void EndBulkAdd()
     {
         this->Sort();
     }
-
+    
     void Sort()
     {
         std::sort(this->data.begin(), this->data.end(), [](const item& lhs, const item& rhs)
-        {
+                  {
             return lhs.first < rhs.first;
         });
         this->searchValid = true;
     }
-
+    
     item* Find(const K& key)
     {
         assert(this->searchValid);
@@ -839,11 +842,11 @@ struct PinnedMap
             bool operator()(const item& item, const K& key) { return item.first < key; }
         };
         auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
-
+        
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
-
+    
     const item* Find(const K& key) const
     {
         assert(this->searchValid);
@@ -857,43 +860,43 @@ struct PinnedMap
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
-
+    
     void Clear()
     {
         this->data.Clear();
     }
-
+    
     item* begin()
     {
         return this->data.begin();
     }
-
+    
     item* end()
     {
         return this->data.end();
     }
-
+    
     const item* begin() const
     {
         return this->data.begin();
     }
-
+    
     const item* end() const
     {
         return this->data.end();
     }
-
+    
     bool searchValid;
     PinnedArray<item> data;
 };
 
 //------------------------------------------------------------------------------
 /**
-    StaticMap is a map which unlike PinnedMap has a fixed size, and it's life time is the duration of the
-    application.
-
-    Does not need to free its memory.
-*/
+ StaticMap is a map which unlike PinnedMap has a fixed size, and it's life time is the duration of the
+ application.
+ 
+ Does not need to free its memory.
+ */
 template <typename K, typename V>
 struct StaticMap
 {
@@ -906,13 +909,13 @@ struct StaticMap
         {
             this->data[this->size++] = std::make_pair(item.first, item.second);
         }
-
+        
         std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
-        {
+                  {
             return lhs.first < rhs.first;
         });
     }
-
+    
     const item* Find(const K& key) const
     {
         struct Comp
@@ -921,11 +924,11 @@ struct StaticMap
             bool operator()(const item& item, const K& key) { return item.first < key; }
         };
         auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
-
+        
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
-
+    
     template <typename U>
     const item* Find(const U& key) const
     {
@@ -935,41 +938,41 @@ struct StaticMap
             bool operator()(const item& item, const U& key) { return item.first < key; }
         };
         auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
-
+        
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
-
+    
     item* begin()
     {
         return this->data;
     }
-
+    
     item* end()
     {
         return this->data + this->size;
     }
-
+    
     const item* begin() const
     {
         return this->data;
     }
-
+    
     const item* end() const
     {
         return this->data + this->size;
     }
-
+    
     item* data;
     size_t size;
 };
 
 //------------------------------------------------------------------------------
 /**
-    StaticSet is a non-growing Set which has to be initialized to the items it needs. 
-    
-    Does not need to free its memory.
-*/
+ StaticSet is a non-growing Set which has to be initialized to the items it needs.
+ 
+ Does not need to free its memory.
+ */
 template <typename K>
 struct StaticSet
 {
@@ -981,12 +984,12 @@ struct StaticSet
         {
             this->data[this->size++] = item;
         }
-
+        
         std::sort(this->data, this->data + this->size, [](const K& lhs, const K& rhs)
-        {
+                  {
             return lhs < rhs;
         });
-
+        
         // Remove duplicates
         for (size_t i = 0; i < this->size; i++)
         {
@@ -996,15 +999,15 @@ struct StaticSet
                 {
                     assert(false && "Duplicate entries in StaticSet are not allowed");
                     /* If we want to allow this, fix the set like so:
-                    memmove(this->data + i, this->data + i + 1, (this->size - i) * sizeof(K));
-                    i--;
-                    this->size--;
-                    */
+                     memmove(this->data + i, this->data + i + 1, (this->size - i) * sizeof(K));
+                     i--;
+                     this->size--;
+                     */
                 }
             }
         }
     }
-
+    
     const K* Find(const K& key) const
     {
         struct Comp
@@ -1012,53 +1015,53 @@ struct StaticSet
             bool operator()(const K& key, const K& item) { return key < item; }
         };
         auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
-
+        
         auto [beginRange, endRange] = it;
         return beginRange;
     }
-
+    
     K* begin()
     {
         return this->data;
     }
-
+    
     K* end()
     {
         return this->data + this->size;
     }
-
+    
     const K* begin() const
     {
         return this->data;
     }
-
+    
     const K* end() const
     {
         return this->data + this->size;
     }
-
+    
     K* data;
     size_t size;
 };
 
 //------------------------------------------------------------------------------
 /**
-    Like PinnedMap and PinnedArray, PinnedSet is a growing set type
-*/
+ Like PinnedMap and PinnedArray, PinnedSet is a growing set type
+ */
 template <typename K>
 struct PinnedSet
 {
     PinnedSet()
-        : searchValid(true)
+    : searchValid(true)
     {
     }
-
+    
     PinnedSet(size_t maxAllocationCount)
-        : searchValid(true)
+    : searchValid(true)
     {
         this->data = PinnedArray<K>(maxAllocationCount);
     }
-
+    
     void Insert(const K& key)
     {
         this->data.Append(key);
@@ -1067,7 +1070,7 @@ struct PinnedSet
             this->Sort();
         }
     }
-
+    
     void Insert(const StaticSet<K>& set)
     {
         this->BeginBulkAdd();
@@ -1077,7 +1080,7 @@ struct PinnedSet
         }
         this->EndBulkAdd();
     }
-
+    
     template<typename K2>
     void Insert(const StaticSet<K2>& set)
     {
@@ -1088,17 +1091,126 @@ struct PinnedSet
         }
         this->EndBulkAdd();
     }
-
+    
     void BeginBulkAdd()
     {
         this->searchValid = false;
     }
-
+    
     void EndBulkAdd()
     {
         this->Sort();
     }
+    
+    void Sort()
+    {
+        std::sort(this->data.begin(), this->data.end(), [](const K& lhs, const K& rhs)
+                  {
+            return lhs < rhs;
+        });
+        this->searchValid = true;
+    }
+    
+    void Clear()
+    {
+        this->data.Clear();
+    }
+    
+    const K* Find(const K& key) const
+    {
+        struct Comp
+        {
+            bool operator()(const K& key, const K& item) { return key < item; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange;
+    }
+    
+    size_t size()
+    {
+        return this->data.size;
+    }
+    
+    K* begin()
+    {
+        return this->data.begin();
+    }
+    
+    K* end()
+    {
+        return this->data.end();
+    }
+    
+    const K* begin() const
+    {
+        return this->data.begin();
+    }
+    
+    const K* end() const
+    {
+        return this->data.end();
+    }
+    
+    bool searchValid;
+    PinnedArray<K> data;
+};
 
+template<typename K>
+struct FixedSet
+{
+    FixedSet()
+        : searchValid(true)
+    {
+    }
+    
+    FixedSet(size_t maxAllocationCount)
+        : searchValid(true)
+    {
+        this->data = FixedArray<K>(maxAllocationCount);
+    }
+    
+    void Insert(const K& key)
+    {
+        this->data.Append(key);
+        if (this->searchValid)
+        {
+            this->Sort();
+        }
+    }
+    
+    void Insert(const StaticSet<K>& set)
+    {
+        this->BeginBulkAdd();
+        for (auto& val : set)
+        {
+            this->Insert(val);
+        }
+        this->EndBulkAdd();
+    }
+    
+    template<typename K2>
+    void Insert(const StaticSet<K2>& set)
+    {
+        this->BeginBulkAdd();
+        for (auto& val : set)
+        {
+            this->Insert(K(val));
+        }
+        this->EndBulkAdd();
+    }
+    
+    void BeginBulkAdd()
+    {
+        this->searchValid = false;
+    }
+    
+    void EndBulkAdd()
+    {
+        this->Sort();
+    }
+    
     void Sort()
     {
         std::sort(this->data.begin(), this->data.end(), [](const K& lhs, const K& rhs)
@@ -1107,12 +1219,12 @@ struct PinnedSet
         });
         this->searchValid = true;
     }
-
+    
     void Clear()
     {
         this->data.Clear();
     }
-
+    
     const K* Find(const K& key) const
     {
         struct Comp
@@ -1120,38 +1232,38 @@ struct PinnedSet
             bool operator()(const K& key, const K& item) { return key < item; }
         };
         auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
-
+        
         auto [beginRange, endRange] = it;
         return beginRange;
     }
-
+    
     size_t size()
     {
         return this->data.size;
     }
-
+    
     K* begin()
     {
         return this->data.begin();
     }
-
+    
     K* end()
     {
         return this->data.end();
     }
-
+    
     const K* begin() const
     {
         return this->data.begin();
     }
-
+    
     const K* end() const
     {
         return this->data.end();
     }
-
+    
     bool searchValid;
-    PinnedArray<K> data;
+    FixedArray<K> data;
 };
 
 } // namespace GPULang
