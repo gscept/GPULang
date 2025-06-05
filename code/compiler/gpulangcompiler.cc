@@ -180,6 +180,7 @@ GPULangPreprocess(
     bool comment = false;
     level->lineCounter = 0;
 
+
     static auto has_char = [](const char* begin, const char* end, char c) -> uint8_t
     {
         int len = min(end - begin, 8);
@@ -365,6 +366,30 @@ GPULangPreprocess(
         return end;
     };
 
+    static auto argListStart = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '(')
+                return start+1;
+            start++;
+        }
+        return end;
+    };
+
+    static auto argListEnd = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == ')')
+                return start;
+            start++;
+        }
+        return end;
+    };
+
     static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions) -> int
     {
         struct Token
@@ -533,11 +558,49 @@ GPULangPreprocess(
                         auto defIt = definitions.Find(ident);
                         if (defIt == definitions.end())
                         {
-                            diagnostics.push_back(DIAGNOSTIC(Format("Unknown identifier *.%s", ident.length(), ident.data())));
-                            return -1;
+                            // This is a built-in macro to check if a value is defined or not
+                            if (ident == "defined")
+                            {
+                                const char* argStart = argListStart(identEnd, end);
+                                if (argStart != end)
+                                {
+                                    const char* argEnd = argListEnd(argStart, end);
+                                    identEnd = argEnd+1;
+                                    auto definedIt = definitions.Find(std::string_view(argStart, argEnd));
+                                    if (definedIt != definitions.end())
+                                        t.value = 1;
+                                    else
+                                        t.value = 0;
+                                    t.op = false;
+                                    unconsumedIntegers++;
+                                    result.Append(t);
+                                }
+                                else
+                                {
+                                    diagnostics.push_back(DIAGNOSTIC(Format("Malformed 'defined'")));
+                                    return -1;
+                                }
+                            }
+                            else
+                            {
+                                // Undefined arguments are simply resolved to 0
+                                t.value = 0;
+                                t.op = false;
+                                unconsumedIntegers++;
+                                result.Append(t);
+                            }
                         }
                         else
                         {
+                            // TODO: Must actually invoke the macro here, with arguments which must be parsed
+                            const char* argStart = argListStart(identEnd, end);
+                            if (argStart != end)
+                            {
+                                const char* argEnd = argListEnd(argStart, end);
+                                identEnd = argEnd + 1;
+                                stride += argEnd - argStart;
+                            }
+
                             // If identifier of a macro, evaluate the contents of said macro
                             t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), level, diagnostics, definitions);
                             t.op = false;
@@ -1057,7 +1120,12 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "elif", 4) == 0)
                 {
-                    ELIFDEFSTACKPUSH()
+                    if (ifStack.empty())
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
+                        ret = false;
+                        goto end;
+                    }
                     
                     StackArray<Symbol::Location> argLocs(1);
                     StackArray<std::string> args(1);
@@ -1066,16 +1134,13 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
-                    int val = eval(endOfDirective, eol, level, diagnostics, definitions);
+                    int val = ifStack.back() ? false : eval(endOfDirective, eol, level, diagnostics, definitions);
                     SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
 
-                    if (ifStack.empty())
-                    {
-                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
-                        ret = false;
-                        goto end;
-                    }
-
+                    pp->args = args;
+                    pp->argLocations = argLocs;
+                    
+                    // TODO: Fix, this won't work because there is no concept of begin-end of an if-elif-endif chain
                     ifStack.pop_back();
                     if (val != 0)
                     {
@@ -1086,8 +1151,6 @@ escape_newline:
                         ifStack.push_back(false);
                     }
 
-                    pp->args = args;
-                    pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
@@ -1185,6 +1248,19 @@ escape_newline:
                 const char* startOfWord = identifierBegin(columnIt, eol);
                 const char* endOfWord = identifierEnd(startOfWord, eol);
 
+                auto argEnd = [](const char* begin, const char* end)
+                {
+                    const char* start = begin;
+                    while (start != end)
+                    {
+                        if (start[0] == ',' || start[0] == ')')
+                            return start;
+                        start++;
+                    }
+                    
+                    return end;
+                };
+
                 // Add whatever comes before the first identifier
                 output.append(columnIt, startOfWord);
                 if (startOfWord != eol)
@@ -1204,38 +1280,15 @@ escape_newline:
                             bool valid = false;
                             while (argumentIt != eol)
                             {
-                                if (argumentIt[0] == ')') // end of list
+                                const char* argumentEnd = argEnd(argumentIt, eol);
+                                args.Append(std::string_view(argumentIt, argumentEnd));
+                                argumentIt = argumentEnd + 1;
+                                if (argumentEnd[0] == ')') // end of list
                                 {
                                     // Move new start to after argument list
                                     valid = true;
                                     break;
                                 }
-                                const char* argumentEnd = identifierEnd(argumentIt, eol);
-
-                                // Check argument for validity
-                                if (!GPULangValidIdentifierStart(argumentIt[0])) // First argument may not be a number
-                                {
-                                    diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentIt[0])));
-                                    ret = false;
-                                    goto end;
-                                }
-                                else
-                                {
-                                    // If first char is valid, check the rest
-                                    const char* argumentCharIt = argumentIt + 1;
-                                    while (argumentCharIt != argumentEnd)
-                                    {
-                                        if (!GPULangValidIdentifierChar(argumentCharIt[0]))
-                                        {
-                                            diagnostics.push_back(DIAGNOSTIC(Format("Invalid argument character '%c'", argumentCharIt[0])));
-                                            ret = false;
-                                            goto end;
-                                        }
-                                        argumentCharIt++;
-                                    }
-                                }
-                                args.Append(std::string_view(argumentIt, argumentEnd));
-                                argumentIt = nextArg(argumentIt, eol);
                             }
                             if (!valid)
                             {
@@ -1243,7 +1296,7 @@ escape_newline:
                                 ret = false;
                                 goto end;
                             }
-                            endOfWord = argumentIt + 1;
+                            endOfWord = argumentIt;
                             std::map<std::string_view, std::string_view> argumentMap;
 
                             // Warn if mismatch
