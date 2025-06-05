@@ -391,7 +391,8 @@ extern thread_local void* ThreadLocalHeapPtr;
 /**
 */
 template<typename TYPE>
-TYPE* AllocStack(size_t count)
+TYPE* 
+AllocStack(size_t count)
 {
     const char* HeapStart = (const char*)ThreadLocalHeap;
     const char* HeapEnd = HeapStart + ThreadLocalHeapSize;
@@ -414,11 +415,17 @@ TYPE* AllocStack(size_t count)
 /**
 */
 template<typename TYPE>
-void DeallocStack(size_t count, TYPE* buf)
+void 
+DeallocStack(size_t count, TYPE* buf)
 {
     const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
     TYPE* topPtr = (TYPE*)(HeapPtr - count * sizeof(TYPE));
     assert(topPtr == buf);
+    if (!std::is_trivially_destructible<TYPE>::value)
+    {
+        for (size_t i = 0; i < count; i++)
+            (buf + i)->~TYPE();
+    }
     ThreadLocalHeapPtr = topPtr;
 }
 

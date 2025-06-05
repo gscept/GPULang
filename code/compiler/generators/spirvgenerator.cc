@@ -966,7 +966,7 @@ struct SPVWriter
         if (this->outputText)
         {
             TStr extension = TStr::Compact("\"", str, "\"");
-            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension).ToString());
+            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension));
             this->texts[(uint32_t)Section::ExtImports].Append("\n");
         }
         this->imports.Insert(str, c);
@@ -1136,7 +1136,7 @@ struct SPVWriter
             TStr argsStr;
             for (uint32_t arg : args)
                 argsStr.Concatenate<false>(SPVArg(arg), " ");
-            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr).ToString());
+            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr));
             texts[(uint32_t)section].Append("\n");
         }
     }

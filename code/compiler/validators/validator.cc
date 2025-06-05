@@ -2873,13 +2873,12 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->storageFunction->name = "bufferStore";
                     currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
 
-                    StackArray<Variable*> args(2);
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.Append(attr);
+                    arg->attributes = { attr };
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();
@@ -2891,9 +2890,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg2->type.modifiers.clear();
                     arg2->type.modifierValues.clear();
                     arg2->type.mut = false;
-                    args.Append(arg);
-                    args.Append(arg2);
-                    currentStrucResolved->storageFunction->parameters = args;
+                    currentStrucResolved->storageFunction->parameters = { arg, arg2 };
                     this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
                 }
                 if (currentStrucResolved->loadFunction == nullptr)
@@ -2902,20 +2899,18 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->loadFunction->name = "bufferLoad";
                     currentStrucResolved->loadFunction->returnType = Type::FullType{currentStructure->name};
 
-                    StackArray<Variable*> args(1);
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.Append(attr);
+                    arg->attributes = { attr };
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();
                     arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
                     
-                    args.Append(arg);
-                    currentStrucResolved->loadFunction->parameters = args;
+                    currentStrucResolved->loadFunction->parameters = { arg };
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   
                 }
             }

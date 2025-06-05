@@ -870,6 +870,15 @@ struct FixedString
         this->buf[this->len] = '\0';
     }
 
+    explicit FixedString(const std::string_view& str)
+    {
+        size_t len = str.length() + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.data(), len - 1);
+        this->buf[this->len] = '\0';
+    }
+
     explicit FixedString(const StaticString& str)
     {
         this->buf = str.buf;
@@ -896,38 +905,67 @@ struct FixedString
 
     void operator=(const char* buf)
     {
-        size_t len = strlen(buf) + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, buf, len - 1);
-        this->buf[this->len] = '\0';
+        size_t len = strlen(buf);
+        this->len = len;
+        this->buf = nullptr;
+        if (len > 0)
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, buf, len);
+            this->buf[this->len] = '\0';
+        }
     }
 
     void operator=(const std::string& str)
     {
-        size_t len = str.length() + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.data(), len - 1);
-        this->buf[this->len] = '\0';
+        size_t len = str.length();
+        this->len = len;
+        this->buf = nullptr;
+        if (!str.empty())
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.data(), len);
+            this->buf[this->len] = '\0';
+        }
+    }
+
+    void operator=(const std::string_view& str)
+    {
+        size_t len = str.length();
+        this->len = len;
+        this->buf = nullptr;
+        if (!str.empty())
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.data(), len);
+            this->buf[this->len] = '\0';
+        }
     }
 
     void operator=(const TransientString& str)
     {
-        size_t len = str.size + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.buf, len - 1);
-        this->buf[this->len] = '\0';
+        size_t len = str.size;
+        this->len = len;
+        this->buf = nullptr;
+        if (str.size != 0)
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.buf, len);
+            this->buf[this->len] = '\0';
+        }
     }
 
     void operator=(const GrowingString& str)
     {
-        size_t len = str.size + 1;
-        this->buf = AllocArray<char>(len);
-        this->len = len - 1;
-        memcpy(this->buf, str.data, len - 1);
-        this->buf[this->len] = '\0';
+        size_t len = str.size;
+        this->len = len;
+        this->buf = nullptr;
+        if (str.size != 0)
+        {
+            this->buf = AllocArray<char>(len + 1);
+            memcpy(this->buf, str.data, len);
+            this->buf[this->len] = '\0';
+        }
     }
 
     FixedString(FixedString&& rhs) noexcept

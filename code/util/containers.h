@@ -294,6 +294,10 @@ struct PinnedArray
                 if (numBytesToCommit > 0)
                 {
                     vcommit(this->data + this->capacity, numBytesToCommit);
+                    if (std::is_trivially_default_constructible<TYPE>::value)
+                        memset(this->data + this->capacity, 0x0, numBytesToCommit);
+                    else
+                        new (this->data + this->capacity) TYPE[numBytesToCommit / sizeof(TYPE)];
                     this->capacity = (numNeededPages * SystemPageSize) / sizeof(TYPE);
                 }
             }
@@ -420,6 +424,22 @@ struct StaticArray
     size_t size = 0;
     
     StaticArray() {}
+
+    StaticArray(const std::initializer_list<T>& list)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedStaticArrayBytes += this->capacity;
+        }
+        this->buf = StaticAllocArray<T>(list.size());
+        this->capacity = list.size();
+        this->size = 0;
+        for (auto& val : list)
+        {
+            this->buf[this->size++] = val;
+        }
+    }
     
     StaticArray(const size_t size)
     {
@@ -431,6 +451,22 @@ struct StaticArray
         this->capacity = size;
         this->size = 0;
         this->buf = StaticAllocArray<T>(size);
+    }
+
+    void operator=(const std::initializer_list<T>& list)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedStaticArrayBytes += this->capacity;
+        }
+        this->buf = StaticAllocArray<T>(list.size());
+        this->capacity = list.size();
+        this->size = 0;
+        for (auto& val : list)
+        {
+            this->buf[this->size++] = val;
+        }
     }
     
     void operator=(const StackArray<T>& vec)
@@ -545,6 +581,22 @@ struct FixedArray
     size_t size = 0;
     
     FixedArray() {}
+
+    FixedArray(const std::initializer_list<T>& list)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->capacity;
+        }
+        this->buf = AllocArray<T>(list.size());
+        this->capacity = list.size();
+        this->size = 0;
+        for (auto& val : list)
+        {
+            this->buf[this->size++] = val;
+        }
+    }
     
     FixedArray(const size_t size)
     {
@@ -606,6 +658,22 @@ struct FixedArray
     {
         *this = vec;
     }
+
+    void operator=(const std::initializer_list<T>& list)
+    {
+        if (this->buf != nullptr)
+        {
+            // leak memory
+            LeakedFixedArrayBytes += this->capacity;
+        }
+        this->buf = AllocArray<T>(list.size());
+        this->capacity = list.size();
+        this->size = 0;
+        for (auto& val : list)
+        {
+            this->buf[this->size++] = val;
+        }
+    }
     
     void operator=(const FixedArray<T>& vec)
     {
@@ -616,6 +684,7 @@ struct FixedArray
         }
         this->capacity = vec.capacity;
         this->buf = AllocArray<T>(vec.capacity);
+        this->size = 0;
         
         if (vec.size > 0)
         {
@@ -635,12 +704,32 @@ struct FixedArray
             }
         }
     }
+
+    void operator=(FixedArray<T>&& vec)
+    {
+        this->buf = vec.buf;
+        this->capacity = vec.capacity;
+        this->size = vec.size;
+        vec.buf = nullptr;
+        vec.capacity = 0;
+        vec.size = 0;
+    }
     
     void operator=(const StaticArray<T>& vec)
     {
         this->buf = vec.buf;
         this->size = vec.size;
         this->capacity = vec.size; // intentional to avoid more appending
+    }
+
+    void operator=(StaticArray<T>&& vec)
+    {
+        this->buf = vec.buf;
+        this->size = vec.size;
+        this->capacity = vec.capacity; // intentional to avoid more appending
+        vec.buf = nullptr;
+        vec.capacity = 0;
+        vec.size = 0;
     }
     
     void operator=(const StackArray<T>& vec)
@@ -652,6 +741,7 @@ struct FixedArray
         }
         this->capacity = vec.size;
         this->buf = AllocArray<T>(vec.size);
+        this->size = 0;
         
         if (vec.size > 0)
         {
@@ -1040,7 +1130,7 @@ struct StaticSet
         auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
         
         auto [beginRange, endRange] = it;
-        return beginRange;
+        return beginRange == endRange ? this->end() : beginRange;
     }
     
     K* begin()
@@ -1148,7 +1238,7 @@ struct PinnedSet
         auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
         
         auto [beginRange, endRange] = it;
-        return beginRange;
+        return beginRange == endRange ? this->end() : beginRange;
     }
     
     size_t size()
@@ -1257,7 +1347,7 @@ struct FixedSet
         auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
         
         auto [beginRange, endRange] = it;
-        return beginRange;
+        return beginRange == endRange ? this->end() : beginRange;
     }
     
     size_t size()

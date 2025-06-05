@@ -884,7 +884,7 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Macro;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
-                    SETUP_ARG2(pp, std::string(def), startOfDefinition, endOfDefinition);
+                    SETUP_ARG2(pp, def, startOfDefinition, endOfDefinition);
 
                     const char* startOfContents = wordStart(endOfDefinition, eol);
                     
@@ -960,7 +960,7 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Undefine;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
-                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
+                    SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     auto it = definitions.Find(definition);
                     if (it != definitions.end())
@@ -999,7 +999,7 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
-                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
+                    SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     auto it = definitions.Find(definition);
                     if (it != definitions.end())
@@ -1041,7 +1041,7 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
-                    SETUP_ARG2(pp, std::string(definition), startOfDefinition, endOfDefinition);
+                    SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     auto it = definitions.Find(definition);
                     if (it == definitions.end())
@@ -1060,7 +1060,7 @@ escape_newline:
                     ELIFDEFSTACKPUSH()
                     
                     StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    StackArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
@@ -1094,7 +1094,7 @@ escape_newline:
                     IFDEFSTACKPUSH()
 
                     StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    StackArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
