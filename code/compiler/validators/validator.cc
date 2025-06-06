@@ -2095,7 +2095,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     Type* type = compiler->GetType(var->type);
     if (type == nullptr)
     {
-        compiler->UnrecognizedTypeError(var->type.ToString().c_str(), symbol);
+        compiler->UnrecognizedTypeError(var->type.name.c_str(), symbol);
         return false;
     }
     varResolved->typeSymbol = type;
