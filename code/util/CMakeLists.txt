@@ -25,6 +25,7 @@ fips_files(
     strings.h
 	textwriter.cc
 	textwriter.h
+    thread.h
 	types.h
 	util.h
 )

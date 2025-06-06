@@ -20,9 +20,6 @@
 
 extern bool SYMBOL_STATIC_ALLOC;
 
-namespace GPULang
-{
-
 //------------------------------------------------------------------------------
 /**
 */
@@ -49,6 +46,10 @@ operator"" _GB(const unsigned long long val)
 {
     return val * 1024 * 1024 * 1024;
 }
+
+
+namespace GPULang
+{
 
 struct MemoryBlock
 {

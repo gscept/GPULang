@@ -24,6 +24,7 @@
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/accessexpression.h"
 #include "ast/expressions/arrayindexexpression.h"
+#include "thread.h"
 
 #if _MSC_VER
 #include <winsock2.h>
@@ -1033,8 +1034,9 @@ main(int argc, const char** argv)
     while (true)
     {
         SOCKET sockfd = accept(sock, nullptr, nullptr);
-        std::vector<std::thread*> threads;
-        auto clientThread = GPULang::Alloc<std::thread>([sockfd, &parseContexts]()
+
+        std::vector<GPULang::Thread*> threads;
+        GPULang::Thread* clientThread = GPULang::CreateThread(GPULang::ThreadInfo{.stackSize = 8_MB}, [sockfd, &parseContexts]()
         {
             printf("Connection established\n");
             SocketBuffer inputBuffer(sockfd);
