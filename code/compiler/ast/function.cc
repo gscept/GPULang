@@ -260,7 +260,7 @@ Function::SetupIntrinsics()
     SYMBOL_STATIC_ALLOC = true;
     __BEGIN_INTRINSICS__;
 
-    std::string scalarArgs[] =
+    static std::string scalarArgs[] =
     {
         "f32"
         , "f32x2"
@@ -657,7 +657,7 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    std::string uintTypes[] =
+    static std::string uintTypes[] =
     {
         "u32"
         , "u32x2"
@@ -673,8 +673,8 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    std::string intTypes[] =
-{
+    static std::string intTypes[] =
+    {
         "i32"
         , "i32x2"
         , "i32x3"
@@ -689,7 +689,7 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    std::string floatTypes[] =
+    static std::string floatTypes[] =
     {
         "f32"
         , "f32x2"
@@ -1363,7 +1363,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_HANDLE_ARG_LIT(texture, pixelCacheMS);
     __SET_RET_LIT(f32x4);
 
-    std::string normCoordinates[] =
+    static std::string normCoordinates[] =
     {
         "f32"     // 1D
         , "f32x2"  // 2D
@@ -1376,7 +1376,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "f32x4"  // 3D + array slice
     };
 
-    std::string projCoordinates[] =
+    static std::string projCoordinates[] =
     {
         "f32x2"    // 1D
         , "f32x3"  // 2D
@@ -1389,7 +1389,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "f32x5"  // 3D + array slice // invalid
     };
 
-    std::string offsets[] =
+    static std::string offsets[] =
     {
         "i32"     // 1D
         , "i32x2"  // 2D
@@ -1402,7 +1402,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "i32x3"  // 3DArray - array slice
     };
 
-    std::string gradients[] =
+    static std::string gradients[] =
     {
         "f32"     // 1D
         , "f32x2"  // 2D
