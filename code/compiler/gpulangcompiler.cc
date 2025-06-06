@@ -149,7 +149,13 @@ GPULangPreprocess(
     };
     PinnedMap<std::string_view, Macro> definitions(0xFFFF);
 
-    std::vector<bool> ifStack;
+    struct IfLevel
+    {
+        bool consumed : 1 = false;
+        bool active : 1 = false;
+    };
+
+    std::vector<IfLevel> ifStack;
     std::vector<FileLevel> fileStack{ { file } };
     std::vector<std::string_view> searchPaths;
     for (auto& arg : defines)
@@ -772,11 +778,29 @@ escape_newline:
         auto lineIt = lineSpan.cbegin();
         auto lineEnd = lineSpan.cend();
 
+#define CHECK_IF()\
+        if (!ifStack.empty())\
+        {\
+            const IfLevel& ilevel = ifStack.back();\
+            if (!ilevel.active)\
+            {\
+                auto pp = Alloc<Preprocessor>();\
+                pp->type = Preprocessor::Comment;\
+                pp->location.file = level->file->path;\
+                pp->location.line = level->lineCounter;\
+                pp->location.start = 0;\
+                pp->location.end = lineSpan.length();\
+                preprocessorSymbols.Append(pp);\
+                output.push_back('\n');\
+                goto next_line;\
+            }\
+        }
+
         // Macro to eliminate directives and output if an if-scope is inactive
 #define IFDEFSTACK() \
         if (!ifStack.empty())\
         {\
-            if (!ifStack.back())\
+            if (!ifStack.back().active)\
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
@@ -793,7 +817,7 @@ escape_newline:
 #define IFDEFSTACKPUSH() \
         if (!ifStack.empty())\
         {\
-            if (!ifStack.back())\
+            if (!ifStack.back().active)\
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
@@ -811,7 +835,7 @@ escape_newline:
 #define ELIFDEFSTACKPUSH() \
         if (ifStack.size() >= 2)\
         {\
-            if (!*(ifStack.rbegin()+1))\
+            if (!*(ifStack.rbegin()+1).active)\
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
@@ -863,7 +887,7 @@ escape_newline:
                 const char* endOfDirective = wordEnd(firstWord, eol);
                 if (strncmp(startOfDirective, "include", 7) == 0) // Include
                 {
-                    IFDEFSTACK()
+                    CHECK_IF()
 
                     const char* startOfPath = wordStart(endOfDirective, eol);
                     const char* endOfPath = wordEnd(startOfPath, eol);
@@ -914,7 +938,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "define", 6) == 0)
                 {
-                    IFDEFSTACK()
+                    CHECK_IF()
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == eol)
                     {
@@ -997,7 +1021,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "undef", 5) == 0)
                 {
-                    IFDEFSTACK()
+                    CHECK_IF()
 
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
@@ -1036,7 +1060,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "ifdef", 5) == 0)
                 {
-                    IFDEFSTACKPUSH()
+                    CHECK_IF()
 
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
@@ -1065,20 +1089,14 @@ escape_newline:
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     auto it = definitions.Find(definition);
-                    if (it != definitions.end())
-                    {
-                        ifStack.push_back(true);
-                    }
-                    else
-                    {
-                        ifStack.push_back(false);
-                    }
+                    IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end()};
+                    ifStack.push_back(ilevel);
                     pp->args = args;
                     pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "ifndef", 6) == 0)
                 {
-                    IFDEFSTACKPUSH()
+                    CHECK_IF()
 
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
@@ -1107,14 +1125,8 @@ escape_newline:
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     auto it = definitions.Find(definition);
-                    if (it == definitions.end())
-                    {
-                        ifStack.push_back(true);
-                    }
-                    else
-                    {
-                        ifStack.push_back(false);
-                    }
+                    IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end() };
+                    ifStack.push_back(ilevel);
                     pp->args = args;
                     pp->argLocations = argLocs;
                 }
@@ -1134,27 +1146,29 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
-                    int val = ifStack.back() ? false : eval(endOfDirective, eol, level, diagnostics, definitions);
-                    SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
-
-                    pp->args = args;
-                    pp->argLocations = argLocs;
-                    
-                    // TODO: Fix, this won't work because there is no concept of begin-end of an if-elif-endif chain
-                    ifStack.pop_back();
-                    if (val != 0)
+                    IfLevel& prevLevel = ifStack.back();
+                    if (!prevLevel.consumed)
                     {
-                        ifStack.push_back(true);
+                        int val = eval(endOfDirective, eol, level, diagnostics, definitions);
+                        SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
+
+                        pp->args = args;
+                        pp->argLocations = argLocs;
+                        prevLevel.active = val != 0;
+                        prevLevel.consumed = prevLevel.active;
                     }
                     else
                     {
-                        ifStack.push_back(false);
-                    }
+                        SETUP_ARG2(pp, "false", endOfDirective, eol);
+                        prevLevel.active = false;
 
+                        pp->args = args;
+                        pp->argLocations = argLocs;
+                    }
                 }
                 else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
-                    IFDEFSTACKPUSH()
+                    CHECK_IF()
 
                     StackArray<Symbol::Location> argLocs(1);
                     StackArray<std::string> args(1);
@@ -1165,26 +1179,28 @@ escape_newline:
 
                     int val = eval(endOfDirective, eol, level, diagnostics, definitions);
                     SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
-
-                    if (val != 0)
-                    {
-                        ifStack.push_back(true);
-                    }
-                    else
-                    {
-                        ifStack.push_back(false);
-                    }
+                    IfLevel ilevel{ .consumed = val != 0, .active = val != 0};
+                    ifStack.push_back(ilevel);
 
                     pp->args = args;
                     pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "else", 4) == 0)
                 {
-                    ELIFDEFSTACKPUSH()
+                    CHECK_IF()
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Else;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
-                    ifStack.back() = !ifStack.back();
+                    IfLevel& prevLevel = ifStack.back();
+                    if (!prevLevel.consumed)
+                    {
+                        prevLevel.consumed = true;
+                        prevLevel.active = true;
+                    }
+                    else
+                    {
+                        prevLevel.active = false;
+                    }
                 }
                 else if (strncmp(startOfDirective, "endif", 5) == 0)
                 {
@@ -1273,6 +1289,7 @@ escape_newline:
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
 
+                            // TODO: This must be handled as a stack as arguments to a call might be other functions
                         if (endOfWord[0] == '(')
                         {
                             const char* argumentIt = wordStart(endOfWord + 1, eol);
@@ -1358,36 +1375,38 @@ escape_newline:
                         }
                         else
                         {
-                            const char* macroContentsIt = it->second.contents.data();
-                            const char* macroContentsEnd = it->second.contents.data() + it->second.contents.size();
-
                             GrowingString contents;
 
-                            // Replace macro contents with definitions and arguments
-                            while (macroContentsIt != macroContentsEnd)
+                            static std::function<void(const char* begin, const char* end, GrowingString&, const PinnedMap<std::string_view, Macro>&)> resolveMacro = [](const char* begin, const char* end, GrowingString& contents, const PinnedMap<std::string_view, Macro>& definitions)
                             {
-                                const char* startOfMacroIdentifier = identifierBegin(macroContentsIt, macroContentsEnd);
-                                const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, macroContentsEnd);
-
-                                // Add whatever comes before the identifier to the output
-                                contents.Append(macroContentsIt, startOfMacroIdentifier);
-                                if (macroContentsEnd == startOfMacroIdentifier)
-                                    break;
-
-                                std::string_view word(startOfMacroIdentifier, endOfMacroIdentifier);
-                                auto defIt = definitions.Find(word);
-                                if (defIt == definitions.end())
+                                const char* it = begin;
+                                // Replace macro contents with definitions and arguments
+                                while (begin != end)
                                 {
-                                    contents.Append(word);
-                                }
-                                else
-                                {
-                                    contents.Append(defIt->second.contents);
-                                }
+                                    const char* startOfMacroIdentifier = identifierBegin(it, end);
+                                    const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, end);
 
-                                macroContentsIt = endOfMacroIdentifier;
-                            }
+                                    // Add whatever comes before the identifier to the output
+                                    contents.Append(it, startOfMacroIdentifier);
+                                    if (end == startOfMacroIdentifier)
+                                        break;
 
+                                    std::string_view word(startOfMacroIdentifier, endOfMacroIdentifier);
+                                    auto defIt = definitions.Find(word);
+                                    if (defIt == definitions.end())
+                                    {
+                                        contents.Append(word);
+                                    }
+                                    else
+                                    {
+                                        resolveMacro(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), contents, definitions);
+                                    }
+
+                                    it = endOfMacroIdentifier;
+                                }
+                            };
+
+                            resolveMacro(it->second.contents.data(), it->second.contents.data() + it->second.contents.size(), contents, definitions);
                             pp->contents = contents;
                         }
 
