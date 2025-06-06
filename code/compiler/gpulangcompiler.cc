@@ -1143,7 +1143,7 @@ escape_newline:
                     StackArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
-                    pp->type = Preprocessor::If;
+                    pp->type = Preprocessor::Else;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     IfLevel& prevLevel = ifStack.back();
@@ -1187,7 +1187,13 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "else", 4) == 0)
                 {
-                    CHECK_IF()
+                    if (ifStack.empty())
+                    {
+                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
+                        ret = false;
+                        goto end;
+                    }
+                    
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Else;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
@@ -1260,7 +1266,7 @@ escape_newline:
             }
             else if (!comment)
             {
-                IFDEFSTACK()
+                CHECK_IF()
                 const char* startOfWord = identifierBegin(columnIt, eol);
                 const char* endOfWord = identifierEnd(startOfWord, eol);
 
@@ -1289,31 +1295,46 @@ escape_newline:
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
 
-                            // TODO: This must be handled as a stack as arguments to a call might be other functions
+                        // TODO: This must be handled as a stack as arguments to a call might be other functions
                         if (endOfWord[0] == '(')
                         {
-                            const char* argumentIt = wordStart(endOfWord + 1, eol);
+                            int argStack = 1;
                             StackArray<std::string_view> args(32);
-                            bool valid = false;
-                            while (argumentIt != eol)
+                            const char* argListIt = endOfWord+1;
+                            const char* argBegin = argListIt;
+                            while (argListIt != eol)
                             {
-                                const char* argumentEnd = argEnd(argumentIt, eol);
-                                args.Append(std::string_view(argumentIt, argumentEnd));
-                                argumentIt = argumentEnd + 1;
-                                if (argumentEnd[0] == ')') // end of list
+                                if (argListIt[0] == '(')
+                                    argStack++;
+                                else if (argListIt[0] == ')')
                                 {
-                                    // Move new start to after argument list
-                                    valid = true;
-                                    break;
+                                    argStack--;
+                                    if (argStack == 0)
+                                    {
+                                        args.Append(std::string_view(argBegin, argListIt));
+                                        argListIt += 1; // parsing done
+                                        break;
+                                    }
                                 }
+                                else if (argListIt[0] == ',')
+                                {
+                                    if (argStack == 1)
+                                    {
+                                        args.Append(std::string_view(argBegin, argListIt-1));
+                                        argBegin = argListIt+1;
+                                    }
+                                }
+                                argListIt++;
                             }
-                            if (!valid)
+                            
+                            if (argStack > 0)
                             {
                                 diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
                                 ret = false;
                                 goto end;
                             }
-                            endOfWord = argumentIt;
+                            
+                            endOfWord = argListIt;
                             std::map<std::string_view, std::string_view> argumentMap;
 
                             // Warn if mismatch
