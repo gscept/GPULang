@@ -162,8 +162,6 @@ struct PinnedArray
         : size(0)
         , capacity(0)
     {
-        this->alloc = AllocVirtual<TYPE>(maxAllocationCount);
-        this->data = (TYPE*)this->alloc->mem;
         this->maxAllocationCount = maxAllocationCount;
     }
     
@@ -171,9 +169,6 @@ struct PinnedArray
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
-        this->alloc = AllocVirtual<TYPE>(rhs.maxAllocationCount);
-        if (rhs.alloc != nullptr)
-            this->data = (TYPE*)this->alloc->mem;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->capacity = 0;
         this->size = 0;
@@ -214,6 +209,8 @@ struct PinnedArray
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
         this->data = nullptr;
+        this->size = 0;
+        this->capacity = 0;
     }
     
     void operator=(PinnedArray<TYPE>&& rhs)
@@ -237,9 +234,6 @@ struct PinnedArray
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
-        this->alloc = AllocVirtual<TYPE>(rhs.maxAllocationCount);
-        if (rhs.alloc != nullptr)
-            this->data = (TYPE*)this->alloc->mem;
         this->capacity = 0;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->Grow(rhs.size);
@@ -261,8 +255,6 @@ struct PinnedArray
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
-        this->alloc = AllocVirtual<TYPE>(rhs.size);
-        this->data = (TYPE*)this->alloc->mem;
         this->maxAllocationCount = rhs.size * sizeof(TYPE);
         this->capacity = 0;
         this->Grow(rhs.size);
@@ -284,6 +276,11 @@ struct PinnedArray
     {
         assert(this->maxAllocationCount > 0 && "PinnedArray not initialized");
         assert((this->size < this->maxAllocationCount) && "PinnedArray over allocation is not allowed");
+        if (this->alloc == nullptr)
+        {
+            this->alloc = AllocVirtual<TYPE>(maxAllocationCount);
+            this->data = (TYPE*)this->alloc->mem;
+        }
         if (this->size + numNeededMoreElements > this->capacity)
         {
             size_t numCommitedPages = ceil((this->capacity * sizeof(TYPE)) / (float)SystemPageSize);

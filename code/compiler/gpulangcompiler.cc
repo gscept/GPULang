@@ -1325,7 +1325,7 @@ escape_newline:
                                     {
                                         if (argStack == 1)
                                         {
-                                            args.Append(std::string_view(argBegin, argListIt-1));
+                                            args.Append(std::string_view(argBegin, argListIt));
                                             argBegin = argListIt+1;
                                         }
                                     }
