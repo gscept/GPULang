@@ -1036,8 +1036,6 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "ifdef", 5) == 0)
                 {
-                    CHECK_IF()
-
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
                     {
@@ -1063,17 +1061,27 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
+                    
+                    bool active = true;
+                    if (!ifStack.empty())
+                        active = ifStack.back().active;
+                    if (active)
+                    {
+                        auto it = definitions.Find(definition);
+                        IfLevel ilevel{ .consumed = it != definitions.end(), .active = it != definitions.end() };
+                        ifStack.push_back(ilevel);
+                    }
+                    else
+                    {
+                        IfLevel ilevel{.consumed = true, .active = false};
+                        ifStack.push_back(ilevel);
+                    }
 
-                    auto it = definitions.Find(definition);
-                    IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end()};
-                    ifStack.push_back(ilevel);
                     pp->args = args;
                     pp->argLocations = argLocs;
                 }
                 else if (strncmp(startOfDirective, "ifndef", 6) == 0)
                 {
-                    CHECK_IF()
-
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
                     {
@@ -1100,9 +1108,22 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
-                    auto it = definitions.Find(definition);
-                    IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end() };
-                    ifStack.push_back(ilevel);
+                    bool active = true;
+                    if (!ifStack.empty())
+                        active = ifStack.back().active;
+                    
+                    if (active)
+                    {
+                        auto it = definitions.Find(definition);
+                        IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end() };
+                        ifStack.push_back(ilevel);
+                    }
+                    else
+                    {
+                        IfLevel ilevel{.consumed = true, .active = false};
+                        ifStack.push_back(ilevel);
+                    }
+                    
                     pp->args = args;
                     pp->argLocations = argLocs;
                 }
@@ -1144,8 +1165,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
-                    CHECK_IF()
-
+                    
                     StackArray<Symbol::Location> argLocs(1);
                     StackArray<std::string> args(1);
 
@@ -1153,10 +1173,21 @@ escape_newline:
                     pp->type = Preprocessor::If;
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
-                    int val = eval(endOfDirective, eol, level, diagnostics, definitions);
-                    SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
-                    IfLevel ilevel{ .consumed = val != 0, .active = val != 0};
-                    ifStack.push_back(ilevel);
+                    bool active = true;
+                    if (!ifStack.empty())
+                        active = ifStack.back().active;
+                    if (active)
+                    {
+                        int val = eval(endOfDirective, eol, level, diagnostics, definitions);
+                        SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
+                        IfLevel ilevel{ .consumed = val != 0, .active = val != 0};
+                        ifStack.push_back(ilevel);
+                    }
+                    else
+                    {
+                        IfLevel ilevel{.consumed = true, .active = false};
+                        ifStack.push_back(ilevel);
+                    }
 
                     pp->args = args;
                     pp->argLocations = argLocs;
@@ -1173,6 +1204,7 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Else;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
+                    
                     IfLevel& prevLevel = ifStack.back();
                     if (!prevLevel.consumed)
                     {
