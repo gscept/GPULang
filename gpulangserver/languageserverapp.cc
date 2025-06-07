@@ -1016,6 +1016,9 @@ main(int argc, const char** argv)
 #endif
     
     SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+    int yes = 1;
+    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+
     struct sockaddr_in server;
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
