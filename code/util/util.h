@@ -18,6 +18,10 @@
 #include <string>
 #include <type_traits>
 
+#if __WIN32__
+#include <intrin.h>
+#endif
+
 // remove warning for vsnprintf
 #pragma warning( disable : 4996 )
 
@@ -157,5 +161,24 @@ inline constexpr T max(T a, T2 b)
     return a > b ? a : b;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+uint8_t
+CountLeadingZeroes(uint64_t word)
+{
+    if (word == 0)
+        return 255;
+    else
+    {
+#if __WIN32__
+        unsigned long index;
+        _BitScanForward64(&index, word);
+        return index;
+#else
+        return __builtin_ctzll(word);
+#endif
+    }
+}
 
 } // namespace GPULang

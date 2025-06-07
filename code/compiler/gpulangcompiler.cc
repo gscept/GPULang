@@ -187,9 +187,11 @@ GPULangPreprocess(
     level->lineCounter = 0;
 
 
-    static auto has_char = [](const char* begin, const char* end, char c) -> uint8_t
+    static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
     {
         int len = min(end - begin, 8);
+        if (len < 0)
+            return 255;
         static const uint64_t masks[] = {
             0x0000000000000000ULL,
             0x00000000000000FFULL,
@@ -203,9 +205,11 @@ GPULangPreprocess(
         };
         uint64_t mask = masks[len];
         uint64_t byte_mask = 0x0101010101010101ULL * c;
-        uint64_t x = c ^ byte_mask;
-
-        return 0;
+        uint64_t word = *(uint64_t*)begin;
+        uint64_t strMask = (word & mask) ^ byte_mask;
+        uint64_t pos = (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
+        uint8_t charPos = CountLeadingZeroes(pos);
+        return charPos == 255 ? 255 : charPos / 8;
     };
 
     static auto is_digit = [](const char c) -> bool
@@ -329,8 +333,28 @@ GPULangPreprocess(
     static auto lineEnd = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
-        while (start != end)
+        while (start < end)
         {
+            uint8_t crPos = charPos(start, end, '\r');
+            uint8_t nlPos = charPos(start, end, '\n');
+            uint8_t nPos = charPos(start, end, '\0');
+            if (crPos != 255)
+            {
+                const char* offset = start + crPos;
+                if ((offset != (end - 1)) && offset[1] == '\n')
+                    return offset + 2;
+                return offset + 1;
+            }
+            else if (nlPos != 255)
+            {
+                return start + nlPos + 1;
+            }
+            else if (nPos != 255)
+            {
+                return start + nPos;
+            }
+            start += 8;
+            /*
             if (start[0] == '\r')
             {
                 // Check if \r\n
@@ -343,6 +367,7 @@ GPULangPreprocess(
             else if (start[0] == '\0')
                 return start;
             start++;
+             */
         }
         return end;
     };
@@ -375,11 +400,13 @@ GPULangPreprocess(
     static auto argListStart = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
-        while (start != end)
+        while (start < end)
         {
-            if (start[0] == '(')
-                return start+1;
-            start++;
+            uint8_t pos = charPos(start, end, '(');
+            if (pos == 255)
+                start += 8;
+            else
+                return start + pos + 1;
         }
         return end;
     };
@@ -387,11 +414,13 @@ GPULangPreprocess(
     static auto argListEnd = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
-        while (start != end)
+        while (start < end)
         {
-            if (start[0] == ')')
-                return start;
-            start++;
+            uint8_t pos = charPos(start, end, ')');
+            if (pos == 255)
+                start += 8;
+            else
+                return start + pos;
         }
         return end;
     };
@@ -777,65 +806,12 @@ escape_newline:
 
         auto lineIt = lineSpan.cbegin();
         auto lineEnd = lineSpan.cend();
-
+        
 #define CHECK_IF()\
         if (!ifStack.empty())\
         {\
             const IfLevel& ilevel = ifStack.back();\
             if (!ilevel.active)\
-            {\
-                auto pp = Alloc<Preprocessor>();\
-                pp->type = Preprocessor::Comment;\
-                pp->location.file = level->file->path;\
-                pp->location.line = level->lineCounter;\
-                pp->location.start = 0;\
-                pp->location.end = lineSpan.length();\
-                preprocessorSymbols.Append(pp);\
-                output.push_back('\n');\
-                goto next_line;\
-            }\
-        }
-
-        // Macro to eliminate directives and output if an if-scope is inactive
-#define IFDEFSTACK() \
-        if (!ifStack.empty())\
-        {\
-            if (!ifStack.back().active)\
-            {\
-                auto pp = Alloc<Preprocessor>();\
-                pp->type = Preprocessor::Comment;\
-                pp->location.file = level->file->path;\
-                pp->location.line = level->lineCounter;\
-                pp->location.start = 0;\
-                pp->location.end = lineSpan.length();\
-                preprocessorSymbols.Append(pp);\
-                output.push_back('\n');\
-                goto next_line;\
-            }\
-        }
-
-#define IFDEFSTACKPUSH() \
-        if (!ifStack.empty())\
-        {\
-            if (!ifStack.back().active)\
-            {\
-                auto pp = Alloc<Preprocessor>();\
-                pp->type = Preprocessor::Comment;\
-                pp->location.file = level->file->path;\
-                pp->location.line = level->lineCounter;\
-                pp->location.start = 0;\
-                pp->location.end = lineSpan.length();\
-                preprocessorSymbols.Append(pp);\
-                output.push_back('\n');\
-                ifStack.push_back(false);\
-                goto next_line;\
-            }\
-        }
-
-#define ELIFDEFSTACKPUSH() \
-        if (ifStack.size() >= 2)\
-        {\
-            if (!*(ifStack.rbegin()+1).active)\
             {\
                 auto pp = Alloc<Preprocessor>();\
                 pp->type = Preprocessor::Comment;\
