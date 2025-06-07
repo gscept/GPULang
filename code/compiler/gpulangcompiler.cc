@@ -1270,19 +1270,6 @@ escape_newline:
                 const char* startOfWord = identifierBegin(columnIt, eol);
                 const char* endOfWord = identifierEnd(startOfWord, eol);
 
-                auto argEnd = [](const char* begin, const char* end)
-                {
-                    const char* start = begin;
-                    while (start != end)
-                    {
-                        if (start[0] == ',' || start[0] == ')')
-                            return start;
-                        start++;
-                    }
-                    
-                    return end;
-                };
-
                 // Add whatever comes before the first identifier
                 output.append(columnIt, startOfWord);
                 if (startOfWord != eol)
@@ -1294,70 +1281,78 @@ escape_newline:
                         auto pp = Alloc<Preprocessor>();
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
-
-                        // TODO: This must be handled as a stack as arguments to a call might be other functions
-                        if (endOfWord[0] == '(')
+                        
+                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, const FileLevel*, std::vector<GPULang::Diagnostic>&)> expandMacro = [](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, const FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics) -> const char*
                         {
-                            int argStack = 1;
+                            StackMap<std::string_view, std::string_view> argumentMap(32);
                             StackArray<std::string_view> args(32);
-                            const char* argListIt = endOfWord+1;
-                            const char* argBegin = argListIt;
-                            while (argListIt != eol)
+                            if (beginOfCall[0] == '(')
                             {
-                                if (argListIt[0] == '(')
-                                    argStack++;
-                                else if (argListIt[0] == ')')
+                                int argStack = 1;
+                                const char* argListIt = beginOfCall+1;
+                                const char* argBegin = argListIt;
+                                
+                                // parse arguments
+                                while (argListIt != eol)
                                 {
-                                    argStack--;
-                                    if (argStack == 0)
+                                    if (argListIt[0] == '(')
+                                        argStack++;
+                                    else if (argListIt[0] == ')')
                                     {
-                                        args.Append(std::string_view(argBegin, argListIt));
-                                        argListIt += 1; // parsing done
-                                        break;
+                                        argStack--;
+                                        if (argStack == 0)
+                                        {
+                                            if (args.Full())
+                                            {
+                                                diagnostics.push_back(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
+                                                return nullptr;
+                                            }
+                                            args.Append(std::string_view(argBegin, argListIt));
+                                            
+                                            argListIt += 1; // parsing done
+                                            break;
+                                        }
                                     }
+                                    else if (argListIt[0] == ',')
+                                    {
+                                        if (argStack == 1)
+                                        {
+                                            args.Append(std::string_view(argBegin, argListIt-1));
+                                            argBegin = argListIt+1;
+                                        }
+                                    }
+                                    argListIt++;
                                 }
-                                else if (argListIt[0] == ',')
+                                
+                                if (argStack > 0)
                                 {
-                                    if (argStack == 1)
-                                    {
-                                        args.Append(std::string_view(argBegin, argListIt-1));
-                                        argBegin = argListIt+1;
-                                    }
+                                    diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
+                                    return nullptr;
                                 }
-                                argListIt++;
+                                
+                                beginOfCall = argListIt;
                             }
-                            
-                            if (argStack > 0)
-                            {
-                                diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
-                                ret = false;
-                                goto end;
-                            }
-                            
-                            endOfWord = argListIt;
-                            std::map<std::string_view, std::string_view> argumentMap;
-
+                                
                             // Warn if mismatch
-                            size_t maxIterations = min(args.size, it->second.args.size);
+                            size_t maxIterations = min(args.size, macro->args.size);
                             int argCounter = 0;
-                            for (auto& arg : it->second.args)
+                            for (auto& arg : macro->args)
                             {
-                                argumentMap[arg] = args[argCounter++];
+                                argumentMap.Insert(arg, args[argCounter++]);
                             }
-
-                            const char* macroContentsIt = it->second.contents.data();
-                            const char* macroContentsEnd = it->second.contents.data() + it->second.contents.size();
-
-                            GStr contents;
-
+                            
+                            const char* macroContentsIt = macro->contents.data();
+                            const char* macroContentsEnd = macro->contents.data() + macro->contents.size();
+                            
                             // Replace macro contents with definitions and arguments
                             while (macroContentsIt != macroContentsEnd)
                             {
+                                // Look for identifiers which may be the start of another macro execution
                                 const char* startOfMacroWord = identifierBegin(macroContentsIt, macroContentsEnd);
                                 const char* endOfMacroWord = identifierEnd(startOfMacroWord, macroContentsEnd);
 
                                 // Add whatever comes before the identifier to the output
-                                contents.Append(macroContentsIt, startOfMacroWord);
+                                expanded.Append(macroContentsIt, startOfMacroWord);
                                 if (macroContentsEnd == startOfMacroWord)
                                     break;
 
@@ -1367,69 +1362,60 @@ escape_newline:
                                     std::string_view word(startOfMacroWord, endOfMacroWord);
                                     macroContentsIt = endOfMacroWord;
 
-                                    auto argIt = argumentMap.find(word);
-                                    if (argIt == argumentMap.end())
+                                    // Small optimization, don't bother with arguments if it's empty
+                                    if (argumentMap.Empty())
                                     {
                                         auto defIt = definitions.Find(word);
                                         if (defIt == definitions.end())
                                         {
-                                            contents.Append(word);
+                                            expanded.Append(word);
                                         }
                                         else
                                         {
-                                            contents.Append(defIt->second.contents);
+                                            macroContentsIt = expandMacro(macroContentsIt, macroContentsEnd, &defIt->second, expanded, definitions, level, diagnostics);
+                                            if (macroContentsIt == nullptr)
+                                                return nullptr;
                                         }
                                     }
                                     else
                                     {
-                                        contents.Append(argIt->second);
+                                        auto argIt = argumentMap.Find(word);
+                                        if (argIt == argumentMap.end())
+                                        {
+                                            auto defIt = definitions.Find(word);
+                                            if (defIt == definitions.end())
+                                            {
+                                                expanded.Append(word);
+                                            }
+                                            else
+                                            {
+                                                macroContentsIt = expandMacro(macroContentsIt, macroContentsEnd, &defIt->second, expanded, definitions, level, diagnostics);
+                                                if (macroContentsIt == nullptr)
+                                                    return nullptr;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            expanded.Append(argIt->second);
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    contents.Append(startOfMacroWord, endOfMacroWord);
+                                    expanded.Append(startOfMacroWord, endOfMacroWord);
                                     macroContentsIt = endOfMacroWord;
                                 }
                             }
+                            return beginOfCall;
+                        };
 
-                            pp->contents = contents;
-                        }
-                        else
-                        {
-                            GrowingString contents;
+                        GrowingString contents;
+                        const char* ret = expandMacro(endOfWord, eol, &it->second, contents, definitions, level, diagnostics);
+                        if (ret == nullptr)
+                            return false;
+                        endOfWord = ret;
 
-                            static std::function<void(const char* begin, const char* end, GrowingString&, const PinnedMap<std::string_view, Macro>&)> resolveMacro = [](const char* begin, const char* end, GrowingString& contents, const PinnedMap<std::string_view, Macro>& definitions)
-                            {
-                                const char* it = begin;
-                                // Replace macro contents with definitions and arguments
-                                while (begin != end)
-                                {
-                                    const char* startOfMacroIdentifier = identifierBegin(it, end);
-                                    const char* endOfMacroIdentifier = identifierEnd(startOfMacroIdentifier, end);
-
-                                    // Add whatever comes before the identifier to the output
-                                    contents.Append(it, startOfMacroIdentifier);
-                                    if (end == startOfMacroIdentifier)
-                                        break;
-
-                                    std::string_view word(startOfMacroIdentifier, endOfMacroIdentifier);
-                                    auto defIt = definitions.Find(word);
-                                    if (defIt == definitions.end())
-                                    {
-                                        contents.Append(word);
-                                    }
-                                    else
-                                    {
-                                        resolveMacro(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), contents, definitions);
-                                    }
-
-                                    it = endOfMacroIdentifier;
-                                }
-                            };
-
-                            resolveMacro(it->second.contents.data(), it->second.contents.data() + it->second.contents.size(), contents, definitions);
-                            pp->contents = contents;
-                        }
+                        pp->contents = contents;
 
                         // Add summed contents to output
                         output.append(pp->contents.c_str());

@@ -277,6 +277,7 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
                     .end = { .line = (uint32_t)diagnostic.line+1, .character = (uint32_t)diagnostic.column + diagnostic.length }
                 },
                 .message = diagnostic.error,
+                .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
             });
         }
         file->result.diagnostics.clear();

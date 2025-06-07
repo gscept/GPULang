@@ -883,6 +883,132 @@ struct FixedArray
 
 //------------------------------------------------------------------------------
 /**
+ A StackMap is an ideally small map that lives on the stack
+ 
+ Frees its memory upon destruction.
+ */
+template <typename K, typename V>
+struct StackMap
+{
+    using item = std::pair<K, V>;
+    StackMap()
+        : searchValid(true)
+    {
+        
+    }
+    
+    StackMap(size_t size)
+        : searchValid(true)
+    {
+        this->data = StackArray<item>(size);
+    }
+    
+    void Insert(const K& key, const V& value)
+    {
+        this->data.Append(std::make_pair(key, value));
+        if (this->searchValid)
+        {
+            this->Sort();
+        }
+    }
+    
+    item* Emplace(const K& key)
+    {
+        assert(this->searchValid);
+        this->data.Append(std::make_pair(key, V()));
+        this->Sort();
+        return this->Find(key);
+    }
+    
+    void Erase(const K& key)
+    {
+        auto it = this->Find(key);
+        this->data.Erase(it);
+    }
+    
+    void BeginBulkAdd()
+    {
+        this->searchValid = false;
+    }
+    
+    void EndBulkAdd()
+    {
+        this->Sort();
+    }
+    
+    void Sort()
+    {
+        std::sort(this->data.begin(), this->data.end(), [](const item& lhs, const item& rhs)
+        {
+            return lhs.first < rhs.first;
+        });
+        this->searchValid = true;
+    }
+    
+    item* Find(const K& key)
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const K& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const K& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    const item* Find(const K& key) const
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const K& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const K& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    void Clear()
+    {
+        this->data.Clear();
+    }
+    
+    bool Empty()
+    {
+        return this->data.size == 0;
+    }
+    
+    item* begin()
+    {
+        return this->data.begin();
+    }
+    
+    item* end()
+    {
+        return this->data.end();
+    }
+    
+    const item* begin() const
+    {
+        return this->data.begin();
+    }
+    
+    const item* end() const
+    {
+        return this->data.end();
+    }
+    
+    bool searchValid;
+    StackArray<item> data;
+};
+
+//------------------------------------------------------------------------------
+/**
  Much like PinnedArray, a PinnedMap implements a binary search and sort for it's items,
  which are stored as key-value pairs.
  
