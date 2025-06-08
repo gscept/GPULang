@@ -814,19 +814,19 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(computeGetLocalInvocationIndices, GetLocalInvocationIndices);
     __SET_RET_LIT(u32x3);
-    __DOCUMENT_INTRINSIC("Returns the dispatch group's local indices as a u32x3");
+    __DOCUMENT_INTRINSIC("Returns the u32x3 indices within the workgroup");
 
     __MAKE_BUILTIN(computeGetGlobalInvocationIndices, GetGlobalInvocationIndices);
     __SET_RET_LIT(u32x3);
-    __DOCUMENT_INTRINSIC("Returns the dispatch global indices as a u32x3");
+    __DOCUMENT_INTRINSIC("Returns the u32x3 global indices for the dispatch call");
 
     __MAKE_BUILTIN(computeGetWorkgroupIndices, GetWorkGroupIndices);
     __SET_RET_LIT(u32x3);
-    __DOCUMENT_INTRINSIC("Returns the dispatch workgroup indices as a u32x3");
+    __DOCUMENT_INTRINSIC("Returns the u32x3 workgroup indices as invoked from the API");
 
     __MAKE_BUILTIN(computeGetIndexInWorkgroup, GetIndexInWorkGroup);
     __SET_RET_LIT(u32);
-    __DOCUMENT_INTRINSIC("Returns the dispatch groups flattened local index as u32");
+    __DOCUMENT_INTRINSIC("Returns a flattened u32 index within the workgroup");
 
     __MAKE_BUILTIN(computeGetWorkgroupDimensions, GetWorkGroupDimensions);
     __SET_RET_LIT(u32x3);
@@ -840,64 +840,81 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(subgroupGetId, GetSubgroupId);                       // The id of the subgroup
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Returns the subgroup index within the workgroup");
 
     __MAKE_BUILTIN(subgroupGetSize, GetSubgroupSize);                       // The size of the subgroup
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Returns the size of the subgroup within the workgroup");
 
     __MAKE_BUILTIN(subgroupGetNum, GetNumSubgroups);                       // The number of subgroups
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Returns the number of subgroups within the work group");
 
-    __MAKE_BUILTIN(subgroupGetLocalInvocationMask, GetSubgroupLocalInvocationMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationMask, GetSubgroupLocalInvocationMask);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Returns a mask where the index of the current thread has the bit set to 1");
 
-    __MAKE_BUILTIN(subgroupGetLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationAndLowerMask, GetSubgroupLocalInvocationAndLowerMask);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Returns a mask where the index of the current thread, and all other threads lesser than it, with the bit set to 1");
 
-    __MAKE_BUILTIN(subgroupGetLowerMask, GetSubgroupLowerMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLowerMask, GetSubgroupLowerMask);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Returns a mask where the index of all other threads lesser than it, with the bit set to 1");
 
-    __MAKE_BUILTIN(subgroupGetLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);                       // The size of the subgroup
+    __MAKE_BUILTIN(subgroupGetLocalInvocationAndGreaterMask, GetSubgroupLocalInvocationAndGreaterMask);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Returns a mask where the index of the current thread, and all other threads greater than it, with the bit set to 1");
 
     __MAKE_BUILTIN(subgroupGetGreaterMask, GetSubgroupGreaterMask);                       // The size of the subgroup
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Returns a mask where the index of all other threads greater than it, with the bit set to 1");
 
     __MAKE_BUILTIN(subgroupGetFirstInvocation, SubgroupFirstInvocation);      // Returns true for the first active invocation in the subgroup, and false for all else
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Returns the index of the first active thread within the workgroup. An active thread is one which executes the current conditional scope.");
 
     __MAKE_BUILTIN(subgroupRead, SubgroupRead);                 // Returns value from the invocation with the lowest invocation
     __ADD_ARG_LIT(x, u32);
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Reads the value of the first active thread within the workgroup given a variable. An active thread is one which executes the current conditional scope.");
 
     __MAKE_BUILTIN(subgroupBallot, SubgroupBallot);               // Creates lane mask with bit set to 1 if value in predicate is true
     __ADD_ARG_LIT(predicate, b8);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Constructs a mask of all threads within the workgroup where the predicate is true.");
 
     __MAKE_BUILTIN(subgroupInverseBallot, SubgroupInverseBallot);    // Creates an inverted lane mask with bit set to 1 if predicate is false
     __ADD_ARG_LIT(predicate, b8);
     __SET_RET_LIT(u32x4);
+    __DOCUMENT_INTRINSIC("Constructs a mask of all threads within the workgroup where the predicate is false.");
 
     __MAKE_BUILTIN(subgroupBallotBitCount, SubgroupBallotBitCount);   // Counts bits set in ballot result up to thread index within subgroup
     __ADD_ARG_LIT(mask, u32x4);
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Count the bits set to 1 in a subgroup thread mask.");
 
     __MAKE_BUILTIN(subgroupBallotBit, SubgroupBallotBit);        // Check if bit in ballot result is for a given index
     __ADD_ARG_LIT(mask, u32x4);
     __ADD_ARG_LIT(index, u32);
     __SET_RET_LIT(b8);
+    __DOCUMENT_INTRINSIC("Returns true if the bit in mask at index is 1.");
 
     __MAKE_BUILTIN(subgroupBallotFirstOne, SubgroupBallotFirstOne);        // Get first bit set to 1
     __ADD_ARG_LIT(mask, u32x4);
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Get the first one (ctz) in a subgroup thread mask.");
 
     __MAKE_BUILTIN(subgroupBallotLastOne, SubgroupBallotLastOne);        // Get last bit set to 1
     __ADD_ARG_LIT(mask, u32x4);
     __SET_RET_LIT(u32);
+    __DOCUMENT_INTRINSIC("Get the first one (clz) in a subgroup thread mask.");
 
 #define X(ty, index)\
     __MAKE_INTRINSIC(subgroupSwapDiagonal, SubgroupSwapDiagonal, ty)\
     __ADD_ARG(value, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
+    __DOCUMENT_INTRINSIC("Swap subgroup values diagonally");
 
     SCALAR_LIST
 #undef X
@@ -906,6 +923,7 @@ FLOAT_LIST
     __MAKE_INTRINSIC(subgroupSwapVertical, SubgroupSwapVertical, ty)\
     __ADD_ARG(value, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
+    __DOCUMENT_INTRINSIC("Swap subgroup values vertically");
 
     SCALAR_LIST
 #undef X
@@ -914,6 +932,7 @@ FLOAT_LIST
     __MAKE_INTRINSIC(subgroupSwapHorizontal, SubgroupSwapHorizontal, ty)\
     __ADD_ARG(value, scalarArgs[index]);\
     __SET_RET(scalarArgs[index]);
+    __DOCUMENT_INTRINSIC("Swap subgroup values horizontally");
 
     SCALAR_LIST
 #undef X
