@@ -516,9 +516,6 @@ GPULangPreprocess(
                     return 10;
                 case '!':
                     return 11;
-                case '(':
-                case ')':
-                    return 12;
                 default:
                     diagnostics.push_back(DIAGNOSTIC(Format("Unknown operator '%c%c%c%c'", op & 0xFF, (op >> 8) & 0xFF, (op >> 16) & 0xFF, (op >> 24) & 0xFF)));
                     return -1;
@@ -572,6 +569,7 @@ GPULangPreprocess(
         
         const char* word = begin;
         int unconsumedIntegers = 0;
+        int parantCounter = 0;
         while (word != end)
         {
             word = wordStart(word, end);
@@ -579,6 +577,38 @@ GPULangPreprocess(
             int stride = 0;
             if (word == end)
                 break;
+            if (word[0] == '(')
+            {
+                t.op = true;
+                t.value = '(';
+                opstack.Append(t);
+                parantCounter++;
+                word++;
+                continue;
+            }
+            else if (word[0] == ')')
+            {
+                if (parantCounter == 0)
+                {
+                    diagnostics.push_back(DIAGNOSTIC("Invalid closing paranthesis ')' in expression, missing opening '('"));
+                    return -1;
+                }
+                
+                // Flush operators to results
+                for (int i = opstack.size-1; i >= 0; i--)
+                {
+                    if (opstack[i].value == '(')
+                    {
+                        opstack.size--; // make sure to consume the opening paranthesis in this case
+                        break;
+                    }
+                    result.Append(opstack.ptr[i]);
+                    opstack.size--;
+                }
+                parantCounter--;
+                word++;
+                continue;
+            }
             int val = digit(word, end, stride);
             if (val == -1)
             {
@@ -673,12 +703,29 @@ GPULangPreprocess(
                         int prevPres = presedence(opstack.ptr[opstack.size-1].value);
                         if (pres < prevPres)
                         {
-                            // Flush operators to results
-                            for (int i = opstack.size-1; i >= 0; i--)
+                            // If we are within paranthesis, only pop operators until the previous paranthesis
+                            if (parantCounter > 0)
                             {
-                                result.Append(opstack.ptr[i]);
+                                // Flush operators to results
+                                for (int i = opstack.size-1; i >= 0; i--)
+                                {
+                                    if (opstack[i].value == '(')
+                                    {
+                                        break;
+                                    }
+                                    result.Append(opstack.ptr[i]);
+                                    opstack.size--;
+                                }
                             }
-                            opstack.size = 0;
+                            else
+                            {
+                                // Flush operators to results
+                                for (int i = opstack.size-1; i >= 0; i--)
+                                {
+                                    result.Append(opstack.ptr[i]);
+                                }
+                                opstack.size = 0;
+                            }
                         }
                     }
                     opstack.Append(t);
@@ -693,6 +740,17 @@ GPULangPreprocess(
                 result.Append(t);
             }
             word += stride;
+        }
+        
+        if (parantCounter > 0)
+        {
+            diagnostics.push_back(DIAGNOSTIC("Missing closing paranthesis ')'"));
+            return -1;
+        }
+        else if (parantCounter < 0)
+        {
+            diagnostics.push_back(DIAGNOSTIC("Too many opening paranthesis ')'"));
+            return -1;
         }
         
         // If we have dangling ops, push to result
@@ -1423,6 +1481,7 @@ escape_newline:
                             return false;
                         endOfWord = ret;
 
+                        pp->location.end = max(contents.size, pp->location.end);
                         pp->contents = contents;
 
                         // Add summed contents to output
