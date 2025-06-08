@@ -186,8 +186,7 @@ GPULangPreprocess(
     bool comment = false;
     level->lineCounter = 0;
 
-
-    static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
+    static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
     {
         int len = min(end - begin, 8);
         if (len < 0)
@@ -207,10 +206,49 @@ GPULangPreprocess(
         uint64_t byte_mask = 0x0101010101010101ULL * c;
         uint64_t word = *(uint64_t*)begin;
         uint64_t strMask = (word & mask) ^ byte_mask;
-        uint64_t pos = (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
-        uint8_t charPos = CountLeadingZeroes(pos);
-        return charPos == 255 ? 255 : charPos / 8;
+        return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
     };
+
+    static auto charPos = [](const char* begin, const char* end, char c) -> uint8_t
+    {
+        uint64_t mask = match_mask(begin, end, c);
+        if (mask == 0x0) return 255;
+        else return CountLeadingZeroes(mask) / 8;
+    };
+    
+    static auto notCharPos = [](const char* begin, const char* end, char c) -> uint8_t
+    {
+        uint64_t mask = match_mask(begin, end, c);
+        mask = ~mask & 0x8080808080808080ULL;
+        if (mask == 0x0) return 255;
+        else return CountLeadingZeroes(mask) / 8;
+    };
+    
+    // Find any char in the given string
+    static auto anyCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
+    {
+        uint64_t resultMask = 0x0;
+        for (auto c : list)
+        {
+            resultMask |= match_mask(begin, end, c);
+        }
+        if (resultMask == 0x0) return 255;
+        else return CountLeadingZeroes(resultMask) / 8;
+    };
+    
+    // Find position where none of the characters in list are present
+    static auto noCharPos = [](const char* begin, const char* end, const std::initializer_list<char>& list) -> uint8_t
+    {
+        uint64_t resultMask = 0x0;
+        for (auto c : list)
+        {
+            resultMask |= match_mask(begin, end, c);;
+        }
+        resultMask = ~resultMask & 0x8080808080808080ULL;
+        if (resultMask == 0x0) return 255;
+        else return CountLeadingZeroes(resultMask) / 8;
+    };
+
 
     static auto is_digit = [](const char c) -> bool
     {
@@ -425,7 +463,7 @@ GPULangPreprocess(
         return end;
     };
 
-    static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions) -> int
+    static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
     {
         struct Token
         {
@@ -435,16 +473,36 @@ GPULangPreprocess(
         StackArray<Token> result(256);
         StackArray<Token> opstack(256);
         
-        auto digit = [&diagnostics, &level](const char* begin, const char* end, int& size) -> int
+        auto digit = [&diagnostics, &level](const char* begin, const char* end, int& size, bool& ret) -> int
         {
             int val = 0;
             size = 0;
             int dec = 1;
-            while (begin != end)
+            
+            // Find first non-digit character
+            if (begin[0] < '0' || begin[0] > '9')
+                return -1;
+            
+            const char* rbegin = begin;
+            while (rbegin < end)
             {
-                if (begin[0] >= '0' && begin[0] <= '9')
+                // Find the end of the list
+                uint8_t endOfDigit = noCharPos(begin, end, {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'});
+                if (endOfDigit == 255)
+                    rbegin += 8;
+                else
                 {
-                    val += begin[0] - '0' * dec;
+                    rbegin += endOfDigit-1;
+                    break;
+                }
+            }
+
+            // Parse the digit
+            while (rbegin >= begin)
+            {
+                if (rbegin[0] >= '0' && rbegin[0] <= '9')
+                {
+                    val += (rbegin[0] - '0') * dec;
                     size++;
                     dec *= 10;
                 }
@@ -453,12 +511,12 @@ GPULangPreprocess(
                 else
                     break;
                     
-                begin++;
+                rbegin--;
             }
             return val;
         };
         
-        auto op = [](const char* begin, const char* end, int& size) -> int
+        auto op = [](const char* begin, const char* end, int& size, bool& res) -> int
         {
             int val = 0;
             size = 0;
@@ -482,10 +540,12 @@ GPULangPreprocess(
             return val;
         };
         
-        auto presedence = [&diagnostics, &level](const int op) -> int
+        auto presedence = [&diagnostics, &level](const int op, bool& res) -> int
         {
             switch(op)
             {
+                case '(':
+                    return 0;
                 case '||':
                     return 1;
                 case '&&':
@@ -518,6 +578,7 @@ GPULangPreprocess(
                     return 11;
                 default:
                     diagnostics.push_back(DIAGNOSTIC(Format("Unknown operator '%c%c%c%c'", op & 0xFF, (op >> 8) & 0xFF, (op >> 16) & 0xFF, (op >> 24) & 0xFF)));
+                    res = false;
                     return -1;
             }
         };
@@ -591,6 +652,7 @@ GPULangPreprocess(
                 if (parantCounter == 0)
                 {
                     diagnostics.push_back(DIAGNOSTIC("Invalid closing paranthesis ')' in expression, missing opening '('"));
+                    res = false;
                     return -1;
                 }
                 
@@ -609,10 +671,10 @@ GPULangPreprocess(
                 word++;
                 continue;
             }
-            int val = digit(word, end, stride);
+            int val = digit(word, end, stride, res);
             if (val == -1)
             {
-                val = op(word, end, stride);
+                val = op(word, end, stride, res);
                 if (val == -1)
                 {
                     const char* identStart = identifierBegin(word, end);
@@ -643,6 +705,7 @@ GPULangPreprocess(
                                 else
                                 {
                                     diagnostics.push_back(DIAGNOSTIC(Format("Malformed 'defined'")));
+                                    res = false;
                                     return -1;
                                 }
                             }
@@ -667,7 +730,7 @@ GPULangPreprocess(
                             }
 
                             // If identifier of a macro, evaluate the contents of said macro
-                            t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), level, diagnostics, definitions);
+                            t.value = eval(defIt->second.contents.data(), defIt->second.contents.data() + defIt->second.contents.size(), level, diagnostics, definitions, res);
                             t.op = false;
                             unconsumedIntegers++;
                             result.Append(t);
@@ -676,6 +739,7 @@ GPULangPreprocess(
                     else
                     {
                         diagnostics.push_back(DIAGNOSTIC(Format("Invalid token '%c'", word[0])));
+                        res = false;
                         return -1;
                     }
                     word = identEnd;
@@ -689,6 +753,7 @@ GPULangPreprocess(
                         if (unconsumedIntegers < 1)
                         {
                             diagnostics.push_back(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
+                            res = false;
                             return -1;
                         }
 
@@ -699,8 +764,8 @@ GPULangPreprocess(
                     // Operator, check presedence
                     if (opstack.size > 0)
                     {
-                        int pres = presedence(t.value);
-                        int prevPres = presedence(opstack.ptr[opstack.size-1].value);
+                        int pres = presedence(t.value, res);
+                        int prevPres = presedence(opstack.ptr[opstack.size-1].value, res);
                         if (pres < prevPres)
                         {
                             // If we are within paranthesis, only pop operators until the previous paranthesis
@@ -745,11 +810,13 @@ GPULangPreprocess(
         if (parantCounter > 0)
         {
             diagnostics.push_back(DIAGNOSTIC("Missing closing paranthesis ')'"));
+            res = false;
             return -1;
         }
         else if (parantCounter < 0)
         {
-            diagnostics.push_back(DIAGNOSTIC("Too many opening paranthesis ')'"));
+            diagnostics.push_back(DIAGNOSTIC("Too closing paranthesis ')' mismatching opening paranthesis '('"));
+            res = false;
             return -1;
         }
         
@@ -1204,7 +1271,7 @@ escape_newline:
                     IfLevel& prevLevel = ifStack.back();
                     if (!prevLevel.consumed)
                     {
-                        int val = eval(endOfDirective, eol, level, diagnostics, definitions);
+                        int val = eval(endOfDirective, eol, level, diagnostics, definitions, ret);
                         SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
 
                         pp->args = args;
@@ -1236,7 +1303,7 @@ escape_newline:
                         active = ifStack.back().active;
                     if (active)
                     {
-                        int val = eval(endOfDirective, eol, level, diagnostics, definitions);
+                        int val = eval(endOfDirective, eol, level, diagnostics, definitions, ret);
                         SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
                         IfLevel ilevel{ .consumed = val != 0, .active = val != 0};
                         ifStack.push_back(ilevel);
