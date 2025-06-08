@@ -273,23 +273,49 @@ GPULangPreprocess(
     {
         return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\f' || c == '\v';
     };
+    
+#define WHITESPACE_CHARS {' ', '\n', '\r', '\t', '\f', '\v'}
 
     static auto wordStart = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
-        while (start != end)
+        while (start < end)
         {
-            if (start[0] == '*')
-                if (start + 1 != end && start[1] == '/')
-                    return start;
-            if (start[0] == '/')
-                if (start + 1 != end && start[1] == '*')
-                    return start;
-                else if (start + 1 != end && start[1] == '/')
-                    return start;
-            if (!whitespace(start[0]))
-                return start;
-            start++;
+            uint8_t asterixOffset = charPos(start, end, '*');
+            uint8_t slashOffset = charPos(start, end, '/');
+            uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
+            
+            // * comes first
+            if (asterixOffset != 255)
+            {
+                if (asterixOffset < slashOffset && asterixOffset <= nonWsOffset)
+                {
+                    if (start + asterixOffset + 1 < end && start[asterixOffset + 1] == '/')
+                        return start + asterixOffset;
+                    asterixOffset = 255;
+                }
+            }
+            
+            // / comes first
+            if (slashOffset != 255)
+            {
+                if (slashOffset <= nonWsOffset)
+                {
+                    if (start + slashOffset +  1 < end && start[slashOffset + 1] == '*')
+                        return start + slashOffset;
+                    else if (start + slashOffset + 1 < end && start[slashOffset + 1] == '/')
+                        return start + slashOffset;
+                    slashOffset = 255;
+                }
+            }
+            
+            if (nonWsOffset != 255)
+            {
+                return start + nonWsOffset;
+            }
+            
+            // skip 8 characters
+            start += 8;
         }
         return end;
     };
@@ -1080,8 +1106,8 @@ escape_newline:
                     if (endOfDefinition[0] == '(')
                     {
                         // Argument list, start parsing arguments
-                        const char* argumentIt = wordStart(endOfDefinition+1, endOfDefinition);
-                        while (argumentIt != endOfDefinition)
+                        const char* argumentIt = wordStart(endOfDefinition+1, eol);
+                        while (argumentIt != eol)
                         {
                             if (argumentIt[0] == ')') // end of list
                             {
@@ -1090,7 +1116,7 @@ escape_newline:
                                 startOfContents = wordStart(argumentIt+1, eol);
                                 break;
                             }
-                            const char* argumentEnd = identifierEnd(argumentIt, endOfDefinition);
+                            const char* argumentEnd = identifierEnd(argumentIt, eol);
 
                             if (!validateIdentifier(argumentIt, argumentEnd))
                             {
@@ -1101,7 +1127,7 @@ escape_newline:
 
                             // Identifier validation done, save argument
                             macroArgs.Append(std::string_view(argumentIt, argumentEnd));
-                            argumentIt = nextArg(argumentIt, endOfDefinition);
+                            argumentIt = nextArg(argumentIt, eol);
                         }
 
                         // append the rest of the contents
@@ -1218,7 +1244,7 @@ escape_newline:
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
+                        diagnostics.push_back(DIAGNOSTIC("Invalid ifndef identifier"));
                         ret = false;
                         goto end;
                     }
