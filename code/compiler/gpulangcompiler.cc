@@ -249,12 +249,6 @@ GPULangPreprocess(
         else return CountLeadingZeroes(resultMask) / 8;
     };
 
-
-    static auto is_digit = [](const char c) -> bool
-    {
-        return (c >= '0' && c <= '9');
-    };
-
     static auto validateIdentifier = [](const char* begin, const char* end) -> bool
     {
         if (!GPULangValidIdentifierStart(begin[0]))
@@ -281,41 +275,11 @@ GPULangPreprocess(
         const char* start = begin;
         while (start < end)
         {
-            uint8_t asterixOffset = charPos(start, end, '*');
-            uint8_t slashOffset = charPos(start, end, '/');
             uint8_t nonWsOffset = noCharPos(start, end, WHITESPACE_CHARS);
-            
-            // * comes first
-            if (asterixOffset != 255)
-            {
-                if (asterixOffset < slashOffset && asterixOffset <= nonWsOffset)
-                {
-                    if (start + asterixOffset + 1 < end && start[asterixOffset + 1] == '/')
-                        return start + asterixOffset;
-                    asterixOffset = 255;
-                }
-            }
-            
-            // / comes first
-            if (slashOffset != 255)
-            {
-                if (slashOffset <= nonWsOffset)
-                {
-                    if (start + slashOffset +  1 < end && start[slashOffset + 1] == '*')
-                        return start + slashOffset;
-                    else if (start + slashOffset + 1 < end && start[slashOffset + 1] == '/')
-                        return start + slashOffset;
-                    slashOffset = 255;
-                }
-            }
-            
             if (nonWsOffset != 255)
-            {
                 return start + nonWsOffset;
-            }
-            
-            // skip 8 characters
-            start += 8;
+            else
+                start += 8;
         }
         return end;
     };
@@ -325,17 +289,33 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
-            if (start[0] == '*')
-                if (start + 1 != end && start[1] == '/')
-                    return start;
-            if (start[0] == '/')
-                if (start + 1 != end && start[1] == '*')
-                    return start;
-                else if (start + 1 != end && start[1] == '/')
-                    return start;
-            if (whitespace(start[0]))
-                return start;
-            start++;
+            uint8_t asterixOffset = charPos(start, end, '*');
+            uint8_t slashOffset = charPos(start, end, '/');
+            uint8_t wsOffset = anyCharPos(start, end, WHITESPACE_CHARS);
+            if (asterixOffset != 255)
+            {
+                if (asterixOffset < slashOffset && asterixOffset < wsOffset)
+                {
+                    if (start + asterixOffset + 1 < end && start[asterixOffset + 1] == '/')
+                        return start + asterixOffset;
+                }
+                asterixOffset = 255;
+            }
+            
+            if (slashOffset != 255)
+            {
+                if (slashOffset < wsOffset)
+                {
+                    if (start + slashOffset + 1 < end && start[slashOffset + 1] == '*')
+                        return start + slashOffset;
+                    else if (start + slashOffset + 1 < end && start[slashOffset + 1] == '/')
+                        return start + slashOffset;
+                }
+            }
+            if (wsOffset != 255)
+                return start + wsOffset;
+            
+            start += 8;
         }
         return end;
     };
@@ -382,18 +362,6 @@ GPULangPreprocess(
         return end;
     };
 
-    static auto nextComment = [](const char* begin, const char* end) -> const char*
-    {
-        const char* start = begin;
-        while (start != end)
-        {
-            if (start[0] == '*' && start[1] == '/')
-                return start;
-            start++;
-        }
-        return end;
-    };
-
     static auto lineEnd = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
@@ -418,20 +386,6 @@ GPULangPreprocess(
                 return start + nPos;
             }
             start += 8;
-            /*
-            if (start[0] == '\r')
-            {
-                // Check if \r\n
-                if ((start != (end - 1)) && start[1] == '\n')
-                    return start + 2;
-                return start + 1;
-            }
-            else if (start[0] == '\n')
-                return start + 1;
-            else if (start[0] == '\0')
-                return start;
-            start++;
-             */
         }
         return end;
     };
@@ -442,6 +396,13 @@ GPULangPreprocess(
         const char* start = begin;
         while (start != end)
         {
+            if (start[0] == '/')
+            {
+                if (start + 1 < end && start[1] == '*')
+                    return start;
+                if (start + 1 < end && start[1] == '/')
+                    return start;
+            }
             if (GPULangValidIdentifierStart(start[0]))
                 return start;
             start++;
