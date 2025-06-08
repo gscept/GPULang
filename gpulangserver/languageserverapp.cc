@@ -815,7 +815,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             {
                 for (auto attr : var->attributes)
                 {
-                    ret += GPULang::Format("*%s*", attr->name.c_str());
+                    ret += GPULang::Format("%s", attr->name.c_str());
                     if (attr->expression != nullptr)
                         ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
                     else
@@ -861,7 +861,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             {
                 for (auto attr : fun->attributes)
                 {
-                    ret += GPULang::Format("*%s*", attr->name.c_str());
+                    ret += GPULang::Format("%s", attr->name.c_str());
                     if (attr->expression != nullptr)
                         ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
                     else
