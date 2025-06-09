@@ -5,9 +5,8 @@ GPULang is a frontend shader language meant to serve as a common shader interfac
 
 GPULang also offers a reflection API, which allows a title to reason about the shader resource layout, allowing for a dynamic setup of desciptor sets/root signatures/bind groups/etc...
 
-GPULang uses the following libraries (all of which are automatically downloaded through fips), and all of which follows either the BSD or GNU lesser general license:
+GPULang uses the following libraries (which are automatically downloaded through fips), and all of which follows either the BSD or GNU lesser general license:
 
-* mcpp
 * spv-tools
 
 GPULang also allows for compile time linking of shader programs, allowing outputting of shader binaries for graphics APIs that support them.
