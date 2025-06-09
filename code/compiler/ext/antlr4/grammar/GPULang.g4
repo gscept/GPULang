@@ -1085,6 +1085,9 @@ multiplyDivideExpression
         }
     )*
     ;
+
+
+unaryOperator : '-' | '+' | '!' | '~' | '++' | '--' | '*';
     
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
 prefixExpression
@@ -1092,21 +1095,13 @@ prefixExpression
     @init 
     {
         $tree = nullptr;
-        StackArray<uint32_t> ops(32);
-        StackArray<Symbol::Location> locations(32);
     }:
-    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 prefix expressions reached"); } ops.Append(StringToFourCC($op.text)); locations.Append(SetupFile()); } )* e1 = suffixExpression 
+    op = unaryOperator p = prefixExpression
     {
-        $tree = $e1.tree;
-        if ($tree != nullptr)
-        {
-            for (size_t i = 0; i < ops.size; i++)
-            {
-                $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
-                $tree->location = locations[i];
-            }
-        }
+        $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), true, $p.tree);
+        $tree->location = SetupFile();
     }
+    | e = suffixExpression { $tree = $e.tree; }
     ;
     
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
