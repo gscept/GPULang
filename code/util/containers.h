@@ -294,9 +294,9 @@ struct PinnedArray
         }
         if (this->size + numNeededMoreElements > this->capacity)
         {
-            float numElementsPerPage = SystemPageSize / (float)sizeof(TYPE);
+            float numElementsPerPage = floor(SystemPageSize / (float)sizeof(TYPE));
             size_t numCommitedPages = ceil(this->capacity / numElementsPerPage);
-            size_t numNeededPages = ceil((this->capacity + 1) / numElementsPerPage);
+            size_t numNeededPages = ceil((this->size + numNeededMoreElements - 1) / numElementsPerPage);
             if (numNeededPages > numCommitedPages)
             {
                 size_t numBytesToCommit = (numNeededPages - numCommitedPages) * SystemPageSize;
