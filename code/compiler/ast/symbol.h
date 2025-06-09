@@ -147,8 +147,8 @@ struct Scope
         Type
     };
     ScopeType type = ScopeType::Local;
-    PinnedArray<Symbol*> symbols = 0xFFFFFF;
-    PinnedMap<std::string, Symbol*> symbolLookup = 0xFFFFFF;
+    PinnedArray<Symbol*> symbols = 0x82000;
+    PinnedMap<std::string, Symbol*> symbolLookup = 0x82000;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;
 };
