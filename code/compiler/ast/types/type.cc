@@ -130,7 +130,7 @@ Type::~Type()
 {
 }
 
-const StaticMap<TypeCode, std::string> codeToStringMapping =
+const StaticMap<TypeCode, StaticString> codeToStringMapping =
 {
     { TypeCode::Void, "void" }
     , { TypeCode::Float, "f32" }
@@ -155,15 +155,17 @@ const StaticMap<TypeCode, std::string> codeToStringMapping =
     , { TypeCode::Sampler, "sampler" }
 };
 
+const StaticString NoCode = "";
+
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+const StaticString&
 Type::CodeToString(const TypeCode& code)
 {
     auto it = codeToStringMapping.Find(code);
     if (it == codeToStringMapping.end())
-        return "";
+        return NoCode;
     else
         return it->second;
 }
@@ -199,7 +201,7 @@ Type::CategoryToString(const Category& cat)
 Symbol* 
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->scope.symbolLookup.find(str);
+    auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())
         return it->second;
     else
@@ -213,7 +215,7 @@ std::vector<Symbol*>
 Type::GetSymbols(const std::string str)
 {
     std::vector<Symbol*> ret;
-    auto range = this->scope.symbolLookup.equal_range(str);
+    auto range = this->scope.symbolLookup.FindRange(str);
     for (auto it = range.first; it != range.second; it++)
         ret.push_back((*it).second);
     return ret;

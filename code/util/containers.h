@@ -206,11 +206,7 @@ struct PinnedArray
     
     ~PinnedArray()
     {
-        if (this->alloc != nullptr)
-            DeallocVirtual(this->alloc);
-        this->data = nullptr;
-        this->size = 0;
-        this->capacity = 0;
+        this->Free();
     }
     
     void operator=(PinnedArray<TYPE>&& rhs)
@@ -352,6 +348,16 @@ struct PinnedArray
     void Clear()
     {
         this->size = 0;
+    }
+    
+    void Free()
+    {
+        if (this->alloc != nullptr)
+            DeallocVirtual(this->alloc);
+        this->alloc = nullptr;
+        this->data = nullptr;
+        this->size = 0;
+        this->capacity = 0;
     }
     
     void Insert(const TYPE& element, size_t index)
@@ -1095,6 +1101,19 @@ struct PinnedMap
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    const std::pair<const item*, const item*> FindRange(const K& key) const
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const K& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const K& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        return it;
     }
     
     void Clear()

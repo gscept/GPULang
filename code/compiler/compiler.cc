@@ -223,7 +223,7 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
     Scope* scope = this->scopes.back();
     if (bypass)
         scope = *(this->scopes.end() - 1);
-    std::multimap<std::string, Symbol*>* lookup;
+    PinnedMap<std::string, Symbol*>* lookup;
     PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
@@ -237,14 +237,14 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
         symbols = &scope->symbols;
     }
 
-    auto it = lookup->find(name);
+    auto it = lookup->Find(name);
     if (it != lookup->end() && !allowDuplicate)
     {
         Symbol* prevSymbol = it->second;
         this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
         return false;
     }
-    lookup->insert({ name, symbol });
+    lookup->Insert(name, symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
     if (scope->type != Scope::ScopeType::Type)
         symbols->Append(symbol);
@@ -261,7 +261,7 @@ Compiler::GetSymbol(const std::string& name) const
     do
     {
         auto scope = *scopeIter;
-        std::multimap<std::string, Symbol*>* map;
+        PinnedMap<std::string, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -271,7 +271,7 @@ Compiler::GetSymbol(const std::string& name) const
         {
             map = &scope->symbolLookup;
         }
-        auto it = map->find(name);
+        auto it = map->Find(name);
         if (it != map->end())
             return it->second;
         scopeIter++;
@@ -291,7 +291,7 @@ Compiler::GetSymbols(const std::string& name) const
     do
     {
         auto scope = *scopeIter;
-        std::multimap<std::string, Symbol*>* map;
+        PinnedMap<std::string, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -302,7 +302,7 @@ Compiler::GetSymbols(const std::string& name) const
             map = &scope->symbolLookup;
         }
 
-        auto range = map->equal_range(name);
+        auto range = map->FindRange(name);
         for (auto it = range.first; it != range.second; it++)
             ret.push_back((*it).second);
         scopeIter++;
@@ -619,13 +619,13 @@ Compiler::Error(const std::string& msg, const FixedString& file, int line, int c
         std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.push_back(err);
 
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     else
     {
         std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.push_back(err);
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }

@@ -194,7 +194,7 @@ struct Type : public Symbol
     virtual ~Type();
 
     /// convert type to string
-    static std::string CodeToString(const TypeCode& code);
+    static const StaticString& CodeToString(const TypeCode& code);
 
     enum Category
     {
@@ -534,7 +534,7 @@ template<typename T>
 inline T*
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->scope.symbolLookup.find(str);
+    auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())
         return static_cast<T*>(it->second);
     else

@@ -207,7 +207,7 @@ __AllocArrayInternal(Allocator* allocator, size_t num)
         sizeLeft = allocator->blockSize;
         alignedIterator = std::align(alignment, size, block->mem, sizeLeft);
     }
-    assert(block->blockIndex != -1);
+    assert(block->blockIndex != -1 && "Allocator is full");
     block->allocs++;
 
     block->iterator = (char*)alignedIterator + size;
@@ -269,7 +269,7 @@ AllocVirtual(size_t num)
             Allocator = &DefaultAllocator;
         }
     }
-    assert(Allocator->freeVirtualMemSlotCounter > 0);
+    assert(Allocator->freeVirtualMemSlotCounter > 0 && "Too many virtual allocations");
     uint32_t vmemIndex = Allocator->freeVirtualMemSlots[Allocator->freeVirtualMemSlotCounter--];
     Allocator::VAlloc* ret = &Allocator->virtualMem[vmemIndex];
     ret->mem = (T*)vmalloc(num * sizeof(T));

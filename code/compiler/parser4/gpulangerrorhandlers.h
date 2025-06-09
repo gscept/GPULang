@@ -14,7 +14,7 @@ public:
 	std::string errorBuffer;
 	std::string warningBuffer;
 	std::vector<std::tuple<int, size_t, size_t, size_t, std::string>> lines;
-    std::vector<GPULang::Diagnostic> diagnostics;
+    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics = 0xFFFFFF;
 };
 
 class GPULangParserErrorHandler : public antlr4::BaseErrorListener
@@ -27,5 +27,5 @@ public:
 	std::string errorBuffer;
 	std::string warningBuffer;
 	std::vector<std::tuple<int,size_t, size_t, size_t, std::string>> lines;
-    std::vector<GPULang::Diagnostic> diagnostics;
+    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics = 0xFFFFFF;
 };

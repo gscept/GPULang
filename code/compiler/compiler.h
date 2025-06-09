@@ -29,8 +29,15 @@ namespace GPULang
 
 struct Diagnostic
 {
+    enum Severity
+    {
+        Error,
+        Warning,
+        Info
+    };
     std::string error;
     std::string file;
+    Severity severity = Severity::Error;
     int line, column, length;
 };
 
@@ -189,7 +196,7 @@ struct Compiler
     std::string path;
     std::string filename;
     std::vector<std::string> defines;
-    std::vector<Diagnostic> diagnostics;
+    PinnedArray<Diagnostic> diagnostics = 0xFFFFFF;
     std::vector<std::string> messages;
     bool hasErrors;
 

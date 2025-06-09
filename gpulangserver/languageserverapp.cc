@@ -132,7 +132,7 @@ struct ParseContext
             auto scopeIt = scopes.rbegin();
             while (scopeIt != scopes.rend())
             {
-                auto symIt = (*scopeIt)->symbolLookup.find(name);
+                auto symIt = (*scopeIt)->symbolLookup.Find(name);
                 if (symIt != (*scopeIt)->symbolLookup.end())
                 {
                     return symIt->second;
@@ -265,7 +265,7 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     std::vector<lsp::Diagnostic> diagnostics;
 
     std::map<std::string, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
-    if (!file->result.diagnostics.empty())
+    if (file->result.diagnostics.size > 0)
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
@@ -280,7 +280,7 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
                 .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
             });
         }
-        file->result.diagnostics.clear();
+        file->result.diagnostics.Clear();
     }
     if (!diagnosticsResults.empty())
     {
@@ -1014,7 +1014,7 @@ main(int argc, const char** argv)
         exit(2);
     }
 #endif
-    
+        
     SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
     int yes = 1;
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));

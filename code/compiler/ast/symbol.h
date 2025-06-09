@@ -148,7 +148,7 @@ struct Scope
     };
     ScopeType type = ScopeType::Local;
     PinnedArray<Symbol*> symbols = 0xFFFFFF;
-    std::multimap<std::string, Symbol*> symbolLookup;
+    PinnedMap<std::string, Symbol*> symbolLookup = 0xFFFFFF;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;
 };

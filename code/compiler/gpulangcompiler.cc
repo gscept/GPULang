@@ -134,7 +134,7 @@ GPULangPreprocess(
     , const std::vector<std::string>& defines
     , std::string& output
     , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
-    , std::vector<GPULang::Diagnostic>& diagnostics
+    , PinnedArray<GPULang::Diagnostic>& diagnostics
 )
 {
 
@@ -171,12 +171,12 @@ GPULangPreprocess(
     }
 
     // Insert into file map
-    std::map<std::string_view, GPULangFile*> fileMap;
+    PinnedMap<std::string_view, GPULangFile*> fileMap = 0xFFFF;
 
     FileLevel* level = &fileStack.back();
     if (file->contents == nullptr)
     {
-        diagnostics.push_back(DIAGNOSTIC(Format("Can't open '%s' for reading", file->path.c_str())));
+        diagnostics.Append(DIAGNOSTIC(Format("Can't open '%s' for reading", file->path.c_str())));
         return false;
     }
     output.clear();
@@ -450,7 +450,7 @@ GPULangPreprocess(
         return end;
     };
 
-    static std::function<int(const char*, const char*, FileLevel*, std::vector<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
+    static std::function<int(const char*, const char*, FileLevel*, PinnedArray<GPULang::Diagnostic>&, const PinnedMap<std::string_view, Macro>&, bool& res)> eval = [](const char* begin, const char* end, FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics, const PinnedMap<std::string_view, Macro>& definitions, bool& res) -> int
     {
         struct Token
         {
@@ -564,7 +564,7 @@ GPULangPreprocess(
                 case '!':
                     return 11;
                 default:
-                    diagnostics.push_back(DIAGNOSTIC(Format("Unknown operator '%c%c%c%c'", op & 0xFF, (op >> 8) & 0xFF, (op >> 16) & 0xFF, (op >> 24) & 0xFF)));
+                    diagnostics.Append(DIAGNOSTIC(Format("Unknown operator '%c%c%c%c'", op & 0xFF, (op >> 8) & 0xFF, (op >> 16) & 0xFF, (op >> 24) & 0xFF)));
                     res = false;
                     return -1;
             }
@@ -638,7 +638,7 @@ GPULangPreprocess(
             {
                 if (parantCounter == 0)
                 {
-                    diagnostics.push_back(DIAGNOSTIC("Invalid closing paranthesis ')' in expression, missing opening '('"));
+                    diagnostics.Append(DIAGNOSTIC("Invalid closing paranthesis ')' in expression, missing opening '('"));
                     res = false;
                     return -1;
                 }
@@ -691,7 +691,7 @@ GPULangPreprocess(
                                 }
                                 else
                                 {
-                                    diagnostics.push_back(DIAGNOSTIC(Format("Malformed 'defined'")));
+                                    diagnostics.Append(DIAGNOSTIC(Format("Malformed 'defined'")));
                                     res = false;
                                     return -1;
                                 }
@@ -725,7 +725,7 @@ GPULangPreprocess(
                     }
                     else
                     {
-                        diagnostics.push_back(DIAGNOSTIC(Format("Invalid token '%c'", word[0])));
+                        diagnostics.Append(DIAGNOSTIC(Format("Invalid token '%c'", word[0])));
                         res = false;
                         return -1;
                     }
@@ -739,7 +739,7 @@ GPULangPreprocess(
                     { 
                         if (unconsumedIntegers < 1)
                         {
-                            diagnostics.push_back(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
+                            diagnostics.Append(DIAGNOSTIC(Format("Operators must be surrounded by expressions '*.%s'", stride, word)));
                             res = false;
                             return -1;
                         }
@@ -796,13 +796,13 @@ GPULangPreprocess(
         
         if (parantCounter > 0)
         {
-            diagnostics.push_back(DIAGNOSTIC("Missing closing paranthesis ')'"));
+            diagnostics.Append(DIAGNOSTIC("Missing closing paranthesis ')'"));
             res = false;
             return -1;
         }
         else if (parantCounter < 0)
         {
-            diagnostics.push_back(DIAGNOSTIC("Too closing paranthesis ')' mismatching opening paranthesis '('"));
+            diagnostics.Append(DIAGNOSTIC("Too closing paranthesis ')' mismatching opening paranthesis '('"));
             res = false;
             return -1;
         }
@@ -993,11 +993,11 @@ escape_newline:
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
 
                         GPULangFile* inc = nullptr;
-                        auto fileIt = fileMap.find(path);
+                        auto fileIt = fileMap.Find(path);
                         if (fileIt == fileMap.end())
                         {
                             inc = GPULangLoadFile(path, searchPaths);
-                            fileMap[path] = inc;
+                            fileMap.Insert(path, inc);
                         }
                         else
                         {
@@ -1006,7 +1006,7 @@ escape_newline:
                         pp->contents = inc->path;
                         if (inc == nullptr)
                         {
-                            diagnostics.push_back(DIAGNOSTIC(Format("File not found '%s'", inc->path.c_str())));
+                            diagnostics.Append(DIAGNOSTIC(Format("File not found '%s'", inc->path.c_str())));
                             ret = false;
                             goto end;
                         }
@@ -1017,7 +1017,7 @@ escape_newline:
                     }
                     else
                     {
-                        diagnostics.push_back(DIAGNOSTIC("include directory must be provided a path"));
+                        diagnostics.Append(DIAGNOSTIC("include directory must be provided a path"));
                         ret = false;
                         goto end;
                     }
@@ -1030,14 +1030,14 @@ escape_newline:
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == eol)
                     {
-                        diagnostics.push_back(DIAGNOSTIC("define missing identifier"));
+                        diagnostics.Append(DIAGNOSTIC("define missing identifier"));
                         ret = false;
                         goto end;
                     }
                     const char* endOfDefinition = wordEndOrParanthesis(startOfDefinition, eol);
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("define identifier invalid"));
+                        diagnostics.Append(DIAGNOSTIC("define identifier invalid"));
                         ret = false;
                         goto end;
                     }
@@ -1046,7 +1046,7 @@ escape_newline:
                     auto prev = definitions.Find(def);
                     if (prev != definitions.end())
                     {
-                        diagnostics.push_back(DIAGNOSTIC(Format("macro %s redefinition", std::string(def).c_str())));
+                        diagnostics.Append(DIAGNOSTIC(Format("macro %s redefinition", std::string(def).c_str())));
                         ret = false;
                         goto end;
                     }
@@ -1081,7 +1081,7 @@ escape_newline:
 
                             if (!validateIdentifier(argumentIt, argumentEnd))
                             {
-                                diagnostics.push_back(DIAGNOSTIC("Invalid argument identifier"));
+                                diagnostics.Append(DIAGNOSTIC("Invalid argument identifier"));
                                 ret = false;
                                 goto end;
                             }
@@ -1114,7 +1114,7 @@ escape_newline:
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
                     {
-                        diagnostics.push_back(DIAGNOSTIC("undef missing identifier"));
+                        diagnostics.Append(DIAGNOSTIC("undef missing identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1122,7 +1122,7 @@ escape_newline:
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("Invalid undef identifier"));
+                        diagnostics.Append(DIAGNOSTIC("Invalid undef identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1151,7 +1151,7 @@ escape_newline:
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
                     {
-                        diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
+                        diagnostics.Append(DIAGNOSTIC("ifdef missing identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1159,7 +1159,7 @@ escape_newline:
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("Invalid ifdef identifier"));
+                        diagnostics.Append(DIAGNOSTIC("Invalid ifdef identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1197,7 +1197,7 @@ escape_newline:
                     const char* startOfDefinition = wordStart(endOfDirective, eol);
                     if (startOfDefinition == nullptr)
                     {
-                        diagnostics.push_back(DIAGNOSTIC("ifdef missing identifier"));
+                        diagnostics.Append(DIAGNOSTIC("ifdef missing identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1205,7 +1205,7 @@ escape_newline:
 
                     if (!validateIdentifier(startOfDefinition, endOfDefinition))
                     {
-                        diagnostics.push_back(DIAGNOSTIC("Invalid ifndef identifier"));
+                        diagnostics.Append(DIAGNOSTIC("Invalid ifndef identifier"));
                         ret = false;
                         goto end;
                     }
@@ -1243,7 +1243,7 @@ escape_newline:
                 {
                     if (ifStack.empty())
                     {
-                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
+                        diagnostics.Append(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
                         ret = false;
                         goto end;
                     }
@@ -1308,7 +1308,7 @@ escape_newline:
                 {
                     if (ifStack.empty())
                     {
-                        diagnostics.push_back(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
+                        diagnostics.Append(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
                         ret = false;
                         goto end;
                     }
@@ -1335,7 +1335,7 @@ escape_newline:
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
                     if (ifStack.empty())
                     {
-                        diagnostics.push_back(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
+                        diagnostics.Append(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
@@ -1402,7 +1402,7 @@ escape_newline:
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
                         
-                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, const FileLevel*, std::vector<GPULang::Diagnostic>&)> expandMacro = [](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, const FileLevel* level, std::vector<GPULang::Diagnostic>& diagnostics) -> const char*
+                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, const FileLevel*, PinnedArray<GPULang::Diagnostic>&)> expandMacro = [](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, const FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics) -> const char*
                         {
                             StackMap<std::string_view, std::string_view> argumentMap(32);
                             StackArray<std::string_view> args(32);
@@ -1424,7 +1424,7 @@ escape_newline:
                                         {
                                             if (args.Full())
                                             {
-                                                diagnostics.push_back(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
+                                                diagnostics.Append(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
                                                 return nullptr;
                                             }
                                             args.Append(std::string_view(argBegin, argListIt));
@@ -1446,7 +1446,7 @@ escape_newline:
                                 
                                 if (argStack > 0)
                                 {
-                                    diagnostics.push_back(DIAGNOSTIC("Macro call missing ')'"));
+                                    diagnostics.Append(DIAGNOSTIC("Macro call missing ')'"));
                                     return nullptr;
                                 }
                                 
@@ -1587,7 +1587,7 @@ GPULangPreprocessFile(
     , const std::vector<std::string>& defines
     , std::string& output
     , PinnedArray<GPULang::Symbol*>& preprocessorSymbols
-    , std::vector<GPULang::Diagnostic>& diagnostics
+    , PinnedArray<GPULang::Diagnostic>& diagnostics
 )
 {
     std::string escaped = FixBackslashes(path);
@@ -1706,7 +1706,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
     timer.Start();
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    std::vector<GPULang::Diagnostic> diagnostics;
+    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
     if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
@@ -1830,7 +1830,7 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
     timer.Start();
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    std::vector<GPULang::Diagnostic> diagnostics;
+    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
     if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
@@ -1883,7 +1883,7 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         if (options.emitTimings)
             timer.Print("Parsing");
 
-        result.diagnostics.clear();
+        result.diagnostics.Clear();
 
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
@@ -1891,8 +1891,8 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
             std::string errorMessage;
             errorMessage.append(lexerErrorHandler.errorBuffer);
             errorMessage.append(parserErrorHandler.errorBuffer);
-            result.diagnostics.insert(result.diagnostics.end(), lexerErrorHandler.diagnostics.begin(), lexerErrorHandler.diagnostics.end());
-            result.diagnostics.insert(result.diagnostics.end(), parserErrorHandler.diagnostics.begin(), parserErrorHandler.diagnostics.end());
+            result.diagnostics.Append(lexerErrorHandler.diagnostics);
+            result.diagnostics.Append(parserErrorHandler.diagnostics);
         }
 
         Compiler compiler;
@@ -1908,7 +1908,7 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         result.symbols.Prepend(preprocessorSymbols);
         result.intrinsicScope = compiler.intrinsicScope;
         result.mainScope = compiler.mainScope;
-        if (!compiler.diagnostics.empty())
+        if (compiler.diagnostics.size > 0)
             result.diagnostics = compiler.diagnostics;
         
         // convert error list to string
@@ -1928,7 +1928,7 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
 
         return res;
     }
-    result.diagnostics.insert(result.diagnostics.end(), diagnostics.begin(), diagnostics.end());
+    result.diagnostics.Append(diagnostics);
     return false;
 }
 
@@ -1948,7 +1948,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     timer.Start();
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    std::vector<GPULang::Diagnostic> diagnostics;
+    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
@@ -2001,7 +2001,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         if (options.emitTimings)
             timer.Print("Parsing");
 
-        result.diagnostics.clear();
+        result.diagnostics.Clear();
 
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
@@ -2009,8 +2009,8 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
             std::string errorMessage;
             errorMessage.append(lexerErrorHandler.errorBuffer);
             errorMessage.append(parserErrorHandler.errorBuffer);
-            result.diagnostics.insert(result.diagnostics.end(), lexerErrorHandler.diagnostics.begin(), lexerErrorHandler.diagnostics.end());
-            result.diagnostics.insert(result.diagnostics.end(), parserErrorHandler.diagnostics.begin(), parserErrorHandler.diagnostics.end());
+            result.diagnostics.Append(lexerErrorHandler.diagnostics);
+            result.diagnostics.Append(parserErrorHandler.diagnostics);
         }
 
         Compiler compiler;
@@ -2026,7 +2026,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         result.symbols.Prepend(preprocessorSymbols);
         result.intrinsicScope = compiler.intrinsicScope;
         result.mainScope = compiler.mainScope;
-        if (!compiler.diagnostics.empty())
+        if (compiler.diagnostics.size > 0)
             result.diagnostics = compiler.diagnostics;
         
         // convert error list to string
@@ -2046,6 +2046,6 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
 
         return res;
     }
-    result.diagnostics.insert(result.diagnostics.end(), diagnostics.begin(), diagnostics.end());
+    result.diagnostics.Append(diagnostics);
     return false;
 }

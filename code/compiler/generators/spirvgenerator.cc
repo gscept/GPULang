@@ -4595,7 +4595,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [baseTy = std::get<1>(fun), vecSize = std::get<2>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             uint32_t baseType = GeneratePODTypeSPIRV(c, g, baseTy, vecSize);
-            std::string name = Type::CodeToString(baseTy);
+            std::string name = Type::CodeToString(baseTy).c_str();
 
             TStr typeSymbolName = vecSize > 1 ? TStr::Compact("ptr_", name, "x", vecSize, "_Output") : TStr::Compact("ptr_", name);
 
@@ -7159,7 +7159,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
         if (type->IsVector() || type->IsMatrix())
         {
-            auto it = type->scope.symbolLookup.find(Format("operator[](%s)", rightType.name.c_str()));
+            auto it = type->scope.symbolLookup.Find(Format("operator[](%s)", rightType.name.c_str()));
             Function* func = static_cast<Function*>((*it).second);
 
             /// Get intrinsic

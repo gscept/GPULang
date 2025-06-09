@@ -219,7 +219,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
     type->symbols.Clear();
-    type->scope.symbolLookup.clear();
+    type->scope.symbolLookup.Clear();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
     {
@@ -280,7 +280,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::EnumerationType)
         {
             Enumeration* en = static_cast<Enumeration*>(sym);
-            en->scope.symbolLookup.clear();
+            en->scope.symbolLookup.Clear();
             en->symbols.Clear();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
@@ -288,7 +288,7 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::StructureType)
         {
             Structure* struc = static_cast<Structure*>(sym);
-            struc->scope.symbolLookup.clear();
+            struc->scope.symbolLookup.Clear();
             struc->symbols.Clear();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
@@ -425,11 +425,11 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
-        auto it = this->resourceIndexCounter.find(cat);
+        auto it = this->resourceIndexCounter.Find(cat);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[cat] = 0;
-            it = this->resourceIndexCounter.find(stateResolved->group);
+            this->resourceIndexCounter.Insert(cat, 0);
+            it = this->resourceIndexCounter.Find(stateResolved->group);
         }
 
         if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -438,16 +438,16 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[cat] = max(it->second, stateResolved->binding + 1);
+            it->second = max(it->second, stateResolved->binding + 1);
         }
     }
     else if (this->resourceIndexingMode == ResourceIndexingByGroup)
     {
-        auto it = this->resourceIndexCounter.find(stateResolved->group);
+        auto it = this->resourceIndexCounter.Find(stateResolved->group);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[stateResolved->group] = 0;
-            it = this->resourceIndexCounter.find(stateResolved->group);
+            this->resourceIndexCounter.Insert(stateResolved->group, 0);
+            it = this->resourceIndexCounter.Find(stateResolved->group);
         }
 
         if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -456,21 +456,22 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[stateResolved->group] = max(it->second, stateResolved->binding + 1);
+            it->second = max(it->second, stateResolved->binding + 1);
         }
-        auto it2 = this->resourceTypePerGroupAndBinding.find(stateResolved->group);
+        auto it2 = this->resourceTypePerGroupAndBinding.Find(stateResolved->group);
         if (it2 == this->resourceTypePerGroupAndBinding.end())
         {
-            std::map<uint32_t, Type::Category> table = { { stateResolved->binding, samplerStateType->category } };
-            this->resourceTypePerGroupAndBinding.insert({ stateResolved->group, table });
+            PinnedMap<uint32_t, Type::Category> table = 0xFFF;
+            table.Insert(stateResolved->binding, samplerStateType->category);
+            this->resourceTypePerGroupAndBinding.Insert(stateResolved->group, table);
         }
         else
         {
-            std::map<uint32_t, Type::Category>& table = it2->second;
-            auto it3 = table.find(stateResolved->binding);
+            PinnedMap<uint32_t, Type::Category>& table = it2->second;
+            auto it3 = table.Find(stateResolved->binding);
             if (it3 == table.end())
             {
-                table.insert({ stateResolved->binding, samplerStateType->category });
+                table.Insert(stateResolved->binding, samplerStateType->category);
             }
             else
             {
@@ -655,7 +656,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
-    funResolved->scope.symbolLookup.clear();
+    funResolved->scope.symbolLookup.Clear();
 
      // run attribute validation
     for (const Attribute* attr : fun->attributes)
@@ -2003,7 +2004,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         Expression* expr = enumeration->values.buf[i];
 
         // Check of label redefinition
-        if (enumeration->scope.symbolLookup.find(str.c_str()) != enumeration->scope.symbolLookup.end())
+        if (enumeration->scope.symbolLookup.Find(str.c_str()) != enumeration->scope.symbolLookup.end())
         {
             compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
             return false;
@@ -2051,7 +2052,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         // Add to type
         sym->name = str.c_str();
         enumeration->symbols.Append(sym);
-        enumeration->scope.symbolLookup.insert({ sym->name, sym });
+        enumeration->scope.symbolLookup.Insert(sym->name, sym);
     }
 
     return true;
@@ -2717,11 +2718,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
             if (this->resourceIndexingMode == ResourceIndexingByType)
             {
-                auto it = this->resourceIndexCounter.find(cat);
+                auto it = this->resourceIndexCounter.Find(cat);
                 if (it == this->resourceIndexCounter.end())
                 {
-                    this->resourceIndexCounter[cat] = 0;
-                    it = this->resourceIndexCounter.find(varResolved->group);
+                    this->resourceIndexCounter.Insert(cat, 0);
+                    it = this->resourceIndexCounter.Find(varResolved->group);
                 }
 
                 if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -2730,16 +2731,16 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    this->resourceIndexCounter[cat] = max(it->second, varResolved->binding + 1);
+                    it->second = max(it->second, varResolved->binding + 1);
                 }
             }
             else if (this->resourceIndexingMode == ResourceIndexingByGroup)
             {
-                auto it = this->resourceIndexCounter.find(varResolved->group);
+                auto it = this->resourceIndexCounter.Find(varResolved->group);
                 if (it == this->resourceIndexCounter.end())
                 {
-                    this->resourceIndexCounter[varResolved->group] = 0;
-                    it = this->resourceIndexCounter.find(varResolved->group);
+                    this->resourceIndexCounter.Insert(varResolved->group, 0);
+                    it = this->resourceIndexCounter.Find(varResolved->group);
                 }
 
                 if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -2748,21 +2749,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    this->resourceIndexCounter[varResolved->group] = max(it->second, varResolved->binding + 1);
+                    it->second = max(it->second, varResolved->binding + 1);
                 }
-                auto it2 = this->resourceTypePerGroupAndBinding.find(varResolved->group);
+                auto it2 = this->resourceTypePerGroupAndBinding.Find(varResolved->group);
                 if (it2 == this->resourceTypePerGroupAndBinding.end())
                 {
-                    std::map<uint32_t, Type::Category> table = { {varResolved->binding, varResolved->typeSymbol->category} };
-                    this->resourceTypePerGroupAndBinding.insert({varResolved->group, table});
+                    PinnedMap<uint32_t, Type::Category> table = 0xFFF;
+                    table.Insert(varResolved->binding, varResolved->typeSymbol->category);
+                    this->resourceTypePerGroupAndBinding.Insert(varResolved->group, table);
                 }
                 else
                 {
-                    std::map<uint32_t, Type::Category>& table = it2->second;
-                    auto it3 = table.find(varResolved->binding);
+                    PinnedMap<uint32_t, Type::Category>& table = it2->second;
+                    auto it3 = table.Find(varResolved->binding);
                     if (it3 == table.end())
                     {
-                        table.insert({varResolved->binding, varResolved->typeSymbol->category});
+                        table.Insert(varResolved->binding, varResolved->typeSymbol->category);
                     }
                     else
                     {
@@ -2826,7 +2828,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                         generatedStruct->symbols.Append(generatedVar);
-                        generatedStruct->scope.symbolLookup.insert({ varResolved->name, generatedVar });
+                        generatedStruct->scope.symbolLookup.Insert(varResolved->name, generatedVar);
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
@@ -2861,7 +2863,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
                 compiler->symbols.Insert(generatedStruct, compiler->symbolIterator);
-                compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
+                compiler->scopes.back()->symbolLookup.Insert(generatedStruct->name, generatedStruct);
                 compiler->symbolIterator++;
             }
 

@@ -51,8 +51,8 @@ struct GPULangServerResult
     GPULang::Effect* root = nullptr;
 	GPULang::PinnedArray<GPULang::Symbol*> symbols;
 	GPULang::Scope* intrinsicScope = nullptr, *mainScope = nullptr;
-    std::map<std::string, GPULang::Symbol*> lookup;
-    std::vector<GPULang::Diagnostic> diagnostics;
+    GPULang::PinnedMap<std::string, GPULang::Symbol*> lookup;
+    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics;
 	std::vector<std::string> messages;	
 };
 

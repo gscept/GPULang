@@ -80,8 +80,8 @@ struct Validator
         ResourceIndexingByGroup    // resource indexing is by group, so each resource in a group get an incremental index
     };
     ResourceIndexingMode resourceIndexingMode;
-    std::map<uint32_t, uint32_t> resourceIndexCounter;
-    std::map<uint32_t, std::map<uint32_t, Type::Category>> resourceTypePerGroupAndBinding;
+    PinnedMap<uint32_t, uint32_t> resourceIndexCounter = 0xFFFF;
+    PinnedMap<uint32_t, PinnedMap<uint32_t, Type::Category>> resourceTypePerGroupAndBinding = 0xFFFF;
     uint8_t defaultGroup;
 
 

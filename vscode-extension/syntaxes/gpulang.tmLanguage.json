@@ -25,6 +25,9 @@
 				"1": { "name": "keyword.other" }
 			}
 		}, {
+			"name": "entity.name.function",
+			"match": "\\b.*\\(.*\\)\\b"
+		}, {
 			"include": "#comment"
 		}, {
 			"include": "#strings"
