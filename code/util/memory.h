@@ -16,6 +16,7 @@
 #include <charconv>
 #include <mutex>
 #include <type_traits>
+#include <memory>
 
 
 extern bool SYMBOL_STATIC_ALLOC;
