@@ -164,7 +164,7 @@ inline constexpr T max(T a, T2 b)
 //------------------------------------------------------------------------------
 /**
 */
-uint8_t
+inline uint8_t
 CountLeadingZeroes(uint64_t word)
 {
     if (word == 0)
