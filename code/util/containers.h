@@ -153,6 +153,7 @@ struct PinnedArray
     PinnedArray()
         : data(nullptr)
         , maxAllocationCount(0)
+        , committedPages(0)
         , size(0)
         , capacity(0)
     {
@@ -162,6 +163,7 @@ struct PinnedArray
     PinnedArray(size_t maxAllocationCount)
         : size(0)
         , capacity(0)
+        , committedPages(0)
     {
         this->maxAllocationCount = maxAllocationCount;
     }
@@ -170,9 +172,12 @@ struct PinnedArray
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
+        this->alloc = nullptr;
+        this->data = nullptr;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->capacity = 0;
         this->size = 0;
+        this->committedPages = 0;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
         {
@@ -193,16 +198,17 @@ struct PinnedArray
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
         this->alloc = rhs.alloc;
-        if (rhs.alloc != nullptr)
-            this->data = (TYPE*)this->alloc->mem;
+        this->data = rhs.data;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->size = rhs.size;
         this->capacity = rhs.capacity;
+        this->committedPages = rhs.committedPages;
         rhs.alloc = nullptr;
         rhs.data = nullptr;
         rhs.maxAllocationCount = 0;
         rhs.size = 0;
         rhs.capacity = 0;
+        rhs.committedPages = 0;
     }
     
     ~PinnedArray()
@@ -215,23 +221,28 @@ struct PinnedArray
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
         this->alloc = rhs.alloc;
-        if (rhs.alloc != nullptr)
-            this->data = (TYPE*)this->alloc->mem;
+        this->data = rhs.data;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->size = rhs.size;
         this->capacity = rhs.capacity;
+        this->committedPages = rhs.committedPages;
         rhs.alloc = nullptr;
         rhs.data = nullptr;
         rhs.maxAllocationCount = 0;
         rhs.size = 0;
         rhs.capacity = 0;
+        rhs.committedPages = 0;
     }
     
     void operator=(const PinnedArray<TYPE>& rhs)
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
+        this->alloc = nullptr;
+        this->data = nullptr;
         this->capacity = 0;
+        this->size = 0;
+        this->committedPages = 0;
         this->maxAllocationCount = rhs.maxAllocationCount;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
@@ -252,7 +263,10 @@ struct PinnedArray
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
+        this->alloc = nullptr;
+        this->data = nullptr;
         this->maxAllocationCount = rhs.size * sizeof(TYPE);
+        this->committedPages = 0;
         this->capacity = 0;
         this->Grow(rhs.size);
         if (std::is_trivially_copyable<TYPE>::value)
@@ -288,11 +302,13 @@ struct PinnedArray
                 if (numBytesToCommit > 0)
                 {
                     vcommit(this->data + this->capacity, numBytesToCommit);
+                    uint32_t numNewObjects = numBytesToCommit / sizeof(TYPE);
                     if (std::is_trivially_default_constructible<TYPE>::value)
                         memset(this->data + this->capacity, 0x0, numBytesToCommit);
                     else
-                        new (this->data + this->capacity) TYPE[numBytesToCommit / sizeof(TYPE)];
-                    this->capacity = (numNeededPages * SystemPageSize) / sizeof(TYPE);
+                        new (this->data + this->capacity) TYPE[numNewObjects];
+                    this->capacity = numNewObjects;
+                    this->committedPages = numNeededPages;
                 }
             }
         }
@@ -406,7 +422,7 @@ struct PinnedArray
             return this->data + this->size;
     }
     
-    size_t maxAllocationCount;
+    size_t maxAllocationCount, committedPages;
     size_t size, capacity;
     TYPE* data = nullptr;
     Allocator::VAlloc* alloc = nullptr;
@@ -1070,7 +1086,7 @@ struct PinnedMap
     void Sort()
     {
         std::sort(this->data.begin(), this->data.end(), [](const item& lhs, const item& rhs)
-                  {
+        {
             return lhs.first < rhs.first;
         });
         this->searchValid = true;
