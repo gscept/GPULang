@@ -998,7 +998,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 int __cdecl
 main(int argc, const char** argv)
 {
-#if _MSC_VER
+#if __WIN32__
     WSADATA wsaData;
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
@@ -1017,7 +1017,9 @@ main(int argc, const char** argv)
         
     SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
     int yes = 1;
+#if !__WIN32__
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+#endif
 
     struct sockaddr_in server;
     server.sin_family = AF_INET;
