@@ -46,8 +46,8 @@ jobs:
     - name: Fix clang version
       if: startsWith(matrix.os, 'ubuntu')
       run: |
-        echo "CC=clang-14" >> $GITHUB_ENV
-        echo "CXX=clang++-14" >> $GITHUB_ENV
+        echo "CC=clang" >> $GITHUB_ENV
+        echo "CXX=clang++" >> $GITHUB_ENV
 
     - name: Configure
       run: |
