@@ -111,7 +111,7 @@ inline size_t FragmentSize(T arg)
 }
 
 template<>
-inline size_t FragmentSize(nullptr_t)
+inline size_t FragmentSize(std::nullptr_t)
 {
     return 0;
 }
@@ -192,7 +192,7 @@ inline void FragmentString(T arg, char* buf, size_t size)
 }
 
 template<>
-inline void FragmentString<nullptr_t>(nullptr_t, char* buf, size_t size)
+inline void FragmentString<std::nullptr_t>(std::nullptr_t, char* buf, size_t size)
 {
 }
 
@@ -435,7 +435,7 @@ struct TransientString
     }
 
     template<>
-    void Append<nullptr_t>(nullptr_t)
+    void Append<std::nullptr_t>(std::nullptr_t)
     {
         // do nothing
     }
