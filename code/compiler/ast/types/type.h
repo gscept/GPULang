@@ -224,9 +224,34 @@ struct Type : public Symbol
                 {
                     case TypeCode::UInt:
                         return TypeCode::UInt;
+                    case TypeCode::UInt16:
+                        return TypeCode::UInt;
                     case TypeCode::Int:
                         return TypeCode::UInt;
+                    case TypeCode::Int16:
+                        return TypeCode::UInt;
                     case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Float16:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::UInt;
+                }
+                break;
+            case TypeCode::UInt16:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::UInt;
+                    case TypeCode::UInt16:
+                        return TypeCode::UInt16;
+                    case TypeCode::Int:
+                        return TypeCode::UInt;
+                    case TypeCode::Int16:
+                        return TypeCode::UInt16;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
                         return TypeCode::UInt;
@@ -237,9 +262,34 @@ struct Type : public Symbol
                 {
                     case TypeCode::UInt:
                         return TypeCode::UInt;
+                    case TypeCode::UInt16:
+                        return TypeCode::UInt;
                     case TypeCode::Int:
                         return TypeCode::Int;
+                    case TypeCode::Int16:
+                        return TypeCode::Int;
                     case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Float16:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::Int;
+                }
+                break;
+            case TypeCode::Int16:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::UInt;
+                    case TypeCode::UInt16:
+                        return TypeCode::UInt16;
+                    case TypeCode::Int:
+                        return TypeCode::Int;
+                    case TypeCode::Int16:
+                        return TypeCode::Int16;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Float16:
                         return TypeCode::Float;
                     case TypeCode::Bool:
                         return TypeCode::Int;
@@ -250,10 +300,35 @@ struct Type : public Symbol
                 {
                     case TypeCode::UInt:
                         return TypeCode::Float;
+                    case TypeCode::UInt16:
+                        return TypeCode::Float;
                     case TypeCode::Int:
+                        return TypeCode::Float;
+                    case TypeCode::Int16:
                         return TypeCode::Float;
                     case TypeCode::Float:
                         return TypeCode::Float;
+                    case TypeCode::Float16:
+                        return TypeCode::Float;
+                    case TypeCode::Bool:
+                        return TypeCode::InvalidType;
+                }
+                break;
+            case TypeCode::Float16:
+                switch (rhs)
+                {
+                    case TypeCode::UInt:
+                        return TypeCode::Float;
+                    case TypeCode::UInt16:
+                        return TypeCode::Float;
+                    case TypeCode::Int:
+                        return TypeCode::Float;
+                    case TypeCode::Int16:
+                        return TypeCode::Float;
+                    case TypeCode::Float:
+                        return TypeCode::Float;
+                    case TypeCode::Float16:
+                        return TypeCode::Float16;
                     case TypeCode::Bool:
                         return TypeCode::InvalidType;
                 }
