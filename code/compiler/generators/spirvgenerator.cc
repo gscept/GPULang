@@ -125,6 +125,14 @@ struct SPVComment
 struct SPVArg
 {
     uint32_t arg;
+    SPVArg()
+        : arg(UINT32_MAX)
+    {
+    }
+    SPVArg(const uint32_t arg)
+        : arg(arg)
+    {
+    }
 };
 
 struct SPVLiteralList
