@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include "shaderusage.h"
-#include <stdint.h>
+#include <cstdint>
 namespace GPULang
 {
 
