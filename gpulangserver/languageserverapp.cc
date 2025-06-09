@@ -3,6 +3,7 @@
 #include "lsp/messagehandler.h"
 #include "lsp/io/standardio.h"
 #include "gpulangcompiler.h"
+#include "ast/preprocessor.h"
 #include "ast/function.h"
 #include "ast/variable.h"
 #include "ast/enumeration.h"
@@ -16,18 +17,22 @@
 #include "ast/statements/ifstatement.h"
 #include "ast/statements/forstatement.h"
 #include "ast/statements/whilestatement.h"
+#include "ast/statements/terminatestatement.h"
 #include "ast/statements/expressionstatement.h"
 #include "ast/expressions/callexpression.h"
 #include "ast/expressions/symbolexpression.h"
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/accessexpression.h"
 #include "ast/expressions/arrayindexexpression.h"
+#include "thread.h"
 
 #if _MSC_VER
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #else
 #include <sys/socket.h>
+#include <netinet/in.h>
+#define SOCKET int
 #endif
 
 #include <map>
@@ -86,6 +91,25 @@ union PresentationBits
     PresentationBits(Flags flags) : flags(flags) {};
 };
 
+struct SemanticToken
+{
+    uint32_t deltaLine, deltaColumn, length, type, modifiers;
+};
+
+struct TextRange
+{
+    size_t startLine, stopLine;
+    size_t startColumn, stopColumn;
+
+    bool operator<(const TextRange& rhs) const
+    {
+        if (this->startLine == rhs.startLine)
+            return this->startColumn < rhs.startColumn;
+        else
+            return this->startLine < rhs.startLine;
+    }
+};
+
 struct ParseContext
 {
     std::vector<std::string> includePaths;
@@ -95,25 +119,20 @@ struct ParseContext
         GPULang::Allocator alloc;
 
         std::string path;
-        std::string file;
-        std::FILE* tmpFile;
-        std::string tmpPath;
-        struct TextRange
-        {
-            size_t startLine, stopLine;
-            size_t startColumn, stopColumn;
-        };
+        GPULangFile* f;
 
         std::vector<std::pair<TextRange, const GPULang::Symbol*>> symbolsByRange;
         std::map<size_t, std::vector<std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>>> symbolsByLine;
-        std::map<std::string, const GPULang::Symbol*> symbolsByName;
+        std::map<TextRange, std::vector<const GPULang::Scope*>> scopesByRange;
+        std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
+        std::map<int, std::string_view> textByLine;
 
         static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
         {
             auto scopeIt = scopes.rbegin();
             while (scopeIt != scopes.rend())
             {
-                auto symIt = (*scopeIt)->symbolLookup.find(name);
+                auto symIt = (*scopeIt)->symbolLookup.Find(name);
                 if (symIt != (*scopeIt)->symbolLookup.end())
                 {
                     return symIt->second;
@@ -121,6 +140,39 @@ struct ParseContext
                 scopeIt++;
             }
             return nullptr;
+        }
+
+        static const std::set<GPULang::Symbol*> FindSymbols(const std::string_view& name, const std::vector<const GPULang::Scope*> scopes)
+        {
+            std::set<GPULang::Symbol*> ret;
+
+            struct Comp
+            {
+                bool operator()(const std::string_view& lhs, const std::pair<std::string, const GPULang::Symbol*>& rhs) const { return rhs.first.starts_with(lhs); }
+                bool operator()(const std::pair<std::string, const GPULang::Symbol*>& rhs, const std::string_view& lhs) const { return rhs.first.starts_with(lhs); }
+            };
+            auto scopeIt = scopes.rbegin();
+            while (scopeIt != scopes.rend())
+            {
+                auto symIt = (*scopeIt)->symbolLookup.begin();
+                bool startMatch = false;
+                while (symIt != (*scopeIt)->symbolLookup.end())
+                {
+                    if (symIt->first.starts_with(name))
+                    {
+                        ret.insert(symIt->second);
+                        startMatch = true;
+                    }
+                    else if (startMatch)
+                        break;
+                    if (ret.size() == 32)
+                        goto escape;
+                    symIt++;
+                }
+                scopeIt++;
+            }
+            escape:
+            return ret;
         }
 
         std::vector<uint32_t> semanticTokens;
@@ -146,6 +198,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
         if (symbol->symbolType != GPULang::Symbol::SymbolType::InvalidType)
             symbol->~Symbol();
     }
+    result.symbols.Clear();
     GPULang::ResetAllocator(&allocator);
 }
 
@@ -155,37 +208,92 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 void
 WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string contents, lsp::MessageHandler& messageHandler)
 {
-    std::fputs(contents.c_str(), file->tmpFile);
-    std::fflush(file->tmpFile);
+    if (!contents.empty())
+    {
+        if (file->f->contents)
+            free(file->f->contents);
+        file->f->contents = (char*)malloc(contents.length());
+        file->f->contentSize = contents.length();
+        memcpy(file->f->contents, contents.data(), contents.length());
+    }
+    
+    static auto find_eol = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start != end)
+        {
+            if (start[0] == '\r')
+            {
+                if ((start+1) != end && start[1] == '\n')
+                    return start + 2;
+                else
+                    return start + 1;
+            }
+            else if (start[0] == '\n')
+                return start+1;
+            start++;
+        }
+        return end;
+    };
+
+    file->textByLine.clear();
+    const char* start = file->f->contents;
+    const char* end = file->f->contents + file->f->contentSize;
+    int lineCounter = 0;
+    while (start != end)
+    {
+        const char* eol = find_eol(start, end);
+        file->textByLine[lineCounter++] = std::string_view(start, eol);
+        start = eol;
+    }
 
     // Pass it to the compiler
     Clear(file->result, file->alloc);
     GPULang::MakeAllocatorCurrent(&file->alloc);
     GPULang::Compiler::Options options;
-    GPULangValidate(file->tmpPath, context->includePaths, options, file->result);
+    options.emitTimings = true;
+
+    GPULangValidate(file->f, context->includePaths, options, file->result);
+
+    // sort symbols on line and starting point
+    std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
+    {
+        if (lhs->location.line == rhs->location.line)
+            return lhs->location.start < rhs->location.start;
+        return lhs->location.line < rhs->location.line;
+    });
     std::vector<lsp::Diagnostic> diagnostics;
 
-    if (!file->result.diagnostics.empty())
+    std::map<std::string, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
+    if (file->result.diagnostics.size > 0)
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
-            diagnostics.push_back(lsp::Diagnostic{
+            auto& it = diagnosticsResults[diagnostic.file];
+            it.uri = diagnostic.file;
+            it.diagnostics.push_back(lsp::Diagnostic{
                 .range = {
-                    .start = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column },
-                    .end = { .line = (uint32_t)diagnostic.line - 1, .character = (uint32_t)diagnostic.column + diagnostic.length }
+                    .start = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column },
+                    .end = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column + diagnostic.length }
                 },
-                .message = diagnostic.error
+                .message = diagnostic.error,
+                .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
             });
         }
-        file->result.diagnostics.clear();
+        file->result.diagnostics.Clear();
     }
-    messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(
-        lsp::notifications::TextDocument_PublishDiagnostics::Params
+    if (!diagnosticsResults.empty())
+    {
+        for (auto res : diagnosticsResults)
         {
-            .uri = file->path,
-            .diagnostics = diagnostics
+            messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(std::move(res.second));
         }
-    );
+    }
+    else
+    {
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(lsp::PublishDiagnosticsParams{ .uri = file->f->path });
+    }
+    
 }
 
 //------------------------------------------------------------------------------
@@ -199,26 +307,12 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
     {
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
+        it->second.f = GPULangLoadFile(path.c_str(), {});
+        it->second.path = path;
     }
-    it->second.path = path;
-
-    // Open file and store in context
-    FILE* f = fopen(path.c_str(), "r");
-    assert(f != nullptr);
-    fseek(f, 0, SEEK_END);
-    int size = ftell(f);
-    char* data = GPULang::AllocStack<char>(size);
-    rewind(f);
-    fread(data, size, 1, f);
-    it->second.file = std::string(data, data + size);
-    fclose(f);
-    GPULang::DeallocStack(size, data);
 
     // Create temporary file for the compiler
-    it->second.tmpPath = (std::filesystem::temp_directory_path() / std::filesystem::path(std::tmpnam(nullptr))).string();
-    std::replace(it->second.tmpPath.begin(), it->second.tmpPath.end(), '\\', '/');
-    it->second.tmpFile = std::fopen(it->second.tmpPath.c_str(), "w");
-    WriteFile(&it->second, context, it->second.file, messageHandler);
+    WriteFile(&it->second, context, "", messageHandler);
 
     return &it->second;
 };
@@ -237,7 +331,6 @@ GetFile(const std::string path, ParseContext* context, lsp::MessageHandler& mess
         return nullptr;
     }
     return &it->second;
-
 }
 
 
@@ -300,20 +393,21 @@ enum class SemanticModifierMapping : uint32_t {
     , DefaultLibrary = 0x40
 };
 
+
 //------------------------------------------------------------------------------
 /**
 */
 void
 InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Location& loc, SemanticTypeMapping type, uint32_t modifiers, std::vector<uint32_t>& result)
 {
-    uint32_t ret[5];
-    ret[0] = (loc.line - prev.line);
-    ret[1] = loc.line == prev.line ? loc.column - prev.column : loc.column;
-    ret[2] = loc.end - loc.start;
-    ret[3] = (uint32_t)type;
-    ret[4] = modifiers;
+    SemanticToken token;
+    token.deltaLine = loc.line - prev.line;
+    token.deltaColumn = loc.line == prev.line ? loc.start - prev.start : loc.start;
+    token.length = loc.end - loc.start;
+    token.type = (uint32_t)type;
+    token.modifiers = modifiers;
     prev = loc;
-    result.insert(result.end(), ret, ret + 5);
+    result.insert(result.end(), reinterpret_cast<uint32_t*>(&token), reinterpret_cast<uint32_t*>(&token) + 5);
 }
 
 //------------------------------------------------------------------------------
@@ -322,16 +416,45 @@ InsertSemanticToken(GPULang::Symbol::Location& prev, const GPULang::Symbol::Loca
 void
 CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* sym, ParseContext::ParsedFile* file, std::vector<uint32_t>& result, std::vector<const GPULang::Scope*>& scopes)
 {
-    ParseContext::ParsedFile::TextRange range;
+    TextRange range;
     range.startLine = sym->location.line;
     range.stopLine = sym->location.line;
     range.startColumn = sym->location.start;
     range.stopColumn = sym->location.end;
     file->symbolsByRange.push_back(std::make_pair(range, sym));
-    file->symbolsByLine[range.startLine-1].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
+    file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits(0x0), sym));
 
     switch (sym->symbolType)
     {
+        case GPULang::Symbol::SymbolType::PreprocessorType:
+        {
+            const GPULang::Preprocessor* pp = static_cast<const GPULang::Preprocessor*>(sym);
+            switch (pp->type)
+            {
+            case GPULang::Preprocessor::Comment:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Comment, 0x0, result);
+                break;
+            case GPULang::Preprocessor::If:
+            case GPULang::Preprocessor::Undefine:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
+                break;
+            case GPULang::Preprocessor::Macro:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::Macro, 0x0, result);
+                break;                
+            case GPULang::Preprocessor::Include:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                InsertSemanticToken(prevLoc, pp->argLocations[0], SemanticTypeMapping::String, 0x0, result);
+                break;
+            case GPULang::Preprocessor::Else:
+            case GPULang::Preprocessor::EndIf:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+            case GPULang::Preprocessor::Call:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
+            }
+            break;
+        }
         case GPULang::Symbol::SymbolType::VariableType:
         {
             const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
@@ -354,13 +477,13 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, (uint32_t)SemanticModifierMapping::Definition, result);
 
             InsertSemanticToken(prevLoc, var->typeLocation, SemanticTypeMapping::Type, 0x0, result);
-            ParseContext::ParsedFile::TextRange range;
+            TextRange range;
             range.startLine = var->typeLocation.line;
             range.stopLine = var->typeLocation.line;
             range.startColumn = var->typeLocation.start;
             range.stopColumn = var->typeLocation.end;
             file->symbolsByRange.push_back(std::make_pair(range, res->typeSymbol));
-            file->symbolsByLine[range.startLine - 1].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
+            file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->typeSymbol));
 
             if (var->valueExpression != nullptr)
                 CreateSemanticToken(prevLoc, var->valueExpression, file, result, scopes);
@@ -371,6 +494,8 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Function* fun = static_cast<const GPULang::Function*>(sym);
             const GPULang::Function::__Resolved* res = GPULang::Symbol::Resolved(fun);
             scopes.push_back(&res->scope);
+            file->scopesByLine[range.startLine] = scopes;
+            file->scopesByRange[range] = scopes;
             for (auto annot : fun->annotations)
             {
                 //InsertSemanticToken(prevLoc, annot->location, SemanticTypeMapping::Decorator, 0x0, result);
@@ -392,13 +517,13 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             }
 
             InsertSemanticToken(prevLoc, fun->returnTypeLocation, SemanticTypeMapping::Type, 0x0, result);
-            ParseContext::ParsedFile::TextRange range;
+            TextRange range;
             range.startLine = fun->returnTypeLocation.line;
             range.stopLine = fun->returnTypeLocation.line;
             range.startColumn = fun->returnTypeLocation.start;
             range.stopColumn = fun->returnTypeLocation.end;
             file->symbolsByRange.push_back(std::make_pair(range, res->returnTypeSymbol));
-            file->symbolsByLine[range.startLine - 1].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
+            file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{ {.typeLookup = 1} }, res->returnTypeSymbol));
 
             if (fun->ast != nullptr)
             {
@@ -413,7 +538,10 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Enumeration* enu = static_cast<const GPULang::Enumeration*>(sym);
             const GPULang::Enumeration::__Resolved* res = GPULang::Symbol::Resolved(enu);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Enum, (uint32_t)SemanticModifierMapping::Definition, result);
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine] = scopes;
 
             for (auto mem : enu->labelLocations)
             {
@@ -427,9 +555,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::RenderState* struc = static_cast<const GPULang::RenderState*>(sym);
             const GPULang::RenderState::__Resolved* res = GPULang::Symbol::Resolved(struc);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -444,9 +575,12 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::SamplerState* struc = static_cast<const GPULang::SamplerState*>(sym);
             const GPULang::SamplerState::__Resolved* res = GPULang::Symbol::Resolved(struc);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : struc->entries)
             {
                 const GPULang::BinaryExpression* assignEntry = static_cast<const GPULang::BinaryExpression*>(entry);
@@ -461,6 +595,7 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             scopes.push_back(&struc->scope);
+            file->scopesByLine[range.startLine] = scopes;
             for (auto var : struc->symbols)
             {
                 CreateSemanticToken(prevLoc, var, file, result, scopes);
@@ -472,15 +607,17 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
         {
             const GPULang::Program* prog = static_cast<const GPULang::Program*>(sym);
             const auto* res = GPULang::Symbol::Resolved(prog);
-            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine - 1].back();
+            auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
             for (auto annot : prog->annotations)
             {
                 if (annot->value != nullptr)
                     CreateSemanticToken(prevLoc, annot->value, file, result, scopes);
             }
-
+            if (res->typeSymbol == nullptr)
+                return;
             scopes.push_back(&res->typeSymbol->scope);
+            file->scopesByLine[range.startLine] = scopes;
             for (auto entry : prog->entries)
             {
                 CreateSemanticToken(prevLoc, entry, file, result, scopes);
@@ -494,11 +631,18 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             const GPULang::ScopeStatement* scope = static_cast<const GPULang::ScopeStatement*>(sym);
             const GPULang::ScopeStatement::__Resolved* res = GPULang::Symbol::Resolved(scope);
             scopes.push_back(&res->scope);
+            file->scopesByLine[range.startLine] = scopes;
+
+            TextRange scopeRange = range;
+            scopeRange.stopLine = scope->ends.line;
+            scopeRange.stopColumn = scope->ends.start;
+            file->scopesByRange[scopeRange] = scopes;
+
             for (auto innerSym : scope->symbols)
             {
                 CreateSemanticToken(prevLoc, innerSym, file, result, scopes);
             }
-            scopes.push_back(&res->scope);
+            scopes.pop_back();
             break;
         }
         case GPULang::Symbol::SymbolType::ExpressionStatementType:
@@ -538,6 +682,14 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                 CreateSemanticToken(prevLoc, stat->elseStatement, file, result, scopes);
             break;
         }
+        case GPULang::Symbol::SymbolType::TerminateStatementType:
+        {
+            const GPULang::TerminateStatement* stat = static_cast<const GPULang::TerminateStatement*>(sym);
+            InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Keyword, 0x0, result);
+            if (stat->returnValue != nullptr)
+                CreateSemanticToken(prevLoc, stat->returnValue, file, result, scopes);
+            break;
+        }
         case GPULang::Symbol::SymbolType::BinaryExpressionType:
         {
             const GPULang::BinaryExpression* expr = static_cast<const GPULang::BinaryExpression*>(sym);
@@ -552,7 +704,10 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
             CreateSemanticToken(prevLoc, expr->left, file, result, scopes);
 
             // Push type on the left
+            if (res->lhsType == nullptr)
+                return;
             scopes.push_back(&res->lhsType->scope);
+            file->scopesByLine[range.startLine] = scopes;
             CreateSemanticToken(prevLoc, expr->right, file, result, scopes);
             scopes.pop_back();
             break;
@@ -594,13 +749,13 @@ CreateSemanticToken(GPULang::Symbol::Location& prevLoc, const GPULang::Symbol* s
                     default:
                         InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, 0x0, result);
                 }
-                ParseContext::ParsedFile::TextRange range;
+                TextRange range;
                 range.startLine = sym->location.line;
                 range.stopLine = sym->location.line;
                 range.startColumn = sym->location.start;
                 range.stopColumn = sym->location.end;
                 file->symbolsByRange.push_back(std::make_pair(range, foundSym));
-                file->symbolsByLine[range.startLine-1].push_back(std::make_tuple(range, PresentationBits{{.symbolLookup=1}}, foundSym));
+                file->symbolsByLine[range.startLine].push_back(std::make_tuple(range, PresentationBits{{.symbolLookup=1}}, foundSym));
             }
             else
                 InsertSemanticToken(prevLoc, sym->location, SemanticTypeMapping::Variable, 0x0, result);
@@ -631,9 +786,27 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
 {
     std::string ret = "";
     if (lookup.bits == 0x0)
-        ret = GPULang::Format("### %s\n", sym->name.c_str());
+        ret = GPULang::Format("%s\n", sym->name.c_str());
+
     switch (sym->symbolType)
     {
+        case GPULang::Symbol::SymbolType::PreprocessorType:
+        {
+            auto pp = static_cast<const GPULang::Preprocessor*>(sym);
+            if (pp->type == GPULang::Preprocessor::Call)
+            {
+                ret = pp->contents.c_str();
+            }
+            else if (pp->type == GPULang::Preprocessor::Include)
+            {
+                ret = pp->contents.c_str();
+            }
+            else
+            {
+                ret = "";
+            }
+            break;
+        }
         case GPULang::Symbol::SymbolType::VariableType:
         {
             const GPULang::Variable* var = static_cast<const GPULang::Variable*>(sym);
@@ -642,7 +815,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             {
                 for (auto attr : var->attributes)
                 {
-                    ret += GPULang::Format("*%s*", attr->name.c_str());
+                    ret += GPULang::Format("%s", attr->name.c_str());
                     if (attr->expression != nullptr)
                         ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
                     else
@@ -688,7 +861,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             {
                 for (auto attr : fun->attributes)
                 {
-                    ret += GPULang::Format("*%s*", attr->name.c_str());
+                    ret += GPULang::Format("%s", attr->name.c_str());
                     if (attr->expression != nullptr)
                         ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
                     else
@@ -717,13 +890,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 || (lookup.flags.symbolLookup)
                 )
             {
-                ret += "##### Enum\n";
-                ret += "```gpulang\n";
+                ret += "Enum\n";
                 for (auto mem : enu->labels)
                 {
-                    ret += mem + "\n";
+                    ret += std::string(mem.c_str()) + "\n";
                 }
-                ret += "```";
             }
             break;
         }
@@ -732,13 +903,11 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const GPULang::Structure* struc = static_cast<const GPULang::Structure*>(sym);
             if (lookup.flags.typeLookup)
             {
-                ret += "##### Struct\n";
-                ret += "```\n";
+                ret += "Struct\n";
                 for (auto mem : struc->symbols)
                 {
                     ret += CreateMarkdown(mem, lookup);
                 }
-                ret += "```";
             }
             break;
         }
@@ -780,39 +949,33 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         {
             const auto state = static_cast<const GPULang::RenderState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Render State\n";
-            ret += "```\n";
+            ret += "Render State\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::SamplerStateType:
         {
             const auto state = static_cast<const GPULang::SamplerState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Sampler State\n";
-            ret += "```\n";
+            ret += "Sampler State\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::ProgramType:
         {
             const auto state = static_cast<const GPULang::Program*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
-            ret += "##### Program\n";
-            ret += "```\n";
+            ret += "Program\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
             }
-            ret += "```";
             break;
         }
         case GPULang::Symbol::SymbolType::IntExpressionType:
@@ -851,21 +1014,22 @@ main(int argc, const char** argv)
         exit(2);
     }
 #endif
-    
+        
     SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+    int yes = 1;
+    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+
     struct sockaddr_in server;
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_port = htons(5007);
-    bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
+    int res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
+    while (res != 0)
+    {
+        // Add sleep...
+        res = bind(sock, reinterpret_cast<struct sockaddr*>(&server), sizeof(server));
+    }
     listen(sock, 5);
-
-
-#if _MSC_VER
-    //DWORD timeout = 1000;
-    //setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof timeout);
-#endif
-
 
     printf("GPULang Language Server Version 1.0\n");
     printf("Waiting for clients...\n");
@@ -874,8 +1038,9 @@ main(int argc, const char** argv)
     while (true)
     {
         SOCKET sockfd = accept(sock, nullptr, nullptr);
-        std::vector<std::thread*> threads;
-        auto clientThread = GPULang::Alloc<std::thread>([sockfd, &parseContexts]()
+
+        std::vector<GPULang::Thread*> threads;
+        GPULang::Thread* clientThread = GPULang::CreateThread(GPULang::ThreadInfo{.stackSize = 8_MB}, [sockfd, &parseContexts]()
         {
             printf("Connection established\n");
             SocketBuffer inputBuffer(sockfd);
@@ -926,6 +1091,8 @@ main(int argc, const char** argv)
                 result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
+                result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = false, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
+
                 result.serverInfo = lsp::InitializeResultServerInfo{ .name = "GPULang Language Server", .version = "1.0" };
                 return result;
             })
@@ -938,11 +1105,11 @@ main(int argc, const char** argv)
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     GPULang::Symbol::Location prev;
-                    prev.line = 1;
-                    prev.column = 0;
+                    prev.line = 0;
+                    prev.start = 0;
                     for (auto sym : file->result.symbols)
                     {
-                        if (sym->location.file == file->tmpPath)
+                        if (sym->location.file == file->f->path)
                         {
                             std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                             CreateSemanticToken(prev, sym, file, file->semanticTokens, scopes);
@@ -951,7 +1118,7 @@ main(int argc, const char** argv)
 
                     for (auto& lineSymbols : file->symbolsByLine)
                     {
-                        std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
+                        std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
                         {
                             auto& [lrange, _0, _1] = lhs;
                             auto& [rrange, _2, _3] = rhs;
@@ -977,12 +1144,14 @@ main(int argc, const char** argv)
                         file->symbolsByRange.clear();
                         file->symbolsByLine.clear();
                         file->semanticTokens.clear();
+                        file->scopesByLine.clear();
+                        file->scopesByRange.clear();
                         GPULang::Symbol::Location prev;
-                        prev.line = 1;
-                        prev.column = 0;
+                        prev.line = 0;
+                        prev.start = 0;
                         for (auto sym : file->result.symbols)
                         {
-                            if (sym->location.file == file->tmpPath)
+                            if (sym->location.file == file->f->path)
                             {
                                 std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                                 CreateSemanticToken(prev, sym, file, file->semanticTokens, scopes);
@@ -991,7 +1160,7 @@ main(int argc, const char** argv)
 
                         for (auto& lineSymbols : file->symbolsByLine)
                         {
-                            std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<ParseContext::ParsedFile::TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
+                            std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
                             {
                                 auto& [lrange, _0, _1] = lhs;
                                 auto& [rrange, _2, _3] = rhs;
@@ -1041,7 +1210,7 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    ParseContext::ParsedFile::TextRange inputRange;
+                    TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
                     auto it = file->symbolsByLine.find(params.position.line);
@@ -1067,15 +1236,15 @@ main(int argc, const char** argv)
                                 lsp::Hover {
                                     .contents = lsp::MarkupContent{
                                         .kind = lsp::MarkupKind::Markdown,
-                                        .value = CreateMarkdown(closestSymbol, presentationBits)
+                                        .value = GPULang::Format("```gpulang\n%s\n```", CreateMarkdown(closestSymbol, presentationBits).c_str())
                                     },
                                     .range = lsp::Range{ 
                                         .start = { 
-                                            .line = (uint32_t)closestSymbol->location.line - 1,
+                                            .line = (uint32_t)closestSymbol->location.line,
                                             .character = (uint32_t)closestSymbol->location.start
                                         }, 
                                         .end = {
-                                            .line = (uint32_t)closestSymbol->location.line - 1,
+                                            .line = (uint32_t)closestSymbol->location.line,
                                             .character = (uint32_t)closestSymbol->location.end
                                         }
                                     }
@@ -1093,10 +1262,10 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    ParseContext::ParsedFile::TextRange inputRange;
+                    TextRange inputRange;
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
-                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& lhs, const std::pair<ParseContext::ParsedFile::TextRange, const GPULang::Symbol*>& rhs)
+                    auto it = std::upper_bound(file->symbolsByRange.begin(), file->symbolsByRange.end(), std::make_pair(inputRange, nullptr), [](const std::pair<TextRange, const GPULang::Symbol*>& lhs, const std::pair<TextRange, const GPULang::Symbol*>& rhs)
                     {
                         if (lhs.first.startLine == rhs.first.startLine)
                             return lhs.first.startColumn < rhs.first.startColumn;
@@ -1110,11 +1279,11 @@ main(int argc, const char** argv)
                                 lsp::DocumentHighlight{ 
                                     .range = { 
                                         .start = { 
-                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .line = (uint32_t)it->second->location.line, 
                                             .character = (uint32_t)it->second->location.start
                                         }, 
                                         .end = {
-                                            .line = (uint32_t)it->second->location.line - 1, 
+                                            .line = (uint32_t)it->second->location.line, 
                                             .character = (uint32_t) + it->second->location.end
                                         }
                                     },
@@ -1122,8 +1291,97 @@ main(int argc, const char** argv)
                                 }
                             }
                         };
+                    }
+                }
+                return result;
+            })
+                .add<lsp::requests::TextDocument_Completion>([&context, &messageHandler](const lsp::jsonrpc::MessageId& id, lsp::requests::TextDocument_Completion::Params&& params)
+            {
+                lsp::requests::TextDocument_Completion::Result result;
+                ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
 
-                        int foo = 5;
+                static auto reverse_identifier_search = [](const char* begin, const char* end) -> const char*
+                {
+                    const char* start = end;
+                    while (start != begin)
+                    {
+                        if (!GPULangValidIdentifierChar(start[0]))
+                            return start+1;
+                        start--;
+                    }
+                    return end;
+                };
+                
+                static auto forward_identifier_search = [](const char* begin, const char* end) -> const char*
+                {
+                    const char* start = begin;
+                    while (start != end)
+                    {
+                        if (!GPULangValidIdentifierChar(start[0]))
+                            return start;
+                        start++;
+                    }
+                    return end;
+                };
+                    
+                if (file != nullptr)
+                {
+                    TextRange inputRange;
+                    inputRange.startLine = params.position.line;
+                    inputRange.startColumn = params.position.character;
+                    auto it = file->textByLine.find(params.position.line);
+                    if (it != file->textByLine.end())
+                    {
+                        auto scopeIt = file->scopesByRange.begin();
+                        std::vector<const GPULang::Scope*>* scopes = nullptr;
+                        while (scopeIt != file->scopesByRange.end())
+                        {
+                            if (scopeIt->first.startLine <= params.position.line && scopeIt->first.stopLine >= params.position.line)
+                            {
+                                scopes = &scopeIt->second;
+                                break;
+                            }
+                            scopeIt++;
+                        }
+                        if (scopes != nullptr)
+                        {
+                            const char* begin = it->second.data() + params.position.character;
+                            const char* eol = it->second.data() + it->second.length();
+                            std::string_view ident;
+                            const char* identifierBegin = reverse_identifier_search(it->second.data(), begin-1);
+                            ident = std::string_view (identifierBegin, begin);
+                         
+                            const std::set<GPULang::Symbol*> symbols = ParseContext::ParsedFile::FindSymbols(ident, *scopes);
+                            std::vector<lsp::CompletionItem> items;
+                            for (auto& sym : symbols)
+                            {
+                                switch (sym->symbolType)
+                                {
+                                case GPULang::Symbol::SymbolType::FunctionType:
+                                {
+                                    auto fun = static_cast<GPULang::Function*>(sym);
+                                    auto res = GPULang::Symbol::Resolved(fun);
+                                    items.push_back(lsp::CompletionItem{ .label = res->name, .insertText = sym->name, .commitCharacters = {{"("}} });
+                                    break;
+                                }
+                                case GPULang::Symbol::SymbolType::VariableType:
+                                {
+                                    auto fun = static_cast<GPULang::Variable*>(sym);
+                                    auto res = GPULang::Symbol::Resolved(fun);
+                                    items.push_back(lsp::CompletionItem{ .label = sym->name, .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name}, .commitCharacters = {{"."}} });
+                                    break;
+                                }
+                                default:
+                                    items.push_back(lsp::CompletionItem{.label = sym->name});
+                                }
+                                
+                            }
+                        
+                            //std::string_view text(it->second.data() + params.position.character, it->second.data() + params.position.character + params.)
+                            result = lsp::requests::TextDocument_Completion::Result { 
+                                    items
+                            };
+                        }
                     }
                 }
                 return result;

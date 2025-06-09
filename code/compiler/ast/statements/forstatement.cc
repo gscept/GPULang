@@ -10,7 +10,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-ForStatement::ForStatement(const std::vector<Variable*> declarations, Expression* condition, Expression* loop, Statement* contents)
+ForStatement::ForStatement(const FixedArray<Variable*> declarations, Expression* condition, Expression* loop, Statement* contents)
     : declarations(declarations)
     , condition(condition)
     , loop(loop)

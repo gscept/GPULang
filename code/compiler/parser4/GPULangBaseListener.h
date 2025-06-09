@@ -19,6 +19,9 @@ public:
   virtual void enterString(GPULangParser::StringContext * /*ctx*/) override { }
   virtual void exitString(GPULangParser::StringContext * /*ctx*/) override { }
 
+  virtual void enterPath(GPULangParser::PathContext * /*ctx*/) override { }
+  virtual void exitPath(GPULangParser::PathContext * /*ctx*/) override { }
+
   virtual void enterBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
   virtual void exitBoolean(GPULangParser::BooleanContext * /*ctx*/) override { }
 

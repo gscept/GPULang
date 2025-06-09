@@ -223,8 +223,8 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
     Scope* scope = this->scopes.back();
     if (bypass)
         scope = *(this->scopes.end() - 1);
-    std::multimap<std::string, Symbol*>* lookup;
-    std::vector<Symbol*>* symbols;
+    PinnedMap<std::string, Symbol*>* lookup;
+    PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
         Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -237,17 +237,17 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
         symbols = &scope->symbols;
     }
 
-    auto it = lookup->find(name);
+    auto it = lookup->Find(name);
     if (it != lookup->end() && !allowDuplicate)
     {
         Symbol* prevSymbol = it->second;
         this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
         return false;
     }
-    lookup->insert({ name, symbol });
+    lookup->Insert(name, symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
     if (scope->type != Scope::ScopeType::Type)
-        symbols->push_back(symbol);
+        symbols->Append(symbol);
     return true;
 }
 
@@ -261,7 +261,7 @@ Compiler::GetSymbol(const std::string& name) const
     do
     {
         auto scope = *scopeIter;
-        std::multimap<std::string, Symbol*>* map;
+        PinnedMap<std::string, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -271,7 +271,7 @@ Compiler::GetSymbol(const std::string& name) const
         {
             map = &scope->symbolLookup;
         }
-        auto it = map->find(name);
+        auto it = map->Find(name);
         if (it != map->end())
             return it->second;
         scopeIter++;
@@ -291,7 +291,7 @@ Compiler::GetSymbols(const std::string& name) const
     do
     {
         auto scope = *scopeIter;
-        std::multimap<std::string, Symbol*>* map;
+        PinnedMap<std::string, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -302,7 +302,7 @@ Compiler::GetSymbols(const std::string& name) const
             map = &scope->symbolLookup;
         }
 
-        auto range = map->equal_range(name);
+        auto range = map->FindRange(name);
         for (auto it = range.first; it != range.second; it++)
             ret.push_back((*it).second);
         scopeIter++;
@@ -424,14 +424,14 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     std::vector<Program*> programs;
 
     // resolves parser state and runs validation
-    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
+    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
-        ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
         if (this->hasErrors)
             break;
 
-        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
-            programs.push_back((Program*)this->symbols[this->symbolIterator]);
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -574,14 +574,14 @@ Compiler::Validate(Effect* root)
     std::vector<Program*> programs;
 
     // resolves parser state and runs validation
-    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size(); this->symbolIterator++)
+    for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
-        ret &= this->validator->Resolve(this, this->symbols[this->symbolIterator]);
+        ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
         if (this->hasErrors)
             break;
 
-        if (this->symbols[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
-            programs.push_back((Program*)this->symbols[this->symbolIterator]);
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -600,7 +600,7 @@ Compiler::Validate(Effect* root)
 /**
 */
 void 
-Compiler::Error(const std::string& msg, const std::string& file, int line, int column, int length)
+Compiler::Error(const std::string& msg, const FixedString& file, int line, int column, int length)
 {
     static const char* ErrorStrings[] =
     {
@@ -619,13 +619,13 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
         std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
         this->messages.push_back(err);
 
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     else
     {
         std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
         this->messages.push_back(err);
-        this->diagnostics.push_back(Diagnostic{ .error = msg, .file = file, .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }
@@ -636,14 +636,14 @@ Compiler::Error(const std::string& msg, const std::string& file, int line, int c
 void 
 Compiler::Error(const std::string& msg, const Symbol* sym)
 {
-    this->Error(msg, sym->location.file, sym->location.line, sym->location.column, sym->location.end - sym->location.start);
+    this->Error(msg, sym->location.file, sym->location.line, sym->location.start, sym->location.end - sym->location.start);
 }
 
 //------------------------------------------------------------------------------
 /**
 */
 void 
-Compiler::Warning(const std::string& msg, const std::string& file, int line, int column)
+Compiler::Warning(const std::string& msg, const FixedString& file, int line, int column)
 {
     std::string err = Format("%s(%d) : warning: %s", file.c_str(), line, msg.c_str());
     this->messages.push_back(err);
@@ -657,7 +657,7 @@ Compiler::Warning(const std::string& msg, const std::string& file, int line, int
 void 
 Compiler::Warning(const std::string& msg, const Symbol* sym)
 {
-    this->Warning(msg, sym->location.file, sym->location.line, sym->location.column);
+    this->Warning(msg, sym->location.file, sym->location.line, sym->location.start);
 }
 
 //------------------------------------------------------------------------------
@@ -706,8 +706,8 @@ void
 WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
     Serialize::Annotation output;
-    output.nameLength = annot->name.length();
-    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.length());
+    output.nameLength = annot->name.len;
+    output.nameOffset = dynamicDataBlob.Write(annot->name.c_str(), annot->name.len);
     if (annot->value != nullptr)
     {
         switch (annot->value->symbolType)
@@ -788,7 +788,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
     {\
-        const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::##x];\
+        const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::x];\
         output.y.binaryOffset = dynamicDataBlob.Write((const char*)binary.data(), binary.size() * sizeof(uint32_t));\
         output.y.binaryLength = binary.size() * sizeof(uint32_t);\
     }\
@@ -908,8 +908,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 output.renderStateNameOffset = 0;
             }
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size());
-            output.annotationsCount = program->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(program->annotations.size);
+            output.annotationsCount = program->annotations.size;
 
             size_t offset = output.annotationsOffset;
             for (const Annotation* annot : program->annotations)
@@ -1000,8 +1000,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.borderColor = resolved->borderColor;
             output.unnormalizedSamplingEnabled = resolved->unnormalizedSamplingEnabled;
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size());
-            output.annotationsCount = sampler->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(sampler->annotations.size);
+            output.annotationsCount = sampler->annotations.size;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : sampler->annotations)
@@ -1077,8 +1077,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             // end serializing variables
 
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size());
-            output.annotationsCount = structure->annotations.size();
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(structure->annotations.size);
+            output.annotationsCount = structure->annotations.size;
 
             size_t annotOffset = output.annotationsOffset;
             for (const Annotation* annot : structure->annotations)
@@ -1114,8 +1114,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     dynamicDataBlob.Write(size.ui);
                 }
             }
-            output.annotationsCount = var->annotations.size();
-            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size());
+            output.annotationsCount = var->annotations.size;
+            output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size);
             if (resolved->usageBits.flags.isEntryPointParameter)
                 output.bindingScope = GPULang::BindingScope::VertexInput;
             else if (resolved->storage == Storage::Global)

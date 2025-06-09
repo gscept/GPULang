@@ -23,11 +23,8 @@ struct Program;
 struct Function;
 struct Generator
 {
-    /// Setup intrinsics
-    virtual void SetupIntrinsics();
-
     /// generate code
-    virtual bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc);
+    virtual bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc);
 
     /// produce error in compiler with explicit file, line and column
     void Error(const std::string& msg);

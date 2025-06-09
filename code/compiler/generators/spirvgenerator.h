@@ -16,7 +16,6 @@
 #include <unordered_map>
 #include <set>
 #include <assert.h>
-#include <dinput.h>
 
 
 
@@ -208,7 +207,7 @@ public:
     static void SetupIntrinsics();
 
     /// generate SPIRV output
-    bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
+    bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// Push a type to the stack
     void PushAccessChain(Type* chain, SPIRVResult::Storage scope = SPIRVResult::Storage::Function);
@@ -216,7 +215,7 @@ public:
     void PopAccessChain();
     
     std::vector<std::tuple<Type*, SPIRVResult::Storage>> accessChain;
-    std::set<uint32_t> interfaceVariables;
+    PinnedSet<uint32_t> interfaceVariables = 0xFFFF;
 
     bool blockOpen = false;
     bool literalExtract = false;

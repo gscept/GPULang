@@ -45,7 +45,7 @@ struct HeaderWriter
 struct HGenerator : public Generator
 {
     /// generate code
-    bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
+    bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate function
     void GenerateFunctionH(const Compiler* compiler, const Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer);
@@ -56,7 +56,7 @@ struct HGenerator : public Generator
     /// generate enum
     void GenerateEnumH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer);
     /// generate program
-    void GenerateProgramH(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer);
+    void GenerateProgramH(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer);
 };
 
 } // namespace GPULang

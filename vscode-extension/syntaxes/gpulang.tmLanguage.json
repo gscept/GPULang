@@ -3,9 +3,32 @@
 	"name": "gpulang",
 	"patterns": [
 		{
-			"include": "#comment"
+			"name": "keyword.control",
+			"match": "\\b(if|else|while|for|return|continue|break|switch|case)\\b"
 		}, {
-			"include": "#keywords"
+			"name": "storage.modifier",
+			"match": "\\b(uniform|workgroup|in|out|const|var)\\b"
+		},{
+			"match": "\\b(entry_point|struct|program|render_state|sampler_state|enum)\\b",
+			"captures": {
+				"1": { "name": "keyword.other" }
+			}
+		}, {
+			"name": "entity.name.type",
+			"match": "\\b(?:void|f32|i32|b8)(?:x[2-4])?(?:x[2-4])?\\b"
+		}, {
+			"name": "entity.name.type",
+			"match": "\\b(texture1D|texture1DArray|texture2D|texture2DArray|texture2DMS|texture2DMSArray|textureCube|textureCubeArray|texture3D|sampler)\\b"
+		}, {
+			"match": "\\b(mutable)\\b",
+			"captures": {
+				"1": { "name": "keyword.other" }
+			}
+		}, {
+			"name": "entity.name.function",
+			"match": "\\b.*\\(.*\\)\\b"
+		}, {
+			"include": "#comment"
 		}, {
 			"include": "#strings"
 		}, {
@@ -15,25 +38,11 @@
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-					"name": "keyword.control",
-					"match": "\\b(if|else|while|for|return|continue|break|switch|case)\\b"
-				}, {
-					"name": "entity.name.type",
-					"match": "\\b(void|i32|i32x2|i32x3|i32x4|u32|u32x2|u32x3|u32x4|f32|f32x2|f32x3|f32x4|f32x2x2|f32x2x3|f32x2x4|f32x3x2|f32x3x3|f32x3x4|f32x4x2|f32x4x3|f32x4x4|b8|b8x2|b8x3|b8x4|texture1D|texture1DArray|texture2D|texture2DArray|texture2DMS|texture2DMSArray|textureCube|textureCubeArray|texture3D|sampler)\\b"
-				}, {
-					"name": "keyword.other",
-					"match": "\\b(entry_point|struct|program|render_state|sampler_state|enum)\\b"
-				}
-			]
-		},
 		"constants": {
 			"patterns": [
 				{
 					"name": "constant.numeric",
-					"match": "\\b\\d*((\\.\\d*f?)|u?)\\b"
+					"match": "\\b\\d+((\\.\\d+f?)|u?)\\b"
 				},
 				{
 					"name": "constant.language",
@@ -69,9 +78,19 @@
 		"preprocessor": {
 			"patterns": [
 				{
-					"begin": "#";
-					"end": "\n";
-					"name": "string.interpolated"
+					"begin": "(#\\b(?:include|define|ifdef|ifndef|elif|elifdef))\\b(.+)\\b",
+					"beginCaptures": {
+						"1": { "name": "keyword" },
+						"2": { "name": "string" }
+					},
+					"end": "\n"
+				},
+				{
+					"begin": "(#\\b(?:else|endif))\\b",
+					"beginCaptures": {
+						"1": { "name": "keyword" }
+					},
+					"end": "\n"
 				}
 			]
 		}

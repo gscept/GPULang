@@ -66,6 +66,7 @@ Function UInt4::elementAccessOperatorUInt;
 */
 UInt4::UInt4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 4;
     this->rowSize = 1;
@@ -77,6 +78,7 @@ UInt4::UInt4()
     __ADD_FUNCTION_PARAM(y, u32);
     __ADD_FUNCTION_PARAM(z, u32);
     __ADD_FUNCTION_PARAM(w, u32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, u32x4, u32x4, val);
@@ -87,7 +89,8 @@ UInt4::UInt4()
 #define X(type, ctor, arg0, arg1)\
     __IMPLEMENT_CTOR(ctor, u32x4, u32x4)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
-    __ADD_FUNCTION_PARAM(arg_1, arg1)
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_CONSTRUCTOR();
 
     UINT4_CTOR2_LIST
 #undef X
@@ -96,7 +99,8 @@ UInt4::UInt4()
     __IMPLEMENT_CTOR(ctor, u32x4, u32x4)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
     __ADD_FUNCTION_PARAM(arg_1, arg1)\
-    __ADD_FUNCTION_PARAM(arg_2, arg2)
+    __ADD_FUNCTION_PARAM(arg_2, arg2)\
+    __ADD_CONSTRUCTOR();
 
     UINT4_CTOR3_LIST
 #undef X

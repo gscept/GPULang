@@ -943,7 +943,7 @@ struct SPVWriter
 
     uint32_t Import(const char* str)
     {
-        auto it = this->imports.find(str);
+        auto it = this->imports.Find(str);
         if (it != this->imports.end())
             return it->second;
 
@@ -966,47 +966,47 @@ struct SPVWriter
         if (this->outputText)
         {
             TStr extension = TStr::Compact("\"", str, "\"");
-            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension).ToString());
+            this->texts[(uint32_t)Section::ExtImports].Append(TStr::Separated(SPVArg(c), "=", "OpExtInstImport", extension));
             this->texts[(uint32_t)Section::ExtImports].Append("\n");
         }
-        this->imports[str] = c;
+        this->imports.Insert(str, c);
         return c;
     }
 
     void Capability(SPVEnum cap)
     {
-        if (this->capabilities.contains(cap))
+        if (set_contains(this->capabilities, cap))
             return;
         this->Instruction(OpCapability, Section::Capabilities, cap);
-        this->capabilities.insert(cap);
+        this->capabilities.Insert(cap);
     }
 
     void Extension(SPVEnum extension)
     {
-        if (this->extensions.contains(extension))
+        if (set_contains(this->extensions, extension))
             return;
         this->Instruction(OpExtension, Section::Extensions, extension.str);
-        this->extensions.insert(extension);
+        this->extensions.Insert(extension);
     }
 
     template<typename ...ARGS>
     void Decorate(SPVArg symbol, SPVEnum decoration, const ARGS&... args)
     {
         std::string key = TStr(symbol.arg, "_", decoration.str, std::forward<const ARGS&>(args)...).ToString();
-        if (this->decorations.find(key) == this->decorations.end())
+        if (this->decorations.Find(key) == this->decorations.end())
         {
             this->Instruction(OpDecorate, Section::Decorations, symbol, decoration, std::forward<const ARGS&>(args)...);
-            this->decorations.insert(key);
+            this->decorations.Insert(key);
         }
     }
 
     uint32_t String(const char* str)
     {
-        auto it = this->strings.find(str);
+        auto it = this->strings.Find(str);
         if (it == this->strings.end())
         {
             uint32_t ret = this->MappedInstruction(OpString, SPVWriter::Section::DebugStrings, str); 
-            this->strings[str] = ret;
+            this->strings.Insert(str, ret);
             return ret;
         }
         else
@@ -1136,7 +1136,7 @@ struct SPVWriter
             TStr argsStr;
             for (uint32_t arg : args)
                 argsStr.Concatenate<false>(SPVArg(arg), " ");
-            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr).ToString());
+            texts[(uint32_t)section].Append(TStr::Separated(op.str, SPVArg(type), argsStr));
             texts[(uint32_t)section].Append("\n");
         }
     }
@@ -1630,11 +1630,11 @@ struct SPVWriter
     GrowingString texts[(uint32_t)Section::NumSections];
     std::vector<uint32_t> binaries[(uint32_t)Section::NumSections];
 
-    std::map<const char*, uint32_t> imports;
-    std::set<SPVEnum> capabilities;
-    std::set<SPVEnum> extensions;
-    std::set<std::string> decorations;
-    std::map<std::string, uint32_t> strings;
+    PinnedMap<const char*, uint32_t> imports = 0xFFF;
+    PinnedSet<SPVEnum> capabilities = 0xFFF;
+    PinnedSet<SPVEnum> extensions = 0xFFF;
+    PinnedSet<std::string> decorations = 0xFFF;
+    PinnedMap<std::string, uint32_t> strings = 0xFFFF;
 };
 
 template<typename ...ARGS>
@@ -3256,12 +3256,12 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
 #define OPERATOR_INTRINSIC(ty, fn, op, inst)\
-    { &ty::##fn##Operator, #op, #inst, false, Op##op##inst }\
-    , { &ty::##fn##AssignOperator, #op, #inst, true, Op##op##inst }
+    { &ty::fn##Operator, #op, #inst, false, Op##op##inst }\
+    , { &ty::fn##AssignOperator, #op, #inst, true, Op##op##inst }
 
 
 #define OPERATOR_INTRINSIC_NO_ASSIGN(ty, fn, op, inst)\
-    { &ty::##fn##Operator, #op, #inst, false, Op##op##inst## }
+    { &ty::fn##Operator, #op, #inst, false, Op##op##inst }
 
     std::vector<std::tuple<Function*, const char*, const char*, bool, SPVOp>> operatorFunctions =
     {
@@ -3424,8 +3424,8 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define MATRIX_OPERATOR_INTRINSIC(ty, fn, size, op, inst)\
-    { &ty::##fn##Operator, #op, size, #inst, false, Op##op##inst## }\
-    , { &ty::##fn##AssignOperator, #op, size, #inst, true, Op##op##inst## }
+    { &ty::fn##Operator, #op, size, #inst, false, Op##op##inst }\
+    , { &ty::fn##AssignOperator, #op, size, #inst, true, Op##op##inst }
 
     std::vector<std::tuple<Function*, const char*, uint32_t, const char*, bool, SPVOp>> matrixOperators =
     {
@@ -3480,7 +3480,7 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define BOOL_OPERATOR_INTRINSIC_NO_ASSIGN(ty, fn, size, inst)\
-    { &ty::##fn##Operator, #inst, size, false, OpI##inst }
+    { &ty::fn##Operator, #inst, size, false, OpI##inst }
     
     std::vector<std::tuple<Function*, const char*, uint32_t, bool, SPVOp>> boolOperatorFunctions =
     {
@@ -3756,8 +3756,8 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define BIT_INTRINSIC(ty, fn, inst)\
-    { &ty::##fn##Operator, #inst, false, Op##inst }\
-    , { &ty::##fn##AssignOperator, #inst, true, Op##inst }
+    { &ty::fn##Operator, #inst, false, Op##inst }\
+    , { &ty::fn##AssignOperator, #inst, true, Op##inst }
 
     std::vector<std::tuple<Function*, const char*, bool, SPVOp>> bitwiseOps =
     {
@@ -3827,7 +3827,7 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define NO_ASSIGN_BIT_INTRINSIC(ty, fn, inst)\
-    { &ty::##fn##Operator, #inst, false, Op##inst }\
+    { &ty::fn##Operator, #inst, false, Op##inst }\
     
     std::vector<std::tuple<Function*, const char*, bool, SPVOp>> noAssignBitwiseOps =
     {
@@ -3857,118 +3857,118 @@ SPIRVGenerator::SetupIntrinsics()
     }
    
 #define MAKE_SCALAR_INTRINSICS(op)\
-      { Intrinsics::##op##_f32, 'F' }\
-    , { Intrinsics::##op##_f32x2, 'F' }\
-    , { Intrinsics::##op##_f32x3, 'F' }\
-    , { Intrinsics::##op##_f32x4, 'F' }\
-    , { Intrinsics::##op##_i32, 'S' }\
-    , { Intrinsics::##op##_i32x2, 'S' }\
-    , { Intrinsics::##op##_i32x3, 'S' }\
-    , { Intrinsics::##op##_i32x4, 'S' }\
-    , { Intrinsics::##op##_u32, 'U' }\
-    , { Intrinsics::##op##_u32x2, 'U' }\
-    , { Intrinsics::##op##_u32x3, 'U' }\
-    , { Intrinsics::##op##_u32x4, 'U' }
+      { Intrinsics::op##_f32, 'F' }\
+    , { Intrinsics::op##_f32x2, 'F' }\
+    , { Intrinsics::op##_f32x3, 'F' }\
+    , { Intrinsics::op##_f32x4, 'F' }\
+    , { Intrinsics::op##_i32, 'S' }\
+    , { Intrinsics::op##_i32x2, 'S' }\
+    , { Intrinsics::op##_i32x3, 'S' }\
+    , { Intrinsics::op##_i32x4, 'S' }\
+    , { Intrinsics::op##_u32, 'U' }\
+    , { Intrinsics::op##_u32x2, 'U' }\
+    , { Intrinsics::op##_u32x3, 'U' }\
+    , { Intrinsics::op##_u32x4, 'U' }
 
 #define MAKE_SCALAR_TYPED_INTRINSICS(op)\
-      { Intrinsics::##op##_f32, 'F', F##op }\
-    , { Intrinsics::##op##_f32x2, 'F', F##op }\
-    , { Intrinsics::##op##_f32x3, 'F', F##op }\
-    , { Intrinsics::##op##_f32x4, 'F', F##op }\
-    , { Intrinsics::##op##_i32, 'S', S##op }\
-    , { Intrinsics::##op##_i32x2, 'S', S##op }\
-    , { Intrinsics::##op##_i32x3, 'S', S##op }\
-    , { Intrinsics::##op##_i32x4, 'S', S##op }\
-    , { Intrinsics::##op##_u32, 'U', U##op }\
-    , { Intrinsics::##op##_u32x2, 'U', U##op }\
-    , { Intrinsics::##op##_u32x3, 'U', U##op }\
-    , { Intrinsics::##op##_u32x4, 'U', U##op }
+      { Intrinsics::op##_f32, 'F', F##op }\
+    , { Intrinsics::op##_f32x2, 'F', F##op }\
+    , { Intrinsics::op##_f32x3, 'F', F##op }\
+    , { Intrinsics::op##_f32x4, 'F', F##op }\
+    , { Intrinsics::op##_i32, 'S', S##op }\
+    , { Intrinsics::op##_i32x2, 'S', S##op }\
+    , { Intrinsics::op##_i32x3, 'S', S##op }\
+    , { Intrinsics::op##_i32x4, 'S', S##op }\
+    , { Intrinsics::op##_u32, 'U', U##op }\
+    , { Intrinsics::op##_u32x2, 'U', U##op }\
+    , { Intrinsics::op##_u32x3, 'U', U##op }\
+    , { Intrinsics::op##_u32x4, 'U', U##op }
 
 #define MAKE_EXPORT_INTRINSICS(op)\
-      { Intrinsics::##op##_f32, TypeCode::Float, 1 }\
-    , { Intrinsics::##op##_f32x2, TypeCode::Float, 2 }\
-    , { Intrinsics::##op##_f32x3, TypeCode::Float, 3 }\
-    , { Intrinsics::##op##_f32x4, TypeCode::Float, 4 }\
-    , { Intrinsics::##op##_i32, TypeCode::Int, 1 }\
-    , { Intrinsics::##op##_i32x2, TypeCode::Int, 2 }\
-    , { Intrinsics::##op##_i32x3, TypeCode::Int, 3 }\
-    , { Intrinsics::##op##_i32x4, TypeCode::Int, 4 }\
-    , { Intrinsics::##op##_u32, TypeCode::UInt, 1 }\
-    , { Intrinsics::##op##_u32x2, TypeCode::UInt, 2 }\
-    , { Intrinsics::##op##_u32x3, TypeCode::UInt, 3 }\
-    , { Intrinsics::##op##_u32x4, TypeCode::UInt, 4 }
+      { Intrinsics::op##_f32, TypeCode::Float, 1 }\
+    , { Intrinsics::op##_f32x2, TypeCode::Float, 2 }\
+    , { Intrinsics::op##_f32x3, TypeCode::Float, 3 }\
+    , { Intrinsics::op##_f32x4, TypeCode::Float, 4 }\
+    , { Intrinsics::op##_i32, TypeCode::Int, 1 }\
+    , { Intrinsics::op##_i32x2, TypeCode::Int, 2 }\
+    , { Intrinsics::op##_i32x3, TypeCode::Int, 3 }\
+    , { Intrinsics::op##_i32x4, TypeCode::Int, 4 }\
+    , { Intrinsics::op##_u32, TypeCode::UInt, 1 }\
+    , { Intrinsics::op##_u32x2, TypeCode::UInt, 2 }\
+    , { Intrinsics::op##_u32x3, TypeCode::UInt, 3 }\
+    , { Intrinsics::op##_u32x4, TypeCode::UInt, 4 }
 
 #define MAKE_FLOAT_INTRINSICS(op)\
-      { Intrinsics::##op##_f32, 'F' }\
-    , { Intrinsics::##op##_f32x2, 'F' }\
-    , { Intrinsics::##op##_f32x3, 'F' }\
-    , { Intrinsics::##op##_f32x4, 'F' }
+      { Intrinsics::op##_f32, 'F' }\
+    , { Intrinsics::op##_f32x2, 'F' }\
+    , { Intrinsics::op##_f32x3, 'F' }\
+    , { Intrinsics::op##_f32x4, 'F' }
 
 #define MAKE_BOOL_INTRINSICS(op)\
-    { Intrinsics::##op##_b8, 'B' }\
-    , { Intrinsics::##op##_b8x2, 'B' }\
-    , { Intrinsics::##op##_b8x3, 'B' }\
-    , { Intrinsics::##op##_b8x4, 'B' }
+    { Intrinsics::op##_b8, 'B' }\
+    , { Intrinsics::op##_b8x2, 'B' }\
+    , { Intrinsics::op##_b8x3, 'B' }\
+    , { Intrinsics::op##_b8x4, 'B' }
 
 #define MAKE_FLOAT_VEC_INTRINSICS(op)\
-    { Intrinsics::##op##_f32x2, 'F' }\
-    , { Intrinsics::##op##_f32x3, 'F' }\
-    , { Intrinsics::##op##_f32x4, 'F' }
+    { Intrinsics::op##_f32x2, 'F' }\
+    , { Intrinsics::op##_f32x3, 'F' }\
+    , { Intrinsics::op##_f32x4, 'F' }
 
 #define MAKE_MAT_INTRINSICS(op)\
-    { Intrinsics::##op##_f32x2x2, 'F' }\
-    , { Intrinsics::##op##_f32x2x3, 'F' }\
-    , { Intrinsics::##op##_f32x2x4, 'F' }\
-    , { Intrinsics::##op##_f32x3x2, 'F' }\
-    , { Intrinsics::##op##_f32x3x3, 'F' }\
-    , { Intrinsics::##op##_f32x3x4, 'F' }\
-    , { Intrinsics::##op##_f32x4x2, 'F' }\
-    , { Intrinsics::##op##_f32x4x3, 'F' }\
-    , { Intrinsics::##op##_f32x4x4, 'F' }
+    { Intrinsics::op##_f32x2x2, 'F' }\
+    , { Intrinsics::op##_f32x2x3, 'F' }\
+    , { Intrinsics::op##_f32x2x4, 'F' }\
+    , { Intrinsics::op##_f32x3x2, 'F' }\
+    , { Intrinsics::op##_f32x3x3, 'F' }\
+    , { Intrinsics::op##_f32x3x4, 'F' }\
+    , { Intrinsics::op##_f32x4x2, 'F' }\
+    , { Intrinsics::op##_f32x4x3, 'F' }\
+    , { Intrinsics::op##_f32x4x4, 'F' }
 
 #define MAKE_SIGN_INTRINSICS(op)\
-      { Intrinsics::##op##_f32, 'F', F##op }\
-    , { Intrinsics::##op##_f32x2, 'F', F##op }\
-    , { Intrinsics::##op##_f32x3, 'F', F##op }\
-    , { Intrinsics::##op##_f32x4, 'F', F##op }\
-    , { Intrinsics::##op##_i32, 'S', S##op }\
-    , { Intrinsics::##op##_i32x2, 'S', S##op }\
-    , { Intrinsics::##op##_i32x3, 'S', S##op }\
-    , { Intrinsics::##op##_i32x4, 'S', S##op }
+      { Intrinsics::op##_f32, 'F', F##op }\
+    , { Intrinsics::op##_f32x2, 'F', F##op }\
+    , { Intrinsics::op##_f32x3, 'F', F##op }\
+    , { Intrinsics::op##_f32x4, 'F', F##op }\
+    , { Intrinsics::op##_i32, 'S', S##op }\
+    , { Intrinsics::op##_i32x2, 'S', S##op }\
+    , { Intrinsics::op##_i32x3, 'S', S##op }\
+    , { Intrinsics::op##_i32x4, 'S', S##op }
 
 #define MAKE_FLOAT_INTRINSICS_VEC(op)\
-      { Intrinsics::##op##_f32, 'F', 1 }\
-    , { Intrinsics::##op##_f32x2, 'F', 2 }\
-    , { Intrinsics::##op##_f32x3, 'F', 3 }\
-    , { Intrinsics::##op##_f32x4, 'F', 4 }
+      { Intrinsics::op##_f32, 'F', 1 }\
+    , { Intrinsics::op##_f32x2, 'F', 2 }\
+    , { Intrinsics::op##_f32x3, 'F', 3 }\
+    , { Intrinsics::op##_f32x4, 'F', 4 }
 
 
 #define MAKE_INT_INTRINSICS(op)\
-      { Intrinsics::##op##_i32, 'S' }\
-    , { Intrinsics::##op##_i32x2, 'S' }\
-    , { Intrinsics::##op##_i32x3, 'S' }\
-    , { Intrinsics::##op##_i32x4, 'S' }\
-    , { Intrinsics::##op##_u32, 'U' }\
-    , { Intrinsics::##op##_u32x2, 'U' }\
-    , { Intrinsics::##op##_u32x3, 'U' }\
-    , { Intrinsics::##op##_u32x4, 'U' }
+      { Intrinsics::op##_i32, 'S' }\
+    , { Intrinsics::op##_i32x2, 'S' }\
+    , { Intrinsics::op##_i32x3, 'S' }\
+    , { Intrinsics::op##_i32x4, 'S' }\
+    , { Intrinsics::op##_u32, 'U' }\
+    , { Intrinsics::op##_u32x2, 'U' }\
+    , { Intrinsics::op##_u32x3, 'U' }\
+    , { Intrinsics::op##_u32x4, 'U' }
     
 #define MAKE_SINGLE_COMPONENT_INTRINSICS(op)\
-    { Intrinsics::##op##_f32, 'F' }\
-    , { Intrinsics::##op##_i32, 'S' }\
-    , { Intrinsics::##op##_u32, 'U' }\
+    { Intrinsics::op##_f32, 'F' }\
+    , { Intrinsics::op##_i32, 'S' }\
+    , { Intrinsics::op##_u32, 'U' }\
 
 #define MAKE_EXT_FLOAT_INTRINSICS(op, fun)\
-    { Intrinsics::##op##_f32, #fun, fun }\
-    , { Intrinsics::##op##_f32x2, #fun, fun }\
-    , { Intrinsics::##op##_f32x3, #fun, fun }\
-    , { Intrinsics::##op##_f32x4, #fun, fun }
+    { Intrinsics::op##_f32, #fun, fun }\
+    , { Intrinsics::op##_f32x2, #fun, fun }\
+    , { Intrinsics::op##_f32x3, #fun, fun }\
+    , { Intrinsics::op##_f32x4, #fun, fun }
 
 #define MAKE_EXT_INT_INTRINSICS(op, fun)\
-    { Intrinsics::##op##_i32, #fun, fun }\
-    , { Intrinsics::##op##_i32x2, #fun, fun }\
-    , { Intrinsics::##op##_i32x3, #fun, fun }\
-    , { Intrinsics::##op##_i32x4, #fun, fun }
+    { Intrinsics::op##_i32, #fun, fun }\
+    , { Intrinsics::op##_i32x2, #fun, fun }\
+    , { Intrinsics::op##_i32x3, #fun, fun }\
+    , { Intrinsics::op##_i32x4, #fun, fun }
 
     std::vector<std::tuple<Function*, const char*, SPVEnum>> extThreeArgumentIntrinsics =
     {
@@ -4449,7 +4449,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4463,7 +4463,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputLayer"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Layer);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         return SPIRVResult::Invalid();
     };
@@ -4477,7 +4477,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplInputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4492,7 +4492,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, args[0]);
         return SPIRVResult::Invalid();
     };
@@ -4506,7 +4506,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
         return SPIRVResult::Invalid();
@@ -4535,7 +4535,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplVertexIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::VertexId);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4550,7 +4550,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::InstanceId);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
         return res;
@@ -4565,7 +4565,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelCoordinates"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
         return res;
@@ -4580,7 +4580,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t ret = GPULang::AddSymbol(g, TStr("gplSetPixelDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
         g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
         
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
         
         g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
@@ -4595,7 +4595,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [baseTy = std::get<1>(fun), vecSize = std::get<2>(fun)](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult {
             uint32_t baseType = GeneratePODTypeSPIRV(c, g, baseTy, vecSize);
-            std::string name = Type::CodeToString(baseTy);
+            std::string name = Type::CodeToString(baseTy).c_str();
 
             TStr typeSymbolName = vecSize > 1 ? TStr::Compact("ptr_", name, "x", vecSize, "_Output") : TStr::Compact("ptr_", name);
 
@@ -4605,7 +4605,7 @@ SPIRVGenerator::SetupIntrinsics()
             g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);
            
             assert(args[1].isLiteral);
-            g->interfaceVariables.insert(ret);
+            g->interfaceVariables.Insert(ret);
             
             SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
             g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ ret }, loaded);
@@ -4623,7 +4623,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4640,7 +4640,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4657,7 +4657,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4675,7 +4675,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4692,7 +4692,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         type.name = ret;
         return res;
@@ -4710,7 +4710,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4728,7 +4728,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4746,7 +4746,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4764,7 +4764,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4782,7 +4782,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4800,7 +4800,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4818,7 +4818,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -4836,7 +4836,7 @@ SPIRVGenerator::SetupIntrinsics()
         fullType.AddModifier(Type::FullType::Modifier::Pointer);
         Type* typeSymbol = c->GetType(fullType);
         SPIRVResult type = GenerateTypeSPIRV(c, g, fullType, typeSymbol, SPIRVResult::Storage::Input);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         SPIRVResult res = type;
         res.name = ret;
         return res;
@@ -5570,42 +5570,42 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::##operands }
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::operands }
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::##operands }
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::operands }
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::##operands }\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::##operands }\
+      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
 
     std::vector<std::tuple<Function*, uint32_t>> textureSampleInstructions =
     {
@@ -5823,42 +5823,42 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::##operands }
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::operands }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::##operands }
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::operands }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::##operands }\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::##operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::##operands }\
+      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
 
     std::vector<std::tuple<Function*, uint32_t>> sampledTextureSampleInstructions =
     {
@@ -6079,14 +6079,14 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define MAKE_TEXTURE_LOAD_STORE_INTRINSICS(op, operands, store)\
-      { Intrinsics::Texture##op##_texture1D, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_texture2D, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_texture2DArray, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_texture2DMS, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_texture2DMSArray, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_texture3D, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_textureCube, store, SampleOperands::##operands }\
-    , { Intrinsics::Texture##op##_textureCubeArray, store, SampleOperands::##operands }
+      { Intrinsics::Texture##op##_texture1D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_texture2D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_texture2DArray, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_texture2DMS, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_texture2DMSArray, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_texture3D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_textureCube, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_textureCubeArray, store, SampleOperands::operands }
 
     std::vector<std::tuple<Function*, bool, uint32_t>> textureStoreLoadInstructions =
     {
@@ -6241,7 +6241,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayLaunchIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayLaunchIndex", ret, "BuiltIn LaunchIdKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6253,7 +6253,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 3);
         uint32_t typePtr = g->AddSymbol("ptr_u32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayLaunchSize", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayLaunchSize", ret, "BuiltIn LaunchSizeKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6265,7 +6265,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplBLASPrimitiveIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplBLASPrimitiveIndex", ret, "BuiltIn PrimitiveId");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6277,7 +6277,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplBLASGeometryIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplBLASGeometryIndex", ret, "BuiltIn RayGeometryIndexKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6289,7 +6289,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplTLASInstanceIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASInstanceIndex", ret, "BuiltIn InstanceId");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6301,7 +6301,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplTLASInstanceCustomIndex", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASInstanceCustomIndex", ret, "BuiltIn InstanceCustomIndexKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6313,7 +6313,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayWorldOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayWorldOrigin", ret, "BuiltIn WorldRayOriginKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6325,7 +6325,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayWorldDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayWorldDirection", ret, "BuiltIn WorldRayDirectionKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6337,7 +6337,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayObjectOrigin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayObjectOrigin", ret, "BuiltIn ObjectRayOriginKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6349,7 +6349,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t vecType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x3_Input", Format("OpTypePointer Input %%%d", vecType), true);
         uint32_t ret = g->AddSymbol("gplRayObjectDirection", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayObjectDirection", ret, "BuiltIn ObjectRayDirectionKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(vecType);
@@ -6361,7 +6361,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayMin", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayMin", ret, "BuiltIn RayTminKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6373,7 +6373,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayMax", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayMax", ret, "BuiltIn RayTmaxKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6385,7 +6385,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayFlags", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayFlags", ret, "BuiltIn IncomingRayFlagsKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6397,7 +6397,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 1);
         uint32_t typePtr = g->AddSymbol("ptr_f32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayHitDistance", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayHitDistance", ret, "BuiltIn RayTmaxKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6409,7 +6409,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt, 1);
         uint32_t typePtr = g->AddSymbol("ptr_u32_Input", Format("OpTypePointer Input %%%d", baseType), true);
         uint32_t ret = g->AddSymbol("gplRayHitKind", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplRayHitKind", ret, "BuiltIn HitKindKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(baseType);
@@ -6421,7 +6421,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
         uint32_t ret = g->AddSymbol("gplTLASObjectToWorld", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASObjectToWorld", ret, "BuiltIn ObjectToWorldKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(matType);
@@ -6433,7 +6433,7 @@ SPIRVGenerator::SetupIntrinsics()
         uint32_t matType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, 4, 3);
         uint32_t typePtr = g->AddSymbol("ptr_f32x4x4)Input", Format("OpTypePointer Input %%%d", matType), true);
         uint32_t ret = g->AddSymbol("gplTLASWorldToObject", Format("OpVariable %%%d Input", typePtr), true);
-        g->interfaceVariables.insert(ret);
+        g->interfaceVariables.Insert(ret);
         g->AddDecoration("gplTLASWorldToObject", ret, "BuiltIn WorldToObjectKHR");
         SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
         res.parentTypes.push_back(matType);
@@ -6452,7 +6452,8 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Function::__Resolved* funcResolved = Symbol::Resolved(func);
     if (func != generator->entryPoint)
     {
-        if (funcResolved->visibilityMap.find(generator->entryPoint) == funcResolved->visibilityMap.end())
+        Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+        if (entryRes->visibleSymbols.Find(func) == entryRes->visibleSymbols.end())
             return;
     }
 
@@ -6466,7 +6467,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     TStr typeArgs;
     TStr spvTypes;
 
-    StackArray<SPVArg> spvTypeArgs(func->parameters.size());
+    StackArray<SPVArg> spvTypeArgs(func->parameters.size);
     for (auto param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -6565,9 +6566,10 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
 
-    if (strucResolved->visibilityMap.find(generator->entryPoint) == strucResolved->visibilityMap.end())
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(struc) == entryRes->visibleSymbols.end())
         return 0xFFFFFFFF;
-
+    
     uint32_t numVariables = 0;
     for (Symbol* sym : struc->symbols)
     {
@@ -6580,10 +6582,10 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     if (compiler->options.symbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
 
-    StackArray<SPVArg> memberTypeArray(struc->symbols.size());
+    StackArray<SPVArg> memberTypeArray(struc->symbols.size);
     uint32_t offset = 0;
     std::string memberTypes = "";
-    for (size_t i = 0; i < struc->symbols.size(); i++)
+    for (size_t i = 0; i < struc->symbols.size; i++)
     {
         Symbol* sym = struc->symbols[i];
         if (sym->symbolType == Symbol::SymbolType::VariableType)
@@ -6650,8 +6652,10 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
 {
     SamplerState* sampler = static_cast<SamplerState*>(symbol);
     SamplerState::__Resolved* samplerResolved = Symbol::Resolved(sampler);
-    if (samplerResolved->visibilityMap.find(generator->entryPoint) == samplerResolved->visibilityMap.end())
-        return SPIRVResult();
+    
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(sampler) == entryRes->visibleSymbols.end())
+        return SPIRVResult::Invalid();
     
     Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
     Type::FullType fullType = Type::FullType{ "sampler" };
@@ -6702,7 +6706,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
     {
         // Generate immutable sampler
         uint32_t name = AddSymbol(generator, symbol->name, SPVWriter::Section::Declarations, OpVariable, samplerType, ScopeToEnum(samplerType.scope));
-        generator->interfaceVariables.insert(name);
+        generator->interfaceVariables.Insert(name);
 
         if (compiler->options.symbols)
             generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ name }, sampler->name.c_str());
@@ -6774,11 +6778,9 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
 
-    //if (varResolved->storage == Storage::Global)
-    //{
-        if (varResolved->visibilityMap.find(generator->entryPoint) == varResolved->visibilityMap.end())
-            return SPIRVResult::Invalid();
-    //}
+    Function::__Resolved* entryRes = Symbol::Resolved(generator->entryPoint);
+    if (entryRes->visibleSymbols.Find(var) == entryRes->visibleSymbols.end())
+        return SPIRVResult::Invalid();
 
     SPIRVResult::Storage storage = ResolveSPIRVVariableStorage(varResolved->type, varResolved->typeSymbol, varResolved->storage, varResolved->usageBits);
     
@@ -6919,7 +6921,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             || storage == SPIRVResult::Storage::Input
             || storage == SPIRVResult::Storage::Output
             )
-            generator->interfaceVariables.insert(name);
+            generator->interfaceVariables.Insert(name);
         
         auto ret = SPIRVResult(name, typeName.typeName, false, false, typeName.scope, parentTypes);\
         ret.isStructPadded = typeName.isStructPadded;
@@ -6970,11 +6972,11 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         // Create arg list from argument expressions
         std::string argList = "";
 
-        StackArray<SPVArg> argListArray(callExpression->args.size());
-        for (size_t i = 0; i < callExpression->args.size(); i++)
+        StackArray<SPVArg> argListArray(callExpression->args.size);
+        for (size_t i = 0; i < callExpression->args.size; i++)
         {
             // If the function calls for a literal argument, the generator needs to extract the value as a literal result
-            if (resolvedCall->function->parameters[i]->type.literal)
+            if (resolvedCall->function->parameters.buf[i]->type.literal)
                 generator->literalExtract = true;
 
             SPIRVResult arg = GenerateExpressionSPIRV(compiler, generator, callExpression->args[i]);
@@ -7009,7 +7011,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         if (compiler->options.symbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
-            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
         }
 
         // Then call the function
@@ -7022,9 +7024,9 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         std::vector<SPIRVResult> args;
 
         // Create arg list from argument expressions
-        for (size_t i = 0; i < callExpression->args.size(); i++)
+        for (size_t i = 0; i < callExpression->args.size; i++)
         {
-            Variable* var = resolvedCall->function->parameters[i];
+            Variable* var = resolvedCall->function->parameters.buf[i];
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             // If an argument is a literal, evalute it directly
@@ -7104,7 +7106,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         if (compiler->options.symbols)
         {
             uint32_t name = generator->writer->String(expr->location.file.c_str());
-            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+            generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
         }
         // Function is not declared by user code, so must be intrinsic
         auto it = generator->generatorIntrinsics.find(resolvedCall->function);
@@ -7149,7 +7151,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (leftType.modifiers.empty())
     {
@@ -7157,7 +7159,7 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
         if (type->IsVector() || type->IsMatrix())
         {
-            auto it = type->scope.symbolLookup.find(Format("operator[](%s)", rightType.name.c_str()));
+            auto it = type->scope.symbolLookup.Find(Format("operator[](%s)", rightType.name.c_str()));
             Function* func = static_cast<Function*>((*it).second);
 
             /// Get intrinsic
@@ -7212,7 +7214,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(initExpression->values.size());
+    StackArray<SPVArg> argList(initExpression->values.size);
 
     std::string initializer = "";
     for (Expression* expr : initExpression->values)
@@ -7231,7 +7233,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (isConst)
     {
@@ -7268,7 +7270,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(sym->values.size());
+    StackArray<SPVArg> argList(sym->values.size);
     std::string initializer = "";
     for (auto value : sym->values)
     {
@@ -7286,7 +7288,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (isConst)
     {
@@ -7332,7 +7334,7 @@ GenerateBinaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
 
     // If there is a conversion function, generate it first
@@ -7459,7 +7461,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     if (swizzle.mask != 0x0)
     {
@@ -7501,7 +7503,7 @@ GenerateAccessExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generato
         }
         else if (lhsSymbol->symbolType == Symbol::StructureType || lhsSymbol->symbolType == Symbol::EnumerationType)
         {
-            for (size_t i = 0; i < lhsSymbol->symbols.size(); i++)
+            for (size_t i = 0; i < lhsSymbol->symbols.size; i++)
             {
                 Symbol* sym = lhsSymbol->symbols[i];
                 if (sym->name == accessExpressionResolved->rightSymbol)
@@ -7581,7 +7583,7 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     SPIRVResult loadedCondition = LoadValueSPIRV(compiler, generator, lhsResult);
     SPIRVResult loadedLeft = LoadValueSPIRV(compiler, generator, ifResult);
@@ -7628,7 +7630,7 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
     auto [op, sign, vectorSize, addOp, subOp, negOp] = value->second;
@@ -7781,7 +7783,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
     ValueUnion val;
     expr->EvalValue(val);
@@ -7919,7 +7921,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
                     else
                     {
                         auto [ty, accessStorage] = generator->accessChain.back();
-                        for (size_t i = 0; i < ty->symbols.size(); i++)
+                        for (size_t i = 0; i < ty->symbols.size; i++)
                         {
                             if (ty->symbols[i]->name == symbolExpression->symbol)
                             {
@@ -8047,7 +8049,7 @@ GenerateForStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, F
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
 
     // TODO: support unrolling
@@ -8116,7 +8118,7 @@ GenerateIfStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, If
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{endLabel}, SelectionControl::None);
     if (stat->elseStatement)
@@ -8209,7 +8211,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (stat->switchExpression->EvalValue(val))
     {
         generator->skipBreakContinue = true;
-        if (val.ui[0] < stat->caseExpressions.size())
+        if (val.ui[0] < stat->caseExpressions.size)
             GenerateStatementSPIRV(compiler, generator, stat->caseStatements[val.ui[0]]);
         else if (stat->defaultStatement != nullptr)
             GenerateStatementSPIRV(compiler, generator, stat->defaultStatement);
@@ -8234,9 +8236,9 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     std::vector<uint32_t> reservedCaseLabels;
 
 
-    StackArray<uint32_t> caseArgs(stat->caseExpressions.size());
-    StackArray<SPVArg> branchArgs(stat->caseExpressions.size());
-    for (size_t i = 0; i < stat->caseExpressions.size(); i++)
+    StackArray<uint32_t> caseArgs(stat->caseExpressions.size);
+    StackArray<SPVArg> branchArgs(stat->caseExpressions.size);
+    for (size_t i = 0; i < stat->caseExpressions.size; i++)
     {
         uint32_t caseLabel = generator->writer->Reserve();
         ValueUnion val;
@@ -8252,19 +8254,19 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     generator->writer->Instruction(OpSelectionMerge, SPVWriter::Section::LocalFunction, SPVArg{mergeLabel}, SelectionControl::None);
     generator->writer->Instruction(OpSwitch, SPVWriter::Section::LocalFunction, switchRes, SPVArg{defaultCase}, SPVCaseList(caseArgs, branchArgs));
 
-    for (size_t i = 0; i < stat->caseStatements.size(); i++)
+    for (size_t i = 0; i < stat->caseStatements.size; i++)
     {
         generator->writer->Reserved(OpLabel, SPVWriter::Section::LocalFunction, reservedCaseLabels[i]);
         generator->blockOpen = true;
         if (stat->caseStatements[i] != nullptr)
         {
             if (!GenerateStatementSPIRV(compiler, generator, stat->caseStatements[i]))
-                if (i + 1 < stat->caseStatements.size())
+                if (i + 1 < stat->caseStatements.size)
                 {
                     generator->writer->Instruction(OpBranch, SPVWriter::Section::LocalFunction, SPVArg{reservedCaseLabels[i+1]});
                 }
@@ -8276,7 +8278,7 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         else
         {
-            if (i + 1 < stat->caseStatements.size())
+            if (i + 1 < stat->caseStatements.size)
             {
                 generator->writer->Instruction(OpBranch, SPVWriter::Section::LocalFunction, SPVArg{reservedCaseLabels[i+1]});
             }
@@ -8434,7 +8436,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(stat->location.file.c_str());
-        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.column);
+        generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, stat->location.line, stat->location.start);
     }
     bool ret = false;
     Symbol::__Resolved* symResolved = Symbol::Resolved(stat);
@@ -8463,7 +8465,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(stat);
             generator->writer->PushScope();
-            const std::vector<Symbol*>& symbols = scope->symbols;
+            const PinnedArray<Symbol*>& symbols = scope->symbols;
             for (const auto& symbol : symbols)
             {
                 if (symbol->symbolType == GPULang::Symbol::SymbolType::VariableType)
@@ -8500,7 +8502,7 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
 /**
 */
 bool 
-SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
 
@@ -8511,7 +8513,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
 
         ~Cleanup()
         {
-            gen->interfaceVariables.clear();
+            gen->interfaceVariables.Clear();
             gen->accessChain.clear();
             gen->mergeBlockCounter = 0;
             gen->linkDefineSlot = 0;
@@ -8522,11 +8524,11 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             for (auto& text : gen->writer->texts)
                 text.Clear();
             gen->writer->scopeStack.clear();
-            gen->writer->imports.clear();
-            gen->writer->extensions.clear();
-            gen->writer->decorations.clear();
-            gen->writer->capabilities.clear();
-            gen->writer->strings.clear();
+            gen->writer->imports.Clear();
+            gen->writer->extensions.Clear();
+            gen->writer->decorations.Clear();
+            gen->writer->capabilities.Clear();
+            gen->writer->strings.Clear();
             
         }
 

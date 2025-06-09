@@ -17,7 +17,7 @@ struct Compiler;
 struct Expression;
 struct Attribute
 {
-    std::string name;
+    FixedString name;
     Expression* expression;
     Symbol::Location location;
 
@@ -44,6 +44,7 @@ struct Attribute
     {
         if (this->expression != nullptr)
             this->expression->~Expression();
+        this->expression = nullptr;
     }
 
     /// Copy constructor

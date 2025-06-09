@@ -15,7 +15,7 @@ namespace GPULang
 struct CallExpression : public Expression
 {
     /// constructor
-    CallExpression(Expression* function, const std::vector<Expression*>& args);
+    CallExpression(Expression* function, const FixedArray<Expression*>& args);
     /// destructor
     virtual ~CallExpression();
 
@@ -36,7 +36,7 @@ struct CallExpression : public Expression
     bool EvalStorage(Storage& out) const override;
 
     Expression* function;
-    std::vector<Expression*> args;
+    FixedArray<Expression*> args;
 
     struct __Resolved : public Expression::__Resolved
     {

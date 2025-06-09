@@ -47,7 +47,7 @@ UnaryExpression::Resolve(Compiler* compiler)
     this->expr->EvalType(type);
     Type* typeSymbol = compiler->GetType(type);
 
-    static const std::set<TypeCode> allowedIncrementDecrementTypes =
+    static const StaticSet<TypeCode> allowedIncrementDecrementTypes =
     {
         TypeCode::Int,
         TypeCode::Int16,
@@ -56,14 +56,14 @@ UnaryExpression::Resolve(Compiler* compiler)
         TypeCode::Float,
         TypeCode::Float16
     };
-    static const std::set<TypeCode> signedTypes =
+    static const StaticSet<TypeCode> signedTypes =
     {
         TypeCode::Int,
         TypeCode::Int16,
         TypeCode::Float,
         TypeCode::Float16,
     };
-    static const std::set<TypeCode> negatableTypes =
+    static const StaticSet<TypeCode> negatableTypes =
     {
         TypeCode::Int,
         TypeCode::Int16,
@@ -77,7 +77,7 @@ UnaryExpression::Resolve(Compiler* compiler)
     {
         case '++':
         {
-            if (allowedIncrementDecrementTypes.find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
                 compiler->Error(Format("Unary '++' only allowed on integer types"), this);
                 return false;    
@@ -86,7 +86,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '--':
         {
-            if (allowedIncrementDecrementTypes.find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
+            if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
                 compiler->Error(Format("Unary '++' only allowed on integer types"), this);
                 return false;    
@@ -114,7 +114,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '-':
         {
-            if (signedTypes.find(typeSymbol->baseType) == signedTypes.end())
+            if (signedTypes.Find(typeSymbol->baseType) == signedTypes.end())
             {
                 compiler->Error(Format("Unary '-' only allowed on signed types"), this);
                 return false;    
@@ -133,7 +133,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '!':
         {
-            if (negatableTypes.find(typeSymbol->baseType) == negatableTypes.end())
+            if (negatableTypes.Find(typeSymbol->baseType) == negatableTypes.end())
             {
                 compiler->Error(Format("Unary '!' only allowed on integer and bool types"), this);
                 return false;    
@@ -142,7 +142,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         }    
         case '~':
         {
-            if (negatableTypes.find(typeSymbol->baseType) == negatableTypes.end())
+            if (negatableTypes.Find(typeSymbol->baseType) == negatableTypes.end())
             {
                 compiler->Error(Format("Unary '~' only allowed on integer and bool types"), this);
                 return false;    

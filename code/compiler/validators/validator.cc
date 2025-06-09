@@ -56,17 +56,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static std::set<std::string> scalarQualifiers =
+static StaticSet<StaticString> scalarQualifiers =
 {
     "const", "var"
 };
 
-static std::set<std::string> bindingQualifiers =
+static StaticSet<StaticString> bindingQualifiers =
 {
     "group", "binding"
 };
 
-static std::set<std::string> functionAttributes =
+static StaticSet<StaticString> functionAttributes =
 {
     "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
@@ -77,27 +77,27 @@ static std::set<std::string> functionAttributes =
     , "derivative_index_linear", "derivative_index_quad"
 };
 
-static std::set<std::string> parameterAccessFlags =
+static StaticSet<StaticString> parameterAccessFlags =
 {
     "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
 };
 
-static std::set<std::string> parameterQualifiers =
+static StaticSet<StaticString> parameterQualifiers =
 {
     "patch", "no_interpolate", "no_perspective", "binding"
 };
 
-static std::set<std::string> structureQualifiers =
+static StaticSet<StaticString> structureQualifiers =
 {
     "packed"
 };
 
-static std::set<std::string> pixelShaderInputQualifiers =
+static StaticSet<StaticString> pixelShaderInputQualifiers =
 {
     "binding", "no_interpolate", "no_perspective"
 };
 
-static std::set<std::string> attributesRequiringEvaluation =
+static StaticSet<StaticString> attributesRequiringEvaluation =
 {
     "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
     , "group_size", "groups_per_workgroup"
@@ -105,17 +105,17 @@ static std::set<std::string> attributesRequiringEvaluation =
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
 };
 
-static std::set<std::string> pointerQualifiers =
+static StaticSet<StaticString> pointerQualifiers =
 {
     "no_read", "atomic", "volatile"
 };
 
-static std::set<std::string> storageQualifiers =
+static StaticSet<StaticString> storageQualifiers =
 {
     "uniform", "inline", "workgroup", "device", "link_defined"
 };
 
-static std::set<std::string> textureQualifiers =
+static StaticSet<StaticString> textureQualifiers =
 {
     "sampled"
 };
@@ -131,32 +131,32 @@ Validator::Validator()
     // add formats
     for (auto it : StringToFormats)
     {
-        this->allowedTextureAttributes.insert(it.first);
+        this->allowedTextureAttributes.Insert(FixedString(it.first));
     }
 
-    this->allowedTextureAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedTextureAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedTextureAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
-    this->allowedTextureAttributes.insert(textureQualifiers.begin(), textureQualifiers.end());
+    this->allowedTextureAttributes.Insert(bindingQualifiers);
+    this->allowedTextureAttributes.Insert(pointerQualifiers);
+    this->allowedTextureAttributes.Insert(storageQualifiers);
+    this->allowedTextureAttributes.Insert(textureQualifiers);
 
-    this->allowedScalarAttributes.insert(scalarQualifiers.begin(), scalarQualifiers.end());
-    this->allowedScalarAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedScalarAttributes.Insert(scalarQualifiers);
+    this->allowedScalarAttributes.Insert(storageQualifiers);
 
-    this->allowedSamplerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedSamplerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedSamplerAttributes.Insert(bindingQualifiers);
+    this->allowedSamplerAttributes.Insert(storageQualifiers);
 
-    this->allowedPointerAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedPointerAttributes.insert(bindingQualifiers.begin(), bindingQualifiers.end());
-    this->allowedPointerAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedPointerAttributes.Insert(pointerQualifiers);
+    this->allowedPointerAttributes.Insert(bindingQualifiers);
+    this->allowedPointerAttributes.Insert(storageQualifiers);
 
-    this->allowedFunctionAttributes.insert(functionAttributes.begin(), functionAttributes.end());
+    this->allowedFunctionAttributes.Insert(functionAttributes);
 
-    this->allowedParameterAttributes.insert(parameterQualifiers.begin(), parameterQualifiers.end());
-    this->allowedParameterAttributes.insert(parameterAccessFlags.begin(), parameterAccessFlags.end());
-    this->allowedParameterAttributes.insert(pointerQualifiers.begin(), pointerQualifiers.end());
-    this->allowedParameterAttributes.insert(storageQualifiers.begin(), storageQualifiers.end());
+    this->allowedParameterAttributes.Insert(parameterQualifiers);
+    this->allowedParameterAttributes.Insert(parameterAccessFlags);
+    this->allowedParameterAttributes.Insert(pointerQualifiers);
+    this->allowedParameterAttributes.Insert(storageQualifiers);
 
-    this->allowedStructureAttributes.insert(structureQualifiers.begin(), structureQualifiers.end());
+    this->allowedStructureAttributes.Insert(structureQualifiers);
 }
 
 //------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
     Symbol* sym = compiler->GetSymbol(alias->type);
     if (sym == nullptr)
     {
-        compiler->UnrecognizedTypeError(alias->type, alias);
+        compiler->UnrecognizedSymbolError(alias->type, alias);
         return false;
     }
     return compiler->AddSymbol(alias->name, sym);
@@ -218,8 +218,8 @@ bool
 Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
-    type->symbols.clear();
-    type->scope.symbolLookup.clear();
+    type->symbols.Clear();
+    type->scope.symbolLookup.Clear();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
     {
@@ -280,16 +280,16 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::EnumerationType)
         {
             Enumeration* en = static_cast<Enumeration*>(sym);
-            en->scope.symbolLookup.clear();
-            en->symbols.clear();
+            en->scope.symbolLookup.Clear();
+            en->symbols.Clear();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
         }
         else if (sym->symbolType == Symbol::SymbolType::StructureType)
         {
             Structure* struc = static_cast<Structure*>(sym);
-            struc->scope.symbolLookup.clear();
-            struc->symbols.clear();
+            struc->scope.symbolLookup.Clear();
+            struc->symbols.Clear();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
         }
@@ -425,11 +425,11 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     Type::Category cat = samplerStateType->category;
     if (this->resourceIndexingMode == ResourceIndexingByType)
     {
-        auto it = this->resourceIndexCounter.find(cat);
+        auto it = this->resourceIndexCounter.Find(cat);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[cat] = 0;
-            it = this->resourceIndexCounter.find(stateResolved->group);
+            this->resourceIndexCounter.Insert(cat, 0);
+            it = this->resourceIndexCounter.Find(stateResolved->group);
         }
 
         if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -438,16 +438,16 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[cat] = max(it->second, stateResolved->binding + 1);
+            it->second = max(it->second, stateResolved->binding + 1);
         }
     }
     else if (this->resourceIndexingMode == ResourceIndexingByGroup)
     {
-        auto it = this->resourceIndexCounter.find(stateResolved->group);
+        auto it = this->resourceIndexCounter.Find(stateResolved->group);
         if (it == this->resourceIndexCounter.end())
         {
-            this->resourceIndexCounter[stateResolved->group] = 0;
-            it = this->resourceIndexCounter.find(stateResolved->group);
+            this->resourceIndexCounter.Insert(stateResolved->group, 0);
+            it = this->resourceIndexCounter.Find(stateResolved->group);
         }
 
         if (stateResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -456,21 +456,22 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            this->resourceIndexCounter[stateResolved->group] = max(it->second, stateResolved->binding + 1);
+            it->second = max(it->second, stateResolved->binding + 1);
         }
-        auto it2 = this->resourceTypePerGroupAndBinding.find(stateResolved->group);
+        auto it2 = this->resourceTypePerGroupAndBinding.Find(stateResolved->group);
         if (it2 == this->resourceTypePerGroupAndBinding.end())
         {
-            std::map<uint32_t, Type::Category> table = { { stateResolved->binding, samplerStateType->category } };
-            this->resourceTypePerGroupAndBinding.insert({ stateResolved->group, table });
+            PinnedMap<uint32_t, Type::Category> table = 0xFFF;
+            table.Insert(stateResolved->binding, samplerStateType->category);
+            this->resourceTypePerGroupAndBinding.Insert(stateResolved->group, table);
         }
         else
         {
-            std::map<uint32_t, Type::Category>& table = it2->second;
-            auto it3 = table.find(stateResolved->binding);
+            PinnedMap<uint32_t, Type::Category>& table = it2->second;
+            auto it3 = table.Find(stateResolved->binding);
             if (it3 == table.end())
             {
-                table.insert({ stateResolved->binding, samplerStateType->category });
+                table.Insert(stateResolved->binding, samplerStateType->category);
             }
             else
             {
@@ -655,7 +656,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
-    funResolved->scope.symbolLookup.clear();
+    funResolved->scope.symbolLookup.Clear();
 
      // run attribute validation
     for (const Attribute* attr : fun->attributes)
@@ -1121,11 +1122,11 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        std::string entry = assignEntry->left->EvalString();
-        Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entry);
+        std::string entryStr = assignEntry->left->EvalString();
+        Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entryStr);
         if (entryType == Program::__Resolved::InvalidProgramEntryType)
         {
-            Symbol* overrideSymbol = compiler->GetSymbol(entry);
+            Symbol* overrideSymbol = compiler->GetSymbol(entryStr);
             if (overrideSymbol->symbolType == Symbol::FunctionType)
             {
                 // get all functions responding to this function
@@ -1134,14 +1135,14 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 // check that we actually got a symbol
                 if (functionStub == nullptr)
                 {
-                    compiler->UnrecognizedTypeError(entry, symbol);
+                    compiler->UnrecognizedTypeError(entryStr, symbol);
                     return false;
                 }
 
                 // check that it's actually a function
                 if (functionStub->symbolType != Symbol::FunctionType)
                 {
-                    compiler->Error(Format("Symbol '%s' is not a recognized function", entry.c_str()), symbol);
+                    compiler->Error(Format("Symbol '%s' is not a recognized function", entryStr.c_str()), symbol);
                     return false;
                 }
 
@@ -1149,7 +1150,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 std::string functionName;
                 if (!assignEntry->right->EvalSymbol(functionName))
                 {
-                    compiler->Error(Format("Expected symbol, but got '%s'", entry.c_str()), symbol);
+                    compiler->Error(Format("Expected symbol, but got '%s'", entryStr.c_str()), symbol);
                     return false;
                 }
                 std::vector<Symbol*> functions = compiler->GetSymbols(functionName);
@@ -1225,7 +1226,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             std::string sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
-                compiler->Error(Format("Entry '%s' has to be a symbol", entry.c_str()), symbol);
+                compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
                 return false;
             }
             Symbol* value = compiler->GetSymbol(sym);
@@ -1244,7 +1245,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             std::string sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
-                compiler->Error(Format("Entry '%s' has to be a symbol", entry.c_str()), symbol);
+                compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
                 return false;
             }
             Symbol* value = compiler->GetSymbol(sym);
@@ -1324,6 +1325,10 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits = 0x0;
                 compiler->shaderValueExpressions[entryType].value = true;
                 compiler->currentState.function = fun;
+                
+                Function::__Resolved* funRes = Symbol::Resolved(fun);
+                if (funRes->visibleSymbols.data.capacity == 0)
+                    funRes->visibleSymbols = 0xFFFFFF; // initialize lookup
 
                 // Temporarily store original variable values
                 std::unordered_map<Variable*, Expression*> originalVariableValues;
@@ -1428,8 +1433,8 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Render state entry '%s' must be assignment", assignEntry->EvalString().c_str()), entry);
             return false;
         }
-
-        std::string entry;
+        
+        std::string entryStr;
 
         // if left is binary, then validate it is an array expression
         if (assignEntry->left->symbolType == Symbol::ArrayIndexExpressionType)
@@ -1451,11 +1456,11 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Render state array entry '%s' must be a valid identifier", lhs->left->EvalString().c_str()), assignEntry);
                 return false;
             }
-            entry = lhs->left->EvalString();
+            entryStr = lhs->left->EvalString();
         }
         else if (assignEntry->left->symbolType == Symbol::AccessExpressionType)
         {
-            entry = assignEntry->left->EvalString();
+            entryStr = assignEntry->left->EvalString();
         }
         else
         {
@@ -1464,13 +1469,13 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Render state entry '%s' must be a valid identifier", assignEntry->left->EvalString().c_str()), assignEntry);
                 return false;
             }
-            entry = assignEntry->left->EvalString();
+            entryStr = assignEntry->left->EvalString();
         }
 
-        RenderState::__Resolved::RenderStateEntryType entryType = RenderState::__Resolved::StringToEntryType(entry);
+        RenderState::__Resolved::RenderStateEntryType entryType = RenderState::__Resolved::StringToEntryType(entryStr);
         if (entryType == RenderState::__Resolved::InvalidRenderStateEntryType)
         {
-            compiler->Error(Format("Invalid render state entry '%s'", entry.c_str()), assignEntry);
+            compiler->Error(Format("Invalid render state entry '%s'", entryStr.c_str()), assignEntry);
             return false;
         }
 
@@ -1511,7 +1516,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::BlendEnabledType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(stateResolved->blendStates[index].blendEnabled);
@@ -1519,7 +1524,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::SourceBlendColorFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1528,7 +1533,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::DestinationBlendColorFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1537,7 +1542,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::SourceBlendAlphaFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1546,7 +1551,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::DestinationBlendAlphaFactorType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1555,7 +1560,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::ColorBlendOpType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1564,7 +1569,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             case RenderState::__Resolved::AlphaBlendOpType:
                 if (!valid)
                 {
-                    compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entry.c_str()), assignEntry);
+                    compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
@@ -1591,7 +1596,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilFailOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1600,7 +1605,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilPassOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1609,7 +1614,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilDepthFailOpType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1618,7 +1623,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilCompareModeType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
@@ -1627,7 +1632,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilCompareMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->compareMask);
@@ -1635,7 +1640,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilWriteMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->writeMask);
@@ -1643,7 +1648,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 case RenderState::__Resolved::StencilReferenceMaskType:
                     if (!valid)
                     {
-                        compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entry.c_str()), assignEntry);
+                        compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(state->referenceMask);
@@ -1653,7 +1658,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
         else if (entryType == RenderState::__Resolved::BlendConstantsType)
         {
             InitializerExpression* init = static_cast<InitializerExpression*>(assignEntry->right);
-            if (init->values.size() != 4)
+            if (init->values.size != 4)
             {
                 compiler->Error(Format("Blend constants must be an initializer of 4 values"), symbol);
                 return false;
@@ -1747,7 +1752,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     stateResolved->logicOp = (GPULang::LogicOp)value.i[0];
                     break;
                 default:
-                    compiler->Error(Format("Unknown render state entry '%s'", entry.c_str()), symbol);
+                    compiler->Error(Format("Unknown render state entry '%s'", entryStr.c_str()), symbol);
                     return false;
             }
         }
@@ -1883,12 +1888,14 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->baseType = enumResolved->typeSymbol->baseType;
-    enumeration->symbols.clear();
+    enumeration->symbols.Clear();
     if (enumeration->globals.empty())
     {
         if (enumeration->builtin)
         {
+            StackArray<Variable*> parameters(1);
             SYMBOL_STATIC_ALLOC = true;
+
             // Create constructor from type, and to type
             Function* fromUnderlyingType = StaticAlloc<Function>();
             fromUnderlyingType->name = enumeration->name;
@@ -1897,7 +1904,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Variable* arg = StaticAlloc<Variable>();
             arg->name = "_arg0";
             arg->type = enumeration->type;
-            fromUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            fromUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(fromUnderlyingType);
 
             Function* toUnderlyingType = StaticAlloc<Function>();
@@ -1907,7 +1916,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "_arg0";
             arg->type = Type::FullType{ enumeration->name };
-            toUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            toUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = StaticAlloc<Function>();
@@ -1916,7 +1927,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = StaticAlloc<Function>();
@@ -1925,12 +1938,16 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = StaticAlloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
             SYMBOL_STATIC_ALLOC = false;
         }
         else
         {
+            StackArray<Variable*> parameters(1);
+
             // Create constructor from type, and to type
             Function* fromUnderlyingType = Alloc<Function>();
             fromUnderlyingType->name = enumeration->name;
@@ -1939,7 +1956,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Variable* arg = Alloc<Variable>();
             arg->name = "_arg0";
             arg->type = enumeration->type;
-            fromUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            fromUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(fromUnderlyingType);
 
             Function* toUnderlyingType = Alloc<Function>();
@@ -1949,7 +1968,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "_arg0";
             arg->type = Type::FullType{ enumeration->name };
-            toUnderlyingType->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            toUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = Alloc<Function>();
@@ -1958,7 +1979,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = Alloc<Function>();
@@ -1967,19 +1990,21 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg = Alloc<Variable>();
             arg->name = "rhs";
             arg->type = Type::FullType{ enumeration->name };
-            comparison->parameters.push_back(arg);
+            parameters.Clear();
+            parameters.Append(arg);
+            comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
         }
     }
 
     uint32_t nextValue = 0;
-    for (size_t i = 0; i < enumeration->labels.size(); i++)
+    for (size_t i = 0; i < enumeration->labels.size; i++)
     {
-        const std::string& str = enumeration->labels[i];
-        Expression* expr = enumeration->values[i];
+        const FixedString& str = enumeration->labels.buf[i];
+        Expression* expr = enumeration->values.buf[i];
 
         // Check of label redefinition
-        if (enumeration->scope.symbolLookup.find(str) != enumeration->scope.symbolLookup.end())
+        if (enumeration->scope.symbolLookup.Find(str.c_str()) != enumeration->scope.symbolLookup.end())
         {
             compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
             return false;
@@ -2025,9 +2050,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
 
         // Add to type
-        sym->name = str;
-        enumeration->symbols.push_back(sym);
-        enumeration->scope.symbolLookup.insert({ sym->name, sym });
+        sym->name = str.c_str();
+        enumeration->symbols.Append(sym);
+        enumeration->scope.symbolLookup.Insert(sym->name, sym);
     }
 
     return true;
@@ -2071,7 +2096,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     Type* type = compiler->GetType(var->type);
     if (type == nullptr)
     {
-        compiler->UnrecognizedTypeError(var->type.ToString().c_str(), symbol);
+        compiler->UnrecognizedTypeError(var->type.name.c_str(), symbol);
         return false;
     }
     varResolved->typeSymbol = type;
@@ -2136,7 +2161,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     }
 
     // figure out set of allowed attributes
-    std::set<std::string>* allowedAttributesSet = nullptr;
+    PinnedSet<FixedString>* allowedAttributesSet = nullptr;
     if (varResolved->usageBits.flags.isStructMember)
         allowedAttributesSet = nullptr;
     else if (varResolved->usageBits.flags.isParameter)
@@ -2693,11 +2718,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
             if (this->resourceIndexingMode == ResourceIndexingByType)
             {
-                auto it = this->resourceIndexCounter.find(cat);
+                auto it = this->resourceIndexCounter.Find(cat);
                 if (it == this->resourceIndexCounter.end())
                 {
-                    this->resourceIndexCounter[cat] = 0;
-                    it = this->resourceIndexCounter.find(varResolved->group);
+                    this->resourceIndexCounter.Insert(cat, 0);
+                    it = this->resourceIndexCounter.Find(varResolved->group);
                 }
 
                 if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -2706,16 +2731,16 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    this->resourceIndexCounter[cat] = max(it->second, varResolved->binding + 1);
+                    it->second = max(it->second, varResolved->binding + 1);
                 }
             }
             else if (this->resourceIndexingMode == ResourceIndexingByGroup)
             {
-                auto it = this->resourceIndexCounter.find(varResolved->group);
+                auto it = this->resourceIndexCounter.Find(varResolved->group);
                 if (it == this->resourceIndexCounter.end())
                 {
-                    this->resourceIndexCounter[varResolved->group] = 0;
-                    it = this->resourceIndexCounter.find(varResolved->group);
+                    this->resourceIndexCounter.Insert(varResolved->group, 0);
+                    it = this->resourceIndexCounter.Find(varResolved->group);
                 }
 
                 if (varResolved->binding == Variable::__Resolved::NOT_BOUND)
@@ -2724,21 +2749,22 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    this->resourceIndexCounter[varResolved->group] = max(it->second, varResolved->binding + 1);
+                    it->second = max(it->second, varResolved->binding + 1);
                 }
-                auto it2 = this->resourceTypePerGroupAndBinding.find(varResolved->group);
+                auto it2 = this->resourceTypePerGroupAndBinding.Find(varResolved->group);
                 if (it2 == this->resourceTypePerGroupAndBinding.end())
                 {
-                    std::map<uint32_t, Type::Category> table = { {varResolved->binding, varResolved->typeSymbol->category} };
-                    this->resourceTypePerGroupAndBinding.insert({varResolved->group, table});
+                    PinnedMap<uint32_t, Type::Category> table = 0xFFF;
+                    table.Insert(varResolved->binding, varResolved->typeSymbol->category);
+                    this->resourceTypePerGroupAndBinding.Insert(varResolved->group, table);
                 }
                 else
                 {
-                    std::map<uint32_t, Type::Category>& table = it2->second;
-                    auto it3 = table.find(varResolved->binding);
+                    PinnedMap<uint32_t, Type::Category>& table = it2->second;
+                    auto it3 = table.Find(varResolved->binding);
                     if (it3 == table.end())
                     {
-                        table.insert({varResolved->binding, varResolved->typeSymbol->category});
+                        table.Insert(varResolved->binding, varResolved->typeSymbol->category);
                     }
                     else
                     {
@@ -2801,8 +2827,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         generatedVarResolved->structureOffset = alignedOffset;
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
-                        generatedStruct->symbols.push_back(generatedVar);
-                        generatedStruct->scope.symbolLookup.insert({ varResolved->name, generatedVar });
+                        generatedStruct->symbols.Append(generatedVar);
+                        generatedStruct->scope.symbolLookup.Insert(varResolved->name, generatedVar);
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
@@ -2836,8 +2862,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
 
                 // Insert symbol before this one, avoiding resolving (we assume the struct and members are already valid)
-                compiler->symbols.insert(compiler->symbols.begin() + compiler->symbolIterator, generatedStruct);
-                compiler->scopes.back()->symbolLookup.insert({ generatedStruct->name, generatedStruct });
+                compiler->symbols.Insert(generatedStruct, compiler->symbolIterator);
+                compiler->scopes.back()->symbolLookup.Insert(generatedStruct->name, generatedStruct);
                 compiler->symbolIterator++;
             }
 
@@ -2848,12 +2874,13 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->storageFunction = Alloc<Function>();
                     currentStrucResolved->storageFunction->name = "bufferStore";
                     currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
+
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.push_back(attr);
+                    arg->attributes = { attr };
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();
@@ -2865,8 +2892,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     arg2->type.modifiers.clear();
                     arg2->type.modifierValues.clear();
                     arg2->type.mut = false;
-                    currentStrucResolved->storageFunction->parameters.push_back(arg);
-                    currentStrucResolved->storageFunction->parameters.push_back(arg2);
+                    currentStrucResolved->storageFunction->parameters = { arg, arg2 };
                     this->ResolveFunction(compiler, currentStrucResolved->storageFunction);    
                 }
                 if (currentStrucResolved->loadFunction == nullptr)
@@ -2874,18 +2900,19 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                     currentStrucResolved->loadFunction = Alloc<Function>();
                     currentStrucResolved->loadFunction->name = "bufferLoad";
                     currentStrucResolved->loadFunction->returnType = Type::FullType{currentStructure->name};
+
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
                     Attribute* attr = Alloc<Attribute>();
                     attr->name = "uniform";
                     attr->expression = nullptr;
-                    arg->attributes.push_back(attr);
+                    arg->attributes = { attr };
                     arg->type = var->type;
                     arg->type.modifiers.clear();
                     arg->type.modifierValues.clear();
                     arg->type.AddModifier(Type::FullType::Modifier::Pointer, nullptr);
                     
-                    currentStrucResolved->loadFunction->parameters.push_back(arg);
+                    currentStrucResolved->loadFunction->parameters = { arg };
                     this->ResolveFunction(compiler, currentStrucResolved->loadFunction);   
                 }
             }
@@ -3121,6 +3148,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                         return false;
                 }
             }
+            for (Expression* expr : statement->unfinished)
+            {
+                if (!expr->Resolve(compiler))
+                    return false;
+            }
             return true;
         }
         case Symbol::SwitchStatementType:
@@ -3147,7 +3179,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             }
 
             bool switchReturns = true;
-            for (size_t i = 0; i < statement->caseExpressions.size(); i++)
+            for (size_t i = 0; i < statement->caseExpressions.size; i++)
             {
                 if (!statement->caseExpressions[i]->Resolve(compiler))
                 {
@@ -3424,17 +3456,17 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     First filters parameters based on in/out qualifiers, then sorts within that set
     based on either inBinding or outBinding respectively
 */
-std::vector<Variable*>
-SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
+StackArray<Variable*>
+SortAndFilterParameters(const FixedArray<Variable*>& vars, bool in)
 {
-    std::vector<Variable*> ret;
+    StackArray<Variable*> ret(vars.size);
     for (Variable* var : vars)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (varResolved->storage == Storage::Input && in)
-            ret.push_back(var);
+            ret.Append(var);
         else if (varResolved->storage == Storage::Output && !in)
-            ret.push_back(var);
+            ret.Append(var);
     }
 
     // sort based on in or out binding respectively
@@ -3454,13 +3486,13 @@ SortAndFilterParameters(const std::vector<Variable*>& vars, bool in)
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
 {
-    std::vector<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
-    std::vector<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
+    StackArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
+    StackArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
     size_t inIterator = 0;
     for (Variable* var : outParams)
     {
         Variable::__Resolved* outResolved = Symbol::Resolved(var);
-        Variable::__Resolved* inResolved = Symbol::Resolved(inParams[inIterator]);
+        Variable::__Resolved* inResolved = Symbol::Resolved(inParams.ptr[inIterator]);
 
         // if bindings don't match, it means the output will be unused since the parameter sets should be sorted
         if ((outResolved->outBinding != inResolved->inBinding))
@@ -3470,9 +3502,9 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
         }
         else
         {
-            if (var->type != inParams[inIterator]->type)
+            if (var->type != inParams.ptr[inIterator]->type)
             {
-                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams[inIterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
+                compiler->Error(Format("Can't match types '%s' and '%s' between shader '%s' and '%s'", var->type.name.c_str(), inParams.ptr[inIterator]->type.name.c_str(), outFunc->name.c_str(), inFunc->name.c_str()), outFunc);
                 return false;
             }
         }
@@ -3552,12 +3584,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both general graphics and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both general graphics and compute", symbol);
                 return false;
             }
             if (programType == ProgramType::IsRaytracing)
             {
-                compiler->Error(Format("Program may not be both general graphics and ray tracing", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both general graphics and ray tracing", symbol);
                 return false;
             }
             programType = ProgramType::IsGraphics;
@@ -3569,12 +3601,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         {
             if (programType == ProgramType::IsCompute)
             {
-                compiler->Error(Format("Program may not be both raytracing and compute", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both raytracing and compute", symbol);
                 return false;
             }
             if (programType == ProgramType::IsGraphics)
             {
-                compiler->Error(Format("Program may not be both raytracing and general graphics", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping)), symbol);
+                compiler->Error("Program may not be both raytracing and general graphics", symbol);
                 return false;
             }
             programType = ProgramType::IsRaytracing;
@@ -3703,13 +3735,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ScopeStatementType:
         {
             ScopeStatement* scope = static_cast<ScopeStatement*>(symbol);
-            //compiler->PushScope(GPULang::Compiler::Scope::ScopeType::Local, scope);
             for (auto* statement : scope->symbols)
             {
-                //compiler->AddSymbol(symbol->name, symbol);
                 res |= this->ResolveVisibility(compiler, statement);
             }
-            //compiler->PopScope();
             break;
         }
         case Symbol::ForStatementType:
@@ -3832,14 +3861,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             ValueUnion val;
             if (switchStat->switchExpression->EvalValue(val))
             {
-                if (val.i[0] < switchStat->caseExpressions.size())
+                if (val.i[0] < switchStat->caseExpressions.size)
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[val.i[0]]);
                 else if (switchStat->defaultStatement != nullptr)
                     res |= this->ResolveVisibility(compiler, switchStat->defaultStatement);
             }
             else
             {
-                for (uint32_t i = 0; i < switchStat->caseStatements.size(); i++)
+                for (uint32_t i = 0; i < switchStat->caseStatements.size; i++)
                 {
                     res |= this->ResolveVisibility(compiler, switchStat->caseExpressions[i]);
                     res |= this->ResolveVisibility(compiler, switchStat->caseStatements[i]);
@@ -4038,7 +4067,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             auto funResolved = Symbol::Resolved(fun);
 
             // Add this function to the visibility map
-            funResolved->visibilityMap.insert(compiler->currentState.function);
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(fun);
 
             for (auto& param : fun->parameters)
                 res |= this->ResolveVisibility(compiler, param);
@@ -4061,7 +4091,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto var = static_cast<Variable*>(symbol);
             auto varResolved = Symbol::Resolved(var);
-            varResolved->visibilityMap.insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(var);
+            
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4124,7 +4157,10 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto sampler = static_cast<SamplerState*>(symbol);
             auto sampResolved = Symbol::Resolved(sampler);
-            sampResolved->visibilityMap.insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(sampler);
+            
             switch (compiler->currentState.shaderType)
             {
                 case Program::__Resolved::ProgramEntryType::VertexShader:
@@ -4178,7 +4214,9 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto struc = static_cast<Structure*>(symbol);
             auto strucResolved = Symbol::Resolved(struc);
-            strucResolved->visibilityMap.insert(compiler->currentState.function);
+            
+            Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
+            entryRes->visibleSymbols.Insert(struc);
 
             for (auto mem : struc->symbols)
                 res |= this->ResolveVisibility(compiler, mem);

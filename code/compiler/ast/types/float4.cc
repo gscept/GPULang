@@ -53,6 +53,7 @@ Function Float4::neOperator;
 */
 Float4::Float4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->columnSize = 4;
     this->rowSize = 1;
@@ -64,6 +65,7 @@ Float4::Float4()
     __ADD_FUNCTION_PARAM(y, f32);
     __ADD_FUNCTION_PARAM(z, f32);
     __ADD_FUNCTION_PARAM(w, f32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, f32x4, f32x4, val);
@@ -74,7 +76,8 @@ Float4::Float4()
 #define X(type, ctor, arg0, arg1)\
     __IMPLEMENT_CTOR(ctor, f32x4, f32x4)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
-    __ADD_FUNCTION_PARAM(arg_1, arg1)
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_CONSTRUCTOR();
 
     FLOAT4_CTOR2_LIST
 #undef X
@@ -83,7 +86,8 @@ Float4::Float4()
     __IMPLEMENT_CTOR(ctor, f32x4, f32x4)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
     __ADD_FUNCTION_PARAM(arg_1, arg1)\
-    __ADD_FUNCTION_PARAM(arg_2, arg2)
+    __ADD_FUNCTION_PARAM(arg_2, arg2)\
+    __ADD_CONSTRUCTOR();
 
     FLOAT4_CTOR3_LIST
 #undef X

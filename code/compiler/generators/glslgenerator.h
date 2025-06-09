@@ -26,7 +26,7 @@ public:
     ~GLSLGenerator();
 
     /// generate GLSL output
-    bool Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
+    bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate function
     void GenerateFunctionSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode);

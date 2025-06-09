@@ -25,7 +25,10 @@ friend class GPULangLexerErrorHandler;
 friend class GPULangParserErrorHandler;
 friend class GPULangTokenFactory;
 friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
-friend bool GPULangValidate(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+friend bool GPULangValidate(GPULangFile*, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+friend bool GPULangValidateFile(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+friend bool GPULangPreprocess(GPULangFile*, const std::string&, const std::vector<std::string>&, std::string&, std::string&);
+friend GPULangFile* GPULangLoadFile(const std::string_view&, const std::vector<std::string_view>&);
 static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 }
 
@@ -46,9 +49,8 @@ SetupFile()
     auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     // assume the previous token is the latest file
     location.file = file;
-    location.line = token->line - rawLine - 1 + preprocessedLine;
-    location.column = token->getCharPositionInLine();
-    location.start = location.column;
+    location.line = token->line - rawLine + preprocessedLine;
+    location.start = token->begin;
     location.end = location.start + token->getText().length();
     return location;
 }
@@ -61,8 +63,7 @@ BeginLocationRange()
 
     auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
     location.file = file;
-    location.line = token->line - rawLine - 1 + preprocessedLine;
-    location.column = token->getCharPositionInLine();
+    location.line = token->line - rawLine + preprocessedLine;
     location.start = token->begin;
     location.end = token->end + 1;
     return location;
@@ -103,6 +104,7 @@ EndLocationRange(const Symbol::Location begin)
 #include "ast/state.h"
 #include "ast/structure.h"
 #include "ast/symbol.h"
+#include "ast/preprocessor.h"
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
@@ -144,7 +146,14 @@ using namespace GPULang;
 string
     returns[ std::string val ]:
     '"' (data = ~'"' { $val.append($data.text); })* '"'
-    | '\'' (data = ~'\'' { $val.append($data.text); })* '\'';
+    | '\'' (data = ~'\'' { $val.append($data.text); })* '\''
+    ;
+
+path
+    returns[ std::string val ]:
+    '"' (data = ~'"' { $val.append($data.text); })* '"'
+    | '<' (data = ~'>' { $val.append($data.text); })* '>'
+    ;
 
 boolean
     returns[ bool val ]
@@ -169,16 +178,35 @@ effect
     :
     (
         linePreprocessorEntry
-        | alias ';'                 { $eff->symbols.push_back($alias.sym); }
-        | functionDeclaration ';'   { $eff->symbols.push_back($functionDeclaration.sym); }    
-        | function                  { $eff->symbols.push_back($function.sym); }    
-        | variables ';'             { for (Variable* var : $variables.list) { $eff->symbols.push_back(var); } }
-        | structure ';'             { $eff->symbols.push_back($structure.sym); }
-        | enumeration ';'           { $eff->symbols.push_back($enumeration.sym); }
-        | state ';'                 { $eff->symbols.push_back($state.sym); }
-        | sampler ';'                 { $eff->symbols.push_back($sampler.sym); }
-        | program ';'               { $eff->symbols.push_back($program.sym); }
+        //| preprocessor
+        | alias ';'                 { $eff->symbols.Append($alias.sym); }
+        | functionDeclaration ';'   { $eff->symbols.Append($functionDeclaration.sym); }    
+        | function                  { $eff->symbols.Append($function.sym); }    
+        | variables ';'             { for (Variable* var : $variables.vars) { $eff->symbols.Append(var); } }
+        | structure ';'             { $eff->symbols.Append($structure.sym); }
+        | enumeration ';'           { $eff->symbols.Append($enumeration.sym); }
+        | state ';'                 { $eff->symbols.Append($state.sym); }
+        | sampler ';'               { $eff->symbols.Append($sampler.sym); }
+        | program ';'               { $eff->symbols.Append($program.sym); }
     )*?;
+
+    
+//preprocessor
+//    returns [Preprocessor* pp]
+//    @init
+//    {
+//        Symbol::Location location;
+//    }
+//    :
+//    '#' (method = IDENTIFIER) { $pp = Alloc<Preprocessor>(); $pp->method = $method.text; $pp->type = Preprocessor::EndIf; }
+//    (
+//        (file = path { $pp->args.push_back($file.val); })                                                                                  { $pp->type = Preprocessor::Include; }    // include
+//        | '(' (arg0 = IDENTIFIER { $pp->args.push_back($arg0.text); } (',' argn = IDENTIFIER { $pp->args.push_back($argn.text); })* )? ')'  { $pp->type = Preprocessor::Macro; }    // macro
+//        | IDENTIFIER                                                                                                                        { $pp->type = Preprocessor::IfDef; }
+//        | line = INTEGERLITERAL p = string
+//    )
+//    ;
+    
     
 linePreprocessorEntry
     @init
@@ -186,7 +214,7 @@ linePreprocessorEntry
         size_t origLine;
     }
     :
-    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL path = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $path.val }); }
+    '#line' { origLine = _input->LT(-1)->getLine(); } line = INTEGERLITERAL p = string { LineStack.push_back( {origLine, atoi($line.text.c_str()), $p.val }); }
     ;
     
 alias
@@ -240,7 +268,7 @@ typeDeclaration
         '[' { $type.type.AddModifier(Type::FullType::Modifier::Array); } 
             ( arraySize0 = expression { $type.type.UpdateValue($arraySize0.tree); } )? 
         ']'
-        | IDENTIFIER { $type.type.AddQualifier($IDENTIFIER.text); }
+        | IDENTIFIER { $type.type.AddQualifier(FixedString($IDENTIFIER.text)); }
         | linePreprocessorEntry
     )* 
     typeName = IDENTIFIER { $type.type.name = $typeName.text; $type.location = EndLocationRange(typeRange); }
@@ -248,34 +276,35 @@ typeDeclaration
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
 variables
-    returns[ std::vector<Variable*> list ]
+    returns[ FixedArray<Variable*> vars ]
     @init
     {
-        std::vector<Annotation*> annotations;
-        std::vector<Attribute*> attributes;
-        std::vector<std::string> names;
-        std::vector<Expression*> valueExpressions;
-        std::vector<Symbol::Location> locations;
+        StackArray<Variable*> list(256);
+        StackArray<Annotation*> annotations(32);
+        StackArray<Attribute*> attributes(32);
+        StackArray<std::string> names(256);
+        StackArray<Expression*> valueExpressions(256);
+        StackArray<Symbol::Location> locations(256);
         unsigned initCounter = 0;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
-    (annotation { annotations.push_back(std::move($annotation.annot)); })*
-    (attribute { attributes.push_back(std::move($attribute.attr)); })+
+    (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
+    (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })+
     
-    varName = IDENTIFIER { names.push_back($varName.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } 
+    varName = IDENTIFIER { names.Append($varName.text); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } 
     (linePreprocessorEntry)?
-    (',' varNameN = IDENTIFIER { names.push_back($varNameN.text); valueExpressions.push_back(nullptr); locations.push_back(SetupFile()); } | linePreprocessorEntry)*
+    (',' varNameN = IDENTIFIER { if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append($varNameN.text); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } | linePreprocessorEntry)*
     
     ( ':' 
        typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
-        '=' valueExpr = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
-        (',' valueExprN = logicalOrExpression { if (initCounter < names.size()) { valueExpressions[initCounter++] = $valueExprN.tree; }; } | linePreprocessorEntry)*
+        '=' valueExpr = logicalOrExpression { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
+        (',' valueExprN = logicalOrExpression { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExprN.tree; }; } | linePreprocessorEntry)*
     )?
     {
-        for (size_t i = 0; i < names.size(); i++)
+        for (size_t i = 0; i < names.size; i++)
         {
             Variable* var = Alloc<Variable>(); 
             var->type = type.type; 
@@ -285,8 +314,9 @@ variables
             var->attributes = attributes;
             var->name = names[i];
             var->valueExpression = valueExpressions[i];
-            $list.push_back(var);
+            list.Append(var);
         }
+        $vars = list;
     }
     ;
 
@@ -295,19 +325,19 @@ structureDeclaration
     @init
     {
         $sym = nullptr;
-        std::vector<Annotation*> annotations;
-        std::vector<Attribute*> attributes;
+        StackArray<Annotation*> annotations(32);
+        StackArray<Attribute*> attributes(32);
     }:
     (linePreprocessorEntry)*
-    (annotation { annotations.push_back(std::move($annotation.annot)); })*
-    (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
+    (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     'struct' 
     name = IDENTIFIER 
     { 
         $sym = Alloc<Structure>();
         $sym->name = $name.text; 
-        $sym->annotations = std::move(annotations);
-        $sym->attributes = std::move(attributes);
+        $sym->annotations = annotations;
+        $sym->attributes = attributes;
         $sym->location = SetupFile();
     }
     ;
@@ -317,7 +347,7 @@ structure
     @init
     {
         $sym = nullptr;
-        std::vector<Symbol*> members;
+        StackArray<Symbol*> members(1024);
         bool isArray = false;
         Expression* arraySizeExpression = nullptr;
         std::string instanceName;
@@ -337,7 +367,7 @@ structure
                     ( arraySize0 = expression { varType.UpdateValue($arraySize0.tree); } )?  
                 ']'
             )* 
-            varTypeName = IDENTIFIER { varType.name = $varTypeName.text; varTypeLocation = EndLocationRange(typeRange); } ';'
+            varTypeName = IDENTIFIER { if (members.Full()) { throw IndexOutOfBoundsException("Maximum of 1024 struct members reached"); } varType.name = $varTypeName.text; varTypeLocation = EndLocationRange(typeRange); } ';'
             {
                 Variable* var = Alloc<Variable>(); 
                 var->type = varType; 
@@ -345,7 +375,7 @@ structure
                 var->typeLocation = varTypeLocation;
                 var->name = varName;
                 var->valueExpression = nullptr;
-                members.push_back(var);
+                members.Append(var);
                 
                 varType = Type::FullType();
             }
@@ -373,9 +403,9 @@ enumeration
     @init
     {
         $sym = nullptr;
-        std::vector<std::string> enumLabels;
-        std::vector<Expression*> enumValues;
-        std::vector<Symbol::Location> enumLocations;
+        StackArray<FixedString> enumLabels(256);
+        StackArray<Expression*> enumValues(256);
+        StackArray<Symbol::Location> enumLocations(256);
         std::string name;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
@@ -387,17 +417,17 @@ enumeration
         (
             label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
             {
-                enumLabels.push_back($label.text);
-                enumValues.push_back(expr);
-                enumLocations.push_back(labelLocation);
+                enumLabels.Append(FixedString($label.text));
+                enumValues.Append(expr);
+                enumLocations.Append(labelLocation);
             }
             (linePreprocessorEntry)?
             (
-                ',' label = IDENTIFIER { Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
+                ',' label = IDENTIFIER { if (enumLabels.Full()) { throw IndexOutOfBoundsException("Maximum of 256 enum labels"); } Expression* expr = nullptr; labelLocation = SetupFile(); } ('=' value = expression { expr = $value.tree; })?
                 {
-                    enumLabels.push_back($label.text);
-                    enumValues.push_back(expr);
-                    enumLocations.push_back(labelLocation);
+                    enumLabels.Append(FixedString($label.text));
+                    enumValues.Append(expr);
+                    enumLocations.Append(labelLocation);
                 }
                 |
                 linePreprocessorEntry
@@ -423,14 +453,14 @@ parameter
     returns[ Variable* sym ]
     @init
     {
-        std::vector<Attribute*> attributes;
+        StackArray<Attribute*> attributes(32);
         std::string name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
-    (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
     ':' 
     typeDeclaration { type = $typeDeclaration.type; }
@@ -453,14 +483,14 @@ functionDeclaration
     @init
     {
         $sym = nullptr;
-        std::vector<Variable*> variables;
-        std::vector<Attribute*> attributes;
+        StackArray<Variable*> variables(32);
+        StackArray<Attribute*> attributes(32);
         Symbol::Location location;
     }:
-    (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     name = IDENTIFIER { location = SetupFile(); } '(' 
         (
-            arg0 = parameter { variables.push_back($arg0.sym); } (linePreprocessorEntry)? (',' argn = parameter { variables.push_back($argn.sym); } | linePreprocessorEntry)* 
+            arg0 = parameter { variables.Append($arg0.sym); } (linePreprocessorEntry)? (',' argn = parameter { if (variables.Full()) throw IndexOutOfBoundsException("Maximum of 32 variables reached"); variables.Append($argn.sym); } | linePreprocessorEntry)* 
         )? 
         ')' returnType = typeDeclaration
     {
@@ -471,7 +501,7 @@ functionDeclaration
         $sym->returnTypeLocation = $returnType.type.location;
         $sym->name = $name.text; 
         $sym->parameters = variables; 
-        $sym->attributes = std::move(attributes);
+        $sym->attributes = attributes;
     }
     ;
 
@@ -480,22 +510,10 @@ function
     @init
     {
         $sym = nullptr;
-        Token* startToken = nullptr;
-        Token* endToken = nullptr;
     }:
     functionDeclaration { $sym = $functionDeclaration.sym; }
-    {
-        startToken = _input->LT(2);
-    }
     scopeStatement
     {
-        endToken = _input->LT(-2);
-
-        // extract code from between tokens
-        antlr4::misc::Interval interval;
-        interval.a = startToken->getTokenIndex();
-        interval.b = endToken->getTokenIndex();
-        $sym->body = _input->getText(interval);
         $sym->hasBody = true;
         $sym->ast = $scopeStatement.tree;
     } 
@@ -507,20 +525,19 @@ program
     {
         $sym = nullptr;
         Symbol::Location location;
-        std::vector<Program::SubroutineMapping> subroutines;
-        std::vector<Expression*> entries;
-        std::vector<Annotation*> annotations;
+        StackArray<Expression*> entries(32);
+        StackArray<Annotation*> annotations(32);
     }:
-    (annotation { annotations.push_back(std::move($annotation.annot)); })*
+    (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     'program' name = IDENTIFIER { location = SetupFile(); }
     '{'
-        ( assignment = expression { entries.push_back($assignment.tree); } ';' )*
+        ( assignment = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assignment.tree); } ';' )*
     '}'
     { 
         $sym = Alloc<Program>();
         $sym->location = location;
         $sym->name = $name.text;
-        $sym->annotations = std::move(annotations);
+        $sym->annotations = annotations;
         $sym->entries = entries;
     }
     ;
@@ -529,23 +546,23 @@ sampler
     returns[ SamplerState* sym ]
     @init
     {
-        std::vector<Attribute*> attributes;
-        std::vector<Annotation*> annotations;
-        std::vector<Expression*> entries;
+        StackArray<Attribute*> attributes(32);
+        StackArray<Annotation*> annotations(32);
+        StackArray<Expression*> entries(32);
     }:
     (
         //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
-        (annotation { annotations.push_back(std::move($annotation.annot)); })*
-        (attribute { attributes.push_back(std::move($attribute.attr)); })*
+        (annotation { if (annotations.Full()) throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); annotations.Append(std::move($annotation.annot)); })*
+        (attribute { if (attributes.Full()) throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); attributes.Append(std::move($attribute.attr)); })*
         'sampler_state' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
-        (assign = expression { entries.push_back($assign.tree); } ';' )*
+        (assign = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assign.tree); } ';' )*
     '}'
     {
         $sym->name = $name.text;
-        $sym->attributes = std::move(attributes);
-        $sym->annotations = std::move(annotations);
+        $sym->attributes = attributes;
+        $sym->annotations = annotations;
         $sym->entries = entries;
     }
     ;
@@ -554,13 +571,13 @@ state
     returns[ State* sym ]
     @init
     {
-        std::vector<Expression*> entries;
+        StackArray<Expression*> entries(32);
     }:
     (
         'render_state' { $sym = Alloc<RenderState>(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
-        (assign = expression { entries.push_back($assign.tree); } ';' )*
+        (assign = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assign.tree); } ';' )*
     '}'
     {
         $sym->name = $name.text;
@@ -626,19 +643,19 @@ forStatement
     @init
     {
         $tree = nullptr;
-        std::vector<Variable*> declarations;
+        FixedArray<Variable*> declarations;
         Expression* conditionExpression = nullptr;
         Expression* loopExpression = nullptr;
         Statement* contents = nullptr;
-        std::vector<Attribute*> attributes;
+        StackArray<Attribute*> attributes(32);
         Symbol::Location location;
     }:
     'for' { location = SetupFile(); }
     '(' 
-        (variables { declarations = $variables.list; })? ';'
+        (variables { declarations = $variables.vars; })? ';'
         (condition = expression { conditionExpression = $condition.tree; })? ';' 
         (loop = expression      { loopExpression = $loop.tree; })?
-    ')' (attribute { attributes.push_back(std::move($attribute.attr)); })*
+    ')' (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     content = statement { contents = $content.tree; }
     {
         $tree = Alloc<ForStatement>(declarations, conditionExpression, loopExpression, contents);
@@ -702,22 +719,26 @@ whileStatement
     ;
 
 scopeStatement
-    returns[ Statement* tree ]
+    returns[ ScopeStatement* tree ]
     @init
     {
         $tree = nullptr;
-        std::vector<Symbol*> contents;
+        PinnedArray<Symbol*> contents(0xFFFFFF);
+	    std::vector<Expression*> unfinished;
         Symbol::Location location;
+        Symbol::Location ends;
     }:
     '{' { location = SetupFile(); }
     (
-        variables ';' { for(Variable* var : $variables.list) { contents.push_back(var); } }
-        | statement { contents.push_back($statement.tree); }
+        variables ';' { for(Variable* var : $variables.vars) { contents.Append(var); } }
+        | statement { contents.Append($statement.tree); }
         | linePreprocessorEntry
+        //| expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
     )* 
-    '}'
+    '}' { ends = SetupFile(); } 
     {
-        $tree = Alloc<ScopeStatement>(contents);
+        $tree = Alloc<ScopeStatement>(std::move(contents), unfinished);
+        $tree->ends = ends;
         $tree->location = location;
     }
     ;
@@ -772,15 +793,15 @@ switchStatement
     {
         $tree = nullptr;
         Expression* switchExpression;
-        std::vector<Expression*> caseExpressions;
-        std::vector<Statement*> caseStatements;
+        StackArray<Expression*> caseExpressions(256);
+        StackArray<Statement*> caseStatements(256);
         Symbol::Location location;
         Statement* defaultStatement = nullptr;
     }:
     'switch' { location = SetupFile(); } '(' expression ')' { switchExpression = $expression.tree; }
     '{'
         (
-            'case' expression ':' { caseExpressions.push_back($expression.tree); caseStatements.push_back(nullptr); }
+            'case' expression ':' { if (caseExpressions.Full()) { throw IndexOutOfBoundsException("Maximum of 256 case expressions reached"); } caseExpressions.Append($expression.tree); caseStatements.Append(nullptr); }
             (
                 statement
                 { 
@@ -799,7 +820,7 @@ switchStatement
         )?
     '}'
     {
-        $tree = Alloc<SwitchStatement>(switchExpression, caseExpressions, caseStatements, defaultStatement);
+        $tree = Alloc<SwitchStatement>(switchExpression, std::move(caseExpressions), std::move(caseStatements), defaultStatement);
         $tree->location = location;
     }
     ;
@@ -1071,15 +1092,15 @@ prefixExpression
     @init 
     {
         $tree = nullptr;
-        std::vector<uint32_t> ops;
-        std::vector<Symbol::Location> locations;
+        StackArray<uint32_t> ops(32);
+        StackArray<Symbol::Location> locations(32);
     }:
-    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* e1 = suffixExpression 
+    (op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') { if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 prefix expressions reached"); } ops.Append(StringToFourCC($op.text)); locations.Append(SetupFile()); } )* e1 = suffixExpression 
     {
         $tree = $e1.tree;
         if ($tree != nullptr)
         {
-            for (size_t i = 0; i < ops.size(); i++)
+            for (size_t i = 0; i < ops.size; i++)
             {
                 $tree = Alloc<UnaryExpression>(ops[i], true, $tree);
                 $tree->location = locations[i];
@@ -1096,11 +1117,11 @@ suffixExpression
         $tree = nullptr;
 
         Symbol::Location location;
-        std::vector<Expression*> args;
+        StackArray<Expression*> args(256);
         Expression* arrayIndexExpr = nullptr;
 
-        std::vector<uint32_t> ops;
-        std::vector<Symbol::Location> locations;
+        StackArray<uint32_t> ops(32);
+        StackArray<Symbol::Location> locations(32);
     }:
     e1 = binaryexpatom
     {
@@ -1110,11 +1131,11 @@ suffixExpression
     (
         '(' 
             (
-                arg0 = logicalOrExpression { args.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { args.push_back($argn.tree); } | linePreprocessorEntry)* 
+                arg0 = logicalOrExpression { args.Append($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append($argn.tree); } | linePreprocessorEntry)* 
             )? 
         ')'
         {
-            CallExpression* expr = Alloc<CallExpression>($tree, args);
+            CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
             expr->location = $e1.tree->location;
             $tree = expr;
         }
@@ -1137,11 +1158,11 @@ suffixExpression
             $tree = expr;
         }
     )*
-    | e1 = binaryexpatom (op = ('++' | '--') { ops.push_back(StringToFourCC($op.text)); locations.push_back(SetupFile()); } )* 
+    | e1 = binaryexpatom (op = ('++' | '--') { if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 suffix expressions reached"); } ops.Append(StringToFourCC($op.text)); locations.Append(SetupFile()); } )* 
     {
         $tree = $e1.tree;
         $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size(); i++)
+        for (size_t i = 0; i < ops.size; i++)
         {
             $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
             $tree->location = locations[i];
@@ -1194,11 +1215,11 @@ initializerExpression
     @init
     {
         $tree = nullptr;
-        std::vector<Expression*> exprs;
+        StackArray<Expression*> exprs(4096);
         std::string type = "";
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); } | linePreprocessorEntry)* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.Append($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append($argN.tree); } | linePreprocessorEntry)* )? '}'
     {
         $tree = Alloc<InitializerExpression>(exprs, type);
         $tree->location = location;
@@ -1210,10 +1231,10 @@ arrayInitializerExpression
     @init
     {
         $tree = nullptr;
-        std::vector<Expression*> exprs;
+        StackArray<Expression*> exprs(4096);
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.push_back($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if ($argN.tree != nullptr) exprs.push_back($argN.tree); } | linePreprocessorEntry)* )? ']'
+    '[' { location = SetupFile(); } ( arg0 = logicalOrExpression { if ($arg0.tree != nullptr) exprs.Append($arg0.tree); } (linePreprocessorEntry)? (',' argN = logicalOrExpression { if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append($argN.tree); } | linePreprocessorEntry)* )? ']'
     {
         $tree = Alloc<ArrayInitializerExpression>(exprs);
         $tree->location = location;

@@ -18,7 +18,7 @@ namespace GPULang
 struct Compiler;
 struct Annotation
 {
-    std::string name;
+    FixedString name;
     Expression* value;
 
     Annotation()

@@ -17,6 +17,9 @@ public:
   virtual void enterString(GPULangParser::StringContext *ctx) = 0;
   virtual void exitString(GPULangParser::StringContext *ctx) = 0;
 
+  virtual void enterPath(GPULangParser::PathContext *ctx) = 0;
+  virtual void exitPath(GPULangParser::PathContext *ctx) = 0;
+
   virtual void enterBoolean(GPULangParser::BooleanContext *ctx) = 0;
   virtual void exitBoolean(GPULangParser::BooleanContext *ctx) = 0;
 

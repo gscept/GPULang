@@ -3,7 +3,6 @@
 #-------------------------------------------------------------------------------
 
 ADD_SUBDIRECTORY(ext/antlr4)
-ADD_SUBDIRECTORY(ext/mcpp)
 
 fips_begin_lib(gpulang_compiler)
 
@@ -12,7 +11,6 @@ target_include_directories(gpulang_compiler PUBLIC
     ${GPULANG_ROOT}/code/util/
     ${GPULANG_ROOT}/code/compiler
     ${GPULANG_ROOT}/code/compiler/ext/antlr4/src
-    ${GPULANG_ROOT}/code/compiler/ext/mcpp
     )
 
     fips_files(
@@ -48,6 +46,8 @@ fips_dir(ast)
         function.h
         intrinsics.cc
         intrinsics.h
+        preprocessor.cc
+        preprocessor.h
         program.cc
         program.h
         renderstate.cc
@@ -217,7 +217,7 @@ fips_dir(validators)
         validator.h
     )
 
-fips_deps(gpulang_util antlr4 glslang mcpp)
+fips_deps(gpulang_util antlr4 glslang)
 SET_DEFAULT_OUTPUT(gpulang_compiler)
 
 IF (MSVC11)

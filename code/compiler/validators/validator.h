@@ -61,18 +61,18 @@ struct Validator
     /// Resolve variable visibility
     bool ResolveVisibility(Compiler* compiler, Symbol* symbol);
 
-    std::set<std::string> allowedTextureAttributes;
-    std::set<std::string> allowedSamplerAttributes;
-    std::set<std::string> allowedScalarAttributes;
-    std::set<std::string> allowedPointerAttributes;
+    PinnedSet<FixedString> allowedTextureAttributes = 0xFF;
+    PinnedSet<FixedString> allowedSamplerAttributes = 0xFF;
+    PinnedSet<FixedString> allowedScalarAttributes = 0xFF;
+    PinnedSet<FixedString> allowedPointerAttributes = 0xFF;
 
-    std::set<std::string> allowedSamplerStateAttributes;
+    PinnedSet<FixedString> allowedSamplerStateAttributes = 0xFF;
 
-    std::set<std::string> allowedFunctionAttributes;
+    PinnedSet<FixedString> allowedFunctionAttributes = 0xFF;
 
-    std::set<std::string> allowedParameterAttributes;
+    PinnedSet<FixedString> allowedParameterAttributes = 0xFF;
 
-    std::set<std::string> allowedStructureAttributes;
+    PinnedSet<FixedString> allowedStructureAttributes = 0xFF;
 
     enum ResourceIndexingMode
     {
@@ -80,8 +80,8 @@ struct Validator
         ResourceIndexingByGroup    // resource indexing is by group, so each resource in a group get an incremental index
     };
     ResourceIndexingMode resourceIndexingMode;
-    std::map<uint32_t, uint32_t> resourceIndexCounter;
-    std::map<uint32_t, std::map<uint32_t, Type::Category>> resourceTypePerGroupAndBinding;
+    PinnedMap<uint32_t, uint32_t> resourceIndexCounter = 0xFFFF;
+    PinnedMap<uint32_t, PinnedMap<uint32_t, Type::Category>> resourceTypePerGroupAndBinding = 0xFFFF;
     uint8_t defaultGroup;
 
 

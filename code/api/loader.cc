@@ -46,6 +46,8 @@ LoadAnnotations(size_t annotationCount, GPULang::Deserialize::Annotation* annota
         annotDeserialized.type = annotation->type;
         switch (annotDeserialized.type)
         {
+        case Serialize::NoData:
+            break;
         case Serialize::FloatType:
             annotDeserialized.data.f = annotation->data.f;
             break;
@@ -230,15 +232,15 @@ Loader::Load(const char* data, const size_t length)
                 deserialized->vsInputs = nullptr;
 
 #define LOAD_SHADER(x, shader) \
-if (prog->##x.binaryOffset != 0)\
+if (prog->x.binaryOffset != 0)\
 {\
-    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binary = Parse<uint32_t>(buf, prog->##x.binaryOffset);\
-    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binaryLength = prog->##x.binaryLength;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::shader].binary = Parse<uint32_t>(buf, prog->x.binaryOffset);\
+    deserialized->shaders[Deserialize::Program::ShaderStages::shader].binaryLength = prog->x.binaryLength;\
 }\
 else\
 {\
-    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binary = nullptr;\
-    deserialized->shaders[Deserialize::Program::ShaderStages::##shader##].binaryLength = prog->##x.binaryLength;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::shader].binary = nullptr;\
+    deserialized->shaders[Deserialize::Program::ShaderStages::shader].binaryLength = prog->x.binaryLength;\
 }
 
             LOAD_SHADER(vs, VertexShader)

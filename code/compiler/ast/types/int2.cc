@@ -52,6 +52,7 @@ Function Int2::elementAccessOperatorUInt;
 */
 Int2::Int2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Int;
     this->columnSize = 2;
     this->rowSize = 1;
@@ -61,6 +62,7 @@ Int2::Int2()
     __IMPLEMENT_CTOR(ctor, i32x2, i32x2);
     __ADD_FUNCTION_PARAM(x, i32);
     __ADD_FUNCTION_PARAM(y, i32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, i32x2, i32x2, val);

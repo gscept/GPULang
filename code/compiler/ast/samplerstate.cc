@@ -5,6 +5,7 @@
 #include "samplerstate.h"
 #include "variable.h"
 #include <map>
+#include <float.h>
 namespace GPULang
 {
 
@@ -46,7 +47,7 @@ SamplerState::~SamplerState()
     this->CleanupAttributes();
 }
 
-const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> samplerEntryTypeLookup =
+const StaticMap<std::string, SamplerState::__Resolved::SamplerStateEntryType> samplerEntryTypeLookup =
 {
     { "Address", SamplerState::__Resolved::AllAddressType }
     , { "AddressU", SamplerState::__Resolved::AddressUType }
@@ -73,7 +74,7 @@ const std::map<std::string, SamplerState::__Resolved::SamplerStateEntryType> sam
 const SamplerState::__Resolved::SamplerStateEntryType
 SamplerState::__Resolved::StringToEntryType(const std::string& str)
 {
-    auto it = samplerEntryTypeLookup.find(str);
+    auto it = samplerEntryTypeLookup.Find(str);
     if (it != samplerEntryTypeLookup.end())
         return it->second;
     else
@@ -96,7 +97,7 @@ SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
     return def;
 }
 
-const std::map<std::string, AddressMode> stringToAddressMode =
+const StaticMap<std::string, AddressMode> stringToAddressMode =
 {
     { "Repeat", RepeatAddressMode }
     , { "Mirror", MirrorAddressMode }
@@ -110,14 +111,14 @@ const std::map<std::string, AddressMode> stringToAddressMode =
 const AddressMode
 SamplerState::__Resolved::StringToAddressMode(const std::string& str)
 {
-    auto it = stringToAddressMode.find(str);
+    auto it = stringToAddressMode.Find(str);
     if (it != stringToAddressMode.end())
         return it->second;
     else
         return AddressMode::InvalidAddressMode;
 }
 
-const std::map<std::string, Filter> stringToFilter =
+const StaticMap<std::string, Filter> stringToFilter =
 {
     { "Linear", LinearFilter }
     , { "Point", PointFilter }
@@ -130,14 +131,14 @@ const std::map<std::string, Filter> stringToFilter =
 const Filter
 SamplerState::__Resolved::StringToFilter(const std::string& str)
 {
-    auto it = stringToFilter.find(str);
+    auto it = stringToFilter.Find(str);
     if (it != stringToFilter.end())
         return it->second;
     else
         return Filter::InvalidFilter;
 }
 
-const std::map<std::string, BorderColor> stringToBorderColor =
+const StaticMap<std::string, BorderColor> stringToBorderColor =
 {
     { "Transparent", TransparentBorder }
     , { "Black", BlackBorder }
@@ -150,7 +151,7 @@ const std::map<std::string, BorderColor> stringToBorderColor =
 const BorderColor 
 SamplerState::__Resolved::StringToBorderColor(const std::string& str)
 {
-    auto it = stringToBorderColor.find(str);
+    auto it = stringToBorderColor.Find(str);
     if (it != stringToBorderColor.end())
         return it->second;
     else

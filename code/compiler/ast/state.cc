@@ -17,7 +17,7 @@ State::~State()
         entry->~Expression();
 }
 
-const std::map<std::string, CompareMode> stringToCompareMode =
+const StaticMap<std::string, CompareMode> stringToCompareMode =
 {
     { "Never", NeverCompare }
     , { "Less", LessCompare }
@@ -38,7 +38,7 @@ const std::map<std::string, CompareMode> stringToCompareMode =
 const CompareMode 
 State::__Resolved::StringToCompareMode(const std::string& str)
 {
-    auto it = stringToCompareMode.find(str);
+    auto it = stringToCompareMode.Find(str);
     if (it != stringToCompareMode.end())
         return it->second;
     else

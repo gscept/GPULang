@@ -20,6 +20,8 @@ extern std::vector<Symbol*> DefaultIntrinsics;
 struct Variable;
 struct Type;
 struct Statement;
+struct Structure;
+struct Enumeration;
 struct Function : public Symbol
 {
     /// constructor
@@ -30,10 +32,9 @@ struct Function : public Symbol
     Statement* ast;
     Type::FullType returnType;
     Symbol::Location returnTypeLocation;
-    std::string body;
     bool hasBody;
     bool compileTime;
-    std::vector<Variable*> parameters;
+    FixedArray<Variable*> parameters;
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
 
@@ -207,8 +208,8 @@ struct Function : public Symbol
 
         bool isEntryPoint;
         bool isPrototype;
-
-        std::set<Function*> visibilityMap;
+        
+        PinnedSet<Symbol*> visibleSymbols;
     };
 
     

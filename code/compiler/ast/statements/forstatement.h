@@ -15,7 +15,7 @@ namespace GPULang
 struct ForStatement : public Statement
 {
     /// constructor
-    ForStatement(const std::vector<Variable*> declarations, Expression* condition, Expression* loop, Statement* contents);
+    ForStatement(const FixedArray<Variable*> declarations, Expression* condition, Expression* loop, Statement* contents);
     /// destructor
     virtual ~ForStatement();
 
@@ -25,7 +25,7 @@ struct ForStatement : public Statement
         Scope scope;
     };
 
-    std::vector<Variable*> declarations;
+    FixedArray<Variable*> declarations;
     Expression* condition;
     Expression* loop;
     Statement* contents;

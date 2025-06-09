@@ -58,6 +58,7 @@ Function UInt3::elementAccessOperatorUInt;
 */
 UInt3::UInt3()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 3;
     this->rowSize = 1;
@@ -68,6 +69,7 @@ UInt3::UInt3()
     __ADD_FUNCTION_PARAM(x, u32);
     __ADD_FUNCTION_PARAM(y, u32);
     __ADD_FUNCTION_PARAM(z, u32);
+    __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
     __IMPLEMENT_CTOR_1(ctor, u32x3, u32x3, val);
@@ -78,7 +80,8 @@ UInt3::UInt3()
 #define X(type, ctor, arg0, arg1)\
     __IMPLEMENT_CTOR(ctor, u32x3, u32x3)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
-    __ADD_FUNCTION_PARAM(arg_1, arg1)
+    __ADD_FUNCTION_PARAM(arg_1, arg1)\
+    __ADD_CONSTRUCTOR();
 
     UINT3_CTOR2_LIST
 #undef X

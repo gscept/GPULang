@@ -16,12 +16,16 @@ fips_files(
 	binwriter.h
 	cmdlineargs.cc
 	cmdlineargs.h
+    containers.cc
+    containers.h
 	memory.cc
 	memory.h
 	serialize.h
     shaderusage.h
+    strings.h
 	textwriter.cc
 	textwriter.h
+    thread.h
 	types.h
 	util.h
 )

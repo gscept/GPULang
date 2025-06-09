@@ -28,7 +28,7 @@ namespace GPULang
 /**
 */
 bool 
-HGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+HGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     HeaderWriter writer;
 
@@ -65,7 +65,7 @@ HGenerator::Generate(const Compiler* compiler, const Program* program, const std
 
 
 
-std::map<std::string, std::string> typeToHeaderType =
+StaticMap<StaticString, StaticString> typeToHeaderType =
 {
     { "f32", "float" },
     { "f32x2", "float" },
@@ -95,7 +95,7 @@ std::map<std::string, std::string> typeToHeaderType =
     { "void", "void" }
 };
 
-std::map<std::string, std::string> typeToArraySize =
+StaticMap<StaticString, StaticString> typeToArraySize =
 {
     { "f32", "" },
     { "f32x2", "[2]" },
@@ -242,13 +242,13 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
     {
         if (varResolved->storage == Storage::LinkDefined)
         {
-            std::string typeStr;
-            auto headerType = typeToHeaderType.find(var->type.name);
+            TStr typeStr;
+            auto headerType = typeToHeaderType.Find(std::string_view(var->type.name));
             if (headerType != typeToHeaderType.end())
-                typeStr = headerType->second;
+                typeStr = headerType->second.c_str();
             else
                 typeStr = var->type.name;
-            std::string arrayTypeStr = typeToArraySize[var->type.name];
+            const StaticString& arrayTypeStr = typeToArraySize.Find(var->type.name)->second;
 
             Expression* init = var->valueExpression;
 
@@ -284,9 +284,9 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             }
 
             if (init != nullptr)
-                writer.WriteLine(Format("static inline const %s %s%s%s = %s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), tempWriter.output.c_str()));
+                writer.WriteLine(Format("static inline const %s %s%s%s = %s;", typeStr.buf, var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str(), tempWriter.output.c_str()));
             else
-                writer.WriteLine(Format("static inline const %s %s%s%s;", typeStr.c_str(), var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
+                writer.WriteLine(Format("static inline const %s %s%s%s;", typeStr.buf, var->name.c_str(), arraySize.c_str(), arrayTypeStr.c_str()));
         }
     }
     else
@@ -301,27 +301,27 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                     writer.WriteLine("unsigned int : 32;");
             }
 
-            std::string type = var->type.name;
-            auto it = typeToHeaderType.find(type);
+            TStr type = var->type.name;
+            auto it = typeToHeaderType.Find(type.ToView());
             if (it != typeToHeaderType.end())
-                type = it->second;
-            std::string arrayType = typeToArraySize[var->type.name];
+                type = it->second.c_str();
+            TStr arrayType = typeToArraySize.Find(var->type.name)->second.c_str();
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
                 if (*modIt == Type::FullType::Modifier::Pointer)
-                    type += "*";
+                    type.Append("*");
                 else if (*modIt == Type::FullType::Modifier::Array)
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
                     if (varResolved->type.modifierValues[diff]->EvalValue(val))
                     {
-                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
+                        arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
                     }
                     else
                     {
-                        type += "*";
+                        type.Append("*");
                     }
                 }
                 modIt++;
@@ -346,14 +346,14 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                         varResolved->type.modifierValues[i]->EvalValue(val);
                         val.Store(size);
                     }
-                    writer.Write(Format("%s %s_%d%s;", type.c_str(), var->name.c_str(), i, arrayType.c_str()));
+                    writer.Write(Format("%s %s_%d%s;", type.buf, var->name.c_str(), i, arrayType.buf));
                     if (i < size - 1)
                         writer.Write("\n");
                 }
             }
             else
             {
-                writer.Write(Format("%s %s%s;", type.c_str(), var->name.c_str(), arrayType.c_str()));
+                writer.Write(Format("%s %s%s;", type.buf, var->name.c_str(), arrayType.buf));
             }
         }
         else if (varResolved->storage == Storage::Uniform)
@@ -390,27 +390,27 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
         }
         else if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Global)
         {
-            std::string type = var->type.name;
-            auto it = typeToHeaderType.find(type);
+            TStr type = var->type.name;
+            auto it = typeToHeaderType.Find(type.ToView());
             if (it != typeToHeaderType.end())
-                type = it->second;
-            std::string arrayType = typeToArraySize[var->type.name];
+                type = it->second.c_str();
+            TStr arrayType = typeToArraySize.Find(var->type.name)->second.c_str();
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
                 if (*modIt == Type::FullType::Modifier::Pointer)
-                    type += "*";
+                    type.Append("*");
                 else if (*modIt == Type::FullType::Modifier::Array)
                 {
                     ptrdiff_t diff = std::distance(modIt, var->type.modifiers.rend()) - 1;
                     ValueUnion val;
                     if (varResolved->type.modifierValues[diff]->EvalValue(val))
                     {
-                        arrayType = Format("[%d]", val.ui[0]) + arrayType;
+                        arrayType = Format("[%d]%s", val.ui[0], arrayType.buf);
                     }
                     else
                     {
-                        type += "*";
+                        type.Append("*");
                     }
                 }
                 modIt++;
@@ -425,11 +425,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str(), initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, varResolved->name.c_str(), arrayType.buf, initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s%s;", type.c_str(), varResolved->name.c_str(), arrayType.c_str()));
+                writer.WriteLine(Format("static const %s %s%s;", type.buf, varResolved->name.c_str(), arrayType.buf));
             }
         }
     }
@@ -448,19 +448,19 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
     writer.WriteLine("{");
     writer.Indent();
 
-    for (size_t i = 0; i < enu->labels.size(); i++)
+    for (size_t i = 0; i < enu->labels.size; i++)
     {
         HeaderWriter tempWriter;
-        tempWriter.Write(Format("%s", enu->labels[i].c_str()));
-        if (enu->values[i] != nullptr)
+        tempWriter.Write(Format("%s", enu->labels.buf[i].c_str()));
+        if (enu->values.buf[i] != nullptr)
         {
             uint32_t val;
             ValueUnion value;
-            enu->values[i]->EvalValue(value);
+            enu->values.buf[i]->EvalValue(value);
             value.Store(val);
             tempWriter.Write(Format(" = %d", val));
         }
-        if (i != enu->labels.size() - 1)
+        if (i != enu->labels.size - 1)
             tempWriter.Write(",");
         writer.WriteLine(tempWriter.output);
     }
@@ -472,7 +472,7 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
 /**
 */
 void 
-HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, HeaderWriter& writer)
+HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer)
 {
     writer.WriteLine(Format("struct %s", program->name.c_str()));
     writer.WriteLine("{");

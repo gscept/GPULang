@@ -93,7 +93,6 @@ struct SamplerState : public State
         uint32_t group;
         uint32_t binding;
 
-        std::set<Function*> visibilityMap;
         ShaderUsage visibilityBits;
     };
 

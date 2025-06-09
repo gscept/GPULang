@@ -159,7 +159,7 @@ GLSLGenerator::~GLSLGenerator()
 /**
 */
 bool
-GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const std::vector<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     SetupDefaultResources();
 
@@ -923,7 +923,7 @@ GenerateSwitchStatementGLSL(const Compiler* compiler, Statement* statement, std:
     IndentationLevel++;
 
     std::string cases;
-    for (size_t i = 0; i < switchStatement->caseExpressions.size(); i++)
+    for (size_t i = 0; i < switchStatement->caseExpressions.size; i++)
     {
         Expression* caseExpression = switchStatement->caseExpressions[i];
         std::string caseValue;

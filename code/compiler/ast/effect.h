@@ -13,7 +13,7 @@ namespace GPULang
 
 struct Effect
 {
-    std::vector<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols = 0xFFFFFF;
     void Destroy();
 };
 

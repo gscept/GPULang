@@ -15,7 +15,10 @@
 
 #define STRINGIFY(x) #x
 
+#define __BEGIN_TYPE() StackArray<Variable*> parameters(32);
+
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#t};\
 this->method.compileTime = true;\
@@ -25,21 +28,23 @@ activeFunction = &this->method;\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
-    activeFunction->parameters.push_back(var); \
+    parameters.Append(var); \
+    activeFunction->parameters = parameters;\
 }\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#type};\
 this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
-activeFunction->documentation = "Constructor for " #type;\
-this->constructors.push_back(activeFunction);
+activeFunction->documentation = "Constructor of " #type;\
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
+parameters.Clear();\
 this->method.name = #id;\
 this->method.returnType = Type::FullType{#t};\
 this->staticSymbols.push_back(&this->method);\
@@ -48,18 +53,9 @@ activeFunction = &this->method;\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
-    activeFunction->parameters.push_back(var); \
+    parameters.Append(var); \
+    activeFunction->parameters = parameters;\
 }
-
-#define __IMPLEMENT_FUNCTION(method, id, type)\
-this->method.name = #id;\
-this->method.returnType = Type::FullType{#type};\
-this->staticSymbols.push_back(&this->method);\
-activeFunction = &this->method;\
-
-
-#define __ADD_FUNCTION_LOOKUP(id)\
-this->lookup.insert({ #id, activeFunction });
 
 #define __ADD_SWIZZLE(retType, format, ...)\
 {\
@@ -77,7 +73,7 @@ this->lookup.insert({ #id, activeFunction });
     Variable* var = StaticAlloc<Variable>();\
     var->name = #id;\
     var->type = Type::FullType{#t};\
-    activeFunction->parameters.push_back(var);\
+    parameters.Append(var);\
 }
 
 #define __ADD_VARIBLE_LOOKUP(variable, id, t)\
@@ -86,19 +82,21 @@ this->variable.type = Type::FullType{#t};\
 this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\
+activeFunction->parameters = parameters;\
+if (!this->constructors.empty()) { assert(this->constructors.back() != activeFunction && "Constructor added twice"); }\
 this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_SWIZZLE(type, size, mask)\
-    for (char x = 0; x < size; x++)\
+    for (uint8_t x = 0; x < size; x++)\
     {\
         __ADD_SWIZZLE(type, "%c", mask[x]);\
-        for (char y = 0; y < size; y++)\
+        for (uint8_t y = 0; y < size; y++)\
         {\
             __ADD_SWIZZLE(type##x2, "%c%c", mask[x], mask[y]);\
-            for (char z = 0; z < size; z++)\
+            for (uint8_t z = 0; z < size; z++)\
             {\
                 __ADD_SWIZZLE(type##x3, "%c%c%c", mask[x], mask[y], mask[z]);\
-                for (char w = 0; w < size; w++)\
+                for (uint8_t w = 0; w < size; w++)\
                 {\
                     __ADD_SWIZZLE(type##x4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
                 }\
@@ -139,7 +137,7 @@ enum ImageFormat
 
 extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
-extern const std::unordered_map<std::string, ImageFormat> StringToFormats;
+extern const std::unordered_map<StaticString, ImageFormat> StringToFormats;
 
 extern std::vector<Symbol*> DefaultTypes;
 enum class TypeCode
@@ -196,7 +194,7 @@ struct Type : public Symbol
     virtual ~Type();
 
     /// convert type to string
-    static std::string CodeToString(const TypeCode& code);
+    static const StaticString& CodeToString(const TypeCode& code);
 
     enum Category
     {
@@ -360,17 +358,29 @@ struct Type : public Symbol
             this->name = UNDEFINED_TYPE;
             this->literal = false;
         }
-        explicit FullType(std::string type)
+        explicit FullType(const char* type)
+            : name(type)
+            , literal(false)
         {
-            this->name = type;
-            this->literal = false;
         }
-        explicit FullType(std::string type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+        explicit FullType(const std::string& type)
+            : name(type)
+            , literal(false)
         {
-            this->name = type;
-            this->modifiers = modifiers;
-            this->modifierValues = modifierValues;
-            this->literal = false;
+        }
+        explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
+        {
+        }
+        explicit FullType(const std::string& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
+        {
         }
         std::string name;
         std::string swizzleName;
@@ -382,7 +392,7 @@ struct Type : public Symbol
             return this->swizzleName.empty() ? this->name : this->swizzleName;
         }
 
-        void AddModifier(Modifier type, Expression* value = nullptr)
+        void AddModifier(const Modifier& type, Expression* value = nullptr)
         {
             this->modifiers.push_back(type);
             this->modifierValues.push_back(value);
@@ -405,7 +415,7 @@ struct Type : public Symbol
             }
         }
         
-        void AddQualifier(std::string identifier)
+        void AddQualifier(const FixedString& identifier)
         {
             if (identifier == "mutable")
                 this->mut = true;
@@ -500,7 +510,7 @@ struct Type : public Symbol
     std::vector<Symbol*> globals;
     std::vector<Symbol*> staticSymbols;
     std::vector<Symbol*> swizzleSymbols;
-    std::vector<Symbol*> symbols;
+    PinnedArray<Symbol*> symbols = 0xFFF;
     std::vector<Symbol*> constructors;
 
     Scope scope;
@@ -524,7 +534,7 @@ template<typename T>
 inline T*
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->scope.symbolLookup.find(str);
+    auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())
         return static_cast<T*>(it->second);
     else

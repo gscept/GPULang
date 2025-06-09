@@ -29,6 +29,7 @@ Function Mat2x4::elementAccessOperatorUInt;
 */
 Mat2x4::Mat2x4()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->rowSize = 2;
     this->columnSize = 4;
@@ -44,10 +45,12 @@ Mat2x4::Mat2x4()
     __ADD_FUNCTION_PARAM(m11, f32);
     __ADD_FUNCTION_PARAM(m12, f32);
     __ADD_FUNCTION_PARAM(m13, f32);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_CTOR(vectorConstructor, f32x2x4, f32x2x4);
     __ADD_FUNCTION_PARAM(r0, f32x2);
     __ADD_FUNCTION_PARAM(r1, f32x2);
+    __ADD_CONSTRUCTOR();
 
     __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x2x4, f32x2x4);
     __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2x4, f32x2x4);

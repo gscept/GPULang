@@ -19,7 +19,7 @@ struct State : public Symbol
     /// destructor
     virtual ~State();
 
-    std::vector<Expression*> entries;
+    FixedArray<Expression*> entries;
 
     struct __Resolved : Symbol::__Resolved
     {

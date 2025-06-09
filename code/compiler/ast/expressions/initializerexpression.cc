@@ -14,7 +14,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-InitializerExpression::InitializerExpression(const std::vector<Expression*>& values, const std::string& type)
+InitializerExpression::InitializerExpression(const FixedArray<Expression*>& values, const std::string& type)
     : values(values)
     , explicitType(type)
 {
@@ -49,14 +49,14 @@ InitializerExpression::Resolve(Compiler* compiler)
     thisResolved->type = ty;
     inner.name = ty->name;
 
-    if (ty->symbols.size() != this->values.size())
+    if (ty->symbols.size != this->values.size)
     {
         compiler->Error("Struct must be fully initialized", this);
         return false;
     }
 
     compiler->PushScope(&ty->scope);
-    for (uint32_t i = 0; i < this->values.size(); i++)
+    for (uint32_t i = 0; i < this->values.size; i++)
     {
         Expression* expr = this->values[i];
         if (expr->symbolType != Symbol::SymbolType::BinaryExpressionType)

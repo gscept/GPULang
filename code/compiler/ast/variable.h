@@ -94,8 +94,6 @@ struct Variable : public Symbol
 
         ShaderUsage visibilityBits;
         bool builtin = false;
-        
-        std::set<Function*> visibilityMap;
     };
     __Resolved* thisResolved;
 };

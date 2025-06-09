@@ -16,9 +16,11 @@
 #include <string>
 #include <map>
 #include "memory.h"
+#include "strings.h"
+#include "containers.h"
 
-#define _IMPLEMENT_ATTRIBUTES() std::vector<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
-#define _IMPLEMENT_ANNOTATIONS() std::vector<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
+#define _IMPLEMENT_ATTRIBUTES() FixedArray<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
+#define _IMPLEMENT_ANNOTATIONS() FixedArray<Annotation*> annotations; void CleanupAnnotations() { for (auto annot : this->annotations) { annot->~Annotation(); }};
 
 namespace GPULang
 {
@@ -31,6 +33,7 @@ struct Symbol
     {
         InvalidType,
         AliasType,
+        PreprocessorType,
         TypeType,
         ProgramType,
         RenderStateType,
@@ -80,15 +83,13 @@ struct Symbol
 
     struct Location
     {
-        std::string file;
+        FixedString file;
         int line;
-        int column;
-
-        int start, end;
+        uint16_t start, end;
 
         Location()
-            : line(-1)
-            , column(-1)
+            : file("")
+            , line(-1)
             , start(0)
             , end(0)
         {
@@ -146,8 +147,8 @@ struct Scope
         Type
     };
     ScopeType type = ScopeType::Local;
-    std::vector<Symbol*> symbols;
-    std::multimap<std::string, Symbol*> symbolLookup;
+    PinnedArray<Symbol*> symbols = 0xFFFFFF;
+    PinnedMap<std::string, Symbol*> symbolLookup = 0xFFFFFF;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;
 };

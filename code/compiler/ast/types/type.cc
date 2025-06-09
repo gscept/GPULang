@@ -8,7 +8,11 @@
 #include "ast/expressions/uintexpression.h"
 #include <set>
 
-
+#if __WIN32__
+#define forceinline __forceinline
+#else
+#define forceinline __attribute__((always_inline))
+#endif
 namespace GPULang
 {
 
@@ -40,7 +44,7 @@ DefaultTypes.push_back(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
-static const std::unordered_map<std::string, ImageFormat> StringToFormats =
+const std::unordered_map<StaticString, ImageFormat> StringToFormats =
 {
     { "rgba16", Rgba16 }
     , { "rgb10_a2", Rgb10_A2 }
@@ -126,7 +130,7 @@ Type::~Type()
 {
 }
 
-const std::map<TypeCode, std::string> codeToStringMapping =
+const StaticMap<TypeCode, StaticString> codeToStringMapping =
 {
     { TypeCode::Void, "void" }
     , { TypeCode::Float, "f32" }
@@ -151,20 +155,22 @@ const std::map<TypeCode, std::string> codeToStringMapping =
     , { TypeCode::Sampler, "sampler" }
 };
 
+const StaticString NoCode = "";
+
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+const StaticString&
 Type::CodeToString(const TypeCode& code)
 {
-    auto it = codeToStringMapping.find(code);
+    auto it = codeToStringMapping.Find(code);
     if (it == codeToStringMapping.end())
-        return "";
+        return NoCode;
     else
         return it->second;
 }
 
-const std::map<Type::Category, std::string> categoryToStringMapping =
+const StaticMap<Type::Category, std::string> categoryToStringMapping =
 {
     { Type::Category::TextureCategory, "Texture" }
     , { Type::Category::PixelCacheCategory, "PixelCache" }
@@ -182,7 +188,7 @@ const std::map<Type::Category, std::string> categoryToStringMapping =
 std::string
 Type::CategoryToString(const Category& cat)
 {
-    auto it = categoryToStringMapping.find(cat);
+    auto it = categoryToStringMapping.Find(cat);
     if (it == categoryToStringMapping.end())
         return "";
     else
@@ -195,7 +201,7 @@ Type::CategoryToString(const Category& cat)
 Symbol* 
 Type::GetSymbol(const std::string str)
 {
-    auto it = this->scope.symbolLookup.find(str);
+    auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())
         return it->second;
     else
@@ -209,7 +215,7 @@ std::vector<Symbol*>
 Type::GetSymbols(const std::string str)
 {
     std::vector<Symbol*> ret;
-    auto range = this->scope.symbolLookup.equal_range(str);
+    auto range = this->scope.symbolLookup.FindRange(str);
     for (auto it = range.first; it != range.second; it++)
         ret.push_back((*it).second);
     return ret;
@@ -291,22 +297,26 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
     newType->category = AccelerationStructureCategory;
 
-#define __ADD_ENUM(val, enum) enum->labels.push_back(#val); enum->values.push_back(nullptr);
+#define __ADD_ENUM(val) labels.Append(#val); values.Append(nullptr);
+#define __FINISH_ENUM(enum) enum->labels = StaticArray<FixedString>(labels); enum->values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
 
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = "CompareMode";
     compareModeEnum->type = Type::FullType{ "u32" };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(InvalidCompareMode, compareModeEnum);
-    __ADD_ENUM(Never, compareModeEnum);
-    __ADD_ENUM(Less, compareModeEnum);
-    __ADD_ENUM(Equal, compareModeEnum);
-    __ADD_ENUM(LessEqual, compareModeEnum);
-    __ADD_ENUM(Greater, compareModeEnum);
-    __ADD_ENUM(NotEqual, compareModeEnum);
-    __ADD_ENUM(GreaterEqual, compareModeEnum);
-    __ADD_ENUM(Always, compareModeEnum);
+    StackArray<StaticString> labels(32);
+    StackArray<Expression*> values(32);
+    __ADD_ENUM(InvalidCompareMode);
+    __ADD_ENUM(Never);
+    __ADD_ENUM(Less);
+    __ADD_ENUM(Equal);
+    __ADD_ENUM(LessEqual);
+    __ADD_ENUM(Greater);
+    __ADD_ENUM(NotEqual);
+    __ADD_ENUM(GreaterEqual);
+    __ADD_ENUM(Always);
+    __FINISH_ENUM(compareModeEnum);
     compareModeEnum->builtin = true;
     DefaultTypes.push_back(compareModeEnum);
 
@@ -315,15 +325,16 @@ Type::SetupDefaultTypes()
     stencilOpEnum->type = Type::FullType{ "u32" };
     stencilOpEnum->type.literal = true;
     stencilOpEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(Invalid, stencilOpEnum);
-    __ADD_ENUM(Keep, stencilOpEnum);
-    __ADD_ENUM(Zero, stencilOpEnum);
-    __ADD_ENUM(Replace, stencilOpEnum);
-    __ADD_ENUM(IncrementClamp, stencilOpEnum);
-    __ADD_ENUM(DecrementClamp, stencilOpEnum);
-    __ADD_ENUM(Invert, stencilOpEnum);
-    __ADD_ENUM(IncrementWrap, stencilOpEnum);
-    __ADD_ENUM(DecrementWrap, stencilOpEnum);
+    __ADD_ENUM(Invalid);
+    __ADD_ENUM(Keep);
+    __ADD_ENUM(Zero);
+    __ADD_ENUM(Replace);
+    __ADD_ENUM(IncrementClamp);
+    __ADD_ENUM(DecrementClamp);
+    __ADD_ENUM(Invert);
+    __ADD_ENUM(IncrementWrap);
+    __ADD_ENUM(DecrementWrap);
+    __FINISH_ENUM(stencilOpEnum);
     stencilOpEnum->builtin = true;
     DefaultTypes.push_back(stencilOpEnum);
 
@@ -341,12 +352,13 @@ Type::SetupDefaultTypes()
     executionScopeEnum->type = Type::FullType{ "u32" };
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
-    executionScopeEnum->labels.push_back("Global"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Device"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Workgroup"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Subgroup"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Invocation"); executionScopeEnum->values.push_back(nullptr);
-    executionScopeEnum->labels.push_back("Queue"); executionScopeEnum->values.push_back(nullptr);
+    __ADD_ENUM(Global)
+    __ADD_ENUM(Device)
+    __ADD_ENUM(Workgroup)
+    __ADD_ENUM(Subgroup)
+    __ADD_ENUM(Invocation)
+    __ADD_ENUM(Queue)
+    __FINISH_ENUM(executionScopeEnum);
     executionScopeEnum->builtin = true;
     DefaultTypes.push_back(executionScopeEnum);
 
@@ -355,10 +367,11 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->type = Type::FullType{ "u32" };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
-    memorySemanticsEnum->labels.push_back("Relaxed"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x0));
-    memorySemanticsEnum->labels.push_back("Acquire"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x1));
-    memorySemanticsEnum->labels.push_back("Release"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x2));
-    memorySemanticsEnum->labels.push_back("AcquireRelease"); memorySemanticsEnum->values.push_back(StaticAlloc<UIntExpression>(0x4));
+    labels.Append("Relaxed"); values.Append(StaticAlloc<UIntExpression>(0x0));
+    labels.Append("Acquire"); values.Append(StaticAlloc<UIntExpression>(0x1));
+    labels.Append("Release"); values.Append(StaticAlloc<UIntExpression>(0x2));
+    labels.Append("AcquireRelease"); values.Append(StaticAlloc<UIntExpression>(0x4));
+    __FINISH_ENUM(memorySemanticsEnum);
     memorySemanticsEnum->builtin = true;
     DefaultTypes.push_back(memorySemanticsEnum);
 
@@ -366,7 +379,7 @@ Type::SetupDefaultTypes()
     SYMBOL_STATIC_ALLOC = false;
 }
 
-std::map<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
+StaticMap<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
 {
     { TypeCode::Float,      { "f32",    "f32x2",    "f32x3",    "f32x4" } }
     , { TypeCode::Float16,  { "f16",    "f16x2",    "f16x3",    "f16x4" } }
@@ -387,7 +400,7 @@ Type::ToVector(const TypeCode baseType, unsigned members)
     if (members > 4)
         return "";
     else
-        return singleComponentToVectorMap[baseType][members - 1];
+        return singleComponentToVectorMap.Find(baseType)->second[members - 1];
 }
 
 //------------------------------------------------------------------------------
@@ -421,7 +434,7 @@ Type::CalculateSize() const
 /**
     Rounds up to next power of 2
 */
-__forceinline unsigned int
+forceinline unsigned int
 roundtopow2(unsigned int val)
 {
     val--;

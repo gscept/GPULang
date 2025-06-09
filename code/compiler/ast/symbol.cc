@@ -33,7 +33,7 @@ Symbol::~Symbol()
 std::string
 Symbol::GetLocation() const
 {
-    std::string result = Format("%d:%d in file %s", this->location.line, this->location.column, this->location.file.c_str());
+    std::string result = Format("%d:%d in file %s", this->location.line, this->location.start, this->location.file.c_str());
     return result;
 }
 

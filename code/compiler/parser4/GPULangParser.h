@@ -21,6 +21,7 @@
 #include "ast/state.h"
 #include "ast/structure.h"
 #include "ast/symbol.h"
+#include "ast/preprocessor.h"
 #include "ast/variable.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
@@ -89,24 +90,24 @@ public:
   };
 
   enum {
-    RuleString = 0, RuleBoolean = 1, RuleEntry = 2, RuleEffect = 3, RuleLinePreprocessorEntry = 4, 
-    RuleAlias = 5, RuleAnnotation = 6, RuleAttribute = 7, RuleTypeDeclaration = 8, 
-    RuleVariables = 9, RuleStructureDeclaration = 10, RuleStructure = 11, 
-    RuleEnumeration = 12, RuleParameter = 13, RuleFunctionDeclaration = 14, 
-    RuleFunction = 15, RuleProgram = 16, RuleSampler = 17, RuleState = 18, 
-    RuleStatement = 19, RuleExpressionStatement = 20, RuleIfStatement = 21, 
-    RuleForStatement = 22, RuleForRangeStatement = 23, RuleForUniformValueStatement = 24, 
-    RuleWhileStatement = 25, RuleScopeStatement = 26, RuleTerminateStatement = 27, 
-    RuleContinueStatement = 28, RuleSwitchStatement = 29, RuleBreakStatement = 30, 
-    RuleExpression = 31, RuleCommaExpression = 32, RuleAssignmentExpression = 33, 
-    RuleLogicalOrExpression = 34, RuleLogicalAndExpression = 35, RuleOrExpression = 36, 
-    RuleXorExpression = 37, RuleAndExpression = 38, RuleEquivalencyExpression = 39, 
-    RuleRelationalExpression = 40, RuleShiftExpression = 41, RuleAddSubtractExpression = 42, 
-    RuleMultiplyDivideExpression = 43, RulePrefixExpression = 44, RuleSuffixExpression = 45, 
-    RuleNamespaceExpression = 46, RuleBinaryexpatom = 47, RuleInitializerExpression = 48, 
-    RuleArrayInitializerExpression = 49, RuleFloatVecLiteralExpression = 50, 
-    RuleDoubleVecLiteralExpression = 51, RuleIntVecLiteralExpression = 52, 
-    RuleUintVecLiteralExpression = 53, RuleBooleanVecLiteralExpression = 54
+    RuleString = 0, RulePath = 1, RuleBoolean = 2, RuleEntry = 3, RuleEffect = 4, 
+    RuleLinePreprocessorEntry = 5, RuleAlias = 6, RuleAnnotation = 7, RuleAttribute = 8, 
+    RuleTypeDeclaration = 9, RuleVariables = 10, RuleStructureDeclaration = 11, 
+    RuleStructure = 12, RuleEnumeration = 13, RuleParameter = 14, RuleFunctionDeclaration = 15, 
+    RuleFunction = 16, RuleProgram = 17, RuleSampler = 18, RuleState = 19, 
+    RuleStatement = 20, RuleExpressionStatement = 21, RuleIfStatement = 22, 
+    RuleForStatement = 23, RuleForRangeStatement = 24, RuleForUniformValueStatement = 25, 
+    RuleWhileStatement = 26, RuleScopeStatement = 27, RuleTerminateStatement = 28, 
+    RuleContinueStatement = 29, RuleSwitchStatement = 30, RuleBreakStatement = 31, 
+    RuleExpression = 32, RuleCommaExpression = 33, RuleAssignmentExpression = 34, 
+    RuleLogicalOrExpression = 35, RuleLogicalAndExpression = 36, RuleOrExpression = 37, 
+    RuleXorExpression = 38, RuleAndExpression = 39, RuleEquivalencyExpression = 40, 
+    RuleRelationalExpression = 41, RuleShiftExpression = 42, RuleAddSubtractExpression = 43, 
+    RuleMultiplyDivideExpression = 44, RulePrefixExpression = 45, RuleSuffixExpression = 46, 
+    RuleNamespaceExpression = 47, RuleBinaryexpatom = 48, RuleInitializerExpression = 49, 
+    RuleArrayInitializerExpression = 50, RuleFloatVecLiteralExpression = 51, 
+    RuleDoubleVecLiteralExpression = 52, RuleIntVecLiteralExpression = 53, 
+    RuleUintVecLiteralExpression = 54, RuleBooleanVecLiteralExpression = 55
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -138,9 +139,8 @@ public:
       auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       // assume the previous token is the latest file
       location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
-      location.column = token->getCharPositionInLine();
-      location.start = location.column;
+      location.line = token->line - rawLine + preprocessedLine;
+      location.start = token->begin;
       location.end = location.start + token->getText().length();
       return location;
   }
@@ -153,8 +153,7 @@ public:
 
       auto [rawLine, preprocessedLine, file] = GPULangParser::LineStack.back();
       location.file = file;
-      location.line = token->line - rawLine - 1 + preprocessedLine;
-      location.column = token->getCharPositionInLine();
+      location.line = token->line - rawLine + preprocessedLine;
       location.start = token->begin;
       location.end = token->end + 1;
       return location;
@@ -172,6 +171,7 @@ public:
 
 
   class StringContext;
+  class PathContext;
   class BooleanContext;
   class EntryContext;
   class EffectContext;
@@ -244,6 +244,25 @@ public:
   };
 
   StringContext* string();
+
+  class  PathContext : public antlr4::ParserRuleContext {
+  public:
+    std::string val;
+    antlr4::Token *data = nullptr;
+    PathContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<antlr4::tree::TerminalNode *> QO();
+    antlr4::tree::TerminalNode* QO(size_t i);
+    antlr4::tree::TerminalNode *LESS();
+    std::vector<antlr4::tree::TerminalNode *> GREATER();
+    antlr4::tree::TerminalNode* GREATER(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  PathContext* path();
 
   class  BooleanContext : public antlr4::ParserRuleContext {
   public:
@@ -321,7 +340,7 @@ public:
   class  LinePreprocessorEntryContext : public antlr4::ParserRuleContext {
   public:
     antlr4::Token *line = nullptr;
-    GPULangParser::StringContext *path = nullptr;
+    GPULangParser::StringContext *p = nullptr;
     LinePreprocessorEntryContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *INTEGERLITERAL();
@@ -420,7 +439,7 @@ public:
 
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
-    std::vector<Variable*> list;
+    FixedArray<Variable*> vars;
     GPULangParser::AnnotationContext *annotationContext = nullptr;
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
@@ -850,7 +869,7 @@ public:
 
   class  ScopeStatementContext : public antlr4::ParserRuleContext {
   public:
-    Statement* tree;
+    ScopeStatement* tree;
     GPULangParser::VariablesContext *variablesContext = nullptr;
     GPULangParser::StatementContext *statementContext = nullptr;
     ScopeStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1510,7 +1529,10 @@ private:
   friend class GPULangParserErrorHandler;
   friend class GPULangTokenFactory;
   friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
-  friend bool GPULangValidate(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+  friend bool GPULangValidate(GPULangFile*, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+  friend bool GPULangValidateFile(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
+  friend bool GPULangPreprocess(GPULangFile*, const std::string&, const std::vector<std::string>&, std::string&, std::string&);
+  friend GPULangFile* GPULangLoadFile(const std::string_view&, const std::vector<std::string_view>&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 
 };

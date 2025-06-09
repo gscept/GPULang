@@ -24,13 +24,7 @@ struct Program : public Symbol
     /// destructor
     virtual ~Program();
 
-    struct SubroutineMapping
-    {
-        std::string name;
-        std::string value;
-    };
-    
-    std::vector<Expression*> entries;
+    FixedArray<Expression*> entries;
     _IMPLEMENT_ANNOTATIONS()
 
     struct __Resolved : public Symbol::__Resolved

@@ -21,6 +21,7 @@ Function Bool2::elementAccessOperatorUInt;
 */
 Bool2::Bool2()
 {
+    __BEGIN_TYPE()
     this->baseType = TypeCode::Bool;
     this->rowSize = 1;
     this->columnSize = 2;
@@ -35,7 +36,6 @@ Bool2::Bool2()
 
         // setup constructor for single component
     __IMPLEMENT_CTOR_1(ctorSingleValue, b8x2, b8x2, b8);
-    __ADD_CONSTRUCTOR()
     
     __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x2, b8x2);
     __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x2, b8x2);

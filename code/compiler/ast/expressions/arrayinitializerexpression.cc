@@ -12,7 +12,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-ArrayInitializerExpression::ArrayInitializerExpression(const std::vector<Expression*>& values)
+ArrayInitializerExpression::ArrayInitializerExpression(const FixedArray<Expression*>& values)
     : values(values)
 {
     this->symbolType = ArrayInitializerExpressionType;
@@ -38,7 +38,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     Type::FullType inner;
 
-    if (this->values.empty())
+    if (this->values.size == 0)
     {
         compiler->Error("Array initializer can't be empty", this);
         return false;
@@ -76,7 +76,7 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.literal = isLiteral;
     thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Array);
-    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>(this->values.size()));
+    thisResolved->fullType.modifierValues.push_back(Alloc<UIntExpression>((uint32_t)this->values.size));
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
     thisResolved->fullType.modifierValues.insert(thisResolved->fullType.modifierValues.end(), inner.modifierValues.begin(), inner.modifierValues.end());
 
