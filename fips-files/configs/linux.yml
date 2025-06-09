@@ -1,7 +1,7 @@
 ---
 platform: linux
-generator: Unix Makefiles
-build_tool: make
+generator: Ninja
+build_tool: ninja
 build_type: Release
 defines:
   BUILD_COMPILER: ON
