@@ -11,13 +11,13 @@
 #include <stdint.h>
 #include <vector>
 #include <assert.h>
+#include <cstring>
 #include <string>
 #include <stdarg.h>
 #include <charconv>
 #include <mutex>
 #include <type_traits>
 #include <memory>
-#include <cstring>
 
 
 extern bool SYMBOL_STATIC_ALLOC;
