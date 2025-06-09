@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 #include <string>
 #include <vector>
+#include <cstring>
 #include "shaderusage.h"
 
 namespace GPULang
