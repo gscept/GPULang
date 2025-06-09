@@ -1103,6 +1103,46 @@ prefixExpression
     }
     | e = suffixExpression { $tree = $e.tree; }
     ;
+
+//suffixExpression2
+//    returns [ Expression* tree ]
+//    @init
+//    {
+//        StackArray<Expression*> args(256);
+//        Symbol::Location location;
+//    }
+//    :
+//    suffixExpression2 
+//    '(' { location = SetupFile(); }
+//        (
+//            arg0 = logicalOrExpression { args.Append($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append($argn.tree); } | linePreprocessorEntry)* 
+//        )? 
+//    ')'
+//    {
+//        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
+//        expr->location = location;
+//        $tree = expr;
+//    }
+//    | suffixExpression2 '.' e2 = suffixExpression2
+//    {
+//        AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
+//        expr->location = $tree->location;
+//        $tree = expr;
+//    }
+//    | suffixExpression2 '[' (e3 = expression { arrayIndexExpr = $e3.tree; })?  ']'
+//    {
+//        ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, arrayIndexExpr);
+//        expr->location = $tree->location;
+//        $tree = expr;
+//    }
+//    |
+//    suffixExpression2 op = ('++'|'--')
+//    {
+//        $tree = Alloc<UnaryExpression>(StringToFourCC(op), false, $tree);
+//        $tree->location = locations[i];
+//    }
+//    |
+//    binaryexpatom
     
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
 suffixExpression
@@ -1152,17 +1192,13 @@ suffixExpression
             expr->location = $tree->location;
             $tree = expr;
         }
-    )*
-    | e1 = binaryexpatom (op = ('++' | '--') { if (ops.Full()) { throw IndexOutOfBoundsException("Maximum of 32 suffix expressions reached"); } ops.Append(StringToFourCC($op.text)); locations.Append(SetupFile()); } )* 
-    {
-        $tree = $e1.tree;
-        $tree->location = SetupFile();
-        for (size_t i = 0; i < ops.size; i++)
+        | op = ('++' | '--')
         {
-            $tree = Alloc<UnaryExpression>(ops[i], false, $tree);
-            $tree->location = locations[i];
+            UnaryExpression* expr = Alloc<UnaryExpression>(StringToFourCC($op.text), false, $tree);
+            expr->location = $tree->location;
+            $tree = expr;
         }
-    }
+    )*
     ;
 
 namespaceExpression
