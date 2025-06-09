@@ -7,6 +7,7 @@
     (C) 2024 Individual contributors, see AUTHORS file
 */
 //------------------------------------------------------------------------------
+#include <cstdint>
 namespace GPULang
 {
 
