@@ -17,6 +17,7 @@
 #include <mutex>
 #include <type_traits>
 #include <memory>
+#include <cstring>
 
 
 extern bool SYMBOL_STATIC_ALLOC;

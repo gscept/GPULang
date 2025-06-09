@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 #include "memory.h"
 #include <algorithm>
+#include <cmath>
 
 namespace GPULang
 {
