@@ -2997,6 +2997,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     return false;
                 }
             }
+            statementRes->scope.owningSymbol = statement;
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
             for (Variable* var : statement->declarations)
             {
@@ -3159,7 +3160,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         {
             auto statement = reinterpret_cast<SwitchStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
-
+            statementRes->scope.owningSymbol = statement;
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
 
             if (statement->switchExpression->Resolve(compiler))
@@ -3213,6 +3214,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             auto statement = reinterpret_cast<WhileStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
 
+            statementRes->scope.owningSymbol = statement;
             Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
             if (statement->condition->Resolve(compiler))
             {
