@@ -14,10 +14,20 @@ env:
 
 jobs:
   build:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [windows-latest, ubuntu-latest, macos-latest]
+        include:
+          - name: windows-latest
+            os: windows-latest
+            config: win64
+          - name: ubuntu-latest
+            os: ubuntu-latest
+            config: linux
+          - name: macos-latest
+            os: macos-latest
+            config: macos
 
     steps:
     - uses: actions/checkout@v4
@@ -27,6 +37,11 @@ jobs:
       with:
         python-version: '3.x' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
+
+    - name: Clone dependencies
+      run: |
+        python fips fetch
+        python fips set config ${{ matrix.config }}
 
     - name: Configure
       run: |
