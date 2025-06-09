@@ -294,20 +294,21 @@ struct PinnedArray
         }
         if (this->size + numNeededMoreElements > this->capacity)
         {
-            size_t numCommitedPages = ceil((this->capacity * sizeof(TYPE)) / (float)SystemPageSize);
-            size_t numNeededPages = ceil(((this->capacity + numNeededMoreElements) * sizeof(TYPE)) / (float)SystemPageSize);
+            float numElementsPerPage = SystemPageSize / (float)sizeof(TYPE);
+            size_t numCommitedPages = ceil(this->capacity / numElementsPerPage);
+            size_t numNeededPages = ceil((this->capacity + 1) / numElementsPerPage);
             if (numNeededPages > numCommitedPages)
             {
                 size_t numBytesToCommit = (numNeededPages - numCommitedPages) * SystemPageSize;
                 if (numBytesToCommit > 0)
                 {
                     vcommit(this->data + this->capacity, numBytesToCommit);
-                    uint32_t numNewObjects = numBytesToCommit / sizeof(TYPE);
+                    size_t numNewObjects = numBytesToCommit / sizeof(TYPE);
                     if (std::is_trivially_default_constructible<TYPE>::value)
                         memset(this->data + this->capacity, 0x0, numBytesToCommit);
                     else
                         new (this->data + this->capacity) TYPE[numNewObjects];
-                    this->capacity = numNewObjects;
+                    this->capacity += numNewObjects;
                     this->committedPages = numNeededPages;
                 }
             }
