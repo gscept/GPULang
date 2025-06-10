@@ -151,9 +151,6 @@ public:
   virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
   virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
 
-  virtual void enterUnaryOperator(GPULangParser::UnaryOperatorContext * /*ctx*/) override { }
-  virtual void exitUnaryOperator(GPULangParser::UnaryOperatorContext * /*ctx*/) override { }
-
   virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
   virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
 
