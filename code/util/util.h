@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 #include <stdlib.h>
+#include <cstdint>
 #include <locale.h>
 #include <string.h>
 #include <stdarg.h>
