@@ -11,7 +11,6 @@
 #include <stdint.h>
 #include <vector>
 #include <assert.h>
-#include <cstring>
 #include <string>
 #include <stdarg.h>
 #include <charconv>
