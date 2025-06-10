@@ -225,7 +225,8 @@ alias
         std::string name;
         std::string type;
     }
-    : 'alias' name = IDENTIFIER 'as' type = IDENTIFIER { name = $name.text; type = $type.text; }
+    : 
+    'alias' name = IDENTIFIER 'as' type = IDENTIFIER { name = $name.text; type = $type.text; }
     {
         $sym = Alloc<Alias>();
         $sym->name = name;
@@ -239,8 +240,9 @@ annotation
     @init
     {
         $annot = nullptr;
-    }:
-        ('@' (name = IDENTIFIER '(' value = expression ')' { $annot = Alloc<Annotation>(); $annot->name = $name.text; $annot->value = $value.tree; }))
+    }
+    : 
+    '@' (name = IDENTIFIER '(' value = expression ')' { $annot = Alloc<Annotation>(); $annot->name = $name.text; $annot->value = $value.tree; })
     ;
     
 // metarule for attribute - compiler layer data to be passed to target language compiler
@@ -249,9 +251,9 @@ attribute
     @init 
     {
         $attr = nullptr;
-    }:
-    name = IDENTIFIER { $attr = Alloc<Attribute>(); $attr->location = SetupFile(); $attr->name = $name.text; } '(' expression ')' { $attr->expression = $expression.tree; } 
-    | name = IDENTIFIER { $attr = Alloc<Attribute>(); $attr->location = SetupFile(); $attr->name = $name.text; $attr->expression = nullptr; }
+    }
+    : 
+    name = IDENTIFIER { $attr = Alloc<Attribute>(); $attr->location = SetupFile(); $attr->name = $name.text; $attr->expression = nullptr; } ('(' expression ')' { $attr->expression = $expression.tree; })? 
     ;
 
 typeDeclaration
@@ -260,8 +262,8 @@ typeDeclaration
     {
         $type.type.name = "";
         Symbol::Location typeRange;
-    }:
-
+    }
+    :
     { typeRange = BeginLocationRange(); }
     ( 
         '*' { $type.type.AddModifier(Type::FullType::Modifier::Pointer); } |
@@ -287,7 +289,8 @@ variables
         StackArray<Symbol::Location> locations(256);
         unsigned initCounter = 0;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
-    }:
+    }
+    :
     (linePreprocessorEntry)*
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })+
@@ -327,7 +330,8 @@ structureDeclaration
         $sym = nullptr;
         StackArray<Annotation*> annotations(32);
         StackArray<Attribute*> attributes(32);
-    }:
+    }
+    :
     (linePreprocessorEntry)*
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
@@ -356,7 +360,8 @@ structure
         Symbol::Location varTypeLocation;
         Symbol::Location typeRange;
         std::string varName;
-    }:
+    }
+    :
     structureDeclaration { $sym = $structureDeclaration.sym; }
     '{' 
         (varName = IDENTIFIER { varName = $varName.text; varLocation = SetupFile(); } ':'         
@@ -410,7 +415,8 @@ enumeration
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
         Symbol::Location labelLocation;
-    }:
+    }
+    :
     'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
     (':' typeDeclaration { type = $typeDeclaration.type; })?
     '{'
@@ -458,7 +464,8 @@ parameter
         Expression* valueExpression = nullptr;
         Symbol::Location location;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
-    }:
+    }
+    :
     (linePreprocessorEntry)*
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
@@ -486,7 +493,8 @@ functionDeclaration
         StackArray<Variable*> variables(32);
         StackArray<Attribute*> attributes(32);
         Symbol::Location location;
-    }:
+    }
+    :
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
     name = IDENTIFIER { location = SetupFile(); } '(' 
         (
@@ -510,7 +518,8 @@ function
     @init
     {
         $sym = nullptr;
-    }:
+    }
+    :
     functionDeclaration { $sym = $functionDeclaration.sym; }
     scopeStatement
     {
@@ -527,7 +536,8 @@ program
         Symbol::Location location;
         StackArray<Expression*> entries(32);
         StackArray<Annotation*> annotations(32);
-    }:
+    }
+    :
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     'program' name = IDENTIFIER { location = SetupFile(); }
     '{'
@@ -549,7 +559,8 @@ sampler
         StackArray<Attribute*> attributes(32);
         StackArray<Annotation*> annotations(32);
         StackArray<Expression*> entries(32);
-    }:
+    }
+    :
     (
         //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
         (annotation { if (annotations.Full()) throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); annotations.Append(std::move($annotation.annot)); })*
@@ -572,7 +583,8 @@ state
     @init
     {
         StackArray<Expression*> entries(32);
-    }:
+    }
+    :
     (
         'render_state' { $sym = Alloc<RenderState>(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
@@ -590,7 +602,8 @@ statement
     @init
     {
         $tree = nullptr;
-    }:
+    }
+    :
     ifStatement               { $tree = $ifStatement.tree; }
     | scopeStatement            { $tree = $scopeStatement.tree; }
     | forStatement              { $tree = $forStatement.tree; }
@@ -609,7 +622,8 @@ expressionStatement
     @init 
     {
         $tree = nullptr;
-    }: 
+    }
+    :
     expression
     {
         $tree = Alloc<ExpressionStatement>($expression.tree);
@@ -627,7 +641,8 @@ ifStatement
         Statement* ifBody = nullptr;
         Statement* elseBody = nullptr;
         Symbol::Location location;
-    }:
+    }
+    :
     'if' { location = SetupFile(); } '(' condition = expression { condition = $condition.tree; } ')' 
     ifBody = statement { ifBody = $ifBody.tree; }
     
@@ -649,7 +664,8 @@ forStatement
         Statement* contents = nullptr;
         StackArray<Attribute*> attributes(32);
         Symbol::Location location;
-    }:
+    }
+    :
     'for' { location = SetupFile(); }
     '(' 
         (variables { declarations = $variables.vars; })? ';'
@@ -671,7 +687,8 @@ forRangeStatement
         $tree = nullptr;
         Statement* contents = nullptr;
         Symbol::Location location;
-    }:
+    }
+    :
     'for' { location = SetupFile(); } '(' iterator = IDENTIFIER ':' start = IDENTIFIER '..' end = IDENTIFIER ')'
     content = statement { contents = $content.tree; }
     {
@@ -686,7 +703,9 @@ forUniformValueStatement
         $tree = nullptr;
         Statement* contents = nullptr;
         Symbol::Location location;
-    }: 'for_uniform' { location = SetupFile(); } '(' expression ')'
+    }
+    : 
+    'for_uniform' { location = SetupFile(); } '(' expression ')'
     content = statement { contents = $content.tree; }
     {
     
@@ -702,7 +721,8 @@ whileStatement
         Statement* contents = nullptr;
         bool isDoWhile = false;
         Symbol::Location location;
-    }:
+    }
+    :
     'while' { location = SetupFile(); } '(' condition = expression { conditionExpression = $condition.tree; } ')'
     content = statement { contents = $content.tree; }
     {
@@ -727,7 +747,8 @@ scopeStatement
 	    std::vector<Expression*> unfinished;
         Symbol::Location location;
         Symbol::Location ends;
-    }:
+    }
+    :
     '{' { location = SetupFile(); }
     (
         variables ';' { for(Variable* var : $variables.vars) { contents.Append(var); } }
@@ -750,7 +771,8 @@ terminateStatement
         $tree = nullptr;
         Expression* returnValue = nullptr;
         Symbol::Location location;
-    }:
+    }
+    :
     'return' { location = SetupFile(); } (value = expression { returnValue = $value.tree; })? ';'
     {
         $tree = Alloc<TerminateStatement>(returnValue, TerminateStatement::TerminationType::Return);
@@ -779,7 +801,8 @@ continueStatement
     {
         $tree = nullptr;
         Symbol::Location location;
-    }: 
+    }
+    :
     'continue' { location = SetupFile(); } ';' 
     {
         $tree = Alloc<ContinueStatement>();
@@ -797,7 +820,8 @@ switchStatement
         StackArray<Statement*> caseStatements(256);
         Symbol::Location location;
         Statement* defaultStatement = nullptr;
-    }:
+    }
+    :
     'switch' { location = SetupFile(); } '(' expression ')' { switchExpression = $expression.tree; }
     '{'
         (
@@ -831,7 +855,8 @@ breakStatement
     {
         $tree = nullptr;
         Symbol::Location location;
-    }: 
+    }
+    :
     'break' { location = SetupFile(); } ';'
     {
         $tree = Alloc<BreakStatement>();
@@ -845,7 +870,8 @@ expression
     @init 
     {
         $tree = nullptr;
-    }: 
+    }
+    :
     commaExpression { $tree = $commaExpression.tree; }
     ;
 
@@ -856,7 +882,8 @@ commaExpression
     {
         $tree = nullptr;
         Symbol::Location location;
-    }:
+    }
+    :
     e1 = assignmentExpression { $tree = $e1.tree; }
     (
         ',' { location = SetupFile(); } e2 = assignmentExpression
@@ -1087,8 +1114,6 @@ multiplyDivideExpression
     ;
 
 
-unaryOperator : '-' | '+' | '!' | '~' | '++' | '--' | '*';
-    
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
 prefixExpression
     returns[ Expression* tree ]
@@ -1096,7 +1121,7 @@ prefixExpression
     {
         $tree = nullptr;
     }:
-    op = unaryOperator p = prefixExpression
+    op = ( '-' | '+' | '!' | '~' | '++' | '--' | '*') p = prefixExpression
     {
         $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), true, $p.tree);
         $tree->location = SetupFile();
@@ -1104,46 +1129,7 @@ prefixExpression
     | e = suffixExpression { $tree = $e.tree; }
     ;
 
-//suffixExpression2
-//    returns [ Expression* tree ]
-//    @init
-//    {
-//        StackArray<Expression*> args(256);
-//        Symbol::Location location;
-//    }
-//    :
-//    suffixExpression2 
-//    '(' { location = SetupFile(); }
-//        (
-//            arg0 = logicalOrExpression { args.Append($arg0.tree); } (linePreprocessorEntry)? (',' argn = logicalOrExpression { if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append($argn.tree); } | linePreprocessorEntry)* 
-//        )? 
-//    ')'
-//    {
-//        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
-//        expr->location = location;
-//        $tree = expr;
-//    }
-//    | suffixExpression2 '.' e2 = suffixExpression2
-//    {
-//        AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
-//        expr->location = $tree->location;
-//        $tree = expr;
-//    }
-//    | suffixExpression2 '[' (e3 = expression { arrayIndexExpr = $e3.tree; })?  ']'
-//    {
-//        ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, arrayIndexExpr);
-//        expr->location = $tree->location;
-//        $tree = expr;
-//    }
-//    |
-//    suffixExpression2 op = ('++'|'--')
-//    {
-//        $tree = Alloc<UnaryExpression>(StringToFourCC(op), false, $tree);
-//        $tree->location = locations[i];
-//    }
-//    |
-//    binaryexpatom
-    
+
 // unary expressions. Create chain of unary expressions by removing one token from the left and create new unary expressions
 suffixExpression
     returns[ Expression* tree ]

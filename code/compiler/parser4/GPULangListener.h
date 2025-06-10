@@ -149,9 +149,6 @@ public:
   virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
   virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
 
-  virtual void enterUnaryOperator(GPULangParser::UnaryOperatorContext *ctx) = 0;
-  virtual void exitUnaryOperator(GPULangParser::UnaryOperatorContext *ctx) = 0;
-
   virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
   virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
 
