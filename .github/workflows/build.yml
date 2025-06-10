@@ -46,10 +46,10 @@ jobs:
     - name: Fix clang version
       if: startsWith(matrix.os, 'ubuntu')
       run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-14
         echo "CC=clang-14" >> $GITHUB_ENV
         echo "CXX=clang++-14" >> $GITHUB_ENV
-        export CC=clang-14
-        export CXX=clang++-14
 
     - name: Configure
       run: |
