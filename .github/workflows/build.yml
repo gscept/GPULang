@@ -41,10 +41,7 @@ jobs:
     - name: Clone dependencies
       run: |
         python fips fetch
-        python fips set config ${{ matrix.config }}
-        
-    - name: Fix clang version
-      
+        python fips set config ${{ matrix.config }}      
 
     - name: Configure Ubuntu
       if: startsWith(matrix.os, 'ubuntu')
