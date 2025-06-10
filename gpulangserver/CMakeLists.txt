@@ -12,7 +12,7 @@ fips_begin_app(gpulang_server cmdline)
          fips_deps(ws2_32)
      endif()
      if(FIPS_LINUX OR FIPS_APPLE)
-          fips_deps(gpulang stdc++fs)
+          fips_deps(stdc++fs)
      endif()
      fips_files(
           languageserverapp.cc
