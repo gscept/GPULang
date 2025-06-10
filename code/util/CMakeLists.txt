@@ -22,7 +22,7 @@ fips_files(
 	memory.h
 	serialize.h
     shaderusage.h
-    strings.h
+    string_utils.h
 	textwriter.cc
 	textwriter.h
     thread.h

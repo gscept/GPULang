@@ -16,7 +16,7 @@
 #include <string>
 #include <map>
 #include "memory.h"
-#include "strings.h"
+#include "string_utils.h"
 #include "containers.h"
 
 #define _IMPLEMENT_ATTRIBUTES() FixedArray<Attribute*> attributes; void CleanupAttributes() { for (auto attr : this->attributes) { attr->~Attribute(); }};
