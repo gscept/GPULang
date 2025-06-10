@@ -8,12 +8,8 @@
 */
 //------------------------------------------------------------------------------
 #pragma once
-#include <stdint.h>
 #include <vector>
-#include <assert.h>
 #include <cstring>
-#include <stdarg.h>
-#include <charconv>
 #include <mutex>
 #include <type_traits>
 #include <memory>

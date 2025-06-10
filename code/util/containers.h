@@ -305,7 +305,7 @@ struct PinnedArray
                     vcommit(this->data + this->capacity, numBytesToCommit);
                     size_t numNewObjects = numBytesToCommit / sizeof(TYPE);
                     if (std::is_trivially_default_constructible<TYPE>::value)
-                        memset(this->data + this->capacity, 0x0, numBytesToCommit);
+                        std::memset(this->data + this->capacity, 0x0, numBytesToCommit);
                     else
                         new (this->data + this->capacity) TYPE[numNewObjects];
                     this->capacity += numNewObjects;
