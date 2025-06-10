@@ -48,6 +48,8 @@ jobs:
       run: |
         echo "CC=clang-14" >> $GITHUB_ENV
         echo "CXX=clang++-14" >> $GITHUB_ENV
+        export CC=clang-14
+        export CXX=clang++-14
 
     - name: Configure
       run: |
