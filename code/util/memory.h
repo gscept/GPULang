@@ -9,7 +9,9 @@
 //------------------------------------------------------------------------------
 #pragma once
 #include <vector>
+#include <assert.h>
 #include <cstring>
+#include <stdarg.h>
 #include <mutex>
 #include <type_traits>
 #include <memory>
