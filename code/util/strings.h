@@ -51,7 +51,8 @@ struct ConstantString
 };
 
 
-inline size_t NumChars(int arg)
+inline size_t
+NumChars(int arg)
 {
     int x = abs(arg);
     return (x < 10 ? 1 :
@@ -66,7 +67,8 @@ inline size_t NumChars(int arg)
             10)))))))));
 }
 
-inline size_t NumChars(unsigned int arg)
+inline size_t
+NumChars(unsigned int arg)
 {
     return (arg < 10 ? 1 :
         (arg < 100 ? 2 :
@@ -80,7 +82,8 @@ inline size_t NumChars(unsigned int arg)
             10)))))))));
 }
 
-inline size_t NumChars(size_t arg)
+inline size_t
+NumChars(size_t arg)
 {
     return (arg < 10 ? 1 :
         (arg < 100 ? 2 :
@@ -96,14 +99,16 @@ inline size_t NumChars(size_t arg)
 
 static const unsigned NUM_FLOAT_DIGITS = 256;
 
-inline size_t NumChars(float arg)
+inline size_t
+NumChars(float arg)
 {
     // 16 decimal points should suffice
     return NUM_FLOAT_DIGITS;
 }
 
 template<typename T>
-inline size_t FragmentSize(T arg)
+inline size_t
+FragmentSize(T arg)
 {
     assert(false && "Should never enter");
     //static_assert(false, "Should never enter");
@@ -111,159 +116,185 @@ inline size_t FragmentSize(T arg)
 }
 
 template<>
-inline size_t FragmentSize(std::nullptr_t)
+inline size_t
+FragmentSize(std::nullptr_t)
 {
     return 0;
 }
 
 template<>
-inline size_t FragmentSize<int>(int arg)
+inline size_t
+FragmentSize<int>(int arg)
 {
     return NumChars(arg);
 }
 
 template<>
-inline size_t FragmentSize<unsigned int>(unsigned int arg)
+inline size_t
+FragmentSize<unsigned int>(unsigned int arg)
 {
     return NumChars(arg);
 }
 
 template<>
-inline size_t FragmentSize<char>(char arg)
+inline size_t
+FragmentSize<char>(char arg)
 {
     return NumChars(arg);
 }
 
 
 template<>
-inline size_t FragmentSize<unsigned char>(unsigned char arg)
+inline size_t
+FragmentSize<unsigned char>(unsigned char arg)
 {
     return NumChars(arg);
 }
 
 template<>
-inline size_t FragmentSize<float>(float arg)
+inline size_t
+FragmentSize<float>(float arg)
 {
     char buf[256];
     return snprintf(buf, 256, "%f", arg);
 }
 
 template<>
-inline size_t FragmentSize<size_t>(size_t arg)
+inline size_t
+FragmentSize<size_t>(size_t arg)
 {
     return NumChars(arg);
 }
 
 template<>
-inline constexpr size_t FragmentSize<const char*>(const char* str)
+inline constexpr size_t
+FragmentSize<const char*>(const char* str)
 {
     return const_len(str);
 }
 
 template<>
-inline size_t FragmentSize<const std::string&>(const std::string& str)
+inline size_t
+FragmentSize<const std::string&>(const std::string& str)
 {
     return str.length();
 }
 
 template<>
-inline size_t FragmentSize<std::string>(std::string str)
+inline size_t
+FragmentSize<std::string>(std::string str)
 {
     return str.length();
 }
 
 template<>
-inline size_t FragmentSize<std::string_view>(std::string_view str)
+inline size_t
+FragmentSize<std::string_view>(std::string_view str)
 {
     return str.length();
 }
 
 template<>
-inline size_t FragmentSize<ConstantString>(ConstantString str)
+inline size_t
+FragmentSize<ConstantString>(ConstantString str)
 {
     return str.size;
 }
 
 
 template<typename T>
-inline void FragmentString(T arg, char* buf, size_t size)
+inline void
+FragmentString(T arg, char* buf, size_t size)
 {
     assert(false);
 }
 
 template<>
-inline void FragmentString<std::nullptr_t>(std::nullptr_t, char* buf, size_t size)
+inline void
+FragmentString<std::nullptr_t>(std::nullptr_t, char* buf, size_t size)
 {
 }
 
 template<>
-inline void FragmentString<int>(int arg, char* buf, size_t size)
+inline void
+FragmentString<int>(int arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%d", arg);
 }
 
 template<>
-inline void FragmentString<unsigned int>(unsigned int arg, char* buf, size_t size)
+inline void
+FragmentString<unsigned int>(unsigned int arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%lu", arg);
 }
 
 template<>
-inline void FragmentString<char>(char arg, char* buf, size_t size)
+inline void
+FragmentString<char>(char arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%hhd", arg);
 }
 
 template<>
-inline void FragmentString<unsigned char>(unsigned char arg, char* buf, size_t size)
+inline void
+FragmentString<unsigned char>(unsigned char arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%hhu", arg);
 }
 
 template<>
-inline void FragmentString<float>(float arg, char* buf, size_t size)
+inline void
+FragmentString<float>(float arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%f", arg);
 }
 
 template<>
-inline void FragmentString<size_t>(size_t arg, char* buf, size_t size)
+inline void
+FragmentString<size_t>(size_t arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%zu", arg);
 }
 
 template<>
-inline void FragmentString<const char*>(const char* arg, char* buf, size_t size)
+inline void
+FragmentString<const char*>(const char* arg, char* buf, size_t size)
 {
     memcpy(buf, arg, const_len(arg));
 }
 
 template<>
-inline void FragmentString<const std::string_view&>(const std::string_view& arg, char* buf, size_t size)
+inline void
+FragmentString<const std::string_view&>(const std::string_view& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.data(), arg.length());
 }
 
 template<>
-inline void FragmentString<std::string_view>(std::string_view arg, char* buf, size_t size)
+inline void
+FragmentString<std::string_view>(std::string_view arg, char* buf, size_t size)
 {
     memcpy(buf, arg.data(), arg.length());
 }
 
 template<>
-inline void FragmentString<const std::string&>(const std::string& arg, char* buf, size_t size)
+inline void
+FragmentString<const std::string&>(const std::string& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.c_str(), arg.length());
 }
 
 template<>
-inline void FragmentString<std::string>(std::string arg, char* buf, size_t size)
+inline void
+FragmentString<std::string>(std::string arg, char* buf, size_t size)
 {
     memcpy(buf, arg.c_str(), arg.length());
 }
 
 template<>
-inline void FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
+inline void
+FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
@@ -522,25 +553,29 @@ struct TransientString
 };
 
 template<>
-inline size_t FragmentSize<const TransientString&>(const TransientString& str)
+inline size_t
+FragmentSize<const TransientString&>(const TransientString& str)
 {
     return str.size;
 }
 
 template<>
-inline size_t FragmentSize<TransientString>(TransientString str)
+inline size_t
+FragmentSize<TransientString>(TransientString str)
 {
     return str.size;
 }
 
 template<>
-inline void FragmentString<TransientString>(TransientString arg, char* buf, size_t size)
+inline void
+FragmentString<TransientString>(TransientString arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
 
 template<>
-inline void FragmentString<const TransientString&>(const TransientString& arg, char* buf, size_t size)
+inline void
+FragmentString<const TransientString&>(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
