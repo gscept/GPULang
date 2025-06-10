@@ -44,12 +44,18 @@ jobs:
         python fips set config ${{ matrix.config }}
         
     - name: Fix clang version
+      
+
+    - name: Configure Ubuntu
       if: startsWith(matrix.os, 'ubuntu')
       env:
         CC: clang-14
         CCX: clang++-14
+      run: |
+        python fips gen
 
     - name: Configure
+      if: startsWith(matrix.os, 'ubuntu') != true
       run: |
         python fips gen
 
