@@ -16,6 +16,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <assert.h>
+#include <algorithm>
 #include <string>
 #include <type_traits>
 
