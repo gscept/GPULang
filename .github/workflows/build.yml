@@ -43,16 +43,13 @@ jobs:
         python fips fetch
         python fips set config ${{ matrix.config }}      
 
-    - name: Configure Ubuntu
+    - name: Fix clang version
       if: startsWith(matrix.os, 'ubuntu')
-      env:
-        CC: clang-14
-        CCX: clang++-14
       run: |
-        python fips gen
+        echo "CC=clang-14" >> $GITHUB_ENV
+        echo "CXX=clang++-14" >> $GITHUB_ENV
 
     - name: Configure
-      if: startsWith(matrix.os, 'ubuntu') != true
       run: |
         python fips gen
 
