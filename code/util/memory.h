@@ -176,7 +176,7 @@ __AllocInternal(Allocator* allocator, ARGS&&... args)
 
     block->iterator = (char*)alignedIterator + size;
     if (std::is_trivially_constructible<T>::value)
-        memset(alignedIterator, 0x0, sizeof(T));
+        std::memset(alignedIterator, 0x0, sizeof(T));
     else
         new (alignedIterator) T(std::forward<ARGS>(args)...);
     return (T*)alignedIterator;
@@ -405,7 +405,7 @@ AllocStack(size_t count)
     ThreadLocalHeapPtr = (char*)alignedPtr + count * sizeof(TYPE);
     TYPE* ret = (TYPE*)alignedPtr;
     if (std::is_trivially_constructible<TYPE>::value)
-        memset(ret, 0x0, sizeof(TYPE) * count);
+        std::memset(ret, 0x0, sizeof(TYPE) * count);
     else
         new (ret) TYPE[count];
     return ret;
