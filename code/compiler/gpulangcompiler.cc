@@ -17,7 +17,6 @@
 #include "parser4/GPULangLexer.h"
 #include "parser4/GPULangParser.h"
 #include "parser4/gpulangerrorhandlers.h"
-#include "parser4/gpulangastconstructor.h"
 
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN

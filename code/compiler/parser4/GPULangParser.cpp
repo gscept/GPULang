@@ -64,7 +64,6 @@ using namespace GPULang;
 
 
 #include "GPULangListener.h"
-#include "GPULangVisitor.h"
 
 #include "GPULangParser.h"
 
@@ -674,14 +673,6 @@ void GPULangParser::StringContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitString(this);
 }
 
-
-std::any GPULangParser::StringContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitString(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::StringContext* GPULangParser::string() {
   StringContext *_localctx = _tracker.createInstance<StringContext>(_ctx, getState());
   enterRule(_localctx, 0, GPULangParser::RuleString);
@@ -815,14 +806,6 @@ void GPULangParser::PathContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitPath(this);
 }
 
-
-std::any GPULangParser::PathContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitPath(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::PathContext* GPULangParser::path() {
   PathContext *_localctx = _tracker.createInstance<PathContext>(_ctx, getState());
   enterRule(_localctx, 2, GPULangParser::RulePath);
@@ -936,14 +919,6 @@ void GPULangParser::BooleanContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitBoolean(this);
 }
 
-
-std::any GPULangParser::BooleanContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitBoolean(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::BooleanContext* GPULangParser::boolean() {
   BooleanContext *_localctx = _tracker.createInstance<BooleanContext>(_ctx, getState());
   enterRule(_localctx, 4, GPULangParser::RuleBoolean);
@@ -1021,14 +996,6 @@ void GPULangParser::EntryContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEntry(this);
-}
-
-
-std::any GPULangParser::EntryContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitEntry(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::EntryContext* GPULangParser::entry() {
@@ -1171,14 +1138,6 @@ void GPULangParser::EffectContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEffect(this);
-}
-
-
-std::any GPULangParser::EffectContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitEffect(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::EffectContext* GPULangParser::effect() {
@@ -1341,14 +1300,6 @@ void GPULangParser::LinePreprocessorEntryContext::exitRule(tree::ParseTreeListen
     parserListener->exitLinePreprocessorEntry(this);
 }
 
-
-std::any GPULangParser::LinePreprocessorEntryContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitLinePreprocessorEntry(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::LinePreprocessorEntryContext* GPULangParser::linePreprocessorEntry() {
   LinePreprocessorEntryContext *_localctx = _tracker.createInstance<LinePreprocessorEntryContext>(_ctx, getState());
   enterRule(_localctx, 10, GPULangParser::RuleLinePreprocessorEntry);
@@ -1413,14 +1364,6 @@ void GPULangParser::AliasContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAlias(this);
-}
-
-
-std::any GPULangParser::AliasContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitAlias(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::AliasContext* GPULangParser::alias() {
@@ -1509,14 +1452,6 @@ void GPULangParser::AnnotationContext::exitRule(tree::ParseTreeListener *listene
     parserListener->exitAnnotation(this);
 }
 
-
-std::any GPULangParser::AnnotationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitAnnotation(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::AnnotationContext* GPULangParser::annotation() {
   AnnotationContext *_localctx = _tracker.createInstance<AnnotationContext>(_ctx, getState());
   enterRule(_localctx, 14, GPULangParser::RuleAnnotation);
@@ -1593,14 +1528,6 @@ void GPULangParser::AttributeContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitAttribute(this);
-}
-
-
-std::any GPULangParser::AttributeContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitAttribute(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::AttributeContext* GPULangParser::attribute() {
@@ -1727,14 +1654,6 @@ void GPULangParser::TypeDeclarationContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitTypeDeclaration(this);
-}
-
-
-std::any GPULangParser::TypeDeclarationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitTypeDeclaration(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::TypeDeclarationContext* GPULangParser::typeDeclaration() {
@@ -1908,14 +1827,6 @@ void GPULangParser::VariablesContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitVariables(this);
-}
-
-
-std::any GPULangParser::VariablesContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitVariables(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::VariablesContext* GPULangParser::variables() {
@@ -2160,14 +2071,6 @@ void GPULangParser::StructureDeclarationContext::exitRule(tree::ParseTreeListene
     parserListener->exitStructureDeclaration(this);
 }
 
-
-std::any GPULangParser::StructureDeclarationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitStructureDeclaration(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration() {
   StructureDeclarationContext *_localctx = _tracker.createInstance<StructureDeclarationContext>(_ctx, getState());
   enterRule(_localctx, 22, GPULangParser::RuleStructureDeclaration);
@@ -2338,14 +2241,6 @@ void GPULangParser::StructureContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStructure(this);
-}
-
-
-std::any GPULangParser::StructureContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitStructure(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::StructureContext* GPULangParser::structure() {
@@ -2564,14 +2459,6 @@ void GPULangParser::EnumerationContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitEnumeration(this);
-}
-
-
-std::any GPULangParser::EnumerationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitEnumeration(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::EnumerationContext* GPULangParser::enumeration() {
@@ -2797,14 +2684,6 @@ void GPULangParser::ParameterContext::exitRule(tree::ParseTreeListener *listener
     parserListener->exitParameter(this);
 }
 
-
-std::any GPULangParser::ParameterContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitParameter(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ParameterContext* GPULangParser::parameter() {
   ParameterContext *_localctx = _tracker.createInstance<ParameterContext>(_ctx, getState());
   enterRule(_localctx, 28, GPULangParser::RuleParameter);
@@ -2960,14 +2839,6 @@ void GPULangParser::FunctionDeclarationContext::exitRule(tree::ParseTreeListener
     parserListener->exitFunctionDeclaration(this);
 }
 
-
-std::any GPULangParser::FunctionDeclarationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitFunctionDeclaration(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() {
   FunctionDeclarationContext *_localctx = _tracker.createInstance<FunctionDeclarationContext>(_ctx, getState());
   enterRule(_localctx, 30, GPULangParser::RuleFunctionDeclaration);
@@ -3116,14 +2987,6 @@ void GPULangParser::FunctionContext::exitRule(tree::ParseTreeListener *listener)
     parserListener->exitFunction(this);
 }
 
-
-std::any GPULangParser::FunctionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitFunction(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::FunctionContext* GPULangParser::function() {
   FunctionContext *_localctx = _tracker.createInstance<FunctionContext>(_ctx, getState());
   enterRule(_localctx, 32, GPULangParser::RuleFunction);
@@ -3219,20 +3082,11 @@ void GPULangParser::ProgramContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitProgram(this);
 }
 
-
-std::any GPULangParser::ProgramContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitProgram(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ProgramContext* GPULangParser::program() {
   ProgramContext *_localctx = _tracker.createInstance<ProgramContext>(_ctx, getState());
   enterRule(_localctx, 34, GPULangParser::RuleProgram);
 
           antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  nullptr;
-          Symbol::Location location;
           StackArray<Expression*> entries(32);
           StackArray<Annotation*> annotations(32);
       
@@ -3262,7 +3116,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     match(GPULangParser::T__7);
     setState(464);
     antlrcpp::downCast<ProgramContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
-     location = SetupFile(); 
+     _localctx->sym->location = SetupFile(); 
     setState(466);
     match(GPULangParser::LB);
     setState(473);
@@ -3365,14 +3219,6 @@ void GPULangParser::SamplerContext::exitRule(tree::ParseTreeListener *listener) 
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSampler(this);
-}
-
-
-std::any GPULangParser::SamplerContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitSampler(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::SamplerContext* GPULangParser::sampler() {
@@ -3509,14 +3355,6 @@ void GPULangParser::StateContext::exitRule(tree::ParseTreeListener *listener) {
     parserListener->exitState(this);
 }
 
-
-std::any GPULangParser::StateContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitState(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::StateContext* GPULangParser::state() {
   StateContext *_localctx = _tracker.createInstance<StateContext>(_ctx, getState());
   enterRule(_localctx, 38, GPULangParser::RuleState);
@@ -3635,14 +3473,6 @@ void GPULangParser::StatementContext::exitRule(tree::ParseTreeListener *listener
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitStatement(this);
-}
-
-
-std::any GPULangParser::StatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::StatementContext* GPULangParser::statement() {
@@ -3801,14 +3631,6 @@ void GPULangParser::ExpressionStatementContext::exitRule(tree::ParseTreeListener
     parserListener->exitExpressionStatement(this);
 }
 
-
-std::any GPULangParser::ExpressionStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitExpressionStatement(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ExpressionStatementContext* GPULangParser::expressionStatement() {
   ExpressionStatementContext *_localctx = _tracker.createInstance<ExpressionStatementContext>(_ctx, getState());
   enterRule(_localctx, 42, GPULangParser::RuleExpressionStatement);
@@ -3883,14 +3705,6 @@ void GPULangParser::IfStatementContext::exitRule(tree::ParseTreeListener *listen
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitIfStatement(this);
-}
-
-
-std::any GPULangParser::IfStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitIfStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::IfStatementContext* GPULangParser::ifStatement() {
@@ -4018,14 +3832,6 @@ void GPULangParser::ForStatementContext::exitRule(tree::ParseTreeListener *liste
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitForStatement(this);
-}
-
-
-std::any GPULangParser::ForStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitForStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::ForStatementContext* GPULangParser::forStatement() {
@@ -4175,14 +3981,6 @@ void GPULangParser::ForRangeStatementContext::exitRule(tree::ParseTreeListener *
     parserListener->exitForRangeStatement(this);
 }
 
-
-std::any GPULangParser::ForRangeStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitForRangeStatement(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ForRangeStatementContext* GPULangParser::forRangeStatement() {
   ForRangeStatementContext *_localctx = _tracker.createInstance<ForRangeStatementContext>(_ctx, getState());
   enterRule(_localctx, 48, GPULangParser::RuleForRangeStatement);
@@ -4274,14 +4072,6 @@ void GPULangParser::ForUniformValueStatementContext::exitRule(tree::ParseTreeLis
     parserListener->exitForUniformValueStatement(this);
 }
 
-
-std::any GPULangParser::ForUniformValueStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitForUniformValueStatement(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ForUniformValueStatementContext* GPULangParser::forUniformValueStatement() {
   ForUniformValueStatementContext *_localctx = _tracker.createInstance<ForUniformValueStatementContext>(_ctx, getState());
   enterRule(_localctx, 50, GPULangParser::RuleForUniformValueStatement);
@@ -4367,14 +4157,6 @@ void GPULangParser::WhileStatementContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitWhileStatement(this);
-}
-
-
-std::any GPULangParser::WhileStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitWhileStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::WhileStatementContext* GPULangParser::whileStatement() {
@@ -4524,14 +4306,6 @@ void GPULangParser::ScopeStatementContext::exitRule(tree::ParseTreeListener *lis
     parserListener->exitScopeStatement(this);
 }
 
-
-std::any GPULangParser::ScopeStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitScopeStatement(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
   ScopeStatementContext *_localctx = _tracker.createInstance<ScopeStatementContext>(_ctx, getState());
   enterRule(_localctx, 54, GPULangParser::RuleScopeStatement);
@@ -4642,14 +4416,6 @@ void GPULangParser::TerminateStatementContext::exitRule(tree::ParseTreeListener 
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitTerminateStatement(this);
-}
-
-
-std::any GPULangParser::TerminateStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitTerminateStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::TerminateStatementContext* GPULangParser::terminateStatement() {
@@ -4781,14 +4547,6 @@ void GPULangParser::ContinueStatementContext::exitRule(tree::ParseTreeListener *
     parserListener->exitContinueStatement(this);
 }
 
-
-std::any GPULangParser::ContinueStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitContinueStatement(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ContinueStatementContext* GPULangParser::continueStatement() {
   ContinueStatementContext *_localctx = _tracker.createInstance<ContinueStatementContext>(_ctx, getState());
   enterRule(_localctx, 58, GPULangParser::RuleContinueStatement);
@@ -4887,14 +4645,6 @@ void GPULangParser::SwitchStatementContext::exitRule(tree::ParseTreeListener *li
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitSwitchStatement(this);
-}
-
-
-std::any GPULangParser::SwitchStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitSwitchStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
@@ -5024,14 +4774,6 @@ void GPULangParser::BreakStatementContext::exitRule(tree::ParseTreeListener *lis
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBreakStatement(this);
-}
-
-
-std::any GPULangParser::BreakStatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitBreakStatement(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::BreakStatementContext* GPULangParser::breakStatement() {
@@ -5240,14 +4982,6 @@ void GPULangParser::ExpressionNoCommaContext::exitRule(tree::ParseTreeListener *
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitExpressionNoComma(this);
-}
-
-
-std::any GPULangParser::ExpressionNoCommaContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitExpressionNoComma(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 
@@ -6031,14 +5765,6 @@ void GPULangParser::ExpressionContext::exitRule(tree::ParseTreeListener *listene
 }
 
 
-std::any GPULangParser::ExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
-
 GPULangParser::ExpressionContext* GPULangParser::expression() {
    return expression(0);
 }
@@ -6739,14 +6465,6 @@ void GPULangParser::BinaryexpatomContext::exitRule(tree::ParseTreeListener *list
     parserListener->exitBinaryexpatom(this);
 }
 
-
-std::any GPULangParser::BinaryexpatomContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitBinaryexpatom(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
   BinaryexpatomContext *_localctx = _tracker.createInstance<BinaryexpatomContext>(_ctx, getState());
   enterRule(_localctx, 68, GPULangParser::RuleBinaryexpatom);
@@ -6938,14 +6656,6 @@ void GPULangParser::InitializerExpressionContext::exitRule(tree::ParseTreeListen
     parserListener->exitInitializerExpression(this);
 }
 
-
-std::any GPULangParser::InitializerExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitInitializerExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpression() {
   InitializerExpressionContext *_localctx = _tracker.createInstance<InitializerExpressionContext>(_ctx, getState());
   enterRule(_localctx, 70, GPULangParser::RuleInitializerExpression);
@@ -7099,14 +6809,6 @@ void GPULangParser::ArrayInitializerExpressionContext::exitRule(tree::ParseTreeL
     parserListener->exitArrayInitializerExpression(this);
 }
 
-
-std::any GPULangParser::ArrayInitializerExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitArrayInitializerExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::ArrayInitializerExpressionContext* GPULangParser::arrayInitializerExpression() {
   ArrayInitializerExpressionContext *_localctx = _tracker.createInstance<ArrayInitializerExpressionContext>(_ctx, getState());
   enterRule(_localctx, 72, GPULangParser::RuleArrayInitializerExpression);
@@ -7252,14 +6954,6 @@ void GPULangParser::FloatVecLiteralExpressionContext::exitRule(tree::ParseTreeLi
     parserListener->exitFloatVecLiteralExpression(this);
 }
 
-
-std::any GPULangParser::FloatVecLiteralExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitFloatVecLiteralExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralExpression() {
   FloatVecLiteralExpressionContext *_localctx = _tracker.createInstance<FloatVecLiteralExpressionContext>(_ctx, getState());
   enterRule(_localctx, 74, GPULangParser::RuleFloatVecLiteralExpression);
@@ -7373,14 +7067,6 @@ void GPULangParser::DoubleVecLiteralExpressionContext::exitRule(tree::ParseTreeL
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitDoubleVecLiteralExpression(this);
-}
-
-
-std::any GPULangParser::DoubleVecLiteralExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitDoubleVecLiteralExpression(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLiteralExpression() {
@@ -7498,14 +7184,6 @@ void GPULangParser::IntVecLiteralExpressionContext::exitRule(tree::ParseTreeList
     parserListener->exitIntVecLiteralExpression(this);
 }
 
-
-std::any GPULangParser::IntVecLiteralExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitIntVecLiteralExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpression() {
   IntVecLiteralExpressionContext *_localctx = _tracker.createInstance<IntVecLiteralExpressionContext>(_ctx, getState());
   enterRule(_localctx, 78, GPULangParser::RuleIntVecLiteralExpression);
@@ -7621,14 +7299,6 @@ void GPULangParser::UintVecLiteralExpressionContext::exitRule(tree::ParseTreeLis
     parserListener->exitUintVecLiteralExpression(this);
 }
 
-
-std::any GPULangParser::UintVecLiteralExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitUintVecLiteralExpression(this);
-  else
-    return visitor->visitChildren(this);
-}
-
 GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExpression() {
   UintVecLiteralExpressionContext *_localctx = _tracker.createInstance<UintVecLiteralExpressionContext>(_ctx, getState());
   enterRule(_localctx, 80, GPULangParser::RuleUintVecLiteralExpression);
@@ -7742,14 +7412,6 @@ void GPULangParser::BooleanVecLiteralExpressionContext::exitRule(tree::ParseTree
   auto parserListener = dynamic_cast<GPULangListener *>(listener);
   if (parserListener != nullptr)
     parserListener->exitBooleanVecLiteralExpression(this);
-}
-
-
-std::any GPULangParser::BooleanVecLiteralExpressionContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<GPULangVisitor*>(visitor))
-    return parserVisitor->visitBooleanVecLiteralExpression(this);
-  else
-    return visitor->visitChildren(this);
 }
 
 GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLiteralExpression() {
