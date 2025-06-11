@@ -3138,7 +3138,6 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     match(GPULangParser::RB);
      
             antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  Alloc<Program>();
-            _localctx->sym->location = location;
             _localctx->sym->name = (antlrcpp::downCast<ProgramContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<ProgramContext *>(_localctx)->name->getText() : "");
             _localctx->sym->annotations = annotations;
             _localctx->sym->entries = entries;

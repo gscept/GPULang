@@ -2265,7 +2265,6 @@ public class GPULangParser extends Parser {
 			match(RB);
 			 
 			        ((ProgramContext)_localctx).sym =  Alloc<Program>();
-			        _localctx.sym->location = location;
 			        _localctx.sym->name = (((ProgramContext)_localctx).name!=null?((ProgramContext)_localctx).name.getText():null);
 			        _localctx.sym->annotations = annotations;
 			        _localctx.sym->entries = entries;

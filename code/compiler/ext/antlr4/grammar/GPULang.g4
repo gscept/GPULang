@@ -534,7 +534,6 @@ program
     '}'
     { 
         $sym = Alloc<Program>();
-        $sym->location = location;
         $sym->name = $name.text;
         $sym->annotations = annotations;
         $sym->entries = entries;
