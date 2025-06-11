@@ -110,53 +110,11 @@ public:
   virtual void enterBreakStatement(GPULangParser::BreakStatementContext *ctx) = 0;
   virtual void exitBreakStatement(GPULangParser::BreakStatementContext *ctx) = 0;
 
+  virtual void enterExpressionNoComma(GPULangParser::ExpressionNoCommaContext *ctx) = 0;
+  virtual void exitExpressionNoComma(GPULangParser::ExpressionNoCommaContext *ctx) = 0;
+
   virtual void enterExpression(GPULangParser::ExpressionContext *ctx) = 0;
   virtual void exitExpression(GPULangParser::ExpressionContext *ctx) = 0;
-
-  virtual void enterCommaExpression(GPULangParser::CommaExpressionContext *ctx) = 0;
-  virtual void exitCommaExpression(GPULangParser::CommaExpressionContext *ctx) = 0;
-
-  virtual void enterAssignmentExpression(GPULangParser::AssignmentExpressionContext *ctx) = 0;
-  virtual void exitAssignmentExpression(GPULangParser::AssignmentExpressionContext *ctx) = 0;
-
-  virtual void enterLogicalOrExpression(GPULangParser::LogicalOrExpressionContext *ctx) = 0;
-  virtual void exitLogicalOrExpression(GPULangParser::LogicalOrExpressionContext *ctx) = 0;
-
-  virtual void enterLogicalAndExpression(GPULangParser::LogicalAndExpressionContext *ctx) = 0;
-  virtual void exitLogicalAndExpression(GPULangParser::LogicalAndExpressionContext *ctx) = 0;
-
-  virtual void enterOrExpression(GPULangParser::OrExpressionContext *ctx) = 0;
-  virtual void exitOrExpression(GPULangParser::OrExpressionContext *ctx) = 0;
-
-  virtual void enterXorExpression(GPULangParser::XorExpressionContext *ctx) = 0;
-  virtual void exitXorExpression(GPULangParser::XorExpressionContext *ctx) = 0;
-
-  virtual void enterAndExpression(GPULangParser::AndExpressionContext *ctx) = 0;
-  virtual void exitAndExpression(GPULangParser::AndExpressionContext *ctx) = 0;
-
-  virtual void enterEquivalencyExpression(GPULangParser::EquivalencyExpressionContext *ctx) = 0;
-  virtual void exitEquivalencyExpression(GPULangParser::EquivalencyExpressionContext *ctx) = 0;
-
-  virtual void enterRelationalExpression(GPULangParser::RelationalExpressionContext *ctx) = 0;
-  virtual void exitRelationalExpression(GPULangParser::RelationalExpressionContext *ctx) = 0;
-
-  virtual void enterShiftExpression(GPULangParser::ShiftExpressionContext *ctx) = 0;
-  virtual void exitShiftExpression(GPULangParser::ShiftExpressionContext *ctx) = 0;
-
-  virtual void enterAddSubtractExpression(GPULangParser::AddSubtractExpressionContext *ctx) = 0;
-  virtual void exitAddSubtractExpression(GPULangParser::AddSubtractExpressionContext *ctx) = 0;
-
-  virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
-  virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext *ctx) = 0;
-
-  virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
-  virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext *ctx) = 0;
-
-  virtual void enterSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
-  virtual void exitSuffixExpression(GPULangParser::SuffixExpressionContext *ctx) = 0;
-
-  virtual void enterNamespaceExpression(GPULangParser::NamespaceExpressionContext *ctx) = 0;
-  virtual void exitNamespaceExpression(GPULangParser::NamespaceExpressionContext *ctx) = 0;
 
   virtual void enterBinaryexpatom(GPULangParser::BinaryexpatomContext *ctx) = 0;
   virtual void exitBinaryexpatom(GPULangParser::BinaryexpatomContext *ctx) = 0;

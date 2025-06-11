@@ -112,53 +112,11 @@ public:
   virtual void enterBreakStatement(GPULangParser::BreakStatementContext * /*ctx*/) override { }
   virtual void exitBreakStatement(GPULangParser::BreakStatementContext * /*ctx*/) override { }
 
+  virtual void enterExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
+  virtual void exitExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
+
   virtual void enterExpression(GPULangParser::ExpressionContext * /*ctx*/) override { }
   virtual void exitExpression(GPULangParser::ExpressionContext * /*ctx*/) override { }
-
-  virtual void enterCommaExpression(GPULangParser::CommaExpressionContext * /*ctx*/) override { }
-  virtual void exitCommaExpression(GPULangParser::CommaExpressionContext * /*ctx*/) override { }
-
-  virtual void enterAssignmentExpression(GPULangParser::AssignmentExpressionContext * /*ctx*/) override { }
-  virtual void exitAssignmentExpression(GPULangParser::AssignmentExpressionContext * /*ctx*/) override { }
-
-  virtual void enterLogicalOrExpression(GPULangParser::LogicalOrExpressionContext * /*ctx*/) override { }
-  virtual void exitLogicalOrExpression(GPULangParser::LogicalOrExpressionContext * /*ctx*/) override { }
-
-  virtual void enterLogicalAndExpression(GPULangParser::LogicalAndExpressionContext * /*ctx*/) override { }
-  virtual void exitLogicalAndExpression(GPULangParser::LogicalAndExpressionContext * /*ctx*/) override { }
-
-  virtual void enterOrExpression(GPULangParser::OrExpressionContext * /*ctx*/) override { }
-  virtual void exitOrExpression(GPULangParser::OrExpressionContext * /*ctx*/) override { }
-
-  virtual void enterXorExpression(GPULangParser::XorExpressionContext * /*ctx*/) override { }
-  virtual void exitXorExpression(GPULangParser::XorExpressionContext * /*ctx*/) override { }
-
-  virtual void enterAndExpression(GPULangParser::AndExpressionContext * /*ctx*/) override { }
-  virtual void exitAndExpression(GPULangParser::AndExpressionContext * /*ctx*/) override { }
-
-  virtual void enterEquivalencyExpression(GPULangParser::EquivalencyExpressionContext * /*ctx*/) override { }
-  virtual void exitEquivalencyExpression(GPULangParser::EquivalencyExpressionContext * /*ctx*/) override { }
-
-  virtual void enterRelationalExpression(GPULangParser::RelationalExpressionContext * /*ctx*/) override { }
-  virtual void exitRelationalExpression(GPULangParser::RelationalExpressionContext * /*ctx*/) override { }
-
-  virtual void enterShiftExpression(GPULangParser::ShiftExpressionContext * /*ctx*/) override { }
-  virtual void exitShiftExpression(GPULangParser::ShiftExpressionContext * /*ctx*/) override { }
-
-  virtual void enterAddSubtractExpression(GPULangParser::AddSubtractExpressionContext * /*ctx*/) override { }
-  virtual void exitAddSubtractExpression(GPULangParser::AddSubtractExpressionContext * /*ctx*/) override { }
-
-  virtual void enterMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
-  virtual void exitMultiplyDivideExpression(GPULangParser::MultiplyDivideExpressionContext * /*ctx*/) override { }
-
-  virtual void enterPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
-  virtual void exitPrefixExpression(GPULangParser::PrefixExpressionContext * /*ctx*/) override { }
-
-  virtual void enterSuffixExpression(GPULangParser::SuffixExpressionContext * /*ctx*/) override { }
-  virtual void exitSuffixExpression(GPULangParser::SuffixExpressionContext * /*ctx*/) override { }
-
-  virtual void enterNamespaceExpression(GPULangParser::NamespaceExpressionContext * /*ctx*/) override { }
-  virtual void exitNamespaceExpression(GPULangParser::NamespaceExpressionContext * /*ctx*/) override { }
 
   virtual void enterBinaryexpatom(GPULangParser::BinaryexpatomContext * /*ctx*/) override { }
   virtual void exitBinaryexpatom(GPULangParser::BinaryexpatomContext * /*ctx*/) override { }

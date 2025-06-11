@@ -22,14 +22,21 @@ target_include_directories(gpulang_compiler PUBLIC
 
 fips_dir(parser4)
     fips_files(
+        gpulangastconstructor.cpp
+        gpulangastconstructor.h
         GPULangParser.cpp
         GPULangParser.h
         GPULangLexer.cpp
         GPULangLexer.h
+        GPULangBaseVisitor.cpp
+        GPULangBaseVisitor.h
         gpulangerrorhandlers.cpp
         gpulangerrorhandlers.h
         gpulangtoken.cpp
         gpulangtoken.h
+        gpulangvisitor.cpp
+        gpulangvisitor.h
+
     )
     
 fips_dir(ast)

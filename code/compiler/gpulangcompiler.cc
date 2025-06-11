@@ -17,6 +17,7 @@
 #include "parser4/GPULangLexer.h"
 #include "parser4/GPULangParser.h"
 #include "parser4/gpulangerrorhandlers.h"
+#include "parser4/gpulangastconstructor.h"
 
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN
@@ -1994,6 +1995,8 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         parser.setTokenStream(&tokens);
         parser.removeErrorListeners();
         parser.addErrorListener(&parserErrorHandler);
+
+
 
         Effect* effect = parser.entry()->returnEffect;
 
