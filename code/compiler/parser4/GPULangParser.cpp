@@ -151,7 +151,7 @@ void gpulangParserInitialize() {
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,86,1221,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+  	4,1,86,1224,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
   	7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,
   	14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,
   	21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,
@@ -226,30 +226,30 @@ void gpulangParserInitialize() {
   	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,
   	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,
   	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,
-  	1,33,1,33,1,33,1,33,3,33,992,8,33,1,33,1,33,1,33,1,33,1,33,5,33,999,8,
-  	33,10,33,12,33,1002,9,33,3,33,1004,8,33,1,33,1,33,1,33,1,33,1,33,1,33,
-  	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1023,8,33,
-  	1,33,1,33,3,33,1027,8,33,3,33,1029,8,33,1,33,1,33,1,33,1,33,1,33,1,33,
-  	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1045,8,33,5,33,1047,8,33,
-  	10,33,12,33,1050,9,33,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,
-  	34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,
-  	34,1,34,1,34,1,34,1,34,1,34,1,34,3,34,1082,8,34,1,35,1,35,1,35,1,35,1,
-  	35,1,35,1,35,3,35,1091,8,35,1,35,1,35,1,35,1,35,1,35,5,35,1098,8,35,10,
-  	35,12,35,1101,9,35,3,35,1103,8,35,1,35,1,35,1,35,1,36,1,36,1,36,1,36,
-  	1,36,3,36,1113,8,36,1,36,1,36,1,36,1,36,1,36,5,36,1120,8,36,10,36,12,
-  	36,1123,9,36,3,36,1125,8,36,1,36,1,36,1,36,1,37,1,37,1,37,1,37,1,37,1,
-  	37,3,37,1136,8,37,1,37,1,37,1,37,4,37,1141,8,37,11,37,12,37,1142,1,37,
-  	1,37,1,37,1,38,1,38,1,38,1,38,1,38,1,38,3,38,1154,8,38,1,38,1,38,1,38,
-  	4,38,1159,8,38,11,38,12,38,1160,1,38,1,38,1,38,1,39,1,39,1,39,1,39,1,
-  	39,1,39,3,39,1172,8,39,1,39,1,39,1,39,4,39,1177,8,39,11,39,12,39,1178,
-  	1,39,1,39,1,39,1,40,1,40,1,40,1,40,1,40,1,40,3,40,1190,8,40,1,40,1,40,
-  	1,40,4,40,1195,8,40,11,40,12,40,1196,1,40,1,40,1,40,1,41,1,41,1,41,1,
-  	41,1,41,1,41,3,41,1208,8,41,1,41,1,41,1,41,1,41,4,41,1214,8,41,11,41,
-  	12,41,1215,1,41,1,41,1,41,1,41,1,172,2,64,66,42,0,2,4,6,8,10,12,14,16,
+  	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,
+  	1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,1,33,
+  	1,33,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1023,8,33,1,33,1,33,1,33,1,33,
+  	1,33,5,33,1030,8,33,10,33,12,33,1033,9,33,3,33,1035,8,33,1,33,1,33,1,
+  	33,1,33,1,33,1,33,1,33,1,33,1,33,3,33,1046,8,33,1,33,1,33,5,33,1050,8,
+  	33,10,33,12,33,1053,9,33,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,
+  	1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,
+  	1,34,1,34,1,34,1,34,1,34,1,34,1,34,3,34,1085,8,34,1,35,1,35,1,35,1,35,
+  	1,35,1,35,1,35,3,35,1094,8,35,1,35,1,35,1,35,1,35,1,35,5,35,1101,8,35,
+  	10,35,12,35,1104,9,35,3,35,1106,8,35,1,35,1,35,1,35,1,36,1,36,1,36,1,
+  	36,1,36,3,36,1116,8,36,1,36,1,36,1,36,1,36,1,36,5,36,1123,8,36,10,36,
+  	12,36,1126,9,36,3,36,1128,8,36,1,36,1,36,1,36,1,37,1,37,1,37,1,37,1,37,
+  	1,37,3,37,1139,8,37,1,37,1,37,1,37,4,37,1144,8,37,11,37,12,37,1145,1,
+  	37,1,37,1,37,1,38,1,38,1,38,1,38,1,38,1,38,3,38,1157,8,38,1,38,1,38,1,
+  	38,4,38,1162,8,38,11,38,12,38,1163,1,38,1,38,1,38,1,39,1,39,1,39,1,39,
+  	1,39,1,39,3,39,1175,8,39,1,39,1,39,1,39,4,39,1180,8,39,11,39,12,39,1181,
+  	1,39,1,39,1,39,1,40,1,40,1,40,1,40,1,40,1,40,3,40,1193,8,40,1,40,1,40,
+  	1,40,4,40,1198,8,40,11,40,12,40,1199,1,40,1,40,1,40,1,41,1,41,1,41,1,
+  	41,1,41,1,41,3,41,1211,8,41,1,41,1,41,1,41,1,41,4,41,1217,8,41,11,41,
+  	12,41,1218,1,41,1,41,1,41,1,41,1,172,2,64,66,42,0,2,4,6,8,10,12,14,16,
   	18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,
   	64,66,68,70,72,74,76,78,80,82,0,11,1,0,50,50,1,0,59,59,1,0,64,64,5,0,
   	27,28,48,48,58,58,73,74,76,76,2,0,70,70,75,76,1,0,73,74,1,0,29,30,1,0,
-  	62,65,1,0,66,67,1,0,27,28,5,0,31,37,49,49,53,53,55,55,57,57,1342,0,102,
+  	62,65,1,0,66,67,1,0,27,28,5,0,31,37,49,49,53,53,55,55,57,57,1345,0,102,
   	1,0,0,0,2,122,1,0,0,0,4,128,1,0,0,0,6,130,1,0,0,0,8,172,1,0,0,0,10,175,
   	1,0,0,0,12,181,1,0,0,0,14,188,1,0,0,0,16,204,1,0,0,0,18,206,1,0,0,0,20,
   	231,1,0,0,0,22,289,1,0,0,0,24,312,1,0,0,0,26,347,1,0,0,0,28,394,1,0,0,
@@ -257,8 +257,8 @@ void gpulangParserInitialize() {
   	1,0,0,0,40,559,1,0,0,0,42,561,1,0,0,0,44,564,1,0,0,0,46,580,1,0,0,0,48,
   	613,1,0,0,0,50,626,1,0,0,0,52,657,1,0,0,0,54,659,1,0,0,0,56,699,1,0,0,
   	0,58,701,1,0,0,0,60,706,1,0,0,0,62,739,1,0,0,0,64,752,1,0,0,0,66,902,
-  	1,0,0,0,68,1081,1,0,0,0,70,1083,1,0,0,0,72,1107,1,0,0,0,74,1129,1,0,0,
-  	0,76,1147,1,0,0,0,78,1165,1,0,0,0,80,1183,1,0,0,0,82,1201,1,0,0,0,84,
+  	1,0,0,0,68,1084,1,0,0,0,70,1086,1,0,0,0,72,1110,1,0,0,0,74,1132,1,0,0,
+  	0,76,1150,1,0,0,0,78,1168,1,0,0,0,80,1186,1,0,0,0,82,1204,1,0,0,0,84,
   	89,5,50,0,0,85,86,8,0,0,0,86,88,6,0,-1,0,87,85,1,0,0,0,88,91,1,0,0,0,
   	89,87,1,0,0,0,89,90,1,0,0,0,90,92,1,0,0,0,91,89,1,0,0,0,92,103,5,50,0,
   	0,93,98,5,59,0,0,94,95,8,1,0,0,95,97,6,0,-1,0,96,94,1,0,0,0,97,100,1,
@@ -479,111 +479,111 @@ void gpulangParserInitialize() {
   	0,889,803,1,0,0,0,889,810,1,0,0,0,889,817,1,0,0,0,889,824,1,0,0,0,889,
   	873,1,0,0,0,890,893,1,0,0,0,891,889,1,0,0,0,891,892,1,0,0,0,892,65,1,
   	0,0,0,893,891,1,0,0,0,894,895,6,33,-1,0,895,896,7,3,0,0,896,897,3,66,
-  	33,14,897,898,6,33,-1,0,898,903,1,0,0,0,899,900,3,68,34,0,900,901,6,33,
-  	-1,0,901,903,1,0,0,0,902,894,1,0,0,0,902,899,1,0,0,0,903,1048,1,0,0,0,
-  	904,905,10,13,0,0,905,906,6,33,-1,0,906,907,7,4,0,0,907,908,6,33,-1,0,
-  	908,909,3,66,33,14,909,910,6,33,-1,0,910,1047,1,0,0,0,911,912,10,12,0,
-  	0,912,913,6,33,-1,0,913,914,7,5,0,0,914,915,6,33,-1,0,915,916,3,66,33,
-  	13,916,917,6,33,-1,0,917,1047,1,0,0,0,918,919,10,11,0,0,919,920,6,33,
-  	-1,0,920,921,7,6,0,0,921,922,6,33,-1,0,922,923,3,66,33,12,923,924,6,33,
-  	-1,0,924,1047,1,0,0,0,925,926,10,10,0,0,926,927,6,33,-1,0,927,928,7,7,
-  	0,0,928,929,6,33,-1,0,929,930,3,66,33,11,930,931,6,33,-1,0,931,1047,1,
-  	0,0,0,932,933,10,9,0,0,933,934,6,33,-1,0,934,935,7,8,0,0,935,936,6,33,
-  	-1,0,936,937,3,66,33,10,937,938,6,33,-1,0,938,1047,1,0,0,0,939,940,10,
-  	8,0,0,940,941,6,33,-1,0,941,942,5,52,0,0,942,943,6,33,-1,0,943,944,3,
-  	66,33,9,944,945,6,33,-1,0,945,1047,1,0,0,0,946,947,10,7,0,0,947,948,6,
-  	33,-1,0,948,949,5,56,0,0,949,950,6,33,-1,0,950,951,3,66,33,8,951,952,
-  	6,33,-1,0,952,1047,1,0,0,0,953,954,10,6,0,0,954,955,6,33,-1,0,955,956,
-  	5,54,0,0,956,957,6,33,-1,0,957,958,3,66,33,7,958,959,6,33,-1,0,959,1047,
-  	1,0,0,0,960,961,10,5,0,0,961,962,6,33,-1,0,962,963,5,68,0,0,963,964,6,
-  	33,-1,0,964,965,3,66,33,6,965,966,6,33,-1,0,966,1047,1,0,0,0,967,968,
-  	10,4,0,0,968,969,6,33,-1,0,969,970,5,69,0,0,970,971,6,33,-1,0,971,972,
-  	3,66,33,5,972,973,6,33,-1,0,973,1047,1,0,0,0,974,975,10,2,0,0,975,976,
-  	6,33,-1,0,976,977,5,39,0,0,977,978,6,33,-1,0,978,979,3,66,33,3,979,980,
-  	6,33,-1,0,980,1047,1,0,0,0,981,982,10,15,0,0,982,1028,6,33,-1,0,983,984,
-  	7,9,0,0,984,985,6,33,-1,0,985,1029,6,33,-1,0,986,987,5,41,0,0,987,1003,
-  	6,33,-1,0,988,989,3,64,32,0,989,991,6,33,-1,0,990,992,3,10,5,0,991,990,
-  	1,0,0,0,991,992,1,0,0,0,992,1000,1,0,0,0,993,994,5,39,0,0,994,995,3,64,
-  	32,0,995,996,6,33,-1,0,996,999,1,0,0,0,997,999,3,10,5,0,998,993,1,0,0,
-  	0,998,997,1,0,0,0,999,1002,1,0,0,0,1000,998,1,0,0,0,1000,1001,1,0,0,0,
-  	1001,1004,1,0,0,0,1002,1000,1,0,0,0,1003,988,1,0,0,0,1003,1004,1,0,0,
-  	0,1004,1005,1,0,0,0,1005,1006,5,42,0,0,1006,1027,6,33,-1,0,1007,1008,
-  	5,47,0,0,1008,1009,6,33,-1,0,1009,1010,3,66,33,0,1010,1011,6,33,-1,0,
-  	1011,1027,1,0,0,0,1012,1013,5,77,0,0,1013,1014,6,33,-1,0,1014,1015,3,
-  	66,33,0,1015,1016,6,33,-1,0,1016,1027,1,0,0,0,1017,1018,5,45,0,0,1018,
-  	1022,6,33,-1,0,1019,1020,3,66,33,0,1020,1021,6,33,-1,0,1021,1023,1,0,
-  	0,0,1022,1019,1,0,0,0,1022,1023,1,0,0,0,1023,1024,1,0,0,0,1024,1025,5,
-  	46,0,0,1025,1027,6,33,-1,0,1026,986,1,0,0,0,1026,1007,1,0,0,0,1026,1012,
-  	1,0,0,0,1026,1017,1,0,0,0,1027,1029,1,0,0,0,1028,983,1,0,0,0,1028,1026,
-  	1,0,0,0,1029,1047,1,0,0,0,1030,1031,10,3,0,0,1031,1044,6,33,-1,0,1032,
-  	1033,5,51,0,0,1033,1034,6,33,-1,0,1034,1035,3,66,33,0,1035,1036,5,40,
-  	0,0,1036,1037,3,66,33,0,1037,1038,6,33,-1,0,1038,1045,1,0,0,0,1039,1040,
-  	7,10,0,0,1040,1041,6,33,-1,0,1041,1042,3,66,33,0,1042,1043,6,33,-1,0,
-  	1043,1045,1,0,0,0,1044,1032,1,0,0,0,1044,1039,1,0,0,0,1045,1047,1,0,0,
-  	0,1046,904,1,0,0,0,1046,911,1,0,0,0,1046,918,1,0,0,0,1046,925,1,0,0,0,
-  	1046,932,1,0,0,0,1046,939,1,0,0,0,1046,946,1,0,0,0,1046,953,1,0,0,0,1046,
-  	960,1,0,0,0,1046,967,1,0,0,0,1046,974,1,0,0,0,1046,981,1,0,0,0,1046,1030,
-  	1,0,0,0,1047,1050,1,0,0,0,1048,1046,1,0,0,0,1048,1049,1,0,0,0,1049,67,
-  	1,0,0,0,1050,1048,1,0,0,0,1051,1052,3,70,35,0,1052,1053,6,34,-1,0,1053,
-  	1082,1,0,0,0,1054,1055,3,72,36,0,1055,1056,6,34,-1,0,1056,1082,1,0,0,
-  	0,1057,1058,5,41,0,0,1058,1059,3,66,33,0,1059,1060,5,42,0,0,1060,1061,
-  	6,34,-1,0,1061,1082,1,0,0,0,1062,1063,5,78,0,0,1063,1082,6,34,-1,0,1064,
-  	1065,5,79,0,0,1065,1082,6,34,-1,0,1066,1067,5,82,0,0,1067,1082,6,34,-1,
-  	0,1068,1069,5,83,0,0,1069,1082,6,34,-1,0,1070,1071,5,84,0,0,1071,1082,
-  	6,34,-1,0,1072,1073,3,0,0,0,1073,1074,6,34,-1,0,1074,1082,1,0,0,0,1075,
-  	1076,5,85,0,0,1076,1082,6,34,-1,0,1077,1078,3,4,2,0,1078,1079,6,34,-1,
-  	0,1079,1082,1,0,0,0,1080,1082,3,10,5,0,1081,1051,1,0,0,0,1081,1054,1,
-  	0,0,0,1081,1057,1,0,0,0,1081,1062,1,0,0,0,1081,1064,1,0,0,0,1081,1066,
-  	1,0,0,0,1081,1068,1,0,0,0,1081,1070,1,0,0,0,1081,1072,1,0,0,0,1081,1075,
-  	1,0,0,0,1081,1077,1,0,0,0,1081,1080,1,0,0,0,1082,69,1,0,0,0,1083,1084,
-  	5,85,0,0,1084,1085,6,35,-1,0,1085,1086,5,43,0,0,1086,1102,6,35,-1,0,1087,
-  	1088,3,64,32,0,1088,1090,6,35,-1,0,1089,1091,3,10,5,0,1090,1089,1,0,0,
-  	0,1090,1091,1,0,0,0,1091,1099,1,0,0,0,1092,1093,5,39,0,0,1093,1094,3,
-  	64,32,0,1094,1095,6,35,-1,0,1095,1098,1,0,0,0,1096,1098,3,10,5,0,1097,
-  	1092,1,0,0,0,1097,1096,1,0,0,0,1098,1101,1,0,0,0,1099,1097,1,0,0,0,1099,
-  	1100,1,0,0,0,1100,1103,1,0,0,0,1101,1099,1,0,0,0,1102,1087,1,0,0,0,1102,
-  	1103,1,0,0,0,1103,1104,1,0,0,0,1104,1105,5,44,0,0,1105,1106,6,35,-1,0,
-  	1106,71,1,0,0,0,1107,1108,5,45,0,0,1108,1124,6,36,-1,0,1109,1110,3,64,
-  	32,0,1110,1112,6,36,-1,0,1111,1113,3,10,5,0,1112,1111,1,0,0,0,1112,1113,
-  	1,0,0,0,1113,1121,1,0,0,0,1114,1115,5,39,0,0,1115,1116,3,64,32,0,1116,
-  	1117,6,36,-1,0,1117,1120,1,0,0,0,1118,1120,3,10,5,0,1119,1114,1,0,0,0,
-  	1119,1118,1,0,0,0,1120,1123,1,0,0,0,1121,1119,1,0,0,0,1121,1122,1,0,0,
-  	0,1122,1125,1,0,0,0,1123,1121,1,0,0,0,1124,1109,1,0,0,0,1124,1125,1,0,
-  	0,0,1125,1126,1,0,0,0,1126,1127,5,46,0,0,1127,1128,6,36,-1,0,1128,73,
-  	1,0,0,0,1129,1130,5,62,0,0,1130,1131,6,37,-1,0,1131,1132,5,82,0,0,1132,
-  	1133,6,37,-1,0,1133,1135,1,0,0,0,1134,1136,3,10,5,0,1135,1134,1,0,0,0,
-  	1135,1136,1,0,0,0,1136,1140,1,0,0,0,1137,1138,5,39,0,0,1138,1139,5,82,
-  	0,0,1139,1141,6,37,-1,0,1140,1137,1,0,0,0,1141,1142,1,0,0,0,1142,1140,
-  	1,0,0,0,1142,1143,1,0,0,0,1143,1144,1,0,0,0,1144,1145,5,64,0,0,1145,1146,
-  	6,37,-1,0,1146,75,1,0,0,0,1147,1148,5,62,0,0,1148,1149,6,38,-1,0,1149,
-  	1150,5,83,0,0,1150,1151,6,38,-1,0,1151,1153,1,0,0,0,1152,1154,3,10,5,
-  	0,1153,1152,1,0,0,0,1153,1154,1,0,0,0,1154,1158,1,0,0,0,1155,1156,5,39,
-  	0,0,1156,1157,5,83,0,0,1157,1159,6,38,-1,0,1158,1155,1,0,0,0,1159,1160,
-  	1,0,0,0,1160,1158,1,0,0,0,1160,1161,1,0,0,0,1161,1162,1,0,0,0,1162,1163,
-  	5,64,0,0,1163,1164,6,38,-1,0,1164,77,1,0,0,0,1165,1166,5,62,0,0,1166,
-  	1167,6,39,-1,0,1167,1168,5,78,0,0,1168,1169,6,39,-1,0,1169,1171,1,0,0,
-  	0,1170,1172,3,10,5,0,1171,1170,1,0,0,0,1171,1172,1,0,0,0,1172,1176,1,
-  	0,0,0,1173,1174,5,39,0,0,1174,1175,5,78,0,0,1175,1177,6,39,-1,0,1176,
-  	1173,1,0,0,0,1177,1178,1,0,0,0,1178,1176,1,0,0,0,1178,1179,1,0,0,0,1179,
-  	1180,1,0,0,0,1180,1181,5,64,0,0,1181,1182,6,39,-1,0,1182,79,1,0,0,0,1183,
-  	1184,5,62,0,0,1184,1185,6,40,-1,0,1185,1186,5,79,0,0,1186,1187,6,40,-1,
-  	0,1187,1189,1,0,0,0,1188,1190,3,10,5,0,1189,1188,1,0,0,0,1189,1190,1,
-  	0,0,0,1190,1194,1,0,0,0,1191,1192,5,39,0,0,1192,1193,5,79,0,0,1193,1195,
-  	6,40,-1,0,1194,1191,1,0,0,0,1195,1196,1,0,0,0,1196,1194,1,0,0,0,1196,
-  	1197,1,0,0,0,1197,1198,1,0,0,0,1198,1199,5,64,0,0,1199,1200,6,40,-1,0,
-  	1200,81,1,0,0,0,1201,1202,5,62,0,0,1202,1203,6,41,-1,0,1203,1204,3,4,
-  	2,0,1204,1205,6,41,-1,0,1205,1207,1,0,0,0,1206,1208,3,10,5,0,1207,1206,
-  	1,0,0,0,1207,1208,1,0,0,0,1208,1213,1,0,0,0,1209,1210,5,39,0,0,1210,1211,
-  	3,4,2,0,1211,1212,6,41,-1,0,1212,1214,1,0,0,0,1213,1209,1,0,0,0,1214,
-  	1215,1,0,0,0,1215,1213,1,0,0,0,1215,1216,1,0,0,0,1216,1217,1,0,0,0,1217,
-  	1218,5,64,0,0,1218,1219,6,41,-1,0,1219,83,1,0,0,0,108,89,98,102,109,118,
+  	33,15,897,898,6,33,-1,0,898,903,1,0,0,0,899,900,3,68,34,0,900,901,6,33,
+  	-1,0,901,903,1,0,0,0,902,894,1,0,0,0,902,899,1,0,0,0,903,1051,1,0,0,0,
+  	904,905,10,18,0,0,905,906,6,33,-1,0,906,907,5,47,0,0,907,908,6,33,-1,
+  	0,908,909,3,66,33,19,909,910,6,33,-1,0,910,1050,1,0,0,0,911,912,10,17,
+  	0,0,912,913,6,33,-1,0,913,914,5,77,0,0,914,915,6,33,-1,0,915,916,3,66,
+  	33,18,916,917,6,33,-1,0,917,1050,1,0,0,0,918,919,10,14,0,0,919,920,6,
+  	33,-1,0,920,921,7,4,0,0,921,922,6,33,-1,0,922,923,3,66,33,15,923,924,
+  	6,33,-1,0,924,1050,1,0,0,0,925,926,10,13,0,0,926,927,6,33,-1,0,927,928,
+  	7,5,0,0,928,929,6,33,-1,0,929,930,3,66,33,14,930,931,6,33,-1,0,931,1050,
+  	1,0,0,0,932,933,10,12,0,0,933,934,6,33,-1,0,934,935,7,6,0,0,935,936,6,
+  	33,-1,0,936,937,3,66,33,13,937,938,6,33,-1,0,938,1050,1,0,0,0,939,940,
+  	10,11,0,0,940,941,6,33,-1,0,941,942,7,7,0,0,942,943,6,33,-1,0,943,944,
+  	3,66,33,12,944,945,6,33,-1,0,945,1050,1,0,0,0,946,947,10,10,0,0,947,948,
+  	6,33,-1,0,948,949,7,8,0,0,949,950,6,33,-1,0,950,951,3,66,33,11,951,952,
+  	6,33,-1,0,952,1050,1,0,0,0,953,954,10,9,0,0,954,955,6,33,-1,0,955,956,
+  	5,52,0,0,956,957,6,33,-1,0,957,958,3,66,33,10,958,959,6,33,-1,0,959,1050,
+  	1,0,0,0,960,961,10,8,0,0,961,962,6,33,-1,0,962,963,5,56,0,0,963,964,6,
+  	33,-1,0,964,965,3,66,33,9,965,966,6,33,-1,0,966,1050,1,0,0,0,967,968,
+  	10,7,0,0,968,969,6,33,-1,0,969,970,5,54,0,0,970,971,6,33,-1,0,971,972,
+  	3,66,33,8,972,973,6,33,-1,0,973,1050,1,0,0,0,974,975,10,6,0,0,975,976,
+  	6,33,-1,0,976,977,5,68,0,0,977,978,6,33,-1,0,978,979,3,66,33,7,979,980,
+  	6,33,-1,0,980,1050,1,0,0,0,981,982,10,5,0,0,982,983,6,33,-1,0,983,984,
+  	5,69,0,0,984,985,6,33,-1,0,985,986,3,66,33,6,986,987,6,33,-1,0,987,1050,
+  	1,0,0,0,988,989,10,4,0,0,989,990,5,51,0,0,990,991,6,33,-1,0,991,992,3,
+  	66,33,0,992,993,5,40,0,0,993,994,3,66,33,4,994,995,6,33,-1,0,995,1050,
+  	1,0,0,0,996,997,10,3,0,0,997,998,6,33,-1,0,998,999,7,10,0,0,999,1000,
+  	6,33,-1,0,1000,1001,3,66,33,3,1001,1002,6,33,-1,0,1002,1050,1,0,0,0,1003,
+  	1004,10,2,0,0,1004,1005,6,33,-1,0,1005,1006,5,39,0,0,1006,1007,6,33,-1,
+  	0,1007,1008,3,66,33,3,1008,1009,6,33,-1,0,1009,1050,1,0,0,0,1010,1011,
+  	10,20,0,0,1011,1012,6,33,-1,0,1012,1013,7,9,0,0,1013,1014,6,33,-1,0,1014,
+  	1050,6,33,-1,0,1015,1016,10,19,0,0,1016,1017,6,33,-1,0,1017,1018,5,41,
+  	0,0,1018,1034,6,33,-1,0,1019,1020,3,64,32,0,1020,1022,6,33,-1,0,1021,
+  	1023,3,10,5,0,1022,1021,1,0,0,0,1022,1023,1,0,0,0,1023,1031,1,0,0,0,1024,
+  	1025,5,39,0,0,1025,1026,3,64,32,0,1026,1027,6,33,-1,0,1027,1030,1,0,0,
+  	0,1028,1030,3,10,5,0,1029,1024,1,0,0,0,1029,1028,1,0,0,0,1030,1033,1,
+  	0,0,0,1031,1029,1,0,0,0,1031,1032,1,0,0,0,1032,1035,1,0,0,0,1033,1031,
+  	1,0,0,0,1034,1019,1,0,0,0,1034,1035,1,0,0,0,1035,1036,1,0,0,0,1036,1037,
+  	5,42,0,0,1037,1050,6,33,-1,0,1038,1039,10,16,0,0,1039,1040,6,33,-1,0,
+  	1040,1041,5,45,0,0,1041,1045,6,33,-1,0,1042,1043,3,66,33,0,1043,1044,
+  	6,33,-1,0,1044,1046,1,0,0,0,1045,1042,1,0,0,0,1045,1046,1,0,0,0,1046,
+  	1047,1,0,0,0,1047,1048,5,46,0,0,1048,1050,6,33,-1,0,1049,904,1,0,0,0,
+  	1049,911,1,0,0,0,1049,918,1,0,0,0,1049,925,1,0,0,0,1049,932,1,0,0,0,1049,
+  	939,1,0,0,0,1049,946,1,0,0,0,1049,953,1,0,0,0,1049,960,1,0,0,0,1049,967,
+  	1,0,0,0,1049,974,1,0,0,0,1049,981,1,0,0,0,1049,988,1,0,0,0,1049,996,1,
+  	0,0,0,1049,1003,1,0,0,0,1049,1010,1,0,0,0,1049,1015,1,0,0,0,1049,1038,
+  	1,0,0,0,1050,1053,1,0,0,0,1051,1049,1,0,0,0,1051,1052,1,0,0,0,1052,67,
+  	1,0,0,0,1053,1051,1,0,0,0,1054,1055,3,70,35,0,1055,1056,6,34,-1,0,1056,
+  	1085,1,0,0,0,1057,1058,3,72,36,0,1058,1059,6,34,-1,0,1059,1085,1,0,0,
+  	0,1060,1061,5,41,0,0,1061,1062,3,66,33,0,1062,1063,5,42,0,0,1063,1064,
+  	6,34,-1,0,1064,1085,1,0,0,0,1065,1066,5,78,0,0,1066,1085,6,34,-1,0,1067,
+  	1068,5,79,0,0,1068,1085,6,34,-1,0,1069,1070,5,82,0,0,1070,1085,6,34,-1,
+  	0,1071,1072,5,83,0,0,1072,1085,6,34,-1,0,1073,1074,5,84,0,0,1074,1085,
+  	6,34,-1,0,1075,1076,3,0,0,0,1076,1077,6,34,-1,0,1077,1085,1,0,0,0,1078,
+  	1079,5,85,0,0,1079,1085,6,34,-1,0,1080,1081,3,4,2,0,1081,1082,6,34,-1,
+  	0,1082,1085,1,0,0,0,1083,1085,3,10,5,0,1084,1054,1,0,0,0,1084,1057,1,
+  	0,0,0,1084,1060,1,0,0,0,1084,1065,1,0,0,0,1084,1067,1,0,0,0,1084,1069,
+  	1,0,0,0,1084,1071,1,0,0,0,1084,1073,1,0,0,0,1084,1075,1,0,0,0,1084,1078,
+  	1,0,0,0,1084,1080,1,0,0,0,1084,1083,1,0,0,0,1085,69,1,0,0,0,1086,1087,
+  	5,85,0,0,1087,1088,6,35,-1,0,1088,1089,5,43,0,0,1089,1105,6,35,-1,0,1090,
+  	1091,3,64,32,0,1091,1093,6,35,-1,0,1092,1094,3,10,5,0,1093,1092,1,0,0,
+  	0,1093,1094,1,0,0,0,1094,1102,1,0,0,0,1095,1096,5,39,0,0,1096,1097,3,
+  	64,32,0,1097,1098,6,35,-1,0,1098,1101,1,0,0,0,1099,1101,3,10,5,0,1100,
+  	1095,1,0,0,0,1100,1099,1,0,0,0,1101,1104,1,0,0,0,1102,1100,1,0,0,0,1102,
+  	1103,1,0,0,0,1103,1106,1,0,0,0,1104,1102,1,0,0,0,1105,1090,1,0,0,0,1105,
+  	1106,1,0,0,0,1106,1107,1,0,0,0,1107,1108,5,44,0,0,1108,1109,6,35,-1,0,
+  	1109,71,1,0,0,0,1110,1111,5,45,0,0,1111,1127,6,36,-1,0,1112,1113,3,64,
+  	32,0,1113,1115,6,36,-1,0,1114,1116,3,10,5,0,1115,1114,1,0,0,0,1115,1116,
+  	1,0,0,0,1116,1124,1,0,0,0,1117,1118,5,39,0,0,1118,1119,3,64,32,0,1119,
+  	1120,6,36,-1,0,1120,1123,1,0,0,0,1121,1123,3,10,5,0,1122,1117,1,0,0,0,
+  	1122,1121,1,0,0,0,1123,1126,1,0,0,0,1124,1122,1,0,0,0,1124,1125,1,0,0,
+  	0,1125,1128,1,0,0,0,1126,1124,1,0,0,0,1127,1112,1,0,0,0,1127,1128,1,0,
+  	0,0,1128,1129,1,0,0,0,1129,1130,5,46,0,0,1130,1131,6,36,-1,0,1131,73,
+  	1,0,0,0,1132,1133,5,62,0,0,1133,1134,6,37,-1,0,1134,1135,5,82,0,0,1135,
+  	1136,6,37,-1,0,1136,1138,1,0,0,0,1137,1139,3,10,5,0,1138,1137,1,0,0,0,
+  	1138,1139,1,0,0,0,1139,1143,1,0,0,0,1140,1141,5,39,0,0,1141,1142,5,82,
+  	0,0,1142,1144,6,37,-1,0,1143,1140,1,0,0,0,1144,1145,1,0,0,0,1145,1143,
+  	1,0,0,0,1145,1146,1,0,0,0,1146,1147,1,0,0,0,1147,1148,5,64,0,0,1148,1149,
+  	6,37,-1,0,1149,75,1,0,0,0,1150,1151,5,62,0,0,1151,1152,6,38,-1,0,1152,
+  	1153,5,83,0,0,1153,1154,6,38,-1,0,1154,1156,1,0,0,0,1155,1157,3,10,5,
+  	0,1156,1155,1,0,0,0,1156,1157,1,0,0,0,1157,1161,1,0,0,0,1158,1159,5,39,
+  	0,0,1159,1160,5,83,0,0,1160,1162,6,38,-1,0,1161,1158,1,0,0,0,1162,1163,
+  	1,0,0,0,1163,1161,1,0,0,0,1163,1164,1,0,0,0,1164,1165,1,0,0,0,1165,1166,
+  	5,64,0,0,1166,1167,6,38,-1,0,1167,77,1,0,0,0,1168,1169,5,62,0,0,1169,
+  	1170,6,39,-1,0,1170,1171,5,78,0,0,1171,1172,6,39,-1,0,1172,1174,1,0,0,
+  	0,1173,1175,3,10,5,0,1174,1173,1,0,0,0,1174,1175,1,0,0,0,1175,1179,1,
+  	0,0,0,1176,1177,5,39,0,0,1177,1178,5,78,0,0,1178,1180,6,39,-1,0,1179,
+  	1176,1,0,0,0,1180,1181,1,0,0,0,1181,1179,1,0,0,0,1181,1182,1,0,0,0,1182,
+  	1183,1,0,0,0,1183,1184,5,64,0,0,1184,1185,6,39,-1,0,1185,79,1,0,0,0,1186,
+  	1187,5,62,0,0,1187,1188,6,40,-1,0,1188,1189,5,79,0,0,1189,1190,6,40,-1,
+  	0,1190,1192,1,0,0,0,1191,1193,3,10,5,0,1192,1191,1,0,0,0,1192,1193,1,
+  	0,0,0,1193,1197,1,0,0,0,1194,1195,5,39,0,0,1195,1196,5,79,0,0,1196,1198,
+  	6,40,-1,0,1197,1194,1,0,0,0,1198,1199,1,0,0,0,1199,1197,1,0,0,0,1199,
+  	1200,1,0,0,0,1200,1201,1,0,0,0,1201,1202,5,64,0,0,1202,1203,6,40,-1,0,
+  	1203,81,1,0,0,0,1204,1205,5,62,0,0,1205,1206,6,41,-1,0,1206,1207,3,4,
+  	2,0,1207,1208,6,41,-1,0,1208,1210,1,0,0,0,1209,1211,3,10,5,0,1210,1209,
+  	1,0,0,0,1210,1211,1,0,0,0,1211,1216,1,0,0,0,1212,1213,5,39,0,0,1213,1214,
+  	3,4,2,0,1214,1215,6,41,-1,0,1215,1217,1,0,0,0,1216,1212,1,0,0,0,1217,
+  	1218,1,0,0,0,1218,1216,1,0,0,0,1218,1219,1,0,0,0,1219,1220,1,0,0,0,1220,
+  	1221,5,64,0,0,1221,1222,6,41,-1,0,1222,83,1,0,0,0,105,89,98,102,109,118,
   	122,128,170,172,204,214,220,222,231,239,247,252,258,260,267,277,279,282,
   	289,297,305,326,329,331,339,341,354,363,367,376,380,382,386,394,402,414,
   	423,432,439,441,444,460,473,484,492,507,525,559,576,586,592,598,606,657,
   	669,671,683,699,720,724,732,734,752,834,841,843,846,865,869,871,887,889,
-  	891,902,991,998,1000,1003,1022,1026,1028,1044,1046,1048,1081,1090,1097,
-  	1099,1102,1112,1119,1121,1124,1135,1142,1153,1160,1171,1178,1189,1196,
-  	1207,1215
+  	891,902,1022,1029,1031,1034,1045,1049,1051,1084,1093,1100,1102,1105,1115,
+  	1122,1124,1127,1138,1145,1156,1163,1174,1181,1192,1199,1210,1218
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -5902,6 +5902,14 @@ GPULangParser::BinaryexpatomContext* GPULangParser::ExpressionContext::binaryexp
   return getRuleContext<GPULangParser::BinaryexpatomContext>(0);
 }
 
+tree::TerminalNode* GPULangParser::ExpressionContext::DOT() {
+  return getToken(GPULangParser::DOT, 0);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::ARROW() {
+  return getToken(GPULangParser::ARROW, 0);
+}
+
 tree::TerminalNode* GPULangParser::ExpressionContext::DIV_OP() {
   return getToken(GPULangParser::DIV_OP, 0);
 }
@@ -5954,54 +5962,6 @@ tree::TerminalNode* GPULangParser::ExpressionContext::LOGICOR() {
   return getToken(GPULangParser::LOGICOR, 0);
 }
 
-std::vector<tree::TerminalNode *> GPULangParser::ExpressionContext::CO() {
-  return getTokens(GPULangParser::CO);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::CO(size_t i) {
-  return getToken(GPULangParser::CO, i);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::LP() {
-  return getToken(GPULangParser::LP, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::RP() {
-  return getToken(GPULangParser::RP, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::DOT() {
-  return getToken(GPULangParser::DOT, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::ARROW() {
-  return getToken(GPULangParser::ARROW, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::LL() {
-  return getToken(GPULangParser::LL, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::RR() {
-  return getToken(GPULangParser::RR, 0);
-}
-
-std::vector<GPULangParser::ExpressionNoCommaContext *> GPULangParser::ExpressionContext::expressionNoComma() {
-  return getRuleContexts<GPULangParser::ExpressionNoCommaContext>();
-}
-
-GPULangParser::ExpressionNoCommaContext* GPULangParser::ExpressionContext::expressionNoComma(size_t i) {
-  return getRuleContext<GPULangParser::ExpressionNoCommaContext>(i);
-}
-
-std::vector<GPULangParser::LinePreprocessorEntryContext *> GPULangParser::ExpressionContext::linePreprocessorEntry() {
-  return getRuleContexts<GPULangParser::LinePreprocessorEntryContext>();
-}
-
-GPULangParser::LinePreprocessorEntryContext* GPULangParser::ExpressionContext::linePreprocessorEntry(size_t i) {
-  return getRuleContext<GPULangParser::LinePreprocessorEntryContext>(i);
-}
-
 tree::TerminalNode* GPULangParser::ExpressionContext::QU() {
   return getToken(GPULangParser::QU, 0);
 }
@@ -6024,6 +5984,46 @@ tree::TerminalNode* GPULangParser::ExpressionContext::ORSET() {
 
 tree::TerminalNode* GPULangParser::ExpressionContext::EQ() {
   return getToken(GPULangParser::EQ, 0);
+}
+
+std::vector<tree::TerminalNode *> GPULangParser::ExpressionContext::CO() {
+  return getTokens(GPULangParser::CO);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::CO(size_t i) {
+  return getToken(GPULangParser::CO, i);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::LP() {
+  return getToken(GPULangParser::LP, 0);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::RP() {
+  return getToken(GPULangParser::RP, 0);
+}
+
+std::vector<GPULangParser::ExpressionNoCommaContext *> GPULangParser::ExpressionContext::expressionNoComma() {
+  return getRuleContexts<GPULangParser::ExpressionNoCommaContext>();
+}
+
+GPULangParser::ExpressionNoCommaContext* GPULangParser::ExpressionContext::expressionNoComma(size_t i) {
+  return getRuleContext<GPULangParser::ExpressionNoCommaContext>(i);
+}
+
+std::vector<GPULangParser::LinePreprocessorEntryContext *> GPULangParser::ExpressionContext::linePreprocessorEntry() {
+  return getRuleContexts<GPULangParser::LinePreprocessorEntryContext>();
+}
+
+GPULangParser::LinePreprocessorEntryContext* GPULangParser::ExpressionContext::linePreprocessorEntry(size_t i) {
+  return getRuleContext<GPULangParser::LinePreprocessorEntryContext>(i);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::LL() {
+  return getToken(GPULangParser::LL, 0);
+}
+
+tree::TerminalNode* GPULangParser::ExpressionContext::RR() {
+  return getToken(GPULangParser::RR, 0);
 }
 
 
@@ -6106,7 +6106,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           consume();
         }
         setState(896);
-        antlrcpp::downCast<ExpressionContext *>(_localctx)->p = expression(14);
+        antlrcpp::downCast<ExpressionContext *>(_localctx)->p = expression(15);
 
                 antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), true, antlrcpp::downCast<ExpressionContext *>(_localctx)->p->tree);
                 _localctx->tree->location = SetupFile();
@@ -6137,41 +6137,32 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
       throw NoViableAltException(this);
     }
     _ctx->stop = _input->LT(-1);
-    setState(1048);
+    setState(1051);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 88, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 85, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         if (!_parseListeners.empty())
           triggerExitRuleEvent();
         previousContext = _localctx;
-        setState(1046);
+        setState(1049);
         _errHandler->sync(this);
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 87, _ctx)) {
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 84, _ctx)) {
         case 1: {
           _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
           _localctx->e1 = previousContext;
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(904);
 
-          if (!(precpred(_ctx, 13))) throw FailedPredicateException(this, "precpred(_ctx, 13)");
+          if (!(precpred(_ctx, 18))) throw FailedPredicateException(this, "precpred(_ctx, 18)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(906);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
-          _la = _input->LA(1);
-          if (!(((((_la - 70) & ~ 0x3fULL) == 0) &&
-            ((1ULL << (_la - 70)) & 97) != 0))) {
-            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-          }
-          else {
-            _errHandler->reportMatch(this);
-            consume();
-          }
+          match(GPULangParser::DOT);
            location = SetupFile(); 
           setState(908);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(14);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(19);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, false);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6184,25 +6175,15 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(911);
 
-          if (!(precpred(_ctx, 12))) throw FailedPredicateException(this, "precpred(_ctx, 12)");
+          if (!(precpred(_ctx, 17))) throw FailedPredicateException(this, "precpred(_ctx, 17)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(913);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
-          _la = _input->LA(1);
-          if (!(_la == GPULangParser::ADD_OP
-
-          || _la == GPULangParser::SUB_OP)) {
-            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-          }
-          else {
-            _errHandler->reportMatch(this);
-            consume();
-          }
+          match(GPULangParser::ARROW);
            location = SetupFile(); 
           setState(915);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(13);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(18);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, true);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6215,14 +6196,13 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(918);
 
-          if (!(precpred(_ctx, 11))) throw FailedPredicateException(this, "precpred(_ctx, 11)");
+          if (!(precpred(_ctx, 14))) throw FailedPredicateException(this, "precpred(_ctx, 14)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(920);
           antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
-          if (!(_la == GPULangParser::T__28
-
-          || _la == GPULangParser::T__29)) {
+          if (!(((((_la - 70) & ~ 0x3fULL) == 0) &&
+            ((1ULL << (_la - 70)) & 97) != 0))) {
             antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
@@ -6231,7 +6211,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           }
            location = SetupFile(); 
           setState(922);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(12);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(15);
 
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
@@ -6246,13 +6226,14 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(925);
 
-          if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
+          if (!(precpred(_ctx, 13))) throw FailedPredicateException(this, "precpred(_ctx, 13)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(927);
           antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
-          if (!(((((_la - 62) & ~ 0x3fULL) == 0) &&
-            ((1ULL << (_la - 62)) & 15) != 0))) {
+          if (!(_la == GPULangParser::ADD_OP
+
+          || _la == GPULangParser::SUB_OP)) {
             antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
@@ -6261,7 +6242,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           }
            location = SetupFile(); 
           setState(929);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(11);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(14);
 
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
@@ -6276,14 +6257,14 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(932);
 
-          if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
+          if (!(precpred(_ctx, 12))) throw FailedPredicateException(this, "precpred(_ctx, 12)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(934);
           antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
-          if (!(_la == GPULangParser::LOGICEQ
+          if (!(_la == GPULangParser::T__28
 
-          || _la == GPULangParser::NOTEQ)) {
+          || _la == GPULangParser::T__29)) {
             antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
@@ -6292,7 +6273,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           }
            location = SetupFile(); 
           setState(936);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(10);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(13);
 
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
@@ -6307,15 +6288,24 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(939);
 
-          if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
+          if (!(precpred(_ctx, 11))) throw FailedPredicateException(this, "precpred(_ctx, 11)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(941);
-          match(GPULangParser::AND);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
+          _la = _input->LA(1);
+          if (!(((((_la - 62) & ~ 0x3fULL) == 0) &&
+            ((1ULL << (_la - 62)) & 15) != 0))) {
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+          }
+          else {
+            _errHandler->reportMatch(this);
+            consume();
+          }
            location = SetupFile(); 
           setState(943);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(9);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(12);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6328,15 +6318,25 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(946);
 
-          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
+          if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(948);
-          match(GPULangParser::XOR);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
+          _la = _input->LA(1);
+          if (!(_la == GPULangParser::LOGICEQ
+
+          || _la == GPULangParser::NOTEQ)) {
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+          }
+          else {
+            _errHandler->reportMatch(this);
+            consume();
+          }
            location = SetupFile(); 
           setState(950);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(8);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(11);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6349,15 +6349,15 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(953);
 
-          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
+          if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(955);
-          match(GPULangParser::OR);
+          match(GPULangParser::AND);
            location = SetupFile(); 
           setState(957);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(7);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(10);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6370,15 +6370,15 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(960);
 
-          if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
+          if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(962);
-          match(GPULangParser::LOGICAND);
+          match(GPULangParser::XOR);
            location = SetupFile(); 
           setState(964);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(6);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(9);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6391,15 +6391,15 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(967);
 
-          if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
+          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(969);
-          match(GPULangParser::LOGICOR);
+          match(GPULangParser::OR);
            location = SetupFile(); 
           setState(971);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(5);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(8);
 
-                            BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6412,15 +6412,15 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(974);
 
-          if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
+          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
           setState(976);
-          match(GPULangParser::CO);
+          match(GPULangParser::LOGICAND);
            location = SetupFile(); 
           setState(978);
-          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(3);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(7);
 
-                            CommaExpression* expr = Alloc<CommaExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
                         
@@ -6433,171 +6433,18 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           pushNewRecursionContext(_localctx, startState, RuleExpression);
           setState(981);
 
-          if (!(precpred(_ctx, 15))) throw FailedPredicateException(this, "precpred(_ctx, 15)");
+          if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
-          setState(1028);
-          _errHandler->sync(this);
-          switch (_input->LA(1)) {
-            case GPULangParser::T__26:
-            case GPULangParser::T__27: {
-              setState(983);
-              antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
-              _la = _input->LA(1);
-              if (!(_la == GPULangParser::T__26
+          setState(983);
+          match(GPULangParser::LOGICOR);
+           location = SetupFile(); 
+          setState(985);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(6);
 
-              || _la == GPULangParser::T__27)) {
-                antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-              }
-              else {
-                _errHandler->reportMatch(this);
-                consume();
-              }
-               location = SetupFile(); 
-
-                                    antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), false, _localctx->tree);
-                                    _localctx->tree->location = location;
-                                
-              break;
-            }
-
-            case GPULangParser::LP:
-            case GPULangParser::LL:
-            case GPULangParser::DOT:
-            case GPULangParser::ARROW: {
-              setState(1026);
-              _errHandler->sync(this);
-              switch (_input->LA(1)) {
-                case GPULangParser::LP: {
-                  setState(986);
-                  match(GPULangParser::LP);
-                   location = SetupFile(); 
-                  setState(1003);
-                  _errHandler->sync(this);
-
-                  _la = _input->LA(1);
-                  if ((((_la & ~ 0x3fULL) == 0) &&
-                    ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
-                    ((1ULL << (_la - 73)) & 7787) != 0)) {
-                    setState(988);
-                    antlrcpp::downCast<ExpressionContext *>(_localctx)->arg0 = expressionNoComma(0);
-                     args.Append(antlrcpp::downCast<ExpressionContext *>(_localctx)->arg0->tree); 
-                    setState(991);
-                    _errHandler->sync(this);
-
-                    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 79, _ctx)) {
-                    case 1: {
-                      setState(990);
-                      linePreprocessorEntry();
-                      break;
-                    }
-
-                    default:
-                      break;
-                    }
-                    setState(1000);
-                    _errHandler->sync(this);
-                    _la = _input->LA(1);
-                    while (_la == GPULangParser::T__2
-
-                    || _la == GPULangParser::CO) {
-                      setState(998);
-                      _errHandler->sync(this);
-                      switch (_input->LA(1)) {
-                        case GPULangParser::CO: {
-                          setState(993);
-                          match(GPULangParser::CO);
-                          setState(994);
-                          antlrcpp::downCast<ExpressionContext *>(_localctx)->argn = expressionNoComma(0);
-                           if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append(antlrcpp::downCast<ExpressionContext *>(_localctx)->argn->tree); 
-                          break;
-                        }
-
-                        case GPULangParser::T__2: {
-                          setState(997);
-                          linePreprocessorEntry();
-                          break;
-                        }
-
-                      default:
-                        throw NoViableAltException(this);
-                      }
-                      setState(1002);
-                      _errHandler->sync(this);
-                      _la = _input->LA(1);
-                    }
-                  }
-                  setState(1005);
-                  match(GPULangParser::RP);
-
-                                            CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(FixedArray<Expression*>(args)));
-                                            expr->location = location;
-                                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                        
-                  break;
-                }
-
-                case GPULangParser::DOT: {
-                  setState(1007);
-                  match(GPULangParser::DOT);
-                   location = SetupFile(); 
-                  setState(1009);
-                  antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(0);
-
-                                            AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, false);
-                                            expr->location = location;
-                                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                        
-                  break;
-                }
-
-                case GPULangParser::ARROW: {
-                  setState(1012);
-                  match(GPULangParser::ARROW);
-                   location = SetupFile(); 
-                  setState(1014);
-                  antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(0);
-
-                                            AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, true);
-                                            expr->location = location;
-                                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                        
-                  break;
-                }
-
-                case GPULangParser::LL: {
-                  setState(1017);
-                  match(GPULangParser::LL);
-                   location = SetupFile(); 
-                  setState(1022);
-                  _errHandler->sync(this);
-
-                  _la = _input->LA(1);
-                  if ((((_la & ~ 0x3fULL) == 0) &&
-                    ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
-                    ((1ULL << (_la - 73)) & 7787) != 0)) {
-                    setState(1019);
-                    antlrcpp::downCast<ExpressionContext *>(_localctx)->e3 = expression(0);
-                     arrayIndexExpr = antlrcpp::downCast<ExpressionContext *>(_localctx)->e3->tree; 
-                  }
-                  setState(1024);
-                  match(GPULangParser::RR);
-
-                                            ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>(_localctx->tree, arrayIndexExpr);
-                                            expr->location = location;
-                                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                        
-                  break;
-                }
-
-              default:
-                throw NoViableAltException(this);
-              }
-              break;
-            }
-
-          default:
-            throw NoViableAltException(this);
-          }
+                            BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
           break;
         }
 
@@ -6605,67 +6452,210 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
           _localctx->e1 = previousContext;
           pushNewRecursionContext(_localctx, startState, RuleExpression);
-          setState(1030);
+          setState(988);
+
+          if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
+          setState(989);
+          match(GPULangParser::QU);
+           location = SetupFile(); 
+          setState(991);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->ifBody = expression(0);
+          setState(992);
+          match(GPULangParser::COL);
+          setState(993);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody = expression(4);
+           
+                            TernaryExpression* expr = Alloc<TernaryExpression>(antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->ifBody->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody->tree);
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
+          break;
+        }
+
+        case 14: {
+          _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
+          _localctx->e1 = previousContext;
+          pushNewRecursionContext(_localctx, startState, RuleExpression);
+          setState(996);
 
           if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
-          setState(1044);
-          _errHandler->sync(this);
-          switch (_input->LA(1)) {
-            case GPULangParser::QU: {
-              setState(1032);
-              match(GPULangParser::QU);
-               location = SetupFile(); 
-              setState(1034);
-              antlrcpp::downCast<ExpressionContext *>(_localctx)->ifBody = expression(0);
-              setState(1035);
-              match(GPULangParser::COL);
-              setState(1036);
-              antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody = expression(0);
-               
-                                    TernaryExpression* expr = Alloc<TernaryExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->ifBody->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody->tree);
-                                    expr->location = location;
-                                    antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                
-              break;
-            }
-
-            case GPULangParser::T__30:
-            case GPULangParser::T__31:
-            case GPULangParser::T__32:
-            case GPULangParser::T__33:
-            case GPULangParser::T__34:
-            case GPULangParser::T__35:
-            case GPULangParser::T__36:
-            case GPULangParser::EQ:
-            case GPULangParser::ANDSET:
-            case GPULangParser::ORSET:
-            case GPULangParser::XORSET: {
-              setState(1039);
-              antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
-              _la = _input->LA(1);
-              if (!((((_la & ~ 0x3fULL) == 0) &&
-                ((1ULL << _la) & 189714407033405440) != 0))) {
-                antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
-              }
-              else {
-                _errHandler->reportMatch(this);
-                consume();
-              }
-               location = SetupFile(); 
-              setState(1041);
-              antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(0);
-
-                                    BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
-                                    expr->location = location;
-                                    antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
-                                
-              break;
-            }
-
-          default:
-            throw NoViableAltException(this);
+          setState(998);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
+          _la = _input->LA(1);
+          if (!((((_la & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 189714407033405440) != 0))) {
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
+          else {
+            _errHandler->reportMatch(this);
+            consume();
+          }
+           location = SetupFile(); 
+          setState(1000);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(3);
+
+                            BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
+          break;
+        }
+
+        case 15: {
+          _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
+          _localctx->e1 = previousContext;
+          pushNewRecursionContext(_localctx, startState, RuleExpression);
+          setState(1003);
+
+          if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
+           antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
+          setState(1005);
+          match(GPULangParser::CO);
+           location = SetupFile(); 
+          setState(1007);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(3);
+
+                            CommaExpression* expr = Alloc<CommaExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
+          break;
+        }
+
+        case 16: {
+          _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
+          _localctx->e1 = previousContext;
+          pushNewRecursionContext(_localctx, startState, RuleExpression);
+          setState(1010);
+
+          if (!(precpred(_ctx, 20))) throw FailedPredicateException(this, "precpred(_ctx, 20)");
+           antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
+          setState(1012);
+          antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
+          _la = _input->LA(1);
+          if (!(_la == GPULangParser::T__26
+
+          || _la == GPULangParser::T__27)) {
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+          }
+          else {
+            _errHandler->reportMatch(this);
+            consume();
+          }
+           location = SetupFile(); 
+
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), false, _localctx->tree);
+                            _localctx->tree->location = location;
+                        
+          break;
+        }
+
+        case 17: {
+          _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
+          _localctx->e1 = previousContext;
+          pushNewRecursionContext(_localctx, startState, RuleExpression);
+          setState(1015);
+
+          if (!(precpred(_ctx, 19))) throw FailedPredicateException(this, "precpred(_ctx, 19)");
+           antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
+          setState(1017);
+          match(GPULangParser::LP);
+           location = SetupFile(); 
+          setState(1034);
+          _errHandler->sync(this);
+
+          _la = _input->LA(1);
+          if ((((_la & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
+            ((1ULL << (_la - 73)) & 7787) != 0)) {
+            setState(1019);
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->arg0 = expressionNoComma(0);
+             args.Append(antlrcpp::downCast<ExpressionContext *>(_localctx)->arg0->tree); 
+            setState(1022);
+            _errHandler->sync(this);
+
+            switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 79, _ctx)) {
+            case 1: {
+              setState(1021);
+              linePreprocessorEntry();
+              break;
+            }
+
+            default:
+              break;
+            }
+            setState(1031);
+            _errHandler->sync(this);
+            _la = _input->LA(1);
+            while (_la == GPULangParser::T__2
+
+            || _la == GPULangParser::CO) {
+              setState(1029);
+              _errHandler->sync(this);
+              switch (_input->LA(1)) {
+                case GPULangParser::CO: {
+                  setState(1024);
+                  match(GPULangParser::CO);
+                  setState(1025);
+                  antlrcpp::downCast<ExpressionContext *>(_localctx)->argn = expressionNoComma(0);
+                   if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append(antlrcpp::downCast<ExpressionContext *>(_localctx)->argn->tree); 
+                  break;
+                }
+
+                case GPULangParser::T__2: {
+                  setState(1028);
+                  linePreprocessorEntry();
+                  break;
+                }
+
+              default:
+                throw NoViableAltException(this);
+              }
+              setState(1033);
+              _errHandler->sync(this);
+              _la = _input->LA(1);
+            }
+          }
+          setState(1036);
+          match(GPULangParser::RP);
+
+                            CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(FixedArray<Expression*>(args)));
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
+          break;
+        }
+
+        case 18: {
+          _localctx = _tracker.createInstance<ExpressionContext>(parentContext, parentState);
+          _localctx->e1 = previousContext;
+          pushNewRecursionContext(_localctx, startState, RuleExpression);
+          setState(1038);
+
+          if (!(precpred(_ctx, 16))) throw FailedPredicateException(this, "precpred(_ctx, 16)");
+           antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree; 
+          setState(1040);
+          match(GPULangParser::LL);
+           location = SetupFile(); 
+          setState(1045);
+          _errHandler->sync(this);
+
+          _la = _input->LA(1);
+          if ((((_la & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
+            ((1ULL << (_la - 73)) & 7787) != 0)) {
+            setState(1042);
+            antlrcpp::downCast<ExpressionContext *>(_localctx)->e3 = expression(0);
+             arrayIndexExpr = antlrcpp::downCast<ExpressionContext *>(_localctx)->e3->tree; 
+          }
+          setState(1047);
+          match(GPULangParser::RR);
+
+                            ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>(_localctx->tree, arrayIndexExpr);
+                            expr->location = location;
+                            antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
+                        
           break;
         }
 
@@ -6673,9 +6663,9 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           break;
         } 
       }
-      setState(1050);
+      setState(1053);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 88, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 85, _ctx);
     }
   }
   catch (RecognitionException &e) {
@@ -6789,12 +6779,12 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
     exitRule();
   });
   try {
-    setState(1081);
+    setState(1084);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 89, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 86, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(1051);
+      setState(1054);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->initializerExpressionContext = initializerExpression();
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->initializerExpressionContext->tree; 
       break;
@@ -6802,7 +6792,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(1054);
+      setState(1057);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->arrayInitializerExpressionContext = arrayInitializerExpression();
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->arrayInitializerExpressionContext->tree; 
       break;
@@ -6810,11 +6800,11 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(1057);
+      setState(1060);
       match(GPULangParser::LP);
-      setState(1058);
+      setState(1061);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->expressionContext = expression(0);
-      setState(1059);
+      setState(1062);
       match(GPULangParser::RP);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->expressionContext->tree; 
       break;
@@ -6822,7 +6812,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 4: {
       enterOuterAlt(_localctx, 4);
-      setState(1062);
+      setState(1065);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken = match(GPULangParser::INTEGERLITERAL);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<IntExpression>(atoi((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->integerliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
@@ -6830,7 +6820,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 5: {
       enterOuterAlt(_localctx, 5);
-      setState(1064);
+      setState(1067);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken = match(GPULangParser::UINTEGERLITERAL);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<UIntExpression>(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->uintegerliteralToken->getText() : "").c_str(), nullptr, 10)); _localctx->tree->location = SetupFile(); 
       break;
@@ -6838,7 +6828,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 6: {
       enterOuterAlt(_localctx, 6);
-      setState(1066);
+      setState(1069);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken = match(GPULangParser::FLOATLITERAL);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<FloatExpression>(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->floatliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
@@ -6846,7 +6836,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 7: {
       enterOuterAlt(_localctx, 7);
-      setState(1068);
+      setState(1071);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken = match(GPULangParser::DOUBLELITERAL);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<FloatExpression>(atof((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->doubleliteralToken->getText() : "").c_str())); _localctx->tree->location = SetupFile(); 
       break;
@@ -6854,7 +6844,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 8: {
       enterOuterAlt(_localctx, 8);
-      setState(1070);
+      setState(1073);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken = match(GPULangParser::HEX);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<UIntExpression>(strtoul((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->hexToken->getText() : "").c_str(), nullptr, 16)); _localctx->tree->location = SetupFile(); 
       break;
@@ -6862,7 +6852,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 9: {
       enterOuterAlt(_localctx, 9);
-      setState(1072);
+      setState(1075);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->stringContext = string();
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<StringExpression>(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->stringContext->val); _localctx->tree->location = EndLocationRange(begin); 
       break;
@@ -6870,7 +6860,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 10: {
       enterOuterAlt(_localctx, 10);
-      setState(1075);
+      setState(1078);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken = match(GPULangParser::IDENTIFIER);
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<SymbolExpression>((antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken != nullptr ? antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->identifierToken->getText() : "")); _localctx->tree->location = SetupFile(); 
       break;
@@ -6878,7 +6868,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 11: {
       enterOuterAlt(_localctx, 11);
-      setState(1077);
+      setState(1080);
       antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->booleanContext = boolean();
        antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->tree =  Alloc<BoolExpression>(antlrcpp::downCast<BinaryexpatomContext *>(_localctx)->booleanContext->val); _localctx->tree->location = SetupFile(); 
       break;
@@ -6886,7 +6876,7 @@ GPULangParser::BinaryexpatomContext* GPULangParser::binaryexpatom() {
 
     case 12: {
       enterOuterAlt(_localctx, 12);
-      setState(1080);
+      setState(1083);
       linePreprocessorEntry();
       break;
     }
@@ -6992,28 +6982,28 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1083);
+    setState(1086);
     antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type = match(GPULangParser::IDENTIFIER);
      type = (antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type->getText() : ""); 
-    setState(1085);
+    setState(1088);
     match(GPULangParser::LB);
      location = SetupFile(); 
-    setState(1102);
+    setState(1105);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 73)) & 7787) != 0)) {
-      setState(1087);
+      setState(1090);
       antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->arg0 = expressionNoComma(0);
        if (antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->arg0->tree != nullptr) exprs.Append(antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->arg0->tree); 
-      setState(1090);
+      setState(1093);
       _errHandler->sync(this);
 
-      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 90, _ctx)) {
+      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 87, _ctx)) {
       case 1: {
-        setState(1089);
+        setState(1092);
         linePreprocessorEntry();
         break;
       }
@@ -7021,26 +7011,26 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
       default:
         break;
       }
-      setState(1099);
+      setState(1102);
       _errHandler->sync(this);
       _la = _input->LA(1);
       while (_la == GPULangParser::T__2
 
       || _la == GPULangParser::CO) {
-        setState(1097);
+        setState(1100);
         _errHandler->sync(this);
         switch (_input->LA(1)) {
           case GPULangParser::CO: {
-            setState(1092);
+            setState(1095);
             match(GPULangParser::CO);
-            setState(1093);
+            setState(1096);
             antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->argN = expressionNoComma(0);
              if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append(antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->argN->tree); 
             break;
           }
 
           case GPULangParser::T__2: {
-            setState(1096);
+            setState(1099);
             linePreprocessorEntry();
             break;
           }
@@ -7048,12 +7038,12 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
         default:
           throw NoViableAltException(this);
         }
-        setState(1101);
+        setState(1104);
         _errHandler->sync(this);
         _la = _input->LA(1);
       }
     }
-    setState(1104);
+    setState(1107);
     match(GPULangParser::RB);
 
             antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->tree =  Alloc<InitializerExpression>(exprs, type);
@@ -7152,25 +7142,25 @@ GPULangParser::ArrayInitializerExpressionContext* GPULangParser::arrayInitialize
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1107);
+    setState(1110);
     match(GPULangParser::LL);
      location = SetupFile(); 
-    setState(1124);
+    setState(1127);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 866135887136686094) != 0) || ((((_la - 73) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 73)) & 7787) != 0)) {
-      setState(1109);
+      setState(1112);
       antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->arg0 = expressionNoComma(0);
        if (antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->arg0->tree != nullptr) exprs.Append(antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->arg0->tree); 
-      setState(1112);
+      setState(1115);
       _errHandler->sync(this);
 
-      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 94, _ctx)) {
+      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 91, _ctx)) {
       case 1: {
-        setState(1111);
+        setState(1114);
         linePreprocessorEntry();
         break;
       }
@@ -7178,26 +7168,26 @@ GPULangParser::ArrayInitializerExpressionContext* GPULangParser::arrayInitialize
       default:
         break;
       }
-      setState(1121);
+      setState(1124);
       _errHandler->sync(this);
       _la = _input->LA(1);
       while (_la == GPULangParser::T__2
 
       || _la == GPULangParser::CO) {
-        setState(1119);
+        setState(1122);
         _errHandler->sync(this);
         switch (_input->LA(1)) {
           case GPULangParser::CO: {
-            setState(1114);
+            setState(1117);
             match(GPULangParser::CO);
-            setState(1115);
+            setState(1118);
             antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->argN = expressionNoComma(0);
              if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append(antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->argN->tree); 
             break;
           }
 
           case GPULangParser::T__2: {
-            setState(1118);
+            setState(1121);
             linePreprocessorEntry();
             break;
           }
@@ -7205,12 +7195,12 @@ GPULangParser::ArrayInitializerExpressionContext* GPULangParser::arrayInitialize
         default:
           throw NoViableAltException(this);
         }
-        setState(1123);
+        setState(1126);
         _errHandler->sync(this);
         _la = _input->LA(1);
       }
     }
-    setState(1126);
+    setState(1129);
     match(GPULangParser::RR);
 
             antlrcpp::downCast<ArrayInitializerExpressionContext *>(_localctx)->tree =  Alloc<ArrayInitializerExpression>(exprs);
@@ -7305,35 +7295,35 @@ GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralE
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1129);
+    setState(1132);
     match(GPULangParser::LESS);
      location = SetupFile(); 
 
-    setState(1131);
+    setState(1134);
     antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::FLOATLITERAL);
      values.push_back(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
-    setState(1135);
+    setState(1138);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == GPULangParser::T__2) {
-      setState(1134);
+      setState(1137);
       linePreprocessorEntry();
     }
-    setState(1140); 
+    setState(1143); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(1137);
+      setState(1140);
       match(GPULangParser::CO);
-      setState(1138);
+      setState(1141);
       antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::FLOATLITERAL);
        values.push_back(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
-      setState(1142); 
+      setState(1145); 
       _errHandler->sync(this);
       _la = _input->LA(1);
     } while (_la == GPULangParser::CO);
-    setState(1144);
+    setState(1147);
     match(GPULangParser::GREATER);
 
             antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->tree =  Alloc<FloatVecExpression>(values);
@@ -7428,35 +7418,35 @@ GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLitera
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1147);
+    setState(1150);
     match(GPULangParser::LESS);
      location = SetupFile(); 
 
-    setState(1149);
+    setState(1152);
     antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::DOUBLELITERAL);
      values.push_back(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
-    setState(1153);
+    setState(1156);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == GPULangParser::T__2) {
-      setState(1152);
+      setState(1155);
       linePreprocessorEntry();
     }
-    setState(1158); 
+    setState(1161); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(1155);
+      setState(1158);
       match(GPULangParser::CO);
-      setState(1156);
+      setState(1159);
       antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::DOUBLELITERAL);
        values.push_back(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
-      setState(1160); 
+      setState(1163); 
       _errHandler->sync(this);
       _la = _input->LA(1);
     } while (_la == GPULangParser::CO);
-    setState(1162);
+    setState(1165);
     match(GPULangParser::GREATER);
 
             antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->tree =  Alloc<FloatVecExpression>(values);
@@ -7551,35 +7541,35 @@ GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpre
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1165);
+    setState(1168);
     match(GPULangParser::LESS);
      location = SetupFile(); 
 
-    setState(1167);
+    setState(1170);
     antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::INTEGERLITERAL);
      values.push_back(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
-    setState(1171);
+    setState(1174);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == GPULangParser::T__2) {
-      setState(1170);
+      setState(1173);
       linePreprocessorEntry();
     }
-    setState(1176); 
+    setState(1179); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(1173);
+      setState(1176);
       match(GPULangParser::CO);
-      setState(1174);
+      setState(1177);
       antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::INTEGERLITERAL);
        values.push_back(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
-      setState(1178); 
+      setState(1181); 
       _errHandler->sync(this);
       _la = _input->LA(1);
     } while (_la == GPULangParser::CO);
-    setState(1180);
+    setState(1183);
     match(GPULangParser::GREATER);
 
             antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->tree =  Alloc<IntVecExpression>(values);
@@ -7674,35 +7664,35 @@ GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExp
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1183);
+    setState(1186);
     match(GPULangParser::LESS);
      location = SetupFile(); 
 
-    setState(1185);
+    setState(1188);
     antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::UINTEGERLITERAL);
      values.push_back(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
-    setState(1189);
+    setState(1192);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == GPULangParser::T__2) {
-      setState(1188);
+      setState(1191);
       linePreprocessorEntry();
     }
-    setState(1194); 
+    setState(1197); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(1191);
+      setState(1194);
       match(GPULangParser::CO);
-      setState(1192);
+      setState(1195);
       antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::UINTEGERLITERAL);
        values.push_back(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
-      setState(1196); 
+      setState(1199); 
       _errHandler->sync(this);
       _la = _input->LA(1);
     } while (_la == GPULangParser::CO);
-    setState(1198);
+    setState(1201);
     match(GPULangParser::GREATER);
 
             antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->tree =  Alloc<UIntVecExpression>(values);
@@ -7797,35 +7787,35 @@ GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLite
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(1201);
+    setState(1204);
     match(GPULangParser::LESS);
      location = SetupFile(); 
 
-    setState(1203);
+    setState(1206);
     antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0 = boolean();
      values.push_back(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->stop) : nullptr).c_str())); 
-    setState(1207);
+    setState(1210);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == GPULangParser::T__2) {
-      setState(1206);
+      setState(1209);
       linePreprocessorEntry();
     }
-    setState(1213); 
+    setState(1216); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(1209);
+      setState(1212);
       match(GPULangParser::CO);
-      setState(1210);
+      setState(1213);
       antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN = boolean();
        values.push_back(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->stop) : nullptr).c_str())); 
-      setState(1215); 
+      setState(1218); 
       _errHandler->sync(this);
       _la = _input->LA(1);
     } while (_la == GPULangParser::CO);
-    setState(1217);
+    setState(1220);
     match(GPULangParser::GREATER);
 
             antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->tree =  Alloc<BoolVecExpression>(values);
@@ -7876,19 +7866,24 @@ bool GPULangParser::expressionNoCommaSempred(ExpressionNoCommaContext *_localctx
 
 bool GPULangParser::expressionSempred(ExpressionContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
-    case 12: return precpred(_ctx, 13);
-    case 13: return precpred(_ctx, 12);
-    case 14: return precpred(_ctx, 11);
-    case 15: return precpred(_ctx, 10);
-    case 16: return precpred(_ctx, 9);
-    case 17: return precpred(_ctx, 8);
-    case 18: return precpred(_ctx, 7);
-    case 19: return precpred(_ctx, 6);
-    case 20: return precpred(_ctx, 5);
-    case 21: return precpred(_ctx, 4);
-    case 22: return precpred(_ctx, 2);
-    case 23: return precpred(_ctx, 15);
-    case 24: return precpred(_ctx, 3);
+    case 12: return precpred(_ctx, 18);
+    case 13: return precpred(_ctx, 17);
+    case 14: return precpred(_ctx, 14);
+    case 15: return precpred(_ctx, 13);
+    case 16: return precpred(_ctx, 12);
+    case 17: return precpred(_ctx, 11);
+    case 18: return precpred(_ctx, 10);
+    case 19: return precpred(_ctx, 9);
+    case 20: return precpred(_ctx, 8);
+    case 21: return precpred(_ctx, 7);
+    case 22: return precpred(_ctx, 6);
+    case 23: return precpred(_ctx, 5);
+    case 24: return precpred(_ctx, 4);
+    case 25: return precpred(_ctx, 3);
+    case 26: return precpred(_ctx, 2);
+    case 27: return precpred(_ctx, 20);
+    case 28: return precpred(_ctx, 19);
+    case 29: return precpred(_ctx, 16);
 
   default:
     break;
