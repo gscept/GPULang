@@ -42,10 +42,10 @@ BasicVertex(
     , out OutUV : f32x2
 ) void
 {
-    worldPos = object.model * Position;
-    clipPos = camera.viewProjection * worldPos;
+    const worldPos = object.model * Position;
+    const clipPos = camera.viewProjection * worldPos;
 
-    gplExportVertexCoordinates(clipPos);
+    vertexExportVertexCoordinates(clipPos);
     OutUV = UV;
 }
 
@@ -59,8 +59,8 @@ BasicPixel(
     in UV : f32x2
 ) void
 {
-    color = textureSample(Albedo, Sampler, UV);
-    gplExportColor(color, Framebuffer.Color);
+    const color = textureSample(Albedo, Sampler, UV);
+    pixelExportColor(color, Framebuffer.Color);
 }
 
 program TestProgram
