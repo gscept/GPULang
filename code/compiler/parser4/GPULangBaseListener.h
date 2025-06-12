@@ -46,6 +46,9 @@ public:
   virtual void enterTypeDeclaration(GPULangParser::TypeDeclarationContext * /*ctx*/) override { }
   virtual void exitTypeDeclaration(GPULangParser::TypeDeclarationContext * /*ctx*/) override { }
 
+  virtual void enterGenerate(GPULangParser::GenerateContext * /*ctx*/) override { }
+  virtual void exitGenerate(GPULangParser::GenerateContext * /*ctx*/) override { }
+
   virtual void enterVariables(GPULangParser::VariablesContext * /*ctx*/) override { }
   virtual void exitVariables(GPULangParser::VariablesContext * /*ctx*/) override { }
 
@@ -114,6 +117,9 @@ public:
 
   virtual void enterExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
   virtual void exitExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
+
+  virtual void enterExpressionList(GPULangParser::ExpressionListContext * /*ctx*/) override { }
+  virtual void exitExpressionList(GPULangParser::ExpressionListContext * /*ctx*/) override { }
 
   virtual void enterExpression(GPULangParser::ExpressionContext * /*ctx*/) override { }
   virtual void exitExpression(GPULangParser::ExpressionContext * /*ctx*/) override { }

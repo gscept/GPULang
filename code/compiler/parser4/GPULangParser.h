@@ -78,32 +78,32 @@ public:
     T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, T__19 = 20, 
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
-    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, SC = 38, 
-    CO = 39, COL = 40, LP = 41, RP = 42, LB = 43, RB = 44, LL = 45, RR = 46, 
-    DOT = 47, NOT = 48, EQ = 49, QO = 50, QU = 51, AND = 52, ANDSET = 53, 
-    OR = 54, ORSET = 55, XOR = 56, XORSET = 57, CONJUGATE = 58, Q = 59, 
-    NU = 60, FORWARDSLASH = 61, LESS = 62, LESSEQ = 63, GREATER = 64, GREATEREQ = 65, 
-    LOGICEQ = 66, NOTEQ = 67, LOGICAND = 68, LOGICOR = 69, MOD = 70, UNDERSC = 71, 
-    SOBAKA = 72, ADD_OP = 73, SUB_OP = 74, DIV_OP = 75, MUL_OP = 76, ARROW = 77, 
-    INTEGERLITERAL = 78, UINTEGERLITERAL = 79, COMMENT = 80, ML_COMMENT = 81, 
-    FLOATLITERAL = 82, DOUBLELITERAL = 83, HEX = 84, IDENTIFIER = 85, WS = 86
+    T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
+    SC = 39, CO = 40, COL = 41, LP = 42, RP = 43, LB = 44, RB = 45, LL = 46, 
+    RR = 47, DOT = 48, NOT = 49, EQ = 50, QO = 51, QU = 52, AND = 53, ANDSET = 54, 
+    OR = 55, ORSET = 56, XOR = 57, XORSET = 58, CONJUGATE = 59, Q = 60, 
+    NU = 61, FORWARDSLASH = 62, LESS = 63, LESSEQ = 64, GREATER = 65, GREATEREQ = 66, 
+    LOGICEQ = 67, NOTEQ = 68, LOGICAND = 69, LOGICOR = 70, MOD = 71, UNDERSC = 72, 
+    SOBAKA = 73, ADD_OP = 74, SUB_OP = 75, DIV_OP = 76, MUL_OP = 77, ARROW = 78, 
+    INTEGERLITERAL = 79, UINTEGERLITERAL = 80, COMMENT = 81, ML_COMMENT = 82, 
+    FLOATLITERAL = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, WS = 87
   };
 
   enum {
     RuleString = 0, RulePath = 1, RuleBoolean = 2, RuleEntry = 3, RuleEffect = 4, 
     RuleLinePreprocessorEntry = 5, RuleAlias = 6, RuleAnnotation = 7, RuleAttribute = 8, 
-    RuleTypeDeclaration = 9, RuleVariables = 10, RuleStructureDeclaration = 11, 
-    RuleStructure = 12, RuleEnumeration = 13, RuleParameter = 14, RuleFunctionDeclaration = 15, 
-    RuleFunction = 16, RuleProgram = 17, RuleSampler = 18, RuleState = 19, 
-    RuleStatement = 20, RuleExpressionStatement = 21, RuleIfStatement = 22, 
-    RuleForStatement = 23, RuleForRangeStatement = 24, RuleForUniformValueStatement = 25, 
-    RuleWhileStatement = 26, RuleScopeStatement = 27, RuleTerminateStatement = 28, 
-    RuleContinueStatement = 29, RuleSwitchStatement = 30, RuleBreakStatement = 31, 
-    RuleExpressionNoComma = 32, RuleExpression = 33, RuleBinaryexpatom = 34, 
-    RuleInitializerExpression = 35, RuleArrayInitializerExpression = 36, 
-    RuleFloatVecLiteralExpression = 37, RuleDoubleVecLiteralExpression = 38, 
-    RuleIntVecLiteralExpression = 39, RuleUintVecLiteralExpression = 40, 
-    RuleBooleanVecLiteralExpression = 41
+    RuleTypeDeclaration = 9, RuleGenerate = 10, RuleVariables = 11, RuleStructureDeclaration = 12, 
+    RuleStructure = 13, RuleEnumeration = 14, RuleParameter = 15, RuleFunctionDeclaration = 16, 
+    RuleFunction = 17, RuleProgram = 18, RuleSampler = 19, RuleState = 20, 
+    RuleStatement = 21, RuleExpressionStatement = 22, RuleIfStatement = 23, 
+    RuleForStatement = 24, RuleForRangeStatement = 25, RuleForUniformValueStatement = 26, 
+    RuleWhileStatement = 27, RuleScopeStatement = 28, RuleTerminateStatement = 29, 
+    RuleContinueStatement = 30, RuleSwitchStatement = 31, RuleBreakStatement = 32, 
+    RuleExpressionNoComma = 33, RuleExpressionList = 34, RuleExpression = 35, 
+    RuleBinaryexpatom = 36, RuleInitializerExpression = 37, RuleArrayInitializerExpression = 38, 
+    RuleFloatVecLiteralExpression = 39, RuleDoubleVecLiteralExpression = 40, 
+    RuleIntVecLiteralExpression = 41, RuleUintVecLiteralExpression = 42, 
+    RuleBooleanVecLiteralExpression = 43
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -176,6 +176,7 @@ public:
   class AnnotationContext;
   class AttributeContext;
   class TypeDeclarationContext;
+  class GenerateContext;
   class VariablesContext;
   class StructureDeclarationContext;
   class StructureContext;
@@ -199,6 +200,7 @@ public:
   class SwitchStatementContext;
   class BreakStatementContext;
   class ExpressionNoCommaContext;
+  class ExpressionListContext;
   class ExpressionContext;
   class BinaryexpatomContext;
   class InitializerExpressionContext;
@@ -278,6 +280,7 @@ public:
   class  EffectContext : public antlr4::ParserRuleContext {
   public:
     Effect* eff;
+    GPULangParser::GenerateContext *generateContext = nullptr;
     GPULangParser::AliasContext *aliasContext = nullptr;
     GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;
     GPULangParser::FunctionContext *functionContext = nullptr;
@@ -291,10 +294,12 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
     LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<AliasContext *> alias();
-    AliasContext* alias(size_t i);
+    std::vector<GenerateContext *> generate();
+    GenerateContext* generate(size_t i);
     std::vector<antlr4::tree::TerminalNode *> SC();
     antlr4::tree::TerminalNode* SC(size_t i);
+    std::vector<AliasContext *> alias();
+    AliasContext* alias(size_t i);
     std::vector<FunctionDeclarationContext *> functionDeclaration();
     FunctionDeclarationContext* functionDeclaration(size_t i);
     std::vector<FunctionContext *> function();
@@ -419,6 +424,24 @@ public:
   };
 
   TypeDeclarationContext* typeDeclaration();
+
+  class  GenerateContext : public antlr4::ParserRuleContext {
+  public:
+    Symbol* sym;
+    GPULangParser::StatementContext *statementContext = nullptr;
+    GenerateContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<StatementContext *> statement();
+    StatementContext* statement(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  GenerateContext* generate();
 
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
@@ -1004,6 +1027,25 @@ public:
 
   ExpressionNoCommaContext* expressionNoComma();
   ExpressionNoCommaContext* expressionNoComma(int precedence);
+  class  ExpressionListContext : public antlr4::ParserRuleContext {
+  public:
+    FixedArray<Expression*> expressions;
+    GPULangParser::ExpressionContext *e1 = nullptr;
+    GPULangParser::ExpressionContext *e2 = nullptr;
+    ExpressionListContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<ExpressionContext *> expression();
+    ExpressionContext* expression(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> CO();
+    antlr4::tree::TerminalNode* CO(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  ExpressionListContext* expressionList();
+
   class  ExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;

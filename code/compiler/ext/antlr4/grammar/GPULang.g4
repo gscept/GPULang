@@ -179,6 +179,7 @@ effect
     (
         linePreprocessorEntry
         //| preprocessor
+        | generate ';'              { $eff->symbols.Append($generate.sym); }
         | alias ';'                 { $eff->symbols.Append($alias.sym); }
         | functionDeclaration ';'   { $eff->symbols.Append($functionDeclaration.sym); }    
         | function                  { $eff->symbols.Append($function.sym); }    
@@ -240,7 +241,7 @@ annotation
     {
         $annot = nullptr;
     }:
-    ('@' (name = IDENTIFIER '(' value = expression ')' { $annot = Alloc<Annotation>(); $annot->name = $name.text; $annot->value = $value.tree; }))
+    ('@' { $annot = Alloc<Annotation>(); }  (name = IDENTIFIER { $annot->location = SetupFile(); } '(' value = expression ')' { $annot->name = $name.text; $annot->value = $value.tree; }))
     ;
     
 // metarule for attribute - compiler layer data to be passed to target language compiler
@@ -272,6 +273,16 @@ typeDeclaration
         | linePreprocessorEntry
     )* 
     typeName = IDENTIFIER { $type.type.name = $typeName.text; $type.location = EndLocationRange(typeRange); }
+    ;
+
+generate
+    returns[ Symbol* sym ]
+    @init
+    {
+        PinnedArray<Symbol*> symbols = 0xFFFFF;
+    }
+    :
+    'generate' '<' ( statement { symbols.Append($statement.tree); })* '>'
     ;
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
@@ -528,12 +539,11 @@ program
         StackArray<Annotation*> annotations(32);
     }:
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
-    'program' name = IDENTIFIER { $sym->location = SetupFile(); }
+    'program' { $sym = Alloc<Program>(); } name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         ( assignment = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assignment.tree); } ';' )*
     '}'
     { 
-        $sym = Alloc<Program>();
         $sym->name = $name.text;
         $sym->annotations = annotations;
         $sym->entries = entries;
@@ -959,6 +969,22 @@ expressionNoComma
     }
     |
     atom = binaryexpatom { $tree = $atom.tree; }
+    ;
+
+expressionList
+    returns [FixedArray<Expression*> expressions]
+    @init
+    {
+        StackArray<Expression*> list(256);
+    }
+    :
+    e1 = expression { list.Append($e1.tree); } (',' e2 = expression
+    {
+        list.Append($e2.tree);
+    })*
+    {
+        $expressions = std::move(FixedArray<Expression*>(list));
+    }
     ;
 
 expression

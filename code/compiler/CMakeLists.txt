@@ -44,6 +44,8 @@ fips_dir(ast)
         enumeration.h
         function.cc
         function.h
+	generate.cc
+	generate.h
         intrinsics.cc
         intrinsics.h
         preprocessor.cc

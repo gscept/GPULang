@@ -72,6 +72,7 @@ struct Symbol
         ScopeStatementType,
         SwitchStatementType,
         WhileStatementType,
+        GenerateType,
 
         NumSymbolTypes
     };

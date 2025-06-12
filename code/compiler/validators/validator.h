@@ -50,6 +50,8 @@ struct Validator
     bool ResolveVariable(Compiler* compiler, Symbol* symbol);
     /// Resolve statement
     bool ResolveStatement(Compiler* compiler, Symbol* symbol);
+    /// Resolve generate
+    bool ResolveGenerate(Compiler* compiler, Symbol* symbol);
 
     /// Validate function
     bool ValidateFunction(Compiler* compiler, Symbol* symbol);
@@ -83,8 +85,12 @@ struct Validator
     PinnedMap<uint32_t, uint32_t> resourceIndexCounter = 0xFFFF;
     PinnedMap<uint32_t, PinnedMap<uint32_t, Type::Category>> resourceTypePerGroupAndBinding = 0xFFFF;
     uint8_t defaultGroup;
-
-
+    
+    struct GenerationState
+    {
+        bool active;
+        bool branchActive;
+    } generationState;
     uint32_t inParameterIndexCounter;
     uint32_t outParameterIndexCounter;
 };

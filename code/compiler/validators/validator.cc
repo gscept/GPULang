@@ -11,6 +11,7 @@
 #include "ast/structure.h"
 #include "ast/enumeration.h"
 #include "ast/variable.h"
+#include "ast/generate.h"
 
 #include "ast/expressions/binaryexpression.h"
 #include "ast/expressions/commaexpression.h"
@@ -128,6 +129,8 @@ Validator::Validator()
     , defaultGroup(0)
 {
 
+    this->generationState.active = false;
+    this->generationState.branchActive = false;
     // add formats
     for (auto it : StringToFormats)
     {
@@ -190,6 +193,9 @@ Validator::Resolve(Compiler* compiler, Symbol* symbol)
         break;
     case Symbol::SymbolType::SamplerStateType:
         return this->ResolveSamplerState(compiler, symbol);
+        break;
+    case Symbol::SymbolType::GenerateType:
+        return this->ResolveGenerate(compiler, symbol);
         break;
     }
     return true;
@@ -2940,6 +2946,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
     {
         case Symbol::BreakStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks can't break control flow"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<BreakStatement*>(symbol);
             Symbol* forOwner = compiler->GetParentScopeOwner(Symbol::ForStatementType);
             Symbol* whileOwner = compiler->GetParentScopeOwner(Symbol::WhileStatementType);
@@ -2954,6 +2965,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ContinueStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks can't break control flow"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<ContinueStatement*>(symbol);
             Symbol* forOwner = compiler->GetParentScopeOwner(Symbol::ForStatementType);
             Symbol* whileOwner = compiler->GetParentScopeOwner(Symbol::WhileStatementType);
@@ -2972,6 +2988,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ForStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation don't support loops"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<ForStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
             for (const Attribute* attr : statement->attributes)
@@ -3062,8 +3083,24 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     return false;
             }
             
+            if (this->generationState.active)
+            {
+                ValueUnion val;
+                if (!statement->condition->EvalValue(val))
+                {
+                    compiler->Error(Format("Code generation blocks conditionals must resolve to a compile time value"), symbol);
+                    return false;
+                }
+                
+                int condition;
+                val.Store(condition);
+                this->generationState.branchActive = condition != 0;
+            }
+            
             if (!this->ResolveStatement(compiler, statement->ifStatement))
                 return false;
+            
+            this->generationState.branchActive = false;
 
             // If the if statement isn't a scope, it might mark the scope as unreachable, which has to reset when we leave the branch
             if (statement->ifStatement->symbolType != Symbol::ScopeStatementType)
@@ -3088,6 +3125,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::TerminateStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks don't support control flow"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<TerminateStatement*>(symbol);
             Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
             std::string terminationString = TerminateStatement::TerminationTypeToString(statement->type);
@@ -3131,6 +3173,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ScopeStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks don't support scopes"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<ScopeStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
             statementRes->scope.owningSymbol = compiler->GetScopeOwner();
@@ -3158,6 +3205,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::SwitchStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks don't support switches"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<SwitchStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
             statementRes->scope.owningSymbol = statement;
@@ -3211,6 +3263,11 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::WhileStatementType:
         {
+            if (this->generationState.active)
+            {
+                compiler->Error(Format("Code generation blocks don't loops"), symbol);
+                return false;
+            }
             auto statement = reinterpret_cast<WhileStatement*>(symbol);
             auto statementRes = Symbol::Resolved(statement);
 
@@ -3249,6 +3306,25 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
     }
     return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
+{
+    Generate* gen = static_cast<Generate*>(symbol);
+    Generate::__Resolved* genResolved = gen->thisResolved;
+    
+    this->generationState.active = true;
+    this->generationState.branchActive = true;
+    for (Symbol* sym : gen->symbols)
+    {
+        this->Resolve(compiler, sym);
+    }
+    this->generationState.active = false;
+    this->generationState.branchActive = false;
 }
 
 //------------------------------------------------------------------------------
