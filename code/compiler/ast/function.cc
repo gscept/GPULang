@@ -1110,30 +1110,39 @@ FLOAT_LIST
 
     __MAKE_BUILTIN(executionBarrier, ExecutionBarrier);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Synchronizes execution of all threads across all levels to this point, ensuring any previous instructions have finished.")
 
     __MAKE_BUILTIN(executionBarrierSubgroup, ExecutionBarrierSubgroup);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Synchronizes execution of all threads within a subgroup to this point, ensuring any previous instructions have finished.")
 
     __MAKE_BUILTIN(executionBarrierWorkgroup, ExecutionBarrierWorkgroup);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Synchronizes execution of all threads within a workgroup to this point, ensuring any previous instructions have finished.")
 
     __MAKE_BUILTIN(memoryBarrier, MemoryExecutionBarrier);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all memory writes across all levels finish before this barrier.")
 
     __MAKE_BUILTIN(memoryBarrierBuffer, MemoryExecutionBarrierBuffer);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all buffer writes across all levels finish before this barrier.")
 
     __MAKE_BUILTIN(memoryBarrierTexture, MemoryExecutionBarrierTexture);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all texture writes across all levels finish before this barrier.")
 
     __MAKE_BUILTIN(memoryBarrierAtomic, MemoryExecutionBarrierAtomic);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all atomic writes across all levels finish before this barrier.")
 
     __MAKE_BUILTIN(memoryBarrierSubgroup, MemoryExecutionBarrierSubgroup);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all memory writes within the subgroup finish before this barrier.")
     
     __MAKE_BUILTIN(memoryBarrierWorkgroup, MemoryExecutionBarrierWorkgroup);
     __SET_RET_LIT(void);
+    __DOCUMENT_INTRINSIC("Ensures all memory writes within the workgroup finish before this barrier.")
 
 
     //------------------------------------------------------------------------------

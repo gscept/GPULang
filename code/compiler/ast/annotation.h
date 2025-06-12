@@ -20,6 +20,7 @@ struct Annotation
 {
     FixedString name;
     Expression* value;
+    Symbol::Location location;
 
     Annotation()
         : value(nullptr)
