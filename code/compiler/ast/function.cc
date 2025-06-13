@@ -1272,7 +1272,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
 #define X(type, index)\
     __MAKE_TEXTURE_QUERY_INTRINSIC(GetSize, type, index)\
-    __SET_RET(dimensionality[index])
+    __SET_RET(dimensionality[index])\
+    __DOCUMENT_INTRINSIC("Retrieve the size of this texture.")
 
     TEXTURE_INTRINSIC_NO_MS_LIST
 #undef X
@@ -1280,7 +1281,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_QUERY_INTRINSIC(GetSizeMip, type, index)\
     __ADD_ARG_LIT(mip, f32);\
-    __SET_RET(dimensionality[index])
+    __SET_RET(dimensionality[index])\
+    __DOCUMENT_INTRINSIC("Retrieve the size of this texture for a specific mip.")
 
     TEXTURE_INTRINSIC_NO_MS_LIST
 #undef X
@@ -1296,14 +1298,16 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
 #define X(type, index)\
     __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(GetMips, type)\
-    __SET_RET_LIT(u32)
+    __SET_RET_LIT(u32)\
+    __DOCUMENT_INTRINSIC("Retrieve the number of mips for this texture.")
         
     TEXTURE_INTRINSIC_NO_MS_LIST
 #undef X
 
 #define X(type, index)\
     __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(GetSamples, type)\
-    __SET_RET_LIT(u32)
+    __SET_RET_LIT(u32)\
+    __DOCUMENT_INTRINSIC("Retrieve the number of multisampling samples for this texture.")
             
     TEXTURE_INTRINSIC_ONLY_MS_LIST
 #undef X
@@ -1311,7 +1315,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(Load, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Load texel at pixel index without filtering.")
 
     TEXTURE_INTRINSIC_ALL_LIST
 #undef X
@@ -1320,7 +1325,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_MUT(Load, Mip, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Load texel at pixel index for specific mip without filtering.")
 
     TEXTURE_INTRINSIC_ALL_LIST
 #undef X
@@ -1329,7 +1335,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(Store, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(value, f32x4);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Store texel at pixel index.")
 
     TEXTURE_INTRINSIC_ALL_LIST
 #undef X
@@ -1339,7 +1346,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);\
     __ADD_ARG_LIT(value, f32x4);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Store texel at pixel index for a specific mip.")
 
     TEXTURE_INTRINSIC_ALL_LIST
 #undef X
@@ -1348,7 +1356,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(Fetch, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Load texel at pixel index for specific mip without filtering.")
 
     TEXTURE_INTRINSIC_NO_CUBE_LIST
 #undef X
@@ -1358,7 +1367,8 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_ARG(coords, intCoordinates[index]);\
     __ADD_ARG_LIT(lod, i32);\
     __ADD_ARG_LIT(sample, i32);\
-    __SET_RET_LIT(f32x4)
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Load texel at pixel index for specific mip and sample without filtering.")
 
     TEXTURE_INTRINSIC_ONLY_MS_LIST
 #undef X
@@ -1366,8 +1376,9 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #define X(type, index)\
     __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(Gather, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
-    __ADD_ARG_LIT(lod, i32);\
-    __SET_RET_LIT(f32x4)
+    __ADD_ARG_LIT(channel, i32);\
+    __SET_RET_LIT(f32x4)\
+    __DOCUMENT_INTRINSIC("Load the 4 values corresponding to a texel quad at a given position and channel.")
 
     TEXTURE_INTRINSIC_GATHER_LIST
 #undef X
