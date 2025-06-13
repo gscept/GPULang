@@ -1012,8 +1012,12 @@ escape_newline:
                         }
                         output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
 
-                        fileStack.push_back({ inc });
-                        level = &fileStack.back();
+                        // Include guarded
+                        if (!inc->consumed)
+                        {
+                            fileStack.push_back({ inc });
+                            level = &fileStack.back();
+                        }
                     }
                     else
                     {
@@ -1341,6 +1345,28 @@ escape_newline:
                     }
                     else
                         ifStack.pop_back();
+                }
+                else if (strncmp(startOfDirective, "pragma", 6) == 0)
+                {
+                    auto pp = Alloc<Preprocessor>();
+                    pp->type = Preprocessor::Pragma;
+                    SETUP_PP2(pp, firstWord-1, endOfDirective);
+                    
+                    const char* startOfCommand = wordStart(endOfDirective, eol);
+                    const char* endOfCommand = wordEnd(startOfCommand, eol);
+                    std::string_view command(startOfCommand, endOfCommand);
+                    pp->contents = command;
+                    
+                    if (command == "once")
+                    {
+                        level->file->consumed = true;
+                    }
+                    else
+                    {
+                        diagnostics.Append(GPULang::Diagnostic{ .error = Format("Unknown #pragma '%s'", command.data()), .file = level->file->path, .line = level->lineCounter });
+                        ret = false;
+                        goto end;
+                    }
                 }
                 output.append("\n");
                 goto next_line;

@@ -452,6 +452,9 @@ CreateSemanticToken(DeltaLocation& prevLoc, const GPULang::Symbol* sym, ParseCon
             case GPULang::Preprocessor::Comment:
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Comment, 0x0, result);
                 break;
+            case GPULang::Preprocessor::Pragma:
+                InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);
+                break;
             case GPULang::Preprocessor::If:
             case GPULang::Preprocessor::Undefine:
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Keyword, 0x0, result);

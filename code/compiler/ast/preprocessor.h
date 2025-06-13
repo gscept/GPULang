@@ -27,7 +27,8 @@ struct Preprocessor : public Symbol
         Line,
         If,
         Else,
-        EndIf
+        EndIf,
+        Pragma
     } type;
 
     FixedArray<FixedString> args;

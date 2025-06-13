@@ -61,6 +61,7 @@ struct GPULangFile
     std::string path;
     char* contents = nullptr;
     size_t contentSize = 0;
+    bool consumed = false;
 
     GPULangFile() {};
 
