@@ -15,11 +15,11 @@ namespace GPULang
 struct ExpressionStatement : public Statement
 {
     /// constructor
-    ExpressionStatement(Expression* expr);
+    ExpressionStatement(FixedArray<Expression*> expressions);
     /// destructor
     virtual ~ExpressionStatement();
 
-    Expression* expr;
+    FixedArray<Expression*> expressions;
 };
 
 } // namespace GPULang

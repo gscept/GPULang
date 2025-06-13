@@ -113,9 +113,6 @@ public:
   virtual void enterBreakStatement(GPULangParser::BreakStatementContext *ctx) = 0;
   virtual void exitBreakStatement(GPULangParser::BreakStatementContext *ctx) = 0;
 
-  virtual void enterExpressionNoComma(GPULangParser::ExpressionNoCommaContext *ctx) = 0;
-  virtual void exitExpressionNoComma(GPULangParser::ExpressionNoCommaContext *ctx) = 0;
-
   virtual void enterExpressionList(GPULangParser::ExpressionListContext *ctx) = 0;
   virtual void exitExpressionList(GPULangParser::ExpressionListContext *ctx) = 0;
 

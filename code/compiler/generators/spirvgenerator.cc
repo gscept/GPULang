@@ -5529,11 +5529,11 @@ SPIRVGenerator::SetupIntrinsics()
             SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
             if (offsets)
             {
-                ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, loadedArg, args[1], ImageOperands::ConstOffsets, args[2]);
+                ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, loadedArg, args[2], ImageOperands::ConstOffsets, args[3]);
             }
             else
             {
-                ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, loadedArg, args[1], ImageOperands::None);
+                ret = g->writer->MappedInstruction(OpImageGather, SPVWriter::Section::LocalFunction, returnType, loadedArg, args[2], ImageOperands::None);
             }
             return SPIRVResult(ret, returnType, true);
         };
@@ -8461,7 +8461,8 @@ GenerateStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Stat
             ret = true;
             break;
         case Symbol::ExpressionStatementType:
-            GenerateExpressionSPIRV(compiler, generator, static_cast<ExpressionStatement*>(stat)->expr);
+            for (auto& expr : static_cast<ExpressionStatement*>(stat)->expressions)
+                GenerateExpressionSPIRV(compiler, generator, expr);
             break;
         case Symbol::ForStatementType:
             GenerateForStatementSPIRV(compiler, generator, static_cast<ForStatement*>(stat));

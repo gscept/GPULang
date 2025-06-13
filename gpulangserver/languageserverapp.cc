@@ -472,7 +472,7 @@ CreateSemanticToken(DeltaLocation& prevLoc, const GPULang::Symbol* sym, ParseCon
             case GPULang::Preprocessor::Call:
             {
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
-                uint32_t callLength = (pp->location.end - pp->location.start);
+                uint32_t callLength = uint32_t(pp->location.end - pp->location.start);
                 if (callLength < pp->contents.len)
                     prevLoc.carry += pp->contents.len - callLength; // Add the difference in length as a carry
                 break;
@@ -666,7 +666,8 @@ CreateSemanticToken(DeltaLocation& prevLoc, const GPULang::Symbol* sym, ParseCon
         case GPULang::Symbol::SymbolType::ExpressionStatementType:
         {
             const GPULang::ExpressionStatement* stat = static_cast<const GPULang::ExpressionStatement*>(sym);
-            CreateSemanticToken(prevLoc, stat->expr, file, result, scopes);
+            for (auto& expr : stat->expressions)
+                CreateSemanticToken(prevLoc, expr, file, result, scopes);
             break;
         }
         case GPULang::Symbol::SymbolType::ForStatementType:
@@ -938,7 +939,8 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         case GPULang::Symbol::SymbolType::ExpressionStatementType:
         {
             const GPULang::ExpressionStatement* stat = static_cast<const GPULang::ExpressionStatement*>(sym);
-            ret += CreateMarkdown(stat->expr, lookup);
+            for (auto& expr : stat->expressions)
+                ret += CreateMarkdown(expr, lookup);
             break;
         }
         case GPULang::Symbol::SymbolType::CallExpressionType:

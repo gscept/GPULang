@@ -9,8 +9,8 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-ExpressionStatement::ExpressionStatement(Expression* expr)
-    : expr(expr)
+ExpressionStatement::ExpressionStatement(FixedArray<Expression*> expressions)
+    : expressions(expressions)
 {
     this->symbolType = ExpressionStatementType;
     this->resolved = Alloc<ExpressionStatement::__Resolved>();
@@ -21,7 +21,8 @@ ExpressionStatement::ExpressionStatement(Expression* expr)
 */
 ExpressionStatement::~ExpressionStatement()
 {
-    this->expr->~Expression();
+    for (auto& expr : this->expressions)
+        expr->~Expression();    
 }
 
 } // namespace GPULang

@@ -99,11 +99,11 @@ public:
     RuleForStatement = 24, RuleForRangeStatement = 25, RuleForUniformValueStatement = 26, 
     RuleWhileStatement = 27, RuleScopeStatement = 28, RuleTerminateStatement = 29, 
     RuleContinueStatement = 30, RuleSwitchStatement = 31, RuleBreakStatement = 32, 
-    RuleExpressionNoComma = 33, RuleExpressionList = 34, RuleExpression = 35, 
-    RuleBinaryexpatom = 36, RuleInitializerExpression = 37, RuleArrayInitializerExpression = 38, 
-    RuleFloatVecLiteralExpression = 39, RuleDoubleVecLiteralExpression = 40, 
-    RuleIntVecLiteralExpression = 41, RuleUintVecLiteralExpression = 42, 
-    RuleBooleanVecLiteralExpression = 43
+    RuleExpressionList = 33, RuleExpression = 34, RuleBinaryexpatom = 35, 
+    RuleInitializerExpression = 36, RuleArrayInitializerExpression = 37, 
+    RuleFloatVecLiteralExpression = 38, RuleDoubleVecLiteralExpression = 39, 
+    RuleIntVecLiteralExpression = 40, RuleUintVecLiteralExpression = 41, 
+    RuleBooleanVecLiteralExpression = 42
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -199,7 +199,6 @@ public:
   class ContinueStatementContext;
   class SwitchStatementContext;
   class BreakStatementContext;
-  class ExpressionNoCommaContext;
   class ExpressionListContext;
   class ExpressionContext;
   class BinaryexpatomContext;
@@ -451,8 +450,8 @@ public:
     antlr4::Token *varName = nullptr;
     antlr4::Token *varNameN = nullptr;
     GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
-    GPULangParser::ExpressionNoCommaContext *valueExpr = nullptr;
-    GPULangParser::ExpressionNoCommaContext *valueExprN = nullptr;
+    GPULangParser::ExpressionContext *valueExpr = nullptr;
+    GPULangParser::ExpressionContext *valueExprN = nullptr;
     VariablesContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
@@ -468,8 +467,8 @@ public:
     antlr4::tree::TerminalNode *COL();
     TypeDeclarationContext *typeDeclaration();
     antlr4::tree::TerminalNode *EQ();
-    std::vector<ExpressionNoCommaContext *> expressionNoComma();
-    ExpressionNoCommaContext* expressionNoComma(size_t i);
+    std::vector<ExpressionContext *> expression();
+    ExpressionContext* expression(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -574,7 +573,7 @@ public:
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *varName = nullptr;
     GPULangParser::TypeDeclarationContext *typeDeclarationContext = nullptr;
-    GPULangParser::ExpressionNoCommaContext *valueExpr = nullptr;
+    GPULangParser::ExpressionContext *valueExpr = nullptr;
     ParameterContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *COL();
@@ -585,7 +584,7 @@ public:
     std::vector<AttributeContext *> attribute();
     AttributeContext* attribute(size_t i);
     antlr4::tree::TerminalNode *EQ();
-    ExpressionNoCommaContext *expressionNoComma();
+    ExpressionContext *expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -751,10 +750,10 @@ public:
   class  ExpressionStatementContext : public antlr4::ParserRuleContext {
   public:
     Statement* tree;
-    GPULangParser::ExpressionContext *expressionContext = nullptr;
+    GPULangParser::ExpressionListContext *expressionListContext = nullptr;
     ExpressionStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ExpressionContext *expression();
+    ExpressionListContext *expressionList();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -967,66 +966,6 @@ public:
 
   BreakStatementContext* breakStatement();
 
-  class  ExpressionNoCommaContext : public antlr4::ParserRuleContext {
-  public:
-    Expression* tree;
-    GPULangParser::ExpressionNoCommaContext *e1 = nullptr;
-    antlr4::Token *op = nullptr;
-    GPULangParser::ExpressionNoCommaContext *p = nullptr;
-    GPULangParser::BinaryexpatomContext *atom = nullptr;
-    GPULangParser::ExpressionNoCommaContext *e2 = nullptr;
-    GPULangParser::ExpressionNoCommaContext *ifBody = nullptr;
-    GPULangParser::ExpressionNoCommaContext *elseBody = nullptr;
-    GPULangParser::ExpressionNoCommaContext *arg0 = nullptr;
-    GPULangParser::ExpressionNoCommaContext *argn = nullptr;
-    GPULangParser::ExpressionNoCommaContext *e3 = nullptr;
-    ExpressionNoCommaContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<ExpressionNoCommaContext *> expressionNoComma();
-    ExpressionNoCommaContext* expressionNoComma(size_t i);
-    antlr4::tree::TerminalNode *SUB_OP();
-    antlr4::tree::TerminalNode *ADD_OP();
-    antlr4::tree::TerminalNode *NOT();
-    antlr4::tree::TerminalNode *CONJUGATE();
-    antlr4::tree::TerminalNode *MUL_OP();
-    BinaryexpatomContext *binaryexpatom();
-    antlr4::tree::TerminalNode *DOT();
-    antlr4::tree::TerminalNode *ARROW();
-    antlr4::tree::TerminalNode *DIV_OP();
-    antlr4::tree::TerminalNode *MOD();
-    antlr4::tree::TerminalNode *LESS();
-    antlr4::tree::TerminalNode *GREATER();
-    antlr4::tree::TerminalNode *LESSEQ();
-    antlr4::tree::TerminalNode *GREATEREQ();
-    antlr4::tree::TerminalNode *LOGICEQ();
-    antlr4::tree::TerminalNode *NOTEQ();
-    antlr4::tree::TerminalNode *AND();
-    antlr4::tree::TerminalNode *XOR();
-    antlr4::tree::TerminalNode *OR();
-    antlr4::tree::TerminalNode *LOGICAND();
-    antlr4::tree::TerminalNode *LOGICOR();
-    antlr4::tree::TerminalNode *QU();
-    antlr4::tree::TerminalNode *COL();
-    antlr4::tree::TerminalNode *ANDSET();
-    antlr4::tree::TerminalNode *XORSET();
-    antlr4::tree::TerminalNode *ORSET();
-    antlr4::tree::TerminalNode *EQ();
-    antlr4::tree::TerminalNode *LP();
-    antlr4::tree::TerminalNode *RP();
-    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
-    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> CO();
-    antlr4::tree::TerminalNode* CO(size_t i);
-    antlr4::tree::TerminalNode *LL();
-    antlr4::tree::TerminalNode *RR();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  ExpressionNoCommaContext* expressionNoComma();
-  ExpressionNoCommaContext* expressionNoComma(int precedence);
   class  ExpressionListContext : public antlr4::ParserRuleContext {
   public:
     FixedArray<Expression*> expressions;
@@ -1036,6 +975,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
     std::vector<antlr4::tree::TerminalNode *> CO();
     antlr4::tree::TerminalNode* CO(size_t i);
 
@@ -1056,8 +997,7 @@ public:
     GPULangParser::ExpressionContext *e2 = nullptr;
     GPULangParser::ExpressionContext *ifBody = nullptr;
     GPULangParser::ExpressionContext *elseBody = nullptr;
-    GPULangParser::ExpressionNoCommaContext *arg0 = nullptr;
-    GPULangParser::ExpressionNoCommaContext *argn = nullptr;
+    GPULangParser::ExpressionListContext *list = nullptr;
     GPULangParser::ExpressionContext *e3 = nullptr;
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -1090,14 +1030,9 @@ public:
     antlr4::tree::TerminalNode *XORSET();
     antlr4::tree::TerminalNode *ORSET();
     antlr4::tree::TerminalNode *EQ();
-    std::vector<antlr4::tree::TerminalNode *> CO();
-    antlr4::tree::TerminalNode* CO(size_t i);
     antlr4::tree::TerminalNode *LP();
     antlr4::tree::TerminalNode *RP();
-    std::vector<ExpressionNoCommaContext *> expressionNoComma();
-    ExpressionNoCommaContext* expressionNoComma(size_t i);
-    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
-    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
+    ExpressionListContext *expressionList();
     antlr4::tree::TerminalNode *LL();
     antlr4::tree::TerminalNode *RR();
 
@@ -1150,19 +1085,13 @@ public:
   public:
     Expression* tree;
     antlr4::Token *type = nullptr;
-    GPULangParser::ExpressionNoCommaContext *arg0 = nullptr;
-    GPULangParser::ExpressionNoCommaContext *argN = nullptr;
+    GPULangParser::ExpressionListContext *list = nullptr;
     InitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LB();
     antlr4::tree::TerminalNode *RB();
     antlr4::tree::TerminalNode *IDENTIFIER();
-    std::vector<ExpressionNoCommaContext *> expressionNoComma();
-    ExpressionNoCommaContext* expressionNoComma(size_t i);
-    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
-    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> CO();
-    antlr4::tree::TerminalNode* CO(size_t i);
+    ExpressionListContext *expressionList();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1174,18 +1103,12 @@ public:
   class  ArrayInitializerExpressionContext : public antlr4::ParserRuleContext {
   public:
     Expression* tree;
-    GPULangParser::ExpressionNoCommaContext *arg0 = nullptr;
-    GPULangParser::ExpressionNoCommaContext *argN = nullptr;
+    GPULangParser::ExpressionListContext *list = nullptr;
     ArrayInitializerExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LL();
     antlr4::tree::TerminalNode *RR();
-    std::vector<ExpressionNoCommaContext *> expressionNoComma();
-    ExpressionNoCommaContext* expressionNoComma(size_t i);
-    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
-    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> CO();
-    antlr4::tree::TerminalNode* CO(size_t i);
+    ExpressionListContext *expressionList();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -1307,7 +1230,6 @@ public:
 
   bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
 
-  bool expressionNoCommaSempred(ExpressionNoCommaContext *_localctx, size_t predicateIndex);
   bool expressionSempred(ExpressionContext *_localctx, size_t predicateIndex);
 
   // By default the static state used to implement the parser is lazily initialized during the first

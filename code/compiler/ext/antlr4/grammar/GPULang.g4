@@ -311,8 +311,8 @@ variables
        typeDeclaration { type = $typeDeclaration.type; }
     )?
     (
-        '=' valueExpr = expressionNoComma { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
-        (',' valueExprN = expressionNoComma { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExprN.tree; }; } | linePreprocessorEntry)*
+        '=' valueExpr = expression { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExpr.tree; }  } 
+        (',' valueExprN = expression { if (initCounter < names.size) { valueExpressions[initCounter++] = $valueExprN.tree; }; } | linePreprocessorEntry)*
     )?
     {
         for (size_t i = 0; i < names.size; i++)
@@ -476,7 +476,7 @@ parameter
     ':' 
     typeDeclaration { type = $typeDeclaration.type; }
     (
-        '=' valueExpr = expressionNoComma { valueExpression = $valueExpr.tree; } 
+        '=' valueExpr = expression { valueExpression = $valueExpr.tree; } 
     )?
     {
             $sym = Alloc<Variable>(); 
@@ -618,10 +618,10 @@ expressionStatement
     {
         $tree = nullptr;
     }: 
-    expression
+    expressionList
     {
-        $tree = Alloc<ExpressionStatement>($expression.tree);
-        $tree->location = $expression.tree->location;
+        $tree = Alloc<ExpressionStatement>($expressionList.expressions);
+        $tree->location = $expressionList.expressions[0]->location; 
     }
     ;
 
@@ -847,130 +847,6 @@ breakStatement
     }
     ;
 
-expressionNoComma
-    returns[ Expression* tree ]
-    @init 
-    {
-        $tree = nullptr;
-        Symbol::Location location;
-        StackArray<Expression*> args(256);
-    }: 
-    e1 = expressionNoComma { $tree = $e1.tree; }op = ('++' | '--') { location = SetupFile(); }
-    {
-        $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), false, $tree);
-        $tree->location = location;
-    }
-    |
-    e1 = expressionNoComma { $tree = $e1.tree; } 
-    '(' { location = SetupFile(); }
-        (
-            arg0 = expressionNoComma { args.Append($arg0.tree); } (linePreprocessorEntry)? (',' argn = expressionNoComma { if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append($argn.tree); } | linePreprocessorEntry)* 
-        )? 
-    ')'
-    {
-        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
-        expr->location = $e1.tree->location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '.' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
-        expr->location = $e1.tree->location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '->' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
-        expr->location = $e1.tree->location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '[' { location = SetupFile(); } ( e3 = expressionNoComma )? ']'
-    {
-        ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, $e3.tree);
-        expr->location = $e1.tree->location;
-        $tree = expr;
-    }
-    | <assoc=right> op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') p = expressionNoComma
-    {
-        $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), true, $p.tree);
-        $tree->location = SetupFile();
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } op = ('*' | '/' | '%') { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } op = ('+' | '-') { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } op = ('<<' | '>>') { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } op = ('<' | '>' | '<=' | '>=' ) { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } op = ('==' | '!=')  { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '&' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>('&', $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '^' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>('^', $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '|' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>('|', $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '&&' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>('&&', $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | e1 = expressionNoComma { $tree = $e1.tree; } '||' { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>('||', $tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | <assoc=right> e1 = expressionNoComma '?' { location = SetupFile(); } ifBody = expressionNoComma ':' elseBody = expressionNoComma
-    { 
-        TernaryExpression* expr = Alloc<TernaryExpression>($e1.tree, $ifBody.tree, $elseBody.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    | <assoc=right> e1 = expressionNoComma { $tree = $e1.tree; } op = ('+=' | '-=' | '*=' | '/=' | '%=' | '<<=' | '>>=' | '&=' | '^=' | '|=' | '=') { location = SetupFile(); } e2 = expressionNoComma
-    {
-        BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $e1.tree, $e2.tree);
-        expr->location = location;
-        $tree = expr;
-    }
-    |
-    atom = binaryexpatom { $tree = $atom.tree; }
-    ;
-
 expressionList
     returns [FixedArray<Expression*> expressions]
     @init
@@ -978,10 +854,14 @@ expressionList
         StackArray<Expression*> list(256);
     }
     :
-    e1 = expression { list.Append($e1.tree); } (',' e2 = expression
+    (linePreprocessorEntry)?
+    e1 = expression { list.Append($e1.tree); } (',' 
+    e2 = expression
     {
         list.Append($e2.tree);
-    })*
+    }
+    | linePreprocessorEntry
+    )*
     {
         $expressions = std::move(FixedArray<Expression*>(list));
     }
@@ -1005,11 +885,11 @@ expression
     e1 = expression { $tree = $e1.tree; } 
     '(' { location = SetupFile(); }
         (
-            arg0 = expressionNoComma { args.Append($arg0.tree); } (linePreprocessorEntry)? (',' argn = expressionNoComma { if (args.Full()) { throw IndexOutOfBoundsException("Maximum of 256 arguments reached"); } args.Append($argn.tree); } | linePreprocessorEntry)* 
+            list = expressionList
         )? 
     ')'
     {
-        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>(args)));
+        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>($list.expressions)));
         expr->location = $e1.tree->location;
         $tree = expr;
     }
@@ -1108,12 +988,6 @@ expression
         expr->location = $e1.tree->location;
         $tree = expr;
     }
-    | e1 = expression { $tree = $e1.tree; } ',' { location = SetupFile(); } e2 = expression
-    {
-        CommaExpression* expr = Alloc<CommaExpression>($tree, $e2.tree);
-        expr->location = $e1.tree->location;
-        $tree = expr;
-    }
     |
     atom = binaryexpatom { $tree = $atom.tree; }
     ;
@@ -1149,13 +1023,12 @@ initializerExpression
     @init
     {
         $tree = nullptr;
-        StackArray<Expression*> exprs(4096);
         std::string type = "";
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } ( arg0 = expressionNoComma { if ($arg0.tree != nullptr) exprs.Append($arg0.tree); } (linePreprocessorEntry)? (',' argN = expressionNoComma { if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append($argN.tree); } | linePreprocessorEntry)* )? '}'
+    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } (list = expressionList)? '}'
     {
-        $tree = Alloc<InitializerExpression>(exprs, type);
+        $tree = Alloc<InitializerExpression>($list.expressions, type);
         $tree->location = location;
     }
     ;
@@ -1165,12 +1038,11 @@ arrayInitializerExpression
     @init
     {
         $tree = nullptr;
-        StackArray<Expression*> exprs(4096);
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } ( arg0 = expressionNoComma { if ($arg0.tree != nullptr) exprs.Append($arg0.tree); } (linePreprocessorEntry)? (',' argN = expressionNoComma { if (exprs.Full()) { throw IndexOutOfBoundsException("Maximum of 4096 expressions reached"); } exprs.Append($argN.tree); } | linePreprocessorEntry)* )? ']'
+    '[' { location = SetupFile(); } (list = expressionList)? ']'
     {
-        $tree = Alloc<ArrayInitializerExpression>(exprs);
+        $tree = Alloc<ArrayInitializerExpression>($list.expressions);
         $tree->location = location;
     }
     ;

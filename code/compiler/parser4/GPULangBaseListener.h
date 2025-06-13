@@ -115,9 +115,6 @@ public:
   virtual void enterBreakStatement(GPULangParser::BreakStatementContext * /*ctx*/) override { }
   virtual void exitBreakStatement(GPULangParser::BreakStatementContext * /*ctx*/) override { }
 
-  virtual void enterExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
-  virtual void exitExpressionNoComma(GPULangParser::ExpressionNoCommaContext * /*ctx*/) override { }
-
   virtual void enterExpressionList(GPULangParser::ExpressionListContext * /*ctx*/) override { }
   virtual void exitExpressionList(GPULangParser::ExpressionListContext * /*ctx*/) override { }
 

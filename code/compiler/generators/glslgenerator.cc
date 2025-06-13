@@ -988,7 +988,9 @@ GenerateStatementGLSL(const Compiler* compiler, Statement* statement, std::strin
         case Symbol::ExpressionStatementType:
         {
             std::string expr;
-            GenerateExpressionGLSL(compiler, static_cast<ExpressionStatement*>(statement)->expr, expr);
+            for (auto& expr : static_cast<ExpressionStatement*>(statement)->expressions)
+                GenerateExpressionGLSL(compiler, expr, outCode);
+
             outCode.append(Format("%s%s;", indentation.c_str(), expr.c_str()));
             break;
         }

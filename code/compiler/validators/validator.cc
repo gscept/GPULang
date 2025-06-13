@@ -2984,7 +2984,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         case Symbol::ExpressionStatementType:
         {
             auto statement = reinterpret_cast<ExpressionStatement*>(symbol);
-            return statement->expr->Resolve(compiler);
+            for (auto& expr : statement->expressions)
+                expr->Resolve(compiler);
+            break;
         }
         case Symbol::ForStatementType:
         {
@@ -3890,7 +3892,8 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::ExpressionStatementType:
         {
             ExpressionStatement* exprStat = static_cast<ExpressionStatement*>(symbol);
-            res |= this->ResolveVisibility(compiler, exprStat->expr);
+            for (auto& expr : exprStat->expressions)
+                res |= this->ResolveVisibility(compiler, expr);
             break;
         }
         case Symbol::IfStatementType:
