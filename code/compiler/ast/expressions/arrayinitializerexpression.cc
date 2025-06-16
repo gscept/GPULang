@@ -66,12 +66,10 @@ ArrayInitializerExpression::Resolve(Compiler* compiler)
     thisResolved->type = compiler->GetType(inner);
     if (thisResolved->type == nullptr)
     {
-        compiler->UnrecognizedTypeError(inner.name, this);
+        compiler->UnrecognizedTypeError(TransientString(inner.name), this);
         return false;
     }
     
-    thisResolved->text = this->EvalString();
-
     // Append array level first
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.literal = isLiteral;
@@ -97,17 +95,16 @@ ArrayInitializerExpression::EvalType(Type::FullType& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 ArrayInitializerExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (Expression* expr : this->values)
     {
-        std::string str;
-        str = expr->EvalString();
-        ret.append(str);
+        TransientString str = expr->EvalString();
+        ret.Append(str);
         if (expr != this->values.back())
-            ret.append(", ");
+            ret.Append(", ");
     }
     return ret;
 }

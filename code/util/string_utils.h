@@ -37,6 +37,13 @@ struct ConstantString
     {
     }
 
+    template<std::size_t num>
+    constexpr ConstantString(const char buf[num])
+    {
+        this->buf = buf;
+        this->size = num;
+    }
+    
     constexpr ConstantString(const char* buf, size_t size)
     {
         this->buf = buf;
@@ -48,9 +55,26 @@ struct ConstantString
         this->buf = buf;
         this->size = const_len(buf);
     }
+    
+    bool operator<(const ConstantString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) < 0;
+    }
+    
+    bool operator==(const ConstantString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
+    }
+    
+    const char* c_str() const
+    {
+        return this->buf;
+    }
 };
 
-
+//------------------------------------------------------------------------------
+/**
+*/
 inline size_t
 NumChars(int arg)
 {
@@ -67,6 +91,9 @@ NumChars(int arg)
             10)))))))));
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
 inline size_t
 NumChars(unsigned int arg)
 {
@@ -82,6 +109,9 @@ NumChars(unsigned int arg)
             10)))))))));
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
 inline size_t
 NumChars(size_t arg)
 {
@@ -110,8 +140,8 @@ template<typename T>
 inline size_t
 FragmentSize(T arg)
 {
-    assert(false && "Should never enter");
-    //static_assert(false, "Should never enter");
+    //assert(false && "Should never enter");
+    static_assert(false, "Should never enter");
     return 0;
 }
 
@@ -168,6 +198,13 @@ FragmentSize<size_t>(size_t arg)
 
 template<>
 inline constexpr size_t
+FragmentSize<char*>(char* str)
+{
+    return const_len(str);
+}
+
+template<>
+inline constexpr size_t
 FragmentSize<const char*>(const char* str)
 {
     return const_len(str);
@@ -201,11 +238,11 @@ FragmentSize<ConstantString>(ConstantString str)
     return str.size;
 }
 
-
 template<typename T>
 inline void
 FragmentString(T arg, char* buf, size_t size)
 {
+    static_assert(false, "Should never enter");
     assert(false);
 }
 
@@ -220,6 +257,14 @@ inline void
 FragmentString<int>(int arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%d", arg);
+}
+
+template<>
+inline void
+FragmentString<bool>(bool arg, char* buf, size_t size)
+{
+    const char* value = arg ? "true" : "false";
+    memcpy(buf, value, arg ? 4 : 5);
 }
 
 template<>
@@ -266,6 +311,13 @@ FragmentString<const char*>(const char* arg, char* buf, size_t size)
 
 template<>
 inline void
+FragmentString<char*>(char* arg, char* buf, size_t size)
+{
+    memcpy(buf, arg, const_len(arg));
+}
+
+template<>
+inline void
 FragmentString<const std::string_view&>(const std::string_view& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.data(), arg.length());
@@ -299,6 +351,8 @@ FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
     memcpy(buf, arg.buf, arg.size);
 }
 
+
+struct FixedString;
 struct TransientString
 {
     char buf[2048];
@@ -327,6 +381,7 @@ struct TransientString
         memcpy(this->buf, buf, const_len(buf));
         this->buf[this->size] = '\0';
     }
+
 
     TransientString(const char* buf, std::size_t len)
         : size(0)
@@ -387,6 +442,11 @@ struct TransientString
     {
         return std::string_view(this->buf, this->size);
     }
+    
+    const char* c_str() const
+    {
+        return this->buf;
+    }
 
     // Format contents, replaces contents in string
     void Format(const char* format, ...)
@@ -442,6 +502,11 @@ struct TransientString
         this->buf[this->size] = '\0';
         DeallocStack(numArgs, subStringLengths);
     }
+    
+    bool operator==(const char* buf) const
+    {
+        return strcmp(this->buf, buf) == 0;
+    }
 
     template<typename T, typename U>
     void Append(T arg, U argN) {}
@@ -461,8 +526,8 @@ struct TransientString
     template<typename T>
     void Append(T arg)
     {
-        assert(false && "Should never enter");
-        //static_assert(false, "Should never enter");
+        //assert(false && "Should never enter");
+        static_assert(false, "Should never enter");
     }
 
     template<>
@@ -545,12 +610,48 @@ struct TransientString
 
     template<>
     void Append<GPULang::SPVArg>(GPULang::SPVArg arg);
+    
+    template<>
+    void Append(TransientString arg);
+    
+    template<>
+    void Append(const TransientString& arg);
+    
+    template<>
+    void Append(FixedString arg);
+    
+    template<>
+    void Append(const FixedString& arg);
 
     const char* Data() const
     {
         return buf;
     }
 };
+
+template<>
+void TransientString::Append(TransientString arg)
+{
+    memcpy(this->buf + this->size, arg.buf, arg.size);
+    this->size += arg.size;
+    this->buf[this->size] = '\0';
+}
+
+template<>
+void TransientString::Append(const TransientString& arg)
+{
+    memcpy(this->buf + this->size, arg.buf, arg.size);
+    this->size += arg.size;
+    this->buf[this->size] = '\0';
+}
+
+
+template<>
+inline size_t
+FragmentSize<bool>(bool b)
+{
+    return sizeof(bool);
+}
 
 template<>
 inline size_t
@@ -904,6 +1005,15 @@ struct FixedString
         memcpy(this->buf, str.data(), len - 1);
         this->buf[this->len] = '\0';
     }
+    
+    explicit FixedString(const TransientString& str)
+    {
+        size_t len = str.size + 1;
+        this->buf = AllocArray<char>(len);
+        this->len = len - 1;
+        memcpy(this->buf, str.buf, len - 1);
+        this->buf[this->len] = '\0';
+    }
 
     explicit FixedString(const std::string_view& str)
     {
@@ -918,6 +1028,12 @@ struct FixedString
     {
         this->buf = str.buf;
         this->len = str.len;
+    }
+    
+    explicit FixedString(const ConstantString& str)
+    {
+        this->buf = const_cast<char*>(str.buf);
+        this->len = str.size;
     }
 
     void operator=(const StaticString& rhs) noexcept
@@ -1002,6 +1118,12 @@ struct FixedString
             this->buf[this->len] = '\0';
         }
     }
+    
+    void operator=(const ConstantString& str)
+    {
+        this->len = str.size;
+        this->buf = const_cast<char*>(str.buf);
+    }
 
     FixedString(FixedString&& rhs) noexcept
     {
@@ -1043,6 +1165,42 @@ struct FixedString
     {
         return rhs.compare(0, this->len, this->buf) == 0;
     }
+    
+    bool StartsWith(const char* str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (strlen(str) == 0)
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str, strlen(str)) == 0;
+    }
+    
+    bool StartsWith(const std::string_view& str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (str.empty())
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str.data(), str.length()) == 0;
+    }
+    
+    bool StartsWith(const std::string& str) const
+    {
+        if (this->buf == nullptr)
+        {
+            if (str.empty())
+                return true;
+            else
+                return false;
+        }
+        return strncmp(this->buf, str.data(), str.length()) == 0;
+    }
 
     operator StaticString() const
     {
@@ -1053,14 +1211,91 @@ struct FixedString
     }
 
     const char* c_str() const { return this->buf; }
+    
+    std::string_view ToView() const { return std::string_view(this->buf, this->len); }
 
     char* buf;
     size_t len;
 };
 
+template<>
+inline size_t
+FragmentSize<FixedString>(FixedString str)
+{
+    return str.len;
+}
+
+template<>
+inline void
+FragmentString<FixedString>(FixedString arg, char* buf, size_t size)
+{
+    memcpy(buf, arg.buf, arg.len);
+}
+
+template<>
+void TransientString::Append(FixedString arg)
+{
+    memcpy(this->buf + this->size, arg.buf, arg.len);
+    this->size += arg.len;
+    this->buf[this->size] = '\0';
+}
+
+template<>
+void TransientString::Append(const FixedString& arg)
+{
+    memcpy(this->buf + this->size, arg.buf, arg.len);
+    this->size += arg.len;
+    this->buf[this->size] = '\0';
+}
 
 using TStr = TransientString;
 using GStr = GrowingString;
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline const TransientString
+FourCCToString(uint32_t fourCC)
+{
+    char buf[4];
+    char usedBytes = 0;
+    uint32_t masks[4] =
+    {
+        0x000000FF
+        , 0x0000FF00
+        , 0x00FF0000
+        , 0xFF000000
+    };
+    for (int i = 0, shift = 0; i < 4; i++)
+    {
+        char c = (char)((fourCC & masks[i]) >> shift);
+        if (c != 0x0)
+            usedBytes++;
+        buf[i] = c;
+        shift += 8;
+    }
+    std::reverse(&buf[0], &buf[usedBytes]);
+    return TransientString(buf);
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+inline uint32_t
+StringToFourCC(const std::string& str)
+{
+    uint32_t fourcc = 0;
+    uint32_t shift = 0;
+    auto it = str.crbegin();
+    while (it != str.crend())
+    {
+        fourcc |= uint32_t(*it) << shift;
+        shift += 8;
+        it++;
+    }
+    return fourcc;
+}
+
 
 } // namespace GPULang
 
@@ -1068,6 +1303,78 @@ inline bool
 operator<(const std::string_view& lhs, const GPULang::FixedString& rhs)
 {
     return strcmp(lhs.data(), rhs.buf) < 0;
+}
+
+inline bool
+operator<(const std::string_view& lhs, const GPULang::ConstantString& rhs)
+{
+    return strcmp(lhs.data(), rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::ConstantString& lhs, const std::string_view& rhs)
+{
+    return strcmp(lhs.buf, rhs.data()) < 0;
+}
+
+inline bool
+operator<(const GPULang::TransientString& lhs, const GPULang::FixedString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::FixedString& lhs, const GPULang::TransientString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::TransientString& lhs, const GPULang::StaticString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::StaticString& lhs, const GPULang::TransientString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::FixedString& lhs, const GPULang::StaticString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::StaticString& lhs, const GPULang::FixedString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::FixedString& lhs, const GPULang::ConstantString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::ConstantString& lhs, const GPULang::FixedString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::TransientString& lhs, const GPULang::ConstantString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
+}
+
+inline bool
+operator<(const GPULang::ConstantString& lhs, const GPULang::TransientString& rhs)
+{
+    return strcmp(lhs.buf, rhs.buf) < 0;
 }
 
 inline bool

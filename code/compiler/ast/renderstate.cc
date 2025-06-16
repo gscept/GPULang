@@ -73,7 +73,7 @@ RenderState::RenderState()
     typeResolved->backStencilState = defaultStencil;
 }
 
-const StaticMap<std::string, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
+const StaticMap<ConstantString, RenderState::__Resolved::RenderStateEntryType> stringToRenderStateEntryType =
 {
     { "DepthClampEnabled", RenderState::__Resolved::DepthClampEnabledType },
     { "NoPixels", RenderState::__Resolved::NoPixelsType },
@@ -124,11 +124,13 @@ const StaticMap<std::string, RenderState::__Resolved::RenderStateEntryType> stri
     { "BlendConstants", RenderState::__Resolved::BlendConstantsType }
 };
 
+static ConstantString NoRenderStateEntry = "";
+
 //------------------------------------------------------------------------------
 /**
 */
 const RenderState::__Resolved::RenderStateEntryType
-RenderState::__Resolved::StringToEntryType(const std::string& str)
+RenderState::__Resolved::StringToEntryType(const TransientString& str)
 {
     auto it = stringToRenderStateEntryType.Find(str);
     if (it != stringToRenderStateEntryType.end())
@@ -141,16 +143,15 @@ RenderState::__Resolved::StringToEntryType(const std::string& str)
 //------------------------------------------------------------------------------
 /**
 */
-const std::string&
+const ConstantString&
 RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
 {
-    static std::string def = "";
     for (auto& it : stringToRenderStateEntryType)
     {
         if (it.second == type)
             return it.first;
     }
-    return def;
+    return NoRenderStateEntry;
 }
 
 const StaticMap<std::string, PolygonMode> stringToPolygonMode =

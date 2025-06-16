@@ -43,20 +43,19 @@ CommaExpression::Resolve(Compiler* compiler)
         return false;
 
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
     this->left->EvalType(thisResolved->leftType);
     this->right->EvalType(thisResolved->rightType);
 
     thisResolved->lhsType = compiler->GetType(thisResolved->leftType);
     if (thisResolved->lhsType == nullptr)
     {
-        compiler->UnrecognizedTypeError(thisResolved->leftType.name, this);
+        compiler->UnrecognizedTypeError(TransientString(thisResolved->leftType.name), this);
         return false;
     }
     thisResolved->rhsType = compiler->GetType(thisResolved->rightType);
     if (thisResolved->rhsType == nullptr)
     {
-        compiler->UnrecognizedTypeError(thisResolved->rightType.name, this);
+        compiler->UnrecognizedTypeError(TransientString(thisResolved->rightType.name), this);
         return false;
     }
 
@@ -78,7 +77,7 @@ CommaExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-CommaExpression::EvalSymbol(std::string& out) const
+CommaExpression::EvalSymbol(FixedString& out) const
 {
     return this->right->EvalSymbol(out);
 }
@@ -86,13 +85,13 @@ CommaExpression::EvalSymbol(std::string& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 CommaExpression::EvalString() const
 {
-    std::string left, right;
+    TransientString left, right;
     left = this->left->EvalString();
     right = this->right->EvalString();
-    return Format("%s,%s", left.c_str(), right.c_str());
+    return TransientString(left, ",", right);
 }
 
 //------------------------------------------------------------------------------

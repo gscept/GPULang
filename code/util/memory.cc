@@ -202,6 +202,7 @@ vcommit(void* data, size_t size)
     assert(res != 0);
 #else
     int res = mprotect(data, size, PROT_READ | PROT_WRITE);
+    
     assert(res == 0);
 #endif
 }

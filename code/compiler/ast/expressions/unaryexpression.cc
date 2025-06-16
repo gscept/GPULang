@@ -41,7 +41,6 @@ UnaryExpression::Resolve(Compiler* compiler)
 
     this->expr->Resolve(compiler);
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
 
     Type::FullType type;
     this->expr->EvalType(type);
@@ -171,7 +170,7 @@ UnaryExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-UnaryExpression::EvalSymbol(std::string& out) const
+UnaryExpression::EvalSymbol(FixedString& out) const
 {
     if (this->op == '*')
     {
@@ -280,18 +279,18 @@ UnaryExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 UnaryExpression::EvalString() const
 {
-    std::string expString;
+    TransientString expString;
     expString = this->expr->EvalString();
     if (this->op != 0x0)
         if (this->isPrefix)
-            return Format("%s%s", FourCCToString(this->op).c_str(), expString.c_str());
+            return TransientString(FourCCToString(this->op), expString);
         else
-            return Format("%s%s", expString.c_str(), FourCCToString(this->op).c_str());
+            return TransientString(expString, FourCCToString(this->op));
     else
-        return Format("%s", expString.c_str());
+        return expString;
 }
 
 //------------------------------------------------------------------------------

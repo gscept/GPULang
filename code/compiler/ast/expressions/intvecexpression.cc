@@ -36,7 +36,6 @@ IntVecExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ Format("i32x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -55,7 +54,7 @@ IntVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-IntVecExpression::EvalSymbol(std::string& out) const
+IntVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -78,13 +77,13 @@ IntVecExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 IntVecExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (const bool val : this->values)
     {
-        ret += Format("%d ", val);
+        ret.Concatenate<false>(val, " ");
     }
     return ret;
 }

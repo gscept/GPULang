@@ -37,7 +37,6 @@ UIntExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ "u32" };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -56,7 +55,7 @@ UIntExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-UIntExpression::EvalSymbol(std::string& out) const
+UIntExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -77,10 +76,10 @@ UIntExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 UIntExpression::EvalString() const
 {
-    return Format("%d", this->value);
+    return TransientString(this->value);
 }
 
 //------------------------------------------------------------------------------

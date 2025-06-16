@@ -137,7 +137,7 @@ enum ImageFormat
 
 extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
-extern const std::unordered_map<StaticString, ImageFormat> StringToFormats;
+extern const StaticMap<ConstantString, ImageFormat> StringToFormats;
 
 extern std::vector<Symbol*> DefaultTypes;
 enum class TypeCode
@@ -194,7 +194,7 @@ struct Type : public Symbol
     virtual ~Type();
 
     /// convert type to string
-    static const StaticString& CodeToString(const TypeCode& code);
+    static const ConstantString& CodeToString(const TypeCode& code);
 
     enum Category
     {
@@ -392,7 +392,7 @@ struct Type : public Symbol
     };
 
     /// convert string to swizzle mask, returns true if possible swizzle mask
-    static bool StringToSwizzleMask(const std::string& str, SwizzleMask& out);
+    static bool StringToSwizzleMask(const FixedString& str, SwizzleMask& out);
     /// count set bits in swizzle mask
     static unsigned SwizzleMaskComponents(SwizzleMask mask);
     /// count highest value in swizzle mask
@@ -433,16 +433,31 @@ struct Type : public Symbol
             this->name = UNDEFINED_TYPE;
             this->literal = false;
         }
+        
         explicit FullType(const char* type)
             : name(type)
             , literal(false)
         {
         }
+        
         explicit FullType(const std::string& type)
             : name(type)
             , literal(false)
         {
         }
+        
+        explicit FullType(const FixedString& type)
+            : name(type)
+            , literal(false)
+        {
+        }
+        
+        explicit FullType(const TransientString& type)
+            : name(type)
+            , literal(false)
+        {
+        }
+        
         explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
@@ -450,6 +465,7 @@ struct Type : public Symbol
             , modifierValues(modifierValues)
         {
         }
+        
         explicit FullType(const std::string& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
@@ -457,14 +473,15 @@ struct Type : public Symbol
             , modifierValues(modifierValues)
         {
         }
-        std::string name;
-        std::string swizzleName;
+        
+        FixedString name;
+        FixedString swizzleName;
         Type::SwizzleMask swizzleMask;
         ImageFormat imageFormat = ImageFormat::Unknown;
 
-        const std::string& Name()
+        const FixedString& Name()
         {
-            return this->swizzleName.empty() ? this->name : this->swizzleName;
+            return this->swizzleName.len == 0 ? this->name : this->swizzleName;
         }
 
         void AddModifier(const Modifier& type, Expression* value = nullptr)
@@ -500,7 +517,7 @@ struct Type : public Symbol
                 this->sampled = true;
             else
             {
-                auto it = StringToFormats.find(identifier);
+                auto it = StringToFormats.Find(identifier);
                 if (it != StringToFormats.end())
                     this->imageFormat = it->second;
                 else
@@ -543,7 +560,7 @@ struct Type : public Symbol
         }
 
         /// Convert to string
-        std::string ToString(bool includeLiteral = false) const;
+        TransientString ToString(bool includeLiteral = false) const;
         /// Returns true if top most indirection qualifier is a pointer
         const bool IsPointer() const;
         /// Returns true if top most access qualifier is mutable
@@ -557,28 +574,29 @@ struct Type : public Symbol
     static FullType TypeFromCode(const TypeCode code, uint8_t columnSize = 0, uint8_t rowSize = 0)
     {
         FullType result;
+        TStr name;
         switch (code)
         {
             case TypeCode::UInt:
-                result.name = "u32";
+                name.Append("u32");
                 break;
             case TypeCode::Int:
-                result.name = "i32";
+                name.Append("i32");
                 break;
             case TypeCode::Float:
-                result.name = "f32";
+                name.Append("f32");
                 break;
             case TypeCode::Bool:
-                result.name = "b8";
+                name.Append("b8");
                 break;
         }
         if (columnSize > 1)
         {
-            result.name.append(Format("x%d", columnSize));
+            name.Concatenate<false>("x", columnSize);
             if (rowSize > 1)
-                result.name.append(Format("x%d", rowSize));
+                name.Concatenate<false>("x", rowSize);
         }
-        
+        result.name = name;
         return result;
     }
 
@@ -591,11 +609,17 @@ struct Type : public Symbol
     Scope scope;
 
     /// return member symbol
-    Symbol* GetSymbol(const std::string str);
+    Symbol* GetSymbol(const FixedString& str);
     /// return member symbol
-    template<typename T> T* GetSymbol(const std::string str);
+    template<typename T> T* GetSymbol(const FixedString& str);
     /// return member symbols matching string
-    std::vector<Symbol*> GetSymbols(const std::string str);
+    std::vector<Symbol*> GetSymbols(const FixedString& str);
+    /// return member symbol
+    Symbol* GetSymbol(const TransientString& str);
+    /// return member symbol
+    template<typename T> T* GetSymbol(const TransientString& str);
+    /// return member symbols matching string
+    std::vector<Symbol*> GetSymbols(const TransientString& str);
 
     /// setup all default shader types, like float, int, vec4, etc
     static void SetupDefaultTypes();
@@ -607,7 +631,21 @@ struct Type : public Symbol
 */
 template<typename T>
 inline T*
-Type::GetSymbol(const std::string str)
+Type::GetSymbol(const FixedString& str)
+{
+    auto it = this->scope.symbolLookup.Find(str);
+    if (it != this->scope.symbolLookup.end())
+        return static_cast<T*>(it->second);
+    else
+        return nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template<typename T>
+inline T*
+Type::GetSymbol(const TransientString& str)
 {
     auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())

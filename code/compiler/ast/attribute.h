@@ -55,57 +55,57 @@ struct Attribute
     }
 
     /// converts attribute to string
-    bool ToString(std::string& out) const;
+    bool ToString(TransientString& out) const;
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 inline bool
-Attribute::ToString(std::string& out) const
+Attribute::ToString(TransientString& out) const
 {
     bool ret = true;
     if (this->expression == nullptr)
-        out.append(Format("%s", this->name.c_str()));
+        out.Append(this->name);
     else
     {
         ValueUnion value;
         this->expression->EvalValue(value);
         switch (this->expression->symbolType)
         {
-        case Symbol::FloatExpressionType:
-        {
-            out.append(Format("%s(%f)", this->name.c_str(), value.f[0]));
-            break;
-        }
-        case Symbol::UIntExpressionType:
-        {
-            out.append(Format("%s(%d)", this->name.c_str(), value.ui[0]));
-            break;
-        }
-        case Symbol::IntExpressionType:
-        {
-            out.append(Format("%s(%d)", this->name.c_str(), value.i[0]));
-            break;
-        }
-        case Symbol::BoolExpressionType:
-        {
-            out.append(Format("%s(%d)", this->name.c_str(), value.b[0]));
-            break;
-        }
-        case Symbol::StringExpressionType:
-        {
-            std::string str = this->expression->EvalString();
-            out.append(Format("%s(%s)", this->name.c_str(), str.c_str()));
-            break;
-        }
-        case Symbol::SymbolExpressionType:
-        {
-            std::string str;
-            ret &= this->expression->EvalSymbol(str);
-            out.append(Format("%s(%s)", this->name.c_str(), str.c_str()));
-            break;
-        }
+            case Symbol::FloatExpressionType:
+            {
+                out.Concatenate<false>(this->name, "(", value.f[0], ")");
+                break;
+            }
+            case Symbol::UIntExpressionType:
+            {
+                out.Concatenate<false>(this->name, "(", value.ui[0], ")");
+                break;
+            }
+            case Symbol::IntExpressionType:
+            {
+                out.Concatenate<false>(this->name, "(", value.i[0], ")");
+                break;
+            }
+            case Symbol::BoolExpressionType:
+            {
+                out.Concatenate<false>(this->name, "(", value.b[0], ")");
+                break;
+            }
+            case Symbol::StringExpressionType:
+            {
+                const TransientString& str = this->expression->EvalString();
+                out.Concatenate<false>(this->name, "(", str, ")");
+                break;
+            }
+            case Symbol::SymbolExpressionType:
+            {
+                FixedString str;
+                ret &= this->expression->EvalSymbol(str);
+                out.Concatenate<false>(this->name, "(", ret, ")");
+                break;
+            }
         }
     }
     return ret;

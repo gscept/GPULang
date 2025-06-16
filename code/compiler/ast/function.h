@@ -67,7 +67,7 @@ struct Function : public Symbol
         };
 
         /// convert from string
-        static const WindingOrder WindingOrderFromString(const std::string& str)
+        static const WindingOrder WindingOrderFromString(const TransientString& str)
         {
             if (str == "cw" || str == "clockwise")
                 return Clockwise;
@@ -90,7 +90,7 @@ struct Function : public Symbol
         };
 
         /// convert from string
-        static const PrimitiveTopology PrimitiveTopologyFromString(const std::string& str)
+        static const PrimitiveTopology PrimitiveTopologyFromString(const TransientString& str)
         {
             if (str == "points")
                 return PrimitiveTopology::Points;
@@ -120,7 +120,7 @@ struct Function : public Symbol
         };
 
         /// convert from string
-        static const PatchType PatchTypeFromString(const std::string& str)
+        static const PatchType PatchTypeFromString(const TransientString& str)
         {
             if (str == "isolines")
                 return PatchType::IsolinePatch;
@@ -141,7 +141,7 @@ struct Function : public Symbol
             FloatOdd           
         };
                 /// convert from string
-        static const PartitionMethod PartitionMethodFromString(const std::string& str)
+        static const PartitionMethod PartitionMethodFromString(const TransientString& str)
         {
             if (str == "steps" || str == "integer")
                 return PartitionMethod::IntegerSteps;
@@ -162,7 +162,7 @@ struct Function : public Symbol
             Center      // pixel center
         };
 
-        static const PixelOrigin PixelOriginFromString(const std::string& str)
+        static const PixelOrigin PixelOriginFromString(const TransientString& str)
         {
             if (str == "lower_left" || str == "lower")
                 return PixelOrigin::Lower;

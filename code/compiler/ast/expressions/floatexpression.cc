@@ -38,7 +38,6 @@ FloatExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ "f32" };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -57,7 +56,7 @@ FloatExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-FloatExpression::EvalSymbol(std::string& out) const
+FloatExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -78,10 +77,10 @@ FloatExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 FloatExpression::EvalString() const
 {
-    return Format("%ff", this->value);
+    return TransientString(this->value);
 }
 
 //------------------------------------------------------------------------------

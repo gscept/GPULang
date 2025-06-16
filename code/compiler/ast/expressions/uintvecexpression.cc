@@ -38,7 +38,6 @@ UIntVecExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ Format("u32x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -57,7 +56,7 @@ UIntVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-UIntVecExpression::EvalSymbol(std::string& out) const
+UIntVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -80,13 +79,13 @@ UIntVecExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 UIntVecExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (const bool val : this->values)
     {
-        ret += Format("%d ", val);
+        ret.Concatenate<false>(val, " ");
     }
     return ret;
 }

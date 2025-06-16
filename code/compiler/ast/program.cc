@@ -29,7 +29,7 @@ Program::~Program()
         entry->~Expression();
 }
 
-const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =
+const StaticMap<ConstantString, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =
 {
     { "VertexShader", Program::__Resolved::VertexShader }
     , { "HullShader", Program::__Resolved::HullShader }
@@ -48,16 +48,17 @@ const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> pro
     , { "RayIntersectionShader", Program::__Resolved::RayIntersectionShader }
     , { "RayCallableShader", Program::__Resolved::RayCallableShader }
     , { "RenderState", Program::__Resolved::RenderState }
-
 };
+
+static ConstantString NoProgramEntry = "";
 
 //------------------------------------------------------------------------------
 /**
 */
 const Program::__Resolved::ProgramEntryType 
-Program::__Resolved::StringToEntryType(const std::string& str)
+Program::__Resolved::StringToEntryType(const TransientString& str)
 {
-    auto it = programEntryTypeLookup.find(str);
+    auto it = programEntryTypeLookup.Find(str);
     if (it != programEntryTypeLookup.end())
         return it->second;
     else
@@ -68,16 +69,15 @@ Program::__Resolved::StringToEntryType(const std::string& str)
 //------------------------------------------------------------------------------
 /**
 */
-const std::string&
+const ConstantString&
 Program::__Resolved::EntryTypeToString(const ProgramEntryType type)
 {
-    static std::string def = "";
     for (auto& it : programEntryTypeLookup)
     {
         if (it.second == type)
             return it.first;
     }
-    return def;
+    return NoProgramEntry;
 }
 
 } // namespace GPULang

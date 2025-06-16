@@ -128,7 +128,7 @@ struct ParseContext
         std::map<size_t, std::vector<const GPULang::Scope*>> scopesByLine;
         std::map<int, std::string_view> textByLine;
 
-        static const GPULang::Symbol* FindSymbol(const std::string& name, const std::vector<const GPULang::Scope*> scopes)
+        static const GPULang::Symbol* FindSymbol(const GPULang::FixedString& name, const std::vector<const GPULang::Scope*> scopes)
         {
             auto scopeIt = scopes.rbegin();
             while (scopeIt != scopes.rend())
@@ -159,7 +159,7 @@ struct ParseContext
                 bool startMatch = false;
                 while (symIt != (*scopeIt)->symbolLookup.end())
                 {
-                    if (symIt->first.starts_with(name))
+                    if (symIt->first.StartsWith(name))
                     {
                         ret.insert(symIt->second);
                         startMatch = true;
@@ -849,7 +849,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     else
                         ret += " ";
                 }
-                ret += res->type.ToString();
+                ret += res->type.ToString().c_str();
             
                 if (var->valueExpression != nullptr)
                 {
@@ -872,13 +872,13 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                     else
                         ret += " ";
                 }
-                ret += var->name + " : ";
-                ret += res->type.ToString();
+                ret += GPULang::Format("%s : ", var->name.c_str());
+                ret += res->type.ToString().c_str();
                 ret += sym->documentation + "\n";
             }
             else
             {
-                ret += res->type.ToString();
+                ret += res->type.ToString().c_str();
             }
             break;
         }
@@ -953,15 +953,15 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             if (res->function != nullptr)
             {
                 const GPULang::Function::__Resolved* funRes = GPULang::Symbol::Resolved(res->function);
-                ret += res->function->name + "(";
+                ret += GPULang::Format("%s(", res->function->name.c_str());
                 for (auto param : res->function->parameters)
                 {
                     const GPULang::Variable::__Resolved* paramRes = GPULang::Symbol::Resolved(param);
-                    ret += param->name + " : " + paramRes->type.ToString(true);
+                    ret += GPULang::Format("%s : %s", param->name.c_str(), paramRes->type.ToString(true).c_str());
                     if (param != res->function->parameters.back())
                         ret += ", ";
                 }
-                ret += ") " + res->function->returnType.ToString() + "\n\n";
+                ret += GPULang::Format(") %s\n\n", res->function->returnType.ToString().c_str());
                 ret += res->function->documentation + "\n";
             }
             break;
@@ -1013,7 +1013,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         case GPULang::Symbol::SymbolType::BoolExpressionType:
         {
             const GPULang::Expression* expr = static_cast<const GPULang::Expression*>(sym);
-            ret += expr->EvalString();
+            ret += expr->EvalString().c_str();
             break;
         }
         default:
@@ -1396,18 +1396,18 @@ main(int argc, const char** argv)
                                 {
                                     auto fun = static_cast<GPULang::Function*>(sym);
                                     auto res = GPULang::Symbol::Resolved(fun);
-                                    items.push_back(lsp::CompletionItem{ .label = res->name, .insertText = sym->name, .commitCharacters = {{"("}} });
+                                    items.push_back(lsp::CompletionItem{ .label = res->name, .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
                                     break;
                                 }
                                 case GPULang::Symbol::SymbolType::VariableType:
                                 {
                                     auto fun = static_cast<GPULang::Variable*>(sym);
                                     auto res = GPULang::Symbol::Resolved(fun);
-                                    items.push_back(lsp::CompletionItem{ .label = sym->name, .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name}, .commitCharacters = {{"."}} });
+                                    items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name.c_str()}, .commitCharacters = {{"."}} });
                                     break;
                                 }
                                 default:
-                                    items.push_back(lsp::CompletionItem{.label = sym->name});
+                                    items.push_back(lsp::CompletionItem{.label = sym->name.c_str()});
                                 }
                                 
                             }

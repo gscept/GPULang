@@ -24,11 +24,29 @@ struct HeaderWriter
             output.append("    ");
         output.append(Format("%s\n", in.c_str()));
     }
+    void Write(const char* buf, size_t len)
+    {
+        for (uint32_t i = 0; i < indentationLevel; i++)
+            output.append("    ");
+        output.append(buf, len);
+    }
+    void Write(const char* buf)
+    {
+        for (uint32_t i = 0; i < indentationLevel; i++)
+            output.append("    ");
+        output.append(buf);
+    }
     void Write(const std::string& in)
     {
         for (uint32_t i = 0; i < indentationLevel; i++)
             output.append("    ");
         output.append(in);
+    }
+    void Write(const TransientString& in)
+    {
+        for (uint32_t i = 0; i < indentationLevel; i++)
+            output.append("    ");
+        output.append(in.c_str());
     }
 
     void Indent()

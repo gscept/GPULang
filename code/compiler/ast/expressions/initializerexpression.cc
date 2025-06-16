@@ -43,7 +43,7 @@ InitializerExpression::Resolve(Compiler* compiler)
     Type* ty = compiler->GetSymbol<Type>(this->explicitType);
     if (ty == nullptr)
     {
-        compiler->UnrecognizedTypeError(this->explicitType, this);
+        compiler->UnrecognizedTypeError(TransientString(this->explicitType), this);
         return false;
     }
     thisResolved->type = ty;
@@ -68,7 +68,7 @@ InitializerExpression::Resolve(Compiler* compiler)
         if (!expr->Resolve(compiler))
             return false;
         
-        std::string name;
+        FixedString name;
         binExpr->left->EvalSymbol(name);
         if (name != ty->symbols[i]->name)
         {
@@ -78,8 +78,6 @@ InitializerExpression::Resolve(Compiler* compiler)
     }
     compiler->PopScope();
     
-    thisResolved->text = this->EvalString();
-
     // Append array level first
     thisResolved->fullType.name = inner.name;
     thisResolved->fullType.modifiers.insert(thisResolved->fullType.modifiers.end(), inner.modifiers.begin(), inner.modifiers.end());
@@ -102,17 +100,17 @@ InitializerExpression::EvalType(Type::FullType& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 InitializerExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (Expression* expr : this->values)
     {
-        std::string str;
+        TransientString str;
         str = expr->EvalString();
-        ret.append(str);
+        ret.Append(str);
         if (expr != this->values.back())
-            ret.append(", ");
+            ret.Append(", ");
     }
     return ret;
 }

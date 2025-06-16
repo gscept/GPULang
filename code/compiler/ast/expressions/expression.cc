@@ -134,7 +134,7 @@ Expression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-Expression::EvalSymbol(std::string& out) const
+Expression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -169,7 +169,7 @@ Expression::EvalStorage(Storage& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 Expression::EvalString() const
 {
     return "";

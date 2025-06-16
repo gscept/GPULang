@@ -311,7 +311,7 @@ struct Expression : public Symbol
     /// eval type
     virtual bool EvalType(Type::FullType& out) const;
     /// eval symbol
-    virtual bool EvalSymbol(std::string& out) const;
+    virtual bool EvalSymbol(FixedString& out) const;
     /// Evaluate value
     virtual bool EvalValue(ValueUnion& out) const;
     ///// evaluates expression as an integer
@@ -328,7 +328,7 @@ struct Expression : public Symbol
     virtual bool EvalStorage(Storage& out) const;
     
     /// evaluates expression as a string
-    virtual std::string EvalString() const;
+    virtual TransientString EvalString() const;
 
     bool isLhsValue;
 
@@ -343,7 +343,7 @@ struct Expression : public Symbol
             bool b;
         } value;
 
-        std::string text;
+        //std::string text;
     };
 }; 
 } // namespace GPULang

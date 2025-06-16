@@ -77,51 +77,6 @@ operator==(const std::string& lhs, const char* rhs)
 
 //------------------------------------------------------------------------------
 /**
-*/
-inline const std::string
-FourCCToString(uint32_t fourCC)
-{
-    char buf[4];
-    char usedBytes = 0;
-    uint32_t masks[4] =
-    {
-        0x000000FF
-        , 0x0000FF00
-        , 0x00FF0000
-        , 0xFF000000
-    };
-    for (int i = 0, shift = 0; i < 4; i++)
-    {
-        char c = (char)((fourCC & masks[i]) >> shift);
-        if (c != 0x0)
-            usedBytes++;
-        buf[i] = c;
-        shift += 8;
-    }
-    std::reverse(&buf[0], &buf[usedBytes]);
-    return std::string(buf, usedBytes);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-inline uint32_t
-StringToFourCC(const std::string& str)
-{
-    uint32_t fourcc = 0;
-    uint32_t shift = 0;
-    auto it = str.crbegin();
-    while (it != str.crend())
-    {
-        fourcc |= uint32_t(*it) << shift;
-        shift += 8;
-        it++;
-    }
-    return fourcc;
-}
-
-//------------------------------------------------------------------------------
-/**
 	Neat macro to make enums act as bit flags, be able to check if bits are set, and convert to integers
 */
 #define ENUM_OPERATORS(TYPE) \

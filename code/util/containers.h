@@ -295,19 +295,19 @@ struct PinnedArray
         if (this->size + numNeededMoreElements > this->capacity)
         {
             float numElementsPerPage = floor(SystemPageSize / (float)sizeof(TYPE));
-            size_t numCommitedPages = ceil(this->capacity / numElementsPerPage);
             size_t numNeededPages = ceil((this->size + numNeededMoreElements) / numElementsPerPage);
-            if (numNeededPages > numCommitedPages)
+            if (numNeededPages > this->committedPages)
             {
-                size_t numBytesToCommit = (numNeededPages - numCommitedPages) * SystemPageSize;
+                size_t numBytesToCommit = (numNeededPages - this->committedPages) * SystemPageSize;
                 if (numBytesToCommit > 0)
                 {
-                    vcommit(this->data + this->capacity, numBytesToCommit);
-                    size_t numNewObjects = numBytesToCommit / sizeof(TYPE);
+                    void* ptr = ((char*)this->data) + this->committedPages * SystemPageSize;
+                    vcommit(ptr, numBytesToCommit);
+                    size_t numNewObjects = floor(numBytesToCommit / (float)sizeof(TYPE));
                     if (std::is_trivially_default_constructible<TYPE>::value)
-                        std::memset(this->data + this->capacity, 0x0, numBytesToCommit);
+                        std::memset(ptr, 0x0, numBytesToCommit);
                     else
-                        new (this->data + this->capacity) TYPE[numNewObjects];
+                        new (ptr) TYPE[numNewObjects];
                     this->capacity += numNewObjects;
                     this->committedPages = numNeededPages;
                 }
@@ -363,11 +363,13 @@ struct PinnedArray
         }
     }
     
+    /// Reset size but don't change the allocation or capacity
     void Clear()
     {
         this->size = 0;
     }
     
+    /// Free internal resources and reset the array
     void Free()
     {
         if (this->alloc != nullptr)
@@ -376,6 +378,16 @@ struct PinnedArray
         this->data = nullptr;
         this->size = 0;
         this->capacity = 0;
+    }
+    
+    /// Invalidate the array, for example when an allocator has cleaned it up
+    void Invalidate()
+    {
+        this->alloc = nullptr;
+        this->data = nullptr;
+        this->size = 0;
+        this->capacity = 0;
+        this->committedPages = 0;
     }
     
     void Insert(const TYPE& element, size_t index)
@@ -1121,6 +1133,36 @@ struct PinnedMap
         return beginRange == endRange ? this->end() : beginRange;
     }
     
+    template<typename U>
+    item* Find(const U& key)
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const U& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const U& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    template<typename U>
+    const item* Find(const U& key) const
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const U& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const U& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
     const std::pair<const item*, const item*> FindRange(const K& key) const
     {
         assert(this->searchValid);
@@ -1134,9 +1176,28 @@ struct PinnedMap
         return it;
     }
     
+    template<typename U>
+    const std::pair<const item*, const item*> FindRange(const U& key) const
+    {
+        assert(this->searchValid);
+        struct Comp
+        {
+            bool operator()(const U& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const U& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        
+        return it;
+    }
+    
     void Clear()
     {
         this->data.Clear();
+    }
+    
+    void Invalidate()
+    {
+        this->data.Invalidate();
     }
     
     item* begin()
@@ -1178,13 +1239,28 @@ struct StaticMap
     {
         this->data = StaticAllocArray<item>(items.size());
         this->size = 0;
-        for (auto& item : items)
+        for (auto& it : items)
         {
-            this->data[this->size++] = std::make_pair(item.first, item.second);
+            new (this->data + this->size++) item(it.first, it.second);
         }
         
         std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
-                  {
+        {
+            return lhs.first < rhs.first;
+        });
+    }
+    
+    StaticMap(std::initializer_list<item>&& items)
+    {
+        this->data = StaticAllocArray<item>(items.size());
+        this->size = 0;
+        for (auto& it : items)
+        {
+            new (this->data + this->size++) item(it.first, it.second);
+        }
+        
+        std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
+        {
             return lhs.first < rhs.first;
         });
     }
@@ -1259,7 +1335,7 @@ struct StaticSet
         }
         
         std::sort(this->data, this->data + this->size, [](const K& lhs, const K& rhs)
-                  {
+        {
             return lhs < rhs;
         });
         
@@ -1286,6 +1362,20 @@ struct StaticSet
         struct Comp
         {
             bool operator()(const K& key, const K& item) { return key < item; }
+        };
+        auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    template<typename U>
+    const K* Find(const U& key) const
+    {
+        struct Comp
+        {
+            bool operator()(const U& key, const K& item) { return key < item; }
+            bool operator()(const K& item, const U& key) { return item < key; }
         };
         auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
         

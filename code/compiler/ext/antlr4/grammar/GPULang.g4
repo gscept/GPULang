@@ -863,7 +863,7 @@ expressionList
     | linePreprocessorEntry
     )*
     {
-        $expressions = std::move(FixedArray<Expression*>(list));
+        $expressions = std::move(list);
     }
     ;
 
@@ -873,7 +873,7 @@ expression
     {
         $tree = nullptr;
         Symbol::Location location;
-        StackArray<Expression*> args(256);
+        FixedArray<Expression*> args;
     }: 
     
     e1 = expression { $tree = $e1.tree; } op = ('++' | '--') { location = SetupFile(); }
@@ -886,10 +886,11 @@ expression
     '(' { location = SetupFile(); }
         (
             list = expressionList
+            { args = std::move($list.expressions); }
         )? 
     ')'
-    {
-        CallExpression* expr = Alloc<CallExpression>($tree, std::move(FixedArray<Expression*>($list.expressions)));
+    {         
+        CallExpression* expr = Alloc<CallExpression>($tree, std::move(args));
         expr->location = $e1.tree->location;
         $tree = expr;
     }
@@ -1008,7 +1009,7 @@ binaryexpatom
     | DOUBLELITERAL                 { $tree = Alloc<FloatExpression>(atof($DOUBLELITERAL.text.c_str())); $tree->location = SetupFile(); }
     | HEX                           { $tree = Alloc<UIntExpression>(strtoul($HEX.text.c_str(), nullptr, 16)); $tree->location = SetupFile(); }
     | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = EndLocationRange(begin); }
-    | IDENTIFIER                    { $tree = Alloc<SymbolExpression>($IDENTIFIER.text); $tree->location = SetupFile(); }
+    | IDENTIFIER                    { $tree = Alloc<SymbolExpression>(FixedString($IDENTIFIER.text)); $tree->location = SetupFile(); }
     | boolean                       { $tree = Alloc<BoolExpression>($boolean.val); $tree->location = SetupFile(); }
     //| floatVecLiteralExpression     { $tree = $floatVecLiteralExpression.tree; }
     //| doubleVecLiteralExpression    { $tree = $doubleVecLiteralExpression.tree; }

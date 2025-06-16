@@ -24,6 +24,7 @@
 #include "ast/statements/whilestatement.h"
 
 #include "compiler.h"
+#include "containers.h"
 #include <algorithm>
 
 #include "glslang/Include/ResourceLimits.h"
@@ -278,7 +279,11 @@ GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const 
 
             // run writer function
             if (writerFunc)
-                writerFunc(program->name + "_" + this->mainFunction->name, std::string(sources[0]) + std::string(sources[1]));
+            {
+                auto str = TransientString(program->name, "_", this->mainFunction->name);
+                auto src = TransientString(sources[0], sources[1]);
+                writerFunc(str.c_str(), src.c_str());
+            }
 
             // add shaders to list
             shaders.push_back(shaderObject);
@@ -350,37 +355,37 @@ struct TypeDimensions
     unsigned int x, y;
 };
 
-std::map<std::string, TypeDimensions> typeToDimensions =
+StaticMap<ConstantString, TypeDimensions> typeToDimensions =
 {
-    { "f32",      { 1, 1 } },
-    { "f32x2",     { 2, 1 } },
-    { "f32x3",     { 3, 1 } },
-    { "f32x4",     { 4, 1 } },
-    { "i32",        { 1, 1 } },
-    { "i32x2",       { 2, 1 } },
-    { "i32x3",       { 3, 1 } },
-    { "i32x4",       { 4, 1 } },
-    { "u32",       { 1, 1 } },
-    { "u32x2",      { 2, 1 } },
-    { "u32x3",      { 3, 1 } },
-    { "u32x4",      { 4, 1 } },
-    { "b8",       { 1, 1 } },
-    { "b8x2",      { 2, 1 } },
-    { "b8x3",      { 3, 1 } },
-    { "b8x4",      { 4, 1 } },
-    { "f32x2x2",   { 2, 2 } },
-    { "f32x2x3",   { 2, 3 } },
-    { "f32x2x4",   { 2, 4 } },
-    { "f32x3x2",   { 3, 2 } },
-    { "f32x3x3",   { 3, 3 } },
-    { "f32x3x4",   { 3, 4 } },
-    { "f32x4x2",   { 4, 2 } },
-    { "f32x4x3",   { 4, 3 } },
-    { "f32x4x4",   { 4, 4 } }
+    { "f32",      TypeDimensions{ 1, 1 } },
+    { "f32x2",     TypeDimensions{ 2, 1 } },
+    { "f32x3",     TypeDimensions{ 3, 1 } },
+    { "f32x4",     TypeDimensions{ 4, 1 } },
+    { "i32",        TypeDimensions{ 1, 1 } },
+    { "i32x2",      TypeDimensions{ 2, 1 } },
+    { "i32x3",      TypeDimensions{ 3, 1 } },
+    { "i32x4",      TypeDimensions{ 4, 1 } },
+    { "u32",       TypeDimensions{ 1, 1 } },
+    { "u32x2",      TypeDimensions{ 2, 1 } },
+    { "u32x3",      TypeDimensions{ 3, 1 } },
+    { "u32x4",      TypeDimensions{ 4, 1 } },
+    { "b8",       TypeDimensions{ 1, 1 } },
+    { "b8x2",      TypeDimensions{ 2, 1 } },
+    { "b8x3",      TypeDimensions{ 3, 1 } },
+    { "b8x4",      TypeDimensions{ 4, 1 } },
+    { "f32x2x2",   TypeDimensions{ 2, 2 } },
+    { "f32x2x3",   TypeDimensions{ 2, 3 } },
+    { "f32x2x4",   TypeDimensions{ 2, 4 } },
+    { "f32x3x2",   TypeDimensions{ 3, 2 } },
+    { "f32x3x3",   TypeDimensions{ 3, 3 } },
+    { "f32x3x4",   TypeDimensions{ 3, 4 } },
+    { "f32x4x2",   TypeDimensions{ 4, 2 } },
+    { "f32x4x3",   TypeDimensions{ 4, 3 } },
+    { "f32x4x4",   TypeDimensions{ 4, 4 } }
 };
 
 // type being the underlying base type (float2x2 -> float)
-std::map<std::string, unsigned int> typeToByteSize =
+StaticMap<ConstantString, unsigned int> typeToByteSize =
 {
     { "f32",      4 },
     { "f32x2",     4 },
@@ -426,8 +431,8 @@ void
 CalculateLayout(const Compiler* compiler, Variable* var, uint32_t arraySize, const bool std140, uint32_t& size, uint32_t& alignment, uint32_t& arrayElementPadding)
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
-    TypeDimensions dimensions = typeToDimensions[var->type.name];
-    uint32_t byteSize = typeToByteSize[var->type.name];
+    TypeDimensions dimensions = typeToDimensions.Find(var->type.name)->second;
+    uint32_t byteSize = typeToByteSize.Find(var->type.name)->second;
     const uint32_t vec4alignment = 16;
     arrayElementPadding = 0;
 
@@ -515,7 +520,7 @@ CalculateLayout(const Compiler* compiler, Variable* var, uint32_t arraySize, con
     }
 }
 
-std::map<std::string, std::string> typeToGlslType =
+StaticMap<ConstantString, ConstantString> typeToGlslType =
 {
     { "readWriteTexture1D", "image1D" },
     { "readWriteTexture2D", "image2D" },
@@ -627,9 +632,9 @@ void
 GenerateCallExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode)
 {
     CallExpression* callExpression = static_cast<CallExpression*>(expr);
-    std::string fun;
+    FixedString fun;
     callExpression->EvalSymbol(fun);
-    auto it = typeToGlslType.find(fun);
+    auto it = typeToGlslType.Find(fun);
     if (it != typeToGlslType.end())
     {
         fun = it->second;
@@ -726,7 +731,7 @@ GenerateExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& 
             GenerateCommaExpressionGLSL(compiler, expr, outCode);
             break;
         default:
-            outCode.append(expr->EvalString());
+            outCode.append(expr->EvalString().c_str());
             break;
     }
 }
@@ -753,13 +758,13 @@ GenerateVariableGLSL(const Compiler* compiler, Variable* var, std::string& outCo
 {
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
     std::string indentation = GenerateIndentation();
-    std::string type = "";
+    FixedString type = "";
     if (outputType)
     {
         if (varResolved->typeSymbol->symbolType == Symbol::StructureType)
             type = varResolved->type.name;
         else
-            type = typeToGlslType[varResolved->type.name];
+            type = typeToGlslType.Find(varResolved->type.name)->second;
     }
 
     std::string arrays = "";
@@ -1036,7 +1041,7 @@ GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const Program* pr
     // convert typename to glsl
     Type::FullType returnType = fun->returnType;
     if (funResolved->returnTypeSymbol->symbolType != Symbol::StructureType)
-        returnType.name = typeToGlslType[returnType.name];
+        returnType.name = typeToGlslType.Find(returnType.name)->second;
 
     std::string body;
     if (funResolved->isPrototype)
@@ -1075,7 +1080,7 @@ GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const Program* pr
             arguments.append(";\n");
         }
     }
-    std::string name = isMain ? "main" : fun->name;
+    TransientString name = isMain ? "main" : fun->name;
 
     
     if (isMain)
@@ -1219,7 +1224,7 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* pr
     Type::FullType type = varResolved->type;
     if (varResolved->typeSymbol->symbolType != Symbol::StructureType)
     {
-        auto it = typeToGlslType.find(type.name);
+        auto it = typeToGlslType.Find(type.name);
         if (it == typeToGlslType.end())
         {
             this->Error(Format("INTERNAL ERROR, built-in type '%s' has no GLSL mapping", type.name.c_str()));
@@ -1227,7 +1232,7 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* pr
         type.name = it->second.c_str();
     }
 
-    std::string name = varResolved->name;
+    const FixedString& name = varResolved->name;
     std::string arraySize = "";
     for (int i = varResolved->type.modifierValues.size()-1; i >= 0; i--)
     {

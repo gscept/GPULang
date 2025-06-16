@@ -40,7 +40,6 @@ bool
 ArrayIndexExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->left->isLhsValue = true;
 
@@ -65,7 +64,8 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     if (thisResolved->returnFullType.modifiers.empty())
     {
         Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnFullType.name));
-        auto it = type->scope.symbolLookup.Find(Format("operator[](%s)", thisResolved->rightFullType.name.c_str()));
+        TStr lookup = TStr("operator[](", thisResolved->rightFullType.name.c_str(), ")");
+        auto it = type->scope.symbolLookup.Find(lookup);
         if (it == type->scope.symbolLookup.end())
         {
             compiler->Error(Format("'%s' does not implement the [] operator", thisResolved->leftFullType.ToString().c_str()), this);
@@ -156,7 +156,7 @@ ArrayIndexExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-ArrayIndexExpression::EvalSymbol(std::string& out) const
+ArrayIndexExpression::EvalSymbol(FixedString& out) const
 {
     return this->left->EvalSymbol(out);
 }
@@ -173,17 +173,17 @@ ArrayIndexExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 ArrayIndexExpression::EvalString() const
 {
-    std::string left, right;
+    TransientString left, right;
     left = this->left->EvalString();
     right = this->right->EvalString();
 
     if (this->right != nullptr)
-        return Format("%s[%s]", left.c_str(), right.c_str());
+        return TransientString(left, "[", right, "]");
     else
-        return Format("%s[]", left.c_str());
+        return TransientString(left, "[]");
 }
 
 //------------------------------------------------------------------------------

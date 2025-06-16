@@ -17,8 +17,8 @@ struct Alias : public Expression
     /// constructor
     Alias();
 
-    std::string name;
-    std::string type;
+    FixedString name;
+    FixedString type;
 
     /// trigger an end-of-parsing event, this is where objects can setup their compiler contextual states
     bool Resolve(Compiler* compiler) override;

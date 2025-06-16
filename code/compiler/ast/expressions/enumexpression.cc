@@ -39,7 +39,6 @@ EnumExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = this->type;
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -58,7 +57,7 @@ EnumExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-EnumExpression::EvalSymbol(std::string& out) const
+EnumExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -78,10 +77,10 @@ EnumExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 EnumExpression::EvalString() const
 {
-    return Format("%d", this->value);
+    return TransientString(this->value);
 }
 
 //------------------------------------------------------------------------------

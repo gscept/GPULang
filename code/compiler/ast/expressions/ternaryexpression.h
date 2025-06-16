@@ -24,7 +24,7 @@ struct TernaryExpression : public Expression
     bool Resolve(Compiler* compiler) override;
 
     /// evaluates expression as a string
-    std::string EvalString() const override;
+    TransientString EvalString() const override;
     /// eval type
     bool EvalType(Type::FullType& out) const override;
     /// evaluates access flags

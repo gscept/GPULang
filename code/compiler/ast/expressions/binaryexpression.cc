@@ -55,7 +55,6 @@ BinaryExpression::~BinaryExpression()
 bool 
 BinaryExpression::Resolve(Compiler* compiler)
 {
-    this->thisResolved->text = this->EvalString();
     if (this->isLhsValue || this->op == '=')
         this->left->isLhsValue = true;
     if (!this->left->Resolve(compiler))
@@ -136,7 +135,8 @@ BinaryExpression::Resolve(Compiler* compiler)
     if (!this->thisResolved->leftType.Assignable(this->thisResolved->rightType) && this->op == '=')
     {
         // If not, or the operator is otherwise, look for conversion assignment or comparison operators
-        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
+        //TStr functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
+        TStr functionName = TStr("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name().c_str(), ")");
         Symbol* conversionFunction = this->thisResolved->lhsType->GetSymbol(functionName);
         if (conversionFunction == nullptr)
         {
@@ -157,7 +157,7 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
     else if (this->op != '=') // If not an assignment, allow promotion of either side of the operator
     {
-        std::string functionName = Format("operator%s(%s)", FourCCToString(this->op).c_str(), this->thisResolved->rightType.Name().c_str());
+        TStr functionName = TStr("operator", FourCCToString(this->op).c_str(), "(", this->thisResolved->rightType.Name().c_str(), ")");
         Function* operatorFunction = this->thisResolved->lhsType->GetSymbol<Function>(functionName);
         if (operatorFunction == nullptr)
         {
@@ -192,7 +192,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                 
                 if (promotedFullType != this->thisResolved->leftType)
                 {
-                    std::string lhsConversion = Format("%s(%s)", promotedFullType.Name().c_str(), this->thisResolved->leftType.Name().c_str());
+                    TransientString lhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->leftType.Name(), ")");
                     this->thisResolved->leftConversion = compiler->GetSymbol<Function>(lhsConversion);
                     if (this->thisResolved->leftConversion == nullptr)
                     {
@@ -203,7 +203,7 @@ BinaryExpression::Resolve(Compiler* compiler)
                 }
                 if (promotedFullType != this->thisResolved->rightType)
                 {
-                    std::string rhsConversion = Format("%s(%s)", promotedFullType.Name().c_str(), this->thisResolved->rightType.Name().c_str());
+                    TransientString rhsConversion = TransientString(promotedFullType.Name(), "(", this->thisResolved->rightType.Name(), ")");
                     this->thisResolved->rightConversion = compiler->GetSymbol<Function>(rhsConversion);
                     if (this->thisResolved->rightConversion == nullptr)
                     {
@@ -268,7 +268,7 @@ BinaryExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-BinaryExpression::EvalSymbol(std::string& out) const
+BinaryExpression::EvalSymbol(FixedString& out) const
 {
     bool ret = true;
     ret &= this->left->EvalSymbol(out);
@@ -423,13 +423,13 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+TransientString
 BinaryExpression::EvalString() const
 {
-    std::string left, right;
+    TransientString left, right;
     left = this->left->EvalString();
     right = this->right->EvalString();
-    return Format("%s %s %s", left.c_str(), FourCCToString(this->op).c_str(), right.c_str());
+    return TransientString(left, FourCCToString(this->op), right);
 }
 
 //------------------------------------------------------------------------------

@@ -28,10 +28,10 @@ StringExpression::~StringExpression()
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 StringExpression::EvalString() const
 {
-    return this->value;
+    return TransientString(this->value);
 }
 
 //------------------------------------------------------------------------------

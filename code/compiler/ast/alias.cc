@@ -26,7 +26,7 @@ Alias::Resolve(Compiler* compiler)
     Symbol* sym = compiler->GetSymbol(this->type);
     if (sym == nullptr)
     {
-        compiler->UnrecognizedTypeError(this->type, this);
+        compiler->UnrecognizedTypeError(TransientString(this->type), this);
         return false;
     }
     return compiler->AddSymbol(this->name, sym);

@@ -63,9 +63,9 @@ struct RenderState : public State
         };
 
         /// convert from string to program entry type
-        static const RenderStateEntryType StringToEntryType(const std::string& str);
+        static const RenderStateEntryType StringToEntryType(const TransientString& str);
         /// convert from mapping to string
-        static const std::string& EntryTypeToString(const RenderStateEntryType type);
+        static const ConstantString& EntryTypeToString(const RenderStateEntryType type);
 
         //------------------------------------------------------------------------------
         /**

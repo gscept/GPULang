@@ -37,7 +37,7 @@ BoolVecExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ Format("b8x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
+    //thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -56,7 +56,7 @@ BoolVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-BoolVecExpression::EvalSymbol(std::string& out) const
+BoolVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -79,13 +79,13 @@ BoolVecExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+TransientString
 BoolVecExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (const bool val : this->values)
     {
-        ret += val ? "true " : "false ";
+        ret.Append(val ? "true " : "false ");
     }
     return ret;
 }

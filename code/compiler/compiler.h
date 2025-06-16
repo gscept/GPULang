@@ -109,15 +109,23 @@ struct Compiler
     Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
-    bool AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
+    bool AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
     /// get symbol by name
-    Symbol* GetSymbol(const std::string& name) const;
+    Symbol* GetSymbol(const FixedString& name) const;
+    /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
+    bool AddSymbol(const TransientString& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
+    /// get symbol by name
+    Symbol* GetSymbol(const TransientString& name) const;
     /// Get type by FullType
     Type* GetType(const Type::FullType& type) const;
     /// get symbol by name as other type
-    template <typename T> T* GetSymbol(const std::string& name) const;
+    template <typename T> T* GetSymbol(const FixedString& name) const;
     /// return iterator to first and last symbol matching name
-    std::vector<Symbol*> GetSymbols(const std::string& name) const;
+    std::vector<Symbol*> GetSymbols(const FixedString& name) const;
+    /// get symbol by name as other type
+    template <typename T> T* GetSymbol(const TransientString& name) const;
+    /// return iterator to first and last symbol matching name
+    std::vector<Symbol*> GetSymbols(const TransientString& name) const;
 
     /// Push a new scope
     void PushScope(Scope* scope);
@@ -184,11 +192,11 @@ struct Compiler
     void GeneratorError(const std::string& msg);
 
     /// helper for unrecognized type error
-    void UnrecognizedTypeError(const std::string& type, Symbol* sym);
+    void UnrecognizedTypeError(const TransientString& type, Symbol* sym);
     /// helper for unrecognized symbol error
-    void UnrecognizedSymbolError(const std::string& symbol, Symbol* sym);
+    void UnrecognizedSymbolError(const TransientString& symbol, Symbol* sym);
     /// Helper for reserved words
-    void ReservedPrefixError(const std::string& name, const std::string& word, Symbol* sym);
+    void ReservedPrefixError(const FixedString& name, const std::string& word, Symbol* sym);
 
     /// output binary data
     void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
@@ -302,7 +310,7 @@ template <typename T, typename K> inline bool
 set_contains(const StaticSet<T>& set, const K& key)
 {
     using T_const = const T;
-    return set.Find(T_const(key)) != set.end();
+    return set.Find(key) != set.end();
 }
 
 //------------------------------------------------------------------------------
@@ -389,7 +397,17 @@ inline constexpr T min(T a, T2 b)
 */
 template <typename T>
 inline T*
-Compiler::GetSymbol(const std::string& name) const
+Compiler::GetSymbol(const FixedString& name) const
+{
+    return static_cast<T*>(this->GetSymbol(name));
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+template <typename T>
+inline T*
+Compiler::GetSymbol(const TransientString& name) const
 {
     return static_cast<T*>(this->GetSymbol(name));
 }
@@ -400,7 +418,7 @@ Compiler::GetSymbol(const std::string& name) const
 inline Type*
 Compiler::GetType(const Type::FullType& type) const
 {
-    if (!type.swizzleName.empty())
+    if (type.swizzleName.len > 0)
         return static_cast<Type*>(this->GetSymbol(type.swizzleName));
     else
         return static_cast<Type*>(this->GetSymbol(type.name));

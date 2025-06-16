@@ -19,7 +19,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-SymbolExpression::SymbolExpression(const std::string symbol)
+SymbolExpression::SymbolExpression(const FixedString& symbol)
     : symbol(symbol)
 {
     this->resolved = Alloc<SymbolExpression::__Resolved>();
@@ -43,10 +43,9 @@ SymbolExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->symbol = compiler->GetSymbol(this->symbol);
-    thisResolved->text = this->EvalString();
     if (thisResolved->symbol == nullptr)
     {
-        compiler->UnrecognizedSymbolError(this->symbol, this);
+        compiler->UnrecognizedSymbolError(TransientString(this->symbol), this);
         return false;
     }
     else
@@ -130,7 +129,7 @@ SymbolExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-SymbolExpression::EvalSymbol(std::string& out) const
+SymbolExpression::EvalSymbol(FixedString& out) const
 {
     out = this->symbol;
     return true;
@@ -172,10 +171,10 @@ SymbolExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 SymbolExpression::EvalString() const
 {
-    return this->symbol;
+    return TransientString(this->symbol);
 }
 
 //------------------------------------------------------------------------------

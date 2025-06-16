@@ -47,7 +47,6 @@ BoolExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ "b8" };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -66,7 +65,7 @@ BoolExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-BoolExpression::EvalSymbol(std::string& out) const
+BoolExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -87,7 +86,7 @@ BoolExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+TransientString
 BoolExpression::EvalString() const
 {
     return this->value ? "true" : "false";

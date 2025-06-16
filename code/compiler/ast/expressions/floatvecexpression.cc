@@ -38,7 +38,6 @@ FloatVecExpression::Resolve(Compiler* compiler)
     thisResolved->fullType = Type::FullType{ Format("f32x%d", this->values.size()) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
-    thisResolved->text = this->EvalString();
     return true;
 }
 
@@ -57,7 +56,7 @@ FloatVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
-FloatVecExpression::EvalSymbol(std::string& out) const
+FloatVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;
 }
@@ -80,13 +79,13 @@ FloatVecExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 FloatVecExpression::EvalString() const
 {
-    std::string ret;
+    TransientString ret;
     for (const bool val : this->values)
     {
-        ret += Format("%f ", val);
+        ret.Concatenate<false>(val, " ");
     }
     return ret;
 }

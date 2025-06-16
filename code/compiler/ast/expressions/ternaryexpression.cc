@@ -37,7 +37,6 @@ bool
 TernaryExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->text = this->EvalString();
     if (!this->lhs->Resolve(compiler))
         return false;
     if (!this->ifExpression->Resolve(compiler))
@@ -74,14 +73,14 @@ TernaryExpression::Resolve(Compiler* compiler)
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 TernaryExpression::EvalString() const
 {
-    std::string lhs, ifStr, elseStr;
+    TransientString lhs, ifStr, elseStr;
     lhs = this->lhs->EvalString();
     ifStr = this->ifExpression->EvalString();
     elseStr = this->elseExpression->EvalString();
-    return Format("%s ? %s : %s", lhs.c_str(), ifStr.c_str(), elseStr.c_str());
+    return TransientString(lhs, " ? ", ifStr, " : ", elseStr);
 }
 
 //------------------------------------------------------------------------------

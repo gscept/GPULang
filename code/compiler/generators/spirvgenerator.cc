@@ -6517,7 +6517,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
             if (!paramResolved->type.IsPointer())
             {
                 uint32_t paramName = MappedInstruction(generator, SPVWriter::Section::Functions, OpFunctionParameter, varType.typeName, SPVComment{param->name.c_str()});
-                std::string type = paramResolved->type.ToString();
+                TransientString type = paramResolved->type.ToString();
                 ConstantString scope = SPIRVResult::ScopeToString(varType.scope);
 
                 TStr argPtrType = TStr::Compact("ptr_", type, "_", scope);
@@ -6665,7 +6665,7 @@ GenerateSamplerSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol
     if (entryRes->visibleSymbols.Find(sampler) == entryRes->visibleSymbols.end())
         return SPIRVResult::Invalid();
     
-    Type* samplerTypeSymbol = compiler->GetSymbol<Type>("sampler");
+    Type* samplerTypeSymbol = compiler->GetSymbol<Type>(TransientString("sampler"));
     Type::FullType fullType = Type::FullType{ "sampler" };
     SPIRVResult::Storage scope = ResolveSPIRVVariableStorage(fullType, samplerTypeSymbol, Storage::Uniform);
     SPIRVResult samplerType = GeneratePointerTypeSPIRV(compiler, generator, fullType, samplerTypeSymbol, scope);
@@ -6804,7 +6804,7 @@ GenerateVariableSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     Expression* initializerExpression = var->valueExpression;
 
     // override initializer if the variable is a gplIs variable
-    if (varResolved->builtin && var->name.starts_with("gplIs"))
+    if (varResolved->builtin && var->name.StartsWith("gplIs"))
     {
         initializerExpression = &generator->shaderValueExpressions[generator->shaderStage];
     }
@@ -7167,7 +7167,8 @@ GenerateArrayIndexExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gene
 
         if (type->IsVector() || type->IsMatrix())
         {
-            auto it = type->scope.symbolLookup.Find(Format("operator[](%s)", rightType.name.c_str()));
+            auto op = TransientString("operator[](", rightType.name, ")");
+            auto it = type->scope.symbolLookup.Find(op);
             Function* func = static_cast<Function*>((*it).second);
 
             /// Get intrinsic
@@ -7603,6 +7604,63 @@ GenerateTernaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generat
     return res;
 }
 
+struct UnaryOperator
+{
+    char bit;
+    bool sign;
+    char elements;
+    SPVOp addOp, subOp, negateOp;
+    
+    UnaryOperator()
+        : bit('\0')
+        , sign(false)
+        , elements(0)
+        , addOp(OpNop)
+        , subOp(OpNop)
+        , negateOp(OpNop)
+    {}
+    
+    UnaryOperator(char bit, bool sign, int elements, SPVOp addOp, SPVOp subOp, SPVOp negateOp)
+        : bit(bit)
+        , sign(sign)
+        , elements(elements)
+        , addOp(addOp)
+        , subOp(subOp)
+        , negateOp(negateOp)
+    {}
+    
+    UnaryOperator(const UnaryOperator& rhs)
+    {
+        memcpy(this, &rhs, sizeof(UnaryOperator));
+    }
+    
+    void operator=(const UnaryOperator& rhs)
+    {
+        memcpy(this, &rhs, sizeof(UnaryOperator));
+    }
+};
+
+// TODO: Add support for looking up SPVOps as well
+static StaticMap<ConstantString, UnaryOperator> UnaryOperatorTable =
+{
+    { "f32", UnaryOperator{ 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
+    , { "f32x2", UnaryOperator{ 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
+    , { "f32x3", UnaryOperator{ 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
+    , { "f32x4", UnaryOperator{ 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
+    , { "i32", UnaryOperator{ 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
+    , { "i32x2", UnaryOperator{ 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
+    , { "i32x3", UnaryOperator{ 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
+    , { "i32x4", UnaryOperator{ 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
+    , { "u32", UnaryOperator{ 'U', false, 1, OpIAdd, OpISub, OpNop } }
+    , { "u32x2", UnaryOperator{ 'U', false, 2, OpIAdd, OpISub, OpNop } }
+    , { "u32x3", UnaryOperator{ 'U', false, 3, OpIAdd, OpISub, OpNop } }
+    , { "u32x4", UnaryOperator{ 'U', false, 4, OpIAdd, OpISub, OpNop } }
+    , { "b8", UnaryOperator{ 'B', false, 1, OpNop, OpNop, OpNop } }
+    , { "b8x2", UnaryOperator{ 'B', false, 2, OpNop, OpNop, OpNop } }
+    , { "b8x3", UnaryOperator{ 'B', false, 3, OpNop, OpNop, OpNop } }
+    , { "b8x4", UnaryOperator{ 'B', false, 4, OpNop, OpNop, OpNop } }
+};
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -7614,40 +7672,19 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
 
     SPIRVResult rhs = GenerateExpressionSPIRV(compiler, generator, unaryExpression->expr);
 
-    // TODO: Add support for looking up SPVOps as well
-    static std::unordered_map<std::string, std::tuple<char, bool, uint32_t, SPVOp, SPVOp, SPVOp>> scalarTable =
-    {
-        { "f32", { 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
-        , { "f32x2", { 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
-        , { "f32x3", { 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
-        , { "f32x4", { 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
-        , { "i32", { 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
-        , { "i32x2", { 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
-        , { "i32x3", { 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
-        , { "i32x4", { 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
-        , { "u32", { 'U', false, 1, OpIAdd, OpISub, OpNop } }
-        , { "u32x2", { 'U', false, 2, OpIAdd, OpISub, OpNop } }
-        , { "u32x3", { 'U', false, 3, OpIAdd, OpISub, OpNop } }
-        , { "u32x4", { 'U', false, 4, OpIAdd, OpISub, OpNop } }
-        , { "b8", { 'B', false, 1, OpNop, OpNop, OpNop } }
-        , { "b8x2", { 'B', false, 2, OpNop, OpNop, OpNop } }
-        , { "b8x3", { 'B', false, 3, OpNop, OpNop, OpNop } }
-        , { "b8x4", { 'B', false, 4, OpNop, OpNop, OpNop } }
-    };
-
     if (compiler->options.symbols)
     {
         uint32_t name = generator->writer->String(expr->location.file.c_str());
         generator->writer->Instruction(OpLine, SPVWriter::Section::LocalFunction, SPVArg{name}, expr->location.line, expr->location.start);
     }
-    auto value = scalarTable.find(unaryExpressionResolved->fullType.name);
+    auto value = UnaryOperatorTable.Find(unaryExpressionResolved->fullType.name);
     auto [op, sign, vectorSize, addOp, subOp, negOp] = value->second;
     switch (unaryExpression->op)
     {
         case '++':
         {
-            assert(value != scalarTable.end());
-            uint32_t vectorSize = std::get<2>(value->second);
+            assert(value != UnaryOperatorTable.end());
+            uint32_t vectorSize = value->second.elements;
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (sign)
             {
@@ -7679,8 +7716,8 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '--':
         {
-            assert(value != scalarTable.end());
-            uint32_t vectorSize = std::get<2>(value->second);
+            assert(value != UnaryOperatorTable.end());
+            uint32_t vectorSize = value->second.elements;
             SPIRVResult constOne = SPIRVResult::Invalid();
             if (sign)
             {
@@ -7721,10 +7758,10 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         }
         case '-':
         {
-            assert(value != scalarTable.end());
-            char op = std::get<0>(value->second);
-            bool isSigned = std::get<1>(value->second);
-            uint32_t vectorSize = std::get<2>(value->second);
+            assert(value != UnaryOperatorTable.end());
+            const char op = value->second.bit;
+            bool isSigned = value->second.sign;
+            uint32_t vectorSize = value->second.elements;
             if (rhs.isLiteral)
             {
                 switch (op)
@@ -7753,10 +7790,10 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
         case '!':
         case '~':
         {
-            assert(value != scalarTable.end());
-            const char op = std::get<0>(value->second);
-            bool isSigned = std::get<1>(value->second);
-            uint32_t vectorSize = std::get<2>(value->second);
+            assert(value != UnaryOperatorTable.end());
+            const char op = value->second.bit;
+            bool isSigned = value->second.sign;
+            uint32_t vectorSize = value->second.elements;
             
             if (rhs.isLiteral)
             {

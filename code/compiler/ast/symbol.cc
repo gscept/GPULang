@@ -40,7 +40,7 @@ Symbol::GetLocation() const
 //------------------------------------------------------------------------------
 /**
 */
-const std::string 
+const TransientString
 Symbol::TypeToString() const
 {
     switch (this->symbolType)

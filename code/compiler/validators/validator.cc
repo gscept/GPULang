@@ -57,17 +57,17 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-static StaticSet<StaticString> scalarQualifiers =
+static StaticSet<ConstantString> scalarQualifiers =
 {
     "const", "var"
 };
 
-static StaticSet<StaticString> bindingQualifiers =
+static StaticSet<ConstantString> bindingQualifiers =
 {
     "group", "binding"
 };
 
-static StaticSet<StaticString> functionAttributes =
+static StaticSet<ConstantString> functionAttributes =
 {
     "entry_point", "local_size_x", "local_size_y", "local_size_z", "local_size", "early_depth", "depth_greater", "depth_lesser"
     , "group_size", "groups_per_workgroup"
@@ -78,27 +78,27 @@ static StaticSet<StaticString> functionAttributes =
     , "derivative_index_linear", "derivative_index_quad"
 };
 
-static StaticSet<StaticString> parameterAccessFlags =
+static StaticSet<ConstantString> parameterAccessFlags =
 {
     "in", "out", "ray_payload", "ray_hit_attribute", "ray_callable_data"
 };
 
-static StaticSet<StaticString> parameterQualifiers =
+static StaticSet<ConstantString> parameterQualifiers =
 {
     "patch", "no_interpolate", "no_perspective", "binding"
 };
 
-static StaticSet<StaticString> structureQualifiers =
+static StaticSet<ConstantString> structureQualifiers =
 {
     "packed"
 };
 
-static StaticSet<StaticString> pixelShaderInputQualifiers =
+static StaticSet<ConstantString> pixelShaderInputQualifiers =
 {
     "binding", "no_interpolate", "no_perspective"
 };
 
-static StaticSet<StaticString> attributesRequiringEvaluation =
+static StaticSet<ConstantString> attributesRequiringEvaluation =
 {
     "binding", "group", "local_size_x", "local_size_y", "local_size_z", "local_size"
     , "group_size", "groups_per_workgroup"
@@ -106,17 +106,17 @@ static StaticSet<StaticString> attributesRequiringEvaluation =
     , "input_topology", "output_topology", "patch_type", "patch_size", "partition"
 };
 
-static StaticSet<StaticString> pointerQualifiers =
+static StaticSet<ConstantString> pointerQualifiers =
 {
     "no_read", "atomic", "volatile"
 };
 
-static StaticSet<StaticString> storageQualifiers =
+static StaticSet<ConstantString> storageQualifiers =
 {
     "uniform", "inline", "workgroup", "device", "link_defined"
 };
 
-static StaticSet<StaticString> textureQualifiers =
+static StaticSet<ConstantString> textureQualifiers =
 {
     "sampled"
 };
@@ -211,10 +211,10 @@ Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
     Symbol* sym = compiler->GetSymbol(alias->type);
     if (sym == nullptr)
     {
-        compiler->UnrecognizedSymbolError(alias->type, alias);
+        compiler->UnrecognizedSymbolError(TransientString(alias->type), alias);
         return false;
     }
-    return compiler->AddSymbol(alias->name, sym);
+    return compiler->AddSymbol(TransientString(alias->name), sym);
 }
 
 //------------------------------------------------------------------------------
@@ -224,8 +224,8 @@ bool
 Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
     Type* type = static_cast<Type*>(symbol);
-    type->symbols.Clear();
-    type->scope.symbolLookup.Clear();
+    type->symbols.Invalidate();
+    type->scope.symbolLookup.Invalidate();
 
     if (type->symbolType == Symbol::SymbolType::EnumerationType)
     {
@@ -286,16 +286,16 @@ Validator::ResolveType(Compiler* compiler, Symbol* symbol)
         else if (sym->symbolType == Symbol::SymbolType::EnumerationType)
         {
             Enumeration* en = static_cast<Enumeration*>(sym);
-            en->scope.symbolLookup.Clear();
-            en->symbols.Clear();
+            en->scope.symbolLookup.Invalidate();
+            en->symbols.Invalidate();
             if (!this->ResolveEnumeration(compiler, sym))
                 return false;
         }
         else if (sym->symbolType == Symbol::SymbolType::StructureType)
         {
             Structure* struc = static_cast<Structure*>(sym);
-            struc->scope.symbolLookup.Clear();
-            struc->symbols.Clear();
+            struc->scope.symbolLookup.Invalidate();
+            struc->symbols.Invalidate();
             if (!this->ResolveStructure(compiler, sym))
                 return false;
         }
@@ -323,6 +323,9 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
         if (sym->symbolType == Symbol::SymbolType::FunctionType)
         {
             Function* fun = static_cast<Function*>(sym);
+            Function::__Resolved* funRes = Symbol::Resolved(fun);
+            funRes->scope.symbols.Invalidate();
+            funRes->scope.symbolLookup.Invalidate();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
         }
@@ -335,6 +338,9 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
         if (sym->symbolType == Symbol::SymbolType::FunctionType)
         {
             Function* fun = static_cast<Function*>(sym);
+            Function::__Resolved* funRes = Symbol::Resolved(fun);
+            funRes->scope.symbols.Invalidate();
+            funRes->scope.symbolLookup.Invalidate();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
         }
@@ -345,6 +351,9 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
         if (sym->symbolType == Symbol::SymbolType::FunctionType)
         {
             Function* fun = static_cast<Function*>(sym);
+            Function::__Resolved* funRes = Symbol::Resolved(fun);
+            funRes->scope.symbols.Invalidate();
+            funRes->scope.symbolLookup.Invalidate();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
         }
@@ -389,7 +398,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     stateResolved->isInline = state->isInline;
     stateResolved->isImmutable = state->isImmutable;
 
-    Type* samplerStateType = compiler->GetSymbol<Type>("samplerState");
+    Type* samplerStateType = compiler->GetSymbol<Type>(TransientString("samplerState"));
     stateResolved->typeSymbol = samplerStateType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &samplerStateType->scope);
 
@@ -509,7 +518,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        std::string entryString = assignEntry->left->EvalString();
+        TransientString entryString = assignEntry->left->EvalString();
         SamplerState::__Resolved::SamplerStateEntryType entryType = SamplerState::__Resolved::StringToEntryType(entryString.c_str());
         if (entryType == SamplerState::__Resolved::InvalidSamplerStateEntryType)
         {
@@ -778,7 +787,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "winding")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.windingOrder = Function::__Resolved::WindingOrderFromString(str);
             if (funResolved->executionModifiers.windingOrder == Function::__Resolved::InvalidWindingOrder)
             {
@@ -788,7 +797,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "input_topology")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.inputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
             if (funResolved->executionModifiers.inputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology)
             {
@@ -798,7 +807,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "output_topology")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.outputPrimitiveTopology = Function::__Resolved::PrimitiveTopologyFromString(str);
             if (funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::InvalidPrimitiveTopology
                 || funResolved->executionModifiers.outputPrimitiveTopology == Function::__Resolved::LinesAdjacency
@@ -810,7 +819,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "patch_type")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.patchType = Function::__Resolved::PatchTypeFromString(str);
             if (funResolved->executionModifiers.patchType == Function::__Resolved::InvalidPatchType)
             {
@@ -820,7 +829,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "partition")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.partitionMethod = Function::__Resolved::PartitionMethodFromString(str);
             if (funResolved->executionModifiers.partitionMethod == Function::__Resolved::InvalidPartitionMethod)
             {
@@ -839,7 +848,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
         else if (attr->name == "pixel_origin")
         {
-            std::string str = attr->expression->EvalString();
+            TransientString str = attr->expression->EvalString();
             funResolved->executionModifiers.pixelOrigin = Function::__Resolved::PixelOriginFromString(str);
             if (funResolved->executionModifiers.pixelOrigin == Function::__Resolved::InvalidPixelOrigin)
             {
@@ -952,21 +961,21 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     compiler->PopScope();
 
     // setup our variables and attributes as sets
-    std::string paramList;
-    std::string paramListNamed;
+    TransientString paramList;
+    TransientString paramListNamed;
     for (Variable* var : fun->parameters)
     {
         // add comma if not first argument
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (StorageRequiresSignature(varResolved->storage))
         {
-            paramListNamed.append(Format("%s %s : %s", StorageToString(varResolved->storage).c_str(), varResolved->name.c_str(), varResolved->type.ToString().c_str()));
-            paramList.append(Format("%s %s", StorageToString(varResolved->storage).c_str(), varResolved->type.ToString().c_str()));
+            paramListNamed.Concatenate<true>(StorageToString(varResolved->storage), varResolved->name, ":", varResolved->type.ToString());
+            paramList.Concatenate<true>(StorageToString(varResolved->storage), varResolved->type.ToString());
         }
         else
         {
-            paramListNamed.append(Format("%s : %s", varResolved->name.c_str(), varResolved->type.ToString().c_str()));
-            paramList.append(varResolved->type.ToString());
+            paramListNamed.Concatenate<true>(varResolved->name, ":", varResolved->type.ToString());
+            paramList.Append(varResolved->type.ToString());
         }
 
         if (varResolved->type.sampled)
@@ -976,8 +985,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 
         if (var != fun->parameters.back())
         {
-            paramList.append(",");
-            paramListNamed.append(", ");            
+            paramList.Append(",");
+            paramListNamed.Append(", ");
         }
     }
 
@@ -986,7 +995,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // make a set of all attributes
     for (const Attribute* attr : fun->attributes)
     {
-        std::string attrAsString;
+        TransientString attrAsString;
         if (!attr->ToString(attrAsString))
         {
             compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr->name.c_str()), symbol);
@@ -1036,11 +1045,11 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     // if we didn't fault, add the symbol
-    if (!compiler->AddSymbol(funResolved->name, fun, false))
+    if (!compiler->AddSymbol(TransientString(funResolved->name), fun, false))
         return false;
 
     // also add the signature for type lookup
-    if (!compiler->AddSymbol(funResolved->signature, fun, false))
+    if (!compiler->AddSymbol(TransientString(funResolved->signature), fun, false))
         return false;
 
     // Add just the name if the function isn't a constructor
@@ -1055,7 +1064,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
     if (type == nullptr)
     {
-        compiler->UnrecognizedTypeError(fun->returnType.name, fun);
+        compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
         return false;
     }
     funResolved->returnTypeSymbol = type;
@@ -1108,7 +1117,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     Program* prog = static_cast<Program*>(symbol);
     Program::__Resolved* progResolved = Symbol::Resolved(prog);
 
-    Type* progType = compiler->GetSymbol<Type>("program");
+    Type* progType = compiler->GetSymbol<Type>(TransientString("program"));
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
     progResolved->typeSymbol = progType;
     for (Expression* entry : prog->entries)
@@ -1128,7 +1137,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             return false;
         }
 
-        std::string entryStr = assignEntry->left->EvalString();
+        TransientString entryStr = assignEntry->left->EvalString();
         Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entryStr);
         if (entryType == Program::__Resolved::InvalidProgramEntryType)
         {
@@ -1153,7 +1162,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 }
 
                 // next up, function to assign
-                std::string functionName;
+                FixedString functionName;
                 if (!assignEntry->right->EvalSymbol(functionName))
                 {
                     compiler->Error(Format("Expected symbol, but got '%s'", entryStr.c_str()), symbol);
@@ -1164,7 +1173,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 // again, check if not null
                 if (functions.empty())
                 {
-                    compiler->UnrecognizedTypeError(functionName, symbol);
+                    compiler->UnrecognizedTypeError(TransientString(functionName), symbol);
                     return false;
                 }
 
@@ -1229,7 +1238,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         }
         else if (entryType == Program::__Resolved::RenderState)
         {
-            std::string sym;
+            FixedString sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
                 compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
@@ -1248,7 +1257,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         else
         {
             // get the symbol for this entry
-            std::string sym;
+            FixedString sym;
             if (!assignEntry->right->EvalSymbol(sym))
             {
                 compiler->Error(Format("Entry '%s' has to be a symbol", entryStr.c_str()), symbol);
@@ -1422,7 +1431,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
     RenderState* state = static_cast<RenderState*>(symbol);
     RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
 
-    Type* renderStateType = compiler->GetSymbol<Type>("renderState");
+    Type* renderStateType = compiler->GetSymbol<Type>(TransientString("renderState"));
     stateResolved->typeSymbol = renderStateType;
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
@@ -1440,7 +1449,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             return false;
         }
         
-        std::string entryStr;
+        TransientString entryStr;
 
         // if left is binary, then validate it is an array expression
         if (assignEntry->left->symbolType == Symbol::ArrayIndexExpressionType)
@@ -1587,7 +1596,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
         else if (entryType >= RenderState::__Resolved::StencilFailOpType && entryType <= RenderState::__Resolved::StencilReferenceMaskType)
         {
             AccessExpression* access = static_cast<AccessExpression*>(assignEntry->left);
-            std::string face = access->left->EvalString();
+            TransientString face = access->left->EvalString();
             StencilState* state;
             if (face == "StencilBack")
                 state = &stateResolved->backStencilState;
@@ -1787,7 +1796,7 @@ Validator::ResolveStructure(Compiler* compiler, Symbol* symbol)
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
     
-    if (struc->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
+    if (struc->name.StartsWith("gpl") && !compiler->ignoreReservedWords)
     {
         compiler->ReservedPrefixError(struc->name, "gpl", symbol);
         return false;
@@ -1895,6 +1904,12 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->baseType = enumResolved->typeSymbol->baseType;
     enumeration->symbols.Clear();
+    
+    static ConstantString arg0 = "_arg0";
+    static ConstantString rhs = "rhs";
+    static ConstantString eqOp = "operator==";
+    static ConstantString neqOp = "operator!=";
+    
     if (enumeration->globals.empty())
     {
         if (enumeration->builtin)
@@ -1908,7 +1923,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
             Variable* arg = StaticAlloc<Variable>();
-            arg->name = "_arg0";
+            arg->name = arg0;
             arg->type = enumeration->type;
             parameters.Clear();
             parameters.Append(arg);
@@ -1920,7 +1935,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
             arg = StaticAlloc<Variable>();
-            arg->name = "_arg0";
+            arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -1928,10 +1943,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = StaticAlloc<Function>();
-            comparison->name = "operator==";
+            comparison->name = eqOp;
             comparison->returnType = Type::FullType{ "b8" };
             arg = StaticAlloc<Variable>();
-            arg->name = "rhs";
+            arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -1939,10 +1954,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = StaticAlloc<Function>();
-            comparison->name = "operator!=";
+            comparison->name = neqOp;
             comparison->returnType = Type::FullType{ "b8" };
             arg = StaticAlloc<Variable>();
-            arg->name = "rhs";
+            arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -1960,7 +1975,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
             Variable* arg = Alloc<Variable>();
-            arg->name = "_arg0";
+            arg->name = arg0;
             arg->type = enumeration->type;
             parameters.Clear();
             parameters.Append(arg);
@@ -1972,7 +1987,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
             arg = Alloc<Variable>();
-            arg->name = "_arg0";
+            arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -1980,10 +1995,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = Alloc<Function>();
-            comparison->name = "operator==";
+            comparison->name = eqOp;
             comparison->returnType = Type::FullType{ "b8" };
             arg = Alloc<Variable>();
-            arg->name = "rhs";
+            arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -1991,10 +2006,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = Alloc<Function>();
-            comparison->name = "operator!=";
+            comparison->name = neqOp;
             comparison->returnType = Type::FullType{ "b8" };
             arg = Alloc<Variable>();
-            arg->name = "rhs";
+            arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
@@ -2010,7 +2025,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         Expression* expr = enumeration->values.buf[i];
 
         // Check of label redefinition
-        if (enumeration->scope.symbolLookup.Find(str.c_str()) != enumeration->scope.symbolLookup.end())
+        if (enumeration->scope.symbolLookup.Find(str) != enumeration->scope.symbolLookup.end())
         {
             compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
             return false;
@@ -2072,7 +2087,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 {
     Variable* var = static_cast<Variable*>(symbol);
     auto varResolved = Symbol::Resolved(var);
-    if (var->name.substr(0, 3) == "gpl" && !compiler->ignoreReservedWords)
+    if (var->name.StartsWith("gpl") && !compiler->ignoreReservedWords)
     {
         compiler->ReservedPrefixError(var->name, "gpl", symbol);
         return false;
@@ -3987,48 +4002,63 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         {
             auto callExpr = static_cast<CallExpression*>(symbol);
             auto callResolved = Symbol::Resolved(callExpr);
-
-            static const std::unordered_map<std::string, std::pair<std::vector<Program::__Resolved::ProgramEntryType>, Compiler::State::SideEffects::Masks>> allowedBuiltins =
+            
+            struct IntrinsicsShaderMask
             {
-                { "vertexExportCoordinates", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
-                , { "geometryExportVertex", { { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
-                , { "geometryExportPrimitive", { { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
-                , { "computeGetLocalInvocationIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetGlobalInvocationIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetWorkGroupIndex", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetWorkGroupDimensions", { { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "vertexSetOutputLayer", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
-                , { "vertexSetOutputViewport", { { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
-                , { "pixelExportColor", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
-                , { "pixelGetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
-                , { "pixelSetDepth", { { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
-                , { "rayTrace", { { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayExportIntersection", { { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayExecuteCallable", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetLaunchIndex", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetLaunchSize", { { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "blasGetPrimitiveIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "blasGetGeometryIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetInstanceIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetInstanceCustomIndex", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetWorldOrigin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetWorldDirection", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetObjectOrigin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetObjectDirection", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetMin", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetMax", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetFlags", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetHitDistance", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetHitKind", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetObjectToWorld", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetWorldToObject", { { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                FixedArray<Program::__Resolved::ProgramEntryType> entries;
+                Compiler::State::SideEffects::Masks sideEffect;
+                
+                IntrinsicsShaderMask()
+                    : sideEffect(Compiler::State::SideEffects::Masks{0x0})
+                {}
+                
+                IntrinsicsShaderMask(const std::initializer_list<Program::__Resolved::ProgramEntryType>& entries, Compiler::State::SideEffects::Masks sideEffects)
+                    : entries(entries)
+                    , sideEffect(sideEffects)
+                {}
             };
 
-            const auto it = allowedBuiltins.find(callResolved->functionSymbol);
+            static const StaticMap<StaticString, IntrinsicsShaderMask> allowedBuiltins =
+            {
+                { "vertexExportCoordinates", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
+                , { "geometryExportVertex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
+                , { "geometryExportPrimitive", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
+                , { "computeGetLocalInvocationIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetGlobalInvocationIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetWorkGroupIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "computeGetWorkGroupDimensions", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , { "vertexSetOutputLayer", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
+                , { "vertexSetOutputViewport", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
+                , { "pixelExportColor", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
+                , { "pixelGetDepth", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
+                , { "pixelSetDepth", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
+                , { "rayTrace", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayExportIntersection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayExecuteCallable", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetLaunchIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetLaunchSize", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "blasGetPrimitiveIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "blasGetGeometryIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetInstanceIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetInstanceCustomIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetWorldOrigin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetWorldDirection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetObjectOrigin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetObjectDirection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetMin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetMax", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetFlags", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetHitDistance", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , { "rayGetHitKind", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetObjectToWorld", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , { "tlasGetWorldToObject", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+            };
+
+            const auto it = allowedBuiltins.Find(callResolved->functionSymbol);
             if (it != allowedBuiltins.end())
             {
                 bool allowedInShader = false;
-                for (auto shaderType : std::get<0>(it->second))
+                for (auto shaderType : it->second.entries)
                 {
                     if (shaderType == compiler->currentState.shaderType)
                     {
@@ -4038,23 +4068,24 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 }
                 if (!allowedInShader)
                 {
-                    const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                     compiler->Error(Format("%s can not be called from a %s", it->first.c_str(), shaderString.c_str()), callExpr);
                     return false;
                 }
-                compiler->currentState.sideEffects.bits |= (uint32_t)std::get<1>(it->second);
+                compiler->currentState.sideEffects.bits |= (uint32_t)it->second.sideEffect;
             }
 
-            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const std::string& fun)
+            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const StaticString& fun)
             {
-                static const std::vector<Program::__Resolved::ProgramEntryType> derivativeProducingShaders =
-                    {
-                        Program::__Resolved::ProgramEntryType::VertexShader
-                        , Program::__Resolved::ProgramEntryType::GeometryShader
-                        , Program::__Resolved::ProgramEntryType::HullShader
-                        , Program::__Resolved::ProgramEntryType::DomainShader
-                        , Program::__Resolved::ProgramEntryType::PixelShader
-                    };
+                
+                static const StaticArray<Program::__Resolved::ProgramEntryType> derivativeProducingShaders =
+                {
+                    Program::__Resolved::ProgramEntryType::VertexShader
+                    , Program::__Resolved::ProgramEntryType::GeometryShader
+                    , Program::__Resolved::ProgramEntryType::HullShader
+                    , Program::__Resolved::ProgramEntryType::DomainShader
+                    , Program::__Resolved::ProgramEntryType::PixelShader
+                };
                 for (const auto shader : derivativeProducingShaders)
                     if (shader == compiler->currentState.shaderType)
                         return true;
@@ -4066,14 +4097,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                         return true;
                     else
                     {
-                        const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                        const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                         compiler->Error(Format("%s must either specify 'derivative_index_linear' or 'derivative_index_quads' when using derivatives", shaderString.c_str()), expr);
                         return false;    
                     }
                 }
                 else
                 {
-                    const std::string shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                     compiler->Error(Format("%s can not be called from a %s", fun.c_str(), shaderString.c_str()), expr);
                     return false;
                 }
@@ -4081,7 +4112,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 
                 return false;
             };
-            static const std::unordered_map<std::string, std::function<bool(Compiler* compiler, Expression* expr, const std::string& fun)>> conditionalBuiltins =
+            static const StaticMap<StaticString, std::function<bool(Compiler* compiler, Expression* expr, const StaticString& fun)>> conditionalBuiltins =
             {
                 { "textureSample", derivativeConditionFunction }
                 , { "textureSampleBias", derivativeConditionFunction }
@@ -4100,7 +4131,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 , { "ddy", derivativeConditionFunction }
                 , { "fwidth", derivativeConditionFunction }
             };
-            const auto it2 = conditionalBuiltins.find(callResolved->functionSymbol);
+            const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())
             {
                 bool allowedInShader = it2->second(compiler, callExpr, it2->first);
@@ -4161,7 +4192,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         case Symbol::SymbolExpressionType:
         {
             auto symExpr = static_cast<SymbolExpression*>(symbol);
-            std::string symbol;
+            FixedString symbol;
             symExpr->EvalSymbol(symbol);
             Symbol* newSymbol = compiler->GetSymbol(symbol);
             if (newSymbol != nullptr)

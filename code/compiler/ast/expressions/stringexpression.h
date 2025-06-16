@@ -21,13 +21,13 @@ public:
 	virtual ~StringExpression();
 	
     /// evaluates expression as a string
-    std::string EvalString() const override;
+    TransientString EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
 	/// evaluates storage
 	bool EvalStorage(Storage& out) const override;
 	
-	std::string value;
+	FixedString value;
 }; 
 } // namespace GPULang
 //------------------------------------------------------------------------------

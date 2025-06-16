@@ -28,14 +28,14 @@ struct InitializerExpression : public Expression
     /// eval type
     bool EvalType(Type::FullType& out) const override;
     /// evaluates expression as a string
-    std::string EvalString() const override;
+    TransientString EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
     
     FixedArray<Expression*> values;
-    std::string explicitType;
+    FixedString explicitType;
 
     struct __Resolved : public Expression::__Resolved
     {

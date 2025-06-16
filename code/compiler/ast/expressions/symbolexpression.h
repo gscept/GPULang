@@ -17,7 +17,7 @@ struct SymbolExpression : public Expression
 {
 public:
 	/// constructor
-	SymbolExpression(const std::string symbol);
+	SymbolExpression(const FixedString& symbol);
 	/// destructor
 	virtual ~SymbolExpression();
 
@@ -27,17 +27,17 @@ public:
     /// eval type
     bool EvalType(Type::FullType& out) const override;
     /// eval symbol
-    bool EvalSymbol(std::string& out) const override;
+    bool EvalSymbol(FixedString& out) const override;
 	/// Evaluate value
 	bool EvalValue(ValueUnion& out) const override;
     /// evaluates expression as a string
-    std::string EvalString() const override;
+    TransientString EvalString() const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
 	/// evaluates storage
 	bool EvalStorage(Storage& out) const override;
 
-	std::string symbol;
+	FixedString symbol;
 
     struct __Resolved : public Expression::__Resolved
     {

@@ -98,6 +98,7 @@ Compiler::Compiler()
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
+    this->shaderSwitches[Program::__Resolved::ProgramEntryType::ComputeShader].name = "gplIsComputeShader";
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
     this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
@@ -218,12 +219,12 @@ Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
 /**
 */
 bool 
-Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate, bool bypass)
+Compiler::AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate, bool bypass)
 {
     Scope* scope = this->scopes.back();
     if (bypass)
         scope = *(this->scopes.end() - 1);
-    PinnedMap<std::string, Symbol*>* lookup;
+    PinnedMap<FixedString, Symbol*>* lookup;
     PinnedArray<Symbol*>* symbols;
     if (scope->type == Scope::ScopeType::Type)
     {
@@ -255,13 +256,13 @@ Compiler::AddSymbol(const std::string& name, Symbol* symbol, bool allowDuplicate
 /**
 */
 Symbol* 
-Compiler::GetSymbol(const std::string& name) const
+Compiler::GetSymbol(const FixedString& name) const
 {
     auto scopeIter = this->scopes.rbegin();
     do
     {
         auto scope = *scopeIter;
-        PinnedMap<std::string, Symbol*>* map;
+        PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -284,14 +285,110 @@ Compiler::GetSymbol(const std::string& name) const
 /**
 */
 std::vector<Symbol*>
-Compiler::GetSymbols(const std::string& name) const
+Compiler::GetSymbols(const FixedString& name) const
 {
     std::vector<Symbol*> ret;
     auto scopeIter = this->scopes.rbegin();
     do
     {
         auto scope = *scopeIter;
-        PinnedMap<std::string, Symbol*>* map;
+        PinnedMap<FixedString, Symbol*>* map;
+        if (scope->type == Scope::ScopeType::Type)
+        {
+            Type* type = static_cast<Type*>(scope->owningSymbol);
+            map = &type->scope.symbolLookup;
+        }
+        else
+        {
+            map = &scope->symbolLookup;
+        }
+
+        auto range = map->FindRange(name);
+        for (auto it = range.first; it != range.second; it++)
+            ret.push_back((*it).second);
+        scopeIter++;
+    } while (scopeIter != this->scopes.rend());
+    return ret;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDuplicate, bool bypass)
+{
+    Scope* scope = this->scopes.back();
+    if (bypass)
+        scope = *(this->scopes.end() - 1);
+    PinnedMap<FixedString, Symbol*>* lookup;
+    PinnedArray<Symbol*>* symbols;
+    if (scope->type == Scope::ScopeType::Type)
+    {
+        Type* type = static_cast<Type*>(scope->owningSymbol);
+        lookup = &type->scope.symbolLookup;
+        symbols = &type->symbols;
+    }
+    else
+    {
+        lookup = &scope->symbolLookup;
+        symbols = &scope->symbols;
+    }
+
+    auto it = lookup->Find(name);
+    if (it != lookup->end() && !allowDuplicate)
+    {
+        Symbol* prevSymbol = it->second;
+        this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
+        return false;
+    }
+    lookup->Insert(FixedString(name), symbol);
+    // Only add to symbols if scope type isn't a type, because they already have the symbols setup
+    if (scope->type != Scope::ScopeType::Type)
+        symbols->Append(symbol);
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Symbol*
+Compiler::GetSymbol(const TransientString& name) const
+{
+    auto scopeIter = this->scopes.rbegin();
+    do
+    {
+        auto scope = *scopeIter;
+        PinnedMap<FixedString, Symbol*>* map;
+        if (scope->type == Scope::ScopeType::Type)
+        {
+            Type* type = static_cast<Type*>(scope->owningSymbol);
+            map = &type->scope.symbolLookup;
+        }
+        else
+        {
+            map = &scope->symbolLookup;
+        }
+        auto it = map->Find(name);
+        if (it != map->end())
+            return it->second;
+        scopeIter++;
+    }
+    while (scopeIter != this->scopes.rend());
+    return nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+std::vector<Symbol*>
+Compiler::GetSymbols(const TransientString& name) const
+{
+    std::vector<Symbol*> ret;
+    auto scopeIter = this->scopes.rbegin();
+    do
+    {
+        auto scope = *scopeIter;
+        PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
             Type* type = static_cast<Type*>(scope->owningSymbol);
@@ -673,7 +770,7 @@ Compiler::GeneratorError(const std::string& msg)
 /**
 */
 void 
-Compiler::UnrecognizedTypeError(const std::string& type, Symbol* sym)
+Compiler::UnrecognizedTypeError(const TransientString& type, Symbol* sym)
 {
     if (type == UNDEFINED_TYPE)
         this->Error(Format("Type not defined or can't inferred for '%s'", sym->name.c_str()), sym);
@@ -685,7 +782,7 @@ Compiler::UnrecognizedTypeError(const std::string& type, Symbol* sym)
 /**
 */
 void 
-Compiler::UnrecognizedSymbolError(const std::string& symbol, Symbol* sym)
+Compiler::UnrecognizedSymbolError(const TransientString& symbol, Symbol* sym)
 {
     this->Error(Format("Unrecognized symbol '%s'", symbol.c_str()), sym);
 }
@@ -694,7 +791,7 @@ Compiler::UnrecognizedSymbolError(const std::string& symbol, Symbol* sym)
 /**
 */
 void 
-Compiler::ReservedPrefixError(const std::string& name, const std::string& word, Symbol* sym)
+Compiler::ReservedPrefixError(const FixedString& name, const std::string& word, Symbol* sym)
 {
     this->Error(Format("Reserved word '%s'. No variables or functions are allowed to be prefixed with '%s'", name.c_str(), word.c_str()), sym);
 }
@@ -714,9 +811,9 @@ WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Seri
         {
         case Symbol::StringExpressionType:
         {
-            std::string str = annot->value->EvalString();
-            output.data.s.stringOffset = dynamicDataBlob.Write(str.c_str(), str.length());
-            output.data.s.stringLength = str.length();
+            TransientString str = annot->value->EvalString();
+            output.data.s.stringOffset = dynamicDataBlob.Write(str.c_str(), str.size);
+            output.data.s.stringLength = str.size;
             output.type = Serialize::StringType;
             break;
         }
@@ -777,8 +874,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             Program* program = static_cast<Program*>(symbol);
             Program::__Resolved* resolved = static_cast<Program::__Resolved*>(symbol->resolved);
             Serialize::Program output;
-            output.nameLength = symbol->name.length();
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
+            output.nameLength = symbol->name.len;
+            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
 
             output.rayHitAttributeSize = 0;
             output.rayPayloadSize = 0;
@@ -899,8 +996,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             if (resolved->usage.flags.hasRenderState)
             {
                 Symbol* renderState = resolved->mappings[Program::__Resolved::RenderState];
-                output.renderStateNameLength = renderState->name.length();
-                output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.length());
+                output.renderStateNameLength = renderState->name.len;
+                output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.len);
             }
             else
             {
@@ -927,8 +1024,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             RenderState::__Resolved* resolved = static_cast<RenderState::__Resolved*>(symbol->resolved);
             Serialize::RenderState output;
-            output.nameLength = symbol->name.length();
-            output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.length());
+            output.nameLength = symbol->name.len;
+            output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
             output.depthClampEnabled = resolved->depthClampEnabled;
             output.noPixels = resolved->noPixels;
             output.polygonMode = resolved->polygonMode;
@@ -982,8 +1079,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.group = resolved->group;
             output.visibility.bits = resolved->visibilityBits.bits;
 
-            output.nameLength = symbol->name.length();
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
+            output.nameLength = symbol->name.len;
+            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
             output.addressU = resolved->addressU;
             output.addressV = resolved->addressV;
             output.addressW = resolved->addressW;
@@ -1020,8 +1117,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             Serialize::Structure output;
             output.isUniform = false;
             output.isMutable = false;
-            output.nameLength = symbol->name.length();
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
+            output.nameLength = symbol->name.len;
+            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
             output.size = resolved->byteSize;
             if (resolved->usageFlags.flags.isUniformBuffer)
             {
@@ -1052,8 +1149,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                     Serialize::Variable varOutput;
                     varOutput.binding = -1;
                     varOutput.group = -1;
-                    varOutput.nameLength = var->name.length();
-                    varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.length());
+                    varOutput.nameLength = var->name.len;
+                    varOutput.nameOffset = dynamicDataBlob.WriteString(var->name.c_str(), var->name.len);
                     varOutput.byteSize = resolved->byteSize;
                     varOutput.structureOffset = resolved->structureOffset;
                     varOutput.arraySizesCount = 0;
@@ -1098,8 +1195,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.binding = resolved->binding;
             output.group = resolved->group;
             output.visibility.bits = resolved->visibilityBits.bits;
-            output.nameLength = symbol->name.length();
-            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.length());
+            output.nameLength = symbol->name.len;
+            output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
             output.byteSize = resolved->byteSize;
             output.structureOffset = resolved->structureOffset;
             output.arraySizesCount = 0;
@@ -1153,8 +1250,8 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.structTypeNameOffset = 0;
             if (output.bindingType == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
             {
-                output.structTypeNameLength = resolved->type.name.length();
-                output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.length());
+                output.structTypeNameLength = resolved->type.name.len;
+                output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.len);
             }
             size_t offset = output.annotationsOffset;
             for (const Annotation* annot : var->annotations)

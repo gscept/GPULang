@@ -44,7 +44,7 @@ DefaultTypes.push_back(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
-const std::unordered_map<StaticString, ImageFormat> StringToFormats =
+const StaticMap<ConstantString, ImageFormat> StringToFormats =
 {
     { "rgba16", Rgba16 }
     , { "rgb10_a2", Rgb10_A2 }
@@ -130,7 +130,7 @@ Type::~Type()
 {
 }
 
-const StaticMap<TypeCode, StaticString> codeToStringMapping =
+const StaticMap<TypeCode, ConstantString> codeToStringMapping =
 {
     { TypeCode::Void, "void" }
     , { TypeCode::Float, "f32" }
@@ -155,12 +155,12 @@ const StaticMap<TypeCode, StaticString> codeToStringMapping =
     , { TypeCode::Sampler, "sampler" }
 };
 
-const StaticString NoCode = "";
+const ConstantString NoCode = "";
 
 //------------------------------------------------------------------------------
 /**
 */
-const StaticString&
+const ConstantString&
 Type::CodeToString(const TypeCode& code)
 {
     auto it = codeToStringMapping.Find(code);
@@ -199,7 +199,7 @@ Type::CategoryToString(const Category& cat)
 /**
 */
 Symbol* 
-Type::GetSymbol(const std::string str)
+Type::GetSymbol(const FixedString& str)
 {
     auto it = this->scope.symbolLookup.Find(str);
     if (it != this->scope.symbolLookup.end())
@@ -212,7 +212,33 @@ Type::GetSymbol(const std::string str)
 /**
 */
 std::vector<Symbol*> 
-Type::GetSymbols(const std::string str)
+Type::GetSymbols(const FixedString& str)
+{
+    std::vector<Symbol*> ret;
+    auto range = this->scope.symbolLookup.FindRange(str);
+    for (auto it = range.first; it != range.second; it++)
+        ret.push_back((*it).second);
+    return ret;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+Symbol*
+Type::GetSymbol(const TransientString& str)
+{
+    auto it = this->scope.symbolLookup.Find(str);
+    if (it != this->scope.symbolLookup.end())
+        return it->second;
+    else
+        return nullptr;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+std::vector<Symbol*>
+Type::GetSymbols(const TransientString& str)
 {
     std::vector<Symbol*> ret;
     auto range = this->scope.symbolLookup.FindRange(str);
@@ -482,16 +508,16 @@ Type::Align(uint32_t alignant, uint32_t alignment)
 /**
 */
 bool 
-Type::StringToSwizzleMask(const std::string& str, SwizzleMask& out)
+Type::StringToSwizzleMask(const FixedString& str, SwizzleMask& out)
 {
     // convert to swizzle mask
     out.bits.x = SwizzleMask::Invalid;
     out.bits.y = SwizzleMask::Invalid;
     out.bits.z = SwizzleMask::Invalid;
     out.bits.w = SwizzleMask::Invalid;
-    for (size_t i = 0; i < str.length() && i <= 4; i++)
+    for (size_t i = 0; i < str.len && i <= 4; i++)
     {
-        char c = str[i];
+        char c = str.buf[i];
         switch (c)
         {
             case 'x':
@@ -610,41 +636,41 @@ Type::SwizzleMaskBiggestComponent(SwizzleMask mask)
 //------------------------------------------------------------------------------
 /**
 */
-std::string 
+TransientString
 Type::FullType::ToString(bool includeLiteral) const
 {
-    std::string base;
+    TransientString base;
     for (size_t i = 0; i < this->modifiers.size(); i++)
     {
         if (this->modifiers[i] == Modifier::Pointer)
         {
-            base.append("*");
+            base.Append("*");
         }
         else if (this->modifiers[i] == Modifier::Array)
         {
             if (this->modifierValues[i] == nullptr)
-                base.append("[]");
+                base.Append("[]");
             else
             {
                 uint32_t size;
                 ValueUnion value;
                 this->modifierValues[i]->EvalValue(value);
                 value.Store(size);
-                base.append(Format("[%d]", size));
+                base.Concatenate<false>("[", size, "]");
             }
         }
     }
     if (this->literal && includeLiteral)
-        base.append("literal ");
+        base.Append("literal ");
     if (this->mut)
-        base.append("mutable ");
+        base.Append("mutable ");
     if (this->sampled)
-        base.append("sampled ");
+        base.Append("sampled ");
     
-    if (!this->swizzleName.empty())
-        return Format("%s%s", base.c_str(), this->swizzleName.c_str());
+    if (this->swizzleName.len > 0)
+        return TransientString(base, this->swizzleName);
     else
-        return Format("%s%s", base.c_str(), this->name.c_str());
+        return TransientString(base, this->name);
 }
 
 //------------------------------------------------------------------------------
@@ -681,8 +707,8 @@ Type::FullType::Assignable(const Type::FullType& rhs) const
         }
         else
             return false;
-    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
-    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    FixedString lhsName = this->swizzleName.len == 0 ? this->name : this->swizzleName;
+    FixedString rhsName = rhs.swizzleName.len == 0 ? rhs.name : rhs.swizzleName;
     if (lhsName != rhsName)
         return false;
     return true;
@@ -728,8 +754,8 @@ Type::FullType::Constructible(const FullType& rhs) const
         }
         else
             return false;
-    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
-    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    FixedString lhsName = this->swizzleName.len == 0 ? this->name : this->swizzleName;
+    FixedString rhsName = rhs.swizzleName.len == 0 ? rhs.name : rhs.swizzleName;
     if (lhsName != rhsName)
         return false;
     return true;
@@ -768,8 +794,8 @@ Type::FullType::operator==(const FullType& rhs) const
             if (lhsSize != rhsSize)
                 return false;
         }
-    std::string lhsName = this->swizzleName.empty() ? this->name : this->swizzleName;
-    std::string rhsName = rhs.swizzleName.empty() ? rhs.name : rhs.swizzleName;
+    FixedString lhsName = this->swizzleName.len == 0 ? this->name : this->swizzleName;
+    FixedString rhsName = rhs.swizzleName.len == 0 ? rhs.name : rhs.swizzleName;
     if (lhsName != rhsName)
         return false;
     return true;

@@ -56,9 +56,9 @@ struct Program : public Symbol
         };
 
         /// convert from string to program entry type
-        static const ProgramEntryType StringToEntryType(const std::string& str);
+        static const ProgramEntryType StringToEntryType(const TransientString& str);
         /// convert from mapping to string
-        static const std::string& EntryTypeToString(const ProgramEntryType type);
+        static const ConstantString& EntryTypeToString(const ProgramEntryType type);
 
         union ProgramUsage
         {
@@ -105,6 +105,6 @@ struct Program : public Symbol
 
 };
 
-extern const std::unordered_map<std::string, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
+extern const StaticMap<ConstantString, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
 
 } // namespace GPULang

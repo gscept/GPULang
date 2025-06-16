@@ -65,7 +65,7 @@ HGenerator::Generate(const Compiler* compiler, const Program* program, const Pin
 
 
 
-StaticMap<StaticString, StaticString> typeToHeaderType =
+StaticMap<ConstantString, ConstantString> typeToHeaderType =
 {
     { "f32", "float" },
     { "f32x2", "float" },
@@ -95,7 +95,7 @@ StaticMap<StaticString, StaticString> typeToHeaderType =
     { "void", "void" }
 };
 
-StaticMap<StaticString, StaticString> typeToArraySize =
+StaticMap<ConstantString, ConstantString> typeToArraySize =
 {
     { "f32", "" },
     { "f32x2", "[2]" },
@@ -243,12 +243,12 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
         if (varResolved->storage == Storage::LinkDefined)
         {
             TStr typeStr;
-            auto headerType = typeToHeaderType.Find(std::string_view(var->type.name));
+            auto headerType = typeToHeaderType.Find(var->type.name);
             if (headerType != typeToHeaderType.end())
                 typeStr = headerType->second.c_str();
             else
                 typeStr = var->type.name;
-            const StaticString& arrayTypeStr = typeToArraySize.Find(var->type.name)->second;
+            const ConstantString& arrayTypeStr = typeToArraySize.Find(var->type.name)->second;
 
             Expression* init = var->valueExpression;
 

@@ -103,7 +103,7 @@ struct Symbol
         Parser state
     */
     //------------------------------------------------------------------------------
-    std::string name;
+    FixedString name;
     std::string documentation;
     SymbolType symbolType;
 
@@ -112,7 +112,7 @@ struct Symbol
     /// construct string representing the line:row and file for this symbol
     std::string GetLocation() const;
 
-    const std::string TypeToString() const;
+    const TransientString TypeToString() const;
 
     //------------------------------------------------------------------------------
     /**
@@ -149,7 +149,7 @@ struct Scope
     };
     ScopeType type = ScopeType::Local;
     PinnedArray<Symbol*> symbols = 0x82000;
-    PinnedMap<std::string, Symbol*> symbolLookup = 0x82000;
+    PinnedMap<FixedString, Symbol*> symbolLookup = 0x82000;
     Symbol* owningSymbol = nullptr;
     bool unreachable = false;
 };

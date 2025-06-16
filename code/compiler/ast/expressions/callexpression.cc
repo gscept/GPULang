@@ -40,14 +40,13 @@ CallExpression::~CallExpression()
 bool 
 CallExpression::Resolve(Compiler* compiler)
 {
-    this->thisResolved->text = this->EvalString();
     if (this->isLhsValue)
         this->function->isLhsValue = true;
 
     this->function->EvalSymbol(this->thisResolved->functionSymbol);
 
     bool argumentsLiteral = true;
-    std::string argList = "";
+    TransientString argList = "";
     for (Expression* expr : this->args)
     {
         if (!expr->Resolve(compiler))
@@ -70,14 +69,14 @@ CallExpression::Resolve(Compiler* compiler)
         this->thisResolved->argumentTypes.push_back(fullType);
         this->thisResolved->argTypes.push_back(type);
         if (StorageRequiresSignature(storage))
-            argList.append(Format("%s %s", StorageToString(storage).c_str(), fullType.ToString().c_str()));
+            argList.Concatenate<true>(StorageToString(storage), fullType.ToString());
         else
-            argList.append(fullType.ToString());
+            argList.Append(fullType.ToString());
 
         if (expr != this->args.back())
-            argList.append(",");
+            argList.Append(",");
     }
-    std::string callSignature = Format("%s(%s)", this->thisResolved->functionSymbol.c_str(), argList.c_str());
+    auto callSignature = TransientString(this->thisResolved->functionSymbol, "(", argList, ")");
     Symbol* symbol = compiler->GetSymbol(callSignature);
 
     this->thisResolved->conversions.resize(this->thisResolved->argTypes.size());
@@ -93,7 +92,7 @@ CallExpression::Resolve(Compiler* compiler)
     if (symbol == nullptr)
     {
         // If the function isn't available, check for any type constructor that might implement it
-        std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol.c_str());
+        std::vector<Symbol*> functionSymbols = compiler->GetSymbols(this->thisResolved->functionSymbol);
         if (functionSymbols.empty())
         {
             compiler->UnrecognizedSymbolError(callSignature, this);
@@ -390,7 +389,7 @@ CallExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool 
-CallExpression::EvalSymbol(std::string& out) const
+CallExpression::EvalSymbol(FixedString& out) const
 {
     return this->function->EvalSymbol(out);
 }
@@ -442,19 +441,19 @@ CallExpression::EvalValue(ValueUnion& out) const
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+TransientString
 CallExpression::EvalString() const
 {
-    std::string args;
+    TransientString args;
     for (Expression* expr : this->args)
     {
-        std::string arg = expr->EvalString();
-        args.append(arg);
+        TransientString arg = expr->EvalString();
+        args.Append(arg);
         if (expr != this->args.back())
-            args.append(",");
+            args.Append(",");
     }
-    std::string fun = this->function->EvalString();
-    return Format("%s(%s)", fun.c_str(), args.c_str());
+    TransientString fun = this->function->EvalString();
+    return TransientString(fun, "(", args, ")");
 }
 
 //------------------------------------------------------------------------------
