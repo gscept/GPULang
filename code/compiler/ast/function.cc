@@ -139,7 +139,7 @@ newIntrinsic->documentation = str;
 #define __MAKE_BUILTIN(nm, opcode)\
 {\
 newIntrinsic = StaticAlloc<Function>();\
-newIntrinsic->name = #nm;\
+newIntrinsic->name = ConstantString(#nm);\
 Intrinsics::opcode = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -148,7 +148,7 @@ arguments.Clear();\
 #define __MAKE_INTRINSIC(nm, opcode, ty)\
 {\
 newIntrinsic = StaticAlloc<Function>();\
-newIntrinsic->name = #nm;\
+newIntrinsic->name = ConstantString(#nm);\
 Intrinsics::opcode##_##ty = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -157,24 +157,24 @@ arguments.Clear();\
 #define __ADD_ARG(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(tp));\
 arguments.Append(newVar);\
 }
 
 #define __ADD_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 arguments.Append(newVar);\
 }
 
 #define __ADD_MUTABLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.mut = true;\
 arguments.Append(newVar);\
 }
@@ -182,8 +182,8 @@ arguments.Append(newVar);\
 #define __ADD_VALUE_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.literal = true;\
 arguments.Append(newVar);\
 }
@@ -191,8 +191,8 @@ arguments.Append(newVar);\
 #define __ADD_ARG_ARR_LIT(nm, tp, size)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.AddModifier(Type::FullType::Modifier::Array);\
 newVar->type.UpdateValue(StaticAlloc<UIntExpression>(size));\
 arguments.Append(newVar);\
@@ -201,10 +201,10 @@ arguments.Append(newVar);\
 #define __ADD_HANDLE_ARG(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
-newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes = StaticArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 arguments.Append(newVar);\
 }
@@ -212,10 +212,10 @@ arguments.Append(newVar);\
 #define __ADD_HANDLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
-newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes = StaticArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 arguments.Append(newVar);\
 }
@@ -223,11 +223,11 @@ arguments.Append(newVar);\
 #define __ADD_SAMPLED_HANDLE_ARG_LIT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.sampled = true;\
-newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes = StaticArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 arguments.Append(newVar);\
 }
@@ -235,20 +235,20 @@ arguments.Append(newVar);\
 #define __ADD_HANDLE_ARG_LIT_MUT(nm, tp)\
 {\
 newVar = StaticAlloc<Variable>();\
-newVar->name = #nm;\
-newVar->type = Type::FullType(#tp);\
+newVar->name = ConstantString(#nm);\
+newVar->type = Type::FullType(ConstantString(#tp));\
 newVar->type.AddModifier(Type::FullType::Modifier::Pointer);\
 newVar->type.mut = true;\
-newVar->attributes = FixedArray<Attribute*>(1);\
+newVar->attributes = StaticArray<Attribute*>(1);\
 newVar->attributes.Append(StaticAlloc<Attribute>("uniform"));\
 arguments.Append(newVar);\
 }
 
 #define __SET_RET_LIT(name)\
-{ newIntrinsic->returnType = Type::FullType(#name); newIntrinsic->parameters = arguments; }
+{ newIntrinsic->returnType = Type::FullType(ConstantString(#name)); newIntrinsic->parameters = StaticArray<Variable*>(arguments); }
 
 #define __SET_RET(name)\
-{ newIntrinsic->returnType = Type::FullType(name); newIntrinsic->parameters = arguments;  }
+{ newIntrinsic->returnType = Type::FullType(ConstantString(name)); newIntrinsic->parameters = StaticArray<Variable*>(arguments); }
 
 //------------------------------------------------------------------------------
 /**
@@ -260,7 +260,7 @@ Function::SetupIntrinsics()
     SYMBOL_STATIC_ALLOC = true;
     __BEGIN_INTRINSICS__;
 
-    static std::string scalarArgs[] =
+    static const char* scalarArgs[] =
     {
         "f32"
         , "f32x2"
@@ -657,7 +657,7 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    static std::string uintTypes[] =
+    static const char* uintTypes[] =
     {
         "u32"
         , "u32x2"
@@ -673,7 +673,7 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    static std::string intTypes[] =
+    static const char* intTypes[] =
     {
         "i32"
         , "i32x2"
@@ -689,7 +689,7 @@ FLOAT_LIST
     FLOAT_LIST
 #undef X
 
-    static std::string floatTypes[] =
+    static const char* floatTypes[] =
     {
         "f32"
         , "f32x2"
@@ -1182,7 +1182,7 @@ FLOAT_LIST
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC(ty, variant, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty##variant); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty##variant)); \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1190,7 +1190,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1198,7 +1198,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_MUT(ty, variant, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty##variant); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty##variant)); \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1206,7 +1206,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 
 #define __MAKE_TEXTURE_STORE_LOAD_INTRINSIC_BASE_MUT(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1214,7 +1214,7 @@ __ADD_HANDLE_ARG_LIT_MUT(texture, overload);\
 
 #define __MAKE_TEXTURE_QUERY_INTRINSIC(ty, overload, index)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1222,7 +1222,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1230,7 +1230,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1238,7 +1238,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_INTRINSIC(ty, variant, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty##variant); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty##variant)); \
 Intrinsics::Texture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1247,7 +1247,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC(ty, variant, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty##variant); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty##variant)); \
 Intrinsics::SampledTexture##ty##variant##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1255,7 +1255,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 
 #define __MAKE_TEXTURE_INTRINSIC_BASE(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::Texture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1264,7 +1264,7 @@ __ADD_HANDLE_ARG_LIT(sampler, sampler);
 
 #define __MAKE_SAMPLEDTEXTURE_INTRINSIC_BASE(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
-newIntrinsic->name = STRINGIFY(texture##ty); \
+newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
 Intrinsics::SampledTexture##ty##Base_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
@@ -1402,7 +1402,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __ADD_HANDLE_ARG_LIT(texture, pixelCacheMS);
     __SET_RET_LIT(f32x4);
 
-    static std::string normCoordinates[] =
+    static const char* normCoordinates[] =
     {
         "f32"     // 1D
         , "f32x2"  // 2D
@@ -1415,7 +1415,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "f32x4"  // 3D + array slice
     };
 
-    static std::string projCoordinates[] =
+    static const char* projCoordinates[] =
     {
         "f32x2"    // 1D
         , "f32x3"  // 2D
@@ -1428,7 +1428,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "f32x5"  // 3D + array slice // invalid
     };
 
-    static std::string offsets[] =
+    static const char* offsets[] =
     {
         "i32"     // 1D
         , "i32x2"  // 2D
@@ -1441,7 +1441,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
         , "i32x3"  // 3DArray - array slice
     };
 
-    static std::string gradients[] =
+    static const char* gradients[] =
     {
         "f32"     // 1D
         , "f32x2"  // 2D

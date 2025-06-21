@@ -223,31 +223,28 @@ Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
 bool 
 Validator::ResolveType(Compiler* compiler, Symbol* symbol)
 {
+    if (symbol->symbolType == Symbol::SymbolType::EnumerationType)
+    {
+        if (!this->ResolveEnumeration(compiler, symbol))
+            return false;
+    }
+    else if (symbol->symbolType == Symbol::SymbolType::StructureType)
+    {
+        if (!this->ResolveStructure(compiler, symbol))
+            return false;
+    }
+    else if (symbol->symbolType == Symbol::SymbolType::TypeType)
+    {
+        if (!compiler->AddSymbol(symbol->name, symbol))
+            return false;
+    }
+    else if (symbol->symbolType != Symbol::SymbolType::FunctionType)
+    {
+        if (!compiler->AddSymbol(symbol->name, symbol))
+            return false;
+    }
+
     Type* type = static_cast<Type*>(symbol);
-    type->symbols.Invalidate();
-    type->scope.symbolLookup.Invalidate();
-
-    if (type->symbolType == Symbol::SymbolType::EnumerationType)
-    {
-        if (!this->ResolveEnumeration(compiler, type))
-            return false;
-    }
-    else if (type->symbolType == Symbol::SymbolType::StructureType)
-    {
-        if (!this->ResolveStructure(compiler, type))
-            return false;
-    }
-    else if (type->symbolType == Symbol::SymbolType::TypeType)
-    {
-        if (!compiler->AddSymbol(symbol->name, symbol))
-            return false;
-    }
-    else if (type->symbolType != Symbol::SymbolType::FunctionType)
-    {
-        if (!compiler->AddSymbol(symbol->name, symbol))
-            return false;
-    }
-
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &type->scope);
 
     for (Symbol* sym : type->symbols)
@@ -1927,7 +1924,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg->type = enumeration->type;
             parameters.Clear();
             parameters.Append(arg);
-            fromUnderlyingType->parameters = parameters;
+            fromUnderlyingType->parameters = StaticArray<Variable*>(parameters);
             enumeration->globals.push_back(fromUnderlyingType);
 
             Function* toUnderlyingType = StaticAlloc<Function>();
@@ -1939,29 +1936,29 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
-            toUnderlyingType->parameters = parameters;
+            toUnderlyingType->parameters = StaticArray<Variable*>(parameters);
             enumeration->globals.push_back(toUnderlyingType);
 
             Function* comparison = StaticAlloc<Function>();
             comparison->name = eqOp;
-            comparison->returnType = Type::FullType{ "b8" };
+            comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
-            comparison->parameters = parameters;
+            comparison->parameters = StaticArray<Variable*>(parameters);
             enumeration->staticSymbols.push_back(comparison);
 
             comparison = StaticAlloc<Function>();
             comparison->name = neqOp;
-            comparison->returnType = Type::FullType{ "b8" };
+            comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
             parameters.Clear();
             parameters.Append(arg);
-            comparison->parameters = parameters;
+            comparison->parameters = StaticArray<Variable*>(parameters);
             enumeration->staticSymbols.push_back(comparison);
             SYMBOL_STATIC_ALLOC = false;
         }
@@ -1996,7 +1993,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             Function* comparison = Alloc<Function>();
             comparison->name = eqOp;
-            comparison->returnType = Type::FullType{ "b8" };
+            comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = Alloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
@@ -2007,7 +2004,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 
             comparison = Alloc<Function>();
             comparison->name = neqOp;
-            comparison->returnType = Type::FullType{ "b8" };
+            comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = Alloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };

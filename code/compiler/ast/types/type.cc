@@ -22,7 +22,7 @@ Function* activeFunction = nullptr;
 
 #define __MAKE_TYPE(typename, typecode)\
 newType = StaticAlloc<Type>();\
-newType->name = #typename;\
+newType->name = ConstantString(#typename);\
 newType->baseType = typecode;\
 newType->category = Type::VoidCategory;\
 DefaultTypes.push_back(newType);
@@ -39,7 +39,7 @@ newType->category = Type::SamplerCategory;
 
 #define __MAKE_TYPE_CUSTOM(t1, t2)\
 newType = StaticAlloc<t2>();\
-newType->name = #t1;\
+newType->name = ConstantString(#t1);\
 DefaultTypes.push_back(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
@@ -328,10 +328,10 @@ Type::SetupDefaultTypes()
 
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = "CompareMode";
-    compareModeEnum->type = Type::FullType{ "u32" };
+    compareModeEnum->type = Type::FullType{ ConstantString("u32") };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    StackArray<StaticString> labels(32);
+    StackArray<ConstantString> labels(32);
     StackArray<Expression*> values(32);
     __ADD_ENUM(InvalidCompareMode);
     __ADD_ENUM(Never);
@@ -348,7 +348,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* stencilOpEnum = StaticAlloc<Enumeration>();
     stencilOpEnum->name = "StencilOp";
-    stencilOpEnum->type = Type::FullType{ "u32" };
+    stencilOpEnum->type = Type::FullType{ ConstantString("u32") };
     stencilOpEnum->type.literal = true;
     stencilOpEnum->baseType = GPULang::TypeCode::UInt;
     __ADD_ENUM(Invalid);
@@ -390,7 +390,7 @@ Type::SetupDefaultTypes()
 
     Enumeration* memorySemanticsEnum = StaticAlloc<Enumeration>();
     memorySemanticsEnum->name = "MemorySemantics";
-    memorySemanticsEnum->type = Type::FullType{ "u32" };
+    memorySemanticsEnum->type = Type::FullType{ ConstantString("u32") };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
     labels.Append("Relaxed"); values.Append(StaticAlloc<UIntExpression>(0x0));

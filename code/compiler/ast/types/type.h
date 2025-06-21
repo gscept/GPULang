@@ -29,7 +29,7 @@ activeFunction = &this->method;\
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
     parameters.Append(var); \
-    activeFunction->parameters = parameters;\
+    activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
@@ -54,7 +54,7 @@ activeFunction = &this->method;\
     var->name = "_arg0"; \
     var->type = Type::FullType{ #argtype }; \
     parameters.Append(var); \
-    activeFunction->parameters = parameters;\
+    activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }
 
 #define __ADD_SWIZZLE(retType, format, ...)\
@@ -82,7 +82,7 @@ this->variable.type = Type::FullType{#t};\
 this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\
-activeFunction->parameters = parameters;\
+activeFunction->parameters = StaticArray<Variable*>(parameters);\
 if (!this->constructors.empty()) { assert(this->constructors.back() != activeFunction && "Constructor added twice"); }\
 this->constructors.push_back(activeFunction);
 
@@ -453,6 +453,12 @@ struct Type : public Symbol
         }
         
         explicit FullType(const TransientString& type)
+            : name(type)
+            , literal(false)
+        {
+        }
+        
+        explicit FullType(const ConstantString& type)
             : name(type)
             , literal(false)
         {

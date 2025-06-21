@@ -62,6 +62,10 @@ Compiler::Compiler()
     auto typeIt = DefaultTypes.begin();
     while (typeIt != DefaultTypes.end())
     {
+        Type* type = static_cast<Type*>(*typeIt);
+        type->symbols.Invalidate();
+        type->scope.symbolLookup.Invalidate();
+        
         this->validator->ResolveType(this, *typeIt);
         typeIt++;
     }
@@ -89,6 +93,10 @@ Compiler::Compiler()
     auto intrinIt = DefaultIntrinsics.begin();
     while (intrinIt != DefaultIntrinsics.end())
     {
+        auto fun = static_cast<Function*>(*intrinIt);
+        auto funRes = Symbol::Resolved(fun);
+        funRes->scope.symbols.Invalidate();
+        funRes->scope.symbolLookup.Invalidate();
         this->validator->ResolveFunction(this, *intrinIt);
         intrinIt++;
     }

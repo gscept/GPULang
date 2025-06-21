@@ -52,7 +52,7 @@ struct GPULangServerResult
 	GPULang::PinnedArray<GPULang::Symbol*> symbols;
 	GPULang::Scope* intrinsicScope = nullptr, *mainScope = nullptr;
     GPULang::PinnedMap<std::string, GPULang::Symbol*> lookup;
-    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics;
+    GPULang::PinnedArray<GPULang::Diagnostic> diagnostics = 0xFFF;
 	std::vector<std::string> messages;	
 };
 

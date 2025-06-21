@@ -123,7 +123,6 @@ struct Symbol
     {
         virtual ~__Resolved() {};
         std::string signature;
-        bool resolved = false;
         bool unreachable = false;
     };
     __Resolved* resolved;
