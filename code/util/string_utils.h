@@ -142,7 +142,11 @@ inline size_t
 FragmentSize(T arg)
 {
     //assert(false && "Should never enter");
+#if !__APPLE__
     static_assert(std::false_type::value, "Should never enter");
+#else
+    assert(false && "Should never enter");
+#endif
     return 0;
 }
 
@@ -243,8 +247,11 @@ template<typename T>
 inline void
 FragmentString(T arg, char* buf, size_t size)
 {
+#if !__APPLE__
     static_assert(std::false_type::value, "Should never enter");
+#else
     assert(false);
+#endif
 }
 
 template<>
@@ -528,7 +535,11 @@ struct TransientString
     void Append(T arg)
     {
         //assert(false && "Should never enter");
+#if !__APPLE__
         static_assert(std::false_type::value, "Should never enter");
+#else
+        assert(false && "Should never enter");
+#endif
     }
 
     template<>
