@@ -630,7 +630,8 @@ struct TransientString
 };
 
 template<>
-void TransientString::Append(TransientString arg)
+inline void
+TransientString::Append(TransientString arg)
 {
     memcpy(this->buf + this->size, arg.buf, arg.size);
     this->size += arg.size;
@@ -638,7 +639,8 @@ void TransientString::Append(TransientString arg)
 }
 
 template<>
-void TransientString::Append(const TransientString& arg)
+inline void
+TransientString::Append(const TransientString& arg)
 {
     memcpy(this->buf + this->size, arg.buf, arg.size);
     this->size += arg.size;
