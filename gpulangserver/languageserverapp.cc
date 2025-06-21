@@ -478,7 +478,7 @@ CreateSemanticToken(DeltaLocation& prevLoc, const GPULang::Symbol* sym, ParseCon
                 InsertSemanticToken(prevLoc, pp->location, SemanticTypeMapping::Macro, 0x0, result);
                 uint32_t callLength = uint32_t(pp->location.end - pp->location.start);
                 if (callLength < pp->contents.len)
-                    prevLoc.carry += pp->contents.len - callLength; // Add the difference in length as a carry
+                    prevLoc.carry += int(pp->contents.len - callLength); // Add the difference in length as a carry
                 break;
             }
             }

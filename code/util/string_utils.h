@@ -9,6 +9,7 @@
 */
 //------------------------------------------------------------------------------
 #include "memory.h"
+#include <algorithm>
 
 namespace GPULang
 {

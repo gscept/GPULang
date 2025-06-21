@@ -3339,6 +3339,7 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     }
     this->generationState.active = false;
     this->generationState.branchActive = false;
+    return true;
 }
 
 //------------------------------------------------------------------------------
