@@ -1233,7 +1233,8 @@ FragmentString<FixedString>(FixedString arg, char* buf, size_t size)
 }
 
 template<>
-void TransientString::Append(FixedString arg)
+inline void
+TransientString::Append(FixedString arg)
 {
     memcpy(this->buf + this->size, arg.buf, arg.len);
     this->size += arg.len;
@@ -1241,7 +1242,8 @@ void TransientString::Append(FixedString arg)
 }
 
 template<>
-void TransientString::Append(const FixedString& arg)
+inline void
+TransientString::Append(const FixedString& arg)
 {
     memcpy(this->buf + this->size, arg.buf, arg.len);
     this->size += arg.len;
