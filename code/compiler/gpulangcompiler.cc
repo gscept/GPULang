@@ -77,6 +77,13 @@ struct FileLevel
         this->file = rhs.file;
         this->it = rhs.it;
     }
+    
+    void operator=(const FileLevel& rhs)
+    {
+        this->lineCounter = rhs.lineCounter;
+        this->file = rhs.file;
+        this->it = rhs.it;
+    }
 
 };
 
@@ -85,7 +92,7 @@ struct FileLevel
 /**
 */
 GPULangFile*
-GPULangLoadFile(const std::string_view& path, const std::vector<std::string_view>& searchPaths)
+GPULangLoadFile(const std::string_view& path, const FixedArray<std::string_view>& searchPaths)
 {
     GPULangFile* file = nullptr;
     FILE* f = fopen(TStr(path).Data(), "rb");
@@ -155,16 +162,25 @@ GPULangPreprocess(
         bool active : 1 = false;
     };
 
-    std::vector<IfLevel> ifStack;
-    std::vector<FileLevel> fileStack{ { file } };
-    std::vector<std::string_view> searchPaths;
+    StackArray<IfLevel> ifStack(32);
+    StackArray<FileLevel> fileStack(128);
+    fileStack.Append({file});
+    StackArray<std::string_view> searchPaths(128);
+    FileLevel* level = &fileStack.back();
     for (auto& arg : defines)
     {
         std::string_view argView = arg;
         if (arg[0] == '-')
         {
             if (arg[1] == 'I')
-                searchPaths.push_back(argView.substr(2));
+            {
+                if (searchPaths.Full())
+                {
+                    diagnostics.Append(DIAGNOSTIC("Maximum include paths of 128 hit"));
+                    return false;
+                }
+                searchPaths.Append(argView.substr(2));
+            }
             else if (arg[1] == 'D')
                 definitions.Insert(argView.substr(2), Macro{ .contents = "" });
         }
@@ -173,7 +189,6 @@ GPULangPreprocess(
     // Insert into file map
     PinnedMap<std::string_view, GPULangFile*> fileMap = 0xFFFF;
 
-    FileLevel* level = &fileStack.back();
     if (file->contents == nullptr)
     {
         diagnostics.Append(DIAGNOSTIC(Format("Can't open '%s' for reading", file->path.c_str())));
@@ -854,15 +869,15 @@ GPULangPreprocess(
     };
 
 #define POP_FILE() \
-            fileStack.pop_back();\
-            if (!fileStack.empty())\
+            fileStack.size--;\
+            if (fileStack.size > 0)\
             {\
                 level = &fileStack.back();\
                 output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));\
                 level->lineCounter++;\
             }\
             continue;
-    while (!fileStack.empty())
+    while (fileStack.size > 0)
     {
         // Find next unescaped \n
         if (level->it == nullptr || level->it == level->file->contents + level->file->contentSize)
@@ -920,7 +935,7 @@ escape_newline:
         auto lineEnd = lineSpan.cend();
         
 #define CHECK_IF()\
-        if (!ifStack.empty())\
+        if (ifStack.size > 0)\
         {\
             const IfLevel& ilevel = ifStack.back();\
             if (!ilevel.active)\
@@ -1015,7 +1030,12 @@ escape_newline:
                         // Include guarded
                         if (!inc->consumed)
                         {
-                            fileStack.push_back({ inc });
+                            if (fileStack.Full())
+                            {
+                                diagnostics.Append(DIAGNOSTIC("File stack maximum depth of 128 reached"));
+                                return false;
+                            }
+                            fileStack.Append({ inc });
                             level = &fileStack.back();
                         }
                     }
@@ -1179,18 +1199,28 @@ escape_newline:
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
                     
                     bool active = true;
-                    if (!ifStack.empty())
+                    if (ifStack.size > 0)
                         active = ifStack.back().active;
                     if (active)
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         auto it = definitions.Find(definition);
                         IfLevel ilevel{ .consumed = it != definitions.end(), .active = it != definitions.end() };
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
                     else
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         IfLevel ilevel{.consumed = true, .active = false};
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
 
                     pp->args = args;
@@ -1225,19 +1255,29 @@ escape_newline:
                     SETUP_ARG2(pp, definition, startOfDefinition, endOfDefinition);
 
                     bool active = true;
-                    if (!ifStack.empty())
+                    if (ifStack.size > 0)
                         active = ifStack.back().active;
                     
                     if (active)
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         auto it = definitions.Find(definition);
                         IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end() };
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
                     else
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         IfLevel ilevel{.consumed = true, .active = false};
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
                     
                     pp->args = args;
@@ -1245,7 +1285,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "elif", 4) == 0)
                 {
-                    if (ifStack.empty())
+                    if (ifStack.size == 0)
                     {
                         diagnostics.Append(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
                         ret = false;
@@ -1290,19 +1330,29 @@ escape_newline:
                     SETUP_PP2(pp, firstWord - 1, endOfDirective);
 
                     bool active = true;
-                    if (!ifStack.empty())
+                    if (ifStack.size > 0)
                         active = ifStack.back().active;
                     if (active)
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         int val = eval(endOfDirective, eol, level, diagnostics, definitions, ret);
                         SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
                         IfLevel ilevel{ .consumed = val != 0, .active = val != 0};
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
                     else
                     {
+                        if (ifStack.Full())
+                        {
+                            diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
+                            return false;
+                        }
                         IfLevel ilevel{.consumed = true, .active = false};
-                        ifStack.push_back(ilevel);
+                        ifStack.Append(ilevel);
                     }
 
                     pp->args = args;
@@ -1310,7 +1360,7 @@ escape_newline:
                 }
                 else if (strncmp(startOfDirective, "else", 4) == 0)
                 {
-                    if (ifStack.empty())
+                    if (ifStack.size == 0)
                     {
                         diagnostics.Append(DIAGNOSTIC("elif missing if/ifdef/ifndef"));
                         ret = false;
@@ -1337,14 +1387,14 @@ escape_newline:
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::EndIf;
                     SETUP_PP2(pp, firstWord-1, endOfDirective)
-                    if (ifStack.empty())
+                    if (ifStack.size == 0)
                     {
                         diagnostics.Append(GPULang::Diagnostic{ .error = "Invalid #endif, missing matching #if/#ifdef/#ifndef", .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
                     else
-                        ifStack.pop_back();
+                        ifStack.size--;
                 }
                 else if (strncmp(startOfDirective, "pragma", 6) == 0)
                 {
@@ -1620,7 +1670,7 @@ GPULangPreprocessFile(
     std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
     std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
     std::string dummy;
-    GPULangFile* file = GPULangLoadFile(path.c_str(), {});
+    GPULangFile* file = GPULangLoadFile(path.c_str(), FixedArray<std::string_view>());
     bool ret = GPULangPreprocess(file, defines, output, preprocessorSymbols, diagnostics);
     delete file;
     return ret;

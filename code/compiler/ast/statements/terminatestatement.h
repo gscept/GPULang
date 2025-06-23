@@ -25,7 +25,7 @@ struct TerminateStatement : public Statement
     /// destructor
     virtual ~TerminateStatement();
 
-    static std::string TerminationTypeToString(TerminationType type);
+    static const ConstantString& TerminationTypeToString(TerminationType type);
 
     Expression* returnValue;
     TerminationType type;

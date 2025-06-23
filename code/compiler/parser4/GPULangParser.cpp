@@ -1324,8 +1324,8 @@ GPULangParser::AliasContext* GPULangParser::alias() {
   enterRule(_localctx, 12, GPULangParser::RuleAlias);
 
           antlrcpp::downCast<AliasContext *>(_localctx)->sym =  nullptr;
-          std::string name;
-          std::string type;
+          FixedString name;
+          FixedString type;
       
 
 #if __cplusplus > 201703L
@@ -1345,7 +1345,7 @@ GPULangParser::AliasContext* GPULangParser::alias() {
     match(GPULangParser::T__4);
     setState(190);
     antlrcpp::downCast<AliasContext *>(_localctx)->type = match(GPULangParser::IDENTIFIER);
-     name = (antlrcpp::downCast<AliasContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->name->getText() : ""); type = (antlrcpp::downCast<AliasContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->type->getText() : ""); 
+     name = FixedString((antlrcpp::downCast<AliasContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->name->getText() : "")); type = FixedString((antlrcpp::downCast<AliasContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<AliasContext *>(_localctx)->type->getText() : "")); 
 
             antlrcpp::downCast<AliasContext *>(_localctx)->sym =  Alloc<Alias>();
             _localctx->sym->name = name;
@@ -1877,7 +1877,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
           StackArray<Variable*> list(256);
           StackArray<Annotation*> annotations(32);
           StackArray<Attribute*> attributes(32);
-          StackArray<std::string> names(256);
+          StackArray<FixedString> names(256);
           StackArray<Expression*> valueExpressions(256);
           StackArray<Symbol::Location> locations(256);
           unsigned initCounter = 0;
@@ -1937,7 +1937,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
     } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
     setState(269);
     antlrcpp::downCast<VariablesContext *>(_localctx)->varName = match(GPULangParser::IDENTIFIER);
-     names.Append((antlrcpp::downCast<VariablesContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varName->getText() : "")); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
+     names.Append(FixedString((antlrcpp::downCast<VariablesContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varName->getText() : ""))); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
     setState(272);
     _errHandler->sync(this);
 
@@ -1965,7 +1965,7 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
           match(GPULangParser::CO);
           setState(275);
           antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN = match(GPULangParser::IDENTIFIER);
-           if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append((antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN->getText() : "")); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
+           if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append(FixedString((antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN != nullptr ? antlrcpp::downCast<VariablesContext *>(_localctx)->varNameN->getText() : ""))); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
           break;
         }
 
@@ -2292,12 +2292,12 @@ GPULangParser::StructureContext* GPULangParser::structure() {
           StackArray<Symbol*> members(1024);
           bool isArray = false;
           Expression* arraySizeExpression = nullptr;
-          std::string instanceName;
+          FixedString instanceName;
           Symbol::Location varLocation;
           Type::FullType varType;
           Symbol::Location varTypeLocation;
           Symbol::Location typeRange;
-          std::string varName;
+          FixedString varName;
       
   size_t _la = 0;
 
@@ -2325,7 +2325,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
         case GPULangParser::IDENTIFIER: {
           setState(335);
           antlrcpp::downCast<StructureContext *>(_localctx)->varName = match(GPULangParser::IDENTIFIER);
-           varName = (antlrcpp::downCast<StructureContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varName->getText() : ""); varLocation = SetupFile(); 
+           varName = FixedString((antlrcpp::downCast<StructureContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<StructureContext *>(_localctx)->varName->getText() : "")); varLocation = SetupFile(); 
           setState(337);
           match(GPULangParser::COL);
            typeRange = BeginLocationRange(); 
@@ -2510,7 +2510,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
           StackArray<FixedString> enumLabels(256);
           StackArray<Expression*> enumValues(256);
           StackArray<Symbol::Location> enumLocations(256);
-          std::string name;
+          FixedString name;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
           Symbol::Location location;
           Symbol::Location labelLocation;
@@ -2530,7 +2530,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
     match(GPULangParser::T__7);
     setState(368);
     antlrcpp::downCast<EnumerationContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
-     name = (antlrcpp::downCast<EnumerationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->name->getText() : ""); location = SetupFile(); 
+     name = FixedString((antlrcpp::downCast<EnumerationContext *>(_localctx)->name != nullptr ? antlrcpp::downCast<EnumerationContext *>(_localctx)->name->getText() : "")); location = SetupFile(); 
     setState(374);
     _errHandler->sync(this);
 
@@ -2730,7 +2730,7 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
   enterRule(_localctx, 30, GPULangParser::RuleParameter);
 
           StackArray<Attribute*> attributes(32);
-          std::string name;
+          FixedString name;
           Expression* valueExpression = nullptr;
           Symbol::Location location;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
@@ -2772,7 +2772,7 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
     }
     setState(425);
     antlrcpp::downCast<ParameterContext *>(_localctx)->varName = match(GPULangParser::IDENTIFIER);
-     name = (antlrcpp::downCast<ParameterContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<ParameterContext *>(_localctx)->varName->getText() : ""); location = SetupFile(); 
+     name = FixedString((antlrcpp::downCast<ParameterContext *>(_localctx)->varName != nullptr ? antlrcpp::downCast<ParameterContext *>(_localctx)->varName->getText() : "")); location = SetupFile(); 
     setState(427);
     match(GPULangParser::COL);
     setState(428);
@@ -5951,7 +5951,7 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
   enterRule(_localctx, 72, GPULangParser::RuleInitializerExpression);
 
           antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->tree =  nullptr;
-          std::string type = "";
+          FixedString type;
           Symbol::Location location;
       
   size_t _la = 0;
@@ -5967,7 +5967,7 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
     enterOuterAlt(_localctx, 1);
     setState(953);
     antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type = match(GPULangParser::IDENTIFIER);
-     type = (antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type->getText() : ""); 
+     type = FixedString((antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type != nullptr ? antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->type->getText() : "")); 
     setState(955);
     match(GPULangParser::LB);
      location = SetupFile(); 

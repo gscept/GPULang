@@ -18,7 +18,7 @@ namespace GPULang
 struct InitializerExpression : public Expression
 {
     /// constructor
-    InitializerExpression(const FixedArray<Expression*>& values, const std::string& type);
+    InitializerExpression(const FixedArray<Expression*>& values, const FixedString& type);
     /// Destructor
     virtual ~InitializerExpression();
 

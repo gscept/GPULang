@@ -223,10 +223,10 @@ alias
     @init
     {
         $sym = nullptr;
-        std::string name;
-        std::string type;
+        FixedString name;
+        FixedString type;
     }
-    : 'alias' name = IDENTIFIER 'as' type = IDENTIFIER { name = $name.text; type = $type.text; }
+    : 'alias' name = IDENTIFIER 'as' type = IDENTIFIER { name = FixedString($name.text); type = FixedString($type.text); }
     {
         $sym = Alloc<Alias>();
         $sym->name = name;
@@ -293,7 +293,7 @@ variables
         StackArray<Variable*> list(256);
         StackArray<Annotation*> annotations(32);
         StackArray<Attribute*> attributes(32);
-        StackArray<std::string> names(256);
+        StackArray<FixedString> names(256);
         StackArray<Expression*> valueExpressions(256);
         StackArray<Symbol::Location> locations(256);
         unsigned initCounter = 0;
@@ -303,9 +303,9 @@ variables
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })+
     
-    varName = IDENTIFIER { names.Append($varName.text); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } 
+    varName = IDENTIFIER { names.Append(FixedString($varName.text)); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } 
     (linePreprocessorEntry)?
-    (',' varNameN = IDENTIFIER { if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append($varNameN.text); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } | linePreprocessorEntry)*
+    (',' varNameN = IDENTIFIER { if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append(FixedString($varNameN.text)); valueExpressions.Append(nullptr); locations.Append(SetupFile()); } | linePreprocessorEntry)*
     
     ( ':' 
        typeDeclaration { type = $typeDeclaration.type; }
@@ -361,16 +361,16 @@ structure
         StackArray<Symbol*> members(1024);
         bool isArray = false;
         Expression* arraySizeExpression = nullptr;
-        std::string instanceName;
+        FixedString instanceName;
         Symbol::Location varLocation;
         Type::FullType varType;
         Symbol::Location varTypeLocation;
         Symbol::Location typeRange;
-        std::string varName;
+        FixedString varName;
     }:
     structureDeclaration { $sym = $structureDeclaration.sym; }
     '{' 
-        (varName = IDENTIFIER { varName = $varName.text; varLocation = SetupFile(); } ':'         
+        (varName = IDENTIFIER { varName = FixedString($varName.text); varLocation = SetupFile(); } ':'         
             { typeRange = BeginLocationRange(); }
             ( 
                 '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); } |
@@ -417,12 +417,12 @@ enumeration
         StackArray<FixedString> enumLabels(256);
         StackArray<Expression*> enumValues(256);
         StackArray<Symbol::Location> enumLocations(256);
-        std::string name;
+        FixedString name;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
         Symbol::Location labelLocation;
     }:
-    'enum' name = IDENTIFIER { name = $name.text; location = SetupFile(); }
+    'enum' name = IDENTIFIER { name = FixedString($name.text); location = SetupFile(); }
     (':' typeDeclaration { type = $typeDeclaration.type; })?
     '{'
         (
@@ -465,14 +465,14 @@ parameter
     @init
     {
         StackArray<Attribute*> attributes(32);
-        std::string name;
+        FixedString name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
     (linePreprocessorEntry)*
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
-    varName = IDENTIFIER { name = $varName.text; location = SetupFile(); } 
+    varName = IDENTIFIER { name = FixedString($varName.text); location = SetupFile(); } 
     ':' 
     typeDeclaration { type = $typeDeclaration.type; }
     (
@@ -1024,10 +1024,10 @@ initializerExpression
     @init
     {
         $tree = nullptr;
-        std::string type = "";
+        FixedString type;
         Symbol::Location location;
     }:
-    type = IDENTIFIER { type = $type.text; } '{' { location = SetupFile(); } (list = expressionList)? '}'
+    type = IDENTIFIER { type = FixedString($type.text); } '{' { location = SetupFile(); } (list = expressionList)? '}'
     {
         $tree = Alloc<InitializerExpression>($list.expressions, type);
         $tree->location = location;

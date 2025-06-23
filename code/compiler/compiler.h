@@ -181,15 +181,15 @@ struct Compiler
     bool Validate(Effect* root);
 
     /// produce error in compiler with explicit file, line and column
-    void Error(const std::string& msg, const FixedString& file, int line, int column, int length = 1);
+    void Error(const TransientString& msg, const FixedString& file, int line, int column, int length = 1);
     /// produce error in compiler from symbol
-    void Error(const std::string& msg, const Symbol* sym);
+    void Error(const TransientString& msg, const Symbol* sym);
     /// produce error in compiler with explicit file, line and column
-    void Warning(const std::string& msg, const FixedString& file, int line, int column);
+    void Warning(const TransientString& msg, const FixedString& file, int line, int column);
     /// produce error in compiler from symbol
-    void Warning(const std::string& msg, const Symbol* sym);
+    void Warning(const TransientString& msg, const Symbol* sym);
     /// produce an internal generator error
-    void GeneratorError(const std::string& msg);
+    void GeneratorError(const TransientString& msg);
 
     /// helper for unrecognized type error
     void UnrecognizedTypeError(const TransientString& type, Symbol* sym);

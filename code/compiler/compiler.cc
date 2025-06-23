@@ -704,8 +704,8 @@ Compiler::Validate(Effect* root)
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::Error(const std::string& msg, const FixedString& file, int line, int column, int length)
+void
+Compiler::Error(const TransientString& msg, const FixedString& file, int line, int column, int length)
 {
     static const char* ErrorStrings[] =
     {
@@ -719,18 +719,20 @@ Compiler::Error(const std::string& msg, const FixedString& file, int line, int c
         "internal error: %s", // GCC
         "internal error: %s", // Clang
     };
-    if (line == -1) 
+    if (line == -1)
     {
-        std::string err = Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
-        this->messages.push_back(err);
+        TransientString err;
+        err.Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
+        this->messages.push_back(err.c_str());
 
-        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     else
     {
-        std::string err = Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
-        this->messages.push_back(err);
-        this->diagnostics.Append(Diagnostic{ .error = msg, .file = file.c_str(), .line = line, .column = column, .length = length });
+        TransientString err;
+        err.Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
+        this->messages.push_back(err.c_str());
+        this->diagnostics.Append(Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }
@@ -738,8 +740,8 @@ Compiler::Error(const std::string& msg, const FixedString& file, int line, int c
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::Error(const std::string& msg, const Symbol* sym)
+void
+Compiler::Error(const TransientString& msg, const Symbol* sym)
 {
     this->Error(msg, sym->location.file, sym->location.line, sym->location.start, sym->location.end - sym->location.start);
 }
@@ -747,11 +749,10 @@ Compiler::Error(const std::string& msg, const Symbol* sym)
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::Warning(const std::string& msg, const FixedString& file, int line, int column)
+void
+Compiler::Warning(const TransientString& msg, const FixedString& file, int line, int column)
 {
-    std::string err = Format("%s(%d) : warning: %s", file.c_str(), line, msg.c_str());
-    this->messages.push_back(err);
+    this->messages.push_back(TransientString(file, "(", line, ")", " : warning: ", msg).c_str());
     if (this->options.warningsAsErrors)
         this->hasErrors = true;
 }
@@ -759,8 +760,8 @@ Compiler::Warning(const std::string& msg, const FixedString& file, int line, int
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::Warning(const std::string& msg, const Symbol* sym)
+void
+Compiler::Warning(const TransientString& msg, const Symbol* sym)
 {
     this->Warning(msg, sym->location.file, sym->location.line, sym->location.start);
 }
@@ -768,11 +769,12 @@ Compiler::Warning(const std::string& msg, const Symbol* sym)
 //------------------------------------------------------------------------------
 /**
 */
-void 
-Compiler::GeneratorError(const std::string& msg)
+void
+Compiler::GeneratorError(const TransientString& msg)
 {
-    this->messages.push_back(msg);
+    this->messages.push_back(msg.c_str());
 }
+
 
 //------------------------------------------------------------------------------
 /**

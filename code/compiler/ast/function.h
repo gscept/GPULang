@@ -52,9 +52,9 @@ struct Function : public Symbol
         Storage returnValueStorage;
         Scope scope;
 
-        std::string name;
-        std::string nameWithVarNames;
-        std::string signature;
+        FixedString name;
+        FixedString nameWithVarNames;
+        FixedString signature;
         bool hasExplicitReturn;
         
         static const uint8_t INVALID_SIZE = 0xF;

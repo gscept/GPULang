@@ -987,7 +987,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    std::string attributeList;
+    TransientString attributeList;
 
     // make a set of all attributes
     for (const Attribute* attr : fun->attributes)
@@ -998,15 +998,17 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
             compiler->Error(Format("Attribute '%s' can not be evaluated to a compile time value", attr->name.c_str()), symbol);
             return false;
         }
-        attributeList.append(Format("%s ", attrAsString.c_str()));
+        attributeList.Append(attrAsString);
+        attributeList.Append(" ");
         if (attr->name == "prototype")
             funResolved->isPrototype = true;
     }
 
     // format function with all attributes and parameters
-    std::string resolvedName = Format("%s(%s)", fun->name.c_str(), paramList.c_str());
-    std::string resolvedNameWithParamNames = Format("%s(%s)", fun->name.c_str(), paramListNamed.c_str());
-    std::string functionFormatted = Format("%s%s %s", (attributeList.empty() ? "" : (attributeList + " ").c_str()), resolvedName.c_str(), fun->returnType.name.c_str());
+    auto resolvedName = TransientString(fun->name, "(", paramList, ")");
+    auto resolvedNameWithParamNames = TransientString(fun->name, "(", paramListNamed, ")");
+    auto functionFormatted = TransientString::Compact(attributeList, resolvedName, " ", fun->returnType.name);
+    
     funResolved->name = resolvedName;
     funResolved->nameWithVarNames = resolvedNameWithParamNames;
     funResolved->signature = functionFormatted;
@@ -1196,15 +1198,15 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 
                 if (!matched)
                 {
-                    std::string candidates;
+                    TransientString candidates;
                     for (Symbol* sym : functions)
                     {
                         Function* func = static_cast<Function*>(sym);
                         Function::__Resolved* res = Symbol::Resolved(func);
 
-                        candidates.append(res->signature);
+                        candidates.Append(res->signature);
                         if (sym != functions.back())
-                            candidates.append(",\n");
+                            candidates.Append(",\n");
                     }
                     compiler->Error(Format("Function prototype '%s' can not bind function '%s', possible candidates: \n%s", functionStub->name.c_str(), assignEntry->right->EvalString().c_str(), candidates.c_str()), symbol);
                     return false;
@@ -2657,7 +2659,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             }
             else
             {
-                std::string conversionName = Format("%s(%s)", lhsType->name.c_str(), rhs.ToString().c_str());
+                auto conversionName = TransientString(lhsType->name, "(", rhs.ToString(), ")");
                 Function* conv = compiler->GetSymbol<Function>(conversionName);
                 if (conv == nullptr)
                 {
@@ -3151,7 +3153,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             }
             auto statement = reinterpret_cast<TerminateStatement*>(symbol);
             Symbol* scopeOwner = compiler->GetParentScopeOwner(Symbol::FunctionType);
-            std::string terminationString = TerminateStatement::TerminationTypeToString(statement->type);
+            const ConstantString& terminationString = TerminateStatement::TerminationTypeToString(statement->type);
             if (scopeOwner == nullptr)
             {
                 compiler->Error(Format("'%s' is only valid inside function body", terminationString.c_str()), statement);

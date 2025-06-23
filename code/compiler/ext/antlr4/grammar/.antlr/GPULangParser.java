@@ -834,8 +834,8 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 12, RULE_alias);
 
 		        ((AliasContext)_localctx).sym =  nullptr;
-		        std::string name;
-		        std::string type;
+		        FixedString name;
+		        FixedString type;
 		    
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -848,7 +848,7 @@ public class GPULangParser extends Parser {
 			match(T__4);
 			setState(190);
 			((AliasContext)_localctx).type = match(IDENTIFIER);
-			 name = (((AliasContext)_localctx).name!=null?((AliasContext)_localctx).name.getText():null); type = (((AliasContext)_localctx).type!=null?((AliasContext)_localctx).type.getText():null); 
+			 name = FixedString((((AliasContext)_localctx).name!=null?((AliasContext)_localctx).name.getText():null)); type = FixedString((((AliasContext)_localctx).type!=null?((AliasContext)_localctx).type.getText():null)); 
 
 			        ((AliasContext)_localctx).sym =  Alloc<Alias>();
 			        _localctx.sym->name = name;
@@ -1237,7 +1237,7 @@ public class GPULangParser extends Parser {
 		        StackArray<Variable*> list(256);
 		        StackArray<Annotation*> annotations(32);
 		        StackArray<Attribute*> attributes(32);
-		        StackArray<std::string> names(256);
+		        StackArray<FixedString> names(256);
 		        StackArray<Expression*> valueExpressions(256);
 		        StackArray<Symbol::Location> locations(256);
 		        unsigned initCounter = 0;
@@ -1300,7 +1300,7 @@ public class GPULangParser extends Parser {
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			setState(269);
 			((VariablesContext)_localctx).varName = match(IDENTIFIER);
-			 names.Append((((VariablesContext)_localctx).varName!=null?((VariablesContext)_localctx).varName.getText():null)); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
+			 names.Append(FixedString((((VariablesContext)_localctx).varName!=null?((VariablesContext)_localctx).varName.getText():null))); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
 			setState(272);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
@@ -1325,7 +1325,7 @@ public class GPULangParser extends Parser {
 					match(CO);
 					setState(275);
 					((VariablesContext)_localctx).varNameN = match(IDENTIFIER);
-					 if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append((((VariablesContext)_localctx).varNameN!=null?((VariablesContext)_localctx).varNameN.getText():null)); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
+					 if (names.Full()) { throw IndexOutOfBoundsException("Maximum of 256 variable declarations reached"); } names.Append(FixedString((((VariablesContext)_localctx).varNameN!=null?((VariablesContext)_localctx).varNameN.getText():null))); valueExpressions.Append(nullptr); locations.Append(SetupFile()); 
 					}
 					break;
 				case T__2:
@@ -1600,12 +1600,12 @@ public class GPULangParser extends Parser {
 		        StackArray<Symbol*> members(1024);
 		        bool isArray = false;
 		        Expression* arraySizeExpression = nullptr;
-		        std::string instanceName;
+		        FixedString instanceName;
 		        Symbol::Location varLocation;
 		        Type::FullType varType;
 		        Symbol::Location varTypeLocation;
 		        Symbol::Location typeRange;
-		        std::string varName;
+		        FixedString varName;
 		    
 		int _la;
 		try {
@@ -1628,7 +1628,7 @@ public class GPULangParser extends Parser {
 					{
 					setState(335);
 					((StructureContext)_localctx).varName = match(IDENTIFIER);
-					 varName = (((StructureContext)_localctx).varName!=null?((StructureContext)_localctx).varName.getText():null); varLocation = SetupFile(); 
+					 varName = FixedString((((StructureContext)_localctx).varName!=null?((StructureContext)_localctx).varName.getText():null)); varLocation = SetupFile(); 
 					setState(337);
 					match(COL);
 					 typeRange = BeginLocationRange(); 
@@ -1779,7 +1779,7 @@ public class GPULangParser extends Parser {
 		        StackArray<FixedString> enumLabels(256);
 		        StackArray<Expression*> enumValues(256);
 		        StackArray<Symbol::Location> enumLocations(256);
-		        std::string name;
+		        FixedString name;
 		        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
 		        Symbol::Location location;
 		        Symbol::Location labelLocation;
@@ -1792,7 +1792,7 @@ public class GPULangParser extends Parser {
 			match(T__7);
 			setState(368);
 			((EnumerationContext)_localctx).name = match(IDENTIFIER);
-			 name = (((EnumerationContext)_localctx).name!=null?((EnumerationContext)_localctx).name.getText():null); location = SetupFile(); 
+			 name = FixedString((((EnumerationContext)_localctx).name!=null?((EnumerationContext)_localctx).name.getText():null)); location = SetupFile(); 
 			setState(374);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -1970,7 +1970,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 30, RULE_parameter);
 
 		        StackArray<Attribute*> attributes(32);
-		        std::string name;
+		        FixedString name;
 		        Expression* valueExpression = nullptr;
 		        Symbol::Location location;
 		        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
@@ -2013,7 +2013,7 @@ public class GPULangParser extends Parser {
 			}
 			setState(425);
 			((ParameterContext)_localctx).varName = match(IDENTIFIER);
-			 name = (((ParameterContext)_localctx).varName!=null?((ParameterContext)_localctx).varName.getText():null); location = SetupFile(); 
+			 name = FixedString((((ParameterContext)_localctx).varName!=null?((ParameterContext)_localctx).varName.getText():null)); location = SetupFile(); 
 			setState(427);
 			match(COL);
 			setState(428);
@@ -4534,7 +4534,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 72, RULE_initializerExpression);
 
 		        ((InitializerExpressionContext)_localctx).tree =  nullptr;
-		        std::string type = "";
+		        FixedString type;
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4543,7 +4543,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(953);
 			((InitializerExpressionContext)_localctx).type = match(IDENTIFIER);
-			 type = (((InitializerExpressionContext)_localctx).type!=null?((InitializerExpressionContext)_localctx).type.getText():null); 
+			 type = FixedString((((InitializerExpressionContext)_localctx).type!=null?((InitializerExpressionContext)_localctx).type.getText():null)); 
 			setState(955);
 			match(LB);
 			 location = SetupFile(); 

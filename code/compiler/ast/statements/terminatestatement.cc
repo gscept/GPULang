@@ -26,7 +26,7 @@ TerminateStatement::~TerminateStatement()
         this->returnValue->~Expression();
 }
 
-const std::vector<std::string> terminationTypeLookup =
+const StaticArray<ConstantString> terminationTypeLookup =
 {
     "return",
     "discard",
@@ -36,7 +36,7 @@ const std::vector<std::string> terminationTypeLookup =
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+const ConstantString&
 TerminateStatement::TerminationTypeToString(TerminationType type)
 {
     return terminationTypeLookup[(unsigned)type];

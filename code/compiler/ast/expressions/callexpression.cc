@@ -307,8 +307,8 @@ CallExpression::Resolve(Compiler* compiler)
         {
             if (scopeIt.get()->owningSymbol == this->thisResolved->function)
             {
-                std::string message = "Recursions are not allowed, the following callstack produced a recursion:\n";
-                std::vector<std::string> callstack;
+                TransientString message = "Recursions are not allowed, the following callstack produced a recursion:\n";
+                PinnedArray<FixedString> callstack = 0xFFF;
                 auto scopeIt2 = compiler->scopes.rbegin();
                 while (scopeIt2 != end)
                 {
@@ -317,12 +317,12 @@ CallExpression::Resolve(Compiler* compiler)
                     {
                         Function* fun = static_cast<Function*>(sym);
                         Function::__Resolved* res = Symbol::Resolved(fun);
-                        callstack.push_back(res->signature);
+                        callstack.Append(res->signature);
                     }
                     scopeIt2++;
                 }
-                std::string indent = "";
-                std::string outline = " ";
+                TransientString indent = "";
+                TransientString outline = " ";
                 auto callstackIt = callstack.begin();
                 while (callstackIt != callstack.end())
                 {

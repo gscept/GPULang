@@ -97,4 +97,4 @@ extern std::vector<std::string> GPULangGenerateDependencies(const std::string& f
 extern bool GPULangCompile(const std::string& file, GPULang::Compiler::Language target, const std::string& output, const std::string& header_output, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangErrorBlob*& errorBuffer);
 extern bool GPULangValidateFile(const std::string& file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
 extern bool GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPULang::Compiler::Options options, GPULangServerResult& result);
-extern GPULangFile* GPULangLoadFile(const std::string_view& path, const std::vector<std::string_view>& searchPaths);
+extern GPULangFile* GPULangLoadFile(const std::string_view& path, const GPULang::FixedArray<std::string_view>& searchPaths);

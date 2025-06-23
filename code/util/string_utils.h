@@ -634,6 +634,28 @@ struct TransientString
     
     template<>
     void Append(const FixedString& arg);
+    
+    TransientString operator+(const TransientString& rhs)
+    {
+        TransientString ret;
+        ret.Append(*this);
+        ret.Append(rhs);
+        return ret;
+    }
+    
+    TransientString operator+(const char* rhs)
+    {
+        TransientString ret;
+        ret.Append(*this);
+        ret.Append(rhs);
+        return ret;
+    }
+    
+    TransientString& operator+=(const TransientString& rhs)
+    {
+        this->Append(rhs);
+        return *this;
+    }
 
     const char* Data() const
     {
