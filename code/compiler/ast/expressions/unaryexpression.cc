@@ -78,7 +78,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         {
             if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
-                compiler->Error(Format("Unary '++' only allowed on integer types"), this);
+                compiler->Error("Unary '++' only allowed on integer types", this);
                 return false;    
             }
             break;
@@ -87,7 +87,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         {
             if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
-                compiler->Error(Format("Unary '++' only allowed on integer types"), this);
+                compiler->Error("Unary '++' only allowed on integer types", this);
                 return false;    
             }
             break;
@@ -98,7 +98,7 @@ UnaryExpression::Resolve(Compiler* compiler)
             {
                 if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
                 {
-                    compiler->Error(Format("Dereferencing is only allowed on a pointer"), this);
+                    compiler->Error("Dereferencing is only allowed on a pointer", this);
                     return false;
                 }
                 type.modifiers.erase(type.modifiers.begin());
@@ -106,7 +106,7 @@ UnaryExpression::Resolve(Compiler* compiler)
             }
             else if (this->isLhsValue)
             {
-                compiler->Error(Format("Left hand unary operators must be pointer indirection '*'"), this);
+                compiler->Error("Left hand unary operators must be pointer indirection '*'", this);
                 return false;
             }
             break;
@@ -115,12 +115,12 @@ UnaryExpression::Resolve(Compiler* compiler)
         {
             if (signedTypes.Find(typeSymbol->baseType) == signedTypes.end())
             {
-                compiler->Error(Format("Unary '-' only allowed on signed types"), this);
+                compiler->Error("Unary '-' only allowed on signed types", this);
                 return false;    
             }
             if (!type.modifiers.empty())
             {
-                compiler->Error(Format("Unary '-' only allowed on scalar values"), this);
+                compiler->Error("Unary '-' only allowed on scalar values", this);
                 return false;
             }
             break;

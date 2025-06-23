@@ -159,21 +159,21 @@ FragmentSize(std::nullptr_t)
 
 template<>
 inline size_t
-FragmentSize<int>(int arg)
+FragmentSize(int arg)
 {
     return NumChars(arg);
 }
 
 template<>
 inline size_t
-FragmentSize<unsigned int>(unsigned int arg)
+FragmentSize(unsigned int arg)
 {
     return NumChars(arg);
 }
 
 template<>
 inline size_t
-FragmentSize<char>(char arg)
+FragmentSize(char arg)
 {
     return NumChars(arg);
 }
@@ -181,14 +181,14 @@ FragmentSize<char>(char arg)
 
 template<>
 inline size_t
-FragmentSize<unsigned char>(unsigned char arg)
+FragmentSize(unsigned char arg)
 {
     return NumChars(arg);
 }
 
 template<>
 inline size_t
-FragmentSize<float>(float arg)
+FragmentSize(float arg)
 {
     char buf[256];
     return snprintf(buf, 256, "%f", arg);
@@ -196,49 +196,56 @@ FragmentSize<float>(float arg)
 
 template<>
 inline size_t
-FragmentSize<size_t>(size_t arg)
+FragmentSize(size_t arg)
 {
     return NumChars(arg);
 }
 
 template<>
 inline constexpr size_t
-FragmentSize<char*>(char* str)
+FragmentSize(char* str)
 {
     return const_len(str);
 }
 
 template<>
 inline constexpr size_t
-FragmentSize<const char*>(const char* str)
+FragmentSize(const char* str)
 {
     return const_len(str);
 }
 
+template<int SIZE>
+inline constexpr size_t
+FragmentSize(const char (&str)[SIZE])
+{
+    return SIZE-1;
+}
+
 template<>
 inline size_t
-FragmentSize<const std::string&>(const std::string& str)
+FragmentSize(const std::string& str)
 {
     return str.length();
 }
 
 template<>
 inline size_t
-FragmentSize<std::string>(std::string str)
+FragmentSize(std::string str)
 {
     return str.length();
 }
 
 template<>
 inline size_t
-FragmentSize<std::string_view>(std::string_view str)
+FragmentSize(std::string_view str)
 {
     return str.length();
 }
 
 template<>
 inline size_t
-FragmentSize<ConstantString>(ConstantString str)
+FragmentSize(ConstantString str)
 {
     return str.size;
 }
@@ -256,20 +263,20 @@ FragmentString(T arg, char* buf, size_t size)
 
 template<>
 inline void
-FragmentString<std::nullptr_t>(std::nullptr_t, char* buf, size_t size)
+FragmentString(std::nullptr_t, char* buf, size_t size)
 {
 }
 
 template<>
 inline void
-FragmentString<int>(int arg, char* buf, size_t size)
+FragmentString(int arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%d", arg);
 }
 
 template<>
 inline void
-FragmentString<bool>(bool arg, char* buf, size_t size)
+FragmentString(bool arg, char* buf, size_t size)
 {
     const char* value = arg ? "true" : "false";
     memcpy(buf, value, arg ? 4 : 5);
@@ -277,84 +284,91 @@ FragmentString<bool>(bool arg, char* buf, size_t size)
 
 template<>
 inline void
-FragmentString<unsigned int>(unsigned int arg, char* buf, size_t size)
+FragmentString(unsigned int arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%lu", arg);
 }
 
 template<>
 inline void
-FragmentString<char>(char arg, char* buf, size_t size)
+FragmentString(char arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%hhd", arg);
 }
 
 template<>
 inline void
-FragmentString<unsigned char>(unsigned char arg, char* buf, size_t size)
+FragmentString(unsigned char arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%hhu", arg);
 }
 
 template<>
 inline void
-FragmentString<float>(float arg, char* buf, size_t size)
+FragmentString(float arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%f", arg);
 }
 
 template<>
 inline void
-FragmentString<size_t>(size_t arg, char* buf, size_t size)
+FragmentString(size_t arg, char* buf, size_t size)
 {
     snprintf(buf, size, "%zu", arg);
 }
 
 template<>
 inline void
-FragmentString<const char*>(const char* arg, char* buf, size_t size)
+FragmentString(const char* arg, char* buf, size_t size)
+{
+    memcpy(buf, arg, const_len(arg));
+}
+
+template<int SIZE>
+inline void
+FragmentString(const char (&arg)[SIZE], char* buf, size_t size)
+{
+    memcpy(buf, arg, SIZE-1);
+}
+
+template<>
+inline void
+FragmentString(char* arg, char* buf, size_t size)
 {
     memcpy(buf, arg, const_len(arg));
 }
 
 template<>
 inline void
-FragmentString<char*>(char* arg, char* buf, size_t size)
-{
-    memcpy(buf, arg, const_len(arg));
-}
-
-template<>
-inline void
-FragmentString<const std::string_view&>(const std::string_view& arg, char* buf, size_t size)
+FragmentString(const std::string_view& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.data(), arg.length());
 }
 
 template<>
 inline void
-FragmentString<std::string_view>(std::string_view arg, char* buf, size_t size)
+FragmentString(std::string_view arg, char* buf, size_t size)
 {
     memcpy(buf, arg.data(), arg.length());
 }
 
 template<>
 inline void
-FragmentString<const std::string&>(const std::string& arg, char* buf, size_t size)
+FragmentString(const std::string& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.c_str(), arg.length());
 }
 
 template<>
 inline void
-FragmentString<std::string>(std::string arg, char* buf, size_t size)
+FragmentString(std::string arg, char* buf, size_t size)
 {
     memcpy(buf, arg.c_str(), arg.length());
 }
 
 template<>
 inline void
-FragmentString<ConstantString>(ConstantString arg, char* buf, size_t size)
+FragmentString(ConstantString arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
@@ -410,25 +424,25 @@ struct TransientString
     }
 
     template<typename ...ARGS>
-    TransientString(ARGS... args)
+    TransientString(const ARGS&... args)
         : size(0)
         , capacity(2048)
     {
-        this->Concatenate<false>(std::forward<ARGS>(args)...);
+        this->Concatenate<false>(std::forward<const ARGS&>(args)...);
     }
 
     template<typename ...ARGS>
-    static TransientString Separated(ARGS... args)
+    static TransientString Separated(const ARGS&... args)
     {
         TransientString ret;
-        ret.Concatenate<true>(std::forward<ARGS>(args)...);
+        ret.Concatenate<true>(std::forward<const ARGS&>(args)...);
         return ret;
     }
 
     template<typename ...ARGS>
-    static TransientString Compact(ARGS... args)
+    static TransientString Compact(const ARGS&... args)
     {
-        return TransientString(std::forward<ARGS>(args)...);
+        return TransientString(std::forward<const ARGS&>(args)...);
     }
 
     void operator=(const TransientString& rhs)
@@ -466,7 +480,7 @@ struct TransientString
     }
 
     template<bool SPACE_SEPARATED, typename ...ARGS>
-    void Concatenate(ARGS... args)
+    void Concatenate(const ARGS&... args)
     {
         size_t numArgs = sizeof...(ARGS);
         size_t numBytes = 0;
@@ -550,15 +564,23 @@ struct TransientString
     }
 
     template<>
-    void Append<const char*>(const char* buf)
+    void Append(const char* buf)
     {
         memcpy(this->buf + this->size, buf, const_len(buf));
         this->size += const_len(buf);
         this->buf[this->size] = '\0';
     }
+    
+    template<int SIZE>
+    void Append(const char (&str)[SIZE])
+    {
+        memcpy(this->buf + this->size, str, SIZE-1);
+        this->size += SIZE-1;
+        this->buf[this->size] = '\0';
+    }
 
     template<>
-    void Append<int>(int arg)
+    void Append(int arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%d", arg);
         this->size += NumChars(arg);
@@ -566,7 +588,7 @@ struct TransientString
     }
 
     template<>
-    void Append<std::string>(std::string arg)
+    void Append(std::string arg)
     {
         memcpy(this->buf + this->size, arg.c_str(), arg.size());
         this->size += arg.size();
@@ -574,7 +596,7 @@ struct TransientString
     }
 
     template<>
-    void Append<std::string_view>(std::string_view arg)
+    void Append(std::string_view arg)
     {
         memcpy(this->buf + this->size, arg.data(), arg.size());
         this->size += arg.size();
@@ -582,7 +604,7 @@ struct TransientString
     }
 
     template<>
-    void Append<unsigned int>(unsigned int arg)
+    void Append(unsigned int arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%ul", arg);
         this->size += NumChars(arg);
@@ -590,7 +612,7 @@ struct TransientString
     }
 
     template<>
-    void Append<char>(char arg)
+    void Append(char arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%hhd", arg);
         this->size += NumChars(arg);
@@ -598,7 +620,7 @@ struct TransientString
     }
 
     template<>
-    void Append<unsigned char>(unsigned char arg)
+    void Append(unsigned char arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%hhu", arg);
         this->size += NumChars(arg);
@@ -606,7 +628,7 @@ struct TransientString
     }
 
     template<>
-    void Append<float>(float arg)
+    void Append(float arg)
     {
         size_t written = snprintf(this->buf + this->size, this->capacity - this->size, "%f", arg);
         this->size += written;
@@ -614,7 +636,7 @@ struct TransientString
     }
 
     template<>
-    void Append<size_t>(size_t arg)
+    void Append(size_t arg)
     {
         snprintf(this->buf + this->size, this->capacity - this->size, "%zu", arg);
         this->size += NumChars(arg);
@@ -622,7 +644,7 @@ struct TransientString
     }
 
     template<>
-    void Append<GPULang::SPVArg>(GPULang::SPVArg arg);
+    void Append(GPULang::SPVArg arg);
     
     template<>
     void Append(TransientString arg);
@@ -685,35 +707,35 @@ TransientString::Append(const TransientString& arg)
 
 template<>
 inline size_t
-FragmentSize<bool>(bool b)
+FragmentSize(bool b)
 {
     return sizeof(bool);
 }
 
 template<>
 inline size_t
-FragmentSize<const TransientString&>(const TransientString& str)
+FragmentSize(const TransientString& str)
 {
     return str.size;
 }
 
 template<>
 inline size_t
-FragmentSize<TransientString>(TransientString str)
+FragmentSize(TransientString str)
 {
     return str.size;
 }
 
 template<>
 inline void
-FragmentString<TransientString>(TransientString arg, char* buf, size_t size)
+FragmentString(TransientString arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
 
 template<>
 inline void
-FragmentString<const TransientString&>(const TransientString& arg, char* buf, size_t size)
+FragmentString(const TransientString& arg, char* buf, size_t size)
 {
     memcpy(buf, arg.buf, arg.size);
 }
@@ -725,7 +747,7 @@ struct GrowingString
     size_t size = 0;
 
     template<typename ...ARGS>
-    void Line(ARGS... args)
+    void Line(const ARGS&... args)
     {
         size_t numArgs = sizeof...(ARGS);
         size_t numBytes = 0;
@@ -777,7 +799,7 @@ struct GrowingString
     }
 
     template<typename ...ARGS>
-    void CompactLine(ARGS... args)
+    void CompactLine(const ARGS&... args)
     {
         size_t numArgs = sizeof...(ARGS);
         size_t numBytes = 0;
