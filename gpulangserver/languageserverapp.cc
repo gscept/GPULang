@@ -199,7 +199,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
         if (symbol->symbolType != GPULang::Symbol::SymbolType::InvalidType)
             symbol->~Symbol();
     }
-    result.symbols.Clear();
+    result.symbols.Invalidate();
     GPULang::ResetAllocator(&allocator);
 }
 
@@ -409,6 +409,8 @@ InsertSemanticToken(DeltaLocation& prev, const GPULang::Symbol::Location& loc, S
 {
     SemanticToken token;
     
+    if (loc.line < prev.loc.line)
+        return;
     // If new line, reset carry
     if (prev.loc.line != loc.line)
         prev.carry = 0;
