@@ -13,7 +13,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-UIntVecExpression::UIntVecExpression(const std::vector<unsigned int>& values) :
+UIntVecExpression::UIntVecExpression(const FixedArray<unsigned int>& values) :
     values(values)
 {
     this->resolved = Alloc<UIntVecExpression::__Resolved>();
@@ -35,7 +35,7 @@ bool
 UIntVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("u32x%d", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("u32x%d", this->values.size) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     return true;
@@ -70,7 +70,7 @@ UIntVecExpression::EvalValue(ValueUnion& out) const
     int index = 0;
     for (const unsigned int val : this->values)
         out.ui[index++] = val;
-    out.columnSize = this->values.size();
+    out.columnSize = this->values.size;
     out.rowSize = 1;
     out.code = TypeCode::UInt;
     return true;

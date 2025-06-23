@@ -4663,7 +4663,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 76, RULE_floatVecLiteralExpression);
 
 		        ((FloatVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        std::vector<float> values;
+		        StackArray<float> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4676,7 +4676,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(973);
 			((FloatVecLiteralExpressionContext)_localctx).arg0 = match(FLOATLITERAL);
-			 values.push_back(atof((((FloatVecLiteralExpressionContext)_localctx).arg0!=null?((FloatVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
+			 values.Append(atof((((FloatVecLiteralExpressionContext)_localctx).arg0!=null?((FloatVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
 			}
 			setState(977);
 			_errHandler.sync(this);
@@ -4698,7 +4698,7 @@ public class GPULangParser extends Parser {
 				match(CO);
 				setState(980);
 				((FloatVecLiteralExpressionContext)_localctx).argN = match(FLOATLITERAL);
-				 values.push_back(atof((((FloatVecLiteralExpressionContext)_localctx).argN!=null?((FloatVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
+				 values.Append(atof((((FloatVecLiteralExpressionContext)_localctx).argN!=null?((FloatVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
 				}
 				}
 				setState(984); 
@@ -4753,7 +4753,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 78, RULE_doubleVecLiteralExpression);
 
 		        ((DoubleVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        std::vector<float> values;
+		        StackArray<float> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4766,7 +4766,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(991);
 			((DoubleVecLiteralExpressionContext)_localctx).arg0 = match(DOUBLELITERAL);
-			 values.push_back(atof((((DoubleVecLiteralExpressionContext)_localctx).arg0!=null?((DoubleVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
+			 values.Append(atof((((DoubleVecLiteralExpressionContext)_localctx).arg0!=null?((DoubleVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
 			}
 			setState(995);
 			_errHandler.sync(this);
@@ -4788,7 +4788,7 @@ public class GPULangParser extends Parser {
 				match(CO);
 				setState(998);
 				((DoubleVecLiteralExpressionContext)_localctx).argN = match(DOUBLELITERAL);
-				 values.push_back(atof((((DoubleVecLiteralExpressionContext)_localctx).argN!=null?((DoubleVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
+				 values.Append(atof((((DoubleVecLiteralExpressionContext)_localctx).argN!=null?((DoubleVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
 				}
 				}
 				setState(1002); 
@@ -4843,7 +4843,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 80, RULE_intVecLiteralExpression);
 
 		        ((IntVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        std::vector<int> values;
+		        StackArray<int> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4856,7 +4856,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(1009);
 			((IntVecLiteralExpressionContext)_localctx).arg0 = match(INTEGERLITERAL);
-			 values.push_back(atof((((IntVecLiteralExpressionContext)_localctx).arg0!=null?((IntVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
+			 values.Append(atof((((IntVecLiteralExpressionContext)_localctx).arg0!=null?((IntVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
 			}
 			setState(1013);
 			_errHandler.sync(this);
@@ -4878,7 +4878,7 @@ public class GPULangParser extends Parser {
 				match(CO);
 				setState(1016);
 				((IntVecLiteralExpressionContext)_localctx).argN = match(INTEGERLITERAL);
-				 values.push_back(atof((((IntVecLiteralExpressionContext)_localctx).argN!=null?((IntVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
+				 values.Append(atof((((IntVecLiteralExpressionContext)_localctx).argN!=null?((IntVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
 				}
 				}
 				setState(1020); 
@@ -4933,7 +4933,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 82, RULE_uintVecLiteralExpression);
 
 		        ((UintVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        std::vector<unsigned int> values;
+		        StackArray<unsigned int> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4946,7 +4946,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(1027);
 			((UintVecLiteralExpressionContext)_localctx).arg0 = match(UINTEGERLITERAL);
-			 values.push_back(atof((((UintVecLiteralExpressionContext)_localctx).arg0!=null?((UintVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
+			 values.Append(atof((((UintVecLiteralExpressionContext)_localctx).arg0!=null?((UintVecLiteralExpressionContext)_localctx).arg0.getText():null).c_str())); 
 			}
 			setState(1031);
 			_errHandler.sync(this);
@@ -4968,7 +4968,7 @@ public class GPULangParser extends Parser {
 				match(CO);
 				setState(1034);
 				((UintVecLiteralExpressionContext)_localctx).argN = match(UINTEGERLITERAL);
-				 values.push_back(atof((((UintVecLiteralExpressionContext)_localctx).argN!=null?((UintVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
+				 values.Append(atof((((UintVecLiteralExpressionContext)_localctx).argN!=null?((UintVecLiteralExpressionContext)_localctx).argN.getText():null).c_str())); 
 				}
 				}
 				setState(1038); 
@@ -5025,7 +5025,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 84, RULE_booleanVecLiteralExpression);
 
 		        ((BooleanVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        std::vector<bool> values;
+		        StackArray<bool> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -5038,7 +5038,7 @@ public class GPULangParser extends Parser {
 			{
 			setState(1045);
 			((BooleanVecLiteralExpressionContext)_localctx).arg0 = boolean_();
-			 values.push_back(atof((((BooleanVecLiteralExpressionContext)_localctx).arg0!=null?_input.getText(((BooleanVecLiteralExpressionContext)_localctx).arg0.start,((BooleanVecLiteralExpressionContext)_localctx).arg0.stop):null).c_str())); 
+			 values.Append(atof((((BooleanVecLiteralExpressionContext)_localctx).arg0!=null?_input.getText(((BooleanVecLiteralExpressionContext)_localctx).arg0.start,((BooleanVecLiteralExpressionContext)_localctx).arg0.stop):null).c_str())); 
 			}
 			setState(1049);
 			_errHandler.sync(this);
@@ -5060,7 +5060,7 @@ public class GPULangParser extends Parser {
 				match(CO);
 				setState(1052);
 				((BooleanVecLiteralExpressionContext)_localctx).argN = boolean_();
-				 values.push_back(atof((((BooleanVecLiteralExpressionContext)_localctx).argN!=null?_input.getText(((BooleanVecLiteralExpressionContext)_localctx).argN.start,((BooleanVecLiteralExpressionContext)_localctx).argN.stop):null).c_str())); 
+				 values.Append(atof((((BooleanVecLiteralExpressionContext)_localctx).argN!=null?_input.getText(((BooleanVecLiteralExpressionContext)_localctx).argN.start,((BooleanVecLiteralExpressionContext)_localctx).argN.stop):null).c_str())); 
 				}
 				}
 				setState(1057); 

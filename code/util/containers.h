@@ -409,6 +409,30 @@ struct PinnedArray
         return this->data[index];
     }
     
+    const TYPE& front() const
+    {
+        assert(this->size > 0);
+        return this->data[0];
+    }
+    
+    TYPE& front()
+    {
+        assert(this->size > 0);
+        return this->data[0];
+    }
+    
+    const TYPE& back() const
+    {
+        assert(this->size > 0);
+        return this->data[this->size - 1];
+    }
+    
+    TYPE& back()
+    {
+        assert(this->size > 0);
+        return this->data[this->size - 1];
+    }
+    
     TYPE* begin()
     {
         return this->data;
@@ -433,6 +457,42 @@ struct PinnedArray
             return nullptr;
         else
             return this->data + this->size;
+    }
+    
+    struct reverse_iterator
+    {
+        TYPE* it;
+        
+        reverse_iterator operator++(int)
+        {
+            it--;
+            return *this;
+        }
+        
+        bool operator==(const reverse_iterator& rhs)
+        {
+            return this->it == rhs.it;
+        }
+        
+        bool operator!=(const reverse_iterator& rhs)
+        {
+            return this->it != rhs.it;
+        }
+        
+        const TYPE& get()
+        {
+            return *this->it;
+        }
+    };
+    
+    reverse_iterator rbegin() const
+    {
+        return { &this->data[this->size-1] };
+    }
+    
+    reverse_iterator rend() const
+    {
+        return { &this->data[-1] };
     }
     
     size_t maxAllocationCount, committedPages;
@@ -628,6 +688,24 @@ struct FixedArray
         for (auto& val : list)
         {
             this->buf[this->size++] = val;
+        }
+    }
+    
+    FixedArray(const T* begin, const T* end)
+    {
+        size_t repeat = end - begin;
+        if (repeat != 0)
+        {
+            this->buf = AllocArray<T>(repeat);
+            this->capacity = repeat;
+            const T* it = begin;
+            size_t i = 0;
+            while (it != begin)
+            {
+                this->buf[i] = *it;
+                i++;
+                it++;
+            }
         }
     }
     
@@ -869,21 +947,25 @@ struct FixedArray
     
     const T& front() const
     {
+        assert(this->size > 0);
         return this->buf[0];
     }
     
     T& front()
     {
+        assert(this->size > 0);
         return this->buf[0];
     }
     
     const T& back() const
     {
+        assert(this->size > 0);
         return this->buf[this->size - 1];
     }
     
     T& back()
     {
+        assert(this->size > 0);
         return this->buf[this->size - 1];
     }
     

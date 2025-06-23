@@ -12,7 +12,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-IntVecExpression::IntVecExpression(const std::vector<int>& values) :
+IntVecExpression::IntVecExpression(const FixedArray<int>& values) :
     values(values)
 {
     this->resolved = Alloc<IntVecExpression::__Resolved>();
@@ -33,7 +33,7 @@ bool
 IntVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("i32x%d", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("i32x%d", this->values.size) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     return true;
@@ -68,7 +68,7 @@ IntVecExpression::EvalValue(ValueUnion& out) const
     int index = 0;
     for (const int val : this->values)
         out.i[index++] = val;
-    out.columnSize = this->values.size();
+    out.columnSize = this->values.size;
     out.rowSize = 1;
     out.code = TypeCode::Int;
     return true;

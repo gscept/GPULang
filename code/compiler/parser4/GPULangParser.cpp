@@ -6137,7 +6137,7 @@ GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralE
   enterRule(_localctx, 76, GPULangParser::RuleFloatVecLiteralExpression);
 
           antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<float> values;
+          StackArray<float> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6157,7 +6157,7 @@ GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralE
 
     setState(973);
     antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::FLOATLITERAL);
-     values.push_back(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
+     values.Append(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
     setState(977);
     _errHandler->sync(this);
 
@@ -6174,7 +6174,7 @@ GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralE
       match(GPULangParser::CO);
       setState(980);
       antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::FLOATLITERAL);
-       values.push_back(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
+       values.Append(atof((antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
       setState(984); 
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -6252,7 +6252,7 @@ GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLitera
   enterRule(_localctx, 78, GPULangParser::RuleDoubleVecLiteralExpression);
 
           antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<float> values;
+          StackArray<float> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6272,7 +6272,7 @@ GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLitera
 
     setState(991);
     antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::DOUBLELITERAL);
-     values.push_back(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
+     values.Append(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
     setState(995);
     _errHandler->sync(this);
 
@@ -6289,7 +6289,7 @@ GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLitera
       match(GPULangParser::CO);
       setState(998);
       antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::DOUBLELITERAL);
-       values.push_back(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
+       values.Append(atof((antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
       setState(1002); 
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -6367,7 +6367,7 @@ GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpre
   enterRule(_localctx, 80, GPULangParser::RuleIntVecLiteralExpression);
 
           antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<int> values;
+          StackArray<int> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6387,7 +6387,7 @@ GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpre
 
     setState(1009);
     antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::INTEGERLITERAL);
-     values.push_back(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
+     values.Append(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
     setState(1013);
     _errHandler->sync(this);
 
@@ -6404,7 +6404,7 @@ GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpre
       match(GPULangParser::CO);
       setState(1016);
       antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::INTEGERLITERAL);
-       values.push_back(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
+       values.Append(atof((antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
       setState(1020); 
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -6482,7 +6482,7 @@ GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExp
   enterRule(_localctx, 82, GPULangParser::RuleUintVecLiteralExpression);
 
           antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<unsigned int> values;
+          StackArray<unsigned int> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6502,7 +6502,7 @@ GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExp
 
     setState(1027);
     antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0 = match(GPULangParser::UINTEGERLITERAL);
-     values.push_back(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
+     values.Append(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->arg0->getText() : "").c_str())); 
     setState(1031);
     _errHandler->sync(this);
 
@@ -6519,7 +6519,7 @@ GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExp
       match(GPULangParser::CO);
       setState(1034);
       antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN = match(GPULangParser::UINTEGERLITERAL);
-       values.push_back(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
+       values.Append(atof((antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->argN->getText() : "").c_str())); 
       setState(1038); 
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -6597,7 +6597,7 @@ GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLite
   enterRule(_localctx, 84, GPULangParser::RuleBooleanVecLiteralExpression);
 
           antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          std::vector<bool> values;
+          StackArray<bool> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6617,7 +6617,7 @@ GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLite
 
     setState(1045);
     antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0 = boolean();
-     values.push_back(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->stop) : nullptr).c_str())); 
+     values.Append(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0 != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->arg0->stop) : nullptr).c_str())); 
     setState(1049);
     _errHandler->sync(this);
 
@@ -6634,7 +6634,7 @@ GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLite
       match(GPULangParser::CO);
       setState(1052);
       antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN = boolean();
-       values.push_back(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->stop) : nullptr).c_str())); 
+       values.Append(atof((antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN != nullptr ? _input->getText(antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->start, antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->argN->stop) : nullptr).c_str())); 
       setState(1057); 
       _errHandler->sync(this);
       _la = _input->LA(1);

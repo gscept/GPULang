@@ -1189,7 +1189,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     if (functionStub->IsCompatible(func, true))
                     {
                         // if compatible, this is our match
-                        progResolved->functionOverrides.insert({ functionStub, func });
+                        progResolved->functionOverrides.Insert(functionStub, func);
                         matched = true;
                     }
                 }
@@ -1230,7 +1230,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     compiler->Error(Format("Trying to assign a value of type '%s' to a link_defined variable of '%s'", binExp->rightType.ToString().c_str(), varResolved->type.ToString().c_str()), var);
                     return false;
                 }
-                progResolved->constVarInitializationOverrides.insert({ var, assignEntry->right });
+                progResolved->constVarInitializationOverrides.Insert(var, assignEntry->right);
             }
         }
         else if (entryType == Program::__Resolved::RenderState)
@@ -1343,13 +1343,15 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                     funRes->visibleSymbols = 0xFFFFFF; // initialize lookup
 
                 // Temporarily store original variable values
-                std::unordered_map<Variable*, Expression*> originalVariableValues;
+                StackMap<Variable*, Expression*> originalVariableValues(progResolved->constVarInitializationOverrides.data.size);
+                originalVariableValues.BeginBulkAdd();
                 auto it = progResolved->constVarInitializationOverrides.begin();
                 for (; it != progResolved->constVarInitializationOverrides.end(); it++)
                 {
-                    originalVariableValues[it->first] = it->first->valueExpression;
+                    originalVariableValues.Insert(it->first, it->first->valueExpression);
                     it->first->valueExpression = it->second;
                 }
+                originalVariableValues.EndBulkAdd();
 
                 // Resolve visibility
                 bool ret = true;
@@ -1364,7 +1366,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 auto it2 = originalVariableValues.begin();
                 for (; it2 != originalVariableValues.end(); it2++)
                 {
-                    originalVariableValues[it2->first] = it2->second;
+                    originalVariableValues.Find(it2->first)->second = it2->second;
                 }
                 
                 compiler->shaderValueExpressions[entryType].value = false;
@@ -2640,7 +2642,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             {
                 #define X(Type, type, ty)\
                     if (val.columnSize > 1)\
-                        var->valueExpression = Alloc<Type##VecExpression>(std::vector<ty>(val.type, val.type + val.columnSize));\
+                    {\
+                        auto arr = FixedArray<ty>(val.type, val.type + val.columnSize);\
+                        var->valueExpression = Alloc<Type##VecExpression>(arr);\
+                    }\
                     else\
                         var->valueExpression = Alloc<Type##Expression>(val.type[0]);\
                         var->valueExpression->Resolve(compiler);
@@ -3055,7 +3060,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     }
 
                     // Replace condition with a call expression to the conversion function
-                    std::vector<Expression*> arguments = { statement->condition };
+                    FixedArray<Expression*> arguments = { statement->condition };
                     statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
 
                     // Resolve again
@@ -3089,7 +3094,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 }
 
                 // Replace condition with a call expression to the conversion function
-                std::vector<Expression*> arguments = { statement->condition };
+                FixedArray<Expression*> arguments = { statement->condition };
                 statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
 
                 // Resolve again
@@ -3303,7 +3308,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     }
 
                     // Replace condition with a call expression to the conversion function
-                    std::vector<Expression*> arguments = { statement->condition };
+                    FixedArray<Expression*> arguments = { statement->condition };
                     statement->condition = Alloc<CallExpression>(Alloc<SymbolExpression>(conversionFunction->name), arguments);
 
                     // Resolve again

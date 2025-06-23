@@ -269,7 +269,7 @@ Compiler::GetSymbol(const FixedString& name) const
     auto scopeIter = this->scopes.rbegin();
     do
     {
-        auto scope = *scopeIter;
+        auto scope = scopeIter.get();
         PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
@@ -299,7 +299,7 @@ Compiler::GetSymbols(const FixedString& name) const
     auto scopeIter = this->scopes.rbegin();
     do
     {
-        auto scope = *scopeIter;
+        auto scope = scopeIter.get();
         PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
@@ -365,7 +365,7 @@ Compiler::GetSymbol(const TransientString& name) const
     auto scopeIter = this->scopes.rbegin();
     do
     {
-        auto scope = *scopeIter;
+        auto scope = scopeIter.get();
         PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
@@ -395,7 +395,7 @@ Compiler::GetSymbols(const TransientString& name) const
     auto scopeIter = this->scopes.rbegin();
     do
     {
-        auto scope = *scopeIter;
+        auto scope = scopeIter.get();
         PinnedMap<FixedString, Symbol*>* map;
         if (scope->type == Scope::ScopeType::Type)
         {
@@ -420,7 +420,7 @@ Compiler::GetSymbols(const TransientString& name) const
 */
 void Compiler::PushScope(Scope* scope)
 {
-    this->scopes.push_back(scope);
+    this->scopes.Append(scope);
 }
 
 //------------------------------------------------------------------------------
@@ -430,7 +430,7 @@ void
 Compiler::PopScope()
 {
     Scope* currentScope = this->scopes.back();
-    this->scopes.pop_back();
+    this->scopes.size--;
 }
 
 //------------------------------------------------------------------------------
@@ -461,7 +461,7 @@ Compiler::GetScopeOwner()
     auto it = this->scopes.rbegin();
     while (it != this->scopes.rend())
     {
-        lastSymbol = (*it)->owningSymbol;
+        lastSymbol = it.get()->owningSymbol;
         if (lastSymbol != nullptr)
             break;
         it++;
@@ -478,8 +478,8 @@ Compiler::GetParentScopeOwner(Symbol::SymbolType type)
     auto it = this->scopes.rbegin();
     while (it != this->scopes.rend())
     {
-        if ((*it)->owningSymbol != nullptr && (*it)->owningSymbol->symbolType == type)
-            return (*it)->owningSymbol;
+        if (it.get()->owningSymbol != nullptr && it.get()->owningSymbol->symbolType == type)
+            return it.get()->owningSymbol;
         it++;
     }
     return nullptr;
@@ -873,7 +873,6 @@ WriteAnnotation(Compiler* compiler, const Annotation* annot, size_t offset, Seri
 void 
 Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob)
 {
-    std::unordered_map<Symbol*, uint32_t> offsetMapping;
     for (uint32_t i = 0; i < symbols.size(); i++)
     {
         Symbol* symbol = symbols[i];
@@ -1023,8 +1022,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 offset += sizeof(Serialize::Annotation);
             }
 
-            offset = writer.WriteType(output);
-            offsetMapping[symbol] = offset;
+            writer.WriteType(output);
         }
         else if (symbol->symbolType == Symbol::RenderStateType)
         {
@@ -1074,8 +1072,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.annotationsOffset = 0;
             output.annotationsCount = 0;
 
-            size_t offset = writer.WriteType(output);
-            offsetMapping[symbol] = offset;
+            writer.WriteType(output);
         }
         else if (symbol->symbolType == Symbol::SamplerStateType)
         {
@@ -1115,8 +1112,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 annotOffset += sizeof(Serialize::Annotation);
             }
 
-            size_t offset = writer.WriteType(output);
-            offsetMapping[symbol] = offset;
+            writer.WriteType(output);
         }
         else if (symbol->symbolType == Symbol::StructureType)
         {
@@ -1192,8 +1188,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 annotOffset += sizeof(Serialize::Annotation);
             }
 
-            offset = writer.WriteType(output);
-            offsetMapping[symbol] = offset;
+            writer.WriteType(output);
         }
         else if (symbol->symbolType == Symbol::VariableType)
         {
@@ -1268,7 +1263,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
                 offset += sizeof(Serialize::Annotation);
             }
 
-            offset = writer.WriteType(output);
+            writer.WriteType(output);
         }
     }
 }

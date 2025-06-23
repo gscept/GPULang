@@ -255,7 +255,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             Program::__Resolved* progResolved = Symbol::Resolved(program);
             HeaderWriter tempWriter;
 
-            auto constOverride = progResolved->constVarInitializationOverrides.find(var);
+            auto constOverride = progResolved->constVarInitializationOverrides.Find(var);
             if (constOverride != progResolved->constVarInitializationOverrides.end())
                 init = constOverride->second;
             

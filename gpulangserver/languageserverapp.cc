@@ -310,7 +310,6 @@ ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& me
         it->second.alloc = GPULang::CreateAllocator();
         it->second.f = GPULangLoadFile(path.c_str(), {});
         it->second.path = path;
-        it->second.result.diagnostics;
     }
 
     // Create temporary file for the compiler

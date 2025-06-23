@@ -15,7 +15,7 @@ struct UIntVecExpression : public Expression
 {
 public:
 	/// constructor
-    UIntVecExpression(const std::vector<unsigned int>& values);
+    UIntVecExpression(const FixedArray<unsigned int>& values);
 	/// destructor
 	virtual ~UIntVecExpression();
 
@@ -35,7 +35,7 @@ public:
     /// evaluates storage
     bool EvalStorage(Storage& out) const override;
     
-	std::vector<unsigned int> values;
+    FixedArray<unsigned int> values;
 
     struct __Resolved : public Expression::__Resolved
     {

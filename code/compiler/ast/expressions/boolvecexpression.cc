@@ -12,7 +12,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-BoolVecExpression::BoolVecExpression(const std::vector<bool>& values) :
+BoolVecExpression::BoolVecExpression(const FixedArray<bool>& values) :
     values(values)
 {
     this->resolved = Alloc<BoolVecExpression::__Resolved>();
@@ -34,7 +34,7 @@ bool
 BoolVecExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("b8x%d", this->values.size()) };
+    thisResolved->fullType = Type::FullType{ Format("b8x%d", this->values.size) };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     //thisResolved->text = this->EvalString();
@@ -70,7 +70,7 @@ BoolVecExpression::EvalValue(ValueUnion& out) const
     int index = 0;
     for (const bool val : this->values)
         out.b[index++] = val;
-    out.columnSize = this->values.size();
+    out.columnSize = this->values.size;
     out.rowSize = 1;
     out.code = TypeCode::Bool;
     return true;

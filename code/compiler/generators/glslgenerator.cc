@@ -1046,9 +1046,10 @@ GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const Program* pr
     std::string body;
     if (funResolved->isPrototype)
     {
-        if (map_contains(progResolved->functionOverrides, fun))
+        auto overrider = progResolved->functionOverrides.Find(fun);
+        if (overrider != progResolved->functionOverrides.end())
         {
-            GenerateStatementGLSL(compiler, progResolved->functionOverrides[fun]->ast, body);
+            GenerateStatementGLSL(compiler, overrider->second->ast, body);
             //body = progResolved->functionOverrides[fun]->body;
         }
         else

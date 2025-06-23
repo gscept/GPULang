@@ -237,7 +237,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         {
 #define X(Type, type, ty)\
     if (value.columnSize > 1)\
-        this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(std::vector<ty>(value.type, value.type + value.columnSize));\
+        this->thisResolved->constValueExpression = Alloc<Type##VecExpression>(FixedArray<ty>(value.type, value.type + value.columnSize));\
     else\
         this->thisResolved->constValueExpression = Alloc<Type##Expression>(value.type[0]);\
         this->thisResolved->constValueExpression->Resolve(compiler);

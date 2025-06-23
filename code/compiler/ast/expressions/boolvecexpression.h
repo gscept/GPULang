@@ -15,7 +15,7 @@ struct BoolVecExpression : public Expression
 {
 public:
 	/// constructor
-	BoolVecExpression(const std::vector<bool>& values);
+	BoolVecExpression(const FixedArray<bool>& values);
 	/// destructor
 	virtual ~BoolVecExpression();
 
@@ -35,8 +35,7 @@ public:
 	/// evaluates storage
 	bool EvalStorage(Storage& out) const override;
 	
-	std::vector<bool> values;
-
+    FixedArray<bool> values;
 
     struct __Resolved : public Expression::__Resolved
     {

@@ -301,18 +301,18 @@ CallExpression::Resolve(Compiler* compiler)
     if (this->thisResolved->function != nullptr)
     {
         // Check for recursion
-        auto scopeIt = compiler->scopes.crbegin();
-        auto end = compiler->scopes.crend();
+        auto scopeIt = compiler->scopes.rbegin();
+        auto end = compiler->scopes.rend();
         while (scopeIt != end)
         {
-            if ((*scopeIt)->owningSymbol == this->thisResolved->function)
+            if (scopeIt.get()->owningSymbol == this->thisResolved->function)
             {
                 std::string message = "Recursions are not allowed, the following callstack produced a recursion:\n";
                 std::vector<std::string> callstack;
-                auto scopeIt2 = compiler->scopes.crbegin();
+                auto scopeIt2 = compiler->scopes.rbegin();
                 while (scopeIt2 != end)
                 {
-                    Symbol* sym = (*scopeIt2)->owningSymbol;
+                    Symbol* sym = scopeIt2.get()->owningSymbol;
                     if (sym != nullptr && sym->symbolType == Symbol::SymbolType::FunctionType)
                     {
                         Function* fun = static_cast<Function*>(sym);

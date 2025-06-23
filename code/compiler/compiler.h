@@ -259,7 +259,7 @@ struct Compiler
     bool branchReturns;
 
     Scope* intrinsicScope, *mainScope;
-    std::vector<Scope*> scopes;
+    PinnedArray<Scope*> scopes = 0xFFF;
 
     std::string debugPath;
     bool debugOutput;

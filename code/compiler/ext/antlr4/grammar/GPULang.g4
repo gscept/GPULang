@@ -265,8 +265,8 @@ typeDeclaration
 
     { typeRange = BeginLocationRange(); }
     ( 
-        '*' { $type.type.AddModifier(Type::FullType::Modifier::Pointer); } |
-        '[' { $type.type.AddModifier(Type::FullType::Modifier::Array); } 
+        '*' { $type.type.AddModifier(Type::FullType::Modifier::Pointer); }
+        | '[' { $type.type.AddModifier(Type::FullType::Modifier::Array); } 
             ( arraySize0 = expression { $type.type.UpdateValue($arraySize0.tree); } )? 
         ']'
         | qual = IDENTIFIER { $type.type.AddQualifier(FixedString($qual.text)); }
@@ -1053,10 +1053,10 @@ floatVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        std::vector<float> values;
+        StackArray<float> values(32);
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = FLOATLITERAL { values.push_back(atof($argN.text.c_str())); })+ '>'
+    '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = FLOATLITERAL { values.Append(atof($argN.text.c_str())); })+ '>'
     {
         $tree = Alloc<FloatVecExpression>(values);
         $tree->location = location;
@@ -1068,10 +1068,10 @@ doubleVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        std::vector<float> values;
+        StackArray<float> values(32);
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = DOUBLELITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = DOUBLELITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<FloatVecExpression>(values);
         $tree->location = location;
@@ -1083,10 +1083,10 @@ intVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        std::vector<int> values;
+        StackArray<int> values(32);
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = INTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = INTEGERLITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<IntVecExpression>(values);
         $tree->location = location;
@@ -1098,10 +1098,10 @@ uintVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        std::vector<unsigned int> values;
+        StackArray<unsigned int> values(32);
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = UINTEGERLITERAL { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = UINTEGERLITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<UIntVecExpression>(values);
         $tree->location = location;
@@ -1113,10 +1113,10 @@ booleanVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        std::vector<bool> values;
+        StackArray<bool> values(32);
         Symbol::Location location;
     }:
-    '<' { location = SetupFile(); } ( arg0 = boolean { values.push_back(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = boolean { values.push_back(atof($argN.text.c_str())); } )+ '>'
+    '<' { location = SetupFile(); } ( arg0 = boolean { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = boolean { values.Append(atof($argN.text.c_str())); } )+ '>'
     {
         $tree = Alloc<BoolVecExpression>(values);
         $tree->location = location;

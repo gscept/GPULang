@@ -6540,7 +6540,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
 
     uint32_t label = generator->writer->MappedInstruction(OpLabel, SPVWriter::Section::Functions);
     generator->blockOpen = true;
-    auto functionOverride = generator->evaluatingProgram->functionOverrides.find(func);
+    auto functionOverride = generator->evaluatingProgram->functionOverrides.Find(func);
     if (functionOverride != generator->evaluatingProgram->functionOverrides.end())
         GenerateStatementSPIRV(compiler, generator, functionOverride->second->ast);
     else
@@ -7848,7 +7848,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             FloatVecExpression::__Resolved* floatVecExprRes = Symbol::Resolved(floatVecExpr);
             assert(!generator->literalExtract);
             std::vector<SPIRVResult> results;
-            for (uint32_t i = 0; i < floatVecExpr->values.size(); i++)
+            for (uint32_t i = 0; i < floatVecExpr->values.size; i++)
             {
                 results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Float(floatVecExpr->values[i])));
             }
@@ -7869,7 +7869,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             IntVecExpression::__Resolved* intVecExprRes = Symbol::Resolved(intVecExpr);
             assert(!generator->literalExtract);
             std::vector<SPIRVResult> results;
-            for (uint32_t i = 0; i < intVecExpr->values.size(); i++)
+            for (uint32_t i = 0; i < intVecExpr->values.size; i++)
             {
                 results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Int(intVecExpr->values[i])));
             }
@@ -7890,7 +7890,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             UIntVecExpression::__Resolved* uintVecExprRes = Symbol::Resolved(uintVecExpr);
             assert(!generator->literalExtract);
             std::vector<SPIRVResult> results;
-            for (uint32_t i = 0; i < uintVecExpr->values.size(); i++)
+            for (uint32_t i = 0; i < uintVecExpr->values.size; i++)
             {
                 results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::UInt(uintVecExpr->values[i])));
             }
@@ -7911,7 +7911,7 @@ GenerateExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Exp
             BoolVecExpression::__Resolved* boolVecExprRes = Symbol::Resolved(boolVecExpr);
             assert(!generator->literalExtract);
             std::vector<SPIRVResult> results;
-            for (uint32_t i = 0; i < boolVecExpr->values.size(); i++)
+            for (uint32_t i = 0; i < boolVecExpr->values.size; i++)
             {
                 results.push_back(GenerateConstantSPIRV(compiler, generator, ConstantCreationInfo::Bool(boolVecExpr->values[i])));
             }

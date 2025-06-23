@@ -464,6 +464,14 @@ struct Type : public Symbol
         {
         }
         
+        explicit FullType(const ConstantString& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
+        {
+        }
+        
         explicit FullType(const char* type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
@@ -536,12 +544,6 @@ struct Type : public Symbol
             this->modifierValues.back() = value;
         }
 
-        void ClearModifiers()
-        {
-            this->modifiers.clear();
-            this->modifierValues.clear();
-        }
-        
         struct
         {
             uint8_t literal: 1 = false;
