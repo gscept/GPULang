@@ -1338,7 +1338,9 @@ FourCCToString(uint32_t fourCC)
         shift += 8;
     }
     std::reverse(&buf[0], &buf[usedBytes]);
-    return TransientString(buf);
+    TransientString ret(buf);
+    ret.size = usedBytes;
+    return ret;
 }
 
 //------------------------------------------------------------------------------

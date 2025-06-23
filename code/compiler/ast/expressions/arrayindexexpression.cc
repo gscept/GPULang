@@ -64,7 +64,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     if (thisResolved->returnFullType.modifiers.empty())
     {
         Type* type = static_cast<Type*>(compiler->GetSymbol(thisResolved->returnFullType.name));
-        TStr lookup = TStr("operator[](", thisResolved->rightFullType.name.c_str(), ")");
+        TStr lookup = TStr("operator[](", thisResolved->rightFullType.name, ")");
         auto it = type->scope.symbolLookup.Find(lookup);
         if (it == type->scope.symbolLookup.end())
         {

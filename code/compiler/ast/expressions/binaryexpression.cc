@@ -157,7 +157,7 @@ BinaryExpression::Resolve(Compiler* compiler)
     }
     else if (this->op != '=') // If not an assignment, allow promotion of either side of the operator
     {
-        TStr functionName = TStr("operator", FourCCToString(this->op).c_str(), "(", this->thisResolved->rightType.Name().c_str(), ")");
+        TStr functionName = TStr("operator", FourCCToString(this->op), "(", this->thisResolved->rightType.Name(), ")");
         Function* operatorFunction = this->thisResolved->lhsType->GetSymbol<Function>(functionName);
         if (operatorFunction == nullptr)
         {

@@ -101,7 +101,7 @@ GPULangLoadFile(const std::string_view& path, const FixedArray<std::string_view>
     {
         for (auto& searchPath : searchPaths)
         {
-            TStr fullPath = TStr::Compact(searchPath.data(), path);
+            TStr fullPath = TStr::Compact(searchPath, path);
             f = fopen(fullPath.Data(), "rb");
             if (f != nullptr)
             {
