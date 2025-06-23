@@ -19,15 +19,15 @@
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 parameters.Clear();\
-this->method.name = #id;\
-this->method.returnType = Type::FullType{#t};\
+this->method.name = ConstantString(#id);\
+this->method.returnType = Type::FullType{ConstantString(#t)};\
 this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
-    var->name = "_arg0"; \
-    var->type = Type::FullType{ #argtype }; \
+    var->name = ConstantString("_arg0"); \
+    var->type = Type::FullType{ ConstantString(#argtype) }; \
     parameters.Append(var); \
     activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }\
@@ -36,8 +36,8 @@ this->constructors.push_back(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
 parameters.Clear();\
-this->method.name = #id;\
-this->method.returnType = Type::FullType{#type};\
+this->method.name = ConstantString(#id);\
+this->method.returnType = Type::FullType{ConstantString(#type)};\
 this->method.compileTime = true;\
 this->globals.push_back(&this->method);\
 activeFunction = &this->method;\
@@ -45,14 +45,14 @@ activeFunction->documentation = "Constructor of " #type;\
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 parameters.Clear();\
-this->method.name = #id;\
-this->method.returnType = Type::FullType{#t};\
+this->method.name = ConstantString(#id);\
+this->method.returnType = Type::FullType{ConstantString(#t)};\
 this->staticSymbols.push_back(&this->method);\
 activeFunction = &this->method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
-    var->name = "_arg0"; \
-    var->type = Type::FullType{ #argtype }; \
+    var->name = ConstantString("_arg0"); \
+    var->type = Type::FullType{ ConstantString(#argtype) }; \
     parameters.Append(var); \
     activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }
@@ -60,8 +60,8 @@ activeFunction = &this->method;\
 #define __ADD_SWIZZLE(retType, format, ...)\
 {\
     Variable* swizzleMember = StaticAlloc<Variable>();\
-    swizzleMember->name = Format(format, __VA_ARGS__);\
-    swizzleMember->type = Type::FullType{#retType};\
+    swizzleMember->name = StaticString(Format(format, __VA_ARGS__));\
+    swizzleMember->type = Type::FullType{ConstantString(#retType)};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
     resolved->usageBits.flags.isVar = true;\
     resolved->usageBits.flags.isStructMember = true;\
@@ -71,14 +71,14 @@ activeFunction = &this->method;\
 #define __ADD_FUNCTION_PARAM(id, t)\
 {\
     Variable* var = StaticAlloc<Variable>();\
-    var->name = #id;\
-    var->type = Type::FullType{#t};\
+    var->name = ConstantString(#id);\
+    var->type = Type::FullType{ConstantString(#t)};\
     parameters.Append(var);\
 }
 
 #define __ADD_VARIBLE_LOOKUP(variable, id, t)\
-this->variable.name = id;\
-this->variable.type = Type::FullType{#t};\
+this->variable.name = ConstantString(id);\
+this->variable.type = Type::FullType{ConstantString(#t)};\
 this->lookup.insert({id, &this->variable});
 
 #define __ADD_CONSTRUCTOR()\

@@ -105,7 +105,7 @@ GPULangLoadFile(const std::string_view& path, const FixedArray<std::string_view>
             f = fopen(fullPath.Data(), "rb");
             if (f != nullptr)
             {
-                file = new GPULangFile();
+                file = Alloc<GPULangFile>();
                 file->path = fullPath.buf;
                 break;
             }
@@ -113,7 +113,7 @@ GPULangLoadFile(const std::string_view& path, const FixedArray<std::string_view>
     }
     else
     {
-        file = new GPULangFile();
+        file = Alloc<GPULangFile>();
         file->path = path;
     }
 
@@ -1646,10 +1646,6 @@ next_line:
         level->lineCounter++;
     }
 end:
-    for (auto& file : fileMap)
-    {
-        delete file.second;
-    }
     return ret;
 }
 
@@ -1669,7 +1665,6 @@ GPULangPreprocessFile(
     std::string escaped = FixBackslashes(path);
     std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
     std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
-    std::string dummy;
     GPULangFile* file = GPULangLoadFile(path.c_str(), FixedArray<std::string_view>());
     bool ret = GPULangPreprocess(file, defines, output, preprocessorSymbols, diagnostics);
     delete file;

@@ -325,14 +325,16 @@ Type::SetupDefaultTypes()
 
 #define __ADD_ENUM(val) labels.Append(#val); values.Append(nullptr);
 #define __FINISH_ENUM(enum) enum->labels = StaticArray<FixedString>(labels); enum->values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
+    
+    TransientArray<ConstantString> labels(32);
+    TransientArray<Expression*> values(32);
 
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
-    compareModeEnum->name = "CompareMode";
+    compareModeEnum->name = ConstantString("CompareMode");
     compareModeEnum->type = Type::FullType{ ConstantString("u32") };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    TransientArray<ConstantString> labels(32);
-    TransientArray<Expression*> values(32);
+    
     __ADD_ENUM(InvalidCompareMode);
     __ADD_ENUM(Never);
     __ADD_ENUM(Less);
@@ -347,7 +349,7 @@ Type::SetupDefaultTypes()
     DefaultTypes.push_back(compareModeEnum);
 
     Enumeration* stencilOpEnum = StaticAlloc<Enumeration>();
-    stencilOpEnum->name = "StencilOp";
+    stencilOpEnum->name = ConstantString("StencilOp");
     stencilOpEnum->type = Type::FullType{ ConstantString("u32") };
     stencilOpEnum->type.literal = true;
     stencilOpEnum->baseType = GPULang::TypeCode::UInt;
@@ -374,8 +376,8 @@ Type::SetupDefaultTypes()
     __MAKE_SAMPLER();
 
     Enumeration* executionScopeEnum = StaticAlloc<Enumeration>();
-    executionScopeEnum->name = "ExecutionScope";
-    executionScopeEnum->type = Type::FullType{ "u32" };
+    executionScopeEnum->name = ConstantString("ExecutionScope");
+    executionScopeEnum->type = Type::FullType{ ConstantString("u32") };
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
     __ADD_ENUM(Global)
@@ -389,7 +391,7 @@ Type::SetupDefaultTypes()
     DefaultTypes.push_back(executionScopeEnum);
 
     Enumeration* memorySemanticsEnum = StaticAlloc<Enumeration>();
-    memorySemanticsEnum->name = "MemorySemantics";
+    memorySemanticsEnum->name = ConstantString("MemorySemantics");
     memorySemanticsEnum->type = Type::FullType{ ConstantString("u32") };
     memorySemanticsEnum->type.literal = true;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;

@@ -4010,7 +4010,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             struct IntrinsicsShaderMask
             {
-                FixedArray<Program::__Resolved::ProgramEntryType> entries;
+                StaticArray<Program::__Resolved::ProgramEntryType> entries;
                 Compiler::State::SideEffects::Masks sideEffect;
                 
                 IntrinsicsShaderMask()
@@ -4023,7 +4023,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 {}
             };
 
-            static const StaticMap<StaticString, IntrinsicsShaderMask> allowedBuiltins =
+            static const StaticMap<ConstantString, IntrinsicsShaderMask> allowedBuiltins =
             {
                 { "vertexExportCoordinates", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
                 , { "geometryExportVertex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
