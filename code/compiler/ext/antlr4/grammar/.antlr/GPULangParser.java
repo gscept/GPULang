@@ -1234,12 +1234,12 @@ public class GPULangParser extends Parser {
 		VariablesContext _localctx = new VariablesContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_variables);
 
-		        StackArray<Variable*> list(256);
-		        StackArray<Annotation*> annotations(32);
-		        StackArray<Attribute*> attributes(32);
-		        StackArray<FixedString> names(256);
-		        StackArray<Expression*> valueExpressions(256);
-		        StackArray<Symbol::Location> locations(256);
+		        TransientArray<Variable*> list(256);
+		        TransientArray<Annotation*> annotations(32);
+		        TransientArray<Attribute*> attributes(32);
+		        TransientArray<FixedString> names(256);
+		        TransientArray<Expression*> valueExpressions(256);
+		        TransientArray<Symbol::Location> locations(256);
 		        unsigned initCounter = 0;
 		        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
 		    
@@ -1463,8 +1463,8 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 24, RULE_structureDeclaration);
 
 		        ((StructureDeclarationContext)_localctx).sym =  nullptr;
-		        StackArray<Annotation*> annotations(32);
-		        StackArray<Attribute*> attributes(32);
+		        TransientArray<Annotation*> annotations(32);
+		        TransientArray<Attribute*> attributes(32);
 		    
 		int _la;
 		try {
@@ -1597,7 +1597,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 26, RULE_structure);
 
 		        ((StructureContext)_localctx).sym =  nullptr;
-		        StackArray<Symbol*> members(1024);
+		        TransientArray<Symbol*> members(1024);
 		        bool isArray = false;
 		        Expression* arraySizeExpression = nullptr;
 		        FixedString instanceName;
@@ -1776,9 +1776,9 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 28, RULE_enumeration);
 
 		        ((EnumerationContext)_localctx).sym =  nullptr;
-		        StackArray<FixedString> enumLabels(256);
-		        StackArray<Expression*> enumValues(256);
-		        StackArray<Symbol::Location> enumLocations(256);
+		        TransientArray<FixedString> enumLabels(256);
+		        TransientArray<Expression*> enumValues(256);
+		        TransientArray<Symbol::Location> enumLocations(256);
 		        FixedString name;
 		        TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
 		        Symbol::Location location;
@@ -1969,7 +1969,7 @@ public class GPULangParser extends Parser {
 		ParameterContext _localctx = new ParameterContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_parameter);
 
-		        StackArray<Attribute*> attributes(32);
+		        TransientArray<Attribute*> attributes(32);
 		        FixedString name;
 		        Expression* valueExpression = nullptr;
 		        Symbol::Location location;
@@ -2101,8 +2101,8 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 32, RULE_functionDeclaration);
 
 		        ((FunctionDeclarationContext)_localctx).sym =  nullptr;
-		        StackArray<Variable*> variables(32);
-		        StackArray<Attribute*> attributes(32);
+		        TransientArray<Variable*> variables(32);
+		        TransientArray<Attribute*> attributes(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -2295,8 +2295,8 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 36, RULE_program);
 
 		        ((ProgramContext)_localctx).sym =  nullptr;
-		        StackArray<Expression*> entries(32);
-		        StackArray<Annotation*> annotations(32);
+		        TransientArray<Expression*> entries(32);
+		        TransientArray<Annotation*> annotations(32);
 		    
 		int _la;
 		try {
@@ -2404,9 +2404,9 @@ public class GPULangParser extends Parser {
 		SamplerContext _localctx = new SamplerContext(_ctx, getState());
 		enterRule(_localctx, 38, RULE_sampler);
 
-		        StackArray<Attribute*> attributes(32);
-		        StackArray<Annotation*> annotations(32);
-		        StackArray<Expression*> entries(32);
+		        TransientArray<Attribute*> attributes(32);
+		        TransientArray<Annotation*> annotations(32);
+		        TransientArray<Expression*> entries(32);
 		    
 		int _la;
 		try {
@@ -2518,7 +2518,7 @@ public class GPULangParser extends Parser {
 		StateContext _localctx = new StateContext(_ctx, getState());
 		enterRule(_localctx, 40, RULE_state);
 
-		        StackArray<Expression*> entries(32);
+		        TransientArray<Expression*> entries(32);
 		    
 		int _la;
 		try {
@@ -2905,7 +2905,7 @@ public class GPULangParser extends Parser {
 		        Expression* conditionExpression = nullptr;
 		        Expression* loopExpression = nullptr;
 		        Statement* contents = nullptr;
-		        StackArray<Attribute*> attributes(32);
+		        TransientArray<Attribute*> attributes(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -3516,8 +3516,8 @@ public class GPULangParser extends Parser {
 
 		        ((SwitchStatementContext)_localctx).tree =  nullptr;
 		        Expression* switchExpression;
-		        StackArray<Expression*> caseExpressions(256);
-		        StackArray<Statement*> caseStatements(256);
+		        TransientArray<Expression*> caseExpressions(256);
+		        TransientArray<Statement*> caseStatements(256);
 		        Symbol::Location location;
 		        Statement* defaultStatement = nullptr;
 		    
@@ -3686,7 +3686,7 @@ public class GPULangParser extends Parser {
 		ExpressionListContext _localctx = new ExpressionListContext(_ctx, getState());
 		enterRule(_localctx, 66, RULE_expressionList);
 
-		        StackArray<Expression*> list(256);
+		        TransientArray<Expression*> list(256);
 		    
 		int _la;
 		try {
@@ -4663,7 +4663,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 76, RULE_floatVecLiteralExpression);
 
 		        ((FloatVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        StackArray<float> values(32);
+		        TransientArray<float> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4753,7 +4753,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 78, RULE_doubleVecLiteralExpression);
 
 		        ((DoubleVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        StackArray<float> values(32);
+		        TransientArray<float> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4843,7 +4843,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 80, RULE_intVecLiteralExpression);
 
 		        ((IntVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        StackArray<int> values(32);
+		        TransientArray<int> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -4933,7 +4933,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 82, RULE_uintVecLiteralExpression);
 
 		        ((UintVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        StackArray<unsigned int> values(32);
+		        TransientArray<unsigned int> values(32);
 		        Symbol::Location location;
 		    
 		int _la;
@@ -5025,7 +5025,7 @@ public class GPULangParser extends Parser {
 		enterRule(_localctx, 84, RULE_booleanVecLiteralExpression);
 
 		        ((BooleanVecLiteralExpressionContext)_localctx).tree =  nullptr;
-		        StackArray<bool> values(32);
+		        TransientArray<bool> values(32);
 		        Symbol::Location location;
 		    
 		int _la;

@@ -15,7 +15,7 @@
 
 #define STRINGIFY(x) #x
 
-#define __BEGIN_TYPE() StackArray<Variable*> parameters(32);
+#define __BEGIN_TYPE() TransientArray<Variable*> parameters(32);
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 parameters.Clear();\

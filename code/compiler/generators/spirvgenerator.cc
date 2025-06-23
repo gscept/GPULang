@@ -146,7 +146,7 @@ struct SPVResultList
     SPIRVResult* vals = nullptr;
     uint8_t num = 0;
 
-    explicit SPVResultList(const StackArray<SPIRVResult>& stackArr)
+    explicit SPVResultList(const TransientArray<SPIRVResult>& stackArr)
     {
         this->vals = stackArr.ptr;
         this->num = (uint8_t)stackArr.size;
@@ -158,7 +158,7 @@ struct SPVArgList
     SPVArg* vals = nullptr;
     uint8_t num = 0;
 
-    explicit SPVArgList(const StackArray<SPVArg>& stackArr)
+    explicit SPVArgList(const TransientArray<SPVArg>& stackArr)
     {
         this->vals = stackArr.ptr;
         this->num = (uint8_t)stackArr.size;
@@ -171,7 +171,7 @@ struct SPVCaseList
     SPVArg* branches = nullptr;
     uint8_t num = 0;
 
-    explicit SPVCaseList(const StackArray<uint32_t>& labels, const StackArray<SPVArg>& branches)
+    explicit SPVCaseList(const TransientArray<uint32_t>& labels, const TransientArray<SPVArg>& branches)
     {
         this->labels = labels.ptr;
         this->branches = branches.ptr;
@@ -2449,7 +2449,7 @@ else\
     }
     if (vectorSize > 1)
     {
-        StackArray<SPVArg> vectorArgs(vectorSize);
+        TransientArray<SPVArg> vectorArgs(vectorSize);
         TStr name;
         for (int i = 0; i < vectorSize; i++)
         {
@@ -2854,7 +2854,7 @@ GenerateCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint
     TStr argList;
     bool isConst = true;
     bool isSpecialization = false;
-    StackArray<SPIRVResult> loadedArgs(args.size());
+    TransientArray<SPIRVResult> loadedArgs(args.size());
     for (const SPIRVResult& arg : args)
     {
         SPIRVResult loaded = LoadValueSPIRV(compiler, generator, arg);
@@ -3461,7 +3461,7 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, size);
             TStr opStr = TStr::Compact("Op", ty, op);
 
-            StackArray<SPVArg> intermediateArgs(size);
+            TransientArray<SPVArg> intermediateArgs(size);
             for (uint32_t i = 0; i < size; i++)
             {
                 // Proceed to extract from the composites
@@ -6475,7 +6475,7 @@ GenerateFunctionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbo
     TStr typeArgs;
     TStr spvTypes;
 
-    StackArray<SPVArg> spvTypeArgs(func->parameters.size);
+    TransientArray<SPVArg> spvTypeArgs(func->parameters.size);
     for (auto param : func->parameters)
     {
         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
@@ -6590,7 +6590,7 @@ GenerateStructureSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symb
     if (compiler->options.symbols)
         generator->writer->Instruction(OpName, SPVWriter::Section::DebugNames, SPVArg{ structName }, struc->name.c_str());
 
-    StackArray<SPVArg> memberTypeArray(struc->symbols.size);
+    TransientArray<SPVArg> memberTypeArray(struc->symbols.size);
     uint32_t offset = 0;
     std::string memberTypes = "";
     for (size_t i = 0; i < struc->symbols.size; i++)
@@ -6980,7 +6980,7 @@ GenerateCallExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
         // Create arg list from argument expressions
         std::string argList = "";
 
-        StackArray<SPVArg> argListArray(callExpression->args.size);
+        TransientArray<SPVArg> argListArray(callExpression->args.size);
         for (size_t i = 0; i < callExpression->args.size; i++)
         {
             // If the function calls for a literal argument, the generator needs to extract the value as a literal result
@@ -7223,7 +7223,7 @@ GenerateInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* gen
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(initExpression->values.size);
+    TransientArray<SPVArg> argList(initExpression->values.size);
 
     std::string initializer = "";
     for (Expression* expr : initExpression->values)
@@ -7279,7 +7279,7 @@ GenerateArrayInitializerExpressionSPIRV(const Compiler* compiler, SPIRVGenerator
     bool isConst = true;
     bool isLinkDefined = false;
 
-    StackArray<SPVArg> argList(sym->values.size);
+    TransientArray<SPVArg> argList(sym->values.size);
     std::string initializer = "";
     for (auto value : sym->values)
     {
@@ -8281,8 +8281,8 @@ GenerateSwitchStatementSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     std::vector<uint32_t> reservedCaseLabels;
 
 
-    StackArray<uint32_t> caseArgs(stat->caseExpressions.size);
-    StackArray<SPVArg> branchArgs(stat->caseExpressions.size);
+    TransientArray<uint32_t> caseArgs(stat->caseExpressions.size);
+    TransientArray<SPVArg> branchArgs(stat->caseExpressions.size);
     for (size_t i = 0; i < stat->caseExpressions.size; i++)
     {
         uint32_t caseLabel = generator->writer->Reserve();
@@ -8811,7 +8811,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         }
         std::string interfaces = "";
 
-        StackArray<SPVArg> interfaceVars(this->interfaceVariables.size());
+        TransientArray<SPVArg> interfaceVars(this->interfaceVariables.size());
         for (const uint32_t inter : this->interfaceVariables)
         {
             interfaces.append(Format("%%%d ", inter));

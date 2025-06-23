@@ -1915,7 +1915,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     {
         if (enumeration->builtin)
         {
-            StackArray<Variable*> parameters(1);
+            TransientArray<Variable*> parameters(1);
             SYMBOL_STATIC_ALLOC = true;
 
             // Create constructor from type, and to type
@@ -1968,7 +1968,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         }
         else
         {
-            StackArray<Variable*> parameters(1);
+            TransientArray<Variable*> parameters(1);
 
             // Create constructor from type, and to type
             Function* fromUnderlyingType = Alloc<Function>();
@@ -3556,10 +3556,10 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     First filters parameters based on in/out qualifiers, then sorts within that set
     based on either inBinding or outBinding respectively
 */
-StackArray<Variable*>
+TransientArray<Variable*>
 SortAndFilterParameters(const FixedArray<Variable*>& vars, bool in)
 {
-    StackArray<Variable*> ret(vars.size);
+    TransientArray<Variable*> ret(vars.size);
     for (Variable* var : vars)
     {
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
@@ -3586,8 +3586,8 @@ SortAndFilterParameters(const FixedArray<Variable*>& vars, bool in)
 bool 
 ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
 {
-    StackArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
-    StackArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
+    TransientArray<Variable*> outParams = SortAndFilterParameters(outFunc->parameters, false);
+    TransientArray<Variable*> inParams = SortAndFilterParameters(inFunc->parameters, true);
     size_t inIterator = 0;
     for (Variable* var : outParams)
     {

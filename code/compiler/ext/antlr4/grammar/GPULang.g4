@@ -290,12 +290,12 @@ variables
     returns[ FixedArray<Variable*> vars ]
     @init
     {
-        StackArray<Variable*> list(256);
-        StackArray<Annotation*> annotations(32);
-        StackArray<Attribute*> attributes(32);
-        StackArray<FixedString> names(256);
-        StackArray<Expression*> valueExpressions(256);
-        StackArray<Symbol::Location> locations(256);
+        TransientArray<Variable*> list(256);
+        TransientArray<Annotation*> annotations(32);
+        TransientArray<Attribute*> attributes(32);
+        TransientArray<FixedString> names(256);
+        TransientArray<Expression*> valueExpressions(256);
+        TransientArray<Symbol::Location> locations(256);
         unsigned initCounter = 0;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
     }:
@@ -336,8 +336,8 @@ structureDeclaration
     @init
     {
         $sym = nullptr;
-        StackArray<Annotation*> annotations(32);
-        StackArray<Attribute*> attributes(32);
+        TransientArray<Annotation*> annotations(32);
+        TransientArray<Attribute*> attributes(32);
     }:
     (linePreprocessorEntry)*
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
@@ -358,7 +358,7 @@ structure
     @init
     {
         $sym = nullptr;
-        StackArray<Symbol*> members(1024);
+        TransientArray<Symbol*> members(1024);
         bool isArray = false;
         Expression* arraySizeExpression = nullptr;
         FixedString instanceName;
@@ -414,9 +414,9 @@ enumeration
     @init
     {
         $sym = nullptr;
-        StackArray<FixedString> enumLabels(256);
-        StackArray<Expression*> enumValues(256);
-        StackArray<Symbol::Location> enumLocations(256);
+        TransientArray<FixedString> enumLabels(256);
+        TransientArray<Expression*> enumValues(256);
+        TransientArray<Symbol::Location> enumLocations(256);
         FixedString name;
         TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
         Symbol::Location location;
@@ -464,7 +464,7 @@ parameter
     returns[ Variable* sym ]
     @init
     {
-        StackArray<Attribute*> attributes(32);
+        TransientArray<Attribute*> attributes(32);
         FixedString name;
         Expression* valueExpression = nullptr;
         Symbol::Location location;
@@ -494,8 +494,8 @@ functionDeclaration
     @init
     {
         $sym = nullptr;
-        StackArray<Variable*> variables(32);
-        StackArray<Attribute*> attributes(32);
+        TransientArray<Variable*> variables(32);
+        TransientArray<Attribute*> attributes(32);
         Symbol::Location location;
     }:
     (attribute { if (attributes.Full()) { throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); } attributes.Append(std::move($attribute.attr)); })*
@@ -535,8 +535,8 @@ program
     @init
     {
         $sym = nullptr;
-        StackArray<Expression*> entries(32);
-        StackArray<Annotation*> annotations(32);
+        TransientArray<Expression*> entries(32);
+        TransientArray<Annotation*> annotations(32);
     }:
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
     'program' { $sym = Alloc<Program>(); } name = IDENTIFIER { $sym->location = SetupFile(); }
@@ -554,9 +554,9 @@ sampler
     returns[ SamplerState* sym ]
     @init
     {
-        StackArray<Attribute*> attributes(32);
-        StackArray<Annotation*> annotations(32);
-        StackArray<Expression*> entries(32);
+        TransientArray<Attribute*> attributes(32);
+        TransientArray<Annotation*> annotations(32);
+        TransientArray<Expression*> entries(32);
     }:
     (
         //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
@@ -579,7 +579,7 @@ state
     returns[ State* sym ]
     @init
     {
-        StackArray<Expression*> entries(32);
+        TransientArray<Expression*> entries(32);
     }:
     (
         'render_state' { $sym = Alloc<RenderState>(); } 
@@ -655,7 +655,7 @@ forStatement
         Expression* conditionExpression = nullptr;
         Expression* loopExpression = nullptr;
         Statement* contents = nullptr;
-        StackArray<Attribute*> attributes(32);
+        TransientArray<Attribute*> attributes(32);
         Symbol::Location location;
     }:
     'for' { location = SetupFile(); }
@@ -801,8 +801,8 @@ switchStatement
     {
         $tree = nullptr;
         Expression* switchExpression;
-        StackArray<Expression*> caseExpressions(256);
-        StackArray<Statement*> caseStatements(256);
+        TransientArray<Expression*> caseExpressions(256);
+        TransientArray<Statement*> caseStatements(256);
         Symbol::Location location;
         Statement* defaultStatement = nullptr;
     }:
@@ -851,7 +851,7 @@ expressionList
     returns [FixedArray<Expression*> expressions]
     @init
     {
-        StackArray<Expression*> list(256);
+        TransientArray<Expression*> list(256);
     }
     :
     (linePreprocessorEntry)?
@@ -1053,7 +1053,7 @@ floatVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        StackArray<float> values(32);
+        TransientArray<float> values(32);
         Symbol::Location location;
     }:
     '<' { location = SetupFile(); } ( arg0 = FLOATLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = FLOATLITERAL { values.Append(atof($argN.text.c_str())); })+ '>'
@@ -1068,7 +1068,7 @@ doubleVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        StackArray<float> values(32);
+        TransientArray<float> values(32);
         Symbol::Location location;
     }:
     '<' { location = SetupFile(); } ( arg0 = DOUBLELITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = DOUBLELITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
@@ -1083,7 +1083,7 @@ intVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        StackArray<int> values(32);
+        TransientArray<int> values(32);
         Symbol::Location location;
     }:
     '<' { location = SetupFile(); } ( arg0 = INTEGERLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = INTEGERLITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
@@ -1098,7 +1098,7 @@ uintVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        StackArray<unsigned int> values(32);
+        TransientArray<unsigned int> values(32);
         Symbol::Location location;
     }:
     '<' { location = SetupFile(); } ( arg0 = UINTEGERLITERAL { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = UINTEGERLITERAL { values.Append(atof($argN.text.c_str())); } )+ '>'
@@ -1113,7 +1113,7 @@ booleanVecLiteralExpression
     @init
     {
         $tree = nullptr;
-        StackArray<bool> values(32);
+        TransientArray<bool> values(32);
         Symbol::Location location;
     }:
     '<' { location = SetupFile(); } ( arg0 = boolean { values.Append(atof($arg0.text.c_str())); } ) (linePreprocessorEntry)? (',' argN = boolean { values.Append(atof($argN.text.c_str())); } )+ '>'

@@ -131,7 +131,7 @@ Function::MatchOverload(Compiler* compiler, const std::vector<Symbol*>& function
     return ret;
 }
 
-#define __BEGIN_INTRINSICS__ Function* newIntrinsic = nullptr; Variable* newVar = nullptr; StackArray<Variable*> arguments(32);
+#define __BEGIN_INTRINSICS__ Function* newIntrinsic = nullptr; Variable* newVar = nullptr; TransientArray<Variable*> arguments(32);
 
 #define __DOCUMENT_INTRINSIC(str)\
 newIntrinsic->documentation = str;

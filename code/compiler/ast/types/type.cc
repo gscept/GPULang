@@ -331,8 +331,8 @@ Type::SetupDefaultTypes()
     compareModeEnum->type = Type::FullType{ ConstantString("u32") };
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    StackArray<ConstantString> labels(32);
-    StackArray<Expression*> values(32);
+    TransientArray<ConstantString> labels(32);
+    TransientArray<Expression*> values(32);
     __ADD_ENUM(InvalidCompareMode);
     __ADD_ENUM(Never);
     __ADD_ENUM(Less);

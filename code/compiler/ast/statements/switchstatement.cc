@@ -10,7 +10,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-SwitchStatement::SwitchStatement(Expression* switchExpression, const StackArray<Expression*>& caseExpressions, const StackArray<Statement*>& caseStatements, Statement* defaultStatement)
+SwitchStatement::SwitchStatement(Expression* switchExpression, const TransientArray<Expression*>& caseExpressions, const TransientArray<Statement*>& caseStatements, Statement* defaultStatement)
     : switchExpression(switchExpression)
     , caseExpressions(caseExpressions)
     , caseStatements(caseStatements)

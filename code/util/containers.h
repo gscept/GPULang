@@ -22,13 +22,13 @@ namespace GPULang
  Frees its memory at destruction
  */
 template<typename TYPE>
-struct StackArray
+struct TransientArray
 {
     TYPE* ptr = nullptr;
     size_t size = 0;
     size_t capacity = 0;
-    StackArray() {}
-    StackArray(size_t count)
+    TransientArray() {}
+    TransientArray(size_t count)
     {
         if (count != 0)
         {
@@ -37,7 +37,7 @@ struct StackArray
         }
     }
     
-    StackArray(StackArray&& rhs) noexcept
+    TransientArray(TransientArray&& rhs) noexcept
     {
         this->ptr = rhs.ptr;
         this->size = rhs.size;
@@ -47,7 +47,7 @@ struct StackArray
         rhs.capacity = 0;
     }
     
-    ~StackArray()
+    ~TransientArray()
     {
         if (this->ptr != nullptr)
             DeallocStack(this->capacity, this->ptr);
@@ -56,7 +56,7 @@ struct StackArray
         this->size = 0;
     }
     
-    void operator=(StackArray&& rhs) noexcept
+    void operator=(TransientArray&& rhs) noexcept
     {
         this->ptr = rhs.ptr;
         this->size = rhs.size;
@@ -259,7 +259,7 @@ struct PinnedArray
         }
     }
     
-    void operator=(const StackArray<TYPE>& rhs)
+    void operator=(const TransientArray<TYPE>& rhs)
     {
         if (this->alloc != nullptr)
             DeallocVirtual(this->alloc);
@@ -562,7 +562,7 @@ struct StaticArray
         }
     }
     
-    void operator=(const StackArray<T>& vec)
+    void operator=(const TransientArray<T>& vec)
     {
         if (this->buf != nullptr)
         {
@@ -591,13 +591,13 @@ struct StaticArray
         }
     }
     
-    StaticArray(const StackArray<T>& vec)
+    StaticArray(const TransientArray<T>& vec)
     {
         *this = vec;
     }
     
     template <typename U>
-    StaticArray(const StackArray<U>& vec)
+    StaticArray(const TransientArray<U>& vec)
     {
         static_assert(std::is_assignable<T, U>::value, "No explicit assignment exists between types");
         if (this->buf != nullptr)
@@ -843,7 +843,7 @@ struct FixedArray
         vec.size = 0;
     }
     
-    void operator=(const StackArray<T>& vec)
+    void operator=(const TransientArray<T>& vec)
     {
         if (this->buf != nullptr)
         {
@@ -873,13 +873,13 @@ struct FixedArray
         }
     }
     
-    FixedArray(const StackArray<T>& vec)
+    FixedArray(const TransientArray<T>& vec)
     {
         *this = vec;
     }
     
     template<typename U>
-    void operator=(const StackArray<U>& vec)
+    void operator=(const TransientArray<U>& vec)
     {
         static_assert(std::is_assignable<T, U>::value, "No explicit assignment exists between types");
         if (this->buf != nullptr)
@@ -916,7 +916,7 @@ struct FixedArray
     }
     
     // Allow stack allocated arrays to insert themselves, given enough space is available
-    void Append(const StackArray<T>& vec)
+    void Append(const TransientArray<T>& vec)
     {
         assert(this->size + vec.size < this->capacity);
         // If mempcy suffices, do it
@@ -1015,7 +1015,7 @@ struct StackMap
     StackMap(size_t size)
         : searchValid(true)
     {
-        this->data = StackArray<item>(size);
+        this->data = TransientArray<item>(size);
     }
     
     void Insert(const K& key, const V& value)
@@ -1119,7 +1119,7 @@ struct StackMap
     }
     
     bool searchValid;
-    StackArray<item> data;
+    TransientArray<item> data;
 };
 
 //------------------------------------------------------------------------------

@@ -162,10 +162,10 @@ GPULangPreprocess(
         bool active : 1 = false;
     };
 
-    StackArray<IfLevel> ifStack(32);
-    StackArray<FileLevel> fileStack(128);
+    TransientArray<IfLevel> ifStack(32);
+    TransientArray<FileLevel> fileStack(128);
     fileStack.Append({file});
-    StackArray<std::string_view> searchPaths(128);
+    TransientArray<std::string_view> searchPaths(128);
     FileLevel* level = &fileStack.back();
     for (auto& arg : defines)
     {
@@ -472,8 +472,8 @@ GPULangPreprocess(
             int value;
             bool op;
         };
-        StackArray<Token> result(256);
-        StackArray<Token> opstack(256);
+        TransientArray<Token> result(256);
+        TransientArray<Token> opstack(256);
         
         auto digit = [&diagnostics, &level](const char* begin, const char* end, int& size, bool& ret) -> int
         {
@@ -998,8 +998,8 @@ escape_newline:
                     pp->type = Preprocessor::Include;
                     SETUP_PP2(pp, firstWord-1, endOfDirective);
 
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
 
                     if ((startOfPath[0] == '"' && endOfPath[-1] == '"')
                         || (startOfPath[0] == '<' && endOfPath[-1] == '>'))
@@ -1077,8 +1077,8 @@ escape_newline:
 
                     macro = &definitions.Emplace(def)->second;
 
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Macro;
@@ -1087,7 +1087,7 @@ escape_newline:
 
                     const char* startOfContents = wordStart(endOfDefinition, eol);
                     
-                    StackArray<std::string_view> macroArgs(32);
+                    TransientArray<std::string_view> macroArgs(32);
                     if (endOfDefinition[0] == '(')
                     {
                         // Argument list, start parsing arguments
@@ -1153,8 +1153,8 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Undefine;
@@ -1190,8 +1190,8 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
@@ -1246,8 +1246,8 @@ escape_newline:
 
                     std::string_view definition = std::string_view(startOfDefinition, endOfDefinition);
 
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string_view> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string_view> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
@@ -1292,8 +1292,8 @@ escape_newline:
                         goto end;
                     }
                     
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::Else;
@@ -1322,8 +1322,8 @@ escape_newline:
                 else if (strncmp(startOfDirective, "if", 2) == 0)
                 {
                     
-                    StackArray<Symbol::Location> argLocs(1);
-                    StackArray<std::string> args(1);
+                    TransientArray<Symbol::Location> argLocs(1);
+                    TransientArray<std::string> args(1);
 
                     auto pp = Alloc<Preprocessor>();
                     pp->type = Preprocessor::If;
@@ -1481,7 +1481,7 @@ escape_newline:
                         static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, const FileLevel*, PinnedArray<GPULang::Diagnostic>&)> expandMacro = [](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, const FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics) -> const char*
                         {
                             StackMap<std::string_view, std::string_view> argumentMap(32);
-                            StackArray<std::string_view> args(32);
+                            TransientArray<std::string_view> args(32);
                             if (beginOfCall[0] == '(')
                             {
                                 int argStack = 1;

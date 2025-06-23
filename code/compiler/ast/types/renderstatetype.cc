@@ -5,7 +5,7 @@
 #include "renderstatetype.h"
 #include "ast/expressions/uintexpression.h"
 
-#define __BEGIN_ENUMS__() StackArray<ConstantString> labels(32); StackArray<Expression*> expressions(32); Function* assignOperator; Variable* arg;
+#define __BEGIN_ENUMS__() TransientArray<ConstantString> labels(32); TransientArray<Expression*> expressions(32); Function* assignOperator; Variable* arg;
 #define __START_ENUM() labels.Clear(); expressions.Clear();
 #define __ADD_ENUM(val) labels.Append(ConstantString(#val)); expressions.Append(nullptr);
 #define __ADD_ENUM_EXPL(name, val) labels.Append(ConstantString(#name)); expressions.Append(StaticAlloc<UIntExpression>(val));

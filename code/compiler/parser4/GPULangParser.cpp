@@ -1874,12 +1874,12 @@ GPULangParser::VariablesContext* GPULangParser::variables() {
   VariablesContext *_localctx = _tracker.createInstance<VariablesContext>(_ctx, getState());
   enterRule(_localctx, 22, GPULangParser::RuleVariables);
 
-          StackArray<Variable*> list(256);
-          StackArray<Annotation*> annotations(32);
-          StackArray<Attribute*> attributes(32);
-          StackArray<FixedString> names(256);
-          StackArray<Expression*> valueExpressions(256);
-          StackArray<Symbol::Location> locations(256);
+          TransientArray<Variable*> list(256);
+          TransientArray<Annotation*> annotations(32);
+          TransientArray<Attribute*> attributes(32);
+          TransientArray<FixedString> names(256);
+          TransientArray<Expression*> valueExpressions(256);
+          TransientArray<Symbol::Location> locations(256);
           unsigned initCounter = 0;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{UNDEFINED_TYPE} };
       
@@ -2117,8 +2117,8 @@ GPULangParser::StructureDeclarationContext* GPULangParser::structureDeclaration(
   enterRule(_localctx, 24, GPULangParser::RuleStructureDeclaration);
 
           antlrcpp::downCast<StructureDeclarationContext *>(_localctx)->sym =  nullptr;
-          StackArray<Annotation*> annotations(32);
-          StackArray<Attribute*> attributes(32);
+          TransientArray<Annotation*> annotations(32);
+          TransientArray<Attribute*> attributes(32);
       
   size_t _la = 0;
 
@@ -2289,7 +2289,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
   enterRule(_localctx, 26, GPULangParser::RuleStructure);
 
           antlrcpp::downCast<StructureContext *>(_localctx)->sym =  nullptr;
-          StackArray<Symbol*> members(1024);
+          TransientArray<Symbol*> members(1024);
           bool isArray = false;
           Expression* arraySizeExpression = nullptr;
           FixedString instanceName;
@@ -2507,9 +2507,9 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
   enterRule(_localctx, 28, GPULangParser::RuleEnumeration);
 
           antlrcpp::downCast<EnumerationContext *>(_localctx)->sym =  nullptr;
-          StackArray<FixedString> enumLabels(256);
-          StackArray<Expression*> enumValues(256);
-          StackArray<Symbol::Location> enumLocations(256);
+          TransientArray<FixedString> enumLabels(256);
+          TransientArray<Expression*> enumValues(256);
+          TransientArray<Symbol::Location> enumLocations(256);
           FixedString name;
           TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
           Symbol::Location location;
@@ -2729,7 +2729,7 @@ GPULangParser::ParameterContext* GPULangParser::parameter() {
   ParameterContext *_localctx = _tracker.createInstance<ParameterContext>(_ctx, getState());
   enterRule(_localctx, 30, GPULangParser::RuleParameter);
 
-          StackArray<Attribute*> attributes(32);
+          TransientArray<Attribute*> attributes(32);
           FixedString name;
           Expression* valueExpression = nullptr;
           Symbol::Location location;
@@ -2885,8 +2885,8 @@ GPULangParser::FunctionDeclarationContext* GPULangParser::functionDeclaration() 
   enterRule(_localctx, 32, GPULangParser::RuleFunctionDeclaration);
 
           antlrcpp::downCast<FunctionDeclarationContext *>(_localctx)->sym =  nullptr;
-          StackArray<Variable*> variables(32);
-          StackArray<Attribute*> attributes(32);
+          TransientArray<Variable*> variables(32);
+          TransientArray<Attribute*> attributes(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -3128,8 +3128,8 @@ GPULangParser::ProgramContext* GPULangParser::program() {
   enterRule(_localctx, 36, GPULangParser::RuleProgram);
 
           antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  nullptr;
-          StackArray<Expression*> entries(32);
-          StackArray<Annotation*> annotations(32);
+          TransientArray<Expression*> entries(32);
+          TransientArray<Annotation*> annotations(32);
       
   size_t _la = 0;
 
@@ -3265,9 +3265,9 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
   SamplerContext *_localctx = _tracker.createInstance<SamplerContext>(_ctx, getState());
   enterRule(_localctx, 38, GPULangParser::RuleSampler);
 
-          StackArray<Attribute*> attributes(32);
-          StackArray<Annotation*> annotations(32);
-          StackArray<Expression*> entries(32);
+          TransientArray<Attribute*> attributes(32);
+          TransientArray<Annotation*> annotations(32);
+          TransientArray<Expression*> entries(32);
       
   size_t _la = 0;
 
@@ -3399,7 +3399,7 @@ GPULangParser::StateContext* GPULangParser::state() {
   StateContext *_localctx = _tracker.createInstance<StateContext>(_ctx, getState());
   enterRule(_localctx, 40, GPULangParser::RuleState);
 
-          StackArray<Expression*> entries(32);
+          TransientArray<Expression*> entries(32);
       
   size_t _la = 0;
 
@@ -3883,7 +3883,7 @@ GPULangParser::ForStatementContext* GPULangParser::forStatement() {
           Expression* conditionExpression = nullptr;
           Expression* loopExpression = nullptr;
           Statement* contents = nullptr;
-          StackArray<Attribute*> attributes(32);
+          TransientArray<Attribute*> attributes(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -4693,8 +4693,8 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
 
           antlrcpp::downCast<SwitchStatementContext *>(_localctx)->tree =  nullptr;
           Expression* switchExpression;
-          StackArray<Expression*> caseExpressions(256);
-          StackArray<Statement*> caseStatements(256);
+          TransientArray<Expression*> caseExpressions(256);
+          TransientArray<Statement*> caseStatements(256);
           Symbol::Location location;
           Statement* defaultStatement = nullptr;
       
@@ -4904,7 +4904,7 @@ GPULangParser::ExpressionListContext* GPULangParser::expressionList() {
   ExpressionListContext *_localctx = _tracker.createInstance<ExpressionListContext>(_ctx, getState());
   enterRule(_localctx, 66, GPULangParser::RuleExpressionList);
 
-          StackArray<Expression*> list(256);
+          TransientArray<Expression*> list(256);
       
   size_t _la = 0;
 
@@ -6137,7 +6137,7 @@ GPULangParser::FloatVecLiteralExpressionContext* GPULangParser::floatVecLiteralE
   enterRule(_localctx, 76, GPULangParser::RuleFloatVecLiteralExpression);
 
           antlrcpp::downCast<FloatVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          StackArray<float> values(32);
+          TransientArray<float> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6252,7 +6252,7 @@ GPULangParser::DoubleVecLiteralExpressionContext* GPULangParser::doubleVecLitera
   enterRule(_localctx, 78, GPULangParser::RuleDoubleVecLiteralExpression);
 
           antlrcpp::downCast<DoubleVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          StackArray<float> values(32);
+          TransientArray<float> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6367,7 +6367,7 @@ GPULangParser::IntVecLiteralExpressionContext* GPULangParser::intVecLiteralExpre
   enterRule(_localctx, 80, GPULangParser::RuleIntVecLiteralExpression);
 
           antlrcpp::downCast<IntVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          StackArray<int> values(32);
+          TransientArray<int> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6482,7 +6482,7 @@ GPULangParser::UintVecLiteralExpressionContext* GPULangParser::uintVecLiteralExp
   enterRule(_localctx, 82, GPULangParser::RuleUintVecLiteralExpression);
 
           antlrcpp::downCast<UintVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          StackArray<unsigned int> values(32);
+          TransientArray<unsigned int> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
@@ -6597,7 +6597,7 @@ GPULangParser::BooleanVecLiteralExpressionContext* GPULangParser::booleanVecLite
   enterRule(_localctx, 84, GPULangParser::RuleBooleanVecLiteralExpression);
 
           antlrcpp::downCast<BooleanVecLiteralExpressionContext *>(_localctx)->tree =  nullptr;
-          StackArray<bool> values(32);
+          TransientArray<bool> values(32);
           Symbol::Location location;
       
   size_t _la = 0;
