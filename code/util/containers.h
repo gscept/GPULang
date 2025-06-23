@@ -1507,55 +1507,45 @@ struct PinnedSet
     }
     
     PinnedSet(size_t maxAllocationCount)
-    : searchValid(true)
+        : searchValid(true)
     {
         this->data = PinnedArray<K>(maxAllocationCount);
     }
     
     void Insert(const K& key)
     {
-        this->data.Append(key);
-        if (this->searchValid)
+        assert(this->searchValid);
+        if (this->Find(key) == this->end())
         {
-            this->Sort();
+            this->data.Append(key);
+            if (this->searchValid)
+            {
+                this->Sort();
+            }
         }
     }
     
     void Insert(const StaticSet<K>& set)
     {
-        this->BeginBulkAdd();
         for (auto& val : set)
         {
             this->Insert(val);
         }
-        this->EndBulkAdd();
     }
     
     template<typename K2>
     void Insert(const StaticSet<K2>& set)
     {
-        this->BeginBulkAdd();
         for (auto& val : set)
         {
             this->Insert(K(val));
         }
-        this->EndBulkAdd();
-    }
-    
-    void BeginBulkAdd()
-    {
-        this->searchValid = false;
-    }
-    
-    void EndBulkAdd()
-    {
-        this->Sort();
     }
     
     void Sort()
     {
         std::sort(this->data.begin(), this->data.end(), [](const K& lhs, const K& rhs)
-                  {
+        {
             return lhs < rhs;
         });
         this->searchValid = true;

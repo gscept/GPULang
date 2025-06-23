@@ -1485,51 +1485,54 @@ escape_newline:
                         {
                             StackMap<std::string_view, std::string_view> argumentMap(32);
                             TransientArray<std::string_view> args(32);
-                            if (beginOfCall[0] == '(')
+                            if (macro->args.size > 0)
                             {
-                                int argStack = 1;
-                                const char* argListIt = beginOfCall+1;
-                                const char* argBegin = argListIt;
-                                
-                                // parse arguments
-                                while (argListIt != eol)
+                                if (beginOfCall[0] == '(')
                                 {
-                                    if (argListIt[0] == '(')
-                                        argStack++;
-                                    else if (argListIt[0] == ')')
+                                    int argStack = 1;
+                                    const char* argListIt = beginOfCall+1;
+                                    const char* argBegin = argListIt;
+                                    
+                                    // parse arguments
+                                    while (argListIt != eol)
                                     {
-                                        argStack--;
-                                        if (argStack == 0)
+                                        if (argListIt[0] == '(')
+                                            argStack++;
+                                        else if (argListIt[0] == ')')
                                         {
-                                            if (args.Full())
+                                            argStack--;
+                                            if (argStack == 0)
                                             {
-                                                diagnostics.Append(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
-                                                return nullptr;
+                                                if (args.Full())
+                                                {
+                                                    diagnostics.Append(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
+                                                    return nullptr;
+                                                }
+                                                args.Append(std::string_view(argBegin, argListIt));
+                                                
+                                                argListIt += 1; // parsing done
+                                                break;
                                             }
-                                            args.Append(std::string_view(argBegin, argListIt));
-                                            
-                                            argListIt += 1; // parsing done
-                                            break;
                                         }
-                                    }
-                                    else if (argListIt[0] == ',')
-                                    {
-                                        if (argStack == 1)
+                                        else if (argListIt[0] == ',')
                                         {
-                                            args.Append(std::string_view(argBegin, argListIt));
-                                            argBegin = argListIt+1;
+                                            if (argStack == 1)
+                                            {
+                                                args.Append(std::string_view(argBegin, argListIt));
+                                                argBegin = argListIt+1;
+                                            }
                                         }
+                                        argListIt++;
                                     }
-                                    argListIt++;
+                                    
+                                    if (argStack > 0)
+                                    {
+                                        diagnostics.Append(DIAGNOSTIC("Macro call missing ')'"));
+                                        return nullptr;
+                                    }
+                                    
+                                    beginOfCall = argListIt;
                                 }
-                                
-                                if (argStack > 0)
-                                {
-                                    diagnostics.Append(DIAGNOSTIC("Macro call missing ')'"));
-                                    return nullptr;
-                                }
-                                
-                                beginOfCall = argListIt;
                             }
                                 
                             // Warn if mismatch
