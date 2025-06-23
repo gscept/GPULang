@@ -219,7 +219,10 @@ GPULangPreprocess(
         };
         uint64_t mask = masks[len];
         uint64_t byte_mask = 0x0101010101010101ULL * c;
-        uint64_t word = *(uint64_t*)begin;
+        uint64_t* wordPtr = (uint64_t*)begin;
+        uint64_t word = 0x0;
+        memcpy(&word, wordPtr, len);
+        //uint64_t word = *(uint64_t*)begin;
         uint64_t strMask = (word & mask) ^ byte_mask;
         return (strMask - 0x0101010101010101ULL) & ~strMask & 0x8080808080808080ULL;
     };

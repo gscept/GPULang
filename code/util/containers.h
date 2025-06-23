@@ -27,12 +27,13 @@ struct TransientArray
     TYPE* ptr = nullptr;
     size_t size = 0;
     size_t capacity = 0;
+    size_t allocatedBytes = 0;
     TransientArray() {}
     TransientArray(size_t count)
     {
         if (count != 0)
         {
-            this->ptr = AllocStack<TYPE>(count);
+            this->ptr = AllocStack<TYPE>(count, this->allocatedBytes);
             this->capacity = count;
         }
     }
@@ -42,15 +43,17 @@ struct TransientArray
         this->ptr = rhs.ptr;
         this->size = rhs.size;
         this->capacity = rhs.capacity;
+        this->allocatedBytes = rhs.allocatedBytes;
         rhs.ptr = nullptr;
         rhs.size = 0;
         rhs.capacity = 0;
+        rhs.allocatedBytes = 0;
     }
     
     ~TransientArray()
     {
         if (this->ptr != nullptr)
-            DeallocStack(this->capacity, this->ptr);
+            DeallocStack(this->capacity, this->ptr, this->allocatedBytes);
         this->ptr = nullptr;
         this->capacity = 0;
         this->size = 0;
@@ -61,9 +64,11 @@ struct TransientArray
         this->ptr = rhs.ptr;
         this->size = rhs.size;
         this->capacity = rhs.capacity;
+        this->allocatedBytes = rhs.allocatedBytes;
         rhs.ptr = nullptr;
         rhs.size = 0;
         rhs.capacity = 0;
+        rhs.allocatedBytes = 0;
     }
     
     void Append(const TYPE& t)

@@ -469,7 +469,8 @@ struct TransientString
     void Concatenate(ARGS... args)
     {
         size_t numArgs = sizeof...(ARGS);
-        size_t* subStringLengths = AllocStack<size_t>(numArgs);
+        size_t numBytes = 0;
+        size_t* subStringLengths = AllocStack<size_t>(numArgs, numBytes);
         size_t size = this->size;
 
         // Setup the substring lengths and calculate full size
@@ -508,7 +509,7 @@ struct TransientString
         } (), ...);
 
         this->buf[this->size] = '\0';
-        DeallocStack(numArgs, subStringLengths);
+        DeallocStack(numArgs, subStringLengths, numBytes);
     }
     
     bool operator==(const char* buf) const
@@ -727,7 +728,8 @@ struct GrowingString
     void Line(ARGS... args)
     {
         size_t numArgs = sizeof...(ARGS);
-        size_t* subStringLengths = AllocStack<size_t>(numArgs);
+        size_t numBytes = 0;
+        size_t* subStringLengths = AllocStack<size_t>(numArgs, numBytes);
         size_t size = this->size;
 
         // Setup the substring lengths and calculate full size
@@ -771,14 +773,15 @@ struct GrowingString
         this->data[this->size] = '\n';
         this->data[this->size + 1] = '\0';
         this->size += 1;
-        DeallocStack(numArgs, subStringLengths);
+        DeallocStack(numArgs, subStringLengths, numBytes);
     }
 
     template<typename ...ARGS>
     void CompactLine(ARGS... args)
     {
         size_t numArgs = sizeof...(ARGS);
-        size_t* subStringLengths = AllocStack<size_t>(numArgs);
+        size_t numBytes = 0;
+        size_t* subStringLengths = AllocStack<size_t>(numArgs, numBytes);
         size_t size = this->size;
 
         // Setup the substring lengths and calculate full size
@@ -813,7 +816,7 @@ struct GrowingString
         this->data[this->size] = '\n';
         this->data[this->size + 1] = '\0';
         this->size += 1;
-        DeallocStack(numArgs, subStringLengths);
+        DeallocStack(numArgs, subStringLengths, numBytes);
     }
 
     void Append(const char* str)

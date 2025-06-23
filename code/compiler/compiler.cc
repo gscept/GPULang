@@ -566,8 +566,9 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     this->performanceTimer.Start();
 
     uint32_t numAvailableThreads = std::thread::hardware_concurrency();
-    std::thread* threads = AllocStack<std::thread>(programs.size());
-    bool* returnValues = AllocStack<bool>(programs.size());
+    size_t threadByteSize, returnValueByteSize;
+    TransientArray<std::thread> threads(programs.size());
+    TransientArray<bool> returnValues(programs.size());
     std::vector<Generator*> generators;
 
     // Run the code generation per thread
@@ -576,9 +577,9 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         auto program = programs[programIndex];
         Generator* gen = CreateGenerator(this->lang, this->options);
         generators.push_back(gen);
-        new (&threads[programIndex]) std::thread([this, returnValues, program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
+        new (&threads[programIndex]) std::thread([this, values = returnValues.begin(), program = programs[programIndex], programIndex, gen, &symbols = this->symbols, writeFunction]()
         {
-            returnValues[programIndex] = gen->Generate(this, program, symbols, writeFunction);
+            values[programIndex] = gen->Generate(this, program, symbols, writeFunction);
         });
     }
 
@@ -591,8 +592,6 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         }
         ret &= returnValues[programIndex];
     }
-    DeallocStack(programs.size(), returnValues);
-    DeallocStack(programs.size(), threads);
 
     this->performanceTimer.Stop();
 

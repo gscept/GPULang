@@ -1425,6 +1425,32 @@ struct SPVWriter
     }
 
     template<>
+    void Append(const int16_t& arg)
+    {
+        this->binaries[(uint32_t)this->section].push_back(arg);
+
+        if (this->outputText)
+        {
+            char buf[16];
+            int numWritten = snprintf(buf, 16, " %d", arg);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
+        }
+    }
+
+    template<>
+    void Append(const uint16_t& arg)
+    {
+        this->binaries[(uint32_t)this->section].push_back(arg);
+
+        if (this->outputText)
+        {
+            char buf[16];
+            int numWritten = snprintf(buf, 16, " %u", arg);
+            this->texts[(uint32_t)this->section].Append(buf, numWritten);
+        }
+    }
+
+    template<>
     void Append(const size_t& arg)
     {
         this->binaries[(uint32_t)this->section].push_back(arg);

@@ -391,7 +391,7 @@ extern thread_local void* ThreadLocalHeapPtr;
 */
 template<typename TYPE>
 TYPE* 
-AllocStack(size_t count)
+AllocStack(size_t count, size_t& numBytes)
 {
     const char* HeapStart = (const char*)ThreadLocalHeap;
     const char* HeapEnd = HeapStart + ThreadLocalHeapSize;
@@ -401,7 +401,8 @@ AllocStack(size_t count)
     size_t sizeLeft = HeapEnd - HeapPtr;
     void* alignedPtr = std::align(alignment, size, ThreadLocalHeapPtr, sizeLeft);
     assert(alignedPtr != nullptr);
-    ThreadLocalHeapPtr = (char*)alignedPtr + count * sizeof(TYPE);
+    ThreadLocalHeapPtr = ((char*)alignedPtr) + count * sizeof(TYPE);
+    numBytes = (char*)ThreadLocalHeapPtr - HeapPtr;
     TYPE* ret = (TYPE*)alignedPtr;
     if (std::is_trivially_constructible<TYPE>::value)
         std::memset(ret, 0x0, sizeof(TYPE) * count);
@@ -415,7 +416,7 @@ AllocStack(size_t count)
 */
 template<typename TYPE>
 void 
-DeallocStack(size_t count, TYPE* buf)
+DeallocStack(size_t count, TYPE* buf, size_t numBytes)
 {
     const char* HeapPtr = (const char*)ThreadLocalHeapPtr;
     TYPE* topPtr = (TYPE*)(HeapPtr - count * sizeof(TYPE));
@@ -425,7 +426,7 @@ DeallocStack(size_t count, TYPE* buf)
         for (size_t i = 0; i < count; i++)
             (buf + i)->~TYPE();
     }
-    ThreadLocalHeapPtr = topPtr;
+    ThreadLocalHeapPtr = (void*)(HeapPtr - numBytes);
 }
 
 

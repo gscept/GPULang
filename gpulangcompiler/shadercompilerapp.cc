@@ -61,7 +61,7 @@ ShaderCompilerApp::ParseCmdLineArgs(const char ** argv)
 
 	if (!(args("i") >> buffer))
 	{
-		fprintf(stderr, "anyfxcompiler error: no input file specified\n");
+		fprintf(stderr, "gpulangc error: no input file specified\n");
 		this->PrintHelp();
 		return false;
 	}

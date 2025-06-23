@@ -204,7 +204,7 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
         {
             auto callExpr = static_cast<CallExpression*>(expr);
             auto res = Symbol::Resolved(callExpr);
-            std::regex re("(f32|i32|u32|b8)(x[0-9])?(x[0-9])?");
+            static std::regex re("(f32|i32|u32|b8)(x[0-9])?(x[0-9])?");
             std::cmatch m;
             if (std::regex_match(res->function->name.c_str(), m, re))
             {
@@ -305,7 +305,10 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             auto it = typeToHeaderType.Find(type.ToView());
             if (it != typeToHeaderType.end())
                 type = it->second.c_str();
-            TStr arrayType = typeToArraySize.Find(var->type.name)->second.c_str();
+            auto item = typeToArraySize.Find(var->type.name);
+            TStr arrayType;// = typeToArraySize.Find(var->type.name)->second.c_str();
+            if (item != typeToArraySize.end())
+                arrayType = item->second;
             auto modIt = var->type.modifiers.rbegin();
             while (modIt != var->type.modifiers.rend())
             {
