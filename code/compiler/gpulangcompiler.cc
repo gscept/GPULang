@@ -1857,11 +1857,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         compiler.Setup(target, defines, options);
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
-        effect->Destroy();
         effect->~Effect();
-        compiler.intrinsicScope->~Scope();
-        compiler.mainScope->~Scope();
-        GPULang::ResetAllocator(&alloc);
         
         // convert error list to string
         if (!compiler.messages.empty() && !compiler.options.quiet)
@@ -1880,6 +1876,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
         return res;
     }
+    GPULang::ResetAllocator(&alloc);
     std::string err;
     for (auto& diagnostic : diagnostics)
     {

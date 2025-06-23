@@ -140,6 +140,11 @@ struct Symbol
 
 struct Scope
 {
+    ~Scope()
+    {
+        this->symbols.Invalidate();
+        this->symbolLookup.Invalidate();
+    }
     enum class ScopeType
     {
         Global,

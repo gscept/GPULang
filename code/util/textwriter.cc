@@ -33,7 +33,8 @@ TextWriter::~TextWriter()
 bool
 TextWriter::Open()
 {
-	assert(this->path.size() > 0);
+    if (this->path.empty())
+        return false;
 	this->output.open(this->path.c_str(), std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
 	this->isOpen = this->output.is_open();
 	return this->isOpen;

@@ -28,6 +28,8 @@ ScopeStatement::~ScopeStatement()
         sym->~Symbol();
     for (auto* expr : this->unfinished)
         expr->~Expression();
+    
+    this->symbols.Invalidate();
 }
 
 } // namespace GPULang

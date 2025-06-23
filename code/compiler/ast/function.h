@@ -47,7 +47,7 @@ struct Function : public Symbol
 
     struct __Resolved : public Symbol::__Resolved
     {
-        virtual ~__Resolved() {};
+        virtual ~__Resolved() { this->visibleSymbols.data.Invalidate(); };
         Type* returnTypeSymbol;
         Storage returnValueStorage;
         Scope scope;
