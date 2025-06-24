@@ -34,7 +34,7 @@ bool
 IntExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ "i32" };
+    thisResolved->fullType = Type::FullType{ ConstantString("i32") };
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     return true;

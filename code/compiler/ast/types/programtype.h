@@ -17,14 +17,15 @@ struct ProgramType : public Type
 {
     /// Constructor
     ProgramType();
-
-    Variable renderState;
-    Variable vertexShader;
-    Variable hullShader;
-    Variable domainShader;
-    Variable geometryShader;
-    Variable pixelShader;
-    Variable computeShader;
 };
+extern ProgramType ProgramTypeType;
+
+extern Variable Program_renderState;
+extern Variable Program_vertexShader;
+extern Variable Program_hullShader;
+extern Variable Program_domainShader;
+extern Variable Program_geometryShader;
+extern Variable Program_pixelShader;
+extern Variable Program_computeShader;
 
 } // namespace GPULang

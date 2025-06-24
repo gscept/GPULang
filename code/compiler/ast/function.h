@@ -32,6 +32,7 @@ struct Function : public Symbol
     Statement* ast;
     Type::FullType returnType;
     Symbol::Location returnTypeLocation;
+    Symbol* constructorType = nullptr;
     bool hasBody;
     bool compileTime;
     FixedArray<Variable*> parameters;
@@ -48,7 +49,7 @@ struct Function : public Symbol
     struct __Resolved : public Symbol::__Resolved
     {
         virtual ~__Resolved() { this->visibleSymbols.data.Invalidate(); };
-        Type* returnTypeSymbol;
+        Type* returnTypeSymbol = nullptr;
         Storage returnValueStorage;
         Scope scope;
 
@@ -184,25 +185,25 @@ struct Function : public Symbol
 
         struct ExecutionModifiers
         {
-            unsigned int computeShaderWorkGroupSize[3];
-            unsigned int groupSize;
-            unsigned int groupsPerWorkgroup;
-            uint32_t earlyDepth : 1;
-            uint32_t depthAlwaysGreater : 1;
-            uint32_t depthAlwaysLesser : 1;
+            unsigned int computeShaderWorkGroupSize[3] = {0};
+            unsigned int groupSize = 0;
+            unsigned int groupsPerWorkgroup = 0;
+            uint32_t earlyDepth : 1 = 0;
+            uint32_t depthAlwaysGreater : 1 = 0;
+            uint32_t depthAlwaysLesser : 1 = 0;
 
-            uint32_t invocations;
+            uint32_t invocations = 0;
 
-            uint32_t maxOutputVertices;
-            PatchType patchType;
+            uint32_t maxOutputVertices = 0;
+            PatchType patchType = PatchType::InvalidPatchType;
 
-            WindingOrder windingOrder;
-            PrimitiveTopology inputPrimitiveTopology;
-            PrimitiveTopology outputPrimitiveTopology;
+            WindingOrder windingOrder = WindingOrder::InvalidWindingOrder;
+            PrimitiveTopology inputPrimitiveTopology = PrimitiveTopology::InvalidPrimitiveTopology;
+            PrimitiveTopology outputPrimitiveTopology = PrimitiveTopology::InvalidPrimitiveTopology;
 
-            PartitionMethod partitionMethod;
-            PixelOrigin pixelOrigin;
-            ComputeDerivativeIndexing computeDerivativeIndexing;
+            PartitionMethod partitionMethod = PartitionMethod::InvalidPartitionMethod;
+            PixelOrigin pixelOrigin = PixelOrigin::InvalidPixelOrigin;
+            ComputeDerivativeIndexing computeDerivativeIndexing = ComputeDerivativeIndexing::NoDerivatives;
 
         } executionModifiers;
 
@@ -211,9 +212,6 @@ struct Function : public Symbol
         
         PinnedSet<Symbol*> visibleSymbols;
     };
-
-    
-
 };
 
 } // namespace GPULang

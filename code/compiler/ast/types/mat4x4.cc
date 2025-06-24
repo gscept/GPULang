@@ -6,31 +6,13 @@
 namespace GPULang
 {
 
-Function Mat4x4::identityConstructor;
-Function Mat4x4::floatConstructor;
-Function Mat4x4::vectorConstructor;
-
-Function Mat4x4::additionOperator;
-Function Mat4x4::subtractionOperator;
-Function Mat4x4::multiplyOperator;
-Function Mat4x4::additionAssignOperator;
-Function Mat4x4::subtractionAssignOperator;
-Function Mat4x4::multiplyAssignOperator;
-
-Function Mat4x4::vectorTransformOperator;
-Function Mat4x4::scaleOperator;
-
-Function Mat4x4::assignOperator;
-
-Function Mat4x4::elementAccessOperatorInt;
-Function Mat4x4::elementAccessOperatorUInt;
-
-
 //------------------------------------------------------------------------------
 /**
 */
 Mat4x4::Mat4x4()
 {
+    SYMBOL_STATIC_ALLOC = true;
+
     __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->rowSize = 4;
@@ -38,9 +20,9 @@ Mat4x4::Mat4x4()
     this->byteSize = 64;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR(identityConstructor, f32x4x4, f32x4x4);
+    __IMPLEMENT_CTOR(Mat4x4_identityConstructor, f32x4x4, f32x4x4, Mat4x4);
 
-    __IMPLEMENT_CTOR(floatConstructor, f32x4x4, f32x4x4);
+    __IMPLEMENT_CTOR(Mat4x4_floatConstructor, f32x4x4, f32x4x4, Mat4x4);
     __ADD_FUNCTION_PARAM(m00, f32);
     __ADD_FUNCTION_PARAM(m01, f32);
     __ADD_FUNCTION_PARAM(m02, f32);
@@ -59,27 +41,29 @@ Mat4x4::Mat4x4()
     __ADD_FUNCTION_PARAM(m33, f32);
     __ADD_CONSTRUCTOR();
 
-    __IMPLEMENT_CTOR(vectorConstructor, f32x4x4, f32x4x4);
+    __IMPLEMENT_CTOR(Mat4x4_vectorConstructor, f32x4x4, f32x4x4, Mat4x4);
     __ADD_FUNCTION_PARAM(r0, f32x4);
     __ADD_FUNCTION_PARAM(r1, f32x4);
     __ADD_FUNCTION_PARAM(r2, f32x4);
     __ADD_FUNCTION_PARAM(r3, f32x4);
     __ADD_CONSTRUCTOR();
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x4x4, f32x4x4);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x4x4, f32x4x4);
-    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, f32x4x4, f32x4x4);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x4x4, f32x4x4);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x4x4, f32x4x4);
-    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_additionOperator, operator+, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_subtractionOperator, operator-, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_multiplyOperator, operator*, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_additionAssignOperator, operator+=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_subtractionAssignOperator, operator-=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_multiplyAssignOperator, operator*=, f32x4x4, f32x4x4);
 
-    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x4, f32x4);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, f32x4x4, f32);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_vectorTransformOperator, operator*, f32x4, f32x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_scaleOperator, operator*, f32x4x4, f32);
 
-    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x4x4, f32x4x4);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_assignOperator, operator=, f32x4x4, f32x4x4);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32x4, i32);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32x4, u32);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_elementAccessOperatorInt, operator[], f32x4, i32);
+    __IMPLEMENT_FUNCTION_1(Mat4x4_elementAccessOperatorUInt, operator[], f32x4, u32);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 } // namespace GPULang

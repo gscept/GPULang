@@ -27,45 +27,47 @@ struct Float3 : public Type
 {
     /// constructor
     Float3();
+};
 
-    static Function ctor;
+extern Float3 Float3Type;
+
+extern Function Float3_ctor;
 #define X(type, ctor, val, args, splat, size, conversion)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
     FLOAT3_CTOR_LIST
 #undef X
 
 #define X(type, ctor, arg0, arg1)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
     FLOAT3_CTOR2_LIST
 #undef X
 
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplicationOperator;
-    static Function divisionOperator;
-    static Function modOperator;
-    static Function scaleOperator;
+extern Function Float3_additionOperator;
+extern Function Float3_subtractionOperator;
+extern Function Float3_multiplicationOperator;
+extern Function Float3_divisionOperator;
+extern Function Float3_modOperator;
+extern Function Float3_scaleOperator;
 
-    static Function matrix34Mul;
-    static Function matrix33Mul;
-    static Function matrix32Mul;
+extern Function Float3_matrix34Mul;
+extern Function Float3_matrix33Mul;
+extern Function Float3_matrix32Mul;
 
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplicationAssignOperator;
-    static Function divisionAssignOperator;
+extern Function Float3_additionAssignOperator;
+extern Function Float3_subtractionAssignOperator;
+extern Function Float3_multiplicationAssignOperator;
+extern Function Float3_divisionAssignOperator;
 
-    static Function ltOperator;
-    static Function lteOperator;
-    static Function gtOperator;
-    static Function gteOperator;
-    static Function eOperator;
-    static Function neOperator;
+extern Function Float3_ltOperator;
+extern Function Float3_lteOperator;
+extern Function Float3_gtOperator;
+extern Function Float3_gteOperator;
+extern Function Float3_eOperator;
+extern Function Float3_neOperator;
 
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
-};
+extern Function Float3_elementAccessOperatorInt;
+extern Function Float3_elementAccessOperatorUInt;
 
 } // namespace GPULang

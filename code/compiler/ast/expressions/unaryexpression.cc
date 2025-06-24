@@ -78,7 +78,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         {
             if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
-                compiler->Error("Unary '++' only allowed on integer types", this);
+                compiler->Error("Unary '++' only allowed on numeric (int/float) types", this);
                 return false;    
             }
             break;
@@ -87,7 +87,7 @@ UnaryExpression::Resolve(Compiler* compiler)
         {
             if (allowedIncrementDecrementTypes.Find(typeSymbol->baseType) == allowedIncrementDecrementTypes.end())
             {
-                compiler->Error("Unary '++' only allowed on integer types", this);
+                compiler->Error("Unary '++' only allowed on numeric (int/float) types", this);
                 return false;    
             }
             break;

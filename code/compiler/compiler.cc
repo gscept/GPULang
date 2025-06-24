@@ -19,6 +19,7 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
+#include "thread.h"
 #include <thread>
 
 namespace GPULang
@@ -43,10 +44,12 @@ Compiler::Compiler()
 
     this->options.validate = true;
     this->options.optimize = false;
+    this->options.emitTimings = true;
 
     this->branchReturns = false;
     this->defaultRenderState.name = "__DefaultRenderState";
 
+    /*
     // Allocate main scopes
     this->intrinsicScope = Alloc<Scope>();
     this->intrinsicScope->type = Scope::ScopeType::Global;
@@ -127,10 +130,16 @@ Compiler::Compiler()
         this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
     }
 
+    this->performanceTimer.Stop();
+
+    if (this->options.emitTimings)
+        this->performanceTimer.Print("Static setup");
+
     this->ignoreReservedWords = false;
 
     // push a new scope for all the parsed symbols
     this->PushScope(this->mainScope);
+    */
 }
 
 //------------------------------------------------------------------------------
@@ -166,7 +175,6 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     case Language::SPIRV:
         this->target.name = "SPIRV";
         this->target.generator = new SPIRVGenerator();
-        SPIRVGenerator::SetupIntrinsics();
         this->target.supportsInlineSamplers = true;
         this->target.supportsPhysicalBufferAddresses = true;
         this->target.supportsPhysicalAddressing = true;
@@ -186,6 +194,122 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
+
+    this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
+    {
+        this->performanceTimer.Start();
+
+        // Allocate main scopes
+        this->intrinsicScope = StaticAlloc<Scope>();
+        this->intrinsicScope->type = Scope::ScopeType::Global;
+        this->mainScope = StaticAlloc<Scope>();
+        this->mainScope->type = Scope::ScopeType::Global;
+
+        // push global scope for all the builtins
+        this->PushScope(this->intrinsicScope);
+
+        // setup default types and their lookups
+        if (DefaultTypes.empty())
+            Type::SetupDefaultTypes();
+        auto typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            Type* type = static_cast<Type*>(*typeIt);
+            type->symbols.Invalidate();
+            type->scope.symbolLookup.Invalidate();
+
+            this->validator->ResolveType(this, *typeIt);
+            typeIt++;
+        }
+
+        // Run again to resolve swizzle variables
+        typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            this->validator->ResolveTypeSwizzles(this, *typeIt);
+            typeIt++;
+        }
+
+        // Run again but resolve methods this time (needed as forward declaration)
+        typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            this->validator->ResolveTypeMethods(this, *typeIt);
+            typeIt++;
+        }
+
+        this->performanceTimer.Stop();
+
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static setup types");
+
+        this->performanceTimer.Start();
+        // setup intrinsics
+        if (DefaultIntrinsics.empty())
+            Function::SetupIntrinsics();
+        this->ignoreReservedWords = true;
+        auto intrinIt = DefaultIntrinsics.begin();
+        while (intrinIt != DefaultIntrinsics.end())
+        {
+            auto fun = static_cast<Function*>(*intrinIt);
+            auto funRes = Symbol::Resolved(fun);
+            funRes->scope.symbols.Invalidate();
+            funRes->scope.symbolLookup.Invalidate();
+            this->validator->ResolveFunction(this, *intrinIt);
+            intrinIt++;
+        }
+
+        this->performanceTimer.Stop();
+
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static setup intrinsics");
+
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::VertexShader].name = "gplIsVertexShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::HullShader].name = "gplIsHullShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::ComputeShader].name = "gplIsComputeShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayMissShader].name = "gplIsRayMissShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayCallableShader].name = "gplIsRayCallableShader";
+
+        for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+        {
+            this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
+            Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
+            res->usageBits.flags.isConst = true;
+            res->builtin = true;
+            this->shaderValueExpressions[i].value = false;
+            this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
+            this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
+        }
+
+        this->ignoreReservedWords = false;
+
+        // push a new scope for all the parsed symbols
+        this->PushScope(this->mainScope);
+
+        switch (this->lang)
+        {
+        case Language::GLSL:
+            break;
+        case Language::HLSL_SPIRV:
+        case Language::HLSL:
+            break;
+        case Language::SPIRV:
+            SPIRVGenerator::SetupIntrinsics();
+            break;
+        case Language::VULKAN_SPIRV:
+            SPIRVGenerator::SetupIntrinsics();
+            break;
+        }
+    });
 }
 
 //------------------------------------------------------------------------------
@@ -223,6 +347,7 @@ Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
     return nullptr;
 }
 
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -246,12 +371,15 @@ Compiler::AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate
         symbols = &scope->symbols;
     }
 
-    auto it = lookup->Find(name);
-    if (it != lookup->end() && !allowDuplicate)
+    if (!allowDuplicate)
     {
-        Symbol* prevSymbol = it->second;
-        this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
-        return false;
+        auto it = lookup->Find(name);
+        if (it != lookup->end())
+        {
+            Symbol* prevSymbol = it->second;
+            this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
+            return false;
+        }
     }
     lookup->Insert(name, symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
@@ -518,6 +646,7 @@ Compiler::MarkScopeReachable()
 bool 
 Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter)
 {
+    ThreadJoin(this->staticSetupThread);
     bool ret = true;
     this->linkDefineCounter = 0;
     this->validator->defaultGroup = this->options.defaultGroupBinding;

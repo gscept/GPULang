@@ -23,39 +23,40 @@ struct Float2 : public Type
 {
     /// constructor
     Float2();
+};
+extern Float2 Float2Type;
 
-    static Function ctor;
+extern Function Float2_ctor;
 #define X(type, ctor, val, args, splat, size, conversion)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
     FLOAT2_CTOR_LIST
 #undef X
 
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplicationOperator;
-    static Function divisionOperator;
-    static Function modOperator;
-    static Function scaleOperator;
+extern Function Float2_additionOperator;
+extern Function Float2_subtractionOperator;
+extern Function Float2_multiplicationOperator;
+extern Function Float2_divisionOperator;
+extern Function Float2_modOperator;
+extern Function Float2_scaleOperator;
 
-    static Function matrix24Mul;
-    static Function matrix23Mul;
-    static Function matrix22Mul;
+extern Function Float2_matrix24Mul;
+extern Function Float2_matrix23Mul;
+extern Function Float2_matrix22Mul;
 
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplicationAssignOperator;
-    static Function divisionAssignOperator;
+extern Function Float2_additionAssignOperator;
+extern Function Float2_subtractionAssignOperator;
+extern Function Float2_multiplicationAssignOperator;
+extern Function Float2_divisionAssignOperator;
 
-    static Function ltOperator;
-    static Function lteOperator;
-    static Function gtOperator;
-    static Function gteOperator;
-    static Function eOperator;
-    static Function neOperator;
+extern Function Float2_ltOperator;
+extern Function Float2_lteOperator;
+extern Function Float2_gtOperator;
+extern Function Float2_gteOperator;
+extern Function Float2_eOperator;
+extern Function Float2_neOperator;
 
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
-};
+extern Function Float2_elementAccessOperatorInt;
+extern Function Float2_elementAccessOperatorUInt;
 
 } // namespace GPULang

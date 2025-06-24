@@ -6,29 +6,14 @@
 namespace GPULang
 {
 
-Function Mat2x2::identityConstructor;
-Function Mat2x2::floatConstructor;
-Function Mat2x2::vectorConstructor;
 
-Function Mat2x2::additionOperator;
-Function Mat2x2::subtractionOperator;
-Function Mat2x2::multiplyOperator;
-Function Mat2x2::additionAssignOperator;
-Function Mat2x2::subtractionAssignOperator;
-Function Mat2x2::multiplyAssignOperator;
-
-Function Mat2x2::vectorTransformOperator;
-Function Mat2x2::scaleOperator;
-
-Function Mat2x2::assignOperator;
-
-Function Mat2x2::elementAccessOperatorInt;
-Function Mat2x2::elementAccessOperatorUInt;
 //------------------------------------------------------------------------------
 /**
 */
 Mat2x2::Mat2x2()
 {
+    SYMBOL_STATIC_ALLOC = true;
+
     __BEGIN_TYPE()
     this->baseType = TypeCode::Float;
     this->rowSize = 2;
@@ -36,34 +21,36 @@ Mat2x2::Mat2x2()
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR(identityConstructor, f32x2x2, f32x2x2);
+    __IMPLEMENT_CTOR(Mat2x2_identityConstructor, f32x2x2, f32x2x2, Mat2x2);
 
-    __IMPLEMENT_CTOR(floatConstructor, f32x2x2, f32x2x2);
+    __IMPLEMENT_CTOR(Mat2x2_floatConstructor, f32x2x2, f32x2x2, Mat2x2);
     __ADD_FUNCTION_PARAM(m00, f32);
     __ADD_FUNCTION_PARAM(m01, f32);
     __ADD_FUNCTION_PARAM(m10, f32);
     __ADD_FUNCTION_PARAM(m11, f32);
     __ADD_CONSTRUCTOR();
 
-    __IMPLEMENT_CTOR(vectorConstructor, f32x2x2, f32x2x2);
+    __IMPLEMENT_CTOR(Mat2x2_vectorConstructor, f32x2x2, f32x2x2, Mat2x2);
     __ADD_FUNCTION_PARAM(r0, f32x2);
     __ADD_FUNCTION_PARAM(r1, f32x2);
     __ADD_CONSTRUCTOR();
 
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, f32x2x2, f32x2x2);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, f32x2x2, f32x2x2);
-    __IMPLEMENT_FUNCTION_1(multiplyOperator, operator*, f32x2x2, f32x2x2);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, f32x2x2, f32x2x2);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, f32x2x2, f32x2x2);
-    __IMPLEMENT_FUNCTION_1(multiplyAssignOperator, operator*=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_additionOperator, operator+, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_subtractionOperator, operator-, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_multiplyOperator, operator*, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_additionAssignOperator, operator+=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_subtractionAssignOperator, operator-=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_multiplyAssignOperator, operator*=, f32x2x2, f32x2x2);
 
-    __IMPLEMENT_FUNCTION_1(vectorTransformOperator, operator*, f32x2, f32x2);
-    __IMPLEMENT_FUNCTION_1(scaleOperator, operator*, f32x2x2, f32);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_vectorTransformOperator, operator*, f32x2, f32x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_scaleOperator, operator*, f32x2x2, f32);
 
-    __IMPLEMENT_FUNCTION_1(assignOperator, operator=, f32x2x2, f32x2x2);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_assignOperator, operator=, f32x2x2, f32x2x2);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], f32x2, i32);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], f32x2, u32);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_elementAccessOperatorInt, operator[], f32x2, i32);
+    __IMPLEMENT_FUNCTION_1(Mat2x2_elementAccessOperatorUInt, operator[], f32x2, u32);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 } // namespace GPULang

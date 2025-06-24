@@ -15,24 +15,25 @@ struct Mat3x2 : public Type
 {
     /// constructor
     Mat3x2();
-
-    static Function floatConstructor;
-    static Function vectorConstructor;
-
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplyOperator;
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplyAssignOperator;
-
-    static Function vectorTransformOperator;
-    static Function scaleOperator;
-    
-    static Function assignOperator;
-
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
 };
+extern Mat3x2 Mat3x2Type;
+
+extern Function Mat3x2_floatConstructor;
+extern Function Mat3x2_vectorConstructor;
+
+extern Function Mat3x2_additionOperator;
+extern Function Mat3x2_subtractionOperator;
+extern Function Mat3x2_multiplyOperator;
+extern Function Mat3x2_additionAssignOperator;
+extern Function Mat3x2_subtractionAssignOperator;
+extern Function Mat3x2_multiplyAssignOperator;
+
+extern Function Mat3x2_vectorTransformOperator;
+extern Function Mat3x2_scaleOperator;
+
+extern Function Mat3x2_assignOperator;
+
+extern Function Mat3x2_elementAccessOperatorInt;
+extern Function Mat3x2_elementAccessOperatorUInt;
 
 } // namespace GPULang

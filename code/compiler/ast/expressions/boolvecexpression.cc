@@ -33,8 +33,14 @@ BoolVecExpression::~BoolVecExpression()
 bool 
 BoolVecExpression::Resolve(Compiler* compiler)
 {
+    static ConstantString Types[] =
+    {
+        "b8x2",
+        "b8x3",
+        "b8x4"
+    };
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("b8x%d", this->values.size) };
+    thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     //thisResolved->text = this->EvalString();

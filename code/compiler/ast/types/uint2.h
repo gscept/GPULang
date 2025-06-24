@@ -25,46 +25,47 @@ struct UInt2 : public Type
 {
     /// constructor
     UInt2();
+};
 
 #define X(type, ctor, val, args, splat, size, conversion)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT2_CTOR_LIST
+UINT2_CTOR_LIST
 #undef X
 
-    static Function ctor;
-    static Function andOperator;
-    static Function orOperator;
-    static Function xorOperator;
-    static Function leftShiftOperator;
-    static Function rightShiftOperator;
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplicationOperator;
-    static Function divisionOperator;
-    static Function modOperator;
-    static Function scaleOperator;
+extern UInt2 UInt2Type;
+extern Function UInt2_ctor;
+extern Function UInt2_andOperator;
+extern Function UInt2_orOperator;
+extern Function UInt2_xorOperator;
+extern Function UInt2_leftShiftOperator;
+extern Function UInt2_rightShiftOperator;
+extern Function UInt2_additionOperator;
+extern Function UInt2_subtractionOperator;
+extern Function UInt2_multiplicationOperator;
+extern Function UInt2_divisionOperator;
+extern Function UInt2_modOperator;
+extern Function UInt2_scaleOperator;
 
-    static Function andAssignOperator;
-    static Function orAssignOperator;
-    static Function xorAssignOperator;
-    static Function leftShiftAssignOperator;
-    static Function rightShiftAssignOperator;
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplicationAssignOperator;
-    static Function divisionAssignOperator;
-    static Function moduloAssignOperator;
+extern Function UInt2_andAssignOperator;
+extern Function UInt2_orAssignOperator;
+extern Function UInt2_xorAssignOperator;
+extern Function UInt2_leftShiftAssignOperator;
+extern Function UInt2_rightShiftAssignOperator;
+extern Function UInt2_additionAssignOperator;
+extern Function UInt2_subtractionAssignOperator;
+extern Function UInt2_multiplicationAssignOperator;
+extern Function UInt2_divisionAssignOperator;
+extern Function UInt2_moduloAssignOperator;
 
-    static Function ltOperator;
-    static Function lteOperator;
-    static Function gtOperator;
-    static Function gteOperator;
-    static Function eOperator;
-    static Function neOperator;
+extern Function UInt2_ltOperator;
+extern Function UInt2_lteOperator;
+extern Function UInt2_gtOperator;
+extern Function UInt2_gteOperator;
+extern Function UInt2_eOperator;
+extern Function UInt2_neOperator;
 
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
-};
+extern Function UInt2_elementAccessOperatorInt;
+extern Function UInt2_elementAccessOperatorUInt;
 
 } // namespace GPULang

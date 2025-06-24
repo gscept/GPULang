@@ -15,17 +15,18 @@ struct Bool2 : public Type
 {
     /// constructor
     Bool2();
-
-    static Function ctor_XY;
-    static Function ctorSingleValue;
-
-    static Function ororOperator;
-    static Function andandOperator;
-    static Function eOperator;
-    static Function neOperator;
-    
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
 };
+extern Bool2 Bool2Type;
+
+extern Function Bool2_ctor_XY;
+extern Function Bool2_ctorSingleValue;
+
+extern Function Bool2_ororOperator;
+extern Function Bool2_andandOperator;
+extern Function Bool2_eOperator;
+extern Function Bool2_neOperator;
+
+extern Function Bool2_elementAccessOperatorInt;
+extern Function Bool2_elementAccessOperatorUInt;
 
 } // namespace GPULang

@@ -28,53 +28,54 @@ struct UInt3 : public Type
 {
     /// constructor
     UInt3();
+};
+extern UInt3 UInt3Type;
 
 #define X(type, ctor, val, args, splat, size, conversion)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT3_CTOR_LIST
+UINT3_CTOR_LIST
 #undef X
 
 #define X(type, ctor, arg0, arg1)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT3_CTOR2_LIST
+UINT3_CTOR2_LIST
 #undef X
 
-    static Function ctor;
+extern Function UInt3_ctor;
 
-    static Function andOperator;
-    static Function orOperator;
-    static Function xorOperator;
-    static Function leftShiftOperator;
-    static Function rightShiftOperator;
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplicationOperator;
-    static Function divisionOperator;
-    static Function modOperator;
-    static Function scaleOperator;
+extern Function UInt3_andOperator;
+extern Function UInt3_orOperator;
+extern Function UInt3_xorOperator;
+extern Function UInt3_leftShiftOperator;
+extern Function UInt3_rightShiftOperator;
+extern Function UInt3_additionOperator;
+extern Function UInt3_subtractionOperator;
+extern Function UInt3_multiplicationOperator;
+extern Function UInt3_divisionOperator;
+extern Function UInt3_modOperator;
+extern Function UInt3_scaleOperator;
 
-    static Function andAssignOperator;
-    static Function orAssignOperator;
-    static Function xorAssignOperator;
-    static Function leftShiftAssignOperator;
-    static Function rightShiftAssignOperator;
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplicationAssignOperator;
-    static Function divisionAssignOperator;
-    static Function moduloAssignOperator;
+extern Function UInt3_andAssignOperator;
+extern Function UInt3_orAssignOperator;
+extern Function UInt3_xorAssignOperator;
+extern Function UInt3_leftShiftAssignOperator;
+extern Function UInt3_rightShiftAssignOperator;
+extern Function UInt3_additionAssignOperator;
+extern Function UInt3_subtractionAssignOperator;
+extern Function UInt3_multiplicationAssignOperator;
+extern Function UInt3_divisionAssignOperator;
+extern Function UInt3_moduloAssignOperator;
 
-    static Function ltOperator;
-    static Function lteOperator;
-    static Function gtOperator;
-    static Function gteOperator;
-    static Function eOperator;
-    static Function neOperator;
+extern Function UInt3_ltOperator;
+extern Function UInt3_lteOperator;
+extern Function UInt3_gtOperator;
+extern Function UInt3_gteOperator;
+extern Function UInt3_eOperator;
+extern Function UInt3_neOperator;
 
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
-};
+extern Function UInt3_elementAccessOperatorInt;
+extern Function UInt3_elementAccessOperatorUInt;
 
 } // namespace GPULang

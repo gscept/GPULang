@@ -1673,7 +1673,6 @@ GPULangPreprocessFile(
     std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
     GPULangFile* file = GPULangLoadFile(path.c_str(), FixedArray<std::string_view>());
     bool ret = GPULangPreprocess(file, defines, output, preprocessorSymbols, diagnostics);
-    delete file;
     return ret;
 }
 
@@ -1780,6 +1779,8 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     errorBuffer = nullptr;
 
     GPULang::Compiler::Timer timer;
+    Compiler compiler;
+    compiler.Setup(target, defines, options);
 
     timer.Start();
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
@@ -1852,12 +1853,10 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         TextWriter headerWriter;
         headerWriter.SetPath(header_output);
 
-        Compiler compiler;
         compiler.path = file;
         compiler.filename = effectName;
         compiler.debugPath = output;
         compiler.debugOutput = true;
-        compiler.Setup(target, defines, options);
 
         bool res = compiler.Compile(effect, binaryWriter, headerWriter);
         effect->~Effect();

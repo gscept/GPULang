@@ -15,25 +15,26 @@ struct Mat4x4 : public Type
 {
     /// constructor
     Mat4x4();
-
-    static Function identityConstructor;
-    static Function floatConstructor;
-    static Function vectorConstructor;
-
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplyOperator;
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplyAssignOperator;
-
-    static Function vectorTransformOperator;
-    static Function scaleOperator;
-    
-    static Function assignOperator;
-
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
 };
+extern Mat4x4 Mat4x4Type;
+
+extern Function Mat4x4_identityConstructor;
+extern Function Mat4x4_floatConstructor;
+extern Function Mat4x4_vectorConstructor;
+
+extern Function Mat4x4_additionOperator;
+extern Function Mat4x4_subtractionOperator;
+extern Function Mat4x4_multiplyOperator;
+extern Function Mat4x4_additionAssignOperator;
+extern Function Mat4x4_subtractionAssignOperator;
+extern Function Mat4x4_multiplyAssignOperator;
+
+extern Function Mat4x4_vectorTransformOperator;
+extern Function Mat4x4_scaleOperator;
+
+extern Function Mat4x4_assignOperator;
+
+extern Function Mat4x4_elementAccessOperatorInt;
+extern Function Mat4x4_elementAccessOperatorUInt;
 
 } // namespace GPULang

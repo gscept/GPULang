@@ -6,21 +6,14 @@
 namespace GPULang
 {
 
-Function Bool4::ctor_XYZW;
-Function Bool4::ctorSingleValue;
 
-Function Bool4::ororOperator;
-Function Bool4::andandOperator;
-Function Bool4::eOperator;
-Function Bool4::neOperator;
-
-Function Bool4::elementAccessOperatorInt;
-Function Bool4::elementAccessOperatorUInt;
 //------------------------------------------------------------------------------
 /**
 */
 Bool4::Bool4()
 {
+    SYMBOL_STATIC_ALLOC = true;
+
     __BEGIN_TYPE()
     this->baseType = TypeCode::Bool;
     this->columnSize = 4;
@@ -29,7 +22,7 @@ Bool4::Bool4()
     this->category = Type::ScalarCategory;
 
     // setup constructor for xyzw
-    __IMPLEMENT_CTOR(ctor_XYZW, b8x4, b8x4);
+    __IMPLEMENT_CTOR(Bool4_ctor_XYZW, b8x4, b8x4, Bool4);
     __ADD_FUNCTION_PARAM(x, b8);
     __ADD_FUNCTION_PARAM(y, b8);
     __ADD_FUNCTION_PARAM(z, b8);
@@ -37,21 +30,23 @@ Bool4::Bool4()
     __ADD_CONSTRUCTOR();
 
     // setup constructor for single component
-    __IMPLEMENT_CTOR_1(ctorSingleValue, b8x4, b8x4, b8);
+    __IMPLEMENT_CTOR_1(Bool4_ctorSingleValue, b8x4, b8x4, b8, Bool4);
     
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8x4, b8x4);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8x4, b8x4);
-    __IMPLEMENT_FUNCTION_1(ororOperator, operator||, b8x4, b8x4);
-    __IMPLEMENT_FUNCTION_1(andandOperator, operator&&, b8x4, b8x4);
+    __IMPLEMENT_FUNCTION_1(Bool4_eOperator, operator==, b8x4, b8x4);
+    __IMPLEMENT_FUNCTION_1(Bool4_neOperator, operator!=, b8x4, b8x4);
+    __IMPLEMENT_FUNCTION_1(Bool4_ororOperator, operator||, b8x4, b8x4);
+    __IMPLEMENT_FUNCTION_1(Bool4_andandOperator, operator&&, b8x4, b8x4);
 
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorInt, operator[], b8, i32);
-    __IMPLEMENT_FUNCTION_1(elementAccessOperatorUInt, operator[], b8, u32);
+    __IMPLEMENT_FUNCTION_1(Bool4_elementAccessOperatorInt, operator[], b8, i32);
+    __IMPLEMENT_FUNCTION_1(Bool4_elementAccessOperatorUInt, operator[], b8, u32);
 
     char swizzleMask[] = { 'x', 'y', 'z', 'w' };
     __IMPLEMENT_SWIZZLE(b8, 4, swizzleMask)
 
     char colorMask[] = { 'r', 'g', 'b', 'a' };
     __IMPLEMENT_SWIZZLE(b8, 4, colorMask)
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 } // namespace GPULang

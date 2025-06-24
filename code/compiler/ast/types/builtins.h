@@ -38,3 +38,8 @@
 #include "stencilstatetype.h"
 #include "programtype.h"
 #include "functiontype.h"
+
+namespace GPULang
+{
+extern FunctionType FunctionTypeType;
+}

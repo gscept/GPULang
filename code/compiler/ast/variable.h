@@ -74,7 +74,7 @@ struct Variable : public Symbol
         Storage storage = Storage::Default;
 
         /// type here is the fully qualified (pointer and array) type
-        Type* typeSymbol;
+        Type* typeSymbol = nullptr;
         Type::FullType type;
         FixedString name;
 

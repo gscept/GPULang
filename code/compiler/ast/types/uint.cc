@@ -5,50 +5,14 @@
 #include "uint.h"
 namespace GPULang
 {
-Function UInt::ctor_Int;
-Function UInt::ctor_Bool;
-Function UInt::ctor_Float;
 
-Function UInt::andOperator;
-Function UInt::orOperator;
-Function UInt::xorOperator;
-Function UInt::leftShiftOperator;
-Function UInt::rightShiftOperator;
-Function UInt::ororOperator;
-Function UInt::andandOperator;
-Function UInt::additionOperator;
-Function UInt::subtractionOperator;
-Function UInt::multiplicationOperator;
-Function UInt::divisionOperator;
-Function UInt::modOperator;
-
-Function UInt::andAssignOperator;
-Function UInt::orAssignOperator;
-Function UInt::xorAssignOperator;
-Function UInt::leftShiftAssignOperator;
-Function UInt::rightShiftAssignOperator;
-Function UInt::additionAssignOperator;
-Function UInt::subtractionAssignOperator;
-Function UInt::multiplicationAssignOperator;
-Function UInt::divisionAssignOperator;
-Function UInt::moduloAssignOperator;
-
-Function UInt::ltOperator;
-Function UInt::lteOperator;
-Function UInt::gtOperator;
-Function UInt::gteOperator;
-Function UInt::eOperator;
-Function UInt::neOperator;
-
-Function UInt::floatAssignOperator;
-Function UInt::intAssignOperator;
-Function UInt::boolAssignOperator;
 
 //------------------------------------------------------------------------------
 /**
 */
 UInt::UInt()
 {
+    SYMBOL_STATIC_ALLOC = true;
     __BEGIN_TYPE()
     this->baseType = TypeCode::UInt;
     this->columnSize = 1;
@@ -56,44 +20,45 @@ UInt::UInt()
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR_1(ctor_Int, u32, u32, i32);
-    __IMPLEMENT_CTOR_1(ctor_Bool, u32, u32, b8);
-    __IMPLEMENT_CTOR_1(ctor_Float, u32, u32, f32);
+    __IMPLEMENT_CTOR_1(UInt_ctor_Int, u32, u32, i32, UInt);
+    __IMPLEMENT_CTOR_1(UInt_ctor_Bool, u32, u32, b8, UInt);
+    __IMPLEMENT_CTOR_1(UInt_ctor_Float, u32, u32, f32, UInt);
 
-    __IMPLEMENT_FUNCTION_1(orOperator, operator|, u32, u32);
-    __IMPLEMENT_FUNCTION_1(andOperator, operator&, u32, u32);
-    __IMPLEMENT_FUNCTION_1(xorOperator, operator^, u32, u32);
-    __IMPLEMENT_FUNCTION_1(leftShiftOperator, operator<<, u32, u32);
-    __IMPLEMENT_FUNCTION_1(rightShiftOperator, operator>>, u32, u32);
-    __IMPLEMENT_FUNCTION_1(ororOperator, operator&&, u32, u32);
-    __IMPLEMENT_FUNCTION_1(andandOperator, operator||, u32, u32);
-    __IMPLEMENT_FUNCTION_1(additionOperator, operator+, u32, u32);
-    __IMPLEMENT_FUNCTION_1(subtractionOperator, operator-, u32, u32);
-    __IMPLEMENT_FUNCTION_1(multiplicationOperator, operator*, u32, u32);
-    __IMPLEMENT_FUNCTION_1(divisionOperator, operator/, u32, u32);
-    __IMPLEMENT_FUNCTION_1(modOperator, operator%, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_orOperator, operator|, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_andOperator, operator&, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_xorOperator, operator^, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_leftShiftOperator, operator<<, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_rightShiftOperator, operator>>, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_ororOperator, operator&&, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_andandOperator, operator||, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_additionOperator, operator+, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_subtractionOperator, operator-, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_multiplicationOperator, operator*, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_divisionOperator, operator/, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_modOperator, operator%, u32, u32);
 
-    __IMPLEMENT_FUNCTION_1(orAssignOperator, operator|=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(andAssignOperator, operator&=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(xorAssignOperator, operator^=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(leftShiftAssignOperator, operator<<=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(rightShiftAssignOperator, operator>>=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(additionAssignOperator, operator+=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(subtractionAssignOperator, operator-=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(multiplicationAssignOperator, operator*=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(divisionAssignOperator, operator/=, u32, u32);
-    __IMPLEMENT_FUNCTION_1(moduloAssignOperator, operator%=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_orAssignOperator, operator|=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_andAssignOperator, operator&=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_xorAssignOperator, operator^=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_leftShiftAssignOperator, operator<<=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_rightShiftAssignOperator, operator>>=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_additionAssignOperator, operator+=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_subtractionAssignOperator, operator-=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_multiplicationAssignOperator, operator*=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_divisionAssignOperator, operator/=, u32, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_moduloAssignOperator, operator%=, u32, u32);
 
-    __IMPLEMENT_FUNCTION_1(ltOperator, operator<, b8, u32);
-    __IMPLEMENT_FUNCTION_1(lteOperator, operator<=, b8, u32);
-    __IMPLEMENT_FUNCTION_1(gtOperator, operator>, b8, u32);
-    __IMPLEMENT_FUNCTION_1(gteOperator, operator>=, b8, u32);
-    __IMPLEMENT_FUNCTION_1(eOperator, operator==, b8, u32);
-    __IMPLEMENT_FUNCTION_1(neOperator, operator!=, b8, i32);
+    __IMPLEMENT_FUNCTION_1(UInt_ltOperator, operator<, b8, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_lteOperator, operator<=, b8, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_gtOperator, operator>, b8, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_gteOperator, operator>=, b8, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_eOperator, operator==, b8, u32);
+    __IMPLEMENT_FUNCTION_1(UInt_neOperator, operator!=, b8, i32);
 
-    __IMPLEMENT_FUNCTION_1(floatAssignOperator, operator=, u32, f32);
-    __IMPLEMENT_FUNCTION_1(intAssignOperator, operator=, u32, i32);
-    __IMPLEMENT_FUNCTION_1(boolAssignOperator, operator=, u32, b8);
+    __IMPLEMENT_FUNCTION_1(UInt_floatAssignOperator, operator=, u32, f32);
+    __IMPLEMENT_FUNCTION_1(UInt_intAssignOperator, operator=, u32, i32);
+    __IMPLEMENT_FUNCTION_1(UInt_boolAssignOperator, operator=, u32, b8);
+    SYMBOL_STATIC_ALLOC = false;
 
 }
 

@@ -34,8 +34,14 @@ FloatVecExpression::~FloatVecExpression()
 bool 
 FloatVecExpression::Resolve(Compiler* compiler)
 {
+    static ConstantString Types[] =
+    {
+        "f32x2",
+        "f32x3",
+        "f32x4"
+    };
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("f32x%d", this->values.size) };
+    thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     return true;

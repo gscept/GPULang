@@ -23,6 +23,8 @@ namespace GPULang
 */
 RenderStateType::RenderStateType()
 {
+    SYMBOL_STATIC_ALLOC = true;
+
     this->category = Type::Category::RenderStateCategory;
 
     __BEGIN_ENUMS__();
@@ -32,7 +34,7 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(Fill);
     __ADD_ENUM(Line);
     __ADD_ENUM(Point);
-    __FINISH_ENUM(this->polygonModeEnum, PolygonMode);
+    __FINISH_ENUM(RenderState_polygonModeEnum, PolygonMode);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -40,13 +42,13 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(Front);
     __ADD_ENUM(Back);
     __ADD_ENUM(FrontAndBack);
-    __FINISH_ENUM(this->cullModeEnum, CullFace);
+    __FINISH_ENUM(RenderState_cullModeEnum, CullFace);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
     __ADD_ENUM(Clockwise);
     __ADD_ENUM(CounterClockwise);
-    __FINISH_ENUM(this->windingOrderModeEnum, WindingOrder);
+    __FINISH_ENUM(RenderState_windingOrderModeEnum, WindingOrder);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -66,7 +68,7 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(OrInverted);
     __ADD_ENUM(Nand);
     __ADD_ENUM(Set);
-    __FINISH_ENUM(this->logicOpModeEnum, LogicOp);
+    __FINISH_ENUM(RenderState_logicOpModeEnum, LogicOp);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -89,7 +91,7 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(OneMinusSource1Color);
     __ADD_ENUM(Source1Alpha);
     __ADD_ENUM(OneMinusSource1Alpha);
-    __FINISH_ENUM(this->blendFactorModeEnum, BlendFactor);
+    __FINISH_ENUM(RenderState_blendFactorModeEnum, BlendFactor);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -98,7 +100,7 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(ReverseSubtract);
     __ADD_ENUM(Min);
     __ADD_ENUM(Max);
-    __FINISH_ENUM(this->blendOpModeEnum, BlendOp);
+    __FINISH_ENUM(RenderState_blendOpModeEnum, BlendOp);
 
     __START_ENUM();
     __ADD_ENUM(Invalid);
@@ -106,41 +108,41 @@ RenderStateType::RenderStateType()
     __ADD_ENUM(XY);
     __ADD_ENUM(XYZ);
     __ADD_ENUM(XYZW);
-    __FINISH_ENUM(this->colorComponentMaskEnum, ColorComponentMask);
+    __FINISH_ENUM(RenderState_colorComponentMaskEnum, ColorComponentMask);
 
-    __SETUP_MEMBER(this->depthClampEnabled, DepthClampEnabled, b8);
-    __SETUP_MEMBER(this->noRasterization, NoRasterization, b8);
-    __SETUP_MEMBER(this->polygonMode, Fill, PolygonMode);
-    __SETUP_MEMBER(this->cullMode, Cull, CullFace);
-    __SETUP_MEMBER(this->windingOrder, Winding, WindingOrder);
-    __SETUP_MEMBER(this->depthBiasEnabled, DepthBiasEnabled, b8);
-    __SETUP_MEMBER(this->depthBiasFactor, DepthBiasFactor, f32);
-    __SETUP_MEMBER(this->depthBiasClamp, DepthBiasClamp, f32);
-    __SETUP_MEMBER(this->depthBiasSlopeFactor, DepthBiasSlopeFactor, f32);
-    __SETUP_MEMBER(this->lineWidth, LineWidth, f32);
-    __SETUP_MEMBER(this->depthTestEnabled, DepthTestEnabled, b8);
-    __SETUP_MEMBER(this->depthWriteEnabled, DepthWriteEnabled, b8);
-    __SETUP_MEMBER(this->depthTestFunction, DepthTestFunction, CompareMode);
-    __SETUP_MEMBER(this->depthBoundsTestEnabled, DepthBoundsTestEnabled, b8);
-    __SETUP_MEMBER(this->minDepthBounds, MinDepthBounds, f32);
-    __SETUP_MEMBER(this->maxDepthBounds, MaxDepthBounds, f32);
-    __SETUP_MEMBER(this->scissorEnabled, ScissorEnabled, b8);
-    __SETUP_MEMBER(this->stencilEnabled, StencilEnabled, b8);
-    __SETUP_MEMBER(this->logicOpEnabled, LogicEnabled, b8);
-    __SETUP_MEMBER(this->logicOp, Logic, LogicOp);
-    __SETUP_MEMBER(this->frontStencilState, StencilFront, stencilState);
-    __SETUP_MEMBER(this->backStencilState, Stencil, stencilState);
-    __SETUP_MEMBER_ARRAY(this->blendEnabled, BlendEnabled, b8, 8u);
-    __SETUP_MEMBER_ARRAY(this->sourceBlend, SourceBlend, BlendFactor, 8u);
-    __SETUP_MEMBER_ARRAY(this->destinationBlend, DestinationBlend, BlendFactor, 8u);
-    __SETUP_MEMBER_ARRAY(this->sourceAlphaBlend, SourceAlphaBlend, BlendFactor, 8u);
-    __SETUP_MEMBER_ARRAY(this->destinationAlphaBlend, DestinationAlphaBlend, BlendFactor, 8u);
-    __SETUP_MEMBER_ARRAY(this->blendOp, ColorBlendOp, BlendOp, 8u);
-    __SETUP_MEMBER_ARRAY(this->blendOpAlpha, AlphaBlendOp, BlendOp, 8u);
-    __SETUP_MEMBER_ARRAY(this->colorComponentMask, Mask, ColorComponentMask, 8u);
+    __SETUP_MEMBER(RenderState_depthClampEnabled, DepthClampEnabled, b8);
+    __SETUP_MEMBER(RenderState_noRasterization, NoRasterization, b8);
+    __SETUP_MEMBER(RenderState_polygonMode, Fill, PolygonMode);
+    __SETUP_MEMBER(RenderState_cullMode, Cull, CullFace);
+    __SETUP_MEMBER(RenderState_windingOrder, Winding, WindingOrder);
+    __SETUP_MEMBER(RenderState_depthBiasEnabled, DepthBiasEnabled, b8);
+    __SETUP_MEMBER(RenderState_depthBiasFactor, DepthBiasFactor, f32);
+    __SETUP_MEMBER(RenderState_depthBiasClamp, DepthBiasClamp, f32);
+    __SETUP_MEMBER(RenderState_depthBiasSlopeFactor, DepthBiasSlopeFactor, f32);
+    __SETUP_MEMBER(RenderState_lineWidth, LineWidth, f32);
+    __SETUP_MEMBER(RenderState_depthTestEnabled, DepthTestEnabled, b8);
+    __SETUP_MEMBER(RenderState_depthWriteEnabled, DepthWriteEnabled, b8);
+    __SETUP_MEMBER(RenderState_depthTestFunction, DepthTestFunction, CompareMode);
+    __SETUP_MEMBER(RenderState_depthBoundsTestEnabled, DepthBoundsTestEnabled, b8);
+    __SETUP_MEMBER(RenderState_minDepthBounds, MinDepthBounds, f32);
+    __SETUP_MEMBER(RenderState_maxDepthBounds, MaxDepthBounds, f32);
+    __SETUP_MEMBER(RenderState_scissorEnabled, ScissorEnabled, b8);
+    __SETUP_MEMBER(RenderState_stencilEnabled, StencilEnabled, b8);
+    __SETUP_MEMBER(RenderState_logicOpEnabled, LogicEnabled, b8);
+    __SETUP_MEMBER(RenderState_logicOp, Logic, LogicOp);
+    __SETUP_MEMBER(RenderState_frontStencilState, StencilFront, stencilState);
+    __SETUP_MEMBER(RenderState_backStencilState, Stencil, stencilState);
+    __SETUP_MEMBER_ARRAY(RenderState_blendEnabled, BlendEnabled, b8, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_sourceBlend, SourceBlend, BlendFactor, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_destinationBlend, DestinationBlend, BlendFactor, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_sourceAlphaBlend, SourceAlphaBlend, BlendFactor, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_destinationAlphaBlend, DestinationAlphaBlend, BlendFactor, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_blendOp, ColorBlendOp, BlendOp, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_blendOpAlpha, AlphaBlendOp, BlendOp, 8u);
+    __SETUP_MEMBER_ARRAY(RenderState_colorComponentMask, Mask, ColorComponentMask, 8u);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
-
-
 } // namespace GPULang
 
 

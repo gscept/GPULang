@@ -900,7 +900,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
     else
     {
-        if (fun->returnType != Type::FullType{ "void" })
+        if (fun->returnType != Type::FullType{ ConstantString("void") })
         {
             compiler->Error("Entry point may only return 'void'", symbol);
             return false;
@@ -1051,22 +1051,35 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     if (!compiler->AddSymbol(TransientString(funResolved->signature), fun, false))
         return false;
 
-    // Add just the name if the function isn't a constructor
-    Symbol* constructorType = compiler->GetSymbol<Symbol>(fun->name);
-    if (constructorType == nullptr || constructorType->symbolType == Type::SymbolType::FunctionType)
+    // Check if the function has a constructor type associated with it
+    if (fun->constructorType == nullptr)
     {
-        // also add the signature for type lookup
+        // If not look it up
+        Symbol* constructorType = compiler->GetSymbol<Symbol>(fun->name);
+        if (constructorType == nullptr || constructorType->symbolType == Type::SymbolType::FunctionType)
+        {
+            // also add the signature for type lookup
+            if (!compiler->AddSymbol(fun->name, fun, true))
+                return false;
+        }
+    }
+    else if (fun->constructorType->symbolType == Type::SymbolType::FunctionType)
+    {
+        // Add constructor
         if (!compiler->AddSymbol(fun->name, fun, true))
             return false;
     }
 
-    Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
-    if (type == nullptr)
+    if (funResolved->returnTypeSymbol == nullptr)
     {
-        compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
-        return false;
+        Type* type = (Type*)compiler->GetSymbol(fun->returnType.name);
+        if (type == nullptr)
+        {
+            compiler->UnrecognizedTypeError(TransientString(fun->returnType.name), fun);
+            return false;
+        }
+        funResolved->returnTypeSymbol = type;
     }
-    funResolved->returnTypeSymbol = type;
 
     
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &funResolved->scope);
@@ -1098,7 +1111,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     // Reset if the function has a branch return
     compiler->branchReturns = false;
 
-    if (fun->returnType != Type::FullType{ "void" } && fun->ast != nullptr && !funResolved->hasExplicitReturn)
+    if (fun->returnType != Type::FullType{ ConstantString("void") } && fun->ast != nullptr && !funResolved->hasExplicitReturn)
     {
         compiler->Error(Format("All paths don't return a value, expected to return value of '%s'", fun->returnType.ToString().c_str()), fun);
         return false;
@@ -2115,14 +2128,19 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
 
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
-    Type* type = compiler->GetType(var->type);
+    Type* type = varResolved->typeSymbol;
     if (type == nullptr)
     {
-        compiler->UnrecognizedTypeError(var->type.name.c_str(), symbol);
-        return false;
+        type = compiler->GetType(var->type);
+        if (type == nullptr)
+        {
+            compiler->UnrecognizedTypeError(var->type.name.c_str(), symbol);
+            return false;
+        }
+        varResolved->typeSymbol = type;
+        var->type.name = type->name;        // because we can do an alias lookup, this value might change
     }
-    varResolved->typeSymbol = type;
-    var->type.name = type->name;        // because we can do an alias lookup, this value might change
+    
     varResolved->type = var->type;
     varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
@@ -2898,7 +2916,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                 {
                     currentStrucResolved->storageFunction = Alloc<Function>();
                     currentStrucResolved->storageFunction->name = "bufferStore";
-                    currentStrucResolved->storageFunction->returnType = Type::FullType{ "void" };
+                    currentStrucResolved->storageFunction->returnType = Type::FullType{ ConstantString("void") };
 
                     Variable* arg = Alloc<Variable>();
                     arg->name = "buffer";
@@ -3180,7 +3198,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 }
                 else
                 {
-                    if (functionOwner->returnType != Type::FullType{ "void" })
+                    if (functionOwner->returnType != Type::FullType{ ConstantString("void") })
                     {
                         compiler->Error(Format("Function expects return of type '%s', got 'void'", functionOwner->returnType.ToString().c_str()), statement);
                         return false;

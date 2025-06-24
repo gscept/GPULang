@@ -34,8 +34,14 @@ UIntVecExpression::~UIntVecExpression()
 bool 
 UIntVecExpression::Resolve(Compiler* compiler)
 {
+    static ConstantString Types[] =
+    {
+        "u32x2",
+        "u32x3",
+        "u32x4"
+    };
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = Type::FullType{ Format("u32x%d", this->values.size) };
+    thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
     thisResolved->type = compiler->GetType(thisResolved->fullType);
     return true;

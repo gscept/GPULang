@@ -34,60 +34,61 @@ struct UInt4 : public Type
 {
     /// constructor
     UInt4();
+};
+extern UInt4 UInt4Type;
 
 #define X(type, ctor, val, args, splat, size, conversion)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT4_CTOR_LIST
+UINT4_CTOR_LIST
 #undef X
 
 #define X(type, ctor, arg0, arg1)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT4_CTOR2_LIST
+UINT4_CTOR2_LIST
 #undef X
 
 #define X(type, ctor, arg0, arg1, arg2)\
-    static Function ctor;
+    extern Function type##_##ctor;
 
-    UINT4_CTOR3_LIST
+UINT4_CTOR3_LIST
 #undef X
 
 
-    static Function ctor;
+extern Function UInt4_ctor;
 
-    static Function andOperator;
-    static Function orOperator;
-    static Function xorOperator;
-    static Function leftShiftOperator;
-    static Function rightShiftOperator;
-    static Function additionOperator;
-    static Function subtractionOperator;
-    static Function multiplicationOperator;
-    static Function divisionOperator;
-    static Function modOperator;
-    static Function scaleOperator;
+extern Function UInt4_andOperator;
+extern Function UInt4_orOperator;
+extern Function UInt4_xorOperator;
+extern Function UInt4_leftShiftOperator;
+extern Function UInt4_rightShiftOperator;
+extern Function UInt4_additionOperator;
+extern Function UInt4_subtractionOperator;
+extern Function UInt4_multiplicationOperator;
+extern Function UInt4_divisionOperator;
+extern Function UInt4_modOperator;
+extern Function UInt4_scaleOperator;
 
-    static Function andAssignOperator;
-    static Function orAssignOperator;
-    static Function xorAssignOperator;
-    static Function leftShiftAssignOperator;
-    static Function rightShiftAssignOperator;
-    static Function additionAssignOperator;
-    static Function subtractionAssignOperator;
-    static Function multiplicationAssignOperator;
-    static Function divisionAssignOperator;
-    static Function moduloAssignOperator;
+extern Function UInt4_andAssignOperator;
+extern Function UInt4_orAssignOperator;
+extern Function UInt4_xorAssignOperator;
+extern Function UInt4_leftShiftAssignOperator;
+extern Function UInt4_rightShiftAssignOperator;
+extern Function UInt4_additionAssignOperator;
+extern Function UInt4_subtractionAssignOperator;
+extern Function UInt4_multiplicationAssignOperator;
+extern Function UInt4_divisionAssignOperator;
+extern Function UInt4_moduloAssignOperator;
 
-    static Function ltOperator;
-    static Function lteOperator;
-    static Function gtOperator;
-    static Function gteOperator;
-    static Function eOperator;
-    static Function neOperator;
+extern Function UInt4_ltOperator;
+extern Function UInt4_lteOperator;
+extern Function UInt4_gtOperator;
+extern Function UInt4_gteOperator;
+extern Function UInt4_eOperator;
+extern Function UInt4_neOperator;
 
-    static Function elementAccessOperatorInt;
-    static Function elementAccessOperatorUInt;
-};
+extern Function UInt4_elementAccessOperatorInt;
+extern Function UInt4_elementAccessOperatorUInt;
 
 } // namespace GPULang

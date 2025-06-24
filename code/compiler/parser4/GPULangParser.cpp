@@ -2511,7 +2511,7 @@ GPULangParser::EnumerationContext* GPULangParser::enumeration() {
           TransientArray<Expression*> enumValues(256);
           TransientArray<Symbol::Location> enumLocations(256);
           FixedString name;
-          TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{"u32"} };
+          TypeDeclaration type = TypeDeclaration{ .type = Type::FullType{ConstantString("u32")} };
           Symbol::Location location;
           Symbol::Location labelLocation;
       

@@ -38,8 +38,8 @@ struct ConstantString
     {
     }
 
-    template<std::size_t num>
-    constexpr ConstantString(const char buf[num])
+    template<int num>
+    constexpr ConstantString(const char (&buf)[num])
     {
         this->buf = buf;
         this->size = num;
@@ -142,11 +142,7 @@ inline size_t
 FragmentSize(T arg)
 {
     //assert(false && "Should never enter");
-#if !__APPLE__
-    static_assert(std::false_type::value, "Should never enter");
-#else
     assert(false && "Should never enter");
-#endif
     return 0;
 }
 
@@ -254,11 +250,7 @@ template<typename T>
 inline void
 FragmentString(T arg, char* buf, size_t size)
 {
-#if !__APPLE__
-    static_assert(std::false_type::value, "Should never enter");
-#else
-    assert(false);
-#endif
+    assert(false && "Should never enter");
 }
 
 template<>
@@ -550,11 +542,7 @@ struct TransientString
     void Append(T arg)
     {
         //assert(false && "Should never enter");
-#if !__APPLE__
-        static_assert(std::false_type::value, "Should never enter");
-#else
         assert(false && "Should never enter");
-#endif
     }
 
     template<>
@@ -678,6 +666,11 @@ struct TransientString
     {
         this->Append(rhs);
         return *this;
+    }
+
+    bool operator==(const ConstantString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
     }
 
     const char* Data() const
@@ -1218,6 +1211,11 @@ struct FixedString
     }
 
     bool operator==(const FixedString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) == 0;
+    }
+
+    bool operator==(const ConstantString& rhs) const
     {
         return strcmp(this->buf, rhs.buf) == 0;
     }

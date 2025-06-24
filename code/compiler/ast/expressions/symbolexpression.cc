@@ -92,12 +92,12 @@ SymbolExpression::Resolve(Compiler* compiler)
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateType)
         {
-            thisResolved->fullType = Type::FullType{ "renderState" };
+            thisResolved->fullType = Type::FullType{ ConstantString("renderState") };
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
         {
-            thisResolved->fullType = Type::FullType{ "sampler" };
+            thisResolved->fullType = Type::FullType{ ConstantString("sampler") };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
             thisResolved->type = compiler->GetType(thisResolved->fullType);

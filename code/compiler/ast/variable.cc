@@ -16,10 +16,11 @@ Variable::Variable()
         this->resolved = StaticAlloc<Variable::__Resolved>();
     else
         this->resolved = Alloc<Variable::__Resolved>();
-    this->type = Type::FullType{ "" };
+    this->type = Type::FullType{ ConstantString("") };
     this->valueExpression = nullptr;
 
     Variable::__Resolved* typeResolved = static_cast<Variable::__Resolved*>(this->resolved);
+    typeResolved->typeSymbol = nullptr;
     typeResolved->accessBits.bits = 0x0;
     typeResolved->parameterBits.bits = 0x0;
     typeResolved->usageBits.bits = 0x0;

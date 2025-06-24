@@ -16,8 +16,11 @@
 
 namespace GPULang
 {
+
+
 SamplerStateType::SamplerStateType()
 {
+    SYMBOL_STATIC_ALLOC = true;
     this->category = Type::Category::SamplerCategory;
 
     __BEGIN_ENUMS__();
@@ -35,7 +38,7 @@ SamplerStateType::SamplerStateType()
     __ADD_ENUM_EXPL(MinPointMagMipLinear, 0x6);
     __ADD_ENUM_EXPL(MinLinearMagPointMipLinear, 0x5);
     __ADD_ENUM_EXPL(MinPointMagLinearMipPoint, 0x2);
-    __FINISH_ENUM(this->filterModeEnum, FilterMode);
+    __FINISH_ENUM(SamplerState_filterModeEnum, FilterMode);
     
     __START_ENUM();
     __ADD_ENUM(InvalidAddressMode);
@@ -43,36 +46,38 @@ SamplerStateType::SamplerStateType()
     __ADD_ENUM(Mirror);
     __ADD_ENUM(Clamp);
     __ADD_ENUM(Border);
-    __FINISH_ENUM(this->addressModeEnum, AddressMode);
+    __FINISH_ENUM(SamplerState_addressModeEnum, AddressMode);
 
     __START_ENUM();
     __ADD_ENUM(InvalidColor);
     __ADD_ENUM(Transparent);
     __ADD_ENUM(Black);
     __ADD_ENUM(White);
-    __FINISH_ENUM(this->colorEnum, Color);
+    __FINISH_ENUM(SamplerState_colorEnum, Color);
 
-    __SETUP_MEMBER(this->allAddress, Address, AddressMode);
-    __SETUP_MEMBER(this->addressU, AddressU, AddressMode);
-    __SETUP_MEMBER(this->addressV, AddressV, AddressMode);
-    __SETUP_MEMBER(this->addressW, AddressW, AddressMode);
+    __SETUP_MEMBER(SamplerState_allAddress, Address, AddressMode);
+    __SETUP_MEMBER(SamplerState_addressU, AddressU, AddressMode);
+    __SETUP_MEMBER(SamplerState_addressV, AddressV, AddressMode);
+    __SETUP_MEMBER(SamplerState_addressW, AddressW, AddressMode);
 
-    __SETUP_MEMBER(this->allFilter, Filter, FilterMode);
-    __SETUP_MEMBER(this->minFilter, MinFilter, FilterMode);
-    __SETUP_MEMBER(this->magFilter, MagFilter, FilterMode);
-    __SETUP_MEMBER(this->mipFilter, MipFilter, FilterMode);
+    __SETUP_MEMBER(SamplerState_allFilter, Filter, FilterMode);
+    __SETUP_MEMBER(SamplerState_minFilter, MinFilter, FilterMode);
+    __SETUP_MEMBER(SamplerState_magFilter, MagFilter, FilterMode);
+    __SETUP_MEMBER(SamplerState_mipFilter, MipFilter, FilterMode);
 
-    __SETUP_MEMBER(this->mipLodBias, MipLodBias, f32);
-    __SETUP_MEMBER(this->anisotropicEnabled, AnisotropicEnabled, b8);
-    __SETUP_MEMBER(this->maxAnisotropy, MaxAnisotropy, f32);
+    __SETUP_MEMBER(SamplerState_mipLodBias, MipLodBias, f32);
+    __SETUP_MEMBER(SamplerState_anisotropicEnabled, AnisotropicEnabled, b8);
+    __SETUP_MEMBER(SamplerState_maxAnisotropy, MaxAnisotropy, f32);
 
-    __SETUP_MEMBER(this->compareSamplerEnabled, CompareEnabled, b8);
-    __SETUP_MEMBER(this->compareMode, CompareMode, CompareMode);
+    __SETUP_MEMBER(SamplerState_compareSamplerEnabled, CompareEnabled, b8);
+    __SETUP_MEMBER(SamplerState_compareMode, CompareMode, CompareMode);
 
-    __SETUP_MEMBER(this->minLod, MinLod, f32);
-    __SETUP_MEMBER(this->maxLod, MaxLod, f32);
-    __SETUP_MEMBER(this->borderColor, Border, Color);
+    __SETUP_MEMBER(SamplerState_minLod, MinLod, f32);
+    __SETUP_MEMBER(SamplerState_maxLod, MaxLod, f32);
+    __SETUP_MEMBER(SamplerState_borderColor, Border, Color);
 
-    __SETUP_MEMBER(this->unnormalizedSamplingEnabled, UnnormalizedSamplingEnabled, b8);
+    __SETUP_MEMBER(SamplerState_unnormalizedSamplingEnabled, UnnormalizedSamplingEnabled, b8);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 } // namespace GPULang

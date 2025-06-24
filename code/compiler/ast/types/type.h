@@ -17,13 +17,14 @@
 
 #define __BEGIN_TYPE() TransientArray<Variable*> parameters(32);
 
-#define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
+#define __IMPLEMENT_CTOR_1(method, id, t, argtype, static_type)\
 parameters.Clear();\
-this->method.name = ConstantString(#id);\
-this->method.returnType = Type::FullType{ConstantString(#t)};\
-this->method.compileTime = true;\
-this->globals.push_back(&this->method);\
-activeFunction = &this->method;\
+method.name = ConstantString(#id);\
+method.returnType = Type::FullType{ConstantString(#t)};\
+method.compileTime = true;\
+method.constructorType = &GPULang::static_type##Type;\
+this->globals.push_back(&method);\
+activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = ConstantString("_arg0"); \
@@ -34,21 +35,22 @@ activeFunction = &this->method;\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
 
-#define __IMPLEMENT_CTOR(method, id, type)\
+#define __IMPLEMENT_CTOR(method, id, type, static_type)\
 parameters.Clear();\
-this->method.name = ConstantString(#id);\
-this->method.returnType = Type::FullType{ConstantString(#type)};\
-this->method.compileTime = true;\
-this->globals.push_back(&this->method);\
-activeFunction = &this->method;\
+method.name = ConstantString(#id);\
+method.returnType = Type::FullType{ConstantString(#type)};\
+method.compileTime = true;\
+method.constructorType = &GPULang::static_type##Type;\
+this->globals.push_back(&method);\
+activeFunction = &method;\
 activeFunction->documentation = "Constructor of " #type;\
 
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 parameters.Clear();\
-this->method.name = ConstantString(#id);\
-this->method.returnType = Type::FullType{ConstantString(#t)};\
-this->staticSymbols.push_back(&this->method);\
-activeFunction = &this->method;\
+method.name = ConstantString(#id);\
+method.returnType = Type::FullType{ConstantString(#t)};\
+this->staticSymbols.push_back(&method);\
+activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = ConstantString("_arg0"); \
@@ -182,8 +184,8 @@ struct Function;
 struct Expression;
 struct Compiler;
 extern Function* activeFunction;
-static const char* UNDEFINED_TYPE = "<undefined>";
-static const char* FUNCTION_TYPE = "function";
+static ConstantString UNDEFINED_TYPE = "<undefined>";
+static ConstantString FUNCTION_TYPE = "function";
 
 
 struct Type : public Symbol

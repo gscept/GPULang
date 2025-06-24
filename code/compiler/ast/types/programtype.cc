@@ -10,12 +10,16 @@ namespace GPULang
 {
 ProgramType::ProgramType()
 {
-    __SETUP_MEMBER(this->renderState, RenderState, renderState);
-    __SETUP_MEMBER(this->vertexShader, VertexShader, function);
-    __SETUP_MEMBER(this->hullShader, HullShader, function);
-    __SETUP_MEMBER(this->domainShader, DomainShader, function);
-    __SETUP_MEMBER(this->geometryShader, GeometryShader, function);
-    __SETUP_MEMBER(this->pixelShader, PixelShader, function);
-    __SETUP_MEMBER(this->computeShader, ComputeShader, function);
+    SYMBOL_STATIC_ALLOC = true;
+
+    __SETUP_MEMBER(Program_renderState, RenderState, renderState);
+    __SETUP_MEMBER(Program_vertexShader, VertexShader, function);
+    __SETUP_MEMBER(Program_hullShader, HullShader, function);
+    __SETUP_MEMBER(Program_domainShader, DomainShader, function);
+    __SETUP_MEMBER(Program_geometryShader, GeometryShader, function);
+    __SETUP_MEMBER(Program_pixelShader, PixelShader, function);
+    __SETUP_MEMBER(Program_computeShader, ComputeShader, function);
+
+    SYMBOL_STATIC_ALLOC = false;
 }
 } // namespace GPULang

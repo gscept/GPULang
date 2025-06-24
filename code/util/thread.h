@@ -39,7 +39,7 @@ struct Thread
 /**
  */
 #if __WIN32__
-DWORD WINAPI threadFunc(void* arg)
+inline DWORD WINAPI threadFunc(void* arg)
 #else
 void* threadFunc(void* arg)
 #endif
@@ -78,6 +78,21 @@ CreateThread(const ThreadInfo& info, LAMBDA&& lambda)
     pthread_create(&ret->thread, &attr, threadFunc, &ret->l);
 #endif
     return ret;
+}
+
+
+//------------------------------------------------------------------------------
+/**
+ */
+inline void
+ThreadJoin(Thread* thread)
+{
+#if __WIN32__
+    WaitForSingleObject(thread->thread, INFINITE);
+#else
+    int ret = pthread_join(thread->thread, nullptr);
+    assert(ret == 0);
+#endif
 }
 
 } // namespace GPULang

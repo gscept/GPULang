@@ -18,15 +18,15 @@ struct StencilStateType : public Type
 {
     /// Constructor
     StencilStateType();
-
-    Variable fail;
-    Variable pass;
-    Variable depthFail;
-    Variable compare;
-    Variable compareMask;
-    Variable writeMask;
-    Variable referenceMask;
-
 };
+extern StencilStateType StencilStateTypeType;
+
+extern Variable StencilState_fail;
+extern Variable StencilState_pass;
+extern Variable StencilState_depthFail;
+extern Variable StencilState_compare;
+extern Variable StencilState_compareMask;
+extern Variable StencilState_writeMask;
+extern Variable StencilState_referenceMask;
 
 } // namespace GPULang

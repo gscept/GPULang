@@ -10,20 +10,24 @@
 namespace GPULang
 {
 
+
+
 //------------------------------------------------------------------------------
 /**
 */
 StencilStateType::StencilStateType()
 {
+    SYMBOL_STATIC_ALLOC = true;
     this->category = Type::Category::StencilStateCategory;
     
-    __SETUP_MEMBER(this->fail, Fail, StencilOp);
-    __SETUP_MEMBER(this->pass, Pass, StencilOp);
-    __SETUP_MEMBER(this->depthFail, DepthFail, StencilOp);
-    __SETUP_MEMBER(this->compare, Compare, CompareMode);
-    __SETUP_MEMBER(this->compareMask, CompareMask, u32);
-    __SETUP_MEMBER(this->writeMask, WriteMask, u32);
-    __SETUP_MEMBER(this->referenceMask, ReferenceMask, u32);
+    __SETUP_MEMBER(StencilState_fail, Fail, StencilOp);
+    __SETUP_MEMBER(StencilState_pass, Pass, StencilOp);
+    __SETUP_MEMBER(StencilState_depthFail, DepthFail, StencilOp);
+    __SETUP_MEMBER(StencilState_compare, Compare, CompareMode);
+    __SETUP_MEMBER(StencilState_compareMask, CompareMask, u32);
+    __SETUP_MEMBER(StencilState_writeMask, WriteMask, u32);
+    __SETUP_MEMBER(StencilState_referenceMask, ReferenceMask, u32);
+    SYMBOL_STATIC_ALLOC = false;
 }
 
 
