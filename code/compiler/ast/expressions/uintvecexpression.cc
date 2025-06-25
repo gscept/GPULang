@@ -3,7 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "uintvecexpression.h"
-
+#include "ast/types/builtins.h"
 #include "util.h"
 #include "compiler.h"
 
@@ -43,7 +43,7 @@ UIntVecExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = compiler->GetType(thisResolved->fullType);
+    thisResolved->type = &UIntType;
     return true;
 }
 

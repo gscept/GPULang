@@ -3,6 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "boolexpression.h"
+#include "ast/types/builtins.h"
 #include "util.h"
 #include "compiler.h"
 
@@ -46,7 +47,7 @@ BoolExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ ConstantString("b8") };
     thisResolved->fullType.literal = true;
-    thisResolved->type = compiler->GetType(thisResolved->fullType);
+    thisResolved->type = &BoolType;
     return true;
 }
 

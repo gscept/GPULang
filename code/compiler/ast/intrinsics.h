@@ -10,60 +10,60 @@
 #include "function.h"
 
 #define TEXTURE_INTRINSIC_ALL_LIST\
-    X(texture1D, 0)\
-    X(texture2D, 1)\
-    X(texture2DMS, 2)\
-    X(texture3D, 3)\
-    X(textureCube, 4)\
-    X(texture1DArray, 5)\
-    X(texture2DArray, 6)\
-    X(texture2DMSArray, 7)\
-    X(textureCubeArray, 8)
+    X(Texture1D, 0)\
+    X(Texture2D, 1)\
+    X(Texture2DMS, 2)\
+    X(Texture3D, 3)\
+    X(TextureCube, 4)\
+    X(Texture1DArray, 5)\
+    X(Texture2DArray, 6)\
+    X(Texture2DMSArray, 7)\
+    X(TextureCubeArray, 8)
 
 #define TEXTURE_INTRINSIC_NO_MS_LIST\
-    X(texture1D, 0)\
-    X(texture2D, 1)\
-    X(texture3D, 3)\
-    X(textureCube, 4)\
-    X(texture1DArray, 5)\
-    X(texture2DArray, 6)\
-    X(textureCubeArray, 8)
+    X(Texture1D, 0)\
+    X(Texture2D, 1)\
+    X(Texture3D, 3)\
+    X(TextureCube, 4)\
+    X(Texture1DArray, 5)\
+    X(Texture2DArray, 6)\
+    X(TextureCubeArray, 8)
 
 #define TEXTURE_INTRINSIC_NO_CUBE_LIST\
-    X(texture1D, 0)\
-    X(texture2D, 1)\
-    X(texture2DMS, 2)\
-    X(texture3D, 3)\
-    X(texture1DArray, 5)\
-    X(texture2DArray, 6)\
-    X(texture2DMSArray, 7)
+    X(Texture1D, 0)\
+    X(Texture2D, 1)\
+    X(Texture2DMS, 2)\
+    X(Texture3D, 3)\
+    X(Texture1DArray, 5)\
+    X(Texture2DArray, 6)\
+    X(Texture2DMSArray, 7)
 
 #define TEXTURE_INTRINSIC_NO_CUBE_MS_LIST\
-    X(texture1D, 0)\
-    X(texture2D, 1)\
-    X(texture3D, 3)\
-    X(texture1DArray, 5)\
-    X(texture2DArray, 6)
+    X(Texture1D, 0)\
+    X(Texture2D, 1)\
+    X(Texture3D, 3)\
+    X(Texture1DArray, 5)\
+    X(Texture2DArray, 6)
 
 #define TEXTURE_INTRINSIC_PLAIN_LIST\
-    X(texture1D, 0)\
-    X(texture2D, 1)\
-    X(texture3D, 3)\
-    X(textureCube, 4)
+    X(Texture1D, 0)\
+    X(Texture2D, 1)\
+    X(Texture3D, 3)\
+    X(TextureCube, 4)
 
 #define TEXTURE_INTRINSIC_GATHER_LIST\
-    X(texture2D, 1)\
-    X(textureCube, 4)\
-    X(texture2DArray, 6)\
-    X(textureCubeArray, 8)
+    X(Texture2D, 1)\
+    X(TextureCube, 4)\
+    X(Texture2DArray, 6)\
+    X(TextureCubeArray, 8)
 
 #define TEXTURE_INTRINSIC_2D_LIST\
-    X(texture2D, 1)\
-    X(texture2DArray, 6)
+    X(Texture2D, 1)\
+    X(Texture2DArray, 6)
 
 #define TEXTURE_INTRINSIC_ONLY_MS_LIST\
-    X(texture2DMS, 2)\
-    X(texture2DMSArray, 7)\
+    X(Texture2DMS, 2)\
+    X(Texture2DMSArray, 7)\
 
 #define DECLARE_TEXTURE_INTRINSIC(variant, ty) \
     extern Function* Texture##variant##_##ty; \
@@ -74,75 +74,75 @@
     Function* SampledTexture##variant##_##ty;
 
 #define SCALAR_LIST\
-    X(f32, 0)\
-    X(f32x2, 1)\
-    X(f32x3, 2)\
-    X(f32x4, 3)\
-    X(i32, 4)\
-    X(i32x2, 5)\
-    X(i32x3, 6)\
-    X(i32x4, 7)\
-    X(u32, 8)\
-    X(u32x2, 9)\
-    X(u32x3, 10)\
-    X(u32x4, 11)
+    X(Float, 0)\
+    X(Float2, 1)\
+    X(Float3, 2)\
+    X(Float4, 3)\
+    X(Int, 4)\
+    X(Int2, 5)\
+    X(Int3, 6)\
+    X(Int4, 7)\
+    X(UInt, 8)\
+    X(UInt2, 9)\
+    X(UInt3, 10)\
+    X(UInt4, 11)
 
 #define FLOAT_LIST\
-    X(f32, 0)\
-    X(f32x2, 1)\
-    X(f32x3, 2)\
-    X(f32x4, 3)
+    X(Float, 0)\
+    X(Float2, 1)\
+    X(Float3, 2)\
+    X(Float4, 3)
 
 #define FLOAT_VEC_LIST\
-    X(f32x2, 1)\
-    X(f32x3, 2)\
-    X(f32x4, 3)
+    X(Float2, 1)\
+    X(Float3, 2)\
+    X(Float4, 3)
 
 #define SIGN_LIST\
-    X(f32, 0)\
-    X(f32x2, 1)\
-    X(f32x3, 2)\
-    X(f32x4, 3)\
-    X(i32, 4)\
-    X(i32x2, 5)\
-    X(i32x3, 6)\
-    X(i32x4, 7)
+    X(Float, 0)\
+    X(Float2, 1)\
+    X(Float3, 2)\
+    X(Float4, 3)\
+    X(Int, 4)\
+    X(Int2, 5)\
+    X(Int3, 6)\
+    X(Int4, 7)
 
 #define INT_LIST\
-    X(i32, 4)\
-    X(i32x2, 5)\
-    X(i32x3, 6)\
-    X(i32x4, 7)\
-    X(u32, 8)\
-    X(u32x2, 9)\
-    X(u32x3, 10)\
-    X(u32x4, 11)
+    X(Int, 4)\
+    X(Int2, 5)\
+    X(Int3, 6)\
+    X(Int4, 7)\
+    X(UInt, 8)\
+    X(UInt2, 9)\
+    X(UInt3, 10)\
+    X(UInt4, 11)
 
 #define INT_SINGLE_LIST\
-    X(i32, 4)\
-    X(u32, 8)
+    X(Int, 4)\
+    X(UInt, 8)
 
 #define SINGLE_COMPONENT_LIST\
-    X(f32, 0)\
-    X(i32, 4)\
-    X(u32, 8)
+    X(Float, 0)\
+    X(Int, 4)\
+    X(UInt, 8)
 
 #define BOOL_LIST\
-    X(b8, 12)\
-    X(b8x2, 13)\
-    X(b8x3, 14)\
-    X(b8x4, 15)
+    X(Bool, 12)\
+    X(Bool2, 13)\
+    X(Bool3, 14)\
+    X(Bool4, 15)
 
 #define MATRIX_LIST\
-    X(f32x2x2, 16)\
-    X(f32x2x3, 17)\
-    X(f32x2x4, 18)\
-    X(f32x3x2, 19)\
-    X(f32x3x3, 20)\
-    X(f32x3x4, 21)\
-    X(f32x4x2, 22)\
-    X(f32x4x3, 23)\
-    X(f32x4x4, 24)
+    X(Mat2x2, 16)\
+    X(Mat2x3, 17)\
+    X(Mat2x4, 18)\
+    X(Mat3x2, 19)\
+    X(Mat3x3, 20)\
+    X(Mat3x4, 21)\
+    X(Mat4x2, 22)\
+    X(Mat4x3, 23)\
+    X(Mat4x4, 24)
 
 #define DECLARE_SCALAR_INTRINSIC(fun, ty) extern Function* fun##_##ty;
 #define DEFINE_SCALAR_INTRINSIC(fun, ty) Function* fun##_##ty;

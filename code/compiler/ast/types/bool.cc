@@ -3,20 +3,10 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "bool.h"
+#include "builtins.h"
 namespace GPULang
 {
 
-
-//Function Bool::ctor_UInt;
-//Function Bool::ctor_Int;
-//
-//Function Bool::ororOperator;
-//Function Bool::andandOperator;
-//Function Bool::eOperator;
-//Function Bool::neOperator;
-//Function Bool::boolAssignOperator;
-//Function Bool::intAssignOperator;
-//Function Bool::uintAssignOperator;
 
 //------------------------------------------------------------------------------
 /**
@@ -24,27 +14,29 @@ namespace GPULang
 Bool::Bool()
 {
     SYMBOL_STATIC_ALLOC = true;
+    
     __BEGIN_TYPE()
+    this->name = ConstantString("b8");
     this->baseType = TypeCode::Bool;
     this->rowSize = 1;
     this->columnSize = 1;
     this->byteSize = 1;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR_1(Bool_ctor_Int, b8, b8, i32, Bool);
+    __IMPLEMENT_CTOR_1(Bool_ctor_Int, b8, Bool, Int);
 
     // setup uint constructor
-    __IMPLEMENT_CTOR_1(Bool_ctor_UInt, b8, b8, u32, Bool);
+    __IMPLEMENT_CTOR_1(Bool_ctor_UInt, b8, Bool, UInt);
     
-    __IMPLEMENT_FUNCTION_1(Bool_ororOperator, operator||, b8, b8);
-    __IMPLEMENT_FUNCTION_1(Bool_andandOperator, operator&&, b8, b8);
+    __IMPLEMENT_FUNCTION_1(Bool_ororOperator, operator||, Bool, Bool);
+    __IMPLEMENT_FUNCTION_1(Bool_andandOperator, operator&&, Bool, Bool);
 
-    __IMPLEMENT_FUNCTION_1(Bool_eOperator, operator==, b8, b8);
-    __IMPLEMENT_FUNCTION_1(Bool_neOperator, operator!=, b8, b8);
+    __IMPLEMENT_FUNCTION_1(Bool_eOperator, operator==, Bool, Bool);
+    __IMPLEMENT_FUNCTION_1(Bool_neOperator, operator!=, Bool, Bool);
 
-    __IMPLEMENT_FUNCTION_1(Bool_boolAssignOperator, operator=, b8, b8);
-    __IMPLEMENT_FUNCTION_1(Bool_intAssignOperator, operator=, b8, i32);
-    __IMPLEMENT_FUNCTION_1(Bool_uintAssignOperator, operator=, b8, u32);
+    __IMPLEMENT_FUNCTION_1(Bool_boolAssignOperator, operator=, Bool, Bool);
+    __IMPLEMENT_FUNCTION_1(Bool_intAssignOperator, operator=, Bool, Int);
+    __IMPLEMENT_FUNCTION_1(Bool_uintAssignOperator, operator=, Bool, UInt);
     SYMBOL_STATIC_ALLOC = false;
 }
 

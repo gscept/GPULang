@@ -663,6 +663,11 @@ Function Mat4x4_elementAccessOperatorInt;
 Function Mat4x4_elementAccessOperatorUInt;
 Mat4x4 Mat4x4Type;
 
+CompareModeType CompareModeTypeType;
+StencilOpType StencilOpTypeType;
+ExecutionScopeType ExecutionScopeTypeType;
+MemorySemanticsType MemorySemanticsTypeType;
+
 Enumeration RenderState_polygonModeEnum;
 Enumeration RenderState_cullModeEnum;
 Enumeration RenderState_windingOrderModeEnum;
@@ -744,26 +749,26 @@ ProgramType ProgramTypeType;
 
 FunctionType FunctionTypeType;
 
+Void VoidType;
+
+Texture1D Texture1DType;
+Texture1DArray Texture1DArrayType;
+Texture2D Texture2DType;
+Texture2DArray Texture2DArrayType;
+Texture2DMS Texture2DMSType;
+Texture2DMSArray Texture2DMSArrayType;
+Texture3D Texture3DType;
+Texture3DArray Texture3DArrayType;
+TextureCube TextureCubeType;
+TextureCubeArray TextureCubeArrayType;
+SamplerType SamplerTypeType;
+PixelCacheType PixelCacheTypeType;
+PixelCacheMS PixelCacheMSType;
+AccelerationStructureType AccelerationStructureTypeType;
+
 Function* activeFunction = nullptr;
 
 #define __BEGIN_TYPES__ Type* newType = nullptr;
-
-#define __MAKE_TYPE(typename, typecode)\
-newType = StaticAlloc<Type>();\
-newType->name = ConstantString(#typename);\
-newType->baseType = typecode;\
-newType->category = Type::VoidCategory;\
-DefaultTypes.push_back(newType);
-
-
-#define __MAKE_TEX()\
-newType->category = Type::TextureCategory;
-
-#define __MAKE_PIXELCACHE()\
-newType->category = Type::PixelCacheCategory;
-
-#define __MAKE_SAMPLER()\
-newType->category = Type::SamplerCategory;
 
 #define __MAKE_TYPE_CUSTOM(t1, t2)\
 newType = &t2##Type;\
@@ -1012,89 +1017,25 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE_CUSTOM(f32x4x3, GPULang::Mat4x3);
     __MAKE_TYPE_CUSTOM(f32x4x4, GPULang::Mat4x4);
 
-    __MAKE_TYPE(texture1D, TypeCode::Texture1D);
-    __MAKE_TEX();
+    __MAKE_TYPE_CUSTOM(texture1D, GPULang::Texture1D);
+    __MAKE_TYPE_CUSTOM(texture1DArray, GPULang::Texture1DArray);
+    __MAKE_TYPE_CUSTOM(texture2D, GPULang::Texture2D);
+    __MAKE_TYPE_CUSTOM(texture2DArray, GPULang::Texture2DArray);
+    __MAKE_TYPE_CUSTOM(texture2DMS, GPULang::Texture2DMS);
+    __MAKE_TYPE_CUSTOM(texture2DMSArray, GPULang::Texture2DMSArray);
+    __MAKE_TYPE_CUSTOM(texture3D, GPULang::Texture3D);
+    __MAKE_TYPE_CUSTOM(textureCube, GPULang::TextureCube);
+    __MAKE_TYPE_CUSTOM(textureCubeArray, GPULang::TextureCubeArray);
+    __MAKE_TYPE_CUSTOM(pixelCache, GPULang::PixelCacheType);
+    __MAKE_TYPE_CUSTOM(pixelCacheMS, GPULang::PixelCacheMS);
 
-    __MAKE_TYPE(texture2D, TypeCode::Texture2D);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture2DMS, TypeCode::Texture2DMS);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture3D, TypeCode::Texture3D);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture3DArray, TypeCode::Texture3DArray);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(textureCube, TypeCode::TextureCube);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture1DArray, TypeCode::Texture1DArray);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture2DArray, TypeCode::Texture2DArray);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(texture2DMSArray, TypeCode::Texture2DMSArray);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(textureCubeArray, TypeCode::TextureCubeArray);
-    __MAKE_TEX();
-
-    __MAKE_TYPE(pixelCache, TypeCode::PixelCache);
-    __MAKE_PIXELCACHE();
-
-    __MAKE_TYPE(pixelCacheMS, TypeCode::PixelCacheMS);
-    __MAKE_PIXELCACHE();
-
-    __MAKE_TYPE(accelerationStructure, TypeCode::AccelerationStructure);
-    newType->category = AccelerationStructureCategory;
+    __MAKE_TYPE_CUSTOM(accelerationStructure, GPULang::AccelerationStructureType);
 
 #define __ADD_ENUM(val) labels.Append(#val); values.Append(nullptr);
-#define __FINISH_ENUM(enum) enum->labels = StaticArray<FixedString>(labels); enum->values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
+#define __FINISH_ENUM(enum) enum.labels = StaticArray<FixedString>(labels); enum.values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
     
-    TransientArray<ConstantString> labels(32);
-    TransientArray<Expression*> values(32);
-
-    Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
-    compareModeEnum->name = ConstantString("CompareMode");
-    compareModeEnum->type = Type::FullType{ ConstantString("u32") };
-    Symbol::Resolved(compareModeEnum)->typeSymbol = &UIntType;
-    compareModeEnum->type.literal = true;
-    compareModeEnum->baseType = GPULang::TypeCode::UInt;
-    
-    __ADD_ENUM(InvalidCompareMode);
-    __ADD_ENUM(Never);
-    __ADD_ENUM(Less);
-    __ADD_ENUM(Equal);
-    __ADD_ENUM(LessEqual);
-    __ADD_ENUM(Greater);
-    __ADD_ENUM(NotEqual);
-    __ADD_ENUM(GreaterEqual);
-    __ADD_ENUM(Always);
-    __FINISH_ENUM(compareModeEnum);
-    compareModeEnum->builtin = true;
-    DefaultTypes.push_back(compareModeEnum);
-
-    Enumeration* stencilOpEnum = StaticAlloc<Enumeration>();
-    stencilOpEnum->name = ConstantString("StencilOp");
-    stencilOpEnum->type = Type::FullType{ ConstantString("u32") };
-    Symbol::Resolved(stencilOpEnum)->typeSymbol = &UIntType;
-    stencilOpEnum->type.literal = true;
-    stencilOpEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(Invalid);
-    __ADD_ENUM(Keep);
-    __ADD_ENUM(Zero);
-    __ADD_ENUM(Replace);
-    __ADD_ENUM(IncrementClamp);
-    __ADD_ENUM(DecrementClamp);
-    __ADD_ENUM(Invert);
-    __ADD_ENUM(IncrementWrap);
-    __ADD_ENUM(DecrementWrap);
-    __FINISH_ENUM(stencilOpEnum);
-    stencilOpEnum->builtin = true;
-    DefaultTypes.push_back(stencilOpEnum);
+    DefaultTypes.push_back(&CompareModeTypeType);
+    DefaultTypes.push_back(&StencilOpTypeType);
 
     __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
     __MAKE_TYPE_CUSTOM(stencilState, GPULang::StencilStateType);
@@ -1102,40 +1043,11 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE_CUSTOM(samplerState, GPULang::SamplerStateType);
     __MAKE_TYPE_CUSTOM(program, GPULang::ProgramType);
 
-    __MAKE_TYPE(sampler, TypeCode::Sampler);
-    __MAKE_SAMPLER();
+    __MAKE_TYPE_CUSTOM(sampler, GPULang::SamplerType);
+    DefaultTypes.push_back(&ExecutionScopeTypeType);
+    DefaultTypes.push_back(&MemorySemanticsTypeType);
 
-    Enumeration* executionScopeEnum = StaticAlloc<Enumeration>();
-    executionScopeEnum->name = ConstantString("ExecutionScope");
-    executionScopeEnum->type = Type::FullType{ ConstantString("u32") };
-    Symbol::Resolved(executionScopeEnum)->typeSymbol = &UIntType;
-    executionScopeEnum->type.literal = true;
-    executionScopeEnum->baseType = GPULang::TypeCode::UInt;
-    __ADD_ENUM(Global)
-    __ADD_ENUM(Device)
-    __ADD_ENUM(Workgroup)
-    __ADD_ENUM(Subgroup)
-    __ADD_ENUM(Invocation)
-    __ADD_ENUM(Queue)
-    __FINISH_ENUM(executionScopeEnum);
-    executionScopeEnum->builtin = true;
-    DefaultTypes.push_back(executionScopeEnum);
-
-    Enumeration* memorySemanticsEnum = StaticAlloc<Enumeration>();
-    memorySemanticsEnum->name = ConstantString("MemorySemantics");
-    memorySemanticsEnum->type = Type::FullType{ ConstantString("u32") };
-    memorySemanticsEnum->type.literal = true;
-    Symbol::Resolved(memorySemanticsEnum)->typeSymbol = &UIntType;
-    memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
-    labels.Append("Relaxed"); values.Append(StaticAlloc<UIntExpression>(0x0));
-    labels.Append("Acquire"); values.Append(StaticAlloc<UIntExpression>(0x1));
-    labels.Append("Release"); values.Append(StaticAlloc<UIntExpression>(0x2));
-    labels.Append("AcquireRelease"); values.Append(StaticAlloc<UIntExpression>(0x4));
-    __FINISH_ENUM(memorySemanticsEnum);
-    memorySemanticsEnum->builtin = true;
-    DefaultTypes.push_back(memorySemanticsEnum);
-
-    __MAKE_TYPE(void, TypeCode::Void);
+    __MAKE_TYPE_CUSTOM(void, Void);
     SYMBOL_STATIC_ALLOC = false;
 }
 

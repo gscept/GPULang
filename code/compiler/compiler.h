@@ -109,6 +109,11 @@ struct Compiler
     /// Create generator
     Generator* CreateGenerator(const Compiler::Language& lang, Options options);
 
+    /// Start static symbol setup
+    void BeginStaticSymbolSetup();
+    /// End static symbol setup
+    void EndStaticSymbolSetup();
+
     /// adds symbol to compiler context, allow duplicate if symbol type should support overloading
     bool AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate = false, bool bypass = false);
     /// get symbol by name
@@ -263,6 +268,7 @@ struct Compiler
 
     Scope* intrinsicScope, *mainScope;
     PinnedArray<Scope*> scopes = 0xFFF;
+    bool staticSymbolSetup = false;
 
     std::string debugPath;
     bool debugOutput;

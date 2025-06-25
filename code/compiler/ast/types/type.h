@@ -23,6 +23,7 @@ method.name = ConstantString(#id);\
 method.returnType = Type::FullType{t##Type.name};\
 method.compileTime = true;\
 method.constructorType = &t##Type;\
+Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
 this->globals.push_back(&method);\
 activeFunction = &method;\
 {\
@@ -42,6 +43,7 @@ method.name = ConstantString(#id);\
 method.returnType = Type::FullType{ConstantString(#type)};\
 method.compileTime = true;\
 method.constructorType = &type##Type;\
+Symbol::Resolved(&method)->returnTypeSymbol = &type##Type;\
 this->globals.push_back(&method);\
 activeFunction = &method;\
 activeFunction->documentation = "Constructor of " #type;\
@@ -49,13 +51,15 @@ activeFunction->documentation = "Constructor of " #type;\
 #define __IMPLEMENT_FUNCTION_1(method, id, t, argtype)\
 parameters.Clear();\
 method.name = ConstantString(#id);\
-method.returnType = Type::FullType{ConstantString(#t)};\
+method.returnType = Type::FullType{t##Type.name};\
+Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
 this->staticSymbols.push_back(&method);\
 activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = ConstantString("_arg0"); \
-    var->type = Type::FullType{ ConstantString(#argtype) }; \
+    var->type = Type::FullType{ argtype##Type.name }; \
+    Symbol::Resolved(var)->typeSymbol = &argtype##Type;\
     parameters.Append(var); \
     activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }
@@ -64,18 +68,20 @@ activeFunction = &method;\
 {\
     Variable* swizzleMember = StaticAlloc<Variable>();\
     swizzleMember->name = StaticString(Format(format, __VA_ARGS__));\
-    swizzleMember->type = Type::FullType{ConstantString(#retType)};\
+    swizzleMember->type = Type::FullType{retType##Type.name};\
     Variable::__Resolved* resolved = Symbol::Resolved(swizzleMember);\
     resolved->usageBits.flags.isVar = true;\
     resolved->usageBits.flags.isStructMember = true;\
+    resolved->typeSymbol = &retType##Type;\
     this->swizzleSymbols.push_back(swizzleMember);\
 }
 
 #define __ADD_FUNCTION_PARAM(id, t)\
 {\
     Variable* var = StaticAlloc<Variable>();\
-    var->name = ConstantString(#id);\
-    var->type = Type::FullType{ConstantString(#t)};\
+    var->name = t##Type.name;\
+    var->type = Type::FullType{t##Type.name};\
+    Symbol::Resolved(var)->typeSymbol = &t##Type;\
     parameters.Append(var);\
 }
 
@@ -95,13 +101,13 @@ this->constructors.push_back(activeFunction);
         __ADD_SWIZZLE(type, "%c", mask[x]);\
         for (uint8_t y = 0; y < size; y++)\
         {\
-            __ADD_SWIZZLE(type##x2, "%c%c", mask[x], mask[y]);\
+            __ADD_SWIZZLE(type##2, "%c%c", mask[x], mask[y]);\
             for (uint8_t z = 0; z < size; z++)\
             {\
-                __ADD_SWIZZLE(type##x3, "%c%c%c", mask[x], mask[y], mask[z]);\
+                __ADD_SWIZZLE(type##3, "%c%c%c", mask[x], mask[y], mask[z]);\
                 for (uint8_t w = 0; w < size; w++)\
                 {\
-                    __ADD_SWIZZLE(type##x4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
+                    __ADD_SWIZZLE(type##4, "%c%c%c%c", mask[x], mask[y], mask[z], mask[w]);\
                 }\
             }\
         }\
@@ -468,6 +474,14 @@ struct Type : public Symbol
         }
         
         explicit FullType(const ConstantString& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
+            : name(type)
+            , modifiers(modifiers)
+            , literal(false)
+            , modifierValues(modifierValues)
+        {
+        }
+
+        explicit FullType(const FixedString& type, const std::vector<Modifier>& modifiers, const std::vector<Expression*>& modifierValues)
             : name(type)
             , modifiers(modifiers)
             , literal(false)

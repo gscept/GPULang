@@ -23,11 +23,13 @@ struct Enumeration : public Type
     FixedArray<Symbol::Location> labelLocations;
     Type::FullType type;
     bool builtin = false;
+    Function fromUnderlyingType, toUnderlyingType, eqOp, neqOp;
 
     struct __Resolved : public Type::__Resolved
     {
         virtual ~__Resolved() { typeSymbol = nullptr; };
         Type* typeSymbol;
+
     };
 };
 

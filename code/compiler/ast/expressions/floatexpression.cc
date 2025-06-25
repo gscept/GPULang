@@ -3,6 +3,7 @@
 //  (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "floatexpression.h"
+#include "ast/types/builtins.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/types/type.h"
@@ -37,7 +38,7 @@ FloatExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ ConstantString("f32") };
     thisResolved->fullType.literal = true;
-    thisResolved->type = compiler->GetType(thisResolved->fullType);
+    thisResolved->type = &FloatType;
     return true;
 }
 

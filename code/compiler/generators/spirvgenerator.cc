@@ -3891,118 +3891,118 @@ SPIRVGenerator::SetupIntrinsics()
     }
    
 #define MAKE_SCALAR_INTRINSICS(op)\
-      { Intrinsics::op##_f32, 'F' }\
-    , { Intrinsics::op##_f32x2, 'F' }\
-    , { Intrinsics::op##_f32x3, 'F' }\
-    , { Intrinsics::op##_f32x4, 'F' }\
-    , { Intrinsics::op##_i32, 'S' }\
-    , { Intrinsics::op##_i32x2, 'S' }\
-    , { Intrinsics::op##_i32x3, 'S' }\
-    , { Intrinsics::op##_i32x4, 'S' }\
-    , { Intrinsics::op##_u32, 'U' }\
-    , { Intrinsics::op##_u32x2, 'U' }\
-    , { Intrinsics::op##_u32x3, 'U' }\
-    , { Intrinsics::op##_u32x4, 'U' }
+      { Intrinsics::op##_Float, 'F' }\
+    , { Intrinsics::op##_Float2, 'F' }\
+    , { Intrinsics::op##_Float3, 'F' }\
+    , { Intrinsics::op##_Float4, 'F' }\
+    , { Intrinsics::op##_Int, 'S' }\
+    , { Intrinsics::op##_Int2, 'S' }\
+    , { Intrinsics::op##_Int3, 'S' }\
+    , { Intrinsics::op##_Int4, 'S' }\
+    , { Intrinsics::op##_UInt, 'U' }\
+    , { Intrinsics::op##_UInt2, 'U' }\
+    , { Intrinsics::op##_UInt3, 'U' }\
+    , { Intrinsics::op##_UInt4, 'U' }
 
 #define MAKE_SCALAR_TYPED_INTRINSICS(op)\
-      { Intrinsics::op##_f32, 'F', F##op }\
-    , { Intrinsics::op##_f32x2, 'F', F##op }\
-    , { Intrinsics::op##_f32x3, 'F', F##op }\
-    , { Intrinsics::op##_f32x4, 'F', F##op }\
-    , { Intrinsics::op##_i32, 'S', S##op }\
-    , { Intrinsics::op##_i32x2, 'S', S##op }\
-    , { Intrinsics::op##_i32x3, 'S', S##op }\
-    , { Intrinsics::op##_i32x4, 'S', S##op }\
-    , { Intrinsics::op##_u32, 'U', U##op }\
-    , { Intrinsics::op##_u32x2, 'U', U##op }\
-    , { Intrinsics::op##_u32x3, 'U', U##op }\
-    , { Intrinsics::op##_u32x4, 'U', U##op }
+      { Intrinsics::op##_Float, 'F', F##op }\
+    , { Intrinsics::op##_Float2, 'F', F##op }\
+    , { Intrinsics::op##_Float3, 'F', F##op }\
+    , { Intrinsics::op##_Float4, 'F', F##op }\
+    , { Intrinsics::op##_Int, 'S', S##op }\
+    , { Intrinsics::op##_Int2, 'S', S##op }\
+    , { Intrinsics::op##_Int3, 'S', S##op }\
+    , { Intrinsics::op##_Int4, 'S', S##op }\
+    , { Intrinsics::op##_UInt, 'U', U##op }\
+    , { Intrinsics::op##_UInt2, 'U', U##op }\
+    , { Intrinsics::op##_UInt3, 'U', U##op }\
+    , { Intrinsics::op##_UInt4, 'U', U##op }
 
 #define MAKE_EXPORT_INTRINSICS(op)\
-      { Intrinsics::op##_f32, TypeCode::Float, 1 }\
-    , { Intrinsics::op##_f32x2, TypeCode::Float, 2 }\
-    , { Intrinsics::op##_f32x3, TypeCode::Float, 3 }\
-    , { Intrinsics::op##_f32x4, TypeCode::Float, 4 }\
-    , { Intrinsics::op##_i32, TypeCode::Int, 1 }\
-    , { Intrinsics::op##_i32x2, TypeCode::Int, 2 }\
-    , { Intrinsics::op##_i32x3, TypeCode::Int, 3 }\
-    , { Intrinsics::op##_i32x4, TypeCode::Int, 4 }\
-    , { Intrinsics::op##_u32, TypeCode::UInt, 1 }\
-    , { Intrinsics::op##_u32x2, TypeCode::UInt, 2 }\
-    , { Intrinsics::op##_u32x3, TypeCode::UInt, 3 }\
-    , { Intrinsics::op##_u32x4, TypeCode::UInt, 4 }
+      { Intrinsics::op##_Float, TypeCode::Float, 1 }\
+    , { Intrinsics::op##_Float2, TypeCode::Float, 2 }\
+    , { Intrinsics::op##_Float3, TypeCode::Float, 3 }\
+    , { Intrinsics::op##_Float4, TypeCode::Float, 4 }\
+    , { Intrinsics::op##_Int, TypeCode::Int, 1 }\
+    , { Intrinsics::op##_Int2, TypeCode::Int, 2 }\
+    , { Intrinsics::op##_Int3, TypeCode::Int, 3 }\
+    , { Intrinsics::op##_Int4, TypeCode::Int, 4 }\
+    , { Intrinsics::op##_UInt, TypeCode::UInt, 1 }\
+    , { Intrinsics::op##_UInt2, TypeCode::UInt, 2 }\
+    , { Intrinsics::op##_UInt3, TypeCode::UInt, 3 }\
+    , { Intrinsics::op##_UInt4, TypeCode::UInt, 4 }
 
 #define MAKE_FLOAT_INTRINSICS(op)\
-      { Intrinsics::op##_f32, 'F' }\
-    , { Intrinsics::op##_f32x2, 'F' }\
-    , { Intrinsics::op##_f32x3, 'F' }\
-    , { Intrinsics::op##_f32x4, 'F' }
+      { Intrinsics::op##_Float, 'F' }\
+    , { Intrinsics::op##_Float2, 'F' }\
+    , { Intrinsics::op##_Float3, 'F' }\
+    , { Intrinsics::op##_Float4, 'F' }
 
 #define MAKE_BOOL_INTRINSICS(op)\
-    { Intrinsics::op##_b8, 'B' }\
-    , { Intrinsics::op##_b8x2, 'B' }\
-    , { Intrinsics::op##_b8x3, 'B' }\
-    , { Intrinsics::op##_b8x4, 'B' }
+    { Intrinsics::op##_Bool, 'B' }\
+    , { Intrinsics::op##_Bool2, 'B' }\
+    , { Intrinsics::op##_Bool3, 'B' }\
+    , { Intrinsics::op##_Bool4, 'B' }
 
 #define MAKE_FLOAT_VEC_INTRINSICS(op)\
-    { Intrinsics::op##_f32x2, 'F' }\
-    , { Intrinsics::op##_f32x3, 'F' }\
-    , { Intrinsics::op##_f32x4, 'F' }
+    { Intrinsics::op##_Float2, 'F' }\
+    , { Intrinsics::op##_Float3, 'F' }\
+    , { Intrinsics::op##_Float4, 'F' }
 
 #define MAKE_MAT_INTRINSICS(op)\
-    { Intrinsics::op##_f32x2x2, 'F' }\
-    , { Intrinsics::op##_f32x2x3, 'F' }\
-    , { Intrinsics::op##_f32x2x4, 'F' }\
-    , { Intrinsics::op##_f32x3x2, 'F' }\
-    , { Intrinsics::op##_f32x3x3, 'F' }\
-    , { Intrinsics::op##_f32x3x4, 'F' }\
-    , { Intrinsics::op##_f32x4x2, 'F' }\
-    , { Intrinsics::op##_f32x4x3, 'F' }\
-    , { Intrinsics::op##_f32x4x4, 'F' }
+    { Intrinsics::op##_Mat2x2, 'F' }\
+    , { Intrinsics::op##_Mat2x3, 'F' }\
+    , { Intrinsics::op##_Mat2x4, 'F' }\
+    , { Intrinsics::op##_Mat3x2, 'F' }\
+    , { Intrinsics::op##_Mat3x3, 'F' }\
+    , { Intrinsics::op##_Mat3x4, 'F' }\
+    , { Intrinsics::op##_Mat4x2, 'F' }\
+    , { Intrinsics::op##_Mat4x3, 'F' }\
+    , { Intrinsics::op##_Mat4x4, 'F' }
 
 #define MAKE_SIGN_INTRINSICS(op)\
-      { Intrinsics::op##_f32, 'F', F##op }\
-    , { Intrinsics::op##_f32x2, 'F', F##op }\
-    , { Intrinsics::op##_f32x3, 'F', F##op }\
-    , { Intrinsics::op##_f32x4, 'F', F##op }\
-    , { Intrinsics::op##_i32, 'S', S##op }\
-    , { Intrinsics::op##_i32x2, 'S', S##op }\
-    , { Intrinsics::op##_i32x3, 'S', S##op }\
-    , { Intrinsics::op##_i32x4, 'S', S##op }
+      { Intrinsics::op##_Float, 'F', F##op }\
+    , { Intrinsics::op##_Float2, 'F', F##op }\
+    , { Intrinsics::op##_Float3, 'F', F##op }\
+    , { Intrinsics::op##_Float4, 'F', F##op }\
+    , { Intrinsics::op##_Int, 'S', S##op }\
+    , { Intrinsics::op##_Int2, 'S', S##op }\
+    , { Intrinsics::op##_Int3, 'S', S##op }\
+    , { Intrinsics::op##_Int4, 'S', S##op }
 
 #define MAKE_FLOAT_INTRINSICS_VEC(op)\
-      { Intrinsics::op##_f32, 'F', 1 }\
-    , { Intrinsics::op##_f32x2, 'F', 2 }\
-    , { Intrinsics::op##_f32x3, 'F', 3 }\
-    , { Intrinsics::op##_f32x4, 'F', 4 }
+      { Intrinsics::op##_Float, 'F', 1 }\
+    , { Intrinsics::op##_Float2, 'F', 2 }\
+    , { Intrinsics::op##_Float3, 'F', 3 }\
+    , { Intrinsics::op##_Float4, 'F', 4 }
 
 
 #define MAKE_INT_INTRINSICS(op)\
-      { Intrinsics::op##_i32, 'S' }\
-    , { Intrinsics::op##_i32x2, 'S' }\
-    , { Intrinsics::op##_i32x3, 'S' }\
-    , { Intrinsics::op##_i32x4, 'S' }\
-    , { Intrinsics::op##_u32, 'U' }\
-    , { Intrinsics::op##_u32x2, 'U' }\
-    , { Intrinsics::op##_u32x3, 'U' }\
-    , { Intrinsics::op##_u32x4, 'U' }
+      { Intrinsics::op##_Int, 'S' }\
+    , { Intrinsics::op##_Int2, 'S' }\
+    , { Intrinsics::op##_Int3, 'S' }\
+    , { Intrinsics::op##_Int4, 'S' }\
+    , { Intrinsics::op##_UInt, 'U' }\
+    , { Intrinsics::op##_UInt2, 'U' }\
+    , { Intrinsics::op##_UInt3, 'U' }\
+    , { Intrinsics::op##_UInt4, 'U' }
     
 #define MAKE_SINGLE_COMPONENT_INTRINSICS(op)\
-    { Intrinsics::op##_f32, 'F' }\
-    , { Intrinsics::op##_i32, 'S' }\
-    , { Intrinsics::op##_u32, 'U' }\
+    { Intrinsics::op##_Float, 'F' }\
+    , { Intrinsics::op##_Int, 'S' }\
+    , { Intrinsics::op##_UInt, 'U' }\
 
 #define MAKE_EXT_FLOAT_INTRINSICS(op, fun)\
-    { Intrinsics::op##_f32, #fun, fun }\
-    , { Intrinsics::op##_f32x2, #fun, fun }\
-    , { Intrinsics::op##_f32x3, #fun, fun }\
-    , { Intrinsics::op##_f32x4, #fun, fun }
+    { Intrinsics::op##_Float, #fun, fun }\
+    , { Intrinsics::op##_Float2, #fun, fun }\
+    , { Intrinsics::op##_Float3, #fun, fun }\
+    , { Intrinsics::op##_Float4, #fun, fun }
 
 #define MAKE_EXT_INT_INTRINSICS(op, fun)\
-    { Intrinsics::op##_i32, #fun, fun }\
-    , { Intrinsics::op##_i32x2, #fun, fun }\
-    , { Intrinsics::op##_i32x3, #fun, fun }\
-    , { Intrinsics::op##_i32x4, #fun, fun }
+    { Intrinsics::op##_Int, #fun, fun }\
+    , { Intrinsics::op##_Int2, #fun, fun }\
+    , { Intrinsics::op##_Int3, #fun, fun }\
+    , { Intrinsics::op##_Int4, #fun, fun }
 
     std::vector<std::tuple<Function*, const char*, SPVEnum>> extThreeArgumentIntrinsics =
     {
@@ -5039,21 +5039,21 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
 #define MAKE_ATOMIC_SCALAR_INTRINSICS(op)\
-    { Intrinsics::Atomic##op##_f32, #op, OpAtomic##op }\
-    , { Intrinsics::Atomic##op##_i32, #op, OpAtomic##op }\
-    , { Intrinsics::Atomic##op##_u32, #op, OpAtomic##op }\
+    { Intrinsics::Atomic##op##_Float, #op, OpAtomic##op }\
+    , { Intrinsics::Atomic##op##_Int, #op, OpAtomic##op }\
+    , { Intrinsics::Atomic##op##_UInt, #op, OpAtomic##op }\
 
 #define MAKE_ATOMIC_INT_INTRINSICS(op)\
-    { Intrinsics::Atomic##op##_i32, #op, OpAtomic##op }\
-    , { Intrinsics::Atomic##op##_u32, #op, OpAtomic##op }\
+    { Intrinsics::Atomic##op##_Int, #op, OpAtomic##op }\
+    , { Intrinsics::Atomic##op##_UInt, #op, OpAtomic##op }\
 
 #define MAKE_ATOMIC_INT_TYPED_INTRINSICS(op)\
-    { Intrinsics::Atomic##op##_i32, #op, OpAtomicI##op }\
-    , { Intrinsics::Atomic##op##_u32, #op, OpAtomicI##op }\
+    { Intrinsics::Atomic##op##_Int, #op, OpAtomicI##op }\
+    , { Intrinsics::Atomic##op##_UInt, #op, OpAtomicI##op }\
 
 #define MAKE_ATOMIC_SIGNED_INT_INTRINSICS(op)\
-    { Intrinsics::Atomic##op##_i32, 'S', #op, OpAtomicS##op }\
-    , { Intrinsics::Atomic##op##_u32, 'U', #op, OpAtomicU##op }\
+    { Intrinsics::Atomic##op##_Int, 'S', #op, OpAtomicS##op }\
+    , { Intrinsics::Atomic##op##_UInt, 'U', #op, OpAtomicU##op }\
     
     std::vector<std::tuple<Function*, const char*, SPVOp>> atomicLoadIntrinsics =
     {
@@ -5408,20 +5408,20 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*, bool>> textureGetSizeIntrinsics =
     {
-        { Intrinsics::TextureGetSize_texture1D, false }
-        , { Intrinsics::TextureGetSize_texture1DArray, false }
-        , { Intrinsics::TextureGetSize_texture2D, false }
-        , { Intrinsics::TextureGetSize_texture2DArray, false }
-        , { Intrinsics::TextureGetSize_textureCube, false }
-        , { Intrinsics::TextureGetSize_textureCubeArray, false }
-        , { Intrinsics::TextureGetSize_texture3D, false }
-        , { Intrinsics::TextureGetSizeMip_texture1D, true }
-        , { Intrinsics::TextureGetSizeMip_texture1DArray, true }
-        , { Intrinsics::TextureGetSizeMip_texture2D, true }
-        , { Intrinsics::TextureGetSizeMip_texture2DArray, true }
-        , { Intrinsics::TextureGetSizeMip_textureCube, true }
-        , { Intrinsics::TextureGetSizeMip_textureCubeArray, true }
-        , { Intrinsics::TextureGetSizeMip_texture3D, true }
+        { Intrinsics::TextureGetSize_Texture1D, false }
+        , { Intrinsics::TextureGetSize_Texture1DArray, false }
+        , { Intrinsics::TextureGetSize_Texture2D, false }
+        , { Intrinsics::TextureGetSize_Texture2DArray, false }
+        , { Intrinsics::TextureGetSize_TextureCube, false }
+        , { Intrinsics::TextureGetSize_TextureCubeArray, false }
+        , { Intrinsics::TextureGetSize_Texture3D, false }
+        , { Intrinsics::TextureGetSizeMip_Texture1D, true }
+        , { Intrinsics::TextureGetSizeMip_Texture1DArray, true }
+        , { Intrinsics::TextureGetSizeMip_Texture2D, true }
+        , { Intrinsics::TextureGetSizeMip_Texture2DArray, true }
+        , { Intrinsics::TextureGetSizeMip_TextureCube, true }
+        , { Intrinsics::TextureGetSizeMip_TextureCubeArray, true }
+        , { Intrinsics::TextureGetSizeMip_Texture3D, true }
     };
     for (auto fun : textureGetSizeIntrinsics)
     {
@@ -5446,14 +5446,14 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*>> textureGetSampledMipIntrinsics =
     {
-        { Intrinsics::TextureGetSampledMip_texture1D }
-        , { Intrinsics::TextureGetSampledMip_texture1DArray }
-        , { Intrinsics::TextureGetSampledMip_texture2D }
-        , { Intrinsics::TextureGetSampledMip_texture2DArray }
-        , { Intrinsics::TextureGetSampledMip_textureCube }
-        , { Intrinsics::TextureGetSampledMip_textureCubeArray }
-        , { Intrinsics::TextureGetSampledMip_texture3D }
-        , { Intrinsics::TextureGetSampledMip_texture3D }
+        { Intrinsics::TextureGetSampledMip_Texture1D }
+        , { Intrinsics::TextureGetSampledMip_Texture1DArray }
+        , { Intrinsics::TextureGetSampledMip_Texture2D }
+        , { Intrinsics::TextureGetSampledMip_Texture2DArray }
+        , { Intrinsics::TextureGetSampledMip_TextureCube }
+        , { Intrinsics::TextureGetSampledMip_TextureCubeArray }
+        , { Intrinsics::TextureGetSampledMip_Texture3D }
+        , { Intrinsics::TextureGetSampledMip_Texture3D }
     };
     for (auto fun : textureGetSampledMipIntrinsics)
     {
@@ -5469,14 +5469,14 @@ SPIRVGenerator::SetupIntrinsics()
     
     std::vector<std::tuple<Function*>> textureGetMips =
     {
-        { Intrinsics::TextureGetMips_texture1D }
-        , { Intrinsics::TextureGetMips_texture1DArray }
-        , { Intrinsics::TextureGetMips_texture2D }
-        , { Intrinsics::TextureGetMips_texture2DArray }
-        , { Intrinsics::TextureGetMips_textureCube }
-        , { Intrinsics::TextureGetMips_textureCubeArray }
-        , { Intrinsics::TextureGetMips_texture3D }
-        , { Intrinsics::TextureGetMips_texture3D }
+        { Intrinsics::TextureGetMips_Texture1D }
+        , { Intrinsics::TextureGetMips_Texture1DArray }
+        , { Intrinsics::TextureGetMips_Texture2D }
+        , { Intrinsics::TextureGetMips_Texture2DArray }
+        , { Intrinsics::TextureGetMips_TextureCube }
+        , { Intrinsics::TextureGetMips_TextureCubeArray }
+        , { Intrinsics::TextureGetMips_Texture3D }
+        , { Intrinsics::TextureGetMips_Texture3D }
     };
     for (auto fun : textureGetSampledMipIntrinsics)
     {
@@ -5492,8 +5492,8 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*>> textureGetSamples =
     {
-        { Intrinsics::TextureGetSamples_texture2DMS }
-        , { Intrinsics::TextureGetSamples_texture2DMSArray }
+        { Intrinsics::TextureGetSamples_Texture2DMS }
+        , { Intrinsics::TextureGetSamples_Texture2DMSArray }
     };
     for (auto fun : textureGetSampledMipIntrinsics)
     {
@@ -5509,15 +5509,15 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*, bool>> textureFetchIntrinsics =
     {
-        { Intrinsics::TextureFetchBase_texture1D, false }
-        , { Intrinsics::TextureFetchBase_texture2D, false }
-        , { Intrinsics::TextureFetchBase_texture2DMS, false }
-        , { Intrinsics::TextureFetchBase_texture3D, false }
-        , { Intrinsics::TextureFetchBase_texture1DArray, false }
-        , { Intrinsics::TextureFetchBase_texture2DArray, false }
-        , { Intrinsics::TextureFetchBase_texture2DMSArray, false }
-        , { Intrinsics::TextureFetchSample_texture2DMS, true }
-        , { Intrinsics::TextureFetchSample_texture2DMSArray, true }
+        { Intrinsics::TextureFetchBase_Texture1D, false }
+        , { Intrinsics::TextureFetchBase_Texture2D, false }
+        , { Intrinsics::TextureFetchBase_Texture2DMS, false }
+        , { Intrinsics::TextureFetchBase_Texture3D, false }
+        , { Intrinsics::TextureFetchBase_Texture1DArray, false }
+        , { Intrinsics::TextureFetchBase_Texture2DArray, false }
+        , { Intrinsics::TextureFetchBase_Texture2DMSArray, false }
+        , { Intrinsics::TextureFetchSample_Texture2DMS, true }
+        , { Intrinsics::TextureFetchSample_Texture2DMSArray, true }
     };
     for (auto fun : textureFetchIntrinsics)
     {
@@ -5540,12 +5540,12 @@ SPIRVGenerator::SetupIntrinsics()
 
     std::vector<std::tuple<Function*, bool>> textureGatherIntrinsics =
     {
-        { Intrinsics::TextureGatherBase_texture2D, false }
-        , { Intrinsics::TextureGatherBase_texture2DArray, false }
-        , { Intrinsics::TextureGatherBase_textureCube, false }
-        , { Intrinsics::TextureGatherBase_textureCubeArray, false }
-        , { Intrinsics::TextureGatherOffsets_texture2D, true }
-        , { Intrinsics::TextureGatherOffsets_texture2DArray, true }
+        { Intrinsics::TextureGatherBase_Texture2D, false }
+        , { Intrinsics::TextureGatherBase_Texture2DArray, false }
+        , { Intrinsics::TextureGatherBase_TextureCube, false }
+        , { Intrinsics::TextureGatherBase_TextureCubeArray, false }
+        , { Intrinsics::TextureGatherOffsets_Texture2D, true }
+        , { Intrinsics::TextureGatherOffsets_Texture2DArray, true }
     };
     for (auto fun : textureGatherIntrinsics)
     {
@@ -5604,42 +5604,42 @@ SPIRVGenerator::SetupIntrinsics()
     };
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::operands }
+      { Intrinsics::TextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_TextureCube, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_TextureCubeArray, SampleOperands::operands }
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMS, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DMSArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
+      { Intrinsics::TextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture3D, SampleOperands::operands }\
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_textureCubeArray, SampleOperands::operands }
+      { Intrinsics::TextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_TextureCube, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_TextureCubeArray, SampleOperands::operands }
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_textureCube, SampleOperands::operands }\
+      { Intrinsics::TextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_TextureCube, SampleOperands::operands }\
 
 #define MAKE_TEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
-      { Intrinsics::TextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::TextureSample##op##_texture3D, SampleOperands::operands }\
+      { Intrinsics::TextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::TextureSample##op##_Texture3D, SampleOperands::operands }\
 
     std::vector<std::tuple<Function*, uint32_t>> textureSampleInstructions =
     {
@@ -5857,42 +5857,42 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::operands }
+      { Intrinsics::SampledTextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_TextureCube, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_TextureCubeArray, SampleOperands::operands }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMS, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DMSArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
+      { Intrinsics::SampledTextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DMS, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DMSArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture3D, SampleOperands::operands }\
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCubeArray, SampleOperands::operands }
+      { Intrinsics::SampledTextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_TextureCube, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_TextureCubeArray, SampleOperands::operands }
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_ARRAY_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_textureCube, SampleOperands::operands }\
+      { Intrinsics::SampledTextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture3D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_TextureCube, SampleOperands::operands }\
 
 #define MAKE_SAMPLEDTEXTURE_SAMPLE_INTRINSICS_NO_CUBE_NO_MS(op, operands)\
-      { Intrinsics::SampledTextureSample##op##_texture1D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2D, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture2DArray, SampleOperands::operands }\
-    , { Intrinsics::SampledTextureSample##op##_texture3D, SampleOperands::operands }\
+      { Intrinsics::SampledTextureSample##op##_Texture1D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2D, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture2DArray, SampleOperands::operands }\
+    , { Intrinsics::SampledTextureSample##op##_Texture3D, SampleOperands::operands }\
 
     std::vector<std::tuple<Function*, uint32_t>> sampledTextureSampleInstructions =
     {
@@ -6113,14 +6113,14 @@ SPIRVGenerator::SetupIntrinsics()
     }
 
 #define MAKE_TEXTURE_LOAD_STORE_INTRINSICS(op, operands, store)\
-      { Intrinsics::Texture##op##_texture1D, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_texture2D, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_texture2DArray, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_texture2DMS, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_texture2DMSArray, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_texture3D, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_textureCube, store, SampleOperands::operands }\
-    , { Intrinsics::Texture##op##_textureCubeArray, store, SampleOperands::operands }
+      { Intrinsics::Texture##op##_Texture1D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_Texture2D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_Texture2DArray, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_Texture2DMS, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_Texture2DMSArray, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_Texture3D, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_TextureCube, store, SampleOperands::operands }\
+    , { Intrinsics::Texture##op##_TextureCubeArray, store, SampleOperands::operands }
 
     std::vector<std::tuple<Function*, bool, uint32_t>> textureStoreLoadInstructions =
     {

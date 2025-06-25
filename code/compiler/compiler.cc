@@ -19,6 +19,7 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
+#include "ast/types/builtins.h"
 #include "thread.h"
 #include <thread>
 
@@ -205,7 +206,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->mainScope = StaticAlloc<Scope>();
         this->mainScope->type = Scope::ScopeType::Global;
 
-        this->intrinsicScope->symbolLookup.BeginBulkAdd();
+        this->BeginStaticSymbolSetup();
 
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
@@ -287,13 +288,14 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
             Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
             res->usageBits.flags.isConst = true;
             res->builtin = true;
+            res->typeSymbol = &BoolType;
             this->shaderValueExpressions[i].value = false;
             this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
             this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
         }
 
         this->ignoreReservedWords = false;
-        this->intrinsicScope->symbolLookup.EndBulkAdd();
+        this->EndStaticSymbolSetup();
 
         // push a new scope for all the parsed symbols
         this->PushScope(this->mainScope);
@@ -350,6 +352,26 @@ Compiler::CreateGenerator(const Compiler::Language& lang, Options options)
     return nullptr;
 }
 
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+Compiler::BeginStaticSymbolSetup()
+{
+    this->staticSymbolSetup = true;
+    this->intrinsicScope->symbolLookup.BeginBulkAdd();
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+void 
+Compiler::EndStaticSymbolSetup()
+{
+    this->staticSymbolSetup = false;
+    this->intrinsicScope->symbolLookup.EndBulkAdd();
+}
+
 
 //------------------------------------------------------------------------------
 /**
@@ -374,7 +396,7 @@ Compiler::AddSymbol(const FixedString& name, Symbol* symbol, bool allowDuplicate
         symbols = &scope->symbols;
     }
 
-    if (!allowDuplicate)
+    if (!allowDuplicate && !this->staticSymbolSetup)
     {
         auto it = lookup->Find(name);
         if (it != lookup->end())
@@ -473,12 +495,15 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
         symbols = &scope->symbols;
     }
 
-    auto it = lookup->Find(name);
-    if (it != lookup->end() && !allowDuplicate)
+    if (!allowDuplicate && !this->staticSymbolSetup)
     {
-        Symbol* prevSymbol = it->second;
-        this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
-        return false;
+        auto it = lookup->Find(name);
+        if (it != lookup->end())
+        {
+            Symbol* prevSymbol = it->second;
+            this->Error(Format("Symbol %s redefinition, previous definition at %s(%d)", name.c_str(), prevSymbol->location.file.c_str(), prevSymbol->location.line), symbol);
+            return false;
+        }
     }
     lookup->Insert(FixedString(name), symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup

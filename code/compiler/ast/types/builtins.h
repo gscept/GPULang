@@ -38,8 +38,98 @@
 #include "stencilstatetype.h"
 #include "programtype.h"
 #include "functiontype.h"
+#include "ast/enumeration.h"
 
 namespace GPULang
 {
 extern FunctionType FunctionTypeType;
+
+struct CompareModeType : public Enumeration
+{
+    CompareModeType();
+};
+extern CompareModeType CompareModeTypeType;
+
+struct StencilOpType : public Enumeration
+{
+    StencilOpType();
+};
+extern StencilOpType StencilOpTypeType;
+
+struct ExecutionScopeType : public Enumeration
+{
+    ExecutionScopeType();
+};
+extern ExecutionScopeType ExecutionScopeTypeType;
+
+struct MemorySemanticsType : public Enumeration
+{
+    MemorySemanticsType();
+};
+extern MemorySemanticsType MemorySemanticsTypeType;
+
+struct Void : public Type
+{
+    Void()
+    {
+        this->name = ConstantString("void");
+        this->category = VoidCategory;
+    }
+};
+extern Void VoidType;
+
+#define MAKE_TEXTURE_TYPE(type) struct Texture##type : public Type { Texture##type() { this->name = ConstantString("texture" #type); this->category = TextureCategory;}}; extern Texture##type Texture##type##Type;
+
+MAKE_TEXTURE_TYPE(1D)
+MAKE_TEXTURE_TYPE(1DArray)
+MAKE_TEXTURE_TYPE(2D)
+MAKE_TEXTURE_TYPE(2DArray)
+MAKE_TEXTURE_TYPE(2DMS)
+MAKE_TEXTURE_TYPE(2DMSArray)
+MAKE_TEXTURE_TYPE(3D)
+MAKE_TEXTURE_TYPE(3DArray)
+MAKE_TEXTURE_TYPE(Cube)
+MAKE_TEXTURE_TYPE(CubeArray)
+
+struct SamplerType : public Type
+{
+    SamplerType()
+    {
+        this->name = ConstantString("sampler");
+        this->category = SamplerCategory;
+    }
+};
+extern SamplerType SamplerTypeType;
+
+struct PixelCacheType : public Type
+{
+    PixelCacheType()
+    {
+        this->name = ConstantString("pixelCache");
+        this->category = PixelCacheCategory;
+    }
+};
+extern PixelCacheType PixelCacheTypeType;
+
+struct PixelCacheMS : public Type
+{
+    PixelCacheMS()
+    {
+        this->name = ConstantString("pixelCacheMS");
+        this->category = PixelCacheCategory;
+    }
+};
+extern PixelCacheMS PixelCacheMSType;
+
+struct AccelerationStructureType : public Type
+{
+    AccelerationStructureType()
+    {
+        this->name = ConstantString("accelerationStructure");
+        this->category = AccelerationStructureCategory;
+    }
+};
+extern AccelerationStructureType AccelerationStructureTypeType;
+
+
 }

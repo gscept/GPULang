@@ -3,6 +3,8 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "int3.h"
+#include "builtins.h"
+
 namespace GPULang
 {
 
@@ -13,27 +15,28 @@ Int3::Int3()
 {
     SYMBOL_STATIC_ALLOC = true;
 
-    __BEGIN_TYPE()
+    __BEGIN_TYPE();
+    this->name = ConstantString("i32x3");
     this->baseType = TypeCode::Int;
     this->columnSize = 3;
     this->rowSize = 1;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR(Int3_ctor, i32x3, i32x3, Int3);
-    __ADD_FUNCTION_PARAM(x, i32);
-    __ADD_FUNCTION_PARAM(y, i32);
-    __ADD_FUNCTION_PARAM(z, i32);
+    __IMPLEMENT_CTOR(Int3_ctor, i32x3, Int3);
+    __ADD_FUNCTION_PARAM(x, Int);
+    __ADD_FUNCTION_PARAM(y, Int);
+    __ADD_FUNCTION_PARAM(z, Int);
     __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
-    __IMPLEMENT_CTOR_1(type##_##ctor, i32x3, i32x3, val, Int3);
+    __IMPLEMENT_CTOR_1(type##_##ctor, i32x3, Int3, val);
 
     INT3_CTOR_LIST
 #undef X
 
 #define X(type, ctor, arg0, arg1)\
-    __IMPLEMENT_CTOR(type##_##ctor, i32x3, i32x3, Int3)\
+    __IMPLEMENT_CTOR(type##_##ctor, i32x3, Int3)\
     __ADD_FUNCTION_PARAM(arg_0, arg0)\
     __ADD_FUNCTION_PARAM(arg_1, arg1)\
     __ADD_CONSTRUCTOR();
@@ -41,44 +44,44 @@ Int3::Int3()
     INT3_CTOR2_LIST
 #undef X
 
-    __IMPLEMENT_FUNCTION_1(Int3_orOperator, operator|, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_andOperator, operator&, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_xorOperator, operator^, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_leftShiftOperator, operator<<, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_rightShiftOperator, operator>>, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_additionOperator, operator+, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_subtractionOperator, operator-, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_multiplicationOperator, operator*, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_divisionOperator, operator/, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_modOperator, operator%, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_scaleOperator, operator*, i32x3, i32);
+    __IMPLEMENT_FUNCTION_1(Int3_orOperator, operator|, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_andOperator, operator&, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_xorOperator, operator^, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_leftShiftOperator, operator<<, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_rightShiftOperator, operator>>, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_additionOperator, operator+, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_subtractionOperator, operator-, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_multiplicationOperator, operator*, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_divisionOperator, operator/, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_modOperator, operator%, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_scaleOperator, operator*, Int3, Int);
 
-    __IMPLEMENT_FUNCTION_1(Int3_orAssignOperator, operator|=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_andAssignOperator, operator&=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_xorAssignOperator, operator^=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_leftShiftAssignOperator, operator<<=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_rightShiftAssignOperator, operator>>=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_additionAssignOperator, operator+=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_subtractionAssignOperator, operator-=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_multiplicationAssignOperator, operator*=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_divisionAssignOperator, operator/=, i32x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_moduloAssignOperator, operator%=, i32x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(Int3_orAssignOperator, operator|=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_andAssignOperator, operator&=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_xorAssignOperator, operator^=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_leftShiftAssignOperator, operator<<=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_rightShiftAssignOperator, operator>>=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_additionAssignOperator, operator+=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_subtractionAssignOperator, operator-=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_multiplicationAssignOperator, operator*=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_divisionAssignOperator, operator/=, Int3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_moduloAssignOperator, operator%=, Int3, Int3);
 
-    __IMPLEMENT_FUNCTION_1(Int3_ltOperator, operator<, b8x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_lteOperator, operator<=, b8x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_gtOperator, operator>, b8x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_gteOperator, operator>=, b8x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_eOperator, operator==, b8x3, i32x3);
-    __IMPLEMENT_FUNCTION_1(Int3_neOperator, operator!=, b8x3, i32x3);
+    __IMPLEMENT_FUNCTION_1(Int3_ltOperator, operator<, Bool3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_lteOperator, operator<=, Bool3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_gtOperator, operator>, Bool3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_gteOperator, operator>=, Bool3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_eOperator, operator==, Bool3, Int3);
+    __IMPLEMENT_FUNCTION_1(Int3_neOperator, operator!=, Bool3, Int3);
 
-    __IMPLEMENT_FUNCTION_1(Int3_elementAccessOperatorInt, operator[], i32, i32);
-    __IMPLEMENT_FUNCTION_1(Int3_elementAccessOperatorUInt, operator[], i32, u32);
+    __IMPLEMENT_FUNCTION_1(Int3_elementAccessOperatorInt, operator[], Int, Int);
+    __IMPLEMENT_FUNCTION_1(Int3_elementAccessOperatorUInt, operator[], Int, UInt);
 
     char swizzleMask[] = { 'x', 'y', 'z' };
-    __IMPLEMENT_SWIZZLE(i32, 3, swizzleMask)
+    __IMPLEMENT_SWIZZLE(Int, 3, swizzleMask);
     
     char colorMask[] = { 'r', 'g', 'b' };
-    __IMPLEMENT_SWIZZLE(i32, 3, colorMask)
+    __IMPLEMENT_SWIZZLE(Int, 3, colorMask);
 
     SYMBOL_STATIC_ALLOC = false;
 }

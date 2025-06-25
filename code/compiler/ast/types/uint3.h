@@ -12,17 +12,17 @@ namespace GPULang
 {
 
 #define UINT3_CTOR_LIST\
-    X(UInt3, ctor_SingleValue, u32, 1, 3, 3, None)\
-    X(UInt3, ctor_SingleIntValue, i32, 1, 3, 3, IntToUInt)\
-    X(UInt3, ctor_SingleBoolValue, b8, 1, 3, 3, BoolToUInt)\
-    X(UInt3, ctor_Int3, i32x3, 1, 1, 3, IntToUInt)\
-    X(UInt3, ctor_Float3, f32x3, 1, 1, 3, FloatToUInt)\
-    X(UInt3, ctor_Bool3, b8x3, 1, 1, 3, BoolToUInt)\
-    X(UInt3, ctor_UInt3, u32x3, 1, 1, 3, None)
+    X(UInt3, ctor_SingleValue, UInt, 1, 3, 3, None)\
+    X(UInt3, ctor_SingleIntValue, Int, 1, 3, 3, IntToUInt)\
+    X(UInt3, ctor_SingleBoolValue, Bool, 1, 3, 3, BoolToUInt)\
+    X(UInt3, ctor_Int3, Int3, 1, 1, 3, IntToUInt)\
+    X(UInt3, ctor_Float3, Float3, 1, 1, 3, FloatToUInt)\
+    X(UInt3, ctor_Bool3, Bool3, 1, 1, 3, BoolToUInt)\
+    X(UInt3, ctor_UInt3, UInt3, 1, 1, 3, None)
 
 #define UINT3_CTOR2_LIST\
-    X(UInt3, ctor_UInt2_UInt, u32x2, u32)\
-    X(UInt3, ctor_UInt_UInt2, u32, u32x2)
+    X(UInt3, ctor_UInt2_UInt, UInt2, UInt)\
+    X(UInt3, ctor_UInt_UInt2, UInt, UInt2)
 
 struct UInt3 : public Type
 {

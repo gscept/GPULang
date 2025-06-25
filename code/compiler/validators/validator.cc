@@ -1023,24 +1023,27 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
     else
     {
-        // find functions with similar name
-        std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
-        for (Symbol* matchingFunction : matchingFunctions)
+        if (!compiler->staticSymbolSetup)
         {
-            if (matchingFunction->symbolType == Symbol::FunctionType)
+            // find functions with similar name
+            std::vector<Symbol*> matchingFunctions = compiler->GetSymbols(fun->name);
+            for (Symbol* matchingFunction : matchingFunctions)
             {
-                Function* otherFunction = static_cast<Function*>(matchingFunction);
+                if (matchingFunction->symbolType == Symbol::FunctionType)
+                {
+                    Function* otherFunction = static_cast<Function*>(matchingFunction);
 
-                if (!fun->IsCompatible(otherFunction, false))
-                    continue;
+                    if (!fun->IsCompatible(otherFunction, false))
+                        continue;
 
-                // if all checks prove these functions are identical, throw error
-                if (fun->returnType != otherFunction->returnType)
-                    compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
-                else
-                    compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                    // if all checks prove these functions are identical, throw error
+                    if (fun->returnType != otherFunction->returnType)
+                        compiler->Error(Format("Function '%s' can not be overloaded because it only differs by return type when trying to overload previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
+                    else
+                        compiler->Error(Format("Function '%s' redefinition, previous definition at %s(%d)", functionFormatted.c_str(), otherFunction->location.file.c_str(), otherFunction->location.line), fun);
 
-                return false;
+                    return false;
+                }
             }
         }
     }
@@ -1053,8 +1056,15 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     if (!compiler->AddSymbol(TransientString(funResolved->signature), fun, false))
         return false;
 
+    if (fun->constructorType != nullptr)
+    {
+        if (!compiler->AddSymbol(fun->name, fun, true))
+            return false;
+    }
+
+    /*
     // Check if the function has a constructor type associated with it
-    if (fun->constructorType == nullptr)
+    if (fun->constructorType == nullptr && !compiler->staticSymbolSetup)
     {
         // If not look it up
         Symbol* constructorType = compiler->GetSymbol<Symbol>(fun->name);
@@ -1071,6 +1081,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         if (!compiler->AddSymbol(fun->name, fun, true))
             return false;
     }
+    */
 
     if (funResolved->returnTypeSymbol == nullptr)
     {
@@ -1917,7 +1928,8 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         return false;
     }
 
-    enumResolved->typeSymbol = compiler->GetType(enumeration->type);
+    if (enumResolved->typeSymbol == nullptr)
+        enumResolved->typeSymbol = compiler->GetType(enumeration->type);
     enumeration->baseType = enumResolved->typeSymbol->baseType;
     enumeration->symbols.Clear();
     
@@ -1934,47 +1946,55 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             SYMBOL_STATIC_ALLOC = true;
 
             // Create constructor from type, and to type
-            Function* fromUnderlyingType = StaticAlloc<Function>();
+            Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
             fromUnderlyingType->name = enumeration->name;
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
+            Symbol::Resolved(fromUnderlyingType)->returnTypeSymbol = enumeration;
             Variable* arg = StaticAlloc<Variable>();
             arg->name = arg0;
             arg->type = enumeration->type;
+            Symbol::Resolved(arg)->typeSymbol = enumResolved->typeSymbol;
             parameters.Clear();
             parameters.Append(arg);
             fromUnderlyingType->parameters = StaticArray<Variable*>(parameters);
             enumeration->globals.push_back(fromUnderlyingType);
 
-            Function* toUnderlyingType = StaticAlloc<Function>();
+            Function* toUnderlyingType = &enumeration->toUnderlyingType;
             toUnderlyingType->name = enumeration->type.name;
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
+            Symbol::Resolved(toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
             arg = StaticAlloc<Variable>();
             arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };
+            Symbol::Resolved(arg)->typeSymbol = enumeration;
             parameters.Clear();
             parameters.Append(arg);
             toUnderlyingType->parameters = StaticArray<Variable*>(parameters);
             enumeration->globals.push_back(toUnderlyingType);
 
-            Function* comparison = StaticAlloc<Function>();
+            Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
+            Symbol::Resolved(comparison)->returnTypeSymbol = &BoolType;
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
+            Symbol::Resolved(arg)->typeSymbol = enumeration;
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = StaticArray<Variable*>(parameters);
             enumeration->staticSymbols.push_back(comparison);
 
-            comparison = StaticAlloc<Function>();
+            comparison = &enumeration->neqOp;
             comparison->name = neqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
+            Symbol::Resolved(comparison)->returnTypeSymbol = &BoolType;
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
+            Symbol::Resolved(arg)->typeSymbol = enumeration;
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = StaticArray<Variable*>(parameters);
@@ -1986,7 +2006,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             TransientArray<Variable*> parameters(1);
 
             // Create constructor from type, and to type
-            Function* fromUnderlyingType = Alloc<Function>();
+            Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
             fromUnderlyingType->name = enumeration->name;
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
@@ -1998,7 +2018,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(fromUnderlyingType);
 
-            Function* toUnderlyingType = Alloc<Function>();
+            Function* toUnderlyingType = &enumeration->toUnderlyingType;
             toUnderlyingType->name = enumeration->type.name;
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
@@ -2010,7 +2030,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->parameters = parameters;
             enumeration->globals.push_back(toUnderlyingType);
 
-            Function* comparison = Alloc<Function>();
+            Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = Alloc<Variable>();
@@ -2021,7 +2041,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             comparison->parameters = parameters;
             enumeration->staticSymbols.push_back(comparison);
 
-            comparison = Alloc<Function>();
+            comparison = &enumeration->neqOp;
             comparison->name = neqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
             arg = Alloc<Variable>();
@@ -2117,22 +2137,20 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->Resolve(compiler);
     }
 
-    if (var->type.name == UNDEFINED_TYPE)
-    {
-        if (var->valueExpression != nullptr)
-            var->valueExpression->EvalType(var->type);
-        else
-        {
-            compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
-            return false;
-        }
-    }
-
-    Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
-
     Type* type = varResolved->typeSymbol;
     if (type == nullptr)
     {
+        if (var->type.name == UNDEFINED_TYPE)
+        {
+            if (var->valueExpression != nullptr)
+                var->valueExpression->EvalType(var->type);
+            else
+            {
+                compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
+                return false;
+            }
+        }
+
         type = compiler->GetType(var->type);
         if (type == nullptr)
         {
@@ -2142,7 +2160,8 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         varResolved->typeSymbol = type;
         var->type.name = type->name;        // because we can do an alias lookup, this value might change
     }
-    
+    Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
+
     varResolved->type = var->type;
     varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true

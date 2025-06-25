@@ -143,6 +143,7 @@ fips_dir(ast/types)
         bool3.h
         bool4.cc
         bool4.h
+        builtins.cc
         builtins.h
         float.cc
         float.h
