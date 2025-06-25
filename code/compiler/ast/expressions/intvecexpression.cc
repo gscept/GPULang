@@ -62,6 +62,17 @@ IntVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+IntVecExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 IntVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;

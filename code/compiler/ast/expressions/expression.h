@@ -310,6 +310,8 @@ struct Expression : public Symbol
 
     /// eval type
     virtual bool EvalType(Type::FullType& out) const;
+    /// eval type symbol
+    virtual bool EvalTypeSymbol(Type*& out) const;
     /// eval symbol
     virtual bool EvalSymbol(FixedString& out) const;
     /// Evaluate value

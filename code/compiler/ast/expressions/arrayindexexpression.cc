@@ -95,6 +95,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         thisResolved->returnFullType.modifiers.erase(thisResolved->returnFullType.modifiers.begin());
         thisResolved->returnFullType.modifierValues.erase(thisResolved->returnFullType.modifierValues.begin());
     }
+    
     thisResolved->returnType = compiler->GetType(thisResolved->returnFullType);
 
     if (!thisResolved->leftFullType.modifierValues.empty())
@@ -114,7 +115,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
         }
     }
     // Return type is the left type with one less modifier
-    thisResolved->lhsType = compiler->GetType(thisResolved->leftFullType);
+    this->left->EvalTypeSymbol(thisResolved->lhsType);
     if (thisResolved->lhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(thisResolved->leftFullType.name, this);
@@ -124,7 +125,7 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     // If we have a right expression (array index), get the type and validate
     if (this->right != nullptr)
     {
-        thisResolved->rhsType = compiler->GetType(thisResolved->rightFullType);
+        this->right->EvalTypeSymbol(thisResolved->rhsType);
         if (thisResolved->rhsType == nullptr)
         {
             compiler->UnrecognizedTypeError(thisResolved->rightFullType.ToString(), this);
@@ -149,6 +150,17 @@ ArrayIndexExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->returnFullType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+ArrayIndexExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->returnType;
     return true;
 }
 

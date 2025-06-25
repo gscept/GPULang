@@ -40,7 +40,7 @@ this->constructors.push_back(activeFunction);
 #define __IMPLEMENT_CTOR(method, id, type)\
 parameters.Clear();\
 method.name = ConstantString(#id);\
-method.returnType = Type::FullType{ConstantString(#type)};\
+method.returnType = Type::FullType{type##Type.name};\
 method.compileTime = true;\
 method.constructorType = &type##Type;\
 Symbol::Resolved(&method)->returnTypeSymbol = &type##Type;\
@@ -79,7 +79,7 @@ activeFunction = &method;\
 #define __ADD_FUNCTION_PARAM(id, t)\
 {\
     Variable* var = StaticAlloc<Variable>();\
-    var->name = t##Type.name;\
+    var->name = ConstantString(#id);\
     var->type = Type::FullType{t##Type.name};\
     Symbol::Resolved(var)->typeSymbol = &t##Type;\
     parameters.Append(var);\

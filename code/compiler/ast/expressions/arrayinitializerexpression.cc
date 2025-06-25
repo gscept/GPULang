@@ -95,6 +95,17 @@ ArrayInitializerExpression::EvalType(Type::FullType& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool
+ArrayInitializerExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 TransientString
 ArrayInitializerExpression::EvalString() const
 {

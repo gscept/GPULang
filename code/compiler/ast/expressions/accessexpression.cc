@@ -58,7 +58,7 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->leftType.modifiers.pop_back();
     }
 
-    thisResolved->lhsType = compiler->GetType(thisResolved->leftType);
+    this->left->EvalTypeSymbol(thisResolved->lhsType);
     if (thisResolved->lhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(TransientString(thisResolved->leftType.name), this);
@@ -72,7 +72,7 @@ AccessExpression::Resolve(Compiler* compiler)
         return false;
 
     this->right->EvalType(thisResolved->rightType);
-    thisResolved->rhsType = compiler->GetType(thisResolved->rightType);
+    this->right->EvalTypeSymbol(thisResolved->rhsType);
     if (thisResolved->rhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(TransientString(thisResolved->rightType.name), this);
@@ -104,6 +104,7 @@ AccessExpression::Resolve(Compiler* compiler)
         thisResolved->retType = thisResolved->lhsType;
         thisResolved->returnType.swizzleName = vectorType;
         thisResolved->returnType.swizzleMask = swizzle;
+        thisResolved->swizzleType = compiler->GetType(thisResolved->returnType);
     }
     else if (!thisResolved->leftType.modifiers.empty() && thisResolved->leftType.modifiers.front() == Type::FullType::Modifier::Array)
     {
@@ -152,6 +153,20 @@ AccessExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->returnType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+AccessExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->swizzleType != nullptr)
+        out = thisResolved->swizzleType;
+    else
+        out = thisResolved->retType;
     return true;
 }
 

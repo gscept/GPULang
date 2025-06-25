@@ -134,6 +134,16 @@ Expression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+Expression::EvalTypeSymbol(Type*& out) const
+{
+    out = nullptr;
+    return false;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 Expression::EvalSymbol(FixedString& out) const
 {
     return false;

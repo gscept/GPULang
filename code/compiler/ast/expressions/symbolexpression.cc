@@ -55,7 +55,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             Variable* var = static_cast<Variable*>(thisResolved->symbol);
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = varResolved->type;
-            thisResolved->type = compiler->GetType(thisResolved->fullType);
+            thisResolved->type = varResolved->typeSymbol;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)
@@ -122,6 +122,17 @@ SymbolExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->fullType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+SymbolExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
     return true;
 }
 

@@ -220,6 +220,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
             Type* type = static_cast<Type*>(*typeIt);
             type->symbols.Invalidate();
             type->scope.symbolLookup.Invalidate();
+            type->scope.symbolLookup.BeginBulkAdd();
 
             this->validator->ResolveType(this, *typeIt);
             typeIt++;
@@ -238,6 +239,8 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         while (typeIt != DefaultTypes.end())
         {
             this->validator->ResolveTypeMethods(this, *typeIt);
+            Type* type = static_cast<Type*>(*typeIt);
+            type->scope.symbolLookup.EndBulkAdd();
             typeIt++;
         }
 
@@ -371,7 +374,6 @@ Compiler::EndStaticSymbolSetup()
     this->staticSymbolSetup = false;
     this->intrinsicScope->symbolLookup.EndBulkAdd();
 }
-
 
 //------------------------------------------------------------------------------
 /**

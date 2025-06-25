@@ -24,6 +24,8 @@ struct CallExpression : public Expression
 
     /// eval type
     bool EvalType(Type::FullType& out) const override;
+    /// eval type symbol
+    bool EvalTypeSymbol(Type*& out) const override;
     /// eval symbol
     bool EvalSymbol(FixedString& out) const override;
     /// Evaluate value

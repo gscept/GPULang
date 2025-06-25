@@ -26,6 +26,8 @@ struct AccessExpression : public Expression
 
     /// eval type
     bool EvalType(Type::FullType& out) const override;
+    /// eval type symbol
+    bool EvalTypeSymbol(Type*& out) const override;
     /// eval symbol
     bool EvalSymbol(FixedString& out) const override;
     /// Evaluate value
@@ -52,6 +54,7 @@ struct AccessExpression : public Expression
         Type::FullType returnType;
         Type* retType;
         Type::SwizzleMask swizzleMask;
+        Type* swizzleType = nullptr;
     };
 };
 

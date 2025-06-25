@@ -56,6 +56,17 @@ IntExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+IntExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 IntExpression::EvalSymbol(FixedString& out) const
 {
     return false;

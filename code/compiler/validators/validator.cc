@@ -2061,10 +2061,13 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         Expression* expr = enumeration->values.buf[i];
 
         // Check of label redefinition
-        if (enumeration->scope.symbolLookup.Find(str) != enumeration->scope.symbolLookup.end())
+        if (!compiler->staticSymbolSetup)
         {
-            compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
-            return false;
+            if (enumeration->scope.symbolLookup.Find(str) != enumeration->scope.symbolLookup.end())
+            {
+                compiler->Error(Format("Enumeration redefinition '%s' in '%s'", str.c_str(), enumeration->name.c_str()), symbol);
+                return false;
+            }
         }
 
         // Setup variable
@@ -2136,21 +2139,21 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
         expr->isLhsValue = false;
         expr->Resolve(compiler);
     }
+    
+    if (var->type.name == UNDEFINED_TYPE)
+    {
+        if (var->valueExpression != nullptr)
+            var->valueExpression->EvalType(var->type);
+        else
+        {
+            compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
+            return false;
+        }
+    }
 
     Type* type = varResolved->typeSymbol;
     if (type == nullptr)
     {
-        if (var->type.name == UNDEFINED_TYPE)
-        {
-            if (var->valueExpression != nullptr)
-                var->valueExpression->EvalType(var->type);
-            else
-            {
-                compiler->Error(Format("'%s' can't infer it's type, either initialize the value or declare its type explicitly", var->name.c_str()), symbol);
-                return false;
-            }
-        }
-
         type = compiler->GetType(var->type);
         if (type == nullptr)
         {
@@ -2663,8 +2666,10 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->UnrecognizedTypeError(rhs.name, symbol);
             return false;
         }
-        Type* rhsType = compiler->GetType(rhs);
-        Type* lhsType = compiler->GetType(lhs);
+        
+        Type* lhsType = varResolved->typeSymbol;
+        Type* rhsType;
+        var->valueExpression->EvalTypeSymbol(rhsType);
 
         if (varResolved->usageBits.flags.isConst && varResolved->storage == Storage::Global)
         {
@@ -3124,7 +3129,9 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
             // Convert condition if not bool
             Type::FullType conditionType;
             statement->condition->EvalType(conditionType);
-            Type* typeSymbol = compiler->GetType(conditionType);
+            Type* typeSymbol;
+            statement->condition->EvalTypeSymbol(typeSymbol);
+            
             if (typeSymbol->baseType != TypeCode::Bool)
             {
                 Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));
@@ -3338,7 +3345,8 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 // Convert condition if not bool
                 Type::FullType conditionType;
                 statement->condition->EvalType(conditionType);
-                Type* typeSymbol = compiler->GetType(conditionType);
+                Type* typeSymbol;
+                statement->condition->EvalTypeSymbol(typeSymbol);
                 if (typeSymbol->baseType != TypeCode::Bool)
                 {
                     Symbol* conversionFunction = compiler->GetSymbol(Format("b8(%s)", conditionType.name.c_str()));

@@ -77,6 +77,17 @@ CommaExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+CommaExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->rhsType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 CommaExpression::EvalSymbol(FixedString& out) const
 {
     return this->right->EvalSymbol(out);

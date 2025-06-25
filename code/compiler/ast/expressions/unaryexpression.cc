@@ -170,6 +170,17 @@ UnaryExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+UnaryExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 UnaryExpression::EvalSymbol(FixedString& out) const
 {
     if (this->op == '*')

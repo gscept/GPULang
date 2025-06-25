@@ -63,6 +63,17 @@ FloatVecExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+FloatVecExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 FloatVecExpression::EvalSymbol(FixedString& out) const
 {
     return false;

@@ -22,6 +22,7 @@ namespace GPULang
 SamplerStateType::SamplerStateType()
 {
     SYMBOL_STATIC_ALLOC = true;
+    this->name = ConstantString("SamplerState");
     this->category = Type::Category::SamplerCategory;
 
     __BEGIN_ENUMS__();

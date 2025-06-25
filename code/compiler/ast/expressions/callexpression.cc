@@ -58,7 +58,8 @@ CallExpression::Resolve(Compiler* compiler)
         Storage storage;
         expr->EvalStorage(storage);
 
-        Type* type = compiler->GetType(fullType);
+        Type* type;
+        expr->EvalTypeSymbol(type);
         if (type == nullptr)
         {
             compiler->UnrecognizedTypeError(fullType.ToString(), this);
@@ -382,6 +383,17 @@ bool
 CallExpression::EvalType(Type::FullType& out) const
 {
     out = this->thisResolved->returnType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+CallExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->retType;
     return true;
 }
 

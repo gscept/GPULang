@@ -25,7 +25,7 @@ namespace GPULang
 RenderStateType::RenderStateType()
 {
     SYMBOL_STATIC_ALLOC = true;
-
+    this->name = ConstantString("RenderState");
     this->category = Type::Category::RenderStateCategory;
 
     __BEGIN_ENUMS__();

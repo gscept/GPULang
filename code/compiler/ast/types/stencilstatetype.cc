@@ -19,6 +19,7 @@ namespace GPULang
 StencilStateType::StencilStateType()
 {
     SYMBOL_STATIC_ALLOC = true;
+    this->name = ConstantString("StencilState");
     this->category = Type::Category::StencilStateCategory;
     
     __SETUP_MEMBER(StencilState_fail, Fail, StencilOpTypeType);

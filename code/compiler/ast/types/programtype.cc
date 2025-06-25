@@ -12,6 +12,7 @@ namespace GPULang
 ProgramType::ProgramType()
 {
     SYMBOL_STATIC_ALLOC = true;
+    this->name = ConstantString("Program");
 
     __SETUP_MEMBER(Program_renderState, RenderState, renderState, RenderState);
     __SETUP_MEMBER(Program_vertexShader, VertexShader, function, Function);

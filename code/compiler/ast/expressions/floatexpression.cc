@@ -57,6 +57,17 @@ FloatExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+FloatExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 FloatExpression::EvalSymbol(FixedString& out) const
 {
     return false;

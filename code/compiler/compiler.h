@@ -427,10 +427,45 @@ Compiler::GetSymbol(const TransientString& name) const
 inline Type*
 Compiler::GetType(const Type::FullType& type) const
 {
+    Symbol* sym = nullptr;
+    FixedString str;
     if (type.swizzleName.len > 0)
-        return static_cast<Type*>(this->GetSymbol(type.swizzleName));
+        str = type.swizzleName;
     else
-        return static_cast<Type*>(this->GetSymbol(type.name));
+        str = type.name;
+    
+    auto scopeIter = this->scopes.rbegin();
+    do
+    {
+        auto scope = scopeIter.get();
+        PinnedMap<FixedString, Symbol*>* map;
+        if (scope->type == Scope::ScopeType::Type)
+        {
+            Type* type = static_cast<Type*>(scope->owningSymbol);
+            map = &type->scope.symbolLookup;
+        }
+        else
+        {
+            map = &scope->symbolLookup;
+        }
+        auto it = map->Find(str);
+        if (it != map->end())
+        {
+            while (it->first == str)
+            {
+                if (it->second->symbolType == Symbol::SymbolType::TypeType)
+                {
+                    sym = it->second;
+                    break;
+                }
+                else
+                    it++;
+            }
+        }
+        scopeIter++;
+    }
+    while (scopeIter != this->scopes.rend());
+    return static_cast<Type*>(sym);
 }
 
 } // namespace GPULang

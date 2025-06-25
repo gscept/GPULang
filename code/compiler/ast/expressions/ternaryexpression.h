@@ -27,6 +27,8 @@ struct TernaryExpression : public Expression
     TransientString EvalString() const override;
     /// eval type
     bool EvalType(Type::FullType& out) const override;
+    /// eval type symbol
+    bool EvalTypeSymbol(Type*& out) const override;
     /// evaluates access flags
     bool EvalAccessFlags(unsigned& out) const override;
     /// evaluates storage

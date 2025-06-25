@@ -77,8 +77,8 @@ BinaryExpression::Resolve(Compiler* compiler)
         compiler->Error(Format("Invalid operator '%c' on type '%s'", this->op, this->thisResolved->rightType.ToString().c_str()), this);
         return false;
     }
-
-    this->thisResolved->lhsType = compiler->GetType(this->thisResolved->leftType);
+    
+    this->left->EvalTypeSymbol(this->thisResolved->lhsType);
     if (this->thisResolved->lhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(this->thisResolved->leftType.name, this);
@@ -95,7 +95,7 @@ BinaryExpression::Resolve(Compiler* compiler)
         return false;
     }
     
-    this->thisResolved->rhsType = compiler->GetType(this->thisResolved->rightType);
+    this->right->EvalTypeSymbol(this->thisResolved->rhsType);
     if (this->thisResolved->rhsType == nullptr)
     {
         compiler->UnrecognizedTypeError(this->thisResolved->rightType.name, this);
@@ -261,6 +261,17 @@ BinaryExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->returnType;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
+BinaryExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->retType;
     return true;
 }
 

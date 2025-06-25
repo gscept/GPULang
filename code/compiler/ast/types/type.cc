@@ -15,6 +15,39 @@
 #endif
 namespace GPULang
 {
+
+struct Namer
+{
+    Namer()
+    {
+        BoolType.name = ConstantString("b8");
+        Bool2Type.name = ConstantString("b8x2");
+        Bool3Type.name = ConstantString("b8x3");
+        Bool4Type.name = ConstantString("b8x4");
+        FloatType.name = ConstantString("f32");
+        Float2Type.name = ConstantString("f32x2");
+        Float3Type.name = ConstantString("f32x3");
+        Float4Type.name = ConstantString("f32x4");
+        IntType.name = ConstantString("i32");
+        Int2Type.name = ConstantString("i32x2");
+        Int3Type.name = ConstantString("i32x3");
+        Int4Type.name = ConstantString("i32x4");
+        UIntType.name = ConstantString("u32");
+        UInt2Type.name = ConstantString("u32x2");
+        UInt3Type.name = ConstantString("u32x3");
+        UInt4Type.name = ConstantString("u32x4");
+        Mat2x2Type.name = ConstantString("f32x2x2");
+        Mat2x3Type.name = ConstantString("f32x2x3");
+        Mat2x4Type.name = ConstantString("f32x2x4");
+        Mat3x2Type.name = ConstantString("f32x3x2");
+        Mat3x3Type.name = ConstantString("f32x3x3");
+        Mat3x4Type.name = ConstantString("f32x3x4");
+        Mat4x2Type.name = ConstantString("f32x4x2");
+        Mat4x3Type.name = ConstantString("f32x4x3");
+        Mat4x4Type.name = ConstantString("f32x4x4");
+    }
+};
+Namer GlobalNamer;
 Function Bool_ctor_UInt;
 Function Bool_ctor_Int;
 Function Bool_ororOperator;
@@ -668,6 +701,15 @@ StencilOpType StencilOpTypeType;
 ExecutionScopeType ExecutionScopeTypeType;
 MemorySemanticsType MemorySemanticsTypeType;
 
+Variable StencilState_fail;
+Variable StencilState_pass;
+Variable StencilState_depthFail;
+Variable StencilState_compare;
+Variable StencilState_compareMask;
+Variable StencilState_writeMask;
+Variable StencilState_referenceMask;
+StencilStateType StencilStateTypeType;
+
 Enumeration RenderState_polygonModeEnum;
 Enumeration RenderState_cullModeEnum;
 Enumeration RenderState_windingOrderModeEnum;
@@ -728,15 +770,6 @@ Variable SamplerState_maxLod;
 Variable SamplerState_borderColor;
 Variable SamplerState_unnormalizedSamplingEnabled;
 SamplerStateType SamplerStateTypeType;
-
-Variable StencilState_fail;
-Variable StencilState_pass;
-Variable StencilState_depthFail;
-Variable StencilState_compare;
-Variable StencilState_compareMask;
-Variable StencilState_writeMask;
-Variable StencilState_referenceMask;
-StencilStateType StencilStateTypeType;
 
 Variable Program_renderState;
 Variable Program_vertexShader;

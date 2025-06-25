@@ -55,6 +55,17 @@ UIntExpression::EvalType(Type::FullType& out) const
 /**
 */
 bool
+UIntExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
+bool
 UIntExpression::EvalSymbol(FixedString& out) const
 {
     return false;

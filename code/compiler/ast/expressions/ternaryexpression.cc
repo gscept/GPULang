@@ -97,6 +97,17 @@ TernaryExpression::EvalType(Type::FullType& out) const
 //------------------------------------------------------------------------------
 /**
 */
+bool
+TernaryExpression::EvalTypeSymbol(Type*& out) const
+{
+    auto thisResolved = Symbol::Resolved(this);
+    out = thisResolved->type;
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 bool 
 TernaryExpression::EvalAccessFlags(unsigned& out) const
 {
