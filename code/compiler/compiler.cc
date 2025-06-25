@@ -196,11 +196,11 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     // if we want other header generators in the future, add here
     this->headerGenerator = new HGenerator();
 
-    this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
+    //this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
     {
         this->performanceTimer.Start();
 
-        MakeAllocatorCurrent(&StaticAllocator);
+        //MakeAllocatorCurrent(&StaticAllocator);
 
         // Allocate main scopes
         this->intrinsicScope = StaticAlloc<Scope>();
@@ -302,8 +302,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->ignoreReservedWords = false;
         this->EndStaticSymbolSetup();
 
-        // push a new scope for all the parsed symbols
-        this->PushScope(this->mainScope);
+        this->performanceTimer.Start();
 
         switch (this->lang)
         {
@@ -319,7 +318,11 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
             SPIRVGenerator::SetupIntrinsics();
             break;
         }
-    });
+
+        this->performanceTimer.Stop();
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static setup target intrinsics");
+    }//);
 }
 
 //------------------------------------------------------------------------------
@@ -678,7 +681,18 @@ Compiler::MarkScopeReachable()
 bool 
 Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWriter)
 {
-    ThreadJoin(this->staticSetupThread);
+    this->performanceTimer.Start();
+
+    //ThreadJoin(this->staticSetupThread);
+
+    this->performanceTimer.Stop();
+
+    if (this->options.emitTimings)
+        this->performanceTimer.Print("Static init wait");
+
+    // push a new scope for all the parsed symbols
+    this->PushScope(this->mainScope);
+
     bool ret = true;
     this->linkDefineCounter = 0;
     this->validator->defaultGroup = this->options.defaultGroupBinding;
