@@ -177,7 +177,7 @@ arguments.Append(newVar);\
 {\
 newVar = StaticAlloc<Variable>();\
 newVar->name = ConstantString(#nm);\
-newVar->type = Type::FullType(ConstantString(#tp));\
+newVar->type = Type::FullType(tp##Type.name);\
 Symbol::Resolved(newVar)->typeSymbol = &tp##Type;\
 newVar->type.mut = true;\
 arguments.Append(newVar);\

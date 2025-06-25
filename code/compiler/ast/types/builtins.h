@@ -74,11 +74,12 @@ struct Void : public Type
     {
         this->name = ConstantString("void");
         this->category = VoidCategory;
+        this->baseType = TypeCode::Void;
     }
 };
 extern Void VoidType;
 
-#define MAKE_TEXTURE_TYPE(type) struct Texture##type : public Type { Texture##type() { this->name = ConstantString("texture" #type); this->category = TextureCategory;}}; extern Texture##type Texture##type##Type;
+#define MAKE_TEXTURE_TYPE(type) struct Texture##type : public Type { Texture##type() { this->name = ConstantString("texture" #type); this->baseType = TypeCode::Texture##type; this->category = TextureCategory;}}; extern Texture##type Texture##type##Type;
 
 MAKE_TEXTURE_TYPE(1D)
 MAKE_TEXTURE_TYPE(1DArray)
@@ -97,6 +98,7 @@ struct SamplerType : public Type
     {
         this->name = ConstantString("sampler");
         this->category = SamplerCategory;
+        this->baseType = TypeCode::Sampler;
     }
 };
 extern SamplerType SamplerTypeType;
@@ -107,6 +109,7 @@ struct PixelCacheType : public Type
     {
         this->name = ConstantString("pixelCache");
         this->category = PixelCacheCategory;
+        this->baseType = TypeCode::PixelCache;
     }
 };
 extern PixelCacheType PixelCacheTypeType;
@@ -117,6 +120,7 @@ struct PixelCacheMS : public Type
     {
         this->name = ConstantString("pixelCacheMS");
         this->category = PixelCacheCategory;
+        this->baseType = TypeCode::PixelCacheMS;
     }
 };
 extern PixelCacheMS PixelCacheMSType;
@@ -127,6 +131,7 @@ struct AccelerationStructureType : public Type
     {
         this->name = ConstantString("accelerationStructure");
         this->category = AccelerationStructureCategory;
+        this->baseType = TypeCode::AccelerationStructure;
     }
 };
 extern AccelerationStructureType AccelerationStructureTypeType;

@@ -200,6 +200,8 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
     {
         this->performanceTimer.Start();
 
+        MakeAllocatorCurrent(&StaticAllocator);
+
         // Allocate main scopes
         this->intrinsicScope = StaticAlloc<Scope>();
         this->intrinsicScope->type = Scope::ScopeType::Global;

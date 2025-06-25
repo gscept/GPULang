@@ -1056,7 +1056,7 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     if (!compiler->AddSymbol(TransientString(funResolved->signature), fun, false))
         return false;
 
-    if (fun->constructorType != nullptr)
+    if (fun->constructorType == nullptr)
     {
         if (!compiler->AddSymbol(fun->name, fun, true))
             return false;
@@ -2096,6 +2096,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
                 uint32_t value;
                 val.Store(value);
                 sym = Alloc<EnumExpression>(value, expressionType, enumeration->type);
+                Symbol::Resolved(sym)->type = enumeration;
                 nextValue = value + 1;
             }
             else
@@ -2107,6 +2108,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         else
         {
             sym = Alloc<EnumExpression>(nextValue++, expressionType, enumeration->type);
+            Symbol::Resolved(sym)->type = enumeration;
         }
 
         // Add to type
@@ -2666,7 +2668,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             compiler->UnrecognizedTypeError(rhs.name, symbol);
             return false;
         }
-        
         Type* lhsType = varResolved->typeSymbol;
         Type* rhsType;
         var->valueExpression->EvalTypeSymbol(rhsType);

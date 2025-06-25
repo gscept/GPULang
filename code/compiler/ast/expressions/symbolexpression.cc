@@ -6,6 +6,7 @@
 #include "ast/symbol.h"
 #include "ast/variable.h"
 #include "ast/function.h"
+#include "ast/types/builtins.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/types/type.h"
@@ -62,7 +63,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         {
             Structure* struc = static_cast<Structure*>(thisResolved->symbol);
             thisResolved->fullType = Type::FullType{ struc->name };
-            thisResolved->type = compiler->GetType(thisResolved->fullType);
+            thisResolved->type = struc;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::TypeType)
@@ -76,23 +77,31 @@ SymbolExpression::Resolve(Compiler* compiler)
         {
             // If lhs, it means it's a function assignment, therefore function pointer
             thisResolved->fullType = Type::FullType{ FUNCTION_TYPE };
+            thisResolved->type = &FunctionTypeType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
         {
             Type* type = static_cast<Type*>(thisResolved->symbol);
             thisResolved->fullType = Type::FullType{ type->name };
+            thisResolved->type = type;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
         {
             EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->symbol);
             thisResolved->fullType = expr->type;
+            if (!expr->EvalTypeSymbol(thisResolved->type))
+            {
+                compiler->Error(Format("Symbol is not a valid enum value"), this);
+                return false;
+            }
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::RenderStateType)
         {
             thisResolved->fullType = Type::FullType{ ConstantString("renderState") };
+            thisResolved->type = &RenderStateTypeType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
@@ -100,7 +109,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = Type::FullType{ ConstantString("sampler") };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
-            thisResolved->type = compiler->GetType(thisResolved->fullType);
+            thisResolved->type = &SamplerTypeType;
             return true;
         }
         else
