@@ -17,30 +17,31 @@
 
 #define __BEGIN_TYPE() TransientArray<Variable*> parameters(32);
 
-#define __IMPLEMENT_CTOR_1(method, id, t, argtype, static_type)\
+#define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 parameters.Clear();\
 method.name = ConstantString(#id);\
-method.returnType = Type::FullType{ConstantString(#t)};\
+method.returnType = Type::FullType{t##Type.name};\
 method.compileTime = true;\
-method.constructorType = &GPULang::static_type##Type;\
+method.constructorType = &t##Type;\
 this->globals.push_back(&method);\
 activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
     var->name = ConstantString("_arg0"); \
-    var->type = Type::FullType{ ConstantString(#argtype) }; \
+    var->type = Type::FullType{ argtype##Type.name }; \
+    Symbol::Resolved(var)->typeSymbol = &argtype##Type;\
     parameters.Append(var); \
     activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
 this->constructors.push_back(activeFunction);
 
-#define __IMPLEMENT_CTOR(method, id, type, static_type)\
+#define __IMPLEMENT_CTOR(method, id, type)\
 parameters.Clear();\
 method.name = ConstantString(#id);\
 method.returnType = Type::FullType{ConstantString(#type)};\
 method.compileTime = true;\
-method.constructorType = &GPULang::static_type##Type;\
+method.constructorType = &type##Type;\
 this->globals.push_back(&method);\
 activeFunction = &method;\
 activeFunction->documentation = "Constructor of " #type;\

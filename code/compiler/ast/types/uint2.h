@@ -12,13 +12,13 @@ namespace GPULang
 {
 
 #define UINT2_CTOR_LIST\
-    X(UInt2, ctor_SingleValue, u32, 1, 2, 2, None)\
-    X(UInt2, ctor_SingleIntValue, i32, 1, 2, 2, IntToUInt)\
-    X(UInt2, ctor_SingleBoolValue, b8, 1, 2, 2, BoolToUInt)\
-    X(UInt2, ctor_Int2, i32x2, 1, 1, 2, IntToUInt)\
-    X(UInt2, ctor_Float2, f32x2, 1, 1, 2, FloatToUInt)\
-    X(UInt2, ctor_Bool2, b8x2, 1, 1, 2, BoolToUInt)\
-    X(UInt2, ctor_UInt2, u32x2, 1, 1, 2, None)
+    X(UInt2, ctor_SingleValue, UInt, 1, 2, 2, None)\
+    X(UInt2, ctor_SingleIntValue, Int, 1, 2, 2, IntToUInt)\
+    X(UInt2, ctor_SingleBoolValue, Bool, 1, 2, 2, BoolToUInt)\
+    X(UInt2, ctor_Int2, Int2, 1, 1, 2, IntToUInt)\
+    X(UInt2, ctor_Float2, Float2, 1, 1, 2, FloatToUInt)\
+    X(UInt2, ctor_Bool2, Bool2, 1, 1, 2, BoolToUInt)\
+    X(UInt2, ctor_UInt2, UInt2, 1, 1, 2, None)
 
 
 struct UInt2 : public Type

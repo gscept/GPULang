@@ -3,6 +3,7 @@
 //  @copyright (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "uint2.h"
+#include "builtins.h"
 namespace GPULang
 {
 
@@ -19,13 +20,13 @@ UInt2::UInt2()
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
 
-    __IMPLEMENT_CTOR(UInt2_ctor, u32x2, u32x2, UInt2);
+    __IMPLEMENT_CTOR(UInt2_ctor, u32x2, UInt2);
     __ADD_FUNCTION_PARAM(x, u32);
     __ADD_FUNCTION_PARAM(y, u32);
     __ADD_CONSTRUCTOR();
 
 #define X(type, ctor, val, args, splat, size, conversion)\
-    __IMPLEMENT_CTOR_1(type##_##ctor, u32x2, u32x2, val, UInt2);
+    __IMPLEMENT_CTOR_1(type##_##ctor, u32x2, UInt2, val);
 
     UINT2_CTOR_LIST
 #undef X
