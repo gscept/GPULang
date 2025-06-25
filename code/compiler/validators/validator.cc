@@ -51,6 +51,8 @@
 #include "ast/expressions/stringexpression.h"
 #include "ast/statements/discardstatement.h"
 
+#include "ast/types/builtins.h"
+
 namespace GPULang
 {
 
@@ -395,7 +397,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     stateResolved->isInline = state->isInline;
     stateResolved->isImmutable = state->isImmutable;
 
-    Type* samplerStateType = compiler->GetSymbol<Type>(TransientString("samplerState"));
+    Type* samplerStateType = &SamplerStateTypeType;
     stateResolved->typeSymbol = samplerStateType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &samplerStateType->scope);
 
@@ -1129,7 +1131,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     Program* prog = static_cast<Program*>(symbol);
     Program::__Resolved* progResolved = Symbol::Resolved(prog);
 
-    Type* progType = compiler->GetSymbol<Type>(TransientString("program"));
+    Type* progType = &ProgramTypeType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
     progResolved->typeSymbol = progType;
     for (Expression* entry : prog->entries)
@@ -1445,7 +1447,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
     RenderState* state = static_cast<RenderState*>(symbol);
     RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
 
-    Type* renderStateType = compiler->GetSymbol<Type>(TransientString("renderState"));
+    Type* renderStateType = &RenderStateTypeType;
     stateResolved->typeSymbol = renderStateType;
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
@@ -2859,7 +2861,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         {
                             generatedVar->type.name = "u32";
                             generatedVarResolved->type.name = "u32";
-                            generatedVarResolved->typeSymbol = compiler->GetType(generatedVarResolved->type);
+                            generatedVarResolved->typeSymbol = &UIntType;
                         }
                         
                         uint32_t size = varResolved->typeSymbol->CalculateSize();

@@ -1060,6 +1060,7 @@ Type::SetupDefaultTypes()
     Enumeration* compareModeEnum = StaticAlloc<Enumeration>();
     compareModeEnum->name = ConstantString("CompareMode");
     compareModeEnum->type = Type::FullType{ ConstantString("u32") };
+    Symbol::Resolved(compareModeEnum)->typeSymbol = &UIntType;
     compareModeEnum->type.literal = true;
     compareModeEnum->baseType = GPULang::TypeCode::UInt;
     
@@ -1079,6 +1080,7 @@ Type::SetupDefaultTypes()
     Enumeration* stencilOpEnum = StaticAlloc<Enumeration>();
     stencilOpEnum->name = ConstantString("StencilOp");
     stencilOpEnum->type = Type::FullType{ ConstantString("u32") };
+    Symbol::Resolved(stencilOpEnum)->typeSymbol = &UIntType;
     stencilOpEnum->type.literal = true;
     stencilOpEnum->baseType = GPULang::TypeCode::UInt;
     __ADD_ENUM(Invalid);
@@ -1106,6 +1108,7 @@ Type::SetupDefaultTypes()
     Enumeration* executionScopeEnum = StaticAlloc<Enumeration>();
     executionScopeEnum->name = ConstantString("ExecutionScope");
     executionScopeEnum->type = Type::FullType{ ConstantString("u32") };
+    Symbol::Resolved(executionScopeEnum)->typeSymbol = &UIntType;
     executionScopeEnum->type.literal = true;
     executionScopeEnum->baseType = GPULang::TypeCode::UInt;
     __ADD_ENUM(Global)
@@ -1122,6 +1125,7 @@ Type::SetupDefaultTypes()
     memorySemanticsEnum->name = ConstantString("MemorySemantics");
     memorySemanticsEnum->type = Type::FullType{ ConstantString("u32") };
     memorySemanticsEnum->type.literal = true;
+    Symbol::Resolved(memorySemanticsEnum)->typeSymbol = &UIntType;
     memorySemanticsEnum->baseType = GPULang::TypeCode::UInt;
     labels.Append("Relaxed"); values.Append(StaticAlloc<UIntExpression>(0x0));
     labels.Append("Acquire"); values.Append(StaticAlloc<UIntExpression>(0x1));

@@ -205,6 +205,8 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->mainScope = StaticAlloc<Scope>();
         this->mainScope->type = Scope::ScopeType::Global;
 
+        this->intrinsicScope->symbolLookup.BeginBulkAdd();
+
         // push global scope for all the builtins
         this->PushScope(this->intrinsicScope);
 
@@ -291,6 +293,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         }
 
         this->ignoreReservedWords = false;
+        this->intrinsicScope->symbolLookup.EndBulkAdd();
 
         // push a new scope for all the parsed symbols
         this->PushScope(this->mainScope);

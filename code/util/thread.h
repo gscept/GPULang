@@ -41,7 +41,7 @@ struct Thread
 #if __WIN32__
 inline DWORD WINAPI threadFunc(void* arg)
 #else
-void* threadFunc(void* arg)
+inline void* threadFunc(void* arg)
 #endif
 {
     auto l = static_cast<std::function<void()>*>(arg);
