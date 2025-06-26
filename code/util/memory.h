@@ -143,7 +143,6 @@ align(unsigned int alignant, unsigned int alignment)
     return (alignant + alignment - 1) & ~(alignment - 1);
 }
 
-
 struct SPVArg;
 
 //------------------------------------------------------------------------------

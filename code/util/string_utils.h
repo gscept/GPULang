@@ -171,9 +171,8 @@ template<>
 inline size_t
 FragmentSize(char arg)
 {
-    return NumChars(arg);
+    return 1;
 }
-
 
 template<>
 inline size_t
@@ -285,7 +284,7 @@ template<>
 inline void
 FragmentString(char arg, char* buf, size_t size)
 {
-    snprintf(buf, size, "%hhd", arg);
+    *buf = arg;
 }
 
 template<>
@@ -602,8 +601,8 @@ struct TransientString
     template<>
     void Append(char arg)
     {
-        snprintf(this->buf + this->size, this->capacity - this->size, "%hhd", arg);
-        this->size += NumChars(arg);
+        this->buf[this->size] = arg;
+        this->size++;
         this->buf[this->size] = '\0';
     }
 

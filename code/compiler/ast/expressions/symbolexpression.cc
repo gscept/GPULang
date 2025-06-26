@@ -25,6 +25,7 @@ SymbolExpression::SymbolExpression(const FixedString& symbol)
 {
     this->resolved = Alloc<SymbolExpression::__Resolved>();
     this->thisResolved = Symbol::Resolved(this);
+    this->thisResolved->type = nullptr;
     this->symbolType = SymbolExpressionType;
 }
 
@@ -54,14 +55,20 @@ SymbolExpression::Resolve(Compiler* compiler)
         if (thisResolved->symbol->symbolType == Symbol::VariableType)
         {
             Variable* var = static_cast<Variable*>(thisResolved->symbol);
+            assert(var->symbolType == Symbol::SymbolType::VariableType);
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = varResolved->type;
             thisResolved->type = varResolved->typeSymbol;
+            if (thisResolved->type->symbolType == Symbol::SymbolType::FunctionType)
+            {
+                _CrtDbgBreak();
+            }
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)
         {
             Structure* struc = static_cast<Structure*>(thisResolved->symbol);
+            assert(struc->symbolType == Symbol::SymbolType::StructureType);
             thisResolved->fullType = Type::FullType{ struc->name };
             thisResolved->type = struc;
             return true;
@@ -69,6 +76,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::TypeType)
         {
             Type* type = static_cast<Type*>(thisResolved->symbol);
+            assert(type->symbolType == Symbol::SymbolType::TypeType);
             thisResolved->fullType = Type::FullType{ type->name };
             thisResolved->type = type;
             return true;
@@ -83,6 +91,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
         {
             Type* type = static_cast<Type*>(thisResolved->symbol);
+            assert(type->symbolType == Symbol::SymbolType::EnumerationType);
             thisResolved->fullType = Type::FullType{ type->name };
             thisResolved->type = type;
             return true;
@@ -90,6 +99,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         else if (thisResolved->symbol->symbolType == Symbol::EnumExpressionType)
         {
             EnumExpression* expr = static_cast<EnumExpression*>(thisResolved->symbol);
+            assert(expr->symbolType == Symbol::SymbolType::EnumExpressionType);
             thisResolved->fullType = expr->type;
             if (!expr->EvalTypeSymbol(thisResolved->type))
             {
@@ -142,6 +152,7 @@ SymbolExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
     out = thisResolved->type;
+    assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;
 }
 

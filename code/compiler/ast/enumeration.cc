@@ -28,20 +28,23 @@ Enumeration::Enumeration()
 */
 Enumeration::~Enumeration()
 {
-    for (auto val : this->values)
-        if (val != nullptr)
-            val->~Expression();
+    if (!this->builtin)
+    {
+        for (auto val : this->values)
+            if (val != nullptr)
+                val->~Expression();
 
-    for (auto sym : this->symbols)
-        sym->~Symbol();
-    for (auto sym : this->globals)
-        sym->~Symbol();
-    for (auto sym : this->staticSymbols)
-        sym->~Symbol();
+        for (auto sym : this->symbols)
+            sym->~Symbol();
+        for (auto sym : this->globals)
+            sym->~Symbol();
+        for (auto sym : this->staticSymbols)
+            sym->~Symbol();
 
-    for (auto modifier : this->type.modifierValues)
-        if (modifier != nullptr)
-            modifier->~Expression();
+        for (auto modifier : this->type.modifierValues)
+            if (modifier != nullptr)
+                modifier->~Expression();
+    }
 
 }
 } // namespace GPULang

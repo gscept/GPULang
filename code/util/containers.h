@@ -377,7 +377,7 @@ struct PinnedArray
     /// Free internal resources and reset the array
     void Free()
     {
-        if (this->alloc != nullptr)
+        if (this->alloc != nullptr && this->alloc->mem != nullptr)
             DeallocVirtual(this->alloc);
         this->alloc = nullptr;
         this->data = nullptr;

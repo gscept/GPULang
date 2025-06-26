@@ -1950,6 +1950,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->name = enumeration->name;
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
+            fromUnderlyingType->constructorType = enumeration;
             Symbol::Resolved(fromUnderlyingType)->returnTypeSymbol = enumeration;
             Variable* arg = StaticAlloc<Variable>();
             arg->name = arg0;
@@ -1964,6 +1965,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->name = enumeration->type.name;
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
+            toUnderlyingType->constructorType = enumeration;
             Symbol::Resolved(toUnderlyingType)->returnTypeSymbol = enumResolved->typeSymbol;
             arg = StaticAlloc<Variable>();
             arg->name = arg0;
@@ -2010,6 +2012,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             fromUnderlyingType->name = enumeration->name;
             fromUnderlyingType->returnType = Type::FullType{ enumeration->name };
             fromUnderlyingType->compileTime = true;
+            fromUnderlyingType->constructorType = enumeration;
             Variable* arg = Alloc<Variable>();
             arg->name = arg0;
             arg->type = enumeration->type;
@@ -2022,6 +2025,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             toUnderlyingType->name = enumeration->type.name;
             toUnderlyingType->returnType = enumeration->type;
             toUnderlyingType->compileTime = true;
+            toUnderlyingType->constructorType = enumeration;
             arg = Alloc<Variable>();
             arg->name = arg0;
             arg->type = Type::FullType{ enumeration->name };

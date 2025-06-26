@@ -116,7 +116,11 @@ DestroyAllocator(Allocator* alloc)
         for (size_t i = 0; i < 4096; i++)
         {
             if (alloc->virtualMem[i].mem != nullptr)
+            { 
                 vfree(alloc->virtualMem[i].mem, alloc->virtualMem[i].size);
+                alloc->virtualMem[i] = Allocator::VAlloc();
+            }
+                
         }
     }
 }

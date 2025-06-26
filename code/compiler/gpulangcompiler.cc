@@ -302,6 +302,20 @@ GPULangPreprocess(
         return end;
     };
 
+    static auto trim = [](const char* begin, const char* end) -> const char*
+    {
+        const char* start = begin;
+        while (start < end)
+        {
+            uint8_t nonWsOffset = noCharPos(start, end, { ' ' });
+            if (nonWsOffset != 255)
+                return start + nonWsOffset;
+            else
+                start += 8;
+        }
+        return end;
+    };
+
     static auto wordEnd = [](const char* begin, const char* end) -> const char*
     {
         const char* start = begin;
@@ -887,7 +901,8 @@ GPULangPreprocess(
         {
             POP_FILE()
         }
-        const char* endOfLine = lineEnd(level->it, level->file->contents + level->file->contentSize);
+        const char* endOfFile = level->file->contents + level->file->contentSize;
+        const char* endOfLine = lineEnd(level->it, endOfFile);
 
         std::string_view lineSpan(level->it, endOfLine);
         level->it = endOfLine;
@@ -935,7 +950,7 @@ escape_newline:
         }
 
         auto lineIt = lineSpan.cbegin();
-        auto lineEnd = lineSpan.cend();
+        auto lineEndIt = lineSpan.cend();
         
 #define CHECK_IF()\
         if (ifStack.size > 0)\
@@ -972,7 +987,7 @@ escape_newline:
         argLocs.Append(argLoc);
 
         const char* lineBegin = &(*lineIt);
-        const char* eol = &(*(lineEnd - 1)) + 1;
+        const char* eol = &(*(lineEndIt - 1)) + 1;
         const char* columnIt = lineBegin;
         const char* prevColumnIt = columnIt;
         do 
@@ -1036,7 +1051,8 @@ escape_newline:
                             if (fileStack.Full())
                             {
                                 diagnostics.Append(DIAGNOSTIC("File stack maximum depth of 128 reached"));
-                                return false;
+                                ret = false;
+                                goto end;
                             }
                             fileStack.Append({ inc });
                             level = &fileStack.back();
@@ -1209,7 +1225,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         auto it = definitions.Find(definition);
                         IfLevel ilevel{ .consumed = it != definitions.end(), .active = it != definitions.end() };
@@ -1220,7 +1237,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         IfLevel ilevel{.consumed = true, .active = false};
                         ifStack.Append(ilevel);
@@ -1266,7 +1284,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         auto it = definitions.Find(definition);
                         IfLevel ilevel{ .consumed = it == definitions.end(), .active = it == definitions.end() };
@@ -1277,7 +1296,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         IfLevel ilevel{.consumed = true, .active = false};
                         ifStack.Append(ilevel);
@@ -1340,7 +1360,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         int val = eval(endOfDirective, eol, level, diagnostics, definitions, ret);
                         SETUP_ARG2(pp, std::string(val == 0 ? "false" : "true"), endOfDirective, eol);
@@ -1352,7 +1373,8 @@ escape_newline:
                         if (ifStack.Full())
                         {
                             diagnostics.Append(DIAGNOSTIC("if/ifdef/ifndef max depth of 32 reached"));
-                            return false;
+                            ret = false;
+                            goto end;
                         }
                         IfLevel ilevel{.consumed = true, .active = false};
                         ifStack.Append(ilevel);
@@ -1429,7 +1451,7 @@ escape_newline:
                 auto pp = Alloc<Preprocessor>();
                 pp->type = Preprocessor::Comment;
                 SETUP_PP2(pp, firstWord, eol)
-                pp->location.end = lineEnd - lineIt;
+                pp->location.end = lineEndIt - lineIt;
 
                 output.append(columnIt, firstWord);
                 output.push_back('\n');
@@ -1481,24 +1503,41 @@ escape_newline:
                         pp->type = Preprocessor::Call;
                         SETUP_PP2(pp, startOfWord, endOfWord)
                         
-                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, const FileLevel*, PinnedArray<GPULang::Diagnostic>&)> expandMacro = [](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, const FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics) -> const char*
+                        static std::function<const char*(const char*, const char*, const Macro*, GrowingString&, const PinnedMap<std::string_view, Macro>&, FileLevel*, PinnedArray<GPULang::Diagnostic>&)> expandMacro = [&endOfFile](const char* beginOfCall, const char* eol, const Macro* macro, GrowingString& expanded, const PinnedMap<std::string_view, Macro>& definitions, FileLevel* level, PinnedArray<GPULang::Diagnostic>& diagnostics) -> const char*
                         {
                             StackMap<std::string_view, std::string_view> argumentMap(32);
-                            TransientArray<std::string_view> args(32);
+                            TransientArray<TransientString> args(32);
                             if (macro->args.size > 0)
                             {
                                 if (beginOfCall[0] == '(')
                                 {
+                                    const char* argumentCharacterIt = beginOfCall + 1;
                                     int argStack = 1;
-                                    const char* argListIt = beginOfCall+1;
-                                    const char* argBegin = argListIt;
-                                    
-                                    // parse arguments
-                                    while (argListIt != eol)
+                                    TransientString argStr;
+
+                                arg:
+                                    const char* startOfArgumentWord = identifierBegin(argumentCharacterIt, endOfFile);
+                                    const char* endOfArgumentWord = identifierEnd(startOfArgumentWord, endOfFile);
+                                    const char* endOfLine = eol;
+                                    std::string_view searchWord{ startOfArgumentWord, endOfArgumentWord };
+                                    auto def = definitions.Find(searchWord);
+
+                                    // Process whatever comes before the start of the argument
+                                    while (argumentCharacterIt != startOfArgumentWord)
                                     {
-                                        if (argListIt[0] == '(')
+                                        if (argumentCharacterIt[0] == ',')
+                                        {
+                                            args.Append(argStr);
+                                            argStr.size = 0;
+                                            argumentCharacterIt = trim(argumentCharacterIt+1, endOfFile);
+                                            goto arg;
+                                        }
+                                        else if (argumentCharacterIt[0] == '(')
+                                        {
                                             argStack++;
-                                        else if (argListIt[0] == ')')
+                                            argumentCharacterIt++;
+                                        }
+                                        else if (argumentCharacterIt[0] == ')')
                                         {
                                             argStack--;
                                             if (argStack == 0)
@@ -1508,30 +1547,64 @@ escape_newline:
                                                     diagnostics.Append(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
                                                     return nullptr;
                                                 }
-                                                args.Append(std::string_view(argBegin, argListIt));
-                                                
-                                                argListIt += 1; // parsing done
-                                                break;
+                                                args.Append(argStr.buf);
+                                                argumentCharacterIt++; // parsing done
+                                                goto done;
                                             }
                                         }
-                                        else if (argListIt[0] == ',')
+                                        else if (argumentCharacterIt[0] == '\r')
                                         {
-                                            if (argStack == 1)
+                                            if (argumentCharacterIt[1] == '\n')
                                             {
-                                                args.Append(std::string_view(argBegin, argListIt));
-                                                argBegin = argListIt+1;
+                                                argumentCharacterIt += 2;
                                             }
+                                            else
+                                            {
+                                                argumentCharacterIt += 1;
+                                            }
+                                            level->lineCounter++;
+                                            endOfLine = lineEnd(argumentCharacterIt, endOfFile);
+                                            level->it = endOfLine;
                                         }
-                                        argListIt++;
+                                        else if (argumentCharacterIt[0] == '\n')
+                                        {
+                                            argumentCharacterIt += 1;
+                                            level->lineCounter++;
+                                            endOfLine = lineEnd(argumentCharacterIt, endOfFile);
+                                            level->it = endOfLine;
+                                        }
+                                        else
+                                            argStr.Append(argumentCharacterIt[0]);
+                                        argumentCharacterIt++;
                                     }
-                                    
+
+                                    if (def == definitions.end())
+                                    {
+                                        argStr.Append(searchWord);
+                                    }
+                                    else
+                                    {
+                                        const Macro* subMacro = &def->second;
+                                        const char* macroContentsIt = macro->contents.data();
+                                        const char* macroContentsEnd = macro->contents.data() + macro->contents.size();
+                                        GrowingString expanded;
+                                        expandMacro(macroContentsIt, macroContentsEnd, subMacro, expanded, definitions, level, diagnostics);
+                                        argStr.Append(expanded.ToView());
+                                    }
+                                    argumentCharacterIt = endOfArgumentWord;
+                                    if (argumentCharacterIt == endOfFile)
+                                        goto done;
+                                    goto arg;
+
+                                    done:
+
                                     if (argStack > 0)
                                     {
                                         diagnostics.Append(DIAGNOSTIC("Macro call missing ')'"));
                                         return nullptr;
                                     }
-                                    
-                                    beginOfCall = argListIt;
+
+                                    beginOfCall = argumentCharacterIt;
                                 }
                             }
                                 
@@ -1540,7 +1613,7 @@ escape_newline:
                             int argCounter = 0;
                             for (auto& arg : macro->args)
                             {
-                                argumentMap.Insert(arg, args[argCounter++]);
+                                argumentMap.Insert(arg, args[argCounter++].ToView());
                             }
                             
                             const char* macroContentsIt = macro->contents.data();
@@ -1612,10 +1685,14 @@ escape_newline:
                         };
 
                         GrowingString contents;
-                        const char* ret = expandMacro(endOfWord, eol, &it->second, contents, definitions, level, diagnostics);
-                        if (ret == nullptr)
-                            return false;
-                        endOfWord = ret;
+                        const char* expandedMacro = expandMacro(endOfWord, eol, &it->second, contents, definitions, level, diagnostics);
+                        if (expandedMacro == nullptr)
+                        {
+                            ret = false;
+                            goto end;
+                        }
+                        endOfWord = expandedMacro;
+                        eol = lineEnd(endOfWord, endOfFile);
 
                         pp->location.end = max(contents.size, pp->location.end);
                         pp->contents = contents;
@@ -1778,113 +1855,115 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     std::string preprocessed;
     errorBuffer = nullptr;
 
-    GPULang::Compiler::Timer timer;
-    Compiler compiler;
-    compiler.Setup(target, defines, options);
-
-    timer.Start();
-    PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
-    PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
-    if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
-        // get the name of the shader
-        std::locale loc;
-        size_t extension = file.rfind('.');
-        size_t lastFolder = file.rfind('/') + 1;
-        std::string effectName = file.substr(lastFolder, (file.length() - lastFolder) - (file.length() - extension));
-        effectName[0] = std::toupper(effectName[0]);
-        size_t undersc = effectName.find('_');
-        while (undersc != std::string::npos)
-        {
-            effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
-            effectName = effectName.erase(undersc, 1);
-            undersc = effectName.find('_');
-        }
+        GPULang::Compiler::Timer timer;
+        Compiler compiler;
+        compiler.Setup(target, defines, options);
 
-        // setup preprocessor
-        //parser.preprocess();
-
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Preprocessing");
-
-        GPULangLexerErrorHandler lexerErrorHandler;
-        GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
-
-        ANTLRInputStream input;
-        GPULangLexer lexer(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        CommonTokenStream tokens(&lexer);
-        GPULangParser parser(&tokens);
-        parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-
-        // reload the preprocessed data
-        input.reset();
-        input.load(preprocessed);
-        lexer.setInputStream(&input);
-        lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
-        lexer.removeErrorListeners();
-        lexer.addErrorListener(&lexerErrorHandler);
-        tokens.setTokenSource(&lexer);
-        parser.setTokenStream(&tokens);
-        parser.removeErrorListeners();
-        parser.addErrorListener(&parserErrorHandler);
-
-        Effect* effect = parser.entry()->returnEffect;
-        GPULangParser::LineStack.clear();
-        timer.Stop();
-        if (options.emitTimings)
-            timer.Print("Parsing");
-
-        // if we have any lexer or parser error, return early
-        if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
+        PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
+        PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+        if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
         {
-            std::string errorMessage;
-            errorMessage.append(lexerErrorHandler.errorBuffer);
-            errorMessage.append(parserErrorHandler.errorBuffer);
-            errorBuffer = Error(errorMessage);
-            return false;
-        }
-
-        // setup and run compiler
-        BinWriter binaryWriter;
-        binaryWriter.SetPath(output);
-        TextWriter headerWriter;
-        headerWriter.SetPath(header_output);
-
-        compiler.path = file;
-        compiler.filename = effectName;
-        compiler.debugPath = output;
-        compiler.debugOutput = true;
-
-        bool res = compiler.Compile(effect, binaryWriter, headerWriter);
-        effect->~Effect();
-        
-        // convert error list to string
-        if (!compiler.messages.empty() && !compiler.options.quiet)
-        {
-            std::string err;
-            for (size_t i = 0; i < compiler.messages.size(); i++)
+            // get the name of the shader
+            std::locale loc;
+            size_t extension = file.rfind('.');
+            size_t lastFolder = file.rfind('/') + 1;
+            std::string effectName = file.substr(lastFolder, (file.length() - lastFolder) - (file.length() - extension));
+            effectName[0] = std::toupper(effectName[0]);
+            size_t undersc = effectName.find('_');
+            while (undersc != std::string::npos)
             {
-                if (i > 0)
-                    err.append("\n");
-                err.append(compiler.messages[i]);
+                effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
+                effectName = effectName.erase(undersc, 1);
+                undersc = effectName.find('_');
             }
-            if (err.empty() && compiler.hasErrors)
-                err = "Unhandled internal compiler error";
-            errorBuffer = Error(err);
-        }
 
-        return res;
+            // setup preprocessor
+            //parser.preprocess();
+
+            timer.Stop();
+            if (options.emitTimings)
+                timer.Print("Preprocessing");
+
+            GPULangLexerErrorHandler lexerErrorHandler;
+            GPULangParserErrorHandler parserErrorHandler;
+            timer.Start();
+
+            ANTLRInputStream input;
+            GPULangLexer lexer(&input);
+            lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+            CommonTokenStream tokens(&lexer);
+            GPULangParser parser(&tokens);
+            parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
+
+            // reload the preprocessed data
+            input.reset();
+            input.load(preprocessed);
+            lexer.setInputStream(&input);
+            lexer.setTokenFactory(GPULangTokenFactory::DEFAULT);
+            lexer.removeErrorListeners();
+            lexer.addErrorListener(&lexerErrorHandler);
+            tokens.setTokenSource(&lexer);
+            parser.setTokenStream(&tokens);
+            parser.removeErrorListeners();
+            parser.addErrorListener(&parserErrorHandler);
+
+            Effect* effect = parser.entry()->returnEffect;
+            GPULangParser::LineStack.clear();
+            timer.Stop();
+            if (options.emitTimings)
+                timer.Print("Parsing");
+
+            // if we have any lexer or parser error, return early
+            if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
+            {
+                std::string errorMessage;
+                errorMessage.append(lexerErrorHandler.errorBuffer);
+                errorMessage.append(parserErrorHandler.errorBuffer);
+                errorBuffer = Error(errorMessage);
+                return false;
+            }
+
+            // setup and run compiler
+            BinWriter binaryWriter;
+            binaryWriter.SetPath(output);
+            TextWriter headerWriter;
+            headerWriter.SetPath(header_output);
+
+            compiler.path = file;
+            compiler.filename = effectName;
+            compiler.debugPath = output;
+            compiler.debugOutput = true;
+
+            bool res = compiler.Compile(effect, binaryWriter, headerWriter);
+            effect->~Effect();
+
+            // convert error list to string
+            if (!compiler.messages.empty() && !compiler.options.quiet)
+            {
+                std::string err;
+                for (size_t i = 0; i < compiler.messages.size(); i++)
+                {
+                    if (i > 0)
+                        err.append("\n");
+                    err.append(compiler.messages[i]);
+                }
+                if (err.empty() && compiler.hasErrors)
+                    err = "Unhandled internal compiler error";
+                errorBuffer = Error(err);
+            }
+
+            return res;
+        }
+        std::string err;
+        for (auto& diagnostic : diagnostics)
+        {
+            err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
+        }
+        errorBuffer = Error(err);
     }
     GPULang::ResetAllocator(&alloc);
-    std::string err;
-    for (auto& diagnostic : diagnostics)
-    {
-        err += Format("%s(%d:%d): %s\n", diagnostic.file.c_str(), diagnostic.line, diagnostic.column, diagnostic.error.c_str());
-    }
-    errorBuffer = Error(err);
     return false;
 }
 
