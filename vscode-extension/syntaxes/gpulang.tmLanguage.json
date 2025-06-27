@@ -4,7 +4,7 @@
 	"patterns": [
 		{
 			"name": "keyword.control",
-			"match": "\\b(if|else|while|for|return|continue|break|switch|case|discard|ray_ignore|ray_terminate)\\b"
+			"match": "\\b(if|else|while|for|return|continue|break|switch|case|discard|ray_ignore|ray_terminate|generate|declared)\\b"
 		}, {
 			"name": "storage.modifier",
 			"match": "\\b(uniform|workgroup|in|out|const|var)\\b"
