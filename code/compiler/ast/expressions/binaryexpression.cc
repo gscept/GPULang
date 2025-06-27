@@ -297,11 +297,6 @@ BinaryExpression::EvalValue(ValueUnion& out) const
     if (!(this->left->EvalValue(lval) & this->right->EvalValue(rval)))
         return false;
 
-    lval.Convert(this->thisResolved->retType->baseType);
-    rval.Convert(this->thisResolved->retType->baseType);
-    if (!out.SetType(this->thisResolved->retType))
-        return false;
-
 #define OPERATOR_EXECUTE(mem, op)\
     out.mem[0] = lval.mem[0] op rval.mem[0];\
     if (lval.columnSize > 1)\
@@ -344,20 +339,20 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 #define OPERATOR_SCALAR(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->retType->baseType)\
+        switch (this->thisResolved->lhsType->baseType)\
         {\
             case TypeCode::Float:\
             case TypeCode::Float16:\
                 OPERATOR_EXECUTE(f, op)\
-                return true;\
+                break;\
             case TypeCode::Int:\
             case TypeCode::Int16:\
                 OPERATOR_EXECUTE(i, op)\
-                return true;\
+                break;\
             case TypeCode::UInt:\
             case TypeCode::UInt16:\
                 OPERATOR_EXECUTE(ui, op)\
-                return true;\
+                break;\
             default:\
                 return false;\
         }\
@@ -366,23 +361,23 @@ BinaryExpression::EvalValue(ValueUnion& out) const
 #define OPERATOR_ALL(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->retType->baseType)\
+        switch (this->thisResolved->lhsType->baseType)\
         {\
             case TypeCode::Bool:\
                 OPERATOR_EXECUTE(b, op)\
-                return true;\
+                break;\
             case TypeCode::Float:\
             case TypeCode::Float16:\
                 OPERATOR_EXECUTE(f, op)\
-                return true;\
+                break;\
             case TypeCode::Int:\
             case TypeCode::Int16:\
                 OPERATOR_EXECUTE(i, op)\
-                return true;\
+                break;\
             case TypeCode::UInt:\
             case TypeCode::UInt16:\
                 OPERATOR_EXECUTE(ui, op)\
-                return true;\
+                break;\
             default:\
                 return false;\
         }\
@@ -392,16 +387,16 @@ BinaryExpression::EvalValue(ValueUnion& out) const
     #define OPERATOR_INTEGER(label, op) \
     case label:\
     {\
-        switch (this->thisResolved->retType->baseType)\
+        switch (this->thisResolved->lhsType->baseType)\
         {\
             case TypeCode::Int:\
             case TypeCode::Int16:\
                 OPERATOR_EXECUTE(i, op)\
-                return true;\
+                break;\
             case TypeCode::UInt:\
             case TypeCode::UInt16:\
                 OPERATOR_EXECUTE(ui, op)\
-                return true;\
+                break;\
             default:\
                 return false;\
         }\
@@ -429,7 +424,11 @@ BinaryExpression::EvalValue(ValueUnion& out) const
         OPERATOR_INTEGER('==', ==)
         OPERATOR_INTEGER('!=', !=)
     }
-    return false;
+
+    if (!out.SetType(this->thisResolved->retType))
+        return false;
+
+    return true;
 }
 
 //------------------------------------------------------------------------------

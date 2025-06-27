@@ -282,13 +282,78 @@ generate
     @init
     {
         PinnedArray<Symbol*> symbols = 0xFFFFF;
-	Symbol::Location location;
+	    Symbol::Location location;
     }
     :
-    'generate' { location = SetupFile(); } '<' ( statement { symbols.Append($statement.tree); })* '>'
+    'generate' { location = SetupFile(); } '<' 
+    ( 
+        variables ';' { for(Variable* var : $variables.vars) { symbols.Append(var); } }
+        | gen_statement { symbols.Append($gen_statement.tree); }
+        | alias ';' { symbols.Append($alias.sym); }
+        | functionDeclaration ';'   { symbols.Append($functionDeclaration.sym); }    
+        | function                  { symbols.Append($function.sym); }    
+    )* '>'
     {
 	$sym = Alloc<Generate>(symbols);
 	$sym->location = location;
+    }
+    ;
+
+gen_statement
+    returns[ Statement* tree ]
+    @init
+    {
+        $tree = nullptr;
+    }:
+    gen_if_statement               { $tree = $gen_if_statement.tree; }
+    | gen_scope_statement          { $tree = $gen_scope_statement.tree; }
+    ;
+
+gen_scope_statement
+    returns[ ScopeStatement* tree ]
+    @init
+    {
+        $tree = nullptr;
+        PinnedArray<Symbol*> contents(0xFFFFFF);
+	    std::vector<Expression*> unfinished;
+        Symbol::Location location;
+        Symbol::Location ends;
+    }:
+    '<' { location = SetupFile(); }
+    (
+        variables ';' { for(Variable* var : $variables.vars) { contents.Append(var); } }
+        | gen_statement { contents.Append($gen_statement.tree); }
+        | alias ';' { contents.Append($alias.sym); }
+        | functionDeclaration ';'   { contents.Append($functionDeclaration.sym); }    
+        | function                  { contents.Append($function.sym); }    
+        | linePreprocessorEntry
+        //| expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
+    )* 
+    '>' { ends = SetupFile(); } 
+    {
+        $tree = Alloc<ScopeStatement>(std::move(contents), unfinished);
+        $tree->ends = ends;
+        $tree->location = location;
+    }
+    ;
+
+gen_if_statement
+    returns[ Statement* tree ]
+    @init
+    {
+        $tree = nullptr;
+        Expression* condition = nullptr;
+        Statement* ifBody = nullptr;
+        Statement* elseBody = nullptr;
+        Symbol::Location location;
+    }:
+    'if' { location = SetupFile(); } '(' condition = expression { condition = $condition.tree; } ')' 
+        ifBody = gen_statement { ifBody = $ifBody.tree; }
+    
+    ('else' elseBody = gen_statement { elseBody = $elseBody.tree; } )?
+    {
+        $tree = Alloc<IfStatement>(condition, ifBody, elseBody);
+        $tree->location = location;
     }
     ;
 
@@ -747,6 +812,7 @@ scopeStatement
     (
         variables ';' { for(Variable* var : $variables.vars) { contents.Append(var); } }
         | statement { contents.Append($statement.tree); }
+        | alias ';' { contents.Append($alias.sym); }
         | linePreprocessorEntry
         //| expression { unfinished.push_back($expression.tree); } // This is really bullshit and won't be consumed by anything, but is needed for the parser to recognize scopes with half-finished content in it
     )* 

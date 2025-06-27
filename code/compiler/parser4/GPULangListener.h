@@ -47,6 +47,15 @@ public:
   virtual void enterGenerate(GPULangParser::GenerateContext *ctx) = 0;
   virtual void exitGenerate(GPULangParser::GenerateContext *ctx) = 0;
 
+  virtual void enterGen_statement(GPULangParser::Gen_statementContext *ctx) = 0;
+  virtual void exitGen_statement(GPULangParser::Gen_statementContext *ctx) = 0;
+
+  virtual void enterGen_scope_statement(GPULangParser::Gen_scope_statementContext *ctx) = 0;
+  virtual void exitGen_scope_statement(GPULangParser::Gen_scope_statementContext *ctx) = 0;
+
+  virtual void enterGen_if_statement(GPULangParser::Gen_if_statementContext *ctx) = 0;
+  virtual void exitGen_if_statement(GPULangParser::Gen_if_statementContext *ctx) = 0;
+
   virtual void enterVariables(GPULangParser::VariablesContext *ctx) = 0;
   virtual void exitVariables(GPULangParser::VariablesContext *ctx) = 0;
 

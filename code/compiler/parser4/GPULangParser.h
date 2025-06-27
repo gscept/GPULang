@@ -95,18 +95,19 @@ public:
   enum {
     RuleString = 0, RulePath = 1, RuleBoolean = 2, RuleEntry = 3, RuleEffect = 4, 
     RuleLinePreprocessorEntry = 5, RuleAlias = 6, RuleAnnotation = 7, RuleAttribute = 8, 
-    RuleTypeDeclaration = 9, RuleGenerate = 10, RuleVariables = 11, RuleStructureDeclaration = 12, 
-    RuleStructure = 13, RuleEnumeration = 14, RuleParameter = 15, RuleFunctionDeclaration = 16, 
-    RuleFunction = 17, RuleProgram = 18, RuleSampler = 19, RuleState = 20, 
-    RuleStatement = 21, RuleExpressionStatement = 22, RuleIfStatement = 23, 
-    RuleForStatement = 24, RuleForRangeStatement = 25, RuleForUniformValueStatement = 26, 
-    RuleWhileStatement = 27, RuleScopeStatement = 28, RuleTerminateStatement = 29, 
-    RuleContinueStatement = 30, RuleSwitchStatement = 31, RuleBreakStatement = 32, 
-    RuleExpressionList = 33, RuleExpression = 34, RuleBinaryexpatom = 35, 
-    RuleInitializerExpression = 36, RuleArrayInitializerExpression = 37, 
-    RuleFloatVecLiteralExpression = 38, RuleDoubleVecLiteralExpression = 39, 
-    RuleIntVecLiteralExpression = 40, RuleUintVecLiteralExpression = 41, 
-    RuleBooleanVecLiteralExpression = 42
+    RuleTypeDeclaration = 9, RuleGenerate = 10, RuleGen_statement = 11, 
+    RuleGen_scope_statement = 12, RuleGen_if_statement = 13, RuleVariables = 14, 
+    RuleStructureDeclaration = 15, RuleStructure = 16, RuleEnumeration = 17, 
+    RuleParameter = 18, RuleFunctionDeclaration = 19, RuleFunction = 20, 
+    RuleProgram = 21, RuleSampler = 22, RuleState = 23, RuleStatement = 24, 
+    RuleExpressionStatement = 25, RuleIfStatement = 26, RuleForStatement = 27, 
+    RuleForRangeStatement = 28, RuleForUniformValueStatement = 29, RuleWhileStatement = 30, 
+    RuleScopeStatement = 31, RuleTerminateStatement = 32, RuleContinueStatement = 33, 
+    RuleSwitchStatement = 34, RuleBreakStatement = 35, RuleExpressionList = 36, 
+    RuleExpression = 37, RuleBinaryexpatom = 38, RuleInitializerExpression = 39, 
+    RuleArrayInitializerExpression = 40, RuleFloatVecLiteralExpression = 41, 
+    RuleDoubleVecLiteralExpression = 42, RuleIntVecLiteralExpression = 43, 
+    RuleUintVecLiteralExpression = 44, RuleBooleanVecLiteralExpression = 45
   };
 
   explicit GPULangParser(antlr4::TokenStream *input);
@@ -180,6 +181,9 @@ public:
   class AttributeContext;
   class TypeDeclarationContext;
   class GenerateContext;
+  class Gen_statementContext;
+  class Gen_scope_statementContext;
+  class Gen_if_statementContext;
   class VariablesContext;
   class StructureDeclarationContext;
   class StructureContext;
@@ -430,13 +434,27 @@ public:
   class  GenerateContext : public antlr4::ParserRuleContext {
   public:
     Symbol* sym;
-    GPULangParser::StatementContext *statementContext = nullptr;
+    GPULangParser::VariablesContext *variablesContext = nullptr;
+    GPULangParser::Gen_statementContext *gen_statementContext = nullptr;
+    GPULangParser::AliasContext *aliasContext = nullptr;
+    GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;
+    GPULangParser::FunctionContext *functionContext = nullptr;
     GenerateContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LESS();
     antlr4::tree::TerminalNode *GREATER();
-    std::vector<StatementContext *> statement();
-    StatementContext* statement(size_t i);
+    std::vector<VariablesContext *> variables();
+    VariablesContext* variables(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> SC();
+    antlr4::tree::TerminalNode* SC(size_t i);
+    std::vector<Gen_statementContext *> gen_statement();
+    Gen_statementContext* gen_statement(size_t i);
+    std::vector<AliasContext *> alias();
+    AliasContext* alias(size_t i);
+    std::vector<FunctionDeclarationContext *> functionDeclaration();
+    FunctionDeclarationContext* functionDeclaration(size_t i);
+    std::vector<FunctionContext *> function();
+    FunctionContext* function(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -444,6 +462,78 @@ public:
   };
 
   GenerateContext* generate();
+
+  class  Gen_statementContext : public antlr4::ParserRuleContext {
+  public:
+    Statement* tree;
+    GPULangParser::Gen_if_statementContext *gen_if_statementContext = nullptr;
+    GPULangParser::Gen_scope_statementContext *gen_scope_statementContext = nullptr;
+    Gen_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Gen_if_statementContext *gen_if_statement();
+    Gen_scope_statementContext *gen_scope_statement();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Gen_statementContext* gen_statement();
+
+  class  Gen_scope_statementContext : public antlr4::ParserRuleContext {
+  public:
+    ScopeStatement* tree;
+    GPULangParser::VariablesContext *variablesContext = nullptr;
+    GPULangParser::Gen_statementContext *gen_statementContext = nullptr;
+    GPULangParser::AliasContext *aliasContext = nullptr;
+    GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;
+    GPULangParser::FunctionContext *functionContext = nullptr;
+    Gen_scope_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
+    std::vector<VariablesContext *> variables();
+    VariablesContext* variables(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> SC();
+    antlr4::tree::TerminalNode* SC(size_t i);
+    std::vector<Gen_statementContext *> gen_statement();
+    Gen_statementContext* gen_statement(size_t i);
+    std::vector<AliasContext *> alias();
+    AliasContext* alias(size_t i);
+    std::vector<FunctionDeclarationContext *> functionDeclaration();
+    FunctionDeclarationContext* functionDeclaration(size_t i);
+    std::vector<FunctionContext *> function();
+    FunctionContext* function(size_t i);
+    std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
+    LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Gen_scope_statementContext* gen_scope_statement();
+
+  class  Gen_if_statementContext : public antlr4::ParserRuleContext {
+  public:
+    Statement* tree;
+    GPULangParser::ExpressionContext *condition = nullptr;
+    GPULangParser::Gen_statementContext *ifBody = nullptr;
+    GPULangParser::Gen_statementContext *elseBody = nullptr;
+    Gen_if_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LP();
+    antlr4::tree::TerminalNode *RP();
+    ExpressionContext *expression();
+    std::vector<Gen_statementContext *> gen_statement();
+    Gen_statementContext* gen_statement(size_t i);
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+   
+  };
+
+  Gen_if_statementContext* gen_if_statement();
 
   class  VariablesContext : public antlr4::ParserRuleContext {
   public:
@@ -880,6 +970,7 @@ public:
     ScopeStatement* tree;
     GPULangParser::VariablesContext *variablesContext = nullptr;
     GPULangParser::StatementContext *statementContext = nullptr;
+    GPULangParser::AliasContext *aliasContext = nullptr;
     ScopeStatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *LB();
@@ -890,6 +981,8 @@ public:
     antlr4::tree::TerminalNode* SC(size_t i);
     std::vector<StatementContext *> statement();
     StatementContext* statement(size_t i);
+    std::vector<AliasContext *> alias();
+    AliasContext* alias(size_t i);
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
     LinePreprocessorEntryContext* linePreprocessorEntry(size_t i);
 

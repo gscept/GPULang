@@ -210,10 +210,10 @@ Validator::ResolveAlias(Compiler* compiler, Symbol* symbol)
     Symbol* sym = compiler->GetSymbol(alias->type);
     if (sym == nullptr)
     {
-        compiler->UnrecognizedSymbolError(TransientString(alias->type), alias);
+        compiler->UnrecognizedSymbolError(alias->type, alias);
         return false;
     }
-    return compiler->AddSymbol(TransientString(alias->name), sym);
+    return compiler->AddSymbol(alias->name, sym);
 }
 
 //------------------------------------------------------------------------------
@@ -3009,6 +3009,17 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
 
     switch (symbol->symbolType)
     {
+        case Symbol::AliasType:
+        {
+            Alias* alias = static_cast<Alias*>(symbol);
+            Symbol* sym = compiler->GetSymbol(alias->type);
+            if (sym == nullptr)
+            {
+                compiler->UnrecognizedSymbolError(alias->type, alias);
+                return false;
+            }
+            return compiler->AddSymbol(alias->name, sym);
+        }
         case Symbol::BreakStatementType:
         {
             if (compiler->generationState.active)
@@ -3267,6 +3278,20 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                         if (!this->ResolveVariable(compiler, sym))
                             return false;
                     }
+                    else if (sym->symbolType == Symbol::FunctionType)
+                    {
+                        if (!compiler->generationState.active)
+                        {
+                            compiler->Error(Format("Functions can only be declared in statement blocks if the block is generating code"), symbol);
+                            return false;
+                        }
+
+                        // Temporarily disable since functions shouldn't be generating code
+                        compiler->generationState.active = false;
+                        if (!this->ResolveFunction(compiler, sym))
+                            return false;
+                        compiler->generationState.active = true;
+                    }
                     else
                     {
                         if (!this->ResolveStatement(compiler, sym))
@@ -3420,7 +3445,16 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     compiler->generationState.branchActive = true;
     for (Symbol* sym : gen->symbols)
     {
-        this->ResolveStatement(compiler, sym);
+        if (sym->symbolType == Symbol::VariableType)
+        {
+            if (!this->ResolveVariable(compiler, sym))
+                return false;
+        }
+        else
+        {
+            if (!this->ResolveStatement(compiler, sym))
+                return false;
+        }
     }
     compiler->generationState.active = false;
     compiler->generationState.branchActive = false;

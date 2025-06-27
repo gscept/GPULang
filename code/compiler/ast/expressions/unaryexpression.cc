@@ -71,6 +71,13 @@ UnaryExpression::Resolve(Compiler* compiler)
         TypeCode::UInt16,
         TypeCode::Bool,
     };
+    static const StaticSet<TypeCode> conjuctableTypes =
+    {
+        TypeCode::Int,
+        TypeCode::Int16,
+        TypeCode::UInt,
+        TypeCode::UInt16
+    };
 
     
     switch (this->op)
@@ -142,9 +149,9 @@ UnaryExpression::Resolve(Compiler* compiler)
         }    
         case '~':
         {
-            if (negatableTypes.Find(typeSymbol->baseType) == negatableTypes.end())
+            if (conjuctableTypes.Find(typeSymbol->baseType) == conjuctableTypes.end())
             {
-                compiler->Error(Format("Unary '~' only allowed on integer and bool types"), this);
+                compiler->Error(Format("Unary '~' only allowed on integer types"), this);
                 return false;    
             }
             break;
@@ -218,6 +225,15 @@ UnaryExpression::EvalValue(ValueUnion& out) const
     if (out.columnSize > 3)\
         out.mem[3] = !out.mem[3];\
 
+#define CONJUGATE_OPERATOR(mem)\
+    out.mem[0] = ~out.mem[0];\
+    if (out.columnSize > 1)\
+        out.mem[1] = ~out.mem[1];\
+    if (out.columnSize > 2)\
+        out.mem[2] = ~out.mem[2];\
+    if (out.columnSize > 3)\
+        out.mem[3] = ~out.mem[3];\
+
 #define NEG_OPERATOR(mem)\
     out.mem[0] *= -1;\
     if (out.columnSize > 1)\
@@ -263,9 +279,6 @@ UnaryExpression::EvalValue(ValueUnion& out) const
         {
             switch (out.code)
             {
-                case TypeCode::Bool:
-                    NEG_OPERATOR(b)
-                    break;
                 case TypeCode::Int:
                 case TypeCode::Int16:
                     NEG_OPERATOR(i)
@@ -301,6 +314,23 @@ UnaryExpression::EvalValue(ValueUnion& out) const
                 default:
                     assert(false);
                 break;
+            }
+        }
+        else if (this->op == '~')
+        {
+            switch (out.code)
+            {
+                case TypeCode::Int:
+                case TypeCode::Int16:
+                    CONJUGATE_OPERATOR(i)
+                    break;
+                case TypeCode::UInt:
+                case TypeCode::UInt16:
+                    CONJUGATE_OPERATOR(ui)
+                    break;
+                default:
+                    assert(false);
+                    break;
             }
         }
         return true;
