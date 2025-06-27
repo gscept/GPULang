@@ -1547,7 +1547,7 @@ escape_newline:
                                                     diagnostics.Append(DIAGNOSTIC("Argument limit of 32 for macro arguments reached"));
                                                     return nullptr;
                                                 }
-                                                args.Append(argStr.buf);
+                                                args.Append(argStr);
                                                 argumentCharacterIt++; // parsing done
                                                 goto done;
                                             }
@@ -1565,6 +1565,7 @@ escape_newline:
                                             level->lineCounter++;
                                             endOfLine = lineEnd(argumentCharacterIt, endOfFile);
                                             level->it = endOfLine;
+                                            goto arg;
                                         }
                                         else if (argumentCharacterIt[0] == '\n')
                                         {
@@ -1572,6 +1573,7 @@ escape_newline:
                                             level->lineCounter++;
                                             endOfLine = lineEnd(argumentCharacterIt, endOfFile);
                                             level->it = endOfLine;
+                                            goto arg;
                                         }
                                         else
                                             argStr.Append(argumentCharacterIt[0]);

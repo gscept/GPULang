@@ -248,7 +248,10 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                 typeStr = headerType->second.c_str();
             else
                 typeStr = var->type.name;
-            const ConstantString& arrayTypeStr = typeToArraySize.Find(var->type.name)->second;
+            FixedString arrayTypeStr(ConstantString(""));
+            auto arrayTypeIt = typeToArraySize.Find(var->type.name);
+            if (arrayTypeIt != typeToArraySize.end())
+                arrayTypeStr = arrayTypeIt->second;
 
             Expression* init = var->valueExpression;
 
