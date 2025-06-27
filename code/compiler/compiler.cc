@@ -14,6 +14,7 @@
 #include "ast/types/type.h"
 #include "ast/function.h"
 #include "ast/variable.h"
+#include "ast/generate.h"
 #include "ast/renderstate.h"
 #include "ast/samplerstate.h"
 #include "ast/program.h"
@@ -38,6 +39,7 @@ Compiler::Compiler()
 
     this->generationState.active = false;
     this->generationState.branchActive = false;
+    this->generationState.owner = nullptr;
     
     this->options.errorFormat = ErrorFormat::MSVC;
     this->options.warningsAsErrors = false;
@@ -515,6 +517,9 @@ Compiler::AddSymbol(const TransientString& name, Symbol* symbol, bool allowDupli
             return false;
         }
     }
+    
+    if (this->generationState.active)
+        Symbol::Resolved(this->generationState.owner)->generatedSymbols.Insert(symbol);
     lookup->Insert(FixedString(name), symbol);
     // Only add to symbols if scope type isn't a type, because they already have the symbols setup
     if (scope->type != Scope::ScopeType::Type)

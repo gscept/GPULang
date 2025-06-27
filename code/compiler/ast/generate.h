@@ -22,7 +22,7 @@ struct Generate : public Symbol
     
     struct __Resolved : public Symbol::__Resolved
     {
-        
+        PinnedSet<Symbol*> generatedSymbols;
     }* thisResolved;
     
     PinnedArray<Symbol*> symbols;

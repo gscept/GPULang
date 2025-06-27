@@ -9,6 +9,7 @@
 #include "ast/structure.h"
 #include "ast/variable.h"
 #include "ast/program.h"
+#include "ast/generate.h"
 #include "ast/expressions/intexpression.h"
 #include "ast/expressions/intvecexpression.h"
 #include "ast/expressions/uintexpression.h"
@@ -8810,6 +8811,33 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
         {
             switch (sym->symbolType)
             {
+            case Symbol::GenerateType:
+            {
+                auto gen = static_cast<struct Generate*>(sym);
+                auto genRes = Symbol::Resolved(gen);
+                for (Symbol* genSym : genRes->generatedSymbols)
+                {
+                    switch (genSym->symbolType)
+                    {
+                        case Symbol::FunctionType:
+                            GenerateFunctionSPIRV(compiler, this, sym);
+                            break;
+                        case Symbol::StructureType:
+                            GenerateStructureSPIRV(compiler, this, sym);
+                            break;
+                        case Symbol::EnumerationType:
+                            GenerateEnumSPIRV(compiler, this, sym);
+                            break;
+                        case Symbol::SamplerStateType:
+                            GenerateSamplerSPIRV(compiler, this, sym);
+                            break;
+                        case Symbol::VariableType:
+                            GenerateVariableSPIRV(compiler, this, sym, false, true);
+                            break;
+                    }
+                }
+                break;
+            }
             case Symbol::FunctionType:
                 GenerateFunctionSPIRV(compiler, this, sym);
                 break;

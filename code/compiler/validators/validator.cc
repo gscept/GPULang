@@ -3443,6 +3443,7 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     
     compiler->generationState.active = true;
     compiler->generationState.branchActive = true;
+    compiler->generationState.owner = gen;
     for (Symbol* sym : gen->symbols)
     {
         if (sym->symbolType == Symbol::VariableType)
@@ -3458,6 +3459,7 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     }
     compiler->generationState.active = false;
     compiler->generationState.branchActive = false;
+    compiler->generationState.owner = nullptr;
     return true;
 }
 

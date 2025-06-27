@@ -44,6 +44,7 @@ struct Diagnostic
 
 struct Type;
 struct Scope;
+struct Generate;
 struct Compiler
 {
     enum class Language : uint8_t
@@ -272,6 +273,7 @@ struct Compiler
     
     struct GenerationState
     {
+        Generate* owner;
         bool active;
         bool branchActive;
     } generationState;
