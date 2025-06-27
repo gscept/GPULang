@@ -59,10 +59,6 @@ SymbolExpression::Resolve(Compiler* compiler)
             auto varResolved = Symbol::Resolved(var);
             thisResolved->fullType = varResolved->type;
             thisResolved->type = varResolved->typeSymbol;
-            if (thisResolved->type->symbolType == Symbol::SymbolType::FunctionType)
-            {
-                _CrtDbgBreak();
-            }
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::StructureType)

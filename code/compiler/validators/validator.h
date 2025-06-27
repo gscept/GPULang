@@ -86,11 +86,6 @@ struct Validator
     PinnedMap<uint32_t, PinnedMap<uint32_t, Type::Category>> resourceTypePerGroupAndBinding = 0xFFFF;
     uint8_t defaultGroup;
     
-    struct GenerationState
-    {
-        bool active;
-        bool branchActive;
-    } generationState;
     uint32_t inParameterIndexCounter;
     uint32_t outParameterIndexCounter;
 };

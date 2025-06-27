@@ -130,9 +130,6 @@ Validator::Validator()
     : resourceIndexingMode(ResourceIndexingByGroup)
     , defaultGroup(0)
 {
-
-    this->generationState.active = false;
-    this->generationState.branchActive = false;
     // add formats
     for (auto it : StringToFormats)
     {
@@ -3014,7 +3011,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
     {
         case Symbol::BreakStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation blocks can't break control flow"), symbol);
                 return false;
@@ -3033,7 +3030,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ContinueStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation blocks can't break control flow"), symbol);
                 return false;
@@ -3058,7 +3055,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ForStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation don't support loops"), symbol);
                 return false;
@@ -3155,7 +3152,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     return false;
             }
             
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 ValueUnion val;
                 if (!statement->condition->EvalValue(val))
@@ -3166,38 +3163,52 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                 
                 int condition;
                 val.Store(condition);
-                this->generationState.branchActive = condition != 0;
-            }
-            
-            if (!this->ResolveStatement(compiler, statement->ifStatement))
-                return false;
-            
-            this->generationState.branchActive = false;
-
-            // If the if statement isn't a scope, it might mark the scope as unreachable, which has to reset when we leave the branch
-            if (statement->ifStatement->symbolType != Symbol::ScopeStatementType)
-                compiler->MarkScopeReachable();
-            
-            bool ifReturns = compiler->branchReturns;
-            compiler->branchReturns = false;
-            if (statement->elseStatement)
-            {
-                compiler->MarkScopeReachable();
-                if (!this->ResolveStatement(compiler, statement->elseStatement))
-                    return false;
-                ifReturns &= compiler->branchReturns;
+                compiler->generationState.branchActive = condition != 0;
+                
+                if (compiler->generationState.branchActive)
+                {
+                    if (!this->ResolveStatement(compiler, statement->ifStatement))
+                        return false;
+                }
+                else if (statement->elseStatement)
+                {
+                    compiler->generationState.branchActive = true;
+                    if (!this->ResolveStatement(compiler, statement->elseStatement))
+                        return false;
+                    compiler->generationState.branchActive = false;
+                }
             }
             else
             {
-                // If there is no else statement, then the branch won't necessarily return
-                ifReturns = false;
+                if (!this->ResolveStatement(compiler, statement->ifStatement))
+                    return false;
+                
+                // If the if statement isn't a scope, it might mark the scope as unreachable, which has to reset when we leave the branch
+                if (statement->ifStatement->symbolType != Symbol::ScopeStatementType)
+                    compiler->MarkScopeReachable();
+                
+                bool ifReturns = compiler->branchReturns;
+                compiler->branchReturns = false;
+                if (statement->elseStatement)
+                {
+                    compiler->MarkScopeReachable();
+                    if (!this->ResolveStatement(compiler, statement->elseStatement))
+                        return false;
+                    ifReturns &= compiler->branchReturns;
+                }
+                else
+                {
+                    // If there is no else statement, then the branch won't necessarily return
+                    ifReturns = false;
+                }
+                compiler->branchReturns = ifReturns;
             }
-            compiler->branchReturns = ifReturns;
+
             return true;
         }
         case Symbol::TerminateStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation blocks don't support control flow"), symbol);
                 return false;
@@ -3245,39 +3256,54 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::ScopeStatementType:
         {
-            if (this->generationState.active)
-            {
-                compiler->Error(Format("Code generation blocks don't support scopes"), symbol);
-                return false;
-            }
             auto statement = reinterpret_cast<ScopeStatement*>(symbol);
-            auto statementRes = Symbol::Resolved(statement);
-            statementRes->scope.owningSymbol = compiler->GetScopeOwner();
-            Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
-
-            for (Symbol* sym : statement->symbols)
+            if (compiler->generationState.active)
             {
-                if (sym->symbolType == Symbol::VariableType)
+                // If generating, resolve the symbols as if there was no scope
+                for (Symbol* sym : statement->symbols)
                 {
-                    if (!this->ResolveVariable(compiler, sym))
-                        return false;
-                }
-                else
-                {
-                    if (!this->ResolveStatement(compiler, sym))
-                        return false;
+                    if (sym->symbolType == Symbol::VariableType)
+                    {
+                        if (!this->ResolveVariable(compiler, sym))
+                            return false;
+                    }
+                    else
+                    {
+                        if (!this->ResolveStatement(compiler, sym))
+                            return false;
+                    }
                 }
             }
-            for (Expression* expr : statement->unfinished)
+            else
             {
-                if (!expr->Resolve(compiler))
-                    return false;
+                auto statementRes = Symbol::Resolved(statement);
+                statementRes->scope.owningSymbol = compiler->GetScopeOwner();
+                Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &statementRes->scope);
+                
+                for (Symbol* sym : statement->symbols)
+                {
+                    if (sym->symbolType == Symbol::VariableType)
+                    {
+                        if (!this->ResolveVariable(compiler, sym))
+                            return false;
+                    }
+                    else
+                    {
+                        if (!this->ResolveStatement(compiler, sym))
+                            return false;
+                    }
+                }
+                for (Expression* expr : statement->unfinished)
+                {
+                    if (!expr->Resolve(compiler))
+                        return false;
+                }
             }
             return true;
         }
         case Symbol::SwitchStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation blocks don't support switches"), symbol);
                 return false;
@@ -3335,7 +3361,7 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::WhileStatementType:
         {
-            if (this->generationState.active)
+            if (compiler->generationState.active)
             {
                 compiler->Error(Format("Code generation blocks don't loops"), symbol);
                 return false;
@@ -3390,14 +3416,14 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     Generate* gen = static_cast<Generate*>(symbol);
     Generate::__Resolved* genResolved = gen->thisResolved;
     
-    this->generationState.active = true;
-    this->generationState.branchActive = true;
+    compiler->generationState.active = true;
+    compiler->generationState.branchActive = true;
     for (Symbol* sym : gen->symbols)
     {
-        this->Resolve(compiler, sym);
+        this->ResolveStatement(compiler, sym);
     }
-    this->generationState.active = false;
-    this->generationState.branchActive = false;
+    compiler->generationState.active = false;
+    compiler->generationState.branchActive = false;
     return true;
 }
 

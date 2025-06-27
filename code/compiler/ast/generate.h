@@ -16,7 +16,7 @@ namespace GPULang
 struct Generate : public Symbol
 {
     /// Constructor
-    Generate();
+    Generate(const PinnedArray<Symbol*>& symbols);
     /// Destructor
     virtual ~Generate();
     

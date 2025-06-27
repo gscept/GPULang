@@ -73,6 +73,7 @@ struct Symbol
         SwitchStatementType,
         WhileStatementType,
         GenerateType,
+        DeclaredExpressionType,
 
         NumSymbolTypes
     };

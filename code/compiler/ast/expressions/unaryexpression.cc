@@ -44,7 +44,8 @@ UnaryExpression::Resolve(Compiler* compiler)
 
     Type::FullType type;
     this->expr->EvalType(type);
-    Type* typeSymbol = compiler->GetType(type);
+    Type* typeSymbol;
+    this->expr->EvalTypeSymbol(typeSymbol);
 
     static const StaticSet<TypeCode> allowedIncrementDecrementTypes =
     {
@@ -263,7 +264,7 @@ UnaryExpression::EvalValue(ValueUnion& out) const
             switch (out.code)
             {
                 case TypeCode::Bool:
-                    INVERT_OPERATOR(b)
+                    NEG_OPERATOR(b)
                     break;
                 case TypeCode::Int:
                 case TypeCode::Int16:
@@ -281,6 +282,26 @@ UnaryExpression::EvalValue(ValueUnion& out) const
                     assert(false);
                 break;
             }    
+        }
+        else if (this->op == '!')
+        {
+            switch (out.code)
+            {
+                case TypeCode::Bool:
+                    INVERT_OPERATOR(b)
+                    break;
+                case TypeCode::Int:
+                case TypeCode::Int16:
+                    INVERT_OPERATOR(i)
+                    break;
+                case TypeCode::UInt:
+                case TypeCode::UInt16:
+                    INVERT_OPERATOR(ui)
+                    break;
+                default:
+                    assert(false);
+                break;
+            }
         }
         return true;
     }

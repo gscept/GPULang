@@ -44,8 +44,8 @@ fips_dir(ast)
         enumeration.h
         function.cc
         function.h
-	    generate.cc
-	    generate.h
+	generate.cc
+	generate.h
         intrinsics.cc
         intrinsics.h
         preprocessor.cc
@@ -83,6 +83,8 @@ fips_dir(ast/expressions)
         callexpression.h
         commaexpression.cc
         commaexpression.h
+        declaredexpression.cc
+        declaredexpression.h
         enumexpression.cc
         enumexpression.h
         expression.cc

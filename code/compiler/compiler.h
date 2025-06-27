@@ -269,6 +269,12 @@ struct Compiler
     Scope* intrinsicScope, *mainScope;
     PinnedArray<Scope*> scopes = 0xFFF;
     bool staticSymbolSetup = false;
+    
+    struct GenerationState
+    {
+        bool active;
+        bool branchActive;
+    } generationState;
 
     std::string debugPath;
     bool debugOutput;

@@ -106,6 +106,7 @@ EndLocationRange(const Symbol::Location begin)
 #include "ast/symbol.h"
 #include "ast/preprocessor.h"
 #include "ast/variable.h"
+#include "ast/generate.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
 #include "ast/statements/expressionstatement.h"
@@ -136,6 +137,7 @@ EndLocationRange(const Symbol::Location begin)
 #include "ast/expressions/uintexpression.h"
 #include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
+#include "ast/expressions/declaredexpression.h"
 #include "util.h"
 #include "memory.h"
 
@@ -280,9 +282,14 @@ generate
     @init
     {
         PinnedArray<Symbol*> symbols = 0xFFFFF;
+	Symbol::Location location;
     }
     :
-    'generate' '<' ( statement { symbols.Append($statement.tree); })* '>'
+    'generate' { location = SetupFile(); } '<' ( statement { symbols.Append($statement.tree); })* '>'
+    {
+	$sym = Alloc<Generate>(symbols);
+	$sym->location = location;
+    }
     ;
 
     // Variable declaration <annotation>* <attribute>* instance0, .. instanceN : <type_modifiers> <type> 
@@ -1011,6 +1018,11 @@ binaryexpatom
     | string                        { $tree = Alloc<StringExpression>($string.val); $tree->location = EndLocationRange(begin); }
     | IDENTIFIER                    { $tree = Alloc<SymbolExpression>(FixedString($IDENTIFIER.text)); $tree->location = SetupFile(); }
     | boolean                       { $tree = Alloc<BoolExpression>($boolean.val); $tree->location = SetupFile(); }
+    | 'declared' { begin = SetupFile(); } '<' ident = IDENTIFIER '>'
+    {
+	$tree = Alloc<DeclaredExpression>(FixedString($ident.text));
+        $tree->location = begin ; 
+    }
     //| floatVecLiteralExpression     { $tree = $floatVecLiteralExpression.tree; }
     //| doubleVecLiteralExpression    { $tree = $doubleVecLiteralExpression.tree; }
     //| intVecLiteralExpression       { $tree = $intVecLiteralExpression.tree; }

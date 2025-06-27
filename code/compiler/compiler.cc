@@ -36,6 +36,9 @@ Compiler::Compiler()
 {
     this->validator = Alloc<Validator>();
 
+    this->generationState.active = false;
+    this->generationState.branchActive = false;
+    
     this->options.errorFormat = ErrorFormat::MSVC;
     this->options.warningsAsErrors = false;
     this->options.emitTimings = false;

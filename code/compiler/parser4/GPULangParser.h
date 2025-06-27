@@ -23,6 +23,7 @@
 #include "ast/symbol.h"
 #include "ast/preprocessor.h"
 #include "ast/variable.h"
+#include "ast/generate.h"
 #include "ast/statements/breakstatement.h"
 #include "ast/statements/continuestatement.h"
 #include "ast/statements/expressionstatement.h"
@@ -53,6 +54,7 @@
 #include "ast/expressions/uintexpression.h"
 #include "ast/expressions/uintvecexpression.h"
 #include "ast/expressions/unaryexpression.h"
+#include "ast/expressions/declaredexpression.h"
 #include "util.h"
 #include "memory.h"
 
@@ -79,14 +81,15 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    SC = 39, CO = 40, COL = 41, LP = 42, RP = 43, LB = 44, RB = 45, LL = 46, 
-    RR = 47, DOT = 48, NOT = 49, EQ = 50, QO = 51, QU = 52, AND = 53, ANDSET = 54, 
-    OR = 55, ORSET = 56, XOR = 57, XORSET = 58, CONJUGATE = 59, Q = 60, 
-    NU = 61, FORWARDSLASH = 62, LESS = 63, LESSEQ = 64, GREATER = 65, GREATEREQ = 66, 
-    LOGICEQ = 67, NOTEQ = 68, LOGICAND = 69, LOGICOR = 70, MOD = 71, UNDERSC = 72, 
-    SOBAKA = 73, ADD_OP = 74, SUB_OP = 75, DIV_OP = 76, MUL_OP = 77, ARROW = 78, 
-    INTEGERLITERAL = 79, UINTEGERLITERAL = 80, COMMENT = 81, ML_COMMENT = 82, 
-    FLOATLITERAL = 83, DOUBLELITERAL = 84, HEX = 85, IDENTIFIER = 86, WS = 87
+    T__38 = 39, SC = 40, CO = 41, COL = 42, LP = 43, RP = 44, LB = 45, RB = 46, 
+    LL = 47, RR = 48, DOT = 49, NOT = 50, EQ = 51, QO = 52, QU = 53, AND = 54, 
+    ANDSET = 55, OR = 56, ORSET = 57, XOR = 58, XORSET = 59, CONJUGATE = 60, 
+    Q = 61, NU = 62, FORWARDSLASH = 63, LESS = 64, LESSEQ = 65, GREATER = 66, 
+    GREATEREQ = 67, LOGICEQ = 68, NOTEQ = 69, LOGICAND = 70, LOGICOR = 71, 
+    MOD = 72, UNDERSC = 73, SOBAKA = 74, ADD_OP = 75, SUB_OP = 76, DIV_OP = 77, 
+    MUL_OP = 78, ARROW = 79, INTEGERLITERAL = 80, UINTEGERLITERAL = 81, 
+    COMMENT = 82, ML_COMMENT = 83, FLOATLITERAL = 84, DOUBLELITERAL = 85, 
+    HEX = 86, IDENTIFIER = 87, WS = 88
   };
 
   enum {
@@ -1057,6 +1060,7 @@ public:
     GPULangParser::StringContext *stringContext = nullptr;
     antlr4::Token *identifierToken = nullptr;
     GPULangParser::BooleanContext *booleanContext = nullptr;
+    antlr4::Token *ident = nullptr;
     BinaryexpatomContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     InitializerExpressionContext *initializerExpression();
@@ -1072,6 +1076,8 @@ public:
     StringContext *string();
     antlr4::tree::TerminalNode *IDENTIFIER();
     BooleanContext *boolean();
+    antlr4::tree::TerminalNode *LESS();
+    antlr4::tree::TerminalNode *GREATER();
     LinePreprocessorEntryContext *linePreprocessorEntry();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
