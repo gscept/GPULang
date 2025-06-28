@@ -8820,19 +8820,19 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
                     switch (genSym->symbolType)
                     {
                         case Symbol::FunctionType:
-                            GenerateFunctionSPIRV(compiler, this, sym);
+                            GenerateFunctionSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::StructureType:
-                            GenerateStructureSPIRV(compiler, this, sym);
+                            GenerateStructureSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::EnumerationType:
-                            GenerateEnumSPIRV(compiler, this, sym);
+                            GenerateEnumSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::SamplerStateType:
-                            GenerateSamplerSPIRV(compiler, this, sym);
+                            GenerateSamplerSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::VariableType:
-                            GenerateVariableSPIRV(compiler, this, sym, false, true);
+                            GenerateVariableSPIRV(compiler, this, genSym, false, true);
                             break;
                     }
                 }
