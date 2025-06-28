@@ -2100,6 +2100,9 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
 
     GPULang::Compiler::Timer timer;
     timer.Start();
+    
+    Compiler compiler;
+    compiler.Setup(options);
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
@@ -2169,10 +2172,8 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
             result.diagnostics.Append(parserErrorHandler.diagnostics);
         }
 
-        Compiler compiler;
         compiler.path = file->path;
         compiler.filename = effectName;
-        compiler.Setup(options);
 
         bool res = compiler.Validate(effect);
         effect->~Effect();

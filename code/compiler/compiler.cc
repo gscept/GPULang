@@ -337,6 +337,113 @@ void
 Compiler::Setup(Options options)
 {
     this->options = options;
+    
+    //this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
+    {
+        this->performanceTimer.Start();
+        
+        //MakeAllocatorCurrent(&StaticAllocator);
+        
+        // Allocate main scopes
+        this->intrinsicScope = StaticAlloc<Scope>();
+        this->intrinsicScope->type = Scope::ScopeType::Global;
+        this->mainScope = StaticAlloc<Scope>();
+        this->mainScope->type = Scope::ScopeType::Global;
+        
+        this->BeginStaticSymbolSetup();
+        
+        // push global scope for all the builtins
+        this->PushScope(this->intrinsicScope);
+        
+        // setup default types and their lookups
+        if (DefaultTypes.empty())
+            Type::SetupDefaultTypes();
+        auto typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            Type* type = static_cast<Type*>(*typeIt);
+            type->symbols.Invalidate();
+            type->scope.symbolLookup.Invalidate();
+            type->scope.symbolLookup.BeginBulkAdd();
+            
+            this->validator->ResolveType(this, *typeIt);
+            typeIt++;
+        }
+        
+        // Run again to resolve swizzle variables
+        typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            this->validator->ResolveTypeSwizzles(this, *typeIt);
+            typeIt++;
+        }
+        
+        // Run again but resolve methods this time (needed as forward declaration)
+        typeIt = DefaultTypes.begin();
+        while (typeIt != DefaultTypes.end())
+        {
+            this->validator->ResolveTypeMethods(this, *typeIt);
+            Type* type = static_cast<Type*>(*typeIt);
+            type->scope.symbolLookup.EndBulkAdd();
+            typeIt++;
+        }
+        
+        this->performanceTimer.Stop();
+        
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static setup types");
+        
+        this->performanceTimer.Start();
+        // setup intrinsics
+        if (DefaultIntrinsics.empty())
+            Function::SetupIntrinsics();
+        this->ignoreReservedWords = true;
+        auto intrinIt = DefaultIntrinsics.begin();
+        while (intrinIt != DefaultIntrinsics.end())
+        {
+            auto fun = static_cast<Function*>(*intrinIt);
+            auto funRes = Symbol::Resolved(fun);
+            funRes->scope.symbols.Invalidate();
+            funRes->scope.symbolLookup.Invalidate();
+            this->validator->ResolveFunction(this, *intrinIt);
+            intrinIt++;
+        }
+        
+        this->performanceTimer.Stop();
+        
+        if (this->options.emitTimings)
+            this->performanceTimer.Print("Static setup intrinsics");
+        
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::VertexShader].name = "gplIsVertexShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::HullShader].name = "gplIsHullShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::ComputeShader].name = "gplIsComputeShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayMissShader].name = "gplIsRayMissShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
+        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayCallableShader].name = "gplIsRayCallableShader";
+        
+        for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+        {
+            this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
+            Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
+            res->usageBits.flags.isConst = true;
+            res->builtin = true;
+            res->typeSymbol = &BoolType;
+            this->shaderValueExpressions[i].value = false;
+            this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
+            this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
+        }
+        
+        this->ignoreReservedWords = false;
+        this->EndStaticSymbolSetup();
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -859,6 +966,9 @@ Compiler::Validate(Effect* root)
     this->performanceTimer.Start();
 
     std::vector<Program*> programs;
+    
+    // push a new scope for all the parsed symbols
+    this->PushScope(this->mainScope);
 
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
