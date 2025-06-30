@@ -2129,7 +2129,6 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         if (options.emitTimings)
             timer.Print("Preprocessing");
 
-
         GPULangLexerErrorHandler lexerErrorHandler;
         GPULangParserErrorHandler parserErrorHandler;
         timer.Start();
@@ -2151,8 +2150,6 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         parser.setTokenStream(&tokens);
         parser.removeErrorListeners();
         parser.addErrorListener(&parserErrorHandler);
-
-
 
         Effect* effect = parser.entry()->returnEffect;
 

@@ -293,6 +293,10 @@ BinaryExpression::EvalSymbol(FixedString& out) const
 bool
 BinaryExpression::EvalValue(ValueUnion& out) const
 {
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->lhsType == nullptr || thisResolved->rhsType == nullptr)
+        return false;
+    
     ValueUnion lval, rval;
     if (!(this->left->EvalValue(lval) & this->right->EvalValue(rval)))
         return false;

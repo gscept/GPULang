@@ -180,6 +180,9 @@ ArrayIndexExpression::EvalSymbol(FixedString& out) const
 bool
 ArrayIndexExpression::EvalValue(ValueUnion& out) const
 {
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->lhsType == nullptr || thisResolved->rhsType == nullptr)
+        return false;
     return this->left->EvalValue(out);
 }
 

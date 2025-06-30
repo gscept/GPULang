@@ -54,7 +54,7 @@ struct DeclaredExpression : public Expression
     struct __Resolved : public Symbol::__Resolved
     {
         virtual ~__Resolved() {};
-        bool declared;
+        bool declared = false;
     };
 }; 
 } // namespace GPULang

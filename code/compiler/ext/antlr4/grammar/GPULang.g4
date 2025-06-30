@@ -225,12 +225,14 @@ alias
     @init
     {
         $sym = nullptr;
-        FixedString name;
-        FixedString type;
+	Symbol::Location nameLocation, typeLocation;
+        FixedString name, type;
     }
-    : 'alias' name = IDENTIFIER 'as' type = IDENTIFIER { name = FixedString($name.text); type = FixedString($type.text); }
+    : 'alias' name = IDENTIFIER { nameLocation = SetupFile(); } 'as' type = IDENTIFIER { typeLocation = SetupFile(); name = FixedString($name.text); type = FixedString($type.text); }
     {
         $sym = Alloc<Alias>();
+	$sym->nameLocation = nameLocation;
+	$sym->typeLocation = typeLocation;
         $sym->name = name;
         $sym->type = type;
     }
@@ -1104,10 +1106,11 @@ initializerExpression
         $tree = nullptr;
         FixedString type;
         Symbol::Location location;
+	FixedArray<Expression*> initializers;
     }:
-    type = IDENTIFIER { type = FixedString($type.text); } '{' { location = SetupFile(); } (list = expressionList)? '}'
+    type = IDENTIFIER { type = FixedString($type.text); } '{' { location = SetupFile(); } (list = expressionList { initializers = $list.expressions; })? '}'
     {
-        $tree = Alloc<InitializerExpression>($list.expressions, type);
+        $tree = Alloc<InitializerExpression>(std::move(initializers), type);
         $tree->location = location;
     }
     ;
@@ -1119,7 +1122,7 @@ arrayInitializerExpression
         $tree = nullptr;
         Symbol::Location location;
     }:
-    '[' { location = SetupFile(); } (list = expressionList)? ']'
+    '[' { location = SetupFile(); } (list = expressionList) ']'
     {
         $tree = Alloc<ArrayInitializerExpression>($list.expressions);
         $tree->location = location;

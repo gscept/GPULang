@@ -413,6 +413,10 @@ CallExpression::EvalSymbol(FixedString& out) const
 bool
 CallExpression::EvalValue(ValueUnion& out) const
 {
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->retType == nullptr)
+        return false;
+    
     int index = 0;
     if (!out.SetType(this->thisResolved->retType))
         return false;

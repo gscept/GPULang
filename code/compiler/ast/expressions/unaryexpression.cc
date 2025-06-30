@@ -216,6 +216,9 @@ UnaryExpression::EvalSymbol(FixedString& out) const
 bool
 UnaryExpression::EvalValue(ValueUnion& out) const
 {
+    auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->type == nullptr)
+        return false;
 #define INVERT_OPERATOR(mem)\
     out.mem[0] = !out.mem[0];\
     if (out.columnSize > 1)\

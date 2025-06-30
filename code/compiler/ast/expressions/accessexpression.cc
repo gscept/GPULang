@@ -187,6 +187,8 @@ bool
 AccessExpression::EvalValue(ValueUnion& out) const
 {
     AccessExpression::__Resolved* thisRes = Symbol::Resolved(this);
+    if (thisRes->lhsType == nullptr || thisRes->rhsType == nullptr)
+        return false;
     if (thisRes->lhsType->symbolType == Type::SymbolType::EnumerationType)
     {
         EnumExpression* expr = static_cast<EnumExpression*>(thisRes->lhsType->GetSymbol(thisRes->rightSymbol));
