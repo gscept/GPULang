@@ -3277,6 +3277,8 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                     {
                         if (!this->ResolveVariable(compiler, sym))
                             return false;
+
+                        Symbol::Resolved(compiler->generationState.owner)->generatedSymbols.Append(sym);
                     }
                     else if (sym->symbolType == Symbol::FunctionType)
                     {
@@ -3291,6 +3293,14 @@ Validator::ResolveStatement(Compiler* compiler, Symbol* symbol)
                         if (!this->ResolveFunction(compiler, sym))
                             return false;
                         compiler->generationState.active = true;
+
+                        Symbol::Resolved(compiler->generationState.owner)->generatedSymbols.Append(sym);
+                    }
+                    else if (sym->symbolType == Symbol::AliasType)
+                    {
+                        if (!this->ResolveAlias(compiler, sym))
+                            return false;
+                        Symbol::Resolved(compiler->generationState.owner)->generatedSymbols.Append(sym);
                     }
                     else
                     {
@@ -3441,6 +3451,11 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
     Generate* gen = static_cast<Generate*>(symbol);
     Generate::__Resolved* genResolved = gen->thisResolved;
     
+    if (compiler->generationState.active)
+    {
+        compiler->Error("Generate blocks can not be recursive", symbol);
+        return false;
+    }
     compiler->generationState.active = true;
     compiler->generationState.branchActive = true;
     compiler->generationState.owner = gen;
@@ -3450,6 +3465,22 @@ Validator::ResolveGenerate(Compiler* compiler, Symbol* symbol)
         {
             if (!this->ResolveVariable(compiler, sym))
                 return false;
+
+            genResolved->generatedSymbols.Append(sym);
+        }
+        else if (sym->symbolType == Symbol::AliasType)
+        {
+            if (!this->ResolveAlias(compiler, sym))
+                return false;
+
+            genResolved->generatedSymbols.Append(sym);
+        }
+        else if (sym->symbolType == Symbol::FunctionType)
+        {
+            if (!this->ResolveFunction(compiler, sym))
+                return false;
+
+            genResolved->generatedSymbols.Append(sym);
         }
         else
         {
