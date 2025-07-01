@@ -185,10 +185,10 @@ GPULangPreprocess(
     }
     output.clear();
     output.reserve(file->contentSize * 1.5f);
-    output.append(Format("#line 0 \"%s\"\n", file->path.c_str()));
+    GPULangParser::LineStack.push_back({0, 0, file->path.c_str()});
     Macro* macro = nullptr;
     bool comment = false;
-    level->lineCounter = 0;
+    level->lineCounter = 1;
 
     static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
     {
@@ -1017,7 +1017,6 @@ escape_newline:
                         
                         auto resolvePath = [](const std::string_view& path, const FixedArray<std::string_view>& searchPaths) -> TransientString
                         {
-                            
                             if (access(path.data(), F_OK) == 0)
                                 return TransientString(path);
                             else
@@ -1499,6 +1498,7 @@ escape_newline:
             }
             else if (!comment)
             {
+                
                 CHECK_IF()
                 const char* startOfWord = identifierBegin(columnIt, eol);
                 const char* endOfWord = identifierEnd(startOfWord, eol);
@@ -1726,6 +1726,7 @@ escape_newline:
                 }
                 columnIt = endOfWord;
             }
+             
             if (comment)
             {
                 auto pp = Alloc<Preprocessor>();
@@ -1877,6 +1878,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         timer.Start();
         PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
         PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+        GPULangParser::LineStack.clear();
         if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
         {
             // get the name of the shader
@@ -1924,7 +1926,6 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             parser.addErrorListener(&parserErrorHandler);
 
             Effect* effect = parser.entry()->returnEffect;
-            GPULangParser::LineStack.clear();
             timer.Stop();
             if (options.emitTimings)
                 timer.Print("Parsing");
@@ -1997,6 +1998,8 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+    GPULangParser::LineStack.clear();
+
     if (GPULangPreprocessFile(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
@@ -2031,7 +2034,6 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         CommonTokenStream tokens(&lexer);
         GPULangParser parser(&tokens);
         parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-        GPULangParser::LineStack.clear();
 
         input.load(preprocessed);
         lexer.setInputStream(&input);
@@ -2116,6 +2118,8 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
 
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
+    GPULangParser::LineStack.clear();
+
     if (GPULangPreprocess(file, defines, preprocessed, preprocessorSymbols, diagnostics))
     {
         // get the name of the shader
@@ -2149,7 +2153,6 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         CommonTokenStream tokens(&lexer);
         GPULangParser parser(&tokens);
         parser.getInterpreter<antlr4::atn::ParserATNSimulator>()->setPredictionMode(antlr4::atn::PredictionMode::SLL);
-        GPULangParser::LineStack.clear();
 
         input.load(preprocessed);
         lexer.setInputStream(&input);

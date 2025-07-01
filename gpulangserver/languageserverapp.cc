@@ -422,7 +422,7 @@ SemanticModifierMapping operator|(const SemanticModifierMapping lhs, const Seman
 struct Context
 {
     GPULang::Symbol::Location loc;
-    int carry;
+    int carry = 0;
     
     int activeBranchIt = 0;
     bool activeBranchStack[32] = {true};
@@ -516,10 +516,10 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
                 break;
             case GPULang::Preprocessor::Call:
             {
-                InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Macro, 0x0, result);
-                uint32_t callLength = uint32_t(pp->location.end - pp->location.start);
-                if (callLength < pp->contents.len)
-                    ctx.carry += int(pp->contents.len - callLength); // Add the difference in length as a carry
+                //InsertSemanticToken(ctx, pp->location, SemanticTypeMapping::Macro, 0x0, result);
+                //uint32_t callLength = uint32_t(pp->location.end - pp->location.start);
+                //if (callLength < pp->contents.len)
+                    //ctx.carry += int(pp->contents.len - callLength); // Add the difference in length as a carry
                 break;
             }
             }
@@ -1245,7 +1245,7 @@ main(int argc, const char** argv)
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     Context prev;
-                    prev.loc.line = 0;
+                    prev.loc.line = 1;
                     prev.loc.start = 0;
                     prev.carry = 0;
                     for (auto sym : file->result.symbols)
@@ -1325,11 +1325,11 @@ main(int argc, const char** argv)
                         ctx.loc.line = 0;
                         ctx.loc.start = 0;
                         ctx.carry = 0;
+                        std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                         for (auto sym : file->result.symbols)
                         {
                             if (sym->location.file == file->f->path)
                             {
-                                std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
                                 CreateSemanticToken(ctx, sym, file, file->semanticTokens, scopes);
                             }
                         }

@@ -1344,7 +1344,7 @@ private:
   friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
   friend bool GPULangValidate(GPULangFile*, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
   friend bool GPULangValidateFile(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
-  friend bool GPULangPreprocess(GPULangFile*, const std::string&, const std::vector<std::string>&, std::string&, std::string&);
+  friend bool GPULangPreprocess(GPULangFile*, const std::vector<std::string>&, std::string&, PinnedArray<GPULang::Symbol*>&, PinnedArray<GPULang::Diagnostic>&);
   friend GPULangFile* GPULangLoadFile(const std::string_view&, const std::vector<std::string_view>&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 
