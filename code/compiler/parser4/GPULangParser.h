@@ -1104,6 +1104,7 @@ public:
     antlr4::tree::TerminalNode *NOT();
     antlr4::tree::TerminalNode *CONJUGATE();
     antlr4::tree::TerminalNode *MUL_OP();
+    antlr4::tree::TerminalNode *AND();
     BinaryexpatomContext *binaryexpatom();
     antlr4::tree::TerminalNode *DOT();
     antlr4::tree::TerminalNode *ARROW();
@@ -1115,7 +1116,6 @@ public:
     antlr4::tree::TerminalNode *GREATEREQ();
     antlr4::tree::TerminalNode *LOGICEQ();
     antlr4::tree::TerminalNode *NOTEQ();
-    antlr4::tree::TerminalNode *AND();
     antlr4::tree::TerminalNode *XOR();
     antlr4::tree::TerminalNode *OR();
     antlr4::tree::TerminalNode *LOGICAND();

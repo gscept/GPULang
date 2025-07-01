@@ -102,21 +102,19 @@ UnaryExpression::Resolve(Compiler* compiler)
         }
         case '*':
         {
-            if (this->op == '*')
+            if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
             {
-                if (type.modifiers.empty() || type.modifiers.front() != Type::FullType::Modifier::Pointer)
-                {
-                    compiler->Error("Dereferencing is only allowed on a pointer", this);
-                    return false;
-                }
-                type.modifiers.erase(type.modifiers.begin());
-                type.modifierValues.erase(type.modifierValues.begin());
-            }
-            else if (this->isLhsValue)
-            {
-                compiler->Error("Left hand unary operators must be pointer indirection '*'", this);
+                compiler->Error("Dereferencing is only allowed on a pointer", this);
                 return false;
             }
+            type.modifiers.erase(type.modifiers.begin());
+            type.modifierValues.erase(type.modifierValues.begin());
+            break;
+        }
+        case '&':
+        {
+            // Add modifier to type
+            type.AddModifier(Type::FullType::Modifier::Pointer);
             break;
         }
         case '-':

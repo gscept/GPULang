@@ -5091,19 +5091,17 @@ SPIRVGenerator::SetupIntrinsics()
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] =  [fun](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {
             assert(args.size() == 3);
-            assert(args[1].isLiteral);
+            assert(args[2].isLiteral);
             auto [fn, op, inst] = fun;
 
             uint32_t scope = ScopeToAtomicScope(args[0].scope);
             uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
-
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, args[0], scopeId, semanticsId);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
             return SPIRVResult(ret, returnType);
         };
     }
@@ -5124,12 +5122,10 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
-
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, valueLoaded);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
 
             return SPIRVResult(ret, returnType, true);
         };
@@ -5143,7 +5139,7 @@ SPIRVGenerator::SetupIntrinsics()
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] =  [fun](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {
-            assert(args.size() == 3);
+            assert(args.size() == 4);
             assert(args[1].isLiteral);
             auto [fn, op, inst] = fun;
 
@@ -5151,13 +5147,11 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult value1Loaded = LoadValueSPIRV(c, g, args[1]);
             SPIRVResult value2Loaded = LoadValueSPIRV(c, g, args[2]);
-            
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret =  g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, semanticsId, value1Loaded, value2Loaded);
+            uint32_t ret =  g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value1Loaded, value2Loaded);
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -5178,12 +5172,10 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t scope = ScopeToAtomicScope(args[0].scope);
             uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
-
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, semanticsId);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId);
             return SPIRVResult(ret, returnType, true);
         };
     }
@@ -5205,12 +5197,10 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
-            
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, semanticsId, valueLoaded);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, valueLoaded);
 
             return SPIRVResult(ret, returnType, true);
         };
@@ -5233,12 +5223,10 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
-            
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, semanticsId, valueLoaded);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, valueLoaded);
 
             return SPIRVResult(ret, returnType, true);
         };
@@ -5262,12 +5250,10 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
             semantics |= ScopeToMemorySemantics(args[0].scope);
 
-            uint32_t ptr = AccessChainSPIRV(c, g, args[0].name, args[0].typeName, args[0].accessChain);
             SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
-            
             SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
             SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
-            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, SPVArg{ptr}, scopeId, semanticsId, valueLoaded);
+            uint32_t ret = g->writer->MappedInstruction(inst, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
 
             return SPIRVResult(ret, returnType, true);
         };
@@ -7802,6 +7788,11 @@ GenerateUnaryExpressionSPIRV(const Compiler* compiler, SPIRVGenerator* generator
             //uint32_t deref = generator->AddMappedOp(Format("OpLoad %%%d %%%d", typeName.typeName, rhs.name), unaryExpressionResolved->text);
             //return SPIRVResult(deref, typeName.typeName, true);
             //break;
+        }
+        case '&':
+        {
+            uint32_t name = AccessChainSPIRV(compiler, generator, rhs.name, rhs.typeName, rhs.accessChain);
+            return SPIRVResult(name, rhs.typeName, false);
         }
         case '-':
         {

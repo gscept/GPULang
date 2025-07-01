@@ -244,11 +244,11 @@ void gpulangParserInitialize() {
   	45,1138,8,45,1,45,1,45,1,45,1,45,4,45,1144,8,45,11,45,12,45,1145,1,45,
   	1,45,1,45,1,45,1,184,1,74,46,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
   	30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,
-  	76,78,80,82,84,86,88,90,0,11,1,0,52,52,1,0,61,61,1,0,66,66,5,0,28,29,
-  	50,50,60,60,75,76,78,78,2,0,72,72,77,78,1,0,75,76,1,0,30,31,1,0,64,67,
-  	1,0,68,69,5,0,32,38,51,51,55,55,57,57,59,59,1,0,28,29,1253,0,110,1,0,
-  	0,0,2,130,1,0,0,0,4,136,1,0,0,0,6,138,1,0,0,0,8,184,1,0,0,0,10,187,1,
-  	0,0,0,12,193,1,0,0,0,14,201,1,0,0,0,16,219,1,0,0,0,18,221,1,0,0,0,20,
+  	76,78,80,82,84,86,88,90,0,11,1,0,52,52,1,0,61,61,1,0,66,66,6,0,28,29,
+  	50,50,54,54,60,60,75,76,78,78,2,0,72,72,77,78,1,0,75,76,1,0,30,31,1,0,
+  	64,67,1,0,68,69,5,0,32,38,51,51,55,55,57,57,59,59,1,0,28,29,1253,0,110,
+  	1,0,0,0,2,130,1,0,0,0,4,136,1,0,0,0,6,138,1,0,0,0,8,184,1,0,0,0,10,187,
+  	1,0,0,0,12,193,1,0,0,0,14,201,1,0,0,0,16,219,1,0,0,0,18,221,1,0,0,0,20,
   	243,1,0,0,0,22,278,1,0,0,0,24,280,1,0,0,0,26,310,1,0,0,0,28,329,1,0,0,
   	0,30,387,1,0,0,0,32,410,1,0,0,0,34,445,1,0,0,0,36,492,1,0,0,0,38,521,
   	1,0,0,0,40,548,1,0,0,0,42,558,1,0,0,0,44,583,1,0,0,0,46,612,1,0,0,0,48,
@@ -1694,7 +1694,7 @@ GPULangParser::TypeDeclarationContext* GPULangParser::typeDeclaration() {
 
             _la = _input->LA(1);
             if ((((_la & ~ 0x3fULL) == 0) &&
-              ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+              ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
               ((1ULL << (_la - 75)) & 7787) != 0)) {
               setState(226);
               antlrcpp::downCast<TypeDeclarationContext *>(_localctx)->arraySize0 = expression(0);
@@ -2862,7 +2862,7 @@ GPULangParser::StructureContext* GPULangParser::structure() {
 
                 _la = _input->LA(1);
                 if ((((_la & ~ 0x3fULL) == 0) &&
-                  ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+                  ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
                   ((1ULL << (_la - 75)) & 7787) != 0)) {
                   setState(421);
                   antlrcpp::downCast<StructureContext *>(_localctx)->arraySize0 = expression(0);
@@ -3673,7 +3673,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(566);
       antlrcpp::downCast<ProgramContext *>(_localctx)->assignment = expression(0);
@@ -3822,7 +3822,7 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(600);
       antlrcpp::downCast<SamplerContext *>(_localctx)->assign = expression(0);
@@ -3932,7 +3932,7 @@ GPULangParser::StateContext* GPULangParser::state() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(618);
       antlrcpp::downCast<StateContext *>(_localctx)->assign = expression(0);
@@ -4119,6 +4119,7 @@ GPULangParser::StatementContext* GPULangParser::statement() {
       case GPULangParser::LL:
       case GPULangParser::NOT:
       case GPULangParser::QO:
+      case GPULangParser::AND:
       case GPULangParser::CONJUGATE:
       case GPULangParser::Q:
       case GPULangParser::ADD_OP:
@@ -4430,7 +4431,7 @@ GPULangParser::ForStatementContext* GPULangParser::forStatement() {
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(688);
       antlrcpp::downCast<ForStatementContext *>(_localctx)->condition = expression(0);
@@ -4443,7 +4444,7 @@ GPULangParser::ForStatementContext* GPULangParser::forStatement() {
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(694);
       antlrcpp::downCast<ForStatementContext *>(_localctx)->loop = expression(0);
@@ -4891,7 +4892,7 @@ GPULangParser::ScopeStatementContext* GPULangParser::scopeStatement() {
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464579282036998302) != 0) || ((((_la - 74) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482593680546480286) != 0) || ((((_la - 74) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 74)) & 15575) != 0)) {
       setState(772);
       _errHandler->sync(this);
@@ -5015,7 +5016,7 @@ GPULangParser::TerminateStatementContext* GPULangParser::terminateStatement() {
 
         _la = _input->LA(1);
         if ((((_la & ~ 0x3fULL) == 0) &&
-          ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+          ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
           ((1ULL << (_la - 75)) & 7787) != 0)) {
           setState(783);
           antlrcpp::downCast<TerminateStatementContext *>(_localctx)->value = expression(0);
@@ -5263,7 +5264,7 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & 3464579282036998286) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+        ((1ULL << _la) & 3482593680546480270) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
         ((1ULL << (_la - 75)) & 7787) != 0)) {
         setState(820);
         antlrcpp::downCast<SwitchStatementContext *>(_localctx)->statementContext = statement();
@@ -5289,7 +5290,7 @@ GPULangParser::SwitchStatementContext* GPULangParser::switchStatement() {
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & 3464579282036998286) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+        ((1ULL << _la) & 3482593680546480270) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
         ((1ULL << (_la - 75)) & 7787) != 0)) {
         setState(832);
         antlrcpp::downCast<SwitchStatementContext *>(_localctx)->statementContext = statement();
@@ -5540,6 +5541,10 @@ tree::TerminalNode* GPULangParser::ExpressionContext::MUL_OP() {
   return getToken(GPULangParser::MUL_OP, 0);
 }
 
+tree::TerminalNode* GPULangParser::ExpressionContext::AND() {
+  return getToken(GPULangParser::AND, 0);
+}
+
 GPULangParser::BinaryexpatomContext* GPULangParser::ExpressionContext::binaryexpatom() {
   return getRuleContext<GPULangParser::BinaryexpatomContext>(0);
 }
@@ -5582,10 +5587,6 @@ tree::TerminalNode* GPULangParser::ExpressionContext::LOGICEQ() {
 
 tree::TerminalNode* GPULangParser::ExpressionContext::NOTEQ() {
   return getToken(GPULangParser::NOTEQ, 0);
-}
-
-tree::TerminalNode* GPULangParser::ExpressionContext::AND() {
-  return getToken(GPULangParser::AND, 0);
 }
 
 tree::TerminalNode* GPULangParser::ExpressionContext::XOR() {
@@ -5702,6 +5703,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
       case GPULangParser::T__27:
       case GPULangParser::T__28:
       case GPULangParser::NOT:
+      case GPULangParser::AND:
       case GPULangParser::CONJUGATE:
       case GPULangParser::ADD_OP:
       case GPULangParser::SUB_OP:
@@ -5710,7 +5712,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
         antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _input->LT(1);
         _la = _input->LA(1);
         if (!(((((_la - 28) & ~ 0x3fULL) == 0) &&
-          ((1ULL << (_la - 28)) & 1548116671070211) != 0))) {
+          ((1ULL << (_la - 28)) & 1548116738179075) != 0))) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
         }
         else {
@@ -6159,7 +6161,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
 
           _la = _input->LA(1);
           if ((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
             ((1ULL << (_la - 75)) & 7787) != 0)) {
             setState(982);
             antlrcpp::downCast<ExpressionContext *>(_localctx)->list = expressionList();
@@ -6191,7 +6193,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
 
           _la = _input->LA(1);
           if ((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
             ((1ULL << (_la - 75)) & 7787) != 0)) {
             setState(993);
             antlrcpp::downCast<ExpressionContext *>(_localctx)->e3 = expression(0);
@@ -6530,7 +6532,7 @@ GPULangParser::InitializerExpressionContext* GPULangParser::initializerExpressio
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 3464544097497251854) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 3482558496006733838) != 0) || ((((_la - 75) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 75)) & 7787) != 0)) {
       setState(1045);
       antlrcpp::downCast<InitializerExpressionContext *>(_localctx)->list = expressionList();

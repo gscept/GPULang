@@ -987,7 +987,7 @@ expression
         expr->location = $e1.tree->location;
         $tree = expr;
     }
-    | <assoc=right> op = ('-' | '+' | '!' | '~' | '++' | '--' | '*') p = expression
+    | <assoc=right> op = ('-' | '+' | '!' | '~' | '++' | '--' | '*' | '&') p = expression
     {
         $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), true, $p.tree);
         $tree->location = $p.tree->location;
