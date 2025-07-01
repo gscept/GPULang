@@ -1285,7 +1285,7 @@ main(int argc, const char** argv)
                     file->scopesByLine.clear();
                     file->scopesByRange.clear();
                     Context ctx;
-                    ctx.loc.line = 0;
+                    ctx.loc.line = 1;
                     ctx.loc.start = 0;
                     ctx.carry = 0;
                     for (auto sym : file->result.symbols)
@@ -1322,7 +1322,7 @@ main(int argc, const char** argv)
                         file->scopesByLine.clear();
                         file->scopesByRange.clear();
                         Context ctx;
-                        ctx.loc.line = 0;
+                        ctx.loc.line = 1;
                         ctx.loc.start = 0;
                         ctx.carry = 0;
                         std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
