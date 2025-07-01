@@ -93,6 +93,8 @@ bool
 InitializerExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->fullType.name == UNDEFINED_TYPE)
+        return false;
     out = thisResolved->fullType;
     return true;
 }
@@ -104,6 +106,8 @@ bool
 InitializerExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->type == nullptr)
+        return false;
     out = thisResolved->type;
     assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;

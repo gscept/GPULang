@@ -303,15 +303,31 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
 /**
 */
 ParseContext::ParsedFile* 
-ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& messageHandler)
+ParseFile(const std::string path, ParseContext* context, lsp::MessageHandler& messageHandler, bool reload = false)
 {
     auto it = context->parsedFiles.find(path);
     if (it == context->parsedFiles.end())
     {
         it = context->parsedFiles.insert({ path, ParseContext::ParsedFile() }).first;
         it->second.alloc = GPULang::CreateAllocator();
-        it->second.f = GPULangLoadFile(path.c_str(), {});
+        it->second.f = GPULangLoadFile(path.c_str());
         it->second.path = path;
+    }
+    else if (reload)
+    {
+        GPULangFile* file = it->second.f;
+        assert(file != nullptr && file->contents != nullptr);
+        free(file->contents);
+        
+        FILE* f = fopen(file->path.c_str(), "rb");
+        fseek(f, 0, SEEK_END);
+        int size = ftell(f);
+
+        file->contents = (char*)malloc(size);
+        rewind(f);
+        fread(file->contents, 1, size, f);
+        fclose(f);
+        file->contentSize = size;
     }
 
     // Create temporary file for the compiler
@@ -629,6 +645,16 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
         {
             const GPULang::SamplerState* struc = static_cast<const GPULang::SamplerState*>(sym);
             const GPULang::SamplerState::__Resolved* res = GPULang::Symbol::Resolved(struc);
+            for (auto annot : struc->annotations)
+            {
+                annotationSemanticToken(annot, ctx, file, result, scopes);
+            }
+            for (auto attr : struc->attributes)
+            {
+                InsertSemanticToken(ctx, attr->location, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Modifier, (uint32_t)dead, result);
+                if (attr->expression != nullptr)
+                    CreateSemanticToken(ctx, attr->expression, file, result, scopes);
+            }
             InsertSemanticToken(ctx, sym->location, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
@@ -1041,6 +1067,36 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             const auto state = static_cast<const GPULang::SamplerState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Sampler State\n";
+            if (lookup.flags.symbolLookup)
+            {
+                for (auto attr : state->attributes)
+                {
+                    ret += GPULang::Format("%s", attr->name.c_str());
+                    if (attr->expression != nullptr)
+                        ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
+                    else
+                        ret += " ";
+                }
+
+                ret += "\n\n";
+                if (sym->location.line != -1)
+                    ret += GPULang::Format("Declared in %s line %d\n", sym->location.file.c_str(), sym->location.line);
+                ret += sym->documentation + "\n";
+            }
+            else if (lookup.flags.typeLookup)
+            {
+                for (auto attr : state->attributes)
+                {
+                    ret += GPULang::Format("*%s*", attr->name.c_str());
+                    if (attr->expression != nullptr)
+                        ret += GPULang::Format("(%s) ", attr->expression->EvalString().c_str());
+                    else
+                        ret += " ";
+                }
+                ret += GPULang::Format("%s : ", state->name.c_str());
+
+                ret += sym->documentation + "\n";
+            }
             for (auto mem : res->typeSymbol->scope.symbolLookup)
             {
                 ret += CreateMarkdown(mem.second, PresentationBits{ {.typeLookup = 1} });
@@ -1167,12 +1223,12 @@ main(int argc, const char** argv)
                     }
                 }
 
-                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .change = lsp::TextDocumentSyncKind::Full };
+                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .willSave = true, .change = lsp::TextDocumentSyncKind::None };
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
                 result.capabilities.declarationProvider = lsp::DeclarationOptions{ .workDoneProgress = true };
-                result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
+                //result.capabilities.definitionProvider = lsp::DefinitionOptions{ .workDoneProgress = true };
                 result.capabilities.semanticTokensProvider = lsp::SemanticTokensOptions{ .legend = legend, .range = false, .full = true };
                 result.capabilities.hoverProvider = lsp::HoverOptions{ .workDoneProgress = true };
                 result.capabilities.completionProvider = lsp::CompletionOptions{ .workDoneProgress = true, .triggerCharacters = { { "." } }, .allCommitCharacters = { { ";" } }, .resolveProvider = false, .completionItem = lsp::CompletionOptionsCompletionItem{ true } };
@@ -1218,7 +1274,41 @@ main(int argc, const char** argv)
                 if (file != nullptr)
                     Clear(file->result, file->alloc);
             })
-                .add<lsp::notifications::TextDocument_DidChange>([&context, &messageHandler](lsp::notifications::TextDocument_DidChange::Params&& params)
+            .add<lsp::notifications::TextDocument_WillSave>([&context, &messageHandler](lsp::notifications::TextDocument_WillSave::Params&& params)
+            {
+                if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
+                {
+                    ParseContext::ParsedFile* file = ParseFile(params.textDocument.uri.path(), context, messageHandler, true);
+                    file->symbolsByRange.clear();
+                    file->symbolsByLine.clear();
+                    file->semanticTokens.clear();
+                    file->scopesByLine.clear();
+                    file->scopesByRange.clear();
+                    Context ctx;
+                    ctx.loc.line = 0;
+                    ctx.loc.start = 0;
+                    ctx.carry = 0;
+                    for (auto sym : file->result.symbols)
+                    {
+                        if (sym->location.file == file->f->path)
+                        {
+                            std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
+                            CreateSemanticToken(ctx, sym, file, file->semanticTokens, scopes);
+                        }
+                    }
+
+                    for (auto& lineSymbols : file->symbolsByLine)
+                    {
+                        std::sort(lineSymbols.second.begin(), lineSymbols.second.end(), [](const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& lhs, const std::tuple<TextRange, PresentationBits, const GPULang::Symbol*>& rhs)
+                        {
+                            auto& [lrange, _0, _1] = lhs;
+                            auto& [rrange, _2, _3] = rhs;
+                            return lrange.startColumn < rrange.startColumn;
+                        });
+                    }
+                }
+            })
+            .add<lsp::notifications::TextDocument_DidChange>([&context, &messageHandler](lsp::notifications::TextDocument_DidChange::Params&& params)
             {
                 if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
                 {
@@ -1253,22 +1343,6 @@ main(int argc, const char** argv)
                                 return lrange.startColumn < rrange.startColumn;
                             });
                         }
-                    }
-                }
-            })
-                .add<lsp::notifications::Workspace_DidChangeWatchedFiles>([&context, &messageHandler](lsp::notifications::Workspace_DidChangeWatchedFiles::Params&& params)
-            {
-                for (auto& event : params.changes)
-                {
-                    GPULang::Compiler::Options options;
-                    switch (event.type)
-                    {
-                        case lsp::FileChangeType::Created:
-                        case lsp::FileChangeType::Changed:
-                            ParseFile(event.uri.path(), context, messageHandler);
-                            break;
-                        case lsp::FileChangeType::Deleted:
-                            break;
                     }
                 }
             })

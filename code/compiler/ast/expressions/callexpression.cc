@@ -122,7 +122,7 @@ CallExpression::Resolve(Compiler* compiler)
                             Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                             // There is no help if storage doesn't align
-                            if (!IsStorageCompatible(this->thisResolved->argStorages[i], paramResolved->storage))
+                            if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
                                 continue;
                             
                             if (param->type != this->thisResolved->argumentTypes[i])
@@ -171,7 +171,7 @@ CallExpression::Resolve(Compiler* compiler)
                         Variable::__Resolved* paramResolved = Symbol::Resolved(param);
 
                         // There is no help if storage doesn't align
-                        if (!IsStorageCompatible(this->thisResolved->argStorages[i], paramResolved->storage))
+                        if (!IsStorageCompatible(paramResolved->storage, this->thisResolved->argStorages[i]))
                             continue;
                         
                         if (fun->parameters[i]->type != this->thisResolved->argumentTypes[i])
@@ -382,6 +382,8 @@ CallExpression::Resolve(Compiler* compiler)
 bool
 CallExpression::EvalType(Type::FullType& out) const
 {
+    if (thisResolved->returnType.name == UNDEFINED_TYPE)
+        return false;
     out = this->thisResolved->returnType;
     return true;
 }
@@ -393,6 +395,8 @@ bool
 CallExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->retType == nullptr)
+        return false;
     out = thisResolved->retType;
     assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;

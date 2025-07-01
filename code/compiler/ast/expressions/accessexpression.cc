@@ -152,6 +152,8 @@ bool
 AccessExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->returnType.name == UNDEFINED_TYPE)
+        return false;
     out = thisResolved->returnType;
     return true;
 }
@@ -165,8 +167,10 @@ AccessExpression::EvalTypeSymbol(Type*& out) const
     auto thisResolved = Symbol::Resolved(this);
     if (thisResolved->swizzleType != nullptr)
         out = thisResolved->swizzleType;
-    else
+    else if (thisResolved->retType != nullptr)
         out = thisResolved->retType;
+    else
+        return false;
     assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;
 }

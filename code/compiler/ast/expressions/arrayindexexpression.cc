@@ -149,6 +149,8 @@ bool
 ArrayIndexExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->returnFullType.name == UNDEFINED_TYPE)
+        return false;
     out = thisResolved->returnFullType;
     return true;
 }
@@ -160,6 +162,8 @@ bool
 ArrayIndexExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->returnType == nullptr)
+        return false;
     out = thisResolved->returnType;
     assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;

@@ -55,7 +55,7 @@ union AccessBits
 };
 
 /// Convert storage to string
-std::string StorageToString(Storage storage);
+ConstantString StorageToString(Storage storage);
 /// Check if storage is compatible
 bool IsStorageCompatible(Storage lhs, Storage rhs);
 /// Returns true if storage type needs explicit call signature

@@ -666,6 +666,11 @@ struct TransientString
         this->Append(rhs);
         return *this;
     }
+    
+    bool operator<(const TransientString& rhs) const
+    {
+        return strcmp(this->buf, rhs.buf) < 0;
+    }
 
     bool operator==(const ConstantString& rhs) const
     {

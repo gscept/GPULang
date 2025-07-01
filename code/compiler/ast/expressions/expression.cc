@@ -13,7 +13,7 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+ConstantString
 StorageToString(Storage storage)
 {
     switch (storage)
@@ -61,6 +61,12 @@ IsStorageCompatible(Storage lhs, Storage rhs)
             return true;
         return false;
     }
+    else if (rhs == Storage::Workgroup)
+    {
+        if (lhs == Storage::Default || lhs == Storage::Workgroup || lhs == Storage::Input || lhs == Storage::Output)
+            return true;
+        return false;
+    }
     else
     {
         return lhs == rhs;
@@ -81,9 +87,9 @@ StorageRequiresSignature(Storage storage)
         case Storage::Output:
         case Storage::LinkDefined:
         case Storage::Global:
+        case Storage::Workgroup:
             return false;
         case Storage::Uniform:
-        case Storage::Workgroup:
         case Storage::Device:
         case Storage::RayPayload:
         case Storage::RayPayloadInput:

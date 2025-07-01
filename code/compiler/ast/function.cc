@@ -1241,7 +1241,7 @@ __ADD_HANDLE_ARG_LIT(texture, overload);\
 #define __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(ty, overload)\
 newIntrinsic = StaticAlloc<Function>(); \
 newIntrinsic->name = ConstantString(STRINGIFY(texture##ty)); \
-Intrinsics::Texture##ty##_##overload = newIntrinsic;\
+Intrinsics::SampledTexture##ty##_##overload = newIntrinsic;\
 DefaultIntrinsics.push_back(newIntrinsic);\
 arguments.Clear();\
 __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
@@ -1298,8 +1298,11 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
 #undef X
 
 #define X(type, index)\
-    __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(GetSampledMip, type)\
+    __MAKE_TEXTURE_QUERY_INTRINSIC_LIT(GetSampledMip, type)\
     __ADD_HANDLE_ARG_LIT(sampler, SamplerType);\
+    __ADD_ARG(coords, intCoordinates[index]);\
+    __SET_RET_LIT(Float)\
+    __MAKE_SAMPLEDTEXTURE_QUERY_INTRINSIC_LIT(GetSampledMip, type)\
     __ADD_ARG(coords, intCoordinates[index]);\
     __SET_RET_LIT(Float)
     

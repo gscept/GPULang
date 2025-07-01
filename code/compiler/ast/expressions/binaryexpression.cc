@@ -260,6 +260,8 @@ bool
 BinaryExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->returnType.name == UNDEFINED_TYPE)
+        return false;
     out = thisResolved->returnType;
     return true;
 }
@@ -271,8 +273,9 @@ bool
 BinaryExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->retType == nullptr)
+        return false;
     out = thisResolved->retType;
-    assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;
 }
 

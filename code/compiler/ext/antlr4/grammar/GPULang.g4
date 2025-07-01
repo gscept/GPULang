@@ -447,8 +447,8 @@ structure
         (varName = IDENTIFIER { varName = FixedString($varName.text); varLocation = SetupFile(); } ':'         
             { typeRange = BeginLocationRange(); }
             ( 
-                '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); } |
-                '[' { varType.AddModifier(Type::FullType::Modifier::Array); } 
+                '*' { varType.AddModifier(Type::FullType::Modifier::Pointer); }
+                | '[' { varType.AddModifier(Type::FullType::Modifier::Array); } 
                     ( arraySize0 = expression { varType.UpdateValue($arraySize0.tree); } )?  
                 ']'
             )* 
@@ -1261,9 +1261,9 @@ ML_COMMENT: '/*' .*? '*/' -> channel(HIDDEN);
 fragment EXPONENT: ('e' | 'E') ('+' | '-')? INTEGER+;
 
 FLOATLITERAL:
-    INTEGER+ DOT INTEGER* EXPONENT? 'f'
-    | DOT INTEGER+ EXPONENT? 'f'
-    | INTEGER+ EXPONENT? 'f';
+    INTEGER+ DOT INTEGER* EXPONENT? ('f'|'F')
+    | DOT INTEGER+ EXPONENT? ('f'|'F')
+    | INTEGER+ EXPONENT? ('f'|'F');
 
 DOUBLELITERAL:
     INTEGER+ DOT INTEGER* EXPONENT?

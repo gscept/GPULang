@@ -21,6 +21,9 @@
 #ifdef __WIN32__
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <io.h>
+#define F_OK 0
+#define access _access
 #else
 #include <unistd.h>
 #endif
@@ -92,26 +95,12 @@ struct FileLevel
 /**
 */
 GPULangFile*
-GPULangLoadFile(const std::string_view& path, const FixedArray<std::string_view>& searchPaths)
+GPULangLoadFile(const std::string_view& path)
 {
     GPULangFile* file = nullptr;
     FILE* f = fopen(TStr(path).Data(), "rb");
     
-    if (f == nullptr)
-    {
-        for (auto& searchPath : searchPaths)
-        {
-            TStr fullPath = TStr::Compact(searchPath, path);
-            f = fopen(fullPath.Data(), "rb");
-            if (f != nullptr)
-            {
-                file = Alloc<GPULangFile>();
-                file->path = fullPath.buf;
-                break;
-            }
-        }
-    }
-    else
+    if (f != nullptr)
     {
         file = Alloc<GPULangFile>();
         file->path = path;
@@ -187,7 +176,7 @@ GPULangPreprocess(
     }
 
     // Insert into file map
-    PinnedMap<std::string_view, GPULangFile*> fileMap = 0xFFFF;
+    PinnedMap<TransientString, GPULangFile*> fileMap = 0xFFFF;
 
     if (file->contents == nullptr)
     {
@@ -886,6 +875,7 @@ GPULangPreprocess(
     };
 
 #define POP_FILE() \
+            level->file->lines = level->lineCounter;\
             fileStack.size--;\
             if (fileStack.size > 0)\
             {\
@@ -1024,25 +1014,43 @@ escape_newline:
                     {
                         const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
+                        
+                        auto resolvePath = [](const std::string_view& path, const FixedArray<std::string_view>& searchPaths) -> TransientString
+                        {
+                            
+                            if (access(path.data(), F_OK) == 0)
+                                return TransientString(path);
+                            else
+                            {
+                                for (auto& searchPath : searchPaths)
+                                {
+                                    TStr fullPath = TStr::Compact(searchPath, path);
+                                    if (access(fullPath.Data(), F_OK) == 0)
+                                        return fullPath;
+                                }
+                            }
+                            return TransientString();
+                        };
 
                         GPULangFile* inc = nullptr;
-                        auto fileIt = fileMap.Find(path);
+                        TransientString fullPath = resolvePath(path, searchPaths);
+                        auto fileIt = fileMap.Find(fullPath);
                         if (fileIt == fileMap.end())
                         {
-                            inc = GPULangLoadFile(path, searchPaths);
-                            fileMap.Insert(path, inc);
+                            inc = GPULangLoadFile(fullPath.ToView());
+                            fileMap.Insert(fullPath, inc);
                         }
                         else
                         {
                             inc = fileIt->second;
                         }
-                        pp->contents = inc->path;
                         if (inc == nullptr)
                         {
-                            diagnostics.Append(DIAGNOSTIC(Format("File not found '%s'", inc->path.c_str())));
+                            diagnostics.Append(DIAGNOSTIC(Format("File not found '%s'", fullPath.ToView())));
                             ret = false;
                             goto end;
                         }
+                        pp->contents = inc->path;
                         output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
 
                         // Include guarded
@@ -1056,6 +1064,10 @@ escape_newline:
                             }
                             fileStack.Append({ inc });
                             level = &fileStack.back();
+                        }
+                        else
+                        {
+                            level->lineCounter += inc->lines;
                         }
                     }
                     else
@@ -1750,7 +1762,7 @@ GPULangPreprocessFile(
     std::string escaped = FixBackslashes(path);
     std::string fileName = path.substr(escaped.rfind("/") + 1, escaped.length() - 1);
     std::string folder = escaped.substr(0, escaped.rfind("/") + 1);
-    GPULangFile* file = GPULangLoadFile(path.c_str(), FixedArray<std::string_view>());
+    GPULangFile* file = GPULangLoadFile(path.c_str());
     bool ret = GPULangPreprocess(file, defines, output, preprocessorSymbols, diagnostics);
     return ret;
 }
@@ -2042,9 +2054,6 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
         {
-            std::string errorMessage;
-            errorMessage.append(lexerErrorHandler.errorBuffer);
-            errorMessage.append(parserErrorHandler.errorBuffer);
             result.diagnostics.Append(lexerErrorHandler.diagnostics);
             result.diagnostics.Append(parserErrorHandler.diagnostics);
         }
@@ -2097,6 +2106,7 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     bool ret = true;
 
     std::string preprocessed;
+    result.diagnostics.Invalidate();
 
     GPULang::Compiler::Timer timer;
     timer.Start();
@@ -2157,14 +2167,9 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         if (options.emitTimings)
             timer.Print("Parsing");
 
-        result.diagnostics.Clear();
-
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
         {
-            std::string errorMessage;
-            errorMessage.append(lexerErrorHandler.errorBuffer);
-            errorMessage.append(parserErrorHandler.errorBuffer);
             result.diagnostics.Append(lexerErrorHandler.diagnostics);
             result.diagnostics.Append(parserErrorHandler.diagnostics);
         }

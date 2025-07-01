@@ -69,6 +69,8 @@ bool
 CommaExpression::EvalType(Type::FullType& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->rightType.name == UNDEFINED_TYPE)
+        return false;
     out = thisResolved->rightType;
     return true;
 }
@@ -80,6 +82,8 @@ bool
 CommaExpression::EvalTypeSymbol(Type*& out) const
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (thisResolved->rhsType == nullptr)
+        return false;
     out = thisResolved->rhsType;
     assert(out->symbolType == Symbol::SymbolType::TypeType || out->symbolType == Symbol::SymbolType::EnumerationType || out->symbolType == Symbol::SymbolType::StructureType);
     return true;

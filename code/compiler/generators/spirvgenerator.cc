@@ -5454,7 +5454,6 @@ SPIRVGenerator::SetupIntrinsics()
         , { Intrinsics::TextureGetSampledMip_TextureCube }
         , { Intrinsics::TextureGetSampledMip_TextureCubeArray }
         , { Intrinsics::TextureGetSampledMip_Texture3D }
-        , { Intrinsics::TextureGetSampledMip_Texture3D }
     };
     for (auto fun : textureGetSampledMipIntrinsics)
     {
@@ -5464,6 +5463,27 @@ SPIRVGenerator::SetupIntrinsics()
             uint32_t ret;
             SPIRVResult sampledImage = createSampledImage(c, g, args[0], args[1]);
             ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, args[2]);
+            return SPIRVResult(ret, returnType, true);
+        };
+    }
+    
+    std::vector<std::tuple<Function*>> sampledTextureGetSampledMipIntrinsics =
+    {
+        { Intrinsics::SampledTextureGetSampledMip_Texture1D }
+        , { Intrinsics::SampledTextureGetSampledMip_Texture1DArray }
+        , { Intrinsics::SampledTextureGetSampledMip_Texture2D }
+        , { Intrinsics::SampledTextureGetSampledMip_Texture2DArray }
+        , { Intrinsics::SampledTextureGetSampledMip_TextureCube }
+        , { Intrinsics::SampledTextureGetSampledMip_TextureCubeArray }
+        , { Intrinsics::SampledTextureGetSampledMip_Texture3D }
+    };
+    for (auto fun : sampledTextureGetSampledMipIntrinsics)
+    {
+        SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+        {
+            g->writer->Capability(Capabilities::ImageQuery);
+            uint32_t ret;
+            ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, args[0], args[1]);
             return SPIRVResult(ret, returnType, true);
         };
     }
