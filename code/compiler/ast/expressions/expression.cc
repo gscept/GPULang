@@ -55,7 +55,7 @@ StorageToString(Storage storage)
 bool
 IsStorageCompatible(Storage lhs, Storage rhs)
 {
-    if (rhs == Storage::Default || rhs == Storage::Global)
+    if (rhs == Storage::Default || rhs == Storage::Global || rhs == Storage::Input || rhs == Storage::Output)
     {
         if (lhs == Storage::Default || lhs == Storage::Global || lhs == Storage::Input || lhs == Storage::Output)
             return true;
@@ -63,7 +63,7 @@ IsStorageCompatible(Storage lhs, Storage rhs)
     }
     else if (rhs == Storage::Workgroup)
     {
-        if (lhs == Storage::Default || lhs == Storage::Workgroup || lhs == Storage::Input || lhs == Storage::Output)
+        if (lhs == Storage::Default || lhs == Storage::Global || lhs == Storage::Workgroup || lhs == Storage::Input || lhs == Storage::Output)
             return true;
         return false;
     }
