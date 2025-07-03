@@ -8810,8 +8810,8 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
 
         if (compiler->options.symbols)
         {
-            std::string path = compiler->path;
-            std::replace(path.begin(), path.end(), '\\', '/');
+            TransientString path = compiler->path;
+            std::replace(path.buf, path.buf + path.size, '\\', '/');
             uint32_t file = this->writer->String(path.c_str());
             this->writer->Instruction(OpSource, SPVWriter::Section::DebugNames, SourceLanguage::Unknown, 1, SPVArg{file});
         }

@@ -38,6 +38,9 @@ UnaryExpression::Resolve(Compiler* compiler)
 {
     if (this->isLhsValue)
         this->expr->isLhsValue = true;
+    
+    if (this->expr == nullptr)
+        return false;
 
     this->expr->Resolve(compiler);
     auto thisResolved = Symbol::Resolved(this);

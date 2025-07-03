@@ -37,6 +37,9 @@ bool
 TernaryExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
+    if (this->lhs == nullptr || this->ifExpression == nullptr || this->elseExpression == nullptr)
+        return false;
+    
     if (!this->lhs->Resolve(compiler))
         return false;
     if (!this->ifExpression->Resolve(compiler))

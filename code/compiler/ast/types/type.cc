@@ -801,12 +801,12 @@ AccelerationStructureType AccelerationStructureTypeType;
 
 Function* activeFunction = nullptr;
 
-#define __BEGIN_TYPES__ Type* newType = nullptr;
+#define __BEGIN_TYPES__ Type* newType = nullptr; TransientArray<Symbol*> types(100);
 
 #define __MAKE_TYPE_CUSTOM(t1, t2)\
 newType = &t2##Type;\
 newType->name = ConstantString(#t1);\
-DefaultTypes.push_back(newType);
+types.Append(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
@@ -1016,7 +1016,7 @@ Type::GetSymbols(const TransientString& str)
 //------------------------------------------------------------------------------
 /**
 */
-std::vector<Symbol*> DefaultTypes;
+StaticArray<Symbol*> DefaultTypes;
 void
 Type::SetupDefaultTypes()
 {
@@ -1067,8 +1067,8 @@ Type::SetupDefaultTypes()
 #define __ADD_ENUM(val) labels.Append(#val); values.Append(nullptr);
 #define __FINISH_ENUM(enum) enum.labels = StaticArray<FixedString>(labels); enum.values = StaticArray<Expression*>(values); labels.size = 0; values.size = 0;
     
-    DefaultTypes.push_back(&CompareModeTypeType);
-    DefaultTypes.push_back(&StencilOpTypeType);
+    types.Append(&CompareModeTypeType);
+    types.Append(&StencilOpTypeType);
 
     __MAKE_TYPE_CUSTOM(function, GPULang::FunctionType);
     __MAKE_TYPE_CUSTOM(stencilState, GPULang::StencilStateType);
@@ -1077,10 +1077,11 @@ Type::SetupDefaultTypes()
     __MAKE_TYPE_CUSTOM(program, GPULang::ProgramType);
 
     __MAKE_TYPE_CUSTOM(sampler, GPULang::SamplerType);
-    DefaultTypes.push_back(&ExecutionScopeTypeType);
-    DefaultTypes.push_back(&MemorySemanticsTypeType);
+    types.Append(&ExecutionScopeTypeType);
+    types.Append(&MemorySemanticsTypeType);
 
     __MAKE_TYPE_CUSTOM(void, Void);
+    DefaultTypes = types;
     SYMBOL_STATIC_ALLOC = false;
 }
 

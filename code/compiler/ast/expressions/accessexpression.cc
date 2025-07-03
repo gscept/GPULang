@@ -27,8 +27,10 @@ AccessExpression::AccessExpression(Expression* left, Expression* right, bool der
 */
 AccessExpression::~AccessExpression()
 {
-    this->left->~Expression();
-    this->right->~Expression();
+    if (this->left != nullptr)
+        this->left->~Expression();
+    if (this->right != nullptr)
+        this->right->~Expression();
 }
 
 //------------------------------------------------------------------------------
@@ -41,6 +43,9 @@ AccessExpression::Resolve(Compiler* compiler)
     if (this->isLhsValue)
         this->left->isLhsValue = true;
 
+    if (this->left == nullptr || this->right == nullptr)
+        return false;
+    
     if (!this->left->Resolve(compiler))
         return false;
 

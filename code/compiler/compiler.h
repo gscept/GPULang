@@ -36,8 +36,8 @@ struct Diagnostic
         Warning,
         Info
     };
-    std::string error;
-    std::string file;
+    FixedString error;
+    FixedString file;
     Severity severity = Severity::Error;
     int line, column, length;
 };
@@ -104,7 +104,7 @@ struct Compiler
     ~Compiler();
 
     /// setup compiler with target language in generation mode
-    void Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options);
+    void Setup(const Compiler::Language& lang, Options options);
     /// setup compiler for validation (language server) mode
     void Setup(Options options);
     /// Create generator
@@ -208,11 +208,11 @@ struct Compiler
     /// output binary data
     void OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, Serialize::DynamicLengthBlob& dynamicDataBlob);
 
-    std::string path;
+    FixedString path;
     std::string filename;
     std::vector<std::string> defines;
     PinnedArray<Diagnostic> diagnostics = 0xFFFFFF;
-    std::vector<std::string> messages;
+    PinnedArray<FixedString> messages = 0xFFF;
     bool hasErrors;
 
     PinnedArray<Symbol*> symbols = 0xFFFFFF;
@@ -293,6 +293,13 @@ struct Compiler
     {
         clock_t start, delta;
         float duration;
+        
+        clock_t creation;
+        
+        Timer()
+        {
+            this->creation = clock();
+        }
 
         void Start()
         {
@@ -308,9 +315,15 @@ struct Compiler
         {
             printf("%s took %.2f ms\n", message.c_str(), this->duration);
         }
+        
+        void TotalTime()
+        {
+            float duration = (clock() - this->creation) * 1000 / float(CLOCKS_PER_SEC);
+            printf("Total time %.2f ms\n\n", duration);
+        }
     } performanceTimer;
 };
-
+	
 //------------------------------------------------------------------------------
 /**
 */

@@ -31,7 +31,7 @@ struct Generator
     /// produce error in compiler with explicit file, line and column
     void Warning(const std::string& msg);
 
-    std::vector<std::string> messages;
+    PinnedArray<FixedString> messages = 0xFFF;
     bool hasErrors = false;
 
     BoolExpression shaderValueExpressions[Program::__Resolved::ProgramEntryType::NumProgramEntries];

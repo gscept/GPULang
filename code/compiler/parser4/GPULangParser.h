@@ -486,7 +486,6 @@ public:
     GPULangParser::VariablesContext *variablesContext = nullptr;
     GPULangParser::Gen_statementContext *gen_statementContext = nullptr;
     GPULangParser::AliasContext *aliasContext = nullptr;
-    GPULangParser::FunctionDeclarationContext *functionDeclarationContext = nullptr;
     GPULangParser::FunctionContext *functionContext = nullptr;
     Gen_scope_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
@@ -500,8 +499,6 @@ public:
     Gen_statementContext* gen_statement(size_t i);
     std::vector<AliasContext *> alias();
     AliasContext* alias(size_t i);
-    std::vector<FunctionDeclarationContext *> functionDeclaration();
-    FunctionDeclarationContext* functionDeclaration(size_t i);
     std::vector<FunctionContext *> function();
     FunctionContext* function(size_t i);
     std::vector<LinePreprocessorEntryContext *> linePreprocessorEntry();
@@ -1344,7 +1341,7 @@ private:
   friend bool GPULangCompile(const std::string&, GPULang::Compiler::Language, const std::string&, const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangErrorBlob*&);
   friend bool GPULangValidate(GPULangFile*, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
   friend bool GPULangValidateFile(const std::string&, const std::vector<std::string>&, GPULang::Compiler::Options, GPULangServerResult&);
-  friend bool GPULangPreprocess(GPULangFile*, const std::vector<std::string>&, std::string&, PinnedArray<GPULang::Symbol*>&, PinnedArray<GPULang::Diagnostic>&);
+  friend bool GPULangPreprocess(GPULangFile*, const std::vector<std::string>&, std::string&, GPULang::PinnedArray<GPULang::Symbol*>&, GPULang::PinnedArray<GPULang::Diagnostic>&);
   friend GPULangFile* GPULangLoadFile(const std::string_view&, const std::vector<std::string_view>&);
   static std::vector<std::tuple<size_t, size_t, std::string>> LineStack;
 

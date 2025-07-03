@@ -209,7 +209,7 @@ Clear(GPULangServerResult& result, GPULang::Allocator& allocator)
 /**
 */
 void
-WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string contents, lsp::MessageHandler& messageHandler)
+WriteFile(ParseContext::ParsedFile* file, ParseContext* context, const std::string& contents, lsp::MessageHandler& messageHandler)
 {
     if (!contents.empty())
     {
@@ -261,25 +261,25 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     // sort symbols on line and starting point
     std::sort(file->result.symbols.begin(), file->result.symbols.end(), [](const GPULang::Symbol* lhs, const GPULang::Symbol* rhs)
     {
+        if (lhs == nullptr)
         if (lhs->location.line == rhs->location.line)
             return lhs->location.start < rhs->location.start;
         return lhs->location.line < rhs->location.line;
     });
-    std::vector<lsp::Diagnostic> diagnostics;
 
-    std::map<std::string, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
+    std::map<GPULang::FixedString, lsp::notifications::TextDocument_PublishDiagnostics::Params> diagnosticsResults;
     if (file->result.diagnostics.size > 0)
     {
         for (auto& diagnostic : file->result.diagnostics)
         {
             auto& it = diagnosticsResults[diagnostic.file];
-            it.uri = diagnostic.file;
+            it.uri = diagnostic.file.c_str();
             it.diagnostics.push_back(lsp::Diagnostic{
                 .range = {
                     .start = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column },
                     .end = { .line = (uint32_t)diagnostic.line, .character = (uint32_t)diagnostic.column + diagnostic.length }
                 },
-                .message = diagnostic.error,
+                .message = diagnostic.error.c_str(),
                 .severity = lsp::DiagnosticSeverity::Error // FIXME, should come from the diagnostic
             });
         }
@@ -294,7 +294,7 @@ WriteFile(ParseContext::ParsedFile* file, ParseContext* context, std::string con
     }
     else
     {
-        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(lsp::PublishDiagnosticsParams{ .uri = file->f->path });
+        messageHandler.messageDispatcher().sendNotification<lsp::notifications::TextDocument_PublishDiagnostics>(lsp::PublishDiagnosticsParams{ .uri = file->f->path.c_str() });
     }
     
 }
@@ -763,7 +763,9 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             GPULang::ValueUnion staticBranch;
             if (stat->condition->EvalValue(staticBranch))
             {
-                ctx.activeBranchStack[++ctx.activeBranchIt] = (staticBranch.i[0] == 1) && !deadBranch;
+                int condition;
+                staticBranch.Store(condition);
+                ctx.activeBranchStack[++ctx.activeBranchIt] = (condition != 0) && !deadBranch;
                 
                 CreateSemanticToken(ctx, stat->ifStatement, file, result, scopes);
                 ctx.activeBranchStack[ctx.activeBranchIt] = !ctx.activeBranchStack[ctx.activeBranchIt];
@@ -1223,7 +1225,7 @@ main(int argc, const char** argv)
                     }
                 }
 
-                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .willSave = true, .change = lsp::TextDocumentSyncKind::None };
+                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .save = true, .change = lsp::TextDocumentSyncKind::Full };
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
@@ -1245,7 +1247,7 @@ main(int argc, const char** argv)
                     file->symbolsByLine.clear();
                     file->semanticTokens.clear();
                     Context prev;
-                    prev.loc.line = 1;
+                    prev.loc.line = 0;
                     prev.loc.start = 0;
                     prev.carry = 0;
                     for (auto sym : file->result.symbols)
@@ -1274,7 +1276,7 @@ main(int argc, const char** argv)
                 if (file != nullptr)
                     Clear(file->result, file->alloc);
             })
-            .add<lsp::notifications::TextDocument_WillSave>([&context, &messageHandler](lsp::notifications::TextDocument_WillSave::Params&& params)
+                .add<lsp::notifications::TextDocument_DidSave>([&context, &messageHandler](lsp::notifications::TextDocument_DidSave::Params&& params)
             {
                 if (params.textDocument.uri.path().ends_with("gpul") || params.textDocument.uri.path().ends_with("gpuh"))
                 {
@@ -1285,7 +1287,7 @@ main(int argc, const char** argv)
                     file->scopesByLine.clear();
                     file->scopesByRange.clear();
                     Context ctx;
-                    ctx.loc.line = 1;
+                    ctx.loc.line = 0;
                     ctx.loc.start = 0;
                     ctx.carry = 0;
                     for (auto sym : file->result.symbols)
@@ -1318,11 +1320,12 @@ main(int argc, const char** argv)
                         WriteFile(file, context, std::get<lsp::TextDocumentContentChangeEvent_Text>(params.contentChanges[0]).text, messageHandler);
                         file->symbolsByRange.clear();
                         file->symbolsByLine.clear();
-                        file->semanticTokens.clear();
-                        file->scopesByLine.clear();
                         file->scopesByRange.clear();
+                        file->scopesByLine.clear();
+                        file->semanticTokens.clear();
+                        
                         Context ctx;
-                        ctx.loc.line = 1;
+                        ctx.loc.line = 0;
                         ctx.loc.start = 0;
                         ctx.carry = 0;
                         std::vector<const GPULang::Scope*> scopes{ file->result.intrinsicScope, file->result.mainScope };
@@ -1370,9 +1373,7 @@ main(int argc, const char** argv)
                 ParseContext::ParsedFile* file = GetFile(params.textDocument.uri.path(), context, messageHandler);
                 if (file != nullptr)
                 {
-                    TextRange inputRange;
-                    inputRange.startLine = params.position.line;
-                    inputRange.startColumn = params.position.character;
+
                     auto it = file->symbolsByLine.find(params.position.line);
                     if (it != file->symbolsByLine.end())
                     {
@@ -1487,6 +1488,24 @@ main(int argc, const char** argv)
                 if (file != nullptr)
                 {
                     TextRange inputRange;
+                    
+                    enum LookupType
+                    {
+                        Symbol,
+                        Member
+                    } completionType = LookupType::Symbol;
+                    if (params.context)
+                    {
+                        if (params.context->triggerKind == lsp::CompletionTriggerKind::TriggerCharacter)
+                        {
+                            if (params.context->triggerCharacter == ".")
+                            {
+                                params.position.character -= 1;
+                                completionType = LookupType::Member;
+                            }
+                        }
+                    }
+                    
                     inputRange.startLine = params.position.line;
                     inputRange.startColumn = params.position.character;
                     auto it = file->textByLine.find(params.position.line);
@@ -1494,22 +1513,29 @@ main(int argc, const char** argv)
                     {
                         auto scopeIt = file->scopesByRange.begin();
                         std::vector<const GPULang::Scope*>* scopes = nullptr;
+                        int distanceFromSymbol = INT_MAX;
                         while (scopeIt != file->scopesByRange.end())
                         {
+                            int distance = params.position.line - scopeIt->first.startLine;
+                            if (distance < 0) // If distance is negative, we passed by the scope
+                                break;
                             if (scopeIt->first.startLine <= params.position.line && scopeIt->first.stopLine >= params.position.line)
                             {
-                                scopes = &scopeIt->second;
-                                break;
+                                if (distance < distanceFromSymbol)
+                                {
+                                    scopes = &scopeIt->second;
+                                    distanceFromSymbol = distance;
+                                }
                             }
+                            
                             scopeIt++;
                         }
                         if (scopes != nullptr)
                         {
                             const char* begin = it->second.data() + params.position.character;
                             const char* eol = it->second.data() + it->second.length();
-                            std::string_view ident;
                             const char* identifierBegin = reverse_identifier_search(it->second.data(), begin-1);
-                            ident = std::string_view (identifierBegin, begin);
+                            std::string_view ident = std::string_view (identifierBegin, begin);
                          
                             const std::set<GPULang::Symbol*> symbols = ParseContext::ParsedFile::FindSymbols(ident, *scopes);
                             std::vector<lsp::CompletionItem> items;
@@ -1524,11 +1550,42 @@ main(int argc, const char** argv)
                                     items.push_back(lsp::CompletionItem{ .label = res->name.c_str(), .insertText = sym->name.c_str(), .commitCharacters = {{"("}} });
                                     break;
                                 }
+                                case GPULang::Symbol::SymbolType::EnumerationType:
+                                {
+                                    auto enu = static_cast<GPULang::Enumeration*>(sym);
+                                    const char* memberEnd = forward_identifier_search(begin+1, eol);
+                                    std::string_view member = std::string_view(begin+1, memberEnd);
+                                    
+                                    for (const auto& label : enu->labels)
+                                    {
+                                        if (label.StartsWith(member))
+                                        {
+                                            items.push_back(lsp::CompletionItem{ .label = label.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = enu->name.c_str()}, .commitCharacters = {{"."}} });
+                                        }
+                                    }
+                                    break;
+                                }
                                 case GPULang::Symbol::SymbolType::VariableType:
                                 {
                                     auto fun = static_cast<GPULang::Variable*>(sym);
                                     auto res = GPULang::Symbol::Resolved(fun);
-                                    items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name.c_str()}, .commitCharacters = {{"."}} });
+                                    if (completionType == LookupType::Member)
+                                    {
+                                        const char* memberEnd = forward_identifier_search(begin+1, eol);
+                                        std::string_view member = std::string_view(begin+1, memberEnd);
+                                        GPULang::Type* type = res->typeSymbol;
+                                        for (const auto tySym : type->symbols)
+                                        {
+                                            if (tySym->name.StartsWith(member))
+                                            {
+                                                items.push_back(lsp::CompletionItem{ .label = tySym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = type->name.c_str()}, .commitCharacters = {{"."}} });
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        items.push_back(lsp::CompletionItem{ .label = sym->name.c_str(), .labelDetails = lsp::CompletionItemLabelDetails{.description = res->type.name.c_str()}, .commitCharacters = {{"."}} });
+                                    }
                                     break;
                                 }
                                 default:

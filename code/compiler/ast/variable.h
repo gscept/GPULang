@@ -22,7 +22,7 @@ struct Variable : public Symbol
     /// destructor
     virtual ~Variable();
 
-    std::vector<std::string> values;
+    
     Type::FullType type;
     Symbol::Location typeLocation;
     Expression* valueExpression;

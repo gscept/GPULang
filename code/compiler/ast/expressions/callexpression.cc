@@ -42,6 +42,9 @@ CallExpression::Resolve(Compiler* compiler)
 {
     if (this->isLhsValue)
         this->function->isLhsValue = true;
+    
+    if (this->function == nullptr)
+        return false;
 
     this->function->EvalSymbol(this->thisResolved->functionSymbol);
 

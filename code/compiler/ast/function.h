@@ -16,7 +16,7 @@
 namespace GPULang
 {
 
-extern std::vector<Symbol*> DefaultIntrinsics;
+extern FixedArray<Symbol*> DefaultIntrinsics;
 struct Variable;
 struct Type;
 struct Statement;

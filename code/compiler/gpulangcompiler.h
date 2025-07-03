@@ -53,12 +53,12 @@ struct GPULangServerResult
 	GPULang::Scope* intrinsicScope = nullptr, *mainScope = nullptr;
     GPULang::PinnedMap<std::string, GPULang::Symbol*> lookup;
     GPULang::PinnedArray<GPULang::Diagnostic> diagnostics = 0xFFF;
-	std::vector<std::string> messages;	
+	GPULang::PinnedArray<GPULang::FixedString> messages = 0xFF;
 };
 
 struct GPULangFile
 {
-    std::string path;
+    GPULang::FixedString path;
     char* contents = nullptr;
     size_t contentSize = 0;
     bool consumed = false;

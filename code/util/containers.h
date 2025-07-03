@@ -1053,7 +1053,18 @@ struct StackMap
     
     void EndBulkAdd()
     {
-        this->Sort();
+        std::qsort(this->data.begin(), this->data.size, sizeof(item), [](const void* x, const void* y)
+        {
+            const auto& lhs = *static_cast<const item*>(x);
+            const auto& rhs = *static_cast<const item*>(y);
+            const auto cmp = lhs <=> rhs;
+            if (cmp < 0)
+                return -1;
+            if (cmp > 0)
+                return 1;
+            return 0;
+        });
+        this->searchValid = true;
     }
     
     void Sort()
@@ -1180,7 +1191,18 @@ struct PinnedMap
     
     void EndBulkAdd()
     {
-        this->Sort();
+        std::qsort(this->data.begin(), this->data.size, sizeof(item), [](const void* x, const void* y)
+        {
+            const auto& lhs = *static_cast<const item*>(x);
+            const auto& rhs = *static_cast<const item*>(y);
+            const auto cmp = lhs <=> rhs;
+            if (cmp < 0)
+                return -1;
+            if (cmp > 0)
+                return 1;
+            return 0;
+        });
+        this->searchValid = true;
     }
     
     void Sort()
@@ -1648,7 +1670,18 @@ struct FixedSet
     
     void EndBulkAdd()
     {
-        this->Sort();
+        std::qsort(this->data.begin(), this->data.size, sizeof(K), [](const void* x, const void* y)
+        {
+            const auto& lhs = *static_cast<const K*>(x);
+            const auto& rhs = *static_cast<const K*>(y);
+            const auto cmp = lhs <=> rhs;
+            if (cmp < 0)
+                return -1;
+            if (cmp > 0)
+                return 1;
+            return 0;
+        });
+        this->searchValid = true;
     }
     
     void Sort()

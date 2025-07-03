@@ -42,6 +42,9 @@ ArrayIndexExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     if (this->isLhsValue)
         this->left->isLhsValue = true;
+    
+    if (this->left == nullptr || this->right == nullptr)
+        return false;
 
     // If rhs value, array indexing needs to provide an argument 
     if (this->right == nullptr)

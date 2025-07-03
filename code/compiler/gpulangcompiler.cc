@@ -22,10 +22,10 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <io.h>
-#define F_OK 0
-#define access _access
+#define stat _stat
 #else
 #include <unistd.h>
+#include <sys/stat.h>
 #endif
 
 using namespace antlr4;
@@ -135,7 +135,7 @@ GPULangPreprocess(
 {
 
 #define DIAGNOSTIC(message)\
-        GPULang::Diagnostic{.error = message, .file = level->file->path, .line = level->lineCounter }
+        GPULang::Diagnostic{.error = FixedString(message), .file = level->file->path, .line = level->lineCounter }
 
     bool ret = true;
     struct Macro
@@ -177,6 +177,7 @@ GPULangPreprocess(
 
     // Insert into file map
     PinnedMap<TransientString, GPULangFile*> fileMap = 0xFFFF;
+    PinnedSet<TransientString> resolvedPaths = 0xFFF;
 
     if (file->contents == nullptr)
     {
@@ -188,7 +189,7 @@ GPULangPreprocess(
     GPULangParser::LineStack.push_back({0, 0, file->path.c_str()});
     Macro* macro = nullptr;
     bool comment = false;
-    level->lineCounter = 1;
+    level->lineCounter = 0;
 
     static auto match_mask = [](const char* begin, const char* end, char c) -> uint64_t
     {
@@ -880,7 +881,7 @@ GPULangPreprocess(
             if (fileStack.size > 0)\
             {\
                 level = &fileStack.back();\
-                output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));\
+                output.append(Format("#line %d \"%s\"\n", level->lineCounter+1, level->file->path.c_str()));\
                 level->lineCounter++;\
             }\
             continue;
@@ -1015,24 +1016,44 @@ escape_newline:
                         const std::string_view path = std::string_view(startOfPath + 1, endOfPath - 1);
                         SETUP_ARG2(pp, path, startOfPath, endOfPath);
                         
-                        auto resolvePath = [](const std::string_view& path, const FixedArray<std::string_view>& searchPaths) -> TransientString
+                        auto resolvePath = [](const std::string_view& path, const FixedArray<std::string_view>& searchPaths, PinnedSet<TransientString>& resolvedPaths) -> TransientString
                         {
-                            if (access(path.data(), F_OK) == 0)
-                                return TransientString(path);
+                            auto it = resolvedPaths.Find(path);
+                            if (it != resolvedPaths.end())
+                                return path;
                             else
                             {
-                                for (auto& searchPath : searchPaths)
+                                struct stat sb;
+                                if (stat(path.data(), &sb) == 0)
                                 {
-                                    TStr fullPath = TStr::Compact(searchPath, path);
-                                    if (access(fullPath.Data(), F_OK) == 0)
-                                        return fullPath;
+                                    resolvedPaths.Insert(path);
+                                    return TransientString(path);
+                                }
+                                else
+                                {
+                                    for (auto& searchPath : searchPaths)
+                                    {
+                                        TStr fullPath = TStr::Compact(searchPath, path);
+                                        auto it = resolvedPaths.Find(fullPath);
+                                        if (it != resolvedPaths.end())
+                                            return fullPath;
+                                        else
+                                        {
+                                            struct stat sb;
+                                            if (stat(fullPath.Data(), &sb) == 0)
+                                            {
+                                                resolvedPaths.Insert(fullPath);
+                                                return fullPath;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             return TransientString();
                         };
 
                         GPULangFile* inc = nullptr;
-                        TransientString fullPath = resolvePath(path, searchPaths);
+                        TransientString fullPath = resolvePath(path, searchPaths, resolvedPaths);
                         auto fileIt = fileMap.Find(fullPath);
                         if (fileIt == fileMap.end())
                         {
@@ -1050,7 +1071,6 @@ escape_newline:
                             goto end;
                         }
                         pp->contents = inc->path;
-                        output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
 
                         // Include guarded
                         if (!inc->consumed)
@@ -1063,10 +1083,12 @@ escape_newline:
                             }
                             fileStack.Append({ inc });
                             level = &fileStack.back();
+                            output.append(Format("#line %d \"%s\"\n", level->lineCounter, level->file->path.c_str()));
                         }
                         else
                         {
-                            level->lineCounter += inc->lines;
+                            output.append("\n");
+                            //level->lineCounter += inc->lines;
                         }
                     }
                     else
@@ -1449,7 +1471,7 @@ escape_newline:
                     }
                     else
                     {
-                        diagnostics.Append(GPULang::Diagnostic{ .error = Format("Unknown #pragma '%s'", command.data()), .file = level->file->path, .line = level->lineCounter });
+                        diagnostics.Append(GPULang::Diagnostic{ .error = FixedString(Format("Unknown #pragma '%s'", command.data())), .file = level->file->path, .line = level->lineCounter });
                         ret = false;
                         goto end;
                     }
@@ -1498,7 +1520,8 @@ escape_newline:
             }
             else if (!comment)
             {
-                
+                output.append(columnIt, eol);
+                goto next_line;
                 CHECK_IF()
                 const char* startOfWord = identifierBegin(columnIt, eol);
                 const char* endOfWord = identifierEnd(startOfWord, eol);
@@ -1829,14 +1852,14 @@ GPULangGenerateDependencies(const std::string& file, const std::vector<std::stri
 /**
 */
 GPULangErrorBlob*
-Error(const std::string message)
+Error(const GPULang::TransientString message)
 {
     GPULangErrorBlob* ret = new GPULangErrorBlob();
-    if (message.size() > 0)
+    if (message.size > 0)
     {
-        ret->buffer = new char[message.size() + 1];
-        ret->size = message.size();
-        message.copy(ret->buffer, ret->size);
+        ret->buffer = new char[message.size + 1];
+        ret->size = message.size;
+        memcpy(ret->buffer, message.buf, ret->size);
         ret->buffer[ret->size] = '\0';
     }
     else
@@ -1873,7 +1896,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
     {
         GPULang::Compiler::Timer timer;
         Compiler compiler;
-        compiler.Setup(target, defines, options);
+        compiler.Setup(target, options);
 
         timer.Start();
         PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
@@ -1955,20 +1978,22 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
             effect->~Effect();
 
             // convert error list to string
-            if (!compiler.messages.empty() && !compiler.options.quiet)
+            if (compiler.messages.size != 0 && !compiler.options.quiet)
             {
-                std::string err;
-                for (size_t i = 0; i < compiler.messages.size(); i++)
+                TransientString err;
+                for (size_t i = 0; i < compiler.messages.size; i++)
                 {
                     if (i > 0)
-                        err.append("\n");
-                    err.append(compiler.messages[i]);
+                        err.Append("\n");
+                    err.Append(compiler.messages[i]);
                 }
-                if (err.empty() && compiler.hasErrors)
+                if (err.size > 0 && compiler.hasErrors)
                     err = "Unhandled internal compiler error";
                 errorBuffer = Error(err);
             }
-
+            if (options.emitTimings)
+                timer.TotalTime();
+            GPULang::ResetAllocator(&alloc);
             return res;
         }
         std::string err;
@@ -1978,7 +2003,9 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
         }
         errorBuffer = Error(err);
     }
+    
     GPULang::ResetAllocator(&alloc);
+    
     return false;
 }
 
@@ -2056,8 +2083,8 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
         {
-            result.diagnostics.Append(lexerErrorHandler.diagnostics);
-            result.diagnostics.Append(parserErrorHandler.diagnostics);
+            diagnostics.Append(lexerErrorHandler.diagnostics);
+            diagnostics.Append(parserErrorHandler.diagnostics);
         }
 
         Compiler compiler;
@@ -2077,23 +2104,29 @@ GPULangValidateFile(const std::string& file, const std::vector<std::string>& def
             result.diagnostics = compiler.diagnostics;
         
         // convert error list to string
-        if (!compiler.messages.empty() && !compiler.options.quiet)
+        if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            std::string err;
-            for (size_t i = 0; i < compiler.messages.size(); i++)
+            TransientString err;
+            for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
-                    err.append("\n");
-                err.append(compiler.messages[i]);
+                    err.Append("\n");
+                err.Append(compiler.messages[i]);
             }
-            if (err.empty() && compiler.hasErrors)
+            if (err.size > 0 && compiler.hasErrors)
                 err = "Unhandled internal compiler error";
-            result.messages.push_back(err);
+            result.messages.Append(FixedString(err));
         }
-
+        if (options.emitTimings)
+            timer.TotalTime();
+        
         return res;
     }
+fail:
     result.diagnostics.Append(diagnostics);
+    if (options.emitTimings)
+        timer.TotalTime();
+    
     return false;
 }
 
@@ -2109,13 +2142,14 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
 
     std::string preprocessed;
     result.diagnostics.Invalidate();
-
-    GPULang::Compiler::Timer timer;
-    timer.Start();
+    result.messages.Invalidate();
     
     Compiler compiler;
     compiler.Setup(options);
 
+    GPULang::Compiler::Timer timer;
+    timer.Start();
+    
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
     GPULangParser::LineStack.clear();
@@ -2124,17 +2158,31 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     {
         // get the name of the shader
         std::locale loc;
-        size_t extension = file->path.rfind('.');
-        size_t lastFolder = file->path.rfind('/') + 1;
-        std::string effectName = file->path.substr(lastFolder, (file->path.length() - lastFolder) - (file->path.length() - extension));
-        effectName[0] = std::toupper(effectName[0]);
-        size_t undersc = effectName.find('_');
-        while (undersc != std::string::npos)
+        
+        TransientString nameMangled = file->path;
+        char* end = nameMangled.buf + nameMangled.size;
+        const char* extension = nullptr;
+        const char* lastSlash = nullptr;
+        while (end != file->path.buf && (extension == nullptr || lastSlash == nullptr))
         {
-            effectName[undersc + 1] = std::toupper(effectName[undersc + 1]);
-            effectName = effectName.erase(undersc, 1);
-            undersc = effectName.find('_');
+            if (end[0] == '.')
+            {
+                extension = end-1;
+            }
+            else if (end[0] == '/')
+            {
+                lastSlash = end + 1;
+                end[1] = std::toupper(end[1]);
+            }
+            else if (end[0] == '_')
+            {
+                memmove(end, end + 1, (nameMangled.buf + nameMangled.size) - end + 1);
+                end[0] = std::toupper(end[0]);
+                end++;
+            }
+            end--;
         }
+        auto effectName = std::string_view(lastSlash, extension);
 
         // setup preprocessor
         //parser.preprocess();
@@ -2173,8 +2221,8 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
         // if we have any lexer or parser error, return early
         if (lexerErrorHandler.hasError || parserErrorHandler.hasError)
         {
-            result.diagnostics.Append(lexerErrorHandler.diagnostics);
-            result.diagnostics.Append(parserErrorHandler.diagnostics);
+            diagnostics.Append(lexerErrorHandler.diagnostics);
+            diagnostics.Append(parserErrorHandler.diagnostics);
         }
 
         compiler.path = file->path;
@@ -2192,22 +2240,28 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
             result.diagnostics = compiler.diagnostics;
         
         // convert error list to string
-        if (!compiler.messages.empty() && !compiler.options.quiet)
+        if (compiler.messages.size != 0 && !compiler.options.quiet)
         {
-            std::string err;
-            for (size_t i = 0; i < compiler.messages.size(); i++)
+            TransientString err;
+            for (size_t i = 0; i < compiler.messages.size; i++)
             {
                 if (i > 0)
-                    err.append("\n");
-                err.append(compiler.messages[i]);
+                    err.Append("\n");
+                err.Append(compiler.messages[i]);
             }
-            if (err.empty() && compiler.hasErrors)
+            if (err.size == 0 && compiler.hasErrors)
                 err = "Unhandled internal compiler error";
-            result.messages.push_back(err);
+            result.messages.Append(FixedString(err));
         }
 
+        if (options.emitTimings)
+            timer.TotalTime();
+        
         return res;
     }
+fail:
     result.diagnostics.Append(diagnostics);
+    if (options.emitTimings)
+        timer.TotalTime();
     return false;
 }

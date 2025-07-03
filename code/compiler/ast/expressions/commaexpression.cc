@@ -36,6 +36,9 @@ CommaExpression::Resolve(Compiler* compiler)
 {
     if (this->isLhsValue)
         this->left->isLhsValue = true;
+    
+    if (this->left == nullptr || this->right == nullptr)
+        return false;
 
     if (!this->left->Resolve(compiler))
         return false;

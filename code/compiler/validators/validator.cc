@@ -322,8 +322,10 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
+            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
+            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }
 
@@ -337,8 +339,10 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
+            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
+            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }    
 
@@ -350,8 +354,10 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
+            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
+            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }
 
@@ -1915,6 +1921,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
 {
     Enumeration* enumeration = static_cast<Enumeration*>(symbol);
     Enumeration::__Resolved* enumResolved = Symbol::Resolved(enumeration);
+    
+    if (enumeration->builtin)
+        enumeration->scope.symbolLookup.BeginBulkAdd();
 
     if (!compiler->AddSymbol(enumeration->name, enumeration))
         return false;
@@ -2117,6 +2126,9 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
         enumeration->symbols.Append(sym);
         enumeration->scope.symbolLookup.Insert(sym->name, sym);
     }
+    
+    if (enumeration->builtin)
+        enumeration->scope.symbolLookup.EndBulkAdd();
 
     return true;
 }

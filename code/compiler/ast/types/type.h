@@ -148,7 +148,7 @@ extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
 extern const StaticMap<ConstantString, ImageFormat> StringToFormats;
 
-extern std::vector<Symbol*> DefaultTypes;
+extern StaticArray<Symbol*> DefaultTypes;
 enum class TypeCode
 {
     InvalidType

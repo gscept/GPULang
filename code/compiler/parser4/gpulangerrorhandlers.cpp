@@ -13,7 +13,7 @@ void GPULangLexerErrorHandler::syntaxError(antlr4::Recognizer* recognizer, antlr
     size_t correctLine = std::get<1>(GPULangParser::LineStack.back()) + line - 1 - std::get<0>(GPULangParser::LineStack.back());
 
     this->errorBuffer += GPULang::Format("%s(%d): syntax error: %s\n", file.c_str(), correctLine, msg.c_str());
-    this->diagnostics.Append(GPULang::Diagnostic{ .error = msg, .file = file, .line = (int)correctLine, .column = (int)charPositionInLine });
+    this->diagnostics.Append(GPULang::Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = (int)correctLine, .column = (int)charPositionInLine });
     this->hasError = true;
 }
 
@@ -26,6 +26,6 @@ void GPULangParserErrorHandler::syntaxError(antlr4::Recognizer* recognizer, antl
 	size_t correctLine = std::get<1>(GPULangParser::LineStack.back()) + line - 1 - std::get<0>(GPULangParser::LineStack.back());
 
 	this->errorBuffer += GPULang::Format("%s(%d): syntax error: %s\n", file.c_str(), correctLine, msg.c_str());
-    this->diagnostics.Append(GPULang::Diagnostic{ .error = msg, .file = file, .line = (int)correctLine, .column = (int)charPositionInLine });
+    this->diagnostics.Append(GPULang::Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = (int)correctLine, .column = (int)charPositionInLine });
 	this->hasError = true;
 }

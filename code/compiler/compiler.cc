@@ -160,7 +160,7 @@ Compiler::~Compiler()
 /**
 */
 void 
-Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& defines, Options options)
+Compiler::Setup(const Compiler::Language& lang, Options options)
 {
     this->lang = lang;
     switch (lang)
@@ -219,7 +219,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
         this->PushScope(this->intrinsicScope);
 
         // setup default types and their lookups
-        if (DefaultTypes.empty())
+        if (DefaultTypes.size == 0)
             Type::SetupDefaultTypes();
         auto typeIt = DefaultTypes.begin();
         while (typeIt != DefaultTypes.end())
@@ -258,7 +258,7 @@ Compiler::Setup(const Compiler::Language& lang, const std::vector<std::string>& 
 
         this->performanceTimer.Start();
         // setup intrinsics
-        if (DefaultIntrinsics.empty())
+        if (DefaultIntrinsics.size == 0)
             Function::SetupIntrinsics();
         this->ignoreReservedWords = true;
         auto intrinIt = DefaultIntrinsics.begin();
@@ -337,10 +337,14 @@ void
 Compiler::Setup(Options options)
 {
     this->options = options;
+    this->target.supportsInlineSamplers = true;
+    this->target.supportsPhysicalBufferAddresses = true;
+    this->target.supportsPhysicalAddressing = false;
+    this->target.supportsGlobalDeviceStorage = false;
     
     //this->staticSetupThread = CreateThread(GPULang::ThreadInfo{ .stackSize = 16_MB }, [this]()
     {
-        this->performanceTimer.Start();
+        
         
         //MakeAllocatorCurrent(&StaticAllocator);
         
@@ -356,8 +360,15 @@ Compiler::Setup(Options options)
         this->PushScope(this->intrinsicScope);
         
         // setup default types and their lookups
-        if (DefaultTypes.empty())
+        if (DefaultTypes.size == 0)
+        {
+            this->performanceTimer.Start();
             Type::SetupDefaultTypes();
+            this->performanceTimer.Stop();
+            if (this->options.emitTimings)
+                this->performanceTimer.Print("Builtin types init");
+        }
+        this->performanceTimer.Start();
         auto typeIt = DefaultTypes.begin();
         while (typeIt != DefaultTypes.end())
         {
@@ -393,10 +404,18 @@ Compiler::Setup(Options options)
         if (this->options.emitTimings)
             this->performanceTimer.Print("Static setup types");
         
-        this->performanceTimer.Start();
+        
         // setup intrinsics
-        if (DefaultIntrinsics.empty())
+        if (DefaultIntrinsics.size == 0)
+        {
+            this->performanceTimer.Start();
             Function::SetupIntrinsics();
+            this->performanceTimer.Stop();
+            if (this->options.emitTimings)
+                this->performanceTimer.Print("Intrinsics init");
+        }
+        
+        this->performanceTimer.Start();
         this->ignoreReservedWords = true;
         auto intrinIt = DefaultIntrinsics.begin();
         while (intrinIt != DefaultIntrinsics.end())
@@ -875,7 +894,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         threads[programIndex].join();
         if (!returnValues[programIndex])
         {
-            this->messages.insert(this->messages.begin(), generators[programIndex]->messages.begin(), generators[programIndex]->messages.end());
+            this->messages.Append(generators[programIndex]->messages);
         }
         ret &= returnValues[programIndex];
     }
@@ -917,7 +936,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     }
     else
     {
-        this->messages.push_back(Format("Failed to open file '%s'", binaryWriter.GetPath().c_str()));
+        this->messages.Append(FixedString(Format("Failed to open file '%s'", binaryWriter.GetPath().c_str())));
         this->hasErrors = true;
         return false;
     }
@@ -941,7 +960,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
     }
     else
     {
-        this->messages.push_back(Format("Failed to open file '%s'", headerWriter.GetPath().c_str()));
+        this->messages.Append(FixedString(Format("Failed to open file '%s'", headerWriter.GetPath().c_str())));
         this->hasErrors = true;
     }
 
@@ -970,6 +989,11 @@ Compiler::Validate(Effect* root)
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
     {
+        if (this->symbols[this->symbolIterator] == nullptr)
+        {
+            this->symbols.size = this->symbolIterator-2;
+            return false;
+        }
         ret &= this->validator->Resolve(this, this->symbols.data[this->symbolIterator]);
         if (this->hasErrors)
             break;
@@ -1012,16 +1036,16 @@ Compiler::Error(const TransientString& msg, const FixedString& file, int line, i
     {
         TransientString err;
         err.Format(InternalErrorStrings[(uint8_t)this->options.errorFormat], msg.c_str());
-        this->messages.push_back(err.c_str());
+        this->messages.Append(FixedString(err));
 
-        this->diagnostics.Append(Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = line, .column = column, .length = length });
+        this->diagnostics.Append(Diagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
     }
     else
     {
         TransientString err;
         err.Format(ErrorStrings[(uint8_t)this->options.errorFormat], file.c_str(), line, column, msg.c_str());
-        this->messages.push_back(err.c_str());
-        this->diagnostics.Append(Diagnostic{ .error = msg.c_str(), .file = file.c_str(), .line = line, .column = column, .length = length });
+        this->messages.Append(err.c_str());
+        this->diagnostics.Append(Diagnostic{ .error = FixedString(msg), .file = file, .line = line, .column = column, .length = length });
     }
     this->hasErrors = true;
 }
@@ -1041,7 +1065,7 @@ Compiler::Error(const TransientString& msg, const Symbol* sym)
 void
 Compiler::Warning(const TransientString& msg, const FixedString& file, int line, int column)
 {
-    this->messages.push_back(TransientString(file, "(", line, ")", " : warning: ", msg).c_str());
+    this->messages.Append(TransientString(file, "(", line, ")", " : warning: ", msg).c_str());
     if (this->options.warningsAsErrors)
         this->hasErrors = true;
 }
@@ -1061,9 +1085,8 @@ Compiler::Warning(const TransientString& msg, const Symbol* sym)
 void
 Compiler::GeneratorError(const TransientString& msg)
 {
-    this->messages.push_back(msg.c_str());
+    this->messages.Append(FixedString(msg));
 }
-
 
 //------------------------------------------------------------------------------
 /**
