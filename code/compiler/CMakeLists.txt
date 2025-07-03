@@ -221,6 +221,10 @@ fips_dir(validators)
         validator.cc
         validator.h
     )
+fips_dir(generated)
+    fips_files(
+	swizzle.h
+    )
 
 fips_deps(gpulang_util antlr4 glslang)
 SET_DEFAULT_OUTPUT(gpulang_compiler)

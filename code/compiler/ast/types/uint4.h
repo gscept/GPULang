@@ -91,4 +91,10 @@ extern Function UInt4_neOperator;
 extern Function UInt4_elementAccessOperatorInt;
 extern Function UInt4_elementAccessOperatorUInt;
 
+#include "generated/swizzle.h"
+
+#define X(mask) extern Variable UInt4_swizzle_##mask;
+SWIZZLE4()
+#undef X
+
 } // namespace GPULang

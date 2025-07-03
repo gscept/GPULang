@@ -1131,6 +1131,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
     return ret;
 }
 
+GPULang::SystemSetup dummy;
 
 //------------------------------------------------------------------------------
 /**

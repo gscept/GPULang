@@ -24,17 +24,17 @@ const_len(const char* str)
 
 struct ConstantString
 {
-    size_t size;
     const char* buf;
+    size_t size;
 
     constexpr ConstantString()
-        : size(0)
-        , buf(nullptr)
+        : buf(nullptr)
+        , size(0)
     {
     }
     constexpr ConstantString(std::nullptr_t)
-        : size(0)
-        , buf(nullptr)
+        : buf(nullptr)
+        , size(0)
     {
     }
 

@@ -1141,6 +1141,71 @@ struct StackMap
 
 //------------------------------------------------------------------------------
 /**
+ StaticMap is a map which unlike PinnedMap has a fixed size, and it's life time is the duration of the
+ application.
+ 
+ Does not need to free its memory.
+ */
+template <typename K, typename V, size_t SIZE>
+struct StaticMap
+{
+    using item = std::pair<K, V>;
+    static constexpr auto cmp_by_value = [](const item& a, const item& b) {
+        return a.first < b.first;
+    };
+    
+    constexpr StaticMap(const std::array<std::pair<K, V>, SIZE>& a) : data(a)
+    {
+        std::sort(this->data.begin(), this->data.end(), cmp_by_value);
+        this->size = a.size();
+    }
+    
+    const item* Find(const K& key) const
+    {
+        struct Comp
+        {
+            bool operator()(const K& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const K& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
+
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    template <typename U>
+    const item* Find(const U& key) const
+    {
+        struct Comp
+        {
+            bool operator()(const U& key, const item& item) { return key < item.first; }
+            bool operator()(const item& item, const U& key) { return item.first < key; }
+        };
+        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
+        
+        auto [beginRange, endRange] = it;
+        return beginRange == endRange ? this->end() : beginRange;
+    }
+    
+    const item* begin() const
+    {
+        return this->data.data();
+    }
+    
+    const item* end() const
+    {
+        return this->data.data() + this->data.size();
+    }
+    
+    std::array<std::pair<K, V>, SIZE> data;
+    size_t size;
+};
+
+template <typename K, typename V, size_t SIZE>
+StaticMap(const std::array<std::pair<K, V>, SIZE>&) -> StaticMap<K, V, SIZE>;
+
+//------------------------------------------------------------------------------
+/**
  Much like PinnedArray, a PinnedMap implements a binary search and sort for it's items,
  which are stored as key-value pairs.
  
@@ -1151,15 +1216,39 @@ struct PinnedMap
 {
     using item = std::pair<K, V>;
     PinnedMap()
-    : searchValid(true)
+        : searchValid(true)
     {
         
     }
     
     PinnedMap(size_t maxAllocationCount)
-    : searchValid(true)
+        : searchValid(true)
     {
         this->data = PinnedArray<item>(maxAllocationCount);
+    }
+    
+    template<size_t SIZE>
+    void operator=(const StaticMap<K, V, SIZE>& rhs)
+    {
+        this->data.Grow(SIZE);
+        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
+    }
+    
+    template<typename U, size_t SIZE>
+    void operator=(const StaticMap<U, V, SIZE>& rhs)
+    {
+        static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between types");
+        this->data.Grow(SIZE);
+        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
+    }
+    
+    template<typename U, typename W, size_t SIZE>
+    void operator=(const StaticMap<U, W, SIZE>& rhs)
+    {
+        static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between types");
+        static_assert(std::is_pointer<V>::value && std::is_pointer<W>::value && std::is_base_of<typename std::remove_pointer<V>::type, typename std::remove_pointer<W>::type>::value, "Value types must inherit");
+        this->data.Grow(SIZE);
+        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
     }
     
     void Insert(const K& key, const V& value)
@@ -1336,72 +1425,6 @@ struct PinnedMap
 
 //------------------------------------------------------------------------------
 /**
- StaticMap is a map which unlike PinnedMap has a fixed size, and it's life time is the duration of the
- application.
- 
- Does not need to free its memory.
- */
-template <typename K, typename V, size_t SIZE>
-struct StaticMap
-{
-    using item = std::pair<K, V>;
-    static constexpr auto cmp_by_value = [](const item& a, const item& b) {
-        return a.first < b.first;
-    };
-    
-    constexpr StaticMap(const std::array<std::pair<K, V>, SIZE>& a) : data(a)
-    {
-        std::sort(this->data.begin(), this->data.end(), cmp_by_value);
-        this->size = a.size();
-    }
-    
-    const item* Find(const K& key) const
-    {
-        struct Comp
-        {
-            bool operator()(const K& key, const item& item) { return key < item.first; }
-            bool operator()(const item& item, const K& key) { return item.first < key; }
-        };
-        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
-
-        auto [beginRange, endRange] = it;
-        return beginRange == endRange ? this->end() : beginRange;
-    }
-    
-    template <typename U>
-    const item* Find(const U& key) const
-    {
-        struct Comp
-        {
-            bool operator()(const U& key, const item& item) { return key < item.first; }
-            bool operator()(const item& item, const U& key) { return item.first < key; }
-        };
-        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
-        
-        auto [beginRange, endRange] = it;
-        return beginRange == endRange ? this->end() : beginRange;
-    }
-    
-    
-    const item* begin() const
-    {
-        return this->data.data();
-    }
-    
-    const item* end() const
-    {
-        return this->data.data() + this->data.size();
-    }
-    
-    std::array<std::pair<K, V>, SIZE> data;
-    size_t size;
-};
-
-template <typename K, typename V, size_t SIZE>
-StaticMap(const std::array<std::pair<K, V>, SIZE>&) -> StaticMap<K, V, SIZE>;
-
-//------------------------------------------------------------------------------
-/**
  StaticSet is a non-growing Set which has to be initialized to the items it needs.
  
  Does not need to free its memory.
@@ -1499,7 +1522,7 @@ template <typename K>
 struct PinnedSet
 {
     PinnedSet()
-    : searchValid(true)
+        : searchValid(true)
     {
     }
     

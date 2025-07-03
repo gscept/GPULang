@@ -132,6 +132,14 @@ extern size_t SystemPageSize;
 
 void SetupSystem();
 
+struct SystemSetup
+{
+    SystemSetup()
+    {
+        SetupSystem();
+    }
+};
+
 void Dealloc(void* alloc);
 
 //------------------------------------------------------------------------------

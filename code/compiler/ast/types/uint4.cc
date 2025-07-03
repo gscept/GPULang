@@ -7,6 +7,18 @@
 namespace GPULang
 {
 
+#include "generated/swizzle.h"
+
+#define X(mask) Variable UInt4_swizzle_##mask;
+SWIZZLE4()
+#undef X
+
+#define X(mask) std::pair{ #mask##_c, &UInt4_swizzle_##mask },
+constexpr StaticMap swizzleLookup = std::array{
+    SWIZZLE4()
+};
+#undef X
+
 //------------------------------------------------------------------------------
 /**
 */
@@ -21,6 +33,7 @@ UInt4::UInt4()
     this->rowSize = 1;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->scope.symbolLookup = swizzleLookup;
 
     __IMPLEMENT_CTOR(UInt4_ctor, u32x4, UInt4);
     __ADD_FUNCTION_PARAM(x, UInt);
@@ -92,6 +105,7 @@ UInt4::UInt4()
 
     char colorMask[] = { 'r', 'g', 'b', 'a' };
     __IMPLEMENT_SWIZZLE(UInt, 4, colorMask);
+
     __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
