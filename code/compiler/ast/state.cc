@@ -17,26 +17,26 @@ State::~State()
         entry->~Expression();
 }
 
-const StaticMap<std::string, CompareMode> stringToCompareMode =
-{
-    { "Never", NeverCompare }
-    , { "Less", LessCompare }
-    , { "Equal", EqualCompare }
-    , { "LessEqual", LessEqualCompare }
-    , { "LEqual", LessEqualCompare }
-    , { "Greater", GreaterCompare }
-    , { "NotEqual", NotEqualCompare }
-    , { "NEqual", NotEqualCompare }
-    , { "GreaterEqual", GreaterEqualCompare }
-    , { "GEqual", GreaterEqualCompare }
-    , { "Always", AlwaysCompare }
+const StaticMap stringToCompareMode =
+std::array{
+    std::pair{ ConstantString("Never"), NeverCompare }
+    , std::pair{ ConstantString("Less"), LessCompare }
+    , std::pair{ ConstantString("Equal"), EqualCompare }
+    , std::pair{ ConstantString("LessEqual"), LessEqualCompare }
+    , std::pair{ ConstantString("LEqual"), LessEqualCompare }
+    , std::pair{ ConstantString("Greater"), GreaterCompare }
+    , std::pair{ ConstantString("NotEqual"), NotEqualCompare }
+    , std::pair{ ConstantString("NEqual"), NotEqualCompare }
+    , std::pair{ ConstantString("GreaterEqual"), GreaterEqualCompare }
+    , std::pair{ ConstantString("GEqual"), GreaterEqualCompare }
+    , std::pair{ ConstantString("Always"), AlwaysCompare }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 const CompareMode 
-State::__Resolved::StringToCompareMode(const std::string& str)
+State::__Resolved::StringToCompareMode(const TransientString& str)
 {
     auto it = stringToCompareMode.Find(str);
     if (it != stringToCompareMode.end())

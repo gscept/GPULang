@@ -4186,40 +4186,40 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 {}
             };
 
-            static const StaticMap<ConstantString, IntrinsicsShaderMask> allowedBuiltins =
-            {
-                { "vertexExportCoordinates", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
-                , { "geometryExportVertex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
-                , { "geometryExportPrimitive", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
-                , { "computeGetLocalInvocationIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetGlobalInvocationIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetWorkGroupIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "computeGetWorkGroupDimensions", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , { "vertexSetOutputLayer", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
-                , { "vertexSetOutputViewport", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
-                , { "pixelExportColor", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
-                , { "pixelGetDepth", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
-                , { "pixelSetDepth", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
-                , { "rayTrace", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayExportIntersection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayExecuteCallable", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetLaunchIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetLaunchSize", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "blasGetPrimitiveIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "blasGetGeometryIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetInstanceIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetInstanceCustomIndex", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetWorldOrigin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetWorldDirection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetObjectOrigin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetObjectDirection", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetMin", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetMax", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetFlags", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetHitDistance", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , { "rayGetHitKind", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetObjectToWorld", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , { "tlasGetWorldToObject", IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+            static const StaticMap allowedBuiltins =
+            std::array{
+                std::pair{ ConstantString("vertexExportCoordinates"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
+                , std::pair{ ConstantString("geometryExportVertex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
+                , std::pair{ ConstantString("geometryExportPrimitive"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
+                , std::pair{ ConstantString("computeGetLocalInvocationIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetGlobalInvocationIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetWorkGroupIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetWorkGroupDimensions"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("vertexSetOutputLayer"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
+                , std::pair{ ConstantString("vertexSetOutputViewport"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
+                , std::pair{ ConstantString("pixelExportColor"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
+                , std::pair{ ConstantString("pixelGetDepth"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("pixelSetDepth"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
+                , std::pair{ ConstantString("rayTrace"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayExportIntersection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayExecuteCallable"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetLaunchIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetLaunchSize"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("blasGetPrimitiveIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("blasGetGeometryIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetInstanceIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetInstanceCustomIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetWorldOrigin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetWorldDirection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetObjectOrigin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetObjectDirection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetMin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetMax"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetFlags"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetHitDistance"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetHitKind"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetObjectToWorld"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetWorldToObject"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
             };
 
             const auto it = allowedBuiltins.Find(callResolved->functionSymbol);
@@ -4243,7 +4243,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 compiler->currentState.sideEffects.bits |= (uint32_t)it->second.sideEffect;
             }
 
-            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const StaticString& fun)
+            static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
                 
                 static const StaticArray<Program::__Resolved::ProgramEntryType> derivativeProducingShaders =
@@ -4280,24 +4280,26 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 
                 return false;
             };
-            static const StaticMap<StaticString, std::function<bool(Compiler* compiler, Expression* expr, const StaticString& fun)>> conditionalBuiltins =
-            {
-                { "textureSample", derivativeConditionFunction }
-                , { "textureSampleBias", derivativeConditionFunction }
-                , { "textureSampleBiasCompare", derivativeConditionFunction }
-                , { "textureSampleBiasOffset", derivativeConditionFunction }
-                , { "textureSampleBiasProj", derivativeConditionFunction }
-                , { "textureSampleBiasProjCompare", derivativeConditionFunction }
-                , { "textureSampleBiasProjOffset", derivativeConditionFunction }
-                , { "textureSampleCompare", derivativeConditionFunction }
-                , { "textureSampleCompareOffset", derivativeConditionFunction }
-                , { "textureSampleProj", derivativeConditionFunction }
-                , { "textureSampleProjCompare", derivativeConditionFunction }
-                , { "textureSampleProjCompareOffset", derivativeConditionFunction }
-                , { "textureSampleProjOffset", derivativeConditionFunction }
-                , { "ddx", derivativeConditionFunction }
-                , { "ddy", derivativeConditionFunction }
-                , { "fwidth", derivativeConditionFunction }
+            
+            using ConditionFunction = std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)>;
+            static const StaticMap conditionalBuiltins =
+            std::array{
+                std::pair{ ConstantString("textureSample"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBias"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBiasCompare"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBiasOffset"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBiasProj"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBiasProjCompare"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleBiasProjOffset"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleCompare"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleCompareOffset"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleProj"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleProjCompare"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleProjCompareOffset"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("textureSampleProjOffset"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("ddx"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("ddy"), ConditionFunction(derivativeConditionFunction) }
+                , std::pair{ ConstantString("fwidth"), ConditionFunction(derivativeConditionFunction) }
             };
             const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())

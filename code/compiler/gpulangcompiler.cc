@@ -1895,6 +1895,7 @@ GPULangCompile(const std::string& file, GPULang::Compiler::Language target, cons
 
     {
         GPULang::Compiler::Timer timer;
+        
         Compiler compiler;
         compiler.Setup(target, options);
 
@@ -2144,12 +2145,12 @@ GPULangValidate(GPULangFile* file, const std::vector<std::string>& defines, GPUL
     result.diagnostics.Invalidate();
     result.messages.Invalidate();
     
-    Compiler compiler;
-    compiler.Setup(options);
-
     GPULang::Compiler::Timer timer;
     timer.Start();
     
+    Compiler compiler;
+    compiler.Setup(options);
+
     PinnedArray<GPULang::Symbol*> preprocessorSymbols(0xFFFFFF);
     PinnedArray<GPULang::Diagnostic> diagnostics(0xFFFFFF);
     GPULangParser::LineStack.clear();

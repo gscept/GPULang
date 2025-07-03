@@ -11,6 +11,7 @@
 #include "memory.h"
 #include <algorithm>
 #include <cmath>
+#include <array>
 
 namespace GPULang
 {
@@ -1340,38 +1341,17 @@ struct PinnedMap
  
  Does not need to free its memory.
  */
-template <typename K, typename V>
+template <typename K, typename V, size_t SIZE>
 struct StaticMap
 {
     using item = std::pair<K, V>;
-    constexpr StaticMap(const std::initializer_list<item>& items)
-    {
-        this->data = StaticAllocArray<item>(items.size());
-        this->size = 0;
-        for (auto& it : items)
-        {
-            this->data[this->size++] = it;
-        }
-        
-        std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
-        {
-            return lhs.first < rhs.first;
-        });
-    }
+    static constexpr auto cmp_by_value = [](const item& a, const item& b) {
+        return a.first < b.first;
+    };
     
-    constexpr StaticMap(std::initializer_list<item>&& items)
+    constexpr StaticMap(std::array<std::pair<K, V>, SIZE> a) : data(a)
     {
-        this->data = StaticAllocArray<item>(items.size());
-        this->size = 0;
-        for (auto& it : items)
-        {
-            this->data[this->size++] = it;
-        }
-        
-        std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
-        {
-            return lhs.first < rhs.first;
-        });
+        std::sort(this->data.begin(), this->data.end(), cmp_by_value);
     }
     
     const item* Find(const K& key) const
@@ -1381,7 +1361,7 @@ struct StaticMap
             bool operator()(const K& key, const item& item) { return key < item.first; }
             bool operator()(const item& item, const K& key) { return item.first < key; }
         };
-        auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
@@ -1395,35 +1375,29 @@ struct StaticMap
             bool operator()(const U& key, const item& item) { return key < item.first; }
             bool operator()(const item& item, const U& key) { return item.first < key; }
         };
-        auto it = std::equal_range(this->data, this->data + this->size, key, Comp{});
+        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
     
-    item* begin()
-    {
-        return this->data;
-    }
-    
-    item* end()
-    {
-        return this->data + this->size;
-    }
     
     const item* begin() const
     {
-        return this->data;
+        return this->data.begin();
     }
     
     const item* end() const
     {
-        return this->data + this->size;
+        return this->data.end();
     }
     
-    item* data;
+    std::array<std::pair<K, V>, SIZE> data;
     size_t size;
 };
+
+template <typename K, typename V, size_t SIZE>
+StaticMap(std::array<std::pair<K, V>, SIZE>) -> StaticMap<K, V, SIZE>;
 
 //------------------------------------------------------------------------------
 /**

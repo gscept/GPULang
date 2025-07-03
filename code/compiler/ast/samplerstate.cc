@@ -47,32 +47,32 @@ SamplerState::~SamplerState()
     this->CleanupAttributes();
 }
 
-const StaticMap<std::string, SamplerState::__Resolved::SamplerStateEntryType> samplerEntryTypeLookup =
-{
-    { "Address", SamplerState::__Resolved::AllAddressType }
-    , { "AddressU", SamplerState::__Resolved::AddressUType }
-    , { "AddressV", SamplerState::__Resolved::AddressVType }
-    , { "AddressW", SamplerState::__Resolved::AddressWType }
-    , { "Filter", SamplerState::__Resolved::AllFilterType }
-    , { "MinFilter", SamplerState::__Resolved::MinFilterType }
-    , { "MagFilter", SamplerState::__Resolved::MagFilterType }
-    , { "MipFilter", SamplerState::__Resolved::MipFilterType }
-    , { "MipLodBias", SamplerState::__Resolved::MipLodBiasType }
-    , { "AnisotropicEnabled", SamplerState::__Resolved::AnisotropicFlagType }
-    , { "MaxAnisotropy", SamplerState::__Resolved::MaxAnisotropyType }
-    , { "CompareEnabled", SamplerState::__Resolved::CompareFlagType }
-    , { "CompareMode", SamplerState::__Resolved::CompareModeType }
-    , { "MinLod", SamplerState::__Resolved::MinLodType }
-    , { "MaxLod", SamplerState::__Resolved::MaxLodType }
-    , { "Border", SamplerState::__Resolved::BorderColorType }
-    , { "UnnormalizedCoordinates", SamplerState::__Resolved::UnnormalizedSamplingType }
+const StaticMap samplerEntryTypeLookup =
+std::array{
+    std::pair{ ConstantString("Address"), SamplerState::__Resolved::AllAddressType }
+    , std::pair{ ConstantString("AddressU"), SamplerState::__Resolved::AddressUType }
+    , std::pair{ ConstantString("AddressV"), SamplerState::__Resolved::AddressVType }
+    , std::pair{ ConstantString("AddressW"), SamplerState::__Resolved::AddressWType }
+    , std::pair{ ConstantString("Filter"), SamplerState::__Resolved::AllFilterType }
+    , std::pair{ ConstantString("MinFilter"), SamplerState::__Resolved::MinFilterType }
+    , std::pair{ ConstantString("MagFilter"), SamplerState::__Resolved::MagFilterType }
+    , std::pair{ ConstantString("MipFilter"), SamplerState::__Resolved::MipFilterType }
+    , std::pair{ ConstantString("MipLodBias"), SamplerState::__Resolved::MipLodBiasType }
+    , std::pair{ ConstantString("AnisotropicEnabled"), SamplerState::__Resolved::AnisotropicFlagType }
+    , std::pair{ ConstantString("MaxAnisotropy"), SamplerState::__Resolved::MaxAnisotropyType }
+    , std::pair{ ConstantString("CompareEnabled"), SamplerState::__Resolved::CompareFlagType }
+    , std::pair{ ConstantString("CompareMode"), SamplerState::__Resolved::CompareModeType }
+    , std::pair{ ConstantString("MinLod"), SamplerState::__Resolved::MinLodType }
+    , std::pair{ ConstantString("MaxLod"), SamplerState::__Resolved::MaxLodType }
+    , std::pair{ ConstantString("Border"), SamplerState::__Resolved::BorderColorType }
+    , std::pair{ ConstantString("UnnormalizedCoordinates"), SamplerState::__Resolved::UnnormalizedSamplingType }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 const SamplerState::__Resolved::SamplerStateEntryType
-SamplerState::__Resolved::StringToEntryType(const std::string& str)
+SamplerState::__Resolved::StringToEntryType(const TransientString& str)
 {
     auto it = samplerEntryTypeLookup.Find(str);
     if (it != samplerEntryTypeLookup.end())
@@ -85,10 +85,10 @@ SamplerState::__Resolved::StringToEntryType(const std::string& str)
 //------------------------------------------------------------------------------
 /**
 */
-const std::string&
+const ConstantString&
 SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
 {
-    static std::string def = "";
+    static ConstantString def = "";
     for (auto& it : samplerEntryTypeLookup)
     {
         if (it.second == type)
@@ -97,19 +97,19 @@ SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
     return def;
 }
 
-const StaticMap<std::string, AddressMode> stringToAddressMode =
-{
-    { "Repeat", RepeatAddressMode }
-    , { "Mirror", MirrorAddressMode }
-    , { "Clamp", ClampAddressMode }
-    , { "Border", BorderAddressMode }
+const StaticMap stringToAddressMode =
+std::array{
+    std::pair{ ConstantString("Repeat"), RepeatAddressMode }
+    , std::pair{ ConstantString("Mirror"), MirrorAddressMode }
+    , std::pair{ ConstantString("Clamp"), ClampAddressMode }
+    , std::pair{ ConstantString("Border"), BorderAddressMode }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 const AddressMode
-SamplerState::__Resolved::StringToAddressMode(const std::string& str)
+SamplerState::__Resolved::StringToAddressMode(const TransientString& str)
 {
     auto it = stringToAddressMode.Find(str);
     if (it != stringToAddressMode.end())
@@ -118,18 +118,18 @@ SamplerState::__Resolved::StringToAddressMode(const std::string& str)
         return AddressMode::InvalidAddressMode;
 }
 
-const StaticMap<std::string, Filter> stringToFilter =
-{
-    { "Linear", LinearFilter }
-    , { "Point", PointFilter }
-    , { "Nearest", PointFilter }
+const StaticMap stringToFilter =
+std::array{
+    std::pair{  ConstantString("Linear"), LinearFilter }
+    , std::pair{ ConstantString("Point"), PointFilter }
+    , std::pair{  ConstantString("Nearest"), PointFilter }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 const Filter
-SamplerState::__Resolved::StringToFilter(const std::string& str)
+SamplerState::__Resolved::StringToFilter(const TransientString& str)
 {
     auto it = stringToFilter.Find(str);
     if (it != stringToFilter.end())
@@ -138,18 +138,18 @@ SamplerState::__Resolved::StringToFilter(const std::string& str)
         return Filter::InvalidFilter;
 }
 
-const StaticMap<std::string, BorderColor> stringToBorderColor =
-{
-    { "Transparent", TransparentBorder }
-    , { "Black", BlackBorder }
-    , { "White", WhiteBorder }
+const StaticMap stringToBorderColor =
+std::array{
+    std::pair{ "Transparent"_c, TransparentBorder }
+    , std::pair{ "Black"_c, BlackBorder }
+    , std::pair{ "White"_c, WhiteBorder }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
 const BorderColor 
-SamplerState::__Resolved::StringToBorderColor(const std::string& str)
+SamplerState::__Resolved::StringToBorderColor(const TransientString& str)
 {
     auto it = stringToBorderColor.Find(str);
     if (it != stringToBorderColor.end())

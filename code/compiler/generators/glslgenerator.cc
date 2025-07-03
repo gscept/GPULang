@@ -355,63 +355,63 @@ struct TypeDimensions
     unsigned int x, y;
 };
 
-StaticMap<ConstantString, TypeDimensions> typeToDimensions =
-{
-    { "f32",      TypeDimensions{ 1, 1 } },
-    { "f32x2",     TypeDimensions{ 2, 1 } },
-    { "f32x3",     TypeDimensions{ 3, 1 } },
-    { "f32x4",     TypeDimensions{ 4, 1 } },
-    { "i32",        TypeDimensions{ 1, 1 } },
-    { "i32x2",      TypeDimensions{ 2, 1 } },
-    { "i32x3",      TypeDimensions{ 3, 1 } },
-    { "i32x4",      TypeDimensions{ 4, 1 } },
-    { "u32",       TypeDimensions{ 1, 1 } },
-    { "u32x2",      TypeDimensions{ 2, 1 } },
-    { "u32x3",      TypeDimensions{ 3, 1 } },
-    { "u32x4",      TypeDimensions{ 4, 1 } },
-    { "b8",       TypeDimensions{ 1, 1 } },
-    { "b8x2",      TypeDimensions{ 2, 1 } },
-    { "b8x3",      TypeDimensions{ 3, 1 } },
-    { "b8x4",      TypeDimensions{ 4, 1 } },
-    { "f32x2x2",   TypeDimensions{ 2, 2 } },
-    { "f32x2x3",   TypeDimensions{ 2, 3 } },
-    { "f32x2x4",   TypeDimensions{ 2, 4 } },
-    { "f32x3x2",   TypeDimensions{ 3, 2 } },
-    { "f32x3x3",   TypeDimensions{ 3, 3 } },
-    { "f32x3x4",   TypeDimensions{ 3, 4 } },
-    { "f32x4x2",   TypeDimensions{ 4, 2 } },
-    { "f32x4x3",   TypeDimensions{ 4, 3 } },
-    { "f32x4x4",   TypeDimensions{ 4, 4 } }
+StaticMap typeToDimensions =
+std::array{
+    std::pair{ ConstantString("f32"),      TypeDimensions{ 1, 1 } },
+    std::pair{ ConstantString("f32x2"),     TypeDimensions{ 2, 1 } },
+    std::pair{ ConstantString("f32x3"),     TypeDimensions{ 3, 1 } },
+    std::pair{ ConstantString("f32x4"),     TypeDimensions{ 4, 1 } },
+    std::pair{ ConstantString("i32"),        TypeDimensions{ 1, 1 } },
+    std::pair{ ConstantString("i32x2"),      TypeDimensions{ 2, 1 } },
+    std::pair{ ConstantString("i32x3"),      TypeDimensions{ 3, 1 } },
+    std::pair{ ConstantString("i32x4"),      TypeDimensions{ 4, 1 } },
+    std::pair{ ConstantString("u32"),       TypeDimensions{ 1, 1 } },
+    std::pair{ ConstantString("u32x2"),      TypeDimensions{ 2, 1 } },
+    std::pair{ ConstantString("u32x3"),      TypeDimensions{ 3, 1 } },
+    std::pair{ ConstantString("u32x4"),      TypeDimensions{ 4, 1 } },
+    std::pair{ ConstantString("b8"),       TypeDimensions{ 1, 1 } },
+    std::pair{ ConstantString("b8x2"),      TypeDimensions{ 2, 1 } },
+    std::pair{ ConstantString("b8x3"),      TypeDimensions{ 3, 1 } },
+    std::pair{ ConstantString("b8x4"),      TypeDimensions{ 4, 1 } },
+    std::pair{ ConstantString("f32x2x2"),   TypeDimensions{ 2, 2 } },
+    std::pair{ ConstantString("f32x2x3"),   TypeDimensions{ 2, 3 } },
+    std::pair{ ConstantString("f32x2x4"),   TypeDimensions{ 2, 4 } },
+    std::pair{ ConstantString("f32x3x2"),   TypeDimensions{ 3, 2 } },
+    std::pair{ ConstantString("f32x3x3"),   TypeDimensions{ 3, 3 } },
+    std::pair{ ConstantString("f32x3x4"),   TypeDimensions{ 3, 4 } },
+    std::pair{ ConstantString("f32x4x2"),   TypeDimensions{ 4, 2 } },
+    std::pair{ ConstantString("f32x4x3"),   TypeDimensions{ 4, 3 } },
+    std::pair{ ConstantString("f32x4x4"),   TypeDimensions{ 4, 4 } }
 };
 
 // type being the underlying base type (float2x2 -> float)
-StaticMap<ConstantString, unsigned int> typeToByteSize =
-{
-    { "f32",      4 },
-    { "f32x2",     4 },
-    { "f32x3",     4 },
-    { "f32x4",     4 },
-    { "i32",        4 },
-    { "i32x2",       4 },
-    { "i32x3",       4 },
-    { "i32x4",       4 },
-    { "u32",       4 },
-    { "u32x2",      4 },
-    { "u32x3",      4 },
-    { "u32x4",      4 },
-    { "b8",       1 },
-    { "b8x2",      1 },
-    { "b8x3",      1 },
-    { "b8x4",      1 },
-    { "f32x2x2",   4 },
-    { "f32x2x3",   4 },
-    { "f32x2x4",   4 },
-    { "f32x3x2",   4 },
-    { "f32x3x3",   4 },
-    { "f32x3x4",   4 },
-    { "f32x4x2",   4 },
-    { "f32x4x3",   4 },
-    { "f32x4x4",   4 },
+StaticMap typeToByteSize =
+std::array{
+    std::pair{ ConstantString("f32"),      4 },
+    std::pair{ ConstantString("f32x2"),     4 },
+    std::pair{ ConstantString("f32x3"),     4 },
+    std::pair{ ConstantString("f32x4"),     4 },
+    std::pair{ ConstantString("i32"),        4 },
+    std::pair{ ConstantString("i32x2"),       4 },
+    std::pair{ ConstantString("i32x3"),       4 },
+    std::pair{ ConstantString("i32x4"),       4 },
+    std::pair{ ConstantString("u32"),       4 },
+    std::pair{ ConstantString("u32x2"),      4 },
+    std::pair{ ConstantString("u32x3"),      4 },
+    std::pair{ ConstantString("u32x4"),      4 },
+    std::pair{ ConstantString("b8"),       1 },
+    std::pair{ ConstantString("b8x2"),      1 },
+    std::pair{ ConstantString("b8x3"),      1 },
+    std::pair{ ConstantString("b8x4"),      1 },
+    std::pair{ ConstantString("f32x2x2"),   4 },
+    std::pair{ ConstantString("f32x2x3"),   4 },
+    std::pair{ ConstantString("f32x2x4"),   4 },
+    std::pair{ ConstantString("f32x3x2"),   4 },
+    std::pair{ ConstantString("f32x3x3"),   4 },
+    std::pair{ ConstantString("f32x3x4"),   4 },
+    std::pair{ ConstantString("f32x4x2"),   4 },
+    std::pair{ ConstantString("f32x4x3"),   4 },
+    std::pair{ ConstantString("f32x4x4"),   4 },
 };
 
 //------------------------------------------------------------------------------
@@ -520,107 +520,107 @@ CalculateLayout(const Compiler* compiler, Variable* var, uint32_t arraySize, con
     }
 }
 
-StaticMap<ConstantString, ConstantString> typeToGlslType =
-{
-    { "readWriteTexture1D", "image1D" },
-    { "readWriteTexture2D", "image2D" },
-    { "readWriteTexture2DMS", "image2DMS" },
-    { "readWriteTextureCube", "imageCube" },
-    { "readWriteTexture3D", "image3D" },
-    { "readWriteTexture1DArray", "image1DArray" },
-    { "readWriteTexture2DArray", "image2DArray" },
-    { "readWriteTexture2DMSArray", "image2DMSArray" },
-    { "readWriteTextureCubeArray", "imageCubeArray" },
-    { "texture1D", "texture1D" },
-    { "texture2D", "texture2D" },
-    { "texture2DMS", "texture2DMS" },
-    { "textureCube", "textureCube" },
-    { "texture3D", "texture3D" },
-    { "texture1DArray", "texture1DArray" },
-    { "texture2DArray", "texture2DArray" },
-    { "texture2DMSArray", "texture2DMSArray" },
-    { "textureCubeArray", "textureCubeArray" },
-    { "sampledTexture1D", "sampler1D" },
-    { "sampledTexture2D", "sampler2D" },
-    { "sampledTexture2DMS", "sampler2DMS" },
-    { "sampledTextureCube", "samplerCube" },
-    { "sampledTexture3D", "sampler3D" },
-    { "sampledTexture1DArray", "sampler1DArray" },
-    { "sampledTexture2DArray", "sampler2DArray" },
-    { "sampledTexture2DMSArray", "sampler2DMSArray" },
-    { "sampledTextureCubeArray", "samplerCubeArray" },
-    { "inputAttachment", "subpassInput" },
-    { "inputAttachmentMS", "subpassInputMS" },
-    { "f32", "float" },
-    { "f32x2", "vec2" },
-    { "f32x3", "vec3" },
-    { "f32x4", "vec4" },
-    { "i32", "int" },
-    { "i32x2", "ivec2" },
-    { "i32x3", "ivec3" },
-    { "i32x4", "ivec4" },
-    { "u32", "uint" },
-    { "u32x2", "uvec2" },
-    { "u32x3", "uvec3" },
-    { "u32x4", "uvec4" },
-    { "b8", "bool" },
-    { "b8x2", "bvec2" },
-    { "b8x3", "bvec3" },
-    { "b8x4", "bvec4" },
-    { "f32x2x2", "mat2" },
-    { "f32x2x3", "mat2x3" },
-    { "f32x2x4", "mat2x4" },
-    { "f32x3x2", "mat3x2" },
-    { "f32x3x3", "mat3" },
-    { "f32x3x4", "mat3x4" },
-    { "f32x4x2", "mat4x2" },
-    { "f32x4x3", "mat4x3" },
-    { "f32x4x4", "mat4" },
-    { "sampler", "sampler" },
-    { "void", "void" }
+StaticMap typeToGlslType =
+std::array{
+    std::pair{ ConstantString("readWriteTexture1D"), ConstantString("image1D") },
+    std::pair{ ConstantString("readWriteTexture2D"), ConstantString("image2D") },
+    std::pair{ ConstantString("readWriteTexture2DMS"), ConstantString("image2DMS") },
+    std::pair{ ConstantString("readWriteTextureCube"), ConstantString("imageCube") },
+    std::pair{ ConstantString("readWriteTexture3D"), ConstantString("image3D") },
+    std::pair{ ConstantString("readWriteTexture1DArray"), ConstantString("image1DArray") },
+    std::pair{ ConstantString("readWriteTexture2DArray"), ConstantString("image2DArray") },
+    std::pair{ ConstantString("readWriteTexture2DMSArray"), ConstantString("image2DMSArray") },
+    std::pair{ ConstantString("readWriteTextureCubeArray"), ConstantString("imageCubeArray") },
+    std::pair{ ConstantString("texture1D"), ConstantString("texture1D") },
+    std::pair{ ConstantString("texture2D"), ConstantString("texture2D") },
+    std::pair{ ConstantString("texture2DMS"), ConstantString("texture2DMS") },
+    std::pair{ ConstantString("textureCube"), ConstantString("textureCube") },
+    std::pair{ ConstantString("texture3D"), ConstantString("texture3D") },
+    std::pair{ ConstantString("texture1DArray"), ConstantString("texture1DArray") },
+    std::pair{ ConstantString("texture2DArray"), ConstantString("texture2DArray") },
+    std::pair{ ConstantString("texture2DMSArray"), ConstantString("texture2DMSArray") },
+    std::pair{ ConstantString("textureCubeArray"), ConstantString("textureCubeArray") },
+    std::pair{ ConstantString("sampledTexture1D"), ConstantString("sampler1D") },
+    std::pair{ ConstantString("sampledTexture2D"), ConstantString("sampler2D") },
+    std::pair{ ConstantString("sampledTexture2DMS"), ConstantString("sampler2DMS") },
+    std::pair{ ConstantString("sampledTextureCube"), ConstantString("samplerCube") },
+    std::pair{ ConstantString("sampledTexture3D"), ConstantString("sampler3D") },
+    std::pair{ ConstantString("sampledTexture1DArray"), ConstantString("sampler1DArray") },
+    std::pair{ ConstantString("sampledTexture2DArray"), ConstantString("sampler2DArray") },
+    std::pair{ ConstantString("sampledTexture2DMSArray"), ConstantString("sampler2DMSArray") },
+    std::pair{ ConstantString("sampledTextureCubeArray"), ConstantString("samplerCubeArray") },
+    std::pair{ ConstantString("inputAttachment"), ConstantString("subpassInput") },
+    std::pair{ ConstantString("inputAttachmentMS"), ConstantString("subpassInputMS") },
+    std::pair{ ConstantString("f32"), ConstantString("float") },
+    std::pair{ ConstantString("f32x2"), ConstantString("vec2") },
+    std::pair{ ConstantString("f32x3"), ConstantString("vec3") },
+    std::pair{ ConstantString("f32x4"), ConstantString("vec4") },
+    std::pair{ ConstantString("i32"), ConstantString("int") },
+    std::pair{ ConstantString("i32x2"), ConstantString("ivec2") },
+    std::pair{ ConstantString("i32x3"), ConstantString("ivec3") },
+    std::pair{ ConstantString("i32x4"), ConstantString("ivec4") },
+    std::pair{ ConstantString("u32"), ConstantString("uint") },
+    std::pair{ ConstantString("u32x2"), ConstantString("uvec2") },
+    std::pair{ ConstantString("u32x3"), ConstantString("uvec3") },
+    std::pair{ ConstantString("u32x4"), ConstantString("uvec4") },
+    std::pair{ ConstantString("b8"), ConstantString("bool") },
+    std::pair{ ConstantString("b8x2"), ConstantString("bvec2") },
+    std::pair{ ConstantString("b8x3"), ConstantString("bvec3") },
+    std::pair{ ConstantString("b8x4"), ConstantString("bvec4") },
+    std::pair{ ConstantString("f32x2x2"), ConstantString("mat2") },
+    std::pair{ ConstantString("f32x2x3"), ConstantString("mat2x3") },
+    std::pair{ ConstantString("f32x2x4"), ConstantString("mat2x4") },
+    std::pair{ ConstantString("f32x3x2"), ConstantString("mat3x2") },
+    std::pair{ ConstantString("f32x3x3"), ConstantString("mat3") },
+    std::pair{ ConstantString("f32x3x4"), ConstantString("mat3x4") },
+    std::pair{ ConstantString("f32x4x2"), ConstantString("mat4x2") },
+    std::pair{ ConstantString("f32x4x3"), ConstantString("mat4x3") },
+    std::pair{ ConstantString("f32x4x4"), ConstantString("mat4") },
+    std::pair{ ConstantString("sampler"), ConstantString("sampler") },
+    std::pair{ ConstantString("void"), ConstantString("void") }
 };
 
-std::map<ImageFormat, std::string> imageFormatToGlsl =
-{
-    { ImageFormat::Rgba16, "rgba16" }
-    , { ImageFormat::Rgb10_A2, "rgb10_a2" }
-    , { ImageFormat::Rgba8, "rgba8" }
-    , { ImageFormat::Rg16, "rg16" }
-    , { ImageFormat::Rg8, "rg8" }
-    , { ImageFormat::R16, "r16" }
-    , { ImageFormat::R8, "r8" }
-    , { ImageFormat::Rgba16_Snorm, "rgba16_snorm" }
-    , { ImageFormat::Rgba8_Snorm, "rgba8_snorm" }
-    , { ImageFormat::Rg16_Snorm, "rg16_snorm" }
-    , { ImageFormat::Rg8_Snorm, "rg8_snorm" }
-    , { ImageFormat::R16_Snorm, "r16_snorm" }
-    , { ImageFormat::R8_Snorm, "r8_snorm" }
-    , { ImageFormat::Rgba32F, "rgba32f" }
-    , { ImageFormat::Rgba16F, "rgba16f" }
-    , { ImageFormat::Rg32F, "rg32f" }
-    , { ImageFormat::Rg16F, "rg16f" }
-    , { ImageFormat::R11G11B10F, "r11f_g11f_b10f" }
-    , { ImageFormat::R32F, "r32f" }
-    , { ImageFormat::R16F, "r16f" }
-    , { ImageFormat::Rgba32I, "rga32i" }
-    , { ImageFormat::Rgba16I, "rgba16i" }
-    , { ImageFormat::Rgba8I, "rgba8i" }
-    , { ImageFormat::Rg32I, "rg32i" }
-    , { ImageFormat::Rg16I, "rg16i" }
-    , { ImageFormat::Rg8I, "rg8i" }
-    , { ImageFormat::R32I, "r32i" }
-    , { ImageFormat::R16I, "r16i" }
-    , { ImageFormat::R8I, "r8i" }
-    , { ImageFormat::Rgba32U, "rga32ui" }
-    , { ImageFormat::Rgba16U, "rgba16ui" }
-    , { ImageFormat::Rgb10_A2U, "rgb10_a2ui" }
-    , { ImageFormat::Rgba8U, "rgba8ui" }
-    , { ImageFormat::Rg32U, "rg32ui" }
-    , { ImageFormat::Rg16U, "rg16ui" }
-    , { ImageFormat::Rg8U, "rg8ui" }
-    , { ImageFormat::R32U, "r32ui" }
-    , { ImageFormat::R16U, "r16ui" }
-    , { ImageFormat::R8U, "r8ui" }
+StaticMap imageFormatToGlsl =
+std::array{
+      std::pair{ ImageFormat::Rgba16, ConstantString("rgba16") }
+    , std::pair{ ImageFormat::Rgb10_A2, ConstantString("rgb10_a2") }
+    , std::pair{ ImageFormat::Rgba8, ConstantString("rgba8") }
+    , std::pair{ ImageFormat::Rg16, ConstantString("rg16") }
+    , std::pair{ ImageFormat::Rg8, ConstantString("rg8") }
+    , std::pair{ ImageFormat::R16, ConstantString("r16") }
+    , std::pair{ ImageFormat::R8, ConstantString("r8") }
+    , std::pair{ ImageFormat::Rgba16_Snorm, ConstantString("rgba16_snorm") }
+    , std::pair{ ImageFormat::Rgba8_Snorm, ConstantString("rgba8_snorm") }
+    , std::pair{ ImageFormat::Rg16_Snorm, ConstantString("rg16_snorm") }
+    , std::pair{ ImageFormat::Rg8_Snorm, ConstantString("rg8_snorm") }
+    , std::pair{ ImageFormat::R16_Snorm, ConstantString("r16_snorm") }
+    , std::pair{ ImageFormat::R8_Snorm, ConstantString("r8_snorm") }
+    , std::pair{ ImageFormat::Rgba32F, ConstantString("rgba32f") }
+    , std::pair{ ImageFormat::Rgba16F, ConstantString("rgba16f") }
+    , std::pair{ ImageFormat::Rg32F, ConstantString("rg32f") }
+    , std::pair{ ImageFormat::Rg16F, ConstantString("rg16f") }
+    , std::pair{ ImageFormat::R11G11B10F, ConstantString("r11f_g11f_b10f") }
+    , std::pair{ ImageFormat::R32F, ConstantString("r32f") }
+    , std::pair{ ImageFormat::R16F, ConstantString("r16f") }
+    , std::pair{ ImageFormat::Rgba32I, ConstantString("rga32i") }
+    , std::pair{ ImageFormat::Rgba16I, ConstantString("rgba16i") }
+    , std::pair{ ImageFormat::Rgba8I, ConstantString("rgba8i") }
+    , std::pair{ ImageFormat::Rg32I, ConstantString("rg32i") }
+    , std::pair{ ImageFormat::Rg16I, ConstantString("rg16i") }
+    , std::pair{ ImageFormat::Rg8I, ConstantString("rg8i") }
+    , std::pair{ ImageFormat::R32I, ConstantString("r32i") }
+    , std::pair{ ImageFormat::R16I, ConstantString("r16i") }
+    , std::pair{ ImageFormat::R8I, ConstantString("r8i") }
+    , std::pair{ ImageFormat::Rgba32U, ConstantString("rga32ui") }
+    , std::pair{ ImageFormat::Rgba16U, ConstantString("rgba16ui") }
+    , std::pair{ ImageFormat::Rgb10_A2U, ConstantString("rgb10_a2ui") }
+    , std::pair{ ImageFormat::Rgba8U, ConstantString("rgba8ui") }
+    , std::pair{ ImageFormat::Rg32U, ConstantString("rg32ui") }
+    , std::pair{ ImageFormat::Rg16U, ConstantString("rg16ui") }
+    , std::pair{ ImageFormat::Rg8U, ConstantString("rg8ui") }
+    , std::pair{ ImageFormat::R32U, ConstantString("r32ui") }
+    , std::pair{ ImageFormat::R16U, ConstantString("r16ui") }
+    , std::pair{ ImageFormat::R8U, ConstantString("r8ui") }
 };
 
 void GenerateExpressionGLSL(const Compiler* compiler, Expression* expr, std::string& outCode);
@@ -1292,7 +1292,11 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* pr
         outCode.append(Format("#line %d %s\n", var->location.line, var->location.file.c_str()));
         if (varResolved->typeSymbol->category == Type::TextureCategory && varResolved->type.IsMutable())
         {
-            outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, imageFormatToGlsl[varResolved->type.imageFormat].c_str()));
+            auto glslFormat = imageFormatToGlsl.Find(varResolved->type.imageFormat);
+            if (glslFormat != imageFormatToGlsl.end())
+            {
+                outCode.append(Format("layout(set=%d, binding=%d, %s) ", varResolved->group, varResolved->binding, glslFormat->second.c_str()));
+            }
 
             // if integer or unsigned, format variable
             if (IsImageFormatInteger(varResolved->type.imageFormat))

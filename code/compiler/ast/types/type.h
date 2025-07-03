@@ -142,7 +142,50 @@ enum ImageFormat
 
 extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
-extern const StaticMap<ConstantString, ImageFormat> StringToFormats;
+const StaticMap StringToFormats =
+std::array{
+    std::pair{ ConstantString("rgba16"), Rgba16 }
+    , std::pair{ ConstantString("rgb10_a2"), Rgb10_A2 }
+    , std::pair{ ConstantString("rgba8"), Rgba8 }
+    , std::pair{ ConstantString("rg16"), Rg16 }
+    , std::pair{ ConstantString("rg8"), Rg8 }
+    , std::pair{ ConstantString("r16"), R16 }
+    , std::pair{ ConstantString("r8"), R8 }
+    , std::pair{ ConstantString("rgba16_snorm"), Rgba16_Snorm }
+    , std::pair{ ConstantString("rgba8_snorm"), Rgba8_Snorm }
+    , std::pair{ ConstantString("rg16_snorm"), Rg16_Snorm }
+    , std::pair{ ConstantString("rg8_snorm"), Rg8_Snorm }
+    , std::pair{ ConstantString("r16_snorm"), R16_Snorm }
+    , std::pair{ ConstantString("r8_snorm"), R8_Snorm }
+    , std::pair{ ConstantString("rgba32f"), Rgba32F }
+    , std::pair{ ConstantString("rgba16f"), Rgba16F }
+    , std::pair{ ConstantString("rg32f"), Rg32F }
+    , std::pair{ ConstantString("rg16f"), Rg16F }
+    , std::pair{ ConstantString("r11g11b10f"), R11G11B10F }
+    , std::pair{ ConstantString("r32f"), R32F }
+    , std::pair{ ConstantString("r16f"), R16F }
+    , std::pair{ ConstantString("rga32i"), Rgba32I }
+    , std::pair{ ConstantString("rgba16i"), Rgba16I }
+    , std::pair{ ConstantString("rgba8i"), Rgba8I }
+    , std::pair{ ConstantString("rg32i"), Rg32I }
+    , std::pair{ ConstantString("rg16i"), Rg16I }
+    , std::pair{ ConstantString("rg8i"), Rg8I }
+    , std::pair{ ConstantString("r32i"), R32I }
+    , std::pair{ ConstantString("r16i"), R16I }
+    , std::pair{ ConstantString("r8i"), R8I }
+    , std::pair{ ConstantString("rga32u"), Rgba32U }
+    , std::pair{ ConstantString("rgba16u"), Rgba16U }
+    , std::pair{ ConstantString("rgb10_a2u"), Rgb10_A2U }
+    , std::pair{ ConstantString("rgba8u"), Rgba8U }
+    , std::pair{ ConstantString("rg32u"), Rg32U }
+    , std::pair{ ConstantString("rg16u"), Rg16U }
+    , std::pair{ ConstantString("rg8u"), Rg8U }
+    , std::pair{ ConstantString("r32u"), R32U }
+    , std::pair{ ConstantString("r16u"), R16U }
+    , std::pair{ ConstantString("r8u"), R8U }
+    , std::pair{ ConstantString("unknown"), Unknown }
+};
+
 
 extern StaticArray<Symbol*> DefaultTypes;
 enum class TypeCode
@@ -218,7 +261,7 @@ struct Type : public Symbol
         StencilStateCategory
     };
 
-    static std::string CategoryToString(const Category& cat);
+    static ConstantString CategoryToString(const Category& cat);
 
     static TypeCode PromoteTypes(const TypeCode lhs, const TypeCode rhs)
     {
@@ -404,7 +447,7 @@ struct Type : public Symbol
     static unsigned SwizzleMaskBiggestComponent(SwizzleMask mask);
 
     /// convert from type to vector with count
-    static const std::string ToVector(const TypeCode baseType, unsigned dimensions);
+    static const ConstantString ToVector(const TypeCode baseType, unsigned dimensions);
     /// returns true if type is vector
     const bool IsVector() const;
     /// returns true if type is matrix

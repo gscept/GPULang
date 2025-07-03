@@ -76,17 +76,17 @@ struct RenderState : public State
         bool noPixels;
 
         /// convert from string
-        static const PolygonMode StringToPolygonMode(const std::string& str);
+        static const PolygonMode StringToPolygonMode(const TransientString& str);
 
         PolygonMode polygonMode;
 
         /// convert from string
-        static const CullMode StringToCullMode(const std::string& str);
+        static const CullMode StringToCullMode(const TransientString& str);
 
         CullMode cullMode;
 
         /// convert from string
-        static const WindingOrderMode StringToWindingOrderMode(const std::string& str);
+        static const WindingOrderMode StringToWindingOrderMode(const TransientString& str);
 
         WindingOrderMode windingOrderMode;
         bool depthBiasEnabled;
@@ -110,7 +110,7 @@ struct RenderState : public State
         bool stencilEnabled;
 
         /// convert from string
-        static const StencilOp StringToStencilOp(const std::string& str);
+        static const StencilOp StringToStencilOp(const TransientString& str);
 
         StencilState frontStencilState;
         StencilState backStencilState;
@@ -124,15 +124,15 @@ struct RenderState : public State
         bool logicOpEnabled;
 
         /// convert from string
-        static const LogicOp StringToLogicOp(const std::string& str);
+        static const LogicOp StringToLogicOp(const TransientString& str);
 
         LogicOp logicOp;
 
         /// convert from string
-        static const BlendFactor StringToBlendFactor(const std::string& str);
+        static const BlendFactor StringToBlendFactor(const TransientString& str);
 
         /// convert from string
-        static const BlendOp StringToBlendOp(const std::string& str);
+        static const BlendOp StringToBlendOp(const TransientString& str);
 
         static const uint8_t NUM_BLEND_STATES = 8;
         BlendState blendStates[NUM_BLEND_STATES];

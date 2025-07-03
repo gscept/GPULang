@@ -952,8 +952,6 @@ expression
     
     e1 = expression { $tree = $e1.tree; } op = ('++' | '--') { location = SetupFile(); }
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), false, $tree);
         $tree->location = location;
     }
@@ -966,135 +964,101 @@ expression
         )? 
     ')'
     {         
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         CallExpression* expr = Alloc<CallExpression>($tree, std::move(args));
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '.' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, false);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '->' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         AccessExpression* expr = Alloc<AccessExpression>($tree, $e2.tree, true);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '[' { location = SetupFile(); } ( e3 = expression )? ']'
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>($tree, $e3.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | <assoc=right> op = ('-' | '+' | '!' | '~' | '++' | '--' | '*' | '&') p = expression
     {
-	if ($p.tree == nullptr)
-	    return $p.tree;
         $tree = Alloc<UnaryExpression>(StringToFourCC($op.text), true, $p.tree);
         $tree->location = $p.tree->location;
     }
     | e1 = expression { $tree = $e1.tree; } op = ('*' | '/' | '%') { location = SetupFile(); } e2 = expression
     {	
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } op = ('+' | '-') { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } op = ('<<' | '>>') { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } op = ('<' | '>' | '<=' | '>=' ) { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } op = ('==' | '!=')  { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '&' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>('&', $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '^' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>('^', $tree, $e2.tree);
         expr->location = location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '|' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>('|', $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '&&' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>('&&', $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | e1 = expression { $tree = $e1.tree; } '||' { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>('||', $tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | <assoc=right> e1 = expression '?' { location = SetupFile(); } ifBody = expression ':' elseBody = expression
     { 
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         TernaryExpression* expr = Alloc<TernaryExpression>($e1.tree, $ifBody.tree, $elseBody.tree);
         expr->location = $e1.tree->location;
         $tree = expr;
     }
     | <assoc=right> e1 = expression { $tree = $e1.tree; } op = ('+=' | '-=' | '*=' | '/=' | '%=' | '<<=' | '>>=' | '&=' | '^=' | '|=' | '=') { location = SetupFile(); } e2 = expression
     {
-	if ($e1.tree == nullptr)
-	    return $e1.tree;
         BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC($op.text), $e1.tree, $e2.tree);
         expr->location = $e1.tree->location;
         $tree = expr;

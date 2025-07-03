@@ -105,6 +105,26 @@ struct Program : public Symbol
 
 };
 
-extern const StaticMap<ConstantString, Program::__Resolved::ProgramEntryType> programEntryTypeLookup;
+const StaticMap programEntryTypeLookup =
+std::array{
+    std::pair{ ConstantString("VertexShader"), Program::__Resolved::VertexShader }
+    , std::pair{ ConstantString("HullShader"), Program::__Resolved::HullShader }
+    , std::pair{ ConstantString("TessellationControlShader"), Program::__Resolved::HullShader }
+    , std::pair{ ConstantString("DomainShader"), Program::__Resolved::DomainShader }
+    , std::pair{ ConstantString("TessellationEvaluationShader"), Program::__Resolved::DomainShader }
+    , std::pair{ ConstantString("GeometryShader"), Program::__Resolved::GeometryShader }
+    , std::pair{ ConstantString("PixelShader"), Program::__Resolved::PixelShader }
+    , std::pair{ ConstantString("ComputeShader"), Program::__Resolved::ComputeShader }
+    , std::pair{ ConstantString("TaskShader"), Program::__Resolved::TaskShader }
+    , std::pair{ ConstantString("MeshShader"), Program::__Resolved::MeshShader }
+    , std::pair{ ConstantString("RayGenerationShader"), Program::__Resolved::RayGenerationShader }
+    , std::pair{ ConstantString("RayMissShader"), Program::__Resolved::RayMissShader }
+    , std::pair{ ConstantString("RayClosestHitShader"), Program::__Resolved::RayClosestHitShader }
+    , std::pair{ ConstantString("RayAnyHitShader"), Program::__Resolved::RayAnyHitShader }
+    , std::pair{ ConstantString("RayIntersectionShader"), Program::__Resolved::RayIntersectionShader }
+    , std::pair{ ConstantString("RayCallableShader"), Program::__Resolved::RayCallableShader }
+    , std::pair{ ConstantString("RenderState"), Program::__Resolved::RenderState }
+};
+
 
 } // namespace GPULang

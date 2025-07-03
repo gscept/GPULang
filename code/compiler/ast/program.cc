@@ -29,27 +29,6 @@ Program::~Program()
         entry->~Expression();
 }
 
-const StaticMap<ConstantString, Program::__Resolved::ProgramEntryType> programEntryTypeLookup =
-{
-    { "VertexShader", Program::__Resolved::VertexShader }
-    , { "HullShader", Program::__Resolved::HullShader }
-    , { "TessellationControlShader", Program::__Resolved::HullShader }
-    , { "DomainShader", Program::__Resolved::DomainShader }
-    , { "TessellationEvaluationShader", Program::__Resolved::DomainShader }
-    , { "GeometryShader", Program::__Resolved::GeometryShader }
-    , { "PixelShader", Program::__Resolved::PixelShader }
-    , { "ComputeShader", Program::__Resolved::ComputeShader }
-    , { "TaskShader", Program::__Resolved::TaskShader }
-    , { "MeshShader", Program::__Resolved::MeshShader }
-    , { "RayGenerationShader", Program::__Resolved::RayGenerationShader }
-    , { "RayMissShader", Program::__Resolved::RayMissShader }
-    , { "RayClosestHitShader", Program::__Resolved::RayClosestHitShader }
-    , { "RayAnyHitShader", Program::__Resolved::RayAnyHitShader }
-    , { "RayIntersectionShader", Program::__Resolved::RayIntersectionShader }
-    , { "RayCallableShader", Program::__Resolved::RayCallableShader }
-    , { "RenderState", Program::__Resolved::RenderState }
-};
-
 static ConstantString NoProgramEntry = "";
 
 //------------------------------------------------------------------------------

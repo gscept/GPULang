@@ -104,7 +104,7 @@ AccessExpression::Resolve(Compiler* compiler)
         }
         thisResolved->swizzleMask = swizzle;
         unsigned numComponents = Type::SwizzleMaskComponents(swizzle);
-        std::string vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
+        ConstantString vectorType = Type::ToVector(thisResolved->lhsType->baseType, numComponents);
         thisResolved->returnType = thisResolved->leftType;
         thisResolved->retType = thisResolved->lhsType;
         thisResolved->returnType.swizzleName = vectorType;

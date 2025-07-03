@@ -53,19 +53,19 @@ struct SamplerState : public State
         };
 
         /// convert from string to program entry type
-        static const SamplerStateEntryType StringToEntryType(const std::string& str);
+        static const SamplerStateEntryType StringToEntryType(const TransientString& str);
         /// convert from mapping to string
-        static const std::string& EntryTypeToString(const SamplerStateEntryType type);
+        static const ConstantString& EntryTypeToString(const SamplerStateEntryType type);
 
 
         /// convert from string to enum
-        static const BorderColor StringToBorderColor(const std::string& str);
+        static const BorderColor StringToBorderColor(const TransientString& str);
 
         /// convert from string to enum
-        static const Filter StringToFilter(const std::string& str);
+        static const Filter StringToFilter(const TransientString& str);
 
         /// convert from string to enum
-        static const AddressMode StringToAddressMode(const std::string& str);
+        static const AddressMode StringToAddressMode(const TransientString& str);
 
         AddressMode addressU;
         AddressMode addressV;

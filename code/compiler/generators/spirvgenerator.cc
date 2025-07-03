@@ -7644,7 +7644,7 @@ struct UnaryOperator
     char elements;
     SPVOp addOp, subOp, negateOp;
     
-    UnaryOperator()
+    constexpr UnaryOperator()
         : bit('\0')
         , sign(false)
         , elements(0)
@@ -7653,7 +7653,7 @@ struct UnaryOperator
         , negateOp(OpNop)
     {}
     
-    UnaryOperator(char bit, bool sign, int elements, SPVOp addOp, SPVOp subOp, SPVOp negateOp)
+    constexpr UnaryOperator(char bit, bool sign, int elements, SPVOp addOp, SPVOp subOp, SPVOp negateOp)
         : bit(bit)
         , sign(sign)
         , elements(elements)
@@ -7674,24 +7674,24 @@ struct UnaryOperator
 };
 
 // TODO: Add support for looking up SPVOps as well
-static StaticMap<ConstantString, UnaryOperator> UnaryOperatorTable =
-{
-    { "f32", UnaryOperator{ 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
-    , { "f32x2", UnaryOperator{ 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
-    , { "f32x3", UnaryOperator{ 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
-    , { "f32x4", UnaryOperator{ 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
-    , { "i32", UnaryOperator{ 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
-    , { "i32x2", UnaryOperator{ 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
-    , { "i32x3", UnaryOperator{ 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
-    , { "i32x4", UnaryOperator{ 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
-    , { "u32", UnaryOperator{ 'U', false, 1, OpIAdd, OpISub, OpNop } }
-    , { "u32x2", UnaryOperator{ 'U', false, 2, OpIAdd, OpISub, OpNop } }
-    , { "u32x3", UnaryOperator{ 'U', false, 3, OpIAdd, OpISub, OpNop } }
-    , { "u32x4", UnaryOperator{ 'U', false, 4, OpIAdd, OpISub, OpNop } }
-    , { "b8", UnaryOperator{ 'B', false, 1, OpNop, OpNop, OpNop } }
-    , { "b8x2", UnaryOperator{ 'B', false, 2, OpNop, OpNop, OpNop } }
-    , { "b8x3", UnaryOperator{ 'B', false, 3, OpNop, OpNop, OpNop } }
-    , { "b8x4", UnaryOperator{ 'B', false, 4, OpNop, OpNop, OpNop } }
+static StaticMap UnaryOperatorTable =
+std::array{
+    std::pair{ "f32"_c, UnaryOperator{ 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x2"_c, UnaryOperator{ 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x3"_c, UnaryOperator{ 'F', true, 3, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "f32x4"_c, UnaryOperator{ 'F', true, 4, OpFAdd, OpFSub, OpFNegate } }
+    , std::pair{ "i32"_c, UnaryOperator{ 'S', true, 1, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x2"_c, UnaryOperator{ 'S', true, 2, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x3"_c, UnaryOperator{ 'S', true, 3, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "i32x4"_c, UnaryOperator{ 'S', true, 4, OpIAdd, OpISub, OpSNegate } }
+    , std::pair{ "u32"_c, UnaryOperator{ 'U', false, 1, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x2"_c, UnaryOperator{ 'U', false, 2, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x3"_c, UnaryOperator{ 'U', false, 3, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "u32x4"_c, UnaryOperator{ 'U', false, 4, OpIAdd, OpISub, OpNop } }
+    , std::pair{ "b8"_c, UnaryOperator{ 'B', false, 1, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x2"_c, UnaryOperator{ 'B', false, 2, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x3"_c, UnaryOperator{ 'B', false, 3, OpNop, OpNop, OpNop } }
+    , std::pair{ "b8x4"_c, UnaryOperator{ 'B', false, 4, OpNop, OpNop, OpNop } }
 };
 
 //------------------------------------------------------------------------------

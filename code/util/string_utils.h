@@ -83,6 +83,11 @@ struct ConstantString
     }
 };
 
+ConstantString operator ""_c(const char* buf, const size_t len)
+{
+    return ConstantString(buf, len);
+}
+
 //------------------------------------------------------------------------------
 /**
 */

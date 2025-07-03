@@ -810,50 +810,6 @@ types.Append(newType);
 
 #define __ADD_LOOKUP(name) DefaultTypes[#name] = newType;
 
-const StaticMap<ConstantString, ImageFormat> StringToFormats =
-{
-    { "rgba16", Rgba16 }
-    , { "rgb10_a2", Rgb10_A2 }
-    , { "rgba8", Rgba8 }
-    , { "rg16", Rg16 }
-    , { "rg8", Rg8 }
-    , { "r16", R16 }
-    , { "r8", R8 }
-    , { "rgba16_snorm", Rgba16_Snorm }
-    , { "rgba8_snorm", Rgba8_Snorm }
-    , { "rg16_snorm", Rg16_Snorm }
-    , { "rg8_snorm", Rg8_Snorm }
-    , { "r16_snorm", R16_Snorm }
-    , { "r8_snorm", R8_Snorm }
-    , { "rgba32f", Rgba32F }
-    , { "rgba16f", Rgba16F }
-    , { "rg32f", Rg32F }
-    , { "rg16f", Rg16F }
-    , { "r11g11b10f", R11G11B10F }
-    , { "r32f", R32F }
-    , { "r16f", R16F }
-    , { "rga32i", Rgba32I }
-    , { "rgba16i", Rgba16I }
-    , { "rgba8i", Rgba8I }
-    , { "rg32i", Rg32I }
-    , { "rg16i", Rg16I }
-    , { "rg8i", Rg8I }
-    , { "r32i", R32I }
-    , { "r16i", R16I }
-    , { "r8i", R8I }
-    , { "rga32u", Rgba32U }
-    , { "rgba16u", Rgba16U }
-    , { "rgb10_a2u", Rgb10_A2U }
-    , { "rgba8u", Rgba8U }
-    , { "rg32u", Rg32U }
-    , { "rg16u", Rg16U }
-    , { "rg8u", Rg8U }
-    , { "r32u", R32U }
-    , { "r16u", R16U }
-    , { "r8u", R8U }
-    , { "unknown", Unknown }
-};
-
 
 //------------------------------------------------------------------------------
 /**
@@ -896,29 +852,29 @@ Type::~Type()
 {
 }
 
-const StaticMap<TypeCode, ConstantString> codeToStringMapping =
-{
-    { TypeCode::Void, "void" }
-    , { TypeCode::Float, "f32" }
-    , { TypeCode::Float16, "f16" }
-    , { TypeCode::Int, "i32" }
-    , { TypeCode::Int16, "i16" }
-    , { TypeCode::UInt, "u32" }
-    , { TypeCode::UInt16, "u16" }
-    , { TypeCode::Bool, "b8" }
-    , { TypeCode::Texture1D, "texture1D" }
-    , { TypeCode::Texture1DArray, "texture1DArray" }
-    , { TypeCode::Texture2D, "texture2D" }
-    , { TypeCode::Texture2DArray, "texture2DArray" }
-    , { TypeCode::Texture2DMS, "texture2DMS" }
-    , { TypeCode::Texture2DMSArray, "texture2DMSArray" }
-    , { TypeCode::Texture3D, "texture3D" }
-    , { TypeCode::Texture3DArray, "texture3DArray" }
-    , { TypeCode::TextureCube, "textureCube" }
-    , { TypeCode::TextureCubeArray, "textureCubeArray" }
-    , { TypeCode::PixelCache, "pixelCache" }
-    , { TypeCode::PixelCacheMS, "pixelCacheMS" }
-    , { TypeCode::Sampler, "sampler" }
+const StaticMap codeToStringMapping =
+std::array{
+    std::pair{ TypeCode::Void, ConstantString("void") }
+    , std::pair{ TypeCode::Float, ConstantString("f32") }
+    , std::pair{ TypeCode::Float16, ConstantString("f16") }
+    , std::pair{ TypeCode::Int, ConstantString("i32") }
+    , std::pair{ TypeCode::Int16, ConstantString("i16") }
+    , std::pair{ TypeCode::UInt, ConstantString("u32") }
+    , std::pair{ TypeCode::UInt16, ConstantString("u16") }
+    , std::pair{ TypeCode::Bool, ConstantString("b8") }
+    , std::pair{ TypeCode::Texture1D, ConstantString("texture1D") }
+    , std::pair{ TypeCode::Texture1DArray, ConstantString("texture1DArray") }
+    , std::pair{ TypeCode::Texture2D, ConstantString("texture2D") }
+    , std::pair{ TypeCode::Texture2DArray, ConstantString("texture2DArray") }
+    , std::pair{ TypeCode::Texture2DMS, ConstantString("texture2DMS") }
+    , std::pair{ TypeCode::Texture2DMSArray, ConstantString("texture2DMSArray") }
+    , std::pair{ TypeCode::Texture3D, ConstantString("texture3D") }
+    , std::pair{ TypeCode::Texture3DArray, ConstantString("texture3DArray") }
+    , std::pair{ TypeCode::TextureCube, ConstantString("textureCube") }
+    , std::pair{ TypeCode::TextureCubeArray, ConstantString("textureCubeArray") }
+    , std::pair{ TypeCode::PixelCache, ConstantString("pixelCache") }
+    , std::pair{ TypeCode::PixelCacheMS, ConstantString("pixelCacheMS") }
+    , std::pair{ TypeCode::Sampler, ConstantString("sampler") }
 };
 
 const ConstantString NoCode = "";
@@ -936,22 +892,22 @@ Type::CodeToString(const TypeCode& code)
         return it->second;
 }
 
-const StaticMap<Type::Category, std::string> categoryToStringMapping =
-{
-    { Type::Category::TextureCategory, "Texture" }
-    , { Type::Category::PixelCacheCategory, "PixelCache" }
-    , { Type::Category::ScalarCategory, "Scalar" }
-    , { Type::Category::UserTypeCategory, "Buffer" }
-    , { Type::Category::EnumCategory, "Enum" }
-    , { Type::Category::VoidCategory, "Void" }
-    , { Type::Category::SamplerCategory, "Sampler" }
-    , { Type::Category::AccelerationStructureCategory, "AccelerationStructure" }
+const StaticMap categoryToStringMapping =
+std::array{
+    std::pair{ Type::Category::TextureCategory, ConstantString("Texture") }
+    , std::pair{ Type::Category::PixelCacheCategory, ConstantString("PixelCache") }
+    , std::pair{ Type::Category::ScalarCategory, ConstantString("Scalar") }
+    , std::pair{ Type::Category::UserTypeCategory, ConstantString("Buffer") }
+    , std::pair{ Type::Category::EnumCategory, ConstantString("Enum") }
+    , std::pair{ Type::Category::VoidCategory, ConstantString("Void") }
+    , std::pair{ Type::Category::SamplerCategory, ConstantString("Sampler") }
+    , std::pair{ Type::Category::AccelerationStructureCategory, ConstantString("AccelerationStructure") }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-std::string
+ConstantString
 Type::CategoryToString(const Category& cat)
 {
     auto it = categoryToStringMapping.Find(cat);
@@ -1085,22 +1041,22 @@ Type::SetupDefaultTypes()
     SYMBOL_STATIC_ALLOC = false;
 }
 
-StaticMap<TypeCode, std::vector<std::string>> singleComponentToVectorMap =
-{
-    { TypeCode::Float,      { "f32",    "f32x2",    "f32x3",    "f32x4" } }
-    , { TypeCode::Float16,  { "f16",    "f16x2",    "f16x3",    "f16x4" } }
-    , { TypeCode::Int,      { "i32",    "i32x2",    "i32x3",    "i32x4" } }
-    , { TypeCode::Int16,    { "i16",    "i16x2",    "i16x3",    "i16x4" } }
-    , { TypeCode::UInt,     { "u32",    "u32x2",    "u32x3",    "u32x4" } }
-    , { TypeCode::UInt16,   { "u16",    "u16x2",    "u16x3",    "u16x4" } }
-    , { TypeCode::Bool,     { "b8",     "b8x2",     "b8x3",     "b8x4"  } }
+const StaticMap singleComponentToVectorMap =
+std::array{
+    std::pair{ TypeCode::Float,      StaticArray{ ConstantString("f32"),    ConstantString("f32x2"),    ConstantString("f32x3"),    ConstantString("f32x4") } }
+    , std::pair{ TypeCode::Float16,  StaticArray{ ConstantString("f16"),    ConstantString("f16x2"),    ConstantString("f16x3"),    ConstantString("f16x4") } }
+    , std::pair{ TypeCode::Int,      StaticArray{ ConstantString("i32"),    ConstantString("i32x2"),    ConstantString("i32x3"),    ConstantString("i32x4") } }
+    , std::pair{ TypeCode::Int16,    StaticArray{ ConstantString("i16"),    ConstantString("i16x2"),    ConstantString("i16x3"),    ConstantString("i16x4") } }
+    , std::pair{ TypeCode::UInt,     StaticArray{ ConstantString("u32"),    ConstantString("u32x2"),    ConstantString("u32x3"),    ConstantString("u32x4") } }
+    , std::pair{ TypeCode::UInt16,   StaticArray{ ConstantString("u16"),    ConstantString("u16x2"),    ConstantString("u16x3"),    ConstantString("u16x4") } }
+    , std::pair{ TypeCode::Bool,     StaticArray{ ConstantString("b8"),     ConstantString("b8x2"),     ConstantString("b8x3"),     ConstantString("b8x4")  } }
 
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const std::string 
+const ConstantString
 Type::ToVector(const TypeCode baseType, unsigned members)
 {
     if (members > 4)
