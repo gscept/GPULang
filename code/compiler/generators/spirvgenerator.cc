@@ -6768,7 +6768,7 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
     Enumeration::__Resolved* enumResolved = Symbol::Resolved(enumeration);
 
     // Implement 'conversion' functions, which is to just return the argument
-    for (size_t i = 0; i < enumeration->globals.size(); i++)
+    for (size_t i = 0; i < enumeration->globals.size; i++)
     {
         Symbol* sym = enumeration->globals[i];
         if (sym->symbolType == Symbol::FunctionType)
@@ -6782,7 +6782,7 @@ GenerateEnumSPIRV(const Compiler* compiler, SPIRVGenerator* generator, Symbol* s
             
         }
     }
-    for (size_t i = 0; i < enumeration->staticSymbols.size(); i++)
+    for (size_t i = 0; i < enumeration->staticSymbols.size; i++)
     {
         Symbol* sym = enumeration->staticSymbols[i];
         if (sym->symbolType == Symbol::FunctionType)

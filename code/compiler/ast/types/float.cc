@@ -46,6 +46,7 @@ Float::Float()
 
     __IMPLEMENT_FUNCTION_1(Float_intAssignOperator, operator=, Float, Int);
     __IMPLEMENT_FUNCTION_1(Float_uintAssignOperator, operator=, Float, UInt);
+    __END_TYPE()
 
     SYMBOL_STATIC_ALLOC = false;
 }

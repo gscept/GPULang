@@ -81,7 +81,7 @@ UInt3::UInt3()
 
     char colorMask[] = { 'r', 'g', 'b' };
     __IMPLEMENT_SWIZZLE(UInt, 3, colorMask);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

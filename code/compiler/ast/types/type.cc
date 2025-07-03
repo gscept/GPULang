@@ -1081,7 +1081,7 @@ Type::SetupDefaultTypes()
     types.Append(&MemorySemanticsTypeType);
 
     __MAKE_TYPE_CUSTOM(void, Void);
-    DefaultTypes = types;
+    DefaultTypes = StaticArray(types);
     SYMBOL_STATIC_ALLOC = false;
 }
 

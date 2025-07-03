@@ -1344,13 +1344,13 @@ template <typename K, typename V>
 struct StaticMap
 {
     using item = std::pair<K, V>;
-    StaticMap(const std::initializer_list<item>& items)
+    constexpr StaticMap(const std::initializer_list<item>& items)
     {
         this->data = StaticAllocArray<item>(items.size());
         this->size = 0;
         for (auto& it : items)
         {
-            new (this->data + this->size++) item(it.first, it.second);
+            this->data[this->size++] = it;
         }
         
         std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)
@@ -1359,13 +1359,13 @@ struct StaticMap
         });
     }
     
-    StaticMap(std::initializer_list<item>&& items)
+    constexpr StaticMap(std::initializer_list<item>&& items)
     {
         this->data = StaticAllocArray<item>(items.size());
         this->size = 0;
         for (auto& it : items)
         {
-            new (this->data + this->size++) item(it.first, it.second);
+            this->data[this->size++] = it;
         }
         
         std::sort(this->data, this->data + this->size, [](const item& lhs, const item& rhs)

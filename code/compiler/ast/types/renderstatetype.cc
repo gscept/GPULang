@@ -6,15 +6,16 @@
 #include "ast/expressions/uintexpression.h"
 #include "builtins.h"
 
-#define __BEGIN_ENUMS__() TransientArray<ConstantString> labels(32); TransientArray<Expression*> expressions(32); Function* assignOperator; Variable* arg;
+#define __BEGIN_ENUMS__() TransientArray<ConstantString> labels(32); TransientArray<Expression*> expressions(32); Function* assignOperator; Variable* arg; TransientArray<Symbol*> members(64);
+
 #define __START_ENUM() labels.Clear(); expressions.Clear();
 #define __ADD_ENUM(val) labels.Append(ConstantString(#val)); expressions.Append(nullptr);
 #define __ADD_ENUM_EXPL(name, val) labels.Append(ConstantString(#name)); expressions.Append(StaticAlloc<UIntExpression>(val));
 #define __IMPL_ENUM_ASSIGN()
-#define __FINISH_ENUM(val, key) new (&val) Enumeration(); Symbol::Resolved(&val)->typeSymbol = &UIntType; val.builtin = true; val.labels = StaticArray<FixedString>(labels); val.values = StaticArray<Expression*>(expressions); val.name = ConstantString(#key); val.baseType = TypeCode::UInt; val.type = Type::FullType{ ConstantString("u32") }; val.type.literal = true; this->staticSymbols.push_back(&val);
+#define __FINISH_ENUM(val, key) new (&val) Enumeration(); Symbol::Resolved(&val)->typeSymbol = &UIntType; val.builtin = true; val.labels = StaticArray<FixedString>(labels); val.values = StaticArray<Expression*>(expressions); val.name = ConstantString(#key); val.baseType = TypeCode::UInt; val.type = Type::FullType{ ConstantString("u32") }; val.type.literal = true; members.Append(&val);
 
-#define __SETUP_MEMBER(val, key, ty) val.name = ConstantString(#key); val.type = Type::FullType{ ty.name }; Symbol::Resolved(&val)->typeSymbol = &ty; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);
-#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = ConstantString(#key); val.type = Type::FullType{ ty.name, {Type::FullType::Modifier::Array}, {StaticAlloc<UIntExpression>(size)} }; Symbol::Resolved(&val)->typeSymbol = &ty; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; this->staticSymbols.push_back(&val);
+#define __SETUP_MEMBER(val, key, ty) val.name = ConstantString(#key); val.type = Type::FullType{ ty.name }; Symbol::Resolved(&val)->typeSymbol = &ty; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; members.Append(&val);
+#define __SETUP_MEMBER_ARRAY(val, key, ty, size) val.name = ConstantString(#key); val.type = Type::FullType{ ty.name, {Type::FullType::Modifier::Array}, {StaticAlloc<UIntExpression>(size)} }; Symbol::Resolved(&val)->typeSymbol = &ty; Symbol::Resolved(&val)->usageBits.flags.isVar = true; Symbol::Resolved(&val)->usageBits.flags.isStructMember = true; members.Append(&val);
 
 namespace GPULang
 {
@@ -141,6 +142,8 @@ RenderStateType::RenderStateType()
     __SETUP_MEMBER_ARRAY(RenderState_blendOp, ColorBlendOp, RenderState_blendOpModeEnum, 8u);
     __SETUP_MEMBER_ARRAY(RenderState_blendOpAlpha, AlphaBlendOp, RenderState_blendOpModeEnum, 8u);
     __SETUP_MEMBER_ARRAY(RenderState_colorComponentMask, Mask, RenderState_colorComponentMaskEnum, 8u);
+    
+    this->staticSymbols = StaticArray(members);
 
     SYMBOL_STATIC_ALLOC = false;
 }

@@ -60,8 +60,8 @@ UInt::UInt()
     __IMPLEMENT_FUNCTION_1(UInt_floatAssignOperator, operator=, UInt, Float);
     __IMPLEMENT_FUNCTION_1(UInt_intAssignOperator, operator=, UInt, Int);
     __IMPLEMENT_FUNCTION_1(UInt_boolAssignOperator, operator=, UInt, Bool);
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
-
 }
 
 } // namespace GPULang

@@ -75,7 +75,7 @@ Float3::Float3()
 
     char colorMask[] = { 'r', 'g', 'b' };
     __IMPLEMENT_SWIZZLE(Float, 3, colorMask)
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

@@ -65,13 +65,13 @@ UInt2::UInt2()
 
     __IMPLEMENT_FUNCTION_1(UInt2_elementAccessOperatorInt, operator[], UInt, Int);
     __IMPLEMENT_FUNCTION_1(UInt2_elementAccessOperatorUInt, operator[], UInt, UInt);
-
+    
     char swizzleMask[] = { 'x', 'y' };
     __IMPLEMENT_SWIZZLE(UInt, 2, swizzleMask);
 
     char colorMask[] = { 'r', 'g' };
     __IMPLEMENT_SWIZZLE(UInt, 2, colorMask);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

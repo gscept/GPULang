@@ -53,7 +53,7 @@ Mat2x4::Mat2x4()
 
     __IMPLEMENT_FUNCTION_1(Mat2x4_elementAccessOperatorInt, operator[], Float2, Int);
     __IMPLEMENT_FUNCTION_1(Mat2x4_elementAccessOperatorUInt, operator[], Float2, UInt);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

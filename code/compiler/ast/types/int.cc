@@ -61,7 +61,7 @@ Int::Int()
     __IMPLEMENT_FUNCTION_1(Int_floatAssignOperator, operator=, Int, Float);
     __IMPLEMENT_FUNCTION_1(Int_uintAssignOperator, operator=, Int, UInt);
     __IMPLEMENT_FUNCTION_1(Int_boolAssignOperator, operator=, Int, Bool);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

@@ -15,7 +15,9 @@
 
 #define STRINGIFY(x) #x
 
-#define __BEGIN_TYPE() TransientArray<Variable*> parameters(32);
+#define __BEGIN_TYPE() TransientArray<Variable*> parameters(32); TransientArray<Symbol*> globals(16); TransientArray<Symbol*> constructors(16); TransientArray<Symbol*> statics(64); TransientArray<Symbol*> swizzles(680);
+
+#define __END_TYPE() this->globals = StaticArray(globals); this->constructors = StaticArray(constructors); this->staticSymbols = StaticArray(statics); this->swizzleSymbols = StaticArray(swizzles);
 
 #define __IMPLEMENT_CTOR_1(method, id, t, argtype)\
 parameters.Clear();\
@@ -24,7 +26,7 @@ method.returnType = Type::FullType{t##Type.name};\
 method.compileTime = true;\
 method.constructorType = &t##Type;\
 Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
-this->globals.push_back(&method);\
+globals.Append(&method);\
 activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
@@ -35,7 +37,7 @@ activeFunction = &method;\
     activeFunction->parameters = StaticArray<Variable*>(parameters);\
 }\
 activeFunction->documentation = "Conversion constructor from " #argtype " to " #id;\
-this->constructors.push_back(activeFunction);
+constructors.Append(activeFunction);
 
 #define __IMPLEMENT_CTOR(method, id, type)\
 parameters.Clear();\
@@ -44,7 +46,7 @@ method.returnType = Type::FullType{type##Type.name};\
 method.compileTime = true;\
 method.constructorType = &type##Type;\
 Symbol::Resolved(&method)->returnTypeSymbol = &type##Type;\
-this->globals.push_back(&method);\
+globals.Append(&method);\
 activeFunction = &method;\
 activeFunction->documentation = "Constructor of " #type;\
 
@@ -53,7 +55,7 @@ parameters.Clear();\
 method.name = ConstantString(#id);\
 method.returnType = Type::FullType{t##Type.name};\
 Symbol::Resolved(&method)->returnTypeSymbol = &t##Type;\
-this->staticSymbols.push_back(&method);\
+statics.Append(&method);\
 activeFunction = &method;\
 {\
     Variable* var = StaticAlloc<Variable>(); \
@@ -73,7 +75,7 @@ activeFunction = &method;\
     resolved->usageBits.flags.isVar = true;\
     resolved->usageBits.flags.isStructMember = true;\
     resolved->typeSymbol = &retType##Type;\
-    this->swizzleSymbols.push_back(swizzleMember);\
+    swizzles.Append(swizzleMember);\
 }
 
 #define __ADD_FUNCTION_PARAM(id, t)\
@@ -85,15 +87,9 @@ activeFunction = &method;\
     parameters.Append(var);\
 }
 
-#define __ADD_VARIBLE_LOOKUP(variable, id, t)\
-this->variable.name = ConstantString(id);\
-this->variable.type = Type::FullType{ConstantString(#t)};\
-this->lookup.insert({id, &this->variable});
-
 #define __ADD_CONSTRUCTOR()\
 activeFunction->parameters = StaticArray<Variable*>(parameters);\
-if (!this->constructors.empty()) { assert(this->constructors.back() != activeFunction && "Constructor added twice"); }\
-this->constructors.push_back(activeFunction);
+constructors.Append(activeFunction);
 
 #define __IMPLEMENT_SWIZZLE(type, size, mask)\
     for (uint8_t x = 0; x < size; x++)\
@@ -625,11 +621,11 @@ struct Type : public Symbol
         return result;
     }
 
-    std::vector<Symbol*> globals;
-    std::vector<Symbol*> staticSymbols;
-    std::vector<Symbol*> swizzleSymbols;
+    FixedArray<Symbol*> globals;
+    FixedArray<Symbol*> staticSymbols;
+    FixedArray<Symbol*> swizzleSymbols;
     PinnedArray<Symbol*> symbols = 0xFFF;
-    std::vector<Symbol*> constructors;
+    FixedArray<Symbol*> constructors;
 
     Scope scope;
 

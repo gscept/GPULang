@@ -37,6 +37,7 @@ Bool::Bool()
     __IMPLEMENT_FUNCTION_1(Bool_boolAssignOperator, operator=, Bool, Bool);
     __IMPLEMENT_FUNCTION_1(Bool_intAssignOperator, operator=, Bool, Int);
     __IMPLEMENT_FUNCTION_1(Bool_uintAssignOperator, operator=, Bool, UInt);
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

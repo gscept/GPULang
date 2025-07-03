@@ -51,7 +51,7 @@ Mat3x2::Mat3x2()
 
     __IMPLEMENT_FUNCTION_1(Mat3x2_elementAccessOperatorInt, operator[], Float3, Int);
     __IMPLEMENT_FUNCTION_1(Mat3x2_elementAccessOperatorUInt, operator[], Float3, UInt);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

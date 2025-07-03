@@ -322,10 +322,8 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
-            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
-            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }
 
@@ -339,10 +337,8 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
-            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
-            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }    
 
@@ -354,10 +350,8 @@ Validator::ResolveTypeMethods(Compiler* compiler, Symbol* symbol)
             Function::__Resolved* funRes = Symbol::Resolved(fun);
             funRes->scope.symbols.Invalidate();
             funRes->scope.symbolLookup.Invalidate();
-            funRes->scope.symbolLookup.BeginBulkAdd();
             if (!this->ResolveFunction(compiler, fun))
                 return false;
-            funRes->scope.symbolLookup.EndBulkAdd();
         }
     }
 
@@ -1944,11 +1938,12 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
     static ConstantString eqOp = "operator==";
     static ConstantString neqOp = "operator!=";
     
-    if (enumeration->globals.empty())
+    if (enumeration->globals.size == 0)
     {
         if (enumeration->builtin)
         {
             TransientArray<Variable*> parameters(1);
+            TransientArray<Symbol*> generatedFunctions(2);
             SYMBOL_STATIC_ALLOC = true;
 
             // Create constructor from type, and to type
@@ -1965,7 +1960,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             fromUnderlyingType->parameters = StaticArray<Variable*>(parameters);
-            enumeration->globals.push_back(fromUnderlyingType);
+            generatedFunctions.Append(fromUnderlyingType);
 
             Function* toUnderlyingType = &enumeration->toUnderlyingType;
             toUnderlyingType->name = enumeration->type.name;
@@ -1980,7 +1975,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             toUnderlyingType->parameters = StaticArray<Variable*>(parameters);
-            enumeration->globals.push_back(toUnderlyingType);
+            generatedFunctions.Append(toUnderlyingType);
+            
+            enumeration->globals = generatedFunctions;
+            generatedFunctions.Clear();
 
             Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
@@ -1993,7 +1991,8 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = StaticArray<Variable*>(parameters);
-            enumeration->staticSymbols.push_back(comparison);
+            generatedFunctions.Append(comparison);
+            
 
             comparison = &enumeration->neqOp;
             comparison->name = neqOp;
@@ -2006,12 +2005,14 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = StaticArray<Variable*>(parameters);
-            enumeration->staticSymbols.push_back(comparison);
+            generatedFunctions.Append(comparison);
+            enumeration->staticSymbols = generatedFunctions;
             SYMBOL_STATIC_ALLOC = false;
         }
         else
         {
             TransientArray<Variable*> parameters(1);
+            TransientArray<Symbol*> generatedFunctions(2);
 
             // Create constructor from type, and to type
             Function* fromUnderlyingType = &enumeration->fromUnderlyingType;
@@ -2025,7 +2026,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             fromUnderlyingType->parameters = parameters;
-            enumeration->globals.push_back(fromUnderlyingType);
+            generatedFunctions.Append(fromUnderlyingType);
 
             Function* toUnderlyingType = &enumeration->toUnderlyingType;
             toUnderlyingType->name = enumeration->type.name;
@@ -2038,7 +2039,10 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             toUnderlyingType->parameters = parameters;
-            enumeration->globals.push_back(toUnderlyingType);
+            generatedFunctions.Append(toUnderlyingType);
+            
+            enumeration->globals = generatedFunctions;
+            generatedFunctions.Clear();
 
             Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
@@ -2049,7 +2053,8 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = parameters;
-            enumeration->staticSymbols.push_back(comparison);
+            generatedFunctions.Append(comparison);
+            
 
             comparison = &enumeration->neqOp;
             comparison->name = neqOp;
@@ -2060,7 +2065,8 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             parameters.Clear();
             parameters.Append(arg);
             comparison->parameters = parameters;
-            enumeration->staticSymbols.push_back(comparison);
+            generatedFunctions.Append(comparison);
+            enumeration->staticSymbols = generatedFunctions;
         }
     }
 

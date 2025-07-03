@@ -82,7 +82,7 @@ Int3::Int3()
     
     char colorMask[] = { 'r', 'g', 'b' };
     __IMPLEMENT_SWIZZLE(Int, 3, colorMask);
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

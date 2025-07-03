@@ -47,7 +47,7 @@ Bool4::Bool4()
 
     char colorMask[] = { 'r', 'g', 'b', 'a' };
     __IMPLEMENT_SWIZZLE(Bool, 4, colorMask)
-
+    __END_TYPE()
     SYMBOL_STATIC_ALLOC = false;
 }
 

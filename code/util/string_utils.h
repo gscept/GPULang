@@ -57,14 +57,24 @@ struct ConstantString
         this->size = const_len(buf);
     }
     
-    bool operator<(const ConstantString& rhs) const
+    constexpr bool operator<(const ConstantString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf) < 0;
+        for (size_t i = 0; i < this->size && i < rhs.size; i++)
+        {
+            if (this->buf[i] < rhs.buf[i]) return true;
+            if (this->buf[i] > rhs.buf[i]) return false;
+        }
+        return this->size < rhs.size;
+        //return std::strcmp(this->buf, rhs.buf) < 0;
     }
     
-    bool operator==(const ConstantString& rhs) const
+    constexpr bool operator==(const ConstantString& rhs) const
     {
-        return strcmp(this->buf, rhs.buf) == 0;
+        for (size_t i = 0; i < this->size && i < rhs.size; i++)
+        {
+            if (this->buf[i] != rhs.buf[i]) return false;
+        }
+        return this->size == rhs.size;
     }
     
     const char* c_str() const

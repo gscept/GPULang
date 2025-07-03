@@ -2052,7 +2052,7 @@ __ADD_SAMPLED_HANDLE_ARG_LIT(texture, overload);\
     __MAKE_BUILTIN(TLASGetWorldToObject, TLASWorldToObject);
     __SET_RET_LIT(Mat4x3);
     
-    DefaultIntrinsics = Intrinsics;
+    DefaultIntrinsics = StaticArray(Intrinsics);
 
     SYMBOL_STATIC_ALLOC = false;
 }
