@@ -5705,7 +5705,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
         antlrcpp::downCast<ExpressionContext *>(_localctx)->p = expression(14);
 
         	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->p->tree == nullptr)
-        	    return;
+        	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->p->tree;
                 antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), true, antlrcpp::downCast<ExpressionContext *>(_localctx)->p->tree);
                 _localctx->tree->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->p->tree->location;
             
@@ -5762,7 +5762,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(18);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, false);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5785,7 +5785,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(17);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             AccessExpression* expr = Alloc<AccessExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree, true);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5815,8 +5815,9 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
            location = SetupFile(); 
           setState(888);
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(14);
-          	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+          	
+                    	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5849,7 +5850,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(13);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5882,7 +5883,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(12);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5914,7 +5915,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(11);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5947,7 +5948,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(10);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5970,7 +5971,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(9);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>('&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -5993,7 +5994,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(8);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>('^', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6016,7 +6017,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(7);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>('|', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6039,7 +6040,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(6);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>('&&', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6062,7 +6063,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(5);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>('||', _localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6088,7 +6089,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody = expression(3);
            
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             TernaryExpression* expr = Alloc<TernaryExpression>(antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->ifBody->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->elseBody->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6120,7 +6121,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           antlrcpp::downCast<ExpressionContext *>(_localctx)->e2 = expression(2);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             BinaryExpression* expr = Alloc<BinaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e2->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6151,7 +6152,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
            location = SetupFile(); 
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  Alloc<UnaryExpression>(StringToFourCC((antlrcpp::downCast<ExpressionContext *>(_localctx)->op != nullptr ? antlrcpp::downCast<ExpressionContext *>(_localctx)->op->getText() : "")), false, _localctx->tree);
                             _localctx->tree->location = location;
                         
@@ -6184,7 +6185,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           match(GPULangParser::RP);
                    
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             CallExpression* expr = Alloc<CallExpression>(_localctx->tree, std::move(args));
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
@@ -6217,7 +6218,7 @@ GPULangParser::ExpressionContext* GPULangParser::expression(int precedence) {
           match(GPULangParser::RR);
 
                     	if (antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree == nullptr)
-                    	    return;
+                    	    return antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree;
                             ArrayIndexExpression* expr = Alloc<ArrayIndexExpression>(_localctx->tree, antlrcpp::downCast<ExpressionContext *>(_localctx)->e3->tree);
                             expr->location = antlrcpp::downCast<ExpressionContext *>(_localctx)->e1->tree->location;
                             antlrcpp::downCast<ExpressionContext *>(_localctx)->tree =  expr;
