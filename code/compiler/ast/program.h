@@ -105,7 +105,7 @@ struct Program : public Symbol
 
 };
 
-const StaticMap programEntryTypeLookup =
+constexpr StaticMap programEntryTypeLookup =
 std::array{
     std::pair{ ConstantString("VertexShader"), Program::__Resolved::VertexShader }
     , std::pair{ ConstantString("HullShader"), Program::__Resolved::HullShader }

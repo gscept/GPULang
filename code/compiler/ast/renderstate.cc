@@ -73,7 +73,7 @@ RenderState::RenderState()
     typeResolved->backStencilState = defaultStencil;
 }
 
-const StaticMap stringToRenderStateEntryType =
+constexpr StaticMap stringToRenderStateEntryType =
 std::array{
     std::pair{ ConstantString("DepthClampEnabled"), RenderState::__Resolved::DepthClampEnabledType },
     std::pair{ ConstantString("NoPixels"), RenderState::__Resolved::NoPixelsType },
@@ -154,7 +154,7 @@ RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
     return NoRenderStateEntry;
 }
 
-const StaticMap stringToPolygonMode =
+constexpr StaticMap stringToPolygonMode =
 std::array{
     std::pair{ ConstantString("Fill") , FillMode },
     std::pair{ ConstantString("Line") , LineMode },
@@ -174,7 +174,7 @@ RenderState::__Resolved::StringToPolygonMode(const TransientString& str)
         return InvalidPolygonMode;
 }
 
-const StaticMap stringToCullMode =
+constexpr StaticMap stringToCullMode =
 std::array{
     std::pair{ ConstantString("None"), NoCullMode },
     std::pair{ ConstantString("Front"), FrontMode },
@@ -195,7 +195,7 @@ RenderState::__Resolved::StringToCullMode(const TransientString& str)
         return InvalidCullMode;
 }
 
-const StaticMap stringToWindingOrderMode =
+constexpr StaticMap stringToWindingOrderMode =
 std::array{
     std::pair{ ConstantString("Clockwise"), ClockwiseMode },
     std::pair{ ConstantString("CounterClockwise"), CounterClockwiseMode }
@@ -214,7 +214,7 @@ RenderState::__Resolved::StringToWindingOrderMode(const TransientString& str)
         return InvalidWindingOrderMode;
 }
 
-const StaticMap stringToLogicOp =
+constexpr StaticMap stringToLogicOp =
 std::array{
     std::pair{ ConstantString("Clear"), LogicClearOp },
     std::pair{ ConstantString("And"), LogicAndOp },
@@ -247,7 +247,7 @@ RenderState::__Resolved::StringToLogicOp(const TransientString& str)
         return InvalidLogicOp;
 }
 
-const StaticMap stringToStencilOp =
+constexpr StaticMap stringToStencilOp =
 std::array{
     std::pair{ ConstantString("Keep"), StencilKeepOp },
     std::pair{ ConstantString("Zero"), StencilZeroOp },
@@ -272,7 +272,7 @@ RenderState::__Resolved::StringToStencilOp(const TransientString& str)
         return InvalidStencilOp;
 }
 
-const StaticMap stringToBlendFactor =
+constexpr StaticMap stringToBlendFactor =
 std::array{
     std::pair{ ConstantString("Zero"),  ZeroFactor },
     std::pair{ ConstantString("One"),  OneFactor },
@@ -308,7 +308,7 @@ RenderState::__Resolved::StringToBlendFactor(const TransientString& str)
         return InvalidBlendFactor;
 }
 
-const StaticMap stringToBlendOp =
+constexpr StaticMap stringToBlendOp =
 std::array{
     std::pair{ ConstantString("Add"), AddOp },
     std::pair{ ConstantString("Subtract"), SubtractOp },

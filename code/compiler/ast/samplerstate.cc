@@ -47,7 +47,7 @@ SamplerState::~SamplerState()
     this->CleanupAttributes();
 }
 
-const StaticMap samplerEntryTypeLookup =
+constexpr StaticMap samplerEntryTypeLookup =
 std::array{
     std::pair{ ConstantString("Address"), SamplerState::__Resolved::AllAddressType }
     , std::pair{ ConstantString("AddressU"), SamplerState::__Resolved::AddressUType }
@@ -97,7 +97,7 @@ SamplerState::__Resolved::EntryTypeToString(const SamplerStateEntryType type)
     return def;
 }
 
-const StaticMap stringToAddressMode =
+constexpr StaticMap stringToAddressMode =
 std::array{
     std::pair{ ConstantString("Repeat"), RepeatAddressMode }
     , std::pair{ ConstantString("Mirror"), MirrorAddressMode }
@@ -118,7 +118,7 @@ SamplerState::__Resolved::StringToAddressMode(const TransientString& str)
         return AddressMode::InvalidAddressMode;
 }
 
-const StaticMap stringToFilter =
+constexpr StaticMap stringToFilter =
 std::array{
     std::pair{  ConstantString("Linear"), LinearFilter }
     , std::pair{ ConstantString("Point"), PointFilter }
@@ -138,7 +138,7 @@ SamplerState::__Resolved::StringToFilter(const TransientString& str)
         return Filter::InvalidFilter;
 }
 
-const StaticMap stringToBorderColor =
+constexpr StaticMap stringToBorderColor =
 std::array{
     std::pair{ "Transparent"_c, TransparentBorder }
     , std::pair{ "Black"_c, BlackBorder }

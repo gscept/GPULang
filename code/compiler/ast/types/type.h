@@ -142,48 +142,48 @@ enum ImageFormat
 
 extern bool IsImageFormatInteger(ImageFormat format);
 extern bool IsImageFormatUnsigned(ImageFormat format);
-const StaticMap StringToFormats =
+constexpr StaticMap StringToFormats =
 std::array{
-    std::pair{ ConstantString("rgba16"), Rgba16 }
-    , std::pair{ ConstantString("rgb10_a2"), Rgb10_A2 }
-    , std::pair{ ConstantString("rgba8"), Rgba8 }
-    , std::pair{ ConstantString("rg16"), Rg16 }
-    , std::pair{ ConstantString("rg8"), Rg8 }
-    , std::pair{ ConstantString("r16"), R16 }
-    , std::pair{ ConstantString("r8"), R8 }
-    , std::pair{ ConstantString("rgba16_snorm"), Rgba16_Snorm }
-    , std::pair{ ConstantString("rgba8_snorm"), Rgba8_Snorm }
-    , std::pair{ ConstantString("rg16_snorm"), Rg16_Snorm }
-    , std::pair{ ConstantString("rg8_snorm"), Rg8_Snorm }
-    , std::pair{ ConstantString("r16_snorm"), R16_Snorm }
-    , std::pair{ ConstantString("r8_snorm"), R8_Snorm }
-    , std::pair{ ConstantString("rgba32f"), Rgba32F }
-    , std::pair{ ConstantString("rgba16f"), Rgba16F }
-    , std::pair{ ConstantString("rg32f"), Rg32F }
-    , std::pair{ ConstantString("rg16f"), Rg16F }
-    , std::pair{ ConstantString("r11g11b10f"), R11G11B10F }
-    , std::pair{ ConstantString("r32f"), R32F }
-    , std::pair{ ConstantString("r16f"), R16F }
-    , std::pair{ ConstantString("rga32i"), Rgba32I }
-    , std::pair{ ConstantString("rgba16i"), Rgba16I }
-    , std::pair{ ConstantString("rgba8i"), Rgba8I }
-    , std::pair{ ConstantString("rg32i"), Rg32I }
-    , std::pair{ ConstantString("rg16i"), Rg16I }
-    , std::pair{ ConstantString("rg8i"), Rg8I }
-    , std::pair{ ConstantString("r32i"), R32I }
-    , std::pair{ ConstantString("r16i"), R16I }
-    , std::pair{ ConstantString("r8i"), R8I }
-    , std::pair{ ConstantString("rga32u"), Rgba32U }
-    , std::pair{ ConstantString("rgba16u"), Rgba16U }
-    , std::pair{ ConstantString("rgb10_a2u"), Rgb10_A2U }
-    , std::pair{ ConstantString("rgba8u"), Rgba8U }
-    , std::pair{ ConstantString("rg32u"), Rg32U }
-    , std::pair{ ConstantString("rg16u"), Rg16U }
-    , std::pair{ ConstantString("rg8u"), Rg8U }
-    , std::pair{ ConstantString("r32u"), R32U }
-    , std::pair{ ConstantString("r16u"), R16U }
-    , std::pair{ ConstantString("r8u"), R8U }
-    , std::pair{ ConstantString("unknown"), Unknown }
+    std::pair{ "rgba16"_c, Rgba16 }
+    , std::pair{ "rgb10_a2"_c, Rgb10_A2 }
+    , std::pair{ "rgba8"_c, Rgba8 }
+    , std::pair{ "rg16"_c, Rg16 }
+    , std::pair{ "rg8"_c, Rg8 }
+    , std::pair{ "r16"_c, R16 }
+    , std::pair{ "r8"_c, R8 }
+    , std::pair{ "rgba16_snorm"_c, Rgba16_Snorm }
+    , std::pair{ "rgba8_snorm"_c, Rgba8_Snorm }
+    , std::pair{ "rg16_snorm"_c, Rg16_Snorm }
+    , std::pair{ "rg8_snorm"_c, Rg8_Snorm }
+    , std::pair{ "r16_snorm"_c, R16_Snorm }
+    , std::pair{ "r8_snorm"_c, R8_Snorm }
+    , std::pair{ "rgba32f"_c, Rgba32F }
+    , std::pair{ "rgba16f"_c, Rgba16F }
+    , std::pair{ "rg32f"_c, Rg32F }
+    , std::pair{ "rg16f"_c, Rg16F }
+    , std::pair{ "r11g11b10f"_c, R11G11B10F }
+    , std::pair{ "r32f"_c, R32F }
+    , std::pair{ "r16f"_c, R16F }
+    , std::pair{ "rga32i"_c, Rgba32I }
+    , std::pair{ "rgba16i"_c, Rgba16I }
+    , std::pair{ "rgba8i"_c, Rgba8I }
+    , std::pair{ "rg32i"_c, Rg32I }
+    , std::pair{ "rg16i"_c, Rg16I }
+    , std::pair{ "rg8i"_c, Rg8I }
+    , std::pair{ "r32i"_c, R32I }
+    , std::pair{ "r16i"_c, R16I }
+    , std::pair{ "r8i"_c, R8I }
+    , std::pair{ "rga32u"_c, Rgba32U }
+    , std::pair{ "rgba16u"_c, Rgba16U }
+    , std::pair{ "rgb10_a2u"_c, Rgb10_A2U }
+    , std::pair{ "rgba8u"_c, Rgba8U }
+    , std::pair{ "rg32u"_c, Rg32U }
+    , std::pair{ "rg16u"_c, Rg16U }
+    , std::pair{ "rg8u"_c, Rg8U }
+    , std::pair{ "r32u"_c, R32U }
+    , std::pair{ "r16u"_c, R16U }
+    , std::pair{ "r8u"_c, R8U }
+    , std::pair{ "unknown"_c, Unknown }
 };
 
 

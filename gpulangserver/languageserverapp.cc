@@ -1225,7 +1225,7 @@ main(int argc, const char** argv)
                     }
                 }
 
-                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .save = true, .change = lsp::TextDocumentSyncKind::Full };
+                result.capabilities.textDocumentSync = lsp::TextDocumentSyncOptions{ .openClose = true, .change = lsp::TextDocumentSyncKind::Full, .save = true };
                 result.capabilities.workspace = lsp::ServerCapabilitiesWorkspace{ .workspaceFolders = lsp::WorkspaceFoldersServerCapabilities{ .supported = true } };
                 result.capabilities.documentHighlightProvider = lsp::DocumentHighlightOptions{ .workDoneProgress = true };
                 result.capabilities.referencesProvider = lsp::ReferenceOptions{ .workDoneProgress = true };
@@ -1516,7 +1516,7 @@ main(int argc, const char** argv)
                         int distanceFromSymbol = INT_MAX;
                         while (scopeIt != file->scopesByRange.end())
                         {
-                            int distance = params.position.line - scopeIt->first.startLine;
+                            int distance = int(params.position.line - scopeIt->first.startLine);
                             if (distance < 0) // If distance is negative, we passed by the scope
                                 break;
                             if (scopeIt->first.startLine <= params.position.line && scopeIt->first.stopLine >= params.position.line)

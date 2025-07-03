@@ -259,7 +259,7 @@ struct ConstantCreationInfo
     }
 };
 
-#define SPV_INSTRUCTION(name, code, words, dyn) SPVOp name { .str = #name, .c = code, .wordCount = words, .dynamicWords = dyn };
+#define SPV_INSTRUCTION(name, code, words, dyn) constexpr SPVOp name { .str = #name, .c = code, .wordCount = words, .dynamicWords = dyn };
 SPV_INSTRUCTION(OpNop, 0, 1, false)
 SPV_INSTRUCTION(OpSourceContinued, 2, 2, true)
 SPV_INSTRUCTION(OpSource, 3, 3, true)
@@ -7674,7 +7674,7 @@ struct UnaryOperator
 };
 
 // TODO: Add support for looking up SPVOps as well
-static StaticMap UnaryOperatorTable =
+static const StaticMap UnaryOperatorTable =
 std::array{
     std::pair{ "f32"_c, UnaryOperator{ 'F', true, 1, OpFAdd, OpFSub, OpFNegate } }
     , std::pair{ "f32x2"_c, UnaryOperator{ 'F', true, 2, OpFAdd, OpFSub, OpFNegate } }

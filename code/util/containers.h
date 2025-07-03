@@ -1349,9 +1349,10 @@ struct StaticMap
         return a.first < b.first;
     };
     
-    constexpr StaticMap(std::array<std::pair<K, V>, SIZE> a) : data(a)
+    constexpr StaticMap(const std::array<std::pair<K, V>, SIZE>& a) : data(a)
     {
         std::sort(this->data.begin(), this->data.end(), cmp_by_value);
+        this->size = a.size();
     }
     
     const item* Find(const K& key) const
@@ -1361,8 +1362,8 @@ struct StaticMap
             bool operator()(const K& key, const item& item) { return key < item.first; }
             bool operator()(const item& item, const K& key) { return item.first < key; }
         };
-        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
-        
+        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
+
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
     }
@@ -1375,7 +1376,7 @@ struct StaticMap
             bool operator()(const U& key, const item& item) { return key < item.first; }
             bool operator()(const item& item, const U& key) { return item.first < key; }
         };
-        auto it = std::equal_range(this->data.begin(), this->data.end(), key, Comp{});
+        auto it = std::equal_range(this->data.data(), this->data.data() + this->data.size(), key, Comp{});
         
         auto [beginRange, endRange] = it;
         return beginRange == endRange ? this->end() : beginRange;
@@ -1384,12 +1385,12 @@ struct StaticMap
     
     const item* begin() const
     {
-        return this->data.begin();
+        return this->data.data();
     }
     
     const item* end() const
     {
-        return this->data.end();
+        return this->data.data() + this->data.size();
     }
     
     std::array<std::pair<K, V>, SIZE> data;
@@ -1397,7 +1398,7 @@ struct StaticMap
 };
 
 template <typename K, typename V, size_t SIZE>
-StaticMap(std::array<std::pair<K, V>, SIZE>) -> StaticMap<K, V, SIZE>;
+StaticMap(const std::array<std::pair<K, V>, SIZE>&) -> StaticMap<K, V, SIZE>;
 
 //------------------------------------------------------------------------------
 /**

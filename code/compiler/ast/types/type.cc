@@ -852,7 +852,7 @@ Type::~Type()
 {
 }
 
-const StaticMap codeToStringMapping =
+constexpr StaticMap codeToStringMapping =
 std::array{
     std::pair{ TypeCode::Void, ConstantString("void") }
     , std::pair{ TypeCode::Float, ConstantString("f32") }
@@ -892,7 +892,7 @@ Type::CodeToString(const TypeCode& code)
         return it->second;
 }
 
-const StaticMap categoryToStringMapping =
+constexpr StaticMap categoryToStringMapping =
 std::array{
     std::pair{ Type::Category::TextureCategory, ConstantString("Texture") }
     , std::pair{ Type::Category::PixelCacheCategory, ConstantString("PixelCache") }
@@ -1041,15 +1041,15 @@ Type::SetupDefaultTypes()
     SYMBOL_STATIC_ALLOC = false;
 }
 
-const StaticMap singleComponentToVectorMap =
+constexpr StaticMap singleComponentToVectorMap =
 std::array{
-    std::pair{ TypeCode::Float,      StaticArray{ ConstantString("f32"),    ConstantString("f32x2"),    ConstantString("f32x3"),    ConstantString("f32x4") } }
-    , std::pair{ TypeCode::Float16,  StaticArray{ ConstantString("f16"),    ConstantString("f16x2"),    ConstantString("f16x3"),    ConstantString("f16x4") } }
-    , std::pair{ TypeCode::Int,      StaticArray{ ConstantString("i32"),    ConstantString("i32x2"),    ConstantString("i32x3"),    ConstantString("i32x4") } }
-    , std::pair{ TypeCode::Int16,    StaticArray{ ConstantString("i16"),    ConstantString("i16x2"),    ConstantString("i16x3"),    ConstantString("i16x4") } }
-    , std::pair{ TypeCode::UInt,     StaticArray{ ConstantString("u32"),    ConstantString("u32x2"),    ConstantString("u32x3"),    ConstantString("u32x4") } }
-    , std::pair{ TypeCode::UInt16,   StaticArray{ ConstantString("u16"),    ConstantString("u16x2"),    ConstantString("u16x3"),    ConstantString("u16x4") } }
-    , std::pair{ TypeCode::Bool,     StaticArray{ ConstantString("b8"),     ConstantString("b8x2"),     ConstantString("b8x3"),     ConstantString("b8x4")  } }
+    std::pair{ TypeCode::Float,      std::array{ ConstantString("f32"),    ConstantString("f32x2"),    ConstantString("f32x3"),    ConstantString("f32x4") } }
+    , std::pair{ TypeCode::Float16,  std::array{ ConstantString("f16"),    ConstantString("f16x2"),    ConstantString("f16x3"),    ConstantString("f16x4") } }
+    , std::pair{ TypeCode::Int,      std::array{ ConstantString("i32"),    ConstantString("i32x2"),    ConstantString("i32x3"),    ConstantString("i32x4") } }
+    , std::pair{ TypeCode::Int16,    std::array{ ConstantString("i16"),    ConstantString("i16x2"),    ConstantString("i16x3"),    ConstantString("i16x4") } }
+    , std::pair{ TypeCode::UInt,     std::array{ ConstantString("u32"),    ConstantString("u32x2"),    ConstantString("u32x3"),    ConstantString("u32x4") } }
+    , std::pair{ TypeCode::UInt16,   std::array{ ConstantString("u16"),    ConstantString("u16x2"),    ConstantString("u16x3"),    ConstantString("u16x4") } }
+    , std::pair{ TypeCode::Bool,     std::array{ ConstantString("b8"),     ConstantString("b8x2"),     ConstantString("b8x3"),     ConstantString("b8x4")  } }
 
 };
 

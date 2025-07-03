@@ -4281,25 +4281,24 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 return false;
             };
             
-            using ConditionFunction = std::function<bool(Compiler* compiler, Expression* expr, const ConstantString& fun)>;
             static const StaticMap conditionalBuiltins =
             std::array{
-                std::pair{ ConstantString("textureSample"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBias"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBiasCompare"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBiasOffset"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBiasProj"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBiasProjCompare"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleBiasProjOffset"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleCompare"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleCompareOffset"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleProj"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleProjCompare"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleProjCompareOffset"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("textureSampleProjOffset"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("ddx"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("ddy"), ConditionFunction(derivativeConditionFunction) }
-                , std::pair{ ConstantString("fwidth"), ConditionFunction(derivativeConditionFunction) }
+                std::pair{ ConstantString("textureSample"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBias"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBiasCompare"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBiasOffset"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBiasProj"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBiasProjCompare"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleBiasProjOffset"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleCompare"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleCompareOffset"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleProj"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleProjCompare"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleProjCompareOffset"), derivativeConditionFunction }
+                , std::pair{ ConstantString("textureSampleProjOffset"), derivativeConditionFunction }
+                , std::pair{ ConstantString("ddx"), derivativeConditionFunction }
+                , std::pair{ ConstantString("ddy"), derivativeConditionFunction }
+                , std::pair{ ConstantString("fwidth"), derivativeConditionFunction }
             };
             const auto it2 = conditionalBuiltins.Find(callResolved->functionSymbol);
             if (it2 != conditionalBuiltins.end())

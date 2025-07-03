@@ -24,7 +24,7 @@ const_len(const char* str)
 
 struct ConstantString
 {
-    size_t size = 0;
+    size_t size;
     const char* buf;
 
     constexpr ConstantString()
@@ -77,15 +77,15 @@ struct ConstantString
         return this->size == rhs.size;
     }
     
-    const char* c_str() const
+    constexpr const char* c_str() const
     {
         return this->buf;
     }
 };
 
-ConstantString operator ""_c(const char* buf, const size_t len)
+inline constexpr ConstantString operator ""_c(const char* buf, const size_t len)
 {
-    return ConstantString(buf, len);
+    return ConstantString{ buf, len };
 }
 
 //------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ State::~State()
         entry->~Expression();
 }
 
-const StaticMap stringToCompareMode =
+constexpr StaticMap stringToCompareMode =
 std::array{
     std::pair{ ConstantString("Never"), NeverCompare }
     , std::pair{ ConstantString("Less"), LessCompare }
