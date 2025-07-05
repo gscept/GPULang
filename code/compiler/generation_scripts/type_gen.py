@@ -64,77 +64,181 @@ def generate_swizzle_two():
             open_file.write(f"X(" + x + y + ")\\\n")
     open_file.write("\n")
 
-def generate_vec_constructors():
-    types = ["Float", "UInt", "Int"]
-    data_types = ["f32", "u32", "i32"]
+def generate_vec():
+    types = ["Float", "UInt", "Int", "Bool"]
+    data_types = ["f32", "u32", "i32", "b8"]
+
+    bit_operator_names = ['or', 'and', 'xor', 'lsh', 'rsh']
+    bit_operators = ['|', '&', '^', '<<', '>>']
+
+    scalar_operator_names = ['add', 'sub', 'mul', 'div', 'mod']
+    scalar_operators = ['+', '-', '*', '/', '%']
+
+    comparison_operator_names = ['lt', 'lte', 'gt', 'gte', 'eq', 'neq']
+    comparison_operators = ['<', '<=', '>', '>=', '==', '!=']
+
+    bool_operator_names = ['oror', 'andand', 'eq', 'neq']
+    bool_operators = ['||', '&&', '==', '!=']
+
+    assignment_operator_names = ['addasg', 'subasg', 'mulasg', 'divasg']
+    assignment_operators = ['+=', '-=', '*=', '/=']
+
+    bit_assignment_operator_names = ['orasg', 'andasg', 'xorasg', 'lshasg', 'rhsasg']
+    bit_assignment_operators = ['|=', '&=', '^=', '<<=', '>>=']
+
+    index_operator_names = ['index_Int', 'index_UInt']
+    index_operators = ['[]', '[]']
+    indexing_types = ['i32', 'u32']
+
+    vector_matrix_operator_names = ['mul']
+    vector_matrix_operators = ['*']
+
     for type, data_type in zip(types, data_types):
-        open_file.write('#define DECL_{}3_ctors()\\\n'.format(type))
-        open_file.write('extern Function {}3_ctor_{}_{}_{}\\\n'.format(type, type, type, type))
-        open_file.write('extern Function {}3_ctor_{}2_{}\\\n'.format(type, type, type))
-        open_file.write('extern Function {}3_ctor_{}_{}2\n'.format(type, type, type))
-        open_file.write("\n")
+        for size in range(1, 5):
+            if size == 1:
+                data_type_name = data_type
+                type_name = type
+            else:
+                type_name = '{}{}'.format(type, size)
+                data_type_name = '{}x{}'.format(data_type, size)
 
-        open_file.write('#define DEF_{}3_ctors()\\\n'.format(type))
-        open_file.write('Function {}3_ctor_{}_{}_{}\\\n'.format(type, type, type, type))
-        open_file.write('Function {}3_ctor_{}2_{}\\\n'.format(type, type, type))
-        open_file.write('Function {}3_ctor_{}_{}2\n'.format(type, type, type))
-        open_file.write("\n")
+            declaration_string = '#define DECL_{}_ctors\\\n'.format(type_name)
+            definition_string = '#define DEF_{}_ctors\\\n'.format(type_name)
+            list_string = '#define {}_ctor_list\\\n'.format(type_name)
+            for type2, data_type2 in zip(types, data_types):
+                if type2 == 'Bool' and type != 'Bool':
+                    continue
 
-        open_file.write('#define {}3_ctor_list()\\\n'.format(type))
-        open_file.write('std::pair{{"{}x3", &{}3_ctor_{}_{}_{}}}\\\n'.format(data_type, type, type, type, type))
-        open_file.write('std::pair{{"{}x3", &{}3_ctor_{}2_{}}}\\\n'.format(data_type, type, type, type))
-        open_file.write('std::pair{{"{}x3", &{}3_ctor_{}_{}2}}\n'.format(data_type, type, type, type))
-        open_file.write("\n")
+                if size == 1 and type2 == type:
+                    continue
 
-    for type, data_type in zip(types, data_types):
-        open_file.write('#define DECL_{}4_ctors()\\\n'.format(type))
-        for type2 in types:
-            open_file.write('extern Function {}4_convert_{}4\\\n'.format(type, type2))
-        for type2 in types:
-            open_file.write('extern Function {}4_splat_{}\\\n'.format(type, type2))
-        open_file.write('extern Function {}4_ctor_{}_{}_{}_{}\\\n'.format(type, type, type, type, type))
-        open_file.write('extern Function {}4_ctor_{}2_{}_{}\\\n'.format(type, type, type, type))
-        open_file.write('extern Function {}4_ctor_{}_{}2_{}\\\n'.format(type, type, type, type))
-        open_file.write('extern Function {}4_ctor_{}_{}_{}2\\\n'.format(type, type, type, type))
-        open_file.write('extern Function {}4_ctor_{}2_{}2\\\n'.format(type, type, type))
-        open_file.write('extern Function {}4_ctor_{}3_{}\\\n'.format(type, type, type))
-        open_file.write('extern Function {}4_ctor_{}_{}3\n'.format(type, type, type))
-        open_file.write("\n")
+                if type == 'Bool' and not (type2.startswith('Int') or type2.startswith('UInt')):
+                    continue
 
-        open_file.write('#define DEF_{}4_ctors()\\\n'.format(type))
-        for type2 in types:
-            open_file.write('Function {}4_convert_{}4\\\n'.format(type, type2))
-        for type2 in types:
-            open_file.write('Function {}4_splat_{}\\\n'.format(type, type2))
-        open_file.write('Function {}4_ctor_{}_{}_{}_{}\\\n'.format(type, type, type, type, type))
-        open_file.write('Function {}4_ctor_{}2_{}_{}\\\n'.format(type, type, type, type))
-        open_file.write('Function {}4_ctor_{}_{}2_{}\\\n'.format(type, type, type, type))
-        open_file.write('Function {}4_ctor_{}_{}_{}2\\\n'.format(type, type, type, type))
-        open_file.write('Function {}4_ctor_{}2_{}2\\\n'.format(type, type, type))
-        open_file.write('Function {}4_ctor_{}3_{}\\\n'.format(type, type, type))
-        open_file.write('Function {}4_ctor_{}_{}3\n'.format(type, type, type))
-        open_file.write("\n")
+                if size == 1:
+                    data_type_name2 = data_type2
+                    type_name2 = type2
+                else:
+                    type_name2 = '{}{}'.format(type2, size)
+                    data_type_name2 = '{}x{}'.format(data_type2, size)
+                declaration_string += 'extern Function {}_convert_{}\\\n'.format(type_name, type_name2)
+                definition_string += 'Function {}_convert_{}\\\n'.format(type_name, type_name2)
+                list_string += 'std::pair{{ "{}"_c, &{}_convert_{} }},\\\n'.format(data_type_name, type_name, type_name2)
+                list_string += 'std::pair{{ "{}({})"_c, &{}_convert_{} }},\\\n'.format(data_type_name, data_type_name2, type_name, type_name2)
+                if size > 1:
+                    declaration_string += 'extern Function {}_splat_{}\\\n'.format(type_name, type2)
+                    definition_string += 'Function {}_splat_{}\\\n'.format(type_name, type2)
+                    list_string += 'std::pair{{ "{}"_c, &{}_splat_{} }},\\\n'.format(data_type_name, type_name, type2)
+                    list_string += 'std::pair{{ "{}({})"_c, &{}_splat_{} }},\\\n'.format(data_type_name, data_type2, type_name, type2)
 
-        open_file.write('#define {}4_ctor_list()\\\n'.format(type))
-        for type2 in types:
-            open_file.write('Function {}4_convert_{}4\\\n'.format(type, type2))
-        for type2 in types:
-            open_file.write('std::pair{{"{}x4", &{}4_convert_{}}}\\\n'.format(data_type, type, type2))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}_{}_{}_{}}}\\\n'.format(data_type, type, type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}2_{}_{}}}\\\n'.format(data_type, type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}_{}2_{}}}\\\n'.format(data_type, type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}_{}_{}2}}\\\n'.format(data_type, type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}2_{}2}}\\\n'.format(data_type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}3_{}}}\\\n'.format(data_type, type, type, type))
-        open_file.write('std::pair{{"{}x4", &{}4_ctor_{}_{}3}}\n'.format(data_type, type, type, type))
-        open_file.write("\n")
+            four_component_combinations = [[1, 1, 1, 1], [2, 1, 1], [1, 2, 1], [1, 1, 2], [3, 1], [1,3]]
+            three_component_combiations = [[1,1,1], [2, 1], [1, 2]]
+            two_component_combinations = [[1, 1]]
+            if size == 1:
+                combinations = [[1]]
+            elif size == 2:
+                combinations = two_component_combinations
+            elif size == 3:
+                combinations = three_component_combiations
+            elif size == 4:
+                combinations = four_component_combinations
+            for comb in combinations:
+                dec_func = 'extern Function {}_ctor'.format(type_name)
+                def_func = 'Function {}_ctor'.format(type_name)
+                list_entry_key = ""
+                list_entry_value = ""
+
+                for s in comb:
+                    if list_entry_key != "":
+                        list_entry_key += ","
+                    if s == 1:
+                        dec_func += '_{}'.format(type)
+                        def_func += '_{}'.format(type)
+                        list_entry_value += '_{}'.format(type)
+                        list_entry_key += '{}'.format(data_type)
+                    else:
+                        dec_func += '_{}{}'.format(type, s)
+                        def_func += '_{}{}'.format(type, s)
+                        list_entry_key += '{}x{}'.format(data_type, s)
+                        list_entry_value += '_{}{}'.format(type, s)
+                    
+                list_string += 'std::pair{{ "{}"_c, &{}_ctor{}}},\\\n'.format(data_type_name, type_name, list_entry_value)
+                list_string += 'std::pair{{ "{}({})"_c, &{}_ctor{}}},\\\n'.format(data_type_name, list_entry_key, type_name, list_entry_value)
+                declaration_string += '{}\\\n'.format(dec_func)
+                definition_string += '{}\\\n'.format(def_func)
+            open_file.write(declaration_string[0:-2] + '\n')
+            open_file.write("\n")
+            open_file.write(definition_string[0:-2] + '\n')
+            open_file.write("\n")
+            open_file.write(list_string[0:-3] + '\n') # remove last comma and add back line feed
+            open_file.write("\n")
+        
+            declaration_string = "#define DECL_{}_operators\\\n".format(type_name)
+            definition_string = "#define DEF_{}_operators\\\n".format(type_name)
+            list_string = "#define {}_operator_list\\\n".format(type_name)
+
+            for name, op, idx_type in zip(index_operator_names, index_operators, indexing_types):
+                declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}}},\\\n'.format(op, idx_type, type_name, name)
+
+            if type == 'Bool':
+                for name, op in zip(bool_operator_names, bool_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}}},\\\n'.format(op, data_type_name, type_name, name)
+            else:
+                for name, op in zip(scalar_operator_names, scalar_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}}},\\\n'.format(op, data_type_name, type_name, name)
+                for name, op in zip(assignment_operator_names, assignment_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}}},\\\n'.format(op, data_type_name, type_name, name)
+                for name, op in zip(comparison_operator_names, comparison_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}}},\\\n'.format(op, data_type_name, type_name, name)
+
+            if type.startswith('Float') and size > 1:
+                
+                for cols in range(2, 5):
+                    compatible_matrix_type = 'Mat{}x{}'.format(size, cols)
+                    compatible_matrix_data_type = 'f32x{}x{}'.format(size, cols)
+                    for name, op in zip(vector_matrix_operator_names, vector_matrix_operators):
+                        declaration_string += 'extern Function {}_operator_{}_{};\\\n'.format(type_name, compatible_matrix_type, name)
+                        definition_string += 'Function {}_operator_{}_{};\\\n'.format(type_name, compatible_matrix_type, name)
+                        list_string += 'std::pair{{ "operator{}({})", &{}_operator_{}_{}}},\\\n'.format(op, compatible_matrix_data_type, type_name, compatible_matrix_type, name)
+
+            if type.startswith("UInt") or type.startswith("Int"):
+                for name, op in zip(bit_operator_names, bit_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}", &{}_operator_{}}},\\\n'.format(op, type_name, name)
+                for name, op in zip(bit_assignment_operator_names, bit_assignment_operators):
+                    declaration_string += 'extern Function {}_operator_{};\\\n'.format(type_name, name)
+                    definition_string += 'Function {}_operator_{};\\\n'.format(type_name, name)
+                    list_string += 'std::pair{{ "operator{}", &{}_operator_{}}},\\\n'.format(op, type_name, name)
+
+
+
+            open_file.write(declaration_string[0:-2] + '\n')
+            open_file.write("\n")
+            open_file.write(definition_string[0:-2] + '\n')
+            open_file.write("\n")
+            open_file.write(list_string[0:-3] + '\n') # remove last comma and add back line feed
+            open_file.write("\n")
+            
+
+   
 
 
 
 generate_swizzle_four()
 generate_swizzle_three()
 generate_swizzle_two()
-generate_vec_constructors()
+generate_vec()
 
 open_file.close()
 print("Swizzle definitions generated in swizzle.h")
