@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 #include "type.h"
 #include "ast/function.h"
+#include "generated/swizzle.h"
 namespace GPULang
 {
 
@@ -35,6 +36,12 @@ extern UInt3 UInt3Type;
     extern Function type##_##ctor;
 
 UINT3_CTOR_LIST
+#undef X
+
+#define X(ty, fun, arg0, arg1)\
+    extern Function type##3##_##fun;
+
+CTOR_VEC3(UInt)
 #undef X
 
 #define X(type, ctor, arg0, arg1)\

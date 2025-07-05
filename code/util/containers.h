@@ -1231,7 +1231,9 @@ struct PinnedMap
     void operator=(const StaticMap<K, V, SIZE>& rhs)
     {
         this->data.Grow(SIZE);
-        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
+        size_t counter = 0;
+        for (auto it : rhs)
+            this->data.data[counter++] = it;
     }
     
     template<typename U, size_t SIZE>
@@ -1239,16 +1241,22 @@ struct PinnedMap
     {
         static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between types");
         this->data.Grow(SIZE);
-        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
+
+        size_t counter = 0;
+        for (auto it : rhs)
+            this->data.data[counter++] = it;
     }
     
     template<typename U, typename W, size_t SIZE>
     void operator=(const StaticMap<U, W, SIZE>& rhs)
     {
-        static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between types");
-        static_assert(std::is_pointer<V>::value && std::is_pointer<W>::value && std::is_base_of<typename std::remove_pointer<V>::type, typename std::remove_pointer<W>::type>::value, "Value types must inherit");
+        static_assert(std::is_assignable<K, U>::value, "No explicit assignment exists between key types");
+        //static_assert(std::is_assignable<V, W>::value, "No explicit assignment exists between value types");
         this->data.Grow(SIZE);
-        memcpy(this->data.data, rhs.data.data(), SIZE * sizeof(item));
+
+        size_t counter = 0;
+        for (auto it : rhs)
+            this->data.data[counter++] = it;
     }
     
     void Insert(const K& key, const V& value)
