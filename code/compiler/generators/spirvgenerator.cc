@@ -186,12 +186,16 @@ struct ConstantCreationInfo
     enum class Type
     {
         Float,
+        Float32 = Float
         Float16,
         Int,
+        Int32 = Int,
         Int16,
         UInt,
+        UInt32 = UInt,
         UInt16,
-        Bool
+        Bool,
+        Bool8 = Bool
     } type;
     union
     {
@@ -206,6 +210,14 @@ struct ConstantCreationInfo
     {
         ConstantCreationInfo ret;
         ret.type = Type::Float;
+        ret.data.f = val;
+        return ret;
+    }
+    
+    static ConstantCreationInfo Float32(float val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Float32;
         ret.data.f = val;
         return ret;
     }
@@ -225,6 +237,14 @@ struct ConstantCreationInfo
         ret.data.ui = val;
         return ret;
     }
+    
+    static ConstantCreationInfo UInt32(uint32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::UInt32;
+        ret.data.ui = val;
+        return ret;
+    }
 
     static ConstantCreationInfo UInt16(uint16_t val)
     {
@@ -241,6 +261,14 @@ struct ConstantCreationInfo
         ret.data.i = val;
         return ret;
     }
+    
+    static ConstantCreationInfo Int32(int32_t val)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Int32;
+        ret.data.i = val;
+        return ret;
+    }
 
     static ConstantCreationInfo Int16(int16_t val)
     {
@@ -251,6 +279,14 @@ struct ConstantCreationInfo
     }
 
     static ConstantCreationInfo Bool(bool b)
+    {
+        ConstantCreationInfo ret;
+        ret.type = Type::Bool;
+        ret.data.b = b;
+        return ret;
+    }
+    
+    static ConstantCreationInfo Bool8(bool b)
     {
         ConstantCreationInfo ret;
         ret.type = Type::Bool;
@@ -2854,18 +2890,6 @@ std::unordered_map<ConversionTable, std::function<SPIRVResult(const Compiler*, S
 //------------------------------------------------------------------------------
 /**
 */
-void
-GenerateConversionsSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, uint32_t vectorSize, const std::vector<SPIRVResult>& inArgs, std::vector<SPIRVResult>& outValues)
-{
-    for (size_t i = 0; i < inArgs.size(); i++)
-    {
-        outValues.push_back(converters[conversion](compiler, generator, vectorSize, inArgs[i]));
-    }
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
 SPIRVResult
 GenerateConversionSPIRV(const Compiler* compiler, SPIRVGenerator* generator, ConversionTable conversion, uint32_t vectorSize, SPIRVResult inArg)
 {
@@ -2927,17 +2951,6 @@ GenerateSplatCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator,
 /**
 */
 SPIRVResult
-GenerateConvertAndSplatCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
-{
-    std::vector<SPIRVResult> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, 1, args, converted);
-    return GenerateSplatCompositeSPIRV(compiler, generator, returnType, 4, converted[0]);
-}
-
-//------------------------------------------------------------------------------
-/**
-*/
-SPIRVResult
 GenerateCompositeExtractSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, uint32_t arg, uint32_t index)
 {
     uint32_t res = generator->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, returnType, SPVArg(arg), SPVArg(index));
@@ -2954,16 +2967,6 @@ GenerateCompositeInsertSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     return SPIRVResult(res, returnType, true );
 }
 
-//------------------------------------------------------------------------------
-/**
-*/
-SPIRVResult
-GenerateConvertAndCompositeSPIRV(const Compiler* compiler, SPIRVGenerator* generator, uint32_t returnType, const std::vector<SPIRVResult>& args, ConversionTable conversion)
-{
-    std::vector<SPIRVResult> converted;
-    GenerateConversionsSPIRV(compiler, generator, conversion, 1, args, converted);
-    return GenerateCompositeSPIRV(compiler, generator, returnType, converted);
-}
 
 //------------------------------------------------------------------------------
 /**

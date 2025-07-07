@@ -12,6 +12,8 @@ Float32::Float32()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // Conversion from UInt32
     Float32_convert_UInt32_arg0.name = "_arg0"_c;
@@ -267,6 +269,8 @@ Float32x2::Float32x2()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // Conversion from Float32x2
     Float32x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -686,6 +690,8 @@ Float32x3::Float32x3()
     this->rowSize = 1;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // Conversion from Float32x3
     Float32x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -1134,6 +1140,8 @@ Float32x4::Float32x4()
     this->rowSize = 1;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // Conversion from Float32x4
     Float32x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -1633,6 +1641,8 @@ UInt32::UInt32()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt32;
+    this->builtin = true;
 
     // Conversion from Float32
     UInt32_convert_Float32_arg0.name = "_arg0"_c;
@@ -1978,6 +1988,8 @@ UInt32x2::UInt32x2()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt32;
+    this->builtin = true;
 
     // Conversion from Float32x2
     UInt32x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -2460,6 +2472,8 @@ UInt32x3::UInt32x3()
     this->rowSize = 1;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt32;
+    this->builtin = true;
 
     // Conversion from Float32x3
     UInt32x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -2971,6 +2985,8 @@ UInt32x4::UInt32x4()
     this->rowSize = 1;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt32;
+    this->builtin = true;
 
     // Conversion from Float32x4
     UInt32x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -3533,6 +3549,8 @@ Int32::Int32()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int32;
+    this->builtin = true;
 
     // Conversion from Float32
     Int32_convert_Float32_arg0.name = "_arg0"_c;
@@ -3878,6 +3896,8 @@ Int32x2::Int32x2()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int32;
+    this->builtin = true;
 
     // Conversion from Float32x2
     Int32x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -4360,6 +4380,8 @@ Int32x3::Int32x3()
     this->rowSize = 1;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int32;
+    this->builtin = true;
 
     // Conversion from Float32x3
     Int32x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -4871,6 +4893,8 @@ Int32x4::Int32x4()
     this->rowSize = 1;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int32;
+    this->builtin = true;
 
     // Conversion from Float32x4
     Int32x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -5433,6 +5457,8 @@ Bool8::Bool8()
     this->rowSize = 1;
     this->byteSize = 1;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Bool8;
+    this->builtin = true;
 
     // Conversion from Float32
     Bool8_convert_Float32_arg0.name = "_arg0"_c;
@@ -5688,6 +5714,8 @@ Bool8x2::Bool8x2()
     this->rowSize = 1;
     this->byteSize = 2;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Bool8;
+    this->builtin = true;
 
     // Conversion from Float32x2
     Bool8x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -6080,6 +6108,8 @@ Bool8x3::Bool8x3()
     this->rowSize = 1;
     this->byteSize = 3;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Bool8;
+    this->builtin = true;
 
     // Conversion from Float32x3
     Bool8x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -6501,6 +6531,8 @@ Bool8x4::Bool8x4()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Bool8;
+    this->builtin = true;
 
     // Conversion from Float32x4
     Bool8x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -6973,6 +7005,8 @@ Float16::Float16()
     this->rowSize = 1;
     this->byteSize = 2;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // Conversion from Float32
     Float16_convert_Float32_arg0.name = "_arg0"_c;
@@ -7228,6 +7262,8 @@ Float16x2::Float16x2()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // Conversion from Float32x2
     Float16x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -7647,6 +7683,8 @@ Float16x3::Float16x3()
     this->rowSize = 1;
     this->byteSize = 6;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // Conversion from Float32x3
     Float16x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -8095,6 +8133,8 @@ Float16x4::Float16x4()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // Conversion from Float32x4
     Float16x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -8594,6 +8634,8 @@ UInt16::UInt16()
     this->rowSize = 1;
     this->byteSize = 2;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt16;
+    this->builtin = true;
 
     // Conversion from Float32
     UInt16_convert_Float32_arg0.name = "_arg0"_c;
@@ -8939,6 +8981,8 @@ UInt16x2::UInt16x2()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt16;
+    this->builtin = true;
 
     // Conversion from Float32x2
     UInt16x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -9421,6 +9465,8 @@ UInt16x3::UInt16x3()
     this->rowSize = 1;
     this->byteSize = 6;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt16;
+    this->builtin = true;
 
     // Conversion from Float32x3
     UInt16x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -9932,6 +9978,8 @@ UInt16x4::UInt16x4()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::UInt16;
+    this->builtin = true;
 
     // Conversion from Float32x4
     UInt16x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -10494,6 +10542,8 @@ Int16::Int16()
     this->rowSize = 1;
     this->byteSize = 2;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int16;
+    this->builtin = true;
 
     // Conversion from Float32
     Int16_convert_Float32_arg0.name = "_arg0"_c;
@@ -10839,6 +10889,8 @@ Int16x2::Int16x2()
     this->rowSize = 1;
     this->byteSize = 4;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int16;
+    this->builtin = true;
 
     // Conversion from Float32x2
     Int16x2_convert_Float32x2_arg0.name = "_arg0"_c;
@@ -11321,6 +11373,8 @@ Int16x3::Int16x3()
     this->rowSize = 1;
     this->byteSize = 6;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int16;
+    this->builtin = true;
 
     // Conversion from Float32x3
     Int16x3_convert_Float32x3_arg0.name = "_arg0"_c;
@@ -11832,6 +11886,8 @@ Int16x4::Int16x4()
     this->rowSize = 1;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Int16;
+    this->builtin = true;
 
     // Conversion from Float32x4
     Int16x4_convert_Float32x4_arg0.name = "_arg0"_c;
@@ -12394,6 +12450,8 @@ Float32x2x2::Float32x2x2()
     this->rowSize = 2;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x2x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -12555,6 +12613,8 @@ Float32x2x3::Float32x2x3()
     this->rowSize = 2;
     this->byteSize = 24;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x2x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -12716,6 +12776,8 @@ Float32x2x4::Float32x2x4()
     this->rowSize = 2;
     this->byteSize = 32;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x2x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -12877,6 +12939,8 @@ Float32x3x2::Float32x3x2()
     this->rowSize = 3;
     this->byteSize = 24;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x3x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13038,6 +13102,8 @@ Float32x3x3::Float32x3x3()
     this->rowSize = 3;
     this->byteSize = 36;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x3x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13199,6 +13265,8 @@ Float32x3x4::Float32x3x4()
     this->rowSize = 3;
     this->byteSize = 48;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x3x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13360,6 +13428,8 @@ Float32x4x2::Float32x4x2()
     this->rowSize = 4;
     this->byteSize = 32;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x4x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13521,6 +13591,8 @@ Float32x4x3::Float32x4x3()
     this->rowSize = 4;
     this->byteSize = 48;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x4x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13682,6 +13754,8 @@ Float32x4x4::Float32x4x4()
     this->rowSize = 4;
     this->byteSize = 64;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float32;
+    this->builtin = true;
 
     // operator[](i32)
     Float32x4x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -13843,6 +13917,8 @@ Float16x2x2::Float16x2x2()
     this->rowSize = 2;
     this->byteSize = 8;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x2x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14004,6 +14080,8 @@ Float16x2x3::Float16x2x3()
     this->rowSize = 2;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x2x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14165,6 +14243,8 @@ Float16x2x4::Float16x2x4()
     this->rowSize = 2;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x2x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14326,6 +14406,8 @@ Float16x3x2::Float16x3x2()
     this->rowSize = 3;
     this->byteSize = 12;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x3x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14487,6 +14569,8 @@ Float16x3x3::Float16x3x3()
     this->rowSize = 3;
     this->byteSize = 18;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x3x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14648,6 +14732,8 @@ Float16x3x4::Float16x3x4()
     this->rowSize = 3;
     this->byteSize = 24;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x3x4_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14809,6 +14895,8 @@ Float16x4x2::Float16x4x2()
     this->rowSize = 4;
     this->byteSize = 16;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x4x2_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -14970,6 +15058,8 @@ Float16x4x3::Float16x4x3()
     this->rowSize = 4;
     this->byteSize = 24;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x4x3_operator_index_Int32_arg0.name = "_arg0"_c;
@@ -15131,6 +15221,8 @@ Float16x4x4::Float16x4x4()
     this->rowSize = 4;
     this->byteSize = 32;
     this->category = Type::ScalarCategory;
+    this->baseType = TypeCode::Float16;
+    this->builtin = true;
 
     // operator[](i32)
     Float16x4x4_operator_index_Int32_arg0.name = "_arg0"_c;

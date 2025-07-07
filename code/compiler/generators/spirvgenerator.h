@@ -49,9 +49,16 @@ struct SPIRVResult
         union
         {
             float f;
+            float f32;
+            short f16;
             int i;
+            int i32;
+            int16_t i16;
             uint32_t ui;
+            uint32_t u32;
+            uint16_t u16;
             bool b;
+            bool b8;
         };
 
         enum Type

@@ -194,12 +194,16 @@ enum class TypeCode
 
     /// Scalar types, matrix, array and vector types are not a part of the type code
     , Float
+    , Float32 = Float
     , Float16
     , Int
+    , Int32 = Int
     , Int16
     , UInt
+    , UInt32 = UInt
     , UInt16
     , Bool
+    , Bool8 = Bool
 
     /// Texture types
     , Texture1D
@@ -466,6 +470,7 @@ struct Type : public Symbol
     uint32_t columnSize;
     uint32_t byteSize;
     Category category;
+    bool builtin;
 
     struct FullType
     {

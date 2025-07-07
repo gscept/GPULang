@@ -839,6 +839,7 @@ Type::Type()
     this->rowSize = 1;
     this->columnSize = 1;
     this->byteSize = 4;
+    this->builtin = false;
     this->category = Type::InvalidCategory;
     this->resolved = nullptr;
     this->scope.type = Scope::ScopeType::Type;

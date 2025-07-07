@@ -226,6 +226,7 @@ fips_dir(generated)
 	swizzle.h
     types.cc
     types.h
+    types_spirv.h
     )
 
 fips_deps(gpulang_util antlr4 glslang)

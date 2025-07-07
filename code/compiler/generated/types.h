@@ -7,6 +7,52 @@
 #include "ast/function.h"
 namespace GPULang
 {
+enum TypeConversionTable
+{
+    Float32ToUInt32,
+    Float32ToInt32,
+    Float32ToBool8,
+    Float32ToFloat16,
+    Float32ToUInt16,
+    Float32ToInt16,
+    UInt32ToFloat32,
+    UInt32ToInt32,
+    UInt32ToBool8,
+    UInt32ToFloat16,
+    UInt32ToUInt16,
+    UInt32ToInt16,
+    Int32ToFloat32,
+    Int32ToUInt32,
+    Int32ToBool8,
+    Int32ToFloat16,
+    Int32ToUInt16,
+    Int32ToInt16,
+    Bool8ToFloat32,
+    Bool8ToUInt32,
+    Bool8ToInt32,
+    Bool8ToFloat16,
+    Bool8ToUInt16,
+    Bool8ToInt16,
+    Float16ToFloat32,
+    Float16ToUInt32,
+    Float16ToInt32,
+    Float16ToBool8,
+    Float16ToUInt16,
+    Float16ToInt16,
+    UInt16ToFloat32,
+    UInt16ToUInt32,
+    UInt16ToInt32,
+    UInt16ToBool8,
+    UInt16ToFloat16,
+    UInt16ToInt16,
+    Int16ToFloat32,
+    Int16ToUInt32,
+    Int16ToInt32,
+    Int16ToBool8,
+    Int16ToFloat16,
+    Int16ToUInt16
+};
+
 struct Float32 : public Type
 {
     Float32();
