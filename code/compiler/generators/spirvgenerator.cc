@@ -186,7 +186,7 @@ struct ConstantCreationInfo
     enum class Type
     {
         Float,
-        Float32 = Float
+        Float32 = Float,
         Float16,
         Int,
         Int32 = Int,
