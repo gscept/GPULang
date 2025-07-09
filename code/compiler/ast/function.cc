@@ -965,7 +965,7 @@ FLOAT_LIST
 //------------------------------------------------------------------------------
 #define X(ty, index)\
     __MAKE_INTRINSIC(atomicLoad, AtomicLoad, ty)\
-    __ADD_ARG_LIT(value, ty);\
+    __ADD_POINTER_ARG_LIT(value, ty);\
     __ADD_VALUE_LIT(semantics, MemorySemanticsType);\
     __SET_RET_LIT(ty);
     

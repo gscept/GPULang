@@ -12,6 +12,18 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
+EnumExpression::EnumExpression()
+    : value(0)
+    , type(Type::FullType{ UNDEFINED_TYPE })
+    , underlyingType(Type::FullType{ UNDEFINED_TYPE })
+{
+    this->resolved = Alloc<EnumExpression::__Resolved>();
+    this->symbolType = EnumExpressionType;
+}
+
+//------------------------------------------------------------------------------
+/**
+*/
 EnumExpression::EnumExpression(int value, Type::FullType type, Type::FullType underlyingType)
     : value(value)
     , type(type)
@@ -36,9 +48,7 @@ bool
 EnumExpression::Resolve(Compiler* compiler)
 {
     auto thisResolved = Symbol::Resolved(this);
-    thisResolved->fullType = this->type;
-    thisResolved->fullType.literal = true;
-    thisResolved->type = compiler->GetType(thisResolved->fullType);
+    thisResolved->type = compiler->GetType(this->type);
     return true;
 }
 
@@ -48,10 +58,10 @@ EnumExpression::Resolve(Compiler* compiler)
 bool
 EnumExpression::EvalType(Type::FullType& out) const
 {
-    auto thisResolved = Symbol::Resolved(this);
-    if (thisResolved->fullType.name == UNDEFINED_TYPE)
+
+    if (this->type.name == UNDEFINED_TYPE)
         return false;
-    out = thisResolved->fullType;
+    out = this->type;
     return true;
 }
 

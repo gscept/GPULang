@@ -223,10 +223,12 @@ fips_dir(validators)
     )
 fips_dir(generated)
     fips_files(
-	swizzle.h
-    types.cc
-    types.h
-    types_spirv.h
+        intrinsics.cc
+        intrinsics.h
+        swizzle.h
+        types.cc
+        types.h
+        types_spirv.h
     )
 
 fips_deps(gpulang_util antlr4 glslang)

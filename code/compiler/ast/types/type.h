@@ -505,6 +505,12 @@ struct Type : public Symbol
         {
         }
         
+        explicit FullType(const FixedString& type, bool literal)
+            : name(type)
+            , literal(literal)
+        {
+        }
+        
         explicit FullType(const TransientString& type)
             : name(type)
             , literal(false)

@@ -122,8 +122,8 @@ def generate_types():
             self.spirv_conversion_arguments = spirv_conversion_arguments
 
     type_conversions = []
-    for type1, width1, base_type1, data_type1 in zip(types, bit_widths, base_types, data_types):
-        for type2, width2, base_type2, data_type2 in zip(types, bit_widths, base_types, data_types):
+    for type1, width1, data_type1 in zip(types, bit_widths, data_types):
+        for type2, width2, data_type2 in zip(types, bit_widths, data_types):
             if type1 != type2:
                 conversion_table_enum += '    {}To{},\n'.format(type1, type2)
                 spirv_conversion_function = ''
@@ -219,6 +219,8 @@ def generate_types():
     header_file.write('#include "ast/types/type.h"\n')
     header_file.write('#include "ast/variable.h"\n')
     header_file.write('#include "ast/function.h"\n')
+    header_file.write('#include "ast/enumeration.h"\n')
+    header_file.write('#include "ast/expressions/enumexpression.h"\n')
     header_file.write('namespace GPULang\n')
     header_file.write('{\n')
     header_file.write(conversion_table_enum)
@@ -235,7 +237,7 @@ def generate_types():
         return 'std::pair{{ &{} , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;\n{{\n    {}\n}};\n'.format(fun, arg)
 
     for size in range(1, 5):
-        for type, data_type, bits in zip(types, data_types, bit_widths):
+        for type, data_type, base_type, bits in zip(types, data_types, base_types, bit_widths):
             if size == 1:
                 data_type_name = data_type
                 type_name = type
@@ -284,9 +286,9 @@ def generate_types():
                 setup_string += '    // Conversion from {}\n'.format(type_name2)
                 setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name)
                 setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name2)
-                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name2)
                 setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, data_type_name)
                 setup_string += '    {}.returnType = Type::FullType {{ {}Type.name }};\n'.format(fun_name, type_name)
+                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name2)
                 setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                 list_string += '        std::pair{{ "{}"_c, &{} }},\n'.format(data_type_name, fun_name)
                 list_string += '        std::pair{{ "{}({})"_c, &{} }},\n'.format(data_type_name, data_type_name2, fun_name)
@@ -301,9 +303,9 @@ def generate_types():
                     setup_string += '    // Splat with {}\n'.format(type2)
                     setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name)
                     setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type2)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type2)
                     setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, data_type_name)
                     setup_string += '    {}.returnType = Type::FullType {{ {}Type.name }};\n'.format(fun_name, type_name)
+                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type2)
                     setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                     list_string += '        std::pair{{ "{}"_c, &{} }},\n'.format(data_type_name, fun_name)
                     list_string += '        std::pair{{ "{}({})"_c, &{} }},\n'.format(data_type_name, data_type2, fun_name)
@@ -330,8 +332,12 @@ def generate_types():
                 list_entry_value = ""
                 arg_list = ""
                 setup_args = ""
+                args = []
+                arg_types = []
 
                 for arg_idx, s in enumerate(comb):
+                    arg_name = '{}_ctor{}_arg{}'.format(type_name, ctor_idx, arg_idx)
+                    args.append(arg_name)
                     if list_entry_key != "":
                         list_entry_key += ","
                     if s == 1:
@@ -339,26 +345,28 @@ def generate_types():
                         fun_name += '_{}'.format(type)
                         list_entry_value += '_{}'.format(type)
                         list_entry_key += '{}'.format(data_type)
-                        dec_var += 'extern Variable {}_ctor{}_arg{};\n'.format(type_name, ctor_idx, arg_idx)
-                        def_var += 'Variable {}_ctor{}_arg{};\\\n'.format(type_name, ctor_idx, arg_idx)
+                        dec_var += 'extern Variable {};\n'.format(arg_name)
+                        def_var += 'Variable {};\n'.format(arg_name)
                         arg_list += '{}, '.format(arg_type_name)
                         
                     else:
                         fun_name += '_{}x{}'.format(type, s)
                         list_entry_key += '{}x{}'.format(data_type, s)
                         list_entry_value += '_{}x{}'.format(type, s)
-                        dec_var += 'extern Variable {}_ctor{}_arg{};\n'.format(type_name, ctor_idx, arg_idx)
-                        def_var += 'Variable {}_ctor{}_arg{};\\\n'.format(type_name, ctor_idx, arg_idx)
+                        dec_var += 'extern Variable {};\n'.format(arg_name)
+                        def_var += 'Variable {};\n'.format(arg_name)
                         arg_type_name = '{}x{}'.format(type, s)
                         arg_list += '{}, '.format(arg_type_name)
-                    setup_args += '    {}_ctor{}_arg{}.name = "_arg{}"_c;\n'.format(type_name, ctor_idx, arg_idx, arg_idx)
-                    setup_args += '    {}_ctor{}_arg{}.type = Type::FullType {{ {}Type.name }};\n'.format(type_name, ctor_idx, arg_idx, arg_type_name)
-                    setup_args += '    Symbol::Resolved(&{}_ctor{}_arg{})->typeSymbol = &{}Type;\n'.format(type_name, ctor_idx, arg_idx, arg_type_name)
+                    arg_types.append(arg_type_name)
+                    setup_args += '    {}.name = "_arg{}"_c;\n'.format(arg_name, arg_idx)
+                    setup_args += '    {}.type = Type::FullType {{ {}Type.name }};\n'.format(arg_name, arg_type_name)
                 
                 setup_string += '    // Construct with {}\n'.format(arg_list[0:-2])
                 setup_string += setup_args
                 setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, ctor_idx, data_type_name)
                 setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                for arg, arg_type in zip(args, arg_types):
+                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg, arg_type)
                 setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                 
                 list_string += '        std::pair{{ "{}"_c, &{}_ctor{}{}}},\n'.format(data_type_name, type_name, ctor_idx, list_entry_value)
@@ -386,9 +394,9 @@ def generate_types():
                 setup_string += '    // operator{}({})\n'.format(op, idx_data_type)
                 setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                 setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, idx_type)
-                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
                 setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                 setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type)
+                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
                 setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type)
                 list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, idx_data_type, fun_name)
 
@@ -399,9 +407,9 @@ def generate_types():
                     setup_string += '    // operator{}({})\n'.format(op, data_type_name)
                     setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                     setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                     setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                     setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                     setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                     declaration_string += 'extern Variable {};\n'.format(arg_name)
                     declaration_string += 'extern Function {};\n'.format(fun_name)
@@ -421,9 +429,9 @@ def generate_types():
                         setup_string += '    // operator{}({})\n'.format(op, data_type_name)
                         setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                         setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                         setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                         declaration_string += 'extern Variable {};\n'.format(arg_name)
                         declaration_string += 'extern Function {};\n'.format(fun_name)
@@ -438,9 +446,9 @@ def generate_types():
                         setup_string += '    // operator{}({})\n'.format(op, scale_data_type)
                         setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                         setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, scale_type)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, scale_type)
                         setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                         setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, scale_type)
                         setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                         declaration_string += 'extern Variable {};\n'.format(arg_name)
                         declaration_string += 'extern Function {};\n'.format(fun_name)
@@ -461,9 +469,9 @@ def generate_types():
                         setup_string += '    // operator{}({})\n'.format(op, compatible_matrix_data_type)
                         setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                         setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, compatible_matrix_type)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, compatible_matrix_type)
                         setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                         setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, return_type)
+                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, compatible_matrix_type)
                         setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, return_type)
                         declaration_string += 'extern Variable {};\n'.format(arg_name)
                         declaration_string += 'extern Function {};\n'.format(fun_name)
@@ -483,9 +491,9 @@ def generate_types():
                         setup_string += '    // operator{}\n'.format(op)
                         setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                         setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                         setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                         
                         declaration_string += 'extern Variable {};\n'.format(arg_name)
@@ -600,9 +608,9 @@ def generate_types():
                     setup_string += '    // operator{}({})\n'.format(op, idx_data_type)
                     setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                     setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, idx_type)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
                     setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                     setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, vec_type)
+                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
                     setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, vec_type)
                     list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, idx_data_type, fun_name)
 
@@ -617,9 +625,9 @@ def generate_types():
                         setup_string += '    // operator{}\n'.format(op)
                         setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                         setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                         setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
                         setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                         
                         declaration_string += 'extern Variable {};\n'.format(arg_name)
@@ -634,9 +642,9 @@ def generate_types():
                     setup_string += '    // operator{}({})\n'.format(op, scale_data_type)
                     setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
                     setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, scale_type)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, scale_type)
                     setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
                     setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, scale_type)
                     setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
                     declaration_string += 'extern Variable {};\n'.format(arg_name)
                     declaration_string += 'extern Function {};\n'.format(fun_name)
@@ -667,6 +675,227 @@ def generate_types():
                 #source_file.write("\n")
                 header_file.write("\n")
 
+    # Texture types
+    texture_dimensions = ['1D', '2D', '3D', 'Cube']
+    texture_multisampling = ['MS', 'MS', '', '']
+    texture_array = ['Array', 'Array', '', 'Array']
+    for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
+
+        class_decl = ""
+        class_decl += 'struct Texture{} : public Type\n'.format(dim)
+        class_decl += '{\n'
+        class_decl += '    Texture{}();\n'.format(dim)
+        class_decl += '};\n'
+        class_decl += 'extern Texture{} Texture{}Type;\n\n'.format(dim, dim)
+    
+        class_def = ""
+        class_def += 'Texture{}::Texture{}()\n'.format(dim, dim)
+        class_def += '{\n'
+        class_def += '    this->name = "texture{}";\n'.format(dim)
+        class_def += '    this->category = Type::TextureCategory;\n'
+        class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+        class_def += '    this->builtin = true;\n'
+        class_def += '};\n\n'
+        if ms : 
+            class_decl += 'struct Texture{}MS : public Type\n'.format(dim)
+            class_decl += '{\n'
+            class_decl += '    Texture{}MS();\n'.format(dim)
+            class_decl += '};\n'
+            class_decl += 'extern Texture{}MS Texture{}MSType;\n\n'.format(dim, dim)
+
+            class_def += 'Texture{}MS::Texture{}MS()\n'.format(dim, dim)
+            class_def += '{\n'
+            class_def += '    this->name = "texture{}MS";\n'.format(dim)
+            class_def += '    this->category = Type::TextureCategory;\n'
+            class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+            class_def += '    this->builtin = true;\n'
+            class_def += '};\n\n'
+            if array:
+                class_decl += 'struct Texture{}MSArray : public Type\n'.format(dim)
+                class_decl += '{\n'
+                class_decl += '    Texture{}MSArray();\n'.format(dim)
+                class_decl += '};\n'
+                class_decl += 'extern Texture{}MSArray Texture{}MSArrayType;\n\n'.format(dim, dim)
+
+                class_def += 'Texture{}MSArray::Texture{}MSArray()\n'.format(dim, dim)
+                class_def += '{\n'
+                class_def += '    this->name = "texture{}MSArray";\n'.format(dim)
+                class_def += '    this->category = Type::TextureCategory;\n'
+                class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+                class_def += '    this->builtin = true;\n'
+                class_def += '};\n\n'
+        if array:
+            class_decl += 'struct Texture{}Array : public Type\n'.format(dim)
+            class_decl += '{\n'
+            class_decl += '    Texture{}Array();\n'.format(dim)
+            class_decl += '};\n'
+            class_decl += 'extern Texture{}Array Texture{}ArrayType;\n\n'.format(dim, dim)
+
+            class_def += 'Texture{}Array::Texture{}Array()\n'.format(dim, dim)
+            class_def += '{\n'
+            class_def += '    this->name = "texture{}Array";\n'.format(dim)
+            class_def += '    this->category = Type::TextureCategory;\n'
+            class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+            class_def += '    this->builtin = true;\n'
+            class_def += '};\n\n'
+
+        header_file.write(class_decl)
+        source_file.write(class_def)
+
+    # Pixel cache types
+    class_decl = ""
+    class_decl += 'struct PixelCache : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    PixelCache();\n'
+    class_decl += '};\n'
+    class_decl += 'extern PixelCache PixelCacheType;\n\n'
+
+    class_decl += 'struct PixelCacheMS : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    PixelCacheMS();\n'
+    class_decl += '};\n'
+    class_decl += 'extern PixelCacheMS PixelCacheMSType;\n\n'
+
+    class_def = ""
+    class_def += 'PixelCache::PixelCache()\n'.format(dim, dim)
+    class_def += '{\n'
+    class_def += '    this->name = "pixelCache";\n'.format(dim)
+    class_def += '    this->category = Type::PixelCacheCategory;\n'
+    class_def += '    this->baseType = TypeCode::PixelCache;\n'.format(type)
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n'
+
+    class_def += 'PixelCacheMS::PixelCacheMS()\n'.format(dim, dim)
+    class_def += '{\n'
+    class_def += '    this->name = "pixelCacheMS";\n'.format(dim)
+    class_def += '    this->category = Type::PixelCacheCategory;\n'
+    class_def += '    this->baseType = TypeCode::PixelCache;\n'.format(type)
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n'
+
+    header_file.write(class_decl)
+    source_file.write(class_def)
+
+    # Acceleration Structure
+    class_decl = ""
+    class_decl += 'struct AccelerationStructure : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    AccelerationStructure();\n'
+    class_decl += '};\n'
+    class_decl += 'extern AccelerationStructure AccelerationStructureType;\n\n'
+
+    class_def = ""
+    class_def += 'AccelerationStructure::AccelerationStructure()\n'.format(dim, dim)
+    class_def += '{\n'
+    class_def += '    this->name = "accelerationStructure";\n'.format(dim)
+    class_def += '    this->category = Type::AccelerationStructureCategory;\n'
+    class_def += '    this->baseType = TypeCode::AccelerationStructure;\n'.format(type)
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n'
+
+    header_file.write(class_decl)
+    source_file.write(class_def)
+
+    class_decl = ""
+    class_decl += 'struct Void : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    Void();\n'
+    class_decl += '};\n'
+    class_decl += 'extern Void VoidType;\n\n'
+
+    class_def = ""
+    class_def += 'Void::Void()\n'
+    class_def += '{\n'
+    class_def += '    this->name = "void";\n'
+    class_def += '    this->category = Type::VoidCategory;\n'
+    class_def += '    this->baseType = TypeCode::Void;\n'
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n' 
+
+    header_file.write(class_decl)
+    source_file.write(class_def)
+
+    class_decl = ""
+    class_decl += 'struct CompareMode : public Enumeration\n'
+    class_decl += '{\n'
+    class_decl += '    CompareMode();\n'
+    class_decl += '};\n'
+    class_decl += 'extern CompareMode CompareModeType;\n\n'
+    compare_mode_names = [
+        'Less',
+        'LessEqual',
+        'Greater',
+        'GreaterEqual',
+        'Equal',
+        'NotEqual',
+        'Always',
+        'Never'
+    ]
+    for name in compare_mode_names:
+        class_decl += 'extern EnumExpression CompareMode{};\n'.format(name)
+    
+    class_def = ""
+    class_def += 'CompareMode CompareModeType;\n'
+    for name in compare_mode_names:
+        class_def += 'EnumExpression CompareMode{};\n'.format(name)
+    class_def += 'CompareMode::CompareMode()\n'
+    class_def += '{\n' 
+    class_def += '    this->name = "CompareMode";\n'
+    class_def += '    this->category = Type::EnumCategory;\n'
+    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
+    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
+    class_def += '    this->baseType = TypeCode::UInt;\n'
+    class_def += '    this->type.literal = true;\n'
+    class_def += '    this->builtin = true;\n'
+    for i, name in enumerate(compare_mode_names):
+        class_def += '    CompareMode{}.value = 0x{};\n'.format(name, i)
+        class_def += '    CompareMode{}.type = Type::FullType{{ CompareModeType.name, true }};\n'.format(name)
+        class_def += '    CompareMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
+        class_def += '    Symbol::Resolved(&CompareMode{})->type = this;\n'.format(name)
+    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
+    for name in compare_mode_names:
+        class_def += '        std::pair{{ "{}"_c, &CompareMode{} }},\n'.format(name, name)
+    class_def += '    }};\n'
+    class_def += '};\n'
+
+    class_decl += 'struct StencilOp : public Enumeration\n'
+    class_decl += '{\n'
+    class_decl += '    StencilOp();\n'
+    class_decl += '};\n'
+
+    stencil_op_names = [
+        'Keep', 'Zero', 'Replace', 'Increment', 'Decrement', 'Invert', 'IncrementWrap', 'DecrementWrap'
+    ]
+    class_decl += 'extern StencilOp StencilOpType;\n\n'
+    for name in stencil_op_names:
+        class_decl += 'extern EnumExpression StencilOp{};\n'.format(name)
+
+    class_def += 'StencilOp StencilOpType;\n'
+    for name in stencil_op_names:
+        class_def += 'EnumExpression StencilOp{};\n'.format(name)
+    class_def += 'StencilOp::StencilOp()\n'
+    class_def += '{\n'
+    class_def += '    this->name = "StencilOp";\n'
+    class_def += '    this->category = Type::EnumCategory;\n'
+    class_def += '    this->type = Type::FullType{{ UInt32Type.name }};\n'
+    class_def += '    Symbol::Resolved(this)->typeSymbol = &UInt32Type;\n'
+    class_def += '    this->baseType = TypeCode::UInt;\n'
+    class_def += '    this->type.literal = true;\n'
+    class_def += '    this->builtin = true;\n'
+
+    for i, name in enumerate(stencil_op_names):
+        class_def += '    StencilOp{}.value = 0x{};\n'.format(name, i)
+        class_def += '    StencilOp{}.type = Type::FullType{{ StencilOpType.name, true }};\n'.format(name)
+        class_def += '    StencilOp{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
+        class_def += '    Symbol::Resolved(&StencilOp{})->type = this;\n'.format(name)
+    class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
+    for name in stencil_op_names:
+        class_def += '        std::pair{{ "{}"_c, &StencilOp{} }},\n'.format(name, name)
+    class_def += '    }};\n'
+    class_def += '};\n'
+
+    header_file.write(class_decl)
+    source_file.write(class_def)
 
     header_file.write('} // namespace GPULang\n\n')
     source_file.write('} // namespace GPULang\n\n')
@@ -692,19 +921,752 @@ def generate_types():
     intrinsics_header.write('namespace GPULang\n')
     intrinsics_header.write('{\n')
 
+
+    intrinsics_source.write("//-------------------------------------------------\n")
+    intrinsics_source.write("// *** Generated by type_gen.py. ***\n")
+    intrinsics_source.write("//       DO NOT MODIFY!!!\n")
+    intrinsics_source.write("//-------------------------------------------------\n")
+    intrinsics_source.write('namespace GPULang\n')
+    intrinsics_source.write('{\n')
+
     intrinsic_decls = ''
     intrinsic_defs = ''
+    intrinsic_setup = ''
 
-    float_only_intrinsics = [
-        'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'cos', 'cosh', 'exp',
-        'exp2', 'invSqrt', 'log', 'log2', 'pow', 'sin', 'sinh', 'sqrt', 'tan', 'tanh'
+    class Parameter:
+        def __init__(self, name, data_type, is_mutable, is_pointer):
+            self.name = name
+            self.data_type = data_type
+            self.is_mutable = is_mutable
+            self.is_pointer = is_pointer
+
+
+    float_only_single_argument_intrinsics = [
+        'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'cos', 'cosh', 'exp',
+        'exp2', 'invSqrt', 'log', 'log2', 'sin', 'sinh', 'sqrt', 'tan', 'tanh'
     ]
+
+    for intrinsic in float_only_single_argument_intrinsics:
+        for float_type in float_types:
+            function_name = '{}_{}'.format(intrinsic, float_type)
+            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Atan2
     for float_type in float_types:
-        for intrinsic in float_only_intrinsics:
-            intrinsic_decls += 'extern Function {}_{};\n'.format(float_type, intrinsic)
+        function_name = 'atan2_{}'.format(float_type)
+        y_name = 'atan2_{}_y'.format(float_type)
+        x_name = 'atan2_{}_x'.format(float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(y_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(y_name)
+        intrinsic_defs += 'Variable {};\n'.format(x_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
+        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        
+    # Pow
+    for float_type in float_types:
+        intrinsic = 'pow'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+        exponent_name = '{}_{}_exp'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(exponent_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(exponent_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+        intrinsic_setup += '    {}.name = "exponent"_c;\n'.format(exponent_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(exponent_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(exponent_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Mad
+    for float_type in scalar_types:
+        intrinsic = 'mad'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+        multiplier_name = '{}_{}_mul'.format(intrinsic, float_type)
+        addend_name = '{}_{}_add'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(multiplier_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(addend_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(multiplier_name)
+        intrinsic_defs += 'Variable {};\n'.format(addend_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+        intrinsic_setup += '    {}.name = "multiplier"_c;\n'.format(multiplier_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(multiplier_name, float_type)
+        intrinsic_setup += '    {}.name = "addend"_c;\n'.format(addend_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(addend_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(multiplier_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(addend_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Dot
+    for float_type in float_vec_types:
+        intrinsic = 'dot'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        x_name = '{}_{}_x'.format(intrinsic, float_type)
+        y_name = '{}_{}_y'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(y_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(x_name)
+        intrinsic_defs += 'Variable {};\n'.format(y_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+        intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
+
+    # Reflect
+    for float_type in float_vec_types:
+        intrinsic = 'reflect'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        incident_name = '{}_{}_incident'.format(intrinsic, float_type)
+        normal_name = '{}_{}_normal'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(incident_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(normal_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(incident_name)
+        intrinsic_defs += 'Variable {};\n'.format(normal_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "incident"_c;\n'.format(incident_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(incident_name, float_type)
+        intrinsic_setup += '    {}.name = "normal"_c;\n'.format(normal_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(normal_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(incident_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(normal_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Refract
+    for float_type in float_vec_types:
+        intrinsic = 'reflect'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        incident_name = '{}_{}_incident'.format(intrinsic, float_type)
+        normal_name = '{}_{}_normal'.format(intrinsic, float_type)
+        ior_name = '{}_{}_ior'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(incident_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(normal_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(ior_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(incident_name)
+        intrinsic_defs += 'Variable {};\n'.format(normal_name)
+        intrinsic_defs += 'Variable {};\n'.format(ior_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "incident"_c;\n'.format(incident_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(incident_name, float_type)
+        intrinsic_setup += '    {}.name = "normal"_c;\n'.format(normal_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(normal_name, float_type)
+        intrinsic_setup += '    {}.name = "ior"_c;\n'.format(ior_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(ior_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(incident_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(normal_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ior_name, float_type.split('x')[0])
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Cross
+    cross_product_types = ['Float32x3', 'Float16x3']
+    intrinsic = 'cross'
+    for float_type in cross_product_types:
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        v0_name = '{}_{}_v0'.format(intrinsic, float_type)
+        v1_name = '{}_{}_v1'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(v0_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(v1_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(v0_name)
+        intrinsic_defs += 'Variable {};\n'.format(v1_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "v0"_c;\n'.format(v0_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(v0_name, float_type)
+        intrinsic_setup += '    {}.name = "v1"_c;\n'.format(v1_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(v1_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(v0_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(v1_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Length & Normalize
+    ops = ['length', 'normalize']
+    for op in ops:
+        for float_type in float_vec_types:
+            function_name = '{}_{}'.format(op, float_type)
+            argument_name = '{}_{}_arg'.format(op, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Distance
+    for float_type in float_vec_types:
+        intrinsic = 'distance'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        p0_name = '{}_{}_p0'.format(intrinsic, float_type)
+        p1_name = '{}_{}_p1'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(p0_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(p1_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(p0_name)
+        intrinsic_defs += 'Variable {};\n'.format(p1_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "p0"_c;\n'.format(p0_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(p0_name, float_type)
+        intrinsic_setup += '    {}.name = "p1"_c;\n'.format(p1_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(p1_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(p0_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(p1_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
+
+    # Min & Max
+    ops = ['min', 'max']
+    for op in ops:
+        for float_type in scalar_types:
+            function_name = '{}_{}'.format(op, float_type)
+            x_name = '{}_{}_x'.format(op, float_type)
+            y_name = '{}_{}_y'.format(op, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(x_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(y_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(x_name)
+            intrinsic_defs += 'Variable {};\n'.format(y_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+            intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Clamp
+    for float_type in scalar_types:
+        intrinsic = 'clamp'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        value_name = '{}_{}_val'.format(intrinsic, float_type)
+        min_name = '{}_{}_min'.format(intrinsic, float_type)
+        max_name = '{}_{}_max'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(value_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(min_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(max_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(value_name)
+        intrinsic_defs += 'Variable {};\n'.format(min_name)
+        intrinsic_defs += 'Variable {};\n'.format(max_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "val"_c;\n'.format(value_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_name, float_type)
+        intrinsic_setup += '    {}.name = "min"_c;\n'.format(min_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(min_name, float_type)
+        intrinsic_setup += '    {}.name = "max"_c;\n'.format(max_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(max_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(min_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(max_name, float_type.split('x')[0])
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+    
+    # Lerp
+    for float_type in float_vec_types:
+        intrinsic = 'lerp'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        a_name = '{}_{}_a'.format(intrinsic, float_type)
+        b_name = '{}_{}_b'.format(intrinsic, float_type)
+        t_name = '{}_{}_t'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(a_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(b_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(t_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(a_name)
+        intrinsic_defs += 'Variable {};\n'.format(b_name)
+        intrinsic_defs += 'Variable {};\n'.format(t_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "a"_c;\n'.format(a_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(a_name, float_type)
+        intrinsic_setup += '    {}.name = "b"_c;\n'.format(b_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(b_name, float_type)
+        intrinsic_setup += '    {}.name = "t"_c;\n'.format(t_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(t_name, float_type.split('x')[0])
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(a_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(b_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(t_name, float_type.split('x')[0])
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Step
+    for float_type in float_types:
+        intrinsic = 'step'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        edge_name = '{}_{}_edge'.format(intrinsic, float_type)
+        x_name = '{}_{}_x'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(edge_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(edge_name)
+        intrinsic_defs += 'Variable {};\n'.format(x_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "edge"_c;\n'.format(edge_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge_name, float_type)
+        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type.split('x')[0])
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+    
+    # Smoothstep
+    for float_type in float_types:
+        intrinsic = 'smoothstep'
+        function_name = '{}_{}'.format(intrinsic, float_type)
+        edge0_name = '{}_{}_edge0'.format(intrinsic, float_type)
+        edge1_name = '{}_{}_edge1'.format(intrinsic, float_type)
+        x_name = '{}_{}_x'.format(intrinsic, float_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(edge0_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(edge1_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(edge0_name)
+        intrinsic_defs += 'Variable {};\n'.format(edge1_name)
+        intrinsic_defs += 'Variable {};\n'.format(x_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "edge0"_c;\n'.format(edge0_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge0_name, float_type)
+        intrinsic_setup += '    {}.name = "edge1"_c;\n'.format(edge1_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge1_name, float_type)
+        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type.split('x')[0])
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge0_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge1_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
+    ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
+    for op in ops:
+        for float_type in float_types:
+            function_name = '{}_{}'.format(op, float_type)
+            argument_name = '{}_{}_arg'.format(op, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Sign and Abs
+    ops = ['sign', 'abs']
+    for op in ops:
+        for float_type in signed_types:
+            intrinsic = op
+            function_name = '{}_{}'.format(intrinsic, float_type)
+            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    types = ["Float16", "UInt16", "Int16"]
+    data_types = ["f16", "u16", "i16"]
+
+    for type1, data_type1 in zip(types, data_types):
+        for type2, data_type2 in zip(types, data_types):
+            if type1 != type2:
+                intrinsic = 'castTo{}'.format(data_type1.title())
+                function_name = '{}_{}'.format(intrinsic, type2)
+                argument_name = '{}_{}_arg'.format(intrinsic, type2)
+                intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+                intrinsic_decls += 'extern Function {};\n'.format(function_name)
+                intrinsic_defs += 'Variable {};\n'.format(argument_name)
+                intrinsic_defs += 'Function {};\n'.format(function_name)
+                intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type2)
+                intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}.name }};\n'.format(function_name, data_type1)
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
+                intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
+
+    types = ["Float32", "UInt32", "Int32"]
+    data_types = ["f32", "u32", "i32"]
+
+    for type1, data_type1 in zip(types, data_types):
+        for type2, data_type2 in zip(types, data_types):
+            if type1 != type2:
+                intrinsic = 'castTo{}'.format(data_type1.title())
+                function_name = '{}_{}'.format(intrinsic, type2)
+                argument_name = '{}_{}_arg'.format(intrinsic, type2)
+                intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+                intrinsic_decls += 'extern Function {};\n'.format(function_name)
+                intrinsic_defs += 'Variable {};\n'.format(argument_name)
+                intrinsic_defs += 'Function {};\n'.format(function_name)
+                intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type2)
+                intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}.name }};\n'.format(function_name, data_type1)
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
+                intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
+
+    # Any and all
+    ops = ['any', 'all']
+    for op in ops:
+        for float_type in bool_types:
+            intrinsic = op
+            function_name = '{}_{}'.format(intrinsic, float_type)
+            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ BoolType.name }};\n'.format(function_name)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &BoolType;\n\n'.format(function_name)
+
+    ops = ['transpose', 'inverse']
+    matrix_types = []
+    for i in range(2, 5):
+        for j in range(2, 5):
+            matrix_types.append('Float32x{}x{}'.format(i, j))
+            matrix_types.append('Float16x{}x{}'.format(i, j))
+            
+    for op in ops:
+        for float_type in matrix_types:
+            intrinsic = op
+            function_name = '{}_{}'.format(intrinsic, float_type)
+            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+    # Builtin value getters
+    vertex_value_builtins = ['OutputLayer', 'OutputViewport', 'Index', 'InstanceIndex', 'BaseIndex', 'BaseInstanceIndex', 'DrawIndex']
+    for builtin in vertex_value_builtins:
+        intrinsic = builtin
+        function_name = 'VertexGet{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "vertexGet{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    unsigned_types = ['UInt16', 'UInt32']
+    vertex_value_builtins = ['OutputLayer', 'OutputViewport']
+    for builtin in vertex_value_builtins:
+        for type in unsigned_types:
+            intrinsic = builtin
+            function_name = 'VertexSet{}'.format(intrinsic)
+            argument_name = 'VertexSet{}_{}_arg'.format(intrinsic, type)
+            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
+            intrinsic_setup += '    {}.name = "vertexSet{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    # Export vertex coordinates
+    four_component_float_vec_types = ['Float32x4', 'Float16x4']
+    for type in four_component_float_vec_types:
+        intrinsic = 'VertexExportCoordinates'
+        function_name = '{}_{}'.format(intrinsic, type)
+        argument_name = '{}_{}_arg'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
+        intrinsic_setup += '    {}.name = "vertexExportCoordinates"_c;\n'.format(function_name)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    geometry_export_builtins = ['Vertex', 'Primitive']
+    for builtin in geometry_export_builtins:
+        intrinsic = builtin
+        function_name = 'GeometryExport{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "geometryExport{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    for type in four_component_float_vec_types:
+        intrinsic = 'Coordinates'
+        function_name = 'PixelGet'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "pixelGet{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+    
+    intrinsic = 'Depth'
+    function_name = 'PixelGet'.format(intrinsic)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "pixelGet{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Float32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Float32')
+
+    intrinsic = 'ExportColor'
+    for type in scalar_types:
+        function_name = 'Pixel{}_{}'.format(intrinsic, type)
+        color_argument_name = 'Pixel{}_{}_color'.format(intrinsic, type)
+        index_argument_name = 'Pixel{}_{}_index'.format(intrinsic, 'UInt32')
+        intrinsic_decls += 'extern Variable {};\n'.format(color_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(index_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(color_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(index_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "color"_c;\n'.format(color_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(color_argument_name, type)
+        intrinsic_setup += '    {}.name = "index"_c;\n'.format(index_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(index_argument_name, 'UInt32')
+        intrinsic_setup += '    {}.name = "pixel{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(color_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(index_argument_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    # TODO: Hmm maybe these should all be UInt16?
+    compute_builtin_getters = ['LocalInvocationIndices', 'GlobalInvocationIndices', 'WorkgroupIndices', 'WorkGroupDimensions']
+    for intrinsic in compute_builtin_getters:
+        function_name = 'ComputeGet{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "computeGet{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x3')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x3')
+
+    intrinsic = 'IndexInWorkgroup'
+    function_name = 'ComputeGet{}'.format(intrinsic)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "computeGet{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    subgroup_builtin_getters = ['Id', 'Size', 'Num']
+    for intrinsic in subgroup_builtin_getters:
+        function_name = 'SubgroupGet{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "subgroupGet{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    subgroup_builtin_masks = ['InvocationMask', 'InvocationAndLowerMask', 'LowerMask', 'InvocationAndGreaterMask', 'GreaterMask']
+    for intrinsic in subgroup_builtin_masks:
+        function_name = 'SubgroupGet{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "subgroupGet{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x4')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x4')
+
+    
+    intrinsic = 'FirstInvocation'
+    function_name = 'Subgroup{}'.format(intrinsic)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+        
+    intrinsic = 'Read'
+    function_name = 'Subgroup{}'.format(intrinsic)
+    value_argument_name = '{}_{}_value'.format(intrinsic, 'UInt32')
+    intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'UInt32')
+    intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    subgroup_ballot_ops = ['Ballot', 'InverseBallot']
+    subgroup_ballot_ops_doc = ['Constructs a subgroup mask within the workgroup where predicate is true', 'Constructs a subgroup mask within the workgroup where predicate is false']
+    for intrinsic, doc in zip(subgroup_ballot_ops, subgroup_ballot_ops_doc):
+        function_name = 'Subgroup{}'.format(intrinsic)
+        predicate_argument_name = 'SubgroupB{}_{}_predicate'.format(intrinsic, 'Bool8')
+        intrinsic_decls += 'extern Variable {};\n'.format(predicate_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(predicate_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "value"_c;\n'.format(predicate_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(predicate_argument_name, 'Bool8')
+        intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, doc)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x4')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x4')
+
+    intrinsic = 'BitCount'
+    function_name = 'SubgroupBallot{}'.format(intrinsic)
+    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
+    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Variable {};\n'.format(mask_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
+    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the number of bits in the mask set to 1.')
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    intrinsic = 'FirstOne'
+    function_name = 'SubgroupBallot{}'.format(intrinsic)
+    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
+    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Variable {};\n'.format(mask_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
+    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the first one (ctz) in a subgroup thread mask.')
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    intrinsic = 'LastOne'
+    function_name = 'SubgroupBallot{}'.format(intrinsic)
+    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
+    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Variable {};\n'.format(mask_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
+    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the first one (clz) in a subgroup thread mask.')
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    intrinsic = 'Bit'
+    function_name = 'SubgroupBallot{}'.format(intrinsic)
+    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
+    index_name = 'SubgroupBallot{}_{}_index'.format(intrinsic, 'UInt32')
+    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
+    intrinsic_decls += 'extern Variable {};\n'.format(index_name)
+    intrinsic_decls += 'extern Function {};\n'.format(function_name)
+    intrinsic_defs += 'Variable {};\n'.format(mask_name)
+    intrinsic_defs += 'Variable {};\n'.format(index_name)
+    intrinsic_defs += 'Function {};\n'.format(function_name)
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
+    intrinsic_setup += '    {}.name = "value"_c;\n'.format(index_name)
+    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(index_name, 'UInt32')
+    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
+    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns true if bit at index in mask is 1.')
+    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Bool8')
+    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Bool8')
+
+    subgroup_swap_ops = ['Diagonal', 'Vertical', 'Horizontal']
+    for op in subgroup_swap_ops:
+        for type in scalar_types:
+            intrinsic = op
+            function_name = 'SubgroupSwap{}_{}'.format(intrinsic, type)
+            value_argument_name = 'SubgroupSwap{}_{}_color'.format(intrinsic, type)
+            intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "color"_c;\n'.format(value_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, type)
+            intrinsic_setup += '    {}.name = "subgroupSwap{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
 
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('} // namespace GPULang\n\n')
+
+    intrinsics_source.write(intrinsic_defs)
+
+    intrinsics_source.write('void SetupIntrinsics()\n')
+    intrinsics_source.write('{\n')
+    intrinsics_source.write(intrinsic_setup)
+    intrinsics_source.write('}\n')
+    intrinsics_source.write('} // namespace GPULang\n')
 
 
 

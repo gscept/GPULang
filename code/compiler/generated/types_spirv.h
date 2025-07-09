@@ -741,10 +741,6 @@ std::pair{ &Float32_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
-std::pair{ &Float32_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
 std::pair{ &Float32_convert_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -762,10 +758,6 @@ std::pair{ &UInt32_convert_Float32 , [](const Compiler*, SPIRVGenerator*, uint32
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &UInt32_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt32_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
@@ -789,10 +781,6 @@ std::pair{ &Int32_convert_UInt32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
-std::pair{ &Int32_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
 std::pair{ &Int32_convert_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -805,19 +793,11 @@ std::pair{ &Int32_convert_Int16 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
-std::pair{ &Bool8_convert_Float32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
 std::pair{ &Bool8_convert_UInt32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Bool8_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8_convert_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
@@ -841,10 +821,6 @@ std::pair{ &Float16_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
-std::pair{ &Float16_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
 std::pair{ &Float16_convert_UInt16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -865,10 +841,6 @@ std::pair{ &UInt16_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
-std::pair{ &UInt16_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
 std::pair{ &UInt16_convert_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -886,10 +858,6 @@ std::pair{ &Int16_convert_UInt32 , [](const Compiler*, SPIRVGenerator*, uint32_t
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Int16_convert_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int16_convert_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
@@ -922,14 +890,6 @@ std::pair{ &Float32x2_convert_Int32x2 , [](const Compiler*, SPIRVGenerator*, uin
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Float32x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
-std::pair{ &Float32x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float32x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
@@ -981,14 +941,6 @@ std::pair{ &UInt32x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
-std::pair{ &UInt32x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt32x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
 std::pair{ &UInt32x2_convert_Float16x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1037,14 +989,6 @@ std::pair{ &Int32x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
-std::pair{ &Int32x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int32x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
 std::pair{ &Int32x2_convert_Float16x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1069,14 +1013,6 @@ std::pair{ &Int32x2_splat_Int16 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
-std::pair{ &Bool8x2_convert_Float32x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x2_splat_Float32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
 std::pair{ &Bool8x2_convert_UInt32x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1090,22 +1026,6 @@ std::pair{ &Bool8x2_convert_Int32x2 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Bool8x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
-std::pair{ &Bool8x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
-std::pair{ &Bool8x2_convert_Float16x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x2_splat_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
@@ -1146,14 +1066,6 @@ std::pair{ &Float16x2_convert_Int32x2 , [](const Compiler*, SPIRVGenerator*, uin
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Float16x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
-std::pair{ &Float16x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float16x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
@@ -1205,14 +1117,6 @@ std::pair{ &UInt16x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
-std::pair{ &UInt16x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt16x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
 std::pair{ &UInt16x2_convert_Float16x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1258,14 +1162,6 @@ std::pair{ &Int16x2_convert_Int32x2 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Int16x2_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
-};
-std::pair{ &Int16x2_convert_Bool8x2 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int16x2_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 2, args[0]);
 };
@@ -1317,14 +1213,6 @@ std::pair{ &Float32x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
-std::pair{ &Float32x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float32x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
 std::pair{ &Float32x3_convert_Float16x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1370,14 +1258,6 @@ std::pair{ &UInt32x3_convert_Int32x3 , [](const Compiler*, SPIRVGenerator*, uint
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &UInt32x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
-std::pair{ &UInt32x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt32x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
@@ -1429,14 +1309,6 @@ std::pair{ &Int32x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
-std::pair{ &Int32x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int32x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
 std::pair{ &Int32x3_convert_Float16x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1461,14 +1333,6 @@ std::pair{ &Int32x3_splat_Int16 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
-std::pair{ &Bool8x3_convert_Float32x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x3_splat_Float32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
 std::pair{ &Bool8x3_convert_UInt32x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1482,22 +1346,6 @@ std::pair{ &Bool8x3_convert_Int32x3 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Bool8x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
-std::pair{ &Bool8x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
-std::pair{ &Bool8x3_convert_Float16x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x3_splat_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
@@ -1538,14 +1386,6 @@ std::pair{ &Float16x3_convert_Int32x3 , [](const Compiler*, SPIRVGenerator*, uin
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Float16x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
-std::pair{ &Float16x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float16x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
@@ -1597,14 +1437,6 @@ std::pair{ &UInt16x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
-std::pair{ &UInt16x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt16x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
 std::pair{ &UInt16x3_convert_Float16x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1650,14 +1482,6 @@ std::pair{ &Int16x3_convert_Int32x3 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Int16x3_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
-};
-std::pair{ &Int16x3_convert_Bool8x3 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int16x3_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 3, args[0]);
 };
@@ -1709,14 +1533,6 @@ std::pair{ &Float32x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
-std::pair{ &Float32x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float32x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
 std::pair{ &Float32x4_convert_Float16x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1762,14 +1578,6 @@ std::pair{ &UInt32x4_convert_Int32x4 , [](const Compiler*, SPIRVGenerator*, uint
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &UInt32x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
-std::pair{ &UInt32x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt32x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
@@ -1821,14 +1629,6 @@ std::pair{ &Int32x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
-std::pair{ &Int32x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int32x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
 std::pair{ &Int32x4_convert_Float16x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1853,14 +1653,6 @@ std::pair{ &Int32x4_splat_Int16 , [](const Compiler*, SPIRVGenerator*, uint32_t,
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
-std::pair{ &Bool8x4_convert_Float32x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x4_splat_Float32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
 std::pair{ &Bool8x4_convert_UInt32x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -1874,22 +1666,6 @@ std::pair{ &Bool8x4_convert_Int32x4 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Bool8x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
-std::pair{ &Bool8x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
-std::pair{ &Bool8x4_convert_Float16x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Bool8x4_splat_Float16 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
@@ -1930,14 +1706,6 @@ std::pair{ &Float16x4_convert_Int32x4 , [](const Compiler*, SPIRVGenerator*, uin
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Float16x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
-std::pair{ &Float16x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Float16x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
@@ -1989,14 +1757,6 @@ std::pair{ &UInt16x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };
-std::pair{ &UInt16x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &UInt16x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
 std::pair{ &UInt16x4_convert_Float16x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
@@ -2042,14 +1802,6 @@ std::pair{ &Int16x4_convert_Int32x4 , [](const Compiler*, SPIRVGenerator*, uint3
     GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
 };
 std::pair{ &Int16x4_splat_Int32 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
-};
-std::pair{ &Int16x4_convert_Bool8x4 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
-{
-    GenerateCompositeSPIRV(c, g, returnType, {{args[0], args[1]}});
-};
-std::pair{ &Int16x4_splat_Bool8 , [](const Compiler*, SPIRVGenerator*, uint32_t, const std::vector<SPIRVResult>&) -> SPIRVResult;
 {
     GenerateSplatCompositeSPIRV(c, g, returnType, 4, args[0]);
 };

@@ -14,6 +14,8 @@ namespace GPULang
 struct EnumExpression : public Expression
 {
 public:
+    /// constructor
+    EnumExpression();
 	/// constructor
     EnumExpression(int value, Type::FullType type,  Type::FullType underlyingType);
 	/// destructor
@@ -44,7 +46,6 @@ public:
     struct __Resolved : public Expression::__Resolved
     {
         virtual ~__Resolved() {};
-        Type::FullType fullType;
         Type* type;
     };
 }; 
