@@ -55,6 +55,8 @@
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/floatvecexpression.h"
 
+#include "generated/types_spirv.h"
+
 namespace GPULang
 {
 struct SPVHeader

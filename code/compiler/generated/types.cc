@@ -14263,7 +14263,6 @@ Void::Void()
     this->builtin = true;
 };
 
-CompareMode CompareModeType;
 EnumExpression CompareModeLess;
 EnumExpression CompareModeLessEqual;
 EnumExpression CompareModeGreater;
@@ -14272,6 +14271,7 @@ EnumExpression CompareModeEqual;
 EnumExpression CompareModeNotEqual;
 EnumExpression CompareModeAlways;
 EnumExpression CompareModeNever;
+CompareMode CompareModeType;
 CompareMode::CompareMode()
 {
     this->name = "CompareMode";
@@ -14324,7 +14324,7 @@ CompareMode::CompareMode()
         std::pair{ "Never"_c, &CompareModeNever },
     }};
 };
-StencilOp StencilOpType;
+
 EnumExpression StencilOpKeep;
 EnumExpression StencilOpZero;
 EnumExpression StencilOpReplace;
@@ -14333,6 +14333,7 @@ EnumExpression StencilOpDecrement;
 EnumExpression StencilOpInvert;
 EnumExpression StencilOpIncrementWrap;
 EnumExpression StencilOpDecrementWrap;
+StencilOp StencilOpType;
 StencilOp::StencilOp()
 {
     this->name = "StencilOp";
@@ -14385,5 +14386,986 @@ StencilOp::StencilOp()
         std::pair{ "DecrementWrap"_c, &StencilOpDecrementWrap },
     }};
 };
+
+EnumExpression ExecutionScopeGlobal;
+EnumExpression ExecutionScopeDevice;
+EnumExpression ExecutionScopeWorkgroup;
+EnumExpression ExecutionScopeSubgroup;
+EnumExpression ExecutionScopeInvocation;
+EnumExpression ExecutionScopeQueue;
+ExecutionScope ExecutionScopeType;
+ExecutionScope::ExecutionScope()
+{
+    this->name = "ExecutionScope";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    ExecutionScopeGlobal.value = 0x0;
+    ExecutionScopeGlobal.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeGlobal.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeGlobal)->type = this;
+    ExecutionScopeDevice.value = 0x1;
+    ExecutionScopeDevice.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeDevice.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeDevice)->type = this;
+    ExecutionScopeWorkgroup.value = 0x2;
+    ExecutionScopeWorkgroup.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeWorkgroup.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeWorkgroup)->type = this;
+    ExecutionScopeSubgroup.value = 0x3;
+    ExecutionScopeSubgroup.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeSubgroup.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeSubgroup)->type = this;
+    ExecutionScopeInvocation.value = 0x4;
+    ExecutionScopeInvocation.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeInvocation.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeInvocation)->type = this;
+    ExecutionScopeQueue.value = 0x5;
+    ExecutionScopeQueue.type = Type::FullType{ ExecutionScopeType.name, true };
+    ExecutionScopeQueue.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&ExecutionScopeQueue)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Global"_c, &ExecutionScopeGlobal },
+        std::pair{ "Device"_c, &ExecutionScopeDevice },
+        std::pair{ "Workgroup"_c, &ExecutionScopeWorkgroup },
+        std::pair{ "Subgroup"_c, &ExecutionScopeSubgroup },
+        std::pair{ "Invocation"_c, &ExecutionScopeInvocation },
+        std::pair{ "Queue"_c, &ExecutionScopeQueue },
+    }};
+};
+
+EnumExpression MemorySemanticsAcquire;
+EnumExpression MemorySemanticsRelease;
+EnumExpression MemorySemanticsAcquireRelease;
+EnumExpression MemorySemanticsSequentiallyConsistent;
+EnumExpression MemorySemanticsRelaxed;
+MemorySemantics MemorySemanticsType;
+MemorySemantics::MemorySemantics()
+{
+    this->name = "MemorySemantics";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    MemorySemanticsAcquire.value = 0x1;
+    MemorySemanticsAcquire.type = Type::FullType{ MemorySemanticsType.name, true };
+    MemorySemanticsAcquire.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&MemorySemanticsAcquire)->type = this;
+    MemorySemanticsRelease.value = 0x2;
+    MemorySemanticsRelease.type = Type::FullType{ MemorySemanticsType.name, true };
+    MemorySemanticsRelease.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&MemorySemanticsRelease)->type = this;
+    MemorySemanticsAcquireRelease.value = 0x4;
+    MemorySemanticsAcquireRelease.type = Type::FullType{ MemorySemanticsType.name, true };
+    MemorySemanticsAcquireRelease.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&MemorySemanticsAcquireRelease)->type = this;
+    MemorySemanticsSequentiallyConsistent.value = 0x8;
+    MemorySemanticsSequentiallyConsistent.type = Type::FullType{ MemorySemanticsType.name, true };
+    MemorySemanticsSequentiallyConsistent.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&MemorySemanticsSequentiallyConsistent)->type = this;
+    MemorySemanticsRelaxed.value = 0x10;
+    MemorySemanticsRelaxed.type = Type::FullType{ MemorySemanticsType.name, true };
+    MemorySemanticsRelaxed.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&MemorySemanticsRelaxed)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Acquire"_c, &MemorySemanticsAcquire },
+        std::pair{ "Release"_c, &MemorySemanticsRelease },
+        std::pair{ "AcquireRelease"_c, &MemorySemanticsAcquireRelease },
+        std::pair{ "SequentiallyConsistent"_c, &MemorySemanticsSequentiallyConsistent },
+        std::pair{ "Relaxed"_c, &MemorySemanticsRelaxed },
+    }};
+};
+
+EnumExpression PolygonModeFill;
+EnumExpression PolygonModeLine;
+EnumExpression PolygonModePoint;
+PolygonMode PolygonModeType;
+PolygonMode::PolygonMode()
+{
+    this->name = "PolygonMode";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    PolygonModeFill.value = 0x0;
+    PolygonModeFill.type = Type::FullType{ PolygonModeType.name, true };
+    PolygonModeFill.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&PolygonModeFill)->type = this;
+    PolygonModeLine.value = 0x1;
+    PolygonModeLine.type = Type::FullType{ PolygonModeType.name, true };
+    PolygonModeLine.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&PolygonModeLine)->type = this;
+    PolygonModePoint.value = 0x2;
+    PolygonModePoint.type = Type::FullType{ PolygonModeType.name, true };
+    PolygonModePoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&PolygonModePoint)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Fill"_c, &PolygonModeFill },
+        std::pair{ "Line"_c, &PolygonModeLine },
+        std::pair{ "Point"_c, &PolygonModePoint },
+    }};
+};
+
+EnumExpression CullModeNone;
+EnumExpression CullModeFront;
+EnumExpression CullModeBack;
+EnumExpression CullModeFrontAndBack;
+CullMode CullModeType;
+CullMode::CullMode()
+{
+    this->name = "CullMode";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    CullModeNone.value = 0x0;
+    CullModeNone.type = Type::FullType{ CullModeType.name, true };
+    CullModeNone.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&CullModeNone)->type = this;
+    CullModeFront.value = 0x1;
+    CullModeFront.type = Type::FullType{ CullModeType.name, true };
+    CullModeFront.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&CullModeFront)->type = this;
+    CullModeBack.value = 0x2;
+    CullModeBack.type = Type::FullType{ CullModeType.name, true };
+    CullModeBack.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&CullModeBack)->type = this;
+    CullModeFrontAndBack.value = 0x3;
+    CullModeFrontAndBack.type = Type::FullType{ CullModeType.name, true };
+    CullModeFrontAndBack.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&CullModeFrontAndBack)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "None"_c, &CullModeNone },
+        std::pair{ "Front"_c, &CullModeFront },
+        std::pair{ "Back"_c, &CullModeBack },
+        std::pair{ "FrontAndBack"_c, &CullModeFrontAndBack },
+    }};
+};
+
+EnumExpression WindingOrderClockwise;
+EnumExpression WindingOrderCounterClockwise;
+WindingOrder WindingOrderType;
+WindingOrder::WindingOrder()
+{
+    this->name = "WindingOrder";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    WindingOrderClockwise.value = 0x0;
+    WindingOrderClockwise.type = Type::FullType{ WindingOrderType.name, true };
+    WindingOrderClockwise.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&WindingOrderClockwise)->type = this;
+    WindingOrderCounterClockwise.value = 0x1;
+    WindingOrderCounterClockwise.type = Type::FullType{ WindingOrderType.name, true };
+    WindingOrderCounterClockwise.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&WindingOrderCounterClockwise)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Clockwise"_c, &WindingOrderClockwise },
+        std::pair{ "CounterClockwise"_c, &WindingOrderCounterClockwise },
+    }};
+};
+
+EnumExpression LogicOpAnd;
+EnumExpression LogicOpAndInverted;
+EnumExpression LogicOpAndReverse;
+EnumExpression LogicOpClear;
+EnumExpression LogicOpCopy;
+EnumExpression LogicOpCopyInverted;
+EnumExpression LogicOpEquivalence;
+EnumExpression LogicOpInvert;
+EnumExpression LogicOpNand;
+EnumExpression LogicOpNo;
+EnumExpression LogicOpNor;
+EnumExpression LogicOpOr;
+EnumExpression LogicOpOrInverted;
+EnumExpression LogicOpOrReverse;
+EnumExpression LogicOpSet;
+EnumExpression LogicOpXor;
+LogicOp LogicOpType;
+LogicOp::LogicOp()
+{
+    this->name = "LogicOp";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    LogicOpAnd.value = 0x0;
+    LogicOpAnd.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpAnd.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpAnd)->type = this;
+    LogicOpAndInverted.value = 0x1;
+    LogicOpAndInverted.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpAndInverted.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpAndInverted)->type = this;
+    LogicOpAndReverse.value = 0x2;
+    LogicOpAndReverse.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpAndReverse.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpAndReverse)->type = this;
+    LogicOpClear.value = 0x3;
+    LogicOpClear.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpClear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpClear)->type = this;
+    LogicOpCopy.value = 0x4;
+    LogicOpCopy.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpCopy.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpCopy)->type = this;
+    LogicOpCopyInverted.value = 0x5;
+    LogicOpCopyInverted.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpCopyInverted.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpCopyInverted)->type = this;
+    LogicOpEquivalence.value = 0x6;
+    LogicOpEquivalence.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpEquivalence.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpEquivalence)->type = this;
+    LogicOpInvert.value = 0x7;
+    LogicOpInvert.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpInvert.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpInvert)->type = this;
+    LogicOpNand.value = 0x8;
+    LogicOpNand.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpNand.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpNand)->type = this;
+    LogicOpNo.value = 0x9;
+    LogicOpNo.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpNo.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpNo)->type = this;
+    LogicOpNor.value = 0xa;
+    LogicOpNor.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpNor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpNor)->type = this;
+    LogicOpOr.value = 0xb;
+    LogicOpOr.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpOr.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpOr)->type = this;
+    LogicOpOrInverted.value = 0xc;
+    LogicOpOrInverted.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpOrInverted.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpOrInverted)->type = this;
+    LogicOpOrReverse.value = 0xd;
+    LogicOpOrReverse.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpOrReverse.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpOrReverse)->type = this;
+    LogicOpSet.value = 0xe;
+    LogicOpSet.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpSet.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpSet)->type = this;
+    LogicOpXor.value = 0xf;
+    LogicOpXor.type = Type::FullType{ LogicOpType.name, true };
+    LogicOpXor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&LogicOpXor)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "And"_c, &LogicOpAnd },
+        std::pair{ "AndInverted"_c, &LogicOpAndInverted },
+        std::pair{ "AndReverse"_c, &LogicOpAndReverse },
+        std::pair{ "Clear"_c, &LogicOpClear },
+        std::pair{ "Copy"_c, &LogicOpCopy },
+        std::pair{ "CopyInverted"_c, &LogicOpCopyInverted },
+        std::pair{ "Equivalence"_c, &LogicOpEquivalence },
+        std::pair{ "Invert"_c, &LogicOpInvert },
+        std::pair{ "Nand"_c, &LogicOpNand },
+        std::pair{ "No"_c, &LogicOpNo },
+        std::pair{ "Nor"_c, &LogicOpNor },
+        std::pair{ "Or"_c, &LogicOpOr },
+        std::pair{ "OrInverted"_c, &LogicOpOrInverted },
+        std::pair{ "OrReverse"_c, &LogicOpOrReverse },
+        std::pair{ "Set"_c, &LogicOpSet },
+        std::pair{ "Xor"_c, &LogicOpXor },
+    }};
+};
+
+EnumExpression BlendFactorZero;
+EnumExpression BlendFactorOne;
+EnumExpression BlendFactorSourceColor;
+EnumExpression BlendFactorOneMinusSourceColor;
+EnumExpression BlendFactorSourceAlpha;
+EnumExpression BlendFactorOneMinusSourceAlpha;
+EnumExpression BlendFactorDestinationColor;
+EnumExpression BlendFactorOneMinusDestinationColor;
+EnumExpression BlendFactorDestinationAlpha;
+EnumExpression BlendFactorOneMinusDestinationAlpha;
+EnumExpression BlendFactorConstantColor;
+EnumExpression BlendFactorOneMinusConstantColor;
+EnumExpression BlendFactorConstantAlpha;
+EnumExpression BlendFactorOneMinusConstantAlpha;
+BlendFactor BlendFactorType;
+BlendFactor::BlendFactor()
+{
+    this->name = "BlendFactor";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    BlendFactorZero.value = 0x0;
+    BlendFactorZero.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorZero.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorZero)->type = this;
+    BlendFactorOne.value = 0x1;
+    BlendFactorOne.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOne.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOne)->type = this;
+    BlendFactorSourceColor.value = 0x2;
+    BlendFactorSourceColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorSourceColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorSourceColor)->type = this;
+    BlendFactorOneMinusSourceColor.value = 0x3;
+    BlendFactorOneMinusSourceColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusSourceColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusSourceColor)->type = this;
+    BlendFactorSourceAlpha.value = 0x4;
+    BlendFactorSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorSourceAlpha)->type = this;
+    BlendFactorOneMinusSourceAlpha.value = 0x5;
+    BlendFactorOneMinusSourceAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusSourceAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusSourceAlpha)->type = this;
+    BlendFactorDestinationColor.value = 0x6;
+    BlendFactorDestinationColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorDestinationColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorDestinationColor)->type = this;
+    BlendFactorOneMinusDestinationColor.value = 0x7;
+    BlendFactorOneMinusDestinationColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusDestinationColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusDestinationColor)->type = this;
+    BlendFactorDestinationAlpha.value = 0x8;
+    BlendFactorDestinationAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorDestinationAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorDestinationAlpha)->type = this;
+    BlendFactorOneMinusDestinationAlpha.value = 0x9;
+    BlendFactorOneMinusDestinationAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusDestinationAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusDestinationAlpha)->type = this;
+    BlendFactorConstantColor.value = 0xa;
+    BlendFactorConstantColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorConstantColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorConstantColor)->type = this;
+    BlendFactorOneMinusConstantColor.value = 0xb;
+    BlendFactorOneMinusConstantColor.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusConstantColor.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusConstantColor)->type = this;
+    BlendFactorConstantAlpha.value = 0xc;
+    BlendFactorConstantAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorConstantAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorConstantAlpha)->type = this;
+    BlendFactorOneMinusConstantAlpha.value = 0xd;
+    BlendFactorOneMinusConstantAlpha.type = Type::FullType{ BlendFactorType.name, true };
+    BlendFactorOneMinusConstantAlpha.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendFactorOneMinusConstantAlpha)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Zero"_c, &BlendFactorZero },
+        std::pair{ "One"_c, &BlendFactorOne },
+        std::pair{ "SourceColor"_c, &BlendFactorSourceColor },
+        std::pair{ "OneMinusSourceColor"_c, &BlendFactorOneMinusSourceColor },
+        std::pair{ "SourceAlpha"_c, &BlendFactorSourceAlpha },
+        std::pair{ "OneMinusSourceAlpha"_c, &BlendFactorOneMinusSourceAlpha },
+        std::pair{ "DestinationColor"_c, &BlendFactorDestinationColor },
+        std::pair{ "OneMinusDestinationColor"_c, &BlendFactorOneMinusDestinationColor },
+        std::pair{ "DestinationAlpha"_c, &BlendFactorDestinationAlpha },
+        std::pair{ "OneMinusDestinationAlpha"_c, &BlendFactorOneMinusDestinationAlpha },
+        std::pair{ "ConstantColor"_c, &BlendFactorConstantColor },
+        std::pair{ "OneMinusConstantColor"_c, &BlendFactorOneMinusConstantColor },
+        std::pair{ "ConstantAlpha"_c, &BlendFactorConstantAlpha },
+        std::pair{ "OneMinusConstantAlpha"_c, &BlendFactorOneMinusConstantAlpha },
+    }};
+};
+
+EnumExpression BlendOperationAdd;
+EnumExpression BlendOperationSubtract;
+EnumExpression BlendOperationReverseSubtract;
+EnumExpression BlendOperationMin;
+EnumExpression BlendOperationMax;
+BlendOperation BlendOperationType;
+BlendOperation::BlendOperation()
+{
+    this->name = "BlendOperation";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    BlendOperationAdd.value = 0x0;
+    BlendOperationAdd.type = Type::FullType{ BlendOperationType.name, true };
+    BlendOperationAdd.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendOperationAdd)->type = this;
+    BlendOperationSubtract.value = 0x1;
+    BlendOperationSubtract.type = Type::FullType{ BlendOperationType.name, true };
+    BlendOperationSubtract.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendOperationSubtract)->type = this;
+    BlendOperationReverseSubtract.value = 0x2;
+    BlendOperationReverseSubtract.type = Type::FullType{ BlendOperationType.name, true };
+    BlendOperationReverseSubtract.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendOperationReverseSubtract)->type = this;
+    BlendOperationMin.value = 0x3;
+    BlendOperationMin.type = Type::FullType{ BlendOperationType.name, true };
+    BlendOperationMin.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendOperationMin)->type = this;
+    BlendOperationMax.value = 0x4;
+    BlendOperationMax.type = Type::FullType{ BlendOperationType.name, true };
+    BlendOperationMax.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendOperationMax)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Add"_c, &BlendOperationAdd },
+        std::pair{ "Subtract"_c, &BlendOperationSubtract },
+        std::pair{ "ReverseSubtract"_c, &BlendOperationReverseSubtract },
+        std::pair{ "Min"_c, &BlendOperationMin },
+        std::pair{ "Max"_c, &BlendOperationMax },
+    }};
+};
+
+EnumExpression BlendColorMaskNone;
+EnumExpression BlendColorMaskR;
+EnumExpression BlendColorMaskRG;
+EnumExpression BlendColorMaskRGB;
+EnumExpression BlendColorMaskRGBA;
+BlendColorMask BlendColorMaskType;
+BlendColorMask::BlendColorMask()
+{
+    this->name = "BlendColorMask";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    BlendColorMaskNone.value = 0x0;
+    BlendColorMaskNone.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskNone.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendColorMaskNone)->type = this;
+    BlendColorMaskR.value = 0x1;
+    BlendColorMaskR.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskR.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendColorMaskR)->type = this;
+    BlendColorMaskRG.value = 0x2;
+    BlendColorMaskRG.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskRG.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendColorMaskRG)->type = this;
+    BlendColorMaskRGB.value = 0x3;
+    BlendColorMaskRGB.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskRGB.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendColorMaskRGB)->type = this;
+    BlendColorMaskRGBA.value = 0x4;
+    BlendColorMaskRGBA.type = Type::FullType{ BlendColorMaskType.name, true };
+    BlendColorMaskRGBA.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BlendColorMaskRGBA)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "None"_c, &BlendColorMaskNone },
+        std::pair{ "R"_c, &BlendColorMaskR },
+        std::pair{ "RG"_c, &BlendColorMaskRG },
+        std::pair{ "RGB"_c, &BlendColorMaskRGB },
+        std::pair{ "RGBA"_c, &BlendColorMaskRGBA },
+    }};
+};
+
+EnumExpression FilterModePoint;
+EnumExpression FilterModeLinear;
+EnumExpression FilterModeMinMagMipmapLinear;
+EnumExpression FilterModeMinMagLinearMipPoint;
+EnumExpression FilterModeMinLinearMagMipPoint;
+EnumExpression FilterModeMinMagMipPoint;
+EnumExpression FilterModeMinMagPointMipLinear;
+EnumExpression FilterModeMinPointMagMipLinear;
+EnumExpression FilterModeMinLinearMagPointMipLinear;
+EnumExpression FilterModeMinPointMagLinearMipPoint;
+FilterMode FilterModeType;
+FilterMode::FilterMode()
+{
+    this->name = "FilterMode";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    FilterModePoint.value = 0x0;
+    FilterModePoint.type = Type::FullType{ FilterModeType.name, true };
+    FilterModePoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModePoint)->type = this;
+    FilterModeLinear.value = 0x1;
+    FilterModeLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeLinear)->type = this;
+    FilterModeMinMagMipmapLinear.value = 0x2;
+    FilterModeMinMagMipmapLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinMagMipmapLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinMagMipmapLinear)->type = this;
+    FilterModeMinMagLinearMipPoint.value = 0x3;
+    FilterModeMinMagLinearMipPoint.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinMagLinearMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinMagLinearMipPoint)->type = this;
+    FilterModeMinLinearMagMipPoint.value = 0x4;
+    FilterModeMinLinearMagMipPoint.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinLinearMagMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinLinearMagMipPoint)->type = this;
+    FilterModeMinMagMipPoint.value = 0x5;
+    FilterModeMinMagMipPoint.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinMagMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinMagMipPoint)->type = this;
+    FilterModeMinMagPointMipLinear.value = 0x6;
+    FilterModeMinMagPointMipLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinMagPointMipLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinMagPointMipLinear)->type = this;
+    FilterModeMinPointMagMipLinear.value = 0x7;
+    FilterModeMinPointMagMipLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinPointMagMipLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinPointMagMipLinear)->type = this;
+    FilterModeMinLinearMagPointMipLinear.value = 0x8;
+    FilterModeMinLinearMagPointMipLinear.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinLinearMagPointMipLinear.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinLinearMagPointMipLinear)->type = this;
+    FilterModeMinPointMagLinearMipPoint.value = 0x9;
+    FilterModeMinPointMagLinearMipPoint.type = Type::FullType{ FilterModeType.name, true };
+    FilterModeMinPointMagLinearMipPoint.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&FilterModeMinPointMagLinearMipPoint)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Point"_c, &FilterModePoint },
+        std::pair{ "Linear"_c, &FilterModeLinear },
+        std::pair{ "MinMagMipmapLinear"_c, &FilterModeMinMagMipmapLinear },
+        std::pair{ "MinMagLinearMipPoint"_c, &FilterModeMinMagLinearMipPoint },
+        std::pair{ "MinLinearMagMipPoint"_c, &FilterModeMinLinearMagMipPoint },
+        std::pair{ "MinMagMipPoint"_c, &FilterModeMinMagMipPoint },
+        std::pair{ "MinMagPointMipLinear"_c, &FilterModeMinMagPointMipLinear },
+        std::pair{ "MinPointMagMipLinear"_c, &FilterModeMinPointMagMipLinear },
+        std::pair{ "MinLinearMagPointMipLinear"_c, &FilterModeMinLinearMagPointMipLinear },
+        std::pair{ "MinPointMagLinearMipPoint"_c, &FilterModeMinPointMagLinearMipPoint },
+    }};
+};
+
+EnumExpression AddressModeRepeat;
+EnumExpression AddressModeMirror;
+EnumExpression AddressModeClamp;
+EnumExpression AddressModeBorder;
+AddressMode AddressModeType;
+AddressMode::AddressMode()
+{
+    this->name = "AddressMode";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    AddressModeRepeat.value = 0x0;
+    AddressModeRepeat.type = Type::FullType{ AddressModeType.name, true };
+    AddressModeRepeat.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&AddressModeRepeat)->type = this;
+    AddressModeMirror.value = 0x1;
+    AddressModeMirror.type = Type::FullType{ AddressModeType.name, true };
+    AddressModeMirror.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&AddressModeMirror)->type = this;
+    AddressModeClamp.value = 0x2;
+    AddressModeClamp.type = Type::FullType{ AddressModeType.name, true };
+    AddressModeClamp.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&AddressModeClamp)->type = this;
+    AddressModeBorder.value = 0x3;
+    AddressModeBorder.type = Type::FullType{ AddressModeType.name, true };
+    AddressModeBorder.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&AddressModeBorder)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Repeat"_c, &AddressModeRepeat },
+        std::pair{ "Mirror"_c, &AddressModeMirror },
+        std::pair{ "Clamp"_c, &AddressModeClamp },
+        std::pair{ "Border"_c, &AddressModeBorder },
+    }};
+};
+
+EnumExpression BorderColorTransparent;
+EnumExpression BorderColorBlack;
+EnumExpression BorderColorWhite;
+BorderColor BorderColorType;
+BorderColor::BorderColor()
+{
+    this->name = "BorderColor";
+    this->category = Type::EnumCategory;
+    this->type = Type::FullType{{ UInt32Type.name }};
+    Symbol::Resolved(this)->typeSymbol = &UInt32Type;
+    this->baseType = TypeCode::UInt;
+    this->type.literal = true;
+    this->builtin = true;
+    BorderColorTransparent.value = 0x0;
+    BorderColorTransparent.type = Type::FullType{ BorderColorType.name, true };
+    BorderColorTransparent.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BorderColorTransparent)->type = this;
+    BorderColorBlack.value = 0x1;
+    BorderColorBlack.type = Type::FullType{ BorderColorType.name, true };
+    BorderColorBlack.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BorderColorBlack)->type = this;
+    BorderColorWhite.value = 0x2;
+    BorderColorWhite.type = Type::FullType{ BorderColorType.name, true };
+    BorderColorWhite.underlyingType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&BorderColorWhite)->type = this;
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Transparent"_c, &BorderColorTransparent },
+        std::pair{ "Black"_c, &BorderColorBlack },
+        std::pair{ "White"_c, &BorderColorWhite },
+    }};
+};
+
+Variable StencilStateFail;
+Variable StencilStatePass;
+Variable StencilStateDepthFail;
+Variable StencilStateCompareFunction;
+Variable StencilStateCompareMask;
+Variable StencilStateWriteMask;
+Variable StencilStateReference;
+StencilState StencilStateType;
+StencilState::StencilState()
+{
+    this->name = "StencilState";
+    this->category = Type::UserTypeCategory;
+    this->builtin = true;
+    StencilStateFail.name = "Fail"_c;
+    StencilStateFail.type = Type::FullType{ StencilOpType.name };
+    Symbol::Resolved(&StencilStateFail)->typeSymbol = &StencilOpType;
+
+    StencilStatePass.name = "Pass"_c;
+    StencilStatePass.type = Type::FullType{ StencilOpType.name };
+    Symbol::Resolved(&StencilStatePass)->typeSymbol = &StencilOpType;
+
+    StencilStateDepthFail.name = "DepthFail"_c;
+    StencilStateDepthFail.type = Type::FullType{ StencilOpType.name };
+    Symbol::Resolved(&StencilStateDepthFail)->typeSymbol = &StencilOpType;
+
+    StencilStateCompareFunction.name = "CompareFunction"_c;
+    StencilStateCompareFunction.type = Type::FullType{ CompareModeType.name };
+    Symbol::Resolved(&StencilStateCompareFunction)->typeSymbol = &CompareModeType;
+
+    StencilStateCompareMask.name = "CompareMask"_c;
+    StencilStateCompareMask.type = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&StencilStateCompareMask)->typeSymbol = &UInt32Type;
+
+    StencilStateWriteMask.name = "WriteMask"_c;
+    StencilStateWriteMask.type = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&StencilStateWriteMask)->typeSymbol = &UInt32Type;
+
+    StencilStateReference.name = "Reference"_c;
+    StencilStateReference.type = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&StencilStateReference)->typeSymbol = &UInt32Type;
+
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Fail"_c, &StencilStateFail },
+        std::pair{ "Pass"_c, &StencilStatePass },
+        std::pair{ "DepthFail"_c, &StencilStateDepthFail },
+        std::pair{ "CompareFunction"_c, &StencilStateCompareFunction },
+        std::pair{ "CompareMask"_c, &StencilStateCompareMask },
+        std::pair{ "WriteMask"_c, &StencilStateWriteMask },
+        std::pair{ "Reference"_c, &StencilStateReference },
+    }};
+};
+
+Variable RenderStateDepthClampEnabled;
+Variable RenderStateDepthTestEnabled;
+Variable RenderStateDepthWriteEnabled;
+Variable RenderStateDepthBiasEnabled;
+Variable RenderStateDepthBiasConstantFactor;
+Variable RenderStateDepthBiasClamp;
+Variable RenderStateDepthBiasSlopeFactor;
+Variable RenderStateDepthTestFunction;
+Variable RenderStateDepthBoundsTestEnabled;
+Variable RenderStateDepthBoundsMin;
+Variable RenderStateDepthBoundsMax;
+Variable RenderStateNoRasterization;
+Variable RenderStatePolygonMode;
+Variable RenderStateCullMode;
+Variable RenderStateWindingOrder;
+Variable RenderStateStencilEnabled;
+Variable RenderStateStencilFront;
+Variable RenderStateStencilBack;
+Variable RenderStateLogicOpEnabled;
+Variable RenderStateLogicOp;
+Variable RenderStateBlendEnabled;
+IntExpression RenderStateBlendEnabledArraySize(8);
+Variable RenderStateSourceBlend;
+IntExpression RenderStateSourceBlendArraySize(8);
+Variable RenderStateDestinationBlend;
+IntExpression RenderStateDestinationBlendArraySize(8);
+Variable RenderStateSourceAlphaBlend;
+IntExpression RenderStateSourceAlphaBlendArraySize(8);
+Variable RenderStateDestinationAlphaBlend;
+IntExpression RenderStateDestinationAlphaBlendArraySize(8);
+Variable RenderStateColorBlendOp;
+IntExpression RenderStateColorBlendOpArraySize(8);
+Variable RenderStateAlphaBlendOp;
+IntExpression RenderStateAlphaBlendOpArraySize(8);
+Variable RenderStateMask;
+IntExpression RenderStateMaskArraySize(8);
+RenderState RenderStateType;
+RenderState::RenderState()
+{
+    this->name = "RenderState";
+    this->category = Type::UserTypeCategory;
+    this->builtin = true;
+    RenderStateDepthClampEnabled.name = "DepthClampEnabled"_c;
+    RenderStateDepthClampEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateDepthClampEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateDepthTestEnabled.name = "DepthTestEnabled"_c;
+    RenderStateDepthTestEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateDepthTestEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateDepthWriteEnabled.name = "DepthWriteEnabled"_c;
+    RenderStateDepthWriteEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateDepthWriteEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateDepthBiasEnabled.name = "DepthBiasEnabled"_c;
+    RenderStateDepthBiasEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateDepthBiasEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateDepthBiasConstantFactor.name = "DepthBiasConstantFactor"_c;
+    RenderStateDepthBiasConstantFactor.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBiasConstantFactor)->typeSymbol = &Float32Type;
+
+    RenderStateDepthBiasClamp.name = "DepthBiasClamp"_c;
+    RenderStateDepthBiasClamp.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBiasClamp)->typeSymbol = &Float32Type;
+
+    RenderStateDepthBiasSlopeFactor.name = "DepthBiasSlopeFactor"_c;
+    RenderStateDepthBiasSlopeFactor.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBiasSlopeFactor)->typeSymbol = &Float32Type;
+
+    RenderStateDepthTestFunction.name = "DepthTestFunction"_c;
+    RenderStateDepthTestFunction.type = Type::FullType{ CompareModeType.name };
+    Symbol::Resolved(&RenderStateDepthTestFunction)->typeSymbol = &CompareModeType;
+
+    RenderStateDepthBoundsTestEnabled.name = "DepthBoundsTestEnabled"_c;
+    RenderStateDepthBoundsTestEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateDepthBoundsTestEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateDepthBoundsMin.name = "DepthBoundsMin"_c;
+    RenderStateDepthBoundsMin.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBoundsMin)->typeSymbol = &Float32Type;
+
+    RenderStateDepthBoundsMax.name = "DepthBoundsMax"_c;
+    RenderStateDepthBoundsMax.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&RenderStateDepthBoundsMax)->typeSymbol = &Float32Type;
+
+    RenderStateNoRasterization.name = "NoRasterization"_c;
+    RenderStateNoRasterization.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateNoRasterization)->typeSymbol = &Bool8Type;
+
+    RenderStatePolygonMode.name = "PolygonMode"_c;
+    RenderStatePolygonMode.type = Type::FullType{ PolygonModeType.name };
+    Symbol::Resolved(&RenderStatePolygonMode)->typeSymbol = &PolygonModeType;
+
+    RenderStateCullMode.name = "CullMode"_c;
+    RenderStateCullMode.type = Type::FullType{ CullModeType.name };
+    Symbol::Resolved(&RenderStateCullMode)->typeSymbol = &CullModeType;
+
+    RenderStateWindingOrder.name = "WindingOrder"_c;
+    RenderStateWindingOrder.type = Type::FullType{ WindingOrderType.name };
+    Symbol::Resolved(&RenderStateWindingOrder)->typeSymbol = &WindingOrderType;
+
+    RenderStateStencilEnabled.name = "StencilEnabled"_c;
+    RenderStateStencilEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateStencilEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateStencilFront.name = "StencilFront"_c;
+    RenderStateStencilFront.type = Type::FullType{ StencilStateType.name };
+    Symbol::Resolved(&RenderStateStencilFront)->typeSymbol = &StencilStateType;
+
+    RenderStateStencilBack.name = "StencilBack"_c;
+    RenderStateStencilBack.type = Type::FullType{ StencilStateType.name };
+    Symbol::Resolved(&RenderStateStencilBack)->typeSymbol = &StencilStateType;
+
+    RenderStateLogicOpEnabled.name = "LogicOpEnabled"_c;
+    RenderStateLogicOpEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&RenderStateLogicOpEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateLogicOp.name = "LogicOp"_c;
+    RenderStateLogicOp.type = Type::FullType{ LogicOpType.name };
+    Symbol::Resolved(&RenderStateLogicOp)->typeSymbol = &LogicOpType;
+
+    RenderStateBlendEnabled.name = "BlendEnabled"_c;
+    RenderStateBlendEnabled.type = Type::FullType{ Bool8Type.name, {Type::FullType::Modifier::Array}, {&RenderStateBlendEnabledArraySize} };
+    Symbol::Resolved(&RenderStateBlendEnabled)->typeSymbol = &Bool8Type;
+
+    RenderStateSourceBlend.name = "SourceBlend"_c;
+    RenderStateSourceBlend.type = Type::FullType{ BlendFactorType.name, {Type::FullType::Modifier::Array}, {&RenderStateSourceBlendArraySize} };
+    Symbol::Resolved(&RenderStateSourceBlend)->typeSymbol = &BlendFactorType;
+
+    RenderStateDestinationBlend.name = "DestinationBlend"_c;
+    RenderStateDestinationBlend.type = Type::FullType{ BlendFactorType.name, {Type::FullType::Modifier::Array}, {&RenderStateDestinationBlendArraySize} };
+    Symbol::Resolved(&RenderStateDestinationBlend)->typeSymbol = &BlendFactorType;
+
+    RenderStateSourceAlphaBlend.name = "SourceAlphaBlend"_c;
+    RenderStateSourceAlphaBlend.type = Type::FullType{ BlendFactorType.name, {Type::FullType::Modifier::Array}, {&RenderStateSourceAlphaBlendArraySize} };
+    Symbol::Resolved(&RenderStateSourceAlphaBlend)->typeSymbol = &BlendFactorType;
+
+    RenderStateDestinationAlphaBlend.name = "DestinationAlphaBlend"_c;
+    RenderStateDestinationAlphaBlend.type = Type::FullType{ BlendFactorType.name, {Type::FullType::Modifier::Array}, {&RenderStateDestinationAlphaBlendArraySize} };
+    Symbol::Resolved(&RenderStateDestinationAlphaBlend)->typeSymbol = &BlendFactorType;
+
+    RenderStateColorBlendOp.name = "ColorBlendOp"_c;
+    RenderStateColorBlendOp.type = Type::FullType{ BlendOperationType.name, {Type::FullType::Modifier::Array}, {&RenderStateColorBlendOpArraySize} };
+    Symbol::Resolved(&RenderStateColorBlendOp)->typeSymbol = &BlendOperationType;
+
+    RenderStateAlphaBlendOp.name = "AlphaBlendOp"_c;
+    RenderStateAlphaBlendOp.type = Type::FullType{ BlendOperationType.name, {Type::FullType::Modifier::Array}, {&RenderStateAlphaBlendOpArraySize} };
+    Symbol::Resolved(&RenderStateAlphaBlendOp)->typeSymbol = &BlendOperationType;
+
+    RenderStateMask.name = "Mask"_c;
+    RenderStateMask.type = Type::FullType{ BlendColorMaskType.name, {Type::FullType::Modifier::Array}, {&RenderStateMaskArraySize} };
+    Symbol::Resolved(&RenderStateMask)->typeSymbol = &BlendColorMaskType;
+
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "DepthClampEnabled"_c, &RenderStateDepthClampEnabled },
+        std::pair{ "DepthTestEnabled"_c, &RenderStateDepthTestEnabled },
+        std::pair{ "DepthWriteEnabled"_c, &RenderStateDepthWriteEnabled },
+        std::pair{ "DepthBiasEnabled"_c, &RenderStateDepthBiasEnabled },
+        std::pair{ "DepthBiasConstantFactor"_c, &RenderStateDepthBiasConstantFactor },
+        std::pair{ "DepthBiasClamp"_c, &RenderStateDepthBiasClamp },
+        std::pair{ "DepthBiasSlopeFactor"_c, &RenderStateDepthBiasSlopeFactor },
+        std::pair{ "DepthTestFunction"_c, &RenderStateDepthTestFunction },
+        std::pair{ "DepthBoundsTestEnabled"_c, &RenderStateDepthBoundsTestEnabled },
+        std::pair{ "DepthBoundsMin"_c, &RenderStateDepthBoundsMin },
+        std::pair{ "DepthBoundsMax"_c, &RenderStateDepthBoundsMax },
+        std::pair{ "NoRasterization"_c, &RenderStateNoRasterization },
+        std::pair{ "PolygonMode"_c, &RenderStatePolygonMode },
+        std::pair{ "CullMode"_c, &RenderStateCullMode },
+        std::pair{ "WindingOrder"_c, &RenderStateWindingOrder },
+        std::pair{ "StencilEnabled"_c, &RenderStateStencilEnabled },
+        std::pair{ "StencilFront"_c, &RenderStateStencilFront },
+        std::pair{ "StencilBack"_c, &RenderStateStencilBack },
+        std::pair{ "LogicOpEnabled"_c, &RenderStateLogicOpEnabled },
+        std::pair{ "LogicOp"_c, &RenderStateLogicOp },
+        std::pair{ "BlendEnabled"_c, &RenderStateBlendEnabled },
+        std::pair{ "SourceBlend"_c, &RenderStateSourceBlend },
+        std::pair{ "DestinationBlend"_c, &RenderStateDestinationBlend },
+        std::pair{ "SourceAlphaBlend"_c, &RenderStateSourceAlphaBlend },
+        std::pair{ "DestinationAlphaBlend"_c, &RenderStateDestinationAlphaBlend },
+        std::pair{ "ColorBlendOp"_c, &RenderStateColorBlendOp },
+        std::pair{ "AlphaBlendOp"_c, &RenderStateAlphaBlendOp },
+        std::pair{ "Mask"_c, &RenderStateMask },
+    }};
+};
+
+Variable SamplerStateAddress;
+Variable SamplerStateAddressU;
+Variable SamplerStateAddressV;
+Variable SamplerStateAddressW;
+Variable SamplerStateFilter;
+Variable SamplerStateMinFilter;
+Variable SamplerStateMagFilter;
+Variable SamplerStateMipFilter;
+Variable SamplerStateMipLodBias;
+Variable SamplerStateAnisotropyEnabled;
+Variable SamplerStateMaxAnisotropy;
+Variable SamplerStateCompareEnabled;
+Variable SamplerStateCompareFunction;
+Variable SamplerStateMinLod;
+Variable SamplerStateMaxLod;
+Variable SamplerStateBorderColor;
+Variable SamplerStateUnnormalizedSamplingEnabled;
+SamplerState SamplerStateType;
+SamplerState::SamplerState()
+{
+    this->name = "SamplerState";
+    this->category = Type::UserTypeCategory;
+    this->builtin = true;
+    SamplerStateAddress.name = "Address"_c;
+    SamplerStateAddress.type = Type::FullType{ AddressModeType.name };
+    Symbol::Resolved(&SamplerStateAddress)->typeSymbol = &AddressModeType;
+
+    SamplerStateAddressU.name = "AddressU"_c;
+    SamplerStateAddressU.type = Type::FullType{ AddressModeType.name };
+    Symbol::Resolved(&SamplerStateAddressU)->typeSymbol = &AddressModeType;
+
+    SamplerStateAddressV.name = "AddressV"_c;
+    SamplerStateAddressV.type = Type::FullType{ AddressModeType.name };
+    Symbol::Resolved(&SamplerStateAddressV)->typeSymbol = &AddressModeType;
+
+    SamplerStateAddressW.name = "AddressW"_c;
+    SamplerStateAddressW.type = Type::FullType{ AddressModeType.name };
+    Symbol::Resolved(&SamplerStateAddressW)->typeSymbol = &AddressModeType;
+
+    SamplerStateFilter.name = "Filter"_c;
+    SamplerStateFilter.type = Type::FullType{ FilterModeType.name };
+    Symbol::Resolved(&SamplerStateFilter)->typeSymbol = &FilterModeType;
+
+    SamplerStateMinFilter.name = "MinFilter"_c;
+    SamplerStateMinFilter.type = Type::FullType{ FilterModeType.name };
+    Symbol::Resolved(&SamplerStateMinFilter)->typeSymbol = &FilterModeType;
+
+    SamplerStateMagFilter.name = "MagFilter"_c;
+    SamplerStateMagFilter.type = Type::FullType{ FilterModeType.name };
+    Symbol::Resolved(&SamplerStateMagFilter)->typeSymbol = &FilterModeType;
+
+    SamplerStateMipFilter.name = "MipFilter"_c;
+    SamplerStateMipFilter.type = Type::FullType{ FilterModeType.name };
+    Symbol::Resolved(&SamplerStateMipFilter)->typeSymbol = &FilterModeType;
+
+    SamplerStateMipLodBias.name = "MipLodBias"_c;
+    SamplerStateMipLodBias.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&SamplerStateMipLodBias)->typeSymbol = &Float32Type;
+
+    SamplerStateAnisotropyEnabled.name = "AnisotropyEnabled"_c;
+    SamplerStateAnisotropyEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&SamplerStateAnisotropyEnabled)->typeSymbol = &Bool8Type;
+
+    SamplerStateMaxAnisotropy.name = "MaxAnisotropy"_c;
+    SamplerStateMaxAnisotropy.type = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&SamplerStateMaxAnisotropy)->typeSymbol = &UInt32Type;
+
+    SamplerStateCompareEnabled.name = "CompareEnabled"_c;
+    SamplerStateCompareEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&SamplerStateCompareEnabled)->typeSymbol = &Bool8Type;
+
+    SamplerStateCompareFunction.name = "CompareFunction"_c;
+    SamplerStateCompareFunction.type = Type::FullType{ CompareModeType.name };
+    Symbol::Resolved(&SamplerStateCompareFunction)->typeSymbol = &CompareModeType;
+
+    SamplerStateMinLod.name = "MinLod"_c;
+    SamplerStateMinLod.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&SamplerStateMinLod)->typeSymbol = &Float32Type;
+
+    SamplerStateMaxLod.name = "MaxLod"_c;
+    SamplerStateMaxLod.type = Type::FullType{ Float32Type.name };
+    Symbol::Resolved(&SamplerStateMaxLod)->typeSymbol = &Float32Type;
+
+    SamplerStateBorderColor.name = "BorderColor"_c;
+    SamplerStateBorderColor.type = Type::FullType{ BorderColorType.name };
+    Symbol::Resolved(&SamplerStateBorderColor)->typeSymbol = &BorderColorType;
+
+    SamplerStateUnnormalizedSamplingEnabled.name = "UnnormalizedSamplingEnabled"_c;
+    SamplerStateUnnormalizedSamplingEnabled.type = Type::FullType{ Bool8Type.name };
+    Symbol::Resolved(&SamplerStateUnnormalizedSamplingEnabled)->typeSymbol = &Bool8Type;
+
+    this->scope.symbolLookup = StaticMap { std::array{
+        std::pair{ "Address"_c, &SamplerStateAddress },
+        std::pair{ "AddressU"_c, &SamplerStateAddressU },
+        std::pair{ "AddressV"_c, &SamplerStateAddressV },
+        std::pair{ "AddressW"_c, &SamplerStateAddressW },
+        std::pair{ "Filter"_c, &SamplerStateFilter },
+        std::pair{ "MinFilter"_c, &SamplerStateMinFilter },
+        std::pair{ "MagFilter"_c, &SamplerStateMagFilter },
+        std::pair{ "MipFilter"_c, &SamplerStateMipFilter },
+        std::pair{ "MipLodBias"_c, &SamplerStateMipLodBias },
+        std::pair{ "AnisotropyEnabled"_c, &SamplerStateAnisotropyEnabled },
+        std::pair{ "MaxAnisotropy"_c, &SamplerStateMaxAnisotropy },
+        std::pair{ "CompareEnabled"_c, &SamplerStateCompareEnabled },
+        std::pair{ "CompareFunction"_c, &SamplerStateCompareFunction },
+        std::pair{ "MinLod"_c, &SamplerStateMinLod },
+        std::pair{ "MaxLod"_c, &SamplerStateMaxLod },
+        std::pair{ "BorderColor"_c, &SamplerStateBorderColor },
+        std::pair{ "UnnormalizedSamplingEnabled"_c, &SamplerStateUnnormalizedSamplingEnabled },
+    }};
+};
+
 } // namespace GPULang
 

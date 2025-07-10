@@ -105,7 +105,7 @@ struct Symbol
     */
     //------------------------------------------------------------------------------
     FixedString name;
-    std::string documentation;
+    FixedString documentation;
     SymbolType symbolType;
 
     Location location;
