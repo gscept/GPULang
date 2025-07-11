@@ -14231,19 +14231,11 @@ TextureCubeArray::TextureCubeArray()
     this->builtin = true;
 };
 
-PixelCache::PixelCache()
+Sampler::Sampler()
 {
-    this->name = "pixelCache";
-    this->category = Type::PixelCacheCategory;
-    this->baseType = TypeCode::PixelCache;
-    this->builtin = true;
-};
-
-PixelCacheMS::PixelCacheMS()
-{
-    this->name = "pixelCacheMS";
-    this->category = Type::PixelCacheCategory;
-    this->baseType = TypeCode::PixelCache;
+    this->name = "sampler"_c;
+    this->category = Type::SamplerCategory;
+    this->baseType = TypeCode::Sampler;
     this->builtin = true;
 };
 

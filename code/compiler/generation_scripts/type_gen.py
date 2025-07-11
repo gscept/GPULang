@@ -801,6 +801,21 @@ def generate_types():
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
+    class_decl += 'struct Sampler : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    Sampler();\n'
+    class_decl += '};\n'
+    class_decl += 'extern Sampler SamplerType;\n\n'
+
+    class_def = ""
+    class_def += 'Sampler::Sampler()\n'.format(dim, dim)
+    class_def += '{\n'
+    class_def += '    this->name = "sampler"_c;\n'.format(dim)
+    class_def += '    this->category = Type::SamplerCategory;\n'
+    class_def += '    this->baseType = TypeCode::Sampler;\n'.format(type)
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n'
+
     header_file.write(class_decl)
     source_file.write(class_def)
 
@@ -2220,6 +2235,374 @@ def generate_types():
             intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    # Atomics
+    atomic_types = ['UInt32', 'Int32', 'UInt16', 'Int16']
+    atomic_functions_no_value = ['Load', 'Increment', 'Decrement']
+
+    for atomic_type in atomic_types:
+        for atomic_function in atomic_functions_no_value:
+            function_name = 'Atomic{}_{}'.format(atomic_function, atomic_type)
+            ptr_argument_name = 'Atomic{}_{}_ptr'.format(atomic_function, atomic_type)
+            semantics_argument_name = 'Atomic{}_{}_semantics'.format(atomic_function, atomic_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(ptr_argument_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(semantics_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(ptr_argument_name)
+            intrinsic_defs += 'Variable {};\n'.format(semantics_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "ptr"_c;\n'.format(ptr_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    {}.name = "semantics"_c;\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ MemorySemanticsType.name }};\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.type.literal = true;\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.name = "atomic{}"_c;\n'.format(function_name, atomic_function)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, atomic_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
+
+    atomic_functions_with_argument = ['Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
+    for atomic_type in atomic_types:
+        for atomic_function in atomic_functions_with_argument:
+            function_name = 'Atomic{}_{}'.format(atomic_function, atomic_type)
+            ptr_argument_name = 'Atomic{}_{}_ptr'.format(atomic_function, atomic_type)
+            value_argument_name = 'Atomic{}_{}_value'.format(atomic_function, atomic_type)
+            semantics_argument_name = 'Atomic{}_{}_semantics'.format(atomic_function, atomic_type)
+            intrinsic_decls += 'extern Variable {};\n'.format(ptr_argument_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(semantics_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(ptr_argument_name)
+            intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+            intrinsic_defs += 'Variable {};\n'.format(semantics_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "ptr"_c;\n'.format(ptr_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, atomic_type)
+            intrinsic_setup += '    {}.name = "semantics"_c;\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ MemorySemanticsType.name }};\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.type.literal = true;\n'.format(semantics_argument_name)
+            intrinsic_setup += '    {}.name = "atomic{}"_c;\n'.format(function_name, atomic_function)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, atomic_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ptr_argument_name, atomic_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, atomic_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
+
+    for atomic_type in atomic_types:
+        atomic_function = 'CompareExchange'
+        function_name = 'Atomic{}_{}'.format(atomic_function, atomic_type)
+        ptr_argument_name = 'Atomic{}_{}_ptr'.format(atomic_function, atomic_type)
+        value_argument_name = 'Atomic{}_{}_value'.format(atomic_function, atomic_type)
+        compare_argument_name = 'Atomic{}_{}_compare'.format(atomic_function, atomic_type)
+        semantics_argument_name = 'Atomic{}_{}_semantics'.format(atomic_function, atomic_type)
+        intrinsic_decls += 'extern Variable {};\n'.format(ptr_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(compare_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(semantics_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(ptr_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(compare_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(semantics_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "ptr"_c;\n'.format(ptr_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(ptr_argument_name, atomic_type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(ptr_argument_name, atomic_type)
+        intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, atomic_type)
+        intrinsic_setup += '    {}.name = "compare"_c;\n'.format(compare_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(compare_argument_name, atomic_type)
+        intrinsic_setup += '    {}.name = "semantics"_c;\n'.format(semantics_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ MemorySemanticsType.name }};\n'.format(semantics_argument_name)
+        intrinsic_setup += '    {}.type.literal = true;\n'.format(semantics_argument_name)
+        intrinsic_setup += '    {}.name = "atomic{}"_c;\n'.format(function_name, atomic_function)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, atomic_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ptr_argument_name, atomic_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, atomic_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(compare_argument_name, atomic_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
+
+    intrinsic = 'Insert'
+    for type in unsigned_types:
+        function_name = 'Bit{}'.format(intrinsic)
+        base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
+        value_argument_name = 'Bit{}_{}_value'.format(intrinsic, type)
+        offset_argument_name = 'Bit{}_{}_offset'.format(intrinsic, type)
+        count_argument_name = 'Bit{}_{}_count'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(offset_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(count_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(offset_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(count_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
+        intrinsic_setup += '    {}.name = "value"_c ;\n'.format(value_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, type)
+        intrinsic_setup += '    {}.name = "offset"_c;\n'.format(offset_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(offset_argument_name, type)
+        intrinsic_setup += '    {}.name = "count"_c;\n'.format(count_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(count_argument_name, type)
+        intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(offset_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(count_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+
+    intrinsic = 'Extract'
+    for type in integer_types:
+        function_name = 'Bit{}'.format(intrinsic)
+        base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
+        offset_argument_name = 'Bit{}_{}_offset'.format(intrinsic, type)
+        count_argument_name = 'Bit{}_{}_count'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(offset_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(count_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(offset_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(count_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
+        intrinsic_setup += '    {}.name = "offset"_c ;\n'.format(offset_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(offset_argument_name, type)
+        intrinsic_setup += '    {}.name = "count"_c;\n'.format(count_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(count_argument_name, type)
+        intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(offset_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(count_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+
+    intrinsics = ['Reverse', 'Count']
+    for intrinsic in intrinsics:
+        for type in integer_types:
+            function_name = 'Bit{}'.format(intrinsic)
+            base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
+            intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
+            intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+
+    barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup', 'MemoryBarrier', 'MemoryBarrierBuffer', 'MemoryBarrierTexture', 'MemoryBarrierAtomic', 'MemoryBarrierSubgroup', 'MemoryBarrierWorkgroup']
+    for intrinsic in barrier_intrinsics:
+        function_name = '{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic[0].lower() + intrinsic[1:])
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+    texture_types_no_ms = ['Texture1D', 'Texture2D', 'Texture3D', 'TextureCube', 'Texture1DArray', 'Texture2DArray', 'TextureCubeArray']
+    texture_types_ms = ['Texture2DMS', 'Texture2DMSArray']
+    texture_types_array = ['Texture1DArray', 'Texture2DArray', 'TextureCubeArray']
+    texture_types_ms_array = ['Texture2DMSArray']
+
+    texture_size_types = []
+    type = 'UInt32'
+    texture_size_types.append(
+        { 
+            'Texture1D': f"{type}",
+            'Texture2D': f"{type}x2",
+            'Texture3D': f"{type}x3",
+            'TextureCube': f"{type}x3",
+            'Texture1DArray': f"{type}x2",
+            'Texture2DArray': f"{type}x3",
+            'TextureCubeArray': f"{type}x4",
+            'Texture2DMS': f"{type}x2",
+            'Texture2DMSArray': f"{type}x3"
+        }
+    )
+
+    type = 'Int32'
+    texture_denormalized_index_types = [
+        {
+            'Texture1D': f"{type}",
+            'Texture2D': f"{type}x2",
+            'Texture3D': f"{type}x3",
+            'TextureCube': f"{type}x3",
+            'Texture1DArray': f"{type}x2",
+            'Texture2DArray': f"{type}x3",
+            'TextureCubeArray': f"{type}x4",
+            'Texture2DMS': f"{type}x2",
+            'Texture2DMSArray': f"{type}x3"
+        }
+    ]
+
+    type = 'Float32'
+    texture_float_index_types = [
+        {
+            'Texture1D': f"{type}",
+            'Texture2D': f"{type}x2",
+            'Texture3D': f"{type}x3",
+            'TextureCube': f"{type}x3",
+            'Texture1DArray': f"{type}x2",
+            'Texture2DArray': f"{type}x3",
+            'TextureCubeArray': f"{type}x4",
+            'Texture2DMS': f"{type}x2",
+            'Texture2DMSArray': f"{type}x3"
+        }
+    ]
+
+    intrinsic = 'GetSize'
+    for type in texture_types_no_ms:
+        for addressing in texture_size_types:
+            return_type = addressing[type]
+            function_name = 'Texture{}_{}'.format(intrinsic, type)
+            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+
+    intrinsic = 'GetSizeMip'
+    for type in texture_types_no_ms:
+        for addressing in texture_size_types:
+            return_type = addressing[type]
+            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+            mip_argument_name = 'Texture{}_{}_mip'.format(intrinsic, 'UInt32')
+            function_name = 'Texture{}_{}'.format(intrinsic, type)
+            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+            intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'UInt32')
+            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'UInt32')
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+
+    intrinsic = 'GetMips'
+    for type in texture_types_no_ms:
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    intrinsic = 'GetSamples'
+    for type in texture_types_ms:
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+    # Helper function to generate a version of the texture sampling method both for combined texture-samplers and for textures with samplers provided separately.
+    def generate_texture_intrinsic_base(intrinsic):
+        texture_argument_name = '{}_texture'.format(intrinsic)
+        sampler_argument_name = '{}_sampler'.format(intrinsic)
+        decls = ''
+        decls += 'extern Variable {};\n'.format(texture_argument_name)
+        decls += 'extern Variable {};\n'.format(sampler_argument_name)
+
+        defs = ''
+        defs += 'Variable {};\n'.format(texture_argument_name)
+        defs += 'Variable {};\n'.format(sampler_argument_name)
+
+        setup = ''
+        setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        setup += '    {}.name = "sampler"_c;\n'.format(sampler_argument_name)
+        setup += '    {}.type = Type::FullType{{ SamplerType.name }};\n'.format(sampler_argument_name)
+        setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(sampler_argument_name)
+        setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(sampler_argument_name, 'Sampler')
+        setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(sampler_argument_name)
+
+        sampled_decls = ''
+        sampled_decls += 'extern Variable Sampled{};\n'.format(texture_argument_name)
+
+        sampled_defs = ''
+        sampled_defs += 'Variable Sampled{};\n'.format(texture_argument_name)
+
+        sampled_setup = ''
+        sampled_setup += '    Sampled{}.name = "texture"_c;\n'.format(texture_argument_name)
+        sampled_setup += '    Sampled{}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        sampled_setup += '    Sampled{}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        sampled_setup += '    Symbol::Resolved(&Sampled{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        sampled_setup += '    Symbol::Resolved(&Sampled{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        return [(decls, defs, setup, ''), (sampled_decls, sampled_defs, sampled_setup, 'Sampled')]
+
+    intrinsic = 'GetSampledMip'
+    for type in texture_types_no_ms:
+        for addressing in texture_float_index_types:
+            coordinate_type = addressing[type]
+            function_name = 'Texture{}_{}'.format(intrinsic, type)
+
+            for defs in generate_texture_intrinsic_base(function_name):
+                base_decls, base_defs, base_setup, prefix = defs
+                coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
+                intrinsic_decls += base_decls
+                intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+                intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
+                intrinsic_defs += base_defs
+                intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+                intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
+
+                intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+                intrinsic_setup += '    {}{}.name = "texture{}"_c;\n'.format(prefix, function_name, intrinsic)
+                intrinsic_setup += '    {}{}.returnType = Type::FullType{{ {}Type.name }};\n'.format(prefix, function_name, 'Float32x2')
+                intrinsic_setup += base_setup
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+                intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &{}Type;\n\n'.format(prefix, function_name, 'Float32x2')
 
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('} // namespace GPULang\n\n')

@@ -8009,6 +8009,12 @@ struct PixelCacheMS : public Type
 };
 extern PixelCacheMS PixelCacheMSType;
 
+struct Sampler : public Type
+{
+    Sampler();
+};
+extern Sampler SamplerType;
+
 struct AccelerationStructure : public Type
 {
     AccelerationStructure();
