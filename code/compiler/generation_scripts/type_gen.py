@@ -2415,8 +2415,8 @@ def generate_types():
 
     texture_types_no_ms = ['Texture1D', 'Texture2D', 'Texture3D', 'TextureCube', 'Texture1DArray', 'Texture2DArray', 'TextureCubeArray']
     texture_types_ms = ['Texture2DMS', 'Texture2DMSArray']
-    texture_types_array = ['Texture1DArray', 'Texture2DArray', 'TextureCubeArray']
-    texture_types_ms_array = ['Texture2DMSArray']
+
+    texture_types = texture_types_no_ms + texture_types_ms
 
     texture_size_types = []
     type = 'UInt32'
@@ -2603,6 +2603,66 @@ def generate_types():
                 intrinsic_setup += base_setup
                 intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
                 intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &{}Type;\n\n'.format(prefix, function_name, 'Float32x2')
+
+    texture_load_store_intrinsics = ['Load', 'LoadMip', 'Store', 'StoreMip']
+    for type in texture_types:
+        for addressing in texture_denormalized_index_types:
+            coordinate_type = addressing[type]
+            for intrinsic in texture_load_store_intrinsics:
+                hasMip = intrinsic in ['LoadMip', 'StoreMip']
+                hasStore = intrinsic in ['Store', 'StoreMip']
+                function_name = 'Texture{}_{}'.format(intrinsic, type)
+                texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+
+                coordinate_argument_name = '{}_coordinate'.format(function_name)
+                if hasMip:
+                    mip_argument_name = '{}_mip'.format(function_name)
+                if hasStore:
+                    value_argument_name = '{}_value'.format(function_name)
+
+                intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+                intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+                if hasMip:
+                    intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
+                if hasStore:
+                    intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+                intrinsic_decls += 'extern Function {};\n'.format(function_name)
+
+                intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+                intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+                if hasMip:
+                    intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
+                if hasStore:
+                    intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+                intrinsic_defs += 'Function {};\n'.format(function_name)
+
+                intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+                intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+                
+                intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+                if hasMip:
+                    intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
+                    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'Int32')
+                if hasStore:
+                    intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
+                    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'Float32x4')
+                intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+
+                if not hasStore:
+                    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+                else:
+                    intrinsic_setup += '    {}.returnType = Type::FullType{{ VoidType.name }};\n'.format(function_name)
+
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+                intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+                if hasMip:
+                    intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'Int32')
+                if hasStore:
+                    intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, 'Float32x4')
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+
 
     intrinsics_header.write(intrinsic_decls)
     intrinsics_header.write('} // namespace GPULang\n\n')
