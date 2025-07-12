@@ -2418,95 +2418,86 @@ def generate_types():
 
     texture_types = texture_types_no_ms + texture_types_ms
 
-    texture_size_types = []
     type = 'UInt32'
-    texture_size_types.append(
-        { 
-            'Texture1D': f"{type}",
-            'Texture2D': f"{type}x2",
-            'Texture3D': f"{type}x3",
-            'TextureCube': f"{type}x3",
-            'Texture1DArray': f"{type}x2",
-            'Texture2DArray': f"{type}x3",
-            'TextureCubeArray': f"{type}x4",
-            'Texture2DMS': f"{type}x2",
-            'Texture2DMSArray': f"{type}x3"
-        }
-    )
+    texture_size_types = {
+        'Texture1D': f"{type}",
+        'Texture2D': f"{type}x2",
+        'Texture3D': f"{type}x3",
+        'TextureCube': f"{type}x3",
+        'Texture1DArray': f"{type}x2",
+        'Texture2DArray': f"{type}x3",
+        'TextureCubeArray': f"{type}x4",
+        'Texture2DMS': f"{type}x2",
+        'Texture2DMSArray': f"{type}x3"
+    }
 
     type = 'Int32'
-    texture_denormalized_index_types = [
-        {
-            'Texture1D': f"{type}",
-            'Texture2D': f"{type}x2",
-            'Texture3D': f"{type}x3",
-            'TextureCube': f"{type}x3",
-            'Texture1DArray': f"{type}x2",
-            'Texture2DArray': f"{type}x3",
-            'TextureCubeArray': f"{type}x4",
-            'Texture2DMS': f"{type}x2",
-            'Texture2DMSArray': f"{type}x3"
-        }
-    ]
+    texture_denormalized_index_types = {
+        'Texture1D': f"{type}",
+        'Texture2D': f"{type}x2",
+        'Texture3D': f"{type}x3",
+        'TextureCube': f"{type}x3",
+        'Texture1DArray': f"{type}x2",
+        'Texture2DArray': f"{type}x3",
+        'TextureCubeArray': f"{type}x4",
+        'Texture2DMS': f"{type}x2",
+        'Texture2DMSArray': f"{type}x3"
+    }
 
     type = 'Float32'
-    texture_float_index_types = [
-        {
-            'Texture1D': f"{type}",
-            'Texture2D': f"{type}x2",
-            'Texture3D': f"{type}x3",
-            'TextureCube': f"{type}x3",
-            'Texture1DArray': f"{type}x2",
-            'Texture2DArray': f"{type}x3",
-            'TextureCubeArray': f"{type}x4",
-            'Texture2DMS': f"{type}x2",
-            'Texture2DMSArray': f"{type}x3"
-        }
-    ]
+    texture_float_index_types = {
+        'Texture1D': f"{type}",
+        'Texture2D': f"{type}x2",
+        'Texture3D': f"{type}x3",
+        'TextureCube': f"{type}x3",
+        'Texture1DArray': f"{type}x2",
+        'Texture2DArray': f"{type}x3",
+        'TextureCubeArray': f"{type}x4",
+        'Texture2DMS': f"{type}x2",
+        'Texture2DMSArray': f"{type}x3"
+    }
 
     intrinsic = 'GetSize'
     for type in texture_types_no_ms:
-        for addressing in texture_size_types:
-            return_type = addressing[type]
-            function_name = 'Texture{}_{}'.format(intrinsic, type)
-            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+        return_type = texture_size_types[type]
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
 
     intrinsic = 'GetSizeMip'
     for type in texture_types_no_ms:
-        for addressing in texture_size_types:
-            return_type = addressing[type]
-            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
-            mip_argument_name = 'Texture{}_{}_mip'.format(intrinsic, 'UInt32')
-            function_name = 'Texture{}_{}'.format(intrinsic, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-            intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-            intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'UInt32')
-            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'UInt32')
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+        return_type = texture_size_types[type]
+        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        mip_argument_name = 'Texture{}_{}_mip'.format(intrinsic, 'UInt32')
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+        intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'UInt32')
+        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'UInt32')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
 
     intrinsic = 'GetMips'
     for type in texture_types_no_ms:
@@ -2582,86 +2573,200 @@ def generate_types():
 
     intrinsic = 'GetSampledMip'
     for type in texture_types_no_ms:
-        for addressing in texture_float_index_types:
-            coordinate_type = addressing[type]
-            function_name = 'Texture{}_{}'.format(intrinsic, type)
+        coordinate_type = texture_float_index_types[type]
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
 
-            for defs in generate_texture_intrinsic_base(function_name):
-                base_decls, base_defs, base_setup, prefix = defs
-                coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
-                intrinsic_decls += base_decls
-                intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
-                intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
-                intrinsic_defs += base_defs
-                intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
-                intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
+        for defs in generate_texture_intrinsic_base(function_name):
+            base_decls, base_defs, base_setup, prefix = defs
+            coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
+            intrinsic_decls += base_decls
+            intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+            intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
+            intrinsic_defs += base_defs
+            intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+            intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
 
-                intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
-                intrinsic_setup += '    {}{}.name = "texture{}"_c;\n'.format(prefix, function_name, intrinsic)
-                intrinsic_setup += '    {}{}.returnType = Type::FullType{{ {}Type.name }};\n'.format(prefix, function_name, 'Float32x2')
-                intrinsic_setup += base_setup
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
-                intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &{}Type;\n\n'.format(prefix, function_name, 'Float32x2')
+            intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+            intrinsic_setup += '    {}{}.name = "texture{}"_c;\n'.format(prefix, function_name, intrinsic)
+            intrinsic_setup += '    {}{}.returnType = Type::FullType{{ {}Type.name }};\n'.format(prefix, function_name, 'Float32x2')
+            intrinsic_setup += base_setup
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+            intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &{}Type;\n\n'.format(prefix, function_name, 'Float32x2')
 
     texture_load_store_intrinsics = ['Load', 'LoadMip', 'Store', 'StoreMip']
     for type in texture_types:
-        for addressing in texture_denormalized_index_types:
-            coordinate_type = addressing[type]
-            for intrinsic in texture_load_store_intrinsics:
-                hasMip = intrinsic in ['LoadMip', 'StoreMip']
-                hasStore = intrinsic in ['Store', 'StoreMip']
-                function_name = 'Texture{}_{}'.format(intrinsic, type)
-                texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        coordinate_type = texture_denormalized_index_types[type]
+        for intrinsic in texture_load_store_intrinsics:
+            hasMip = intrinsic in ['LoadMip', 'StoreMip']
+            hasStore = intrinsic in ['Store', 'StoreMip']
+            function_name = 'Texture{}_{}'.format(intrinsic, type)
+            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
 
-                coordinate_argument_name = '{}_coordinate'.format(function_name)
-                if hasMip:
-                    mip_argument_name = '{}_mip'.format(function_name)
-                if hasStore:
-                    value_argument_name = '{}_value'.format(function_name)
+            coordinate_argument_name = '{}_coordinate'.format(function_name)
+            if hasMip:
+                mip_argument_name = '{}_mip'.format(function_name)
+            if hasStore:
+                value_argument_name = '{}_value'.format(function_name)
 
-                intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-                intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
-                if hasMip:
-                    intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
-                if hasStore:
-                    intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
-                intrinsic_decls += 'extern Function {};\n'.format(function_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+            intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+            if hasMip:
+                intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
+            if hasStore:
+                intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
+            intrinsic_decls += 'extern Function {};\n'.format(function_name)
 
-                intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-                intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
-                if hasMip:
-                    intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
-                if hasStore:
-                    intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
-                intrinsic_defs += 'Function {};\n'.format(function_name)
+            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+            intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+            if hasMip:
+                intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
+            if hasStore:
+                intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
+            intrinsic_defs += 'Function {};\n'.format(function_name)
 
-                intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-                intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-                
-                intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
-                if hasMip:
-                    intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
-                    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'Int32')
-                if hasStore:
-                    intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
-                    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'Float32x4')
-                intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+            
+            intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+            if hasMip:
+                intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'Int32')
+            if hasStore:
+                intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
+                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'Float32x4')
+            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
 
-                if not hasStore:
-                    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-                else:
-                    intrinsic_setup += '    {}.returnType = Type::FullType{{ VoidType.name }};\n'.format(function_name)
+            if not hasStore:
+                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+            else:
+                intrinsic_setup += '    {}.returnType = Type::FullType{{ VoidType.name }};\n'.format(function_name)
 
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-                intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-                if hasMip:
-                    intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'Int32')
-                if hasStore:
-                    intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, 'Float32x4')
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+            if hasMip:
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'Int32')
+            if hasStore:
+                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, 'Float32x4')
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(coordinate_argument_name, coordinate_type)
+
+    intrinsic = 'PixelCacheLoad'
+    for type in ['PixelCache', 'PixelCacheMS']:
+        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+        coordinate_argument_name = '{}_coordinate'.format(function_name)
+        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
+        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ Float32x4Type.name }};\n'.format(function_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
+        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &Float32x4Type;\n\n'.format(function_name)
+
+    intrinsic = 'Sample'
+    lod_modifiers = ['', 'Lod', 'Grad', 'Bias']
+    compare_modifiers = ['', 'Compare']
+    projection_modifiers = ['', 'Proj']
+    for lod in lod_modifiers:
+        for comp in compare_modifiers:
+            for proj in projection_modifiers:
+                for type in texture_types_no_ms:
+                    function_name = 'Texture{}{}{}{}_{}'.format(intrinsic, lod, proj, comp, type)
+
+                    for defs in generate_texture_intrinsic_base(function_name):
+                        base_decls, base_defs, base_setup, prefix = defs
+
+                        if comp == 'Compare' and type.startswith('TextureCube'):
+                            continue
+
+                        if proj == 'Proj' and type.endswith('Array'):
+                            continue
+
+                        if proj == 'Proj' and type.startswith('TextureCube'):
+                            continue
+
+                        coordinate_type = texture_float_index_types[type]
+                        coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
+                        if lod == 'Lod':
+                            lod_argument_name = '{}{}_lod'.format(prefix, function_name)
+                        elif lod == 'Grad':
+                            lodx_argument_name = '{}{}_gradx'.format(prefix, function_name)
+                            lody_argument_name = '{}{}_grady'.format(prefix, function_name)
+                        elif lod == 'Bias':
+                            lod_argument_name = '{}{}_bias'.format(prefix, function_name)
+                        if proj == 'Proj':
+                            proj_argument_name = '{}{}_proj'.format(prefix, function_name)
+                        if comp == 'Compare':
+                            compare_argument_name = '{}{}_compare'.format(prefix, function_name)
+                        
+
+                        intrinsic_decls += base_decls
+                        intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+                        if lod == 'Lod' or lod == 'Bias':
+                            intrinsic_decls += 'extern Variable {};\n'.format(lod_argument_name)
+                        elif lod == 'Grad':
+                            intrinsic_decls += 'extern Variable {};\n'.format(lodx_argument_name)
+                            intrinsic_decls += 'extern Variable {};\n'.format(lody_argument_name)
+                        if proj == 'Proj':
+                            intrinsic_decls += 'extern Variable {};\n'.format(proj_argument_name)
+                        if comp == 'Compare':
+                            intrinsic_decls += 'extern Variable {};\n'.format(compare_argument_name)
+                        
+                        intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
+
+                        intrinsic_defs += base_defs
+                        intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+                        if lod:
+                            intrinsic_defs += 'Variable {};\n'.format(lod_argument_name)
+                        if proj == 'Proj':
+                            intrinsic_defs += 'Variable {};\n'.format(proj_argument_name)
+                        if comp == 'Compare':
+                            intrinsic_defs += 'Variable {};\n'.format(compare_argument_name)
+                        
+                        intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
+
+                        intrinsic_setup += base_setup
+                        intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
+                        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+                        if lod == 'Lod':
+                            intrinsic_setup += '    {}.name = "lod"_c;\n'.format(lod_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(lod_argument_name)
+                        elif lod == 'Bias':
+                            intrinsic_setup += '    {}.name = "bias"_c;\n'.format(lod_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(lod_argument_name)
+                        elif lod == 'Grad':
+                            intrinsic_setup += '    {}.name = "grad_x"_c;\n'.format(lodx_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ {}.name }};\n'.format(lodx_argument_name, coordinate_type)
+                            intrinsic_setup += '    {}.name = "grad_y"_c;\n'.format(lody_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ {}.name }};\n'.format(lody_argument_name, coordinate_type)
+                        if proj == 'Proj':
+                            intrinsic_setup += '    {}.name = "proj"_c;\n'.format(proj_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(proj_argument_name)
+                        if comp == 'Compare':
+                            intrinsic_setup += '    {}.name = "compare"_c;\n'.format(compare_argument_name)
+                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(compare_argument_name)
+                        
+                        intrinsic_setup += '    {}{}.name = "texture{}{}{}{}"_c;\n'.format(prefix, function_name, intrinsic, lod, proj, comp)
+                        intrinsic_setup += '    {}{}.returnType = Type::FullType{{ Float32x4Type.name }};\n'.format(prefix, function_name)
+                        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+                        if lod == 'Lod' or lod == 'Bias':
+                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(lod_argument_name)
+                        elif lod == 'Grad':
+                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{};\n'.format(lodx_argument_name, coordinate_type)
+                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{};\n'.format(lody_argument_name, coordinate_type)
+                        if comp == 'Compare':
+                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(compare_argument_name)
+                        if proj == 'Proj':
+                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(proj_argument_name)
+                        intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &Float32x4Type;\n\n'.format(prefix, function_name)
+
 
 
     intrinsics_header.write(intrinsic_decls)
