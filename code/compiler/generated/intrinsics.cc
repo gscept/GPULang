@@ -2281,15 +2281,6 @@ Variable SampledTextureSampleProj_Texture3D_texture;
 Variable SampledTextureSampleProj_Texture3D_coordinate;
 Variable SampledTextureSampleProj_Texture3D_proj;
 Function SampledTextureSampleProj_Texture3D;
-Variable TextureSampleProj_TextureCube_texture;
-Variable TextureSampleProj_TextureCube_sampler;
-Variable TextureSampleProj_TextureCube_coordinate;
-Variable TextureSampleProj_TextureCube_proj;
-Function TextureSampleProj_TextureCube;
-Variable SampledTextureSampleProj_TextureCube_texture;
-Variable SampledTextureSampleProj_TextureCube_coordinate;
-Variable SampledTextureSampleProj_TextureCube_proj;
-Function SampledTextureSampleProj_TextureCube;
 Variable TextureSampleCompare_Texture1D_texture;
 Variable TextureSampleCompare_Texture1D_sampler;
 Variable TextureSampleCompare_Texture1D_coordinate;
@@ -2464,17 +2455,6 @@ Variable SampledTextureSampleLodProj_Texture3D_coordinate;
 Variable SampledTextureSampleLodProj_Texture3D_lod;
 Variable SampledTextureSampleLodProj_Texture3D_proj;
 Function SampledTextureSampleLodProj_Texture3D;
-Variable TextureSampleLodProj_TextureCube_texture;
-Variable TextureSampleLodProj_TextureCube_sampler;
-Variable TextureSampleLodProj_TextureCube_coordinate;
-Variable TextureSampleLodProj_TextureCube_lod;
-Variable TextureSampleLodProj_TextureCube_proj;
-Function TextureSampleLodProj_TextureCube;
-Variable SampledTextureSampleLodProj_TextureCube_texture;
-Variable SampledTextureSampleLodProj_TextureCube_coordinate;
-Variable SampledTextureSampleLodProj_TextureCube_lod;
-Variable SampledTextureSampleLodProj_TextureCube_proj;
-Function SampledTextureSampleLodProj_TextureCube;
 Variable TextureSampleLodCompare_Texture1D_texture;
 Variable TextureSampleLodCompare_Texture1D_sampler;
 Variable TextureSampleLodCompare_Texture1D_coordinate;
@@ -2665,17 +2645,6 @@ Variable SampledTextureSampleGradProj_Texture3D_coordinate;
 Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 Variable SampledTextureSampleGradProj_Texture3D_proj;
 Function SampledTextureSampleGradProj_Texture3D;
-Variable TextureSampleGradProj_TextureCube_texture;
-Variable TextureSampleGradProj_TextureCube_sampler;
-Variable TextureSampleGradProj_TextureCube_coordinate;
-Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
-Variable TextureSampleGradProj_TextureCube_proj;
-Function TextureSampleGradProj_TextureCube;
-Variable SampledTextureSampleGradProj_TextureCube_texture;
-Variable SampledTextureSampleGradProj_TextureCube_coordinate;
-Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
-Variable SampledTextureSampleGradProj_TextureCube_proj;
-Function SampledTextureSampleGradProj_TextureCube;
 Variable TextureSampleGradCompare_Texture1D_texture;
 Variable TextureSampleGradCompare_Texture1D_sampler;
 Variable TextureSampleGradCompare_Texture1D_coordinate;
@@ -2866,17 +2835,6 @@ Variable SampledTextureSampleBiasProj_Texture3D_coordinate;
 Variable SampledTextureSampleBiasProj_Texture3D_bias;
 Variable SampledTextureSampleBiasProj_Texture3D_proj;
 Function SampledTextureSampleBiasProj_Texture3D;
-Variable TextureSampleBiasProj_TextureCube_texture;
-Variable TextureSampleBiasProj_TextureCube_sampler;
-Variable TextureSampleBiasProj_TextureCube_coordinate;
-Variable TextureSampleBiasProj_TextureCube_bias;
-Variable TextureSampleBiasProj_TextureCube_proj;
-Function TextureSampleBiasProj_TextureCube;
-Variable SampledTextureSampleBiasProj_TextureCube_texture;
-Variable SampledTextureSampleBiasProj_TextureCube_coordinate;
-Variable SampledTextureSampleBiasProj_TextureCube_bias;
-Variable SampledTextureSampleBiasProj_TextureCube_proj;
-Function SampledTextureSampleBiasProj_TextureCube;
 Variable TextureSampleBiasCompare_Texture1D_texture;
 Variable TextureSampleBiasCompare_Texture1D_sampler;
 Variable TextureSampleBiasCompare_Texture1D_coordinate;
@@ -10844,11 +10802,11 @@ void SetupIntrinsics()
     TextureSampleProj_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture1D_proj.name = "proj"_c;
-    TextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture1D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProj_Texture1D_texture.name = "texture"_c;
@@ -10859,11 +10817,11 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture1D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleProj_Texture2D_texture.name = "texture"_c;
@@ -10879,11 +10837,11 @@ void SetupIntrinsics()
     TextureSampleProj_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProj_Texture2D_proj.name = "proj"_c;
-    TextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture2D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProj_Texture2D_texture.name = "texture"_c;
@@ -10894,11 +10852,11 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProj_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture2D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleProj_Texture3D_texture.name = "texture"_c;
@@ -10914,11 +10872,11 @@ void SetupIntrinsics()
     TextureSampleProj_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProj_Texture3D_proj.name = "proj"_c;
-    TextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProj_Texture3D.name = "textureSampleProj"_c;
     TextureSampleProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProj_Texture3D_texture.name = "texture"_c;
@@ -10929,47 +10887,12 @@ void SetupIntrinsics()
     SampledTextureSampleProj_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProj_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProj_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProj_Texture3D.name = "textureSampleProj"_c;
     SampledTextureSampleProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    TextureSampleProj_TextureCube_texture.name = "texture"_c;
-    TextureSampleProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    TextureSampleProj_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleProj_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleProj_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&TextureSampleProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureSampleProj_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleProj_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleProj_TextureCube_sampler)->storage = Storage::Uniform;
-    TextureSampleProj_TextureCube_coordinate.name = "coordinate"_c;
-    TextureSampleProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleProj_TextureCube_proj.name = "proj"_c;
-    TextureSampleProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleProj_TextureCube.name = "textureSampleProj"_c;
-    TextureSampleProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&TextureSampleProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    SampledTextureSampleProj_TextureCube_texture.name = "texture"_c;
-    SampledTextureSampleProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    SampledTextureSampleProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&SampledTextureSampleProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&SampledTextureSampleProj_TextureCube_texture)->storage = Storage::Uniform;
-    SampledTextureSampleProj_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureSampleProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleProj_TextureCube_proj.name = "proj"_c;
-    SampledTextureSampleProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleProj_TextureCube.name = "textureSampleProj"_c;
-    SampledTextureSampleProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&SampledTextureSampleProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
@@ -11159,14 +11082,14 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture1D_proj.name = "proj"_c;
-    TextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture1D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProjCompare_Texture1D_texture.name = "texture"_c;
@@ -11177,14 +11100,14 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture1D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture1D_coordinate.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture1D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleProjCompare_Texture2D_texture.name = "texture"_c;
@@ -11200,14 +11123,14 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     TextureSampleProjCompare_Texture2D_proj.name = "proj"_c;
-    TextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture2D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProjCompare_Texture2D_texture.name = "texture"_c;
@@ -11218,14 +11141,14 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture2D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture2D_coordinate.type = Type::FullType{ Float32x2Type.name };
     SampledTextureSampleProjCompare_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture2D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleProjCompare_Texture3D_texture.name = "texture"_c;
@@ -11241,14 +11164,14 @@ void SetupIntrinsics()
     TextureSampleProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     TextureSampleProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     TextureSampleProjCompare_Texture3D_proj.name = "proj"_c;
-    TextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleProjCompare_Texture3D.name = "textureSampleProjCompare"_c;
     TextureSampleProjCompare_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleProjCompare_Texture3D_texture.name = "texture"_c;
@@ -11259,14 +11182,14 @@ void SetupIntrinsics()
     SampledTextureSampleProjCompare_Texture3D_coordinate.name = "coordinate"_c;
     SampledTextureSampleProjCompare_Texture3D_coordinate.type = Type::FullType{ Float32x3Type.name };
     SampledTextureSampleProjCompare_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleProjCompare_Texture3D.name = "textureSampleProjCompare"_c;
     SampledTextureSampleProjCompare_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLod_Texture1D_texture.name = "texture"_c;
@@ -11529,12 +11452,12 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture1D_lod.name = "lod"_c;
     TextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D_proj.name = "proj"_c;
-    TextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture1D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProj_Texture1D_texture.name = "texture"_c;
@@ -11547,12 +11470,12 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture1D_lod.name = "lod"_c;
     SampledTextureSampleLodProj_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture1D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLodProj_Texture2D_texture.name = "texture"_c;
@@ -11570,12 +11493,12 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture2D_lod.name = "lod"_c;
     TextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture2D_proj.name = "proj"_c;
-    TextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture2D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProj_Texture2D_texture.name = "texture"_c;
@@ -11588,12 +11511,12 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture2D_lod.name = "lod"_c;
     SampledTextureSampleLodProj_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture2D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLodProj_Texture3D_texture.name = "texture"_c;
@@ -11611,12 +11534,12 @@ void SetupIntrinsics()
     TextureSampleLodProj_Texture3D_lod.name = "lod"_c;
     TextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture3D_proj.name = "proj"_c;
-    TextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProj_Texture3D.name = "textureSampleLodProj"_c;
     TextureSampleLodProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProj_Texture3D_texture.name = "texture"_c;
@@ -11629,54 +11552,13 @@ void SetupIntrinsics()
     SampledTextureSampleLodProj_Texture3D_lod.name = "lod"_c;
     SampledTextureSampleLodProj_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProj_Texture3D.name = "textureSampleLodProj"_c;
     SampledTextureSampleLodProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    TextureSampleLodProj_TextureCube_texture.name = "texture"_c;
-    TextureSampleLodProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleLodProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    TextureSampleLodProj_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleLodProj_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleLodProj_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_sampler)->storage = Storage::Uniform;
-    TextureSampleLodProj_TextureCube_coordinate.name = "coordinate"_c;
-    TextureSampleLodProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleLodProj_TextureCube_lod.name = "lod"_c;
-    TextureSampleLodProj_TextureCube_lod.type = Type::FullType{ Float32Type.name };
-    TextureSampleLodProj_TextureCube_proj.name = "proj"_c;
-    TextureSampleLodProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleLodProj_TextureCube.name = "textureSampleLodProj"_c;
-    TextureSampleLodProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleLodProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    SampledTextureSampleLodProj_TextureCube_texture.name = "texture"_c;
-    SampledTextureSampleLodProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    SampledTextureSampleLodProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube_texture)->storage = Storage::Uniform;
-    SampledTextureSampleLodProj_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureSampleLodProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleLodProj_TextureCube_lod.name = "lod"_c;
-    SampledTextureSampleLodProj_TextureCube_lod.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleLodProj_TextureCube_proj.name = "proj"_c;
-    SampledTextureSampleLodProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleLodProj_TextureCube.name = "textureSampleLodProj"_c;
-    SampledTextureSampleLodProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube_lod)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleLodProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLodCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleLodCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
@@ -11898,7 +11780,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
     TextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_proj.name = "proj"_c;
-    TextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture1D.name = "textureSampleLodProjCompare"_c;
@@ -11906,7 +11788,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProjCompare_Texture1D_texture.name = "texture"_c;
@@ -11919,7 +11801,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture1D_lod.name = "lod"_c;
     SampledTextureSampleLodProjCompare_Texture1D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture1D.name = "textureSampleLodProjCompare"_c;
@@ -11927,7 +11809,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
@@ -11945,7 +11827,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
     TextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D_proj.name = "proj"_c;
-    TextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture2D.name = "textureSampleLodProjCompare"_c;
@@ -11953,7 +11835,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProjCompare_Texture2D_texture.name = "texture"_c;
@@ -11966,7 +11848,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture2D_lod.name = "lod"_c;
     SampledTextureSampleLodProjCompare_Texture2D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture2D.name = "textureSampleLodProjCompare"_c;
@@ -11974,7 +11856,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
@@ -11992,7 +11874,7 @@ void SetupIntrinsics()
     TextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
     TextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D_proj.name = "proj"_c;
-    TextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleLodProjCompare_Texture3D.name = "textureSampleLodProjCompare"_c;
@@ -12000,7 +11882,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleLodProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleLodProjCompare_Texture3D_texture.name = "texture"_c;
@@ -12013,7 +11895,7 @@ void SetupIntrinsics()
     SampledTextureSampleLodProjCompare_Texture3D_lod.name = "lod"_c;
     SampledTextureSampleLodProjCompare_Texture3D_lod.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleLodProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleLodProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleLodProjCompare_Texture3D.name = "textureSampleLodProjCompare"_c;
@@ -12021,7 +11903,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_lod)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleLodProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGrad_Texture1D_texture.name = "texture"_c;
@@ -12328,13 +12210,13 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture1D_grady.name = "grad_y"_c;
     TextureSampleGradProj_Texture1D_grady.type = Type::FullType{ Float32.name };
     TextureSampleGradProj_Texture1D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture1D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_gradx)->typeSymbol = &Float32;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D_grady)->typeSymbol = &Float32;
-    Symbol::Resolved(&TextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProj_Texture1D_texture.name = "texture"_c;
@@ -12349,13 +12231,13 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture1D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture1D_grady.type = Type::FullType{ Float32.name };
     SampledTextureSampleGradProj_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture1D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_gradx)->typeSymbol = &Float32;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_grady)->typeSymbol = &Float32;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGradProj_Texture2D_texture.name = "texture"_c;
@@ -12375,13 +12257,13 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture2D_grady.name = "grad_y"_c;
     TextureSampleGradProj_Texture2D_grady.type = Type::FullType{ Float32x2.name };
     TextureSampleGradProj_Texture2D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture2D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_gradx)->typeSymbol = &Float32x2;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D_grady)->typeSymbol = &Float32x2;
-    Symbol::Resolved(&TextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProj_Texture2D_texture.name = "texture"_c;
@@ -12396,13 +12278,13 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture2D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture2D_grady.type = Type::FullType{ Float32x2.name };
     SampledTextureSampleGradProj_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture2D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_gradx)->typeSymbol = &Float32x2;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_grady)->typeSymbol = &Float32x2;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGradProj_Texture3D_texture.name = "texture"_c;
@@ -12422,13 +12304,13 @@ void SetupIntrinsics()
     TextureSampleGradProj_Texture3D_grady.name = "grad_y"_c;
     TextureSampleGradProj_Texture3D_grady.type = Type::FullType{ Float32x3.name };
     TextureSampleGradProj_Texture3D_proj.name = "proj"_c;
-    TextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProj_Texture3D.name = "textureSampleGradProj"_c;
     TextureSampleGradProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_gradx)->typeSymbol = &Float32x3;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D_grady)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&TextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProj_Texture3D_texture.name = "texture"_c;
@@ -12443,61 +12325,14 @@ void SetupIntrinsics()
     SampledTextureSampleGradProj_Texture3D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProj_Texture3D_grady.type = Type::FullType{ Float32x3.name };
     SampledTextureSampleGradProj_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProj_Texture3D.name = "textureSampleGradProj"_c;
     SampledTextureSampleGradProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_gradx)->typeSymbol = &Float32x3;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_grady)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    TextureSampleGradProj_TextureCube_texture.name = "texture"_c;
-    TextureSampleGradProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleGradProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    TextureSampleGradProj_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleGradProj_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleGradProj_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_sampler)->storage = Storage::Uniform;
-    TextureSampleGradProj_TextureCube_coordinate.name = "coordinate"_c;
-    TextureSampleGradProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleGradProj_TextureCube_gradx.name = "grad_x"_c;
-    TextureSampleGradProj_TextureCube_gradx.type = Type::FullType{ Float32x3.name };
-    TextureSampleGradProj_TextureCube_grady.name = "grad_y"_c;
-    TextureSampleGradProj_TextureCube_grady.type = Type::FullType{ Float32x3.name };
-    TextureSampleGradProj_TextureCube_proj.name = "proj"_c;
-    TextureSampleGradProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleGradProj_TextureCube.name = "textureSampleGradProj"_c;
-    TextureSampleGradProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_gradx)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_grady)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleGradProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    SampledTextureSampleGradProj_TextureCube_texture.name = "texture"_c;
-    SampledTextureSampleGradProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    SampledTextureSampleGradProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_texture)->storage = Storage::Uniform;
-    SampledTextureSampleGradProj_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureSampleGradProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleGradProj_TextureCube_gradx.name = "grad_x"_c;
-    SampledTextureSampleGradProj_TextureCube_gradx.type = Type::FullType{ Float32x3.name };
-    SampledTextureSampleGradProj_TextureCube_grady.name = "grad_y"_c;
-    SampledTextureSampleGradProj_TextureCube_grady.type = Type::FullType{ Float32x3.name };
-    SampledTextureSampleGradProj_TextureCube_proj.name = "proj"_c;
-    SampledTextureSampleGradProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleGradProj_TextureCube.name = "textureSampleGradProj"_c;
-    SampledTextureSampleGradProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_gradx)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_grady)->typeSymbol = &Float32x3;
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleGradProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGradCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleGradCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
@@ -12751,7 +12586,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture1D_grady.name = "grad_y"_c;
     TextureSampleGradProjCompare_Texture1D_grady.type = Type::FullType{ Float32.name };
     TextureSampleGradProjCompare_Texture1D_proj.name = "proj"_c;
-    TextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture1D.name = "textureSampleGradProjCompare"_c;
@@ -12760,7 +12595,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_gradx)->typeSymbol = &Float32;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_grady)->typeSymbol = &Float32;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProjCompare_Texture1D_texture.name = "texture"_c;
@@ -12775,7 +12610,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture1D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProjCompare_Texture1D_grady.type = Type::FullType{ Float32.name };
     SampledTextureSampleGradProjCompare_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture1D.name = "textureSampleGradProjCompare"_c;
@@ -12784,7 +12619,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_gradx)->typeSymbol = &Float32;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_grady)->typeSymbol = &Float32;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGradProjCompare_Texture2D_texture.name = "texture"_c;
@@ -12804,7 +12639,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture2D_grady.name = "grad_y"_c;
     TextureSampleGradProjCompare_Texture2D_grady.type = Type::FullType{ Float32x2.name };
     TextureSampleGradProjCompare_Texture2D_proj.name = "proj"_c;
-    TextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture2D.name = "textureSampleGradProjCompare"_c;
@@ -12813,7 +12648,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_gradx)->typeSymbol = &Float32x2;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_grady)->typeSymbol = &Float32x2;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProjCompare_Texture2D_texture.name = "texture"_c;
@@ -12828,7 +12663,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture2D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProjCompare_Texture2D_grady.type = Type::FullType{ Float32x2.name };
     SampledTextureSampleGradProjCompare_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture2D.name = "textureSampleGradProjCompare"_c;
@@ -12837,7 +12672,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_gradx)->typeSymbol = &Float32x2;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_grady)->typeSymbol = &Float32x2;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleGradProjCompare_Texture3D_texture.name = "texture"_c;
@@ -12857,7 +12692,7 @@ void SetupIntrinsics()
     TextureSampleGradProjCompare_Texture3D_grady.name = "grad_y"_c;
     TextureSampleGradProjCompare_Texture3D_grady.type = Type::FullType{ Float32x3.name };
     TextureSampleGradProjCompare_Texture3D_proj.name = "proj"_c;
-    TextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleGradProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleGradProjCompare_Texture3D.name = "textureSampleGradProjCompare"_c;
@@ -12866,7 +12701,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_gradx)->typeSymbol = &Float32x3;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_grady)->typeSymbol = &Float32x3;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleGradProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleGradProjCompare_Texture3D_texture.name = "texture"_c;
@@ -12881,7 +12716,7 @@ void SetupIntrinsics()
     SampledTextureSampleGradProjCompare_Texture3D_grady.name = "grad_y"_c;
     SampledTextureSampleGradProjCompare_Texture3D_grady.type = Type::FullType{ Float32x3.name };
     SampledTextureSampleGradProjCompare_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleGradProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleGradProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleGradProjCompare_Texture3D.name = "textureSampleGradProjCompare"_c;
@@ -12890,7 +12725,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_gradx)->typeSymbol = &Float32x3;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_grady)->typeSymbol = &Float32x3;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleGradProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBias_Texture1D_texture.name = "texture"_c;
@@ -13153,12 +12988,12 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture1D_bias.name = "bias"_c;
     TextureSampleBiasProj_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture1D_proj.name = "proj"_c;
-    TextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture1D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProj_Texture1D_texture.name = "texture"_c;
@@ -13171,12 +13006,12 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture1D_bias.name = "bias"_c;
     SampledTextureSampleBiasProj_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProj_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture1D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture1D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBiasProj_Texture2D_texture.name = "texture"_c;
@@ -13194,12 +13029,12 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture2D_bias.name = "bias"_c;
     TextureSampleBiasProj_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture2D_proj.name = "proj"_c;
-    TextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture2D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProj_Texture2D_texture.name = "texture"_c;
@@ -13212,12 +13047,12 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture2D_bias.name = "bias"_c;
     SampledTextureSampleBiasProj_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProj_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture2D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture2D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBiasProj_Texture3D_texture.name = "texture"_c;
@@ -13235,12 +13070,12 @@ void SetupIntrinsics()
     TextureSampleBiasProj_Texture3D_bias.name = "bias"_c;
     TextureSampleBiasProj_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture3D_proj.name = "proj"_c;
-    TextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProj_Texture3D.name = "textureSampleBiasProj"_c;
     TextureSampleBiasProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProj_Texture3D_texture.name = "texture"_c;
@@ -13253,54 +13088,13 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProj_Texture3D_bias.name = "bias"_c;
     SampledTextureSampleBiasProj_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProj_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProj_Texture3D.name = "textureSampleBiasProj"_c;
     SampledTextureSampleBiasProj_Texture3D.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProj_Texture3D)->returnTypeSymbol = &Float32x4Type;
-
-    TextureSampleBiasProj_TextureCube_texture.name = "texture"_c;
-    TextureSampleBiasProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    TextureSampleBiasProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    TextureSampleBiasProj_TextureCube_sampler.name = "sampler"_c;
-    TextureSampleBiasProj_TextureCube_sampler.type = Type::FullType{ SamplerType.name };
-    TextureSampleBiasProj_TextureCube_sampler.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_texture)->storage = Storage::Uniform;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_sampler)->typeSymbol = &SamplerType;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_sampler)->storage = Storage::Uniform;
-    TextureSampleBiasProj_TextureCube_coordinate.name = "coordinate"_c;
-    TextureSampleBiasProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    TextureSampleBiasProj_TextureCube_bias.name = "bias"_c;
-    TextureSampleBiasProj_TextureCube_bias.type = Type::FullType{ Float32Type.name };
-    TextureSampleBiasProj_TextureCube_proj.name = "proj"_c;
-    TextureSampleBiasProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    TextureSampleBiasProj_TextureCube.name = "textureSampleBiasProj"_c;
-    TextureSampleBiasProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&TextureSampleBiasProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
-
-    SampledTextureSampleBiasProj_TextureCube_texture.name = "texture"_c;
-    SampledTextureSampleBiasProj_TextureCube_texture.type = Type::FullType{ TextureCubeType.name };
-    SampledTextureSampleBiasProj_TextureCube_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube_texture)->typeSymbol = &TextureCubeType;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube_texture)->storage = Storage::Uniform;
-    SampledTextureSampleBiasProj_TextureCube_coordinate.name = "coordinate"_c;
-    SampledTextureSampleBiasProj_TextureCube_coordinate.type = Type::FullType{ Float32x3Type.name };
-    SampledTextureSampleBiasProj_TextureCube_bias.name = "bias"_c;
-    SampledTextureSampleBiasProj_TextureCube_bias.type = Type::FullType{ Float32Type.name };
-    SampledTextureSampleBiasProj_TextureCube_proj.name = "proj"_c;
-    SampledTextureSampleBiasProj_TextureCube_proj.type = Type::FullType{ Float32x2Type.name };
-    SampledTextureSampleBiasProj_TextureCube.name = "textureSampleBiasProj"_c;
-    SampledTextureSampleBiasProj_TextureCube.returnType = Type::FullType{ Float32x4Type.name };
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube_coordinate)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube_bias)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube_proj)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProj_TextureCube)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBiasCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
@@ -13507,7 +13301,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray_compare)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasCompare_Texture2DArray)->returnTypeSymbol = &Float32x4Type;
 
-    TextureSample_Texture1D_texture.name = "texture"_c;
+    TextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
     TextureSampleBiasProjCompare_Texture1D_texture.type = Type::FullType{ Texture1DType.name };
     TextureSampleBiasProjCompare_Texture1D_texture.type.AddModifier(Type::FullType::Modifier::Pointer);
     TextureSampleBiasProjCompare_Texture1D_sampler.name = "sampler"_c;
@@ -13522,7 +13316,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
     TextureSampleBiasProjCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D_proj.name = "proj"_c;
-    TextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture1D.name = "textureSampleBiasProjCompare"_c;
@@ -13530,7 +13324,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProjCompare_Texture1D_texture.name = "texture"_c;
@@ -13543,7 +13337,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture1D_bias.name = "bias"_c;
     SampledTextureSampleBiasProjCompare_Texture1D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompare_Texture1D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture1D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture1D.name = "textureSampleBiasProjCompare"_c;
@@ -13551,7 +13345,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_coordinate)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture1D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
@@ -13569,7 +13363,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
     TextureSampleBiasProjCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture2D_proj.name = "proj"_c;
-    TextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture2D.name = "textureSampleBiasProjCompare"_c;
@@ -13577,7 +13371,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProjCompare_Texture2D_texture.name = "texture"_c;
@@ -13590,7 +13384,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture2D_bias.name = "bias"_c;
     SampledTextureSampleBiasProjCompare_Texture2D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompare_Texture2D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture2D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture2D.name = "textureSampleBiasProjCompare"_c;
@@ -13598,7 +13392,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_coordinate)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture2D)->returnTypeSymbol = &Float32x4Type;
 
     TextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
@@ -13616,7 +13410,7 @@ void SetupIntrinsics()
     TextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
     TextureSampleBiasProjCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture3D_proj.name = "proj"_c;
-    TextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    TextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
     TextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     TextureSampleBiasProjCompare_Texture3D.name = "textureSampleBiasProjCompare"_c;
@@ -13624,7 +13418,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&TextureSampleBiasProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
     SampledTextureSampleBiasProjCompare_Texture3D_texture.name = "texture"_c;
@@ -13637,7 +13431,7 @@ void SetupIntrinsics()
     SampledTextureSampleBiasProjCompare_Texture3D_bias.name = "bias"_c;
     SampledTextureSampleBiasProjCompare_Texture3D_bias.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D_proj.name = "proj"_c;
-    SampledTextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32x2Type.name };
+    SampledTextureSampleBiasProjCompare_Texture3D_proj.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D_compare.name = "compare"_c;
     SampledTextureSampleBiasProjCompare_Texture3D_compare.type = Type::FullType{ Float32Type.name };
     SampledTextureSampleBiasProjCompare_Texture3D.name = "textureSampleBiasProjCompare"_c;
@@ -13645,7 +13439,7 @@ void SetupIntrinsics()
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_coordinate)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_bias)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_compare)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D_proj)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SampledTextureSampleBiasProjCompare_Texture3D)->returnTypeSymbol = &Float32x4Type;
 
 }

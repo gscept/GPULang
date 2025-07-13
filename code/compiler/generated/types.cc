@@ -11307,46 +11307,6 @@ Float32x2x2::Float32x2x2()
     Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Float32)->returnTypeSymbol = &Float32x2x2Type;
 
-    // operator*(f16)
-    Float32x2x2_operator_scale_Float32x2x2_Float16_arg0.name = "_arg0"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x2x2_operator_scale_Float32x2x2_Float16.name = "operator*"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Float16.returnType = Type::FullType{ Float32x2x2Type.name };
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Float16)->returnTypeSymbol = &Float32x2x2Type;
-
-    // operator*(u32)
-    Float32x2x2_operator_scale_Float32x2x2_UInt32_arg0.name = "_arg0"_c;
-    Float32x2x2_operator_scale_Float32x2x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x2x2_operator_scale_Float32x2x2_UInt32.name = "operator*"_c;
-    Float32x2x2_operator_scale_Float32x2x2_UInt32.returnType = Type::FullType{ Float32x2x2Type.name };
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_UInt32)->returnTypeSymbol = &Float32x2x2Type;
-
-    // operator*(u16)
-    Float32x2x2_operator_scale_Float32x2x2_UInt16_arg0.name = "_arg0"_c;
-    Float32x2x2_operator_scale_Float32x2x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x2x2_operator_scale_Float32x2x2_UInt16.name = "operator*"_c;
-    Float32x2x2_operator_scale_Float32x2x2_UInt16.returnType = Type::FullType{ Float32x2x2Type.name };
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_UInt16)->returnTypeSymbol = &Float32x2x2Type;
-
-    // operator*(i32)
-    Float32x2x2_operator_scale_Float32x2x2_Int32_arg0.name = "_arg0"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x2x2_operator_scale_Float32x2x2_Int32.name = "operator*"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Int32.returnType = Type::FullType{ Float32x2x2Type.name };
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Int32)->returnTypeSymbol = &Float32x2x2Type;
-
-    // operator*(i16)
-    Float32x2x2_operator_scale_Float32x2x2_Int16_arg0.name = "_arg0"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x2x2_operator_scale_Float32x2x2_Int16.name = "operator*"_c;
-    Float32x2x2_operator_scale_Float32x2x2_Int16.returnType = Type::FullType{ Float32x2x2Type.name };
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x2x2_operator_scale_Float32x2x2_Int16)->returnTypeSymbol = &Float32x2x2Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x2x2"_c, &Float32x2x2_Float32x2_ctor},
@@ -11362,12 +11322,7 @@ Float32x2x2::Float32x2x2()
         std::pair{ "operator+=(f32x2x2)"_c, &Float32x2x2_operator_addasg_Float32x2x2},
         std::pair{ "operator-=(f32x2x2)"_c, &Float32x2x2_operator_subasg_Float32x2x2},
         std::pair{ "operator*=(f32x2x2)"_c, &Float32x2x2_operator_mulasg_Float32x2x2},
-        std::pair{ "operator*(f32)"_c, &Float32x2x2_operator_scale_Float32x2x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x2x2_operator_scale_Float32x2x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x2x2_operator_scale_Float32x2x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x2x2_operator_scale_Float32x2x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x2x2_operator_scale_Float32x2x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x2x2_operator_scale_Float32x2x2_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x2x2_operator_scale_Float32x2x2_Float32}
     }
     };   
 }
@@ -11470,46 +11425,6 @@ Float32x2x3::Float32x2x3()
     Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Float32)->returnTypeSymbol = &Float32x2x3Type;
 
-    // operator*(f16)
-    Float32x2x3_operator_scale_Float32x2x3_Float16_arg0.name = "_arg0"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x2x3_operator_scale_Float32x2x3_Float16.name = "operator*"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Float16.returnType = Type::FullType{ Float32x2x3Type.name };
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Float16)->returnTypeSymbol = &Float32x2x3Type;
-
-    // operator*(u32)
-    Float32x2x3_operator_scale_Float32x2x3_UInt32_arg0.name = "_arg0"_c;
-    Float32x2x3_operator_scale_Float32x2x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x2x3_operator_scale_Float32x2x3_UInt32.name = "operator*"_c;
-    Float32x2x3_operator_scale_Float32x2x3_UInt32.returnType = Type::FullType{ Float32x2x3Type.name };
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_UInt32)->returnTypeSymbol = &Float32x2x3Type;
-
-    // operator*(u16)
-    Float32x2x3_operator_scale_Float32x2x3_UInt16_arg0.name = "_arg0"_c;
-    Float32x2x3_operator_scale_Float32x2x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x2x3_operator_scale_Float32x2x3_UInt16.name = "operator*"_c;
-    Float32x2x3_operator_scale_Float32x2x3_UInt16.returnType = Type::FullType{ Float32x2x3Type.name };
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_UInt16)->returnTypeSymbol = &Float32x2x3Type;
-
-    // operator*(i32)
-    Float32x2x3_operator_scale_Float32x2x3_Int32_arg0.name = "_arg0"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x2x3_operator_scale_Float32x2x3_Int32.name = "operator*"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Int32.returnType = Type::FullType{ Float32x2x3Type.name };
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Int32)->returnTypeSymbol = &Float32x2x3Type;
-
-    // operator*(i16)
-    Float32x2x3_operator_scale_Float32x2x3_Int16_arg0.name = "_arg0"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x2x3_operator_scale_Float32x2x3_Int16.name = "operator*"_c;
-    Float32x2x3_operator_scale_Float32x2x3_Int16.returnType = Type::FullType{ Float32x2x3Type.name };
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x2x3_operator_scale_Float32x2x3_Int16)->returnTypeSymbol = &Float32x2x3Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x2x3"_c, &Float32x2x3_Float32x3_ctor},
@@ -11525,12 +11440,7 @@ Float32x2x3::Float32x2x3()
         std::pair{ "operator+=(f32x2x3)"_c, &Float32x2x3_operator_addasg_Float32x2x3},
         std::pair{ "operator-=(f32x2x3)"_c, &Float32x2x3_operator_subasg_Float32x2x3},
         std::pair{ "operator*=(f32x2x3)"_c, &Float32x2x3_operator_mulasg_Float32x2x3},
-        std::pair{ "operator*(f32)"_c, &Float32x2x3_operator_scale_Float32x2x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x2x3_operator_scale_Float32x2x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x2x3_operator_scale_Float32x2x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x2x3_operator_scale_Float32x2x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x2x3_operator_scale_Float32x2x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x2x3_operator_scale_Float32x2x3_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x2x3_operator_scale_Float32x2x3_Float32}
     }
     };   
 }
@@ -11633,46 +11543,6 @@ Float32x2x4::Float32x2x4()
     Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Float32)->returnTypeSymbol = &Float32x2x4Type;
 
-    // operator*(f16)
-    Float32x2x4_operator_scale_Float32x2x4_Float16_arg0.name = "_arg0"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x2x4_operator_scale_Float32x2x4_Float16.name = "operator*"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Float16.returnType = Type::FullType{ Float32x2x4Type.name };
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Float16)->returnTypeSymbol = &Float32x2x4Type;
-
-    // operator*(u32)
-    Float32x2x4_operator_scale_Float32x2x4_UInt32_arg0.name = "_arg0"_c;
-    Float32x2x4_operator_scale_Float32x2x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x2x4_operator_scale_Float32x2x4_UInt32.name = "operator*"_c;
-    Float32x2x4_operator_scale_Float32x2x4_UInt32.returnType = Type::FullType{ Float32x2x4Type.name };
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_UInt32)->returnTypeSymbol = &Float32x2x4Type;
-
-    // operator*(u16)
-    Float32x2x4_operator_scale_Float32x2x4_UInt16_arg0.name = "_arg0"_c;
-    Float32x2x4_operator_scale_Float32x2x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x2x4_operator_scale_Float32x2x4_UInt16.name = "operator*"_c;
-    Float32x2x4_operator_scale_Float32x2x4_UInt16.returnType = Type::FullType{ Float32x2x4Type.name };
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_UInt16)->returnTypeSymbol = &Float32x2x4Type;
-
-    // operator*(i32)
-    Float32x2x4_operator_scale_Float32x2x4_Int32_arg0.name = "_arg0"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x2x4_operator_scale_Float32x2x4_Int32.name = "operator*"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Int32.returnType = Type::FullType{ Float32x2x4Type.name };
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Int32)->returnTypeSymbol = &Float32x2x4Type;
-
-    // operator*(i16)
-    Float32x2x4_operator_scale_Float32x2x4_Int16_arg0.name = "_arg0"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x2x4_operator_scale_Float32x2x4_Int16.name = "operator*"_c;
-    Float32x2x4_operator_scale_Float32x2x4_Int16.returnType = Type::FullType{ Float32x2x4Type.name };
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x2x4_operator_scale_Float32x2x4_Int16)->returnTypeSymbol = &Float32x2x4Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x2x4"_c, &Float32x2x4_Float32x4_ctor},
@@ -11688,12 +11558,7 @@ Float32x2x4::Float32x2x4()
         std::pair{ "operator+=(f32x2x4)"_c, &Float32x2x4_operator_addasg_Float32x2x4},
         std::pair{ "operator-=(f32x2x4)"_c, &Float32x2x4_operator_subasg_Float32x2x4},
         std::pair{ "operator*=(f32x2x4)"_c, &Float32x2x4_operator_mulasg_Float32x2x4},
-        std::pair{ "operator*(f32)"_c, &Float32x2x4_operator_scale_Float32x2x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x2x4_operator_scale_Float32x2x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x2x4_operator_scale_Float32x2x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x2x4_operator_scale_Float32x2x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x2x4_operator_scale_Float32x2x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x2x4_operator_scale_Float32x2x4_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x2x4_operator_scale_Float32x2x4_Float32}
     }
     };   
 }
@@ -11796,46 +11661,6 @@ Float32x3x2::Float32x3x2()
     Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Float32)->returnTypeSymbol = &Float32x3x2Type;
 
-    // operator*(f16)
-    Float32x3x2_operator_scale_Float32x3x2_Float16_arg0.name = "_arg0"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x3x2_operator_scale_Float32x3x2_Float16.name = "operator*"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Float16.returnType = Type::FullType{ Float32x3x2Type.name };
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Float16)->returnTypeSymbol = &Float32x3x2Type;
-
-    // operator*(u32)
-    Float32x3x2_operator_scale_Float32x3x2_UInt32_arg0.name = "_arg0"_c;
-    Float32x3x2_operator_scale_Float32x3x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x3x2_operator_scale_Float32x3x2_UInt32.name = "operator*"_c;
-    Float32x3x2_operator_scale_Float32x3x2_UInt32.returnType = Type::FullType{ Float32x3x2Type.name };
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_UInt32)->returnTypeSymbol = &Float32x3x2Type;
-
-    // operator*(u16)
-    Float32x3x2_operator_scale_Float32x3x2_UInt16_arg0.name = "_arg0"_c;
-    Float32x3x2_operator_scale_Float32x3x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x3x2_operator_scale_Float32x3x2_UInt16.name = "operator*"_c;
-    Float32x3x2_operator_scale_Float32x3x2_UInt16.returnType = Type::FullType{ Float32x3x2Type.name };
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_UInt16)->returnTypeSymbol = &Float32x3x2Type;
-
-    // operator*(i32)
-    Float32x3x2_operator_scale_Float32x3x2_Int32_arg0.name = "_arg0"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x3x2_operator_scale_Float32x3x2_Int32.name = "operator*"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Int32.returnType = Type::FullType{ Float32x3x2Type.name };
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Int32)->returnTypeSymbol = &Float32x3x2Type;
-
-    // operator*(i16)
-    Float32x3x2_operator_scale_Float32x3x2_Int16_arg0.name = "_arg0"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x3x2_operator_scale_Float32x3x2_Int16.name = "operator*"_c;
-    Float32x3x2_operator_scale_Float32x3x2_Int16.returnType = Type::FullType{ Float32x3x2Type.name };
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x3x2_operator_scale_Float32x3x2_Int16)->returnTypeSymbol = &Float32x3x2Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x3x2"_c, &Float32x3x2_Float32x2_ctor},
@@ -11851,12 +11676,7 @@ Float32x3x2::Float32x3x2()
         std::pair{ "operator+=(f32x3x2)"_c, &Float32x3x2_operator_addasg_Float32x3x2},
         std::pair{ "operator-=(f32x3x2)"_c, &Float32x3x2_operator_subasg_Float32x3x2},
         std::pair{ "operator*=(f32x3x2)"_c, &Float32x3x2_operator_mulasg_Float32x3x2},
-        std::pair{ "operator*(f32)"_c, &Float32x3x2_operator_scale_Float32x3x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x3x2_operator_scale_Float32x3x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x3x2_operator_scale_Float32x3x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x3x2_operator_scale_Float32x3x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x3x2_operator_scale_Float32x3x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x3x2_operator_scale_Float32x3x2_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x3x2_operator_scale_Float32x3x2_Float32}
     }
     };   
 }
@@ -11959,46 +11779,6 @@ Float32x3x3::Float32x3x3()
     Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Float32)->returnTypeSymbol = &Float32x3x3Type;
 
-    // operator*(f16)
-    Float32x3x3_operator_scale_Float32x3x3_Float16_arg0.name = "_arg0"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x3x3_operator_scale_Float32x3x3_Float16.name = "operator*"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Float16.returnType = Type::FullType{ Float32x3x3Type.name };
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Float16)->returnTypeSymbol = &Float32x3x3Type;
-
-    // operator*(u32)
-    Float32x3x3_operator_scale_Float32x3x3_UInt32_arg0.name = "_arg0"_c;
-    Float32x3x3_operator_scale_Float32x3x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x3x3_operator_scale_Float32x3x3_UInt32.name = "operator*"_c;
-    Float32x3x3_operator_scale_Float32x3x3_UInt32.returnType = Type::FullType{ Float32x3x3Type.name };
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_UInt32)->returnTypeSymbol = &Float32x3x3Type;
-
-    // operator*(u16)
-    Float32x3x3_operator_scale_Float32x3x3_UInt16_arg0.name = "_arg0"_c;
-    Float32x3x3_operator_scale_Float32x3x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x3x3_operator_scale_Float32x3x3_UInt16.name = "operator*"_c;
-    Float32x3x3_operator_scale_Float32x3x3_UInt16.returnType = Type::FullType{ Float32x3x3Type.name };
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_UInt16)->returnTypeSymbol = &Float32x3x3Type;
-
-    // operator*(i32)
-    Float32x3x3_operator_scale_Float32x3x3_Int32_arg0.name = "_arg0"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x3x3_operator_scale_Float32x3x3_Int32.name = "operator*"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Int32.returnType = Type::FullType{ Float32x3x3Type.name };
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Int32)->returnTypeSymbol = &Float32x3x3Type;
-
-    // operator*(i16)
-    Float32x3x3_operator_scale_Float32x3x3_Int16_arg0.name = "_arg0"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x3x3_operator_scale_Float32x3x3_Int16.name = "operator*"_c;
-    Float32x3x3_operator_scale_Float32x3x3_Int16.returnType = Type::FullType{ Float32x3x3Type.name };
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x3x3_operator_scale_Float32x3x3_Int16)->returnTypeSymbol = &Float32x3x3Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x3x3"_c, &Float32x3x3_Float32x3_ctor},
@@ -12014,12 +11794,7 @@ Float32x3x3::Float32x3x3()
         std::pair{ "operator+=(f32x3x3)"_c, &Float32x3x3_operator_addasg_Float32x3x3},
         std::pair{ "operator-=(f32x3x3)"_c, &Float32x3x3_operator_subasg_Float32x3x3},
         std::pair{ "operator*=(f32x3x3)"_c, &Float32x3x3_operator_mulasg_Float32x3x3},
-        std::pair{ "operator*(f32)"_c, &Float32x3x3_operator_scale_Float32x3x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x3x3_operator_scale_Float32x3x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x3x3_operator_scale_Float32x3x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x3x3_operator_scale_Float32x3x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x3x3_operator_scale_Float32x3x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x3x3_operator_scale_Float32x3x3_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x3x3_operator_scale_Float32x3x3_Float32}
     }
     };   
 }
@@ -12122,46 +11897,6 @@ Float32x3x4::Float32x3x4()
     Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Float32)->returnTypeSymbol = &Float32x3x4Type;
 
-    // operator*(f16)
-    Float32x3x4_operator_scale_Float32x3x4_Float16_arg0.name = "_arg0"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x3x4_operator_scale_Float32x3x4_Float16.name = "operator*"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Float16.returnType = Type::FullType{ Float32x3x4Type.name };
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Float16)->returnTypeSymbol = &Float32x3x4Type;
-
-    // operator*(u32)
-    Float32x3x4_operator_scale_Float32x3x4_UInt32_arg0.name = "_arg0"_c;
-    Float32x3x4_operator_scale_Float32x3x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x3x4_operator_scale_Float32x3x4_UInt32.name = "operator*"_c;
-    Float32x3x4_operator_scale_Float32x3x4_UInt32.returnType = Type::FullType{ Float32x3x4Type.name };
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_UInt32)->returnTypeSymbol = &Float32x3x4Type;
-
-    // operator*(u16)
-    Float32x3x4_operator_scale_Float32x3x4_UInt16_arg0.name = "_arg0"_c;
-    Float32x3x4_operator_scale_Float32x3x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x3x4_operator_scale_Float32x3x4_UInt16.name = "operator*"_c;
-    Float32x3x4_operator_scale_Float32x3x4_UInt16.returnType = Type::FullType{ Float32x3x4Type.name };
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_UInt16)->returnTypeSymbol = &Float32x3x4Type;
-
-    // operator*(i32)
-    Float32x3x4_operator_scale_Float32x3x4_Int32_arg0.name = "_arg0"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x3x4_operator_scale_Float32x3x4_Int32.name = "operator*"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Int32.returnType = Type::FullType{ Float32x3x4Type.name };
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Int32)->returnTypeSymbol = &Float32x3x4Type;
-
-    // operator*(i16)
-    Float32x3x4_operator_scale_Float32x3x4_Int16_arg0.name = "_arg0"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x3x4_operator_scale_Float32x3x4_Int16.name = "operator*"_c;
-    Float32x3x4_operator_scale_Float32x3x4_Int16.returnType = Type::FullType{ Float32x3x4Type.name };
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x3x4_operator_scale_Float32x3x4_Int16)->returnTypeSymbol = &Float32x3x4Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x3x4"_c, &Float32x3x4_Float32x4_ctor},
@@ -12177,12 +11912,7 @@ Float32x3x4::Float32x3x4()
         std::pair{ "operator+=(f32x3x4)"_c, &Float32x3x4_operator_addasg_Float32x3x4},
         std::pair{ "operator-=(f32x3x4)"_c, &Float32x3x4_operator_subasg_Float32x3x4},
         std::pair{ "operator*=(f32x3x4)"_c, &Float32x3x4_operator_mulasg_Float32x3x4},
-        std::pair{ "operator*(f32)"_c, &Float32x3x4_operator_scale_Float32x3x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x3x4_operator_scale_Float32x3x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x3x4_operator_scale_Float32x3x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x3x4_operator_scale_Float32x3x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x3x4_operator_scale_Float32x3x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x3x4_operator_scale_Float32x3x4_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x3x4_operator_scale_Float32x3x4_Float32}
     }
     };   
 }
@@ -12285,46 +12015,6 @@ Float32x4x2::Float32x4x2()
     Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Float32)->returnTypeSymbol = &Float32x4x2Type;
 
-    // operator*(f16)
-    Float32x4x2_operator_scale_Float32x4x2_Float16_arg0.name = "_arg0"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x4x2_operator_scale_Float32x4x2_Float16.name = "operator*"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Float16.returnType = Type::FullType{ Float32x4x2Type.name };
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Float16)->returnTypeSymbol = &Float32x4x2Type;
-
-    // operator*(u32)
-    Float32x4x2_operator_scale_Float32x4x2_UInt32_arg0.name = "_arg0"_c;
-    Float32x4x2_operator_scale_Float32x4x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x4x2_operator_scale_Float32x4x2_UInt32.name = "operator*"_c;
-    Float32x4x2_operator_scale_Float32x4x2_UInt32.returnType = Type::FullType{ Float32x4x2Type.name };
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_UInt32)->returnTypeSymbol = &Float32x4x2Type;
-
-    // operator*(u16)
-    Float32x4x2_operator_scale_Float32x4x2_UInt16_arg0.name = "_arg0"_c;
-    Float32x4x2_operator_scale_Float32x4x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x4x2_operator_scale_Float32x4x2_UInt16.name = "operator*"_c;
-    Float32x4x2_operator_scale_Float32x4x2_UInt16.returnType = Type::FullType{ Float32x4x2Type.name };
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_UInt16)->returnTypeSymbol = &Float32x4x2Type;
-
-    // operator*(i32)
-    Float32x4x2_operator_scale_Float32x4x2_Int32_arg0.name = "_arg0"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x4x2_operator_scale_Float32x4x2_Int32.name = "operator*"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Int32.returnType = Type::FullType{ Float32x4x2Type.name };
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Int32)->returnTypeSymbol = &Float32x4x2Type;
-
-    // operator*(i16)
-    Float32x4x2_operator_scale_Float32x4x2_Int16_arg0.name = "_arg0"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x4x2_operator_scale_Float32x4x2_Int16.name = "operator*"_c;
-    Float32x4x2_operator_scale_Float32x4x2_Int16.returnType = Type::FullType{ Float32x4x2Type.name };
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x4x2_operator_scale_Float32x4x2_Int16)->returnTypeSymbol = &Float32x4x2Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x4x2"_c, &Float32x4x2_Float32x2_ctor},
@@ -12340,12 +12030,7 @@ Float32x4x2::Float32x4x2()
         std::pair{ "operator+=(f32x4x2)"_c, &Float32x4x2_operator_addasg_Float32x4x2},
         std::pair{ "operator-=(f32x4x2)"_c, &Float32x4x2_operator_subasg_Float32x4x2},
         std::pair{ "operator*=(f32x4x2)"_c, &Float32x4x2_operator_mulasg_Float32x4x2},
-        std::pair{ "operator*(f32)"_c, &Float32x4x2_operator_scale_Float32x4x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x4x2_operator_scale_Float32x4x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x4x2_operator_scale_Float32x4x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x4x2_operator_scale_Float32x4x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x4x2_operator_scale_Float32x4x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x4x2_operator_scale_Float32x4x2_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x4x2_operator_scale_Float32x4x2_Float32}
     }
     };   
 }
@@ -12448,46 +12133,6 @@ Float32x4x3::Float32x4x3()
     Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Float32)->returnTypeSymbol = &Float32x4x3Type;
 
-    // operator*(f16)
-    Float32x4x3_operator_scale_Float32x4x3_Float16_arg0.name = "_arg0"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x4x3_operator_scale_Float32x4x3_Float16.name = "operator*"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Float16.returnType = Type::FullType{ Float32x4x3Type.name };
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Float16)->returnTypeSymbol = &Float32x4x3Type;
-
-    // operator*(u32)
-    Float32x4x3_operator_scale_Float32x4x3_UInt32_arg0.name = "_arg0"_c;
-    Float32x4x3_operator_scale_Float32x4x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x4x3_operator_scale_Float32x4x3_UInt32.name = "operator*"_c;
-    Float32x4x3_operator_scale_Float32x4x3_UInt32.returnType = Type::FullType{ Float32x4x3Type.name };
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_UInt32)->returnTypeSymbol = &Float32x4x3Type;
-
-    // operator*(u16)
-    Float32x4x3_operator_scale_Float32x4x3_UInt16_arg0.name = "_arg0"_c;
-    Float32x4x3_operator_scale_Float32x4x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x4x3_operator_scale_Float32x4x3_UInt16.name = "operator*"_c;
-    Float32x4x3_operator_scale_Float32x4x3_UInt16.returnType = Type::FullType{ Float32x4x3Type.name };
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_UInt16)->returnTypeSymbol = &Float32x4x3Type;
-
-    // operator*(i32)
-    Float32x4x3_operator_scale_Float32x4x3_Int32_arg0.name = "_arg0"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x4x3_operator_scale_Float32x4x3_Int32.name = "operator*"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Int32.returnType = Type::FullType{ Float32x4x3Type.name };
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Int32)->returnTypeSymbol = &Float32x4x3Type;
-
-    // operator*(i16)
-    Float32x4x3_operator_scale_Float32x4x3_Int16_arg0.name = "_arg0"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x4x3_operator_scale_Float32x4x3_Int16.name = "operator*"_c;
-    Float32x4x3_operator_scale_Float32x4x3_Int16.returnType = Type::FullType{ Float32x4x3Type.name };
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x4x3_operator_scale_Float32x4x3_Int16)->returnTypeSymbol = &Float32x4x3Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x4x3"_c, &Float32x4x3_Float32x3_ctor},
@@ -12503,12 +12148,7 @@ Float32x4x3::Float32x4x3()
         std::pair{ "operator+=(f32x4x3)"_c, &Float32x4x3_operator_addasg_Float32x4x3},
         std::pair{ "operator-=(f32x4x3)"_c, &Float32x4x3_operator_subasg_Float32x4x3},
         std::pair{ "operator*=(f32x4x3)"_c, &Float32x4x3_operator_mulasg_Float32x4x3},
-        std::pair{ "operator*(f32)"_c, &Float32x4x3_operator_scale_Float32x4x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x4x3_operator_scale_Float32x4x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x4x3_operator_scale_Float32x4x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x4x3_operator_scale_Float32x4x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x4x3_operator_scale_Float32x4x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x4x3_operator_scale_Float32x4x3_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x4x3_operator_scale_Float32x4x3_Float32}
     }
     };   
 }
@@ -12611,46 +12251,6 @@ Float32x4x4::Float32x4x4()
     Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Float32_arg0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Float32)->returnTypeSymbol = &Float32x4x4Type;
 
-    // operator*(f16)
-    Float32x4x4_operator_scale_Float32x4x4_Float16_arg0.name = "_arg0"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
-    Float32x4x4_operator_scale_Float32x4x4_Float16.name = "operator*"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Float16.returnType = Type::FullType{ Float32x4x4Type.name };
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Float16_arg0)->typeSymbol = &Float16Type;
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Float16)->returnTypeSymbol = &Float32x4x4Type;
-
-    // operator*(u32)
-    Float32x4x4_operator_scale_Float32x4x4_UInt32_arg0.name = "_arg0"_c;
-    Float32x4x4_operator_scale_Float32x4x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float32x4x4_operator_scale_Float32x4x4_UInt32.name = "operator*"_c;
-    Float32x4x4_operator_scale_Float32x4x4_UInt32.returnType = Type::FullType{ Float32x4x4Type.name };
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_UInt32)->returnTypeSymbol = &Float32x4x4Type;
-
-    // operator*(u16)
-    Float32x4x4_operator_scale_Float32x4x4_UInt16_arg0.name = "_arg0"_c;
-    Float32x4x4_operator_scale_Float32x4x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float32x4x4_operator_scale_Float32x4x4_UInt16.name = "operator*"_c;
-    Float32x4x4_operator_scale_Float32x4x4_UInt16.returnType = Type::FullType{ Float32x4x4Type.name };
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_UInt16)->returnTypeSymbol = &Float32x4x4Type;
-
-    // operator*(i32)
-    Float32x4x4_operator_scale_Float32x4x4_Int32_arg0.name = "_arg0"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float32x4x4_operator_scale_Float32x4x4_Int32.name = "operator*"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Int32.returnType = Type::FullType{ Float32x4x4Type.name };
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Int32)->returnTypeSymbol = &Float32x4x4Type;
-
-    // operator*(i16)
-    Float32x4x4_operator_scale_Float32x4x4_Int16_arg0.name = "_arg0"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float32x4x4_operator_scale_Float32x4x4_Int16.name = "operator*"_c;
-    Float32x4x4_operator_scale_Float32x4x4_Int16.returnType = Type::FullType{ Float32x4x4Type.name };
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float32x4x4_operator_scale_Float32x4x4_Int16)->returnTypeSymbol = &Float32x4x4Type;
-
     this->scope.symbolLookup = StaticMap { 
     std::array{
         std::pair{ "f32x4x4"_c, &Float32x4x4_Float32x4_ctor},
@@ -12666,12 +12266,7 @@ Float32x4x4::Float32x4x4()
         std::pair{ "operator+=(f32x4x4)"_c, &Float32x4x4_operator_addasg_Float32x4x4},
         std::pair{ "operator-=(f32x4x4)"_c, &Float32x4x4_operator_subasg_Float32x4x4},
         std::pair{ "operator*=(f32x4x4)"_c, &Float32x4x4_operator_mulasg_Float32x4x4},
-        std::pair{ "operator*(f32)"_c, &Float32x4x4_operator_scale_Float32x4x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float32x4x4_operator_scale_Float32x4x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float32x4x4_operator_scale_Float32x4x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float32x4x4_operator_scale_Float32x4x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float32x4x4_operator_scale_Float32x4x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float32x4x4_operator_scale_Float32x4x4_Int16}
+        std::pair{ "operator*(f32)"_c, &Float32x4x4_operator_scale_Float32x4x4_Float32}
     }
     };   
 }
@@ -12766,14 +12361,6 @@ Float16x2x2::Float16x2x2()
     Symbol::Resolved(&Float16x2x2_operator_mulasg_Float16x2x2_arg0)->typeSymbol = &Float16x2x2Type;
     Symbol::Resolved(&Float16x2x2_operator_mulasg_Float16x2x2)->returnTypeSymbol = &Float16x2x2Type;
 
-    // operator*(f32)
-    Float16x2x2_operator_scale_Float16x2x2_Float32_arg0.name = "_arg0"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x2x2_operator_scale_Float16x2x2_Float32.name = "operator*"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Float32.returnType = Type::FullType{ Float16x2x2Type.name };
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Float32)->returnTypeSymbol = &Float16x2x2Type;
-
     // operator*(f16)
     Float16x2x2_operator_scale_Float16x2x2_Float16_arg0.name = "_arg0"_c;
     Float16x2x2_operator_scale_Float16x2x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -12781,38 +12368,6 @@ Float16x2x2::Float16x2x2()
     Float16x2x2_operator_scale_Float16x2x2_Float16.returnType = Type::FullType{ Float16x2x2Type.name };
     Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Float16)->returnTypeSymbol = &Float16x2x2Type;
-
-    // operator*(u32)
-    Float16x2x2_operator_scale_Float16x2x2_UInt32_arg0.name = "_arg0"_c;
-    Float16x2x2_operator_scale_Float16x2x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x2x2_operator_scale_Float16x2x2_UInt32.name = "operator*"_c;
-    Float16x2x2_operator_scale_Float16x2x2_UInt32.returnType = Type::FullType{ Float16x2x2Type.name };
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_UInt32)->returnTypeSymbol = &Float16x2x2Type;
-
-    // operator*(u16)
-    Float16x2x2_operator_scale_Float16x2x2_UInt16_arg0.name = "_arg0"_c;
-    Float16x2x2_operator_scale_Float16x2x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x2x2_operator_scale_Float16x2x2_UInt16.name = "operator*"_c;
-    Float16x2x2_operator_scale_Float16x2x2_UInt16.returnType = Type::FullType{ Float16x2x2Type.name };
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_UInt16)->returnTypeSymbol = &Float16x2x2Type;
-
-    // operator*(i32)
-    Float16x2x2_operator_scale_Float16x2x2_Int32_arg0.name = "_arg0"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x2x2_operator_scale_Float16x2x2_Int32.name = "operator*"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Int32.returnType = Type::FullType{ Float16x2x2Type.name };
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Int32)->returnTypeSymbol = &Float16x2x2Type;
-
-    // operator*(i16)
-    Float16x2x2_operator_scale_Float16x2x2_Int16_arg0.name = "_arg0"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x2x2_operator_scale_Float16x2x2_Int16.name = "operator*"_c;
-    Float16x2x2_operator_scale_Float16x2x2_Int16.returnType = Type::FullType{ Float16x2x2Type.name };
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x2x2_operator_scale_Float16x2x2_Int16)->returnTypeSymbol = &Float16x2x2Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -12829,12 +12384,7 @@ Float16x2x2::Float16x2x2()
         std::pair{ "operator+=(f16x2x2)"_c, &Float16x2x2_operator_addasg_Float16x2x2},
         std::pair{ "operator-=(f16x2x2)"_c, &Float16x2x2_operator_subasg_Float16x2x2},
         std::pair{ "operator*=(f16x2x2)"_c, &Float16x2x2_operator_mulasg_Float16x2x2},
-        std::pair{ "operator*(f32)"_c, &Float16x2x2_operator_scale_Float16x2x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x2x2_operator_scale_Float16x2x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x2x2_operator_scale_Float16x2x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x2x2_operator_scale_Float16x2x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x2x2_operator_scale_Float16x2x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x2x2_operator_scale_Float16x2x2_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x2x2_operator_scale_Float16x2x2_Float16}
     }
     };   
 }
@@ -12929,14 +12479,6 @@ Float16x2x3::Float16x2x3()
     Symbol::Resolved(&Float16x2x3_operator_mulasg_Float16x2x3_arg0)->typeSymbol = &Float16x2x3Type;
     Symbol::Resolved(&Float16x2x3_operator_mulasg_Float16x2x3)->returnTypeSymbol = &Float16x2x3Type;
 
-    // operator*(f32)
-    Float16x2x3_operator_scale_Float16x2x3_Float32_arg0.name = "_arg0"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x2x3_operator_scale_Float16x2x3_Float32.name = "operator*"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Float32.returnType = Type::FullType{ Float16x2x3Type.name };
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Float32)->returnTypeSymbol = &Float16x2x3Type;
-
     // operator*(f16)
     Float16x2x3_operator_scale_Float16x2x3_Float16_arg0.name = "_arg0"_c;
     Float16x2x3_operator_scale_Float16x2x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -12944,38 +12486,6 @@ Float16x2x3::Float16x2x3()
     Float16x2x3_operator_scale_Float16x2x3_Float16.returnType = Type::FullType{ Float16x2x3Type.name };
     Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Float16)->returnTypeSymbol = &Float16x2x3Type;
-
-    // operator*(u32)
-    Float16x2x3_operator_scale_Float16x2x3_UInt32_arg0.name = "_arg0"_c;
-    Float16x2x3_operator_scale_Float16x2x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x2x3_operator_scale_Float16x2x3_UInt32.name = "operator*"_c;
-    Float16x2x3_operator_scale_Float16x2x3_UInt32.returnType = Type::FullType{ Float16x2x3Type.name };
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_UInt32)->returnTypeSymbol = &Float16x2x3Type;
-
-    // operator*(u16)
-    Float16x2x3_operator_scale_Float16x2x3_UInt16_arg0.name = "_arg0"_c;
-    Float16x2x3_operator_scale_Float16x2x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x2x3_operator_scale_Float16x2x3_UInt16.name = "operator*"_c;
-    Float16x2x3_operator_scale_Float16x2x3_UInt16.returnType = Type::FullType{ Float16x2x3Type.name };
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_UInt16)->returnTypeSymbol = &Float16x2x3Type;
-
-    // operator*(i32)
-    Float16x2x3_operator_scale_Float16x2x3_Int32_arg0.name = "_arg0"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x2x3_operator_scale_Float16x2x3_Int32.name = "operator*"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Int32.returnType = Type::FullType{ Float16x2x3Type.name };
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Int32)->returnTypeSymbol = &Float16x2x3Type;
-
-    // operator*(i16)
-    Float16x2x3_operator_scale_Float16x2x3_Int16_arg0.name = "_arg0"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x2x3_operator_scale_Float16x2x3_Int16.name = "operator*"_c;
-    Float16x2x3_operator_scale_Float16x2x3_Int16.returnType = Type::FullType{ Float16x2x3Type.name };
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x2x3_operator_scale_Float16x2x3_Int16)->returnTypeSymbol = &Float16x2x3Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -12992,12 +12502,7 @@ Float16x2x3::Float16x2x3()
         std::pair{ "operator+=(f16x2x3)"_c, &Float16x2x3_operator_addasg_Float16x2x3},
         std::pair{ "operator-=(f16x2x3)"_c, &Float16x2x3_operator_subasg_Float16x2x3},
         std::pair{ "operator*=(f16x2x3)"_c, &Float16x2x3_operator_mulasg_Float16x2x3},
-        std::pair{ "operator*(f32)"_c, &Float16x2x3_operator_scale_Float16x2x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x2x3_operator_scale_Float16x2x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x2x3_operator_scale_Float16x2x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x2x3_operator_scale_Float16x2x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x2x3_operator_scale_Float16x2x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x2x3_operator_scale_Float16x2x3_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x2x3_operator_scale_Float16x2x3_Float16}
     }
     };   
 }
@@ -13092,14 +12597,6 @@ Float16x2x4::Float16x2x4()
     Symbol::Resolved(&Float16x2x4_operator_mulasg_Float16x2x4_arg0)->typeSymbol = &Float16x2x4Type;
     Symbol::Resolved(&Float16x2x4_operator_mulasg_Float16x2x4)->returnTypeSymbol = &Float16x2x4Type;
 
-    // operator*(f32)
-    Float16x2x4_operator_scale_Float16x2x4_Float32_arg0.name = "_arg0"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x2x4_operator_scale_Float16x2x4_Float32.name = "operator*"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Float32.returnType = Type::FullType{ Float16x2x4Type.name };
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Float32)->returnTypeSymbol = &Float16x2x4Type;
-
     // operator*(f16)
     Float16x2x4_operator_scale_Float16x2x4_Float16_arg0.name = "_arg0"_c;
     Float16x2x4_operator_scale_Float16x2x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13107,38 +12604,6 @@ Float16x2x4::Float16x2x4()
     Float16x2x4_operator_scale_Float16x2x4_Float16.returnType = Type::FullType{ Float16x2x4Type.name };
     Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Float16)->returnTypeSymbol = &Float16x2x4Type;
-
-    // operator*(u32)
-    Float16x2x4_operator_scale_Float16x2x4_UInt32_arg0.name = "_arg0"_c;
-    Float16x2x4_operator_scale_Float16x2x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x2x4_operator_scale_Float16x2x4_UInt32.name = "operator*"_c;
-    Float16x2x4_operator_scale_Float16x2x4_UInt32.returnType = Type::FullType{ Float16x2x4Type.name };
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_UInt32)->returnTypeSymbol = &Float16x2x4Type;
-
-    // operator*(u16)
-    Float16x2x4_operator_scale_Float16x2x4_UInt16_arg0.name = "_arg0"_c;
-    Float16x2x4_operator_scale_Float16x2x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x2x4_operator_scale_Float16x2x4_UInt16.name = "operator*"_c;
-    Float16x2x4_operator_scale_Float16x2x4_UInt16.returnType = Type::FullType{ Float16x2x4Type.name };
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_UInt16)->returnTypeSymbol = &Float16x2x4Type;
-
-    // operator*(i32)
-    Float16x2x4_operator_scale_Float16x2x4_Int32_arg0.name = "_arg0"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x2x4_operator_scale_Float16x2x4_Int32.name = "operator*"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Int32.returnType = Type::FullType{ Float16x2x4Type.name };
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Int32)->returnTypeSymbol = &Float16x2x4Type;
-
-    // operator*(i16)
-    Float16x2x4_operator_scale_Float16x2x4_Int16_arg0.name = "_arg0"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x2x4_operator_scale_Float16x2x4_Int16.name = "operator*"_c;
-    Float16x2x4_operator_scale_Float16x2x4_Int16.returnType = Type::FullType{ Float16x2x4Type.name };
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x2x4_operator_scale_Float16x2x4_Int16)->returnTypeSymbol = &Float16x2x4Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13155,12 +12620,7 @@ Float16x2x4::Float16x2x4()
         std::pair{ "operator+=(f16x2x4)"_c, &Float16x2x4_operator_addasg_Float16x2x4},
         std::pair{ "operator-=(f16x2x4)"_c, &Float16x2x4_operator_subasg_Float16x2x4},
         std::pair{ "operator*=(f16x2x4)"_c, &Float16x2x4_operator_mulasg_Float16x2x4},
-        std::pair{ "operator*(f32)"_c, &Float16x2x4_operator_scale_Float16x2x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x2x4_operator_scale_Float16x2x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x2x4_operator_scale_Float16x2x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x2x4_operator_scale_Float16x2x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x2x4_operator_scale_Float16x2x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x2x4_operator_scale_Float16x2x4_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x2x4_operator_scale_Float16x2x4_Float16}
     }
     };   
 }
@@ -13255,14 +12715,6 @@ Float16x3x2::Float16x3x2()
     Symbol::Resolved(&Float16x3x2_operator_mulasg_Float16x3x2_arg0)->typeSymbol = &Float16x3x2Type;
     Symbol::Resolved(&Float16x3x2_operator_mulasg_Float16x3x2)->returnTypeSymbol = &Float16x3x2Type;
 
-    // operator*(f32)
-    Float16x3x2_operator_scale_Float16x3x2_Float32_arg0.name = "_arg0"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x3x2_operator_scale_Float16x3x2_Float32.name = "operator*"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Float32.returnType = Type::FullType{ Float16x3x2Type.name };
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Float32)->returnTypeSymbol = &Float16x3x2Type;
-
     // operator*(f16)
     Float16x3x2_operator_scale_Float16x3x2_Float16_arg0.name = "_arg0"_c;
     Float16x3x2_operator_scale_Float16x3x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13270,38 +12722,6 @@ Float16x3x2::Float16x3x2()
     Float16x3x2_operator_scale_Float16x3x2_Float16.returnType = Type::FullType{ Float16x3x2Type.name };
     Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Float16)->returnTypeSymbol = &Float16x3x2Type;
-
-    // operator*(u32)
-    Float16x3x2_operator_scale_Float16x3x2_UInt32_arg0.name = "_arg0"_c;
-    Float16x3x2_operator_scale_Float16x3x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x3x2_operator_scale_Float16x3x2_UInt32.name = "operator*"_c;
-    Float16x3x2_operator_scale_Float16x3x2_UInt32.returnType = Type::FullType{ Float16x3x2Type.name };
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_UInt32)->returnTypeSymbol = &Float16x3x2Type;
-
-    // operator*(u16)
-    Float16x3x2_operator_scale_Float16x3x2_UInt16_arg0.name = "_arg0"_c;
-    Float16x3x2_operator_scale_Float16x3x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x3x2_operator_scale_Float16x3x2_UInt16.name = "operator*"_c;
-    Float16x3x2_operator_scale_Float16x3x2_UInt16.returnType = Type::FullType{ Float16x3x2Type.name };
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_UInt16)->returnTypeSymbol = &Float16x3x2Type;
-
-    // operator*(i32)
-    Float16x3x2_operator_scale_Float16x3x2_Int32_arg0.name = "_arg0"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x3x2_operator_scale_Float16x3x2_Int32.name = "operator*"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Int32.returnType = Type::FullType{ Float16x3x2Type.name };
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Int32)->returnTypeSymbol = &Float16x3x2Type;
-
-    // operator*(i16)
-    Float16x3x2_operator_scale_Float16x3x2_Int16_arg0.name = "_arg0"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x3x2_operator_scale_Float16x3x2_Int16.name = "operator*"_c;
-    Float16x3x2_operator_scale_Float16x3x2_Int16.returnType = Type::FullType{ Float16x3x2Type.name };
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x3x2_operator_scale_Float16x3x2_Int16)->returnTypeSymbol = &Float16x3x2Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13318,12 +12738,7 @@ Float16x3x2::Float16x3x2()
         std::pair{ "operator+=(f16x3x2)"_c, &Float16x3x2_operator_addasg_Float16x3x2},
         std::pair{ "operator-=(f16x3x2)"_c, &Float16x3x2_operator_subasg_Float16x3x2},
         std::pair{ "operator*=(f16x3x2)"_c, &Float16x3x2_operator_mulasg_Float16x3x2},
-        std::pair{ "operator*(f32)"_c, &Float16x3x2_operator_scale_Float16x3x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x3x2_operator_scale_Float16x3x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x3x2_operator_scale_Float16x3x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x3x2_operator_scale_Float16x3x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x3x2_operator_scale_Float16x3x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x3x2_operator_scale_Float16x3x2_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x3x2_operator_scale_Float16x3x2_Float16}
     }
     };   
 }
@@ -13418,14 +12833,6 @@ Float16x3x3::Float16x3x3()
     Symbol::Resolved(&Float16x3x3_operator_mulasg_Float16x3x3_arg0)->typeSymbol = &Float16x3x3Type;
     Symbol::Resolved(&Float16x3x3_operator_mulasg_Float16x3x3)->returnTypeSymbol = &Float16x3x3Type;
 
-    // operator*(f32)
-    Float16x3x3_operator_scale_Float16x3x3_Float32_arg0.name = "_arg0"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x3x3_operator_scale_Float16x3x3_Float32.name = "operator*"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Float32.returnType = Type::FullType{ Float16x3x3Type.name };
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Float32)->returnTypeSymbol = &Float16x3x3Type;
-
     // operator*(f16)
     Float16x3x3_operator_scale_Float16x3x3_Float16_arg0.name = "_arg0"_c;
     Float16x3x3_operator_scale_Float16x3x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13433,38 +12840,6 @@ Float16x3x3::Float16x3x3()
     Float16x3x3_operator_scale_Float16x3x3_Float16.returnType = Type::FullType{ Float16x3x3Type.name };
     Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Float16)->returnTypeSymbol = &Float16x3x3Type;
-
-    // operator*(u32)
-    Float16x3x3_operator_scale_Float16x3x3_UInt32_arg0.name = "_arg0"_c;
-    Float16x3x3_operator_scale_Float16x3x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x3x3_operator_scale_Float16x3x3_UInt32.name = "operator*"_c;
-    Float16x3x3_operator_scale_Float16x3x3_UInt32.returnType = Type::FullType{ Float16x3x3Type.name };
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_UInt32)->returnTypeSymbol = &Float16x3x3Type;
-
-    // operator*(u16)
-    Float16x3x3_operator_scale_Float16x3x3_UInt16_arg0.name = "_arg0"_c;
-    Float16x3x3_operator_scale_Float16x3x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x3x3_operator_scale_Float16x3x3_UInt16.name = "operator*"_c;
-    Float16x3x3_operator_scale_Float16x3x3_UInt16.returnType = Type::FullType{ Float16x3x3Type.name };
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_UInt16)->returnTypeSymbol = &Float16x3x3Type;
-
-    // operator*(i32)
-    Float16x3x3_operator_scale_Float16x3x3_Int32_arg0.name = "_arg0"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x3x3_operator_scale_Float16x3x3_Int32.name = "operator*"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Int32.returnType = Type::FullType{ Float16x3x3Type.name };
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Int32)->returnTypeSymbol = &Float16x3x3Type;
-
-    // operator*(i16)
-    Float16x3x3_operator_scale_Float16x3x3_Int16_arg0.name = "_arg0"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x3x3_operator_scale_Float16x3x3_Int16.name = "operator*"_c;
-    Float16x3x3_operator_scale_Float16x3x3_Int16.returnType = Type::FullType{ Float16x3x3Type.name };
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x3x3_operator_scale_Float16x3x3_Int16)->returnTypeSymbol = &Float16x3x3Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13481,12 +12856,7 @@ Float16x3x3::Float16x3x3()
         std::pair{ "operator+=(f16x3x3)"_c, &Float16x3x3_operator_addasg_Float16x3x3},
         std::pair{ "operator-=(f16x3x3)"_c, &Float16x3x3_operator_subasg_Float16x3x3},
         std::pair{ "operator*=(f16x3x3)"_c, &Float16x3x3_operator_mulasg_Float16x3x3},
-        std::pair{ "operator*(f32)"_c, &Float16x3x3_operator_scale_Float16x3x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x3x3_operator_scale_Float16x3x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x3x3_operator_scale_Float16x3x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x3x3_operator_scale_Float16x3x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x3x3_operator_scale_Float16x3x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x3x3_operator_scale_Float16x3x3_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x3x3_operator_scale_Float16x3x3_Float16}
     }
     };   
 }
@@ -13581,14 +12951,6 @@ Float16x3x4::Float16x3x4()
     Symbol::Resolved(&Float16x3x4_operator_mulasg_Float16x3x4_arg0)->typeSymbol = &Float16x3x4Type;
     Symbol::Resolved(&Float16x3x4_operator_mulasg_Float16x3x4)->returnTypeSymbol = &Float16x3x4Type;
 
-    // operator*(f32)
-    Float16x3x4_operator_scale_Float16x3x4_Float32_arg0.name = "_arg0"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x3x4_operator_scale_Float16x3x4_Float32.name = "operator*"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Float32.returnType = Type::FullType{ Float16x3x4Type.name };
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Float32)->returnTypeSymbol = &Float16x3x4Type;
-
     // operator*(f16)
     Float16x3x4_operator_scale_Float16x3x4_Float16_arg0.name = "_arg0"_c;
     Float16x3x4_operator_scale_Float16x3x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13596,38 +12958,6 @@ Float16x3x4::Float16x3x4()
     Float16x3x4_operator_scale_Float16x3x4_Float16.returnType = Type::FullType{ Float16x3x4Type.name };
     Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Float16)->returnTypeSymbol = &Float16x3x4Type;
-
-    // operator*(u32)
-    Float16x3x4_operator_scale_Float16x3x4_UInt32_arg0.name = "_arg0"_c;
-    Float16x3x4_operator_scale_Float16x3x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x3x4_operator_scale_Float16x3x4_UInt32.name = "operator*"_c;
-    Float16x3x4_operator_scale_Float16x3x4_UInt32.returnType = Type::FullType{ Float16x3x4Type.name };
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_UInt32)->returnTypeSymbol = &Float16x3x4Type;
-
-    // operator*(u16)
-    Float16x3x4_operator_scale_Float16x3x4_UInt16_arg0.name = "_arg0"_c;
-    Float16x3x4_operator_scale_Float16x3x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x3x4_operator_scale_Float16x3x4_UInt16.name = "operator*"_c;
-    Float16x3x4_operator_scale_Float16x3x4_UInt16.returnType = Type::FullType{ Float16x3x4Type.name };
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_UInt16)->returnTypeSymbol = &Float16x3x4Type;
-
-    // operator*(i32)
-    Float16x3x4_operator_scale_Float16x3x4_Int32_arg0.name = "_arg0"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x3x4_operator_scale_Float16x3x4_Int32.name = "operator*"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Int32.returnType = Type::FullType{ Float16x3x4Type.name };
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Int32)->returnTypeSymbol = &Float16x3x4Type;
-
-    // operator*(i16)
-    Float16x3x4_operator_scale_Float16x3x4_Int16_arg0.name = "_arg0"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x3x4_operator_scale_Float16x3x4_Int16.name = "operator*"_c;
-    Float16x3x4_operator_scale_Float16x3x4_Int16.returnType = Type::FullType{ Float16x3x4Type.name };
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x3x4_operator_scale_Float16x3x4_Int16)->returnTypeSymbol = &Float16x3x4Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13644,12 +12974,7 @@ Float16x3x4::Float16x3x4()
         std::pair{ "operator+=(f16x3x4)"_c, &Float16x3x4_operator_addasg_Float16x3x4},
         std::pair{ "operator-=(f16x3x4)"_c, &Float16x3x4_operator_subasg_Float16x3x4},
         std::pair{ "operator*=(f16x3x4)"_c, &Float16x3x4_operator_mulasg_Float16x3x4},
-        std::pair{ "operator*(f32)"_c, &Float16x3x4_operator_scale_Float16x3x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x3x4_operator_scale_Float16x3x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x3x4_operator_scale_Float16x3x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x3x4_operator_scale_Float16x3x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x3x4_operator_scale_Float16x3x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x3x4_operator_scale_Float16x3x4_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x3x4_operator_scale_Float16x3x4_Float16}
     }
     };   
 }
@@ -13744,14 +13069,6 @@ Float16x4x2::Float16x4x2()
     Symbol::Resolved(&Float16x4x2_operator_mulasg_Float16x4x2_arg0)->typeSymbol = &Float16x4x2Type;
     Symbol::Resolved(&Float16x4x2_operator_mulasg_Float16x4x2)->returnTypeSymbol = &Float16x4x2Type;
 
-    // operator*(f32)
-    Float16x4x2_operator_scale_Float16x4x2_Float32_arg0.name = "_arg0"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x4x2_operator_scale_Float16x4x2_Float32.name = "operator*"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Float32.returnType = Type::FullType{ Float16x4x2Type.name };
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Float32)->returnTypeSymbol = &Float16x4x2Type;
-
     // operator*(f16)
     Float16x4x2_operator_scale_Float16x4x2_Float16_arg0.name = "_arg0"_c;
     Float16x4x2_operator_scale_Float16x4x2_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13759,38 +13076,6 @@ Float16x4x2::Float16x4x2()
     Float16x4x2_operator_scale_Float16x4x2_Float16.returnType = Type::FullType{ Float16x4x2Type.name };
     Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Float16)->returnTypeSymbol = &Float16x4x2Type;
-
-    // operator*(u32)
-    Float16x4x2_operator_scale_Float16x4x2_UInt32_arg0.name = "_arg0"_c;
-    Float16x4x2_operator_scale_Float16x4x2_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x4x2_operator_scale_Float16x4x2_UInt32.name = "operator*"_c;
-    Float16x4x2_operator_scale_Float16x4x2_UInt32.returnType = Type::FullType{ Float16x4x2Type.name };
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_UInt32)->returnTypeSymbol = &Float16x4x2Type;
-
-    // operator*(u16)
-    Float16x4x2_operator_scale_Float16x4x2_UInt16_arg0.name = "_arg0"_c;
-    Float16x4x2_operator_scale_Float16x4x2_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x4x2_operator_scale_Float16x4x2_UInt16.name = "operator*"_c;
-    Float16x4x2_operator_scale_Float16x4x2_UInt16.returnType = Type::FullType{ Float16x4x2Type.name };
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_UInt16)->returnTypeSymbol = &Float16x4x2Type;
-
-    // operator*(i32)
-    Float16x4x2_operator_scale_Float16x4x2_Int32_arg0.name = "_arg0"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x4x2_operator_scale_Float16x4x2_Int32.name = "operator*"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Int32.returnType = Type::FullType{ Float16x4x2Type.name };
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Int32)->returnTypeSymbol = &Float16x4x2Type;
-
-    // operator*(i16)
-    Float16x4x2_operator_scale_Float16x4x2_Int16_arg0.name = "_arg0"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x4x2_operator_scale_Float16x4x2_Int16.name = "operator*"_c;
-    Float16x4x2_operator_scale_Float16x4x2_Int16.returnType = Type::FullType{ Float16x4x2Type.name };
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x4x2_operator_scale_Float16x4x2_Int16)->returnTypeSymbol = &Float16x4x2Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13807,12 +13092,7 @@ Float16x4x2::Float16x4x2()
         std::pair{ "operator+=(f16x4x2)"_c, &Float16x4x2_operator_addasg_Float16x4x2},
         std::pair{ "operator-=(f16x4x2)"_c, &Float16x4x2_operator_subasg_Float16x4x2},
         std::pair{ "operator*=(f16x4x2)"_c, &Float16x4x2_operator_mulasg_Float16x4x2},
-        std::pair{ "operator*(f32)"_c, &Float16x4x2_operator_scale_Float16x4x2_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x4x2_operator_scale_Float16x4x2_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x4x2_operator_scale_Float16x4x2_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x4x2_operator_scale_Float16x4x2_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x4x2_operator_scale_Float16x4x2_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x4x2_operator_scale_Float16x4x2_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x4x2_operator_scale_Float16x4x2_Float16}
     }
     };   
 }
@@ -13907,14 +13187,6 @@ Float16x4x3::Float16x4x3()
     Symbol::Resolved(&Float16x4x3_operator_mulasg_Float16x4x3_arg0)->typeSymbol = &Float16x4x3Type;
     Symbol::Resolved(&Float16x4x3_operator_mulasg_Float16x4x3)->returnTypeSymbol = &Float16x4x3Type;
 
-    // operator*(f32)
-    Float16x4x3_operator_scale_Float16x4x3_Float32_arg0.name = "_arg0"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x4x3_operator_scale_Float16x4x3_Float32.name = "operator*"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Float32.returnType = Type::FullType{ Float16x4x3Type.name };
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Float32)->returnTypeSymbol = &Float16x4x3Type;
-
     // operator*(f16)
     Float16x4x3_operator_scale_Float16x4x3_Float16_arg0.name = "_arg0"_c;
     Float16x4x3_operator_scale_Float16x4x3_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -13922,38 +13194,6 @@ Float16x4x3::Float16x4x3()
     Float16x4x3_operator_scale_Float16x4x3_Float16.returnType = Type::FullType{ Float16x4x3Type.name };
     Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Float16)->returnTypeSymbol = &Float16x4x3Type;
-
-    // operator*(u32)
-    Float16x4x3_operator_scale_Float16x4x3_UInt32_arg0.name = "_arg0"_c;
-    Float16x4x3_operator_scale_Float16x4x3_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x4x3_operator_scale_Float16x4x3_UInt32.name = "operator*"_c;
-    Float16x4x3_operator_scale_Float16x4x3_UInt32.returnType = Type::FullType{ Float16x4x3Type.name };
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_UInt32)->returnTypeSymbol = &Float16x4x3Type;
-
-    // operator*(u16)
-    Float16x4x3_operator_scale_Float16x4x3_UInt16_arg0.name = "_arg0"_c;
-    Float16x4x3_operator_scale_Float16x4x3_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x4x3_operator_scale_Float16x4x3_UInt16.name = "operator*"_c;
-    Float16x4x3_operator_scale_Float16x4x3_UInt16.returnType = Type::FullType{ Float16x4x3Type.name };
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_UInt16)->returnTypeSymbol = &Float16x4x3Type;
-
-    // operator*(i32)
-    Float16x4x3_operator_scale_Float16x4x3_Int32_arg0.name = "_arg0"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x4x3_operator_scale_Float16x4x3_Int32.name = "operator*"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Int32.returnType = Type::FullType{ Float16x4x3Type.name };
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Int32)->returnTypeSymbol = &Float16x4x3Type;
-
-    // operator*(i16)
-    Float16x4x3_operator_scale_Float16x4x3_Int16_arg0.name = "_arg0"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x4x3_operator_scale_Float16x4x3_Int16.name = "operator*"_c;
-    Float16x4x3_operator_scale_Float16x4x3_Int16.returnType = Type::FullType{ Float16x4x3Type.name };
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x4x3_operator_scale_Float16x4x3_Int16)->returnTypeSymbol = &Float16x4x3Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -13970,12 +13210,7 @@ Float16x4x3::Float16x4x3()
         std::pair{ "operator+=(f16x4x3)"_c, &Float16x4x3_operator_addasg_Float16x4x3},
         std::pair{ "operator-=(f16x4x3)"_c, &Float16x4x3_operator_subasg_Float16x4x3},
         std::pair{ "operator*=(f16x4x3)"_c, &Float16x4x3_operator_mulasg_Float16x4x3},
-        std::pair{ "operator*(f32)"_c, &Float16x4x3_operator_scale_Float16x4x3_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x4x3_operator_scale_Float16x4x3_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x4x3_operator_scale_Float16x4x3_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x4x3_operator_scale_Float16x4x3_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x4x3_operator_scale_Float16x4x3_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x4x3_operator_scale_Float16x4x3_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x4x3_operator_scale_Float16x4x3_Float16}
     }
     };   
 }
@@ -14070,14 +13305,6 @@ Float16x4x4::Float16x4x4()
     Symbol::Resolved(&Float16x4x4_operator_mulasg_Float16x4x4_arg0)->typeSymbol = &Float16x4x4Type;
     Symbol::Resolved(&Float16x4x4_operator_mulasg_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
-    // operator*(f32)
-    Float16x4x4_operator_scale_Float16x4x4_Float32_arg0.name = "_arg0"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Float32_arg0.type = Type::FullType{ Float32Type.name };
-    Float16x4x4_operator_scale_Float16x4x4_Float32.name = "operator*"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Float32.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Float32_arg0)->typeSymbol = &Float32Type;
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Float32)->returnTypeSymbol = &Float16x4x4Type;
-
     // operator*(f16)
     Float16x4x4_operator_scale_Float16x4x4_Float16_arg0.name = "_arg0"_c;
     Float16x4x4_operator_scale_Float16x4x4_Float16_arg0.type = Type::FullType{ Float16Type.name };
@@ -14085,38 +13312,6 @@ Float16x4x4::Float16x4x4()
     Float16x4x4_operator_scale_Float16x4x4_Float16.returnType = Type::FullType{ Float16x4x4Type.name };
     Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Float16_arg0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Float16)->returnTypeSymbol = &Float16x4x4Type;
-
-    // operator*(u32)
-    Float16x4x4_operator_scale_Float16x4x4_UInt32_arg0.name = "_arg0"_c;
-    Float16x4x4_operator_scale_Float16x4x4_UInt32_arg0.type = Type::FullType{ UInt32Type.name };
-    Float16x4x4_operator_scale_Float16x4x4_UInt32.name = "operator*"_c;
-    Float16x4x4_operator_scale_Float16x4x4_UInt32.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_UInt32_arg0)->typeSymbol = &UInt32Type;
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_UInt32)->returnTypeSymbol = &Float16x4x4Type;
-
-    // operator*(u16)
-    Float16x4x4_operator_scale_Float16x4x4_UInt16_arg0.name = "_arg0"_c;
-    Float16x4x4_operator_scale_Float16x4x4_UInt16_arg0.type = Type::FullType{ UInt16Type.name };
-    Float16x4x4_operator_scale_Float16x4x4_UInt16.name = "operator*"_c;
-    Float16x4x4_operator_scale_Float16x4x4_UInt16.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_UInt16_arg0)->typeSymbol = &UInt16Type;
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_UInt16)->returnTypeSymbol = &Float16x4x4Type;
-
-    // operator*(i32)
-    Float16x4x4_operator_scale_Float16x4x4_Int32_arg0.name = "_arg0"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Int32_arg0.type = Type::FullType{ Int32Type.name };
-    Float16x4x4_operator_scale_Float16x4x4_Int32.name = "operator*"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Int32.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Int32_arg0)->typeSymbol = &Int32Type;
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Int32)->returnTypeSymbol = &Float16x4x4Type;
-
-    // operator*(i16)
-    Float16x4x4_operator_scale_Float16x4x4_Int16_arg0.name = "_arg0"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Int16_arg0.type = Type::FullType{ Int16Type.name };
-    Float16x4x4_operator_scale_Float16x4x4_Int16.name = "operator*"_c;
-    Float16x4x4_operator_scale_Float16x4x4_Int16.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Int16_arg0)->typeSymbol = &Int16Type;
-    Symbol::Resolved(&Float16x4x4_operator_scale_Float16x4x4_Int16)->returnTypeSymbol = &Float16x4x4Type;
 
     this->scope.symbolLookup = StaticMap { 
     std::array{
@@ -14133,12 +13328,7 @@ Float16x4x4::Float16x4x4()
         std::pair{ "operator+=(f16x4x4)"_c, &Float16x4x4_operator_addasg_Float16x4x4},
         std::pair{ "operator-=(f16x4x4)"_c, &Float16x4x4_operator_subasg_Float16x4x4},
         std::pair{ "operator*=(f16x4x4)"_c, &Float16x4x4_operator_mulasg_Float16x4x4},
-        std::pair{ "operator*(f32)"_c, &Float16x4x4_operator_scale_Float16x4x4_Float32},
-        std::pair{ "operator*(f16)"_c, &Float16x4x4_operator_scale_Float16x4x4_Float16},
-        std::pair{ "operator*(u32)"_c, &Float16x4x4_operator_scale_Float16x4x4_UInt32},
-        std::pair{ "operator*(u16)"_c, &Float16x4x4_operator_scale_Float16x4x4_UInt16},
-        std::pair{ "operator*(i32)"_c, &Float16x4x4_operator_scale_Float16x4x4_Int32},
-        std::pair{ "operator*(i16)"_c, &Float16x4x4_operator_scale_Float16x4x4_Int16}
+        std::pair{ "operator*(f16)"_c, &Float16x4x4_operator_scale_Float16x4x4_Float16}
     }
     };   
 }
