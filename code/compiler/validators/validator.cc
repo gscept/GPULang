@@ -51,8 +51,7 @@
 #include "ast/expressions/stringexpression.h"
 #include "ast/statements/discardstatement.h"
 
-#include "ast/types/builtins.h"
-
+#include "generated/types.h"
 namespace GPULang
 {
 
@@ -178,7 +177,7 @@ Validator::Resolve(Compiler* compiler, Symbol* symbol)
     case Symbol::SymbolType::ProgramType:
         return this->ResolveProgram(compiler, symbol);
         break;
-    case Symbol::SymbolType::RenderStateType:
+    case Symbol::SymbolType::RenderStateInstanceType:
         return this->ResolveRenderState(compiler, symbol);
         break;
     case Symbol::SymbolType::StructureType:
@@ -190,7 +189,7 @@ Validator::Resolve(Compiler* compiler, Symbol* symbol)
     case Symbol::SymbolType::VariableType:
         return this->ResolveVariable(compiler, symbol);
         break;
-    case Symbol::SymbolType::SamplerStateType:
+    case Symbol::SymbolType::SamplerStateInstanceType:
         return this->ResolveSamplerState(compiler, symbol);
         break;
     case Symbol::SymbolType::GenerateType:
@@ -385,8 +384,8 @@ Validator::ResolveTypeSwizzles(Compiler* compiler, Symbol* symbol)
 bool
 Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
 {
-    SamplerState* state = static_cast<SamplerState*>(symbol);
-    SamplerState::__Resolved* stateResolved = Symbol::Resolved(state);
+    SamplerStateInstance* state = static_cast<SamplerStateInstance*>(symbol);
+    SamplerStateInstance::__Resolved* stateResolved = Symbol::Resolved(state);
 
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
@@ -394,7 +393,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
     stateResolved->isInline = state->isInline;
     stateResolved->isImmutable = state->isImmutable;
 
-    Type* samplerStateType = &SamplerStateTypeType;
+    Type* samplerStateType = &SamplerStateType;
     stateResolved->typeSymbol = samplerStateType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &samplerStateType->scope);
 
@@ -515,8 +514,8 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         }
 
         TransientString entryString = assignEntry->left->EvalString();
-        SamplerState::__Resolved::SamplerStateEntryType entryType = SamplerState::__Resolved::StringToEntryType(entryString.c_str());
-        if (entryType == SamplerState::__Resolved::InvalidSamplerStateEntryType)
+        SamplerStateInstance::__Resolved::SamplerStateEntryType entryType = SamplerStateInstance::__Resolved::StringToEntryType(entryString.c_str());
+        if (entryType == SamplerStateInstance::__Resolved::InvalidSamplerStateEntryType)
         {
             compiler->Error(Format("Invalid sampler state entry '%s'", entryString.c_str()), assignEntry);
             return false;
@@ -526,68 +525,68 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
         assignEntry->right->EvalValue(value);
         switch (entryType)
         {
-        case SamplerState::__Resolved::AllAddressType:
-            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (GPULang::AddressMode)value.i[0];
+        case SamplerStateInstance::__Resolved::AllAddressType:
+            stateResolved->addressU = stateResolved->addressV = stateResolved->addressW = (GPULang::Serialization::AddressMode)value.i[0];
             break;
-        case SamplerState::__Resolved::AddressUType:
+        case SamplerStateInstance::__Resolved::AddressUType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressU = (GPULang::AddressMode)value.i[0];
+            stateResolved->addressU = (GPULang::Serialization::AddressMode)value.i[0];
             break;
-        case SamplerState::__Resolved::AddressVType:
+        case SamplerStateInstance::__Resolved::AddressVType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressV = (GPULang::AddressMode)value.i[0];
+            stateResolved->addressV = (GPULang::Serialization::AddressMode)value.i[0];
             break;
-        case SamplerState::__Resolved::AddressWType:
+        case SamplerStateInstance::__Resolved::AddressWType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support per-coordinate addressing mode"), assignEntry);
                 return false;
             }
-            stateResolved->addressW = (GPULang::AddressMode)value.i[0];
+            stateResolved->addressW = (GPULang::Serialization::AddressMode)value.i[0];
             break;
-        case SamplerState::__Resolved::AllFilterType:
+        case SamplerStateInstance::__Resolved::AllFilterType:
             if (stateResolved->isInline && (value.i[0] != 0x7 && value.i[0] != 0x0))
             {
                 compiler->Error(Format("inline_sampler requires filter mode to either be FilterMode.Linear or FilterMode.Point"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Filter)((value.i[0] & 0x1) + 1);
-            stateResolved->magFilter = (GPULang::Filter)(((value.i[0] >> 1) & 0x1) + 1);
-            stateResolved->mipFilter = (GPULang::Filter)(((value.i[0] >> 2) & 0x1) + 1);
+            stateResolved->minFilter = (GPULang::Serialization::Filter)((value.i[0] & 0x1) + 1);
+            stateResolved->magFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 1) & 0x1) + 1);
+            stateResolved->mipFilter = (GPULang::Serialization::Filter)(((value.i[0] >> 2) & 0x1) + 1);
             break;
-        case SamplerState::__Resolved::MinFilterType:
+        case SamplerStateInstance::__Resolved::MinFilterType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->minFilter = (GPULang::Filter)value.i[0];
+            stateResolved->minFilter = (GPULang::Serialization::Filter)value.i[0];
             break;
-        case SamplerState::__Resolved::MagFilterType:
+        case SamplerStateInstance::__Resolved::MagFilterType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->magFilter = (GPULang::Filter)value.i[0];
+            stateResolved->magFilter = (GPULang::Serialization::Filter)value.i[0];
             break;
-        case SamplerState::__Resolved::MipFilterType:
+        case SamplerStateInstance::__Resolved::MipFilterType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting filter modes individually"), assignEntry);
                 return false;
             }
-            stateResolved->mipFilter = (GPULang::Filter)value.i[0];
+            stateResolved->mipFilter = (GPULang::Serialization::Filter)value.i[0];
             break;
-        case SamplerState::__Resolved::MipLodBiasType:
+        case SamplerStateInstance::__Resolved::MipLodBiasType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support mip lod bias"), assignEntry);
@@ -595,7 +594,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->mipLodBias);
             break;
-        case SamplerState::__Resolved::AnisotropicFlagType:
+        case SamplerStateInstance::__Resolved::AnisotropicFlagType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
@@ -603,7 +602,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->anisotropicEnabled);
             break;
-        case SamplerState::__Resolved::MaxAnisotropyType:
+        case SamplerStateInstance::__Resolved::MaxAnisotropyType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support anisotropy"), assignEntry);
@@ -611,7 +610,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->maxAnisotropy);
             break;
-        case SamplerState::__Resolved::CompareFlagType:
+        case SamplerStateInstance::__Resolved::CompareFlagType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
@@ -619,15 +618,15 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->compareSamplerEnabled);
             break;
-        case SamplerState::__Resolved::CompareModeType:
+        case SamplerStateInstance::__Resolved::CompareModeType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support comparison samplers"), assignEntry);
                 return false;
             }
-            stateResolved->compareMode = (GPULang::CompareMode)value.i[0];
+            stateResolved->compareMode = (GPULang::Serialization::CompareMode)value.i[0];
             break;
-        case SamplerState::__Resolved::MinLodType:
+        case SamplerStateInstance::__Resolved::MinLodType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
@@ -635,7 +634,7 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->minLod);
             break;
-        case SamplerState::__Resolved::MaxLodType:
+        case SamplerStateInstance::__Resolved::MaxLodType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support lod controls"), assignEntry);
@@ -643,15 +642,15 @@ Validator::ResolveSamplerState(Compiler* compiler, Symbol* symbol)
             }
             value.Store(stateResolved->maxLod);
             break;
-        case SamplerState::__Resolved::BorderColorType:
+        case SamplerStateInstance::__Resolved::BorderColorType:
             if (stateResolved->isInline)
             {
                 compiler->Error(Format("inline_sampler doesn't support setting border color"), assignEntry);
                 return false;
             }
-            stateResolved->borderColor = (GPULang::BorderColor)value.i[0];
+            stateResolved->borderColor = (GPULang::Serialization::BorderColor)value.i[0];
             break;
-        case SamplerState::__Resolved::UnnormalizedSamplingType:
+        case SamplerStateInstance::__Resolved::UnnormalizedSamplingType:
             value.Store(stateResolved->unnormalizedSamplingEnabled);
             break;
         }
@@ -1139,7 +1138,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     Program* prog = static_cast<Program*>(symbol);
     Program::__Resolved* progResolved = Symbol::Resolved(prog);
 
-    Type* progType = &ProgramTypeType;
+    Type* progType = &ProgramType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
     progResolved->typeSymbol = progType;
     for (Expression* entry : prog->entries)
@@ -1267,13 +1266,12 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 return false;
             }
             Symbol* value = compiler->GetSymbol(sym);
-            if (value->symbolType != Symbol::SymbolType::RenderStateType)
+            if (value->symbolType != Symbol::SymbolType::RenderStateInstanceType)
             {
                 compiler->Error(Format("Program binds symbol '%s' to '%s' but it is not a recognized render_state", sym.c_str(), assignEntry->name.c_str()), assignEntry);
                 return false;
             }
-            RenderState* state = static_cast<RenderState*>(value);
-            RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
+            RenderStateInstance* state = static_cast<RenderStateInstance*>(value);
             progResolved->mappings[entryType] = state;
         }
         else
@@ -1423,7 +1421,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
             }
             else
             {
-                if (value->symbolType != Symbol::SymbolType::RenderStateType)
+                if (value->symbolType != Symbol::SymbolType::RenderStateInstanceType)
                 {
                     compiler->Error(Format("Program binds symbol '%s' as RenderState but it is not a recognized render_state symbol", assignEntry->name.c_str(), assignEntry->name.c_str()), assignEntry);
                     return false;
@@ -1452,10 +1450,10 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 bool 
 Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
 {
-    RenderState* state = static_cast<RenderState*>(symbol);
-    RenderState::__Resolved* stateResolved = Symbol::Resolved(state);
+    RenderStateInstance* state = static_cast<RenderStateInstance*>(symbol);
+    RenderStateInstance::__Resolved* stateResolved = Symbol::Resolved(state);
 
-    Type* renderStateType = &RenderStateTypeType;
+    Type* renderStateType = &RenderStateType;
     stateResolved->typeSymbol = renderStateType;
     if (!compiler->AddSymbol(symbol->name, symbol))
         return false;
@@ -1511,15 +1509,15 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             entryStr = assignEntry->left->EvalString();
         }
 
-        RenderState::__Resolved::RenderStateEntryType entryType = RenderState::__Resolved::StringToEntryType(entryStr);
-        if (entryType == RenderState::__Resolved::InvalidRenderStateEntryType)
+        RenderStateInstance::__Resolved::RenderStateEntryType entryType = RenderStateInstance::__Resolved::StringToEntryType(entryStr);
+        if (entryType == RenderStateInstance::__Resolved::InvalidRenderStateEntryType)
         {
             compiler->Error(Format("Invalid render state entry '%s'", entryStr.c_str()), assignEntry);
             return false;
         }
 
         // Look at the array states (blend per MRT)
-        if (entryType >= RenderState::__Resolved::BlendEnabledType && entryType <= RenderState::__Resolved::ColorComponentMaskType)
+        if (entryType >= RenderStateInstance::__Resolved::BlendEnabledType && entryType <= RenderStateInstance::__Resolved::ColorComponentMaskType)
         {
             uint32_t index = -1;
 
@@ -1541,9 +1539,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 return false;
             }
 
-            if (index >= RenderState::__Resolved::NUM_BLEND_STATES)
+            if (index >= RenderStateInstance::__Resolved::NUM_BLEND_STATES)
             {
-                compiler->Error(Format("Only %d blend states are allowed", RenderState::__Resolved::NUM_BLEND_STATES), assignEntry);
+                compiler->Error(Format("Only %d blend states are allowed", RenderStateInstance::__Resolved::NUM_BLEND_STATES), assignEntry);
                 return false;
             }
 
@@ -1552,7 +1550,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             uint32_t enumValue = 0;
             switch (entryType)
             {
-            case RenderState::__Resolved::BlendEnabledType:
+            case RenderStateInstance::__Resolved::BlendEnabledType:
                 if (!valid)
                 {
                     compiler->Error(Format("Blend state entry '%s' must evaluate to a compile time bool", entryStr.c_str()), assignEntry);
@@ -1560,68 +1558,68 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                 }
                 val.Store(stateResolved->blendStates[index].blendEnabled);
                 break;
-            case RenderState::__Resolved::SourceBlendColorFactorType:
+            case RenderStateInstance::__Resolved::SourceBlendColorFactorType:
                 if (!valid)
                 {
                     compiler->Error(Format("Source blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].sourceColorBlendFactor = (GPULang::BlendFactor)enumValue;
+                stateResolved->blendStates[index].sourceColorBlendFactor = (GPULang::Serialization::BlendFactor)enumValue;
                 break;
-            case RenderState::__Resolved::DestinationBlendColorFactorType:
+            case RenderStateInstance::__Resolved::DestinationBlendColorFactorType:
                 if (!valid)
                 {
                     compiler->Error(Format("Destination blend factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].destinationColorBlendFactor = (GPULang::BlendFactor)enumValue;
+                stateResolved->blendStates[index].destinationColorBlendFactor = (GPULang::Serialization::BlendFactor)enumValue;
                 break;
-            case RenderState::__Resolved::SourceBlendAlphaFactorType:
+            case RenderStateInstance::__Resolved::SourceBlendAlphaFactorType:
                 if (!valid)
                 {
                     compiler->Error(Format("Source blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].sourceAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
+                stateResolved->blendStates[index].sourceAlphaBlendFactor = (GPULang::Serialization::BlendFactor)enumValue;
                 break;
-            case RenderState::__Resolved::DestinationBlendAlphaFactorType:
+            case RenderStateInstance::__Resolved::DestinationBlendAlphaFactorType:
                 if (!valid)
                 {
                     compiler->Error(Format("Destination blend alpha factor entry '%s' must evaluate to a compile time enum of BlendFactor", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].destinationAlphaBlendFactor = (GPULang::BlendFactor)enumValue;
+                stateResolved->blendStates[index].destinationAlphaBlendFactor = (GPULang::Serialization::BlendFactor)enumValue;
                 break;
-            case RenderState::__Resolved::ColorBlendOpType:
+            case RenderStateInstance::__Resolved::ColorBlendOpType:
                 if (!valid)
                 {
                     compiler->Error(Format("Color blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].colorBlendOp = (GPULang::BlendOp)enumValue;
+                stateResolved->blendStates[index].colorBlendOp = (GPULang::Serialization::BlendOp)enumValue;
                 break;
-            case RenderState::__Resolved::AlphaBlendOpType:
+            case RenderStateInstance::__Resolved::AlphaBlendOpType:
                 if (!valid)
                 {
                     compiler->Error(Format("Alpha blend op entry '%s' must evaluate to a compile time enum of BlendOp", entryStr.c_str()), assignEntry);
                     return false;
                 }
                 val.Store(enumValue);
-                stateResolved->blendStates[index].alphaBlendOp = (GPULang::BlendOp)enumValue;
+                stateResolved->blendStates[index].alphaBlendOp = (GPULang::Serialization::BlendOp)enumValue;
                 break;
                 
             }
         }
-        else if (entryType >= RenderState::__Resolved::StencilFailOpType && entryType <= RenderState::__Resolved::StencilReferenceMaskType)
+        else if (entryType >= RenderStateInstance::__Resolved::StencilFailOpType && entryType <= RenderStateInstance::__Resolved::StencilReferenceMaskType)
         {
             AccessExpression* access = static_cast<AccessExpression*>(assignEntry->left);
             TransientString face = access->left->EvalString();
-            StencilState* state;
+            Serialization::StencilState* state;
             if (face == "StencilBack")
                 state = &stateResolved->backStencilState;
             else if (face == "StencilFront")
@@ -1632,43 +1630,43 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             bool valid = assignEntry->right->EvalValue(val);
             switch (entryType)
             {
-                case RenderState::__Resolved::StencilFailOpType:
+                case RenderStateInstance::__Resolved::StencilFailOpType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
-                    state->fail = (GPULang::StencilOp)enumValue;
+                    state->fail = (GPULang::Serialization::StencilOp)enumValue;
                     break;
-                case RenderState::__Resolved::StencilPassOpType:
+                case RenderStateInstance::__Resolved::StencilPassOpType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil pass op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
-                    state->pass = (GPULang::StencilOp)enumValue;
+                    state->pass = (GPULang::Serialization::StencilOp)enumValue;
                     break;
-                case RenderState::__Resolved::StencilDepthFailOpType:
+                case RenderStateInstance::__Resolved::StencilDepthFailOpType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil depth fail op entry '%s' must evaluate to a compile time enum of StencilOp", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
-                    state->depthFail = (GPULang::StencilOp)enumValue;
+                    state->depthFail = (GPULang::Serialization::StencilOp)enumValue;
                     break;
-                case RenderState::__Resolved::StencilCompareModeType:
+                case RenderStateInstance::__Resolved::StencilCompareModeType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil compare mode '%s' must evaluate to a compile time enum of CompareMode", entryStr.c_str()), assignEntry);
                         return false;
                     }
                     val.Store(enumValue);
-                    state->compare = (GPULang::CompareMode)enumValue;
+                    state->compare = (GPULang::Serialization::CompareMode)enumValue;
                     break;
-                case RenderState::__Resolved::StencilCompareMaskType:
+                case RenderStateInstance::__Resolved::StencilCompareMaskType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil compare mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
@@ -1676,7 +1674,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     }
                     val.Store(state->compareMask);
                     break;
-                case RenderState::__Resolved::StencilWriteMaskType:
+                case RenderStateInstance::__Resolved::StencilWriteMaskType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil write mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
@@ -1684,7 +1682,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     }
                     val.Store(state->writeMask);
                     break;
-                case RenderState::__Resolved::StencilReferenceMaskType:
+                case RenderStateInstance::__Resolved::StencilReferenceMaskType:
                     if (!valid)
                     {
                         compiler->Error(Format("Stencil reference mask '%s' must evaluate to a compile time unsigned integer", entryStr.c_str()), assignEntry);
@@ -1694,7 +1692,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
                     break;
             }
         }
-        else if (entryType == RenderState::__Resolved::BlendConstantsType)
+        else if (entryType == RenderStateInstance::__Resolved::BlendConstantsType)
         {
             InitializerExpression* init = static_cast<InitializerExpression*>(assignEntry->right);
             if (init->values.size != 4)
@@ -1729,66 +1727,66 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
             uint32_t enumValue = 0;
             switch (entryType)
             {
-                case RenderState::__Resolved::DepthClampEnabledType:
+                case RenderStateInstance::__Resolved::DepthClampEnabledType:
                     
                     value.Store(stateResolved->depthClampEnabled);
                     break;
-                case RenderState::__Resolved::NoPixelsType:
+                case RenderStateInstance::__Resolved::NoPixelsType:
                     value.Store(stateResolved->noPixels);
                     break;
-                case RenderState::__Resolved::PolygonModeType:
-                    stateResolved->polygonMode = (GPULang::PolygonMode)value.i[0];
+                case RenderStateInstance::__Resolved::PolygonModeType:
+                    stateResolved->polygonMode = (GPULang::Serialization::PolygonMode)value.i[0];
                     break;
-                case RenderState::__Resolved::CullModeType:
-                    stateResolved->cullMode = (GPULang::CullMode)value.i[0];
+                case RenderStateInstance::__Resolved::CullModeType:
+                    stateResolved->cullMode = (GPULang::Serialization::CullMode)value.i[0];
                     break;
-                case RenderState::__Resolved::WindingOrderType:
-                    stateResolved->windingOrderMode = (GPULang::WindingOrderMode)value.i[0];
+                case RenderStateInstance::__Resolved::WindingOrderType:
+                    stateResolved->windingOrderMode = (GPULang::Serialization::WindingOrderMode)value.i[0];
                     break;
-                case RenderState::__Resolved::DepthBiasEnabledType:
+                case RenderStateInstance::__Resolved::DepthBiasEnabledType:
                     value.Store(stateResolved->depthBiasEnabled);
                     break;
-                case RenderState::__Resolved::DepthBiasFactorType:
+                case RenderStateInstance::__Resolved::DepthBiasFactorType:
                     value.Store(stateResolved->depthBiasFactor);
                     break;
-                case RenderState::__Resolved::DepthBiasClampType:
+                case RenderStateInstance::__Resolved::DepthBiasClampType:
                     value.Store(stateResolved->depthBiasClamp);
                     break;
-                case RenderState::__Resolved::DepthBiasSlopeFactorType:
+                case RenderStateInstance::__Resolved::DepthBiasSlopeFactorType:
                     value.Store(stateResolved->depthBiasSlopeFactor);
                     break;
-                case RenderState::__Resolved::LineWidthType:
+                case RenderStateInstance::__Resolved::LineWidthType:
                     value.Store(stateResolved->lineWidth);
                     break;
-                case RenderState::__Resolved::DepthTestEnabledType:
+                case RenderStateInstance::__Resolved::DepthTestEnabledType:
                     value.Store(stateResolved->depthTestEnabled);
                     break;
-                case RenderState::__Resolved::DepthWriteEnabledType:
+                case RenderStateInstance::__Resolved::DepthWriteEnabledType:
                     value.Store(stateResolved->depthWriteEnabled);
                     break;
-                case RenderState::__Resolved::DepthTestFunction:
-                    stateResolved->depthCompare = (GPULang::CompareMode)value.i[0];
+                case RenderStateInstance::__Resolved::DepthTestFunction:
+                    stateResolved->depthCompare = (GPULang::Serialization::CompareMode)value.i[0];
                     break;
-                case RenderState::__Resolved::DepthBoundsTestEnabledType:
+                case RenderStateInstance::__Resolved::DepthBoundsTestEnabledType:
                     value.Store(stateResolved->depthBoundsTestEnabled);
                     break;
-                case RenderState::__Resolved::MinDepthBoundsType:
+                case RenderStateInstance::__Resolved::MinDepthBoundsType:
                     value.Store(stateResolved->minDepthBounds);
                     break;
-                case RenderState::__Resolved::MaxDepthBoundsType:
+                case RenderStateInstance::__Resolved::MaxDepthBoundsType:
                     value.Store(stateResolved->maxDepthBounds);
                     break;
-                case RenderState::__Resolved::LogicOpEnabledType:
+                case RenderStateInstance::__Resolved::LogicOpEnabledType:
                     value.Store(stateResolved->logicOpEnabled);
                     break;
-                case RenderState::__Resolved::ScissorEnabledType:
+                case RenderStateInstance::__Resolved::ScissorEnabledType:
                     value.Store(stateResolved->scissorEnabled);
                     break;
-                case RenderState::__Resolved::StencilEnabledType:
+                case RenderStateInstance::__Resolved::StencilEnabledType:
                     value.Store(stateResolved->stencilEnabled);
                     break;
-                case RenderState::__Resolved::LogicOpType:
-                    stateResolved->logicOp = (GPULang::LogicOp)value.i[0];
+                case RenderStateInstance::__Resolved::LogicOpType:
+                    stateResolved->logicOp = (GPULang::Serialization::LogicOp)value.i[0];
                     break;
                 default:
                     compiler->Error(Format("Unknown render state entry '%s'", entryStr.c_str()), symbol);
@@ -1797,9 +1795,9 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (stateResolved->logicOpEnabled != GPULang::LogicOp::InvalidLogicOp)
+    if (stateResolved->logicOpEnabled != GPULang::Serialization::LogicOp::InvalidLogicOp)
     {
-        for (uint8_t i = 0; i < RenderState::__Resolved::NUM_BLEND_STATES; i++)
+        for (uint8_t i = 0; i < RenderStateInstance::__Resolved::NUM_BLEND_STATES; i++)
         {
             if (stateResolved->blendStates[i].blendEnabled)
             {
@@ -1983,7 +1981,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             Function* comparison = &enumeration->eqOp;
             comparison->name = eqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
-            Symbol::Resolved(comparison)->returnTypeSymbol = &BoolType;
+            Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
@@ -1997,7 +1995,7 @@ Validator::ResolveEnumeration(Compiler* compiler, Symbol* symbol)
             comparison = &enumeration->neqOp;
             comparison->name = neqOp;
             comparison->returnType = Type::FullType{ ConstantString("b8") };
-            Symbol::Resolved(comparison)->returnTypeSymbol = &BoolType;
+            Symbol::Resolved(comparison)->returnTypeSymbol = &Bool8Type;
             arg = StaticAlloc<Variable>();
             arg->name = rhs;
             arg->type = Type::FullType{ enumeration->name };
@@ -4434,7 +4432,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             }
             break;
         }
-        case Symbol::SamplerStateType:
+        case Symbol::SamplerStateInstanceType:
         {
             auto sampler = static_cast<SamplerState*>(symbol);
             auto sampResolved = Symbol::Resolved(sampler);

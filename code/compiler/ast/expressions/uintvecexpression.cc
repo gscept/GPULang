@@ -3,7 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "uintvecexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "util.h"
 #include "compiler.h"
 
@@ -43,7 +43,7 @@ UIntVecExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &UIntType;
+    thisResolved->type = &UInt32Type;
     return true;
 }
 
@@ -90,7 +90,7 @@ UIntVecExpression::EvalValue(ValueUnion& out) const
         out.ui[index++] = val;
     out.columnSize = this->values.size;
     out.rowSize = 1;
-    out.code = TypeCode::UInt;
+    out.code = TypeCode::UInt32;
     return true;
 }
 

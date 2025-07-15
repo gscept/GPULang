@@ -283,7 +283,7 @@ struct Compiler
 
     bool ignoreReservedWords;
 
-    RenderState defaultRenderState;
+    RenderStateInstance defaultRenderState;
     Variable shaderSwitches[Program::__Resolved::ProgramEntryType::NumProgramEntries];
     BoolExpression shaderValueExpressions[Program::__Resolved::ProgramEntryType::NumProgramEntries];
 

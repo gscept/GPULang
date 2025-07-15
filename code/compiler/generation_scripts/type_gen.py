@@ -109,6 +109,8 @@ def generate_types():
     ### Type conversion enum and SPIRV conversion methods ###
     spirv_intrinsics = open("../generated/types_spirv.h", 'w')
 
+    namer_line = ''
+
     conversion_table_enum = "enum TypeConversionTable\n"
     conversion_table_enum += '{\n'
 
@@ -125,15 +127,15 @@ def generate_types():
     for type1, width1, data_type1 in zip(types, bit_widths, data_types):
         for type2, width2, data_type2 in zip(types, bit_widths, data_types):
             if type1 != type2:
-                conversion_table_enum += '    {}To{},\n'.format(type1, type2)
+                conversion_table_enum += f'    {type1}To{type2},\n'
                 spirv_conversion_function = ''
                 spirv_conversion_prep = ''
 
                 if type1.startswith('Bool'):
                     if type2.startswith('Int') or type2.startswith('UInt'):
-                        spirv_conversion_prep = '            SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{}(1), vectorSize);\n'.format(type2)
-                        spirv_conversion_prep += '            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{}(0), vectorSize);\n'.format(type2)
-                        type_conversions.append(TypeConverter('{}To{}'.format(type1, type2), type2, data_type1, 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
+                        spirv_conversion_prep = f'            SPIRVResult trueValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(1), vectorSize);\n'
+                        spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type2}(0), vectorSize);\n'
+                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, 'OpSelect', spirv_conversion_prep, 'trueValue, falseValue'))
                 else:    
                     if not type2.startswith('Bool'):
                         spirv_conversion_prep = ''
@@ -158,12 +160,12 @@ def generate_types():
                                 spirv_conversion_function = 'OpBitcast'
                             elif type2.startswith('Float'):
                                 spirv_conversion_function = 'OpConvertSToF'
-                        type_conversions.append(TypeConverter('{}To{}'.format(type1, type2), type2, data_type1, spirv_conversion_function, spirv_conversion_prep, ''))
+                        type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, spirv_conversion_function, spirv_conversion_prep, ''))
                     else:
                         if type1.startswith('UInt') or type1.startswith('Int'):
-                            spirv_conversion_prep = '            value = LoadValueSPIRV(c, g, value);\n'
-                            spirv_conversion_prep += '            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{}(0), vectorSize);\n'.format(type1)   
-                            type_conversions.append(TypeConverter('{}To{}'.format(type1, type2), type2, data_type1, 'OpINotEqual', spirv_conversion_prep, 'value, falseValue'))
+                            spirv_conversion_prep = f'            value = LoadValueSPIRV(c, g, value);\n'
+                            spirv_conversion_prep += f'            SPIRVResult falseValue = GenerateConstantSPIRV(c, g, ConstantCreationInfo::{type1}(0), vectorSize);\n'
+                            type_conversions.append(TypeConverter(f'{type1}To{type2}', type2, data_type1, 'OpINotEqual', spirv_conversion_prep, 'value, falseValue'))
 
 
     conversion_table_enum = conversion_table_enum[0:-2]
@@ -199,31 +201,31 @@ def generate_types():
     spirv_intrinsics.write('constexpr ConverterTable = StaticMap{ std::array{\n')
     spirv_type_construction = ''
     for converter in type_conversions:
-        spirv_type_construction += '    {{ TypeConversionTable::{}, [](const Compiler*, SPIRVGenerator*, uint32_t, SPIRVResult) -> SPIRVResult {{\n'.format(converter.enum)
-        spirv_type_construction += '        if (value.isLiteral)\n'
-        spirv_type_construction += '        {\n'
-        spirv_type_construction += '            assert(vectorSize == 1);\n'
-        spirv_type_construction += '            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::{}(value.literalValue.{}));\n'.format(converter.target, converter.source_data_type)
-        spirv_type_construction += '        }\n'
-        spirv_type_construction += '        else\n'
-        spirv_type_construction += '        {\n'
-        spirv_type_construction += '            uint32_t type;\n'
-        spirv_type_construction += '            if (vectorSize > 1)\n'
-        spirv_type_construction += '                type = GeneratePODTypeSPIRV(c, g, TypeCode::{}, vectorSize);\n'.format(converter.target)
-        spirv_type_construction += '            else\n'
-        spirv_type_construction += '                type = GeneratePODTypeSPIRV(c, g, TypeCode::{});\n'.format(converter.target)
+        spirv_type_construction += f'    {{ TypeConversionTable::{converter.enum}, [](const Compiler*, SPIRVGenerator*, uint32_t, SPIRVResult) -> SPIRVResult {{\n'
+        spirv_type_construction += f'        if (value.isLiteral)\n'
+        spirv_type_construction += f'        {{\n'
+        spirv_type_construction += f'            assert(vectorSize == 1);\n'
+        spirv_type_construction += f'            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::{converter.target}(value.literalValue.{converter.source_data_type}));\n'
+        spirv_type_construction += f'        }}\n'
+        spirv_type_construction += f'        else\n'
+        spirv_type_construction += f'        {{\n'
+        spirv_type_construction += f'            uint32_t type;\n'
+        spirv_type_construction += f'            if (vectorSize > 1)\n'
+        spirv_type_construction += f'                type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
+        spirv_type_construction += f'            else\n'
+        spirv_type_construction += f'                type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += '            value = LoadValueSPIRV(c, g, value);\n'
-            spirv_type_construction += '            uint32_t res = value.name;\n'
+            spirv_type_construction += f'            value = LoadValueSPIRV(c, g, value);\n'
+            spirv_type_construction += f'            uint32_t res = value.name;\n'
         if converter.spirv_conversion_prep:
             spirv_type_construction += converter.spirv_conversion_prep
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += '            res = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, type, SPVArg{{res}});\n'.format(converter.spirv_conversion_function)
+            spirv_type_construction += f'            res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, SPVArg{{res}});\n'
         else:
-            spirv_type_construction += '            res = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, type, {});\n'.format(converter.spirv_conversion_function, converter.spirv_conversion_arguments)
-        spirv_type_construction += '            return SPIRVResult(res, type, true);\n'
-        spirv_type_construction += '        }\n'
-        spirv_type_construction += '    } },\n'
+            spirv_type_construction += f'            res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, {converter.spirv_conversion_arguments});\n'
+        spirv_type_construction += f'            return SPIRVResult(res, type, true);\n'
+        spirv_type_construction += f'        }}\n'
+        spirv_type_construction += f'    }} }},\n'
     spirv_intrinsics.write(spirv_type_construction[0:-2])
     spirv_intrinsics.write('\n}};\n\n')
     spirv_intrinsics.write('StaticMap default_intrinsics = std::array{\n')
@@ -257,30 +259,30 @@ def generate_types():
     spirv_code = ''
 
     def spirv_intrinsic(fun, arg):
-        return 'std::pair{{ &{} , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult\n{{\n{}}}}},\n'.format(fun, arg)
+        return f'std::pair{{ &{fun} , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult\n{{\n{arg}}}}},\n'
 
+    class_def = ""
+    declaration_string = ""
+    definition_string = ""
     for size in range(1, 5):
         for type, data_type, base_type, bits in zip(types, data_types, base_types, bit_widths):
             if size == 1:
                 data_type_name = data_type
                 type_name = type
             else:
-                type_name = '{}x{}'.format(type, size)
-                data_type_name = '{}x{}'.format(data_type, size)
+                type_name = f'{type}x{size}'
+                data_type_name = f'{data_type}x{size}'
 
-            class_decl = ""
-            class_decl += 'struct {} : public Type\n'.format(type_name)
+            class_decl = ''
+            class_decl += f'struct {type_name} : public Type\n'
             class_decl += '{\n'
-            class_decl += '    {}();\n'.format(type_name)
+            class_decl += f'    {type_name}();\n'
             class_decl += '};\n'
-            class_decl += 'extern {} {}Type;\n\n'.format(type_name, type_name)
-            
-            
-            header_file.write(class_decl)
+            class_decl += f'extern {type_name} {type_name}Type;\n\n'
+            declaration_string += class_decl
 
-            declaration_string = ""
-            #declaration_string = '#define DECL_{}_ctors\\\n'.format(type_name)
-            definition_string = '#define DEF_{}_ctors\\\n'.format(type_name)
+            namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
+            definition_string += f'#define DEF_{type_name}_ctors\\\n'
             setup_string = ""
             list_string = ""
             for type2, data_type2, bits2 in zip(types, data_types, bit_widths):
@@ -297,45 +299,45 @@ def generate_types():
                     data_type_name2 = data_type2
                     type_name2 = type2
                 else:
-                    type_name2 = '{}x{}'.format(type2, size)
-                    data_type_name2 = '{}x{}'.format(data_type2, size)
+                    type_name2 = f'{type2}x{size}'
+                    data_type_name2 = f'{data_type2}x{size}'
 
-                fun_name = '{}_convert_{}'.format(type_name, type_name2)
-                arg_name = '{}_convert_{}_arg0'.format(type_name, type_name2)
-                declaration_string += 'extern Variable {};\n'.format(arg_name)
-                definition_string += 'Variable {};\\\n'.format(arg_name)
-                declaration_string += 'extern Function {};\n'.format(fun_name)
-                definition_string += 'Function {};\\\n'.format(fun_name)
-                setup_string += '    // Conversion from {}\n'.format(type_name2)
-                setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name)
-                setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name2)
-                setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, data_type_name)
-                setup_string += '    {}.returnType = Type::FullType {{ {}Type.name }};\n'.format(fun_name, type_name)
-                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name2)
-                setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                list_string += '        std::pair{{ "{}"_c, &{} }},\n'.format(data_type_name, fun_name)
-                list_string += '        std::pair{{ "{}({})"_c, &{} }},\n'.format(data_type_name, data_type_name2, fun_name)
-                spirv_type_construction += spirv_intrinsic(fun_name, '    return GenerateConversionSPIRV(c, g, TypeConversionTable::{}To{}, {}, args[0]);\n'.format(type, type2, size))
+                fun_name = f'{type_name}_convert_{type_name2}'
+                arg_name = f'{type_name}_convert_{type_name2}_arg0'
+                declaration_string += f'extern Variable {arg_name};\n'
+                definition_string += f'Variable {arg_name};\\\n'
+                declaration_string += f'extern Function {fun_name};\n'
+                definition_string += f'Function {fun_name};\\\n'
+                setup_string += f'    // Conversion from {type_name2}\n'
+                setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name2}Type.name }};\n'
+                setup_string += f'    {fun_name}.name = "{data_type_name}"_c;\n'
+                setup_string += f'    {fun_name}.returnType = Type::FullType {{ {type_name}Type.name }};\n'
+                setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name2}Type;\n'
+                setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                list_string += f'        std::pair{{ "{data_type_name}"_c, &{fun_name} }},\n'
+                list_string += f'        std::pair{{ "{data_type_name}({data_type_name2})"_c, &{fun_name} }},\n'
+                spirv_type_construction += spirv_intrinsic(fun_name, f'    return GenerateConversionSPIRV(c, g, TypeConversionTable::{type}To{type2}, {size}, args[0]);\n')
                 if size > 1:
-                    fun_name = '{}_splat_{}'.format(type_name, type2)
-                    arg_name = '{}_splat_{}_arg0'.format(type_name, type2)
-                    declaration_string += 'extern Variable {};\n'.format(arg_name)
-                    definition_string += 'Variable {};\\\n'.format(arg_name)
-                    declaration_string += 'extern Function {};\n'.format(fun_name)
-                    definition_string += 'Function {};\\\n'.format(fun_name)
-                    setup_string += '    // Splat with {}\n'.format(type2)
-                    setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name)
-                    setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type2)
-                    setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, data_type_name)
-                    setup_string += '    {}.returnType = Type::FullType {{ {}Type.name }};\n'.format(fun_name, type_name)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type2)
-                    setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                    list_string += '        std::pair{{ "{}"_c, &{} }},\n'.format(data_type_name, fun_name)
-                    list_string += '        std::pair{{ "{}({})"_c, &{} }},\n'.format(data_type_name, data_type2, fun_name)
+                    fun_name = f'{type_name}_splat_{type2}'
+                    arg_name = f'{type_name}_splat_{type2}_arg0'
+                    declaration_string += f'extern Variable {arg_name};\n'
+                    definition_string += f'Variable {arg_name};\\\n'
+                    declaration_string += f'extern Function {fun_name};\n'
+                    definition_string += f'Function {fun_name};\\\n'
+                    setup_string += f'    // Splat with {type2}\n'
+                    setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                    setup_string += f'    {arg_name}.type = Type::FullType{{ {type2}Type.name }};\n'
+                    setup_string += f'    {fun_name}.name = "{data_type_name}"_c;\n'
+                    setup_string += f'    {fun_name}.returnType = Type::FullType {{ {type_name}Type.name }};\n'
+                    setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type2}Type;\n'
+                    setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                    list_string += f'        std::pair{{ "{data_type_name}"_c, &{fun_name} }},\n'
+                    list_string += f'        std::pair{{ "{data_type_name}({data_type2})"_c, &{fun_name} }},\n'
                     spirv_function = '    SPIRVResult val = args[0];\n'
                     if type != type2:
-                        spirv_function += '    val = GenerateConversionSPIRV(c, g, TypeConversionTable::{}To{}, 1, val);\n'.format(type2, type)
-                    spirv_function += '    return GenerateSplatCompositeSPIRV(c, g, returnType, {}, val);\n'.format(size)
+                        spirv_function += f'    val = GenerateConversionSPIRV(c, g, TypeConversionTable::{type2}To{type}, 1, val);\n'
+                    spirv_function += f'    return GenerateSplatCompositeSPIRV(c, g, returnType, {size}, val);\n'
                     spirv_type_construction += spirv_intrinsic(fun_name, spirv_function)
 
 
@@ -351,7 +353,7 @@ def generate_types():
             elif size == 4:
                 combinations = four_component_combinations
             for ctor_idx, comb in enumerate(combinations):
-                fun_name = '{}_ctor{}'.format(type_name, ctor_idx)                
+                fun_name = f'{type_name}_ctor{ctor_idx}'
 
                 dec_var = ''
                 def_var = ''
@@ -366,79 +368,74 @@ def generate_types():
                 spirv_function += "            return loadedArg;\n"
                 spirv_function += "        }\n"
                 if type != type2:
-                    spirv_function += '    loadedArg = GenerateConversionSPIRV(c, g, TypeConversionTable::{}To{}, {}, loadedArg);\n'.format(type, type2, size)
+                    spirv_function += f'    loadedArg = GenerateConversionSPIRV(c, g, TypeConversionTable::{type}To{type2}, {size}, loadedArg);\n'
                 spirv_function += '    return loadedArg;\n'
 
                 for arg_idx, s in enumerate(comb):
-                    arg_name = '{}_ctor{}_arg{}'.format(type_name, ctor_idx, arg_idx)
+                    arg_name = f'{type_name}_ctor{ctor_idx}_arg{arg_idx}'
                     args.append(arg_name)
                     if list_entry_key != "":
                         list_entry_key += ","
                     if s == 1:
-                        arg_type_name = '{}'.format(type)
-                        fun_name += '_{}'.format(type)
-                        list_entry_value += '_{}'.format(type)
-                        list_entry_key += '{}'.format(data_type)
-                        dec_var += 'extern Variable {};\n'.format(arg_name)
-                        def_var += 'Variable {};\n'.format(arg_name)
-                        arg_list += '{}, '.format(arg_type_name)
-                        
+                        arg_type_name = f'{type}'
+                        fun_name += f'_{type}'
+                        list_entry_value += f'_{type}'
+                        list_entry_key += f'{data_type}'
+                        dec_var += f'extern Variable {arg_name};\n'
+                        def_var += f'Variable {arg_name};\n'
+                        arg_list += f'{arg_type_name}, '
+
                     else:
-                        fun_name += '_{}x{}'.format(type, s)
-                        list_entry_key += '{}x{}'.format(data_type, s)
-                        list_entry_value += '_{}x{}'.format(type, s)
-                        dec_var += 'extern Variable {};\n'.format(arg_name)
-                        def_var += 'Variable {};\n'.format(arg_name)
-                        arg_type_name = '{}x{}'.format(type, s)
-                        arg_list += '{}, '.format(arg_type_name)
+                        fun_name += f'_{type}x{s}'
+                        list_entry_key += f'{data_type}x{s}'
+                        list_entry_value += f'_{type}x{s}'
+                        dec_var += f'extern Variable {arg_name};\n'
+                        def_var += f'Variable {arg_name};\n'
+                        arg_type_name = f'{type}x{s}'
+                        arg_list += f'{arg_type_name}, '
                     arg_types.append(arg_type_name)
-                    setup_args += '    {}.name = "_arg{}"_c;\n'.format(arg_name, arg_idx)
-                    setup_args += '    {}.type = Type::FullType {{ {}Type.name }};\n'.format(arg_name, arg_type_name)
-                
-                setup_string += '    // Construct with {}\n'.format(arg_list[0:-2])
+                    setup_args += f'    {arg_name}.name = "_arg{arg_idx}"_c;\n'
+                    setup_args += f'    {arg_name}.type = Type::FullType {{ {arg_type_name}Type.name }};\n'
+
+                setup_string += f'    // Construct with {arg_list[0:-2]}\n'
                 setup_string += setup_args
-                setup_string += '    {}.name = "{}"_c;\n'.format(fun_name, ctor_idx, data_type_name)
-                setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
+                setup_string += f'    {fun_name}.name = "{ctor_idx}"_c;\n'
+                setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
                 for arg, arg_type in zip(args, arg_types):
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg, arg_type)
-                setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                
-                list_string += '        std::pair{{ "{}"_c, &{}_ctor{}{}}},\n'.format(data_type_name, type_name, ctor_idx, list_entry_value)
-                list_string += '        std::pair{{ "{}({})"_c, &{}_ctor{}{}}},\n'.format(data_type_name, list_entry_key, type_name, ctor_idx, list_entry_value)
-                spirv_function = '    return GenerateCompositeSPIRV(c, g, returnType, {{{}}});\n'.format(', '.join(['args[{}]'.format(idx) for idx, arg in enumerate(args)]))
+                    setup_string += f'    Symbol::Resolved(&{arg})->typeSymbol = &{arg_type}Type;\n'
+                setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+
+                list_string += f'        std::pair{{ "{data_type_name}"_c, &{fun_name}}},\n'
+                list_string += f'        std::pair{{ "{data_type_name}({list_entry_key})"_c, &{fun_name}}},\n'
+                spirv_function = f'    return GenerateCompositeSPIRV(c, g, returnType, {{{", ".join([f"args[{idx}]" for idx, arg in enumerate(args)])}}});\n'
                 spirv_type_construction += spirv_intrinsic(fun_name, spirv_function)
 
-                declaration_string += '{}'.format(dec_var)
-                declaration_string += 'extern Function {};\n'.format(fun_name)
-                definition_string += '{}'.format(def_var)
-                definition_string += 'Function {};\\\n'.format(fun_name)
-                
+                declaration_string += f'{dec_var}'
+                declaration_string += f'extern Function {fun_name};\n'
+                definition_string += f'{def_var}'
+                definition_string += f'Function {fun_name};\\\n'
+
             spirv_intrinsics.write(spirv_type_construction)
-            header_file.write(declaration_string[0:-1] + '\n')
-            header_file.write("\n")
-            header_file.write(definition_string[0:-2] + '\n')
-            header_file.write("\n")
-            header_file.write("\n")
         
-            definition_string = "#define DEF_{}_operators\\\n".format(type_name)
+            definition_string += f"#define DEF_{type_name}_operators\\\n"
 
             for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
-                fun_name = '{}_operator_{}'.format(type_name, name)
-                arg_name = '{}_operator_{}_arg0'.format(type_name, name)
-                declaration_string += 'extern Variable {};\n'.format(arg_name)
-                declaration_string += 'extern Function {};\n'.format(fun_name)
-                definition_string += 'Variable {};\\\n'.format(arg_name)
-                definition_string += 'Function {};\\\n'.format(fun_name)
-                setup_string += '    // operator{}({})\n'.format(op, idx_data_type)
-                setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, idx_type)
-                setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type)
-                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
-                setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type)
-                list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, idx_data_type, fun_name)
+                fun_name = f'{type_name}_operator_{name}'
+                arg_name = f'{type_name}_operator_{name}_arg0'
+                declaration_string += f'extern Variable {arg_name};\n'
+                declaration_string += f'extern Function {fun_name};\n'
+                definition_string += f'Variable {arg_name};\\\n'
+                definition_string += f'Function {fun_name};\\\n'
+                setup_string += f'    // operator{op}({idx_data_type})\n'
+                setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                setup_string += f'    {arg_name}.type = Type::FullType{{ {idx_type}Type.name }};\n'
+                setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+                setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{idx_type}Type;\n'
+                setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type}Type;\n\n'
+                list_string += f'        std::pair{{ "operator{op}({idx_data_type})"_c, &{fun_name}}},\n'
 
-                spirv_function =  '    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {}.returnType, &{}Type, args[0].scope);\n'.format(fun_name, type)
+                spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {fun_name}.returnType, &{type}Type, args[0].scope);\n'
                 spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
                 spirv_function += '    SPIRVResult ret = args[0];\n'
                 spirv_function += '    ret.AddAccessChainLink({loadedIndex});\n'
@@ -451,20 +448,20 @@ def generate_types():
 
             if type == 'Bool8':
                 for name, op in zip(bool_operator_names, bool_operators):
-                    fun_name = '{}_operator_{}_{}'.format(type_name, name, type_name)
-                    arg_name = '{}_operator_{}_{}_arg0'.format(type_name, name, type_name)
-                    setup_string += '    // operator{}({})\n'.format(op, data_type_name)
-                    setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                    setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                    setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                    setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
-                    setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                    declaration_string += 'extern Variable {};\n'.format(arg_name)
-                    declaration_string += 'extern Function {};\n'.format(fun_name)
-                    definition_string += 'Variable {};\\\n'.format(arg_name)
-                    definition_string += 'Function {};\\\n'.format(fun_name)
-                    list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, data_type_name, fun_name)
+                    fun_name = f'{type_name}_operator_{name}_{type_name}'
+                    arg_name = f'{type_name}_operator_{name}_{type_name}_arg0'
+                    setup_string += f'    // operator{op}({data_type_name})\n'
+                    setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                    setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
+                    setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                    setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                    setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
+                    setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                    declaration_string += f'extern Variable {arg_name};\n'
+                    declaration_string += f'extern Function {fun_name};\n'
+                    definition_string += f'Variable {arg_name};\\\n'
+                    definition_string += f'Function {fun_name};\\\n'
+                    list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{fun_name}}},\n'
 
                     spirv_function =  ''
                     spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -478,7 +475,7 @@ def generate_types():
                         spirv_op = 'OpIEqual'
                     elif op == '!=':
                         spirv_op = 'OpINotEqual'
-                    spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                     spirv_code += spirv_intrinsic(fun_name, spirv_function)
             else:
@@ -489,20 +486,20 @@ def generate_types():
                     ]
                 for operator_set in operator_sets:
                     for name, op in operator_set:
-                        fun_name = '{}_operator_{}_{}'.format(type_name, name, type_name)
-                        arg_name = '{}_operator_{}_{}_arg0'.format(type_name, name, type_name)
-                        setup_string += '    // operator{}({})\n'.format(op, data_type_name)
-                        setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                        setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                        setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                        declaration_string += 'extern Variable {};\n'.format(arg_name)
-                        declaration_string += 'extern Function {};\n'.format(fun_name)
-                        definition_string += 'Variable {};\\\n'.format(arg_name)
-                        definition_string += 'Function {};\\\n'.format(fun_name)
-                        list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, data_type_name, fun_name)
+                        fun_name = f'{type_name}_operator_{name}_{type_name}'
+                        arg_name = f'{type_name}_operator_{name}_{type_name}_arg0'
+                        setup_string += f'    // operator{op}({data_type_name})\n'
+                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                        setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
+                        setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                        declaration_string += f'extern Variable {arg_name};\n'
+                        declaration_string += f'extern Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\\\n'
+                        definition_string += f'Function {fun_name};\\\n'
+                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{fun_name}}},\n'
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -523,54 +520,54 @@ def generate_types():
                                 spirv_op_type = 'I'
 
                         if op == '+' or op == '+=':
-                            spirv_op = 'Op{}Add'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Add'
                         elif op == '-' or op == '-=':
-                            spirv_op = 'Op{}Sub'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Sub'
                         elif op == '*' or op == '*=':
-                            spirv_op = 'Op{}Mul'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Mul'
                         elif op == '/' or op == '/=':
-                            spirv_op = 'Op{}Div'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Div'
                         elif op == '%' or op == '%=':
-                            spirv_op = 'Op{}Mod'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Mod'
                         elif op == '<':
-                            spirv_op = 'Op{}LessThan'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}LessThan'
                         elif op == '>':
-                            spirv_op = 'Op{}GreaterThan'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}GreaterThan'
                         elif op == '<=':
-                            spirv_op = 'Op{}LessThanEqual'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}LessThanEqual'
                         elif op == '>=':
-                            spirv_op = 'Op{}GreaterThanEqual'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}GreaterThanEqual'
                         elif op == '==':
-                            spirv_op = 'Op{}Equal'.format(spirv_op_type)
+                            spirv_op = f'Op{spirv_op_type}Equal'
                         elif op == '!=':
-                            spirv_op = 'Op{}NotEqual'.format(spirv_op_type)
-                        spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                            spirv_op = f'Op{spirv_op_type}NotEqual'
+                        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
                 
                 if size > 1:
                     for name, op, scale_type, scale_data_type in zip(scale_operator_names, scale_operators, scale_operator_types, scale_operator_data_types):
-                        fun_name = '{}_operator_{}_{}_{}'.format(type_name, name, type_name, scale_type)
-                        arg_name = '{}_operator_{}_{}_{}_arg0'.format(type_name, name, type_name, scale_type)
-                        setup_string += '    // operator{}({})\n'.format(op, scale_data_type)
-                        setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                        setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, scale_type)
-                        setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                        setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, scale_type)
-                        setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                        declaration_string += 'extern Variable {};\n'.format(arg_name)
-                        declaration_string += 'extern Function {};\n'.format(fun_name)
-                        definition_string += 'Variable {};\\\n'.format(arg_name)
-                        definition_string += 'Function {};\\\n'.format(fun_name)
-                        list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, scale_data_type, fun_name)
+                        fun_name = f'{type_name}_operator_{name}_{type_name}_{scale_type}'
+                        arg_name = f'{type_name}_operator_{name}_{type_name}_{scale_type}_arg0'
+                        setup_string += f'    // operator{op}({scale_data_type})\n'
+                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                        setup_string += f'    {arg_name}.type = Type::FullType{{ {scale_type}Type.name }};\n'
+                        setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                        setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{scale_type}Type;\n'
+                        setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                        declaration_string += f'extern Variable {arg_name};\n'
+                        declaration_string += f'extern Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\\\n'
+                        definition_string += f'Function {fun_name};\\\n'
+                        list_string += f'        std::pair{{ "operator{op}({scale_data_type})"_c, &{fun_name}}},\n'
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         if scale_type.startswith('Float'):
                             spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         else:
-                            spirv_function += '    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {}<, args[1]);\n'.format(size)
+                            spirv_function += f'    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {{{size}}}, args[1]);\n'
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
@@ -578,25 +575,25 @@ def generate_types():
             # Matrix transform
             if type.startswith('Float') and size > 1:
                 for cols in range(2, 5):
-                    compatible_matrix_type = 'Float32x{}x{}'.format(size, cols)
-                    compatible_matrix_data_type = 'f32x{}x{}'.format(size, cols)
-                    return_type = '{}x{}'.format(type, cols)
-                    return_data_type = 'f32x{}'.format(cols)
+                    compatible_matrix_type = f'Float32x{size}x{cols}'
+                    compatible_matrix_data_type = f'f32x{size}x{cols}'
+                    return_type = f'{type}x{cols}'
+                    return_data_type = f'f32x{cols}'
                     for name, op in zip(vector_matrix_operator_names, vector_matrix_operators):
-                        fun_name = '{}_operator_{}_{}'.format(type_name, name, compatible_matrix_type)
-                        arg_name = '{}_operator_{}_{}_arg0'.format(type_name, name, compatible_matrix_type)
-                        setup_string += '    // operator{}({})\n'.format(op, compatible_matrix_data_type)
-                        setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                        setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, compatible_matrix_type)
-                        setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                        setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, return_type)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, compatible_matrix_type)
-                        setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, return_type)
-                        declaration_string += 'extern Variable {};\n'.format(arg_name)
-                        declaration_string += 'extern Function {};\n'.format(fun_name)
-                        definition_string += 'Variable {};\\\n'.format(arg_name)
-                        definition_string += 'Function {};\\\n'.format(fun_name)
-                        list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, compatible_matrix_data_type, fun_name)  
+                        fun_name = f'{type_name}_operator_{name}_{compatible_matrix_type}'
+                        arg_name = f'{type_name}_operator_{name}_{compatible_matrix_type}_arg0'
+                        setup_string += f'    // operator{op}({compatible_matrix_data_type})\n'
+                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                        setup_string += f'    {arg_name}.type = Type::FullType{{ {compatible_matrix_type}Type.name }};\n'
+                        setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                        setup_string += f'    {fun_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
+                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{compatible_matrix_type}Type;\n'
+                        setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{return_type}Type;\n\n'
+                        declaration_string += f'extern Variable {arg_name};\n'
+                        declaration_string += f'extern Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\\\n'
+                        definition_string += f'Function {fun_name};\\\n'
+                        list_string += f'        std::pair{{ "operator{op}({compatible_matrix_data_type})"_c, &{fun_name}}},\n'
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -612,21 +609,21 @@ def generate_types():
                     ]
                 for operator_set in operator_sets:
                     for name, op in operator_set:
-                        fun_name = '{}_operator_{}_{}'.format(type_name, name, type_name)
-                        arg_name = '{}_operator_{}_{}_arg0'.format(type_name, name, type_name)
-                        setup_string += '    // operator{}\n'.format(op)
-                        setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                        setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                        setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                        
-                        declaration_string += 'extern Variable {};\n'.format(arg_name)
-                        declaration_string += 'extern Function {};\n'.format(fun_name)
-                        definition_string += 'Variable {};\\\n'.format(arg_name)
-                        definition_string += 'Function {};\\\n'.format(fun_name)
-                        list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, data_type_name, fun_name)
+                        fun_name = f'{type_name}_operator_{name}_{type_name}'
+                        arg_name = f'{type_name}_operator_{name}_{type_name}_arg0'
+                        setup_string += f'    // operator{op}\n'
+                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                        setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
+                        setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+
+                        declaration_string += f'extern Variable {arg_name};\n'
+                        declaration_string += f'extern Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\\\n'
+                        definition_string += f'Function {fun_name};\\\n'
+                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{fun_name}}},\n'
 
                         if op == '&':
                             spirv_op = 'OpBitwiseAnd'
@@ -641,31 +638,24 @@ def generate_types():
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
-                        spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
-            class_def = ""
-            class_def += '{}::{}()\n'.format(type_name, type_name)
+            class_def += f'{type_name}::{type_name}()\n'
             class_def += '{\n'
-            class_def += '    this->name = "{}";\n'.format(data_type)
-            class_def += '    this->columnSize = {};\n'.format(size)
-            class_def += '    this->rowSize = 1;\n'
-            class_def += '    this->byteSize = {:d};\n'.format(trunc((bits * size) / 8))
-            class_def += '    this->category = Type::ScalarCategory;\n'
-            class_def += '    this->baseType = TypeCode::{};\n'.format(type)
-            class_def += '    this->builtin = true;\n'
-            class_def += '\n'
-            class_def += '{}'.format(setup_string)
-            class_def += '    this->scope.symbolLookup = StaticMap {{ std::array{{\n{}\n    }}}};   \n'.format(list_string[0:-2])
+            class_def += f'    this->name = "{data_type}";\n'
+            class_def += f'    this->columnSize = {size};\n'
+            class_def += f'    this->rowSize = 1;\n'
+            class_def += f'    this->byteSize = {trunc((bits * size) / 8)};\n'
+            class_def += f'    this->category = Type::ScalarCategory;\n'
+            class_def += f'    this->baseType = TypeCode::{type};\n'
+            class_def += f'    this->builtin = true;\n'
+            class_def += f'\n'
+            class_def += f'{setup_string}'
+            class_def += f'    this->scope.symbolLookup = StaticMap {{ std::array{{\n{list_string[0:-2]}\n    }}}};   \n'
             class_def += '}\n\n'
 
-            header_file.write(declaration_string[0:-1] + '\n')
-            header_file.write("\n")
-            header_file.write(definition_string[0:-2] + '\n')
-            header_file.write("\n")
-            source_file.write(class_def)
-            header_file.write("\n")
 
     # Matrix types
     types = ['Float32', 'Float16']
@@ -690,19 +680,19 @@ def generate_types():
                 type_name = '{}x{}x{}'.format(type, row_size, column_size)
                 data_type_name = '{}x{}x{}'.format(data_type, row_size, column_size)
 
-                declaration_string = ""
-                definition_string = "#define DEF_{}_ctors\\\n".format(type_name)
+                namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
+
+                definition_string += "#define DEF_{}_ctors\\\n".format(type_name)
                 list_string = ""
                 setup_string = ""
                 
-                class_decl = ""
+                class_decl = ''
                 class_decl += 'struct {} : public Type\n'.format(type_name)
                 class_decl += '{\n'
                 class_decl += '    {}();\n'.format(type_name)
                 class_decl += '};\n'
                 class_decl += 'extern {} {}Type;\n\n'.format(type_name, type_name)
-
-                header_file.write(class_decl)
+                declaration_string += class_decl
 
                 vector_ctor_name = '{}_{}x{}_ctor'.format(type_name, type, column_size)
                 
@@ -728,15 +718,8 @@ def generate_types():
                 declaration_string += 'extern Function {};\n'.format(array_ctor_name)
                 definition_string += 'Function {};\n'.format(array_ctor_name)
                 list_string += '        std::pair{{ "{}"_c, &{}}},\n'.format(data_type_name, array_ctor_name)
-
-                header_file.write(declaration_string[0:-1] + '\n')
-                header_file.write("\n")
-                header_file.write(definition_string[0:-2] + '\n')
-                header_file.write("\n")
-                header_file.write("\n")
         
                 definition_string = "#define DEF_{}_operators\\\n".format(type_name)
-                declaration_string = ""
 
                 vec_type = '{}x{}'.format(type, column_size)
                 for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
@@ -842,7 +825,6 @@ def generate_types():
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
-                class_def = ""
                 class_def += '{}::{}()\n'.format(type_name, type_name)
                 class_def += '{\n'
                 class_def += '    this->name = "{}";\n'.format(data_type)
@@ -857,13 +839,23 @@ def generate_types():
                 class_def += '    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{}\n    }}\n    }};   \n'.format(list_string[0:-2])
                 class_def += '}\n\n'
 
-                header_file.write(declaration_string[0:-1] + '\n')
-                header_file.write("\n")
-                header_file.write(definition_string[0:-2] + '\n')
-                header_file.write("\n")
-                source_file.write(class_def)
-                #source_file.write("\n")
-                header_file.write("\n")
+
+    namer_struct = 'struct Namer\n'
+    namer_struct += '{\n'
+    namer_struct += '    Namer()\n'
+    namer_struct += '    {\n'
+    namer_struct += f'{namer_line[0:-1]}\n'
+    namer_struct += '    }\n'
+    namer_struct += '};\n'
+    namer_struct += 'Namer namer;\n\n'
+    source_file.write(namer_struct)
+
+    header_file.write(declaration_string[0:-1] + '\n')
+    header_file.write("\n")
+    header_file.write(definition_string[0:-2] + '\n')
+    header_file.write("\n")
+    source_file.write(class_def)
+    header_file.write("\n")
 
     # Texture types
     texture_dimensions = ['1D', '2D', '3D', 'Cube']
@@ -975,6 +967,19 @@ def generate_types():
     class_def += '    this->name = "sampler"_c;\n'.format(dim)
     class_def += '    this->category = Type::SamplerCategory;\n'
     class_def += '    this->baseType = TypeCode::Sampler;\n'.format(type)
+    class_def += '    this->builtin = true;\n'
+    class_def += '};\n\n'
+
+    class_decl += 'struct FunctionPtr : public Type\n'
+    class_decl += '{\n'
+    class_decl += '    FunctionPtr();\n'
+    class_decl += '};\n'
+    class_decl += 'extern FunctionPtr FunctionType;\n\n'
+
+    class_def = ""
+    class_def += 'FunctionPtr::FunctionPtr()\n'.format(dim, dim)
+    class_def += '{\n'
+    class_def += '    this->name = "function"_c;\n'.format(dim)
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
@@ -2160,7 +2165,7 @@ def generate_types():
 
     # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
     ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
-    spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'Ddx', 'Ddy', 'Fwidth']
+    spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
     for op, spirv_op in zip(ops, spirv_ops):
         for float_type in float_types:
             function_name = '{}_{}'.format(op, float_type)
@@ -2380,18 +2385,18 @@ def generate_types():
     four_component_float_vec_types = ['Float32x4', 'Float16x4']
     for type in four_component_float_vec_types:
         intrinsic = 'VertexExportCoordinates'
-        function_name = '{}_{}'.format(intrinsic, type)
-        argument_name = '{}_{}_arg'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
-        intrinsic_setup += '    {}.name = "vertexExportCoordinates"_c;\n'.format(function_name)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+        function_name = f'{intrinsic}_{type}'
+        argument_name = f'{intrinsic}_{type}_arg'
+        intrinsic_decls += f'extern Variable {argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {argument_name}.name = "coordinate"_c;\n'
+        intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "vertexExportCoordinates"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type}Type;\n\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
 
     geometry_export_builtins = ['Vertex', 'Primitive']
     for builtin in geometry_export_builtins:
@@ -2688,79 +2693,79 @@ def generate_types():
 
     intrinsic = 'Insert'
     for type in unsigned_types:
-        function_name = 'Bit{}'.format(intrinsic)
-        base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
-        value_argument_name = 'Bit{}_{}_value'.format(intrinsic, type)
-        offset_argument_name = 'Bit{}_{}_offset'.format(intrinsic, type)
-        count_argument_name = 'Bit{}_{}_count'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(offset_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(count_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(offset_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(count_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
-        intrinsic_setup += '    {}.name = "value"_c ;\n'.format(value_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, type)
-        intrinsic_setup += '    {}.name = "offset"_c;\n'.format(offset_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(offset_argument_name, type)
-        intrinsic_setup += '    {}.name = "count"_c;\n'.format(count_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(count_argument_name, type)
-        intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(offset_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(count_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+        function_name = f'Bit{intrinsic}_{type}'
+        base_argument_name = f'Bit{intrinsic}_{type}_base'
+        value_argument_name = f'Bit{intrinsic}_{type}_value'
+        offset_argument_name = f'Bit{intrinsic}_{type}_offset'
+        count_argument_name = f'Bit{intrinsic}_{type}_count'
+        intrinsic_decls += f'extern Variable {base_argument_name};\n'
+        intrinsic_decls += f'extern Variable {value_argument_name};\n'
+        intrinsic_decls += f'extern Variable {offset_argument_name};\n'
+        intrinsic_decls += f'extern Variable {count_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {base_argument_name};\n'
+        intrinsic_defs += f'Variable {value_argument_name};\n'
+        intrinsic_defs += f'Variable {offset_argument_name};\n'
+        intrinsic_defs += f'Variable {count_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
+        intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {value_argument_name}.name = "value"_c ;\n'
+        intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
+        intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {count_argument_name}.name = "count"_c;\n'
+        intrinsic_setup += f'    {count_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
     intrinsic = 'Extract'
     for type in integer_types:
-        function_name = 'Bit{}'.format(intrinsic)
-        base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
-        offset_argument_name = 'Bit{}_{}_offset'.format(intrinsic, type)
-        count_argument_name = 'Bit{}_{}_count'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(offset_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(count_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(offset_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(count_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
-        intrinsic_setup += '    {}.name = "offset"_c ;\n'.format(offset_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(offset_argument_name, type)
-        intrinsic_setup += '    {}.name = "count"_c;\n'.format(count_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(count_argument_name, type)
-        intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(offset_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(count_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+        function_name = f'Bit{intrinsic}_{type}'
+        base_argument_name = f'Bit{intrinsic}_{type}_base'
+        offset_argument_name = f'Bit{intrinsic}_{type}_offset'
+        count_argument_name = f'Bit{intrinsic}_{type}_count'
+        intrinsic_decls += f'extern Variable {base_argument_name};\n'
+        intrinsic_decls += f'extern Variable {offset_argument_name};\n'
+        intrinsic_decls += f'extern Variable {count_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {base_argument_name};\n'
+        intrinsic_defs += f'Variable {offset_argument_name};\n'
+        intrinsic_defs += f'Variable {count_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
+        intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c ;\n'
+        intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {count_argument_name}.name = "count"_c;\n'
+        intrinsic_setup += f'    {count_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
     intrinsics = ['Reverse', 'Count']
     for intrinsic in intrinsics:
         for type in integer_types:
-            function_name = 'Bit{}'.format(intrinsic)
-            base_argument_name = 'Bit{}_{}_base'.format(intrinsic, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(base_argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(base_argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "base"_c;\n'.format(base_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(base_argument_name, type)
-            intrinsic_setup += '    {}.name = "bit{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(base_argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+            function_name = f'Bit{intrinsic}_{type}'
+            base_argument_name = f'Bit{intrinsic}_{type}_base'
+            intrinsic_decls += f'extern Variable {base_argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {base_argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
+            intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
     barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup', 'MemoryBarrier', 'MemoryBarrierBuffer', 'MemoryBarrierTexture', 'MemoryBarrierAtomic', 'MemoryBarrierSubgroup', 'MemoryBarrierWorkgroup']
     for intrinsic in barrier_intrinsics:
@@ -2818,61 +2823,61 @@ def generate_types():
     intrinsic = 'GetSize'
     for type in texture_types_no_ms:
         return_type = texture_size_types[type]
-        function_name = 'Texture{}_{}'.format(intrinsic, type)
-        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+        function_name = f'Texture{intrinsic}_{type}'
+        texture_argument_name = f'{function_name}_texture'
+        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {texture_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
 
     intrinsic = 'GetSizeMip'
     for type in texture_types_no_ms:
         return_type = texture_size_types[type]
-        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
-        mip_argument_name = 'Texture{}_{}_mip'.format(intrinsic, 'UInt32')
-        function_name = 'Texture{}_{}'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'UInt32')
-        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, return_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'UInt32')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, return_type)
+        function_name = f'Texture{intrinsic}_{type}'
+        texture_argument_name = f'{function_name}_texture'
+        mip_argument_name = f'{function_name}_UInt32_mip'
+        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+        intrinsic_decls += f'extern Variable {mip_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {texture_argument_name};\n'
+        intrinsic_defs += f'Variable {mip_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+        intrinsic_setup += f'    {mip_argument_name}.name = "mip"_c;\n'
+        intrinsic_setup += f'    {mip_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{mip_argument_name})->typeSymbol = &UInt32Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
 
     intrinsic = 'GetMips'
     for type in texture_types_no_ms:
-        function_name = 'Texture{}_{}'.format(intrinsic, type)
-        texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
-        intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+        function_name = f'Texture{intrinsic}_{type}'
+        texture_argument_name = f'{function_name}_texture'
+        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {texture_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
 
     intrinsic = 'GetSamples'
     for type in texture_types_ms:
@@ -3049,7 +3054,7 @@ def generate_types():
         for comp in compare_modifiers:
             for proj in projection_modifiers:
                 for type in texture_types_no_ms:
-                    function_name = 'Texture{}{}{}{}_{}'.format(intrinsic, lod, proj, comp, type)
+                    function_name = f'Texture{intrinsic}{lod}{proj}{comp}_{type}'
 
                     for defs in generate_texture_intrinsic_base(function_name):
                         base_decls, base_defs, base_setup, prefix = defs
@@ -3064,79 +3069,82 @@ def generate_types():
                             continue
 
                         coordinate_type = texture_float_index_types[type]
-                        coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
+                        coordinate_argument_name = f'{prefix}{function_name}_coordinate'
                         if lod == 'Lod':
-                            lod_argument_name = '{}{}_lod'.format(prefix, function_name)
+                            lod_argument_name = f'{prefix}{function_name}_lod'
                         elif lod == 'Grad':
-                            lodx_argument_name = '{}{}_gradx'.format(prefix, function_name)
-                            lody_argument_name = '{}{}_grady'.format(prefix, function_name)
+                            lodx_argument_name = f'{prefix}{function_name}_gradx'
+                            lody_argument_name = f'{prefix}{function_name}_grady'
                         elif lod == 'Bias':
-                            lod_argument_name = '{}{}_bias'.format(prefix, function_name)
+                            lod_argument_name = f'{prefix}{function_name}_bias'
                         if proj == 'Proj':
-                            proj_argument_name = '{}{}_proj'.format(prefix, function_name)
+                            proj_argument_name = f'{prefix}{function_name}_proj'
                         if comp == 'Compare':
-                            compare_argument_name = '{}{}_compare'.format(prefix, function_name)
-                        
+                            compare_argument_name = f'{prefix}{function_name}_compare'
+
 
                         intrinsic_decls += base_decls
-                        intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+                        intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
                         if lod == 'Lod' or lod == 'Bias':
-                            intrinsic_decls += 'extern Variable {};\n'.format(lod_argument_name)
+                            intrinsic_decls += f'extern Variable {lod_argument_name};\n'
                         elif lod == 'Grad':
-                            intrinsic_decls += 'extern Variable {};\n'.format(lodx_argument_name)
-                            intrinsic_decls += 'extern Variable {};\n'.format(lody_argument_name)
+                            intrinsic_decls += f'extern Variable {lodx_argument_name};\n'
+                            intrinsic_decls += f'extern Variable {lody_argument_name};\n'
                         if proj == 'Proj':
-                            intrinsic_decls += 'extern Variable {};\n'.format(proj_argument_name)
+                            intrinsic_decls += f'extern Variable {proj_argument_name};\n'
                         if comp == 'Compare':
-                            intrinsic_decls += 'extern Variable {};\n'.format(compare_argument_name)
-                        
-                        intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
+                            intrinsic_decls += f'extern Variable {compare_argument_name};\n'
+
+                        intrinsic_decls += f'extern Function {prefix}{function_name};\n'
 
                         intrinsic_defs += base_defs
-                        intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
-                        if lod:
-                            intrinsic_defs += 'Variable {};\n'.format(lod_argument_name)
+                        intrinsic_defs += f'Variable {coordinate_argument_name};\n'
+                        if lod == 'Lod' or lod == 'Bias':
+                            intrinsic_defs += f'Variable {lod_argument_name};\n'
+                        elif lod == 'Grad':
+                            intrinsic_defs += f'Variable {lodx_argument_name};\n'
+                            intrinsic_defs += f'Variable {lody_argument_name};\n'
                         if proj == 'Proj':
-                            intrinsic_defs += 'Variable {};\n'.format(proj_argument_name)
+                            intrinsic_defs += f'Variable {proj_argument_name};\n'
                         if comp == 'Compare':
-                            intrinsic_defs += 'Variable {};\n'.format(compare_argument_name)
-                        
-                        intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
+                            intrinsic_defs += f'Variable {compare_argument_name};\n'
+
+                        intrinsic_defs += f'Function {prefix}{function_name};\n'
 
                         intrinsic_setup += base_setup
-                        intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
-                        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+                        intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+                        intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
                         if lod == 'Lod':
-                            intrinsic_setup += '    {}.name = "lod"_c;\n'.format(lod_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(lod_argument_name)
+                            intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
+                            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
                         elif lod == 'Bias':
-                            intrinsic_setup += '    {}.name = "bias"_c;\n'.format(lod_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(lod_argument_name)
+                            intrinsic_setup += f'    {lod_argument_name}.name = "bias"_c;\n'
+                            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
                         elif lod == 'Grad':
-                            intrinsic_setup += '    {}.name = "grad_x"_c;\n'.format(lodx_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ {}.name }};\n'.format(lodx_argument_name, coordinate_type)
-                            intrinsic_setup += '    {}.name = "grad_y"_c;\n'.format(lody_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ {}.name }};\n'.format(lody_argument_name, coordinate_type)
+                            intrinsic_setup += f'    {lodx_argument_name}.name = "grad_x"_c;\n'
+                            intrinsic_setup += f'    {lodx_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
+                            intrinsic_setup += f'    {lody_argument_name}.name = "grad_y"_c;\n'
+                            intrinsic_setup += f'    {lody_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
                         if proj == 'Proj':
-                            intrinsic_setup += '    {}.name = "proj"_c;\n'.format(proj_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(proj_argument_name)
+                            intrinsic_setup += f'    {proj_argument_name}.name = "proj"_c;\n'
+                            intrinsic_setup += f'    {proj_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
                         if comp == 'Compare':
-                            intrinsic_setup += '    {}.name = "compare"_c;\n'.format(compare_argument_name)
-                            intrinsic_setup += '    {}.type = Type::FullType{{ Float32Type.name }};\n'.format(compare_argument_name)
-                        
-                        intrinsic_setup += '    {}{}.name = "texture{}{}{}{}"_c;\n'.format(prefix, function_name, intrinsic, lod, proj, comp)
-                        intrinsic_setup += '    {}{}.returnType = Type::FullType{{ Float32x4Type.name }};\n'.format(prefix, function_name)
-                        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
+                            intrinsic_setup += f'    {compare_argument_name}.name = "compare"_c;\n'
+                            intrinsic_setup += f'    {compare_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+
+                        intrinsic_setup += f'    {prefix}{function_name}.name = "texture{intrinsic}{lod}{proj}{comp}"_c;\n'
+                        intrinsic_setup += f'    {prefix}{function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
+                        intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
                         if lod == 'Lod' or lod == 'Bias':
-                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(lod_argument_name)
+                            intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
                         elif lod == 'Grad':
-                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{};\n'.format(lodx_argument_name, coordinate_type)
-                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{};\n'.format(lody_argument_name, coordinate_type)
+                            intrinsic_setup += f'    Symbol::Resolved(&{lodx_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+                            intrinsic_setup += f'    Symbol::Resolved(&{lody_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
                         if comp == 'Compare':
-                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(compare_argument_name)
+                            intrinsic_setup += f'    Symbol::Resolved(&{compare_argument_name})->typeSymbol = &Float32Type;\n'
                         if proj == 'Proj':
-                            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &Float32Type;\n'.format(proj_argument_name)
-                        intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &Float32x4Type;\n\n'.format(prefix, function_name)
+                            intrinsic_setup += f'    Symbol::Resolved(&{proj_argument_name})->typeSymbol = &Float32Type;\n'
+                        intrinsic_setup += f'    Symbol::Resolved(&{prefix}{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
 
 
 

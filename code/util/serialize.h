@@ -14,12 +14,16 @@
 namespace GPULang
 {
 
+namespace Serialization
+{
+
+
 //------------------------------------------------------------------------------
 /**
-    Enums shared between compiler and API
-*/
+ Enums shared between compiler and API
+ */
 //------------------------------------------------------------------------------
-enum AddressMode
+enum class AddressMode
 {
     InvalidAddressMode,
     RepeatAddressMode,
@@ -28,14 +32,14 @@ enum AddressMode
     BorderAddressMode
 };
 
-enum Filter
+enum class Filter
 {
     InvalidFilter,
     PointFilter,
     LinearFilter
 };
 
-enum BorderColor
+enum class BorderColor
 {
     InvalidBorderColor,
     TransparentBorder,
@@ -43,7 +47,7 @@ enum BorderColor
     WhiteBorder
 };
 
-enum CompareMode
+enum class CompareMode
 {
     InvalidCompareMode,
     NeverCompare,
@@ -56,7 +60,7 @@ enum CompareMode
     AlwaysCompare
 };
 
-enum PolygonMode
+enum class PolygonMode
 {
     InvalidPolygonMode,
     FillMode,
@@ -64,7 +68,7 @@ enum PolygonMode
     PointMode
 };
 
-enum CullMode
+enum class CullMode
 {
     InvalidCullMode,
     NoCullMode,
@@ -73,14 +77,14 @@ enum CullMode
     FrontAndBackMode
 };
 
-enum WindingOrderMode
+enum class WindingOrderMode
 {
     InvalidWindingOrderMode,
     ClockwiseMode,
     CounterClockwiseMode
 };
 
-enum StencilOp
+enum class StencilOp
 {
     InvalidStencilOp,
     StencilKeepOp,
@@ -93,7 +97,7 @@ enum StencilOp
     StencilDecrementWrapOp
 };
 
-enum LogicOp
+enum class LogicOp
 {
     InvalidLogicOp,
     LogicClearOp,
@@ -114,7 +118,7 @@ enum LogicOp
     LogicSetOp
 };
 
-enum BlendFactor
+enum class BlendFactor
 {
     InvalidBlendFactor,
     ZeroFactor,
@@ -138,7 +142,7 @@ enum BlendFactor
     OneMinusSource1AlphaFactor
 };
 
-enum BlendOp
+enum class BlendOp
 {
     InvalidBlendOp,
     AddOp,
@@ -187,7 +191,7 @@ enum class BindingScope
     Member              // For struct members
 };
 
-enum BindingType
+enum class BindingType
 {
     None,
     MutableBuffer,
@@ -201,6 +205,9 @@ enum BindingType
     LinkDefined,
     AccelerationStructure
 };
+
+} // namespace Serialization
+
 
 namespace Serialize
 {
@@ -259,9 +266,9 @@ struct RenderState : public Serializable
     }
     bool depthClampEnabled;
     bool noPixels;
-    PolygonMode polygonMode;
-    CullMode cullMode;
-    WindingOrderMode windingOrderMode;
+    Serialization::PolygonMode polygonMode;
+    Serialization::CullMode cullMode;
+    Serialization::WindingOrderMode windingOrderMode;
     bool depthBiasEnabled;
     float depthBiasFactor;
     float depthBiasClamp;
@@ -269,16 +276,16 @@ struct RenderState : public Serializable
     float lineWidth;
     bool depthTestEnabled;
     bool depthWriteEnabled;
-    CompareMode depthCompare;
+    Serialization::CompareMode depthCompare;
     bool depthBoundsTestEnabled;
     float minDepthBounds;
     float maxDepthBounds;
     bool scissorEnabled;
     bool stencilEnabled;
-    StencilState frontStencilState;
-    StencilState backStencilState;
+    Serialization::StencilState frontStencilState;
+    Serialization::StencilState backStencilState;
     bool logicOpEnabled;
-    LogicOp logicOp;
+    Serialization::LogicOp logicOp;
     size_t blendStatesOffset;
     size_t blendStatesCount;
     float blendConstants[4];
@@ -330,25 +337,25 @@ struct SamplerState : public Bindable
     {
         this->type = SamplerStateType;
     }
-    AddressMode addressU;
-    AddressMode addressV;
-    AddressMode addressW;
+    Serialization::AddressMode addressU;
+    Serialization::AddressMode addressV;
+    Serialization::AddressMode addressW;
 
-    Filter minFilter;
-    Filter magFilter;
-    Filter mipFilter;
+    Serialization::Filter minFilter;
+    Serialization::Filter magFilter;
+    Serialization::Filter mipFilter;
 
     float mipLodBias;
     bool anisotropicEnabled;
     float maxAnisotropy;
 
     bool compareSamplerEnabled;
-    CompareMode compareMode;
+    Serialization::CompareMode compareMode;
 
     float minLod;
     float maxLod;
 
-    BorderColor borderColor;
+    Serialization::BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
 
@@ -368,8 +375,8 @@ struct Variable : public Bindable
     uint32_t byteSize;
     uint32_t structureOffset;
 
-    BindingScope bindingScope;
-    BindingType bindingType;
+    Serialization::BindingScope bindingScope;
+    Serialization::BindingType bindingType;
     ShaderUsage visibility;
 
     size_t structTypeNameOffset;
@@ -574,9 +581,9 @@ struct RenderState : public Deserializable
 {
     bool depthClampEnabled;
     bool noPixels;
-    PolygonMode polygonMode;
-    CullMode cullMode;
-    WindingOrderMode windingOrderMode;
+    Serialization::PolygonMode polygonMode;
+    Serialization::CullMode cullMode;
+    Serialization::WindingOrderMode windingOrderMode;
     bool depthBiasEnabled;
     float depthBiasFactor;
     float depthBiasClamp;
@@ -584,16 +591,16 @@ struct RenderState : public Deserializable
     float lineWidth;
     bool depthTestEnabled;
     bool depthWriteEnabled;
-    CompareMode depthCompare;
+    Serialization::CompareMode depthCompare;
     bool depthBoundsTestEnabled;
     float minDepthBounds;
     float maxDepthBounds;
     bool stencilEnabled;
-    StencilState frontStencilState;
-    StencilState backStencilState;
+    Serialization::StencilState frontStencilState;
+    Serialization::StencilState backStencilState;
     bool logicOpEnabled;
-    LogicOp logicOp;
-    BlendState blendStates[8];
+    Serialization::LogicOp logicOp;
+    Serialization::BlendState blendStates[8];
     float blendConstants[4];
 };
 
@@ -651,25 +658,25 @@ struct Bindable : public Deserializable
 
 struct SamplerState : public Bindable
 {
-    AddressMode addressU;
-    AddressMode addressV;
-    AddressMode addressW;
+    Serialization::AddressMode addressU;
+    Serialization::AddressMode addressV;
+    Serialization::AddressMode addressW;
 
-    Filter minFilter;
-    Filter magFilter;
-    Filter mipFilter;
+    Serialization::Filter minFilter;
+    Serialization::Filter magFilter;
+    Serialization::Filter mipFilter;
 
     float mipLodBias;
     bool anisotropicEnabled;
     float maxAnisotropy;
 
     bool compareSamplerEnabled;
-    CompareMode compareMode;
+    Serialization::CompareMode compareMode;
 
     float minLod;
     float maxLod;
 
-    BorderColor borderColor;
+    Serialization::BorderColor borderColor;
 
     bool unnormalizedSamplingEnabled;
 
@@ -685,8 +692,8 @@ struct Variable : public Bindable
     uint32_t byteSize;
     uint32_t structureOffset;
 
-    BindingScope bindingScope;
-    BindingType bindingType;
+    Serialization::BindingScope bindingScope;
+    Serialization::BindingType bindingType;
     ShaderUsage visibility;
 
     const Structure* structType;

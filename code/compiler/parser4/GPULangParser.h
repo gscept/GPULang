@@ -757,7 +757,7 @@ public:
 
   class  SamplerContext : public antlr4::ParserRuleContext {
   public:
-    SamplerState* sym;
+    SamplerStateInstance* sym;
     GPULangParser::AnnotationContext *annotationContext = nullptr;
     GPULangParser::AttributeContext *attributeContext = nullptr;
     antlr4::Token *name = nullptr;

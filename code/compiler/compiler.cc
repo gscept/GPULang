@@ -20,7 +20,7 @@
 #include "ast/program.h"
 #include "ast/structure.h"
 #include "ast/variable.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "thread.h"
 #include <thread>
 
@@ -298,7 +298,7 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
             Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
             res->usageBits.flags.isConst = true;
             res->builtin = true;
-            res->typeSymbol = &BoolType;
+            res->typeSymbol = &Bool8Type;
             this->shaderValueExpressions[i].value = false;
             this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
             this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
@@ -454,7 +454,7 @@ Compiler::Setup(Options options)
             Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
             res->usageBits.flags.isConst = true;
             res->builtin = true;
-            res->typeSymbol = &BoolType;
+            res->typeSymbol = &Bool8Type;
             this->shaderValueExpressions[i].value = false;
             this->shaderSwitches[i].valueExpression = &this->shaderValueExpressions[i];
             this->validator->ResolveVariable(this, &this->shaderSwitches[i]);
@@ -1338,11 +1338,11 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             writer.WriteType(output);
         }
-        else if (symbol->symbolType == Symbol::RenderStateType)
+        else if (symbol->symbolType == Symbol::RenderStateInstanceType)
         {
-            RenderState* rend = static_cast<RenderState*>(symbol);
+            RenderStateInstance* rend = static_cast<RenderStateInstance*>(symbol);
 
-            RenderState::__Resolved* resolved = static_cast<RenderState::__Resolved*>(symbol->resolved);
+            auto resolved = Symbol::Resolved(rend);
             Serialize::RenderState output;
             output.nameLength = symbol->name.len;
             output.nameOffset = dynamicDataBlob.Write(symbol->name.c_str(), symbol->name.len);
@@ -1388,10 +1388,10 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             writer.WriteType(output);
         }
-        else if (symbol->symbolType == Symbol::SamplerStateType)
+        else if (symbol->symbolType == Symbol::SamplerStateInstanceType)
         {
-            SamplerState* sampler = static_cast<SamplerState*>(symbol);
-            SamplerState::__Resolved* resolved = Symbol::Resolved(sampler);
+            SamplerStateInstance* sampler = static_cast<SamplerStateInstance*>(symbol);
+            SamplerStateInstance::__Resolved* resolved = Symbol::Resolved(sampler);
             Serialize::SamplerState output;
 
             output.binding = resolved->binding;

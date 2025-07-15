@@ -3,7 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "intvecexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 
 #include "util.h"
 #include "compiler.h"
@@ -43,7 +43,7 @@ IntVecExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &IntType;
+    thisResolved->type = &Int32Type;
     return true;
 }
 
@@ -90,7 +90,7 @@ IntVecExpression::EvalValue(ValueUnion& out) const
         out.i[index++] = val;
     out.columnSize = this->values.size;
     out.rowSize = 1;
-    out.code = TypeCode::Int;
+    out.code = TypeCode::Int32;
     return true;
 }
 

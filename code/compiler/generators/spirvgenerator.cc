@@ -40,7 +40,7 @@
 #include "ast/statements/switchstatement.h"
 #include "ast/statements/whilestatement.h"
 
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "ast/intrinsics.h"
 
 #include "spirv-tools/libspirv.h"
@@ -8844,7 +8844,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
                         case Symbol::EnumerationType:
                             GenerateEnumSPIRV(compiler, this, genSym);
                             break;
-                        case Symbol::SamplerStateType:
+                        case Symbol::SamplerStateInstanceType:
                             GenerateSamplerSPIRV(compiler, this, genSym);
                             break;
                         case Symbol::VariableType:
@@ -8863,7 +8863,7 @@ SPIRVGenerator::Generate(const Compiler* compiler, const Program* program, const
             case Symbol::EnumerationType:
                 GenerateEnumSPIRV(compiler, this, sym);
                 break;
-            case Symbol::SamplerStateType:
+            case Symbol::SamplerStateInstanceType:
                 GenerateSamplerSPIRV(compiler, this, sym);
                 break;
             case Symbol::VariableType:

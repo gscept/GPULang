@@ -10,19 +10,19 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-RenderState::RenderState()
+RenderStateInstance::RenderStateInstance()
 {
-    this->symbolType = RenderStateType;
+    this->symbolType = RenderStateInstanceType;
     if (SYMBOL_STATIC_ALLOC)
-        this->resolved = StaticAlloc<RenderState::__Resolved>();
+        this->resolved = StaticAlloc<RenderStateInstance::__Resolved>();
     else
-        this->resolved = Alloc<RenderState::__Resolved>();
-    RenderState::__Resolved* typeResolved = static_cast<RenderState::__Resolved*>(this->resolved);
+        this->resolved = Alloc<RenderStateInstance::__Resolved>();
+    RenderStateInstance::__Resolved* typeResolved = static_cast<RenderStateInstance::__Resolved*>(this->resolved);
     typeResolved->depthClampEnabled = false;
     typeResolved->noPixels = false;
-    typeResolved->polygonMode = PolygonMode::FillMode;
-    typeResolved->cullMode = CullMode::BackMode;
-    typeResolved->windingOrderMode = WindingOrderMode::CounterClockwiseMode;
+    typeResolved->polygonMode = Serialization::PolygonMode::FillMode;
+    typeResolved->cullMode = Serialization::CullMode::BackMode;
+    typeResolved->windingOrderMode = Serialization::WindingOrderMode::CounterClockwiseMode;
     typeResolved->depthBiasEnabled = false;
     typeResolved->depthBiasFactor = 0.0f;
     typeResolved->depthBiasClamp = 0.0f;
@@ -31,23 +31,23 @@ RenderState::RenderState()
 
     typeResolved->depthTestEnabled = true;
     typeResolved->depthWriteEnabled = true;
-    typeResolved->depthCompare = CompareMode::LessEqualCompare;
+    typeResolved->depthCompare = Serialization::CompareMode::LessEqualCompare;
     typeResolved->depthBoundsTestEnabled = true;
     typeResolved->minDepthBounds = 0.0f;
     typeResolved->maxDepthBounds = 1.0f;
     typeResolved->scissorEnabled = false;
     typeResolved->stencilEnabled = false;
     typeResolved->logicOpEnabled = false;
-    typeResolved->logicOp = LogicOp::LogicSetOp;
-    BlendState defaultBlend =
+    typeResolved->logicOp = Serialization::LogicOp::LogicSetOp;
+    Serialization::BlendState defaultBlend =
     {
         .blendEnabled = false,
-        .sourceColorBlendFactor = BlendFactor::OneFactor,
-        .destinationColorBlendFactor = BlendFactor::OneFactor,
-        .sourceAlphaBlendFactor = BlendFactor::OneFactor,
-        .destinationAlphaBlendFactor = BlendFactor::OneFactor,
-        .colorBlendOp = BlendOp::AddOp,
-        .alphaBlendOp = BlendOp::AddOp,
+        .sourceColorBlendFactor = Serialization::BlendFactor::OneFactor,
+        .destinationColorBlendFactor = Serialization::BlendFactor::OneFactor,
+        .sourceAlphaBlendFactor = Serialization::BlendFactor::OneFactor,
+        .destinationAlphaBlendFactor = Serialization::BlendFactor::OneFactor,
+        .colorBlendOp = Serialization::BlendOp::AddOp,
+        .alphaBlendOp = Serialization::BlendOp::AddOp,
         .colorComponentMask = 0xFFFFFFFF
     };
     typeResolved->blendStates[0] = defaultBlend;
@@ -59,12 +59,12 @@ RenderState::RenderState()
     typeResolved->blendStates[6] = defaultBlend;
     typeResolved->blendStates[7] = defaultBlend;
 
-    StencilState defaultStencil =
+    Serialization::StencilState defaultStencil =
     {
-        .fail = StencilOp::StencilKeepOp,
-        .pass = StencilOp::StencilKeepOp,
-        .depthFail = StencilOp::StencilKeepOp,
-        .compare = CompareMode::EqualCompare,
+        .fail = Serialization::StencilOp::StencilKeepOp,
+        .pass = Serialization::StencilOp::StencilKeepOp,
+        .depthFail = Serialization::StencilOp::StencilKeepOp,
+        .compare = Serialization::CompareMode::EqualCompare,
         .compareMask = 0xFFFFFFFF,
         .writeMask = 0xFFFFFFFF,
         .referenceMask = 0xFFFFFFFF
@@ -75,53 +75,53 @@ RenderState::RenderState()
 
 constexpr StaticMap stringToRenderStateEntryType =
 std::array{
-    std::pair{ ConstantString("DepthClampEnabled"), RenderState::__Resolved::DepthClampEnabledType },
-    std::pair{ ConstantString("NoPixels"), RenderState::__Resolved::NoPixelsType },
-    std::pair{ ConstantString("Polygon"), RenderState::__Resolved::PolygonModeType },
-    std::pair{ ConstantString("Cull"), RenderState::__Resolved::CullModeType },
-    std::pair{ ConstantString("WindingOrder"), RenderState::__Resolved::WindingOrderType },
-    std::pair{ ConstantString("DepthBiasEnabled"), RenderState::__Resolved::DepthBiasEnabledType },
-    std::pair{ ConstantString("DepthBiasFactor"), RenderState::__Resolved::DepthBiasFactorType },
-    std::pair{ ConstantString("DepthBiasClamp"), RenderState::__Resolved::DepthBiasClampType },
-    std::pair{ ConstantString("DepthBiasSlopeFactor"), RenderState::__Resolved::DepthBiasSlopeFactorType },
-    std::pair{ ConstantString("LineWidth"), RenderState::__Resolved::LineWidthType },
-    std::pair{ ConstantString("DepthTestEnabled"), RenderState::__Resolved::DepthTestEnabledType },
-    std::pair{ ConstantString("DepthWriteEnabled"), RenderState::__Resolved::DepthWriteEnabledType },
-    std::pair{ ConstantString("DepthTestFunction"), RenderState::__Resolved::DepthTestFunction },
-    std::pair{ ConstantString("DepthBoundsTestEnabled"), RenderState::__Resolved::DepthBoundsTestEnabledType },
-    std::pair{ ConstantString("MinDepthBounds"), RenderState::__Resolved::MinDepthBoundsType },
-    std::pair{ ConstantString("MaxDepthBounds"), RenderState::__Resolved::MaxDepthBoundsType },
-    std::pair{ ConstantString("ScissorEnabled"), RenderState::__Resolved::ScissorEnabledType },
-    std::pair{ ConstantString("StencilEnabled"), RenderState::__Resolved::StencilEnabledType },
-    std::pair{ ConstantString("StencilFront.Fail"), RenderState::__Resolved::StencilFailOpType },
-    std::pair{ ConstantString("StencilFront.Pass"), RenderState::__Resolved::StencilPassOpType },
-    std::pair{ ConstantString("StencilFront.DepthFail"), RenderState::__Resolved::StencilDepthFailOpType },
-    std::pair{ ConstantString("StencilFront.Compare"), RenderState::__Resolved::StencilCompareModeType },
-    std::pair{ ConstantString("StencilFront.CompareMask"), RenderState::__Resolved::StencilCompareMaskType },
-    std::pair{ ConstantString("StencilFront.WriteMask"), RenderState::__Resolved::StencilWriteMaskType },
-    std::pair{ ConstantString("StencilFront.ReferenceMask"), RenderState::__Resolved::StencilReferenceMaskType },
-    std::pair{ ConstantString("StencilBack.Fail"), RenderState::__Resolved::StencilFailOpType },
-    std::pair{ ConstantString("StencilBack.Pass"), RenderState::__Resolved::StencilPassOpType },
-    std::pair{ ConstantString("StencilBack.DepthFail"), RenderState::__Resolved::StencilDepthFailOpType },
-    std::pair{ ConstantString("StencilBack.Compare"), RenderState::__Resolved::StencilCompareModeType },
-    std::pair{ ConstantString("StencilBack.CompareMask"), RenderState::__Resolved::StencilCompareMaskType },
-    std::pair{ ConstantString("StencilBack.WriteMask"), RenderState::__Resolved::StencilWriteMaskType },
-    std::pair{ ConstantString("StencilBack.ReferenceMask"), RenderState::__Resolved::StencilReferenceMaskType },
-    std::pair{ ConstantString("LogicOpEnabled"), RenderState::__Resolved::LogicOpEnabledType },
-    std::pair{ ConstantString("LogicOp"), RenderState::__Resolved::LogicOpType },
-    std::pair{ ConstantString("BlendEnabled"), RenderState::__Resolved::BlendEnabledType },
-    std::pair{ ConstantString("SrcBlend"), RenderState::__Resolved::SourceBlendColorFactorType },
-    std::pair{ ConstantString("SourceBlend"), RenderState::__Resolved::SourceBlendColorFactorType },
-    std::pair{ ConstantString("DstBlend"), RenderState::__Resolved::DestinationBlendColorFactorType },
-    std::pair{ ConstantString("DestinationBlend"), RenderState::__Resolved::DestinationBlendColorFactorType },
-    std::pair{ ConstantString("SrcAlphaBlend"), RenderState::__Resolved::SourceBlendAlphaFactorType },
-    std::pair{ ConstantString("SourceAlphaBlend"), RenderState::__Resolved::SourceBlendAlphaFactorType },
-    std::pair{ ConstantString("DstAlphaBlend"), RenderState::__Resolved::DestinationBlendAlphaFactorType },
-    std::pair{ ConstantString("DestinationAlphaBlend"), RenderState::__Resolved::DestinationBlendAlphaFactorType },
-    std::pair{ ConstantString("BlendOp"), RenderState::__Resolved::ColorBlendOpType },
-    std::pair{ ConstantString("BlendOpAlpha"), RenderState::__Resolved::AlphaBlendOpType },
-    std::pair{ ConstantString("ColorComponentMask"), RenderState::__Resolved::ColorComponentMaskType },
-    std::pair{ ConstantString("BlendConstants"), RenderState::__Resolved::BlendConstantsType }
+    std::pair{ ConstantString("DepthClampEnabled"), RenderStateInstance::__Resolved::DepthClampEnabledType },
+    std::pair{ ConstantString("NoPixels"), RenderStateInstance::__Resolved::NoPixelsType },
+    std::pair{ ConstantString("Polygon"), RenderStateInstance::__Resolved::PolygonModeType },
+    std::pair{ ConstantString("Cull"), RenderStateInstance::__Resolved::CullModeType },
+    std::pair{ ConstantString("WindingOrder"), RenderStateInstance::__Resolved::WindingOrderType },
+    std::pair{ ConstantString("DepthBiasEnabled"), RenderStateInstance::__Resolved::DepthBiasEnabledType },
+    std::pair{ ConstantString("DepthBiasFactor"), RenderStateInstance::__Resolved::DepthBiasFactorType },
+    std::pair{ ConstantString("DepthBiasClamp"), RenderStateInstance::__Resolved::DepthBiasClampType },
+    std::pair{ ConstantString("DepthBiasSlopeFactor"), RenderStateInstance::__Resolved::DepthBiasSlopeFactorType },
+    std::pair{ ConstantString("LineWidth"), RenderStateInstance::__Resolved::LineWidthType },
+    std::pair{ ConstantString("DepthTestEnabled"), RenderStateInstance::__Resolved::DepthTestEnabledType },
+    std::pair{ ConstantString("DepthWriteEnabled"), RenderStateInstance::__Resolved::DepthWriteEnabledType },
+    std::pair{ ConstantString("DepthTestFunction"), RenderStateInstance::__Resolved::DepthTestFunction },
+    std::pair{ ConstantString("DepthBoundsTestEnabled"), RenderStateInstance::__Resolved::DepthBoundsTestEnabledType },
+    std::pair{ ConstantString("MinDepthBounds"), RenderStateInstance::__Resolved::MinDepthBoundsType },
+    std::pair{ ConstantString("MaxDepthBounds"), RenderStateInstance::__Resolved::MaxDepthBoundsType },
+    std::pair{ ConstantString("ScissorEnabled"), RenderStateInstance::__Resolved::ScissorEnabledType },
+    std::pair{ ConstantString("StencilEnabled"), RenderStateInstance::__Resolved::StencilEnabledType },
+    std::pair{ ConstantString("StencilFront.Fail"), RenderStateInstance::__Resolved::StencilFailOpType },
+    std::pair{ ConstantString("StencilFront.Pass"), RenderStateInstance::__Resolved::StencilPassOpType },
+    std::pair{ ConstantString("StencilFront.DepthFail"), RenderStateInstance::__Resolved::StencilDepthFailOpType },
+    std::pair{ ConstantString("StencilFront.Compare"), RenderStateInstance::__Resolved::StencilCompareModeType },
+    std::pair{ ConstantString("StencilFront.CompareMask"), RenderStateInstance::__Resolved::StencilCompareMaskType },
+    std::pair{ ConstantString("StencilFront.WriteMask"), RenderStateInstance::__Resolved::StencilWriteMaskType },
+    std::pair{ ConstantString("StencilFront.ReferenceMask"), RenderStateInstance::__Resolved::StencilReferenceMaskType },
+    std::pair{ ConstantString("StencilBack.Fail"), RenderStateInstance::__Resolved::StencilFailOpType },
+    std::pair{ ConstantString("StencilBack.Pass"), RenderStateInstance::__Resolved::StencilPassOpType },
+    std::pair{ ConstantString("StencilBack.DepthFail"), RenderStateInstance::__Resolved::StencilDepthFailOpType },
+    std::pair{ ConstantString("StencilBack.Compare"), RenderStateInstance::__Resolved::StencilCompareModeType },
+    std::pair{ ConstantString("StencilBack.CompareMask"), RenderStateInstance::__Resolved::StencilCompareMaskType },
+    std::pair{ ConstantString("StencilBack.WriteMask"), RenderStateInstance::__Resolved::StencilWriteMaskType },
+    std::pair{ ConstantString("StencilBack.ReferenceMask"), RenderStateInstance::__Resolved::StencilReferenceMaskType },
+    std::pair{ ConstantString("LogicOpEnabled"), RenderStateInstance::__Resolved::LogicOpEnabledType },
+    std::pair{ ConstantString("LogicOp"), RenderStateInstance::__Resolved::LogicOpType },
+    std::pair{ ConstantString("BlendEnabled"), RenderStateInstance::__Resolved::BlendEnabledType },
+    std::pair{ ConstantString("SrcBlend"), RenderStateInstance::__Resolved::SourceBlendColorFactorType },
+    std::pair{ ConstantString("SourceBlend"), RenderStateInstance::__Resolved::SourceBlendColorFactorType },
+    std::pair{ ConstantString("DstBlend"), RenderStateInstance::__Resolved::DestinationBlendColorFactorType },
+    std::pair{ ConstantString("DestinationBlend"), RenderStateInstance::__Resolved::DestinationBlendColorFactorType },
+    std::pair{ ConstantString("SrcAlphaBlend"), RenderStateInstance::__Resolved::SourceBlendAlphaFactorType },
+    std::pair{ ConstantString("SourceAlphaBlend"), RenderStateInstance::__Resolved::SourceBlendAlphaFactorType },
+    std::pair{ ConstantString("DstAlphaBlend"), RenderStateInstance::__Resolved::DestinationBlendAlphaFactorType },
+    std::pair{ ConstantString("DestinationAlphaBlend"), RenderStateInstance::__Resolved::DestinationBlendAlphaFactorType },
+    std::pair{ ConstantString("BlendOp"), RenderStateInstance::__Resolved::ColorBlendOpType },
+    std::pair{ ConstantString("BlendOpAlpha"), RenderStateInstance::__Resolved::AlphaBlendOpType },
+    std::pair{ ConstantString("ColorComponentMask"), RenderStateInstance::__Resolved::ColorComponentMaskType },
+    std::pair{ ConstantString("BlendConstants"), RenderStateInstance::__Resolved::BlendConstantsType }
 };
 
 static ConstantString NoRenderStateEntry = "";
@@ -129,14 +129,14 @@ static ConstantString NoRenderStateEntry = "";
 //------------------------------------------------------------------------------
 /**
 */
-const RenderState::__Resolved::RenderStateEntryType
-RenderState::__Resolved::StringToEntryType(const TransientString& str)
+const RenderStateInstance::__Resolved::RenderStateEntryType
+RenderStateInstance::__Resolved::StringToEntryType(const TransientString& str)
 {
     auto it = stringToRenderStateEntryType.Find(str);
     if (it != stringToRenderStateEntryType.end())
         return it->second;
     else
-        return RenderState::__Resolved::RenderStateEntryType::InvalidRenderStateEntryType;
+        return RenderStateInstance::__Resolved::RenderStateEntryType::InvalidRenderStateEntryType;
 
 }
 
@@ -144,7 +144,7 @@ RenderState::__Resolved::StringToEntryType(const TransientString& str)
 /**
 */
 const ConstantString&
-RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
+RenderStateInstance::__Resolved::EntryTypeToString(const RenderStateEntryType type)
 {
     for (auto& it : stringToRenderStateEntryType)
     {
@@ -156,178 +156,178 @@ RenderState::__Resolved::EntryTypeToString(const RenderStateEntryType type)
 
 constexpr StaticMap stringToPolygonMode =
 std::array{
-    std::pair{ ConstantString("Fill") , FillMode },
-    std::pair{ ConstantString("Line") , LineMode },
-    std::pair{ ConstantString("Point"), PointMode }
+    std::pair{ ConstantString("Fill") , Serialization::PolygonMode::FillMode },
+    std::pair{ ConstantString("Line") , Serialization::PolygonMode::LineMode },
+    std::pair{ ConstantString("Point"), Serialization::PolygonMode::PointMode }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const PolygonMode
-RenderState::__Resolved::StringToPolygonMode(const TransientString& str)
+const Serialization::PolygonMode
+RenderStateInstance::__Resolved::StringToPolygonMode(const TransientString& str)
 {
     auto it = stringToPolygonMode.Find(str);
     if (it != stringToPolygonMode.end())
         return it->second;
     else
-        return InvalidPolygonMode;
+        return Serialization::PolygonMode::InvalidPolygonMode;
 }
 
 constexpr StaticMap stringToCullMode =
 std::array{
-    std::pair{ ConstantString("None"), NoCullMode },
-    std::pair{ ConstantString("Front"), FrontMode },
-    std::pair{ ConstantString("Back"), BackMode },
-    std::pair{ ConstantString("FrontAndBack"), FrontAndBackMode }
+    std::pair{ ConstantString("None"), Serialization::CullMode::NoCullMode },
+    std::pair{ ConstantString("Front"), Serialization::CullMode::FrontMode },
+    std::pair{ ConstantString("Back"), Serialization::CullMode::BackMode },
+    std::pair{ ConstantString("FrontAndBack"), Serialization::CullMode::FrontAndBackMode }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const CullMode
-RenderState::__Resolved::StringToCullMode(const TransientString& str)
+const Serialization::CullMode
+RenderStateInstance::__Resolved::StringToCullMode(const TransientString& str)
 {
     auto it = stringToCullMode.Find(str);
     if (it != stringToCullMode.end())
         return it->second;
     else
-        return InvalidCullMode;
+        return Serialization::CullMode::InvalidCullMode;
 }
 
 constexpr StaticMap stringToWindingOrderMode =
 std::array{
-    std::pair{ ConstantString("Clockwise"), ClockwiseMode },
-    std::pair{ ConstantString("CounterClockwise"), CounterClockwiseMode }
+    std::pair{ ConstantString("Clockwise"), Serialization::WindingOrderMode::ClockwiseMode },
+    std::pair{ ConstantString("CounterClockwise"), Serialization::WindingOrderMode::CounterClockwiseMode }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const WindingOrderMode
-RenderState::__Resolved::StringToWindingOrderMode(const TransientString& str)
+const Serialization::WindingOrderMode
+RenderStateInstance::__Resolved::StringToWindingOrderMode(const TransientString& str)
 {
     auto it = stringToWindingOrderMode.Find(str);
     if (it != stringToWindingOrderMode.end())
         return it->second;
     else
-        return InvalidWindingOrderMode;
+        return Serialization::WindingOrderMode::InvalidWindingOrderMode;
 }
 
 constexpr StaticMap stringToLogicOp =
 std::array{
-    std::pair{ ConstantString("Clear"), LogicClearOp },
-    std::pair{ ConstantString("And"), LogicAndOp },
-    std::pair{ ConstantString("AndReverse"), LogicAndReverseOp },
-    std::pair{ ConstantString("Copy"), LogicCopyOp },
-    std::pair{ ConstantString("AndInverted"), LogicAndInvertedOp },
-    std::pair{ ConstantString("No"), LogicNoOp },
-    std::pair{ ConstantString("Xor"), LogicXorOp },
-    std::pair{ ConstantString("Or"), LogicOrOp },
-    std::pair{ ConstantString("Nor"), LogicNorOp },
-    std::pair{ ConstantString("Equivalent"), LogicEquivalentOp },
-    std::pair{ ConstantString("Invert"), LogicInvertOp },
-    std::pair{ ConstantString("OrReverse"), LogicOrReverseOp },
-    std::pair{ ConstantString("CopyInverted"), LogicCopyInvertedOp },
-    std::pair{ ConstantString("OrInverted"), LogicOrInvertedOp },
-    std::pair{ ConstantString("Nand"), LogicNandOp },
-    std::pair{ ConstantString("Set"), LogicSetOp }
+    std::pair{ ConstantString("Clear"), Serialization::LogicOp::LogicClearOp },
+    std::pair{ ConstantString("And"), Serialization::LogicOp::LogicAndOp },
+    std::pair{ ConstantString("AndReverse"), Serialization::LogicOp::LogicAndReverseOp },
+    std::pair{ ConstantString("Copy"), Serialization::LogicOp::LogicCopyOp },
+    std::pair{ ConstantString("AndInverted"), Serialization::LogicOp::LogicAndInvertedOp },
+    std::pair{ ConstantString("No"), Serialization::LogicOp::LogicNoOp },
+    std::pair{ ConstantString("Xor"), Serialization::LogicOp::LogicXorOp },
+    std::pair{ ConstantString("Or"), Serialization::LogicOp::LogicOrOp },
+    std::pair{ ConstantString("Nor"), Serialization::LogicOp::LogicNorOp },
+    std::pair{ ConstantString("Equivalent"), Serialization::LogicOp::LogicEquivalentOp },
+    std::pair{ ConstantString("Invert"), Serialization::LogicOp::LogicInvertOp },
+    std::pair{ ConstantString("OrReverse"), Serialization::LogicOp::LogicOrReverseOp },
+    std::pair{ ConstantString("CopyInverted"), Serialization::LogicOp::LogicCopyInvertedOp },
+    std::pair{ ConstantString("OrInverted"), Serialization::LogicOp::LogicOrInvertedOp },
+    std::pair{ ConstantString("Nand"), Serialization::LogicOp::LogicNandOp },
+    std::pair{ ConstantString("Set"), Serialization::LogicOp::LogicSetOp }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const LogicOp
-RenderState::__Resolved::StringToLogicOp(const TransientString& str)
+const Serialization::LogicOp
+RenderStateInstance::__Resolved::StringToLogicOp(const TransientString& str)
 {
     auto it = stringToLogicOp.Find(str);
     if (it != stringToLogicOp.end())
         return it->second;
     else
-        return InvalidLogicOp;
+        return Serialization::LogicOp::InvalidLogicOp;
 }
 
 constexpr StaticMap stringToStencilOp =
 std::array{
-    std::pair{ ConstantString("Keep"), StencilKeepOp },
-    std::pair{ ConstantString("Zero"), StencilZeroOp },
-    std::pair{ ConstantString("Replace"), StencilReplaceOp },
-    std::pair{ ConstantString("IncrementClamp"), StencilIncrementClampOp },
-    std::pair{ ConstantString("DecrementClamp"), StencilDecrementClampOp },
-    std::pair{ ConstantString("Invert"), StencilInvertOp },
-    std::pair{ ConstantString("IncrementWrap"), StencilIncrementWrapOp },
-    std::pair{ ConstantString("DecrementWrap"), StencilDecrementWrapOp }
+    std::pair{ ConstantString("Keep"), Serialization::StencilOp::StencilKeepOp },
+    std::pair{ ConstantString("Zero"), Serialization::StencilOp::StencilZeroOp },
+    std::pair{ ConstantString("Replace"), Serialization::StencilOp::StencilReplaceOp },
+    std::pair{ ConstantString("IncrementClamp"), Serialization::StencilOp::StencilIncrementClampOp },
+    std::pair{ ConstantString("DecrementClamp"), Serialization::StencilOp::StencilDecrementClampOp },
+    std::pair{ ConstantString("Invert"), Serialization::StencilOp::StencilInvertOp },
+    std::pair{ ConstantString("IncrementWrap"), Serialization::StencilOp::StencilIncrementWrapOp },
+    std::pair{ ConstantString("DecrementWrap"), Serialization::StencilOp::StencilDecrementWrapOp }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const StencilOp
-RenderState::__Resolved::StringToStencilOp(const TransientString& str)
+const Serialization::StencilOp
+RenderStateInstance::__Resolved::StringToStencilOp(const TransientString& str)
 {
     auto it = stringToStencilOp.Find(str);
     if (it != stringToStencilOp.end())
         return it->second;
     else
-        return InvalidStencilOp;
+        return Serialization::StencilOp::InvalidStencilOp;
 }
 
 constexpr StaticMap stringToBlendFactor =
 std::array{
-    std::pair{ ConstantString("Zero"),  ZeroFactor },
-    std::pair{ ConstantString("One"),  OneFactor },
-    std::pair{ ConstantString("SourceColor"),  SourceColorFactor },
-    std::pair{ ConstantString("OneMinusSourceColor"),  OneMinusSourceColorFactor },
-    std::pair{ ConstantString("DestinationColor"),  DestinationColorFactor },
-    std::pair{ ConstantString("OneMinusDestinationColor"),  OneMinusDestinationColorFactor },
-    std::pair{ ConstantString("SourceAlpha"),  SourceAlphaFactor },
-    std::pair{ ConstantString("OneMinusSourceAlpha"),  OneMinusSourceAlphaFactor },
-    std::pair{ ConstantString("DestinationAlpha"),  DestinationAlphaFactor },
-    std::pair{ ConstantString("OneMinusDestinationAlpha"),  OneMinusDestinationAlphaFactor },
-    std::pair{ ConstantString("ConstantColor"),  ConstantColorFactor },
-    std::pair{ ConstantString("OneMinusConstantColor"),  OneMinusConstantColorFactor },
-    std::pair{ ConstantString("ConstantAlpha"),  ConstantAlphaFactor },
-    std::pair{ ConstantString("OneMinusConstantAlpha"),  OneMinusConstantAlphaFactor },
-    std::pair{ ConstantString("SourceAlphaSaturate"),  SourceAlphaSaturateFactor },
-    std::pair{ ConstantString("Source1Color"),  Source1ColorFactor },
-    std::pair{ ConstantString("OneMinusSource1Color"),  OneMinusSource1ColorFactor },
-    std::pair{ ConstantString("Source1Alpha"),  Source1AlphaFactor },
-    std::pair{ ConstantString("OneMinusSource1Alpha"),  OneMinusSource1AlphaFactor }
+    std::pair{ ConstantString("Zero"),  Serialization::BlendFactor::ZeroFactor },
+    std::pair{ ConstantString("One"),  Serialization::BlendFactor::OneFactor },
+    std::pair{ ConstantString("SourceColor"),  Serialization::BlendFactor::SourceColorFactor },
+    std::pair{ ConstantString("OneMinusSourceColor"),  Serialization::BlendFactor::OneMinusSourceColorFactor },
+    std::pair{ ConstantString("DestinationColor"),  Serialization::BlendFactor::DestinationColorFactor },
+    std::pair{ ConstantString("OneMinusDestinationColor"),  Serialization::BlendFactor::OneMinusDestinationColorFactor },
+    std::pair{ ConstantString("SourceAlpha"),  Serialization::BlendFactor::SourceAlphaFactor },
+    std::pair{ ConstantString("OneMinusSourceAlpha"),  Serialization::BlendFactor::OneMinusSourceAlphaFactor },
+    std::pair{ ConstantString("DestinationAlpha"),  Serialization::BlendFactor::DestinationAlphaFactor },
+    std::pair{ ConstantString("OneMinusDestinationAlpha"),  Serialization::BlendFactor::OneMinusDestinationAlphaFactor },
+    std::pair{ ConstantString("ConstantColor"),  Serialization::BlendFactor::ConstantColorFactor },
+    std::pair{ ConstantString("OneMinusConstantColor"),  Serialization::BlendFactor::OneMinusConstantColorFactor },
+    std::pair{ ConstantString("ConstantAlpha"),  Serialization::BlendFactor::ConstantAlphaFactor },
+    std::pair{ ConstantString("OneMinusConstantAlpha"),  Serialization::BlendFactor::OneMinusConstantAlphaFactor },
+    std::pair{ ConstantString("SourceAlphaSaturate"),  Serialization::BlendFactor::SourceAlphaSaturateFactor },
+    std::pair{ ConstantString("Source1Color"),  Serialization::BlendFactor::Source1ColorFactor },
+    std::pair{ ConstantString("OneMinusSource1Color"),  Serialization::BlendFactor::OneMinusSource1ColorFactor },
+    std::pair{ ConstantString("Source1Alpha"),  Serialization::BlendFactor::Source1AlphaFactor },
+    std::pair{ ConstantString("OneMinusSource1Alpha"),  Serialization::BlendFactor::OneMinusSource1AlphaFactor }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const BlendFactor
-RenderState::__Resolved::StringToBlendFactor(const TransientString& str)
+const Serialization::BlendFactor
+RenderStateInstance::__Resolved::StringToBlendFactor(const TransientString& str)
 {
     auto it = stringToBlendFactor.Find(str);
     if (it != stringToBlendFactor.end())
         return it->second;
     else
-        return InvalidBlendFactor;
+        return Serialization::BlendFactor::InvalidBlendFactor;
 }
 
 constexpr StaticMap stringToBlendOp =
 std::array{
-    std::pair{ ConstantString("Add"), AddOp },
-    std::pair{ ConstantString("Subtract"), SubtractOp },
-    std::pair{ ConstantString("ReverseSubtract"), ReverseSubtractOp },
-    std::pair{ ConstantString("Min"), MinOp },
-    std::pair{ ConstantString("Max"), MaxOp }
+    std::pair{ ConstantString("Add"), Serialization::BlendOp::AddOp },
+    std::pair{ ConstantString("Subtract"), Serialization::BlendOp::SubtractOp },
+    std::pair{ ConstantString("ReverseSubtract"), Serialization::BlendOp::ReverseSubtractOp },
+    std::pair{ ConstantString("Min"), Serialization::BlendOp::MinOp },
+    std::pair{ ConstantString("Max"), Serialization::BlendOp::MaxOp }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const BlendOp
-RenderState::__Resolved::StringToBlendOp(const TransientString& str)
+const Serialization::BlendOp
+RenderStateInstance::__Resolved::StringToBlendOp(const TransientString& str)
 {
     auto it = stringToBlendOp.Find(str);
     if (it != stringToBlendOp.end())
         return it->second;
     else
-        return InvalidBlendOp;
+        return Serialization::BlendOp::InvalidBlendOp;
 }
 
 } // namespace GPULang

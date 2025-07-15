@@ -5,6 +5,60 @@
 #include "types.h"
 namespace GPULang
 {
+struct Namer
+{
+    Namer()
+    {
+        Float32Type.name = "f32"_c;
+        UInt32Type.name = "u32"_c;
+        Int32Type.name = "i32"_c;
+        Bool8Type.name = "b8"_c;
+        Float16Type.name = "f16"_c;
+        UInt16Type.name = "u16"_c;
+        Int16Type.name = "i16"_c;
+        Float32x2Type.name = "f32x2"_c;
+        UInt32x2Type.name = "u32x2"_c;
+        Int32x2Type.name = "i32x2"_c;
+        Bool8x2Type.name = "b8x2"_c;
+        Float16x2Type.name = "f16x2"_c;
+        UInt16x2Type.name = "u16x2"_c;
+        Int16x2Type.name = "i16x2"_c;
+        Float32x3Type.name = "f32x3"_c;
+        UInt32x3Type.name = "u32x3"_c;
+        Int32x3Type.name = "i32x3"_c;
+        Bool8x3Type.name = "b8x3"_c;
+        Float16x3Type.name = "f16x3"_c;
+        UInt16x3Type.name = "u16x3"_c;
+        Int16x3Type.name = "i16x3"_c;
+        Float32x4Type.name = "f32x4"_c;
+        UInt32x4Type.name = "u32x4"_c;
+        Int32x4Type.name = "i32x4"_c;
+        Bool8x4Type.name = "b8x4"_c;
+        Float16x4Type.name = "f16x4"_c;
+        UInt16x4Type.name = "u16x4"_c;
+        Int16x4Type.name = "i16x4"_c;
+        Float32x2x2Type.name = "f32x2x2"_c;
+        Float32x2x3Type.name = "f32x2x3"_c;
+        Float32x2x4Type.name = "f32x2x4"_c;
+        Float32x3x2Type.name = "f32x3x2"_c;
+        Float32x3x3Type.name = "f32x3x3"_c;
+        Float32x3x4Type.name = "f32x3x4"_c;
+        Float32x4x2Type.name = "f32x4x2"_c;
+        Float32x4x3Type.name = "f32x4x3"_c;
+        Float32x4x4Type.name = "f32x4x4"_c;
+        Float16x2x2Type.name = "f16x2x2"_c;
+        Float16x2x3Type.name = "f16x2x3"_c;
+        Float16x2x4Type.name = "f16x2x4"_c;
+        Float16x3x2Type.name = "f16x3x2"_c;
+        Float16x3x3Type.name = "f16x3x3"_c;
+        Float16x3x4Type.name = "f16x3x4"_c;
+        Float16x4x2Type.name = "f16x4x2"_c;
+        Float16x4x3Type.name = "f16x4x3"_c;
+        Float16x4x4Type.name = "f16x4x4"_c;
+    }
+};
+Namer namer;
+
 Float32::Float32()
 {
     this->name = "f32";
@@ -13421,11 +13475,9 @@ TextureCubeArray::TextureCubeArray()
     this->builtin = true;
 };
 
-Sampler::Sampler()
+FunctionPtr::FunctionPtr()
 {
-    this->name = "sampler"_c;
-    this->category = Type::SamplerCategory;
-    this->baseType = TypeCode::Sampler;
+    this->name = "function"_c;
     this->builtin = true;
 };
 

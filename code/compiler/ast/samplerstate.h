@@ -15,12 +15,12 @@
 namespace GPULang
 {
 
-struct SamplerState : public State
+struct SamplerStateInstance : public State
 {
     /// constructor
-    SamplerState();
+    SamplerStateInstance();
     /// Destructor
-    ~SamplerState();
+    ~SamplerStateInstance();
 
     _IMPLEMENT_ANNOTATIONS();
     _IMPLEMENT_ATTRIBUTES();
@@ -59,33 +59,33 @@ struct SamplerState : public State
 
 
         /// convert from string to enum
-        static const BorderColor StringToBorderColor(const TransientString& str);
+        static const Serialization::BorderColor StringToBorderColor(const TransientString& str);
 
         /// convert from string to enum
-        static const Filter StringToFilter(const TransientString& str);
+        static const Serialization::Filter StringToFilter(const TransientString& str);
 
         /// convert from string to enum
-        static const AddressMode StringToAddressMode(const TransientString& str);
+        static const Serialization::AddressMode StringToAddressMode(const TransientString& str);
 
-        AddressMode addressU;
-        AddressMode addressV;
-        AddressMode addressW;
+        Serialization::AddressMode addressU;
+        Serialization::AddressMode addressV;
+        Serialization::AddressMode addressW;
 
-        Filter minFilter;
-        Filter magFilter;
-        Filter mipFilter;
+        Serialization::Filter minFilter;
+        Serialization::Filter magFilter;
+        Serialization::Filter mipFilter;
 
         float mipLodBias;
         bool anisotropicEnabled;
         float maxAnisotropy;
 
         bool compareSamplerEnabled;
-        CompareMode compareMode;
+        Serialization::CompareMode compareMode;
 
         float minLod;
         float maxLod;
 
-        BorderColor borderColor;
+        Serialization::BorderColor borderColor;
 
         bool unnormalizedSamplingEnabled;        // sample as if texture was in dimensions [0..width, 0..height] instead of [0..1, 0..1]
         bool isInline, isImmutable;

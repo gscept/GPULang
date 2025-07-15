@@ -11,10 +11,10 @@ namespace GPULang
 {
 
 struct Type;
-struct RenderState : public State
+struct RenderStateInstance : public State
 {
     /// constructor
-    RenderState();
+    RenderStateInstance();
 
     struct __Resolved : State::__Resolved
     {
@@ -76,19 +76,19 @@ struct RenderState : public State
         bool noPixels;
 
         /// convert from string
-        static const PolygonMode StringToPolygonMode(const TransientString& str);
+        static const Serialization::PolygonMode StringToPolygonMode(const TransientString& str);
 
-        PolygonMode polygonMode;
-
-        /// convert from string
-        static const CullMode StringToCullMode(const TransientString& str);
-
-        CullMode cullMode;
+        Serialization::PolygonMode polygonMode;
 
         /// convert from string
-        static const WindingOrderMode StringToWindingOrderMode(const TransientString& str);
+        static const Serialization::CullMode StringToCullMode(const TransientString& str);
 
-        WindingOrderMode windingOrderMode;
+        Serialization::CullMode cullMode;
+
+        /// convert from string
+        static const Serialization::WindingOrderMode StringToWindingOrderMode(const TransientString& str);
+
+        Serialization::WindingOrderMode windingOrderMode;
         bool depthBiasEnabled;
         float depthBiasFactor;
         float depthBiasClamp;
@@ -102,7 +102,7 @@ struct RenderState : public State
         //------------------------------------------------------------------------------
         bool depthTestEnabled;
         bool depthWriteEnabled;
-        CompareMode depthCompare;
+        Serialization::CompareMode depthCompare;
         bool depthBoundsTestEnabled;
         float minDepthBounds;
         float maxDepthBounds;
@@ -110,10 +110,10 @@ struct RenderState : public State
         bool stencilEnabled;
 
         /// convert from string
-        static const StencilOp StringToStencilOp(const TransientString& str);
+        static const Serialization::StencilOp StringToStencilOp(const TransientString& str);
 
-        StencilState frontStencilState;
-        StencilState backStencilState;
+        Serialization::StencilState frontStencilState;
+        Serialization::StencilState backStencilState;
 
 
         //------------------------------------------------------------------------------
@@ -124,18 +124,18 @@ struct RenderState : public State
         bool logicOpEnabled;
 
         /// convert from string
-        static const LogicOp StringToLogicOp(const TransientString& str);
+        static const Serialization::LogicOp StringToLogicOp(const TransientString& str);
 
-        LogicOp logicOp;
-
-        /// convert from string
-        static const BlendFactor StringToBlendFactor(const TransientString& str);
+        Serialization::LogicOp logicOp;
 
         /// convert from string
-        static const BlendOp StringToBlendOp(const TransientString& str);
+        static const Serialization::BlendFactor StringToBlendFactor(const TransientString& str);
+
+        /// convert from string
+        static const Serialization::BlendOp StringToBlendOp(const TransientString& str);
 
         static const uint8_t NUM_BLEND_STATES = 8;
-        BlendState blendStates[NUM_BLEND_STATES];
+        Serialization::BlendState blendStates[NUM_BLEND_STATES];
         float blendConstants[4];
     };
 };

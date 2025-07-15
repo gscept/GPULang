@@ -3,7 +3,7 @@
 //  (C) 2025 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "declaredexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "compiler.h"
 
 namespace GPULang
@@ -63,7 +63,7 @@ DeclaredExpression::EvalType(Type::FullType& out) const
 bool
 DeclaredExpression::EvalTypeSymbol(Type*& out) const
 {
-    out = &BoolType;
+    out = &Bool8Type;
     return true;
 }
 
@@ -84,7 +84,7 @@ bool
 DeclaredExpression::EvalValue(ValueUnion& out) const
 {
     auto res = Symbol::Resolved(this);
-    out.code = TypeCode::Bool;
+    out.code = TypeCode::Bool8;
     out.b[0] = res->declared;
     out.columnSize = 1;
     out.rowSize = 1;

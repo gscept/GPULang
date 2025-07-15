@@ -624,7 +624,7 @@ program
     ;
 
 sampler
-    returns[ SamplerState* sym ]
+    returns[ SamplerStateInstance* sym ]
     @init
     {
         TransientArray<Attribute*> attributes(32);
@@ -632,10 +632,10 @@ sampler
         TransientArray<Expression*> entries(32);
     }:
     (
-        //'inline_sampler' { $sym = Alloc<SamplerState>(); $sym->isInline = true; }
+        //'inline_sampler' { $sym = Alloc<SamplerStateInstance>(); $sym->isInline = true; }
         (annotation { if (annotations.Full()) throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); annotations.Append(std::move($annotation.annot)); })*
         (attribute { if (attributes.Full()) throw IndexOutOfBoundsException("Maximum of 32 attributes reached"); attributes.Append(std::move($attribute.attr)); })*
-        'sampler_state' { $sym = Alloc<SamplerState>(); $sym->isImmutable = true; }
+        'sampler_state' { $sym = Alloc<SamplerStateInstance>(); $sym->isImmutable = true; }
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         (assign = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assign.tree); } ';' )*
@@ -655,7 +655,7 @@ state
         TransientArray<Expression*> entries(32);
     }:
     (
-        'render_state' { $sym = Alloc<RenderState>(); } 
+        'render_state' { $sym = Alloc<RenderStateInstance>(); } 
     ) name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         (assign = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assign.tree); } ';' )*

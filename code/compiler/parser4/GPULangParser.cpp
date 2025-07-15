@@ -3794,7 +3794,7 @@ GPULangParser::SamplerContext* GPULangParser::sampler() {
     }
     setState(590);
     match(GPULangParser::T__11);
-     antlrcpp::downCast<SamplerContext *>(_localctx)->sym =  Alloc<SamplerState>(); _localctx->sym->isImmutable = true; 
+     antlrcpp::downCast<SamplerContext *>(_localctx)->sym =  Alloc<SamplerStateInstance>(); _localctx->sym->isImmutable = true; 
     setState(593);
     antlrcpp::downCast<SamplerContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      _localctx->sym->location = SetupFile(); 
@@ -3904,7 +3904,7 @@ GPULangParser::StateContext* GPULangParser::state() {
     enterOuterAlt(_localctx, 1);
     setState(608);
     match(GPULangParser::T__12);
-     antlrcpp::downCast<StateContext *>(_localctx)->sym =  Alloc<RenderState>(); 
+     antlrcpp::downCast<StateContext *>(_localctx)->sym =  Alloc<RenderStateInstance>(); 
     setState(611);
     antlrcpp::downCast<StateContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      _localctx->sym->location = SetupFile(); 

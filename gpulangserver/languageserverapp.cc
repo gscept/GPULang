@@ -641,7 +641,7 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             scopes.pop_back();
             break;
         }
-        case GPULang::Symbol::SymbolType::SamplerStateType:
+        case GPULang::Symbol::SymbolType::SamplerStateInstanceType:
         {
             const GPULang::SamplerState* struc = static_cast<const GPULang::SamplerState*>(sym);
             const GPULang::SamplerState::__Resolved* res = GPULang::Symbol::Resolved(struc);
@@ -1068,7 +1068,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             }
             break;
         }
-        case GPULang::Symbol::SymbolType::SamplerStateType:
+        case GPULang::Symbol::SymbolType::SamplerStateInstanceType:
         {
             const auto state = static_cast<const GPULang::SamplerState*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);

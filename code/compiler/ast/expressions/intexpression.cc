@@ -3,7 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "intexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "util.h"
 #include "compiler.h"
 
@@ -37,7 +37,7 @@ IntExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ ConstantString("i32") };
     thisResolved->fullType.literal = true;
-    thisResolved->type = &IntType;
+    thisResolved->type = &Int32Type;
     return true;
 }
 
@@ -79,7 +79,7 @@ IntExpression::EvalSymbol(FixedString& out) const
 bool
 IntExpression::EvalValue(ValueUnion& out) const
 {
-    out.code = TypeCode::Int;
+    out.code = TypeCode::Int32;
     out.i[0] = this->value;
     out.columnSize = 1;
     out.rowSize = 1;

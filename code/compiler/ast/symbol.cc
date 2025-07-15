@@ -47,9 +47,9 @@ Symbol::TypeToString() const
     {
     case ProgramType:
         return "program";
-    case RenderStateType:
+    case RenderStateInstanceType:
         return "render_state";
-    case SamplerStateType:
+    case SamplerStateInstanceType:
         return "sampler_state";
     case VariableType:
         return "variable";

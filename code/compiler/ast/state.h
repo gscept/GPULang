@@ -24,7 +24,7 @@ struct State : public Symbol
     struct __Resolved : Symbol::__Resolved
     {
         virtual ~__Resolved() {};
-        static const CompareMode StringToCompareMode(const TransientString& str);
+        static const Serialization::CompareMode StringToCompareMode(const TransientString& str);
     };
 
 

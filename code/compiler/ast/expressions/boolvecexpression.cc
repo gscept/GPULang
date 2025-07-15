@@ -3,7 +3,7 @@
 //  (C) 2013 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "boolvecexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "util.h"
 #include "compiler.h"
 
@@ -43,7 +43,7 @@ BoolVecExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &BoolType;
+    thisResolved->type = &Bool8Type;
     //thisResolved->text = this->EvalString();
     return true;
 }

@@ -3,7 +3,7 @@
 //  (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "floatexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/types/type.h"
@@ -38,7 +38,7 @@ FloatExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ ConstantString("f32") };
     thisResolved->fullType.literal = true;
-    thisResolved->type = &FloatType;
+    thisResolved->type = &Float32Type;
     return true;
 }
 
@@ -80,7 +80,7 @@ FloatExpression::EvalSymbol(FixedString& out) const
 bool
 FloatExpression::EvalValue(ValueUnion& out) const
 {
-    out.code = TypeCode::Float;
+    out.code = TypeCode::Float32;
     out.f[0] = this->value;
     out.columnSize = 1;
     out.rowSize = 1;

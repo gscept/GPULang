@@ -3,7 +3,7 @@
 //  (C) 2021 Gustav Sterbrant
 //------------------------------------------------------------------------------
 #include "floatvecexpression.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/types/type.h"
@@ -44,7 +44,7 @@ FloatVecExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ Types[this->values.size-1]};
     thisResolved->fullType.literal = true;
-    thisResolved->type = &FloatType;
+    thisResolved->type = &Float32Type;
     return true;
 }
 
@@ -91,7 +91,7 @@ FloatVecExpression::EvalValue(ValueUnion& out) const
         out.f[index++] = val;
     out.columnSize = this->values.size;
     out.rowSize = 1;
-    out.code = TypeCode::Float;
+    out.code = TypeCode::Float32;
     return true;
 }
 

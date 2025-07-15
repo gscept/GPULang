@@ -5,7 +5,7 @@
 #include "uintexpression.h"
 #include "util.h"
 #include "compiler.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 namespace GPULang
 {
 
@@ -36,7 +36,7 @@ UIntExpression::Resolve(Compiler* compiler)
     auto thisResolved = Symbol::Resolved(this);
     thisResolved->fullType = Type::FullType{ ConstantString("u32") };
     thisResolved->fullType.literal = true;
-    thisResolved->type = &UIntType;
+    thisResolved->type = &UInt32Type;
     return true;
 }
 
@@ -78,7 +78,7 @@ UIntExpression::EvalSymbol(FixedString& out) const
 bool
 UIntExpression::EvalValue(ValueUnion& out) const
 {
-    out.code = TypeCode::UInt;
+    out.code = TypeCode::UInt32;
     out.ui[0] = this->value;
     out.columnSize = 1;
     out.rowSize = 1;

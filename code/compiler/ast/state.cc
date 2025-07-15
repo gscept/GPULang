@@ -19,30 +19,30 @@ State::~State()
 
 constexpr StaticMap stringToCompareMode =
 std::array{
-    std::pair{ ConstantString("Never"), NeverCompare }
-    , std::pair{ ConstantString("Less"), LessCompare }
-    , std::pair{ ConstantString("Equal"), EqualCompare }
-    , std::pair{ ConstantString("LessEqual"), LessEqualCompare }
-    , std::pair{ ConstantString("LEqual"), LessEqualCompare }
-    , std::pair{ ConstantString("Greater"), GreaterCompare }
-    , std::pair{ ConstantString("NotEqual"), NotEqualCompare }
-    , std::pair{ ConstantString("NEqual"), NotEqualCompare }
-    , std::pair{ ConstantString("GreaterEqual"), GreaterEqualCompare }
-    , std::pair{ ConstantString("GEqual"), GreaterEqualCompare }
-    , std::pair{ ConstantString("Always"), AlwaysCompare }
+    std::pair{ ConstantString("Never"), Serialization::CompareMode::NeverCompare }
+    , std::pair{ ConstantString("Less"), Serialization::CompareMode::LessCompare }
+    , std::pair{ ConstantString("Equal"), Serialization::CompareMode::EqualCompare }
+    , std::pair{ ConstantString("LessEqual"), Serialization::CompareMode::LessEqualCompare }
+    , std::pair{ ConstantString("LEqual"), Serialization::CompareMode::LessEqualCompare }
+    , std::pair{ ConstantString("Greater"), Serialization::CompareMode::GreaterCompare }
+    , std::pair{ ConstantString("NotEqual"), Serialization::CompareMode::NotEqualCompare }
+    , std::pair{ ConstantString("NEqual"), Serialization::CompareMode::NotEqualCompare }
+    , std::pair{ ConstantString("GreaterEqual"), Serialization::CompareMode::GreaterEqualCompare }
+    , std::pair{ ConstantString("GEqual"), Serialization::CompareMode::GreaterEqualCompare }
+    , std::pair{ ConstantString("Always"), Serialization::CompareMode::AlwaysCompare }
 };
 
 //------------------------------------------------------------------------------
 /**
 */
-const CompareMode 
+const Serialization::CompareMode
 State::__Resolved::StringToCompareMode(const TransientString& str)
 {
     auto it = stringToCompareMode.Find(str);
     if (it != stringToCompareMode.end())
         return it->second;
     else
-        return InvalidCompareMode;
+        return Serialization::CompareMode::InvalidCompareMode;
 }
 
 } // namespace GPULang

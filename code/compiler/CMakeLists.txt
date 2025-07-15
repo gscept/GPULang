@@ -137,68 +137,6 @@ fips_dir(ast/statements)
     )
 fips_dir(ast/types)
     fips_files(
-        bool.cc
-        bool.h
-        bool2.cc
-        bool2.h
-        bool3.cc
-        bool3.h
-        bool4.cc
-        bool4.h
-        builtins.cc
-        builtins.h
-        float.cc
-        float.h
-        float2.cc
-        float2.h
-        float3.cc
-        float3.h
-        float4.cc
-        float4.h
-        functiontype.cc
-        functiontype.h
-        int.cc
-        int.h
-        int2.cc
-        int2.h
-        int3.cc
-        int3.h
-        int4.cc
-        int4.h
-        mat2x2.cc
-        mat2x2.h
-        mat2x3.cc
-        mat2x3.h
-        mat2x4.cc
-        mat2x4.h
-        mat3x2.cc
-        mat3x2.h
-        mat3x3.cc
-        mat3x3.h
-        mat3x4.cc
-        mat3x4.h
-        mat4x2.cc
-        mat4x2.h
-        mat4x3.cc
-        mat4x3.h
-        mat4x4.cc
-        mat4x4.h
-        programtype.cc
-        programtype.h
-        renderstatetype.cc
-        renderstatetype.h
-        stencilstatetype.cc
-        stencilstatetype.h
-        samplerstatetype.cc
-        samplerstatetype.h
-        uint.cc
-        uint.h
-        uint2.cc
-        uint2.h
-        uint3.cc
-        uint3.h
-        uint4.cc
-        uint4.h
         type.cc
         type.h
     )

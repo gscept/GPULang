@@ -6,7 +6,7 @@
 #include "ast/symbol.h"
 #include "ast/variable.h"
 #include "ast/function.h"
-#include "ast/types/builtins.h"
+#include "generated/types.h"
 #include "compiler.h"
 #include "util.h"
 #include "ast/types/type.h"
@@ -81,7 +81,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         {
             // If lhs, it means it's a function assignment, therefore function pointer
             thisResolved->fullType = Type::FullType{ FUNCTION_TYPE };
-            thisResolved->type = &FunctionTypeType;
+            thisResolved->type = &GPULang::FunctionType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
@@ -104,10 +104,10 @@ SymbolExpression::Resolve(Compiler* compiler)
             }
             return true;
         }
-        else if (thisResolved->symbol->symbolType == Symbol::RenderStateType)
+        else if (thisResolved->symbol->symbolType == Symbol::RenderStateInstanceType)
         {
             thisResolved->fullType = Type::FullType{ ConstantString("renderState") };
-            thisResolved->type = &RenderStateTypeType;
+            thisResolved->type = &RenderStateType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
@@ -115,7 +115,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->fullType = Type::FullType{ ConstantString("sampler") };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
             thisResolved->fullType.modifierValues.push_back(nullptr);
-            thisResolved->type = &SamplerTypeType;
+            thisResolved->type = &SamplerType;
             return true;
         }
         else
