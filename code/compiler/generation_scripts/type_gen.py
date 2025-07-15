@@ -479,6 +479,7 @@ def generate_types():
                     elif op == '!=':
                         spirv_op = 'OpINotEqual'
                     spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                     spirv_code += spirv_intrinsic(fun_name, spirv_function)
             else:
                 operator_sets = [
@@ -544,6 +545,7 @@ def generate_types():
                         elif op == '!=':
                             spirv_op = 'Op{}NotEqual'.format(spirv_op_type)
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
                 
                 if size > 1:
@@ -570,6 +572,7 @@ def generate_types():
                         else:
                             spirv_function += '    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {}<, args[1]);\n'.format(size)
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
             # Matrix transform
@@ -599,6 +602,7 @@ def generate_types():
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpVectorTimesMatrix, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
             if type.startswith("UInt") or type.startswith("Int"):
@@ -638,6 +642,7 @@ def generate_types():
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'.format(spirv_op)
+                        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
             class_def = ""
@@ -811,6 +816,7 @@ def generate_types():
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList(intermediateArgs));\n'
                         elif op == '*' or op == '*=':
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesMatrix, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
                 op = '*'
@@ -833,6 +839,7 @@ def generate_types():
                 spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                 spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                 spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpMatrixTimesScalar, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
                 class_def = ""
@@ -1675,7 +1682,12 @@ def generate_types():
         'exp2', 'invSqrt', 'log', 'log2', 'sin', 'sinh', 'sqrt', 'tan', 'tanh'
     ]
 
-    for intrinsic in float_only_single_argument_intrinsics:
+    float_only_single_argument_spirv_intrinsics = [
+        'Acos', 'Acosh', 'Asin', 'Asinh', 'Atan', 'Atanh', 'Cos', 'Cosh', 'Exp',
+        'Exp2', 'InverseSqrt', 'Log', 'Log2', 'Sin', 'Sinh', 'Sqrt', 'Tan', 'Tanh'
+    ]
+
+    for intrinsic, spirv_op in zip(float_only_single_argument_intrinsics, float_only_single_argument_spirv_intrinsics):
         for float_type in float_types:
             function_name = '{}_{}'.format(intrinsic, float_type)
             argument_name = '{}_{}_arg'.format(intrinsic, float_type)
@@ -1689,6 +1701,12 @@ def generate_types():
             intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, arg);\n'.format(spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Atan2
     for float_type in float_types:
@@ -1710,6 +1728,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, y, x);\n'.format('Atan2')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
         
     # Pow
     for float_type in float_types:
@@ -1732,6 +1757,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(exponent_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult exponent = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val, exponent);\n'.format('Pow')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Mad
     for float_type in scalar_types:
@@ -1761,6 +1793,14 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(addend_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult multiplicant = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult addend = LoadValueSPIRV(c, g, args[2]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val, multiplicant, addend);\n'.format('Fma')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Dot
     for float_type in float_vec_types:
         intrinsic = 'dot'
@@ -1783,6 +1823,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpDot, SPVWriter::Section::LocalFunction, returnType, x, y);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Reflect
     for float_type in float_vec_types:
         intrinsic = 'reflect'
@@ -1804,6 +1851,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(incident_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(normal_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult normal = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, incident, normal);\n'.format('Reflect')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Refract
     for float_type in float_vec_types:
@@ -1833,6 +1887,14 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ior_name, float_type.split('x')[0])
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult normal = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult ior = LoadValueSPIRV(c, g, args[2]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, incident, normal, ior);\n'.format('Refract')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Cross
     cross_product_types = ['Float32x3', 'Float16x3']
     intrinsic = 'cross'
@@ -1856,9 +1918,17 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(v1_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, x, y);\n'.format('Cross')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Length & Normalize
     ops = ['length', 'normalize']
-    for op in ops:
+    spirv_ops = ['Length', 'Normalize']
+    for op, spirv_op in zip(ops, spirv_ops):
         for float_type in float_vec_types:
             function_name = '{}_{}'.format(op, float_type)
             argument_name = '{}_{}_arg'.format(op, float_type)
@@ -1872,6 +1942,12 @@ def generate_types():
             intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult vec = LoadValueSPIRV(c, g, args[0]);\n'    
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, vec);\n'.format(spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Distance
     for float_type in float_vec_types:
@@ -1895,13 +1971,21 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(p1_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult v0 = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += '    SPIRVResult v1 = LoadValueSPIRV(c, g, args[1]);\n'    
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, v0, v1);\n'.format('Distance')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Min & Max
     ops = ['min', 'max']
-    for op in ops:
-        for float_type in scalar_types:
-            function_name = '{}_{}'.format(op, float_type)
-            x_name = '{}_{}_x'.format(op, float_type)
-            y_name = '{}_{}_y'.format(op, float_type)
+    spirv_ops = ['Min', 'Max']
+    for op, spirv_op in zip(ops, spirv_ops):
+        for type in scalar_types:
+            function_name = '{}_{}'.format(op, type)
+            x_name = '{}_{}_x'.format(op, type)
+            y_name = '{}_{}_y'.format(op, type)
             intrinsic_decls += 'extern Variable {};\n'.format(x_name)
             intrinsic_decls += 'extern Variable {};\n'.format(y_name)
             intrinsic_decls += 'extern Function {};\n'.format(function_name)
@@ -1909,14 +1993,27 @@ def generate_types():
             intrinsic_defs += 'Variable {};\n'.format(y_name)
             intrinsic_defs += 'Function {};\n'.format(function_name)
             intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, type)
             intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, type)
             intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+
+            if  type.startswith('Float'):
+                spirv_op_type = 'F'
+            elif type.startswith('Int'):
+                spirv_op_type = 'S'
+            elif type.startswith('UInt'):
+                spirv_op_type = 'U'
+            spirv_function = ''
+            spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+            spirv_function += '    SPIRVResult limit = LoadValueSPIRV(c, g, args[1]);\n'    
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{}, val, limit);\n'.format(spirv_op_type, spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Clamp
     for float_type in scalar_types:
@@ -1945,6 +2042,20 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(min_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(max_name, float_type.split('x')[0])
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+        if  type.startswith('Float'):
+            spirv_op_type = 'F'
+        elif type.startswith('Int'):
+            spirv_op_type = 'S'
+        elif type.startswith('UInt'):
+            spirv_op_type = 'U'
+        spirv_function = ''
+        spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += '    SPIRVResult min = LoadValueSPIRV(c, g, args[1]);\n'    
+        spirv_function += '    SPIRVResult max = LoadValueSPIRV(c, g, args[2]);\n'    
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{} val, min, max);\n'.format(spirv_op_type, 'Clamp')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
     
     # Lerp
     for float_type in float_vec_types:
@@ -1974,6 +2085,14 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(t_name, float_type.split('x')[0])
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult a = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += '    SPIRVResult b = LoadValueSPIRV(c, g, args[1]);\n'    
+        spirv_function += '    SPIRVResult t = LoadValueSPIRV(c, g, args[2]);\n'    
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, a, b, t);\n'.format('FMix')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Step
     for float_type in float_types:
         intrinsic = 'step'
@@ -1995,6 +2114,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+
+        spirv_function = ''
+        spirv_function += '    SPIRVResult edge = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[1]);\n'    
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, edge, x);\n'.format('Step')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
     
     # Smoothstep
     for float_type in float_types:
@@ -2024,9 +2150,18 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);\n'    
+        spirv_function += '    SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[2]);\n'    
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, edge0, edge1, x);\n'.format('SmoothStep')
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
     ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
-    for op in ops:
+    spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'Ddx', 'Ddy', 'Fwidth']
+    for op, spirv_op in zip(ops, spirv_ops):
         for float_type in float_types:
             function_name = '{}_{}'.format(op, float_type)
             argument_name = '{}_{}_arg'.format(op, float_type)
@@ -2041,23 +2176,40 @@ def generate_types():
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+            spirv_function = ''
+            spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val);\n'.format(spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Sign and Abs
     ops = ['sign', 'abs']
-    for op in ops:
-        for float_type in signed_types:
+    spirv_ops = ['Sign', 'Abs']
+    for op, spirv_op in zip(ops, spirv_ops):
+        for type in signed_types:
             intrinsic = op
-            function_name = '{}_{}'.format(intrinsic, float_type)
-            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
+            function_name = '{}_{}'.format(intrinsic, type)
+            argument_name = '{}_{}_arg'.format(intrinsic, type)
             intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
             intrinsic_decls += 'extern Function {};\n'.format(function_name)
             intrinsic_defs += 'Variable {};\n'.format(argument_name)
             intrinsic_defs += 'Function {};\n'.format(function_name)
             intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
+            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
             intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type)
+            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+
+            if  type.startswith('Float'):
+                spirv_op_type = 'F'
+            elif type.startswith('Int'):
+                spirv_op_type = 'S'
+            spirv_function = ''
+            spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{} val, min, max);\n'.format(spirv_op_type, spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     types = ["Float16", "UInt16", "Int16"]
     data_types = ["f16", "u16", "i16"]
@@ -2079,6 +2231,12 @@ def generate_types():
                 intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
                 intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
 
+                spirv_function = ''
+                spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     types = ["Float32", "UInt32", "Int32"]
     data_types = ["f32", "u32", "i32"]
 
@@ -2099,9 +2257,16 @@ def generate_types():
                 intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
                 intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
 
+                spirv_function = ''
+                spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpBitcast, SPVWriter::Section::LocalFunction, returnType, val);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     # Any and all
     ops = ['any', 'all']
-    for op in ops:
+    spirv_op = ['Any', 'All']
+    for op, spirv_op in zip(ops, spirv_op):
         for float_type in bool_types:
             intrinsic = op
             function_name = '{}_{}'.format(intrinsic, float_type)
@@ -2116,6 +2281,12 @@ def generate_types():
             intrinsic_setup += '    {}.returnType = Type::FullType{{ Bool8Type.name }};\n'.format(function_name)
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &Bool8Type;\n\n'.format(function_name)
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, val);\n'.format(spirv_op)
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     ops = ['transpose', 'inverse']
     matrix_types = []
@@ -2140,9 +2311,20 @@ def generate_types():
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
 
+            spirv_function = ''
+            spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
+            if op == 'transpose':
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, val);\n'.format('Transpose')
+            else:
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val);\n'.format('Inverse')
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
+
     # Builtin value getters
     vertex_value_builtins = ['OutputLayer', 'OutputViewport', 'Index', 'InstanceIndex', 'BaseIndex', 'BaseInstanceIndex', 'DrawIndex']
-    for builtin in vertex_value_builtins:
+    vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexId', 'InstanceId', 'BaseVertex', 'BaseInstance', 'DrawIndex']
+    for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         intrinsic = builtin
         function_name = 'VertexGet{}'.format(intrinsic)
         intrinsic_decls += 'extern Function {};\n'.format(function_name)
@@ -2151,9 +2333,23 @@ def generate_types():
         intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
 
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += '    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'.format(builtin)
+        spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{});\n'.format(spirv_builtin)
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    return res;\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     unsigned_types = ['UInt16', 'UInt32']
     vertex_value_builtins = ['OutputLayer', 'OutputViewport']
-    for builtin in vertex_value_builtins:
+    vertex_value_builtins_spirv = ['Layer', 'ViewportIndex']
+    for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         for type in unsigned_types:
             intrinsic = builtin
             function_name = 'VertexSet{}_{}'.format(intrinsic, type)
@@ -2168,6 +2364,17 @@ def generate_types():
             intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(argument_name, type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+            spirv_function = '' 
+            spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+            spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+            spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+            spirv_function += '    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'.format(builtin)
+            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{});\n'.format(spirv_builtin)
+            spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);\n'
+            spirv_function += '    return SPIRVResult::Invalid();\n'
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Export vertex coordinates
     four_component_float_vec_types = ['Float32x4', 'Float16x4']
