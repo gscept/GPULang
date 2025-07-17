@@ -286,20 +286,6 @@ Function::SetupIntrinsics()
         Shader state intrinsics
     */
     //------------------------------------------------------------------------------
-    __MAKE_BUILTIN(vertexSetOutputLayer, SetOutputLayer);
-    __ADD_ARG_LIT(layer, UInt);
-    __SET_RET_LIT(Void);
-
-    __MAKE_BUILTIN(vertexGetOutputLayer, GetOutputLayer);
-    __SET_RET_LIT(UInt);
-
-    __MAKE_BUILTIN(vertexSetOutputViewport, SetOutputViewport);
-    __ADD_ARG_LIT(layer, UInt);
-    __SET_RET_LIT(Void);
-
-    __MAKE_BUILTIN(vertexGetOutputViewport, GetOutputViewport);
-    __SET_RET_LIT(UInt);
-
     __MAKE_BUILTIN(vertexExportCoordinates, ExportVertexCoordinates);
     __ADD_ARG_LIT(coordinates, Float4);
     __SET_RET_LIT(Void);
@@ -310,21 +296,6 @@ Function::SetupIntrinsics()
 
     __MAKE_BUILTIN(geometryExportPrimitive, ExportPrimitive);
     __SET_RET_LIT(Void);
-
-    __MAKE_BUILTIN(vertexGetIndex, GetVertexIndex);
-    __SET_RET_LIT(UInt);
-
-    __MAKE_BUILTIN(vertexGetInstanceIndex, GetInstanceIndex);
-    __SET_RET_LIT(UInt);
-
-    __MAKE_BUILTIN(vertexGetBaseIndex, GetBaseVertexIndex);
-    __SET_RET_LIT(UInt);
-
-    __MAKE_BUILTIN(vertexGetBaseInstanceIndex, GetBaseInstanceIndex);
-    __SET_RET_LIT(UInt);
-
-    __MAKE_BUILTIN(vertexGetDrawIndex, GetDrawIndex);
-    __SET_RET_LIT(UInt);
 
     __MAKE_BUILTIN(pixelGetCoordinates, GetPixelCoordinates);
     __SET_RET_LIT(Float4);

@@ -749,6 +749,62 @@ constexpr ConverterTable = StaticMap{ std::array{
     } }
 }};
 
+static const uint32_t SemanticsTable[] =
+{
+    0x0,
+    0x1,
+    0x2,
+    0x4,
+    0x8,
+    0x10,
+    0x20,
+    0x40,
+    0x80,
+    0x100
+};
+
+static auto ScopeToAtomicScope = [](SPIRVResult::Storage scope) -> uint32_t
+{
+    switch (scope)
+    {
+        case SPIRVResult::Storage::Function:
+        case SPIRVResult::Storage::Input:
+        case SPIRVResult::Storage::Output:
+        case SPIRVResult::Storage::PushConstant:
+        case SPIRVResult::Storage::Private:
+            return 4;
+        case SPIRVResult::Storage::WorkGroup:
+            return 2;
+        case SPIRVResult::Storage::Device:
+        case SPIRVResult::Storage::Uniform:
+        case SPIRVResult::Storage::UniformConstant:
+        case SPIRVResult::Storage::StorageBuffer:
+        case SPIRVResult::Storage::MutableImage:
+            return 1;
+        case SPIRVResult::Storage::Sampler:
+        case SPIRVResult::Storage::Image:
+            assert(false);
+    }
+    return 0;
+};
+
+static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
+{
+    switch (scope)
+    {
+        case SPIRVResult::Storage::WorkGroup:
+            return 0x100; // WorkgroupMemory
+        case SPIRVResult::Storage::Uniform:
+        case SPIRVResult::Storage::UniformConstant:
+        case SPIRVResult::Storage::StorageBuffer:
+        case SPIRVResult::Storage::Sampler:
+            return 0x40; // UniformMemory
+        case SPIRVResult::Storage::Image:
+        case SPIRVResult::Storage::MutableImage:
+            return 0x800; // ImageMemory
+    }
+    return 0x0;
+};
 StaticMap default_intrinsics = std::array{
 std::pair{ &Float32_convert_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
@@ -30093,7 +30149,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30101,7 +30157,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30109,7 +30165,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30117,7 +30173,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30125,7 +30181,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30133,7 +30189,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30141,7 +30197,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30149,7 +30205,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30157,7 +30213,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30165,7 +30221,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30173,7 +30229,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30181,7 +30237,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30189,7 +30245,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30197,7 +30253,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30205,7 +30261,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30213,7 +30269,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30221,7 +30277,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30229,7 +30285,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30237,7 +30293,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30245,7 +30301,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30253,7 +30309,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30261,7 +30317,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30269,7 +30325,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30277,7 +30333,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30389,7 +30445,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30397,7 +30453,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30405,7 +30461,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30413,7 +30469,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30421,7 +30477,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30429,7 +30485,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30437,7 +30493,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30445,7 +30501,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult x = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SmoothStep, edge0, edge1, x);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Max, edge0, edge1, x);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -30691,97 +30747,97 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddx, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Ddy, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
@@ -31374,7 +31430,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31386,7 +31442,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31398,7 +31454,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31410,7 +31466,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplBaseIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31422,7 +31478,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplBaseInstanceIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31434,7 +31490,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplDrawIndex"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
@@ -31468,7 +31524,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
@@ -31479,7 +31535,7 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
 }},
 std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    g->writer->Capability(Capabilities::ShaderLayer);
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
@@ -31487,6 +31543,2121 @@ std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* 
     g->interfaceVariables.Insert(ret);
     g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
     return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Geometry);
+    g->writer->Instruction(OpEmitVertex, SPVWriter::Section::LocalFunction);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Geometry);
+    g->writer->Instruction(OpEndPrimitive, SPVWriter::Section::LocalFunction);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetCoordinates_Float32x4"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetCoordinates_Float16x4"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragCoord);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelGetDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelSetDepth"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::FragDepth);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Float16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_Int16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt32x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x2_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x3_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt32"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_Int16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplPixelExportColor_UInt16x4_UInt16"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);
+    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetLocalThreadIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetGlobalThreadIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::GlobalInvocationId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetWorkgroupIndices"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::WorkgroupId);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetWorkGroupDimensions"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::WorkgroupSize);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &Float16x4x4_operator_scale_Float16x4x4_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplComputeGetIndexInWorkgroup"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetId , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetId"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetSize , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetSize"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetNum , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetNum"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetThreadMask , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupEqMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetThreadAndLowerMask , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadAndLowerMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLeMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetLowerMask , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetLowerMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupLtMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetThreadAndGreaterMask , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetThreadAndGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGeMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupGetGreaterMask , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
+}},
+std::pair{ &SubgroupFirstActiveThread , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBroadcastFirstActiveThread , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBallot , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(['GroupNonUniformBallot', 'GroupNonUniformInverseBallot'], SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupInverseBallot , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(['GroupNonUniformBallot', 'GroupNonUniformInverseBallot'], SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBallotBitCount , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, 0, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBallotFirstOne , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBallotLastOne , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupBallotBit , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult bit = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, bit);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Float16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapDiagonal_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(2));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Float16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapVertical_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(1));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Float16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SubgroupSwapHorizontal_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::GroupNonUniformQuad);
+    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &TextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {

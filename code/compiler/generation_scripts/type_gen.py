@@ -228,6 +228,65 @@ def generate_types():
         spirv_type_construction += f'    }} }},\n'
     spirv_intrinsics.write(spirv_type_construction[0:-2])
     spirv_intrinsics.write('\n}};\n\n')
+
+    spirv_atomic_tables = ""
+    spirv_atomic_tables += "static const uint32_t SemanticsTable[] =\n"
+    spirv_atomic_tables += "{\n"
+    spirv_atomic_tables += "    0x0,\n"
+    spirv_atomic_tables += "    0x1,\n"
+    spirv_atomic_tables += "    0x2,\n"
+    spirv_atomic_tables += "    0x4,\n"
+    spirv_atomic_tables += "    0x8,\n"
+    spirv_atomic_tables += "    0x10,\n"
+    spirv_atomic_tables += "    0x20,\n"
+    spirv_atomic_tables += "    0x40,\n"
+    spirv_atomic_tables += "    0x80,\n"
+    spirv_atomic_tables += "    0x100\n"
+    spirv_atomic_tables += "};\n"
+    spirv_atomic_tables += "\n"
+    spirv_atomic_tables += "static auto ScopeToAtomicScope = [](SPIRVResult::Storage scope) -> uint32_t\n"
+    spirv_atomic_tables += "{\n"
+    spirv_atomic_tables += "    switch (scope)\n"
+    spirv_atomic_tables += "    {\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Function:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Input:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Output:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::PushConstant:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Private:\n"
+    spirv_atomic_tables += "            return 4;\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::WorkGroup:\n"
+    spirv_atomic_tables += "            return 2;\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Device:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Uniform:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::UniformConstant:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::StorageBuffer:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::MutableImage:\n"
+    spirv_atomic_tables += "            return 1;\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Sampler:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Image:\n"
+    spirv_atomic_tables += "            assert(false);\n"
+    spirv_atomic_tables += "    }\n"
+    spirv_atomic_tables += "    return 0;\n"
+    spirv_atomic_tables += "};\n"
+    spirv_atomic_tables += "\n"
+    spirv_atomic_tables += "static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t\n"
+    spirv_atomic_tables += "{\n"
+    spirv_atomic_tables += "    switch (scope)\n"
+    spirv_atomic_tables += "    {\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::WorkGroup:\n"
+    spirv_atomic_tables += "            return 0x100; // WorkgroupMemory\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Uniform:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::UniformConstant:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::StorageBuffer:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Sampler:\n"
+    spirv_atomic_tables += "            return 0x40; // UniformMemory\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::Image:\n"
+    spirv_atomic_tables += "        case SPIRVResult::Storage::MutableImage:\n"
+    spirv_atomic_tables += "            return 0x800; // ImageMemory\n"
+    spirv_atomic_tables += "    }\n"
+    spirv_atomic_tables += "    return 0x0;\n"
+    spirv_atomic_tables += "};\n\n"
+    spirv_intrinsics.write(spirv_atomic_tables)
     spirv_intrinsics.write('StaticMap default_intrinsics = std::array{\n')
     
 
@@ -677,68 +736,68 @@ def generate_types():
         for row_size in range(2, 5):
             for column_size in range(2, 5):
 
-                type_name = '{}x{}x{}'.format(type, row_size, column_size)
-                data_type_name = '{}x{}x{}'.format(data_type, row_size, column_size)
+                type_name = f'{type}x{row_size}x{column_size}'
+                data_type_name = f'{data_type}x{row_size}x{column_size}'
 
                 namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
 
-                definition_string += "#define DEF_{}_ctors\\\n".format(type_name)
+                definition_string += f"#define DEF_{type_name}_ctors\\\n"
                 list_string = ""
                 setup_string = ""
                 
                 class_decl = ''
-                class_decl += 'struct {} : public Type\n'.format(type_name)
+                class_decl += f'struct {type_name} : public Type\n'
                 class_decl += '{\n'
-                class_decl += '    {}();\n'.format(type_name)
+                class_decl += f'    {type_name}();\n'
                 class_decl += '};\n'
-                class_decl += 'extern {} {}Type;\n\n'.format(type_name, type_name)
+                class_decl += f'extern {type_name} {type_name}Type;\n\n'
                 declaration_string += class_decl
 
-                vector_ctor_name = '{}_{}x{}_ctor'.format(type_name, type, column_size)
-                
+                vector_ctor_name = f'{type_name}_{type}_{column_size}_ctor'
+
                 for arg_index in range(0, row_size):
-                    arg_name = '{}_arg{}'.format(vector_ctor_name, arg_index)
-                    declaration_string += 'extern Variable {};\n'.format(arg_name)
-                    definition_string += 'Variable {};\\\n'.format(arg_name)
+                    arg_name = f'{vector_ctor_name}_arg{arg_index}'
+                    declaration_string += f'extern Variable {arg_name};\n'
+                    definition_string += f'Variable {arg_name};\\\n'
 
-                declaration_string += 'extern Function {};\n'.format(vector_ctor_name)
-                definition_string += 'Function {};\\\n'.format(vector_ctor_name)
-                list_string += '        std::pair{{ "{}"_c, &{}}},\n'.format(data_type_name, vector_ctor_name)
+                declaration_string += f'extern Function {vector_ctor_name};\n'
+                definition_string += f'Function {vector_ctor_name};\\\n'
+                list_string += f'        std::pair{{ "{data_type_name}"_c, &{vector_ctor_name}}},\n'
 
-                declaration_string += 'extern Function {}_identity;\n'.format(type_name)
-                definition_string += 'Function {}_identity;\\\n'.format(type_name)
-                list_string += '        std::pair{{ "{}"_c, &{}_identity}},\n'.format(data_type_name, type_name)
+                declaration_string += f'extern Function {type_name}_identity;\n'
+                definition_string += f'Function {type_name}_identity;\\\n'
+                list_string += f'        std::pair{{ "{data_type_name}"_c, &{type_name}_identity}},\n'
 
-                array_ctor_name = '{}_{}_{}_ctor'.format(type_name, type, column_size * row_size)
+                array_ctor_name = f'{type_name}_{type}_{column_size * row_size}_ctor'
                 for arg_index in range(0, column_size * row_size):
-                    arg_name = '{}_arg{}'.format(array_ctor_name, arg_index)
-                    declaration_string += 'extern Variable {};\n'.format(arg_name)
-                    definition_string += 'Variable {};\\\n'.format(arg_name)
+                    arg_name = f'{array_ctor_name}_arg{arg_index}'
+                    declaration_string += f'extern Variable {arg_name};\n'
+                    definition_string += f'Variable {arg_name};\\\n'
 
-                declaration_string += 'extern Function {};\n'.format(array_ctor_name)
-                definition_string += 'Function {};\n'.format(array_ctor_name)
-                list_string += '        std::pair{{ "{}"_c, &{}}},\n'.format(data_type_name, array_ctor_name)
-        
-                definition_string = "#define DEF_{}_operators\\\n".format(type_name)
+                declaration_string += f'extern Function {array_ctor_name};\n'
+                definition_string += f'Function {array_ctor_name};\\\n'
+                list_string += f'        std::pair{{ "{data_type_name}"_c, &{array_ctor_name}}},\n'
 
-                vec_type = '{}x{}'.format(type, column_size)
+                definition_string = f"#define DEF_{type_name}_operators\\\n"
+
+                vec_type = f'{type}x{column_size}'
                 for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
-                    fun_name = '{}_operator_{}'.format(type_name, name)
-                    arg_name = '{}_operator_{}_arg0'.format(type_name, name)
-                    declaration_string += 'extern Variable {};\n'.format(arg_name)
-                    declaration_string += 'extern Function {};\n'.format(fun_name)
-                    definition_string += 'Variable {};\\\n'.format(arg_name)
-                    definition_string += 'Function {};\\\n'.format(fun_name)
-                    setup_string += '    // operator{}({})\n'.format(op, idx_data_type)
-                    setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                    setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, idx_type)
-                    setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                    setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, vec_type)
-                    setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, idx_type)
-                    setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, vec_type)
-                    list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, idx_data_type, fun_name)
+                    fun_name = f'{type_name}_operator_{name}'
+                    arg_name = f'{type_name}_operator_{name}_arg0'
+                    declaration_string += f'extern Variable {arg_name};\n'
+                    declaration_string += f'extern Function {fun_name};\n'
+                    definition_string += f'Variable {arg_name};\\\n'
+                    definition_string += f'Function {fun_name};\\\n'
+                    setup_string += f'    // operator{op}({idx_data_type})\n'
+                    setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                    setup_string += f'    {arg_name}.type = Type::FullType{{ {idx_type}Type.name }};\n'
+                    setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                    setup_string += f'    {fun_name}.returnType = Type::FullType{{ {vec_type}Type.name }};\n'
+                    setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{idx_type}Type;\n'
+                    setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{vec_type}Type;\n\n'
+                    list_string += f'        std::pair{{ "operator{op}({idx_data_type})"_c, &{fun_name}}},\n'
 
-                    spirv_function =  '    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {}.returnType, &{}Type, args[0].scope);\n'.format(fun_name, type)
+                    spirv_function =  f'    SPIRVResult returnTypePtr = GeneratePointerTypeSPIRV(c, g, {fun_name}.returnType, &{type}Type, args[0].scope);\n'
                     spirv_function += '    SPIRVResult index = LoadValueSPIRV(c, g, args[0]);\n'
                     spirv_function += '    SPIRVResult ret = args[0];\n'
                     spirv_function += '    ret.AddAccessChainLink({loadedIndex});\n'
@@ -755,30 +814,30 @@ def generate_types():
                 ]
                 for operator_set in operator_sets:
                     for name, op in operator_set:
-                        fun_name = '{}_operator_{}_{}'.format(type_name, name, type_name)
-                        arg_name = '{}_operator_{}_{}_arg0'.format(type_name, name, type_name)
-                        setup_string += '    // operator{}\n'.format(op)
-                        setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                        setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type_name)
-                        setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                        setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type_name)
-                        setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                        
-                        declaration_string += 'extern Variable {};\n'.format(arg_name)
-                        declaration_string += 'extern Function {};\n'.format(fun_name)
-                        definition_string += 'Variable {};\\\n'.format(arg_name)
-                        definition_string += 'Function {};\\\n'.format(fun_name)
-                        list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, data_type_name, fun_name)
+                        fun_name = f'{type_name}_operator_{name}_{type_name}'
+                        arg_name = f'{type_name}_operator_{name}_{type_name}_arg0'
+                        setup_string += f'    // operator{op}({data_type})\n'
+                        setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                        setup_string += f'    {arg_name}.type = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                        setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                        setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type_name}Type;\n'
+                        setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+
+                        declaration_string += f'extern Variable {arg_name};\n'
+                        declaration_string += f'extern Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\n'
+                        definition_string += f'Function {fun_name};\n'
+                        list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{fun_name}}},\n'
 
                         spirv_function = ''
                         spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
                         spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
 
                         if op == '+' or op == '+=':
-                            spirv_function += '    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {});\n'.format(column_size)
-                            spirv_function += '    TransientArray<SPVArg> intermediateArgs({});\n'.format(column_size)
-                            spirv_function += '    for (uint32_t i = 0; i < {}; i++);\n'.format(column_size)
+                            spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {column_size});\n'
+                            spirv_function += f'    TransientArray<SPVArg> intermediateArgs({column_size});\n'
+                            spirv_function += f'    for (uint32_t i = 0; i < {column_size}; i++);\n'
                             spirv_function += '    {\n'
                             spirv_function += '        uint32_t lhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, lhs, i);\n'
                             spirv_function += '        uint32_t rhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, rhs, i);\n'
@@ -787,9 +846,9 @@ def generate_types():
                             spirv_function += '    }\n'
                             spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpCompositeConstruct, SPVWriter::Section::LocalFunction, returnType, SPVArgList(intermediateArgs));\n'
                         elif op == '-' or op == '-=':
-                            spirv_function += '    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {});\n'.format(column_size)
-                            spirv_function += '    TransientArray<SPVArg> intermediateArgs({});\n'.format(column_size)
-                            spirv_function += '    for (uint32_t i = 0; i < {}; i++);\n'.format(column_size)
+                            spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float, {column_size});\n'
+                            spirv_function += f'    TransientArray<SPVArg> intermediateArgs({column_size});\n'
+                            spirv_function += f'    for (uint32_t i = 0; i < {column_size}; i++);\n'
                             spirv_function += '    {\n'
                             spirv_function += '        uint32_t lhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, lhs, i);\n'
                             spirv_function += '        uint32_t rhsVec = g->writer->MappedInstruction(OpCompositeExtract, SPVWriter::Section::LocalFunction, vectorType, rhs, i);\n'
@@ -803,20 +862,20 @@ def generate_types():
                         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
                 op = '*'
-                fun_name = '{}_operator_{}_{}_{}'.format(type_name, 'scale', type_name, type)
-                arg_name = '{}_operator_{}_{}_{}_arg0'.format(type_name, 'scale', type_name, type)
-                setup_string += '    // operator{}({})\n'.format(op, data_type)
-                setup_string += '    {}.name = "_arg0"_c;\n'.format(arg_name, name)
-                setup_string += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(arg_name, type)
-                setup_string += '    {}.name = "operator{}"_c;\n'.format(fun_name, op)
-                setup_string += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(fun_name, type_name)
-                setup_string += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(arg_name, type)
-                setup_string += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(fun_name, type_name)
-                declaration_string += 'extern Variable {};\n'.format(arg_name)
-                declaration_string += 'extern Function {};\n'.format(fun_name)
-                definition_string += 'Variable {};\\\n'.format(arg_name)
-                definition_string += 'Function {};\\\n'.format(fun_name)
-                list_string += '        std::pair{{ "operator{}({})"_c, &{}}},\n'.format(op, data_type, fun_name)
+                fun_name = f'{type_name}_operator_scale_{type_name}_{type}'
+                arg_name = f'{type_name}_operator_scale_{type_name}_{type}_arg0'
+                setup_string += f'    // operator{op}({data_type})\n'
+                setup_string += f'    {arg_name}.name = "_arg0"_c;\n'
+                setup_string += f'    {arg_name}.type = Type::FullType{{ {type}Type.name }};\n'
+                setup_string += f'    {fun_name}.name = "operator{op}"_c;\n'
+                setup_string += f'    {fun_name}.returnType = Type::FullType{{ {type_name}Type.name }};\n'
+                setup_string += f'    Symbol::Resolved(&{arg_name})->typeSymbol = &{type}Type;\n'
+                setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
+                declaration_string += f'extern Variable {arg_name};\n'
+                declaration_string += f'extern Function {fun_name};\n'
+                definition_string += f'Variable {arg_name};\n'
+                definition_string += f'Function {fun_name};\n'
+                list_string += f'        std::pair{{ "operator{op}({data_type})"_c, &{fun_name}}},\n'
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult lhs = LoadValueSPIRV(c, g, args[0]);\n'
@@ -825,18 +884,18 @@ def generate_types():
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
-                class_def += '{}::{}()\n'.format(type_name, type_name)
+                class_def += f'{type_name}::{type_name}()\n'
                 class_def += '{\n'
-                class_def += '    this->name = "{}";\n'.format(data_type)
-                class_def += '    this->columnSize = {};\n'.format(column_size)
-                class_def += '    this->rowSize = {};\n'.format(row_size)
-                class_def += '    this->byteSize = {:d};\n'.format(trunc((bits * row_size * column_size) / 8))
+                class_def += f'    this->name = "{data_type}";\n'
+                class_def += f'    this->columnSize = {column_size};\n'
+                class_def += f'    this->rowSize = {row_size};\n'
+                class_def += f'    this->byteSize = {trunc((bits * row_size * column_size) / 8)};\n'
                 class_def += '    this->category = Type::ScalarCategory;\n'
-                class_def += '    this->baseType = TypeCode::{};\n'.format(type)
+                class_def += f'    this->baseType = TypeCode::{type};\n'
                 class_def += '    this->builtin = true;\n'
                 class_def += '\n'
-                class_def += '{}'.format(setup_string)
-                class_def += '    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{}\n    }}\n    }};   \n'.format(list_string[0:-2])
+                class_def += f'{setup_string}'
+                class_def += f'    this->scope.symbolLookup = StaticMap {{ \n    std::array{{\n{list_string[0:-2]}\n    }}\n    }};   \n'
                 class_def += '}\n\n'
 
 
@@ -864,60 +923,60 @@ def generate_types():
     for dim, ms, array in zip(texture_dimensions, texture_multisampling, texture_array):
 
         class_decl = ""
-        class_decl += 'struct Texture{} : public Type\n'.format(dim)
+        class_decl += f'struct Texture{dim} : public Type\n'
         class_decl += '{\n'
-        class_decl += '    Texture{}();\n'.format(dim)
+        class_decl += f'    Texture{dim}();\n'
         class_decl += '};\n'
-        class_decl += 'extern Texture{} Texture{}Type;\n\n'.format(dim, dim)
-    
+        class_decl += f'extern Texture{dim} Texture{dim}Type;\n\n'
+
         class_def = ""
-        class_def += 'Texture{}::Texture{}()\n'.format(dim, dim)
+        class_def += f'Texture{dim}::Texture{dim}()\n'
         class_def += '{\n'
-        class_def += '    this->name = "texture{}";\n'.format(dim)
+        class_def += f'    this->name = "texture{dim}";\n'
         class_def += '    this->category = Type::TextureCategory;\n'
-        class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+        class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
         class_def += '    this->builtin = true;\n'
         class_def += '};\n\n'
         if ms : 
-            class_decl += 'struct Texture{}MS : public Type\n'.format(dim)
+            class_decl += f'struct Texture{dim}MS : public Type\n'
             class_decl += '{\n'
-            class_decl += '    Texture{}MS();\n'.format(dim)
+            class_decl += f'    Texture{dim}MS();\n'
             class_decl += '};\n'
-            class_decl += 'extern Texture{}MS Texture{}MSType;\n\n'.format(dim, dim)
+            class_decl += f'extern Texture{dim}MS Texture{dim}MSType;\n\n'
 
-            class_def += 'Texture{}MS::Texture{}MS()\n'.format(dim, dim)
+            class_def += f'Texture{dim}MS::Texture{dim}MS()\n'
             class_def += '{\n'
-            class_def += '    this->name = "texture{}MS";\n'.format(dim)
+            class_def += f'    this->name = "texture{dim}MS";\n'
             class_def += '    this->category = Type::TextureCategory;\n'
-            class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+            class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
             class_def += '    this->builtin = true;\n'
             class_def += '};\n\n'
             if array:
-                class_decl += 'struct Texture{}MSArray : public Type\n'.format(dim)
+                class_decl += f'struct Texture{dim}MSArray : public Type\n'
                 class_decl += '{\n'
-                class_decl += '    Texture{}MSArray();\n'.format(dim)
+                class_decl += f'    Texture{dim}MSArray();\n'
                 class_decl += '};\n'
-                class_decl += 'extern Texture{}MSArray Texture{}MSArrayType;\n\n'.format(dim, dim)
+                class_decl += f'extern Texture{dim}MSArray Texture{dim}MSArrayType;\n\n'
 
-                class_def += 'Texture{}MSArray::Texture{}MSArray()\n'.format(dim, dim)
+                class_def += f'Texture{dim}MSArray::Texture{dim}MSArray()\n'
                 class_def += '{\n'
-                class_def += '    this->name = "texture{}MSArray";\n'.format(dim)
+                class_def += f'    this->name = "texture{dim}MSArray";\n'
                 class_def += '    this->category = Type::TextureCategory;\n'
-                class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+                class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
                 class_def += '    this->builtin = true;\n'
                 class_def += '};\n\n'
         if array:
-            class_decl += 'struct Texture{}Array : public Type\n'.format(dim)
+            class_decl += f'struct Texture{dim}Array : public Type\n'
             class_decl += '{\n'
-            class_decl += '    Texture{}Array();\n'.format(dim)
+            class_decl += f'    Texture{dim}Array();\n'
             class_decl += '};\n'
-            class_decl += 'extern Texture{}Array Texture{}ArrayType;\n\n'.format(dim, dim)
+            class_decl += f'extern Texture{dim}Array Texture{dim}ArrayType;\n\n'
 
-            class_def += 'Texture{}Array::Texture{}Array()\n'.format(dim, dim)
+            class_def += f'Texture{dim}Array::Texture{dim}Array()\n'
             class_def += '{\n'
-            class_def += '    this->name = "texture{}Array";\n'.format(dim)
+            class_def += f'    this->name = "texture{dim}Array";\n'
             class_def += '    this->category = Type::TextureCategory;\n'
-            class_def += '    this->baseType = TypeCode::Texture{};\n'.format(dim)
+            class_def += f'    this->baseType = TypeCode::Texture{dim};\n'
             class_def += '    this->builtin = true;\n'
             class_def += '};\n\n'
 
@@ -939,19 +998,19 @@ def generate_types():
     class_decl += 'extern PixelCacheMS PixelCacheMSType;\n\n'
 
     class_def = ""
-    class_def += 'PixelCache::PixelCache()\n'.format(dim, dim)
+    class_def += 'PixelCache::PixelCache()\n'
     class_def += '{\n'
-    class_def += '    this->name = "pixelCache";\n'.format(dim)
+    class_def += '    this->name = "pixelCache";\n'
     class_def += '    this->category = Type::PixelCacheCategory;\n'
-    class_def += '    this->baseType = TypeCode::PixelCache;\n'.format(type)
+    class_def += '    this->baseType = TypeCode::PixelCache;\n'
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
-    class_def += 'PixelCacheMS::PixelCacheMS()\n'.format(dim, dim)
+    class_def += 'PixelCacheMS::PixelCacheMS()\n'
     class_def += '{\n'
-    class_def += '    this->name = "pixelCacheMS";\n'.format(dim)
+    class_def += '    this->name = "pixelCacheMS";\n'
     class_def += '    this->category = Type::PixelCacheCategory;\n'
-    class_def += '    this->baseType = TypeCode::PixelCache;\n'.format(type)
+    class_def += '    this->baseType = TypeCode::PixelCache;\n'
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
@@ -962,11 +1021,11 @@ def generate_types():
     class_decl += 'extern Sampler SamplerType;\n\n'
 
     class_def = ""
-    class_def += 'Sampler::Sampler()\n'.format(dim, dim)
+    class_def += 'Sampler::Sampler()\n'
     class_def += '{\n'
-    class_def += '    this->name = "sampler"_c;\n'.format(dim)
+    class_def += '    this->name = "sampler"_c;\n'
     class_def += '    this->category = Type::SamplerCategory;\n'
-    class_def += '    this->baseType = TypeCode::Sampler;\n'.format(type)
+    class_def += '    this->baseType = TypeCode::Sampler;\n'
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
@@ -977,9 +1036,9 @@ def generate_types():
     class_decl += 'extern FunctionPtr FunctionType;\n\n'
 
     class_def = ""
-    class_def += 'FunctionPtr::FunctionPtr()\n'.format(dim, dim)
+    class_def += f'FunctionPtr::FunctionPtr()\n'
     class_def += '{\n'
-    class_def += '    this->name = "function"_c;\n'.format(dim)
+    class_def += '    this->name = "function"_c;\n'
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
@@ -995,11 +1054,11 @@ def generate_types():
     class_decl += 'extern AccelerationStructure AccelerationStructureType;\n\n'
 
     class_def = ""
-    class_def += 'AccelerationStructure::AccelerationStructure()\n'.format(dim, dim)
+    class_def += f'AccelerationStructure::AccelerationStructure()\n'
     class_def += '{\n'
-    class_def += '    this->name = "accelerationStructure";\n'.format(dim)
+    class_def += '    this->name = "accelerationStructure";\n'
     class_def += '    this->category = Type::AccelerationStructureCategory;\n'
-    class_def += '    this->baseType = TypeCode::AccelerationStructure;\n'.format(type)
+    class_def += '    this->baseType = TypeCode::AccelerationStructure;\n'
     class_def += '    this->builtin = true;\n'
     class_def += '};\n\n'
 
@@ -1043,8 +1102,8 @@ def generate_types():
         'Never'
     ]
     for name in compare_mode_names:
-        class_decl += 'extern EnumExpression CompareMode{};\n'.format(name)
-        class_def += 'EnumExpression CompareMode{};\n'.format(name)
+        class_decl += f'extern EnumExpression CompareMode{name};\n'
+        class_def += f'EnumExpression CompareMode{name};\n'
     class_def += 'CompareMode CompareModeType;\n'
     class_def += 'CompareMode::CompareMode()\n'
     class_def += '{\n' 
@@ -1056,13 +1115,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(compare_mode_names):
-        class_def += '    CompareMode{}.value = {};\n'.format(name, hex(i))
-        class_def += '    CompareMode{}.type = Type::FullType{{ CompareModeType.name, true }};\n'.format(name)
-        class_def += '    CompareMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&CompareMode{})->type = this;\n'.format(name)
+        class_def += f'    CompareMode{name}.value = {hex(i)};\n'
+        class_def += f'    CompareMode{name}.type = Type::FullType{{ CompareModeType.name, true }};\n'
+        class_def += f'    CompareMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&CompareMode{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in compare_mode_names:
-        class_def += '        std::pair{{ "{}"_c, &CompareMode{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &CompareMode{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1076,8 +1135,8 @@ def generate_types():
     ]
     class_decl += 'extern StencilOp StencilOpType;\n\n'
     for name in stencil_op_names:
-        class_decl += 'extern EnumExpression StencilOp{};\n'.format(name)
-        class_def += 'EnumExpression StencilOp{};\n'.format(name)
+        class_decl += f'extern EnumExpression StencilOp{name};\n'
+        class_def += f'EnumExpression StencilOp{name};\n'
     class_def += 'StencilOp StencilOpType;\n'
     class_def += 'StencilOp::StencilOp()\n'
     class_def += '{\n'
@@ -1090,13 +1149,13 @@ def generate_types():
     class_def += '    this->builtin = true;\n'
 
     for i, name in enumerate(stencil_op_names):
-        class_def += '    StencilOp{}.value = {};\n'.format(name, hex(i))
-        class_def += '    StencilOp{}.type = Type::FullType{{ StencilOpType.name, true }};\n'.format(name)
-        class_def += '    StencilOp{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&StencilOp{})->type = this;\n'.format(name)
+        class_def += f'    StencilOp{name}.value = {hex(i)};\n'
+        class_def += f'    StencilOp{name}.type = Type::FullType{{ StencilOpType.name, true }};\n'
+        class_def += f'    StencilOp{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&StencilOp{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in stencil_op_names:
-        class_def += '        std::pair{{ "{}"_c, &StencilOp{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &StencilOp{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1110,8 +1169,8 @@ def generate_types():
         'Global', 'Device', 'Workgroup', 'Subgroup', 'Invocation', 'Queue'
     ]
     for name in execution_scope_names:
-        class_decl += 'extern EnumExpression ExecutionScope{};\n'.format(name)
-        class_def += 'EnumExpression ExecutionScope{};\n'.format(name)
+        class_decl += f'extern EnumExpression ExecutionScope{name};\n'
+        class_def += f'EnumExpression ExecutionScope{name};\n'
     class_def += 'ExecutionScope ExecutionScopeType;\n'
     class_def += 'ExecutionScope::ExecutionScope()\n'
     class_def += '{\n'
@@ -1123,13 +1182,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'  
     for i, name in enumerate(execution_scope_names):
-        class_def += '    ExecutionScope{}.value = {};\n'.format(name, hex(i))
-        class_def += '    ExecutionScope{}.type = Type::FullType{{ ExecutionScopeType.name, true }};\n'.format(name)
-        class_def += '    ExecutionScope{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&ExecutionScope{})->type = this;\n'.format(name)
+        class_def += f'    ExecutionScope{name}.value = {hex(i)};\n'
+        class_def += f'    ExecutionScope{name}.type = Type::FullType{{ ExecutionScopeType.name, true }};\n'
+        class_def += f'    ExecutionScope{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&ExecutionScope{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in execution_scope_names:
-        class_def += '        std::pair{{ "{}"_c, &ExecutionScope{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &ExecutionScope{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1142,8 +1201,8 @@ def generate_types():
         'Acquire', 'Release', 'AcquireRelease', 'SequentiallyConsistent', 'Relaxed'
     ]
     for name in memory_semantics_names:
-        class_decl += 'extern EnumExpression MemorySemantics{};\n'.format(name)
-        class_def += 'EnumExpression MemorySemantics{};\n'.format(name)
+        class_decl += f'extern EnumExpression MemorySemantics{name};\n'
+        class_def += f'EnumExpression MemorySemantics{name};\n'
     class_def += 'MemorySemantics MemorySemanticsType;\n'
     class_def += 'MemorySemantics::MemorySemantics()\n'
     class_def += '{\n'
@@ -1155,13 +1214,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(memory_semantics_names):
-        class_def += '    MemorySemantics{}.value = {};\n'.format(name, hex(1 << i))
-        class_def += '    MemorySemantics{}.type = Type::FullType{{ MemorySemanticsType.name, true }};\n'.format(name)
-        class_def += '    MemorySemantics{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&MemorySemantics{})->type = this;\n'.format(name)
+        class_def += f'    MemorySemantics{name}.value = {hex(1 << i)};\n'
+        class_def += f'    MemorySemantics{name}.type = Type::FullType{{ MemorySemanticsType.name, true }};\n'
+        class_def += f'    MemorySemantics{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&MemorySemantics{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in memory_semantics_names:
-        class_def += '        std::pair{{ "{}"_c, &MemorySemantics{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &MemorySemantics{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1174,8 +1233,8 @@ def generate_types():
         'Fill', 'Line', 'Point'
     ]
     for name in polygon_mode_names:
-        class_decl += 'extern EnumExpression PolygonMode{};\n'.format(name)
-        class_def += 'EnumExpression PolygonMode{};\n'.format(name)
+        class_decl += f'extern EnumExpression PolygonMode{name};\n'
+        class_def += f'EnumExpression PolygonMode{name};\n'
     class_def += 'PolygonMode PolygonModeType;\n'
     class_def += 'PolygonMode::PolygonMode()\n'
     class_def += '{\n'
@@ -1187,13 +1246,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(polygon_mode_names):
-        class_def += '    PolygonMode{}.value = {};\n'.format(name, hex(i))
-        class_def += '    PolygonMode{}.type = Type::FullType{{ PolygonModeType.name, true }};\n'.format(name)
-        class_def += '    PolygonMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&PolygonMode{})->type = this;\n'.format(name)
+        class_def += f'    PolygonMode{name}.value = {hex(i)};\n'
+        class_def += f'    PolygonMode{name}.type = Type::FullType{{ PolygonModeType.name, true }};\n'
+        class_def += f'    PolygonMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&PolygonMode{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in polygon_mode_names:
-        class_def += '        std::pair{{ "{}"_c, &PolygonMode{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &PolygonMode{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1206,8 +1265,8 @@ def generate_types():
         'None', 'Front', 'Back', 'FrontAndBack'
     ]
     for name in cull_mode_names:
-        class_decl += 'extern EnumExpression CullMode{};\n'.format(name)
-        class_def += 'EnumExpression CullMode{};\n'.format(name)
+        class_decl += f'extern EnumExpression CullMode{name};\n'
+        class_def += f'EnumExpression CullMode{name};\n'
     class_def += 'CullMode CullModeType;\n'
     class_def += 'CullMode::CullMode()\n'
     class_def += '{\n'
@@ -1219,13 +1278,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(cull_mode_names):
-        class_def += '    CullMode{}.value = {};\n'.format(name, hex(i))
-        class_def += '    CullMode{}.type = Type::FullType{{ CullModeType.name, true }};\n'.format(name)
-        class_def += '    CullMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&CullMode{})->type = this;\n'.format(name)
+        class_def += f'    CullMode{name}.value = {hex(i)};\n'
+        class_def += f'    CullMode{name}.type = Type::FullType{{ CullModeType.name, true }};\n'
+        class_def += f'    CullMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&CullMode{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in cull_mode_names:
-        class_def += '        std::pair{{ "{}"_c, &CullMode{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &CullMode{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1238,8 +1297,8 @@ def generate_types():
         'Clockwise', 'CounterClockwise'
     ]
     for name in winding_order_names:
-        class_decl += 'extern EnumExpression WindingOrder{};\n'.format(name)
-        class_def += 'EnumExpression WindingOrder{};\n'.format(name)
+        class_decl += f'extern EnumExpression WindingOrder{name};\n'
+        class_def += f'EnumExpression WindingOrder{name};\n'
     class_def += 'WindingOrder WindingOrderType;\n'
     class_def += 'WindingOrder::WindingOrder()\n'
     class_def += '{\n'
@@ -1251,13 +1310,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(winding_order_names):
-        class_def += '    WindingOrder{}.value = {};\n'.format(name, hex(i))
-        class_def += '    WindingOrder{}.type = Type::FullType{{ WindingOrderType.name, true }};\n'.format(name)
-        class_def += '    WindingOrder{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&WindingOrder{})->type = this;\n'.format(name)
+        class_def += f'    WindingOrder{name}.value = {hex(i)};\n'
+        class_def += f'    WindingOrder{name}.type = Type::FullType{{ WindingOrderType.name, true }};\n'
+        class_def += f'    WindingOrder{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&WindingOrder{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in winding_order_names:
-        class_def += '        std::pair{{ "{}"_c, &WindingOrder{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &WindingOrder{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1270,8 +1329,8 @@ def generate_types():
         'And', 'AndInverted', 'AndReverse', 'Clear', 'Copy', 'CopyInverted', 'Equivalence', 'Invert', 'Nand', 'No', 'Nor', 'Or', 'OrInverted', 'OrReverse', 'Set', 'Xor'
     ]
     for name in logic_op_names:
-        class_decl += 'extern EnumExpression LogicOp{};\n'.format(name)
-        class_def += 'EnumExpression LogicOp{};\n'.format(name)
+        class_decl += f'extern EnumExpression LogicOp{name};\n'
+        class_def += f'EnumExpression LogicOp{name};\n'
     class_def += 'LogicOp LogicOpType;\n'
     class_def += 'LogicOp::LogicOp()\n'
     class_def += '{\n'
@@ -1283,13 +1342,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(logic_op_names):
-        class_def += '    LogicOp{}.value = {};\n'.format(name, hex(i))
-        class_def += '    LogicOp{}.type = Type::FullType{{ LogicOpType.name, true }};\n'.format(name)
-        class_def += '    LogicOp{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&LogicOp{})->type = this;\n'.format(name)
+        class_def += f'    LogicOp{name}.value = {hex(i)};\n'
+        class_def += f'    LogicOp{name}.type = Type::FullType{{ LogicOpType.name, true }};\n'
+        class_def += f'    LogicOp{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&LogicOp{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in logic_op_names:
-        class_def += '        std::pair{{ "{}"_c, &LogicOp{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &LogicOp{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1304,8 +1363,8 @@ def generate_types():
         'OneMinusConstantColor', 'ConstantAlpha', 'OneMinusConstantAlpha'
     ]
     for name in blend_factor_names:
-        class_decl += 'extern EnumExpression BlendFactor{};\n'.format(name)
-        class_def += 'EnumExpression BlendFactor{};\n'.format(name)
+        class_decl += f'extern EnumExpression BlendFactor{name};\n'
+        class_def += f'EnumExpression BlendFactor{name};\n'
     class_def += 'BlendFactor BlendFactorType;\n'
     class_def += 'BlendFactor::BlendFactor()\n'
     class_def += '{\n'
@@ -1317,13 +1376,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(blend_factor_names):
-        class_def += '    BlendFactor{}.value = {};\n'.format(name, hex(i))
-        class_def += '    BlendFactor{}.type = Type::FullType{{ BlendFactorType.name, true }};\n'.format(name)
-        class_def += '    BlendFactor{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&BlendFactor{})->type = this;\n'.format(name)
+        class_def += f'    BlendFactor{name}.value = {hex(i)};\n'
+        class_def += f'    BlendFactor{name}.type = Type::FullType{{ BlendFactorType.name, true }};\n'
+        class_def += f'    BlendFactor{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&BlendFactor{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in blend_factor_names:
-        class_def += '        std::pair{{ "{}"_c, &BlendFactor{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &BlendFactor{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1336,8 +1395,8 @@ def generate_types():
         'Add', 'Subtract', 'ReverseSubtract', 'Min', 'Max'
     ]
     for name in blend_operation_names:
-        class_decl += 'extern EnumExpression BlendOperation{};\n'.format(name)
-        class_def += 'EnumExpression BlendOperation{};\n'.format(name)
+        class_decl += f'extern EnumExpression BlendOperation{name};\n'
+        class_def += f'EnumExpression BlendOperation{name};\n'
     class_def += 'BlendOperation BlendOperationType;\n'
     class_def += 'BlendOperation::BlendOperation()\n'
     class_def += '{\n'
@@ -1349,13 +1408,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(blend_operation_names):
-        class_def += '    BlendOperation{}.value = {};\n'.format(name, hex(i))
-        class_def += '    BlendOperation{}.type = Type::FullType{{ BlendOperationType.name, true }};\n'.format(name)
-        class_def += '    BlendOperation{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&BlendOperation{})->type = this;\n'.format(name)
+        class_def += f'    BlendOperation{name}.value = {hex(i)};\n'
+        class_def += f'    BlendOperation{name}.type = Type::FullType{{ BlendOperationType.name, true }};\n'
+        class_def += f'    BlendOperation{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&BlendOperation{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in blend_operation_names:
-        class_def += '        std::pair{{ "{}"_c, &BlendOperation{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &BlendOperation{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1368,8 +1427,8 @@ def generate_types():
         'None', 'R', 'RG', 'RGB', 'RGBA'
     ]
     for name in blend_color_mask_names:
-        class_decl += 'extern EnumExpression BlendColorMask{};\n'.format(name)
-        class_def += 'EnumExpression BlendColorMask{};\n'.format(name)
+        class_decl += f'extern EnumExpression BlendColorMask{name};\n'
+        class_def += f'EnumExpression BlendColorMask{name};\n'
     class_def += 'BlendColorMask BlendColorMaskType;\n'
     class_def += 'BlendColorMask::BlendColorMask()\n'
     class_def += '{\n'
@@ -1381,13 +1440,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(blend_color_mask_names):
-        class_def += '    BlendColorMask{}.value = {};\n'.format(name, hex(i))
-        class_def += '    BlendColorMask{}.type = Type::FullType{{ BlendColorMaskType.name, true }};\n'.format(name)
-        class_def += '    BlendColorMask{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&BlendColorMask{})->type = this;\n'.format(name)
+        class_def += f'    BlendColorMask{name}.value = {hex(i)};\n'
+        class_def += f'    BlendColorMask{name}.type = Type::FullType{{ BlendColorMaskType.name, true }};\n'
+        class_def += f'    BlendColorMask{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&BlendColorMask{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in blend_color_mask_names:
-        class_def += '        std::pair{{ "{}"_c, &BlendColorMask{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &BlendColorMask{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1400,8 +1459,8 @@ def generate_types():
         'Point', 'Linear', 'MinMagMipmapLinear', 'MinMagLinearMipPoint', 'MinLinearMagMipPoint', 'MinMagMipPoint', 'MinMagPointMipLinear', 'MinPointMagMipLinear', 'MinLinearMagPointMipLinear', 'MinPointMagLinearMipPoint'
     ]
     for name in filter_mode_names:
-        class_decl += 'extern EnumExpression FilterMode{};\n'.format(name)
-        class_def += 'EnumExpression FilterMode{};\n'.format(name)
+        class_decl += f'extern EnumExpression FilterMode{name};\n'
+        class_def += f'EnumExpression FilterMode{name};\n'
     class_def += 'FilterMode FilterModeType;\n'
     class_def += 'FilterMode::FilterMode()\n'
     class_def += '{\n'
@@ -1413,13 +1472,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(filter_mode_names):
-        class_def += '    FilterMode{}.value = {};\n'.format(name, hex(i))
-        class_def += '    FilterMode{}.type = Type::FullType{{ FilterModeType.name, true }};\n'.format(name)
-        class_def += '    FilterMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&FilterMode{})->type = this;\n'.format(name)
+        class_def += f'    FilterMode{name}.value = {hex(i)};\n'
+        class_def += f'    FilterMode{name}.type = Type::FullType{{ FilterModeType.name, true }};\n'
+        class_def += f'    FilterMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&FilterMode{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in filter_mode_names:
-        class_def += '        std::pair{{ "{}"_c, &FilterMode{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &FilterMode{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1432,8 +1491,8 @@ def generate_types():
         'Repeat', 'Mirror', 'Clamp', 'Border'
     ]
     for name in address_mode_names:
-        class_decl += 'extern EnumExpression AddressMode{};\n'.format(name)
-        class_def += 'EnumExpression AddressMode{};\n'.format(name)
+        class_decl += f'extern EnumExpression AddressMode{name};\n'
+        class_def += f'EnumExpression AddressMode{name};\n'
     class_def += 'AddressMode AddressModeType;\n'
     class_def += 'AddressMode::AddressMode()\n'
     class_def += '{\n'
@@ -1445,13 +1504,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(address_mode_names):
-        class_def += '    AddressMode{}.value = {};\n'.format(name, hex(i))
-        class_def += '    AddressMode{}.type = Type::FullType{{ AddressModeType.name, true }};\n'.format(name)
-        class_def += '    AddressMode{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&AddressMode{})->type = this;\n'.format(name)
+        class_def += f'    AddressMode{name}.value = {hex(i)};\n'
+        class_def += f'    AddressMode{name}.type = Type::FullType{{ AddressModeType.name, true }};\n'
+        class_def += f'    AddressMode{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&AddressMode{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in address_mode_names:
-        class_def += '        std::pair{{ "{}"_c, &AddressMode{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &AddressMode{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1464,8 +1523,8 @@ def generate_types():
         'Transparent', 'Black', 'White'
     ]
     for name in border_color_names:
-        class_decl += 'extern EnumExpression BorderColor{};\n'.format(name)
-        class_def += 'EnumExpression BorderColor{};\n'.format(name)
+        class_decl += f'extern EnumExpression BorderColor{name};\n'
+        class_def += f'EnumExpression BorderColor{name};\n'
     class_def += 'BorderColor BorderColorType;\n'
     class_def += 'BorderColor::BorderColor()\n'
     class_def += '{\n'
@@ -1477,13 +1536,13 @@ def generate_types():
     class_def += '    this->type.literal = true;\n'
     class_def += '    this->builtin = true;\n'
     for i, name in enumerate(border_color_names):
-        class_def += '    BorderColor{}.value = {};\n'.format(name, hex(i))
-        class_def += '    BorderColor{}.type = Type::FullType{{ BorderColorType.name, true }};\n'.format(name)
-        class_def += '    BorderColor{}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'.format(name)
-        class_def += '    Symbol::Resolved(&BorderColor{})->type = this;\n'.format(name)
+        class_def += f'    BorderColor{name}.value = {hex(i)};\n'
+        class_def += f'    BorderColor{name}.type = Type::FullType{{ BorderColorType.name, true }};\n'
+        class_def += f'    BorderColor{name}.underlyingType = Type::FullType{{ UInt32Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&BorderColor{name})->type = this;\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for name in border_color_names:
-        class_def += '        std::pair{{ "{}"_c, &BorderColor{} }},\n'.format(name, name)
+        class_def += f'        std::pair{{ "{name}"_c, &BorderColor{name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1509,8 +1568,8 @@ def generate_types():
         StateMember('Reference', 'UInt32'),
     ]
     for member in stencil_state_members:
-        class_decl += 'extern Variable StencilState{};\n'.format(member.name)
-        class_def += 'Variable StencilState{};\n'.format(member.name)
+        class_decl += f'extern Variable StencilState{member.name};\n'
+        class_def += f'Variable StencilState{member.name};\n'
 
     class_def += 'StencilState StencilStateType;\n'
     class_def += 'StencilState::StencilState()\n'
@@ -1519,12 +1578,12 @@ def generate_types():
     class_def += '    this->category = Type::UserTypeCategory;\n'
     class_def += '    this->builtin = true;\n'
     for member in stencil_state_members:
-        class_def += '    StencilState{}.name = "{}"_c;\n'.format(member.name, member.name)
-        class_def += '    StencilState{}.type = Type::FullType{{ {}Type.name }};\n'.format(member.name, member.data_type)
-        class_def += '    Symbol::Resolved(&StencilState{})->typeSymbol = &{}Type;\n\n'.format(member.name, member.data_type)
+        class_def += f'    StencilState{member.name}.name = "{member.name}"_c;\n'
+        class_def += f'    StencilState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&StencilState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for member in stencil_state_members:
-        class_def += '        std::pair{{ "{}"_c, &StencilState{} }},\n'.format(member.name, member.name)
+        class_def += f'        std::pair{{ "{member.name}"_c, &StencilState{member.name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1565,11 +1624,11 @@ def generate_types():
         StateMember('Mask', 'BlendColorMask', 8),
     ]
     for member in render_state_members:
-        class_decl += 'extern Variable RenderState{};\n'.format(member.name)
-        class_def += 'Variable RenderState{};\n'.format(member.name)
+        class_decl += f'extern Variable RenderState{member.name};\n'
+        class_def += f'Variable RenderState{member.name};\n'
         if member.array_size > 1:
-            class_decl += 'extern IntExpression RenderState{}ArraySize;\n'.format(member.name)
-            class_def += 'IntExpression RenderState{}ArraySize({});\n'.format(member.name, member.array_size)
+            class_decl += f'extern IntExpression RenderState{member.name}ArraySize;\n'
+            class_def += f'IntExpression RenderState{member.name}ArraySize({member.name}, {member.array_size});\n'
 
     class_def += 'RenderState RenderStateType;\n'
     class_def += 'RenderState::RenderState()\n'
@@ -1578,15 +1637,15 @@ def generate_types():
     class_def += '    this->category = Type::UserTypeCategory;\n'
     class_def += '    this->builtin = true;\n'
     for member in render_state_members:
-        class_def += '    RenderState{}.name = "{}"_c;\n'.format(member.name, member.name)
+        class_def += f'    RenderState{member.name}.name = "{member.name}"_c;\n'
         if member.array_size > 1:
-            class_def += '    RenderState{}.type = Type::FullType{{ {}Type.name, {{Type::FullType::Modifier::Array}}, {{&RenderState{}ArraySize}} }};\n'.format(member.name, member.data_type, member.name)
+            class_def += f'    RenderState{member.name}.type = Type::FullType{{ {member.data_type}Type.name, {{Type::FullType::Modifier::Array}}, {{&RenderState{member.name}ArraySize}} }};\n'
         else:
-            class_def += '    RenderState{}.type = Type::FullType{{ {}Type.name }};\n'.format(member.name, member.data_type)
-        class_def += '    Symbol::Resolved(&RenderState{})->typeSymbol = &{}Type;\n\n'.format(member.name, member.data_type)
+            class_def += f'    RenderState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&RenderState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for member in render_state_members:
-        class_def += '        std::pair{{ "{}"_c, &RenderState{} }},\n'.format(member.name, member.name)
+        class_def += f'        std::pair{{ "{member.name}"_c, &RenderState{member.name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n'
 
@@ -1616,9 +1675,9 @@ def generate_types():
         StateMember('UnnormalizedSamplingEnabled', 'Bool8')
     ]
     for member in sampler_state_members:
-        class_decl += 'extern Variable SamplerState{};\n'.format(member.name)
-        class_def += 'Variable SamplerState{};\n'.format(member.name)
-    
+        class_decl += f'extern Variable SamplerState{member.name};\n'
+        class_def += f'Variable SamplerState{member.name};\n'
+
     class_def += 'SamplerState SamplerStateType;\n'
     class_def += 'SamplerState::SamplerState()\n'
     class_def += '{\n'
@@ -1626,12 +1685,12 @@ def generate_types():
     class_def += '    this->category = Type::UserTypeCategory;\n'
     class_def += '    this->builtin = true;\n'
     for member in sampler_state_members:
-        class_def += '    SamplerState{}.name = "{}"_c;\n'.format(member.name, member.name)
-        class_def += '    SamplerState{}.type = Type::FullType{{ {}Type.name }};\n'.format(member.name, member.data_type)
-        class_def += '    Symbol::Resolved(&SamplerState{})->typeSymbol = &{}Type;\n\n'.format(member.name, member.data_type)
+        class_def += f'    SamplerState{member.name}.name = "{member.name}"_c;\n'
+        class_def += f'    SamplerState{member.name}.type = Type::FullType{{ {member.data_type}Type.name }};\n'
+        class_def += f'    Symbol::Resolved(&SamplerState{member.name})->typeSymbol = &{member.data_type}Type;\n\n'
     class_def += '    this->scope.symbolLookup = StaticMap { std::array{\n'
     for member in sampler_state_members:
-        class_def += '        std::pair{{ "{}"_c, &SamplerState{} }},\n'.format(member.name, member.name)
+        class_def += f'        std::pair{{ "{member.name}"_c, &SamplerState{member.name} }},\n'
     class_def += '    }};\n'
     class_def += '};\n\n' 
 
@@ -1694,139 +1753,139 @@ def generate_types():
 
     for intrinsic, spirv_op in zip(float_only_single_argument_intrinsics, float_only_single_argument_spirv_intrinsics):
         for float_type in float_types:
-            function_name = '{}_{}'.format(intrinsic, float_type)
-            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            function_name = f'{intrinsic}_{float_type}'
+            argument_name = f'{intrinsic}_{float_type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
             spirv_function = ''
             spirv_function += '    SPIRVResult arg = LoadValueSPIRV(c, g, args[0]);\n'
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, arg);\n'.format(spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, arg);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Atan2
     for float_type in float_types:
-        function_name = 'atan2_{}'.format(float_type)
-        y_name = 'atan2_{}_y'.format(float_type)
-        x_name = 'atan2_{}_x'.format(float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(y_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(y_name)
-        intrinsic_defs += 'Variable {};\n'.format(x_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
-        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'atan2_{float_type}'
+        y_name = f'atan2_{float_type}_y'
+        x_name = f'atan2_{float_type}_x'
+        intrinsic_decls += f'extern Variable {y_name};\n'
+        intrinsic_decls += f'extern Variable {x_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {y_name};\n'
+        intrinsic_defs += f'Variable {x_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {y_name}.name = "y"_c;\n'
+        intrinsic_setup += f'    {y_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {x_name}.name = "x"_c;\n'
+        intrinsic_setup += f'    {x_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{y_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{x_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[1]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, y, x);\n'.format('Atan2')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Atan2, y, x);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
         
     # Pow
     for float_type in float_types:
         intrinsic = 'pow'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        argument_name = '{}_{}_arg'.format(intrinsic, float_type)
-        exponent_name = '{}_{}_exp'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(exponent_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(exponent_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-        intrinsic_setup += '    {}.name = "exponent"_c;\n'.format(exponent_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(exponent_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(exponent_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        argument_name = f'{intrinsic}_{float_type}_arg'
+        exponent_name = f'{intrinsic}_{float_type}_exp'
+        intrinsic_decls += f'extern Variable {argument_name};\n'
+        intrinsic_decls += f'extern Variable {exponent_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {argument_name};\n'
+        intrinsic_defs += f'Variable {exponent_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+        intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {exponent_name}.name = "exponent"_c;\n'
+        intrinsic_setup += f'    {exponent_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{exponent_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult exponent = LoadValueSPIRV(c, g, args[1]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val, exponent);\n'.format('Pow')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Pow, val, exponent);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Mad
     for float_type in scalar_types:
         intrinsic = 'mad'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        argument_name = '{}_{}_arg'.format(intrinsic, float_type)
-        multiplier_name = '{}_{}_mul'.format(intrinsic, float_type)
-        addend_name = '{}_{}_add'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(multiplier_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(addend_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(argument_name)
-        intrinsic_defs += 'Variable {};\n'.format(multiplier_name)
-        intrinsic_defs += 'Variable {};\n'.format(addend_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-        intrinsic_setup += '    {}.name = "multiplier"_c;\n'.format(multiplier_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(multiplier_name, float_type)
-        intrinsic_setup += '    {}.name = "addend"_c;\n'.format(addend_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(addend_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(multiplier_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(addend_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        argument_name = f'{intrinsic}_{float_type}_arg'
+        multiplier_name = f'{intrinsic}_{float_type}_mul'
+        addend_name = f'{intrinsic}_{float_type}_add'
+        intrinsic_decls += f'extern Variable {argument_name};\n'
+        intrinsic_decls += f'extern Variable {multiplier_name};\n'
+        intrinsic_decls += f'extern Variable {addend_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {argument_name};\n'
+        intrinsic_defs += f'Variable {multiplier_name};\n'
+        intrinsic_defs += f'Variable {addend_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+        intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {multiplier_name}.name = "multiplier"_c;\n'
+        intrinsic_setup += f'    {multiplier_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {addend_name}.name = "addend"_c;\n'
+        intrinsic_setup += f'    {addend_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{multiplier_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{addend_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult multiplicant = LoadValueSPIRV(c, g, args[1]);\n'
         spirv_function += '    SPIRVResult addend = LoadValueSPIRV(c, g, args[2]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val, multiplicant, addend);\n'.format('Fma')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fma, val, multiplicant, addend);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Dot
     for float_type in float_vec_types:
         intrinsic = 'dot'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        x_name = '{}_{}_x'.format(intrinsic, float_type)
-        y_name = '{}_{}_y'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(y_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(x_name)
-        intrinsic_defs += 'Variable {};\n'.format(y_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
-        intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
+        function_name = f'{intrinsic}_{float_type}'
+        x_name = f'{intrinsic}_{float_type}_x'
+        y_name = f'{intrinsic}_{float_type}_y'
+        intrinsic_decls += f'extern Variable {x_name};\n'
+        intrinsic_decls += f'extern Variable {y_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {x_name};\n'
+        intrinsic_defs += f'Variable {y_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {x_name}.name = "x"_c;\n'
+        intrinsic_setup += f'    {x_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {y_name}.name = "y"_c;\n'
+        intrinsic_setup += f'    {y_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{x_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{y_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
@@ -1838,65 +1897,65 @@ def generate_types():
     # Reflect
     for float_type in float_vec_types:
         intrinsic = 'reflect'
-        function_name = '{}_{}'.format(intrinsic, float_type) 
-        incident_name = '{}_{}_incident'.format(intrinsic, float_type)
-        normal_name = '{}_{}_normal'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(incident_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(normal_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(incident_name)
-        intrinsic_defs += 'Variable {};\n'.format(normal_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "incident"_c;\n'.format(incident_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(incident_name, float_type)
-        intrinsic_setup += '    {}.name = "normal"_c;\n'.format(normal_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(normal_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(incident_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(normal_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        incident_name = f'{intrinsic}_{float_type}_incident'
+        normal_name = f'{intrinsic}_{float_type}_normal'
+        intrinsic_decls += f'extern Variable {incident_name};\n'
+        intrinsic_decls += f'extern Variable {normal_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {incident_name};\n'
+        intrinsic_defs += f'Variable {normal_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {incident_name}.name = "incident"_c;\n'
+        intrinsic_setup += f'    {incident_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {normal_name}.name = "normal"_c;\n'
+        intrinsic_setup += f'    {normal_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{incident_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{normal_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult normal = LoadValueSPIRV(c, g, args[1]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, incident, normal);\n'.format('Reflect')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Reflect, incident, normal);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Refract
     for float_type in float_vec_types:
         intrinsic = 'refract'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        incident_name = '{}_{}_incident'.format(intrinsic, float_type)
-        normal_name = '{}_{}_normal'.format(intrinsic, float_type)
-        ior_name = '{}_{}_ior'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(incident_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(normal_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(ior_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(incident_name)
-        intrinsic_defs += 'Variable {};\n'.format(normal_name)
-        intrinsic_defs += 'Variable {};\n'.format(ior_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "incident"_c;\n'.format(incident_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(incident_name, float_type)
-        intrinsic_setup += '    {}.name = "normal"_c;\n'.format(normal_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(normal_name, float_type)
-        intrinsic_setup += '    {}.name = "ior"_c;\n'.format(ior_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(ior_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(incident_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(normal_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(ior_name, float_type.split('x')[0])
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        incident_name = f'{intrinsic}_{float_type}_incident'
+        normal_name = f'{intrinsic}_{float_type}_normal'
+        ior_name = f'{intrinsic}_{float_type}_ior'
+        intrinsic_decls += f'extern Variable {incident_name};\n'
+        intrinsic_decls += f'extern Variable {normal_name};\n'
+        intrinsic_decls += f'extern Variable {ior_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {incident_name};\n'
+        intrinsic_defs += f'Variable {normal_name};\n'
+        intrinsic_defs += f'Variable {ior_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {incident_name}.name = "incident"_c;\n'
+        intrinsic_setup += f'    {incident_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {normal_name}.name = "normal"_c;\n'
+        intrinsic_setup += f'    {normal_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {ior_name}.name = "ior"_c;\n'
+        intrinsic_setup += f'    {ior_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{incident_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{normal_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{ior_name})->typeSymbol = &{float_type.split("x")[0]}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult incident = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult normal = LoadValueSPIRV(c, g, args[1]);\n'
         spirv_function += '    SPIRVResult ior = LoadValueSPIRV(c, g, args[2]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, incident, normal, ior);\n'.format('Refract')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Refract, incident, normal, ior);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -1904,29 +1963,29 @@ def generate_types():
     cross_product_types = ['Float32x3', 'Float16x3']
     intrinsic = 'cross'
     for float_type in cross_product_types:
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        v0_name = '{}_{}_v0'.format(intrinsic, float_type)
-        v1_name = '{}_{}_v1'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(v0_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(v1_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(v0_name)
-        intrinsic_defs += 'Variable {};\n'.format(v1_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "v0"_c;\n'.format(v0_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(v0_name, float_type)
-        intrinsic_setup += '    {}.name = "v1"_c;\n'.format(v1_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(v1_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(v0_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(v1_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        v0_name = f'{intrinsic}_{float_type}_v0'
+        v1_name = f'{intrinsic}_{float_type}_v1'
+        intrinsic_decls += f'extern Variable {v0_name};\n'
+        intrinsic_decls += f'extern Variable {v1_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {v0_name};\n'
+        intrinsic_defs += f'Variable {v1_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {v0_name}.name = "v0"_c;\n'
+        intrinsic_setup += f'    {v0_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {v1_name}.name = "v1"_c;\n'
+        intrinsic_setup += f'    {v1_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{v0_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{v1_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type.split("x")[0]}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[0]);\n'
         spirv_function += '    SPIRVResult y = LoadValueSPIRV(c, g, args[1]);\n'
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, x, y);\n'.format('Cross')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Cross, x, y);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -1935,51 +1994,51 @@ def generate_types():
     spirv_ops = ['Length', 'Normalize']
     for op, spirv_op in zip(ops, spirv_ops):
         for float_type in float_vec_types:
-            function_name = '{}_{}'.format(op, float_type)
-            argument_name = '{}_{}_arg'.format(op, float_type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            function_name = f'{op}_{float_type}'
+            argument_name = f'{op}_{float_type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{op}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type.split("x")[0]}Type;\n\n'
 
             spirv_function = ''
             spirv_function += '    SPIRVResult vec = LoadValueSPIRV(c, g, args[0]);\n'    
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, vec);\n'.format(spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, vec);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Distance
     for float_type in float_vec_types:
         intrinsic = 'distance'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        p0_name = '{}_{}_p0'.format(intrinsic, float_type)
-        p1_name = '{}_{}_p1'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(p0_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(p1_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(p0_name)
-        intrinsic_defs += 'Variable {};\n'.format(p1_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "p0"_c;\n'.format(p0_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(p0_name, float_type)
-        intrinsic_setup += '    {}.name = "p1"_c;\n'.format(p1_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(p1_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(p0_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(p1_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type.split('x')[0])
+        function_name = f'{intrinsic}_{float_type}'
+        p0_name = f'{intrinsic}_{float_type}_p0'
+        p1_name = f'{intrinsic}_{float_type}_p1'
+        intrinsic_decls += f'extern Variable {p0_name};\n'
+        intrinsic_decls += f'extern Variable {p1_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {p0_name};\n'
+        intrinsic_defs += f'Variable {p1_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {p0_name}.name = "p0"_c;\n'
+        intrinsic_setup += f'    {p0_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {p1_name}.name = "p1"_c;\n'
+        intrinsic_setup += f'    {p1_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{p0_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{p1_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type.split("x")[0]}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult v0 = LoadValueSPIRV(c, g, args[0]);\n'    
         spirv_function += '    SPIRVResult v1 = LoadValueSPIRV(c, g, args[1]);\n'    
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, v0, v1);\n'.format('Distance')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Distance, v0, v1);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -1988,24 +2047,24 @@ def generate_types():
     spirv_ops = ['Min', 'Max']
     for op, spirv_op in zip(ops, spirv_ops):
         for type in scalar_types:
-            function_name = '{}_{}'.format(op, type)
-            x_name = '{}_{}_x'.format(op, type)
-            y_name = '{}_{}_y'.format(op, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(x_name)
-            intrinsic_decls += 'extern Variable {};\n'.format(y_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(x_name)
-            intrinsic_defs += 'Variable {};\n'.format(y_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, type)
-            intrinsic_setup += '    {}.name = "y"_c;\n'.format(y_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(y_name, type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(y_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+            function_name = f'{op}_{type}'
+            x_name = f'{op}_{type}_x'
+            y_name = f'{op}_{type}_y'
+            intrinsic_decls += f'extern Variable {x_name};\n'
+            intrinsic_decls += f'extern Variable {y_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {x_name};\n'
+            intrinsic_defs += f'Variable {y_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {x_name}.name = "x"_c;\n'
+            intrinsic_setup += f'    {x_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {y_name}.name = "y"_c;\n'
+            intrinsic_setup += f'    {y_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{op}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{x_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{y_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
             if  type.startswith('Float'):
                 spirv_op_type = 'F'
@@ -2016,37 +2075,37 @@ def generate_types():
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
             spirv_function += '    SPIRVResult limit = LoadValueSPIRV(c, g, args[1]);\n'    
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{}, val, limit);\n'.format(spirv_op_type, spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op_type}{spirv_op}, val, limit);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Clamp
     for float_type in scalar_types:
         intrinsic = 'clamp'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        value_name = '{}_{}_val'.format(intrinsic, float_type)
-        min_name = '{}_{}_min'.format(intrinsic, float_type)
-        max_name = '{}_{}_max'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(value_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(min_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(max_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(value_name)
-        intrinsic_defs += 'Variable {};\n'.format(min_name)
-        intrinsic_defs += 'Variable {};\n'.format(max_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "val"_c;\n'.format(value_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_name, float_type)
-        intrinsic_setup += '    {}.name = "min"_c;\n'.format(min_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(min_name, float_type)
-        intrinsic_setup += '    {}.name = "max"_c;\n'.format(max_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(max_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(min_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(max_name, float_type.split('x')[0])
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        value_name = f'{intrinsic}_{float_type}_val'
+        min_name = f'{intrinsic}_{float_type}_min'
+        max_name = f'{intrinsic}_{float_type}_max'
+        intrinsic_decls += f'extern Variable {value_name};\n'
+        intrinsic_decls += f'extern Variable {min_name};\n'
+        intrinsic_decls += f'extern Variable {max_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {value_name};\n'
+        intrinsic_defs += f'Variable {min_name};\n'
+        intrinsic_defs += f'Variable {max_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {value_name}.name = "val"_c;\n'
+        intrinsic_setup += f'    {value_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {min_name}.name = "min"_c;\n'
+        intrinsic_setup += f'    {min_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {max_name}.name = "max"_c;\n'
+        intrinsic_setup += f'    {max_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{value_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{min_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{max_name})->typeSymbol = &{float_type.split("x")[0]}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         if  type.startswith('Float'):
             spirv_op_type = 'F'
@@ -2058,108 +2117,108 @@ def generate_types():
         spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
         spirv_function += '    SPIRVResult min = LoadValueSPIRV(c, g, args[1]);\n'    
         spirv_function += '    SPIRVResult max = LoadValueSPIRV(c, g, args[2]);\n'    
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{} val, min, max);\n'.format(spirv_op_type, 'Clamp')
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op_type}Clamp, val, min, max);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
     
     # Lerp
     for float_type in float_vec_types:
         intrinsic = 'lerp'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        a_name = '{}_{}_a'.format(intrinsic, float_type)
-        b_name = '{}_{}_b'.format(intrinsic, float_type)
-        t_name = '{}_{}_t'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(a_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(b_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(t_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(a_name)
-        intrinsic_defs += 'Variable {};\n'.format(b_name)
-        intrinsic_defs += 'Variable {};\n'.format(t_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "a"_c;\n'.format(a_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(a_name, float_type)
-        intrinsic_setup += '    {}.name = "b"_c;\n'.format(b_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(b_name, float_type)
-        intrinsic_setup += '    {}.name = "t"_c;\n'.format(t_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(t_name, float_type.split('x')[0])
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(a_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(b_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(t_name, float_type.split('x')[0])
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        a_name = f'{intrinsic}_{float_type}_a'
+        b_name = f'{intrinsic}_{float_type}_b'
+        t_name = f'{intrinsic}_{float_type}_t'
+        intrinsic_decls += f'extern Variable {a_name};\n'
+        intrinsic_decls += f'extern Variable {b_name};\n'
+        intrinsic_decls += f'extern Variable {t_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {a_name};\n'
+        intrinsic_defs += f'Variable {b_name};\n'
+        intrinsic_defs += f'Variable {t_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {a_name}.name = "a"_c;\n'
+        intrinsic_setup += f'    {a_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {b_name}.name = "b"_c;\n'
+        intrinsic_setup += f'    {b_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {t_name}.name = "t"_c;\n'
+        intrinsic_setup += f'    {t_name}.type = Type::FullType{{ {float_type.split("x")[0]}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{a_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{b_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{t_name})->typeSymbol = &{float_type.split("x")[0]}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult a = LoadValueSPIRV(c, g, args[0]);\n'    
         spirv_function += '    SPIRVResult b = LoadValueSPIRV(c, g, args[1]);\n'    
         spirv_function += '    SPIRVResult t = LoadValueSPIRV(c, g, args[2]);\n'    
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, a, b, t);\n'.format('FMix')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FMix, a, b, t);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     # Step
     for float_type in float_types:
         intrinsic = 'step'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        edge_name = '{}_{}_edge'.format(intrinsic, float_type)
-        x_name = '{}_{}_x'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(edge_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(edge_name)
-        intrinsic_defs += 'Variable {};\n'.format(x_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "edge"_c;\n'.format(edge_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge_name, float_type)
-        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type.split('x')[0])
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        edge_name = f'{intrinsic}_{float_type}_edge'
+        x_name = f'{intrinsic}_{float_type}_x'
+        intrinsic_decls += f'extern Variable {edge_name};\n'
+        intrinsic_decls += f'extern Variable {x_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {edge_name};\n'
+        intrinsic_defs += f'Variable {x_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {edge_name}.name = "edge"_c;\n'
+        intrinsic_setup += f'    {edge_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {x_name}.name = "x"_c;\n'
+        intrinsic_setup += f'    {x_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type.split("x")[0]}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{edge_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{x_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult edge = LoadValueSPIRV(c, g, args[0]);\n'    
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[1]);\n'    
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, edge, x);\n'.format('Step')
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Step, edge, x);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
     
     # Smoothstep
     for float_type in float_types:
         intrinsic = 'smoothstep'
-        function_name = '{}_{}'.format(intrinsic, float_type)
-        edge0_name = '{}_{}_edge0'.format(intrinsic, float_type)
-        edge1_name = '{}_{}_edge1'.format(intrinsic, float_type)
-        x_name = '{}_{}_x'.format(intrinsic, float_type)
-        intrinsic_decls += 'extern Variable {};\n'.format(edge0_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(edge1_name)
-        intrinsic_decls += 'extern Variable {};\n'.format(x_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(edge0_name)
-        intrinsic_defs += 'Variable {};\n'.format(edge1_name)
-        intrinsic_defs += 'Variable {};\n'.format(x_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "edge0"_c;\n'.format(edge0_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge0_name, float_type)
-        intrinsic_setup += '    {}.name = "edge1"_c;\n'.format(edge1_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(edge1_name, float_type)
-        intrinsic_setup += '    {}.name = "x"_c;\n'.format(x_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(x_name, float_type)
-        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type.split('x')[0])
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge0_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(edge1_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(x_name, float_type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+        function_name = f'{intrinsic}_{float_type}'
+        edge0_name = f'{intrinsic}_{float_type}_edge0'
+        edge1_name = f'{intrinsic}_{float_type}_edge1'
+        x_name = f'{intrinsic}_{float_type}_x'
+        intrinsic_decls += f'extern Variable {edge0_name};\n'
+        intrinsic_decls += f'extern Variable {edge1_name};\n'
+        intrinsic_decls += f'extern Variable {x_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {edge0_name};\n'
+        intrinsic_defs += f'Variable {edge1_name};\n'
+        intrinsic_defs += f'Variable {x_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {edge0_name}.name = "edge0"_c;\n'
+        intrinsic_setup += f'    {edge0_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {edge1_name}.name = "edge1"_c;\n'
+        intrinsic_setup += f'    {edge1_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {x_name}.name = "x"_c;\n'
+        intrinsic_setup += f'    {x_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{edge0_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{edge1_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{x_name})->typeSymbol = &{float_type}Type;\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
         spirv_function = ''
         spirv_function += '    SPIRVResult edge0 = LoadValueSPIRV(c, g, args[0]);\n'    
         spirv_function += '    SPIRVResult edge1 = LoadValueSPIRV(c, g, args[1]);\n'
         spirv_function += '    SPIRVResult x = LoadValueSPIRV(c, g, args[2]);\n'    
-        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, edge0, edge1, x);\n'.format('SmoothStep')
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, edge0, edge1, x);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -2168,22 +2227,22 @@ def generate_types():
     spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
     for op, spirv_op in zip(ops, spirv_ops):
         for float_type in float_types:
-            function_name = '{}_{}'.format(op, float_type)
-            argument_name = '{}_{}_arg'.format(op, float_type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, op)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            function_name = f'{op}_{float_type}'
+            argument_name = f'{op}_{float_type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{op}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val);\n'.format(spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op}, val);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -2193,18 +2252,18 @@ def generate_types():
     for op, spirv_op in zip(ops, spirv_ops):
         for type in signed_types:
             intrinsic = op
-            function_name = '{}_{}'.format(intrinsic, type)
-            argument_name = '{}_{}_arg'.format(intrinsic, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+            function_name = f'{intrinsic}_{type}'
+            argument_name = f'{intrinsic}_{type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
             if  type.startswith('Float'):
                 spirv_op_type = 'F'
@@ -2212,7 +2271,7 @@ def generate_types():
                 spirv_op_type = 'S'
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}{} val, min, max);\n'.format(spirv_op_type, spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {spirv_op_type}{spirv_op} val, min, max);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -2222,19 +2281,19 @@ def generate_types():
     for type1, data_type1 in zip(types, data_types):
         for type2, data_type2 in zip(types, data_types):
             if type1 != type2:
-                intrinsic = 'castTo{}'.format(data_type1.title())
-                function_name = '{}_{}'.format(intrinsic, type2)
-                argument_name = '{}_{}_arg'.format(intrinsic, type2)
-                intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-                intrinsic_decls += 'extern Function {};\n'.format(function_name)
-                intrinsic_defs += 'Variable {};\n'.format(argument_name)
-                intrinsic_defs += 'Function {};\n'.format(function_name)
-                intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type2)
-                intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type1)
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
-                intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
+                intrinsic = f'castTo{data_type1.title()}'
+                function_name = f'{intrinsic}_{type2}'
+                argument_name = f'{intrinsic}_{type2}_arg'
+                intrinsic_decls += f'extern Variable {argument_name};\n'
+                intrinsic_decls += f'extern Function {function_name};\n'
+                intrinsic_defs += f'Variable {argument_name};\n'
+                intrinsic_defs += f'Function {function_name};\n'
+                intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+                intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {type2}Type.name }};\n'
+                intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type1}Type.name }};\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type1}Type;\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type1}Type;\n\n'
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2248,19 +2307,19 @@ def generate_types():
     for type1, data_type1 in zip(types, data_types):
         for type2, data_type2 in zip(types, data_types):
             if type1 != type2:
-                intrinsic = 'castTo{}'.format(data_type1.title())
-                function_name = '{}_{}'.format(intrinsic, type2)
-                argument_name = '{}_{}_arg'.format(intrinsic, type2)
-                intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-                intrinsic_decls += 'extern Function {};\n'.format(function_name)
-                intrinsic_defs += 'Variable {};\n'.format(argument_name)
-                intrinsic_defs += 'Function {};\n'.format(function_name)
-                intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type2)
-                intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type1)
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, type1)
-                intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type1)
+                intrinsic = f'castTo{data_type1.title()}'
+                function_name = f'{intrinsic}_{type2}'
+                argument_name = f'{intrinsic}_{type2}_arg'
+                intrinsic_decls += f'extern Variable {argument_name};\n'
+                intrinsic_decls += f'extern Function {function_name};\n'
+                intrinsic_defs += f'Variable {argument_name};\n'
+                intrinsic_defs += f'Function {function_name};\n'
+                intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+                intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {type2}Type.name }};\n'
+                intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type1}Type.name }};\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type1}Type;\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type1}Type;\n\n'
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
@@ -2274,22 +2333,22 @@ def generate_types():
     for op, spirv_op in zip(ops, spirv_op):
         for float_type in bool_types:
             intrinsic = op
-            function_name = '{}_{}'.format(intrinsic, float_type)
-            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ Bool8Type.name }};\n'.format(function_name)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &Bool8Type;\n\n'.format(function_name)
+            function_name = f'{intrinsic}_{float_type}'
+            argument_name = f'{intrinsic}_{float_type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Bool8Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Bool8Type;\n\n'
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
-            spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, val);\n'.format(spirv_op)
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, val);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -2297,31 +2356,31 @@ def generate_types():
     matrix_types = []
     for i in range(2, 5):
         for j in range(2, 5):
-            matrix_types.append('Float32x{}x{}'.format(i, j))
-            matrix_types.append('Float16x{}x{}'.format(i, j))
-            
+            matrix_types.append(f'Float32x{i}x{j}')
+            matrix_types.append(f'Float16x{i}x{j}')
+
     for op in ops:
         for float_type in matrix_types:
             intrinsic = op
-            function_name = '{}_{}'.format(intrinsic, float_type)
-            argument_name = '{}_{}_arg'.format(intrinsic, float_type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, float_type)
-            intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(argument_name, float_type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, float_type)
+            function_name = f'{intrinsic}_{float_type}'
+            argument_name = f'{intrinsic}_{float_type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{float_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
 
             spirv_function = ''
             spirv_function += '    SPIRVResult val = LoadValueSPIRV(c, g, args[0]);\n'    
             if op == 'transpose':
-                spirv_function += '    uint32_t ret = g->writer->MappedInstruction({}, SPVWriter::Section::LocalFunction, returnType, val);\n'.format('Transpose')
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Transpose, SPVWriter::Section::LocalFunction, returnType, val);\n'
             else:
-                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), {}, val);\n'.format('Inverse')
+                spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Inverse, val);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
@@ -2331,20 +2390,24 @@ def generate_types():
     vertex_value_builtins_spirv = ['Layer', 'ViewportIndex', 'VertexId', 'InstanceId', 'BaseVertex', 'BaseInstance', 'DrawIndex']
     for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         intrinsic = builtin
-        function_name = 'VertexGet{}'.format(intrinsic)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "vertexGet{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
-
+        function_name = f'VertexGet{intrinsic}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "vertexGet{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
 
         spirv_function = ''
-        spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+        if builtin == 'OutputLayer':
+            spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+        elif builtin == 'OutputViewport':
+            spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
+        elif builtin == 'Index' or builtin == 'InstanceIndex' or builtin == 'BaseIndex' or builtin == 'BaseInstanceIndex' or builtin == 'DrawIndex':
+            spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
         spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
         spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
-        spirv_function += '    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'.format(builtin)
-        spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{});\n'.format(spirv_builtin)
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
         spirv_function += '    g->interfaceVariables.Insert(ret);\n'
         spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
         spirv_function += '    res.parentTypes.push_back(baseType);\n'
@@ -2357,25 +2420,28 @@ def generate_types():
     for builtin, spirv_builtin in zip(vertex_value_builtins, vertex_value_builtins_spirv):
         for type in unsigned_types:
             intrinsic = builtin
-            function_name = 'VertexSet{}_{}'.format(intrinsic, type)
-            argument_name = 'VertexSet{}_{}_arg'.format(intrinsic, type)
-            intrinsic_decls += 'extern Variable {};\n'.format(argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "val"_c;\n'.format(argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(argument_name, type)
-            intrinsic_setup += '    {}.name = "vertexSet{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+            function_name = f'VertexSet{intrinsic}_{type}'
+            argument_name = f'VertexSet{intrinsic}_{type}_arg'
+            intrinsic_decls += f'extern Variable {argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {argument_name}.name = "val"_c;\n'
+            intrinsic_setup += f'    {argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "vertexSet{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type}Type;\n\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
 
             spirv_function = '' 
-            spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+            if builtin == 'OutputLayer':
+                spirv_function += '    g->writer->Capability(Capabilities::ShaderLayer);\n'
+            elif builtin == 'OutputViewport':
+                spirv_function += '    g->writer->Capability(Capabilities::ShaderViewportIndex);\n'
             spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
             spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
-            spirv_function += '    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'.format(builtin)
-            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{});\n'.format(spirv_builtin)
+            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+            spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
             spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);\n'
             spirv_function += '    return SPIRVResult::Invalid();\n'
@@ -2383,7 +2449,9 @@ def generate_types():
 
     # Export vertex coordinates
     four_component_float_vec_types = ['Float32x4', 'Float16x4']
-    for type in four_component_float_vec_types:
+    vertex_value_builtins_spirv = ['Position', 'Position']
+
+    for type, spirv_builtin in zip(four_component_float_vec_types, vertex_value_builtins_spirv):
         intrinsic = 'VertexExportCoordinates'
         function_name = f'{intrinsic}_{type}'
         argument_name = f'{intrinsic}_{type}_arg'
@@ -2398,192 +2466,388 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{argument_name})->typeSymbol = &{type}Type;\n\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
 
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{builtin}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+        spirv_function += '    return SPIRVResult::Invalid();\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
     geometry_export_builtins = ['Vertex', 'Primitive']
-    for builtin in geometry_export_builtins:
+    geometry_export_builtins_spirv = ['EmitVertex', 'EndPrimitive']
+
+    for builtin, spirv_builtin in zip(geometry_export_builtins, geometry_export_builtins_spirv):
         intrinsic = builtin
-        function_name = 'GeometryExport{}'.format(intrinsic)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "geometryExport{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+        function_name = f'GeometryExport{intrinsic}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "geometryExport{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Geometry);\n'
+        spirv_function += f'    g->writer->Instruction(Op{spirv_builtin}, SPVWriter::Section::LocalFunction);\n'
+        spirv_function += '    return SPIRVResult::Invalid();\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     for type in four_component_float_vec_types:
         intrinsic = 'Coordinates'
-        function_name = 'PixelGet{}_{}'.format(intrinsic, type)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "pixelGet{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, type)
+        spirv_builtin = 'FragCoord'
+        function_name = f'PixelGet{intrinsic}_{type}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "pixelGet{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    return res;\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
     
     intrinsic = 'Depth'
-    function_name = 'PixelGet{}'.format(intrinsic)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "pixelGet{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Float32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Float32')
+    spirv_builtin = 'FragDepth'
+    function_name = f'PixelGet{intrinsic}'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {function_name}.name = "pixelGet{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
+    spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
+    function_name = f'PixelSet{intrinsic}'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {function_name}.name = "pixelSet{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {float_type}Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{float_type}Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32_Input"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+    spirv_function += '    return SPIRVResult::Invalid();\n' 
+    spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     intrinsic = 'ExportColor'
     for type in scalar_types:
         for idx in index_types:
-            function_name = 'Pixel{}_{}_{}'.format(intrinsic, type, idx)
-            color_argument_name = '{}_color'.format(function_name)
-            index_argument_name = '{}_index'.format(function_name)
-            intrinsic_decls += 'extern Variable {};\n'.format(color_argument_name)
-            intrinsic_decls += 'extern Variable {};\n'.format(index_argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
-            intrinsic_defs += 'Variable {};\n'.format(color_argument_name)
-            intrinsic_defs += 'Variable {};\n'.format(index_argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
-            intrinsic_setup += '    {}.name = "color"_c;\n'.format(color_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(color_argument_name, type)
-            intrinsic_setup += '    {}.name = "index"_c;\n'.format(index_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(index_argument_name, idx)
-            intrinsic_setup += '    {}.name = "pixel{}"_c;\n'.format(function_name, intrinsic)
-            intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(color_argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(index_argument_name, idx)
-            intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+            function_name = f'Pixel{intrinsic}_{type}_{idx}'
+            color_argument_name = f'{function_name}_color'
+            index_argument_name = f'{function_name}_index'
+            intrinsic_decls += f'extern Variable {color_argument_name};\n'
+            intrinsic_decls += f'extern Variable {index_argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+            intrinsic_defs += f'Variable {color_argument_name};\n'
+            intrinsic_defs += f'Variable {index_argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+            intrinsic_setup += f'    {color_argument_name}.name = "color"_c;\n'
+            intrinsic_setup += f'    {color_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {index_argument_name}.name = "index"_c;\n'
+            intrinsic_setup += f'    {index_argument_name}.type = Type::FullType{{ {idx}Type.name }};\n'
+            intrinsic_setup += f'    {index_argument_name}.type.literal = true;\n'
+            intrinsic_setup += f'    {function_name}.name = "pixel{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{color_argument_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{index_argument_name})->typeSymbol = &{idx}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
 
-    # TODO: Hmm maybe these should all be UInt16?
-    compute_builtin_getters = ['LocalInvocationIndices', 'GlobalInvocationIndices', 'WorkgroupIndices', 'WorkGroupDimensions']
-    for intrinsic in compute_builtin_getters:
-        function_name = 'ComputeGet{}'.format(intrinsic)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "computeGet{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x3')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x3')
+            spirv_function = ''
+            spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+            spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
+            spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+            spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);\n'
+            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);\n'
+            spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+            spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
+            spirv_function += '    return SPIRVResult::Invalid();\n' 
+            spirv_code += spirv_intrinsic(fun_name, spirv_function)
+
+    # TODO: Hmm maybe these should all be UInt16 considering dispatch sizes can't exceed 65535?????
+    compute_builtin_getters = ['LocalThreadIndices', 'GlobalThreadIndices', 'WorkgroupIndices', 'WorkGroupDimensions']
+    compute_builtin_getters_spirv = ['LocalInvocationId', 'GlobalInvocationId', 'WorkgroupId', 'WorkgroupSize']
+    for intrinsic, spirv_builtin in zip(compute_builtin_getters, compute_builtin_getters_spirv):
+        function_name = f'ComputeGet{intrinsic}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "computeGet{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32x3Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32x3Type;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    return res;\n'
+        spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     intrinsic = 'IndexInWorkgroup'
-    function_name = 'ComputeGet{}'.format(intrinsic)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "computeGet{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    spirv_builtin = 'LocalInvocationIndex'
+    function_name = f'ComputeGet{intrinsic}'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {function_name}.name = "computeGet{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);\n'
+    spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+    spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+    spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+    spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+    spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+    spirv_function += '    res.parentTypes.push_back(baseType);\n'
+    spirv_function += '    return res;\n'
+    spirv_code += spirv_intrinsic(fun_name, spirv_function)
 
     subgroup_builtin_getters = ['Id', 'Size', 'Num']
-    for intrinsic in subgroup_builtin_getters:
-        function_name = 'SubgroupGet{}'.format(intrinsic)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "subgroupGet{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    subgroup_builtin_getters_spirv = ['SubgroupId', 'SubgroupSize', 'SubgroupNum']
+    subgroup_builtin_getters_docs = [
+        'Returns the subgroup ID of the current thread',
+        'Returns the size of the subgroup',
+        'Returns the number of subgroups in the workgroup'
+    ]
+    for intrinsic, subgroup_builtin, doc in zip(subgroup_builtin_getters, subgroup_builtin_getters_spirv, subgroup_builtin_getters_docs):
+        function_name = f'SubgroupGet{intrinsic}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "subgroupGet{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.documentation = "{doc}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32x3Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32x3Type;\n\n'
 
-    subgroup_builtin_masks = ['InvocationMask', 'InvocationAndLowerMask', 'LowerMask', 'InvocationAndGreaterMask', 'GreaterMask']
-    for intrinsic in subgroup_builtin_masks:
-        function_name = 'SubgroupGet{}'.format(intrinsic)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "subgroupGet{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x4')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x4')
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    return res;\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    subgroup_builtin_masks = ['ThreadMask', 'ThreadAndLowerMask', 'LowerMask', 'ThreadAndGreaterMask', 'GreaterMask']
+    subgroup_builtin_masks_spirv = ['SubgroupEqMask', 'SubgroupLeMask', 'SubgroupLtMask', 'SubgroupGeMask', 'SubgroupGtMask']
+    subgroup_builtin_docs = [
+        'Returns a subgroup mask where the current thread is active',
+        'Returns a subgroup mask where the current thread and all lower threads are active',
+        'Returns a subgroup mask where all lower threads are active',
+        'Returns a subgroup mask where the current thread and all greater threads are active',
+        'Returns a subgroup mask where all greater threads are active'
+    ]
+    for intrinsic, spirv_builtin, doc in zip(subgroup_builtin_masks, subgroup_builtin_masks_spirv, subgroup_builtin_docs):
+        function_name = f'SubgroupGet{intrinsic}'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {function_name}.name = "subgroupGet{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.documentation = "{doc}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32x4Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32x4Type;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
+        spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);\n'
+        spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
+        spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
+        spirv_function += f'    g->writer->Decorate(SPVArg{{ret}}, Decorations::BuiltIn, Builtins::{spirv_builtin});\n'
+        spirv_function += '    g->interfaceVariables.Insert(ret);\n'
+        spirv_function += '    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);\n'
+        spirv_function += '    res.parentTypes.push_back(baseType);\n'
+        spirv_function += '    return res;\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     
-    intrinsic = 'FirstInvocation'
-    function_name = 'Subgroup{}'.format(intrinsic)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
-        
-    intrinsic = 'Read'
-    function_name = 'Subgroup{}'.format(intrinsic)
-    value_argument_name = '{}_{}_value'.format(intrinsic, 'UInt32')
-    intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'UInt32')
-    intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    intrinsic = 'FirstActiveThread'
+    function_name = f'Subgroup{intrinsic}'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroup{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns true for the first active thread in the subgroup"_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniform);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    intrinsic = 'BroadcastFirstActiveThread'
+    function_name = f'Subgroup{intrinsic}'
+    value_argument_name = f'{intrinsic}_UInt32_value'
+    intrinsic_decls += f'extern Variable {value_argument_name};\n'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Variable {value_argument_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroup{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     subgroup_ballot_ops = ['Ballot', 'InverseBallot']
     subgroup_ballot_ops_doc = ['Constructs a subgroup mask within the workgroup where predicate is true', 'Constructs a subgroup mask within the workgroup where predicate is false']
-    for intrinsic, doc in zip(subgroup_ballot_ops, subgroup_ballot_ops_doc):
-        function_name = 'Subgroup{}'.format(intrinsic)
-        predicate_argument_name = 'Subgroup{}_{}_predicate'.format(intrinsic, 'Bool8')
-        intrinsic_decls += 'extern Variable {};\n'.format(predicate_argument_name)
-        intrinsic_decls += 'extern Function {};\n'.format(function_name)
-        intrinsic_defs += 'Variable {};\n'.format(predicate_argument_name)
-        intrinsic_defs += 'Function {};\n'.format(function_name)
-        intrinsic_setup += '    {}.name = "value"_c;\n'.format(predicate_argument_name)
-        intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(predicate_argument_name, 'Bool8')
-        intrinsic_setup += '    {}.name = "subgroup{}"_c;\n'.format(function_name, intrinsic)
-        intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, doc)
-        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32x4')
-        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32x4')
+    subgroup_ballot_ops_spirv = ['GroupNonUniformBallot', 'GroupNonUniformInverseBallot']
+    for intrinsic, doc, spirv in zip(subgroup_ballot_ops, subgroup_ballot_ops_doc, subgroup_ballot_ops_spirv):
+        function_name = f'Subgroup{intrinsic}'
+        predicate_argument_name = f'Subgroup{intrinsic}_Bool8_predicate'
+        intrinsic_decls += f'extern Variable {predicate_argument_name};\n'
+        intrinsic_decls += f'extern Function {function_name};\n'
+        intrinsic_defs += f'Variable {predicate_argument_name};\n'
+        intrinsic_defs += f'Function {function_name};\n'
+        intrinsic_setup += f'    {predicate_argument_name}.name = "value"_c;\n'
+        intrinsic_setup += f'    {predicate_argument_name}.type = Type::FullType{{ Bool8Type.name }};\n'
+        intrinsic_setup += f'    {function_name}.name = "subgroup{intrinsic}"_c;\n'
+        intrinsic_setup += f'    {function_name}.documentation = "{doc}"_c;\n'
+        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32x4Type.name }};\n'
+        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32x4Type;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({subgroup_ballot_ops_spirv}, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'BitCount'
-    function_name = 'SubgroupBallot{}'.format(intrinsic)
-    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
-    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Variable {};\n'.format(mask_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
-    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the number of bits in the mask set to 1.')
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    function_name = f'SubgroupBallot{intrinsic}'
+    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
+    intrinsic_decls += f'extern Variable {mask_name};\n'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Variable {mask_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns the number of bits in the mask set to 1."_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitCount, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, 0, loaded);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'FirstOne'
-    function_name = 'SubgroupBallot{}'.format(intrinsic)
-    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
-    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Variable {};\n'.format(mask_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
-    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the first one (ctz) in a subgroup thread mask.')
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    function_name = f'SubgroupBallot{intrinsic}'
+    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
+    intrinsic_decls += f'extern Variable {mask_name};\n'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Variable {mask_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns the first one (ctz) in a subgroup thread mask."_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindLSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'LastOne'
-    function_name = 'SubgroupBallot{}'.format(intrinsic)
-    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
-    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Variable {};\n'.format(mask_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
-    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns the first one (clz) in a subgroup thread mask.')
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'UInt32')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+    function_name = f'SubgroupBallot{intrinsic}'
+    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
+    intrinsic_decls += f'extern Variable {mask_name};\n'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Variable {mask_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns the first one (clz) in a subgroup thread mask."_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotFindMSB, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'Bit'
-    function_name = 'SubgroupBallot{}'.format(intrinsic)
-    mask_name = 'SubgroupBallot{}_{}_mask'.format(intrinsic, 'UInt32x4')
-    index_name = 'SubgroupBallot{}_{}_index'.format(intrinsic, 'UInt32')
-    intrinsic_decls += 'extern Variable {};\n'.format(mask_name)
-    intrinsic_decls += 'extern Variable {};\n'.format(index_name)
-    intrinsic_decls += 'extern Function {};\n'.format(function_name)
-    intrinsic_defs += 'Variable {};\n'.format(mask_name)
-    intrinsic_defs += 'Variable {};\n'.format(index_name)
-    intrinsic_defs += 'Function {};\n'.format(function_name)
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(mask_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mask_name, 'UInt32x4')
-    intrinsic_setup += '    {}.name = "value"_c;\n'.format(index_name)
-    intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(index_name, 'UInt32')
-    intrinsic_setup += '    {}.name = "subgroupBallot{}"_c;\n'.format(function_name, intrinsic)
-    intrinsic_setup += '    {}.documentation = "{}"_c;\n'.format(function_name, 'Returns true if bit at index in mask is 1.')
-    intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Bool8')
-    intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Bool8')
+    function_name = f'SubgroupBallot{intrinsic}'
+    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
+    index_name = f'SubgroupBallot{intrinsic}_UInt32_index'
+    intrinsic_decls += f'extern Variable {mask_name};\n'
+    intrinsic_decls += f'extern Variable {index_name};\n'
+    intrinsic_decls += f'extern Function {function_name};\n'
+    intrinsic_defs += f'Variable {mask_name};\n'
+    intrinsic_defs += f'Variable {index_name};\n'
+    intrinsic_defs += f'Function {function_name};\n'
+    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
+    intrinsic_setup += f'    {index_name}.name = "value"_c;\n'
+    intrinsic_setup += f'    {index_name}.type = Type::FullType{{ UInt32Type.name }};\n'
+    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
+    intrinsic_setup += f'    {function_name}.documentation = "Returns true if bit at index in mask is 1."_c;\n'
+    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Bool8Type.name }};\n'
+    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Bool8Type;\n\n'
+
+    spirv_function = ''
+    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+    spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);\n'
+    spirv_function += '    SPIRVResult bit = LoadValueSPIRV(c, g, args[1]);\n'
+    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, bit);\n'
+    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+    spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     subgroup_swap_ops = ['Diagonal', 'Vertical', 'Horizontal']
-    for op in subgroup_swap_ops:
+    subgroup_swap_op_directions = [2, 1, 0]
+    for op, direction in zip(subgroup_swap_ops, subgroup_swap_op_directions):
         for type in scalar_types:
             intrinsic = op
             function_name = 'SubgroupSwap{}_{}'.format(intrinsic, type)
@@ -2599,12 +2863,21 @@ def generate_types():
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, type)
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
 
+            spirv_function = ''
+            spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
+            spirv_function += '    SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += f'    SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int({direction}));\n'
+            spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     # Atomics
     atomic_types = ['UInt32', 'Int32', 'UInt16', 'Int16']
     atomic_functions_no_value = ['Load', 'Increment', 'Decrement']
+    atomic_builtins_spirv = ['OpAtomicLoad', 'OpAtomicIIncrement', 'OpAtomicIDecrement']
 
     for atomic_type in atomic_types:
-        for atomic_function in atomic_functions_no_value:
+        for atomic_function, spirv_builtin in zip(atomic_functions_no_value, atomic_builtins_spirv):
             function_name = 'Atomic{}_{}'.format(atomic_function, atomic_type)
             ptr_argument_name = 'Atomic{}_{}_ptr'.format(atomic_function, atomic_type)
             semantics_argument_name = 'Atomic{}_{}_semantics'.format(atomic_function, atomic_type)
@@ -2626,7 +2899,17 @@ def generate_types():
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
 
-    atomic_functions_with_argument = ['Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
+            spirv_function = ''
+            spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
+            spirv_function += '    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];\n'
+            spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
+            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    atomic_functions_with_argument = ['Store', 'Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
     for atomic_type in atomic_types:
         for atomic_function in atomic_functions_with_argument:
             function_name = 'Atomic{}_{}'.format(atomic_function, atomic_type)
@@ -2655,6 +2938,17 @@ def generate_types():
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, atomic_type)
             intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
             intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
+
+            spirv_function = ''
+            spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
+            spirv_function += '    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];\n'
+            spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
+            spirv_function += '    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+            spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     for atomic_type in atomic_types:
         atomic_function = 'CompareExchange'

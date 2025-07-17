@@ -1195,6 +1195,7 @@ Function GeometryExportPrimitive;
 Function PixelGetCoordinates_Float32x4;
 Function PixelGetCoordinates_Float16x4;
 Function PixelGetDepth;
+Function PixelSetDepth;
 Variable PixelExportColor_Float32_Int32_color;
 Variable PixelExportColor_Float32_Int32_index;
 Function PixelExportColor_Float32_Int32;
@@ -1483,22 +1484,22 @@ Function PixelExportColor_UInt16x4_Int16;
 Variable PixelExportColor_UInt16x4_UInt16_color;
 Variable PixelExportColor_UInt16x4_UInt16_index;
 Function PixelExportColor_UInt16x4_UInt16;
-Function ComputeGetLocalInvocationIndices;
-Function ComputeGetGlobalInvocationIndices;
+Function ComputeGetLocalThreadIndices;
+Function ComputeGetGlobalThreadIndices;
 Function ComputeGetWorkgroupIndices;
 Function ComputeGetWorkGroupDimensions;
 Function ComputeGetIndexInWorkgroup;
 Function SubgroupGetId;
 Function SubgroupGetSize;
 Function SubgroupGetNum;
-Function SubgroupGetInvocationMask;
-Function SubgroupGetInvocationAndLowerMask;
+Function SubgroupGetThreadMask;
+Function SubgroupGetThreadAndLowerMask;
 Function SubgroupGetLowerMask;
-Function SubgroupGetInvocationAndGreaterMask;
+Function SubgroupGetThreadAndGreaterMask;
 Function SubgroupGetGreaterMask;
-Function SubgroupFirstInvocation;
-Variable Read_UInt32_value;
-Function SubgroupRead;
+Function SubgroupFirstActiveThread;
+Variable BroadcastFirstActiveThread_UInt32_value;
+Function SubgroupBroadcastFirstActiveThread;
 Variable SubgroupBallot_Bool8_predicate;
 Function SubgroupBallot;
 Variable SubgroupInverseBallot_Bool8_predicate;
@@ -4455,7 +4456,7 @@ void SetupIntrinsics()
     dot_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
     Symbol::Resolved(&dot_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&dot_Float32x2_y)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     dot_Float32x3_x.name = "x"_c;
     dot_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
@@ -4465,7 +4466,7 @@ void SetupIntrinsics()
     dot_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
     Symbol::Resolved(&dot_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&dot_Float32x3_y)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     dot_Float32x4_x.name = "x"_c;
     dot_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
@@ -4475,7 +4476,7 @@ void SetupIntrinsics()
     dot_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&dot_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&dot_Float32x4_y)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     dot_Float16x2_x.name = "x"_c;
     dot_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
@@ -4485,7 +4486,7 @@ void SetupIntrinsics()
     dot_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
     Symbol::Resolved(&dot_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&dot_Float16x2_y)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     dot_Float16x3_x.name = "x"_c;
     dot_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
@@ -4495,7 +4496,7 @@ void SetupIntrinsics()
     dot_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
     Symbol::Resolved(&dot_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&dot_Float16x3_y)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     dot_Float16x4_x.name = "x"_c;
     dot_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
@@ -4505,7 +4506,7 @@ void SetupIntrinsics()
     dot_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
     Symbol::Resolved(&dot_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&dot_Float16x4_y)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     reflect_Float32x2_incident.name = "incident"_c;
     reflect_Float32x2_incident.type = Type::FullType{ Float32x2Type.name };
@@ -4653,7 +4654,7 @@ void SetupIntrinsics()
     cross_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
     Symbol::Resolved(&cross_Float32x3_v0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&cross_Float32x3_v1)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&cross_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Symbol::Resolved(&cross_Float32x3)->returnTypeSymbol = &Float32Type;
 
     cross_Float16x3_v0.name = "v0"_c;
     cross_Float16x3_v0.type = Type::FullType{ Float16x3Type.name };
@@ -4663,91 +4664,91 @@ void SetupIntrinsics()
     cross_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
     Symbol::Resolved(&cross_Float16x3_v0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&cross_Float16x3_v1)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&cross_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Symbol::Resolved(&cross_Float16x3)->returnTypeSymbol = &Float16Type;
 
     length_Float32x2_arg.name = "val"_c;
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     length_Float32x2.name = "length"_c;
     length_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
     Symbol::Resolved(&length_Float32x2_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&length_Float32x2)->returnTypeSymbol = &Float32x2Type;
+    Symbol::Resolved(&length_Float32x2)->returnTypeSymbol = &Float32Type;
 
     length_Float32x3_arg.name = "val"_c;
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     length_Float32x3.name = "length"_c;
     length_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
     Symbol::Resolved(&length_Float32x3_arg)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&length_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Symbol::Resolved(&length_Float32x3)->returnTypeSymbol = &Float32Type;
 
     length_Float32x4_arg.name = "val"_c;
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     length_Float32x4.name = "length"_c;
     length_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&length_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&length_Float32x4)->returnTypeSymbol = &Float32x4Type;
+    Symbol::Resolved(&length_Float32x4)->returnTypeSymbol = &Float32Type;
 
     length_Float16x2_arg.name = "val"_c;
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     length_Float16x2.name = "length"_c;
     length_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
     Symbol::Resolved(&length_Float16x2_arg)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&length_Float16x2)->returnTypeSymbol = &Float16x2Type;
+    Symbol::Resolved(&length_Float16x2)->returnTypeSymbol = &Float16Type;
 
     length_Float16x3_arg.name = "val"_c;
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     length_Float16x3.name = "length"_c;
     length_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
     Symbol::Resolved(&length_Float16x3_arg)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&length_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Symbol::Resolved(&length_Float16x3)->returnTypeSymbol = &Float16Type;
 
     length_Float16x4_arg.name = "val"_c;
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     length_Float16x4.name = "length"_c;
     length_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
     Symbol::Resolved(&length_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&length_Float16x4)->returnTypeSymbol = &Float16x4Type;
+    Symbol::Resolved(&length_Float16x4)->returnTypeSymbol = &Float16Type;
 
     normalize_Float32x2_arg.name = "val"_c;
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     normalize_Float32x2.name = "normalize"_c;
     normalize_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
     Symbol::Resolved(&normalize_Float32x2_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&normalize_Float32x2)->returnTypeSymbol = &Float32x2Type;
+    Symbol::Resolved(&normalize_Float32x2)->returnTypeSymbol = &Float32Type;
 
     normalize_Float32x3_arg.name = "val"_c;
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     normalize_Float32x3.name = "normalize"_c;
     normalize_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
     Symbol::Resolved(&normalize_Float32x3_arg)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&normalize_Float32x3)->returnTypeSymbol = &Float32x3Type;
+    Symbol::Resolved(&normalize_Float32x3)->returnTypeSymbol = &Float32Type;
 
     normalize_Float32x4_arg.name = "val"_c;
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     normalize_Float32x4.name = "normalize"_c;
     normalize_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&normalize_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&normalize_Float32x4)->returnTypeSymbol = &Float32x4Type;
+    Symbol::Resolved(&normalize_Float32x4)->returnTypeSymbol = &Float32Type;
 
     normalize_Float16x2_arg.name = "val"_c;
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     normalize_Float16x2.name = "normalize"_c;
     normalize_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
     Symbol::Resolved(&normalize_Float16x2_arg)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&normalize_Float16x2)->returnTypeSymbol = &Float16x2Type;
+    Symbol::Resolved(&normalize_Float16x2)->returnTypeSymbol = &Float16Type;
 
     normalize_Float16x3_arg.name = "val"_c;
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     normalize_Float16x3.name = "normalize"_c;
     normalize_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
     Symbol::Resolved(&normalize_Float16x3_arg)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&normalize_Float16x3)->returnTypeSymbol = &Float16x3Type;
+    Symbol::Resolved(&normalize_Float16x3)->returnTypeSymbol = &Float16Type;
 
     normalize_Float16x4_arg.name = "val"_c;
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     normalize_Float16x4.name = "normalize"_c;
     normalize_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
     Symbol::Resolved(&normalize_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&normalize_Float16x4)->returnTypeSymbol = &Float16x4Type;
+    Symbol::Resolved(&normalize_Float16x4)->returnTypeSymbol = &Float16Type;
 
     distance_Float32x2_p0.name = "p0"_c;
     distance_Float32x2_p0.type = Type::FullType{ Float32x2Type.name };
@@ -5779,7 +5780,7 @@ void SetupIntrinsics()
     smoothstep_Float32x2_x.name = "x"_c;
     smoothstep_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     smoothstep_Float32x2.name = "smoothstep"_c;
-    smoothstep_Float32x2.returnType = Type::FullType{ Float32Type.name };
+    smoothstep_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
     Symbol::Resolved(&smoothstep_Float32x2_edge0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&smoothstep_Float32x2_edge1)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&smoothstep_Float32x2_x)->typeSymbol = &Float32x2Type;
@@ -5792,7 +5793,7 @@ void SetupIntrinsics()
     smoothstep_Float32x3_x.name = "x"_c;
     smoothstep_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     smoothstep_Float32x3.name = "smoothstep"_c;
-    smoothstep_Float32x3.returnType = Type::FullType{ Float32Type.name };
+    smoothstep_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
     Symbol::Resolved(&smoothstep_Float32x3_edge0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&smoothstep_Float32x3_edge1)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&smoothstep_Float32x3_x)->typeSymbol = &Float32x3Type;
@@ -5805,7 +5806,7 @@ void SetupIntrinsics()
     smoothstep_Float32x4_x.name = "x"_c;
     smoothstep_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     smoothstep_Float32x4.name = "smoothstep"_c;
-    smoothstep_Float32x4.returnType = Type::FullType{ Float32Type.name };
+    smoothstep_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
     Symbol::Resolved(&smoothstep_Float32x4_edge0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&smoothstep_Float32x4_edge1)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&smoothstep_Float32x4_x)->typeSymbol = &Float32x4Type;
@@ -5831,7 +5832,7 @@ void SetupIntrinsics()
     smoothstep_Float16x2_x.name = "x"_c;
     smoothstep_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     smoothstep_Float16x2.name = "smoothstep"_c;
-    smoothstep_Float16x2.returnType = Type::FullType{ Float16Type.name };
+    smoothstep_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
     Symbol::Resolved(&smoothstep_Float16x2_edge0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&smoothstep_Float16x2_edge1)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&smoothstep_Float16x2_x)->typeSymbol = &Float16x2Type;
@@ -5844,7 +5845,7 @@ void SetupIntrinsics()
     smoothstep_Float16x3_x.name = "x"_c;
     smoothstep_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     smoothstep_Float16x3.name = "smoothstep"_c;
-    smoothstep_Float16x3.returnType = Type::FullType{ Float16Type.name };
+    smoothstep_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
     Symbol::Resolved(&smoothstep_Float16x3_edge0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&smoothstep_Float16x3_edge1)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&smoothstep_Float16x3_x)->typeSymbol = &Float16x3Type;
@@ -5857,7 +5858,7 @@ void SetupIntrinsics()
     smoothstep_Float16x4_x.name = "x"_c;
     smoothstep_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     smoothstep_Float16x4.name = "smoothstep"_c;
-    smoothstep_Float16x4.returnType = Type::FullType{ Float16Type.name };
+    smoothstep_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
     Symbol::Resolved(&smoothstep_Float16x4_edge0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&smoothstep_Float16x4_edge1)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&smoothstep_Float16x4_x)->typeSymbol = &Float16x4Type;
@@ -7020,13 +7021,18 @@ void SetupIntrinsics()
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     PixelGetDepth.name = "pixelGetDepth"_c;
-    PixelGetDepth.returnType = Type::FullType{ Float32Type.name };
-    Symbol::Resolved(&PixelGetDepth)->returnTypeSymbol = &Float32Type;
+    PixelGetDepth.returnType = Type::FullType{ Float16x4x4Type.name };
+    Symbol::Resolved(&PixelGetDepth)->returnTypeSymbol = &Float16x4x4Type;
+
+    PixelSetDepth.name = "pixelSetDepth"_c;
+    PixelSetDepth.returnType = Type::FullType{ Float16x4x4Type.name };
+    Symbol::Resolved(&PixelSetDepth)->returnTypeSymbol = &Float16x4x4Type;
 
     PixelExportColor_Float32_Int32_color.name = "color"_c;
     PixelExportColor_Float32_Int32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int32_index.name = "index"_c;
     PixelExportColor_Float32_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float32_Int32_index.type.literal = true;
     PixelExportColor_Float32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32_Int32_color)->typeSymbol = &Float32Type;
@@ -7037,6 +7043,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt32_index.name = "index"_c;
     PixelExportColor_Float32_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float32_UInt32_index.type.literal = true;
     PixelExportColor_Float32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32_UInt32_color)->typeSymbol = &Float32Type;
@@ -7047,6 +7054,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_Int16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int16_index.name = "index"_c;
     PixelExportColor_Float32_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float32_Int16_index.type.literal = true;
     PixelExportColor_Float32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32_Int16_color)->typeSymbol = &Float32Type;
@@ -7057,6 +7065,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32_UInt16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt16_index.name = "index"_c;
     PixelExportColor_Float32_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float32_UInt16_index.type.literal = true;
     PixelExportColor_Float32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32_UInt16_color)->typeSymbol = &Float32Type;
@@ -7067,6 +7076,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int32_index.name = "index"_c;
     PixelExportColor_Float32x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float32x2_Int32_index.type.literal = true;
     PixelExportColor_Float32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x2_Int32_color)->typeSymbol = &Float32x2Type;
@@ -7077,6 +7087,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float32x2_UInt32_index.type.literal = true;
     PixelExportColor_Float32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt32_color)->typeSymbol = &Float32x2Type;
@@ -7087,6 +7098,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_Int16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int16_index.name = "index"_c;
     PixelExportColor_Float32x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float32x2_Int16_index.type.literal = true;
     PixelExportColor_Float32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x2_Int16_color)->typeSymbol = &Float32x2Type;
@@ -7097,6 +7109,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x2_UInt16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float32x2_UInt16_index.type.literal = true;
     PixelExportColor_Float32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt16_color)->typeSymbol = &Float32x2Type;
@@ -7107,6 +7120,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int32_index.name = "index"_c;
     PixelExportColor_Float32x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float32x3_Int32_index.type.literal = true;
     PixelExportColor_Float32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x3_Int32_color)->typeSymbol = &Float32x3Type;
@@ -7117,6 +7131,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float32x3_UInt32_index.type.literal = true;
     PixelExportColor_Float32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt32_color)->typeSymbol = &Float32x3Type;
@@ -7127,6 +7142,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_Int16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int16_index.name = "index"_c;
     PixelExportColor_Float32x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float32x3_Int16_index.type.literal = true;
     PixelExportColor_Float32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x3_Int16_color)->typeSymbol = &Float32x3Type;
@@ -7137,6 +7153,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x3_UInt16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float32x3_UInt16_index.type.literal = true;
     PixelExportColor_Float32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt16_color)->typeSymbol = &Float32x3Type;
@@ -7147,6 +7164,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int32_index.name = "index"_c;
     PixelExportColor_Float32x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float32x4_Int32_index.type.literal = true;
     PixelExportColor_Float32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x4_Int32_color)->typeSymbol = &Float32x4Type;
@@ -7157,6 +7175,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float32x4_UInt32_index.type.literal = true;
     PixelExportColor_Float32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt32_color)->typeSymbol = &Float32x4Type;
@@ -7167,6 +7186,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_Int16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int16_index.name = "index"_c;
     PixelExportColor_Float32x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float32x4_Int16_index.type.literal = true;
     PixelExportColor_Float32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x4_Int16_color)->typeSymbol = &Float32x4Type;
@@ -7177,6 +7197,7 @@ void SetupIntrinsics()
     PixelExportColor_Float32x4_UInt16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float32x4_UInt16_index.type.literal = true;
     PixelExportColor_Float32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float32x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt16_color)->typeSymbol = &Float32x4Type;
@@ -7187,6 +7208,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int32_index.name = "index"_c;
     PixelExportColor_Float16_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float16_Int32_index.type.literal = true;
     PixelExportColor_Float16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16_Int32_color)->typeSymbol = &Float16Type;
@@ -7197,6 +7219,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt32_index.name = "index"_c;
     PixelExportColor_Float16_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float16_UInt32_index.type.literal = true;
     PixelExportColor_Float16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16_UInt32_color)->typeSymbol = &Float16Type;
@@ -7207,6 +7230,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_Int16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int16_index.name = "index"_c;
     PixelExportColor_Float16_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16_Int16_index.type.literal = true;
     PixelExportColor_Float16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16_Int16_color)->typeSymbol = &Float16Type;
@@ -7217,6 +7241,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16_UInt16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt16_index.name = "index"_c;
     PixelExportColor_Float16_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16_UInt16_index.type.literal = true;
     PixelExportColor_Float16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16_UInt16_color)->typeSymbol = &Float16Type;
@@ -7227,6 +7252,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int32_index.name = "index"_c;
     PixelExportColor_Float16x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float16x2_Int32_index.type.literal = true;
     PixelExportColor_Float16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x2_Int32_color)->typeSymbol = &Float16x2Type;
@@ -7237,6 +7263,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float16x2_UInt32_index.type.literal = true;
     PixelExportColor_Float16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt32_color)->typeSymbol = &Float16x2Type;
@@ -7247,6 +7274,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_Int16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int16_index.name = "index"_c;
     PixelExportColor_Float16x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16x2_Int16_index.type.literal = true;
     PixelExportColor_Float16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x2_Int16_color)->typeSymbol = &Float16x2Type;
@@ -7257,6 +7285,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x2_UInt16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16x2_UInt16_index.type.literal = true;
     PixelExportColor_Float16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt16_color)->typeSymbol = &Float16x2Type;
@@ -7267,6 +7296,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int32_index.name = "index"_c;
     PixelExportColor_Float16x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float16x3_Int32_index.type.literal = true;
     PixelExportColor_Float16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x3_Int32_color)->typeSymbol = &Float16x3Type;
@@ -7277,6 +7307,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float16x3_UInt32_index.type.literal = true;
     PixelExportColor_Float16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt32_color)->typeSymbol = &Float16x3Type;
@@ -7287,6 +7318,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_Int16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int16_index.name = "index"_c;
     PixelExportColor_Float16x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16x3_Int16_index.type.literal = true;
     PixelExportColor_Float16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x3_Int16_color)->typeSymbol = &Float16x3Type;
@@ -7297,6 +7329,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x3_UInt16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16x3_UInt16_index.type.literal = true;
     PixelExportColor_Float16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_color)->typeSymbol = &Float16x3Type;
@@ -7307,6 +7340,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int32_index.name = "index"_c;
     PixelExportColor_Float16x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Float16x4_Int32_index.type.literal = true;
     PixelExportColor_Float16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x4_Int32_color)->typeSymbol = &Float16x4Type;
@@ -7317,6 +7351,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Float16x4_UInt32_index.type.literal = true;
     PixelExportColor_Float16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_color)->typeSymbol = &Float16x4Type;
@@ -7327,6 +7362,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_Int16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int16_index.name = "index"_c;
     PixelExportColor_Float16x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Float16x4_Int16_index.type.literal = true;
     PixelExportColor_Float16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x4_Int16_color)->typeSymbol = &Float16x4Type;
@@ -7337,6 +7373,7 @@ void SetupIntrinsics()
     PixelExportColor_Float16x4_UInt16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Float16x4_UInt16_index.type.literal = true;
     PixelExportColor_Float16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Float16x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_color)->typeSymbol = &Float16x4Type;
@@ -7347,6 +7384,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int32_index.name = "index"_c;
     PixelExportColor_Int32_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32_Int32_index.type.literal = true;
     PixelExportColor_Int32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32_Int32_color)->typeSymbol = &Int32Type;
@@ -7357,6 +7395,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt32_index.name = "index"_c;
     PixelExportColor_Int32_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32_UInt32_index.type.literal = true;
     PixelExportColor_Int32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32_UInt32_color)->typeSymbol = &Int32Type;
@@ -7367,6 +7406,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_Int16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int16_index.name = "index"_c;
     PixelExportColor_Int32_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32_Int16_index.type.literal = true;
     PixelExportColor_Int32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32_Int16_color)->typeSymbol = &Int32Type;
@@ -7377,6 +7417,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32_UInt16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt16_index.name = "index"_c;
     PixelExportColor_Int32_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32_UInt16_index.type.literal = true;
     PixelExportColor_Int32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32_UInt16_color)->typeSymbol = &Int32Type;
@@ -7387,6 +7428,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int32_index.name = "index"_c;
     PixelExportColor_Int32x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x2_Int32_index.type.literal = true;
     PixelExportColor_Int32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x2_Int32_color)->typeSymbol = &Int32x2Type;
@@ -7397,6 +7439,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x2_UInt32_index.type.literal = true;
     PixelExportColor_Int32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_color)->typeSymbol = &Int32x2Type;
@@ -7407,6 +7450,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_Int16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int16_index.name = "index"_c;
     PixelExportColor_Int32x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x2_Int16_index.type.literal = true;
     PixelExportColor_Int32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x2_Int16_color)->typeSymbol = &Int32x2Type;
@@ -7417,6 +7461,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x2_UInt16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x2_UInt16_index.type.literal = true;
     PixelExportColor_Int32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_color)->typeSymbol = &Int32x2Type;
@@ -7427,6 +7472,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int32_index.name = "index"_c;
     PixelExportColor_Int32x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x3_Int32_index.type.literal = true;
     PixelExportColor_Int32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x3_Int32_color)->typeSymbol = &Int32x3Type;
@@ -7437,6 +7483,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x3_UInt32_index.type.literal = true;
     PixelExportColor_Int32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_color)->typeSymbol = &Int32x3Type;
@@ -7447,6 +7494,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_Int16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int16_index.name = "index"_c;
     PixelExportColor_Int32x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x3_Int16_index.type.literal = true;
     PixelExportColor_Int32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x3_Int16_color)->typeSymbol = &Int32x3Type;
@@ -7457,6 +7505,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x3_UInt16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x3_UInt16_index.type.literal = true;
     PixelExportColor_Int32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_color)->typeSymbol = &Int32x3Type;
@@ -7467,6 +7516,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int32_index.name = "index"_c;
     PixelExportColor_Int32x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int32x4_Int32_index.type.literal = true;
     PixelExportColor_Int32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x4_Int32_color)->typeSymbol = &Int32x4Type;
@@ -7477,6 +7527,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int32x4_UInt32_index.type.literal = true;
     PixelExportColor_Int32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_color)->typeSymbol = &Int32x4Type;
@@ -7487,6 +7538,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_Int16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int16_index.name = "index"_c;
     PixelExportColor_Int32x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int32x4_Int16_index.type.literal = true;
     PixelExportColor_Int32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x4_Int16_color)->typeSymbol = &Int32x4Type;
@@ -7497,6 +7549,7 @@ void SetupIntrinsics()
     PixelExportColor_Int32x4_UInt16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int32x4_UInt16_index.type.literal = true;
     PixelExportColor_Int32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int32x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_color)->typeSymbol = &Int32x4Type;
@@ -7507,6 +7560,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int32_index.name = "index"_c;
     PixelExportColor_Int16_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16_Int32_index.type.literal = true;
     PixelExportColor_Int16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16_Int32_color)->typeSymbol = &Int16Type;
@@ -7517,6 +7571,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt32_index.name = "index"_c;
     PixelExportColor_Int16_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16_UInt32_index.type.literal = true;
     PixelExportColor_Int16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16_UInt32_color)->typeSymbol = &Int16Type;
@@ -7527,6 +7582,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_Int16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int16_index.name = "index"_c;
     PixelExportColor_Int16_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16_Int16_index.type.literal = true;
     PixelExportColor_Int16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16_Int16_color)->typeSymbol = &Int16Type;
@@ -7537,6 +7593,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16_UInt16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt16_index.name = "index"_c;
     PixelExportColor_Int16_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16_UInt16_index.type.literal = true;
     PixelExportColor_Int16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16_UInt16_color)->typeSymbol = &Int16Type;
@@ -7547,6 +7604,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int32_index.name = "index"_c;
     PixelExportColor_Int16x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x2_Int32_index.type.literal = true;
     PixelExportColor_Int16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x2_Int32_color)->typeSymbol = &Int16x2Type;
@@ -7557,6 +7615,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x2_UInt32_index.type.literal = true;
     PixelExportColor_Int16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_color)->typeSymbol = &Int16x2Type;
@@ -7567,6 +7626,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_Int16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int16_index.name = "index"_c;
     PixelExportColor_Int16x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x2_Int16_index.type.literal = true;
     PixelExportColor_Int16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x2_Int16_color)->typeSymbol = &Int16x2Type;
@@ -7577,6 +7637,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x2_UInt16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x2_UInt16_index.type.literal = true;
     PixelExportColor_Int16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_color)->typeSymbol = &Int16x2Type;
@@ -7587,6 +7648,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int32_index.name = "index"_c;
     PixelExportColor_Int16x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x3_Int32_index.type.literal = true;
     PixelExportColor_Int16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x3_Int32_color)->typeSymbol = &Int16x3Type;
@@ -7597,6 +7659,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x3_UInt32_index.type.literal = true;
     PixelExportColor_Int16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_color)->typeSymbol = &Int16x3Type;
@@ -7607,6 +7670,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_Int16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int16_index.name = "index"_c;
     PixelExportColor_Int16x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x3_Int16_index.type.literal = true;
     PixelExportColor_Int16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x3_Int16_color)->typeSymbol = &Int16x3Type;
@@ -7617,6 +7681,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x3_UInt16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x3_UInt16_index.type.literal = true;
     PixelExportColor_Int16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_color)->typeSymbol = &Int16x3Type;
@@ -7627,6 +7692,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int32_index.name = "index"_c;
     PixelExportColor_Int16x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_Int16x4_Int32_index.type.literal = true;
     PixelExportColor_Int16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x4_Int32_color)->typeSymbol = &Int16x4Type;
@@ -7637,6 +7703,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_Int16x4_UInt32_index.type.literal = true;
     PixelExportColor_Int16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_color)->typeSymbol = &Int16x4Type;
@@ -7647,6 +7714,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_Int16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int16_index.name = "index"_c;
     PixelExportColor_Int16x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_Int16x4_Int16_index.type.literal = true;
     PixelExportColor_Int16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x4_Int16_color)->typeSymbol = &Int16x4Type;
@@ -7657,6 +7725,7 @@ void SetupIntrinsics()
     PixelExportColor_Int16x4_UInt16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_Int16x4_UInt16_index.type.literal = true;
     PixelExportColor_Int16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_Int16x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_color)->typeSymbol = &Int16x4Type;
@@ -7667,6 +7736,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int32_index.name = "index"_c;
     PixelExportColor_UInt32_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32_Int32_index.type.literal = true;
     PixelExportColor_UInt32_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32_Int32_color)->typeSymbol = &UInt32Type;
@@ -7677,6 +7747,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32_UInt32_index.type.literal = true;
     PixelExportColor_UInt32_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32_UInt32_color)->typeSymbol = &UInt32Type;
@@ -7687,6 +7758,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_Int16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int16_index.name = "index"_c;
     PixelExportColor_UInt32_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32_Int16_index.type.literal = true;
     PixelExportColor_UInt32_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32_Int16_color)->typeSymbol = &UInt32Type;
@@ -7697,6 +7769,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32_UInt16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32_UInt16_index.type.literal = true;
     PixelExportColor_UInt32_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32_UInt16_color)->typeSymbol = &UInt32Type;
@@ -7707,6 +7780,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32x2_Int32_index.type.literal = true;
     PixelExportColor_UInt32x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_color)->typeSymbol = &UInt32x2Type;
@@ -7717,6 +7791,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_color)->typeSymbol = &UInt32x2Type;
@@ -7727,6 +7802,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_Int16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32x2_Int16_index.type.literal = true;
     PixelExportColor_UInt32x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_color)->typeSymbol = &UInt32x2Type;
@@ -7737,6 +7813,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x2_UInt16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_color)->typeSymbol = &UInt32x2Type;
@@ -7747,6 +7824,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32x3_Int32_index.type.literal = true;
     PixelExportColor_UInt32x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32_color)->typeSymbol = &UInt32x3Type;
@@ -7757,6 +7835,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32_color)->typeSymbol = &UInt32x3Type;
@@ -7767,6 +7846,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_Int16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32x3_Int16_index.type.literal = true;
     PixelExportColor_UInt32x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16_color)->typeSymbol = &UInt32x3Type;
@@ -7777,6 +7857,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x3_UInt16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16_color)->typeSymbol = &UInt32x3Type;
@@ -7787,6 +7868,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt32x4_Int32_index.type.literal = true;
     PixelExportColor_UInt32x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32_color)->typeSymbol = &UInt32x4Type;
@@ -7797,6 +7879,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32_color)->typeSymbol = &UInt32x4Type;
@@ -7807,6 +7890,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_Int16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt32x4_Int16_index.type.literal = true;
     PixelExportColor_UInt32x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16_color)->typeSymbol = &UInt32x4Type;
@@ -7817,6 +7901,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt32x4_UInt16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt32x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16_color)->typeSymbol = &UInt32x4Type;
@@ -7827,6 +7912,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int32_index.name = "index"_c;
     PixelExportColor_UInt16_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt16_Int32_index.type.literal = true;
     PixelExportColor_UInt16_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16_Int32_color)->typeSymbol = &UInt16Type;
@@ -7837,6 +7923,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt16_UInt32_index.type.literal = true;
     PixelExportColor_UInt16_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32_color)->typeSymbol = &UInt16Type;
@@ -7847,6 +7934,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_Int16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int16_index.name = "index"_c;
     PixelExportColor_UInt16_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt16_Int16_index.type.literal = true;
     PixelExportColor_UInt16_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16_Int16_color)->typeSymbol = &UInt16Type;
@@ -7857,6 +7945,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16_UInt16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt16_UInt16_index.type.literal = true;
     PixelExportColor_UInt16_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16_color)->typeSymbol = &UInt16Type;
@@ -7867,6 +7956,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt16x2_Int32_index.type.literal = true;
     PixelExportColor_UInt16x2_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32_color)->typeSymbol = &UInt16x2Type;
@@ -7877,6 +7967,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32_color)->typeSymbol = &UInt16x2Type;
@@ -7887,6 +7978,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_Int16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt16x2_Int16_index.type.literal = true;
     PixelExportColor_UInt16x2_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_color)->typeSymbol = &UInt16x2Type;
@@ -7897,6 +7989,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x2_UInt16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x2_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_color)->typeSymbol = &UInt16x2Type;
@@ -7907,6 +8000,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt16x3_Int32_index.type.literal = true;
     PixelExportColor_UInt16x3_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int32_color)->typeSymbol = &UInt16x3Type;
@@ -7917,6 +8011,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt16x3_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt32_color)->typeSymbol = &UInt16x3Type;
@@ -7927,6 +8022,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_Int16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt16x3_Int16_index.type.literal = true;
     PixelExportColor_UInt16x3_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int16_color)->typeSymbol = &UInt16x3Type;
@@ -7937,6 +8033,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x3_UInt16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt16x3_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x3_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt16_color)->typeSymbol = &UInt16x3Type;
@@ -7947,6 +8044,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int32_index.type = Type::FullType{ Int32Type.name };
+    PixelExportColor_UInt16x4_Int32_index.type.literal = true;
     PixelExportColor_UInt16x4_Int32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int32_color)->typeSymbol = &UInt16x4Type;
@@ -7957,6 +8055,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
+    PixelExportColor_UInt16x4_UInt32_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt32.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt32_color)->typeSymbol = &UInt16x4Type;
@@ -7967,6 +8066,7 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_Int16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int16_index.type = Type::FullType{ Int16Type.name };
+    PixelExportColor_UInt16x4_Int16_index.type.literal = true;
     PixelExportColor_UInt16x4_Int16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_Int16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int16_color)->typeSymbol = &UInt16x4Type;
@@ -7977,19 +8077,20 @@ void SetupIntrinsics()
     PixelExportColor_UInt16x4_UInt16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
+    PixelExportColor_UInt16x4_UInt16_index.type.literal = true;
     PixelExportColor_UInt16x4_UInt16.name = "pixelExportColor"_c;
     PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType{ VoidType.name };
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16_color)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16)->returnTypeSymbol = &VoidType;
 
-    ComputeGetLocalInvocationIndices.name = "computeGetLocalInvocationIndices"_c;
-    ComputeGetLocalInvocationIndices.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetLocalInvocationIndices)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetLocalThreadIndices.name = "computeGetLocalThreadIndices"_c;
+    ComputeGetLocalThreadIndices.returnType = Type::FullType{ UInt32x3Type.name };
+    Symbol::Resolved(&ComputeGetLocalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
 
-    ComputeGetGlobalInvocationIndices.name = "computeGetGlobalInvocationIndices"_c;
-    ComputeGetGlobalInvocationIndices.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetGlobalInvocationIndices)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetGlobalThreadIndices.name = "computeGetGlobalThreadIndices"_c;
+    ComputeGetGlobalThreadIndices.returnType = Type::FullType{ UInt32x3Type.name };
+    Symbol::Resolved(&ComputeGetGlobalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
 
     ComputeGetWorkgroupIndices.name = "computeGetWorkgroupIndices"_c;
     ComputeGetWorkgroupIndices.returnType = Type::FullType{ UInt32x3Type.name };
@@ -8004,46 +8105,56 @@ void SetupIntrinsics()
     Symbol::Resolved(&ComputeGetIndexInWorkgroup)->returnTypeSymbol = &UInt32Type;
 
     SubgroupGetId.name = "subgroupGetId"_c;
-    SubgroupGetId.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &UInt32Type;
+    SubgroupGetId.documentation = "Returns the subgroup ID of the current thread"_c;
+    SubgroupGetId.returnType = Type::FullType{ UInt32x3Type.name };
+    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &UInt32x3Type;
 
     SubgroupGetSize.name = "subgroupGetSize"_c;
-    SubgroupGetSize.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &UInt32Type;
+    SubgroupGetSize.documentation = "Returns the size of the subgroup"_c;
+    SubgroupGetSize.returnType = Type::FullType{ UInt32x3Type.name };
+    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &UInt32x3Type;
 
     SubgroupGetNum.name = "subgroupGetNum"_c;
-    SubgroupGetNum.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32Type;
+    SubgroupGetNum.documentation = "Returns the number of subgroups in the workgroup"_c;
+    SubgroupGetNum.returnType = Type::FullType{ UInt32x3Type.name };
+    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32x3Type;
 
-    SubgroupGetInvocationMask.name = "subgroupGetInvocationMask"_c;
-    SubgroupGetInvocationMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetInvocationMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadMask.name = "subgroupGetThreadMask"_c;
+    SubgroupGetThreadMask.documentation = "Returns a subgroup mask where the current thread is active"_c;
+    SubgroupGetThreadMask.returnType = Type::FullType{ UInt32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadMask)->returnTypeSymbol = &UInt32x4Type;
 
-    SubgroupGetInvocationAndLowerMask.name = "subgroupGetInvocationAndLowerMask"_c;
-    SubgroupGetInvocationAndLowerMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetInvocationAndLowerMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadAndLowerMask.name = "subgroupGetThreadAndLowerMask"_c;
+    SubgroupGetThreadAndLowerMask.documentation = "Returns a subgroup mask where the current thread and all lower threads are active"_c;
+    SubgroupGetThreadAndLowerMask.returnType = Type::FullType{ UInt32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->returnTypeSymbol = &UInt32x4Type;
 
     SubgroupGetLowerMask.name = "subgroupGetLowerMask"_c;
+    SubgroupGetLowerMask.documentation = "Returns a subgroup mask where all lower threads are active"_c;
     SubgroupGetLowerMask.returnType = Type::FullType{ UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetLowerMask)->returnTypeSymbol = &UInt32x4Type;
 
-    SubgroupGetInvocationAndGreaterMask.name = "subgroupGetInvocationAndGreaterMask"_c;
-    SubgroupGetInvocationAndGreaterMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetInvocationAndGreaterMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadAndGreaterMask.name = "subgroupGetThreadAndGreaterMask"_c;
+    SubgroupGetThreadAndGreaterMask.documentation = "Returns a subgroup mask where the current thread and all greater threads are active"_c;
+    SubgroupGetThreadAndGreaterMask.returnType = Type::FullType{ UInt32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->returnTypeSymbol = &UInt32x4Type;
 
     SubgroupGetGreaterMask.name = "subgroupGetGreaterMask"_c;
+    SubgroupGetGreaterMask.documentation = "Returns a subgroup mask where all greater threads are active"_c;
     SubgroupGetGreaterMask.returnType = Type::FullType{ UInt32x4Type.name };
     Symbol::Resolved(&SubgroupGetGreaterMask)->returnTypeSymbol = &UInt32x4Type;
 
-    SubgroupFirstInvocation.name = "subgroupFirstInvocation"_c;
-    SubgroupFirstInvocation.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupFirstInvocation)->returnTypeSymbol = &UInt32Type;
+    SubgroupFirstActiveThread.name = "subgroupFirstActiveThread"_c;
+    SubgroupFirstActiveThread.documentation = "Returns true for the first active thread in the subgroup"_c;
+    SubgroupFirstActiveThread.returnType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&SubgroupFirstActiveThread)->returnTypeSymbol = &UInt32Type;
 
-    Read_UInt32_value.name = "value"_c;
-    Read_UInt32_value.type = Type::FullType{ UInt32Type.name };
-    SubgroupRead.name = "subgroupRead"_c;
-    SubgroupRead.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupRead)->returnTypeSymbol = &UInt32Type;
+    BroadcastFirstActiveThread_UInt32_value.name = "value"_c;
+    BroadcastFirstActiveThread_UInt32_value.type = Type::FullType{ UInt32Type.name };
+    SubgroupBroadcastFirstActiveThread.name = "subgroupBroadcastFirstActiveThread"_c;
+    SubgroupBroadcastFirstActiveThread.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;
+    SubgroupBroadcastFirstActiveThread.returnType = Type::FullType{ UInt32Type.name };
+    Symbol::Resolved(&SubgroupBroadcastFirstActiveThread)->returnTypeSymbol = &UInt32Type;
 
     SubgroupBallot_Bool8_predicate.name = "value"_c;
     SubgroupBallot_Bool8_predicate.type = Type::FullType{ Bool8Type.name };

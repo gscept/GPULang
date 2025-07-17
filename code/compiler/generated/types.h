@@ -2593,9 +2593,9 @@ struct Float32x2x2 : public Type
 };
 extern Float32x2x2 Float32x2x2Type;
 
-extern Variable Float32x2x2_Float32x2_ctor_arg0;
-extern Variable Float32x2x2_Float32x2_ctor_arg1;
-extern Function Float32x2x2_Float32x2_ctor;
+extern Variable Float32x2x2_Float32_2_ctor_arg0;
+extern Variable Float32x2x2_Float32_2_ctor_arg1;
+extern Function Float32x2x2_Float32_2_ctor;
 extern Function Float32x2x2_identity;
 extern Variable Float32x2x2_Float32_4_ctor_arg0;
 extern Variable Float32x2x2_Float32_4_ctor_arg1;
@@ -2630,9 +2630,9 @@ struct Float32x2x3 : public Type
 };
 extern Float32x2x3 Float32x2x3Type;
 
-extern Variable Float32x2x3_Float32x3_ctor_arg0;
-extern Variable Float32x2x3_Float32x3_ctor_arg1;
-extern Function Float32x2x3_Float32x3_ctor;
+extern Variable Float32x2x3_Float32_3_ctor_arg0;
+extern Variable Float32x2x3_Float32_3_ctor_arg1;
+extern Function Float32x2x3_Float32_3_ctor;
 extern Function Float32x2x3_identity;
 extern Variable Float32x2x3_Float32_6_ctor_arg0;
 extern Variable Float32x2x3_Float32_6_ctor_arg1;
@@ -2669,9 +2669,9 @@ struct Float32x2x4 : public Type
 };
 extern Float32x2x4 Float32x2x4Type;
 
-extern Variable Float32x2x4_Float32x4_ctor_arg0;
-extern Variable Float32x2x4_Float32x4_ctor_arg1;
-extern Function Float32x2x4_Float32x4_ctor;
+extern Variable Float32x2x4_Float32_4_ctor_arg0;
+extern Variable Float32x2x4_Float32_4_ctor_arg1;
+extern Function Float32x2x4_Float32_4_ctor;
 extern Function Float32x2x4_identity;
 extern Variable Float32x2x4_Float32_8_ctor_arg0;
 extern Variable Float32x2x4_Float32_8_ctor_arg1;
@@ -2710,10 +2710,10 @@ struct Float32x3x2 : public Type
 };
 extern Float32x3x2 Float32x3x2Type;
 
-extern Variable Float32x3x2_Float32x2_ctor_arg0;
-extern Variable Float32x3x2_Float32x2_ctor_arg1;
-extern Variable Float32x3x2_Float32x2_ctor_arg2;
-extern Function Float32x3x2_Float32x2_ctor;
+extern Variable Float32x3x2_Float32_2_ctor_arg0;
+extern Variable Float32x3x2_Float32_2_ctor_arg1;
+extern Variable Float32x3x2_Float32_2_ctor_arg2;
+extern Function Float32x3x2_Float32_2_ctor;
 extern Function Float32x3x2_identity;
 extern Variable Float32x3x2_Float32_6_ctor_arg0;
 extern Variable Float32x3x2_Float32_6_ctor_arg1;
@@ -2750,10 +2750,10 @@ struct Float32x3x3 : public Type
 };
 extern Float32x3x3 Float32x3x3Type;
 
-extern Variable Float32x3x3_Float32x3_ctor_arg0;
-extern Variable Float32x3x3_Float32x3_ctor_arg1;
-extern Variable Float32x3x3_Float32x3_ctor_arg2;
-extern Function Float32x3x3_Float32x3_ctor;
+extern Variable Float32x3x3_Float32_3_ctor_arg0;
+extern Variable Float32x3x3_Float32_3_ctor_arg1;
+extern Variable Float32x3x3_Float32_3_ctor_arg2;
+extern Function Float32x3x3_Float32_3_ctor;
 extern Function Float32x3x3_identity;
 extern Variable Float32x3x3_Float32_9_ctor_arg0;
 extern Variable Float32x3x3_Float32_9_ctor_arg1;
@@ -2793,10 +2793,10 @@ struct Float32x3x4 : public Type
 };
 extern Float32x3x4 Float32x3x4Type;
 
-extern Variable Float32x3x4_Float32x4_ctor_arg0;
-extern Variable Float32x3x4_Float32x4_ctor_arg1;
-extern Variable Float32x3x4_Float32x4_ctor_arg2;
-extern Function Float32x3x4_Float32x4_ctor;
+extern Variable Float32x3x4_Float32_4_ctor_arg0;
+extern Variable Float32x3x4_Float32_4_ctor_arg1;
+extern Variable Float32x3x4_Float32_4_ctor_arg2;
+extern Function Float32x3x4_Float32_4_ctor;
 extern Function Float32x3x4_identity;
 extern Variable Float32x3x4_Float32_12_ctor_arg0;
 extern Variable Float32x3x4_Float32_12_ctor_arg1;
@@ -2839,11 +2839,11 @@ struct Float32x4x2 : public Type
 };
 extern Float32x4x2 Float32x4x2Type;
 
-extern Variable Float32x4x2_Float32x2_ctor_arg0;
-extern Variable Float32x4x2_Float32x2_ctor_arg1;
-extern Variable Float32x4x2_Float32x2_ctor_arg2;
-extern Variable Float32x4x2_Float32x2_ctor_arg3;
-extern Function Float32x4x2_Float32x2_ctor;
+extern Variable Float32x4x2_Float32_2_ctor_arg0;
+extern Variable Float32x4x2_Float32_2_ctor_arg1;
+extern Variable Float32x4x2_Float32_2_ctor_arg2;
+extern Variable Float32x4x2_Float32_2_ctor_arg3;
+extern Function Float32x4x2_Float32_2_ctor;
 extern Function Float32x4x2_identity;
 extern Variable Float32x4x2_Float32_8_ctor_arg0;
 extern Variable Float32x4x2_Float32_8_ctor_arg1;
@@ -2882,11 +2882,11 @@ struct Float32x4x3 : public Type
 };
 extern Float32x4x3 Float32x4x3Type;
 
-extern Variable Float32x4x3_Float32x3_ctor_arg0;
-extern Variable Float32x4x3_Float32x3_ctor_arg1;
-extern Variable Float32x4x3_Float32x3_ctor_arg2;
-extern Variable Float32x4x3_Float32x3_ctor_arg3;
-extern Function Float32x4x3_Float32x3_ctor;
+extern Variable Float32x4x3_Float32_3_ctor_arg0;
+extern Variable Float32x4x3_Float32_3_ctor_arg1;
+extern Variable Float32x4x3_Float32_3_ctor_arg2;
+extern Variable Float32x4x3_Float32_3_ctor_arg3;
+extern Function Float32x4x3_Float32_3_ctor;
 extern Function Float32x4x3_identity;
 extern Variable Float32x4x3_Float32_12_ctor_arg0;
 extern Variable Float32x4x3_Float32_12_ctor_arg1;
@@ -2929,11 +2929,11 @@ struct Float32x4x4 : public Type
 };
 extern Float32x4x4 Float32x4x4Type;
 
-extern Variable Float32x4x4_Float32x4_ctor_arg0;
-extern Variable Float32x4x4_Float32x4_ctor_arg1;
-extern Variable Float32x4x4_Float32x4_ctor_arg2;
-extern Variable Float32x4x4_Float32x4_ctor_arg3;
-extern Function Float32x4x4_Float32x4_ctor;
+extern Variable Float32x4x4_Float32_4_ctor_arg0;
+extern Variable Float32x4x4_Float32_4_ctor_arg1;
+extern Variable Float32x4x4_Float32_4_ctor_arg2;
+extern Variable Float32x4x4_Float32_4_ctor_arg3;
+extern Function Float32x4x4_Float32_4_ctor;
 extern Function Float32x4x4_identity;
 extern Variable Float32x4x4_Float32_16_ctor_arg0;
 extern Variable Float32x4x4_Float32_16_ctor_arg1;
@@ -2980,9 +2980,9 @@ struct Float16x2x2 : public Type
 };
 extern Float16x2x2 Float16x2x2Type;
 
-extern Variable Float16x2x2_Float16x2_ctor_arg0;
-extern Variable Float16x2x2_Float16x2_ctor_arg1;
-extern Function Float16x2x2_Float16x2_ctor;
+extern Variable Float16x2x2_Float16_2_ctor_arg0;
+extern Variable Float16x2x2_Float16_2_ctor_arg1;
+extern Function Float16x2x2_Float16_2_ctor;
 extern Function Float16x2x2_identity;
 extern Variable Float16x2x2_Float16_4_ctor_arg0;
 extern Variable Float16x2x2_Float16_4_ctor_arg1;
@@ -3017,9 +3017,9 @@ struct Float16x2x3 : public Type
 };
 extern Float16x2x3 Float16x2x3Type;
 
-extern Variable Float16x2x3_Float16x3_ctor_arg0;
-extern Variable Float16x2x3_Float16x3_ctor_arg1;
-extern Function Float16x2x3_Float16x3_ctor;
+extern Variable Float16x2x3_Float16_3_ctor_arg0;
+extern Variable Float16x2x3_Float16_3_ctor_arg1;
+extern Function Float16x2x3_Float16_3_ctor;
 extern Function Float16x2x3_identity;
 extern Variable Float16x2x3_Float16_6_ctor_arg0;
 extern Variable Float16x2x3_Float16_6_ctor_arg1;
@@ -3056,9 +3056,9 @@ struct Float16x2x4 : public Type
 };
 extern Float16x2x4 Float16x2x4Type;
 
-extern Variable Float16x2x4_Float16x4_ctor_arg0;
-extern Variable Float16x2x4_Float16x4_ctor_arg1;
-extern Function Float16x2x4_Float16x4_ctor;
+extern Variable Float16x2x4_Float16_4_ctor_arg0;
+extern Variable Float16x2x4_Float16_4_ctor_arg1;
+extern Function Float16x2x4_Float16_4_ctor;
 extern Function Float16x2x4_identity;
 extern Variable Float16x2x4_Float16_8_ctor_arg0;
 extern Variable Float16x2x4_Float16_8_ctor_arg1;
@@ -3097,10 +3097,10 @@ struct Float16x3x2 : public Type
 };
 extern Float16x3x2 Float16x3x2Type;
 
-extern Variable Float16x3x2_Float16x2_ctor_arg0;
-extern Variable Float16x3x2_Float16x2_ctor_arg1;
-extern Variable Float16x3x2_Float16x2_ctor_arg2;
-extern Function Float16x3x2_Float16x2_ctor;
+extern Variable Float16x3x2_Float16_2_ctor_arg0;
+extern Variable Float16x3x2_Float16_2_ctor_arg1;
+extern Variable Float16x3x2_Float16_2_ctor_arg2;
+extern Function Float16x3x2_Float16_2_ctor;
 extern Function Float16x3x2_identity;
 extern Variable Float16x3x2_Float16_6_ctor_arg0;
 extern Variable Float16x3x2_Float16_6_ctor_arg1;
@@ -3137,10 +3137,10 @@ struct Float16x3x3 : public Type
 };
 extern Float16x3x3 Float16x3x3Type;
 
-extern Variable Float16x3x3_Float16x3_ctor_arg0;
-extern Variable Float16x3x3_Float16x3_ctor_arg1;
-extern Variable Float16x3x3_Float16x3_ctor_arg2;
-extern Function Float16x3x3_Float16x3_ctor;
+extern Variable Float16x3x3_Float16_3_ctor_arg0;
+extern Variable Float16x3x3_Float16_3_ctor_arg1;
+extern Variable Float16x3x3_Float16_3_ctor_arg2;
+extern Function Float16x3x3_Float16_3_ctor;
 extern Function Float16x3x3_identity;
 extern Variable Float16x3x3_Float16_9_ctor_arg0;
 extern Variable Float16x3x3_Float16_9_ctor_arg1;
@@ -3180,10 +3180,10 @@ struct Float16x3x4 : public Type
 };
 extern Float16x3x4 Float16x3x4Type;
 
-extern Variable Float16x3x4_Float16x4_ctor_arg0;
-extern Variable Float16x3x4_Float16x4_ctor_arg1;
-extern Variable Float16x3x4_Float16x4_ctor_arg2;
-extern Function Float16x3x4_Float16x4_ctor;
+extern Variable Float16x3x4_Float16_4_ctor_arg0;
+extern Variable Float16x3x4_Float16_4_ctor_arg1;
+extern Variable Float16x3x4_Float16_4_ctor_arg2;
+extern Function Float16x3x4_Float16_4_ctor;
 extern Function Float16x3x4_identity;
 extern Variable Float16x3x4_Float16_12_ctor_arg0;
 extern Variable Float16x3x4_Float16_12_ctor_arg1;
@@ -3226,11 +3226,11 @@ struct Float16x4x2 : public Type
 };
 extern Float16x4x2 Float16x4x2Type;
 
-extern Variable Float16x4x2_Float16x2_ctor_arg0;
-extern Variable Float16x4x2_Float16x2_ctor_arg1;
-extern Variable Float16x4x2_Float16x2_ctor_arg2;
-extern Variable Float16x4x2_Float16x2_ctor_arg3;
-extern Function Float16x4x2_Float16x2_ctor;
+extern Variable Float16x4x2_Float16_2_ctor_arg0;
+extern Variable Float16x4x2_Float16_2_ctor_arg1;
+extern Variable Float16x4x2_Float16_2_ctor_arg2;
+extern Variable Float16x4x2_Float16_2_ctor_arg3;
+extern Function Float16x4x2_Float16_2_ctor;
 extern Function Float16x4x2_identity;
 extern Variable Float16x4x2_Float16_8_ctor_arg0;
 extern Variable Float16x4x2_Float16_8_ctor_arg1;
@@ -3269,11 +3269,11 @@ struct Float16x4x3 : public Type
 };
 extern Float16x4x3 Float16x4x3Type;
 
-extern Variable Float16x4x3_Float16x3_ctor_arg0;
-extern Variable Float16x4x3_Float16x3_ctor_arg1;
-extern Variable Float16x4x3_Float16x3_ctor_arg2;
-extern Variable Float16x4x3_Float16x3_ctor_arg3;
-extern Function Float16x4x3_Float16x3_ctor;
+extern Variable Float16x4x3_Float16_3_ctor_arg0;
+extern Variable Float16x4x3_Float16_3_ctor_arg1;
+extern Variable Float16x4x3_Float16_3_ctor_arg2;
+extern Variable Float16x4x3_Float16_3_ctor_arg3;
+extern Function Float16x4x3_Float16_3_ctor;
 extern Function Float16x4x3_identity;
 extern Variable Float16x4x3_Float16_12_ctor_arg0;
 extern Variable Float16x4x3_Float16_12_ctor_arg1;
@@ -3316,11 +3316,11 @@ struct Float16x4x4 : public Type
 };
 extern Float16x4x4 Float16x4x4Type;
 
-extern Variable Float16x4x4_Float16x4_ctor_arg0;
-extern Variable Float16x4x4_Float16x4_ctor_arg1;
-extern Variable Float16x4x4_Float16x4_ctor_arg2;
-extern Variable Float16x4x4_Float16x4_ctor_arg3;
-extern Function Float16x4x4_Float16x4_ctor;
+extern Variable Float16x4x4_Float16_4_ctor_arg0;
+extern Variable Float16x4x4_Float16_4_ctor_arg1;
+extern Variable Float16x4x4_Float16_4_ctor_arg2;
+extern Variable Float16x4x4_Float16_4_ctor_arg3;
+extern Function Float16x4x4_Float16_4_ctor;
 extern Function Float16x4x4_identity;
 extern Variable Float16x4x4_Float16_16_ctor_arg0;
 extern Variable Float16x4x4_Float16_16_ctor_arg1;
@@ -3371,20 +3371,20 @@ Variable Float16x4x4_operator_index_Int16_arg0;\
 Function Float16x4x4_operator_index_Int16;\
 Variable Float16x4x4_operator_index_UInt16_arg0;\
 Function Float16x4x4_operator_index_UInt16;\
-Variable Float16x4x4_operator_add_Float16x4x4_arg0;\
-Function Float16x4x4_operator_add_Float16x4x4;\
-Variable Float16x4x4_operator_sub_Float16x4x4_arg0;\
-Function Float16x4x4_operator_sub_Float16x4x4;\
-Variable Float16x4x4_operator_mul_Float16x4x4_arg0;\
-Function Float16x4x4_operator_mul_Float16x4x4;\
-Variable Float16x4x4_operator_addasg_Float16x4x4_arg0;\
-Function Float16x4x4_operator_addasg_Float16x4x4;\
-Variable Float16x4x4_operator_subasg_Float16x4x4_arg0;\
-Function Float16x4x4_operator_subasg_Float16x4x4;\
-Variable Float16x4x4_operator_mulasg_Float16x4x4_arg0;\
-Function Float16x4x4_operator_mulasg_Float16x4x4;\
-Variable Float16x4x4_operator_scale_Float16x4x4_Float16_arg0;\
-Function Float16x4x4_operator_scale_Float16x4x4_Float16;
+Variable Float16x4x4_operator_add_Float16x4x4_arg0;
+Function Float16x4x4_operator_add_Float16x4x4;
+Variable Float16x4x4_operator_sub_Float16x4x4_arg0;
+Function Float16x4x4_operator_sub_Float16x4x4;
+Variable Float16x4x4_operator_mul_Float16x4x4_arg0;
+Function Float16x4x4_operator_mul_Float16x4x4;
+Variable Float16x4x4_operator_addasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_addasg_Float16x4x4;
+Variable Float16x4x4_operator_subasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_subasg_Float16x4x4;
+Variable Float16x4x4_operator_mulasg_Float16x4x4_arg0;
+Function Float16x4x4_operator_mulasg_Float16x4x4;
+Variable Float16x4x4_operator_scale_Float16x4x4_Float16_arg0;
+Function Float16x4x4_operator_scale_Float16x4x4_Float16
 
 
 struct Texture1D : public Type
