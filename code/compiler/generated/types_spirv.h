@@ -805,6 +805,7 @@ static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
     }
     return 0x0;
 };
+
 StaticMap default_intrinsics = std::array{
 std::pair{ &Float32_convert_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
@@ -33657,6 +33658,434 @@ std::pair{ &SubgroupSwapHorizontal_UInt16x4 , [](const Compiler* c, SPIRVGenerat
     SPIRVResult mask = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult direction = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int(0));
     uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
     return SPIRVResult(ret, returnType, true);
 }},
 std::pair{ &TextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult

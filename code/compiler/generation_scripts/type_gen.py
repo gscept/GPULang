@@ -341,7 +341,7 @@ def generate_types():
             declaration_string += class_decl
 
             namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
-            definition_string += f'#define DEF_{type_name}_ctors\\\n'
+            definition_string += f'\n#define DEF_{type_name}_ctors\\\n'
             setup_string = ""
             list_string = ""
             for type2, data_type2, bits2 in zip(types, data_types, bit_widths):
@@ -476,7 +476,7 @@ def generate_types():
 
             spirv_intrinsics.write(spirv_type_construction)
         
-            definition_string += f"#define DEF_{type_name}_operators\\\n"
+            definition_string += f"\n#define DEF_{type_name}_operators\\\n"
 
             for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
                 fun_name = f'{type_name}_operator_{name}'
@@ -741,7 +741,7 @@ def generate_types():
 
                 namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
 
-                definition_string += f"#define DEF_{type_name}_ctors\\\n"
+                definition_string += f"\n#define DEF_{type_name}_ctors\\\n"
                 list_string = ""
                 setup_string = ""
                 
@@ -778,7 +778,7 @@ def generate_types():
                 definition_string += f'Function {array_ctor_name};\\\n'
                 list_string += f'        std::pair{{ "{data_type_name}"_c, &{array_ctor_name}}},\n'
 
-                definition_string = f"#define DEF_{type_name}_operators\\\n"
+                definition_string += f"\n#define DEF_{type_name}_operators\\\n"
 
                 vec_type = f'{type}x{column_size}'
                 for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
@@ -826,8 +826,8 @@ def generate_types():
 
                         declaration_string += f'extern Variable {arg_name};\n'
                         declaration_string += f'extern Function {fun_name};\n'
-                        definition_string += f'Variable {arg_name};\n'
-                        definition_string += f'Function {fun_name};\n'
+                        definition_string += f'Variable {arg_name};\\\n'
+                        definition_string += f'Function {fun_name};\\\n'
                         list_string += f'        std::pair{{ "operator{op}({data_type_name})"_c, &{fun_name}}},\n'
 
                         spirv_function = ''
@@ -873,8 +873,8 @@ def generate_types():
                 setup_string += f'    Symbol::Resolved(&{fun_name})->returnTypeSymbol = &{type_name}Type;\n\n'
                 declaration_string += f'extern Variable {arg_name};\n'
                 declaration_string += f'extern Function {fun_name};\n'
-                definition_string += f'Variable {arg_name};\n'
-                definition_string += f'Function {fun_name};\n'
+                definition_string += f'Variable {arg_name};\\\n'
+                definition_string += f'Function {fun_name};\\\n'
                 list_string += f'        std::pair{{ "operator{op}({data_type})"_c, &{fun_name}}},\n'
 
                 spirv_function = ''
@@ -911,7 +911,7 @@ def generate_types():
 
     header_file.write(declaration_string[0:-1] + '\n')
     header_file.write("\n")
-    header_file.write(definition_string[0:-2] + '\n')
+    header_file.write(definition_string[0:-1] + '\n')
     header_file.write("\n")
     source_file.write(class_def)
     header_file.write("\n")
@@ -1628,7 +1628,7 @@ def generate_types():
         class_def += f'Variable RenderState{member.name};\n'
         if member.array_size > 1:
             class_decl += f'extern IntExpression RenderState{member.name}ArraySize;\n'
-            class_def += f'IntExpression RenderState{member.name}ArraySize({member.name}, {member.array_size});\n'
+            class_def += f'IntExpression RenderState{member.name}ArraySize({member.array_size});\n'
 
     class_def += 'RenderState RenderStateType;\n'
     class_def += 'RenderState::RenderState()\n'
