@@ -2439,6 +2439,7 @@ else\
 
     switch (info.type)
     {
+        case ConstantCreationInfo::Type::UInt32:
         case ConstantCreationInfo::Type::UInt:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
@@ -2457,6 +2458,7 @@ else\
             ADD_CONSTANT(u16, ui)
             break;
         }
+        case ConstantCreationInfo::Type::Int32:
         case ConstantCreationInfo::Type::Int:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
@@ -2475,6 +2477,7 @@ else\
             ADD_CONSTANT(i16, i)
             break;
         }
+        case ConstantCreationInfo::Type::Float32:
         case ConstantCreationInfo::Type::Float:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
@@ -2493,6 +2496,7 @@ else\
             ADD_CONSTANT(f16, f)
             break;
         }
+        case ConstantCreationInfo::Type::Bool8:
         case ConstantCreationInfo::Type::Bool:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Bool, 1);
@@ -5490,7 +5494,7 @@ SPIRVGenerator::SetupIntrinsics()
         , { Intrinsics::TextureGetMips_Texture3D }
         , { Intrinsics::TextureGetMips_Texture3D }
     };
-    for (auto fun : textureGetSampledMipIntrinsics)
+    for (auto fun : textureGetMips)
     {
         SPIRVGenerator::IntrinsicMap[std::get<0>(fun)] = [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
         {

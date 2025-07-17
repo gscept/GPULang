@@ -2985,6 +2985,18 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(semantics_argument_name, 'MemorySemantics')
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, atomic_type)
 
+        spirv_function = ''
+        spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
+        spirv_function += '    uint32_t semantics = SemanticsTable[args[3].literalValue.ui];\n'
+        spirv_function += '    semantics |= ScopeToMemorySemantics(args[0].scope);\n'
+        spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);\n'
+        spirv_function += '    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));\n'
+        spirv_function += '    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_builtin}, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value, compare);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     intrinsic = 'Insert'
     for type in unsigned_types:
         function_name = f'Bit{intrinsic}_{type}'
@@ -3018,6 +3030,15 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);\n'
+        spirv_function += '    SPIRVResult count = LoadValueSPIRV(c, g, args[3]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpBitFieldInsert, SPVWriter::Section::LocalFunction, returnType, base, value, offset, count);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     intrinsic = 'Extract'
     for type in integer_types:
         function_name = f'Bit{intrinsic}_{type}'
@@ -3045,6 +3066,19 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
+
+        if type.startswith('UInt'):
+            spirv_op = "OpBitFieldUExtract"
+        elif type.startswith('Int'):
+            spirv_op = "OpBitFieldSExtract"
+        spirv_function = ''
+        spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += '    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({spirv_op}, SPVWriter::Section::LocalFunction, returnType, base, offset, count);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     intrinsics = ['Reverse', 'Count']
     for intrinsic in intrinsics:
         for type in integer_types:
@@ -3061,7 +3095,13 @@ def generate_types():
             intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
             intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
-    barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup', 'MemoryBarrier', 'MemoryBarrierBuffer', 'MemoryBarrierTexture', 'MemoryBarrierAtomic', 'MemoryBarrierSubgroup', 'MemoryBarrierWorkgroup']
+            spirv_function = ''
+            spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup']
     for intrinsic in barrier_intrinsics:
         function_name = '{}'.format(intrinsic)
         intrinsic_decls += 'extern Function {};\n'.format(function_name)
@@ -3069,6 +3109,55 @@ def generate_types():
         intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic[0].lower() + intrinsic[1:])
         intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+        if intrinsic.endswith('Subgroup'):
+            scope = '3'
+            semantics = '0x2 | 0x80'
+        elif intrinsic.endswith('Workgroup'):
+            scope = '2'
+            semantics = '0x2 | 0x100'
+        else:
+            scope = '2'
+            semantics = '0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
+        spirv_function = ''
+        spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
+        spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
+        spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    memory_barrier_intrinsics = ['MemoryBarrier', 'MemoryBarrierBuffer', 'MemoryBarrierTexture', 'MemoryBarrierAtomic', 'MemoryBarrierSubgroup', 'MemoryBarrierWorkgroup']
+    for intrinsic in memory_barrier_intrinsics:
+        function_name = '{}'.format(intrinsic)
+        intrinsic_decls += 'extern Function {};\n'.format(function_name)
+        intrinsic_defs += 'Function {};\n'.format(function_name)
+        intrinsic_setup += '    {}.name = "{}"_c;\n'.format(function_name, intrinsic[0].lower() + intrinsic[1:])
+        intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, 'Void')
+        intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'Void')
+
+        if intrinsic.endswith('Buffer'):
+            scope = '2'
+            semantics = '0x2 | 0x40'
+        elif intrinsic.endswith('Texture'):
+            scope = '2'
+            semantics = '0x2 | 0x800'
+        elif intrinsic.endswith('Atomic'):
+            scope = '2'
+            semantics = '0x2 | 0x400'
+        elif intrinsic.endswith('Subgroup'):
+            scope = '3'
+            semantics = '0x2 | 0x80'
+        elif intrinsic.endswith('Workgroup'):
+            scope = '2'
+            semantics = '0x2 | 0x100'
+        else:
+            semantics = '0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800'
+        spirv_function = ''
+        spirv_function += f'    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({scope}));\n'
+        spirv_function += f'    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt({semantics}));\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);\n'
+        spirv_function += '    return SPIRVResult(0xFFFFFFFF, returnType);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     texture_types_no_ms = ['Texture1D', 'Texture2D', 'Texture3D', 'TextureCube', 'Texture1DArray', 'Texture2DArray', 'TextureCubeArray']
     texture_types_ms = ['Texture2DMS', 'Texture2DMSArray']
@@ -3114,6 +3203,17 @@ def generate_types():
         'Texture2DMSArray': f"{type}x3"
     }
 
+    texture_float_index_proj_sizes = {
+        'Texture1D': 2,
+        'Texture2D': 3,
+        'Texture3D': 4,
+        'TextureCube': 4,
+        'Texture1DArray': 3,
+        'Texture2DArray': 4,
+        'Texture2DMS': 3,
+        'Texture2DMSArray': 4
+    }
+
     intrinsic = 'GetSize'
     for type in texture_types_no_ms:
         return_type = texture_size_types[type]
@@ -3131,6 +3231,13 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+        spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'GetSizeMip'
     for type in texture_types_no_ms:
@@ -3156,6 +3263,14 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{mip_argument_name})->typeSymbol = &UInt32Type;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
 
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+        spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     intrinsic = 'GetMips'
     for type in texture_types_no_ms:
         function_name = f'Texture{intrinsic}_{type}'
@@ -3173,6 +3288,13 @@ def generate_types():
         intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
         intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
 
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+        spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
+
     intrinsic = 'GetSamples'
     for type in texture_types_ms:
         function_name = 'Texture{}_{}'.format(intrinsic, type)
@@ -3189,6 +3311,13 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
         intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &{}Type;\n\n'.format(function_name, 'UInt32')
+
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+        spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     # Helper function to generate a version of the texture sampling method both for combined texture-samplers and for textures with samplers provided separately.
     def generate_texture_intrinsic_base(intrinsic):
@@ -3231,38 +3360,39 @@ def generate_types():
     intrinsic = 'GetSampledMip'
     for type in texture_types_no_ms:
         coordinate_type = texture_float_index_types[type]
-        function_name = 'Texture{}_{}'.format(intrinsic, type)
+        base_function_name = f'Texture{intrinsic}_{type}'
 
         for defs in generate_texture_intrinsic_base(function_name):
             base_decls, base_defs, base_setup, prefix = defs
-            coordinate_argument_name = '{}{}_coordinate'.format(prefix, function_name)
+            function_name = f'{prefix}{base_function_name}'
+            coordinate_argument_name = f'{function_name}_coordinate'
             intrinsic_decls += base_decls
-            intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
-            intrinsic_decls += 'extern Function {}{};\n'.format(prefix, function_name)
+            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
             intrinsic_defs += base_defs
-            intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
-            intrinsic_defs += 'Function {}{};\n'.format(prefix, function_name)
+            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
 
-            intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
-            intrinsic_setup += '    {}{}.name = "texture{}"_c;\n'.format(prefix, function_name, intrinsic)
-            intrinsic_setup += '    {}{}.returnType = Type::FullType{{ {}Type.name }};\n'.format(prefix, function_name, 'Float32x2')
+            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x2Type.name }};\n'
             intrinsic_setup += base_setup
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(coordinate_argument_name, coordinate_type)
-            intrinsic_setup += '    Symbol::Resolved(&{}{})->returnTypeSymbol = &{}Type;\n\n'.format(prefix, function_name, 'Float32x2')
+            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x2Type;\n\n'
 
-            spirv_func = ''
+            spirv_function = ''
             if prefix: # Prefix here is merely 'Sampled'
-                spirv_func += '    SPIRVResult sampledImage = args[0];\n'
-                spirv_func += '    SPIRVResult coord = args[1];\n'
+                spirv_function += '    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
             else:
-                spirv_func += '    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);\n'
-                spirv_func += '    SPIRVResult coord = args[2];\n'
-            spirv_func += '    g->writer->Capability(Capabilities::ImageQuery);\n'
-            spirv_func += '    uint32_t ret;\n'
-            spirv_func += '    ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);\n'
-            spirv_func += '    return SPIRVResult(ret, returnType, true);\n'
-            spirv_code += spirv_intrinsic('{}{}'.format(prefix, function_name), spirv_func)
+                spirv_function += '    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);\n'
+                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);\n'
+            spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+            spirv_function += '    uint32_t ret;\n'
+            spirv_function += '    ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     texture_load_store_intrinsics = ['Load', 'LoadMip', 'Store', 'StoreMip']
     for type in texture_types:
@@ -3270,57 +3400,207 @@ def generate_types():
         for intrinsic in texture_load_store_intrinsics:
             hasMip = intrinsic in ['LoadMip', 'StoreMip']
             hasStore = intrinsic in ['Store', 'StoreMip']
-            function_name = 'Texture{}_{}'.format(intrinsic, type)
-            texture_argument_name = 'Texture{}_{}_texture'.format(intrinsic, type)
+            function_name = f'Texture{intrinsic}_{type}'
+            texture_argument_name = f'Texture{intrinsic}_{type}_texture'
 
-            coordinate_argument_name = '{}_coordinate'.format(function_name)
+            coordinate_argument_name = f'{function_name}_coordinate'
             if hasMip:
-                mip_argument_name = '{}_mip'.format(function_name)
+                mip_argument_name = f'{function_name}_mip'
             if hasStore:
-                value_argument_name = '{}_value'.format(function_name)
+                value_argument_name = f'{function_name}_value'
 
-            intrinsic_decls += 'extern Variable {};\n'.format(texture_argument_name)
-            intrinsic_decls += 'extern Variable {};\n'.format(coordinate_argument_name)
+            intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
             if hasMip:
-                intrinsic_decls += 'extern Variable {};\n'.format(mip_argument_name)
+                intrinsic_decls += f'extern Variable {mip_argument_name};\n'
             if hasStore:
-                intrinsic_decls += 'extern Variable {};\n'.format(value_argument_name)
-            intrinsic_decls += 'extern Function {};\n'.format(function_name)
+                intrinsic_decls += f'extern Variable {value_argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
 
-            intrinsic_defs += 'Variable {};\n'.format(texture_argument_name)
-            intrinsic_defs += 'Variable {};\n'.format(coordinate_argument_name)
+            intrinsic_defs += f'Variable {texture_argument_name};\n'
+            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
             if hasMip:
-                intrinsic_defs += 'Variable {};\n'.format(mip_argument_name)
+                intrinsic_defs += f'Variable {mip_argument_name};\n'
             if hasStore:
-                intrinsic_defs += 'Variable {};\n'.format(value_argument_name)
-            intrinsic_defs += 'Function {};\n'.format(function_name)
+                intrinsic_defs += f'Variable {value_argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
 
-            intrinsic_setup += '    {}.name = "texture"_c;\n'.format(texture_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    {}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'.format(texture_argument_name, type)
-            
-            intrinsic_setup += '    {}.name = "coordinate"_c;\n'.format(coordinate_argument_name)
-            intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(coordinate_argument_name, coordinate_type)
+            intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+            intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+
+            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
             if hasMip:
-                intrinsic_setup += '    {}.name = "mip"_c;\n'.format(mip_argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(mip_argument_name, 'Int32')
+                intrinsic_setup += f'    {mip_argument_name}.name = "mip"_c;\n'
+                intrinsic_setup += f'    {mip_argument_name}.type = Type::FullType{{ Int32Type.name }};\n'
             if hasStore:
-                intrinsic_setup += '    {}.name = "value"_c;\n'.format(value_argument_name)
-                intrinsic_setup += '    {}.type = Type::FullType{{ {}Type.name }};\n'.format(value_argument_name, 'Float32x4')
-            intrinsic_setup += '    {}.name = "texture{}"_c;\n'.format(function_name, intrinsic)
+                intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
+                intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ Float32x4Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
 
             if not hasStore:
-                intrinsic_setup += '    {}.returnType = Type::FullType{{ {}Type.name }};\n'.format(function_name, type)
+                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
             else:
-                intrinsic_setup += '    {}.returnType = Type::FullType{{ VoidType.name }};\n'.format(function_name)
+                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
 
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(texture_argument_name, type)
-            intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
+            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
             if hasMip:
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(mip_argument_name, 'Int32')
+                intrinsic_setup += f'    Symbol::Resolved(&{mip_argument_name})->typeSymbol = &Int32Type;\n'
             if hasStore:
-                intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n'.format(value_argument_name, 'Float32x4')
-            intrinsic_setup += '    Symbol::Resolved(&{})->typeSymbol = &{}Type;\n\n'.format(coordinate_argument_name, coordinate_type)
+                intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &Float32x4Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n\n'
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
+            if hasStore:
+                spirv_function += '    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);\n'
+                if hasMip:
+                    spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);\n'
+            else:
+                if hasMip:
+                    spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
+
+            if hasStore:
+                if hasMip:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);\n'
+                else:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);\n'
+            else:
+                if hasMip:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
+                else:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    texture_fetch_intrinsics = ['Fetch', 'FetchSample']
+    for type in texture_types:
+
+        if type.startswith('TextureCube'):
+            continue
+
+        for intrinsic in texture_fetch_intrinsics:
+            function_name = f'Texture{intrinsic}_{type}'
+            texture_argument_name = f'Texture{intrinsic}_{type}_texture'
+            coordinate_argument_name = f'{function_name}_coordinate'
+            lod_argument_name = f'{function_name}_lod'
+            if intrinsic == 'FetchSample':
+                sample_argument_name = f'{function_name}_sample'
+            intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
+            intrinsic_decls += f'extern Variable {lod_argument_name};\n'
+
+            if intrinsic == 'FetchSample':
+                intrinsic_decls += f'extern Variable {sample_argument_name};\n'
+            intrinsic_decls += f'extern Function {function_name};\n'
+
+            intrinsic_defs += f'Variable {texture_argument_name};\n'
+            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
+            intrinsic_defs += f'Variable {lod_argument_name};\n'
+            if intrinsic == 'FetchSample':
+                intrinsic_defs += f'Variable {sample_argument_name};\n'
+            intrinsic_defs += f'Function {function_name};\n'
+
+            intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+            intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+            intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {texture_denormalized_index_types[type]}Type.name }};\n'
+            intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
+            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
+            if intrinsic == 'FetchSample':
+                intrinsic_setup += f'    {sample_argument_name}.name = "sample"_c;\n'
+                intrinsic_setup += f'    {sample_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
+            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{texture_denormalized_index_types[type]}Type;\n'
+            intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &UInt32Type;\n'
+            if intrinsic == 'FetchSample':
+                intrinsic_setup += f'    Symbol::Resolved(&{sample_argument_name})->typeSymbol = &UInt32Type;\n'
+
+            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+
+            spirv_function = ''
+            spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+            spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);\n'
+            if intrinsic == 'FetchSample':
+                spirv_function += '    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);\n'
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);\n'
+            else:
+                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
+            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+            spirv_code += spirv_intrinsic(function_name, spirv_function)
+
+    texture_gather_intrinsics = ['Gather', 'GatherOffset']
+    for type in texture_types_no_ms:
+
+        if type.startswith('Texture1D') or type.startswith('Texture3D'):
+            continue
+
+        for intrinsic in texture_gather_intrinsics:
+            base_function_name = f'Texture{intrinsic}_{type}'
+            for defs in generate_texture_intrinsic_base(base_function_name):
+                base_decls, base_defs, base_setup, prefix = defs
+                function_name = f'{prefix}{base_function_name}'
+                texture_argument_name = f'{function_name}_texture'
+                coordinate_argument_name = f'{function_name}_coordinate'
+                component_argument_name = f'{function_name}_component'
+                if intrinsic == 'GatherOffset':
+                    offset_argument_name = f'{function_name}_offset'
+                intrinsic_decls += f'extern Variable {texture_argument_name};\n'
+                intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
+                intrinsic_decls += f'extern Variable {component_argument_name};\n'
+
+                if intrinsic == 'GatherOffset':
+                    intrinsic_decls += f'extern Variable {offset_argument_name};\n'
+                intrinsic_decls += f'extern Function {function_name};\n'
+
+                intrinsic_defs += f'Variable {texture_argument_name};\n'
+                intrinsic_defs += f'Variable {coordinate_argument_name};\n'
+                intrinsic_defs += f'Variable {component_argument_name};\n'
+                if intrinsic == 'GatherOffset':
+                    intrinsic_defs += f'Variable {offset_argument_name};\n'
+                intrinsic_defs += f'Function {function_name};\n'
+
+                intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
+                intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
+                intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
+                intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+                intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {texture_denormalized_index_types[type]}Type.name }};\n'
+                intrinsic_setup += f'    {component_argument_name}.name = "component"_c;\n'
+                intrinsic_setup += f'    {component_argument_name}.type = Type::FullType{{ Int32Type.name }};\n'
+                if intrinsic == 'GatherOffset':
+                    intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
+                    intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
+                intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{texture_denormalized_index_types[type]}Type;\n'
+                intrinsic_setup += f'    Symbol::Resolved(&{component_argument_name})->typeSymbol = &Int32Type;\n'
+                if intrinsic == 'GatherOffset':
+                    intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &UInt32Type;\n'
+
+                intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+
+                spirv_function = ''
+                spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
+                spirv_function += '    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);\n'
+                if intrinsic == 'GatherOffset':
+                    spirv_function += '    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);\n'
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);\n'
+                else:
+                    spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);\n'
+                spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'PixelCacheLoad'
     for type in ['PixelCache', 'PixelCacheMS']:
@@ -3340,105 +3620,187 @@ def generate_types():
         intrinsic_setup += '    Symbol::Resolved(&{})->storage = Storage::Uniform;\n'.format(texture_argument_name)
         intrinsic_setup += '    Symbol::Resolved(&{})->returnTypeSymbol = &Float32x4Type;\n\n'.format(function_name)
 
+        spirv_function = ''
+        spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    SPIRVResult coord = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(0), 2);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
+
     intrinsic = 'Sample'
     lod_modifiers = ['', 'Lod', 'Grad', 'Bias']
     compare_modifiers = ['', 'Compare']
     projection_modifiers = ['', 'Proj']
+    offset_modifiers = ['', 'Offset']
     for lod in lod_modifiers:
         for comp in compare_modifiers:
             for proj in projection_modifiers:
-                for type in texture_types_no_ms:
-                    function_name = f'Texture{intrinsic}{lod}{proj}{comp}_{type}'
+                for offset in offset_modifiers:
+                    for type in texture_types_no_ms:
+                        base_function_name = f'Texture{intrinsic}{lod}{proj}{comp}{offset}_{type}'
 
-                    for defs in generate_texture_intrinsic_base(function_name):
-                        base_decls, base_defs, base_setup, prefix = defs
+                        for defs in generate_texture_intrinsic_base(base_function_name):
+                            base_decls, base_defs, base_setup, prefix = defs
+                            function_name = f'{prefix}{base_function_name}'
+                            if comp == 'Compare' and type.startswith('TextureCube'):
+                                continue
 
-                        if comp == 'Compare' and type.startswith('TextureCube'):
-                            continue
+                            if proj == 'Proj' and type.endswith('Array'):
+                                continue
 
-                        if proj == 'Proj' and type.endswith('Array'):
-                            continue
+                            if proj == 'Proj' and type.startswith('TextureCube'):
+                                continue
 
-                        if proj == 'Proj' and type.startswith('TextureCube'):
-                            continue
+                            if offset == 'Offset' and type.startswith('TextureCube'):
+                                continue
 
-                        coordinate_type = texture_float_index_types[type]
-                        coordinate_argument_name = f'{prefix}{function_name}_coordinate'
-                        if lod == 'Lod':
-                            lod_argument_name = f'{prefix}{function_name}_lod'
-                        elif lod == 'Grad':
-                            lodx_argument_name = f'{prefix}{function_name}_gradx'
-                            lody_argument_name = f'{prefix}{function_name}_grady'
-                        elif lod == 'Bias':
-                            lod_argument_name = f'{prefix}{function_name}_bias'
-                        if proj == 'Proj':
-                            proj_argument_name = f'{prefix}{function_name}_proj'
-                        if comp == 'Compare':
-                            compare_argument_name = f'{prefix}{function_name}_compare'
+                            coordinate_type = texture_float_index_types[type]
+                            coordinate_argument_name = f'{function_name}_coordinate'
+                            if lod == 'Lod':
+                                lod_argument_name = f'{function_name}_lod'
+                            elif lod == 'Grad':
+                                lodx_argument_name = f'{function_name}_gradx'
+                                lody_argument_name = f'{function_name}_grady'
+                            elif lod == 'Bias':
+                                lod_argument_name = f'{function_name}_bias'
+                            if proj == 'Proj':
+                                proj_argument_name = f'{function_name}_proj'
+                            if comp == 'Compare':
+                                compare_argument_name = f'{function_name}_compare'
+                            if offset == 'Offset':
+                                offset_argument_name = f'{function_name}_offset'
 
 
-                        intrinsic_decls += base_decls
-                        intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-                        if lod == 'Lod' or lod == 'Bias':
-                            intrinsic_decls += f'extern Variable {lod_argument_name};\n'
-                        elif lod == 'Grad':
-                            intrinsic_decls += f'extern Variable {lodx_argument_name};\n'
-                            intrinsic_decls += f'extern Variable {lody_argument_name};\n'
-                        if proj == 'Proj':
-                            intrinsic_decls += f'extern Variable {proj_argument_name};\n'
-                        if comp == 'Compare':
-                            intrinsic_decls += f'extern Variable {compare_argument_name};\n'
+                            intrinsic_decls += base_decls
+                            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
+                            if lod == 'Lod' or lod == 'Bias':
+                                intrinsic_decls += f'extern Variable {lod_argument_name};\n'
+                            elif lod == 'Grad':
+                                intrinsic_decls += f'extern Variable {lodx_argument_name};\n'
+                                intrinsic_decls += f'extern Variable {lody_argument_name};\n'
+                            elif lod == 'Bias':
+                                intrinsic_decls += f'extern Variable {lod_argument_name};\n'
+                            if proj == 'Proj':
+                                intrinsic_decls += f'extern Variable {proj_argument_name};\n'
+                            if comp == 'Compare':
+                                intrinsic_decls += f'extern Variable {compare_argument_name};\n'
+                            if offset == 'Offset':
+                                intrinsic_decls += f'extern Variable {offset_argument_name};\n'
 
-                        intrinsic_decls += f'extern Function {prefix}{function_name};\n'
+                            intrinsic_decls += f'extern Function {function_name};\n'
 
-                        intrinsic_defs += base_defs
-                        intrinsic_defs += f'Variable {coordinate_argument_name};\n'
-                        if lod == 'Lod' or lod == 'Bias':
-                            intrinsic_defs += f'Variable {lod_argument_name};\n'
-                        elif lod == 'Grad':
-                            intrinsic_defs += f'Variable {lodx_argument_name};\n'
-                            intrinsic_defs += f'Variable {lody_argument_name};\n'
-                        if proj == 'Proj':
-                            intrinsic_defs += f'Variable {proj_argument_name};\n'
-                        if comp == 'Compare':
-                            intrinsic_defs += f'Variable {compare_argument_name};\n'
+                            intrinsic_defs += base_defs
+                            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
+                            if lod == 'Lod' or lod == 'Bias':
+                                intrinsic_defs += f'Variable {lod_argument_name};\n'
+                            elif lod == 'Grad':
+                                intrinsic_defs += f'Variable {lodx_argument_name};\n'
+                                intrinsic_defs += f'Variable {lody_argument_name};\n'
+                            elif lod == 'Bias':
+                                intrinsic_defs += f'Variable {lod_argument_name};\n'
+                            if proj == 'Proj':
+                                intrinsic_defs += f'Variable {proj_argument_name};\n'
+                            if comp == 'Compare':
+                                intrinsic_defs += f'Variable {compare_argument_name};\n'
+                            if offset == 'Offset':
+                                intrinsic_defs += f'Variable {offset_argument_name};\n'
 
-                        intrinsic_defs += f'Function {prefix}{function_name};\n'
+                            intrinsic_defs += f'Function {function_name};\n'
 
-                        intrinsic_setup += base_setup
-                        intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-                        intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                        if lod == 'Lod':
-                            intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
-                            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                        elif lod == 'Bias':
-                            intrinsic_setup += f'    {lod_argument_name}.name = "bias"_c;\n'
-                            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                        elif lod == 'Grad':
-                            intrinsic_setup += f'    {lodx_argument_name}.name = "grad_x"_c;\n'
-                            intrinsic_setup += f'    {lodx_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                            intrinsic_setup += f'    {lody_argument_name}.name = "grad_y"_c;\n'
-                            intrinsic_setup += f'    {lody_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                        if proj == 'Proj':
-                            intrinsic_setup += f'    {proj_argument_name}.name = "proj"_c;\n'
-                            intrinsic_setup += f'    {proj_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                        if comp == 'Compare':
-                            intrinsic_setup += f'    {compare_argument_name}.name = "compare"_c;\n'
-                            intrinsic_setup += f'    {compare_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+                            intrinsic_setup += base_setup
+                            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
+                            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
+                            if lod == 'Lod':
+                                intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
+                                intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+                            elif lod == 'Grad':
+                                intrinsic_setup += f'    {lodx_argument_name}.name = "grad_x"_c;\n'
+                                intrinsic_setup += f'    {lodx_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
+                                intrinsic_setup += f'    {lody_argument_name}.name = "grad_y"_c;\n'
+                                intrinsic_setup += f'    {lody_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
+                            elif lod == 'Bias':
+                                intrinsic_setup += f'    {lod_argument_name}.name = "bias"_c;\n'
+                                intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+                            if proj == 'Proj':
+                                intrinsic_setup += f'    {proj_argument_name}.name = "proj"_c;\n'
+                                intrinsic_setup += f'    {proj_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+                            if comp == 'Compare':
+                                intrinsic_setup += f'    {compare_argument_name}.name = "compare"_c;\n'
+                                intrinsic_setup += f'    {compare_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
+                            if offset == 'Offset':
+                                intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
+                                intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
 
-                        intrinsic_setup += f'    {prefix}{function_name}.name = "texture{intrinsic}{lod}{proj}{comp}"_c;\n'
-                        intrinsic_setup += f'    {prefix}{function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
-                        intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                        if lod == 'Lod' or lod == 'Bias':
-                            intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
-                        elif lod == 'Grad':
-                            intrinsic_setup += f'    Symbol::Resolved(&{lodx_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                            intrinsic_setup += f'    Symbol::Resolved(&{lody_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                        if comp == 'Compare':
-                            intrinsic_setup += f'    Symbol::Resolved(&{compare_argument_name})->typeSymbol = &Float32Type;\n'
-                        if proj == 'Proj':
-                            intrinsic_setup += f'    Symbol::Resolved(&{proj_argument_name})->typeSymbol = &Float32Type;\n'
-                        intrinsic_setup += f'    Symbol::Resolved(&{prefix}{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+                            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}{lod}{proj}{comp}{offset}"_c;\n'
+                            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
+                            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+                            if lod == 'Lod' or lod == 'Bias':
+                                intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
+                            elif lod == 'Grad':
+                                intrinsic_setup += f'    Symbol::Resolved(&{lodx_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+                                intrinsic_setup += f'    Symbol::Resolved(&{lody_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+                            elif lod == 'Bias':
+                                intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
+                            if proj == 'Proj':
+                                intrinsic_setup += f'    Symbol::Resolved(&{proj_argument_name})->typeSymbol = &Float32Type;\n'
+                            if comp == 'Compare':
+                                intrinsic_setup += f'    Symbol::Resolved(&{compare_argument_name})->typeSymbol = &Float32Type;\n'
+                            if offset == 'Offset':
+                                intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
+                            
+                            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+
+                            spirv_function = ''
+                            spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'
+                            if prefix: # Prefix here is merely 'Sampled'
+                                spirv_function += '    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);\n'
+                                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);\n'
+                            else:
+                                spirv_function += '    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);\n'
+                                spirv_function += '    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);\n'
+                            spirv_args = []
+                            if prefix:
+                                spirv_arg_counter = 2 # Sampled image + coordinate
+                            else:
+                                spirv_arg_counter = 3 # Texture + sampler + coordinate
+
+                            spirv_proj = '' 
+                            if proj:
+                                spirv_proj = 'Proj'
+                                spirv_function += f'    SPIRVResult proj = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                spirv_arg_counter += 1
+                                spirv_function += f'    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, {texture_float_index_proj_sizes[type]});\n'
+                                spirv_function += f'    coord = GenerateCompositeSPIRV(c, g, vectorType, {{ coord, proj }});\n'
+                            spirv_compare = ''
+                            if comp:
+                                spirv_compare = 'Dref'
+                                spirv_function += f'    SPIRVResult compare = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                spirv_arg_counter += 1
+                                spirv_args.append('compare')
+                            spirv_lod = 'ImplicitLod'
+                            if lod == 'Lod' or lod == 'Grad':
+                                spirv_lod = 'ExplicitLod'
+                                if lod == 'Lod':
+                                    spirv_function += f'    SPIRVResult lod = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                    spirv_arg_counter += 1
+                                    spirv_args.append('ImageOperands::Lod, lod')
+                                elif lod == 'Grad':
+                                    spirv_function += f'    SPIRVResult gradX = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                    spirv_arg_counter += 1
+                                    spirv_function += f'    SPIRVResult gradY = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                    spirv_arg_counter += 1
+                                    spirv_args.append('ImageOperands::GradY, gradX, gradY')
+                            elif lod == 'Bias':
+                                spirv_function += f'    SPIRVResult bias = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
+                                spirv_arg_counter += 1
+                                spirv_args.append('ImageOperands::Bias, bias')
+                            if offset:
+                                spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
+                                spirv_function += f'    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);\n'
+                                spirv_args.append('ImageOperands::Offset, offset')
+
+                            spirv_arg_list = ', '.join(spirv_args)
+                            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageSample{spirv_proj}{spirv_compare}{spirv_lod}, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, {spirv_arg_list});\n'
+                            spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+                            spirv_code += spirv_intrinsic(function_name, spirv_function)
 
 
 

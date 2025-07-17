@@ -805,6 +805,7 @@ static auto ScopeToMemorySemantics = [](SPIRVResult::Storage scope) -> uint32_t
     }
     return 0x0;
 };
+
 StaticMap default_intrinsics = std::array{
 std::pair{ &Float32_convert_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
@@ -33659,10 +33660,1055 @@ std::pair{ &SubgroupSwapHorizontal_UInt16x4 , [](const Compiler* c, SPIRVGenerat
     uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBallotBitExtract, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, mask, direction);
     return SPIRVResult(ret, returnType, true);
 }},
+std::pair{ &AtomicLoad_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicLoad_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicLoad, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicIncrement_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIIncrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicDecrement_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[1].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicStore_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicExchange_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAdd_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicSubtract_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicAnd_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicOr_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicXor_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[2].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult valueLoaded = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, valueLoaded);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicCompareExchange_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicCompareExchange_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicCompareExchange_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &AtomicCompareExchange_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    uint32_t scope = ScopeToAtomicScope(args[0].scope);
+    uint32_t semantics = SemanticsTable[args[3].literalValue.ui];
+    semantics |= ScopeToMemorySemantics(args[0].scope);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(scope));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(semantics));
+    uint32_t ret = g->writer->MappedInstruction(OpAtomicIDecrement, SPVWriter::Section::LocalFunction, returnType, args[0], scopeId, semanticsId, semanticsId, value, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitInsert_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldInsert, SPVWriter::Section::LocalFunction, returnType, base, value, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitInsert_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldInsert, SPVWriter::Section::LocalFunction, returnType, base, value, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldSExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitExtract_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult count = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitFieldUExtract, SPVWriter::Section::LocalFunction, returnType, base, offset, count);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitReverse_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_Int16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt32 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt32x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt32x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt32x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt16 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt16x2 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt16x3 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &BitCount_UInt16x4 , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpBitReverse, SPVWriter::Section::LocalFunction, returnType, base);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &ExecutionBarrier , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+    uint32_t ret = g->writer->MappedInstruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &ExecutionBarrierSubgroup , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
+    uint32_t ret = g->writer->MappedInstruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &ExecutionBarrierWorkgroup , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
+    uint32_t ret = g->writer->MappedInstruction(OpControlBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrier , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40 | 0x80 | 0x100 | 0x200 | 0x400 | 0x800));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrierBuffer , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x40));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrierTexture , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x800));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrierAtomic , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x400));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrierSubgroup , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(3));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x80));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &MemoryBarrierWorkgroup , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult scopeId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(2));
+    SPIRVResult semanticsId = GenerateConstantSPIRV(c, g, ConstantCreationInfo::UInt(0x2 | 0x100));
+    uint32_t ret = g->writer->MappedInstruction(OpMemoryBarrier, SPVWriter::Section::LocalFunction, scopeId, scopeId, semanticsId);
+    return SPIRVResult(0xFFFFFFFF, returnType);
+}},
+std::pair{ &TextureGetSize_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSize_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySize, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSizeMip_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySizeLod, SPVWriter::Section::LocalFunction, returnType, texture, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetMips_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQueryLevels, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSamples_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGetSamples_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
 std::pair{ &TextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33670,8 +34716,8 @@ std::pair{ &TextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVGenerato
 }},
 std::pair{ &SampledTextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33680,7 +34726,7 @@ std::pair{ &SampledTextureGetSampledMip_Texture1D , [](const Compiler* c, SPIRVG
 std::pair{ &TextureGetSampledMip_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33688,8 +34734,8 @@ std::pair{ &TextureGetSampledMip_Texture2D , [](const Compiler* c, SPIRVGenerato
 }},
 std::pair{ &SampledTextureGetSampledMip_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33698,7 +34744,7 @@ std::pair{ &SampledTextureGetSampledMip_Texture2D , [](const Compiler* c, SPIRVG
 std::pair{ &TextureGetSampledMip_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33706,8 +34752,8 @@ std::pair{ &TextureGetSampledMip_Texture3D , [](const Compiler* c, SPIRVGenerato
 }},
 std::pair{ &SampledTextureGetSampledMip_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33716,7 +34762,7 @@ std::pair{ &SampledTextureGetSampledMip_Texture3D , [](const Compiler* c, SPIRVG
 std::pair{ &TextureGetSampledMip_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33724,8 +34770,8 @@ std::pair{ &TextureGetSampledMip_TextureCube , [](const Compiler* c, SPIRVGenera
 }},
 std::pair{ &SampledTextureGetSampledMip_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33734,7 +34780,7 @@ std::pair{ &SampledTextureGetSampledMip_TextureCube , [](const Compiler* c, SPIR
 std::pair{ &TextureGetSampledMip_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33742,8 +34788,8 @@ std::pair{ &TextureGetSampledMip_Texture1DArray , [](const Compiler* c, SPIRVGen
 }},
 std::pair{ &SampledTextureGetSampledMip_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33752,7 +34798,7 @@ std::pair{ &SampledTextureGetSampledMip_Texture1DArray , [](const Compiler* c, S
 std::pair{ &TextureGetSampledMip_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33760,8 +34806,8 @@ std::pair{ &TextureGetSampledMip_Texture2DArray , [](const Compiler* c, SPIRVGen
 }},
 std::pair{ &SampledTextureGetSampledMip_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33770,7 +34816,7 @@ std::pair{ &SampledTextureGetSampledMip_Texture2DArray , [](const Compiler* c, S
 std::pair{ &TextureGetSampledMip_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
     SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
-    SPIRVResult coord = args[2];
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
@@ -33778,11 +34824,3710 @@ std::pair{ &TextureGetSampledMip_TextureCubeArray , [](const Compiler* c, SPIRVG
 }},
 std::pair{ &SampledTextureGetSampledMip_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
 {
-    SPIRVResult sampledImage = args[0];
-    SPIRVResult coord = args[1];
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
     g->writer->Capability(Capabilities::ImageQuery);
     uint32_t ret;
     ret = g->writer->MappedInstruction(OpImageQueryLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoad_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureLoadMip_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStore_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureStoreMip_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult value = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageWrite, SPVWriter::Section::LocalFunction, returnType, texture, coord, value, ImageOperands::Lod, mip);
+    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture2DMS , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetch_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureFetchSample_Texture2DMSArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult mip = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult sample = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip, ImageOperands::Sample, sample);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGather_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGather_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGatherOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGatherOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGather_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGather_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGatherOffset_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGatherOffset_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGather_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGather_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGatherOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGatherOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGather_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGather_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureGatherOffset_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureGatherOffset_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult component = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult offset = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageFetch, SPVWriter::Section::LocalFunction, returnType, texture, coord, component, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSample_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSample_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, );
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLod_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLod_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleLodProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleLodProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult lod = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Lod, lod, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGrad_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGrad_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleGradProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[5]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[6]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleGradProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult gradX = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult gradY = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefExplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::GradY, gradX, gradY, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_TextureCube , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBias_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBias_TextureCubeArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[2]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProj_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProj_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProj_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompare_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompare_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompareOffset_Texture1DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasCompareOffset_Texture2DArray , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[3]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompare_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompare_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompare_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompareOffset_Texture1D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 2);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompareOffset_Texture2D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 3);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &TextureSampleBiasProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = CreateSampledImageSPIRV(c, g, args[0], args[1]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[2]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[3]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[4]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[5]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
+    return SPIRVResult(ret, returnType, true);
+}},
+std::pair{ &SampledTextureSampleBiasProjCompareOffset_Texture3D , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult
+{
+    g->writer->Capability(Capabilities::Shader);
+    SPIRVResult sampledImage = LoadValueSPIRV(c, g, args[0]);
+    SPIRVResult coord = LoadValueSPIRV(c, g, args[1]);
+    SPIRVResult proj = LoadValueSPIRV(c, g, args[2]);
+    uint32_t vectorType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    coord = GenerateCompositeSPIRV(c, g, vectorType, { coord, proj });
+    SPIRVResult compare = LoadValueSPIRV(c, g, args[3]);
+    SPIRVResult bias = LoadValueSPIRV(c, g, args[4]);
+    g->writer->Capability(Capabilities::ImageQuery);
+    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);
+    uint32_t ret = g->writer->MappedInstruction(OpImageSampleProjDrefImplicitLod, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, compare, ImageOperands::Bias, bias, ImageOperands::Offset, offset);
     return SPIRVResult(ret, returnType, true);
 }},
 };
