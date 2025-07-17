@@ -341,7 +341,7 @@ def generate_types():
             declaration_string += class_decl
 
             namer_line += f'        {type_name}Type.name = "{data_type_name}"_c;\n'
-            definition_string += f'\n#define DEF_{type_name}_ctors\\\n'
+            definition_string += f'\n#define DEF_{type_name}\\\n'
             setup_string = ""
             list_string = ""
             for type2, data_type2, bits2 in zip(types, data_types, bit_widths):
@@ -441,7 +441,7 @@ def generate_types():
                         list_entry_value += f'_{type}'
                         list_entry_key += f'{data_type}'
                         dec_var += f'extern Variable {arg_name};\n'
-                        def_var += f'Variable {arg_name};\n'
+                        def_var += f'Variable {arg_name};\\\n'
                         arg_list += f'{arg_type_name}, '
 
                     else:
@@ -449,7 +449,7 @@ def generate_types():
                         list_entry_key += f'{data_type}x{s}'
                         list_entry_value += f'_{type}x{s}'
                         dec_var += f'extern Variable {arg_name};\n'
-                        def_var += f'Variable {arg_name};\n'
+                        def_var += f'Variable {arg_name};\\\n'
                         arg_type_name = f'{type}x{s}'
                         arg_list += f'{arg_type_name}, '
                     arg_types.append(arg_type_name)
@@ -476,7 +476,6 @@ def generate_types():
 
             spirv_intrinsics.write(spirv_type_construction)
         
-            definition_string += f"\n#define DEF_{type_name}_operators\\\n"
 
             for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
                 fun_name = f'{type_name}_operator_{name}'
@@ -778,7 +777,7 @@ def generate_types():
                 definition_string += f'Function {array_ctor_name};\\\n'
                 list_string += f'        std::pair{{ "{data_type_name}"_c, &{array_ctor_name}}},\n'
 
-                definition_string += f"\n#define DEF_{type_name}_operators\\\n"
+                definition_string += f"\n#define DEF_{type_name}\\\n"
 
                 vec_type = f'{type}x{column_size}'
                 for name, op, idx_type, idx_data_type in zip(index_operator_names, index_operators, index_types, index_data_types):
