@@ -1187,6 +1187,13 @@ struct StaticMap
         return beginRange == endRange ? this->end() : beginRange;
     }
     
+    const V& operator[](const K& key) const
+    {
+        const auto* it = this->Find(key);
+        assert(it != this->end() && "Key not found in StaticMap");
+        return it->second;
+    }
+    
     const item* begin() const
     {
         return this->data.data();

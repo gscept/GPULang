@@ -198,35 +198,42 @@ def generate_types():
     spirv_intrinsics.write("        uint32_t sampledImage = g->writer->MappedInstruction(OpSampledImage, SPVWriter::Section::LocalFunction, typeSymbol, image, sampler);\n")
     spirv_intrinsics.write("        return SPIRVResult(sampledImage, typeSymbol, true);\n")
     spirv_intrinsics.write("};\n\n")
-    spirv_intrinsics.write('constexpr auto ConverterTable = StaticMap{ std::array{\n')
+
+    spirv_type_converter_list = []
     spirv_type_construction = ''
     for converter in type_conversions:
-        spirv_type_construction += f'    {{ TypeConversionTable::{converter.enum}, [](const Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) -> SPIRVResult {{\n'
-        spirv_type_construction += f'        if (value.isLiteral)\n'
-        spirv_type_construction += f'        {{\n'
-        spirv_type_construction += f'            assert(vectorSize == 1);\n'
-        spirv_type_construction += f'            return GenerateConstantSPIRV(c, g, ConstantCreationInfo::{converter.target}(value.literalValue.{converter.source_data_type}));\n'
-        spirv_type_construction += f'        }}\n'
+        spirv_type_construction += f'SPIRVResult SPIRV_{converter.enum}(const Compiler* c, SPIRVGenerator* g, uint32_t vectorSize, SPIRVResult value) \n{{\n'
+        spirv_type_construction += f'    if (value.isLiteral)\n'
+        spirv_type_construction += f'    {{\n'
+        spirv_type_construction += f'        assert(vectorSize == 1);\n'
+        spirv_type_construction += f'        return GenerateConstantSPIRV(c, g, ConstantCreationInfo::{converter.target}(value.literalValue.{converter.source_data_type}));\n'
+        spirv_type_construction += f'    }}\n'
+        spirv_type_construction += f'    else\n'
+        spirv_type_construction += f'    {{\n'
+        spirv_type_construction += f'        uint32_t type;\n'
+        spirv_type_construction += f'        if (vectorSize > 1)\n'
+        spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
         spirv_type_construction += f'        else\n'
-        spirv_type_construction += f'        {{\n'
-        spirv_type_construction += f'            uint32_t type;\n'
-        spirv_type_construction += f'            if (vectorSize > 1)\n'
-        spirv_type_construction += f'                type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target}, vectorSize);\n'
-        spirv_type_construction += f'            else\n'
-        spirv_type_construction += f'                type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
+        spirv_type_construction += f'            type = GeneratePODTypeSPIRV(c, g, TypeCode::{converter.target});\n'
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'            value = LoadValueSPIRV(c, g, value);\n'
+            spirv_type_construction += f'        value = LoadValueSPIRV(c, g, value);\n'
         if converter.spirv_conversion_prep:
             spirv_type_construction += converter.spirv_conversion_prep
         if not converter.spirv_conversion_arguments:
-            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
+            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value);\n'
         else:
-            spirv_type_construction += f'            uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
-        spirv_type_construction += f'            return SPIRVResult(res, type, true);\n'
-        spirv_type_construction += f'        }}\n'
-        spirv_type_construction += f'    }} }},\n'
+            spirv_type_construction += f'        uint32_t res = g->writer->MappedInstruction({converter.spirv_conversion_function}, SPVWriter::Section::LocalFunction, type, value, {converter.spirv_conversion_arguments});\n'
+        spirv_type_construction += f'        return SPIRVResult(res, type, true);\n'
+        spirv_type_construction += f'    }}\n'
+        spirv_type_construction += f'}}\n\n'
+        spirv_type_converter_list.append(f'    std::pair{{ TypeConversionTable::{converter.enum}, &SPIRV_{converter.enum} }}')
+
+    
     spirv_intrinsics.write(spirv_type_construction[0:-2])
-    spirv_intrinsics.write('\n}};\n\n')
+    spirv_intrinsics.write('\n\n')
+    spirv_intrinsics.write('constexpr StaticMap ConverterTable = std::array{\n')
+    spirv_intrinsics.write(",\n".join(spirv_type_converter_list))
+    spirv_intrinsics.write('\n};\n\n')
 
     spirv_atomic_tables = ""
     spirv_atomic_tables += "static const uint32_t SemanticsTable[] =\n"
@@ -286,7 +293,7 @@ def generate_types():
     spirv_atomic_tables += "    return 0x0;\n"
     spirv_atomic_tables += "};\n\n"
     spirv_intrinsics.write(spirv_atomic_tables)
-    spirv_intrinsics.write('StaticMap default_intrinsics = std::array{\n')
+    #spirv_intrinsics.write('constexpr StaticMap default_intrinsics = std::array{\n')
     
 
     ### Built-in data types (Float, Int, UInt, Bool and their vector/matrix variants)
@@ -316,8 +323,14 @@ def generate_types():
     spirv_type_construction = ''
     spirv_code = ''
 
+    spirv_intrinsic_list = []
     def spirv_intrinsic(fun, arg):
-        return f'std::pair{{ &{fun} , [](const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args) -> SPIRVResult\n{{\n{arg}}}}},\n'
+        spirv_intrinsic_code = f'SPIRVResult SPIRV_{fun}(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)\n'
+        spirv_intrinsic_code += '{\n'
+        spirv_intrinsic_code += f'{arg}'
+        spirv_intrinsic_code += '}\n\n'
+        spirv_intrinsic_list.append(f'std::pair{{ &{fun}, &SPIRV_{fun} }}')
+        return spirv_intrinsic_code
 
     class_def = ""
     declaration_string = ""
@@ -330,7 +343,7 @@ def generate_types():
             else:
                 type_name = f'{type}x{size}'
                 data_type_name = f'{data_type}x{size}'
-
+            spirv_type_construction = ''
             class_decl = ''
             class_decl += f'struct {type_name} : public Type\n'
             class_decl += '{\n'
@@ -629,7 +642,7 @@ def generate_types():
                         if scale_type.startswith('Float'):
                             spirv_function += '    SPIRVResult rhs = LoadValueSPIRV(c, g, args[1]);\n'
                         else:
-                            spirv_function += f'    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {{{size}}}, args[1]);\n'
+                            spirv_function += f'    SPIRVResult rhs = GenerateSplatCompositeSPIRV(c, g, returnType, {size}, args[1]);\n'
                         spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpIMul, SPVWriter::Section::LocalFunction, returnType, lhs, rhs);\n'
                         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                         spirv_code += spirv_intrinsic(function_name, spirv_function)
@@ -2660,8 +2673,8 @@ def generate_types():
             spirv_function += '    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);\n'
             spirv_function += '    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));\n'
             spirv_function += f'    uint32_t ret = GPULang::AddSymbol(g, TStr("gpl{function_name}"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);\n'
-            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::Index, args[1].literalValue.i);\n'
-            spirv_function += '    g->writer->Decorate(SPVArg{{ret}}, Decorations::Location, args[1].literalValue.i);\n'
+            spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Index, args[1].literalValue.i);\n'
+            spirv_function += '    g->writer->Decorate(SPVArg{ret}, Decorations::Location, args[1].literalValue.i);\n'
             spirv_function += '    g->interfaceVariables.Insert(ret);\n'
             spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
             spirv_function += '    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);\n'
@@ -2825,7 +2838,7 @@ def generate_types():
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
         spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction({subgroup_ballot_ops_spirv}, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(Op{spirv}, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -3546,7 +3559,6 @@ def generate_types():
                     spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Lod, mip);\n'
                 else:
                     spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
-            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageQuerySamples, SPVWriter::Section::LocalFunction, returnType, texture);\n'
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
@@ -3860,7 +3872,7 @@ def generate_types():
                                     spirv_arg_counter += 1
                                     spirv_function += f'    SPIRVResult gradY = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
                                     spirv_arg_counter += 1
-                                    spirv_args.append('ImageOperands::GradY, gradX, gradY')
+                                    spirv_args.append('ImageOperands::Grad, gradX, gradY')
                             elif lod == 'Bias':
                                 spirv_function += f'    SPIRVResult bias = LoadValueSPIRV(c, g, args[{spirv_arg_counter}]);\n'
                                 spirv_arg_counter += 1
@@ -3870,15 +3882,21 @@ def generate_types():
                                 spirv_function += f'    SPIRVResult offset = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Int32(0), 2);\n'
                                 spirv_args.append('ImageOperands::Offset, offset')
 
-                            spirv_arg_list = ', '.join(spirv_args)
-                            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageSample{spirv_proj}{spirv_compare}{spirv_lod}, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, {spirv_arg_list});\n'
+                            if spirv_args:
+                                spirv_arg_list = ', '.join(spirv_args)
+                                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageSample{spirv_proj}{spirv_compare}{spirv_lod}, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord, {spirv_arg_list});\n'
+                            else:
+                                spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageSample{spirv_proj}{spirv_compare}{spirv_lod}, SPVWriter::Section::LocalFunction, returnType, sampledImage, coord);\n'
                             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
 
 
-    spirv_intrinsics.write(spirv_code)
-    spirv_intrinsics.write('};\n')
+    spirv_intrinsics.write(spirv_code[0:-2])
+    spirv_intrinsics.write('\n\n')
+    spirv_intrinsics.write('const StaticMap SPIRVDefaultIntrinsics = std::array{\n')
+    spirv_intrinsics.write(",\n".join(spirv_intrinsic_list))
+    spirv_intrinsics.write('\n};\n')
     #spirv_intrinsics.write('} // namespace GPULang\n\n')
     
     intrinsics_header.write(intrinsic_decls)

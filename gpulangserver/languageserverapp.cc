@@ -13,8 +13,7 @@
 #include "ast/renderstate.h"
 #include "ast/samplerstate.h"
 #include "ast/types/type.h"
-#include "ast/types/renderstatetype.h"
-#include "ast/types/samplerstatetype.h"
+#include "generated/types.h"
 #include "ast/statements/scopestatement.h"
 #include "ast/statements/ifstatement.h"
 #include "ast/statements/forstatement.h"
@@ -621,10 +620,10 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             scopes.pop_back();
             break;
         }
-        case GPULang::Symbol::SymbolType::RenderStateType:
+        case GPULang::Symbol::SymbolType::RenderStateInstanceType:
         {
-            const GPULang::RenderState* struc = static_cast<const GPULang::RenderState*>(sym);
-            const GPULang::RenderState::__Resolved* res = GPULang::Symbol::Resolved(struc);
+            const GPULang::RenderStateInstance* struc = static_cast<const GPULang::RenderStateInstance*>(sym);
+            const GPULang::RenderStateInstance::__Resolved* res = GPULang::Symbol::Resolved(struc);
             InsertSemanticToken(ctx, sym->location, deadBranch ? SemanticTypeMapping::Comment : SemanticTypeMapping::Struct, (uint32_t)SemanticModifierMapping::Definition, result);
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
@@ -643,8 +642,8 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
         }
         case GPULang::Symbol::SymbolType::SamplerStateInstanceType:
         {
-            const GPULang::SamplerState* struc = static_cast<const GPULang::SamplerState*>(sym);
-            const GPULang::SamplerState::__Resolved* res = GPULang::Symbol::Resolved(struc);
+            const GPULang::SamplerStateInstance* struc = static_cast<const GPULang::SamplerStateInstance*>(sym);
+            const GPULang::SamplerStateInstance::__Resolved* res = GPULang::Symbol::Resolved(struc);
             for (auto annot : struc->annotations)
             {
                 annotationSemanticToken(annot, ctx, file, result, scopes);
@@ -684,9 +683,9 @@ CreateSemanticToken(Context& ctx, const GPULang::Symbol* sym, ParseContext::Pars
             scopes.pop_back();
             break;
         }
-        case GPULang::Symbol::SymbolType::ProgramType:
+        case GPULang::Symbol::SymbolType::ProgramInstanceType:
         {
-            const GPULang::Program* prog = static_cast<const GPULang::Program*>(sym);
+            const GPULang::ProgramInstance* prog = static_cast<const GPULang::ProgramInstance*>(sym);
             const auto* res = GPULang::Symbol::Resolved(prog);
             auto& [_0, bits, _1] = file->symbolsByLine[range.startLine].back();
             bits = PresentationBits{ { .typeLookup=1 } };
@@ -1057,9 +1056,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
                 ret += CreateMarkdown(res->symbol, true);
             break;
         }
-        case GPULang::Symbol::SymbolType::RenderStateType:
+        case GPULang::Symbol::SymbolType::RenderStateInstanceType:
         {
-            const auto state = static_cast<const GPULang::RenderState*>(sym);
+            const auto state = static_cast<const GPULang::RenderStateInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Render State\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
@@ -1070,7 +1069,7 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
         }
         case GPULang::Symbol::SymbolType::SamplerStateInstanceType:
         {
-            const auto state = static_cast<const GPULang::SamplerState*>(sym);
+            const auto state = static_cast<const GPULang::SamplerStateInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Sampler State\n";
             if (lookup.flags.symbolLookup)
@@ -1111,9 +1110,9 @@ CreateMarkdown(const GPULang::Symbol* sym, PresentationBits lookup = 0x0)
             }
             break;
         }
-        case GPULang::Symbol::SymbolType::ProgramType:
+        case GPULang::Symbol::SymbolType::ProgramInstanceType:
         {
-            const auto state = static_cast<const GPULang::Program*>(sym);
+            const auto state = static_cast<const GPULang::ProgramInstance*>(sym);
             const auto res = GPULang::Symbol::Resolved(state);
             ret += "Program\n";
             for (auto mem : res->typeSymbol->scope.symbolLookup)
