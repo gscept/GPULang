@@ -19,20 +19,22 @@ Variable::Variable()
     this->type = Type::FullType{ ConstantString("") };
     this->valueExpression = nullptr;
 
-    Variable::__Resolved* typeResolved = static_cast<Variable::__Resolved*>(this->resolved);
-    typeResolved->typeSymbol = nullptr;
-    typeResolved->accessBits.bits = 0x0;
-    typeResolved->parameterBits.bits = 0x0;
-    typeResolved->usageBits.bits = 0x0;
-    typeResolved->group = __Resolved::NOT_BOUND;
-    typeResolved->binding = __Resolved::NOT_BOUND;
-    typeResolved->inBinding = 0xF;
-    typeResolved->outBinding = 0xF;
-    typeResolved->byteSize = 0;
-    typeResolved->structureOffset = 0;
-    typeResolved->elementPadding = 0;
-    typeResolved->startPadding = 0;
-    typeResolved->visibilityBits.bits = 0x0;
+    Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
+    varResolved->typeSymbol = nullptr;
+    varResolved->accessBits.bits = 0x0;
+    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
+    varResolved->parameterBits.bits = 0x0;
+    varResolved->usageBits.bits = 0x0;
+    varResolved->group = __Resolved::NOT_BOUND;
+    varResolved->binding = __Resolved::NOT_BOUND;
+    varResolved->inBinding = 0xF;
+    varResolved->outBinding = 0xF;
+    varResolved->byteSize = 0;
+    varResolved->structureOffset = 0;
+    varResolved->elementPadding = 0;
+    varResolved->startPadding = 0;
+    varResolved->visibilityBits.bits = 0x0;
+    varResolved->storage = Storage::Default;
     this->thisResolved = Symbol::Resolved(this);
 }
 
@@ -50,6 +52,18 @@ Variable::~Variable()
             modifier->~Expression();
 }
 
-
+//------------------------------------------------------------------------------
+/**
+*/
+void
+Variable::SetupAsBuiltinParameter()
+{
+    Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(this->resolved);
+    varResolved->type = this->type;
+    varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
+    varResolved->byteSize = varResolved->typeSymbol->byteSize;
+    varResolved->storage = Storage::Default;
+    varResolved->usageBits.flags.isParameter = true;
+}
 
 } // namespace GPULang

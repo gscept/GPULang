@@ -2622,8 +2622,8 @@ extern Variable Float32x2x2_operator_subasg_Float32x2x2_arg0;
 extern Function Float32x2x2_operator_subasg_Float32x2x2;
 extern Variable Float32x2x2_operator_mulasg_Float32x2x2_arg0;
 extern Function Float32x2x2_operator_mulasg_Float32x2x2;
-extern Variable Float32x2x2_operator_scale_Float32x2x2_Float32_arg0;
-extern Function Float32x2x2_operator_scale_Float32x2x2_Float32;
+extern Variable Float32x2x2_operator_scale_Float32_arg0;
+extern Function Float32x2x2_operator_scale_Float32;
 struct Float32x2x3 : public Type
 {
     Float32x2x3();
@@ -2661,8 +2661,8 @@ extern Variable Float32x2x3_operator_subasg_Float32x2x3_arg0;
 extern Function Float32x2x3_operator_subasg_Float32x2x3;
 extern Variable Float32x2x3_operator_mulasg_Float32x2x3_arg0;
 extern Function Float32x2x3_operator_mulasg_Float32x2x3;
-extern Variable Float32x2x3_operator_scale_Float32x2x3_Float32_arg0;
-extern Function Float32x2x3_operator_scale_Float32x2x3_Float32;
+extern Variable Float32x2x3_operator_scale_Float32_arg0;
+extern Function Float32x2x3_operator_scale_Float32;
 struct Float32x2x4 : public Type
 {
     Float32x2x4();
@@ -2702,8 +2702,8 @@ extern Variable Float32x2x4_operator_subasg_Float32x2x4_arg0;
 extern Function Float32x2x4_operator_subasg_Float32x2x4;
 extern Variable Float32x2x4_operator_mulasg_Float32x2x4_arg0;
 extern Function Float32x2x4_operator_mulasg_Float32x2x4;
-extern Variable Float32x2x4_operator_scale_Float32x2x4_Float32_arg0;
-extern Function Float32x2x4_operator_scale_Float32x2x4_Float32;
+extern Variable Float32x2x4_operator_scale_Float32_arg0;
+extern Function Float32x2x4_operator_scale_Float32;
 struct Float32x3x2 : public Type
 {
     Float32x3x2();
@@ -2742,8 +2742,8 @@ extern Variable Float32x3x2_operator_subasg_Float32x3x2_arg0;
 extern Function Float32x3x2_operator_subasg_Float32x3x2;
 extern Variable Float32x3x2_operator_mulasg_Float32x3x2_arg0;
 extern Function Float32x3x2_operator_mulasg_Float32x3x2;
-extern Variable Float32x3x2_operator_scale_Float32x3x2_Float32_arg0;
-extern Function Float32x3x2_operator_scale_Float32x3x2_Float32;
+extern Variable Float32x3x2_operator_scale_Float32_arg0;
+extern Function Float32x3x2_operator_scale_Float32;
 struct Float32x3x3 : public Type
 {
     Float32x3x3();
@@ -2785,8 +2785,8 @@ extern Variable Float32x3x3_operator_subasg_Float32x3x3_arg0;
 extern Function Float32x3x3_operator_subasg_Float32x3x3;
 extern Variable Float32x3x3_operator_mulasg_Float32x3x3_arg0;
 extern Function Float32x3x3_operator_mulasg_Float32x3x3;
-extern Variable Float32x3x3_operator_scale_Float32x3x3_Float32_arg0;
-extern Function Float32x3x3_operator_scale_Float32x3x3_Float32;
+extern Variable Float32x3x3_operator_scale_Float32_arg0;
+extern Function Float32x3x3_operator_scale_Float32;
 struct Float32x3x4 : public Type
 {
     Float32x3x4();
@@ -2831,8 +2831,8 @@ extern Variable Float32x3x4_operator_subasg_Float32x3x4_arg0;
 extern Function Float32x3x4_operator_subasg_Float32x3x4;
 extern Variable Float32x3x4_operator_mulasg_Float32x3x4_arg0;
 extern Function Float32x3x4_operator_mulasg_Float32x3x4;
-extern Variable Float32x3x4_operator_scale_Float32x3x4_Float32_arg0;
-extern Function Float32x3x4_operator_scale_Float32x3x4_Float32;
+extern Variable Float32x3x4_operator_scale_Float32_arg0;
+extern Function Float32x3x4_operator_scale_Float32;
 struct Float32x4x2 : public Type
 {
     Float32x4x2();
@@ -2874,8 +2874,8 @@ extern Variable Float32x4x2_operator_subasg_Float32x4x2_arg0;
 extern Function Float32x4x2_operator_subasg_Float32x4x2;
 extern Variable Float32x4x2_operator_mulasg_Float32x4x2_arg0;
 extern Function Float32x4x2_operator_mulasg_Float32x4x2;
-extern Variable Float32x4x2_operator_scale_Float32x4x2_Float32_arg0;
-extern Function Float32x4x2_operator_scale_Float32x4x2_Float32;
+extern Variable Float32x4x2_operator_scale_Float32_arg0;
+extern Function Float32x4x2_operator_scale_Float32;
 struct Float32x4x3 : public Type
 {
     Float32x4x3();
@@ -2921,8 +2921,8 @@ extern Variable Float32x4x3_operator_subasg_Float32x4x3_arg0;
 extern Function Float32x4x3_operator_subasg_Float32x4x3;
 extern Variable Float32x4x3_operator_mulasg_Float32x4x3_arg0;
 extern Function Float32x4x3_operator_mulasg_Float32x4x3;
-extern Variable Float32x4x3_operator_scale_Float32x4x3_Float32_arg0;
-extern Function Float32x4x3_operator_scale_Float32x4x3_Float32;
+extern Variable Float32x4x3_operator_scale_Float32_arg0;
+extern Function Float32x4x3_operator_scale_Float32;
 struct Float32x4x4 : public Type
 {
     Float32x4x4();
@@ -2972,8 +2972,8 @@ extern Variable Float32x4x4_operator_subasg_Float32x4x4_arg0;
 extern Function Float32x4x4_operator_subasg_Float32x4x4;
 extern Variable Float32x4x4_operator_mulasg_Float32x4x4_arg0;
 extern Function Float32x4x4_operator_mulasg_Float32x4x4;
-extern Variable Float32x4x4_operator_scale_Float32x4x4_Float32_arg0;
-extern Function Float32x4x4_operator_scale_Float32x4x4_Float32;
+extern Variable Float32x4x4_operator_scale_Float32_arg0;
+extern Function Float32x4x4_operator_scale_Float32;
 struct Float16x2x2 : public Type
 {
     Float16x2x2();
@@ -3009,8 +3009,8 @@ extern Variable Float16x2x2_operator_subasg_Float16x2x2_arg0;
 extern Function Float16x2x2_operator_subasg_Float16x2x2;
 extern Variable Float16x2x2_operator_mulasg_Float16x2x2_arg0;
 extern Function Float16x2x2_operator_mulasg_Float16x2x2;
-extern Variable Float16x2x2_operator_scale_Float16x2x2_Float16_arg0;
-extern Function Float16x2x2_operator_scale_Float16x2x2_Float16;
+extern Variable Float16x2x2_operator_scale_Float16_arg0;
+extern Function Float16x2x2_operator_scale_Float16;
 struct Float16x2x3 : public Type
 {
     Float16x2x3();
@@ -3048,8 +3048,8 @@ extern Variable Float16x2x3_operator_subasg_Float16x2x3_arg0;
 extern Function Float16x2x3_operator_subasg_Float16x2x3;
 extern Variable Float16x2x3_operator_mulasg_Float16x2x3_arg0;
 extern Function Float16x2x3_operator_mulasg_Float16x2x3;
-extern Variable Float16x2x3_operator_scale_Float16x2x3_Float16_arg0;
-extern Function Float16x2x3_operator_scale_Float16x2x3_Float16;
+extern Variable Float16x2x3_operator_scale_Float16_arg0;
+extern Function Float16x2x3_operator_scale_Float16;
 struct Float16x2x4 : public Type
 {
     Float16x2x4();
@@ -3089,8 +3089,8 @@ extern Variable Float16x2x4_operator_subasg_Float16x2x4_arg0;
 extern Function Float16x2x4_operator_subasg_Float16x2x4;
 extern Variable Float16x2x4_operator_mulasg_Float16x2x4_arg0;
 extern Function Float16x2x4_operator_mulasg_Float16x2x4;
-extern Variable Float16x2x4_operator_scale_Float16x2x4_Float16_arg0;
-extern Function Float16x2x4_operator_scale_Float16x2x4_Float16;
+extern Variable Float16x2x4_operator_scale_Float16_arg0;
+extern Function Float16x2x4_operator_scale_Float16;
 struct Float16x3x2 : public Type
 {
     Float16x3x2();
@@ -3129,8 +3129,8 @@ extern Variable Float16x3x2_operator_subasg_Float16x3x2_arg0;
 extern Function Float16x3x2_operator_subasg_Float16x3x2;
 extern Variable Float16x3x2_operator_mulasg_Float16x3x2_arg0;
 extern Function Float16x3x2_operator_mulasg_Float16x3x2;
-extern Variable Float16x3x2_operator_scale_Float16x3x2_Float16_arg0;
-extern Function Float16x3x2_operator_scale_Float16x3x2_Float16;
+extern Variable Float16x3x2_operator_scale_Float16_arg0;
+extern Function Float16x3x2_operator_scale_Float16;
 struct Float16x3x3 : public Type
 {
     Float16x3x3();
@@ -3172,8 +3172,8 @@ extern Variable Float16x3x3_operator_subasg_Float16x3x3_arg0;
 extern Function Float16x3x3_operator_subasg_Float16x3x3;
 extern Variable Float16x3x3_operator_mulasg_Float16x3x3_arg0;
 extern Function Float16x3x3_operator_mulasg_Float16x3x3;
-extern Variable Float16x3x3_operator_scale_Float16x3x3_Float16_arg0;
-extern Function Float16x3x3_operator_scale_Float16x3x3_Float16;
+extern Variable Float16x3x3_operator_scale_Float16_arg0;
+extern Function Float16x3x3_operator_scale_Float16;
 struct Float16x3x4 : public Type
 {
     Float16x3x4();
@@ -3218,8 +3218,8 @@ extern Variable Float16x3x4_operator_subasg_Float16x3x4_arg0;
 extern Function Float16x3x4_operator_subasg_Float16x3x4;
 extern Variable Float16x3x4_operator_mulasg_Float16x3x4_arg0;
 extern Function Float16x3x4_operator_mulasg_Float16x3x4;
-extern Variable Float16x3x4_operator_scale_Float16x3x4_Float16_arg0;
-extern Function Float16x3x4_operator_scale_Float16x3x4_Float16;
+extern Variable Float16x3x4_operator_scale_Float16_arg0;
+extern Function Float16x3x4_operator_scale_Float16;
 struct Float16x4x2 : public Type
 {
     Float16x4x2();
@@ -3261,8 +3261,8 @@ extern Variable Float16x4x2_operator_subasg_Float16x4x2_arg0;
 extern Function Float16x4x2_operator_subasg_Float16x4x2;
 extern Variable Float16x4x2_operator_mulasg_Float16x4x2_arg0;
 extern Function Float16x4x2_operator_mulasg_Float16x4x2;
-extern Variable Float16x4x2_operator_scale_Float16x4x2_Float16_arg0;
-extern Function Float16x4x2_operator_scale_Float16x4x2_Float16;
+extern Variable Float16x4x2_operator_scale_Float16_arg0;
+extern Function Float16x4x2_operator_scale_Float16;
 struct Float16x4x3 : public Type
 {
     Float16x4x3();
@@ -3308,8 +3308,8 @@ extern Variable Float16x4x3_operator_subasg_Float16x4x3_arg0;
 extern Function Float16x4x3_operator_subasg_Float16x4x3;
 extern Variable Float16x4x3_operator_mulasg_Float16x4x3_arg0;
 extern Function Float16x4x3_operator_mulasg_Float16x4x3;
-extern Variable Float16x4x3_operator_scale_Float16x4x3_Float16_arg0;
-extern Function Float16x4x3_operator_scale_Float16x4x3_Float16;
+extern Variable Float16x4x3_operator_scale_Float16_arg0;
+extern Function Float16x4x3_operator_scale_Float16;
 struct Float16x4x4 : public Type
 {
     Float16x4x4();
@@ -3359,8 +3359,8 @@ extern Variable Float16x4x4_operator_subasg_Float16x4x4_arg0;
 extern Function Float16x4x4_operator_subasg_Float16x4x4;
 extern Variable Float16x4x4_operator_mulasg_Float16x4x4_arg0;
 extern Function Float16x4x4_operator_mulasg_Float16x4x4;
-extern Variable Float16x4x4_operator_scale_Float16x4x4_Float16_arg0;
-extern Function Float16x4x4_operator_scale_Float16x4x4_Float16;
+extern Variable Float16x4x4_operator_scale_Float16_arg0;
+extern Function Float16x4x4_operator_scale_Float16;
 
 
 #define DEF_Float32\
@@ -5781,7 +5781,7 @@ Function Int16x4_operator_lshasg_Int16x4;\
 Variable Int16x4_operator_rhsasg_Int16x4_arg0;\
 Function Int16x4_operator_rhsasg_Int16x4;\
 
-#define DEF_Float32x2x2_ctors\
+#define DEF_Float32x2x2\
 Variable Float32x2x2_Float32_2_ctor_arg0;\
 Variable Float32x2x2_Float32_2_ctor_arg1;\
 Function Float32x2x2_Float32_2_ctor;\
@@ -5791,8 +5791,6 @@ Variable Float32x2x2_Float32_4_ctor_arg1;\
 Variable Float32x2x2_Float32_4_ctor_arg2;\
 Variable Float32x2x2_Float32_4_ctor_arg3;\
 Function Float32x2x2_Float32_4_ctor;\
-
-#define DEF_Float32x2x2\
 Variable Float32x2x2_operator_index_Int32_arg0;\
 Function Float32x2x2_operator_index_Int32;\
 Variable Float32x2x2_operator_index_UInt32_arg0;\
@@ -5813,10 +5811,10 @@ Variable Float32x2x2_operator_subasg_Float32x2x2_arg0;\
 Function Float32x2x2_operator_subasg_Float32x2x2;\
 Variable Float32x2x2_operator_mulasg_Float32x2x2_arg0;\
 Function Float32x2x2_operator_mulasg_Float32x2x2;\
-Variable Float32x2x2_operator_scale_Float32x2x2_Float32_arg0;\
-Function Float32x2x2_operator_scale_Float32x2x2_Float32;\
+Variable Float32x2x2_operator_scale_Float32_arg0;\
+Function Float32x2x2_operator_scale_Float32;\
 
-#define DEF_Float32x2x3_ctors\
+#define DEF_Float32x2x3\
 Variable Float32x2x3_Float32_3_ctor_arg0;\
 Variable Float32x2x3_Float32_3_ctor_arg1;\
 Function Float32x2x3_Float32_3_ctor;\
@@ -5828,8 +5826,6 @@ Variable Float32x2x3_Float32_6_ctor_arg3;\
 Variable Float32x2x3_Float32_6_ctor_arg4;\
 Variable Float32x2x3_Float32_6_ctor_arg5;\
 Function Float32x2x3_Float32_6_ctor;\
-
-#define DEF_Float32x2x3\
 Variable Float32x2x3_operator_index_Int32_arg0;\
 Function Float32x2x3_operator_index_Int32;\
 Variable Float32x2x3_operator_index_UInt32_arg0;\
@@ -5850,10 +5846,10 @@ Variable Float32x2x3_operator_subasg_Float32x2x3_arg0;\
 Function Float32x2x3_operator_subasg_Float32x2x3;\
 Variable Float32x2x3_operator_mulasg_Float32x2x3_arg0;\
 Function Float32x2x3_operator_mulasg_Float32x2x3;\
-Variable Float32x2x3_operator_scale_Float32x2x3_Float32_arg0;\
-Function Float32x2x3_operator_scale_Float32x2x3_Float32;\
+Variable Float32x2x3_operator_scale_Float32_arg0;\
+Function Float32x2x3_operator_scale_Float32;\
 
-#define DEF_Float32x2x4_ctors\
+#define DEF_Float32x2x4\
 Variable Float32x2x4_Float32_4_ctor_arg0;\
 Variable Float32x2x4_Float32_4_ctor_arg1;\
 Function Float32x2x4_Float32_4_ctor;\
@@ -5867,8 +5863,6 @@ Variable Float32x2x4_Float32_8_ctor_arg5;\
 Variable Float32x2x4_Float32_8_ctor_arg6;\
 Variable Float32x2x4_Float32_8_ctor_arg7;\
 Function Float32x2x4_Float32_8_ctor;\
-
-#define DEF_Float32x2x4\
 Variable Float32x2x4_operator_index_Int32_arg0;\
 Function Float32x2x4_operator_index_Int32;\
 Variable Float32x2x4_operator_index_UInt32_arg0;\
@@ -5889,10 +5883,10 @@ Variable Float32x2x4_operator_subasg_Float32x2x4_arg0;\
 Function Float32x2x4_operator_subasg_Float32x2x4;\
 Variable Float32x2x4_operator_mulasg_Float32x2x4_arg0;\
 Function Float32x2x4_operator_mulasg_Float32x2x4;\
-Variable Float32x2x4_operator_scale_Float32x2x4_Float32_arg0;\
-Function Float32x2x4_operator_scale_Float32x2x4_Float32;\
+Variable Float32x2x4_operator_scale_Float32_arg0;\
+Function Float32x2x4_operator_scale_Float32;\
 
-#define DEF_Float32x3x2_ctors\
+#define DEF_Float32x3x2\
 Variable Float32x3x2_Float32_2_ctor_arg0;\
 Variable Float32x3x2_Float32_2_ctor_arg1;\
 Variable Float32x3x2_Float32_2_ctor_arg2;\
@@ -5905,8 +5899,6 @@ Variable Float32x3x2_Float32_6_ctor_arg3;\
 Variable Float32x3x2_Float32_6_ctor_arg4;\
 Variable Float32x3x2_Float32_6_ctor_arg5;\
 Function Float32x3x2_Float32_6_ctor;\
-
-#define DEF_Float32x3x2\
 Variable Float32x3x2_operator_index_Int32_arg0;\
 Function Float32x3x2_operator_index_Int32;\
 Variable Float32x3x2_operator_index_UInt32_arg0;\
@@ -5927,10 +5919,10 @@ Variable Float32x3x2_operator_subasg_Float32x3x2_arg0;\
 Function Float32x3x2_operator_subasg_Float32x3x2;\
 Variable Float32x3x2_operator_mulasg_Float32x3x2_arg0;\
 Function Float32x3x2_operator_mulasg_Float32x3x2;\
-Variable Float32x3x2_operator_scale_Float32x3x2_Float32_arg0;\
-Function Float32x3x2_operator_scale_Float32x3x2_Float32;\
+Variable Float32x3x2_operator_scale_Float32_arg0;\
+Function Float32x3x2_operator_scale_Float32;\
 
-#define DEF_Float32x3x3_ctors\
+#define DEF_Float32x3x3\
 Variable Float32x3x3_Float32_3_ctor_arg0;\
 Variable Float32x3x3_Float32_3_ctor_arg1;\
 Variable Float32x3x3_Float32_3_ctor_arg2;\
@@ -5946,8 +5938,6 @@ Variable Float32x3x3_Float32_9_ctor_arg6;\
 Variable Float32x3x3_Float32_9_ctor_arg7;\
 Variable Float32x3x3_Float32_9_ctor_arg8;\
 Function Float32x3x3_Float32_9_ctor;\
-
-#define DEF_Float32x3x3\
 Variable Float32x3x3_operator_index_Int32_arg0;\
 Function Float32x3x3_operator_index_Int32;\
 Variable Float32x3x3_operator_index_UInt32_arg0;\
@@ -5968,10 +5958,10 @@ Variable Float32x3x3_operator_subasg_Float32x3x3_arg0;\
 Function Float32x3x3_operator_subasg_Float32x3x3;\
 Variable Float32x3x3_operator_mulasg_Float32x3x3_arg0;\
 Function Float32x3x3_operator_mulasg_Float32x3x3;\
-Variable Float32x3x3_operator_scale_Float32x3x3_Float32_arg0;\
-Function Float32x3x3_operator_scale_Float32x3x3_Float32;\
+Variable Float32x3x3_operator_scale_Float32_arg0;\
+Function Float32x3x3_operator_scale_Float32;\
 
-#define DEF_Float32x3x4_ctors\
+#define DEF_Float32x3x4\
 Variable Float32x3x4_Float32_4_ctor_arg0;\
 Variable Float32x3x4_Float32_4_ctor_arg1;\
 Variable Float32x3x4_Float32_4_ctor_arg2;\
@@ -5990,8 +5980,6 @@ Variable Float32x3x4_Float32_12_ctor_arg9;\
 Variable Float32x3x4_Float32_12_ctor_arg10;\
 Variable Float32x3x4_Float32_12_ctor_arg11;\
 Function Float32x3x4_Float32_12_ctor;\
-
-#define DEF_Float32x3x4\
 Variable Float32x3x4_operator_index_Int32_arg0;\
 Function Float32x3x4_operator_index_Int32;\
 Variable Float32x3x4_operator_index_UInt32_arg0;\
@@ -6012,10 +6000,10 @@ Variable Float32x3x4_operator_subasg_Float32x3x4_arg0;\
 Function Float32x3x4_operator_subasg_Float32x3x4;\
 Variable Float32x3x4_operator_mulasg_Float32x3x4_arg0;\
 Function Float32x3x4_operator_mulasg_Float32x3x4;\
-Variable Float32x3x4_operator_scale_Float32x3x4_Float32_arg0;\
-Function Float32x3x4_operator_scale_Float32x3x4_Float32;\
+Variable Float32x3x4_operator_scale_Float32_arg0;\
+Function Float32x3x4_operator_scale_Float32;\
 
-#define DEF_Float32x4x2_ctors\
+#define DEF_Float32x4x2\
 Variable Float32x4x2_Float32_2_ctor_arg0;\
 Variable Float32x4x2_Float32_2_ctor_arg1;\
 Variable Float32x4x2_Float32_2_ctor_arg2;\
@@ -6031,8 +6019,6 @@ Variable Float32x4x2_Float32_8_ctor_arg5;\
 Variable Float32x4x2_Float32_8_ctor_arg6;\
 Variable Float32x4x2_Float32_8_ctor_arg7;\
 Function Float32x4x2_Float32_8_ctor;\
-
-#define DEF_Float32x4x2\
 Variable Float32x4x2_operator_index_Int32_arg0;\
 Function Float32x4x2_operator_index_Int32;\
 Variable Float32x4x2_operator_index_UInt32_arg0;\
@@ -6053,10 +6039,10 @@ Variable Float32x4x2_operator_subasg_Float32x4x2_arg0;\
 Function Float32x4x2_operator_subasg_Float32x4x2;\
 Variable Float32x4x2_operator_mulasg_Float32x4x2_arg0;\
 Function Float32x4x2_operator_mulasg_Float32x4x2;\
-Variable Float32x4x2_operator_scale_Float32x4x2_Float32_arg0;\
-Function Float32x4x2_operator_scale_Float32x4x2_Float32;\
+Variable Float32x4x2_operator_scale_Float32_arg0;\
+Function Float32x4x2_operator_scale_Float32;\
 
-#define DEF_Float32x4x3_ctors\
+#define DEF_Float32x4x3\
 Variable Float32x4x3_Float32_3_ctor_arg0;\
 Variable Float32x4x3_Float32_3_ctor_arg1;\
 Variable Float32x4x3_Float32_3_ctor_arg2;\
@@ -6076,8 +6062,6 @@ Variable Float32x4x3_Float32_12_ctor_arg9;\
 Variable Float32x4x3_Float32_12_ctor_arg10;\
 Variable Float32x4x3_Float32_12_ctor_arg11;\
 Function Float32x4x3_Float32_12_ctor;\
-
-#define DEF_Float32x4x3\
 Variable Float32x4x3_operator_index_Int32_arg0;\
 Function Float32x4x3_operator_index_Int32;\
 Variable Float32x4x3_operator_index_UInt32_arg0;\
@@ -6098,10 +6082,10 @@ Variable Float32x4x3_operator_subasg_Float32x4x3_arg0;\
 Function Float32x4x3_operator_subasg_Float32x4x3;\
 Variable Float32x4x3_operator_mulasg_Float32x4x3_arg0;\
 Function Float32x4x3_operator_mulasg_Float32x4x3;\
-Variable Float32x4x3_operator_scale_Float32x4x3_Float32_arg0;\
-Function Float32x4x3_operator_scale_Float32x4x3_Float32;\
+Variable Float32x4x3_operator_scale_Float32_arg0;\
+Function Float32x4x3_operator_scale_Float32;\
 
-#define DEF_Float32x4x4_ctors\
+#define DEF_Float32x4x4\
 Variable Float32x4x4_Float32_4_ctor_arg0;\
 Variable Float32x4x4_Float32_4_ctor_arg1;\
 Variable Float32x4x4_Float32_4_ctor_arg2;\
@@ -6125,8 +6109,6 @@ Variable Float32x4x4_Float32_16_ctor_arg13;\
 Variable Float32x4x4_Float32_16_ctor_arg14;\
 Variable Float32x4x4_Float32_16_ctor_arg15;\
 Function Float32x4x4_Float32_16_ctor;\
-
-#define DEF_Float32x4x4\
 Variable Float32x4x4_operator_index_Int32_arg0;\
 Function Float32x4x4_operator_index_Int32;\
 Variable Float32x4x4_operator_index_UInt32_arg0;\
@@ -6147,10 +6129,10 @@ Variable Float32x4x4_operator_subasg_Float32x4x4_arg0;\
 Function Float32x4x4_operator_subasg_Float32x4x4;\
 Variable Float32x4x4_operator_mulasg_Float32x4x4_arg0;\
 Function Float32x4x4_operator_mulasg_Float32x4x4;\
-Variable Float32x4x4_operator_scale_Float32x4x4_Float32_arg0;\
-Function Float32x4x4_operator_scale_Float32x4x4_Float32;\
+Variable Float32x4x4_operator_scale_Float32_arg0;\
+Function Float32x4x4_operator_scale_Float32;\
 
-#define DEF_Float16x2x2_ctors\
+#define DEF_Float16x2x2\
 Variable Float16x2x2_Float16_2_ctor_arg0;\
 Variable Float16x2x2_Float16_2_ctor_arg1;\
 Function Float16x2x2_Float16_2_ctor;\
@@ -6160,8 +6142,6 @@ Variable Float16x2x2_Float16_4_ctor_arg1;\
 Variable Float16x2x2_Float16_4_ctor_arg2;\
 Variable Float16x2x2_Float16_4_ctor_arg3;\
 Function Float16x2x2_Float16_4_ctor;\
-
-#define DEF_Float16x2x2\
 Variable Float16x2x2_operator_index_Int32_arg0;\
 Function Float16x2x2_operator_index_Int32;\
 Variable Float16x2x2_operator_index_UInt32_arg0;\
@@ -6182,10 +6162,10 @@ Variable Float16x2x2_operator_subasg_Float16x2x2_arg0;\
 Function Float16x2x2_operator_subasg_Float16x2x2;\
 Variable Float16x2x2_operator_mulasg_Float16x2x2_arg0;\
 Function Float16x2x2_operator_mulasg_Float16x2x2;\
-Variable Float16x2x2_operator_scale_Float16x2x2_Float16_arg0;\
-Function Float16x2x2_operator_scale_Float16x2x2_Float16;\
+Variable Float16x2x2_operator_scale_Float16_arg0;\
+Function Float16x2x2_operator_scale_Float16;\
 
-#define DEF_Float16x2x3_ctors\
+#define DEF_Float16x2x3\
 Variable Float16x2x3_Float16_3_ctor_arg0;\
 Variable Float16x2x3_Float16_3_ctor_arg1;\
 Function Float16x2x3_Float16_3_ctor;\
@@ -6197,8 +6177,6 @@ Variable Float16x2x3_Float16_6_ctor_arg3;\
 Variable Float16x2x3_Float16_6_ctor_arg4;\
 Variable Float16x2x3_Float16_6_ctor_arg5;\
 Function Float16x2x3_Float16_6_ctor;\
-
-#define DEF_Float16x2x3\
 Variable Float16x2x3_operator_index_Int32_arg0;\
 Function Float16x2x3_operator_index_Int32;\
 Variable Float16x2x3_operator_index_UInt32_arg0;\
@@ -6219,10 +6197,10 @@ Variable Float16x2x3_operator_subasg_Float16x2x3_arg0;\
 Function Float16x2x3_operator_subasg_Float16x2x3;\
 Variable Float16x2x3_operator_mulasg_Float16x2x3_arg0;\
 Function Float16x2x3_operator_mulasg_Float16x2x3;\
-Variable Float16x2x3_operator_scale_Float16x2x3_Float16_arg0;\
-Function Float16x2x3_operator_scale_Float16x2x3_Float16;\
+Variable Float16x2x3_operator_scale_Float16_arg0;\
+Function Float16x2x3_operator_scale_Float16;\
 
-#define DEF_Float16x2x4_ctors\
+#define DEF_Float16x2x4\
 Variable Float16x2x4_Float16_4_ctor_arg0;\
 Variable Float16x2x4_Float16_4_ctor_arg1;\
 Function Float16x2x4_Float16_4_ctor;\
@@ -6236,8 +6214,6 @@ Variable Float16x2x4_Float16_8_ctor_arg5;\
 Variable Float16x2x4_Float16_8_ctor_arg6;\
 Variable Float16x2x4_Float16_8_ctor_arg7;\
 Function Float16x2x4_Float16_8_ctor;\
-
-#define DEF_Float16x2x4\
 Variable Float16x2x4_operator_index_Int32_arg0;\
 Function Float16x2x4_operator_index_Int32;\
 Variable Float16x2x4_operator_index_UInt32_arg0;\
@@ -6258,10 +6234,10 @@ Variable Float16x2x4_operator_subasg_Float16x2x4_arg0;\
 Function Float16x2x4_operator_subasg_Float16x2x4;\
 Variable Float16x2x4_operator_mulasg_Float16x2x4_arg0;\
 Function Float16x2x4_operator_mulasg_Float16x2x4;\
-Variable Float16x2x4_operator_scale_Float16x2x4_Float16_arg0;\
-Function Float16x2x4_operator_scale_Float16x2x4_Float16;\
+Variable Float16x2x4_operator_scale_Float16_arg0;\
+Function Float16x2x4_operator_scale_Float16;\
 
-#define DEF_Float16x3x2_ctors\
+#define DEF_Float16x3x2\
 Variable Float16x3x2_Float16_2_ctor_arg0;\
 Variable Float16x3x2_Float16_2_ctor_arg1;\
 Variable Float16x3x2_Float16_2_ctor_arg2;\
@@ -6274,8 +6250,6 @@ Variable Float16x3x2_Float16_6_ctor_arg3;\
 Variable Float16x3x2_Float16_6_ctor_arg4;\
 Variable Float16x3x2_Float16_6_ctor_arg5;\
 Function Float16x3x2_Float16_6_ctor;\
-
-#define DEF_Float16x3x2\
 Variable Float16x3x2_operator_index_Int32_arg0;\
 Function Float16x3x2_operator_index_Int32;\
 Variable Float16x3x2_operator_index_UInt32_arg0;\
@@ -6296,10 +6270,10 @@ Variable Float16x3x2_operator_subasg_Float16x3x2_arg0;\
 Function Float16x3x2_operator_subasg_Float16x3x2;\
 Variable Float16x3x2_operator_mulasg_Float16x3x2_arg0;\
 Function Float16x3x2_operator_mulasg_Float16x3x2;\
-Variable Float16x3x2_operator_scale_Float16x3x2_Float16_arg0;\
-Function Float16x3x2_operator_scale_Float16x3x2_Float16;\
+Variable Float16x3x2_operator_scale_Float16_arg0;\
+Function Float16x3x2_operator_scale_Float16;\
 
-#define DEF_Float16x3x3_ctors\
+#define DEF_Float16x3x3\
 Variable Float16x3x3_Float16_3_ctor_arg0;\
 Variable Float16x3x3_Float16_3_ctor_arg1;\
 Variable Float16x3x3_Float16_3_ctor_arg2;\
@@ -6315,8 +6289,6 @@ Variable Float16x3x3_Float16_9_ctor_arg6;\
 Variable Float16x3x3_Float16_9_ctor_arg7;\
 Variable Float16x3x3_Float16_9_ctor_arg8;\
 Function Float16x3x3_Float16_9_ctor;\
-
-#define DEF_Float16x3x3\
 Variable Float16x3x3_operator_index_Int32_arg0;\
 Function Float16x3x3_operator_index_Int32;\
 Variable Float16x3x3_operator_index_UInt32_arg0;\
@@ -6337,10 +6309,10 @@ Variable Float16x3x3_operator_subasg_Float16x3x3_arg0;\
 Function Float16x3x3_operator_subasg_Float16x3x3;\
 Variable Float16x3x3_operator_mulasg_Float16x3x3_arg0;\
 Function Float16x3x3_operator_mulasg_Float16x3x3;\
-Variable Float16x3x3_operator_scale_Float16x3x3_Float16_arg0;\
-Function Float16x3x3_operator_scale_Float16x3x3_Float16;\
+Variable Float16x3x3_operator_scale_Float16_arg0;\
+Function Float16x3x3_operator_scale_Float16;\
 
-#define DEF_Float16x3x4_ctors\
+#define DEF_Float16x3x4\
 Variable Float16x3x4_Float16_4_ctor_arg0;\
 Variable Float16x3x4_Float16_4_ctor_arg1;\
 Variable Float16x3x4_Float16_4_ctor_arg2;\
@@ -6359,8 +6331,6 @@ Variable Float16x3x4_Float16_12_ctor_arg9;\
 Variable Float16x3x4_Float16_12_ctor_arg10;\
 Variable Float16x3x4_Float16_12_ctor_arg11;\
 Function Float16x3x4_Float16_12_ctor;\
-
-#define DEF_Float16x3x4\
 Variable Float16x3x4_operator_index_Int32_arg0;\
 Function Float16x3x4_operator_index_Int32;\
 Variable Float16x3x4_operator_index_UInt32_arg0;\
@@ -6381,10 +6351,10 @@ Variable Float16x3x4_operator_subasg_Float16x3x4_arg0;\
 Function Float16x3x4_operator_subasg_Float16x3x4;\
 Variable Float16x3x4_operator_mulasg_Float16x3x4_arg0;\
 Function Float16x3x4_operator_mulasg_Float16x3x4;\
-Variable Float16x3x4_operator_scale_Float16x3x4_Float16_arg0;\
-Function Float16x3x4_operator_scale_Float16x3x4_Float16;\
+Variable Float16x3x4_operator_scale_Float16_arg0;\
+Function Float16x3x4_operator_scale_Float16;\
 
-#define DEF_Float16x4x2_ctors\
+#define DEF_Float16x4x2\
 Variable Float16x4x2_Float16_2_ctor_arg0;\
 Variable Float16x4x2_Float16_2_ctor_arg1;\
 Variable Float16x4x2_Float16_2_ctor_arg2;\
@@ -6400,8 +6370,6 @@ Variable Float16x4x2_Float16_8_ctor_arg5;\
 Variable Float16x4x2_Float16_8_ctor_arg6;\
 Variable Float16x4x2_Float16_8_ctor_arg7;\
 Function Float16x4x2_Float16_8_ctor;\
-
-#define DEF_Float16x4x2\
 Variable Float16x4x2_operator_index_Int32_arg0;\
 Function Float16x4x2_operator_index_Int32;\
 Variable Float16x4x2_operator_index_UInt32_arg0;\
@@ -6422,10 +6390,10 @@ Variable Float16x4x2_operator_subasg_Float16x4x2_arg0;\
 Function Float16x4x2_operator_subasg_Float16x4x2;\
 Variable Float16x4x2_operator_mulasg_Float16x4x2_arg0;\
 Function Float16x4x2_operator_mulasg_Float16x4x2;\
-Variable Float16x4x2_operator_scale_Float16x4x2_Float16_arg0;\
-Function Float16x4x2_operator_scale_Float16x4x2_Float16;\
+Variable Float16x4x2_operator_scale_Float16_arg0;\
+Function Float16x4x2_operator_scale_Float16;\
 
-#define DEF_Float16x4x3_ctors\
+#define DEF_Float16x4x3\
 Variable Float16x4x3_Float16_3_ctor_arg0;\
 Variable Float16x4x3_Float16_3_ctor_arg1;\
 Variable Float16x4x3_Float16_3_ctor_arg2;\
@@ -6445,8 +6413,6 @@ Variable Float16x4x3_Float16_12_ctor_arg9;\
 Variable Float16x4x3_Float16_12_ctor_arg10;\
 Variable Float16x4x3_Float16_12_ctor_arg11;\
 Function Float16x4x3_Float16_12_ctor;\
-
-#define DEF_Float16x4x3\
 Variable Float16x4x3_operator_index_Int32_arg0;\
 Function Float16x4x3_operator_index_Int32;\
 Variable Float16x4x3_operator_index_UInt32_arg0;\
@@ -6467,10 +6433,10 @@ Variable Float16x4x3_operator_subasg_Float16x4x3_arg0;\
 Function Float16x4x3_operator_subasg_Float16x4x3;\
 Variable Float16x4x3_operator_mulasg_Float16x4x3_arg0;\
 Function Float16x4x3_operator_mulasg_Float16x4x3;\
-Variable Float16x4x3_operator_scale_Float16x4x3_Float16_arg0;\
-Function Float16x4x3_operator_scale_Float16x4x3_Float16;\
+Variable Float16x4x3_operator_scale_Float16_arg0;\
+Function Float16x4x3_operator_scale_Float16;\
 
-#define DEF_Float16x4x4_ctors\
+#define DEF_Float16x4x4\
 Variable Float16x4x4_Float16_4_ctor_arg0;\
 Variable Float16x4x4_Float16_4_ctor_arg1;\
 Variable Float16x4x4_Float16_4_ctor_arg2;\
@@ -6494,8 +6460,6 @@ Variable Float16x4x4_Float16_16_ctor_arg13;\
 Variable Float16x4x4_Float16_16_ctor_arg14;\
 Variable Float16x4x4_Float16_16_ctor_arg15;\
 Function Float16x4x4_Float16_16_ctor;\
-
-#define DEF_Float16x4x4\
 Variable Float16x4x4_operator_index_Int32_arg0;\
 Function Float16x4x4_operator_index_Int32;\
 Variable Float16x4x4_operator_index_UInt32_arg0;\
@@ -6516,8 +6480,8 @@ Variable Float16x4x4_operator_subasg_Float16x4x4_arg0;\
 Function Float16x4x4_operator_subasg_Float16x4x4;\
 Variable Float16x4x4_operator_mulasg_Float16x4x4_arg0;\
 Function Float16x4x4_operator_mulasg_Float16x4x4;\
-Variable Float16x4x4_operator_scale_Float16x4x4_Float16_arg0;\
-Function Float16x4x4_operator_scale_Float16x4x4_Float16;\
+Variable Float16x4x4_operator_scale_Float16_arg0;\
+Function Float16x4x4_operator_scale_Float16;\
 
 
 struct Texture1D : public Type
@@ -6608,7 +6572,7 @@ struct FunctionPtr : public Type
 {
     FunctionPtr();
 };
-extern FunctionPtr FunctionType;
+extern FunctionPtr FunctionPtrType;
 
 struct AccelerationStructure : public Type
 {
@@ -6798,6 +6762,7 @@ extern BorderColor BorderColorType;
 extern EnumExpression BorderColorTransparent;
 extern EnumExpression BorderColorBlack;
 extern EnumExpression BorderColorWhite;
+
 struct StencilState : public Type
 {
     StencilState();
@@ -6810,6 +6775,7 @@ extern Variable StencilStateCompareFunction;
 extern Variable StencilStateCompareMask;
 extern Variable StencilStateWriteMask;
 extern Variable StencilStateReference;
+
 struct RenderState : public Type
 {
     RenderState();
@@ -6851,6 +6817,7 @@ extern Variable RenderStateAlphaBlendOp;
 extern IntExpression RenderStateAlphaBlendOpArraySize;
 extern Variable RenderStateMask;
 extern IntExpression RenderStateMaskArraySize;
+
 struct SamplerState : public Type
 {
     SamplerState();
@@ -6873,5 +6840,26 @@ extern Variable SamplerStateMinLod;
 extern Variable SamplerStateMaxLod;
 extern Variable SamplerStateBorderColor;
 extern Variable SamplerStateUnnormalizedSamplingEnabled;
+
+struct Program : public Type
+{
+    Program();
+};
+extern Program ProgramType;
+extern Variable ProgramVertexShader;
+extern Variable ProgramHullShader;
+extern Variable ProgramDomainShader;
+extern Variable ProgramGeometryShader;
+extern Variable ProgramPixelShader;
+extern Variable ProgramComputeShader;
+extern Variable ProgramTaskShader;
+extern Variable ProgramMeshShader;
+extern Variable ProgramRayGenerationShader;
+extern Variable ProgramRayAnyHitShader;
+extern Variable ProgramRayClosestHitShader;
+extern Variable ProgramRayMissShader;
+extern Variable ProgramRayIntersectionShader;
+extern Variable ProgramRayCallableShader;
+extern Variable ProgramRenderState;
 } // namespace GPULang
 

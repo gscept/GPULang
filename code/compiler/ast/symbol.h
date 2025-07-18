@@ -35,7 +35,7 @@ struct Symbol
         AliasType,
         PreprocessorType,
         TypeType,
-        ProgramType,
+        ProgramInstanceType,
         RenderStateInstanceType,
         SamplerStateInstanceType,
         VariableType,

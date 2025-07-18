@@ -229,7 +229,7 @@ struct Compiler
     {
         uint8_t allowConstOverride = false;
 
-        Program::__Resolved::ProgramEntryType shaderType;
+        ProgramInstance::__Resolved::EntryType shaderType;
         
         union SideEffects
         {
@@ -284,8 +284,8 @@ struct Compiler
     bool ignoreReservedWords;
 
     RenderStateInstance defaultRenderState;
-    Variable shaderSwitches[Program::__Resolved::ProgramEntryType::NumProgramEntries];
-    BoolExpression shaderValueExpressions[Program::__Resolved::ProgramEntryType::NumProgramEntries];
+    Variable shaderSwitches[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
+    BoolExpression shaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
 
     Options options;
 

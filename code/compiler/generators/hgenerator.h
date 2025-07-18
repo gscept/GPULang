@@ -63,18 +63,18 @@ struct HeaderWriter
 struct HGenerator : public Generator
 {
     /// generate code
-    bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
+    bool Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc) override;
 
     /// generate function
-    void GenerateFunctionH(const Compiler* compiler, const Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer);
-    /// generate structure 
-    void GenerateStructureH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer);
+    void GenerateFunctionH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, ProgramInstance::__Resolved::EntryType shaderType, HeaderWriter& writer);
+    /// generate structure
+    void GenerateStructureH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer);
     /// generate variable
-    void GenerateVariableH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables);
+    void GenerateVariableH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables);
     /// generate enum
-    void GenerateEnumH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer);
+    void GenerateEnumH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer);
     /// generate program
-    void GenerateProgramH(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer);
+    void GenerateProgramH(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer);
 };
 
 } // namespace GPULang

@@ -45,7 +45,7 @@ Symbol::TypeToString() const
 {
     switch (this->symbolType)
     {
-    case ProgramType:
+    case ProgramInstanceType:
         return "program";
     case RenderStateInstanceType:
         return "render_state";

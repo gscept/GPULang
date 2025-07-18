@@ -28,7 +28,7 @@ namespace GPULang
 /**
 */
 bool 
-HGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+HGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     HeaderWriter writer;
 
@@ -47,8 +47,8 @@ HGenerator::Generate(const Compiler* compiler, const Program* program, const Pin
         case Symbol::EnumerationType:
             this->GenerateEnumH(compiler, nullptr, sym, writer);
             break;
-        case Symbol::ProgramType:
-            this->GenerateProgramH(compiler, static_cast<Program*>(sym), symbols, writer);
+        case Symbol::ProgramInstanceType:
+            this->GenerateProgramH(compiler, static_cast<ProgramInstance*>(sym), symbols, writer);
             break;
 
         }
@@ -129,7 +129,7 @@ std::array{
 /**
 */
 void 
-HGenerator::GenerateStructureH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateStructureH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = Symbol::Resolved(struc);
@@ -233,7 +233,7 @@ GenerateHInitializer(const Compiler* compiler, Expression* expr, HeaderWriter& w
 /**
 */
 void 
-HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
+HGenerator::GenerateVariableH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer, bool isShaderArgument, bool evaluateLinkDefinedVariables)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -255,7 +255,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
 
             Expression* init = var->valueExpression;
 
-            Program::__Resolved* progResolved = Symbol::Resolved(program);
+            ProgramInstance::__Resolved* progResolved = Symbol::Resolved(program);
             HeaderWriter tempWriter;
 
             auto constOverride = progResolved->constVarInitializationOverrides.Find(var);
@@ -370,7 +370,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
                 || varResolved->typeSymbol->category == Type::Category::PixelCacheCategory
                 )
             {
-                writer.WriteLine(Format("struct %s", varResolved->name.c_str()));
+                writer.WriteLine(Format("struct %s", var->name.c_str()));
                 writer.WriteLine("{");
                 writer.Indent();
                 writer.WriteLine(Format("static const unsigned int BINDING = %d;", varResolved->binding));
@@ -386,7 +386,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
         }
         else if (varResolved->storage == Storage::LinkDefined)
         {
-            writer.WriteLine(Format("struct %s", varResolved->name.c_str()));
+            writer.WriteLine(Format("struct %s", var->name.c_str()));
             writer.WriteLine("{");
             writer.Indent();
             writer.WriteLine(Format("static const unsigned int LINK_BINDING = %d;", varResolved->binding));
@@ -431,11 +431,11 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
             if (var->valueExpression != nullptr)
             {
                 GenerateHInitializer(compiler, var->valueExpression, initWriter);
-                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, varResolved->name.c_str(), arrayType.buf, initWriter.output.c_str()));
+                writer.WriteLine(Format("static const %s %s%s = %s;", type.buf, var->name.c_str(), arrayType.buf, initWriter.output.c_str()));
             }
             else
             {
-                writer.WriteLine(Format("static const %s %s%s;", type.buf, varResolved->name.c_str(), arrayType.buf));
+                writer.WriteLine(Format("static const %s %s%s;", type.buf, var->name.c_str(), arrayType.buf));
             }
         }
     }
@@ -445,7 +445,7 @@ HGenerator::GenerateVariableH(const Compiler* compiler, const Program* program, 
 /**
 */
 void 
-HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symbol* symbol, HeaderWriter& writer)
+HGenerator::GenerateEnumH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, HeaderWriter& writer)
 {
     Enumeration* enu = static_cast<Enumeration*>(symbol);
     Enumeration::__Resolved* enuResolved = Symbol::Resolved(enu);
@@ -478,7 +478,7 @@ HGenerator::GenerateEnumH(const Compiler* compiler, const Program* program, Symb
 /**
 */
 void 
-HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer)
+HGenerator::GenerateProgramH(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, HeaderWriter& writer)
 {
     writer.WriteLine(Format("struct %s", program->name.c_str()));
     writer.WriteLine("{");
@@ -494,12 +494,12 @@ HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, c
     }
 
     // Generate program mappings
-    Program::__Resolved* progRes = Symbol::Resolved(program); 
-    for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+    ProgramInstance::__Resolved* progRes = Symbol::Resolved(program);
+    for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
     {
         if (progRes->mappings[i] != nullptr)
         {
-            this->GenerateFunctionH(compiler, program, progRes->mappings[i], Program::__Resolved::ProgramEntryType(i), writer);
+            this->GenerateFunctionH(compiler, program, progRes->mappings[i], ProgramInstance::__Resolved::EntryType(i), writer);
         }
     }
     writer.Unindent();
@@ -510,7 +510,7 @@ HGenerator::GenerateProgramH(const Compiler* compiler, const Program* program, c
 /**
 */
 void 
-HGenerator::GenerateFunctionH(const Compiler* compiler, const Program* program, Symbol* symbol, Program::__Resolved::ProgramEntryType shaderType, HeaderWriter& writer)
+HGenerator::GenerateFunctionH(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, ProgramInstance::__Resolved::EntryType shaderType, HeaderWriter& writer)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
@@ -519,7 +519,7 @@ HGenerator::GenerateFunctionH(const Compiler* compiler, const Program* program, 
         writer.WriteLine(Format("struct %s", fun->name.c_str()));
         writer.WriteLine("{");
         writer.Indent();
-        if (shaderType == Program::__Resolved::VertexShader)
+        if (shaderType == ProgramInstance::__Resolved::VertexShader)
         {
             uint32_t offset = 0;
             for (Variable* arg : fun->parameters)
@@ -527,15 +527,15 @@ HGenerator::GenerateFunctionH(const Compiler* compiler, const Program* program, 
                 Variable::__Resolved* argRes = Symbol::Resolved(arg);
                 if (argRes->usageBits.flags.isEntryPointParameter && argRes->storage == Storage::Input)
                 {
-                    writer.WriteLine(Format("static const unsigned int %s_BINDING = %d;", argRes->name.c_str(), argRes->inBinding));
-                    writer.WriteLine(Format("static const unsigned int %s_OFFSET = %d;", argRes->name.c_str(), offset));
-                    writer.WriteLine(Format("static const unsigned int %s_SIZE = %d;", argRes->name.c_str(), argRes->byteSize));
+                    writer.WriteLine(Format("static const unsigned int %s_BINDING = %d;", arg->name.c_str(), argRes->inBinding));
+                    writer.WriteLine(Format("static const unsigned int %s_OFFSET = %d;", arg->name.c_str(), offset));
+                    writer.WriteLine(Format("static const unsigned int %s_SIZE = %d;", arg->name.c_str(), argRes->byteSize));
                     offset += argRes->byteSize;
                 }
             }
             writer.WriteLine(Format("static const uint32_t VERTEX_STRIDE = %d;", offset));
         }
-        if (shaderType == Program::__Resolved::ComputeShader)
+        if (shaderType == ProgramInstance::__Resolved::ComputeShader)
         {
             const Function::__Resolved::ExecutionModifiers& mods = funResolved->executionModifiers;
             writer.WriteLine(Format("static inline const unsigned int WORKGROUP_SIZE[] = { %d, %d, %d };", mods.computeShaderWorkGroupSize[0], mods.computeShaderWorkGroupSize[1], mods.computeShaderWorkGroupSize[2]));

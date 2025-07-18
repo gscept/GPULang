@@ -29,6 +29,9 @@ struct Variable : public Symbol
     _IMPLEMENT_ANNOTATIONS()
     _IMPLEMENT_ATTRIBUTES()
     
+    /// Resolve a variable as a parameter to a builtin function
+    void SetupAsBuiltinParameter();
+    
     struct __Resolved : Symbol::__Resolved
     {
         virtual ~__Resolved() {};
@@ -76,7 +79,6 @@ struct Variable : public Symbol
         /// type here is the fully qualified (pointer and array) type
         Type* typeSymbol = nullptr;
         Type::FullType type;
-        FixedString name;
 
         static const uint8_t NOT_BOUND = 0xF;
         uint32_t group;          // resource group

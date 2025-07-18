@@ -498,7 +498,7 @@ CallExpression::EvalStorage(Storage& out) const
 {
     // Function calls return values on the stack
     Function::__Resolved* funResolved = Symbol::Resolved(this->thisResolved->function);
-    out = funResolved->returnValueStorage;
+    out = Storage::Default;
     return true;
 }
 

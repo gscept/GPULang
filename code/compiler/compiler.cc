@@ -277,22 +277,22 @@ Compiler::Setup(const Compiler::Language& lang, Options options)
         if (this->options.emitTimings)
             this->performanceTimer.Print("Static setup intrinsics");
 
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::VertexShader].name = "gplIsVertexShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::HullShader].name = "gplIsHullShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::ComputeShader].name = "gplIsComputeShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayMissShader].name = "gplIsRayMissShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayCallableShader].name = "gplIsRayCallableShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
 
-        for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+        for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
         {
             this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
             Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
@@ -433,22 +433,22 @@ Compiler::Setup(Options options)
         if (this->options.emitTimings)
             this->performanceTimer.Print("Static setup intrinsics");
         
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::VertexShader].name = "gplIsVertexShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::HullShader].name = "gplIsHullShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::DomainShader].name = "gplIsDomainShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::GeometryShader].name = "gplIsGeometryShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::PixelShader].name = "gplIsPixelShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::ComputeShader].name = "gplIsComputeShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::TaskShader].name = "gplIsTaskShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::MeshShader].name = "gplIsMeshShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayMissShader].name = "gplIsRayMissShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
-        this->shaderSwitches[Program::__Resolved::ProgramEntryType::RayCallableShader].name = "gplIsRayCallableShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::VertexShader].name = "gplIsVertexShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::HullShader].name = "gplIsHullShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::DomainShader].name = "gplIsDomainShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::GeometryShader].name = "gplIsGeometryShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::PixelShader].name = "gplIsPixelShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::ComputeShader].name = "gplIsComputeShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::TaskShader].name = "gplIsTaskShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::MeshShader].name = "gplIsMeshShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayGenerationShader].name = "gplIsRayGenerationShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayClosestHitShader].name = "gplIsRayClosestHitShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayAnyHitShader].name = "gplIsRayAnyHitShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayMissShader].name = "gplIsRayMissShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayIntersectionShader].name = "gplIsRayIntersectionShader";
+        this->shaderSwitches[ProgramInstance::__Resolved::EntryType::RayCallableShader].name = "gplIsRayCallableShader";
         
-        for (uint32_t i = Program::__Resolved::ProgramEntryType::FirstShader; i <= Program::__Resolved::ProgramEntryType::LastShader; i++)
+        for (uint32_t i = ProgramInstance::__Resolved::EntryType::FirstShader; i <= ProgramInstance::__Resolved::EntryType::LastShader; i++)
         {
             this->shaderSwitches[i].type = Type::FullType{ ConstantString("b8") };
             Variable::__Resolved* res = Symbol::Resolved(&this->shaderSwitches[i]);
@@ -832,7 +832,7 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
 
     this->performanceTimer.Start();
 
-    std::vector<Program*> programs;
+    std::vector<ProgramInstance*> programs;
 
     // resolves parser state and runs validation
     for (this->symbolIterator = 0; this->symbolIterator < this->symbols.size; this->symbolIterator++)
@@ -841,8 +841,8 @@ Compiler::Compile(Effect* root, BinWriter& binaryWriter, TextWriter& headerWrite
         if (this->hasErrors)
             break;
 
-        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
-            programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramInstanceType)
+            programs.push_back((ProgramInstance*)this->symbols.data[this->symbolIterator]);
     }
 
     this->performanceTimer.Stop();
@@ -998,7 +998,7 @@ Compiler::Validate(Effect* root)
         if (this->hasErrors)
             break;
 
-        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramType)
+        if (this->symbols.data[this->symbolIterator]->symbolType == Symbol::SymbolType::ProgramInstanceType)
             programs.push_back((Program*)this->symbols.data[this->symbolIterator]);
     }
 
@@ -1190,10 +1190,10 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
     for (uint32_t i = 0; i < symbols.size(); i++)
     {
         Symbol* symbol = symbols[i];
-        if (symbol->symbolType == Symbol::ProgramType)
+        if (symbol->symbolType == Symbol::ProgramInstanceType)
         {
-            Program* program = static_cast<Program*>(symbol);
-            Program::__Resolved* resolved = static_cast<Program::__Resolved*>(symbol->resolved);
+            ProgramInstance* program = static_cast<ProgramInstance*>(symbol);
+            ProgramInstance::__Resolved* resolved = static_cast<ProgramInstance::__Resolved*>(symbol->resolved);
             Serialize::Program output;
             output.nameLength = symbol->name.len;
             output.nameOffset = dynamicDataBlob.WriteString(symbol->name.c_str(), symbol->name.len);
@@ -1206,7 +1206,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 #define WRITE_BINARY(x, y)\
     if (resolved->usage.flags.has##x)\
     {\
-        const std::vector<uint32_t>& binary = resolved->binaries[Program::__Resolved::x];\
+        const std::vector<uint32_t>& binary = resolved->binaries[ProgramInstance::__Resolved::x];\
         output.y.binaryOffset = dynamicDataBlob.Write((const char*)binary.data(), binary.size() * sizeof(uint32_t));\
         output.y.binaryLength = binary.size() * sizeof(uint32_t);\
     }\
@@ -1234,7 +1234,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             if (resolved->usage.flags.hasVertexShader)
             {
-                Function* vs = (Function*)resolved->mappings[Program::__Resolved::VertexShader];
+                Function* vs = (Function*)resolved->mappings[ProgramInstance::__Resolved::VertexShader];
                 Function::__Resolved* vsRes = Symbol::Resolved(vs);
                 output.vsInputsLength = 0;
                 output.vsInputsOffset = dynamicDataBlob.iterator;
@@ -1250,13 +1250,13 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             }
             if (resolved->usage.flags.hasHullShader)
             {
-                Function* hs = (Function*)resolved->mappings[Program::__Resolved::HullShader];
+                Function* hs = (Function*)resolved->mappings[ProgramInstance::__Resolved::HullShader];
                 Function::__Resolved* hsRes = Symbol::Resolved(hs);
                 output.patchSize = hsRes->executionModifiers.maxOutputVertices;
             }
             if (resolved->usage.flags.hasRayGenerationShader)
             {
-                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayGenerationShader];
+                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayGenerationShader];
                 Function::__Resolved* shRes = Symbol::Resolved(sh);
                 for (const Variable* var : sh->parameters)
                 {
@@ -1267,7 +1267,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             }
             if (resolved->usage.flags.hasRayAnyHitShader)
             {
-                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayAnyHitShader];
+                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayAnyHitShader];
                 Function::__Resolved* shRes = Symbol::Resolved(sh);
                 for (const Variable* var : sh->parameters)
                 {
@@ -1280,7 +1280,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             }
             if (resolved->usage.flags.hasRayClosestHitShader)
             {
-                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayClosestHitShader];
+                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayClosestHitShader];
                 Function::__Resolved* shRes = Symbol::Resolved(sh);
                 for (const Variable* var : sh->parameters)
                 {
@@ -1293,7 +1293,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             }
             if (resolved->usage.flags.hasRayMissShader)
             {
-                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayMissShader];
+                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayMissShader];
                 Function::__Resolved* shRes = Symbol::Resolved(sh);
                 for (const Variable* var : sh->parameters)
                 {
@@ -1304,7 +1304,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             }
             if (resolved->usage.flags.hasRayIntersectionShader)
             {
-                Function* sh = (Function*)resolved->mappings[Program::__Resolved::RayIntersectionShader];
+                Function* sh = (Function*)resolved->mappings[ProgramInstance::__Resolved::RayIntersectionShader];
                 Function::__Resolved* shRes = Symbol::Resolved(sh);
                 for (const Variable* var : sh->parameters)
                 {
@@ -1316,7 +1316,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
 
             if (resolved->usage.flags.hasRenderState)
             {
-                Symbol* renderState = resolved->mappings[Program::__Resolved::RenderState];
+                Symbol* renderState = resolved->mappings[ProgramInstance::__Resolved::RenderState];
                 output.renderStateNameLength = renderState->name.len;
                 output.renderStateNameOffset = dynamicDataBlob.WriteString(renderState->name.c_str(), renderState->name.len);
             }
@@ -1379,7 +1379,7 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.blendStatesCount = 8;
             for (int i = 0; i < 8; i++)
             {
-                const BlendState& state = resolved->blendStates[i];
+                const Serialization::BlendState& state = resolved->blendStates[i];
                 dynamicDataBlob.Write(state);
             }
 
@@ -1531,41 +1531,41 @@ Compiler::OutputBinary(const std::vector<Symbol*>& symbols, BinWriter& writer, S
             output.annotationsCount = var->annotations.size;
             output.annotationsOffset = dynamicDataBlob.Reserve<Serialize::Annotation>(var->annotations.size);
             if (resolved->usageBits.flags.isEntryPointParameter)
-                output.bindingScope = GPULang::BindingScope::VertexInput;
+                output.bindingScope = Serialization::BindingScope::VertexInput;
             else if (resolved->storage == Storage::Global)
-                output.bindingScope = GPULang::BindingScope::Constant;
+                output.bindingScope = Serialization::BindingScope::Constant;
             else
-                output.bindingScope = GPULang::BindingScope::Resource;
+                output.bindingScope = Serialization::BindingScope::Resource;
 
             if (resolved->type.IsMutable())
             {
                 if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
-                    output.bindingType = GPULang::BindingType::MutableBuffer;
+                    output.bindingType = Serialization::BindingType::MutableBuffer;
                 else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
-                    output.bindingType = GPULang::BindingType::MutableImage;
+                    output.bindingType = Serialization::BindingType::MutableImage;
             }
             else
             {
                 if (resolved->typeSymbol->category == Type::Category::UserTypeCategory)
-                    output.bindingType = GPULang::BindingType::Buffer;
+                    output.bindingType = Serialization::BindingType::Buffer;
                 else if (resolved->typeSymbol->category == Type::Category::TextureCategory)
                     if (resolved->type.sampled)
-                        output.bindingType = GPULang::BindingType::SampledImage;
+                        output.bindingType = Serialization::BindingType::SampledImage;
                     else
-                        output.bindingType = GPULang::BindingType::Image;
+                        output.bindingType = Serialization::BindingType::Image;
                 else if (resolved->typeSymbol->category == Type::Category::SamplerCategory)
-                    output.bindingType = GPULang::BindingType::Sampler;
+                    output.bindingType = Serialization::BindingType::Sampler;
                 else if (resolved->typeSymbol->category == Type::Category::ScalarCategory)
-                    output.bindingType = GPULang::BindingType::LinkDefined;
+                    output.bindingType = Serialization::BindingType::LinkDefined;
                 else if (resolved->typeSymbol->category == Type::Category::PixelCacheCategory)
-                    output.bindingType = GPULang::BindingType::PixelCache;
+                    output.bindingType = Serialization::BindingType::PixelCache;
                 else if (resolved->typeSymbol->category == Type::Category::AccelerationStructureCategory)
-                    output.bindingType = GPULang::BindingType::AccelerationStructure;
+                    output.bindingType = Serialization::BindingType::AccelerationStructure;
             }
 
             output.structTypeNameLength = 0;
             output.structTypeNameOffset = 0;
-            if (output.bindingType == GPULang::BindingType::Buffer || output.bindingType == GPULang::BindingType::MutableBuffer)
+            if (output.bindingType == Serialization::BindingType::Buffer || output.bindingType == Serialization::BindingType::MutableBuffer)
             {
                 output.structTypeNameLength = resolved->type.name.len;
                 output.structTypeNameOffset = dynamicDataBlob.WriteString(resolved->type.name.c_str(), resolved->type.name.len);

@@ -81,7 +81,7 @@ SymbolExpression::Resolve(Compiler* compiler)
         {
             // If lhs, it means it's a function assignment, therefore function pointer
             thisResolved->fullType = Type::FullType{ FUNCTION_TYPE };
-            thisResolved->type = &GPULang::FunctionType;
+            thisResolved->type = &GPULang::FunctionPtrType;
             return true;
         }
         else if (thisResolved->symbol->symbolType == Symbol::EnumerationType)
@@ -110,7 +110,7 @@ SymbolExpression::Resolve(Compiler* compiler)
             thisResolved->type = &RenderStateType;
             return true;
         }
-        else if (thisResolved->symbol->symbolType == Symbol::SamplerStateType)
+        else if (thisResolved->symbol->symbolType == Symbol::SamplerStateInstanceType)
         {
             thisResolved->fullType = Type::FullType{ ConstantString("sampler") };
             thisResolved->fullType.modifiers.push_back(Type::FullType::Modifier::Pointer);
@@ -263,7 +263,7 @@ SymbolExpression::EvalStorage(Storage& out) const
                 out = varResolved->storage;
                 return true;
             }
-            case SamplerStateType:
+            case SamplerStateInstanceType:
             {
                 out = Storage::Uniform;
                 return true;

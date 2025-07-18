@@ -160,38 +160,38 @@ GLSLGenerator::~GLSLGenerator()
 /**
 */
 bool
-GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
+GLSLGenerator::Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc)
 {
     SetupDefaultResources();
 
-    static const std::unordered_map<Program::__Resolved::ProgramEntryType, EShLanguage> entryToGlslangShaderMappings =
+    static const std::unordered_map<ProgramInstance::__Resolved::EntryType, EShLanguage> entryToGlslangShaderMappings =
     {
-        { Program::__Resolved::VertexShader, EShLangVertex },
-        { Program::__Resolved::HullShader, EShLangTessControl },
-        { Program::__Resolved::DomainShader, EShLangTessEvaluation },
-        { Program::__Resolved::GeometryShader, EShLangGeometry },
-        { Program::__Resolved::PixelShader, EShLangFragment },
-        { Program::__Resolved::ComputeShader, EShLangCompute },
-        { Program::__Resolved::TaskShader, EShLangTaskNV },
-        { Program::__Resolved::MeshShader, EShLangMeshNV },
-        { Program::__Resolved::RayGenerationShader, EShLangRayGen },
-        { Program::__Resolved::RayMissShader, EShLangMiss },
-        { Program::__Resolved::RayClosestHitShader, EShLangClosestHit },
-        { Program::__Resolved::RayAnyHitShader, EShLangAnyHit },
-        { Program::__Resolved::RayIntersectionShader, EShLangIntersect },
-        { Program::__Resolved::RayCallableShader, EShLangCallable },
+        { ProgramInstance::__Resolved::VertexShader, EShLangVertex },
+        { ProgramInstance::__Resolved::HullShader, EShLangTessControl },
+        { ProgramInstance::__Resolved::DomainShader, EShLangTessEvaluation },
+        { ProgramInstance::__Resolved::GeometryShader, EShLangGeometry },
+        { ProgramInstance::__Resolved::PixelShader, EShLangFragment },
+        { ProgramInstance::__Resolved::ComputeShader, EShLangCompute },
+        { ProgramInstance::__Resolved::TaskShader, EShLangTaskNV },
+        { ProgramInstance::__Resolved::MeshShader, EShLangMeshNV },
+        { ProgramInstance::__Resolved::RayGenerationShader, EShLangRayGen },
+        { ProgramInstance::__Resolved::RayMissShader, EShLangMiss },
+        { ProgramInstance::__Resolved::RayClosestHitShader, EShLangClosestHit },
+        { ProgramInstance::__Resolved::RayAnyHitShader, EShLangAnyHit },
+        { ProgramInstance::__Resolved::RayIntersectionShader, EShLangIntersect },
+        { ProgramInstance::__Resolved::RayCallableShader, EShLangCallable },
     };
 
-    Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(program->resolved);
+    ProgramInstance::__Resolved* progResolved = static_cast<ProgramInstance::__Resolved*>(program->resolved);
     std::vector<glslang::TShader*> shaders;
-    for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
+    for (uint32_t mapping = 0; mapping < ProgramInstance::__Resolved::EntryType::NumProgramEntries; mapping++)
     {
         Symbol* object = progResolved->mappings[mapping];
         if (object == nullptr)
             continue;
 
         // for each shader, generate code and use it as a binary output
-        if (mapping >= Program::__Resolved::VertexShader && mapping <= Program::__Resolved::RayIntersectionShader)
+        if (mapping >= ProgramInstance::__Resolved::VertexShader && mapping <= ProgramInstance::__Resolved::RayIntersectionShader)
         {
             std::string code;
             this->mainFunction = static_cast<Function*>(object);
@@ -211,9 +211,9 @@ GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const 
                 }
             }
 
-            if (!map_contains(entryToGlslangShaderMappings, (Program::__Resolved::ProgramEntryType)mapping))
+            if (!map_contains(entryToGlslangShaderMappings, (ProgramInstance::__Resolved::EntryType)mapping))
             {
-                this->Error(Format("Internal error, no known mapping of shader '%s'", Program::__Resolved::EntryTypeToString((Program::__Resolved::ProgramEntryType)mapping).c_str()));
+                this->Error(Format("Internal error, no known mapping of shader '%s'", ProgramInstance::__Resolved::EntryTypeToString((ProgramInstance::__Resolved::EntryType)mapping).c_str()));
                 return false;
             }
 
@@ -252,7 +252,7 @@ GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const 
 #define __VULKAN__\n";
             }
 
-            glslang::TShader* shaderObject = new glslang::TShader(entryToGlslangShaderMappings.at((Program::__Resolved::ProgramEntryType)mapping));
+            glslang::TShader* shaderObject = new glslang::TShader(entryToGlslangShaderMappings.at((ProgramInstance::__Resolved::EntryType)mapping));
             const char* sources[] = { header.c_str(), code.c_str() };
             int lengths[] = { (int)header.length(), (int)code.length() };
             shaderObject->setStringsWithLengths(sources, lengths, 2);
@@ -319,7 +319,7 @@ GLSLGenerator::Generate(const Compiler* compiler, const Program* program, const 
     optimizer->RegisterPerformancePasses();
 
 
-    for (Program::__Resolved::ProgramEntryType i = Program::__Resolved::VertexShader; i < Program::__Resolved::RayIntersectionShader; i = (Program::__Resolved::ProgramEntryType)((int)i + 1))
+    for (ProgramInstance::__Resolved::EntryType i = ProgramInstance::__Resolved::VertexShader; i < ProgramInstance::__Resolved::RayIntersectionShader; i = (ProgramInstance::__Resolved::EntryType)((int)i + 1))
     {
         glslang::TIntermediate* intermediate = programObject->getIntermediate(entryToGlslangShaderMappings.at(i));
         if (intermediate != NULL)
@@ -786,11 +786,11 @@ GenerateVariableGLSL(const Compiler* compiler, Variable* var, std::string& outCo
     {
         std::string value;
         GenerateExpressionGLSL(compiler, var->valueExpression, value);
-        outCode.append(Format("%s%s %s%s = %s", indentation.c_str(), type.c_str(), varResolved->name.c_str(), arrays.c_str(), value.c_str()));
+        outCode.append(Format("%s%s %s%s = %s", indentation.c_str(), type.c_str(), var->name.c_str(), arrays.c_str(), value.c_str()));
     }
     else
     {
-        outCode.append(Format("%s%s %s%s", indentation.c_str(), type.c_str(), varResolved->name.c_str(), arrays.c_str()));
+        outCode.append(Format("%s%s %s%s", indentation.c_str(), type.c_str(), var->name.c_str(), arrays.c_str()));
     }
 }
 
@@ -1024,12 +1024,12 @@ GenerateStatementGLSL(const Compiler* compiler, Statement* statement, std::strin
 /**
 */
 void 
-GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateFunctionSPIRV(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, std::string& outCode)
 {
     Function* fun = static_cast<Function*>(symbol);
     Function::__Resolved* funResolved = Symbol::Resolved(fun);
 
-    Program::__Resolved* progResolved = Symbol::Resolved(program);
+    ProgramInstance::__Resolved* progResolved = Symbol::Resolved(program);
 
 
     bool isMain = fun == this->mainFunction;
@@ -1184,7 +1184,7 @@ GenerateAlignedVariables(const Compiler* compiler, Structure* struc, StructureAl
 /**
 */
 void 
-GLSLGenerator::GenerateStructureSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode)
+GLSLGenerator::GenerateStructureSPIRV(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, std::string& outCode)
 {
     Structure* struc = static_cast<Structure*>(symbol);
     Structure::__Resolved* strucResolved = static_cast<Structure::__Resolved*>(struc->resolved);
@@ -1213,7 +1213,7 @@ GLSLGenerator::GenerateStructureSPIRV(const Compiler* compiler, const Program* p
 /**
 */
 void 
-GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
+GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const ProgramInstance* program, Symbol* symbol, std::string& outCode, bool isShaderArgument)
 {
     Variable* var = static_cast<Variable*>(symbol);
     Variable::__Resolved* varResolved = static_cast<Variable::__Resolved*>(var->resolved);
@@ -1233,7 +1233,7 @@ GLSLGenerator::GenerateVariableSPIRV(const Compiler* compiler, const Program* pr
         type.name = it->second.c_str();
     }
 
-    const FixedString& name = varResolved->name;
+    const FixedString& name = var->name;
     std::string arraySize = "";
     for (int i = varResolved->type.modifierValues.size()-1; i >= 0; i--)
     {

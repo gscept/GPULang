@@ -1,7 +1,10 @@
 #pragma once
 //------------------------------------------------------------------------------
 /**
-    AST for Program
+    AST for a program instance
+ 
+    A program instance is a linker assembly object which combines a set of shaders
+    and an optional render state which can trivially be lowered to a pipeline object at runtime.
 
     (C) 2021 Individual contributors, see AUTHORS file
 */
@@ -17,12 +20,12 @@ namespace GPULang
 {
 
 struct Function;
-struct Program : public Symbol
+struct ProgramInstance : public Symbol
 {
     /// constructor
-    Program();
+    ProgramInstance();
     /// destructor
-    virtual ~Program();
+    virtual ~ProgramInstance();
 
     FixedArray<Expression*> entries;
     _IMPLEMENT_ANNOTATIONS()
@@ -31,7 +34,7 @@ struct Program : public Symbol
     {
         virtual ~__Resolved() {};
         Type* typeSymbol;
-        enum ProgramEntryType
+        enum EntryType
         {
             InvalidProgramEntryType,
             VertexShader,
@@ -56,9 +59,9 @@ struct Program : public Symbol
         };
 
         /// convert from string to program entry type
-        static const ProgramEntryType StringToEntryType(const TransientString& str);
+        static const EntryType StringToEntryType(const TransientString& str);
         /// convert from mapping to string
-        static const ConstantString& EntryTypeToString(const ProgramEntryType type);
+        static const ConstantString& EntryTypeToString(const EntryType type);
 
         union ProgramUsage
         {
@@ -97,33 +100,33 @@ struct Program : public Symbol
             } flags;
             uint32_t bits;
         } effects;
-        Symbol* mappings[ProgramEntryType::NumProgramEntries];
-        std::vector<uint32_t> binaries[ProgramEntryType::NumProgramEntries];
+        Symbol* mappings[EntryType::NumProgramEntries];
+        std::vector<uint32_t> binaries[EntryType::NumProgramEntries];
         PinnedMap<Function*, Function*> functionOverrides = 0xFFF;
         PinnedMap<Variable*, Expression*> constVarInitializationOverrides = 0xFFF;
     };
 
 };
 
-constexpr StaticMap programEntryTypeLookup =
+constexpr StaticMap programInstanceEntryTypeLookup =
 std::array{
-    std::pair{ ConstantString("VertexShader"), Program::__Resolved::VertexShader }
-    , std::pair{ ConstantString("HullShader"), Program::__Resolved::HullShader }
-    , std::pair{ ConstantString("TessellationControlShader"), Program::__Resolved::HullShader }
-    , std::pair{ ConstantString("DomainShader"), Program::__Resolved::DomainShader }
-    , std::pair{ ConstantString("TessellationEvaluationShader"), Program::__Resolved::DomainShader }
-    , std::pair{ ConstantString("GeometryShader"), Program::__Resolved::GeometryShader }
-    , std::pair{ ConstantString("PixelShader"), Program::__Resolved::PixelShader }
-    , std::pair{ ConstantString("ComputeShader"), Program::__Resolved::ComputeShader }
-    , std::pair{ ConstantString("TaskShader"), Program::__Resolved::TaskShader }
-    , std::pair{ ConstantString("MeshShader"), Program::__Resolved::MeshShader }
-    , std::pair{ ConstantString("RayGenerationShader"), Program::__Resolved::RayGenerationShader }
-    , std::pair{ ConstantString("RayMissShader"), Program::__Resolved::RayMissShader }
-    , std::pair{ ConstantString("RayClosestHitShader"), Program::__Resolved::RayClosestHitShader }
-    , std::pair{ ConstantString("RayAnyHitShader"), Program::__Resolved::RayAnyHitShader }
-    , std::pair{ ConstantString("RayIntersectionShader"), Program::__Resolved::RayIntersectionShader }
-    , std::pair{ ConstantString("RayCallableShader"), Program::__Resolved::RayCallableShader }
-    , std::pair{ ConstantString("RenderState"), Program::__Resolved::RenderState }
+    std::pair{ ConstantString("VertexShader"), ProgramInstance::__Resolved::VertexShader }
+    , std::pair{ ConstantString("HullShader"), ProgramInstance::__Resolved::HullShader }
+    , std::pair{ ConstantString("TessellationControlShader"), ProgramInstance::__Resolved::HullShader }
+    , std::pair{ ConstantString("DomainShader"), ProgramInstance::__Resolved::DomainShader }
+    , std::pair{ ConstantString("TessellationEvaluationShader"), ProgramInstance::__Resolved::DomainShader }
+    , std::pair{ ConstantString("GeometryShader"), ProgramInstance::__Resolved::GeometryShader }
+    , std::pair{ ConstantString("PixelShader"), ProgramInstance::__Resolved::PixelShader }
+    , std::pair{ ConstantString("ComputeShader"), ProgramInstance::__Resolved::ComputeShader }
+    , std::pair{ ConstantString("TaskShader"), ProgramInstance::__Resolved::TaskShader }
+    , std::pair{ ConstantString("MeshShader"), ProgramInstance::__Resolved::MeshShader }
+    , std::pair{ ConstantString("RayGenerationShader"), ProgramInstance::__Resolved::RayGenerationShader }
+    , std::pair{ ConstantString("RayMissShader"), ProgramInstance::__Resolved::RayMissShader }
+    , std::pair{ ConstantString("RayClosestHitShader"), ProgramInstance::__Resolved::RayClosestHitShader }
+    , std::pair{ ConstantString("RayAnyHitShader"), ProgramInstance::__Resolved::RayAnyHitShader }
+    , std::pair{ ConstantString("RayIntersectionShader"), ProgramInstance::__Resolved::RayIntersectionShader }
+    , std::pair{ ConstantString("RayCallableShader"), ProgramInstance::__Resolved::RayCallableShader }
+    , std::pair{ ConstantString("RenderState"), ProgramInstance::__Resolved::RenderState }
 };
 
 

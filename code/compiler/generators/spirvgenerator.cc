@@ -41,6 +41,7 @@
 #include "ast/statements/whilestatement.h"
 
 #include "generated/types.h"
+#include "generated/intrinsics.h"
 #include "ast/intrinsics.h"
 
 #include "spirv-tools/libspirv.h"
@@ -54,8 +55,6 @@
 #include "ast/samplerstate.h"
 #include "ast/expressions/arrayinitializerexpression.h"
 #include "ast/expressions/floatvecexpression.h"
-
-#include "generated/types_spirv.h"
 
 namespace GPULang
 {
@@ -374,6 +373,9 @@ SPV_INSTRUCTION(OpConvertFToU, 109, 4, false)
 SPV_INSTRUCTION(OpConvertFToS, 110, 4, false)
 SPV_INSTRUCTION(OpConvertSToF, 111, 4, false)
 SPV_INSTRUCTION(OpConvertUToF, 112, 4, false)
+SPV_INSTRUCTION(OpUConvert, 113, 4, false)
+SPV_INSTRUCTION(OpSConvert, 114, 4, false)
+SPV_INSTRUCTION(OpFConvert, 115, 4, false)
 SPV_INSTRUCTION(OpBitcast, 124, 4, false)
 SPV_INSTRUCTION(OpSNegate, 126, 4, false)
 SPV_INSTRUCTION(OpFNegate, 127, 4, false)
@@ -2440,7 +2442,6 @@ else\
     switch (info.type)
     {
         case ConstantCreationInfo::Type::UInt32:
-        case ConstantCreationInfo::Type::UInt:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::UInt, 1);
             if (vectorSize > 1)
@@ -2459,7 +2460,6 @@ else\
             break;
         }
         case ConstantCreationInfo::Type::Int32:
-        case ConstantCreationInfo::Type::Int:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Int, 1);
             if (vectorSize > 1)
@@ -2478,7 +2478,6 @@ else\
             break;
         }
         case ConstantCreationInfo::Type::Float32:
-        case ConstantCreationInfo::Type::Float:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Float, 1);
             if (vectorSize > 1)
@@ -2497,7 +2496,6 @@ else\
             break;
         }
         case ConstantCreationInfo::Type::Bool8:
-        case ConstantCreationInfo::Type::Bool:
         {
             baseType = GeneratePODTypeSPIRV(compiler, generator, TypeCode::Bool, 1);
             if (vectorSize > 1)
@@ -2973,6 +2971,7 @@ GenerateCompositeInsertSPIRV(const Compiler* compiler, SPIRVGenerator* generator
     return SPIRVResult(res, returnType, true );
 }
 
+#include "generated/spirv.h"
 
 //------------------------------------------------------------------------------
 /**

@@ -164,9 +164,9 @@ fips_dir(generated)
         intrinsics.cc
         intrinsics.h
         swizzle.h
+        spirv.h
         types.cc
         types.h
-        types_spirv.h
     )
 
 fips_deps(gpulang_util antlr4 glslang)

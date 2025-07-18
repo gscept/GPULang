@@ -732,7 +732,7 @@ public:
 
   class  ProgramContext : public antlr4::ParserRuleContext {
   public:
-    Program* sym;
+    ProgramInstance* sym;
     GPULangParser::AnnotationContext *annotationContext = nullptr;
     antlr4::Token *name = nullptr;
     GPULangParser::ExpressionContext *assignment = nullptr;

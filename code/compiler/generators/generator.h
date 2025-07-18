@@ -24,7 +24,7 @@ struct Function;
 struct Generator
 {
     /// generate code
-    virtual bool Generate(const Compiler* compiler, const Program* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc);
+    virtual bool Generate(const Compiler* compiler, const ProgramInstance* program, const PinnedArray<Symbol*>& symbols, std::function<void(const std::string&, const std::string&)> writerFunc);
 
     /// produce error in compiler with explicit file, line and column
     void Error(const std::string& msg);
@@ -34,7 +34,7 @@ struct Generator
     PinnedArray<FixedString> messages = 0xFFF;
     bool hasErrors = false;
 
-    BoolExpression shaderValueExpressions[Program::__Resolved::ProgramEntryType::NumProgramEntries];
+    BoolExpression shaderValueExpressions[ProgramInstance::__Resolved::EntryType::NumProgramEntries];
     std::vector<std::string> targetLanguageFiles;
     Function* mainFunction;
 };

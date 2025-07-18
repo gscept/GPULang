@@ -9,20 +9,20 @@ namespace GPULang
 //------------------------------------------------------------------------------
 /**
 */
-Program::Program()
+ProgramInstance::ProgramInstance()
 {
-    this->symbolType = ProgramType;
-    this->resolved = Alloc<Program::__Resolved>();
-    Program::__Resolved* progResolved = static_cast<Program::__Resolved*>(this->resolved);
+    this->symbolType = ProgramInstanceType;
+    this->resolved = Alloc<ProgramInstance::__Resolved>();
+    ProgramInstance::__Resolved* progResolved = static_cast<ProgramInstance::__Resolved*>(this->resolved);
     progResolved->usage.bits = 0x0;
-    for (uint32_t i = 0; i < Program::__Resolved::ProgramEntryType::NumProgramEntries; i++)
+    for (uint32_t i = 0; i < ProgramInstance::__Resolved::EntryType::NumProgramEntries; i++)
         progResolved->mappings[i] = nullptr;
 }
 
 //------------------------------------------------------------------------------
 /**
 */
-Program::~Program()
+ProgramInstance::~ProgramInstance()
 {
     this->CleanupAnnotations();
     for (auto entry : this->entries)
@@ -34,14 +34,14 @@ static ConstantString NoProgramEntry = "";
 //------------------------------------------------------------------------------
 /**
 */
-const Program::__Resolved::ProgramEntryType 
-Program::__Resolved::StringToEntryType(const TransientString& str)
+const ProgramInstance::__Resolved::EntryType
+ProgramInstance::__Resolved::StringToEntryType(const TransientString& str)
 {
-    auto it = programEntryTypeLookup.Find(str);
-    if (it != programEntryTypeLookup.end())
+    auto it = programInstanceEntryTypeLookup.Find(str);
+    if (it != programInstanceEntryTypeLookup.end())
         return it->second;
     else
-        return Program::__Resolved::ProgramEntryType::InvalidProgramEntryType;
+        return ProgramInstance::__Resolved::EntryType::InvalidProgramEntryType;
 
 }
 
@@ -49,9 +49,9 @@ Program::__Resolved::StringToEntryType(const TransientString& str)
 /**
 */
 const ConstantString&
-Program::__Resolved::EntryTypeToString(const ProgramEntryType type)
+ProgramInstance::__Resolved::EntryTypeToString(const EntryType type)
 {
-    for (auto& it : programEntryTypeLookup)
+    for (auto& it : programInstanceEntryTypeLookup)
     {
         if (it.second == type)
             return it.first;

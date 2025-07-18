@@ -45,12 +45,14 @@ struct Function : public Symbol
 
     /// returns true if functions are compatible
     bool IsCompatible(Function* otherFunction, bool checkReturnType = false);
+    
+    /// Resolve as a builtin (intrinsic or type constructor) function
+    void SetupAsBuiltin(const FixedArray<Variable*>& parameters);
 
     struct __Resolved : public Symbol::__Resolved
     {
         virtual ~__Resolved() { this->visibleSymbols.data.Invalidate(); };
         Type* returnTypeSymbol = nullptr;
-        Storage returnValueStorage;
         Scope scope;
 
         FixedString name;

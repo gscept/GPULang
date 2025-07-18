@@ -604,7 +604,7 @@ function
     ;
 
 program
-    returns[ Program* sym ]
+    returns[ ProgramInstance* sym ]
     @init
     {
         $sym = nullptr;
@@ -612,7 +612,7 @@ program
         TransientArray<Annotation*> annotations(32);
     }:
     (annotation { if (annotations.Full()) { throw IndexOutOfBoundsException("Maximum of 32 annotations reached"); } annotations.Append(std::move($annotation.annot)); })*
-    'program' { $sym = Alloc<Program>(); } name = IDENTIFIER { $sym->location = SetupFile(); }
+    'program' { $sym = Alloc<ProgramInstance>(); } name = IDENTIFIER { $sym->location = SetupFile(); }
     '{'
         ( assignment = expression { if (entries.Full()) throw IndexOutOfBoundsException("Maximum of 32 entries reached"); entries.Append($assignment.tree); } ';' )*
     '}'

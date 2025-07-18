@@ -3645,7 +3645,7 @@ GPULangParser::ProgramContext* GPULangParser::program() {
     }
     setState(557);
     match(GPULangParser::T__10);
-     antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  Alloc<Program>(); 
+     antlrcpp::downCast<ProgramContext *>(_localctx)->sym =  Alloc<ProgramInstance>(); 
     setState(559);
     antlrcpp::downCast<ProgramContext *>(_localctx)->name = match(GPULangParser::IDENTIFIER);
      _localctx->sym->location = SetupFile(); 

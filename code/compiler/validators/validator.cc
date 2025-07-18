@@ -174,7 +174,7 @@ Validator::Resolve(Compiler* compiler, Symbol* symbol)
     case Symbol::SymbolType::AliasType:
         return this->ResolveAlias(compiler, symbol);
         break;
-    case Symbol::SymbolType::ProgramType:
+    case Symbol::SymbolType::ProgramInstanceType:
         return this->ResolveProgram(compiler, symbol);
         break;
     case Symbol::SymbolType::RenderStateInstanceType:
@@ -925,7 +925,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
     }
 
     // Push temporary scope to evaluate parameters
-    funResolved->scope.owningSymbol = fun;
     compiler->PushScope(&funResolved->scope);
 
     // run validation on parameters
@@ -937,7 +936,6 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         varResolved->usageBits.flags.isParameter = true;
         varResolved->usageBits.flags.isEntryPointParameter = funResolved->isEntryPoint;
         this->ResolveVariable(compiler, var);
-
 
         if (varResolved->storage == Storage::RayHitAttribute)
         {
@@ -964,12 +962,12 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
         Variable::__Resolved* varResolved = Symbol::Resolved(var);
         if (StorageRequiresSignature(varResolved->storage))
         {
-            paramListNamed.Concatenate<true>(StorageToString(varResolved->storage), varResolved->name, ":", varResolved->type.ToString());
+            paramListNamed.Concatenate<true>(StorageToString(varResolved->storage), var->name, ":", varResolved->type.ToString());
             paramList.Concatenate<true>(StorageToString(varResolved->storage), varResolved->type.ToString());
         }
         else
         {
-            paramListNamed.Concatenate<true>(varResolved->name, ":", varResolved->type.ToString());
+            paramListNamed.Concatenate<true>(var->name, ":", varResolved->type.ToString());
             paramList.Append(varResolved->type.ToString());
         }
 
@@ -1135,8 +1133,8 @@ Validator::ResolveFunction(Compiler* compiler, Symbol* symbol)
 bool 
 Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 {
-    Program* prog = static_cast<Program*>(symbol);
-    Program::__Resolved* progResolved = Symbol::Resolved(prog);
+    ProgramInstance* prog = static_cast<ProgramInstance*>(symbol);
+    ProgramInstance::__Resolved* progResolved = Symbol::Resolved(prog);
 
     Type* progType = &ProgramType;
     Compiler::LocalScope scope = Compiler::LocalScope::MakeLocalScope(compiler, &progType->scope);
@@ -1159,8 +1157,8 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
         }
 
         TransientString entryStr = assignEntry->left->EvalString();
-        Program::__Resolved::ProgramEntryType entryType = Program::__Resolved::StringToEntryType(entryStr);
-        if (entryType == Program::__Resolved::InvalidProgramEntryType)
+        ProgramInstance::__Resolved::EntryType entryType = ProgramInstance::__Resolved::StringToEntryType(entryStr);
+        if (entryType == ProgramInstance::__Resolved::InvalidProgramEntryType)
         {
             Symbol* overrideSymbol = compiler->GetSymbol(entryStr);
             if (overrideSymbol->symbolType == Symbol::FunctionType)
@@ -1257,7 +1255,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 progResolved->constVarInitializationOverrides.Insert(var, assignEntry->right);
             }
         }
-        else if (entryType == Program::__Resolved::RenderState)
+        else if (entryType == ProgramInstance::__Resolved::RenderState)
         {
             FixedString sym;
             if (!assignEntry->right->EvalSymbol(sym))
@@ -1301,56 +1299,56 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
 
             switch (entryType)
             {
-            case Program::__Resolved::VertexShader:
+            case ProgramInstance::__Resolved::VertexShader:
                 progResolved->usage.flags.hasVertexShader = true;
                 break;
-            case Program::__Resolved::HullShader:
+            case ProgramInstance::__Resolved::HullShader:
                 progResolved->usage.flags.hasHullShader = true;
                 break;
-            case Program::__Resolved::DomainShader:
+            case ProgramInstance::__Resolved::DomainShader:
                 progResolved->usage.flags.hasDomainShader = true;
                 break;
-            case Program::__Resolved::GeometryShader:
+            case ProgramInstance::__Resolved::GeometryShader:
                 progResolved->usage.flags.hasGeometryShader = true;
                 break;
-            case Program::__Resolved::PixelShader:
+            case ProgramInstance::__Resolved::PixelShader:
                 progResolved->usage.flags.hasPixelShader = true;
                 break;
-            case Program::__Resolved::ComputeShader:
+            case ProgramInstance::__Resolved::ComputeShader:
                 progResolved->usage.flags.hasComputeShader = true;
                 break;
-            case Program::__Resolved::TaskShader:
+            case ProgramInstance::__Resolved::TaskShader:
                 progResolved->usage.flags.hasTaskShader = true;
                 break;
-            case Program::__Resolved::MeshShader:
+            case ProgramInstance::__Resolved::MeshShader:
                 progResolved->usage.flags.hasMeshShader = true;
                 break;
-            case Program::__Resolved::RayGenerationShader:
+            case ProgramInstance::__Resolved::RayGenerationShader:
                 progResolved->usage.flags.hasRayGenerationShader = true;
                 break;
-            case Program::__Resolved::RayMissShader:
+            case ProgramInstance::__Resolved::RayMissShader:
                 progResolved->usage.flags.hasRayMissShader = true;
                 break;
-            case Program::__Resolved::RayClosestHitShader:
+            case ProgramInstance::__Resolved::RayClosestHitShader:
                 progResolved->usage.flags.hasRayClosestHitShader = true;
                 break;
-            case Program::__Resolved::RayAnyHitShader:
+            case ProgramInstance::__Resolved::RayAnyHitShader:
                 progResolved->usage.flags.hasRayAnyHitShader = true;
                 break;
-            case Program::__Resolved::RayIntersectionShader:
+            case ProgramInstance::__Resolved::RayIntersectionShader:
                 progResolved->usage.flags.hasRayIntersectionShader = true;
                 break;
-            case Program::__Resolved::RayCallableShader:
+            case ProgramInstance::__Resolved::RayCallableShader:
                 progResolved->usage.flags.hasRayCallableShader = true;
                 break;
-            case Program::__Resolved::RenderState:
+            case ProgramInstance::__Resolved::RenderState:
                 progResolved->usage.flags.hasRenderState = true;
                 break;
             }
 
             // if shader, value must be a function
-            if (entryType >= Program::__Resolved::ProgramEntryType::VertexShader
-                && entryType <= Program::__Resolved::ProgramEntryType::RayIntersectionShader)
+            if (entryType >= ProgramInstance::__Resolved::EntryType::VertexShader
+                && entryType <= ProgramInstance::__Resolved::EntryType::RayIntersectionShader)
             {
                 compiler->currentState.shaderType = entryType;
                 // when we've set these flags, run function validation to make sure it's properly formatted
@@ -1395,7 +1393,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                 compiler->shaderValueExpressions[entryType].value = false;
                 compiler->currentState.function = nullptr;
 
-                if (entryType == Program::__Resolved::VertexShader)
+                if (entryType == ProgramInstance::__Resolved::VertexShader)
                 {
                     if (!compiler->currentState.sideEffects.flags.exportsVertexPosition)
                     {
@@ -1403,7 +1401,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
                         return false;
                     }
                 }
-                else if (entryType == Program::__Resolved::PixelShader)
+                else if (entryType == ProgramInstance::__Resolved::PixelShader)
                 {
                     if (!compiler->currentState.sideEffects.flags.exportsPixel && compiler->options.warnOnMissingColorExport)
                     {
@@ -1437,7 +1435,7 @@ Validator::ResolveProgram(Compiler* compiler, Symbol* symbol)
     {
         if (compiler->options.warnOnMissingRenderState)
             compiler->Warning(Format("Program is general graphics but does not specify a render state, falling back on the default"), symbol);
-        progResolved->mappings[Program::__Resolved::ProgramEntryType::RenderState] = &compiler->defaultRenderState;
+        progResolved->mappings[ProgramInstance::__Resolved::EntryType::RenderState] = &compiler->defaultRenderState;
         progResolved->usage.flags.hasRenderState = true;
     }
 
@@ -1795,7 +1793,7 @@ Validator::ResolveRenderState(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (stateResolved->logicOpEnabled != GPULang::Serialization::LogicOp::InvalidLogicOp)
+    if (stateResolved->logicOpEnabled)
     {
         for (uint8_t i = 0; i < RenderStateInstance::__Resolved::NUM_BLEND_STATES; i++)
         {
@@ -2185,7 +2183,6 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     Type::FullType::Modifier lastIndirectionModifier = var->type.LastIndirectionModifier();
 
     varResolved->type = var->type;
-    varResolved->name = var->name;
     varResolved->accessBits.flags.readAccess = true; // Implicitly set read access to true
     varResolved->byteSize = type->byteSize;
     varResolved->storage = Storage::Default;
@@ -2204,7 +2201,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
     if (varResolved->usageBits.flags.isStructMember && 
         (type->category != Type::ScalarCategory && type->category != Type::EnumCategory && type->category != Type::UserTypeCategory && type->category != Type::StencilStateCategory))
     {
-        compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", varResolved->name.c_str()), symbol);
+        compiler->Error(Format("'%s' may only be scalar or struct type if member of a struct", var->name.c_str()), symbol);
         return false;
     }    
     
@@ -2874,7 +2871,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
             if (currentStrucResolved->packMembers || currentStrucResolved->hasBoolMember)
             {
                 const char* bufferType = varResolved->type.IsMutable() ? "MutableBuffer" : "Buffer";
-                std::string structName = Format("gpl%s_%s", bufferType, varResolved->name.c_str());
+                std::string structName = Format("gpl%s_%s", bufferType, var->name.c_str());
                 if (currentStrucResolved->packMembers && compiler->options.warnOnImplicitBufferPadding)
                     compiler->Warning(Format("'%s' of packed type '%s' with 'uniform' storage uses a generated struct '%s' with fixed alignment of each member", var->name.c_str(), var->type.ToString().c_str(), structName.c_str(), var->type.name.c_str()), var);
                 if (currentStrucResolved->hasBoolMember && compiler->options.warnOnImplicitBoolPromotion)
@@ -2898,12 +2895,11 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         generatedVarResolved->usageBits = varResolved->usageBits;
                         generatedVarResolved->type = varResolved->type;
                         generatedVarResolved->typeSymbol = varResolved->typeSymbol;
-                        generatedVarResolved->name = varResolved->name;
                         if (generatedVarResolved->typeSymbol->baseType == TypeCode::Bool)
                         {
                             generatedVar->type.name = "u32";
                             generatedVarResolved->type.name = "u32";
-                            generatedVarResolved->typeSymbol = &UIntType;
+                            generatedVarResolved->typeSymbol = &UInt32Type;
                         }
                         
                         uint32_t size = varResolved->typeSymbol->CalculateSize();
@@ -2915,7 +2911,7 @@ Validator::ResolveVariable(Compiler* compiler, Symbol* symbol)
                         offset = alignedOffset + size;
                         structSize += generatedVarResolved->byteSize + generatedVarResolved->startPadding;
                         generatedStruct->symbols.Append(generatedVar);
-                        generatedStruct->scope.symbolLookup.Insert(varResolved->name, generatedVar);
+                        generatedStruct->scope.symbolLookup.Insert(var->name, generatedVar);
                     }
                 }
                 Structure::__Resolved* generatedStructResolved = Symbol::Resolved(generatedStruct);
@@ -3522,26 +3518,26 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
     for (Variable* var : fun->parameters)
     {
         // if function is used for shader, validate parameters with special rules
-        if (compiler->currentState.shaderType != Program::__Resolved::InvalidProgramEntryType)
+        if (compiler->currentState.shaderType != ProgramInstance::__Resolved::InvalidProgramEntryType)
         {
             Variable::__Resolved* varResolved = Symbol::Resolved(var);
 
             if (varResolved->parameterBits.flags.isPatch
-                && !(compiler->currentState.shaderType == Program::__Resolved::HullShader || compiler->currentState.shaderType == Program::__Resolved::DomainShader))
+                && !(compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader))
             {
                 compiler->Error(Format("Parameter '%s' can not use 'patch' if function is not being used as a HullShader/TessellationControlShader or DomainShader/TessellationEvaluationShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoInterpolate
-                && compiler->currentState.shaderType != Program::__Resolved::PixelShader)
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_interpolate' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
             }
 
             if (varResolved->parameterBits.flags.isNoPerspective
-                && compiler->currentState.shaderType != Program::__Resolved::PixelShader)
+                && compiler->currentState.shaderType != ProgramInstance::__Resolved::PixelShader)
             {
                 compiler->Error(Format("Parameter '%s' can not use 'no_perspective' if function is not being used as a PixelShader", var->name.c_str(), fun->name.c_str()), var);
                 return false;
@@ -3549,7 +3545,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::HullShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::HullShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -3587,7 +3583,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::DomainShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::DomainShader)
     {
         // validate required qualifiers
         if (funResolved->executionModifiers.patchType != Function::__Resolved::InvalidPatchType)
@@ -3598,7 +3594,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
 
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::GeometryShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::GeometryShader)
     {
         if (funResolved->executionModifiers.maxOutputVertices == Function::__Resolved::INVALID_SIZE)
         {
@@ -3629,7 +3625,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::ComputeShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::ComputeShader)
     {
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
@@ -3658,7 +3654,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::TaskShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::TaskShader)
     {
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[1] > 1)
         {
@@ -3672,7 +3668,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType == Program::__Resolved::MeshShader)
+    if (compiler->currentState.shaderType == ProgramInstance::__Resolved::MeshShader)
     {
         if (funResolved->executionModifiers.computeShaderWorkGroupSize[0] <= 0)
         {
@@ -3701,7 +3697,7 @@ Validator::ValidateFunction(Compiler* compiler, Symbol* symbol)
         }
     }
 
-    if (compiler->currentState.shaderType != Program::__Resolved::ComputeShader && compiler->currentState.shaderType != Program::__Resolved::TaskShader && compiler->currentState.shaderType != Program::__Resolved::MeshShader)
+    if (compiler->currentState.shaderType != ProgramInstance::__Resolved::ComputeShader && compiler->currentState.shaderType != ProgramInstance::__Resolved::TaskShader && compiler->currentState.shaderType != ProgramInstance::__Resolved::MeshShader)
     {
         if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
         {
@@ -3780,8 +3776,8 @@ ValidateParameterSets(Compiler* compiler, Function* outFunc, Function* inFunc)
 bool 
 Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
 {
-    Program* prog = static_cast<Program*>(symbol);
-    Program::__Resolved* progResolved = Symbol::Resolved(prog);
+    ProgramInstance* prog = static_cast<ProgramInstance*>(symbol);
+    ProgramInstance::__Resolved* progResolved = Symbol::Resolved(prog);
 
     if (progResolved->usage.flags.hasHullShader
         && !progResolved->usage.flags.hasDomainShader)
@@ -3814,13 +3810,13 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
     ProgramType programType = ProgramType::NotSet;
 
     // validate program setup as compute or graphics program, do it on a first-come-first-serve basis
-    for (uint32_t mapping = 0; mapping < Program::__Resolved::ProgramEntryType::NumProgramEntries; mapping++)
+    for (uint32_t mapping = 0; mapping < ProgramInstance::__Resolved::EntryType::NumProgramEntries; mapping++)
     {
         Symbol* object = progResolved->mappings[mapping];
         if (object == nullptr)
             continue;
 
-        if (mapping == Program::__Resolved::ComputeShader)
+        if (mapping == ProgramInstance::__Resolved::ComputeShader)
         {
             if (programType == ProgramType::IsGraphics)
             {
@@ -3834,13 +3830,13 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             }
             programType = ProgramType::IsCompute;
         }
-        else if (mapping == Program::__Resolved::VertexShader
-            || mapping == Program::__Resolved::HullShader
-            || mapping == Program::__Resolved::DomainShader
-            || mapping == Program::__Resolved::GeometryShader
-            || mapping == Program::__Resolved::PixelShader
-            || mapping == Program::__Resolved::TaskShader
-            || mapping == Program::__Resolved::MeshShader
+        else if (mapping == ProgramInstance::__Resolved::VertexShader
+            || mapping == ProgramInstance::__Resolved::HullShader
+            || mapping == ProgramInstance::__Resolved::DomainShader
+            || mapping == ProgramInstance::__Resolved::GeometryShader
+            || mapping == ProgramInstance::__Resolved::PixelShader
+            || mapping == ProgramInstance::__Resolved::TaskShader
+            || mapping == ProgramInstance::__Resolved::MeshShader
             )
         {
             if (programType == ProgramType::IsCompute)
@@ -3855,10 +3851,10 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
             }
             programType = ProgramType::IsGraphics;
         }
-        else if (mapping == Program::__Resolved::RayAnyHitShader
-            || mapping == Program::__Resolved::RayCallableShader
-            || mapping == Program::__Resolved::RayIntersectionShader
-            || mapping == Program::__Resolved::RayMissShader)
+        else if (mapping == ProgramInstance::__Resolved::RayAnyHitShader
+            || mapping == ProgramInstance::__Resolved::RayCallableShader
+            || mapping == ProgramInstance::__Resolved::RayIntersectionShader
+            || mapping == ProgramInstance::__Resolved::RayMissShader)
         {
             if (programType == ProgramType::IsCompute)
             {
@@ -3880,7 +3876,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         Function* lastPrimitiveShader = nullptr;
         if (progResolved->usage.flags.hasVertexShader)
         {
-            Function* vs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::VertexShader]);
+            Function* vs = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::VertexShader]);
             lastPrimitiveShader = vs;
         }
 
@@ -3891,7 +3887,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, HullShader/TessellationControlShader needs a VertexShader"), symbol);
                 return false;
             }
-            Function* hs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::HullShader]);
+            Function* hs = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::HullShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, hs))
                 return false;
 
@@ -3901,12 +3897,12 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
         if (progResolved->usage.flags.hasDomainShader)
         {
             if (lastPrimitiveShader == nullptr 
-                && progResolved->mappings[Program::__Resolved::HullShader] != nullptr)
+                && progResolved->mappings[ProgramInstance::__Resolved::HullShader] != nullptr)
             {
                 compiler->Error(Format("Invalid program setup, DomainShader needs a HullShader/TessellationControlShader"), symbol);
                 return false;
             }
-            Function* ds = static_cast<Function*>(progResolved->mappings[Program::__Resolved::DomainShader]);
+            Function* ds = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::DomainShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ds))
                 return false;
 
@@ -3920,7 +3916,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, GeometryShader needs either a VertexShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader setup"), symbol);
                 return false;
             }
-            Function* gs = static_cast<Function*>(progResolved->mappings[Program::__Resolved::GeometryShader]);
+            Function* gs = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::GeometryShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, gs))
                 return false;
 
@@ -3934,7 +3930,7 @@ Validator::ValidateProgram(Compiler* compiler, Symbol* symbol)
                 compiler->Error(Format("Invalid program setup, PixelShader needs either a VertexShader, a VertexShader-GeometryShader, a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader or a VertexShader-HullShader/TessellationControlShader-DomainShader/TessellationEvaluationShader-GeometryShader setup"), symbol);
                 return false;
             }
-            Function* ps = static_cast<Function*>(progResolved->mappings[Program::__Resolved::PixelShader]);
+            Function* ps = static_cast<Function*>(progResolved->mappings[ProgramInstance::__Resolved::PixelShader]);
             if (!ValidateParameterSets(compiler, lastPrimitiveShader, ps))
                 return false;
         }
@@ -4042,7 +4038,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             else if (termStat->type == TerminateStatement::TerminationType::Discard)
             {
                 compiler->currentState.sideEffects.flags.killsPixel = true;
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::PixelShader)
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::PixelShader)
                 {
                     compiler->Error(Format("'discard' can only be used from a pixel shader"), termStat);
                     return false;
@@ -4051,7 +4047,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             else if (termStat->type == TerminateStatement::TerminationType::RayTerminate)
             {
                 compiler->currentState.sideEffects.flags.stopsRay = true;
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::RayAnyHitShader)
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayAnyHitShader)
                 {
                     compiler->Error(Format("'ray_terminate' can only be used in a ray anyhit shader"), termStat);
                     return false;
@@ -4060,7 +4056,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             else if (termStat->type == TerminateStatement::TerminationType::RayIgnoreIntersection)
             {
                 compiler->currentState.sideEffects.flags.ignoresRay = true;
-                if (compiler->currentState.shaderType != Program::__Resolved::ProgramEntryType::RayAnyHitShader)
+                if (compiler->currentState.shaderType != ProgramInstance::__Resolved::EntryType::RayAnyHitShader)
                 {
                     compiler->Error(Format("'ray_ignore' can only be used in a ray anyhit"), termStat);
                     return false;
@@ -4171,14 +4167,14 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             struct IntrinsicsShaderMask
             {
-                StaticArray<Program::__Resolved::ProgramEntryType> entries;
+                StaticArray<ProgramInstance::__Resolved::EntryType> entries;
                 Compiler::State::SideEffects::Masks sideEffect;
                 
                 IntrinsicsShaderMask()
                     : sideEffect(Compiler::State::SideEffects::Masks{0x0})
                 {}
                 
-                IntrinsicsShaderMask(const std::initializer_list<Program::__Resolved::ProgramEntryType>& entries, Compiler::State::SideEffects::Masks sideEffects)
+                IntrinsicsShaderMask(const std::initializer_list<ProgramInstance::__Resolved::EntryType>& entries, Compiler::State::SideEffects::Masks sideEffects)
                     : entries(entries)
                     , sideEffect(sideEffects)
                 {}
@@ -4186,38 +4182,38 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
 
             static const StaticMap allowedBuiltins =
             std::array{
-                std::pair{ ConstantString("vertexExportCoordinates"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
-                , std::pair{ ConstantString("geometryExportVertex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
-                , std::pair{ ConstantString("geometryExportPrimitive"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
-                , std::pair{ ConstantString("computeGetLocalInvocationIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("computeGetGlobalInvocationIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("computeGetWorkGroupIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("computeGetWorkGroupDimensions"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("vertexSetOutputLayer"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
-                , std::pair{ ConstantString("vertexSetOutputViewport"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
-                , std::pair{ ConstantString("pixelExportColor"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
-                , std::pair{ ConstantString("pixelGetDepth"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("pixelSetDepth"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
-                , std::pair{ ConstantString("rayTrace"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayExportIntersection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayExecuteCallable"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetLaunchIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetLaunchSize"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayGenerationShader, Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("blasGetPrimitiveIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("blasGetGeometryIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("tlasGetInstanceIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("tlasGetInstanceCustomIndex"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetWorldOrigin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetWorldDirection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetObjectOrigin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetObjectDirection"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetMin"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetMax"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetFlags"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayMissShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetHitDistance"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("rayGetHitKind"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("tlasGetObjectToWorld"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
-                , std::pair{ ConstantString("tlasGetWorldToObject"), IntrinsicsShaderMask{ { Program::__Resolved::ProgramEntryType::RayClosestHitShader, Program::__Resolved::ProgramEntryType::RayAnyHitShader, Program::__Resolved::ProgramEntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                std::pair{ ConstantString("vertexExportCoordinates"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::VertexShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_POSITION_BIT }}
+                , std::pair{ ConstantString("geometryExportVertex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_VERTEX_BIT }}
+                , std::pair{ ConstantString("geometryExportPrimitive"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::GeometryShader }, Compiler::State::SideEffects::Masks::EXPORT_PRIMITIVE_BIT }}
+                , std::pair{ ConstantString("computeGetLocalInvocationIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetGlobalInvocationIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetWorkGroupIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("computeGetWorkGroupDimensions"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::ComputeShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("vertexSetOutputLayer"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_OUTPUT_LAYER_BIT }}
+                , std::pair{ ConstantString("vertexSetOutputViewport"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::VertexShader }, Compiler::State::SideEffects::Masks::SET_VIEWPORT_BIT }}
+                , std::pair{ ConstantString("pixelExportColor"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_PIXEL_BIT }}
+                , std::pair{ ConstantString("pixelGetDepth"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("pixelSetDepth"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::PixelShader }, Compiler::State::SideEffects::Masks::EXPORT_DEPTH_BIT }}
+                , std::pair{ ConstantString("rayTrace"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayExportIntersection"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayIntersectionShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayExecuteCallable"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayCallableShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetLaunchIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetLaunchSize"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayGenerationShader, ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("blasGetPrimitiveIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("blasGetGeometryIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetInstanceIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetInstanceCustomIndex"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetWorldOrigin"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetWorldDirection"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetObjectOrigin"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetObjectDirection"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetMin"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetMax"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetFlags"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayMissShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetHitDistance"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("rayGetHitKind"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetObjectToWorld"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
+                , std::pair{ ConstantString("tlasGetWorldToObject"), IntrinsicsShaderMask{ { ProgramInstance::__Resolved::EntryType::RayClosestHitShader, ProgramInstance::__Resolved::EntryType::RayAnyHitShader, ProgramInstance::__Resolved::EntryType::RayIntersectionShader  }, Compiler::State::SideEffects::Masks() }}
             };
 
             const auto it = allowedBuiltins.Find(callResolved->functionSymbol);
@@ -4234,7 +4230,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
                 }
                 if (!allowedInShader)
                 {
-                    const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                     compiler->Error(Format("%s can not be called from a %s", it->first.c_str(), shaderString.c_str()), callExpr);
                     return false;
                 }
@@ -4244,33 +4240,33 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             static const auto derivativeConditionFunction = [](Compiler* compiler, Expression* expr, const ConstantString& fun)
             {
                 
-                static const StaticArray<Program::__Resolved::ProgramEntryType> derivativeProducingShaders =
+                static const StaticArray<ProgramInstance::__Resolved::EntryType> derivativeProducingShaders =
                 {
-                    Program::__Resolved::ProgramEntryType::VertexShader
-                    , Program::__Resolved::ProgramEntryType::GeometryShader
-                    , Program::__Resolved::ProgramEntryType::HullShader
-                    , Program::__Resolved::ProgramEntryType::DomainShader
-                    , Program::__Resolved::ProgramEntryType::PixelShader
+                    ProgramInstance::__Resolved::EntryType::VertexShader
+                    , ProgramInstance::__Resolved::EntryType::GeometryShader
+                    , ProgramInstance::__Resolved::EntryType::HullShader
+                    , ProgramInstance::__Resolved::EntryType::DomainShader
+                    , ProgramInstance::__Resolved::EntryType::PixelShader
                 };
                 for (const auto shader : derivativeProducingShaders)
                     if (shader == compiler->currentState.shaderType)
                         return true;
 
-                if (compiler->currentState.shaderType == Program::__Resolved::ComputeShader || compiler->currentState.shaderType == Program::__Resolved::TaskShader || compiler->currentState.shaderType == Program::__Resolved::ProgramEntryType::MeshShader)
+                if (compiler->currentState.shaderType == ProgramInstance::__Resolved::ComputeShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::TaskShader || compiler->currentState.shaderType == ProgramInstance::__Resolved::EntryType::MeshShader)
                 {
                     Function::__Resolved* funResolved = Symbol::Resolved(compiler->currentState.function);
                     if (funResolved->executionModifiers.computeDerivativeIndexing != Function::__Resolved::NoDerivatives)
                         return true;
                     else
                     {
-                        const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                        const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                         compiler->Error(Format("%s must either specify 'derivative_index_linear' or 'derivative_index_quads' when using derivatives", shaderString.c_str()), expr);
                         return false;    
                     }
                 }
                 else
                 {
-                    const ConstantString& shaderString = Program::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
+                    const ConstantString& shaderString = ProgramInstance::__Resolved::EntryTypeToString(compiler->currentState.shaderType);
                     compiler->Error(Format("%s can not be called from a %s", fun.c_str(), shaderString.c_str()), expr);
                     return false;
                 }
@@ -4376,46 +4372,46 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             switch (compiler->currentState.shaderType)
             {
-                case Program::__Resolved::ProgramEntryType::VertexShader:
+                case ProgramInstance::__Resolved::EntryType::VertexShader:
                     varResolved->visibilityBits.flags.vertexShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::HullShader:
+                case ProgramInstance::__Resolved::EntryType::HullShader:
                     varResolved->visibilityBits.flags.hullShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::DomainShader:
+                case ProgramInstance::__Resolved::EntryType::DomainShader:
                     varResolved->visibilityBits.flags.domainShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::GeometryShader:
+                case ProgramInstance::__Resolved::EntryType::GeometryShader:
                     varResolved->visibilityBits.flags.geometryShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::PixelShader:
+                case ProgramInstance::__Resolved::EntryType::PixelShader:
                     varResolved->visibilityBits.flags.pixelShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::ComputeShader:
+                case ProgramInstance::__Resolved::EntryType::ComputeShader:
                     varResolved->visibilityBits.flags.computeShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::TaskShader:
+                case ProgramInstance::__Resolved::EntryType::TaskShader:
                     varResolved->visibilityBits.flags.taskShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::MeshShader:
+                case ProgramInstance::__Resolved::EntryType::MeshShader:
                     varResolved->visibilityBits.flags.meshShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
+                case ProgramInstance::__Resolved::EntryType::RayGenerationShader:
                     varResolved->visibilityBits.flags.rayGenerationShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayMissShader:
+                case ProgramInstance::__Resolved::EntryType::RayMissShader:
                     varResolved->visibilityBits.flags.rayMissShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
+                case ProgramInstance::__Resolved::EntryType::RayClosestHitShader:
                     varResolved->visibilityBits.flags.rayClosestHitShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
+                case ProgramInstance::__Resolved::EntryType::RayAnyHitShader:
                     varResolved->visibilityBits.flags.rayAnyHitShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
+                case ProgramInstance::__Resolved::EntryType::RayIntersectionShader:
                     varResolved->visibilityBits.flags.rayIntersectionShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                case ProgramInstance::__Resolved::EntryType::RayCallableShader:
                     varResolved->visibilityBits.flags.rayCallableShader = true;
                     break;
                 default:
@@ -4434,7 +4430,7 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
         }
         case Symbol::SamplerStateInstanceType:
         {
-            auto sampler = static_cast<SamplerState*>(symbol);
+            auto sampler = static_cast<SamplerStateInstance*>(symbol);
             auto sampResolved = Symbol::Resolved(sampler);
             
             Function::__Resolved* entryRes = Symbol::Resolved(compiler->currentState.function);
@@ -4442,46 +4438,46 @@ Validator::ResolveVisibility(Compiler* compiler, Symbol* symbol)
             
             switch (compiler->currentState.shaderType)
             {
-                case Program::__Resolved::ProgramEntryType::VertexShader:
+                case ProgramInstance::__Resolved::EntryType::VertexShader:
                     sampResolved->visibilityBits.flags.vertexShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::HullShader:
+                case ProgramInstance::__Resolved::EntryType::HullShader:
                     sampResolved->visibilityBits.flags.hullShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::DomainShader:
+                case ProgramInstance::__Resolved::EntryType::DomainShader:
                     sampResolved->visibilityBits.flags.domainShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::GeometryShader:
+                case ProgramInstance::__Resolved::EntryType::GeometryShader:
                     sampResolved->visibilityBits.flags.geometryShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::PixelShader:
+                case ProgramInstance::__Resolved::EntryType::PixelShader:
                     sampResolved->visibilityBits.flags.pixelShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::ComputeShader:
+                case ProgramInstance::__Resolved::EntryType::ComputeShader:
                     sampResolved->visibilityBits.flags.computeShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::TaskShader:
+                case ProgramInstance::__Resolved::EntryType::TaskShader:
                     sampResolved->visibilityBits.flags.taskShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::MeshShader:
+                case ProgramInstance::__Resolved::EntryType::MeshShader:
                     sampResolved->visibilityBits.flags.meshShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayGenerationShader:
+                case ProgramInstance::__Resolved::EntryType::RayGenerationShader:
                     sampResolved->visibilityBits.flags.rayGenerationShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayMissShader:
+                case ProgramInstance::__Resolved::EntryType::RayMissShader:
                     sampResolved->visibilityBits.flags.rayMissShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayClosestHitShader:
+                case ProgramInstance::__Resolved::EntryType::RayClosestHitShader:
                     sampResolved->visibilityBits.flags.rayClosestHitShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayAnyHitShader:
+                case ProgramInstance::__Resolved::EntryType::RayAnyHitShader:
                     sampResolved->visibilityBits.flags.rayAnyHitShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayIntersectionShader:
+                case ProgramInstance::__Resolved::EntryType::RayIntersectionShader:
                     sampResolved->visibilityBits.flags.rayIntersectionShader = true;
                     break;
-                case Program::__Resolved::ProgramEntryType::RayCallableShader:
+                case ProgramInstance::__Resolved::EntryType::RayCallableShader:
                     sampResolved->visibilityBits.flags.rayCallableShader = true;
                     break;
                 default:
