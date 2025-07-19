@@ -809,9 +809,8 @@ def generate_types():
 
 
     # Matrix types
-    types = ['Float32', 'Float16']
+    matrix_types = ['Float32', 'Float16']
     bit_widths = [32, 16]
-    data_types = ["f32", "f16"]
 
     scalar_operator_names = ['add', 'sub', 'mul']
     scalar_operators = ['+', '-', '*']
@@ -823,7 +822,7 @@ def generate_types():
     scale_operators = ['*', '*']
     scale_operator_types = ['Float32', 'Float16']
 
-    for type, bits in zip(types, bit_widths):
+    for type, bits in zip(matrix_types, bit_widths):
         for row_size in range(2, 5):
             for column_size in range(2, 5):
 
@@ -2350,9 +2349,9 @@ def generate_types():
     # Ceil, Floor, Fract, Saturate, Trunc, Ddx, Ddy, Fwidth
     ops = ['ceil', 'floor', 'fract', 'saturate', 'trunc', 'ddx', 'ddy', 'fwidth']
     spirv_ops = ['Ceil', 'Floor', 'Fract', 'Saturate', 'Trunc', 'DPdx', 'DPdy', 'Fwidth']
-    for op, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op in zip(ops, spirv_ops):
         for type in float_types:
-            function_name = f'{op}_{type}'
+            function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
             fun = Function(
                 decl_name = function_name,
@@ -2387,9 +2386,8 @@ def generate_types():
     # Sign and Abs
     ops = ['sign', 'abs']
     spirv_ops = ['Sign', 'Abs']
-    for op, spirv_op in zip(ops, spirv_ops):
+    for intrinsic, spirv_op in zip(ops, spirv_ops):
         for type in signed_types:
-            intrinsic = op
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
             fun = Function( 
@@ -2415,10 +2413,10 @@ def generate_types():
             spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    types = ["Float16", "UInt16", "Int16"]
+    cast_types = ["Float16", "UInt16", "Int16"]
 
-    for type1 in types:
-        for type2 in types:
+    for type1 in cast_types:
+        for type2 in cast_types:
             if type1 != type2:
                 intrinsic = f'castTo{data_type_mapping[type1].title()}'
                 function_name = f'{intrinsic}_{type2}'
@@ -2442,10 +2440,10 @@ def generate_types():
                 spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
                 spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    types = ["Float32", "UInt32", "Int32"]
+    cast_types = ["Float32", "UInt32", "Int32"]
 
-    for type1 in types:
-        for type2 in types:
+    for type1 in cast_types:
+        for type2 in cast_types:
             if type1 != type2:
                 intrinsic = f'castTo{data_type_mapping[type1].title()}'
                 function_name = f'{intrinsic}_{type2}'
@@ -2472,9 +2470,8 @@ def generate_types():
     # Any and all
     ops = ['any', 'all']
     spirv_op = ['Any', 'All']
-    for op, spirv_op in zip(ops, spirv_op):
+    for intrinsic, spirv_op in zip(ops, spirv_op):
         for type in bool_types:
-            intrinsic = op
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
 
@@ -2504,9 +2501,8 @@ def generate_types():
             matrix_types.append(f'Float32x{i}x{j}')
             matrix_types.append(f'Float16x{i}x{j}')
 
-    for op in ops:
+    for intrinsic in ops:
         for type in matrix_types:
-            intrinsic = op
             function_name = f'{intrinsic}_{type}'
             argument_name = f'{function_name}_arg'
 
@@ -2787,7 +2783,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'compute{intrinsic}',
-            return_type = 'Uint32x3',
+            return_type = 'UInt32x3',
             parameters = [
             ]
         )
@@ -2814,7 +2810,7 @@ def generate_types():
     fun = Function( 
         decl_name = function_name,
         api_name = f'compute{intrinsic}',
-        return_type = 'Uint32',
+        return_type = 'UInt32',
         parameters = [
         ]
     )
@@ -2847,7 +2843,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'subgroup{intrinsic}',
-            return_type = 'Uint32x3',
+            return_type = 'UInt32x3',
             documentation = doc,
             parameters = [
             ]
@@ -2884,7 +2880,7 @@ def generate_types():
         fun = Function( 
             decl_name = function_name,
             api_name = f'subgroup{intrinsic}',
-            return_type = 'Uint32x4',
+            return_type = 'UInt32x4',
             documentation = doc,
             parameters = [
             ]
@@ -2913,7 +2909,7 @@ def generate_types():
     fun = Function( 
         decl_name = function_name,
         api_name = f'subgroup{intrinsic}',
-        return_type = 'Uint32',
+        return_type = 'UInt32',
         parameters = [
         ]
     )
@@ -2928,42 +2924,49 @@ def generate_types():
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     intrinsic = 'BroadcastFirstActiveThread'
-    function_name = f'Subgroup{intrinsic}'
-    value_argument_name = f'{intrinsic}_UInt32_value'
-    intrinsic_decls += f'extern Variable {value_argument_name};\n'
-    intrinsic_decls += f'extern Function {function_name};\n'
-    intrinsic_defs += f'Variable {value_argument_name};\n'
-    intrinsic_defs += f'Function {function_name};\n'
-    intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    {function_name}.name = "subgroup{intrinsic}"_c;\n'
-    intrinsic_setup += f'    {function_name}.documentation = "Returns the value of the provided argument for the first active thread in the subgroup"_c;\n'
-    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+    for type in scalar_types:
+        function_name = f'Subgroup{intrinsic}_{type}'
+        value_argument_name = f'{intrinsic}_value'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'subgroup{intrinsic}',
+            return_type = type,
+            documentation = 'Returns the value of the provided argument for the first active thread in the subgroup',
+            parameters = [
+                Variable(decl_name = value_argument_name, api_name = "value", type_name=type)
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
-    spirv_function = ''
-    spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
-    spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
-    spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
-    spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
-    spirv_code += spirv_intrinsic(function_name, spirv_function)
+        spirv_function = ''
+        spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
+        spirv_function += '    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);\n'
+        spirv_function += '    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);\n'
+        spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
+        spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     subgroup_ballot_ops = ['Ballot', 'InverseBallot']
     subgroup_ballot_ops_doc = ['Constructs a subgroup mask within the workgroup where predicate is true', 'Constructs a subgroup mask within the workgroup where predicate is false']
     subgroup_ballot_ops_spirv = ['GroupNonUniformBallot', 'GroupNonUniformInverseBallot']
     for intrinsic, doc, spirv in zip(subgroup_ballot_ops, subgroup_ballot_ops_doc, subgroup_ballot_ops_spirv):
         function_name = f'Subgroup{intrinsic}'
-        predicate_argument_name = f'Subgroup{intrinsic}_Bool8_predicate'
-        intrinsic_decls += f'extern Variable {predicate_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {predicate_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {predicate_argument_name}.name = "value"_c;\n'
-        intrinsic_setup += f'    {predicate_argument_name}.type = Type::FullType{{ Bool8Type.name }};\n'
-        intrinsic_setup += f'    {function_name}.name = "subgroup{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.documentation = "{doc}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32x4Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32x4Type;\n\n'
+        predicate_argument_name = f'{function_name}_predicate'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'subgroup{intrinsic}',
+            return_type = 'UInt32x4',
+            documentation = 'Sets the subgroup mask to the value of the predicate argument for each active thread',
+            parameters = [
+                Variable(decl_name = predicate_argument_name, api_name = "predicate", type_name='Bool8')
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -2972,19 +2975,22 @@ def generate_types():
         spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
         spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    intrinsic = 'BitCount'
-    function_name = f'SubgroupBallot{intrinsic}'
-    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
-    intrinsic_decls += f'extern Variable {mask_name};\n'
-    intrinsic_decls += f'extern Function {function_name};\n'
-    intrinsic_defs += f'Variable {mask_name};\n'
-    intrinsic_defs += f'Function {function_name};\n'
-    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
-    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
-    intrinsic_setup += f'    {function_name}.documentation = "Returns the number of bits in the mask set to 1."_c;\n'
-    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+    intrinsic = 'BallotBitCount'
+    function_name = f'Subgroup{intrinsic}'
+    mask_name = f'{function_name}_mask'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'subgroup{intrinsic}',
+        return_type = 'UInt32',
+        documentation = 'Returns the number of bits set to 1 in a ballot mask',
+        parameters = [
+            Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
+        ]
+    )
+    intrinsic_decls += fun.declaration()
+    intrinsic_defs += fun.definition()
+    intrinsic_setup += fun.setup()
+    intrinsic_list.append(fun.pair())
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -2993,19 +2999,22 @@ def generate_types():
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    intrinsic = 'FirstOne'
-    function_name = f'SubgroupBallot{intrinsic}'
-    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
-    intrinsic_decls += f'extern Variable {mask_name};\n'
-    intrinsic_decls += f'extern Function {function_name};\n'
-    intrinsic_defs += f'Variable {mask_name};\n'
-    intrinsic_defs += f'Function {function_name};\n'
-    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
-    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
-    intrinsic_setup += f'    {function_name}.documentation = "Returns the first one (ctz) in a subgroup thread mask."_c;\n'
-    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+    intrinsic = 'BallotFirstOne'
+    function_name = f'Subgroup{intrinsic}'
+    mask_name = f'{function_name}_mask'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'subgroup{intrinsic}',
+        return_type = 'UInt32',
+        documentation = 'Returns the first one (ctz) in a subgroup thread mask',
+        parameters = [
+            Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
+        ]
+    )
+    intrinsic_decls += fun.declaration()
+    intrinsic_defs += fun.definition()
+    intrinsic_setup += fun.setup()
+    intrinsic_list.append(fun.pair())
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3014,19 +3023,22 @@ def generate_types():
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    intrinsic = 'LastOne'
-    function_name = f'SubgroupBallot{intrinsic}'
-    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
-    intrinsic_decls += f'extern Variable {mask_name};\n'
-    intrinsic_decls += f'extern Function {function_name};\n'
-    intrinsic_defs += f'Variable {mask_name};\n'
-    intrinsic_defs += f'Function {function_name};\n'
-    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
-    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
-    intrinsic_setup += f'    {function_name}.documentation = "Returns the first one (clz) in a subgroup thread mask."_c;\n'
-    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+    intrinsic = 'BallotLastOne'
+    function_name = f'Subgroup{intrinsic}'
+    mask_name = f'{function_name}_mask'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'subgroup{intrinsic}',
+        return_type = 'UInt32',
+        documentation = 'Returns the last one (clz) in a subgroup thread mask',
+        parameters = [
+            Variable(decl_name = mask_name, api_name = "value", type_name='UInt32x4')
+        ]
+    )
+    intrinsic_decls += fun.declaration()
+    intrinsic_defs += fun.definition()
+    intrinsic_setup += fun.setup()
+    intrinsic_list.append(fun.pair())
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3035,24 +3047,24 @@ def generate_types():
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    intrinsic = 'Bit'
-    function_name = f'SubgroupBallot{intrinsic}'
-    mask_name = f'SubgroupBallot{intrinsic}_UInt32x4_mask'
-    index_name = f'SubgroupBallot{intrinsic}_UInt32_index'
-    intrinsic_decls += f'extern Variable {mask_name};\n'
-    intrinsic_decls += f'extern Variable {index_name};\n'
-    intrinsic_decls += f'extern Function {function_name};\n'
-    intrinsic_defs += f'Variable {mask_name};\n'
-    intrinsic_defs += f'Variable {index_name};\n'
-    intrinsic_defs += f'Function {function_name};\n'
-    intrinsic_setup += f'    {mask_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {mask_name}.type = Type::FullType{{ UInt32x4Type.name }};\n'
-    intrinsic_setup += f'    {index_name}.name = "value"_c;\n'
-    intrinsic_setup += f'    {index_name}.type = Type::FullType{{ UInt32Type.name }};\n'
-    intrinsic_setup += f'    {function_name}.name = "subgroupBallot{intrinsic}"_c;\n'
-    intrinsic_setup += f'    {function_name}.documentation = "Returns true if bit at index in mask is 1."_c;\n'
-    intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Bool8Type.name }};\n'
-    intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Bool8Type;\n\n'
+    intrinsic = 'BallotBit'
+    function_name = f'Subgroup{intrinsic}'
+    mask_name = f'{function_name}_mask'
+    index_name = f'{function_name}_index'
+    fun = Function( 
+        decl_name = function_name,
+        api_name = f'subgroup{intrinsic}',
+        return_type = 'UInt32',
+        documentation = 'Returns true if bit at index in mask is 1',
+        parameters = [
+            Variable(decl_name = mask_name, api_name = "mask", type_name='UInt32x4'),
+            Variable(decl_name = index_name, api_name = "index", type_name='UInt32', literal=True)
+        ]
+    )
+    intrinsic_decls += fun.declaration()
+    intrinsic_defs += fun.definition()
+    intrinsic_setup += fun.setup()
+    intrinsic_list.append(fun.pair())
 
     spirv_function = ''
     spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformBallot);\n'
@@ -3062,23 +3074,25 @@ def generate_types():
     spirv_function += '    return SPIRVResult(ret, returnType, true);\n'
     spirv_code += spirv_intrinsic(function_name, spirv_function)
 
-    subgroup_swap_ops = ['Diagonal', 'Vertical', 'Horizontal']
+    subgroup_swap_ops = ['SwapDiagonal', 'SwapVertical', 'SwapHorizontal']
     subgroup_swap_op_directions = [2, 1, 0]
-    for op, direction in zip(subgroup_swap_ops, subgroup_swap_op_directions):
+    for intrinsic, direction in zip(subgroup_swap_ops, subgroup_swap_op_directions):
         for type in scalar_types:
-            intrinsic = op
-            function_name = f'SubgroupSwap{intrinsic}_{type}'
+            function_name = f'Subgroup{intrinsic}_{type}'
             value_argument_name = f'{function_name}_color'
-            intrinsic_decls += f'extern Variable {value_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
-            intrinsic_defs += f'Variable {value_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-            intrinsic_setup += f'    {value_argument_name}.name = "color"_c;\n'
-            intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-            intrinsic_setup += f'    {function_name}.name = "subgroupSwap{intrinsic}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &{type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'subgroup{intrinsic}',
+                return_type = type,
+                documentation = 'Returns true if bit at index in mask is 1',
+                parameters = [
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type)
+                ]
+            )
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    g->writer->Capability(Capabilities::GroupNonUniformQuad);\n'
@@ -3093,28 +3107,26 @@ def generate_types():
     atomic_functions_no_value = ['Load', 'Increment', 'Decrement']
     atomic_builtins_spirv = ['OpAtomicLoad', 'OpAtomicIIncrement', 'OpAtomicIDecrement']
 
-    for atomic_type in atomic_types:
-        for atomic_function, spirv_builtin in zip(atomic_functions_no_value, atomic_builtins_spirv):
-            function_name = f'Atomic{atomic_function}_{atomic_type}'
+    for type in atomic_types:
+        for intrinsic, spirv_builtin in zip(atomic_functions_no_value, atomic_builtins_spirv):
+            function_name = f'Atomic{intrinsic}_{type}'
             ptr_argument_name = f'{function_name}_ptr'
             semantics_argument_name = f'{function_name}_semantics'
-            intrinsic_decls += f'extern Variable {ptr_argument_name};\n'
-            intrinsic_decls += f'extern Variable {semantics_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
-            intrinsic_defs += f'Variable {ptr_argument_name};\n'
-            intrinsic_defs += f'Variable {semantics_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-            intrinsic_setup += f'    {ptr_argument_name}.name = "ptr"_c;\n'
-            intrinsic_setup += f'    {ptr_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-            intrinsic_setup += f'    {ptr_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-            intrinsic_setup += f'    {semantics_argument_name}.name = "semantics"_c;\n'
-            intrinsic_setup += f'    {semantics_argument_name}.type = Type::FullType{{ MemorySemanticsType.name }};\n'
-            intrinsic_setup += f'    {semantics_argument_name}.type.literal = true;\n'
-            intrinsic_setup += f'    {function_name}.name = "atomic{atomic_function}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {atomic_type}Type.name }};\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{ptr_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{semantics_argument_name})->typeSymbol = &MemorySemanticsType;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{atomic_type}Type;\n\n'
+
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'atomic{intrinsic}',
+                return_type = type,
+                documentation = 'Returns true if bit at index in mask is 1',
+                parameters = [
+                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
+                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                ]
+            )
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3127,34 +3139,28 @@ def generate_types():
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     atomic_functions_with_argument = ['Store', 'Exchange', 'Add', 'Subtract', 'And', 'Or', 'Xor']
-    for atomic_type in atomic_types:
-        for atomic_function in atomic_functions_with_argument:
-            function_name = f'Atomic{atomic_function}_{atomic_type}'
+    for type in atomic_types:
+        for intrinsic in atomic_functions_with_argument:
+            function_name = f'Atomic{intrinsic}_{type}'
             ptr_argument_name = f'{function_name}_ptr'
             value_argument_name = f'{function_name}_value'
             semantics_argument_name = f'{function_name}_semantics'
-            intrinsic_decls += f'extern Variable {ptr_argument_name};\n'
-            intrinsic_decls += f'extern Variable {value_argument_name};\n'
-            intrinsic_decls += f'extern Variable {semantics_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
-            intrinsic_defs += f'Variable {ptr_argument_name};\n'
-            intrinsic_defs += f'Variable {value_argument_name};\n'
-            intrinsic_defs += f'Variable {semantics_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-            intrinsic_setup += f'    {ptr_argument_name}.name = "ptr"_c;\n'
-            intrinsic_setup += f'    {ptr_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-            intrinsic_setup += f'    {ptr_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-            intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
-            intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-            intrinsic_setup += f'    {semantics_argument_name}.name = "semantics"_c;\n'
-            intrinsic_setup += f'    {semantics_argument_name}.type = Type::FullType{{ MemorySemanticsType.name }};\n'
-            intrinsic_setup += f'    {semantics_argument_name}.type.literal = true;\n'
-            intrinsic_setup += f'    {function_name}.name = "atomic{atomic_function}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {atomic_type}Type.name }};\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{ptr_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{semantics_argument_name})->typeSymbol = &MemorySemanticsType;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{atomic_type}Type;\n\n'
+
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'atomic{intrinsic}',
+                return_type = type,
+                documentation = 'Returns true if bit at index in mask is 1',
+                parameters = [
+                    Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
+                    Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                    Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+                ]
+            )
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3168,39 +3174,28 @@ def generate_types():
             spirv_code += spirv_intrinsic(function_name, spirv_function)
 
     for atomic_type in atomic_types:
-        atomic_function = 'CompareExchange'
-        function_name = f'Atomic{atomic_function}_{atomic_type}'
+        intrinsic = 'CompareExchange'
+        function_name = f'Atomic{intrinsic}_{atomic_type}'
         ptr_argument_name = f'{function_name}_ptr'
         value_argument_name = f'{function_name}_value'
         compare_argument_name = f'{function_name}_compare'
         semantics_argument_name = f'{function_name}_semantics'
-        intrinsic_decls += f'extern Variable {ptr_argument_name};\n'
-        intrinsic_decls += f'extern Variable {value_argument_name};\n'
-        intrinsic_decls += f'extern Variable {compare_argument_name};\n'
-        intrinsic_decls += f'extern Variable {semantics_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {ptr_argument_name};\n'
-        intrinsic_defs += f'Variable {value_argument_name};\n'
-        intrinsic_defs += f'Variable {compare_argument_name};\n'
-        intrinsic_defs += f'Variable {semantics_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {ptr_argument_name}.name = "ptr"_c;\n'
-        intrinsic_setup += f'    {ptr_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-        intrinsic_setup += f'    {ptr_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
-        intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-        intrinsic_setup += f'    {compare_argument_name}.name = "compare"_c;\n'
-        intrinsic_setup += f'    {compare_argument_name}.type = Type::FullType{{ {atomic_type}Type.name }};\n'
-        intrinsic_setup += f'    {semantics_argument_name}.name = "semantics"_c;\n'
-        intrinsic_setup += f'    {semantics_argument_name}.type = Type::FullType{{ MemorySemanticsType.name }};\n'
-        intrinsic_setup += f'    {semantics_argument_name}.type.literal = true;\n'
-        intrinsic_setup += f'    {function_name}.name = "atomic{atomic_function}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {atomic_type}Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{ptr_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{compare_argument_name})->typeSymbol = &{atomic_type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{semantics_argument_name})->typeSymbol = &MemorySemanticsType;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{atomic_type}Type;\n\n'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'atomic{intrinsic}',
+            return_type = type,
+            documentation = 'Returns true if bit at index in mask is 1',
+            parameters = [
+                Variable(decl_name = ptr_argument_name, api_name = "ptr", type_name=type, pointer=True),
+                Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                Variable(decl_name = compare_argument_name, api_name = "compare", type_name=type),
+                Variable(decl_name = semantics_argument_name, api_name = "semantics", type_name='MemorySemantics', literal=True)
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    uint32_t scope = ScopeToAtomicScope(args[0].scope);\n'
@@ -3221,31 +3216,23 @@ def generate_types():
         value_argument_name = f'{function_name}_value'
         offset_argument_name = f'{function_name}_offset'
         count_argument_name = f'{function_name}_count'
-        intrinsic_decls += f'extern Variable {base_argument_name};\n'
-        intrinsic_decls += f'extern Variable {value_argument_name};\n'
-        intrinsic_decls += f'extern Variable {offset_argument_name};\n'
-        intrinsic_decls += f'extern Variable {count_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {base_argument_name};\n'
-        intrinsic_defs += f'Variable {value_argument_name};\n'
-        intrinsic_defs += f'Variable {offset_argument_name};\n'
-        intrinsic_defs += f'Variable {count_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
-        intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {value_argument_name}.name = "value"_c ;\n'
-        intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
-        intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {count_argument_name}.name = "count"_c;\n'
-        intrinsic_setup += f'    {count_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'bit{intrinsic}',
+            return_type = type,
+            documentation = 'Insert bit into bitmask',
+            parameters = [
+                Variable(decl_name = base_argument_name, api_name = "base", type_name=type),
+                Variable(decl_name = value_argument_name, api_name = "value", type_name=type),
+                Variable(decl_name = offset_argument_name, api_name = "offset", type_name=type),
+                Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3262,27 +3249,22 @@ def generate_types():
         base_argument_name = f'{function_name}_base'
         offset_argument_name = f'{function_name}_offset'
         count_argument_name = f'{function_name}_count'
-        intrinsic_decls += f'extern Variable {base_argument_name};\n'
-        intrinsic_decls += f'extern Variable {offset_argument_name};\n'
-        intrinsic_decls += f'extern Variable {count_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {base_argument_name};\n'
-        intrinsic_defs += f'Variable {offset_argument_name};\n'
-        intrinsic_defs += f'Variable {count_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
-        intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c ;\n'
-        intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {count_argument_name}.name = "count"_c;\n'
-        intrinsic_setup += f'    {count_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{count_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
 
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'bit{intrinsic}',
+            return_type = type,
+            documentation = 'Extract a specific bit from a bitmask',
+            parameters = [
+                Variable(decl_name = base_argument_name, api_name = "base", type_name=type),
+                Variable(decl_name = offset_argument_name, api_name = "offset", type_name=type),
+                Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         if type.startswith('UInt'):
             spirv_op = "OpBitFieldUExtract"
@@ -3301,16 +3283,21 @@ def generate_types():
         for type in integer_types:
             function_name = f'Bit{intrinsic}_{type}'
             base_argument_name = f'{function_name}_base'
-            intrinsic_decls += f'extern Variable {base_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
-            intrinsic_defs += f'Variable {base_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-            intrinsic_setup += f'    {base_argument_name}.name = "base"_c;\n'
-            intrinsic_setup += f'    {base_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-            intrinsic_setup += f'    {function_name}.name = "bit{intrinsic}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{base_argument_name})->typeSymbol = &{type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{type}Type;\n\n'
+
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'bit{intrinsic}',
+                return_type = type,
+                parameters = [
+                    Variable(decl_name = base_argument_name, api_name = "base", type_name=type),
+                    Variable(decl_name = offset_argument_name, api_name = "offset", type_name=type),
+                    Variable(decl_name = count_argument_name, api_name = "count", type_name=type)
+                ]
+            )
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    SPIRVResult base = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3321,11 +3308,17 @@ def generate_types():
     barrier_intrinsics = ['ExecutionBarrier', 'ExecutionBarrierSubgroup', 'ExecutionBarrierWorkgroup']
     for intrinsic in barrier_intrinsics:
         function_name = f'{intrinsic}'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {function_name}.name = "{intrinsic[0].lower() + intrinsic[1:]}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
+            return_type = type,
+            parameters = [
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         if intrinsic.endswith('Subgroup'):
             scope = '3'
@@ -3346,11 +3339,18 @@ def generate_types():
     memory_barrier_intrinsics = ['MemoryBarrier', 'MemoryBarrierBuffer', 'MemoryBarrierTexture', 'MemoryBarrierAtomic', 'MemoryBarrierSubgroup', 'MemoryBarrierWorkgroup']
     for intrinsic in memory_barrier_intrinsics:
         function_name = f'{intrinsic}'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {function_name}.name = "{intrinsic[0].lower() + intrinsic[1:]}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &VoidType;\n\n'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'{intrinsic[0].lower() + intrinsic[1:]}',
+            return_type = type,
+            parameters = [
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         if intrinsic.endswith('Buffer'):
             scope = '2'
@@ -3436,18 +3436,19 @@ def generate_types():
         return_type = texture_size_types[type]
         function_name = f'Texture{intrinsic}_{type}'
         texture_argument_name = f'{function_name}_texture'
-        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {texture_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'texture{intrinsic}',
+            return_type = type,
+            parameters = [
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3461,24 +3462,21 @@ def generate_types():
         return_type = texture_size_types[type]
         function_name = f'Texture{intrinsic}_{type}'
         texture_argument_name = f'{function_name}_texture'
-        mip_argument_name = f'{function_name}_UInt32_mip'
-        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-        intrinsic_decls += f'extern Variable {mip_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {texture_argument_name};\n'
-        intrinsic_defs += f'Variable {mip_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {mip_argument_name}.name = "mip"_c;\n'
-        intrinsic_setup += f'    {mip_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {return_type}Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{mip_argument_name})->typeSymbol = &UInt32Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &{return_type}Type;\n\n'
+        mip_argument_name = f'{function_name}_mip'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'texture{intrinsic}',
+            return_type = type,
+            parameters = [
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+                Variable(decl_name = mip_argument_name, api_name = "mip", type_name='UInt32')
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3492,18 +3490,19 @@ def generate_types():
     for type in texture_types_no_ms:
         function_name = f'Texture{intrinsic}_{type}'
         texture_argument_name = f'{function_name}_texture'
-        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {texture_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'texture{intrinsic}',
+            return_type = type,
+            parameters = [
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3516,18 +3515,19 @@ def generate_types():
     for type in texture_types_ms:
         function_name = f'Texture{intrinsic}_{type}'
         texture_argument_name = f'{function_name}_texture'
-        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {texture_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ UInt32Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &UInt32Type;\n\n'
+
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'texture{intrinsic}',
+            return_type = type,
+            parameters = [
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+            ]
+        )
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
 
         spirv_function = ''
         spirv_function += '    g->writer->Capability(Capabilities::ImageQuery);\n'
@@ -3538,41 +3538,16 @@ def generate_types():
 
     # Helper function to generate a version of the texture sampling method both for combined texture-samplers and for textures with samplers provided separately.
     def generate_texture_intrinsic_base(intrinsic):
-        texture_argument_name = f'{intrinsic}_texture'
-        sampler_argument_name = f'{intrinsic}_sampler'
-        decls = ''
-        decls += f'extern Variable {texture_argument_name};\n'
-        decls += f'extern Variable {sampler_argument_name};\n'
 
-        defs = ''
-        defs += f'Variable {texture_argument_name};\n'
-        defs += f'Variable {sampler_argument_name};\n'
-
-        setup = ''
-        setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        setup += f'    {sampler_argument_name}.name = "sampler"_c;\n'
-        setup += f'    {sampler_argument_name}.type = Type::FullType{{ SamplerType.name }};\n'
-        setup += f'    {sampler_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        setup += f'    Symbol::Resolved(&{sampler_argument_name})->typeSymbol = &SamplerType;\n'
-        setup += f'    Symbol::Resolved(&{sampler_argument_name})->storage = Storage::Uniform;\n'
-
-        sampled_decls = ''
-        sampled_decls += f'extern Variable Sampled{texture_argument_name};\n'
-
-        sampled_defs = ''
-        sampled_defs += f'Variable Sampled{texture_argument_name};\n'
-
-        sampled_setup = ''
-        sampled_setup += f'    Sampled{texture_argument_name}.name = "texture"_c;\n'
-        sampled_setup += f'    Sampled{texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        sampled_setup += f'    Sampled{texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        sampled_setup += f'    Symbol::Resolved(&Sampled{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        sampled_setup += f'    Symbol::Resolved(&Sampled{texture_argument_name})->storage = Storage::Uniform;\n'
-        return [(decls, defs, setup, ''), (sampled_decls, sampled_defs, sampled_setup, 'Sampled')]
+        sampled_args = [
+            Variable(decl_name = f'Sampled{intrinsic}_texture', api_name = "texture", type_name=type, pointer=True, uniform=True)
+        ]
+        base_args = [
+            Variable(decl_name = f'{intrinsic}_texture', api_name = "texture", type_name=type, pointer=True, uniform=True),
+            Variable(decl_name = f'{intrinsic}_sampler', api_name = "sampler", type_name='SamplerType', pointer=True, uniform=True)
+        ]
+        
+        return [(base_args, ''), (sampled_args, 'Sampled')]
 
     intrinsic = 'GetSampledMip'
     for type in texture_types_no_ms:
@@ -3580,23 +3555,22 @@ def generate_types():
         base_function_name = f'Texture{intrinsic}_{type}'
 
         for defs in generate_texture_intrinsic_base(base_function_name):
-            base_decls, base_defs, base_setup, prefix = defs
+            args, prefix = defs
             function_name = f'{prefix}{base_function_name}'
             coordinate_argument_name = f'{function_name}_coordinate'
-            intrinsic_decls += base_decls
-            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
-            intrinsic_defs += base_defs
-            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
 
-            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x2Type.name }};\n'
-            intrinsic_setup += base_setup
-            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x2Type;\n\n'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'texture{intrinsic}',
+                return_type = type,
+                parameters = args + [
+                    Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
+                ]
+            )
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             if prefix: # Prefix here is merely 'Sampled'
@@ -3618,55 +3592,36 @@ def generate_types():
             hasStore = intrinsic in ['Store', 'StoreMip']
             function_name = f'Texture{intrinsic}_{type}'
             texture_argument_name = f'{function_name}_texture'
-
             coordinate_argument_name = f'{function_name}_coordinate'
-            if hasMip:
-                mip_argument_name = f'{function_name}_mip'
-            if hasStore:
-                value_argument_name = f'{function_name}_value'
 
-            intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-            if hasMip:
-                intrinsic_decls += f'extern Variable {mip_argument_name};\n'
-            if hasStore:
-                intrinsic_decls += f'extern Variable {value_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'texture{intrinsic}',
+                return_type = type,
+                parameters = [
+                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+                    Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type)
+                ]
+            )
 
-            intrinsic_defs += f'Variable {texture_argument_name};\n'
-            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
             if hasMip:
-                intrinsic_defs += f'Variable {mip_argument_name};\n'
+                fun.parameters.append(
+                    Variable(decl_name = f'{function_name}_mip', api_name = "mip", type_name='Int32')
+                )
             if hasStore:
-                intrinsic_defs += f'Variable {value_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-
-            intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-            intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-            intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-
-            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-            if hasMip:
-                intrinsic_setup += f'    {mip_argument_name}.name = "mip"_c;\n'
-                intrinsic_setup += f'    {mip_argument_name}.type = Type::FullType{{ Int32Type.name }};\n'
-            if hasStore:
-                intrinsic_setup += f'    {value_argument_name}.name = "value"_c;\n'
-                intrinsic_setup += f'    {value_argument_name}.type = Type::FullType{{ Float32x4Type.name }};\n'
-            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
+                fun.parameters.append(
+                    Variable(decl_name = f'{function_name}_value', api_name = "value", type_name='Float32x4')
+                )
 
             if not hasStore:
-                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ {type}Type.name }};\n'
+                fun.return_type = type
             else:
-                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ VoidType.name }};\n'
+                fun.return_type = 'Void'
 
-            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-            if hasMip:
-                intrinsic_setup += f'    Symbol::Resolved(&{mip_argument_name})->typeSymbol = &Int32Type;\n'
-            if hasStore:
-                intrinsic_setup += f'    Symbol::Resolved(&{value_argument_name})->typeSymbol = &Float32x4Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n\n'
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3703,43 +3658,26 @@ def generate_types():
             texture_argument_name = f'{function_name}_texture'
             coordinate_argument_name = f'{function_name}_coordinate'
             lod_argument_name = f'{function_name}_lod'
-            if intrinsic == 'FetchSample':
-                sample_argument_name = f'{function_name}_sample'
-            intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-            intrinsic_decls += f'extern Variable {lod_argument_name};\n'
 
+            fun = Function( 
+                decl_name = function_name,
+                api_name = f'texture{intrinsic}',
+                return_type = type,
+                parameters = [
+                    Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True),
+                    Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
+                    Variable(decl_name = lod_argument_name, api_name = "lod", type_name='UInt32')
+                ]
+            )
             if intrinsic == 'FetchSample':
-                intrinsic_decls += f'extern Variable {sample_argument_name};\n'
-            intrinsic_decls += f'extern Function {function_name};\n'
+                fun.parameters.append(
+                    Variable(decl_name = f'{function_name}_sample', api_name = "sample", type_name='UInt32')
+                )
 
-            intrinsic_defs += f'Variable {texture_argument_name};\n'
-            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
-            intrinsic_defs += f'Variable {lod_argument_name};\n'
-            if intrinsic == 'FetchSample':
-                intrinsic_defs += f'Variable {sample_argument_name};\n'
-            intrinsic_defs += f'Function {function_name};\n'
-
-            intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-            intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-            intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {texture_denormalized_index_types[type]}Type.name }};\n'
-            intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
-            intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
-            if intrinsic == 'FetchSample':
-                intrinsic_setup += f'    {sample_argument_name}.name = "sample"_c;\n'
-                intrinsic_setup += f'    {sample_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
-            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{texture_denormalized_index_types[type]}Type;\n'
-            intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &UInt32Type;\n'
-            if intrinsic == 'FetchSample':
-                intrinsic_setup += f'    Symbol::Resolved(&{sample_argument_name})->typeSymbol = &UInt32Type;\n'
-
-            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+            intrinsic_decls += fun.declaration()
+            intrinsic_defs += fun.definition()
+            intrinsic_setup += fun.setup()
+            intrinsic_list.append(fun.pair())
 
             spirv_function = ''
             spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3762,48 +3700,29 @@ def generate_types():
         for intrinsic in texture_gather_intrinsics:
             base_function_name = f'Texture{intrinsic}_{type}'
             for defs in generate_texture_intrinsic_base(base_function_name):
-                base_decls, base_defs, base_setup, prefix = defs
+                args, prefix = defs
                 function_name = f'{prefix}{base_function_name}'
-                texture_argument_name = f'{function_name}_texture'
                 coordinate_argument_name = f'{function_name}_coordinate'
                 component_argument_name = f'{function_name}_component'
-                if intrinsic == 'GatherOffset':
-                    offset_argument_name = f'{function_name}_offset'
-                intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-                intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-                intrinsic_decls += f'extern Variable {component_argument_name};\n'
 
+                fun = Function( 
+                    decl_name = function_name,
+                    api_name = f'texture{intrinsic}',
+                    return_type = type,
+                    parameters = args + [
+                        Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=texture_denormalized_index_types[type]),
+                        Variable(decl_name = component_argument_name, api_name = "component", type_name='Int32')
+                    ]
+                )
                 if intrinsic == 'GatherOffset':
-                    intrinsic_decls += f'extern Variable {offset_argument_name};\n'
-                intrinsic_decls += f'extern Function {function_name};\n'
+                    fun.parameters.append(
+                        Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name='UInt32')
+                    )
 
-                intrinsic_defs += f'Variable {texture_argument_name};\n'
-                intrinsic_defs += f'Variable {coordinate_argument_name};\n'
-                intrinsic_defs += f'Variable {component_argument_name};\n'
-                if intrinsic == 'GatherOffset':
-                    intrinsic_defs += f'Variable {offset_argument_name};\n'
-                intrinsic_defs += f'Function {function_name};\n'
-
-                intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-                intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-                intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-                intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-                intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {texture_denormalized_index_types[type]}Type.name }};\n'
-                intrinsic_setup += f'    {component_argument_name}.name = "component"_c;\n'
-                intrinsic_setup += f'    {component_argument_name}.type = Type::FullType{{ Int32Type.name }};\n'
-                if intrinsic == 'GatherOffset':
-                    intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
-                    intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ UInt32Type.name }};\n'
-                intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-                intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
-                intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-                intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-                intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{texture_denormalized_index_types[type]}Type;\n'
-                intrinsic_setup += f'    Symbol::Resolved(&{component_argument_name})->typeSymbol = &Int32Type;\n'
-                if intrinsic == 'GatherOffset':
-                    intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &UInt32Type;\n'
-
-                intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+                intrinsic_decls += fun.declaration()
+                intrinsic_defs += fun.definition()
+                intrinsic_setup += fun.setup()
+                intrinsic_list.append(fun.pair())
 
                 spirv_function = ''
                 spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
@@ -3822,23 +3741,35 @@ def generate_types():
         function_name = f'Texture{intrinsic}_{type}'
         texture_argument_name = f'{function_name}_texture'
         coordinate_argument_name = f'{function_name}_coordinate'
-        intrinsic_decls += f'extern Variable {texture_argument_name};\n'
-        intrinsic_decls += f'extern Function {function_name};\n'
-        intrinsic_defs += f'Variable {texture_argument_name};\n'
-        intrinsic_defs += f'Function {function_name};\n'
-        intrinsic_setup += f'    {texture_argument_name}.name = "texture"_c;\n'
-        intrinsic_setup += f'    {texture_argument_name}.type = Type::FullType{{ {type}Type.name }};\n'
-        intrinsic_setup += f'    {texture_argument_name}.type.AddModifier(Type::FullType::Modifier::Pointer);\n'
-        intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}"_c;\n'
-        intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->typeSymbol = &{type}Type;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{texture_argument_name})->storage = Storage::Uniform;\n'
-        intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
 
+        fun = Function( 
+            decl_name = function_name,
+            api_name = f'texture{intrinsic}',
+            return_type = type,
+            parameters = [
+                Variable(decl_name = texture_argument_name, api_name = "texture", type_name=type, pointer=True, uniform=True)
+            ]
+        )
+
+        if type.endswith('MS'):
+            fun.parameters.append(
+                Variable(decl_name = f'{function_name}_sample', api_name = "sample", type_name='UInt32')
+            )
+
+        intrinsic_decls += fun.declaration()
+        intrinsic_defs += fun.definition()
+        intrinsic_setup += fun.setup()
+        intrinsic_list.append(fun.pair())
+        
         spirv_function = ''
         spirv_function += '    SPIRVResult texture = LoadValueSPIRV(c, g, args[0]);\n'
-        spirv_function += '    SPIRVResult coord = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(0), 2);\n'
-        spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
+        if type.endswith('MS'):
+            spirv_function += '    SPIRVResult sample = LoadValueSPIRV(c, g, args[1]);\n'
+            spirv_function += '    SPIRVResult coord = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(0), 2);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord, ImageOperands::Sample, sample);\n'
+        else:
+            spirv_function += '    SPIRVResult coord = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float32(0), 2);\n'
+            spirv_function += f'    uint32_t ret = g->writer->MappedInstruction(OpImageRead, SPVWriter::Section::LocalFunction, returnType, texture, coord);\n'
 
     intrinsic = 'Sample'
     lod_modifiers = ['', 'Lod', 'Grad', 'Bias']
@@ -3853,8 +3784,9 @@ def generate_types():
                         base_function_name = f'Texture{intrinsic}{lod}{proj}{comp}{offset}_{type}'
 
                         for defs in generate_texture_intrinsic_base(base_function_name):
-                            base_decls, base_defs, base_setup, prefix = defs
-                            function_name = f'{prefix}{base_function_name}'
+                            args, prefix = defs
+
+
                             if comp == 'Compare' and type.startswith('TextureCube'):
                                 continue
 
@@ -3867,101 +3799,48 @@ def generate_types():
                             if offset == 'Offset' and type.startswith('TextureCube'):
                                 continue
 
+                            function_name = f'{prefix}{base_function_name}'
                             coordinate_type = texture_float_index_types[type]
                             coordinate_argument_name = f'{function_name}_coordinate'
+
+                            fun = Function( 
+                                decl_name = function_name,
+                                api_name = f'texture{intrinsic}{lod}{proj}{comp}{offset}',
+                                return_type = 'Float32x4',
+                                parameters = args + [
+                                    Variable(decl_name = coordinate_argument_name, api_name = "coordinate", type_name=coordinate_type),
+                                ]
+                            )
                             if lod == 'Lod':
-                                lod_argument_name = f'{function_name}_lod'
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_lod', api_name = "lod", type_name='Float32')
+                                )
                             elif lod == 'Grad':
-                                lodx_argument_name = f'{function_name}_gradx'
-                                lody_argument_name = f'{function_name}_grady'
+                                fun.parameters += [
+                                    Variable(decl_name = f'{function_name}_grad_x', api_name = "grad_x", type_name=coordinate_type),
+                                    Variable(decl_name = f'{function_name}_grad_y', api_name = "grad_y", type_name=coordinate_type)
+                                ]
                             elif lod == 'Bias':
-                                lod_argument_name = f'{function_name}_bias'
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_bias', api_name = "bias", type_name='Float32')
+                                )
                             if proj == 'Proj':
-                                proj_argument_name = f'{function_name}_proj'
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_proj', api_name = "proj", type_name='Float32')
+                                )
                             if comp == 'Compare':
-                                compare_argument_name = f'{function_name}_compare'
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_compare', api_name = "compare", type_name='Float32')
+                                )
                             if offset == 'Offset':
-                                offset_argument_name = f'{function_name}_offset'
-
-
-                            intrinsic_decls += base_decls
-                            intrinsic_decls += f'extern Variable {coordinate_argument_name};\n'
-                            if lod == 'Lod' or lod == 'Bias':
-                                intrinsic_decls += f'extern Variable {lod_argument_name};\n'
-                            elif lod == 'Grad':
-                                intrinsic_decls += f'extern Variable {lodx_argument_name};\n'
-                                intrinsic_decls += f'extern Variable {lody_argument_name};\n'
-                            elif lod == 'Bias':
-                                intrinsic_decls += f'extern Variable {lod_argument_name};\n'
-                            if proj == 'Proj':
-                                intrinsic_decls += f'extern Variable {proj_argument_name};\n'
-                            if comp == 'Compare':
-                                intrinsic_decls += f'extern Variable {compare_argument_name};\n'
-                            if offset == 'Offset':
-                                intrinsic_decls += f'extern Variable {offset_argument_name};\n'
-
-                            intrinsic_decls += f'extern Function {function_name};\n'
-
-                            intrinsic_defs += base_defs
-                            intrinsic_defs += f'Variable {coordinate_argument_name};\n'
-                            if lod == 'Lod' or lod == 'Bias':
-                                intrinsic_defs += f'Variable {lod_argument_name};\n'
-                            elif lod == 'Grad':
-                                intrinsic_defs += f'Variable {lodx_argument_name};\n'
-                                intrinsic_defs += f'Variable {lody_argument_name};\n'
-                            elif lod == 'Bias':
-                                intrinsic_defs += f'Variable {lod_argument_name};\n'
-                            if proj == 'Proj':
-                                intrinsic_defs += f'Variable {proj_argument_name};\n'
-                            if comp == 'Compare':
-                                intrinsic_defs += f'Variable {compare_argument_name};\n'
-                            if offset == 'Offset':
-                                intrinsic_defs += f'Variable {offset_argument_name};\n'
-
-                            intrinsic_defs += f'Function {function_name};\n'
-
-                            intrinsic_setup += base_setup
-                            intrinsic_setup += f'    {coordinate_argument_name}.name = "coordinate"_c;\n'
-                            intrinsic_setup += f'    {coordinate_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                            if lod == 'Lod':
-                                intrinsic_setup += f'    {lod_argument_name}.name = "lod"_c;\n'
-                                intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                            elif lod == 'Grad':
-                                intrinsic_setup += f'    {lodx_argument_name}.name = "grad_x"_c;\n'
-                                intrinsic_setup += f'    {lodx_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                                intrinsic_setup += f'    {lody_argument_name}.name = "grad_y"_c;\n'
-                                intrinsic_setup += f'    {lody_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-                            elif lod == 'Bias':
-                                intrinsic_setup += f'    {lod_argument_name}.name = "bias"_c;\n'
-                                intrinsic_setup += f'    {lod_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                            if proj == 'Proj':
-                                intrinsic_setup += f'    {proj_argument_name}.name = "proj"_c;\n'
-                                intrinsic_setup += f'    {proj_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                            if comp == 'Compare':
-                                intrinsic_setup += f'    {compare_argument_name}.name = "compare"_c;\n'
-                                intrinsic_setup += f'    {compare_argument_name}.type = Type::FullType{{ Float32Type.name }};\n'
-                            if offset == 'Offset':
-                                intrinsic_setup += f'    {offset_argument_name}.name = "offset"_c;\n'
-                                intrinsic_setup += f'    {offset_argument_name}.type = Type::FullType{{ {coordinate_type}Type.name }};\n'
-
-                            intrinsic_setup += f'    {function_name}.name = "texture{intrinsic}{lod}{proj}{comp}{offset}"_c;\n'
-                            intrinsic_setup += f'    {function_name}.returnType = Type::FullType{{ Float32x4Type.name }};\n'
-                            intrinsic_setup += f'    Symbol::Resolved(&{coordinate_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                            if lod == 'Lod' or lod == 'Bias':
-                                intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
-                            elif lod == 'Grad':
-                                intrinsic_setup += f'    Symbol::Resolved(&{lodx_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                                intrinsic_setup += f'    Symbol::Resolved(&{lody_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                            elif lod == 'Bias':
-                                intrinsic_setup += f'    Symbol::Resolved(&{lod_argument_name})->typeSymbol = &Float32Type;\n'
-                            if proj == 'Proj':
-                                intrinsic_setup += f'    Symbol::Resolved(&{proj_argument_name})->typeSymbol = &Float32Type;\n'
-                            if comp == 'Compare':
-                                intrinsic_setup += f'    Symbol::Resolved(&{compare_argument_name})->typeSymbol = &Float32Type;\n'
-                            if offset == 'Offset':
-                                intrinsic_setup += f'    Symbol::Resolved(&{offset_argument_name})->typeSymbol = &{coordinate_type}Type;\n'
-                            
-                            intrinsic_setup += f'    Symbol::Resolved(&{function_name})->returnTypeSymbol = &Float32x4Type;\n\n'
+                                fun.parameters.append(
+                                    Variable(decl_name = f'{function_name}_offset', api_name = "offset", type_name=coordinate_type)
+                                )
+                         
+                            intrinsic_decls += fun.declaration()
+                            intrinsic_defs += fun.definition()
+                            intrinsic_setup += fun.setup()
+                            intrinsic_list.append(fun.pair())
 
                             spirv_function = ''
                             spirv_function += '    g->writer->Capability(Capabilities::Shader);\n'

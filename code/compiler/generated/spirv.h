@@ -14807,84 +14807,56 @@ SPIRVResult SPIRV_fract_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_saturate_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 2, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 2, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 3, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 3, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 4, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 4, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 2, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 2, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 3, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 3, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_saturate_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    SPIRVResult min = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(0));
-    SPIRVResult max = GenerateConstantSPIRV(c, g, ConstantCreationInfo::Float(1));
-    min = GenerateSplatCompositeSPIRV(c, g, returnType, 4, min);
-    max = GenerateSplatCompositeSPIRV(c, g, returnType, 4, max);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Saturate, val);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14947,168 +14919,168 @@ SPIRVResult SPIRV_trunc_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t
 SPIRVResult SPIRV_ddx_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddx_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdx, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdx, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_ddy_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpDPdy, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), DPdy, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_fwidth_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpFwidth, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), Fwidth, val);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -15479,126 +15451,126 @@ SPIRVResult SPIRV_all_Bool8x4(const Compiler* c, SPIRVGenerator* g, uint32_t ret
 SPIRVResult SPIRV_transpose_Float32x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x2x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x3x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float32x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
 SPIRVResult SPIRV_transpose_Float16x4x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
-    uint32_t ret = g->writer->MappedInstruction(OpTranspose, SPVWriter::Section::LocalFunction, returnType, val);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), MatrixInverse, val);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -17508,7 +17480,191 @@ SPIRVResult SPIRV_SubgroupGetFirstActiveThread(const Compiler* c, SPIRVGenerator
     return SPIRVResult(ret, returnType, true);
 }
 
-SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x2(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x3(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+{
+    g->writer->Capability(Capabilities::GroupNonUniformBallot);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformBroadcastFirst, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup, loaded);
+    return SPIRVResult(ret, returnType, true);
+}
+
+SPIRVResult SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
     g->writer->Capability(Capabilities::GroupNonUniformBallot);
     SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
@@ -25432,7 +25588,30 @@ std::pair{ &SubgroupGetLowerMask, &SPIRV_SubgroupGetLowerMask },
 std::pair{ &SubgroupGetThreadAndGreaterMask, &SPIRV_SubgroupGetThreadAndGreaterMask },
 std::pair{ &SubgroupGetGreaterMask, &SPIRV_SubgroupGetGreaterMask },
 std::pair{ &SubgroupGetFirstActiveThread, &SPIRV_SubgroupGetFirstActiveThread },
-std::pair{ &SubgroupBroadcastFirstActiveThread, &SPIRV_SubgroupBroadcastFirstActiveThread },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float32, &SPIRV_SubgroupBroadcastFirstActiveThread_Float32 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float32x2, &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float32x3, &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float32x4, &SPIRV_SubgroupBroadcastFirstActiveThread_Float32x4 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float16, &SPIRV_SubgroupBroadcastFirstActiveThread_Float16 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float16x2, &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float16x3, &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Float16x4, &SPIRV_SubgroupBroadcastFirstActiveThread_Float16x4 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int32, &SPIRV_SubgroupBroadcastFirstActiveThread_Int32 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int32x2, &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int32x3, &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int32x4, &SPIRV_SubgroupBroadcastFirstActiveThread_Int32x4 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int16, &SPIRV_SubgroupBroadcastFirstActiveThread_Int16 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int16x2, &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int16x3, &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_Int16x4, &SPIRV_SubgroupBroadcastFirstActiveThread_Int16x4 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt32, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt32x2, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt32x3, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt32x4, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt32x4 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt16, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt16x2, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x2 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt16x3, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x3 },
+std::pair{ &SubgroupBroadcastFirstActiveThread_UInt16x4, &SPIRV_SubgroupBroadcastFirstActiveThread_UInt16x4 },
 std::pair{ &SubgroupBallot, &SPIRV_SubgroupBallot },
 std::pair{ &SubgroupInverseBallot, &SPIRV_SubgroupInverseBallot },
 std::pair{ &SubgroupBallotBitCount, &SPIRV_SubgroupBallotBitCount },

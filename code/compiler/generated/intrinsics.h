@@ -1496,259 +1496,259 @@ extern Variable smoothstep_Float16x4_edge1;
 extern Variable smoothstep_Float16x4_x;
 extern Function smoothstep_Float16x4;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float32_arg;
 extern Function ceil_Float32;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float32x2_arg;
 extern Function ceil_Float32x2;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float32x3_arg;
 extern Function ceil_Float32x3;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float32x4_arg;
 extern Function ceil_Float32x4;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float16_arg;
 extern Function ceil_Float16;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float16x2_arg;
 extern Function ceil_Float16x2;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float16x3_arg;
 extern Function ceil_Float16x3;
 
-/// smoothstep
+/// ceil
 extern Variable ceil_Float16x4_arg;
 extern Function ceil_Float16x4;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float32_arg;
 extern Function floor_Float32;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float32x2_arg;
 extern Function floor_Float32x2;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float32x3_arg;
 extern Function floor_Float32x3;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float32x4_arg;
 extern Function floor_Float32x4;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float16_arg;
 extern Function floor_Float16;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float16x2_arg;
 extern Function floor_Float16x2;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float16x3_arg;
 extern Function floor_Float16x3;
 
-/// smoothstep
+/// floor
 extern Variable floor_Float16x4_arg;
 extern Function floor_Float16x4;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float32_arg;
 extern Function fract_Float32;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float32x2_arg;
 extern Function fract_Float32x2;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float32x3_arg;
 extern Function fract_Float32x3;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float32x4_arg;
 extern Function fract_Float32x4;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float16_arg;
 extern Function fract_Float16;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float16x2_arg;
 extern Function fract_Float16x2;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float16x3_arg;
 extern Function fract_Float16x3;
 
-/// smoothstep
+/// fract
 extern Variable fract_Float16x4_arg;
 extern Function fract_Float16x4;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float32_arg;
 extern Function saturate_Float32;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float32x2_arg;
 extern Function saturate_Float32x2;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float32x3_arg;
 extern Function saturate_Float32x3;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float32x4_arg;
 extern Function saturate_Float32x4;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float16_arg;
 extern Function saturate_Float16;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float16x2_arg;
 extern Function saturate_Float16x2;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float16x3_arg;
 extern Function saturate_Float16x3;
 
-/// smoothstep
+/// saturate
 extern Variable saturate_Float16x4_arg;
 extern Function saturate_Float16x4;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float32_arg;
 extern Function trunc_Float32;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float32x2_arg;
 extern Function trunc_Float32x2;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float32x3_arg;
 extern Function trunc_Float32x3;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float32x4_arg;
 extern Function trunc_Float32x4;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float16_arg;
 extern Function trunc_Float16;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float16x2_arg;
 extern Function trunc_Float16x2;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float16x3_arg;
 extern Function trunc_Float16x3;
 
-/// smoothstep
+/// trunc
 extern Variable trunc_Float16x4_arg;
 extern Function trunc_Float16x4;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float32_arg;
 extern Function ddx_Float32;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float32x2_arg;
 extern Function ddx_Float32x2;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float32x3_arg;
 extern Function ddx_Float32x3;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float32x4_arg;
 extern Function ddx_Float32x4;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float16_arg;
 extern Function ddx_Float16;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float16x2_arg;
 extern Function ddx_Float16x2;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float16x3_arg;
 extern Function ddx_Float16x3;
 
-/// smoothstep
+/// ddx
 extern Variable ddx_Float16x4_arg;
 extern Function ddx_Float16x4;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float32_arg;
 extern Function ddy_Float32;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float32x2_arg;
 extern Function ddy_Float32x2;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float32x3_arg;
 extern Function ddy_Float32x3;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float32x4_arg;
 extern Function ddy_Float32x4;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float16_arg;
 extern Function ddy_Float16;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float16x2_arg;
 extern Function ddy_Float16x2;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float16x3_arg;
 extern Function ddy_Float16x3;
 
-/// smoothstep
+/// ddy
 extern Variable ddy_Float16x4_arg;
 extern Function ddy_Float16x4;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float32_arg;
 extern Function fwidth_Float32;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float32x2_arg;
 extern Function fwidth_Float32x2;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float32x3_arg;
 extern Function fwidth_Float32x3;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float32x4_arg;
 extern Function fwidth_Float32x4;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float16_arg;
 extern Function fwidth_Float16;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float16x2_arg;
 extern Function fwidth_Float16x2;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float16x3_arg;
 extern Function fwidth_Float16x3;
 
-/// smoothstep
+/// fwidth
 extern Variable fwidth_Float16x4_arg;
 extern Function fwidth_Float16x4;
 
@@ -2690,1152 +2690,2016 @@ extern Function SubgroupGetGreaterMask;
 /// subgroupGetFirstActiveThread
 extern Function SubgroupGetFirstActiveThread;
 
-extern Variable BroadcastFirstActiveThread_UInt32_value;
-extern Function SubgroupBroadcastFirstActiveThread;
-extern Variable SubgroupBallot_Bool8_predicate;
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float32;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float32x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float32x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float32x4;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float16;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float16x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float16x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Float16x4;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int32;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int32x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int32x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int32x4;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int16;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int16x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int16x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_Int16x4;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt32;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt32x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt32x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt32x4;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt16;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt16x2;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt16x3;
+
+/// subgroupBroadcastFirstActiveThread
+extern Variable BroadcastFirstActiveThread_value;
+extern Function SubgroupBroadcastFirstActiveThread_UInt16x4;
+
+/// subgroupBallot
+extern Variable SubgroupBallot_predicate;
 extern Function SubgroupBallot;
-extern Variable SubgroupInverseBallot_Bool8_predicate;
+
+/// subgroupInverseBallot
+extern Variable SubgroupInverseBallot_predicate;
 extern Function SubgroupInverseBallot;
-extern Variable SubgroupBallotBitCount_UInt32x4_mask;
+
+/// subgroupBallotBitCount
+extern Variable SubgroupBallotBitCount_mask;
 extern Function SubgroupBallotBitCount;
-extern Variable SubgroupBallotFirstOne_UInt32x4_mask;
+
+/// subgroupBallotFirstOne
+extern Variable SubgroupBallotFirstOne_mask;
 extern Function SubgroupBallotFirstOne;
-extern Variable SubgroupBallotLastOne_UInt32x4_mask;
+
+/// subgroupBallotLastOne
+extern Variable SubgroupBallotLastOne_mask;
 extern Function SubgroupBallotLastOne;
-extern Variable SubgroupBallotBit_UInt32x4_mask;
-extern Variable SubgroupBallotBit_UInt32_index;
+
+/// subgroupBallotBit
+extern Variable SubgroupBallotBit_mask;
+extern Variable SubgroupBallotBit_index;
 extern Function SubgroupBallotBit;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float32_color;
 extern Function SubgroupSwapDiagonal_Float32;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float32x2_color;
 extern Function SubgroupSwapDiagonal_Float32x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float32x3_color;
 extern Function SubgroupSwapDiagonal_Float32x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float32x4_color;
 extern Function SubgroupSwapDiagonal_Float32x4;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float16_color;
 extern Function SubgroupSwapDiagonal_Float16;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float16x2_color;
 extern Function SubgroupSwapDiagonal_Float16x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float16x3_color;
 extern Function SubgroupSwapDiagonal_Float16x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Float16x4_color;
 extern Function SubgroupSwapDiagonal_Float16x4;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int32_color;
 extern Function SubgroupSwapDiagonal_Int32;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int32x2_color;
 extern Function SubgroupSwapDiagonal_Int32x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int32x3_color;
 extern Function SubgroupSwapDiagonal_Int32x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int32x4_color;
 extern Function SubgroupSwapDiagonal_Int32x4;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int16_color;
 extern Function SubgroupSwapDiagonal_Int16;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int16x2_color;
 extern Function SubgroupSwapDiagonal_Int16x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int16x3_color;
 extern Function SubgroupSwapDiagonal_Int16x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_Int16x4_color;
 extern Function SubgroupSwapDiagonal_Int16x4;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt32_color;
 extern Function SubgroupSwapDiagonal_UInt32;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt32x2_color;
 extern Function SubgroupSwapDiagonal_UInt32x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt32x3_color;
 extern Function SubgroupSwapDiagonal_UInt32x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt32x4_color;
 extern Function SubgroupSwapDiagonal_UInt32x4;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt16_color;
 extern Function SubgroupSwapDiagonal_UInt16;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt16x2_color;
 extern Function SubgroupSwapDiagonal_UInt16x2;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt16x3_color;
 extern Function SubgroupSwapDiagonal_UInt16x3;
+
+/// subgroupSwapDiagonal
 extern Variable SubgroupSwapDiagonal_UInt16x4_color;
 extern Function SubgroupSwapDiagonal_UInt16x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float32_color;
 extern Function SubgroupSwapVertical_Float32;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float32x2_color;
 extern Function SubgroupSwapVertical_Float32x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float32x3_color;
 extern Function SubgroupSwapVertical_Float32x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float32x4_color;
 extern Function SubgroupSwapVertical_Float32x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float16_color;
 extern Function SubgroupSwapVertical_Float16;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float16x2_color;
 extern Function SubgroupSwapVertical_Float16x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float16x3_color;
 extern Function SubgroupSwapVertical_Float16x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Float16x4_color;
 extern Function SubgroupSwapVertical_Float16x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int32_color;
 extern Function SubgroupSwapVertical_Int32;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int32x2_color;
 extern Function SubgroupSwapVertical_Int32x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int32x3_color;
 extern Function SubgroupSwapVertical_Int32x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int32x4_color;
 extern Function SubgroupSwapVertical_Int32x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int16_color;
 extern Function SubgroupSwapVertical_Int16;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int16x2_color;
 extern Function SubgroupSwapVertical_Int16x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int16x3_color;
 extern Function SubgroupSwapVertical_Int16x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_Int16x4_color;
 extern Function SubgroupSwapVertical_Int16x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt32_color;
 extern Function SubgroupSwapVertical_UInt32;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt32x2_color;
 extern Function SubgroupSwapVertical_UInt32x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt32x3_color;
 extern Function SubgroupSwapVertical_UInt32x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt32x4_color;
 extern Function SubgroupSwapVertical_UInt32x4;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt16_color;
 extern Function SubgroupSwapVertical_UInt16;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt16x2_color;
 extern Function SubgroupSwapVertical_UInt16x2;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt16x3_color;
 extern Function SubgroupSwapVertical_UInt16x3;
+
+/// subgroupSwapVertical
 extern Variable SubgroupSwapVertical_UInt16x4_color;
 extern Function SubgroupSwapVertical_UInt16x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float32_color;
 extern Function SubgroupSwapHorizontal_Float32;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float32x2_color;
 extern Function SubgroupSwapHorizontal_Float32x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float32x3_color;
 extern Function SubgroupSwapHorizontal_Float32x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float32x4_color;
 extern Function SubgroupSwapHorizontal_Float32x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float16_color;
 extern Function SubgroupSwapHorizontal_Float16;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float16x2_color;
 extern Function SubgroupSwapHorizontal_Float16x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float16x3_color;
 extern Function SubgroupSwapHorizontal_Float16x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Float16x4_color;
 extern Function SubgroupSwapHorizontal_Float16x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int32_color;
 extern Function SubgroupSwapHorizontal_Int32;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int32x2_color;
 extern Function SubgroupSwapHorizontal_Int32x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int32x3_color;
 extern Function SubgroupSwapHorizontal_Int32x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int32x4_color;
 extern Function SubgroupSwapHorizontal_Int32x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int16_color;
 extern Function SubgroupSwapHorizontal_Int16;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int16x2_color;
 extern Function SubgroupSwapHorizontal_Int16x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int16x3_color;
 extern Function SubgroupSwapHorizontal_Int16x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_Int16x4_color;
 extern Function SubgroupSwapHorizontal_Int16x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt32_color;
 extern Function SubgroupSwapHorizontal_UInt32;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt32x2_color;
 extern Function SubgroupSwapHorizontal_UInt32x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt32x3_color;
 extern Function SubgroupSwapHorizontal_UInt32x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt32x4_color;
 extern Function SubgroupSwapHorizontal_UInt32x4;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt16_color;
 extern Function SubgroupSwapHorizontal_UInt16;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt16x2_color;
 extern Function SubgroupSwapHorizontal_UInt16x2;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt16x3_color;
 extern Function SubgroupSwapHorizontal_UInt16x3;
+
+/// subgroupSwapHorizontal
 extern Variable SubgroupSwapHorizontal_UInt16x4_color;
 extern Function SubgroupSwapHorizontal_UInt16x4;
+
+/// atomicLoad
 extern Variable AtomicLoad_UInt32_ptr;
 extern Variable AtomicLoad_UInt32_semantics;
 extern Function AtomicLoad_UInt32;
+
+/// atomicIncrement
 extern Variable AtomicIncrement_UInt32_ptr;
 extern Variable AtomicIncrement_UInt32_semantics;
 extern Function AtomicIncrement_UInt32;
+
+/// atomicDecrement
 extern Variable AtomicDecrement_UInt32_ptr;
 extern Variable AtomicDecrement_UInt32_semantics;
 extern Function AtomicDecrement_UInt32;
+
+/// atomicLoad
 extern Variable AtomicLoad_Int32_ptr;
 extern Variable AtomicLoad_Int32_semantics;
 extern Function AtomicLoad_Int32;
+
+/// atomicIncrement
 extern Variable AtomicIncrement_Int32_ptr;
 extern Variable AtomicIncrement_Int32_semantics;
 extern Function AtomicIncrement_Int32;
+
+/// atomicDecrement
 extern Variable AtomicDecrement_Int32_ptr;
 extern Variable AtomicDecrement_Int32_semantics;
 extern Function AtomicDecrement_Int32;
+
+/// atomicLoad
 extern Variable AtomicLoad_UInt16_ptr;
 extern Variable AtomicLoad_UInt16_semantics;
 extern Function AtomicLoad_UInt16;
+
+/// atomicIncrement
 extern Variable AtomicIncrement_UInt16_ptr;
 extern Variable AtomicIncrement_UInt16_semantics;
 extern Function AtomicIncrement_UInt16;
+
+/// atomicDecrement
 extern Variable AtomicDecrement_UInt16_ptr;
 extern Variable AtomicDecrement_UInt16_semantics;
 extern Function AtomicDecrement_UInt16;
+
+/// atomicLoad
 extern Variable AtomicLoad_Int16_ptr;
 extern Variable AtomicLoad_Int16_semantics;
 extern Function AtomicLoad_Int16;
+
+/// atomicIncrement
 extern Variable AtomicIncrement_Int16_ptr;
 extern Variable AtomicIncrement_Int16_semantics;
 extern Function AtomicIncrement_Int16;
+
+/// atomicDecrement
 extern Variable AtomicDecrement_Int16_ptr;
 extern Variable AtomicDecrement_Int16_semantics;
 extern Function AtomicDecrement_Int16;
+
+/// atomicStore
 extern Variable AtomicStore_UInt32_ptr;
 extern Variable AtomicStore_UInt32_value;
 extern Variable AtomicStore_UInt32_semantics;
 extern Function AtomicStore_UInt32;
+
+/// atomicExchange
 extern Variable AtomicExchange_UInt32_ptr;
 extern Variable AtomicExchange_UInt32_value;
 extern Variable AtomicExchange_UInt32_semantics;
 extern Function AtomicExchange_UInt32;
+
+/// atomicAdd
 extern Variable AtomicAdd_UInt32_ptr;
 extern Variable AtomicAdd_UInt32_value;
 extern Variable AtomicAdd_UInt32_semantics;
 extern Function AtomicAdd_UInt32;
+
+/// atomicSubtract
 extern Variable AtomicSubtract_UInt32_ptr;
 extern Variable AtomicSubtract_UInt32_value;
 extern Variable AtomicSubtract_UInt32_semantics;
 extern Function AtomicSubtract_UInt32;
+
+/// atomicAnd
 extern Variable AtomicAnd_UInt32_ptr;
 extern Variable AtomicAnd_UInt32_value;
 extern Variable AtomicAnd_UInt32_semantics;
 extern Function AtomicAnd_UInt32;
+
+/// atomicOr
 extern Variable AtomicOr_UInt32_ptr;
 extern Variable AtomicOr_UInt32_value;
 extern Variable AtomicOr_UInt32_semantics;
 extern Function AtomicOr_UInt32;
+
+/// atomicXor
 extern Variable AtomicXor_UInt32_ptr;
 extern Variable AtomicXor_UInt32_value;
 extern Variable AtomicXor_UInt32_semantics;
 extern Function AtomicXor_UInt32;
+
+/// atomicStore
 extern Variable AtomicStore_Int32_ptr;
 extern Variable AtomicStore_Int32_value;
 extern Variable AtomicStore_Int32_semantics;
 extern Function AtomicStore_Int32;
+
+/// atomicExchange
 extern Variable AtomicExchange_Int32_ptr;
 extern Variable AtomicExchange_Int32_value;
 extern Variable AtomicExchange_Int32_semantics;
 extern Function AtomicExchange_Int32;
+
+/// atomicAdd
 extern Variable AtomicAdd_Int32_ptr;
 extern Variable AtomicAdd_Int32_value;
 extern Variable AtomicAdd_Int32_semantics;
 extern Function AtomicAdd_Int32;
+
+/// atomicSubtract
 extern Variable AtomicSubtract_Int32_ptr;
 extern Variable AtomicSubtract_Int32_value;
 extern Variable AtomicSubtract_Int32_semantics;
 extern Function AtomicSubtract_Int32;
+
+/// atomicAnd
 extern Variable AtomicAnd_Int32_ptr;
 extern Variable AtomicAnd_Int32_value;
 extern Variable AtomicAnd_Int32_semantics;
 extern Function AtomicAnd_Int32;
+
+/// atomicOr
 extern Variable AtomicOr_Int32_ptr;
 extern Variable AtomicOr_Int32_value;
 extern Variable AtomicOr_Int32_semantics;
 extern Function AtomicOr_Int32;
+
+/// atomicXor
 extern Variable AtomicXor_Int32_ptr;
 extern Variable AtomicXor_Int32_value;
 extern Variable AtomicXor_Int32_semantics;
 extern Function AtomicXor_Int32;
+
+/// atomicStore
 extern Variable AtomicStore_UInt16_ptr;
 extern Variable AtomicStore_UInt16_value;
 extern Variable AtomicStore_UInt16_semantics;
 extern Function AtomicStore_UInt16;
+
+/// atomicExchange
 extern Variable AtomicExchange_UInt16_ptr;
 extern Variable AtomicExchange_UInt16_value;
 extern Variable AtomicExchange_UInt16_semantics;
 extern Function AtomicExchange_UInt16;
+
+/// atomicAdd
 extern Variable AtomicAdd_UInt16_ptr;
 extern Variable AtomicAdd_UInt16_value;
 extern Variable AtomicAdd_UInt16_semantics;
 extern Function AtomicAdd_UInt16;
+
+/// atomicSubtract
 extern Variable AtomicSubtract_UInt16_ptr;
 extern Variable AtomicSubtract_UInt16_value;
 extern Variable AtomicSubtract_UInt16_semantics;
 extern Function AtomicSubtract_UInt16;
+
+/// atomicAnd
 extern Variable AtomicAnd_UInt16_ptr;
 extern Variable AtomicAnd_UInt16_value;
 extern Variable AtomicAnd_UInt16_semantics;
 extern Function AtomicAnd_UInt16;
+
+/// atomicOr
 extern Variable AtomicOr_UInt16_ptr;
 extern Variable AtomicOr_UInt16_value;
 extern Variable AtomicOr_UInt16_semantics;
 extern Function AtomicOr_UInt16;
+
+/// atomicXor
 extern Variable AtomicXor_UInt16_ptr;
 extern Variable AtomicXor_UInt16_value;
 extern Variable AtomicXor_UInt16_semantics;
 extern Function AtomicXor_UInt16;
+
+/// atomicStore
 extern Variable AtomicStore_Int16_ptr;
 extern Variable AtomicStore_Int16_value;
 extern Variable AtomicStore_Int16_semantics;
 extern Function AtomicStore_Int16;
+
+/// atomicExchange
 extern Variable AtomicExchange_Int16_ptr;
 extern Variable AtomicExchange_Int16_value;
 extern Variable AtomicExchange_Int16_semantics;
 extern Function AtomicExchange_Int16;
+
+/// atomicAdd
 extern Variable AtomicAdd_Int16_ptr;
 extern Variable AtomicAdd_Int16_value;
 extern Variable AtomicAdd_Int16_semantics;
 extern Function AtomicAdd_Int16;
+
+/// atomicSubtract
 extern Variable AtomicSubtract_Int16_ptr;
 extern Variable AtomicSubtract_Int16_value;
 extern Variable AtomicSubtract_Int16_semantics;
 extern Function AtomicSubtract_Int16;
+
+/// atomicAnd
 extern Variable AtomicAnd_Int16_ptr;
 extern Variable AtomicAnd_Int16_value;
 extern Variable AtomicAnd_Int16_semantics;
 extern Function AtomicAnd_Int16;
+
+/// atomicOr
 extern Variable AtomicOr_Int16_ptr;
 extern Variable AtomicOr_Int16_value;
 extern Variable AtomicOr_Int16_semantics;
 extern Function AtomicOr_Int16;
+
+/// atomicXor
 extern Variable AtomicXor_Int16_ptr;
 extern Variable AtomicXor_Int16_value;
 extern Variable AtomicXor_Int16_semantics;
 extern Function AtomicXor_Int16;
+
+/// atomicCompareExchange
 extern Variable AtomicCompareExchange_UInt32_ptr;
 extern Variable AtomicCompareExchange_UInt32_value;
 extern Variable AtomicCompareExchange_UInt32_compare;
 extern Variable AtomicCompareExchange_UInt32_semantics;
 extern Function AtomicCompareExchange_UInt32;
+
+/// atomicCompareExchange
 extern Variable AtomicCompareExchange_Int32_ptr;
 extern Variable AtomicCompareExchange_Int32_value;
 extern Variable AtomicCompareExchange_Int32_compare;
 extern Variable AtomicCompareExchange_Int32_semantics;
 extern Function AtomicCompareExchange_Int32;
+
+/// atomicCompareExchange
 extern Variable AtomicCompareExchange_UInt16_ptr;
 extern Variable AtomicCompareExchange_UInt16_value;
 extern Variable AtomicCompareExchange_UInt16_compare;
 extern Variable AtomicCompareExchange_UInt16_semantics;
 extern Function AtomicCompareExchange_UInt16;
+
+/// atomicCompareExchange
 extern Variable AtomicCompareExchange_Int16_ptr;
 extern Variable AtomicCompareExchange_Int16_value;
 extern Variable AtomicCompareExchange_Int16_compare;
 extern Variable AtomicCompareExchange_Int16_semantics;
 extern Function AtomicCompareExchange_Int16;
+
+/// bitInsert
 extern Variable BitInsert_UInt16_base;
 extern Variable BitInsert_UInt16_value;
 extern Variable BitInsert_UInt16_offset;
 extern Variable BitInsert_UInt16_count;
 extern Function BitInsert_UInt16;
+
+/// bitInsert
 extern Variable BitInsert_UInt32_base;
 extern Variable BitInsert_UInt32_value;
 extern Variable BitInsert_UInt32_offset;
 extern Variable BitInsert_UInt32_count;
 extern Function BitInsert_UInt32;
+
+/// bitExtract
 extern Variable BitExtract_Int32_base;
 extern Variable BitExtract_Int32_offset;
 extern Variable BitExtract_Int32_count;
 extern Function BitExtract_Int32;
+
+/// bitExtract
 extern Variable BitExtract_Int32x2_base;
 extern Variable BitExtract_Int32x2_offset;
 extern Variable BitExtract_Int32x2_count;
 extern Function BitExtract_Int32x2;
+
+/// bitExtract
 extern Variable BitExtract_Int32x3_base;
 extern Variable BitExtract_Int32x3_offset;
 extern Variable BitExtract_Int32x3_count;
 extern Function BitExtract_Int32x3;
+
+/// bitExtract
 extern Variable BitExtract_Int32x4_base;
 extern Variable BitExtract_Int32x4_offset;
 extern Variable BitExtract_Int32x4_count;
 extern Function BitExtract_Int32x4;
+
+/// bitExtract
 extern Variable BitExtract_Int16_base;
 extern Variable BitExtract_Int16_offset;
 extern Variable BitExtract_Int16_count;
 extern Function BitExtract_Int16;
+
+/// bitExtract
 extern Variable BitExtract_Int16x2_base;
 extern Variable BitExtract_Int16x2_offset;
 extern Variable BitExtract_Int16x2_count;
 extern Function BitExtract_Int16x2;
+
+/// bitExtract
 extern Variable BitExtract_Int16x3_base;
 extern Variable BitExtract_Int16x3_offset;
 extern Variable BitExtract_Int16x3_count;
 extern Function BitExtract_Int16x3;
+
+/// bitExtract
 extern Variable BitExtract_Int16x4_base;
 extern Variable BitExtract_Int16x4_offset;
 extern Variable BitExtract_Int16x4_count;
 extern Function BitExtract_Int16x4;
+
+/// bitExtract
 extern Variable BitExtract_UInt32_base;
 extern Variable BitExtract_UInt32_offset;
 extern Variable BitExtract_UInt32_count;
 extern Function BitExtract_UInt32;
+
+/// bitExtract
 extern Variable BitExtract_UInt32x2_base;
 extern Variable BitExtract_UInt32x2_offset;
 extern Variable BitExtract_UInt32x2_count;
 extern Function BitExtract_UInt32x2;
+
+/// bitExtract
 extern Variable BitExtract_UInt32x3_base;
 extern Variable BitExtract_UInt32x3_offset;
 extern Variable BitExtract_UInt32x3_count;
 extern Function BitExtract_UInt32x3;
+
+/// bitExtract
 extern Variable BitExtract_UInt32x4_base;
 extern Variable BitExtract_UInt32x4_offset;
 extern Variable BitExtract_UInt32x4_count;
 extern Function BitExtract_UInt32x4;
+
+/// bitExtract
 extern Variable BitExtract_UInt16_base;
 extern Variable BitExtract_UInt16_offset;
 extern Variable BitExtract_UInt16_count;
 extern Function BitExtract_UInt16;
+
+/// bitExtract
 extern Variable BitExtract_UInt16x2_base;
 extern Variable BitExtract_UInt16x2_offset;
 extern Variable BitExtract_UInt16x2_count;
 extern Function BitExtract_UInt16x2;
+
+/// bitExtract
 extern Variable BitExtract_UInt16x3_base;
 extern Variable BitExtract_UInt16x3_offset;
 extern Variable BitExtract_UInt16x3_count;
 extern Function BitExtract_UInt16x3;
+
+/// bitExtract
 extern Variable BitExtract_UInt16x4_base;
 extern Variable BitExtract_UInt16x4_offset;
 extern Variable BitExtract_UInt16x4_count;
 extern Function BitExtract_UInt16x4;
+
+/// bitReverse
 extern Variable BitReverse_Int32_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int32;
+
+/// bitReverse
 extern Variable BitReverse_Int32x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int32x2;
+
+/// bitReverse
 extern Variable BitReverse_Int32x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int32x3;
+
+/// bitReverse
 extern Variable BitReverse_Int32x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int32x4;
+
+/// bitReverse
 extern Variable BitReverse_Int16_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int16;
+
+/// bitReverse
 extern Variable BitReverse_Int16x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int16x2;
+
+/// bitReverse
 extern Variable BitReverse_Int16x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int16x3;
+
+/// bitReverse
 extern Variable BitReverse_Int16x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_Int16x4;
+
+/// bitReverse
 extern Variable BitReverse_UInt32_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt32;
+
+/// bitReverse
 extern Variable BitReverse_UInt32x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt32x2;
+
+/// bitReverse
 extern Variable BitReverse_UInt32x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt32x3;
+
+/// bitReverse
 extern Variable BitReverse_UInt32x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt32x4;
+
+/// bitReverse
 extern Variable BitReverse_UInt16_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt16;
+
+/// bitReverse
 extern Variable BitReverse_UInt16x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt16x2;
+
+/// bitReverse
 extern Variable BitReverse_UInt16x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt16x3;
+
+/// bitReverse
 extern Variable BitReverse_UInt16x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitReverse_UInt16x4;
+
+/// bitCount
 extern Variable BitCount_Int32_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int32;
+
+/// bitCount
 extern Variable BitCount_Int32x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int32x2;
+
+/// bitCount
 extern Variable BitCount_Int32x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int32x3;
+
+/// bitCount
 extern Variable BitCount_Int32x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int32x4;
+
+/// bitCount
 extern Variable BitCount_Int16_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int16;
+
+/// bitCount
 extern Variable BitCount_Int16x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int16x2;
+
+/// bitCount
 extern Variable BitCount_Int16x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int16x3;
+
+/// bitCount
 extern Variable BitCount_Int16x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_Int16x4;
+
+/// bitCount
 extern Variable BitCount_UInt32_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt32;
+
+/// bitCount
 extern Variable BitCount_UInt32x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt32x2;
+
+/// bitCount
 extern Variable BitCount_UInt32x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt32x3;
+
+/// bitCount
 extern Variable BitCount_UInt32x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt32x4;
+
+/// bitCount
 extern Variable BitCount_UInt16_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt16;
+
+/// bitCount
 extern Variable BitCount_UInt16x2_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt16x2;
+
+/// bitCount
 extern Variable BitCount_UInt16x3_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt16x3;
+
+/// bitCount
 extern Variable BitCount_UInt16x4_base;
+extern Variable BitExtract_UInt16x4_offset;
+extern Variable BitExtract_UInt16x4_count;
 extern Function BitCount_UInt16x4;
+
+/// executionBarrier
 extern Function ExecutionBarrier;
+
+/// executionBarrierSubgroup
 extern Function ExecutionBarrierSubgroup;
+
+/// executionBarrierWorkgroup
 extern Function ExecutionBarrierWorkgroup;
+
+/// memoryBarrier
 extern Function MemoryBarrier;
+
+/// memoryBarrierBuffer
 extern Function MemoryBarrierBuffer;
+
+/// memoryBarrierTexture
 extern Function MemoryBarrierTexture;
+
+/// memoryBarrierAtomic
 extern Function MemoryBarrierAtomic;
+
+/// memoryBarrierSubgroup
 extern Function MemoryBarrierSubgroup;
+
+/// memoryBarrierWorkgroup
 extern Function MemoryBarrierWorkgroup;
+
+/// textureGetSize
 extern Variable TextureGetSize_Texture1D_texture;
 extern Function TextureGetSize_Texture1D;
+
+/// textureGetSize
 extern Variable TextureGetSize_Texture2D_texture;
 extern Function TextureGetSize_Texture2D;
+
+/// textureGetSize
 extern Variable TextureGetSize_Texture3D_texture;
 extern Function TextureGetSize_Texture3D;
+
+/// textureGetSize
 extern Variable TextureGetSize_TextureCube_texture;
 extern Function TextureGetSize_TextureCube;
+
+/// textureGetSize
 extern Variable TextureGetSize_Texture1DArray_texture;
 extern Function TextureGetSize_Texture1DArray;
+
+/// textureGetSize
 extern Variable TextureGetSize_Texture2DArray_texture;
 extern Function TextureGetSize_Texture2DArray;
+
+/// textureGetSize
 extern Variable TextureGetSize_TextureCubeArray_texture;
 extern Function TextureGetSize_TextureCubeArray;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_Texture1D_texture;
-extern Variable TextureGetSizeMip_Texture1D_UInt32_mip;
+extern Variable TextureGetSizeMip_Texture1D_mip;
 extern Function TextureGetSizeMip_Texture1D;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_Texture2D_texture;
-extern Variable TextureGetSizeMip_Texture2D_UInt32_mip;
+extern Variable TextureGetSizeMip_Texture2D_mip;
 extern Function TextureGetSizeMip_Texture2D;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_Texture3D_texture;
-extern Variable TextureGetSizeMip_Texture3D_UInt32_mip;
+extern Variable TextureGetSizeMip_Texture3D_mip;
 extern Function TextureGetSizeMip_Texture3D;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_TextureCube_texture;
-extern Variable TextureGetSizeMip_TextureCube_UInt32_mip;
+extern Variable TextureGetSizeMip_TextureCube_mip;
 extern Function TextureGetSizeMip_TextureCube;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_Texture1DArray_texture;
-extern Variable TextureGetSizeMip_Texture1DArray_UInt32_mip;
+extern Variable TextureGetSizeMip_Texture1DArray_mip;
 extern Function TextureGetSizeMip_Texture1DArray;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_Texture2DArray_texture;
-extern Variable TextureGetSizeMip_Texture2DArray_UInt32_mip;
+extern Variable TextureGetSizeMip_Texture2DArray_mip;
 extern Function TextureGetSizeMip_Texture2DArray;
+
+/// textureGetSizeMip
 extern Variable TextureGetSizeMip_TextureCubeArray_texture;
-extern Variable TextureGetSizeMip_TextureCubeArray_UInt32_mip;
+extern Variable TextureGetSizeMip_TextureCubeArray_mip;
 extern Function TextureGetSizeMip_TextureCubeArray;
+
+/// textureGetMips
 extern Variable TextureGetMips_Texture1D_texture;
 extern Function TextureGetMips_Texture1D;
+
+/// textureGetMips
 extern Variable TextureGetMips_Texture2D_texture;
 extern Function TextureGetMips_Texture2D;
+
+/// textureGetMips
 extern Variable TextureGetMips_Texture3D_texture;
 extern Function TextureGetMips_Texture3D;
+
+/// textureGetMips
 extern Variable TextureGetMips_TextureCube_texture;
 extern Function TextureGetMips_TextureCube;
+
+/// textureGetMips
 extern Variable TextureGetMips_Texture1DArray_texture;
 extern Function TextureGetMips_Texture1DArray;
+
+/// textureGetMips
 extern Variable TextureGetMips_Texture2DArray_texture;
 extern Function TextureGetMips_Texture2DArray;
+
+/// textureGetMips
 extern Variable TextureGetMips_TextureCubeArray_texture;
 extern Function TextureGetMips_TextureCubeArray;
+
+/// textureGetSamples
 extern Variable TextureGetSamples_Texture2DMS_texture;
 extern Function TextureGetSamples_Texture2DMS;
+
+/// textureGetSamples
 extern Variable TextureGetSamples_Texture2DMSArray_texture;
 extern Function TextureGetSamples_Texture2DMSArray;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_Texture1D_texture;
 extern Variable TextureGetSampledMip_Texture1D_sampler;
 extern Variable TextureGetSampledMip_Texture1D_coordinate;
 extern Function TextureGetSampledMip_Texture1D;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_Texture1D_texture;
 extern Variable SampledTextureGetSampledMip_Texture1D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1D;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_Texture2D_texture;
 extern Variable TextureGetSampledMip_Texture2D_sampler;
 extern Variable TextureGetSampledMip_Texture2D_coordinate;
 extern Function TextureGetSampledMip_Texture2D;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_Texture2D_texture;
 extern Variable SampledTextureGetSampledMip_Texture2D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2D;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_Texture3D_texture;
 extern Variable TextureGetSampledMip_Texture3D_sampler;
 extern Variable TextureGetSampledMip_Texture3D_coordinate;
 extern Function TextureGetSampledMip_Texture3D;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_Texture3D_texture;
 extern Variable SampledTextureGetSampledMip_Texture3D_coordinate;
 extern Function SampledTextureGetSampledMip_Texture3D;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_TextureCube_texture;
 extern Variable TextureGetSampledMip_TextureCube_sampler;
 extern Variable TextureGetSampledMip_TextureCube_coordinate;
 extern Function TextureGetSampledMip_TextureCube;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_TextureCube_texture;
 extern Variable SampledTextureGetSampledMip_TextureCube_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCube;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_Texture1DArray_texture;
 extern Variable TextureGetSampledMip_Texture1DArray_sampler;
 extern Variable TextureGetSampledMip_Texture1DArray_coordinate;
 extern Function TextureGetSampledMip_Texture1DArray;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_Texture1DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture1DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture1DArray;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_Texture2DArray_texture;
 extern Variable TextureGetSampledMip_Texture2DArray_sampler;
 extern Variable TextureGetSampledMip_Texture2DArray_coordinate;
 extern Function TextureGetSampledMip_Texture2DArray;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_Texture2DArray_texture;
 extern Variable SampledTextureGetSampledMip_Texture2DArray_coordinate;
 extern Function SampledTextureGetSampledMip_Texture2DArray;
+
+/// textureGetSampledMip
 extern Variable TextureGetSampledMip_TextureCubeArray_texture;
 extern Variable TextureGetSampledMip_TextureCubeArray_sampler;
 extern Variable TextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function TextureGetSampledMip_TextureCubeArray;
+
+/// textureGetSampledMip
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_texture;
 extern Variable SampledTextureGetSampledMip_TextureCubeArray_coordinate;
 extern Function SampledTextureGetSampledMip_TextureCubeArray;
+
+/// textureLoad
 extern Variable TextureLoad_Texture1D_texture;
 extern Variable TextureLoad_Texture1D_coordinate;
 extern Function TextureLoad_Texture1D;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture1D_texture;
 extern Variable TextureLoadMip_Texture1D_coordinate;
 extern Variable TextureLoadMip_Texture1D_mip;
 extern Function TextureLoadMip_Texture1D;
+
+/// textureStore
 extern Variable TextureStore_Texture1D_texture;
 extern Variable TextureStore_Texture1D_coordinate;
 extern Variable TextureStore_Texture1D_value;
 extern Function TextureStore_Texture1D;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture1D_texture;
 extern Variable TextureStoreMip_Texture1D_coordinate;
 extern Variable TextureStoreMip_Texture1D_mip;
 extern Variable TextureStoreMip_Texture1D_value;
 extern Function TextureStoreMip_Texture1D;
+
+/// textureLoad
 extern Variable TextureLoad_Texture2D_texture;
 extern Variable TextureLoad_Texture2D_coordinate;
 extern Function TextureLoad_Texture2D;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture2D_texture;
 extern Variable TextureLoadMip_Texture2D_coordinate;
 extern Variable TextureLoadMip_Texture2D_mip;
 extern Function TextureLoadMip_Texture2D;
+
+/// textureStore
 extern Variable TextureStore_Texture2D_texture;
 extern Variable TextureStore_Texture2D_coordinate;
 extern Variable TextureStore_Texture2D_value;
 extern Function TextureStore_Texture2D;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture2D_texture;
 extern Variable TextureStoreMip_Texture2D_coordinate;
 extern Variable TextureStoreMip_Texture2D_mip;
 extern Variable TextureStoreMip_Texture2D_value;
 extern Function TextureStoreMip_Texture2D;
+
+/// textureLoad
 extern Variable TextureLoad_Texture3D_texture;
 extern Variable TextureLoad_Texture3D_coordinate;
 extern Function TextureLoad_Texture3D;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture3D_texture;
 extern Variable TextureLoadMip_Texture3D_coordinate;
 extern Variable TextureLoadMip_Texture3D_mip;
 extern Function TextureLoadMip_Texture3D;
+
+/// textureStore
 extern Variable TextureStore_Texture3D_texture;
 extern Variable TextureStore_Texture3D_coordinate;
 extern Variable TextureStore_Texture3D_value;
 extern Function TextureStore_Texture3D;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture3D_texture;
 extern Variable TextureStoreMip_Texture3D_coordinate;
 extern Variable TextureStoreMip_Texture3D_mip;
 extern Variable TextureStoreMip_Texture3D_value;
 extern Function TextureStoreMip_Texture3D;
+
+/// textureLoad
 extern Variable TextureLoad_TextureCube_texture;
 extern Variable TextureLoad_TextureCube_coordinate;
 extern Function TextureLoad_TextureCube;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_TextureCube_texture;
 extern Variable TextureLoadMip_TextureCube_coordinate;
 extern Variable TextureLoadMip_TextureCube_mip;
 extern Function TextureLoadMip_TextureCube;
+
+/// textureStore
 extern Variable TextureStore_TextureCube_texture;
 extern Variable TextureStore_TextureCube_coordinate;
 extern Variable TextureStore_TextureCube_value;
 extern Function TextureStore_TextureCube;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_TextureCube_texture;
 extern Variable TextureStoreMip_TextureCube_coordinate;
 extern Variable TextureStoreMip_TextureCube_mip;
 extern Variable TextureStoreMip_TextureCube_value;
 extern Function TextureStoreMip_TextureCube;
+
+/// textureLoad
 extern Variable TextureLoad_Texture1DArray_texture;
 extern Variable TextureLoad_Texture1DArray_coordinate;
 extern Function TextureLoad_Texture1DArray;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture1DArray_texture;
 extern Variable TextureLoadMip_Texture1DArray_coordinate;
 extern Variable TextureLoadMip_Texture1DArray_mip;
 extern Function TextureLoadMip_Texture1DArray;
+
+/// textureStore
 extern Variable TextureStore_Texture1DArray_texture;
 extern Variable TextureStore_Texture1DArray_coordinate;
 extern Variable TextureStore_Texture1DArray_value;
 extern Function TextureStore_Texture1DArray;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture1DArray_texture;
 extern Variable TextureStoreMip_Texture1DArray_coordinate;
 extern Variable TextureStoreMip_Texture1DArray_mip;
 extern Variable TextureStoreMip_Texture1DArray_value;
 extern Function TextureStoreMip_Texture1DArray;
+
+/// textureLoad
 extern Variable TextureLoad_Texture2DArray_texture;
 extern Variable TextureLoad_Texture2DArray_coordinate;
 extern Function TextureLoad_Texture2DArray;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture2DArray_texture;
 extern Variable TextureLoadMip_Texture2DArray_coordinate;
 extern Variable TextureLoadMip_Texture2DArray_mip;
 extern Function TextureLoadMip_Texture2DArray;
+
+/// textureStore
 extern Variable TextureStore_Texture2DArray_texture;
 extern Variable TextureStore_Texture2DArray_coordinate;
 extern Variable TextureStore_Texture2DArray_value;
 extern Function TextureStore_Texture2DArray;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture2DArray_texture;
 extern Variable TextureStoreMip_Texture2DArray_coordinate;
 extern Variable TextureStoreMip_Texture2DArray_mip;
 extern Variable TextureStoreMip_Texture2DArray_value;
 extern Function TextureStoreMip_Texture2DArray;
+
+/// textureLoad
 extern Variable TextureLoad_TextureCubeArray_texture;
 extern Variable TextureLoad_TextureCubeArray_coordinate;
 extern Function TextureLoad_TextureCubeArray;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_TextureCubeArray_texture;
 extern Variable TextureLoadMip_TextureCubeArray_coordinate;
 extern Variable TextureLoadMip_TextureCubeArray_mip;
 extern Function TextureLoadMip_TextureCubeArray;
+
+/// textureStore
 extern Variable TextureStore_TextureCubeArray_texture;
 extern Variable TextureStore_TextureCubeArray_coordinate;
 extern Variable TextureStore_TextureCubeArray_value;
 extern Function TextureStore_TextureCubeArray;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_TextureCubeArray_texture;
 extern Variable TextureStoreMip_TextureCubeArray_coordinate;
 extern Variable TextureStoreMip_TextureCubeArray_mip;
 extern Variable TextureStoreMip_TextureCubeArray_value;
 extern Function TextureStoreMip_TextureCubeArray;
+
+/// textureLoad
 extern Variable TextureLoad_Texture2DMS_texture;
 extern Variable TextureLoad_Texture2DMS_coordinate;
 extern Function TextureLoad_Texture2DMS;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture2DMS_texture;
 extern Variable TextureLoadMip_Texture2DMS_coordinate;
 extern Variable TextureLoadMip_Texture2DMS_mip;
 extern Function TextureLoadMip_Texture2DMS;
+
+/// textureStore
 extern Variable TextureStore_Texture2DMS_texture;
 extern Variable TextureStore_Texture2DMS_coordinate;
 extern Variable TextureStore_Texture2DMS_value;
 extern Function TextureStore_Texture2DMS;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture2DMS_texture;
 extern Variable TextureStoreMip_Texture2DMS_coordinate;
 extern Variable TextureStoreMip_Texture2DMS_mip;
 extern Variable TextureStoreMip_Texture2DMS_value;
 extern Function TextureStoreMip_Texture2DMS;
+
+/// textureLoad
 extern Variable TextureLoad_Texture2DMSArray_texture;
 extern Variable TextureLoad_Texture2DMSArray_coordinate;
 extern Function TextureLoad_Texture2DMSArray;
+
+/// textureLoadMip
 extern Variable TextureLoadMip_Texture2DMSArray_texture;
 extern Variable TextureLoadMip_Texture2DMSArray_coordinate;
 extern Variable TextureLoadMip_Texture2DMSArray_mip;
 extern Function TextureLoadMip_Texture2DMSArray;
+
+/// textureStore
 extern Variable TextureStore_Texture2DMSArray_texture;
 extern Variable TextureStore_Texture2DMSArray_coordinate;
 extern Variable TextureStore_Texture2DMSArray_value;
 extern Function TextureStore_Texture2DMSArray;
+
+/// textureStoreMip
 extern Variable TextureStoreMip_Texture2DMSArray_texture;
 extern Variable TextureStoreMip_Texture2DMSArray_coordinate;
 extern Variable TextureStoreMip_Texture2DMSArray_mip;
 extern Variable TextureStoreMip_Texture2DMSArray_value;
 extern Function TextureStoreMip_Texture2DMSArray;
+
+/// textureFetch
 extern Variable TextureFetch_Texture1D_texture;
 extern Variable TextureFetch_Texture1D_coordinate;
 extern Variable TextureFetch_Texture1D_lod;
 extern Function TextureFetch_Texture1D;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture1D_texture;
 extern Variable TextureFetchSample_Texture1D_coordinate;
 extern Variable TextureFetchSample_Texture1D_lod;
 extern Variable TextureFetchSample_Texture1D_sample;
 extern Function TextureFetchSample_Texture1D;
+
+/// textureFetch
 extern Variable TextureFetch_Texture2D_texture;
 extern Variable TextureFetch_Texture2D_coordinate;
 extern Variable TextureFetch_Texture2D_lod;
 extern Function TextureFetch_Texture2D;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture2D_texture;
 extern Variable TextureFetchSample_Texture2D_coordinate;
 extern Variable TextureFetchSample_Texture2D_lod;
 extern Variable TextureFetchSample_Texture2D_sample;
 extern Function TextureFetchSample_Texture2D;
+
+/// textureFetch
 extern Variable TextureFetch_Texture3D_texture;
 extern Variable TextureFetch_Texture3D_coordinate;
 extern Variable TextureFetch_Texture3D_lod;
 extern Function TextureFetch_Texture3D;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture3D_texture;
 extern Variable TextureFetchSample_Texture3D_coordinate;
 extern Variable TextureFetchSample_Texture3D_lod;
 extern Variable TextureFetchSample_Texture3D_sample;
 extern Function TextureFetchSample_Texture3D;
+
+/// textureFetch
 extern Variable TextureFetch_Texture1DArray_texture;
 extern Variable TextureFetch_Texture1DArray_coordinate;
 extern Variable TextureFetch_Texture1DArray_lod;
 extern Function TextureFetch_Texture1DArray;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture1DArray_texture;
 extern Variable TextureFetchSample_Texture1DArray_coordinate;
 extern Variable TextureFetchSample_Texture1DArray_lod;
 extern Variable TextureFetchSample_Texture1DArray_sample;
 extern Function TextureFetchSample_Texture1DArray;
+
+/// textureFetch
 extern Variable TextureFetch_Texture2DArray_texture;
 extern Variable TextureFetch_Texture2DArray_coordinate;
 extern Variable TextureFetch_Texture2DArray_lod;
 extern Function TextureFetch_Texture2DArray;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture2DArray_texture;
 extern Variable TextureFetchSample_Texture2DArray_coordinate;
 extern Variable TextureFetchSample_Texture2DArray_lod;
 extern Variable TextureFetchSample_Texture2DArray_sample;
 extern Function TextureFetchSample_Texture2DArray;
+
+/// textureFetch
 extern Variable TextureFetch_Texture2DMS_texture;
 extern Variable TextureFetch_Texture2DMS_coordinate;
 extern Variable TextureFetch_Texture2DMS_lod;
 extern Function TextureFetch_Texture2DMS;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture2DMS_texture;
 extern Variable TextureFetchSample_Texture2DMS_coordinate;
 extern Variable TextureFetchSample_Texture2DMS_lod;
 extern Variable TextureFetchSample_Texture2DMS_sample;
 extern Function TextureFetchSample_Texture2DMS;
+
+/// textureFetch
 extern Variable TextureFetch_Texture2DMSArray_texture;
 extern Variable TextureFetch_Texture2DMSArray_coordinate;
 extern Variable TextureFetch_Texture2DMSArray_lod;
 extern Function TextureFetch_Texture2DMSArray;
+
+/// textureFetchSample
 extern Variable TextureFetchSample_Texture2DMSArray_texture;
 extern Variable TextureFetchSample_Texture2DMSArray_coordinate;
 extern Variable TextureFetchSample_Texture2DMSArray_lod;
 extern Variable TextureFetchSample_Texture2DMSArray_sample;
 extern Function TextureFetchSample_Texture2DMSArray;
+
+/// textureGather
 extern Variable TextureGather_Texture2D_texture;
+extern Variable TextureGather_Texture2D_sampler;
 extern Variable TextureGather_Texture2D_coordinate;
 extern Variable TextureGather_Texture2D_component;
 extern Function TextureGather_Texture2D;
+
+/// textureGather
 extern Variable SampledTextureGather_Texture2D_texture;
 extern Variable SampledTextureGather_Texture2D_coordinate;
 extern Variable SampledTextureGather_Texture2D_component;
 extern Function SampledTextureGather_Texture2D;
+
+/// textureGatherOffset
 extern Variable TextureGatherOffset_Texture2D_texture;
+extern Variable TextureGatherOffset_Texture2D_sampler;
 extern Variable TextureGatherOffset_Texture2D_coordinate;
 extern Variable TextureGatherOffset_Texture2D_component;
 extern Variable TextureGatherOffset_Texture2D_offset;
 extern Function TextureGatherOffset_Texture2D;
+
+/// textureGatherOffset
 extern Variable SampledTextureGatherOffset_Texture2D_texture;
 extern Variable SampledTextureGatherOffset_Texture2D_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2D_component;
 extern Variable SampledTextureGatherOffset_Texture2D_offset;
 extern Function SampledTextureGatherOffset_Texture2D;
+
+/// textureGather
 extern Variable TextureGather_TextureCube_texture;
+extern Variable TextureGather_TextureCube_sampler;
 extern Variable TextureGather_TextureCube_coordinate;
 extern Variable TextureGather_TextureCube_component;
 extern Function TextureGather_TextureCube;
+
+/// textureGather
 extern Variable SampledTextureGather_TextureCube_texture;
 extern Variable SampledTextureGather_TextureCube_coordinate;
 extern Variable SampledTextureGather_TextureCube_component;
 extern Function SampledTextureGather_TextureCube;
+
+/// textureGatherOffset
 extern Variable TextureGatherOffset_TextureCube_texture;
+extern Variable TextureGatherOffset_TextureCube_sampler;
 extern Variable TextureGatherOffset_TextureCube_coordinate;
 extern Variable TextureGatherOffset_TextureCube_component;
 extern Variable TextureGatherOffset_TextureCube_offset;
 extern Function TextureGatherOffset_TextureCube;
+
+/// textureGatherOffset
 extern Variable SampledTextureGatherOffset_TextureCube_texture;
 extern Variable SampledTextureGatherOffset_TextureCube_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCube_component;
 extern Variable SampledTextureGatherOffset_TextureCube_offset;
 extern Function SampledTextureGatherOffset_TextureCube;
+
+/// textureGather
 extern Variable TextureGather_Texture2DArray_texture;
+extern Variable TextureGather_Texture2DArray_sampler;
 extern Variable TextureGather_Texture2DArray_coordinate;
 extern Variable TextureGather_Texture2DArray_component;
 extern Function TextureGather_Texture2DArray;
+
+/// textureGather
 extern Variable SampledTextureGather_Texture2DArray_texture;
 extern Variable SampledTextureGather_Texture2DArray_coordinate;
 extern Variable SampledTextureGather_Texture2DArray_component;
 extern Function SampledTextureGather_Texture2DArray;
+
+/// textureGatherOffset
 extern Variable TextureGatherOffset_Texture2DArray_texture;
+extern Variable TextureGatherOffset_Texture2DArray_sampler;
 extern Variable TextureGatherOffset_Texture2DArray_coordinate;
 extern Variable TextureGatherOffset_Texture2DArray_component;
 extern Variable TextureGatherOffset_Texture2DArray_offset;
 extern Function TextureGatherOffset_Texture2DArray;
+
+/// textureGatherOffset
 extern Variable SampledTextureGatherOffset_Texture2DArray_texture;
 extern Variable SampledTextureGatherOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureGatherOffset_Texture2DArray_component;
 extern Variable SampledTextureGatherOffset_Texture2DArray_offset;
 extern Function SampledTextureGatherOffset_Texture2DArray;
+
+/// textureGather
 extern Variable TextureGather_TextureCubeArray_texture;
+extern Variable TextureGather_TextureCubeArray_sampler;
 extern Variable TextureGather_TextureCubeArray_coordinate;
 extern Variable TextureGather_TextureCubeArray_component;
 extern Function TextureGather_TextureCubeArray;
+
+/// textureGather
 extern Variable SampledTextureGather_TextureCubeArray_texture;
 extern Variable SampledTextureGather_TextureCubeArray_coordinate;
 extern Variable SampledTextureGather_TextureCubeArray_component;
 extern Function SampledTextureGather_TextureCubeArray;
+
+/// textureGatherOffset
 extern Variable TextureGatherOffset_TextureCubeArray_texture;
+extern Variable TextureGatherOffset_TextureCubeArray_sampler;
 extern Variable TextureGatherOffset_TextureCubeArray_coordinate;
 extern Variable TextureGatherOffset_TextureCubeArray_component;
 extern Variable TextureGatherOffset_TextureCubeArray_offset;
 extern Function TextureGatherOffset_TextureCubeArray;
+
+/// textureGatherOffset
 extern Variable SampledTextureGatherOffset_TextureCubeArray_texture;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_coordinate;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_component;
 extern Variable SampledTextureGatherOffset_TextureCubeArray_offset;
 extern Function SampledTextureGatherOffset_TextureCubeArray;
+
+/// texturePixelCacheLoad
 extern Variable TexturePixelCacheLoad_PixelCache_texture;
 extern Function TexturePixelCacheLoad_PixelCache;
+
+/// texturePixelCacheLoad
 extern Variable TexturePixelCacheLoad_PixelCacheMS_texture;
+extern Variable TexturePixelCacheLoad_PixelCacheMS_sample;
 extern Function TexturePixelCacheLoad_PixelCacheMS;
+
+/// textureSample
 extern Variable TextureSample_Texture1D_texture;
 extern Variable TextureSample_Texture1D_sampler;
 extern Variable TextureSample_Texture1D_coordinate;
 extern Function TextureSample_Texture1D;
+
+/// textureSample
 extern Variable SampledTextureSample_Texture1D_texture;
 extern Variable SampledTextureSample_Texture1D_coordinate;
 extern Function SampledTextureSample_Texture1D;
+
+/// textureSample
 extern Variable TextureSample_Texture2D_texture;
 extern Variable TextureSample_Texture2D_sampler;
 extern Variable TextureSample_Texture2D_coordinate;
 extern Function TextureSample_Texture2D;
+
+/// textureSample
 extern Variable SampledTextureSample_Texture2D_texture;
 extern Variable SampledTextureSample_Texture2D_coordinate;
 extern Function SampledTextureSample_Texture2D;
+
+/// textureSample
 extern Variable TextureSample_Texture3D_texture;
 extern Variable TextureSample_Texture3D_sampler;
 extern Variable TextureSample_Texture3D_coordinate;
 extern Function TextureSample_Texture3D;
+
+/// textureSample
 extern Variable SampledTextureSample_Texture3D_texture;
 extern Variable SampledTextureSample_Texture3D_coordinate;
 extern Function SampledTextureSample_Texture3D;
+
+/// textureSample
 extern Variable TextureSample_TextureCube_texture;
 extern Variable TextureSample_TextureCube_sampler;
 extern Variable TextureSample_TextureCube_coordinate;
 extern Function TextureSample_TextureCube;
+
+/// textureSample
 extern Variable SampledTextureSample_TextureCube_texture;
 extern Variable SampledTextureSample_TextureCube_coordinate;
 extern Function SampledTextureSample_TextureCube;
+
+/// textureSample
 extern Variable TextureSample_Texture1DArray_texture;
 extern Variable TextureSample_Texture1DArray_sampler;
 extern Variable TextureSample_Texture1DArray_coordinate;
 extern Function TextureSample_Texture1DArray;
+
+/// textureSample
 extern Variable SampledTextureSample_Texture1DArray_texture;
 extern Variable SampledTextureSample_Texture1DArray_coordinate;
 extern Function SampledTextureSample_Texture1DArray;
+
+/// textureSample
 extern Variable TextureSample_Texture2DArray_texture;
 extern Variable TextureSample_Texture2DArray_sampler;
 extern Variable TextureSample_Texture2DArray_coordinate;
 extern Function TextureSample_Texture2DArray;
+
+/// textureSample
 extern Variable SampledTextureSample_Texture2DArray_texture;
 extern Variable SampledTextureSample_Texture2DArray_coordinate;
 extern Function SampledTextureSample_Texture2DArray;
+
+/// textureSample
 extern Variable TextureSample_TextureCubeArray_texture;
 extern Variable TextureSample_TextureCubeArray_sampler;
 extern Variable TextureSample_TextureCubeArray_coordinate;
 extern Function TextureSample_TextureCubeArray;
+
+/// textureSample
 extern Variable SampledTextureSample_TextureCubeArray_texture;
 extern Variable SampledTextureSample_TextureCubeArray_coordinate;
 extern Function SampledTextureSample_TextureCubeArray;
+
+/// textureSampleOffset
 extern Variable TextureSampleOffset_Texture1D_texture;
 extern Variable TextureSampleOffset_Texture1D_sampler;
 extern Variable TextureSampleOffset_Texture1D_coordinate;
 extern Variable TextureSampleOffset_Texture1D_offset;
 extern Function TextureSampleOffset_Texture1D;
+
+/// textureSampleOffset
 extern Variable SampledTextureSampleOffset_Texture1D_texture;
 extern Variable SampledTextureSampleOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1D_offset;
 extern Function SampledTextureSampleOffset_Texture1D;
+
+/// textureSampleOffset
 extern Variable TextureSampleOffset_Texture2D_texture;
 extern Variable TextureSampleOffset_Texture2D_sampler;
 extern Variable TextureSampleOffset_Texture2D_coordinate;
 extern Variable TextureSampleOffset_Texture2D_offset;
 extern Function TextureSampleOffset_Texture2D;
+
+/// textureSampleOffset
 extern Variable SampledTextureSampleOffset_Texture2D_texture;
 extern Variable SampledTextureSampleOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2D_offset;
 extern Function SampledTextureSampleOffset_Texture2D;
+
+/// textureSampleOffset
 extern Variable TextureSampleOffset_Texture3D_texture;
 extern Variable TextureSampleOffset_Texture3D_sampler;
 extern Variable TextureSampleOffset_Texture3D_coordinate;
 extern Variable TextureSampleOffset_Texture3D_offset;
 extern Function TextureSampleOffset_Texture3D;
+
+/// textureSampleOffset
 extern Variable SampledTextureSampleOffset_Texture3D_texture;
 extern Variable SampledTextureSampleOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleOffset_Texture3D_offset;
 extern Function SampledTextureSampleOffset_Texture3D;
+
+/// textureSampleOffset
 extern Variable TextureSampleOffset_Texture1DArray_texture;
 extern Variable TextureSampleOffset_Texture1DArray_sampler;
 extern Variable TextureSampleOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleOffset_Texture1DArray_offset;
 extern Function TextureSampleOffset_Texture1DArray;
+
+/// textureSampleOffset
 extern Variable SampledTextureSampleOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleOffset_Texture1DArray;
+
+/// textureSampleOffset
 extern Variable TextureSampleOffset_Texture2DArray_texture;
 extern Variable TextureSampleOffset_Texture2DArray_sampler;
 extern Variable TextureSampleOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleOffset_Texture2DArray_offset;
 extern Function TextureSampleOffset_Texture2DArray;
+
+/// textureSampleOffset
 extern Variable SampledTextureSampleOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleOffset_Texture2DArray;
+
+/// textureSampleProj
 extern Variable TextureSampleProj_Texture1D_texture;
 extern Variable TextureSampleProj_Texture1D_sampler;
 extern Variable TextureSampleProj_Texture1D_coordinate;
 extern Variable TextureSampleProj_Texture1D_proj;
 extern Function TextureSampleProj_Texture1D;
+
+/// textureSampleProj
 extern Variable SampledTextureSampleProj_Texture1D_texture;
 extern Variable SampledTextureSampleProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleProj_Texture1D_proj;
 extern Function SampledTextureSampleProj_Texture1D;
+
+/// textureSampleProj
 extern Variable TextureSampleProj_Texture2D_texture;
 extern Variable TextureSampleProj_Texture2D_sampler;
 extern Variable TextureSampleProj_Texture2D_coordinate;
 extern Variable TextureSampleProj_Texture2D_proj;
 extern Function TextureSampleProj_Texture2D;
+
+/// textureSampleProj
 extern Variable SampledTextureSampleProj_Texture2D_texture;
 extern Variable SampledTextureSampleProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleProj_Texture2D_proj;
 extern Function SampledTextureSampleProj_Texture2D;
+
+/// textureSampleProj
 extern Variable TextureSampleProj_Texture3D_texture;
 extern Variable TextureSampleProj_Texture3D_sampler;
 extern Variable TextureSampleProj_Texture3D_coordinate;
 extern Variable TextureSampleProj_Texture3D_proj;
 extern Function TextureSampleProj_Texture3D;
+
+/// textureSampleProj
 extern Variable SampledTextureSampleProj_Texture3D_texture;
 extern Variable SampledTextureSampleProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleProj_Texture3D_proj;
 extern Function SampledTextureSampleProj_Texture3D;
+
+/// textureSampleProjOffset
 extern Variable TextureSampleProjOffset_Texture1D_texture;
 extern Variable TextureSampleProjOffset_Texture1D_sampler;
 extern Variable TextureSampleProjOffset_Texture1D_coordinate;
 extern Variable TextureSampleProjOffset_Texture1D_proj;
 extern Variable TextureSampleProjOffset_Texture1D_offset;
 extern Function TextureSampleProjOffset_Texture1D;
+
+/// textureSampleProjOffset
 extern Variable SampledTextureSampleProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjOffset_Texture1D;
+
+/// textureSampleProjOffset
 extern Variable TextureSampleProjOffset_Texture2D_texture;
 extern Variable TextureSampleProjOffset_Texture2D_sampler;
 extern Variable TextureSampleProjOffset_Texture2D_coordinate;
 extern Variable TextureSampleProjOffset_Texture2D_proj;
 extern Variable TextureSampleProjOffset_Texture2D_offset;
 extern Function TextureSampleProjOffset_Texture2D;
+
+/// textureSampleProjOffset
 extern Variable SampledTextureSampleProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjOffset_Texture2D;
+
+/// textureSampleProjOffset
 extern Variable TextureSampleProjOffset_Texture3D_texture;
 extern Variable TextureSampleProjOffset_Texture3D_sampler;
 extern Variable TextureSampleProjOffset_Texture3D_coordinate;
 extern Variable TextureSampleProjOffset_Texture3D_proj;
 extern Variable TextureSampleProjOffset_Texture3D_offset;
 extern Function TextureSampleProjOffset_Texture3D;
+
+/// textureSampleProjOffset
 extern Variable SampledTextureSampleProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjOffset_Texture3D;
+
+/// textureSampleCompare
 extern Variable TextureSampleCompare_Texture1D_texture;
 extern Variable TextureSampleCompare_Texture1D_sampler;
 extern Variable TextureSampleCompare_Texture1D_coordinate;
 extern Variable TextureSampleCompare_Texture1D_compare;
 extern Function TextureSampleCompare_Texture1D;
+
+/// textureSampleCompare
 extern Variable SampledTextureSampleCompare_Texture1D_texture;
 extern Variable SampledTextureSampleCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1D_compare;
 extern Function SampledTextureSampleCompare_Texture1D;
+
+/// textureSampleCompare
 extern Variable TextureSampleCompare_Texture2D_texture;
 extern Variable TextureSampleCompare_Texture2D_sampler;
 extern Variable TextureSampleCompare_Texture2D_coordinate;
 extern Variable TextureSampleCompare_Texture2D_compare;
 extern Function TextureSampleCompare_Texture2D;
+
+/// textureSampleCompare
 extern Variable SampledTextureSampleCompare_Texture2D_texture;
 extern Variable SampledTextureSampleCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2D_compare;
 extern Function SampledTextureSampleCompare_Texture2D;
+
+/// textureSampleCompare
 extern Variable TextureSampleCompare_Texture3D_texture;
 extern Variable TextureSampleCompare_Texture3D_sampler;
 extern Variable TextureSampleCompare_Texture3D_coordinate;
 extern Variable TextureSampleCompare_Texture3D_compare;
 extern Function TextureSampleCompare_Texture3D;
+
+/// textureSampleCompare
 extern Variable SampledTextureSampleCompare_Texture3D_texture;
 extern Variable SampledTextureSampleCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompare_Texture3D_compare;
 extern Function SampledTextureSampleCompare_Texture3D;
+
+/// textureSampleCompare
 extern Variable TextureSampleCompare_Texture1DArray_texture;
 extern Variable TextureSampleCompare_Texture1DArray_sampler;
 extern Variable TextureSampleCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleCompare_Texture1DArray_compare;
 extern Function TextureSampleCompare_Texture1DArray;
+
+/// textureSampleCompare
 extern Variable SampledTextureSampleCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleCompare_Texture1DArray;
+
+/// textureSampleCompare
 extern Variable TextureSampleCompare_Texture2DArray_texture;
 extern Variable TextureSampleCompare_Texture2DArray_sampler;
 extern Variable TextureSampleCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleCompare_Texture2DArray_compare;
 extern Function TextureSampleCompare_Texture2DArray;
+
+/// textureSampleCompare
 extern Variable SampledTextureSampleCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleCompare_Texture2DArray;
+
+/// textureSampleCompareOffset
 extern Variable TextureSampleCompareOffset_Texture1D_texture;
 extern Variable TextureSampleCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleCompareOffset_Texture1D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture1D_compare;
 extern Variable TextureSampleCompareOffset_Texture1D_offset;
 extern Function TextureSampleCompareOffset_Texture1D;
+
+/// textureSampleCompareOffset
 extern Variable SampledTextureSampleCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1D;
+
+/// textureSampleCompareOffset
 extern Variable TextureSampleCompareOffset_Texture2D_texture;
 extern Variable TextureSampleCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleCompareOffset_Texture2D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture2D_compare;
 extern Variable TextureSampleCompareOffset_Texture2D_offset;
 extern Function TextureSampleCompareOffset_Texture2D;
+
+/// textureSampleCompareOffset
 extern Variable SampledTextureSampleCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2D;
+
+/// textureSampleCompareOffset
 extern Variable TextureSampleCompareOffset_Texture3D_texture;
 extern Variable TextureSampleCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleCompareOffset_Texture3D_coordinate;
 extern Variable TextureSampleCompareOffset_Texture3D_compare;
 extern Variable TextureSampleCompareOffset_Texture3D_offset;
 extern Function TextureSampleCompareOffset_Texture3D;
+
+/// textureSampleCompareOffset
 extern Variable SampledTextureSampleCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleCompareOffset_Texture3D;
+
+/// textureSampleCompareOffset
 extern Variable TextureSampleCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleCompareOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleCompareOffset_Texture1DArray;
+
+/// textureSampleCompareOffset
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture1DArray;
+
+/// textureSampleCompareOffset
 extern Variable TextureSampleCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleCompareOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleCompareOffset_Texture2DArray;
+
+/// textureSampleCompareOffset
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleCompareOffset_Texture2DArray;
+
+/// textureSampleProjCompare
 extern Variable TextureSampleProjCompare_Texture1D_texture;
 extern Variable TextureSampleProjCompare_Texture1D_sampler;
 extern Variable TextureSampleProjCompare_Texture1D_coordinate;
 extern Variable TextureSampleProjCompare_Texture1D_proj;
 extern Variable TextureSampleProjCompare_Texture1D_compare;
 extern Function TextureSampleProjCompare_Texture1D;
+
+/// textureSampleProjCompare
 extern Variable SampledTextureSampleProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleProjCompare_Texture1D;
+
+/// textureSampleProjCompare
 extern Variable TextureSampleProjCompare_Texture2D_texture;
 extern Variable TextureSampleProjCompare_Texture2D_sampler;
 extern Variable TextureSampleProjCompare_Texture2D_coordinate;
 extern Variable TextureSampleProjCompare_Texture2D_proj;
 extern Variable TextureSampleProjCompare_Texture2D_compare;
 extern Function TextureSampleProjCompare_Texture2D;
+
+/// textureSampleProjCompare
 extern Variable SampledTextureSampleProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleProjCompare_Texture2D;
+
+/// textureSampleProjCompare
 extern Variable TextureSampleProjCompare_Texture3D_texture;
 extern Variable TextureSampleProjCompare_Texture3D_sampler;
 extern Variable TextureSampleProjCompare_Texture3D_coordinate;
 extern Variable TextureSampleProjCompare_Texture3D_proj;
 extern Variable TextureSampleProjCompare_Texture3D_compare;
 extern Function TextureSampleProjCompare_Texture3D;
+
+/// textureSampleProjCompare
 extern Variable SampledTextureSampleProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleProjCompare_Texture3D;
+
+/// textureSampleProjCompareOffset
 extern Variable TextureSampleProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture1D_coordinate;
@@ -3843,12 +4707,16 @@ extern Variable TextureSampleProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleProjCompareOffset_Texture1D;
+
+/// textureSampleProjCompareOffset
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture1D;
+
+/// textureSampleProjCompareOffset
 extern Variable TextureSampleProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture2D_coordinate;
@@ -3856,12 +4724,16 @@ extern Variable TextureSampleProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleProjCompareOffset_Texture2D;
+
+/// textureSampleProjCompareOffset
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture2D;
+
+/// textureSampleProjCompareOffset
 extern Variable TextureSampleProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleProjCompareOffset_Texture3D_coordinate;
@@ -3869,163 +4741,227 @@ extern Variable TextureSampleProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleProjCompareOffset_Texture3D;
+
+/// textureSampleProjCompareOffset
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleProjCompareOffset_Texture3D;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_Texture1D_texture;
 extern Variable TextureSampleLod_Texture1D_sampler;
 extern Variable TextureSampleLod_Texture1D_coordinate;
 extern Variable TextureSampleLod_Texture1D_lod;
 extern Function TextureSampleLod_Texture1D;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_Texture1D_texture;
 extern Variable SampledTextureSampleLod_Texture1D_coordinate;
 extern Variable SampledTextureSampleLod_Texture1D_lod;
 extern Function SampledTextureSampleLod_Texture1D;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_Texture2D_texture;
 extern Variable TextureSampleLod_Texture2D_sampler;
 extern Variable TextureSampleLod_Texture2D_coordinate;
 extern Variable TextureSampleLod_Texture2D_lod;
 extern Function TextureSampleLod_Texture2D;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_Texture2D_texture;
 extern Variable SampledTextureSampleLod_Texture2D_coordinate;
 extern Variable SampledTextureSampleLod_Texture2D_lod;
 extern Function SampledTextureSampleLod_Texture2D;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_Texture3D_texture;
 extern Variable TextureSampleLod_Texture3D_sampler;
 extern Variable TextureSampleLod_Texture3D_coordinate;
 extern Variable TextureSampleLod_Texture3D_lod;
 extern Function TextureSampleLod_Texture3D;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_Texture3D_texture;
 extern Variable SampledTextureSampleLod_Texture3D_coordinate;
 extern Variable SampledTextureSampleLod_Texture3D_lod;
 extern Function SampledTextureSampleLod_Texture3D;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_TextureCube_texture;
 extern Variable TextureSampleLod_TextureCube_sampler;
 extern Variable TextureSampleLod_TextureCube_coordinate;
 extern Variable TextureSampleLod_TextureCube_lod;
 extern Function TextureSampleLod_TextureCube;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_TextureCube_texture;
 extern Variable SampledTextureSampleLod_TextureCube_coordinate;
 extern Variable SampledTextureSampleLod_TextureCube_lod;
 extern Function SampledTextureSampleLod_TextureCube;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_Texture1DArray_texture;
 extern Variable TextureSampleLod_Texture1DArray_sampler;
 extern Variable TextureSampleLod_Texture1DArray_coordinate;
 extern Variable TextureSampleLod_Texture1DArray_lod;
 extern Function TextureSampleLod_Texture1DArray;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_Texture1DArray_texture;
 extern Variable SampledTextureSampleLod_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture1DArray_lod;
 extern Function SampledTextureSampleLod_Texture1DArray;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_Texture2DArray_texture;
 extern Variable TextureSampleLod_Texture2DArray_sampler;
 extern Variable TextureSampleLod_Texture2DArray_coordinate;
 extern Variable TextureSampleLod_Texture2DArray_lod;
 extern Function TextureSampleLod_Texture2DArray;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_Texture2DArray_texture;
 extern Variable SampledTextureSampleLod_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLod_Texture2DArray_lod;
 extern Function SampledTextureSampleLod_Texture2DArray;
+
+/// textureSampleLod
 extern Variable TextureSampleLod_TextureCubeArray_texture;
 extern Variable TextureSampleLod_TextureCubeArray_sampler;
 extern Variable TextureSampleLod_TextureCubeArray_coordinate;
 extern Variable TextureSampleLod_TextureCubeArray_lod;
 extern Function TextureSampleLod_TextureCubeArray;
+
+/// textureSampleLod
 extern Variable SampledTextureSampleLod_TextureCubeArray_texture;
 extern Variable SampledTextureSampleLod_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleLod_TextureCubeArray_lod;
 extern Function SampledTextureSampleLod_TextureCubeArray;
+
+/// textureSampleLodOffset
 extern Variable TextureSampleLodOffset_Texture1D_texture;
 extern Variable TextureSampleLodOffset_Texture1D_sampler;
 extern Variable TextureSampleLodOffset_Texture1D_coordinate;
 extern Variable TextureSampleLodOffset_Texture1D_lod;
 extern Variable TextureSampleLodOffset_Texture1D_offset;
 extern Function TextureSampleLodOffset_Texture1D;
+
+/// textureSampleLodOffset
 extern Variable SampledTextureSampleLodOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodOffset_Texture1D;
+
+/// textureSampleLodOffset
 extern Variable TextureSampleLodOffset_Texture2D_texture;
 extern Variable TextureSampleLodOffset_Texture2D_sampler;
 extern Variable TextureSampleLodOffset_Texture2D_coordinate;
 extern Variable TextureSampleLodOffset_Texture2D_lod;
 extern Variable TextureSampleLodOffset_Texture2D_offset;
 extern Function TextureSampleLodOffset_Texture2D;
+
+/// textureSampleLodOffset
 extern Variable SampledTextureSampleLodOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodOffset_Texture2D;
+
+/// textureSampleLodOffset
 extern Variable TextureSampleLodOffset_Texture3D_texture;
 extern Variable TextureSampleLodOffset_Texture3D_sampler;
 extern Variable TextureSampleLodOffset_Texture3D_coordinate;
 extern Variable TextureSampleLodOffset_Texture3D_lod;
 extern Variable TextureSampleLodOffset_Texture3D_offset;
 extern Function TextureSampleLodOffset_Texture3D;
+
+/// textureSampleLodOffset
 extern Variable SampledTextureSampleLodOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodOffset_Texture3D;
+
+/// textureSampleLodOffset
 extern Variable TextureSampleLodOffset_Texture1DArray_texture;
 extern Variable TextureSampleLodOffset_Texture1DArray_sampler;
 extern Variable TextureSampleLodOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleLodOffset_Texture1DArray_lod;
 extern Variable TextureSampleLodOffset_Texture1DArray_offset;
 extern Function TextureSampleLodOffset_Texture1DArray;
+
+/// textureSampleLodOffset
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture1DArray;
+
+/// textureSampleLodOffset
 extern Variable TextureSampleLodOffset_Texture2DArray_texture;
 extern Variable TextureSampleLodOffset_Texture2DArray_sampler;
 extern Variable TextureSampleLodOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleLodOffset_Texture2DArray_lod;
 extern Variable TextureSampleLodOffset_Texture2DArray_offset;
 extern Function TextureSampleLodOffset_Texture2DArray;
+
+/// textureSampleLodOffset
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodOffset_Texture2DArray;
+
+/// textureSampleLodProj
 extern Variable TextureSampleLodProj_Texture1D_texture;
 extern Variable TextureSampleLodProj_Texture1D_sampler;
 extern Variable TextureSampleLodProj_Texture1D_coordinate;
 extern Variable TextureSampleLodProj_Texture1D_lod;
 extern Variable TextureSampleLodProj_Texture1D_proj;
 extern Function TextureSampleLodProj_Texture1D;
+
+/// textureSampleLodProj
 extern Variable SampledTextureSampleLodProj_Texture1D_texture;
 extern Variable SampledTextureSampleLodProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture1D_lod;
 extern Variable SampledTextureSampleLodProj_Texture1D_proj;
 extern Function SampledTextureSampleLodProj_Texture1D;
+
+/// textureSampleLodProj
 extern Variable TextureSampleLodProj_Texture2D_texture;
 extern Variable TextureSampleLodProj_Texture2D_sampler;
 extern Variable TextureSampleLodProj_Texture2D_coordinate;
 extern Variable TextureSampleLodProj_Texture2D_lod;
 extern Variable TextureSampleLodProj_Texture2D_proj;
 extern Function TextureSampleLodProj_Texture2D;
+
+/// textureSampleLodProj
 extern Variable SampledTextureSampleLodProj_Texture2D_texture;
 extern Variable SampledTextureSampleLodProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture2D_lod;
 extern Variable SampledTextureSampleLodProj_Texture2D_proj;
 extern Function SampledTextureSampleLodProj_Texture2D;
+
+/// textureSampleLodProj
 extern Variable TextureSampleLodProj_Texture3D_texture;
 extern Variable TextureSampleLodProj_Texture3D_sampler;
 extern Variable TextureSampleLodProj_Texture3D_coordinate;
 extern Variable TextureSampleLodProj_Texture3D_lod;
 extern Variable TextureSampleLodProj_Texture3D_proj;
 extern Function TextureSampleLodProj_Texture3D;
+
+/// textureSampleLodProj
 extern Variable SampledTextureSampleLodProj_Texture3D_texture;
 extern Variable SampledTextureSampleLodProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProj_Texture3D_lod;
 extern Variable SampledTextureSampleLodProj_Texture3D_proj;
 extern Function SampledTextureSampleLodProj_Texture3D;
+
+/// textureSampleLodProjOffset
 extern Variable TextureSampleLodProjOffset_Texture1D_texture;
 extern Variable TextureSampleLodProjOffset_Texture1D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture1D_coordinate;
@@ -4033,12 +4969,16 @@ extern Variable TextureSampleLodProjOffset_Texture1D_lod;
 extern Variable TextureSampleLodProjOffset_Texture1D_proj;
 extern Variable TextureSampleLodProjOffset_Texture1D_offset;
 extern Function TextureSampleLodProjOffset_Texture1D;
+
+/// textureSampleLodProjOffset
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture1D;
+
+/// textureSampleLodProjOffset
 extern Variable TextureSampleLodProjOffset_Texture2D_texture;
 extern Variable TextureSampleLodProjOffset_Texture2D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture2D_coordinate;
@@ -4046,12 +4986,16 @@ extern Variable TextureSampleLodProjOffset_Texture2D_lod;
 extern Variable TextureSampleLodProjOffset_Texture2D_proj;
 extern Variable TextureSampleLodProjOffset_Texture2D_offset;
 extern Function TextureSampleLodProjOffset_Texture2D;
+
+/// textureSampleLodProjOffset
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture2D;
+
+/// textureSampleLodProjOffset
 extern Variable TextureSampleLodProjOffset_Texture3D_texture;
 extern Variable TextureSampleLodProjOffset_Texture3D_sampler;
 extern Variable TextureSampleLodProjOffset_Texture3D_coordinate;
@@ -4059,67 +5003,91 @@ extern Variable TextureSampleLodProjOffset_Texture3D_lod;
 extern Variable TextureSampleLodProjOffset_Texture3D_proj;
 extern Variable TextureSampleLodProjOffset_Texture3D_offset;
 extern Function TextureSampleLodProjOffset_Texture3D;
+
+/// textureSampleLodProjOffset
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjOffset_Texture3D;
+
+/// textureSampleLodCompare
 extern Variable TextureSampleLodCompare_Texture1D_texture;
 extern Variable TextureSampleLodCompare_Texture1D_sampler;
 extern Variable TextureSampleLodCompare_Texture1D_coordinate;
 extern Variable TextureSampleLodCompare_Texture1D_lod;
 extern Variable TextureSampleLodCompare_Texture1D_compare;
 extern Function TextureSampleLodCompare_Texture1D;
+
+/// textureSampleLodCompare
 extern Variable SampledTextureSampleLodCompare_Texture1D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodCompare_Texture1D;
+
+/// textureSampleLodCompare
 extern Variable TextureSampleLodCompare_Texture2D_texture;
 extern Variable TextureSampleLodCompare_Texture2D_sampler;
 extern Variable TextureSampleLodCompare_Texture2D_coordinate;
 extern Variable TextureSampleLodCompare_Texture2D_lod;
 extern Variable TextureSampleLodCompare_Texture2D_compare;
 extern Function TextureSampleLodCompare_Texture2D;
+
+/// textureSampleLodCompare
 extern Variable SampledTextureSampleLodCompare_Texture2D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodCompare_Texture2D;
+
+/// textureSampleLodCompare
 extern Variable TextureSampleLodCompare_Texture3D_texture;
 extern Variable TextureSampleLodCompare_Texture3D_sampler;
 extern Variable TextureSampleLodCompare_Texture3D_coordinate;
 extern Variable TextureSampleLodCompare_Texture3D_lod;
 extern Variable TextureSampleLodCompare_Texture3D_compare;
 extern Function TextureSampleLodCompare_Texture3D;
+
+/// textureSampleLodCompare
 extern Variable SampledTextureSampleLodCompare_Texture3D_texture;
 extern Variable SampledTextureSampleLodCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture3D_lod;
 extern Variable SampledTextureSampleLodCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodCompare_Texture3D;
+
+/// textureSampleLodCompare
 extern Variable TextureSampleLodCompare_Texture1DArray_texture;
 extern Variable TextureSampleLodCompare_Texture1DArray_sampler;
 extern Variable TextureSampleLodCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleLodCompare_Texture1DArray_lod;
 extern Variable TextureSampleLodCompare_Texture1DArray_compare;
 extern Function TextureSampleLodCompare_Texture1DArray;
+
+/// textureSampleLodCompare
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture1DArray;
+
+/// textureSampleLodCompare
 extern Variable TextureSampleLodCompare_Texture2DArray_texture;
 extern Variable TextureSampleLodCompare_Texture2DArray_sampler;
 extern Variable TextureSampleLodCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleLodCompare_Texture2DArray_lod;
 extern Variable TextureSampleLodCompare_Texture2DArray_compare;
 extern Function TextureSampleLodCompare_Texture2DArray;
+
+/// textureSampleLodCompare
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleLodCompare_Texture2DArray;
+
+/// textureSampleLodCompareOffset
 extern Variable TextureSampleLodCompareOffset_Texture1D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture1D_coordinate;
@@ -4127,12 +5095,16 @@ extern Variable TextureSampleLodCompareOffset_Texture1D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodCompareOffset_Texture1D;
+
+/// textureSampleLodCompareOffset
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1D;
+
+/// textureSampleLodCompareOffset
 extern Variable TextureSampleLodCompareOffset_Texture2D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture2D_coordinate;
@@ -4140,12 +5112,16 @@ extern Variable TextureSampleLodCompareOffset_Texture2D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodCompareOffset_Texture2D;
+
+/// textureSampleLodCompareOffset
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2D;
+
+/// textureSampleLodCompareOffset
 extern Variable TextureSampleLodCompareOffset_Texture3D_texture;
 extern Variable TextureSampleLodCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture3D_coordinate;
@@ -4153,12 +5129,16 @@ extern Variable TextureSampleLodCompareOffset_Texture3D_lod;
 extern Variable TextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodCompareOffset_Texture3D;
+
+/// textureSampleLodCompareOffset
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture3D;
+
+/// textureSampleLodCompareOffset
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_coordinate;
@@ -4166,12 +5146,16 @@ extern Variable TextureSampleLodCompareOffset_Texture1DArray_lod;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture1DArray;
+
+/// textureSampleLodCompareOffset
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture1DArray;
+
+/// textureSampleLodCompareOffset
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_coordinate;
@@ -4179,12 +5163,16 @@ extern Variable TextureSampleLodCompareOffset_Texture2DArray_lod;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleLodCompareOffset_Texture2DArray;
+
+/// textureSampleLodCompareOffset
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_lod;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleLodCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleLodCompareOffset_Texture2DArray;
+
+/// textureSampleLodProjCompare
 extern Variable TextureSampleLodProjCompare_Texture1D_texture;
 extern Variable TextureSampleLodProjCompare_Texture1D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture1D_coordinate;
@@ -4192,12 +5180,16 @@ extern Variable TextureSampleLodProjCompare_Texture1D_lod;
 extern Variable TextureSampleLodProjCompare_Texture1D_proj;
 extern Variable TextureSampleLodProjCompare_Texture1D_compare;
 extern Function TextureSampleLodProjCompare_Texture1D;
+
+/// textureSampleLodProjCompare
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture1D;
+
+/// textureSampleLodProjCompare
 extern Variable TextureSampleLodProjCompare_Texture2D_texture;
 extern Variable TextureSampleLodProjCompare_Texture2D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture2D_coordinate;
@@ -4205,12 +5197,16 @@ extern Variable TextureSampleLodProjCompare_Texture2D_lod;
 extern Variable TextureSampleLodProjCompare_Texture2D_proj;
 extern Variable TextureSampleLodProjCompare_Texture2D_compare;
 extern Function TextureSampleLodProjCompare_Texture2D;
+
+/// textureSampleLodProjCompare
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture2D;
+
+/// textureSampleLodProjCompare
 extern Variable TextureSampleLodProjCompare_Texture3D_texture;
 extern Variable TextureSampleLodProjCompare_Texture3D_sampler;
 extern Variable TextureSampleLodProjCompare_Texture3D_coordinate;
@@ -4218,12 +5214,16 @@ extern Variable TextureSampleLodProjCompare_Texture3D_lod;
 extern Variable TextureSampleLodProjCompare_Texture3D_proj;
 extern Variable TextureSampleLodProjCompare_Texture3D_compare;
 extern Function TextureSampleLodProjCompare_Texture3D;
+
+/// textureSampleLodProjCompare
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_lod;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleLodProjCompare_Texture3D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_coordinate;
@@ -4232,6 +5232,8 @@ extern Variable TextureSampleLodProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture1D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_lod;
@@ -4239,6 +5241,8 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture1D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_coordinate;
@@ -4247,6 +5251,8 @@ extern Variable TextureSampleLodProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture2D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_lod;
@@ -4254,6 +5260,8 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture2D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_coordinate;
@@ -4262,6 +5270,8 @@ extern Variable TextureSampleLodProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleLodProjCompareOffset_Texture3D;
+
+/// textureSampleLodProjCompareOffset
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_lod;
@@ -4269,619 +5279,817 @@ extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleLodProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleLodProjCompareOffset_Texture3D;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_Texture1D_texture;
 extern Variable TextureSampleGrad_Texture1D_sampler;
 extern Variable TextureSampleGrad_Texture1D_coordinate;
-extern Variable TextureSampleGrad_Texture1D_gradx;
-extern Variable TextureSampleGrad_Texture1D_grady;
+extern Variable TextureSampleGrad_Texture1D_grad_x;
+extern Variable TextureSampleGrad_Texture1D_grad_y;
 extern Function TextureSampleGrad_Texture1D;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_Texture1D_texture;
 extern Variable SampledTextureSampleGrad_Texture1D_coordinate;
-extern Variable SampledTextureSampleGrad_Texture1D_gradx;
-extern Variable SampledTextureSampleGrad_Texture1D_grady;
+extern Variable SampledTextureSampleGrad_Texture1D_grad_x;
+extern Variable SampledTextureSampleGrad_Texture1D_grad_y;
 extern Function SampledTextureSampleGrad_Texture1D;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_Texture2D_texture;
 extern Variable TextureSampleGrad_Texture2D_sampler;
 extern Variable TextureSampleGrad_Texture2D_coordinate;
-extern Variable TextureSampleGrad_Texture2D_gradx;
-extern Variable TextureSampleGrad_Texture2D_grady;
+extern Variable TextureSampleGrad_Texture2D_grad_x;
+extern Variable TextureSampleGrad_Texture2D_grad_y;
 extern Function TextureSampleGrad_Texture2D;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_Texture2D_texture;
 extern Variable SampledTextureSampleGrad_Texture2D_coordinate;
-extern Variable SampledTextureSampleGrad_Texture2D_gradx;
-extern Variable SampledTextureSampleGrad_Texture2D_grady;
+extern Variable SampledTextureSampleGrad_Texture2D_grad_x;
+extern Variable SampledTextureSampleGrad_Texture2D_grad_y;
 extern Function SampledTextureSampleGrad_Texture2D;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_Texture3D_texture;
 extern Variable TextureSampleGrad_Texture3D_sampler;
 extern Variable TextureSampleGrad_Texture3D_coordinate;
-extern Variable TextureSampleGrad_Texture3D_gradx;
-extern Variable TextureSampleGrad_Texture3D_grady;
+extern Variable TextureSampleGrad_Texture3D_grad_x;
+extern Variable TextureSampleGrad_Texture3D_grad_y;
 extern Function TextureSampleGrad_Texture3D;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_Texture3D_texture;
 extern Variable SampledTextureSampleGrad_Texture3D_coordinate;
-extern Variable SampledTextureSampleGrad_Texture3D_gradx;
-extern Variable SampledTextureSampleGrad_Texture3D_grady;
+extern Variable SampledTextureSampleGrad_Texture3D_grad_x;
+extern Variable SampledTextureSampleGrad_Texture3D_grad_y;
 extern Function SampledTextureSampleGrad_Texture3D;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_TextureCube_texture;
 extern Variable TextureSampleGrad_TextureCube_sampler;
 extern Variable TextureSampleGrad_TextureCube_coordinate;
-extern Variable TextureSampleGrad_TextureCube_gradx;
-extern Variable TextureSampleGrad_TextureCube_grady;
+extern Variable TextureSampleGrad_TextureCube_grad_x;
+extern Variable TextureSampleGrad_TextureCube_grad_y;
 extern Function TextureSampleGrad_TextureCube;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_TextureCube_texture;
 extern Variable SampledTextureSampleGrad_TextureCube_coordinate;
-extern Variable SampledTextureSampleGrad_TextureCube_gradx;
-extern Variable SampledTextureSampleGrad_TextureCube_grady;
+extern Variable SampledTextureSampleGrad_TextureCube_grad_x;
+extern Variable SampledTextureSampleGrad_TextureCube_grad_y;
 extern Function SampledTextureSampleGrad_TextureCube;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_Texture1DArray_texture;
 extern Variable TextureSampleGrad_Texture1DArray_sampler;
 extern Variable TextureSampleGrad_Texture1DArray_coordinate;
-extern Variable TextureSampleGrad_Texture1DArray_gradx;
-extern Variable TextureSampleGrad_Texture1DArray_grady;
+extern Variable TextureSampleGrad_Texture1DArray_grad_x;
+extern Variable TextureSampleGrad_Texture1DArray_grad_y;
 extern Function TextureSampleGrad_Texture1DArray;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_Texture1DArray_texture;
 extern Variable SampledTextureSampleGrad_Texture1DArray_coordinate;
-extern Variable SampledTextureSampleGrad_Texture1DArray_gradx;
-extern Variable SampledTextureSampleGrad_Texture1DArray_grady;
+extern Variable SampledTextureSampleGrad_Texture1DArray_grad_x;
+extern Variable SampledTextureSampleGrad_Texture1DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture1DArray;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_Texture2DArray_texture;
 extern Variable TextureSampleGrad_Texture2DArray_sampler;
 extern Variable TextureSampleGrad_Texture2DArray_coordinate;
-extern Variable TextureSampleGrad_Texture2DArray_gradx;
-extern Variable TextureSampleGrad_Texture2DArray_grady;
+extern Variable TextureSampleGrad_Texture2DArray_grad_x;
+extern Variable TextureSampleGrad_Texture2DArray_grad_y;
 extern Function TextureSampleGrad_Texture2DArray;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_Texture2DArray_texture;
 extern Variable SampledTextureSampleGrad_Texture2DArray_coordinate;
-extern Variable SampledTextureSampleGrad_Texture2DArray_gradx;
-extern Variable SampledTextureSampleGrad_Texture2DArray_grady;
+extern Variable SampledTextureSampleGrad_Texture2DArray_grad_x;
+extern Variable SampledTextureSampleGrad_Texture2DArray_grad_y;
 extern Function SampledTextureSampleGrad_Texture2DArray;
+
+/// textureSampleGrad
 extern Variable TextureSampleGrad_TextureCubeArray_texture;
 extern Variable TextureSampleGrad_TextureCubeArray_sampler;
 extern Variable TextureSampleGrad_TextureCubeArray_coordinate;
-extern Variable TextureSampleGrad_TextureCubeArray_gradx;
-extern Variable TextureSampleGrad_TextureCubeArray_grady;
+extern Variable TextureSampleGrad_TextureCubeArray_grad_x;
+extern Variable TextureSampleGrad_TextureCubeArray_grad_y;
 extern Function TextureSampleGrad_TextureCubeArray;
+
+/// textureSampleGrad
 extern Variable SampledTextureSampleGrad_TextureCubeArray_texture;
 extern Variable SampledTextureSampleGrad_TextureCubeArray_coordinate;
-extern Variable SampledTextureSampleGrad_TextureCubeArray_gradx;
-extern Variable SampledTextureSampleGrad_TextureCubeArray_grady;
+extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_x;
+extern Variable SampledTextureSampleGrad_TextureCubeArray_grad_y;
 extern Function SampledTextureSampleGrad_TextureCubeArray;
+
+/// textureSampleGradOffset
 extern Variable TextureSampleGradOffset_Texture1D_texture;
 extern Variable TextureSampleGradOffset_Texture1D_sampler;
 extern Variable TextureSampleGradOffset_Texture1D_coordinate;
-extern Variable TextureSampleGradOffset_Texture1D_gradx;
-extern Variable TextureSampleGradOffset_Texture1D_grady;
+extern Variable TextureSampleGradOffset_Texture1D_grad_x;
+extern Variable TextureSampleGradOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradOffset_Texture1D_offset;
 extern Function TextureSampleGradOffset_Texture1D;
+
+/// textureSampleGradOffset
 extern Variable SampledTextureSampleGradOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradOffset_Texture1D_gradx;
-extern Variable SampledTextureSampleGradOffset_Texture1D_grady;
+extern Variable SampledTextureSampleGradOffset_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradOffset_Texture1D;
+
+/// textureSampleGradOffset
 extern Variable TextureSampleGradOffset_Texture2D_texture;
 extern Variable TextureSampleGradOffset_Texture2D_sampler;
 extern Variable TextureSampleGradOffset_Texture2D_coordinate;
-extern Variable TextureSampleGradOffset_Texture2D_gradx;
-extern Variable TextureSampleGradOffset_Texture2D_grady;
+extern Variable TextureSampleGradOffset_Texture2D_grad_x;
+extern Variable TextureSampleGradOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradOffset_Texture2D_offset;
 extern Function TextureSampleGradOffset_Texture2D;
+
+/// textureSampleGradOffset
 extern Variable SampledTextureSampleGradOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradOffset_Texture2D_gradx;
-extern Variable SampledTextureSampleGradOffset_Texture2D_grady;
+extern Variable SampledTextureSampleGradOffset_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradOffset_Texture2D;
+
+/// textureSampleGradOffset
 extern Variable TextureSampleGradOffset_Texture3D_texture;
 extern Variable TextureSampleGradOffset_Texture3D_sampler;
 extern Variable TextureSampleGradOffset_Texture3D_coordinate;
-extern Variable TextureSampleGradOffset_Texture3D_gradx;
-extern Variable TextureSampleGradOffset_Texture3D_grady;
+extern Variable TextureSampleGradOffset_Texture3D_grad_x;
+extern Variable TextureSampleGradOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradOffset_Texture3D_offset;
 extern Function TextureSampleGradOffset_Texture3D;
+
+/// textureSampleGradOffset
 extern Variable SampledTextureSampleGradOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradOffset_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradOffset_Texture3D_gradx;
-extern Variable SampledTextureSampleGradOffset_Texture3D_grady;
+extern Variable SampledTextureSampleGradOffset_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradOffset_Texture3D;
+
+/// textureSampleGradOffset
 extern Variable TextureSampleGradOffset_Texture1DArray_texture;
 extern Variable TextureSampleGradOffset_Texture1DArray_sampler;
 extern Variable TextureSampleGradOffset_Texture1DArray_coordinate;
-extern Variable TextureSampleGradOffset_Texture1DArray_gradx;
-extern Variable TextureSampleGradOffset_Texture1DArray_grady;
+extern Variable TextureSampleGradOffset_Texture1DArray_grad_x;
+extern Variable TextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture1DArray_offset;
 extern Function TextureSampleGradOffset_Texture1DArray;
+
+/// textureSampleGradOffset
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_coordinate;
-extern Variable SampledTextureSampleGradOffset_Texture1DArray_gradx;
-extern Variable SampledTextureSampleGradOffset_Texture1DArray_grady;
+extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_x;
+extern Variable SampledTextureSampleGradOffset_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture1DArray;
+
+/// textureSampleGradOffset
 extern Variable TextureSampleGradOffset_Texture2DArray_texture;
 extern Variable TextureSampleGradOffset_Texture2DArray_sampler;
 extern Variable TextureSampleGradOffset_Texture2DArray_coordinate;
-extern Variable TextureSampleGradOffset_Texture2DArray_gradx;
-extern Variable TextureSampleGradOffset_Texture2DArray_grady;
+extern Variable TextureSampleGradOffset_Texture2DArray_grad_x;
+extern Variable TextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable TextureSampleGradOffset_Texture2DArray_offset;
 extern Function TextureSampleGradOffset_Texture2DArray;
+
+/// textureSampleGradOffset
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_coordinate;
-extern Variable SampledTextureSampleGradOffset_Texture2DArray_gradx;
-extern Variable SampledTextureSampleGradOffset_Texture2DArray_grady;
+extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_x;
+extern Variable SampledTextureSampleGradOffset_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradOffset_Texture2DArray;
+
+/// textureSampleGradProj
 extern Variable TextureSampleGradProj_Texture1D_texture;
 extern Variable TextureSampleGradProj_Texture1D_sampler;
 extern Variable TextureSampleGradProj_Texture1D_coordinate;
-extern Variable TextureSampleGradProj_Texture1D_gradx;
-extern Variable TextureSampleGradProj_Texture1D_grady;
+extern Variable TextureSampleGradProj_Texture1D_grad_x;
+extern Variable TextureSampleGradProj_Texture1D_grad_y;
 extern Variable TextureSampleGradProj_Texture1D_proj;
 extern Function TextureSampleGradProj_Texture1D;
+
+/// textureSampleGradProj
 extern Variable SampledTextureSampleGradProj_Texture1D_texture;
 extern Variable SampledTextureSampleGradProj_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradProj_Texture1D_gradx;
-extern Variable SampledTextureSampleGradProj_Texture1D_grady;
+extern Variable SampledTextureSampleGradProj_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradProj_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture1D_proj;
 extern Function SampledTextureSampleGradProj_Texture1D;
+
+/// textureSampleGradProj
 extern Variable TextureSampleGradProj_Texture2D_texture;
 extern Variable TextureSampleGradProj_Texture2D_sampler;
 extern Variable TextureSampleGradProj_Texture2D_coordinate;
-extern Variable TextureSampleGradProj_Texture2D_gradx;
-extern Variable TextureSampleGradProj_Texture2D_grady;
+extern Variable TextureSampleGradProj_Texture2D_grad_x;
+extern Variable TextureSampleGradProj_Texture2D_grad_y;
 extern Variable TextureSampleGradProj_Texture2D_proj;
 extern Function TextureSampleGradProj_Texture2D;
+
+/// textureSampleGradProj
 extern Variable SampledTextureSampleGradProj_Texture2D_texture;
 extern Variable SampledTextureSampleGradProj_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradProj_Texture2D_gradx;
-extern Variable SampledTextureSampleGradProj_Texture2D_grady;
+extern Variable SampledTextureSampleGradProj_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradProj_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture2D_proj;
 extern Function SampledTextureSampleGradProj_Texture2D;
+
+/// textureSampleGradProj
 extern Variable TextureSampleGradProj_Texture3D_texture;
 extern Variable TextureSampleGradProj_Texture3D_sampler;
 extern Variable TextureSampleGradProj_Texture3D_coordinate;
-extern Variable TextureSampleGradProj_Texture3D_gradx;
-extern Variable TextureSampleGradProj_Texture3D_grady;
+extern Variable TextureSampleGradProj_Texture3D_grad_x;
+extern Variable TextureSampleGradProj_Texture3D_grad_y;
 extern Variable TextureSampleGradProj_Texture3D_proj;
 extern Function TextureSampleGradProj_Texture3D;
+
+/// textureSampleGradProj
 extern Variable SampledTextureSampleGradProj_Texture3D_texture;
 extern Variable SampledTextureSampleGradProj_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradProj_Texture3D_gradx;
-extern Variable SampledTextureSampleGradProj_Texture3D_grady;
+extern Variable SampledTextureSampleGradProj_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradProj_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProj_Texture3D_proj;
 extern Function SampledTextureSampleGradProj_Texture3D;
+
+/// textureSampleGradProjOffset
 extern Variable TextureSampleGradProjOffset_Texture1D_texture;
 extern Variable TextureSampleGradProjOffset_Texture1D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture1D_coordinate;
-extern Variable TextureSampleGradProjOffset_Texture1D_gradx;
-extern Variable TextureSampleGradProjOffset_Texture1D_grady;
+extern Variable TextureSampleGradProjOffset_Texture1D_grad_x;
+extern Variable TextureSampleGradProjOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture1D_proj;
 extern Variable TextureSampleGradProjOffset_Texture1D_offset;
 extern Function TextureSampleGradProjOffset_Texture1D;
+
+/// textureSampleGradProjOffset
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradProjOffset_Texture1D_gradx;
-extern Variable SampledTextureSampleGradProjOffset_Texture1D_grady;
+extern Variable SampledTextureSampleGradProjOffset_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradProjOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture1D;
+
+/// textureSampleGradProjOffset
 extern Variable TextureSampleGradProjOffset_Texture2D_texture;
 extern Variable TextureSampleGradProjOffset_Texture2D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture2D_coordinate;
-extern Variable TextureSampleGradProjOffset_Texture2D_gradx;
-extern Variable TextureSampleGradProjOffset_Texture2D_grady;
+extern Variable TextureSampleGradProjOffset_Texture2D_grad_x;
+extern Variable TextureSampleGradProjOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture2D_proj;
 extern Variable TextureSampleGradProjOffset_Texture2D_offset;
 extern Function TextureSampleGradProjOffset_Texture2D;
+
+/// textureSampleGradProjOffset
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradProjOffset_Texture2D_gradx;
-extern Variable SampledTextureSampleGradProjOffset_Texture2D_grady;
+extern Variable SampledTextureSampleGradProjOffset_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradProjOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture2D;
+
+/// textureSampleGradProjOffset
 extern Variable TextureSampleGradProjOffset_Texture3D_texture;
 extern Variable TextureSampleGradProjOffset_Texture3D_sampler;
 extern Variable TextureSampleGradProjOffset_Texture3D_coordinate;
-extern Variable TextureSampleGradProjOffset_Texture3D_gradx;
-extern Variable TextureSampleGradProjOffset_Texture3D_grady;
+extern Variable TextureSampleGradProjOffset_Texture3D_grad_x;
+extern Variable TextureSampleGradProjOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradProjOffset_Texture3D_proj;
 extern Variable TextureSampleGradProjOffset_Texture3D_offset;
 extern Function TextureSampleGradProjOffset_Texture3D;
+
+/// textureSampleGradProjOffset
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradProjOffset_Texture3D_gradx;
-extern Variable SampledTextureSampleGradProjOffset_Texture3D_grady;
+extern Variable SampledTextureSampleGradProjOffset_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradProjOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjOffset_Texture3D;
+
+/// textureSampleGradCompare
 extern Variable TextureSampleGradCompare_Texture1D_texture;
 extern Variable TextureSampleGradCompare_Texture1D_sampler;
 extern Variable TextureSampleGradCompare_Texture1D_coordinate;
-extern Variable TextureSampleGradCompare_Texture1D_gradx;
-extern Variable TextureSampleGradCompare_Texture1D_grady;
+extern Variable TextureSampleGradCompare_Texture1D_grad_x;
+extern Variable TextureSampleGradCompare_Texture1D_grad_y;
 extern Variable TextureSampleGradCompare_Texture1D_compare;
 extern Function TextureSampleGradCompare_Texture1D;
+
+/// textureSampleGradCompare
 extern Variable SampledTextureSampleGradCompare_Texture1D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradCompare_Texture1D_gradx;
-extern Variable SampledTextureSampleGradCompare_Texture1D_grady;
+extern Variable SampledTextureSampleGradCompare_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradCompare_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradCompare_Texture1D;
+
+/// textureSampleGradCompare
 extern Variable TextureSampleGradCompare_Texture2D_texture;
 extern Variable TextureSampleGradCompare_Texture2D_sampler;
 extern Variable TextureSampleGradCompare_Texture2D_coordinate;
-extern Variable TextureSampleGradCompare_Texture2D_gradx;
-extern Variable TextureSampleGradCompare_Texture2D_grady;
+extern Variable TextureSampleGradCompare_Texture2D_grad_x;
+extern Variable TextureSampleGradCompare_Texture2D_grad_y;
 extern Variable TextureSampleGradCompare_Texture2D_compare;
 extern Function TextureSampleGradCompare_Texture2D;
+
+/// textureSampleGradCompare
 extern Variable SampledTextureSampleGradCompare_Texture2D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradCompare_Texture2D_gradx;
-extern Variable SampledTextureSampleGradCompare_Texture2D_grady;
+extern Variable SampledTextureSampleGradCompare_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradCompare_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradCompare_Texture2D;
+
+/// textureSampleGradCompare
 extern Variable TextureSampleGradCompare_Texture3D_texture;
 extern Variable TextureSampleGradCompare_Texture3D_sampler;
 extern Variable TextureSampleGradCompare_Texture3D_coordinate;
-extern Variable TextureSampleGradCompare_Texture3D_gradx;
-extern Variable TextureSampleGradCompare_Texture3D_grady;
+extern Variable TextureSampleGradCompare_Texture3D_grad_x;
+extern Variable TextureSampleGradCompare_Texture3D_grad_y;
 extern Variable TextureSampleGradCompare_Texture3D_compare;
 extern Function TextureSampleGradCompare_Texture3D;
+
+/// textureSampleGradCompare
 extern Variable SampledTextureSampleGradCompare_Texture3D_texture;
 extern Variable SampledTextureSampleGradCompare_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradCompare_Texture3D_gradx;
-extern Variable SampledTextureSampleGradCompare_Texture3D_grady;
+extern Variable SampledTextureSampleGradCompare_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradCompare_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradCompare_Texture3D;
+
+/// textureSampleGradCompare
 extern Variable TextureSampleGradCompare_Texture1DArray_texture;
 extern Variable TextureSampleGradCompare_Texture1DArray_sampler;
 extern Variable TextureSampleGradCompare_Texture1DArray_coordinate;
-extern Variable TextureSampleGradCompare_Texture1DArray_gradx;
-extern Variable TextureSampleGradCompare_Texture1DArray_grady;
+extern Variable TextureSampleGradCompare_Texture1DArray_grad_x;
+extern Variable TextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture1DArray_compare;
 extern Function TextureSampleGradCompare_Texture1DArray;
+
+/// textureSampleGradCompare
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_coordinate;
-extern Variable SampledTextureSampleGradCompare_Texture1DArray_gradx;
-extern Variable SampledTextureSampleGradCompare_Texture1DArray_grady;
+extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_x;
+extern Variable SampledTextureSampleGradCompare_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture1DArray;
+
+/// textureSampleGradCompare
 extern Variable TextureSampleGradCompare_Texture2DArray_texture;
 extern Variable TextureSampleGradCompare_Texture2DArray_sampler;
 extern Variable TextureSampleGradCompare_Texture2DArray_coordinate;
-extern Variable TextureSampleGradCompare_Texture2DArray_gradx;
-extern Variable TextureSampleGradCompare_Texture2DArray_grady;
+extern Variable TextureSampleGradCompare_Texture2DArray_grad_x;
+extern Variable TextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable TextureSampleGradCompare_Texture2DArray_compare;
 extern Function TextureSampleGradCompare_Texture2DArray;
+
+/// textureSampleGradCompare
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_coordinate;
-extern Variable SampledTextureSampleGradCompare_Texture2DArray_gradx;
-extern Variable SampledTextureSampleGradCompare_Texture2DArray_grady;
+extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_x;
+extern Variable SampledTextureSampleGradCompare_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleGradCompare_Texture2DArray;
+
+/// textureSampleGradCompareOffset
 extern Variable TextureSampleGradCompareOffset_Texture1D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture1D_coordinate;
-extern Variable TextureSampleGradCompareOffset_Texture1D_gradx;
-extern Variable TextureSampleGradCompareOffset_Texture1D_grady;
+extern Variable TextureSampleGradCompareOffset_Texture1D_grad_x;
+extern Variable TextureSampleGradCompareOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradCompareOffset_Texture1D;
+
+/// textureSampleGradCompareOffset
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradCompareOffset_Texture1D_gradx;
-extern Variable SampledTextureSampleGradCompareOffset_Texture1D_grady;
+extern Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradCompareOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1D;
+
+/// textureSampleGradCompareOffset
 extern Variable TextureSampleGradCompareOffset_Texture2D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture2D_coordinate;
-extern Variable TextureSampleGradCompareOffset_Texture2D_gradx;
-extern Variable TextureSampleGradCompareOffset_Texture2D_grady;
+extern Variable TextureSampleGradCompareOffset_Texture2D_grad_x;
+extern Variable TextureSampleGradCompareOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradCompareOffset_Texture2D;
+
+/// textureSampleGradCompareOffset
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradCompareOffset_Texture2D_gradx;
-extern Variable SampledTextureSampleGradCompareOffset_Texture2D_grady;
+extern Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradCompareOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2D;
+
+/// textureSampleGradCompareOffset
 extern Variable TextureSampleGradCompareOffset_Texture3D_texture;
 extern Variable TextureSampleGradCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture3D_coordinate;
-extern Variable TextureSampleGradCompareOffset_Texture3D_gradx;
-extern Variable TextureSampleGradCompareOffset_Texture3D_grady;
+extern Variable TextureSampleGradCompareOffset_Texture3D_grad_x;
+extern Variable TextureSampleGradCompareOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradCompareOffset_Texture3D;
+
+/// textureSampleGradCompareOffset
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradCompareOffset_Texture3D_gradx;
-extern Variable SampledTextureSampleGradCompareOffset_Texture3D_grady;
+extern Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradCompareOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture3D;
+
+/// textureSampleGradCompareOffset
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_coordinate;
-extern Variable TextureSampleGradCompareOffset_Texture1DArray_gradx;
-extern Variable TextureSampleGradCompareOffset_Texture1DArray_grady;
+extern Variable TextureSampleGradCompareOffset_Texture1DArray_grad_x;
+extern Variable TextureSampleGradCompareOffset_Texture1DArray_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture1DArray;
+
+/// textureSampleGradCompareOffset
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_coordinate;
-extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_gradx;
-extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grady;
+extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_x;
+extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture1DArray;
+
+/// textureSampleGradCompareOffset
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_coordinate;
-extern Variable TextureSampleGradCompareOffset_Texture2DArray_gradx;
-extern Variable TextureSampleGradCompareOffset_Texture2DArray_grady;
+extern Variable TextureSampleGradCompareOffset_Texture2DArray_grad_x;
+extern Variable TextureSampleGradCompareOffset_Texture2DArray_grad_y;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleGradCompareOffset_Texture2DArray;
+
+/// textureSampleGradCompareOffset
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_coordinate;
-extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_gradx;
-extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grady;
+extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_x;
+extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_grad_y;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleGradCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleGradCompareOffset_Texture2DArray;
+
+/// textureSampleGradProjCompare
 extern Variable TextureSampleGradProjCompare_Texture1D_texture;
 extern Variable TextureSampleGradProjCompare_Texture1D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture1D_coordinate;
-extern Variable TextureSampleGradProjCompare_Texture1D_gradx;
-extern Variable TextureSampleGradProjCompare_Texture1D_grady;
+extern Variable TextureSampleGradProjCompare_Texture1D_grad_x;
+extern Variable TextureSampleGradProjCompare_Texture1D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture1D_proj;
 extern Variable TextureSampleGradProjCompare_Texture1D_compare;
 extern Function TextureSampleGradProjCompare_Texture1D;
+
+/// textureSampleGradProjCompare
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradProjCompare_Texture1D_gradx;
-extern Variable SampledTextureSampleGradProjCompare_Texture1D_grady;
+extern Variable SampledTextureSampleGradProjCompare_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradProjCompare_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture1D;
+
+/// textureSampleGradProjCompare
 extern Variable TextureSampleGradProjCompare_Texture2D_texture;
 extern Variable TextureSampleGradProjCompare_Texture2D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture2D_coordinate;
-extern Variable TextureSampleGradProjCompare_Texture2D_gradx;
-extern Variable TextureSampleGradProjCompare_Texture2D_grady;
+extern Variable TextureSampleGradProjCompare_Texture2D_grad_x;
+extern Variable TextureSampleGradProjCompare_Texture2D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture2D_proj;
 extern Variable TextureSampleGradProjCompare_Texture2D_compare;
 extern Function TextureSampleGradProjCompare_Texture2D;
+
+/// textureSampleGradProjCompare
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradProjCompare_Texture2D_gradx;
-extern Variable SampledTextureSampleGradProjCompare_Texture2D_grady;
+extern Variable SampledTextureSampleGradProjCompare_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradProjCompare_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture2D;
+
+/// textureSampleGradProjCompare
 extern Variable TextureSampleGradProjCompare_Texture3D_texture;
 extern Variable TextureSampleGradProjCompare_Texture3D_sampler;
 extern Variable TextureSampleGradProjCompare_Texture3D_coordinate;
-extern Variable TextureSampleGradProjCompare_Texture3D_gradx;
-extern Variable TextureSampleGradProjCompare_Texture3D_grady;
+extern Variable TextureSampleGradProjCompare_Texture3D_grad_x;
+extern Variable TextureSampleGradProjCompare_Texture3D_grad_y;
 extern Variable TextureSampleGradProjCompare_Texture3D_proj;
 extern Variable TextureSampleGradProjCompare_Texture3D_compare;
 extern Function TextureSampleGradProjCompare_Texture3D;
+
+/// textureSampleGradProjCompare
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradProjCompare_Texture3D_gradx;
-extern Variable SampledTextureSampleGradProjCompare_Texture3D_grady;
+extern Variable SampledTextureSampleGradProjCompare_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradProjCompare_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleGradProjCompare_Texture3D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_coordinate;
-extern Variable TextureSampleGradProjCompareOffset_Texture1D_gradx;
-extern Variable TextureSampleGradProjCompareOffset_Texture1D_grady;
+extern Variable TextureSampleGradProjCompareOffset_Texture1D_grad_x;
+extern Variable TextureSampleGradProjCompareOffset_Texture1D_grad_y;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture1D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_coordinate;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_gradx;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grady;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grad_x;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_grad_y;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture1D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_coordinate;
-extern Variable TextureSampleGradProjCompareOffset_Texture2D_gradx;
-extern Variable TextureSampleGradProjCompareOffset_Texture2D_grady;
+extern Variable TextureSampleGradProjCompareOffset_Texture2D_grad_x;
+extern Variable TextureSampleGradProjCompareOffset_Texture2D_grad_y;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture2D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_coordinate;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_gradx;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grady;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grad_x;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_grad_y;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture2D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_coordinate;
-extern Variable TextureSampleGradProjCompareOffset_Texture3D_gradx;
-extern Variable TextureSampleGradProjCompareOffset_Texture3D_grady;
+extern Variable TextureSampleGradProjCompareOffset_Texture3D_grad_x;
+extern Variable TextureSampleGradProjCompareOffset_Texture3D_grad_y;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleGradProjCompareOffset_Texture3D;
+
+/// textureSampleGradProjCompareOffset
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_coordinate;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_gradx;
-extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grady;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grad_x;
+extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_grad_y;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleGradProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleGradProjCompareOffset_Texture3D;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_Texture1D_texture;
 extern Variable TextureSampleBias_Texture1D_sampler;
 extern Variable TextureSampleBias_Texture1D_coordinate;
 extern Variable TextureSampleBias_Texture1D_bias;
 extern Function TextureSampleBias_Texture1D;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_Texture1D_texture;
 extern Variable SampledTextureSampleBias_Texture1D_coordinate;
 extern Variable SampledTextureSampleBias_Texture1D_bias;
 extern Function SampledTextureSampleBias_Texture1D;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_Texture2D_texture;
 extern Variable TextureSampleBias_Texture2D_sampler;
 extern Variable TextureSampleBias_Texture2D_coordinate;
 extern Variable TextureSampleBias_Texture2D_bias;
 extern Function TextureSampleBias_Texture2D;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_Texture2D_texture;
 extern Variable SampledTextureSampleBias_Texture2D_coordinate;
 extern Variable SampledTextureSampleBias_Texture2D_bias;
 extern Function SampledTextureSampleBias_Texture2D;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_Texture3D_texture;
 extern Variable TextureSampleBias_Texture3D_sampler;
 extern Variable TextureSampleBias_Texture3D_coordinate;
 extern Variable TextureSampleBias_Texture3D_bias;
 extern Function TextureSampleBias_Texture3D;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_Texture3D_texture;
 extern Variable SampledTextureSampleBias_Texture3D_coordinate;
 extern Variable SampledTextureSampleBias_Texture3D_bias;
 extern Function SampledTextureSampleBias_Texture3D;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_TextureCube_texture;
 extern Variable TextureSampleBias_TextureCube_sampler;
 extern Variable TextureSampleBias_TextureCube_coordinate;
 extern Variable TextureSampleBias_TextureCube_bias;
 extern Function TextureSampleBias_TextureCube;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_TextureCube_texture;
 extern Variable SampledTextureSampleBias_TextureCube_coordinate;
 extern Variable SampledTextureSampleBias_TextureCube_bias;
 extern Function SampledTextureSampleBias_TextureCube;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_Texture1DArray_texture;
 extern Variable TextureSampleBias_Texture1DArray_sampler;
 extern Variable TextureSampleBias_Texture1DArray_coordinate;
 extern Variable TextureSampleBias_Texture1DArray_bias;
 extern Function TextureSampleBias_Texture1DArray;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_Texture1DArray_texture;
 extern Variable SampledTextureSampleBias_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture1DArray_bias;
 extern Function SampledTextureSampleBias_Texture1DArray;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_Texture2DArray_texture;
 extern Variable TextureSampleBias_Texture2DArray_sampler;
 extern Variable TextureSampleBias_Texture2DArray_coordinate;
 extern Variable TextureSampleBias_Texture2DArray_bias;
 extern Function TextureSampleBias_Texture2DArray;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_Texture2DArray_texture;
 extern Variable SampledTextureSampleBias_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBias_Texture2DArray_bias;
 extern Function SampledTextureSampleBias_Texture2DArray;
+
+/// textureSampleBias
 extern Variable TextureSampleBias_TextureCubeArray_texture;
 extern Variable TextureSampleBias_TextureCubeArray_sampler;
 extern Variable TextureSampleBias_TextureCubeArray_coordinate;
 extern Variable TextureSampleBias_TextureCubeArray_bias;
 extern Function TextureSampleBias_TextureCubeArray;
+
+/// textureSampleBias
 extern Variable SampledTextureSampleBias_TextureCubeArray_texture;
 extern Variable SampledTextureSampleBias_TextureCubeArray_coordinate;
 extern Variable SampledTextureSampleBias_TextureCubeArray_bias;
 extern Function SampledTextureSampleBias_TextureCubeArray;
+
+/// textureSampleBiasOffset
 extern Variable TextureSampleBiasOffset_Texture1D_texture;
 extern Variable TextureSampleBiasOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasOffset_Texture1D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture1D_bias;
 extern Variable TextureSampleBiasOffset_Texture1D_offset;
 extern Function TextureSampleBiasOffset_Texture1D;
+
+/// textureSampleBiasOffset
 extern Variable SampledTextureSampleBiasOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1D;
+
+/// textureSampleBiasOffset
 extern Variable TextureSampleBiasOffset_Texture2D_texture;
 extern Variable TextureSampleBiasOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasOffset_Texture2D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture2D_bias;
 extern Variable TextureSampleBiasOffset_Texture2D_offset;
 extern Function TextureSampleBiasOffset_Texture2D;
+
+/// textureSampleBiasOffset
 extern Variable SampledTextureSampleBiasOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2D;
+
+/// textureSampleBiasOffset
 extern Variable TextureSampleBiasOffset_Texture3D_texture;
 extern Variable TextureSampleBiasOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasOffset_Texture3D_coordinate;
 extern Variable TextureSampleBiasOffset_Texture3D_bias;
 extern Variable TextureSampleBiasOffset_Texture3D_offset;
 extern Function TextureSampleBiasOffset_Texture3D;
+
+/// textureSampleBiasOffset
 extern Variable SampledTextureSampleBiasOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasOffset_Texture3D;
+
+/// textureSampleBiasOffset
 extern Variable TextureSampleBiasOffset_Texture1DArray_texture;
 extern Variable TextureSampleBiasOffset_Texture1DArray_sampler;
 extern Variable TextureSampleBiasOffset_Texture1DArray_coordinate;
 extern Variable TextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasOffset_Texture1DArray;
+
+/// textureSampleBiasOffset
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture1DArray;
+
+/// textureSampleBiasOffset
 extern Variable TextureSampleBiasOffset_Texture2DArray_texture;
 extern Variable TextureSampleBiasOffset_Texture2DArray_sampler;
 extern Variable TextureSampleBiasOffset_Texture2DArray_coordinate;
 extern Variable TextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable TextureSampleBiasOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasOffset_Texture2DArray;
+
+/// textureSampleBiasOffset
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasOffset_Texture2DArray;
+
+/// textureSampleBiasProj
 extern Variable TextureSampleBiasProj_Texture1D_texture;
 extern Variable TextureSampleBiasProj_Texture1D_sampler;
 extern Variable TextureSampleBiasProj_Texture1D_coordinate;
 extern Variable TextureSampleBiasProj_Texture1D_bias;
 extern Variable TextureSampleBiasProj_Texture1D_proj;
 extern Function TextureSampleBiasProj_Texture1D;
+
+/// textureSampleBiasProj
 extern Variable SampledTextureSampleBiasProj_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture1D_proj;
 extern Function SampledTextureSampleBiasProj_Texture1D;
+
+/// textureSampleBiasProj
 extern Variable TextureSampleBiasProj_Texture2D_texture;
 extern Variable TextureSampleBiasProj_Texture2D_sampler;
 extern Variable TextureSampleBiasProj_Texture2D_coordinate;
 extern Variable TextureSampleBiasProj_Texture2D_bias;
 extern Variable TextureSampleBiasProj_Texture2D_proj;
 extern Function TextureSampleBiasProj_Texture2D;
+
+/// textureSampleBiasProj
 extern Variable SampledTextureSampleBiasProj_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture2D_proj;
 extern Function SampledTextureSampleBiasProj_Texture2D;
+
+/// textureSampleBiasProj
 extern Variable TextureSampleBiasProj_Texture3D_texture;
 extern Variable TextureSampleBiasProj_Texture3D_sampler;
 extern Variable TextureSampleBiasProj_Texture3D_coordinate;
 extern Variable TextureSampleBiasProj_Texture3D_bias;
 extern Variable TextureSampleBiasProj_Texture3D_proj;
 extern Function TextureSampleBiasProj_Texture3D;
+
+/// textureSampleBiasProj
 extern Variable SampledTextureSampleBiasProj_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProj_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProj_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProj_Texture3D_proj;
 extern Function SampledTextureSampleBiasProj_Texture3D;
+
+/// textureSampleBiasProjOffset
 extern Variable TextureSampleBiasProjOffset_Texture1D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture1D_coordinate;
@@ -4889,12 +6097,16 @@ extern Variable TextureSampleBiasProjOffset_Texture1D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjOffset_Texture1D;
+
+/// textureSampleBiasProjOffset
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture1D;
+
+/// textureSampleBiasProjOffset
 extern Variable TextureSampleBiasProjOffset_Texture2D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture2D_coordinate;
@@ -4902,12 +6114,16 @@ extern Variable TextureSampleBiasProjOffset_Texture2D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjOffset_Texture2D;
+
+/// textureSampleBiasProjOffset
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture2D;
+
+/// textureSampleBiasProjOffset
 extern Variable TextureSampleBiasProjOffset_Texture3D_texture;
 extern Variable TextureSampleBiasProjOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasProjOffset_Texture3D_coordinate;
@@ -4915,67 +6131,91 @@ extern Variable TextureSampleBiasProjOffset_Texture3D_bias;
 extern Variable TextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable TextureSampleBiasProjOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjOffset_Texture3D;
+
+/// textureSampleBiasProjOffset
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjOffset_Texture3D;
+
+/// textureSampleBiasCompare
 extern Variable TextureSampleBiasCompare_Texture1D_texture;
 extern Variable TextureSampleBiasCompare_Texture1D_sampler;
 extern Variable TextureSampleBiasCompare_Texture1D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture1D_bias;
 extern Variable TextureSampleBiasCompare_Texture1D_compare;
 extern Function TextureSampleBiasCompare_Texture1D;
+
+/// textureSampleBiasCompare
 extern Variable SampledTextureSampleBiasCompare_Texture1D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1D;
+
+/// textureSampleBiasCompare
 extern Variable TextureSampleBiasCompare_Texture2D_texture;
 extern Variable TextureSampleBiasCompare_Texture2D_sampler;
 extern Variable TextureSampleBiasCompare_Texture2D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture2D_bias;
 extern Variable TextureSampleBiasCompare_Texture2D_compare;
 extern Function TextureSampleBiasCompare_Texture2D;
+
+/// textureSampleBiasCompare
 extern Variable SampledTextureSampleBiasCompare_Texture2D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2D;
+
+/// textureSampleBiasCompare
 extern Variable TextureSampleBiasCompare_Texture3D_texture;
 extern Variable TextureSampleBiasCompare_Texture3D_sampler;
 extern Variable TextureSampleBiasCompare_Texture3D_coordinate;
 extern Variable TextureSampleBiasCompare_Texture3D_bias;
 extern Variable TextureSampleBiasCompare_Texture3D_compare;
 extern Function TextureSampleBiasCompare_Texture3D;
+
+/// textureSampleBiasCompare
 extern Variable SampledTextureSampleBiasCompare_Texture3D_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasCompare_Texture3D;
+
+/// textureSampleBiasCompare
 extern Variable TextureSampleBiasCompare_Texture1DArray_texture;
 extern Variable TextureSampleBiasCompare_Texture1DArray_sampler;
 extern Variable TextureSampleBiasCompare_Texture1DArray_coordinate;
 extern Variable TextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture1DArray_compare;
 extern Function TextureSampleBiasCompare_Texture1DArray;
+
+/// textureSampleBiasCompare
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture1DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture1DArray;
+
+/// textureSampleBiasCompare
 extern Variable TextureSampleBiasCompare_Texture2DArray_texture;
 extern Variable TextureSampleBiasCompare_Texture2DArray_sampler;
 extern Variable TextureSampleBiasCompare_Texture2DArray_coordinate;
 extern Variable TextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable TextureSampleBiasCompare_Texture2DArray_compare;
 extern Function TextureSampleBiasCompare_Texture2DArray;
+
+/// textureSampleBiasCompare
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasCompare_Texture2DArray_compare;
 extern Function SampledTextureSampleBiasCompare_Texture2DArray;
+
+/// textureSampleBiasCompareOffset
 extern Variable TextureSampleBiasCompareOffset_Texture1D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_coordinate;
@@ -4983,12 +6223,16 @@ extern Variable TextureSampleBiasCompareOffset_Texture1D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1D;
+
+/// textureSampleBiasCompareOffset
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1D;
+
+/// textureSampleBiasCompareOffset
 extern Variable TextureSampleBiasCompareOffset_Texture2D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_coordinate;
@@ -4996,12 +6240,16 @@ extern Variable TextureSampleBiasCompareOffset_Texture2D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2D;
+
+/// textureSampleBiasCompareOffset
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2D;
+
+/// textureSampleBiasCompareOffset
 extern Variable TextureSampleBiasCompareOffset_Texture3D_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_coordinate;
@@ -5009,12 +6257,16 @@ extern Variable TextureSampleBiasCompareOffset_Texture3D_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasCompareOffset_Texture3D;
+
+/// textureSampleBiasCompareOffset
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture3D;
+
+/// textureSampleBiasCompareOffset
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_coordinate;
@@ -5022,12 +6274,16 @@ extern Variable TextureSampleBiasCompareOffset_Texture1DArray_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture1DArray;
+
+/// textureSampleBiasCompareOffset
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture1DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture1DArray;
+
+/// textureSampleBiasCompareOffset
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_texture;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_sampler;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_coordinate;
@@ -5035,12 +6291,16 @@ extern Variable TextureSampleBiasCompareOffset_Texture2DArray_bias;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable TextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function TextureSampleBiasCompareOffset_Texture2DArray;
+
+/// textureSampleBiasCompareOffset
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_texture;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_coordinate;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_bias;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_compare;
 extern Variable SampledTextureSampleBiasCompareOffset_Texture2DArray_offset;
 extern Function SampledTextureSampleBiasCompareOffset_Texture2DArray;
+
+/// textureSampleBiasProjCompare
 extern Variable TextureSampleBiasProjCompare_Texture1D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture1D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture1D_coordinate;
@@ -5048,12 +6308,16 @@ extern Variable TextureSampleBiasProjCompare_Texture1D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture1D_compare;
 extern Function TextureSampleBiasProjCompare_Texture1D;
+
+/// textureSampleBiasProjCompare
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture1D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture1D;
+
+/// textureSampleBiasProjCompare
 extern Variable TextureSampleBiasProjCompare_Texture2D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture2D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture2D_coordinate;
@@ -5061,12 +6325,16 @@ extern Variable TextureSampleBiasProjCompare_Texture2D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture2D_compare;
 extern Function TextureSampleBiasProjCompare_Texture2D;
+
+/// textureSampleBiasProjCompare
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture2D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture2D;
+
+/// textureSampleBiasProjCompare
 extern Variable TextureSampleBiasProjCompare_Texture3D_texture;
 extern Variable TextureSampleBiasProjCompare_Texture3D_sampler;
 extern Variable TextureSampleBiasProjCompare_Texture3D_coordinate;
@@ -5074,12 +6342,16 @@ extern Variable TextureSampleBiasProjCompare_Texture3D_bias;
 extern Variable TextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable TextureSampleBiasProjCompare_Texture3D_compare;
 extern Function TextureSampleBiasProjCompare_Texture3D;
+
+/// textureSampleBiasProjCompare
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_bias;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompare_Texture3D_compare;
 extern Function SampledTextureSampleBiasProjCompare_Texture3D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_coordinate;
@@ -5088,6 +6360,8 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture1D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture1D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_bias;
@@ -5095,6 +6369,8 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture1D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture1D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_coordinate;
@@ -5103,6 +6379,8 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture2D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture2D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_bias;
@@ -5110,6 +6388,8 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture2D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture2D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_texture;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_sampler;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_coordinate;
@@ -5118,6 +6398,8 @@ extern Variable TextureSampleBiasProjCompareOffset_Texture3D_proj;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable TextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function TextureSampleBiasProjCompareOffset_Texture3D;
+
+/// textureSampleBiasProjCompareOffset
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_texture;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_coordinate;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_bias;
@@ -5125,6 +6407,7 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
+
 inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "f32"_c, &Float32_convert_UInt32 },
     std::pair{ "f32(u32)"_c, &Float32_convert_UInt32 },
@@ -6252,70 +7535,70 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "smoothstep"_c, &smoothstep_Float16x2 },
     std::pair{ "smoothstep"_c, &smoothstep_Float16x3 },
     std::pair{ "smoothstep"_c, &smoothstep_Float16x4 },
-    std::pair{ "smoothstep"_c, &ceil_Float32 },
-    std::pair{ "smoothstep"_c, &ceil_Float32x2 },
-    std::pair{ "smoothstep"_c, &ceil_Float32x3 },
-    std::pair{ "smoothstep"_c, &ceil_Float32x4 },
-    std::pair{ "smoothstep"_c, &ceil_Float16 },
-    std::pair{ "smoothstep"_c, &ceil_Float16x2 },
-    std::pair{ "smoothstep"_c, &ceil_Float16x3 },
-    std::pair{ "smoothstep"_c, &ceil_Float16x4 },
-    std::pair{ "smoothstep"_c, &floor_Float32 },
-    std::pair{ "smoothstep"_c, &floor_Float32x2 },
-    std::pair{ "smoothstep"_c, &floor_Float32x3 },
-    std::pair{ "smoothstep"_c, &floor_Float32x4 },
-    std::pair{ "smoothstep"_c, &floor_Float16 },
-    std::pair{ "smoothstep"_c, &floor_Float16x2 },
-    std::pair{ "smoothstep"_c, &floor_Float16x3 },
-    std::pair{ "smoothstep"_c, &floor_Float16x4 },
-    std::pair{ "smoothstep"_c, &fract_Float32 },
-    std::pair{ "smoothstep"_c, &fract_Float32x2 },
-    std::pair{ "smoothstep"_c, &fract_Float32x3 },
-    std::pair{ "smoothstep"_c, &fract_Float32x4 },
-    std::pair{ "smoothstep"_c, &fract_Float16 },
-    std::pair{ "smoothstep"_c, &fract_Float16x2 },
-    std::pair{ "smoothstep"_c, &fract_Float16x3 },
-    std::pair{ "smoothstep"_c, &fract_Float16x4 },
-    std::pair{ "smoothstep"_c, &saturate_Float32 },
-    std::pair{ "smoothstep"_c, &saturate_Float32x2 },
-    std::pair{ "smoothstep"_c, &saturate_Float32x3 },
-    std::pair{ "smoothstep"_c, &saturate_Float32x4 },
-    std::pair{ "smoothstep"_c, &saturate_Float16 },
-    std::pair{ "smoothstep"_c, &saturate_Float16x2 },
-    std::pair{ "smoothstep"_c, &saturate_Float16x3 },
-    std::pair{ "smoothstep"_c, &saturate_Float16x4 },
-    std::pair{ "smoothstep"_c, &trunc_Float32 },
-    std::pair{ "smoothstep"_c, &trunc_Float32x2 },
-    std::pair{ "smoothstep"_c, &trunc_Float32x3 },
-    std::pair{ "smoothstep"_c, &trunc_Float32x4 },
-    std::pair{ "smoothstep"_c, &trunc_Float16 },
-    std::pair{ "smoothstep"_c, &trunc_Float16x2 },
-    std::pair{ "smoothstep"_c, &trunc_Float16x3 },
-    std::pair{ "smoothstep"_c, &trunc_Float16x4 },
-    std::pair{ "smoothstep"_c, &ddx_Float32 },
-    std::pair{ "smoothstep"_c, &ddx_Float32x2 },
-    std::pair{ "smoothstep"_c, &ddx_Float32x3 },
-    std::pair{ "smoothstep"_c, &ddx_Float32x4 },
-    std::pair{ "smoothstep"_c, &ddx_Float16 },
-    std::pair{ "smoothstep"_c, &ddx_Float16x2 },
-    std::pair{ "smoothstep"_c, &ddx_Float16x3 },
-    std::pair{ "smoothstep"_c, &ddx_Float16x4 },
-    std::pair{ "smoothstep"_c, &ddy_Float32 },
-    std::pair{ "smoothstep"_c, &ddy_Float32x2 },
-    std::pair{ "smoothstep"_c, &ddy_Float32x3 },
-    std::pair{ "smoothstep"_c, &ddy_Float32x4 },
-    std::pair{ "smoothstep"_c, &ddy_Float16 },
-    std::pair{ "smoothstep"_c, &ddy_Float16x2 },
-    std::pair{ "smoothstep"_c, &ddy_Float16x3 },
-    std::pair{ "smoothstep"_c, &ddy_Float16x4 },
-    std::pair{ "smoothstep"_c, &fwidth_Float32 },
-    std::pair{ "smoothstep"_c, &fwidth_Float32x2 },
-    std::pair{ "smoothstep"_c, &fwidth_Float32x3 },
-    std::pair{ "smoothstep"_c, &fwidth_Float32x4 },
-    std::pair{ "smoothstep"_c, &fwidth_Float16 },
-    std::pair{ "smoothstep"_c, &fwidth_Float16x2 },
-    std::pair{ "smoothstep"_c, &fwidth_Float16x3 },
-    std::pair{ "smoothstep"_c, &fwidth_Float16x4 },
+    std::pair{ "ceil"_c, &ceil_Float32 },
+    std::pair{ "ceil"_c, &ceil_Float32x2 },
+    std::pair{ "ceil"_c, &ceil_Float32x3 },
+    std::pair{ "ceil"_c, &ceil_Float32x4 },
+    std::pair{ "ceil"_c, &ceil_Float16 },
+    std::pair{ "ceil"_c, &ceil_Float16x2 },
+    std::pair{ "ceil"_c, &ceil_Float16x3 },
+    std::pair{ "ceil"_c, &ceil_Float16x4 },
+    std::pair{ "floor"_c, &floor_Float32 },
+    std::pair{ "floor"_c, &floor_Float32x2 },
+    std::pair{ "floor"_c, &floor_Float32x3 },
+    std::pair{ "floor"_c, &floor_Float32x4 },
+    std::pair{ "floor"_c, &floor_Float16 },
+    std::pair{ "floor"_c, &floor_Float16x2 },
+    std::pair{ "floor"_c, &floor_Float16x3 },
+    std::pair{ "floor"_c, &floor_Float16x4 },
+    std::pair{ "fract"_c, &fract_Float32 },
+    std::pair{ "fract"_c, &fract_Float32x2 },
+    std::pair{ "fract"_c, &fract_Float32x3 },
+    std::pair{ "fract"_c, &fract_Float32x4 },
+    std::pair{ "fract"_c, &fract_Float16 },
+    std::pair{ "fract"_c, &fract_Float16x2 },
+    std::pair{ "fract"_c, &fract_Float16x3 },
+    std::pair{ "fract"_c, &fract_Float16x4 },
+    std::pair{ "saturate"_c, &saturate_Float32 },
+    std::pair{ "saturate"_c, &saturate_Float32x2 },
+    std::pair{ "saturate"_c, &saturate_Float32x3 },
+    std::pair{ "saturate"_c, &saturate_Float32x4 },
+    std::pair{ "saturate"_c, &saturate_Float16 },
+    std::pair{ "saturate"_c, &saturate_Float16x2 },
+    std::pair{ "saturate"_c, &saturate_Float16x3 },
+    std::pair{ "saturate"_c, &saturate_Float16x4 },
+    std::pair{ "trunc"_c, &trunc_Float32 },
+    std::pair{ "trunc"_c, &trunc_Float32x2 },
+    std::pair{ "trunc"_c, &trunc_Float32x3 },
+    std::pair{ "trunc"_c, &trunc_Float32x4 },
+    std::pair{ "trunc"_c, &trunc_Float16 },
+    std::pair{ "trunc"_c, &trunc_Float16x2 },
+    std::pair{ "trunc"_c, &trunc_Float16x3 },
+    std::pair{ "trunc"_c, &trunc_Float16x4 },
+    std::pair{ "ddx"_c, &ddx_Float32 },
+    std::pair{ "ddx"_c, &ddx_Float32x2 },
+    std::pair{ "ddx"_c, &ddx_Float32x3 },
+    std::pair{ "ddx"_c, &ddx_Float32x4 },
+    std::pair{ "ddx"_c, &ddx_Float16 },
+    std::pair{ "ddx"_c, &ddx_Float16x2 },
+    std::pair{ "ddx"_c, &ddx_Float16x3 },
+    std::pair{ "ddx"_c, &ddx_Float16x4 },
+    std::pair{ "ddy"_c, &ddy_Float32 },
+    std::pair{ "ddy"_c, &ddy_Float32x2 },
+    std::pair{ "ddy"_c, &ddy_Float32x3 },
+    std::pair{ "ddy"_c, &ddy_Float32x4 },
+    std::pair{ "ddy"_c, &ddy_Float16 },
+    std::pair{ "ddy"_c, &ddy_Float16x2 },
+    std::pair{ "ddy"_c, &ddy_Float16x3 },
+    std::pair{ "ddy"_c, &ddy_Float16x4 },
+    std::pair{ "fwidth"_c, &fwidth_Float32 },
+    std::pair{ "fwidth"_c, &fwidth_Float32x2 },
+    std::pair{ "fwidth"_c, &fwidth_Float32x3 },
+    std::pair{ "fwidth"_c, &fwidth_Float32x4 },
+    std::pair{ "fwidth"_c, &fwidth_Float16 },
+    std::pair{ "fwidth"_c, &fwidth_Float16x2 },
+    std::pair{ "fwidth"_c, &fwidth_Float16x3 },
+    std::pair{ "fwidth"_c, &fwidth_Float16x4 },
     std::pair{ "sign"_c, &sign_Int32 },
     std::pair{ "sign"_c, &sign_Int32x2 },
     std::pair{ "sign"_c, &sign_Int32x3 },
@@ -6532,7 +7815,589 @@ inline constexpr StaticMap Intrinsics = std::array{
     std::pair{ "subgroupGetLowerMask"_c, &SubgroupGetLowerMask },
     std::pair{ "subgroupGetThreadAndGreaterMask"_c, &SubgroupGetThreadAndGreaterMask },
     std::pair{ "subgroupGetGreaterMask"_c, &SubgroupGetGreaterMask },
-    std::pair{ "subgroupGetFirstActiveThread"_c, &SubgroupGetFirstActiveThread }
+    std::pair{ "subgroupGetFirstActiveThread"_c, &SubgroupGetFirstActiveThread },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float32 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float32x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float32x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float32x4 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float16 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float16x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float16x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Float16x4 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int32 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int32x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int32x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int32x4 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int16 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int16x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int16x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_Int16x4 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt32 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt32x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt32x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt32x4 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt16 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt16x2 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt16x3 },
+    std::pair{ "subgroupBroadcastFirstActiveThread"_c, &SubgroupBroadcastFirstActiveThread_UInt16x4 },
+    std::pair{ "subgroupBallot"_c, &SubgroupBallot },
+    std::pair{ "subgroupInverseBallot"_c, &SubgroupInverseBallot },
+    std::pair{ "subgroupBallotBitCount"_c, &SubgroupBallotBitCount },
+    std::pair{ "subgroupBallotFirstOne"_c, &SubgroupBallotFirstOne },
+    std::pair{ "subgroupBallotLastOne"_c, &SubgroupBallotLastOne },
+    std::pair{ "subgroupBallotBit"_c, &SubgroupBallotBit },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float32 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float32x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float32x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float32x4 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float16 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float16x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float16x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Float16x4 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int32 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int32x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int32x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int32x4 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int16 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int16x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int16x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_Int16x4 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt32 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt32x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt32x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt32x4 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt16 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt16x2 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt16x3 },
+    std::pair{ "subgroupSwapDiagonal"_c, &SubgroupSwapDiagonal_UInt16x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float32 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float32x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float32x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float32x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float16 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float16x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float16x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Float16x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int32 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int32x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int32x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int32x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int16 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int16x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int16x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_Int16x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt32 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt32x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt32x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt32x4 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt16 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt16x2 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt16x3 },
+    std::pair{ "subgroupSwapVertical"_c, &SubgroupSwapVertical_UInt16x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float32 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float32x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float32x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float32x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float16 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float16x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float16x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Float16x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int32 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int32x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int32x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int32x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int16 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int16x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int16x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_Int16x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt32 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt32x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt32x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt32x4 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt16 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt16x2 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt16x3 },
+    std::pair{ "subgroupSwapHorizontal"_c, &SubgroupSwapHorizontal_UInt16x4 },
+    std::pair{ "atomicLoad"_c, &AtomicLoad_UInt32 },
+    std::pair{ "atomicIncrement"_c, &AtomicIncrement_UInt32 },
+    std::pair{ "atomicDecrement"_c, &AtomicDecrement_UInt32 },
+    std::pair{ "atomicLoad"_c, &AtomicLoad_Int32 },
+    std::pair{ "atomicIncrement"_c, &AtomicIncrement_Int32 },
+    std::pair{ "atomicDecrement"_c, &AtomicDecrement_Int32 },
+    std::pair{ "atomicLoad"_c, &AtomicLoad_UInt16 },
+    std::pair{ "atomicIncrement"_c, &AtomicIncrement_UInt16 },
+    std::pair{ "atomicDecrement"_c, &AtomicDecrement_UInt16 },
+    std::pair{ "atomicLoad"_c, &AtomicLoad_Int16 },
+    std::pair{ "atomicIncrement"_c, &AtomicIncrement_Int16 },
+    std::pair{ "atomicDecrement"_c, &AtomicDecrement_Int16 },
+    std::pair{ "atomicStore"_c, &AtomicStore_UInt32 },
+    std::pair{ "atomicExchange"_c, &AtomicExchange_UInt32 },
+    std::pair{ "atomicAdd"_c, &AtomicAdd_UInt32 },
+    std::pair{ "atomicSubtract"_c, &AtomicSubtract_UInt32 },
+    std::pair{ "atomicAnd"_c, &AtomicAnd_UInt32 },
+    std::pair{ "atomicOr"_c, &AtomicOr_UInt32 },
+    std::pair{ "atomicXor"_c, &AtomicXor_UInt32 },
+    std::pair{ "atomicStore"_c, &AtomicStore_Int32 },
+    std::pair{ "atomicExchange"_c, &AtomicExchange_Int32 },
+    std::pair{ "atomicAdd"_c, &AtomicAdd_Int32 },
+    std::pair{ "atomicSubtract"_c, &AtomicSubtract_Int32 },
+    std::pair{ "atomicAnd"_c, &AtomicAnd_Int32 },
+    std::pair{ "atomicOr"_c, &AtomicOr_Int32 },
+    std::pair{ "atomicXor"_c, &AtomicXor_Int32 },
+    std::pair{ "atomicStore"_c, &AtomicStore_UInt16 },
+    std::pair{ "atomicExchange"_c, &AtomicExchange_UInt16 },
+    std::pair{ "atomicAdd"_c, &AtomicAdd_UInt16 },
+    std::pair{ "atomicSubtract"_c, &AtomicSubtract_UInt16 },
+    std::pair{ "atomicAnd"_c, &AtomicAnd_UInt16 },
+    std::pair{ "atomicOr"_c, &AtomicOr_UInt16 },
+    std::pair{ "atomicXor"_c, &AtomicXor_UInt16 },
+    std::pair{ "atomicStore"_c, &AtomicStore_Int16 },
+    std::pair{ "atomicExchange"_c, &AtomicExchange_Int16 },
+    std::pair{ "atomicAdd"_c, &AtomicAdd_Int16 },
+    std::pair{ "atomicSubtract"_c, &AtomicSubtract_Int16 },
+    std::pair{ "atomicAnd"_c, &AtomicAnd_Int16 },
+    std::pair{ "atomicOr"_c, &AtomicOr_Int16 },
+    std::pair{ "atomicXor"_c, &AtomicXor_Int16 },
+    std::pair{ "atomicCompareExchange"_c, &AtomicCompareExchange_UInt32 },
+    std::pair{ "atomicCompareExchange"_c, &AtomicCompareExchange_Int32 },
+    std::pair{ "atomicCompareExchange"_c, &AtomicCompareExchange_UInt16 },
+    std::pair{ "atomicCompareExchange"_c, &AtomicCompareExchange_Int16 },
+    std::pair{ "bitInsert"_c, &BitInsert_UInt16 },
+    std::pair{ "bitInsert"_c, &BitInsert_UInt32 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int32 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int32x2 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int32x3 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int32x4 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int16 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int16x2 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int16x3 },
+    std::pair{ "bitExtract"_c, &BitExtract_Int16x4 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt32 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt32x2 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt32x3 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt32x4 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt16 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt16x2 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt16x3 },
+    std::pair{ "bitExtract"_c, &BitExtract_UInt16x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int32 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int32x2 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int32x3 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int32x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int16 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int16x2 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int16x3 },
+    std::pair{ "bitReverse"_c, &BitReverse_Int16x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt32 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt32x2 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt32x3 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt32x4 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt16 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt16x2 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt16x3 },
+    std::pair{ "bitReverse"_c, &BitReverse_UInt16x4 },
+    std::pair{ "bitCount"_c, &BitCount_Int32 },
+    std::pair{ "bitCount"_c, &BitCount_Int32x2 },
+    std::pair{ "bitCount"_c, &BitCount_Int32x3 },
+    std::pair{ "bitCount"_c, &BitCount_Int32x4 },
+    std::pair{ "bitCount"_c, &BitCount_Int16 },
+    std::pair{ "bitCount"_c, &BitCount_Int16x2 },
+    std::pair{ "bitCount"_c, &BitCount_Int16x3 },
+    std::pair{ "bitCount"_c, &BitCount_Int16x4 },
+    std::pair{ "bitCount"_c, &BitCount_UInt32 },
+    std::pair{ "bitCount"_c, &BitCount_UInt32x2 },
+    std::pair{ "bitCount"_c, &BitCount_UInt32x3 },
+    std::pair{ "bitCount"_c, &BitCount_UInt32x4 },
+    std::pair{ "bitCount"_c, &BitCount_UInt16 },
+    std::pair{ "bitCount"_c, &BitCount_UInt16x2 },
+    std::pair{ "bitCount"_c, &BitCount_UInt16x3 },
+    std::pair{ "bitCount"_c, &BitCount_UInt16x4 },
+    std::pair{ "executionBarrier"_c, &ExecutionBarrier },
+    std::pair{ "executionBarrierSubgroup"_c, &ExecutionBarrierSubgroup },
+    std::pair{ "executionBarrierWorkgroup"_c, &ExecutionBarrierWorkgroup },
+    std::pair{ "memoryBarrier"_c, &MemoryBarrier },
+    std::pair{ "memoryBarrierBuffer"_c, &MemoryBarrierBuffer },
+    std::pair{ "memoryBarrierTexture"_c, &MemoryBarrierTexture },
+    std::pair{ "memoryBarrierAtomic"_c, &MemoryBarrierAtomic },
+    std::pair{ "memoryBarrierSubgroup"_c, &MemoryBarrierSubgroup },
+    std::pair{ "memoryBarrierWorkgroup"_c, &MemoryBarrierWorkgroup },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_Texture1D },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_Texture2D },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_Texture3D },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_TextureCube },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_Texture1DArray },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_Texture2DArray },
+    std::pair{ "textureGetSize"_c, &TextureGetSize_TextureCubeArray },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_Texture1D },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_Texture2D },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_Texture3D },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_TextureCube },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_Texture1DArray },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_Texture2DArray },
+    std::pair{ "textureGetSizeMip"_c, &TextureGetSizeMip_TextureCubeArray },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_Texture1D },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_Texture2D },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_Texture3D },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_TextureCube },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_Texture1DArray },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_Texture2DArray },
+    std::pair{ "textureGetMips"_c, &TextureGetMips_TextureCubeArray },
+    std::pair{ "textureGetSamples"_c, &TextureGetSamples_Texture2DMS },
+    std::pair{ "textureGetSamples"_c, &TextureGetSamples_Texture2DMSArray },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_Texture1D },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_Texture1D },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_Texture2D },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_Texture2D },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_Texture3D },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_Texture3D },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_TextureCube },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_TextureCube },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_Texture1DArray },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_Texture1DArray },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_Texture2DArray },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_Texture2DArray },
+    std::pair{ "textureGetSampledMip"_c, &TextureGetSampledMip_TextureCubeArray },
+    std::pair{ "textureGetSampledMip"_c, &SampledTextureGetSampledMip_TextureCubeArray },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture1D },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture1D },
+    std::pair{ "textureStore"_c, &TextureStore_Texture1D },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture1D },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture2D },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture2D },
+    std::pair{ "textureStore"_c, &TextureStore_Texture2D },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture2D },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture3D },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture3D },
+    std::pair{ "textureStore"_c, &TextureStore_Texture3D },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture3D },
+    std::pair{ "textureLoad"_c, &TextureLoad_TextureCube },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_TextureCube },
+    std::pair{ "textureStore"_c, &TextureStore_TextureCube },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_TextureCube },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture1DArray },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture1DArray },
+    std::pair{ "textureStore"_c, &TextureStore_Texture1DArray },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture1DArray },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture2DArray },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture2DArray },
+    std::pair{ "textureStore"_c, &TextureStore_Texture2DArray },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture2DArray },
+    std::pair{ "textureLoad"_c, &TextureLoad_TextureCubeArray },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_TextureCubeArray },
+    std::pair{ "textureStore"_c, &TextureStore_TextureCubeArray },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_TextureCubeArray },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture2DMS },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture2DMS },
+    std::pair{ "textureStore"_c, &TextureStore_Texture2DMS },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture2DMS },
+    std::pair{ "textureLoad"_c, &TextureLoad_Texture2DMSArray },
+    std::pair{ "textureLoadMip"_c, &TextureLoadMip_Texture2DMSArray },
+    std::pair{ "textureStore"_c, &TextureStore_Texture2DMSArray },
+    std::pair{ "textureStoreMip"_c, &TextureStoreMip_Texture2DMSArray },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture1D },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture1D },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture2D },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture2D },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture3D },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture3D },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture1DArray },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture1DArray },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture2DArray },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture2DArray },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture2DMS },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture2DMS },
+    std::pair{ "textureFetch"_c, &TextureFetch_Texture2DMSArray },
+    std::pair{ "textureFetchSample"_c, &TextureFetchSample_Texture2DMSArray },
+    std::pair{ "textureGather"_c, &TextureGather_Texture2D },
+    std::pair{ "textureGather"_c, &SampledTextureGather_Texture2D },
+    std::pair{ "textureGatherOffset"_c, &TextureGatherOffset_Texture2D },
+    std::pair{ "textureGatherOffset"_c, &SampledTextureGatherOffset_Texture2D },
+    std::pair{ "textureGather"_c, &TextureGather_TextureCube },
+    std::pair{ "textureGather"_c, &SampledTextureGather_TextureCube },
+    std::pair{ "textureGatherOffset"_c, &TextureGatherOffset_TextureCube },
+    std::pair{ "textureGatherOffset"_c, &SampledTextureGatherOffset_TextureCube },
+    std::pair{ "textureGather"_c, &TextureGather_Texture2DArray },
+    std::pair{ "textureGather"_c, &SampledTextureGather_Texture2DArray },
+    std::pair{ "textureGatherOffset"_c, &TextureGatherOffset_Texture2DArray },
+    std::pair{ "textureGatherOffset"_c, &SampledTextureGatherOffset_Texture2DArray },
+    std::pair{ "textureGather"_c, &TextureGather_TextureCubeArray },
+    std::pair{ "textureGather"_c, &SampledTextureGather_TextureCubeArray },
+    std::pair{ "textureGatherOffset"_c, &TextureGatherOffset_TextureCubeArray },
+    std::pair{ "textureGatherOffset"_c, &SampledTextureGatherOffset_TextureCubeArray },
+    std::pair{ "texturePixelCacheLoad"_c, &TexturePixelCacheLoad_PixelCache },
+    std::pair{ "texturePixelCacheLoad"_c, &TexturePixelCacheLoad_PixelCacheMS },
+    std::pair{ "textureSample"_c, &TextureSample_Texture1D },
+    std::pair{ "textureSample"_c, &SampledTextureSample_Texture1D },
+    std::pair{ "textureSample"_c, &TextureSample_Texture2D },
+    std::pair{ "textureSample"_c, &SampledTextureSample_Texture2D },
+    std::pair{ "textureSample"_c, &TextureSample_Texture3D },
+    std::pair{ "textureSample"_c, &SampledTextureSample_Texture3D },
+    std::pair{ "textureSample"_c, &TextureSample_TextureCube },
+    std::pair{ "textureSample"_c, &SampledTextureSample_TextureCube },
+    std::pair{ "textureSample"_c, &TextureSample_Texture1DArray },
+    std::pair{ "textureSample"_c, &SampledTextureSample_Texture1DArray },
+    std::pair{ "textureSample"_c, &TextureSample_Texture2DArray },
+    std::pair{ "textureSample"_c, &SampledTextureSample_Texture2DArray },
+    std::pair{ "textureSample"_c, &TextureSample_TextureCubeArray },
+    std::pair{ "textureSample"_c, &SampledTextureSample_TextureCubeArray },
+    std::pair{ "textureSampleOffset"_c, &TextureSampleOffset_Texture1D },
+    std::pair{ "textureSampleOffset"_c, &SampledTextureSampleOffset_Texture1D },
+    std::pair{ "textureSampleOffset"_c, &TextureSampleOffset_Texture2D },
+    std::pair{ "textureSampleOffset"_c, &SampledTextureSampleOffset_Texture2D },
+    std::pair{ "textureSampleOffset"_c, &TextureSampleOffset_Texture3D },
+    std::pair{ "textureSampleOffset"_c, &SampledTextureSampleOffset_Texture3D },
+    std::pair{ "textureSampleOffset"_c, &TextureSampleOffset_Texture1DArray },
+    std::pair{ "textureSampleOffset"_c, &SampledTextureSampleOffset_Texture1DArray },
+    std::pair{ "textureSampleOffset"_c, &TextureSampleOffset_Texture2DArray },
+    std::pair{ "textureSampleOffset"_c, &SampledTextureSampleOffset_Texture2DArray },
+    std::pair{ "textureSampleProj"_c, &TextureSampleProj_Texture1D },
+    std::pair{ "textureSampleProj"_c, &SampledTextureSampleProj_Texture1D },
+    std::pair{ "textureSampleProj"_c, &TextureSampleProj_Texture2D },
+    std::pair{ "textureSampleProj"_c, &SampledTextureSampleProj_Texture2D },
+    std::pair{ "textureSampleProj"_c, &TextureSampleProj_Texture3D },
+    std::pair{ "textureSampleProj"_c, &SampledTextureSampleProj_Texture3D },
+    std::pair{ "textureSampleProjOffset"_c, &TextureSampleProjOffset_Texture1D },
+    std::pair{ "textureSampleProjOffset"_c, &SampledTextureSampleProjOffset_Texture1D },
+    std::pair{ "textureSampleProjOffset"_c, &TextureSampleProjOffset_Texture2D },
+    std::pair{ "textureSampleProjOffset"_c, &SampledTextureSampleProjOffset_Texture2D },
+    std::pair{ "textureSampleProjOffset"_c, &TextureSampleProjOffset_Texture3D },
+    std::pair{ "textureSampleProjOffset"_c, &SampledTextureSampleProjOffset_Texture3D },
+    std::pair{ "textureSampleCompare"_c, &TextureSampleCompare_Texture1D },
+    std::pair{ "textureSampleCompare"_c, &SampledTextureSampleCompare_Texture1D },
+    std::pair{ "textureSampleCompare"_c, &TextureSampleCompare_Texture2D },
+    std::pair{ "textureSampleCompare"_c, &SampledTextureSampleCompare_Texture2D },
+    std::pair{ "textureSampleCompare"_c, &TextureSampleCompare_Texture3D },
+    std::pair{ "textureSampleCompare"_c, &SampledTextureSampleCompare_Texture3D },
+    std::pair{ "textureSampleCompare"_c, &TextureSampleCompare_Texture1DArray },
+    std::pair{ "textureSampleCompare"_c, &SampledTextureSampleCompare_Texture1DArray },
+    std::pair{ "textureSampleCompare"_c, &TextureSampleCompare_Texture2DArray },
+    std::pair{ "textureSampleCompare"_c, &SampledTextureSampleCompare_Texture2DArray },
+    std::pair{ "textureSampleCompareOffset"_c, &TextureSampleCompareOffset_Texture1D },
+    std::pair{ "textureSampleCompareOffset"_c, &SampledTextureSampleCompareOffset_Texture1D },
+    std::pair{ "textureSampleCompareOffset"_c, &TextureSampleCompareOffset_Texture2D },
+    std::pair{ "textureSampleCompareOffset"_c, &SampledTextureSampleCompareOffset_Texture2D },
+    std::pair{ "textureSampleCompareOffset"_c, &TextureSampleCompareOffset_Texture3D },
+    std::pair{ "textureSampleCompareOffset"_c, &SampledTextureSampleCompareOffset_Texture3D },
+    std::pair{ "textureSampleCompareOffset"_c, &TextureSampleCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleCompareOffset"_c, &SampledTextureSampleCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleCompareOffset"_c, &TextureSampleCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleCompareOffset"_c, &SampledTextureSampleCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleProjCompare"_c, &TextureSampleProjCompare_Texture1D },
+    std::pair{ "textureSampleProjCompare"_c, &SampledTextureSampleProjCompare_Texture1D },
+    std::pair{ "textureSampleProjCompare"_c, &TextureSampleProjCompare_Texture2D },
+    std::pair{ "textureSampleProjCompare"_c, &SampledTextureSampleProjCompare_Texture2D },
+    std::pair{ "textureSampleProjCompare"_c, &TextureSampleProjCompare_Texture3D },
+    std::pair{ "textureSampleProjCompare"_c, &SampledTextureSampleProjCompare_Texture3D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &TextureSampleProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &SampledTextureSampleProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &TextureSampleProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &SampledTextureSampleProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &TextureSampleProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleProjCompareOffset"_c, &SampledTextureSampleProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_Texture1D },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_Texture1D },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_Texture2D },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_Texture2D },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_Texture3D },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_Texture3D },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_TextureCube },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_TextureCube },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_Texture1DArray },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_Texture1DArray },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_Texture2DArray },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_Texture2DArray },
+    std::pair{ "textureSampleLod"_c, &TextureSampleLod_TextureCubeArray },
+    std::pair{ "textureSampleLod"_c, &SampledTextureSampleLod_TextureCubeArray },
+    std::pair{ "textureSampleLodOffset"_c, &TextureSampleLodOffset_Texture1D },
+    std::pair{ "textureSampleLodOffset"_c, &SampledTextureSampleLodOffset_Texture1D },
+    std::pair{ "textureSampleLodOffset"_c, &TextureSampleLodOffset_Texture2D },
+    std::pair{ "textureSampleLodOffset"_c, &SampledTextureSampleLodOffset_Texture2D },
+    std::pair{ "textureSampleLodOffset"_c, &TextureSampleLodOffset_Texture3D },
+    std::pair{ "textureSampleLodOffset"_c, &SampledTextureSampleLodOffset_Texture3D },
+    std::pair{ "textureSampleLodOffset"_c, &TextureSampleLodOffset_Texture1DArray },
+    std::pair{ "textureSampleLodOffset"_c, &SampledTextureSampleLodOffset_Texture1DArray },
+    std::pair{ "textureSampleLodOffset"_c, &TextureSampleLodOffset_Texture2DArray },
+    std::pair{ "textureSampleLodOffset"_c, &SampledTextureSampleLodOffset_Texture2DArray },
+    std::pair{ "textureSampleLodProj"_c, &TextureSampleLodProj_Texture1D },
+    std::pair{ "textureSampleLodProj"_c, &SampledTextureSampleLodProj_Texture1D },
+    std::pair{ "textureSampleLodProj"_c, &TextureSampleLodProj_Texture2D },
+    std::pair{ "textureSampleLodProj"_c, &SampledTextureSampleLodProj_Texture2D },
+    std::pair{ "textureSampleLodProj"_c, &TextureSampleLodProj_Texture3D },
+    std::pair{ "textureSampleLodProj"_c, &SampledTextureSampleLodProj_Texture3D },
+    std::pair{ "textureSampleLodProjOffset"_c, &TextureSampleLodProjOffset_Texture1D },
+    std::pair{ "textureSampleLodProjOffset"_c, &SampledTextureSampleLodProjOffset_Texture1D },
+    std::pair{ "textureSampleLodProjOffset"_c, &TextureSampleLodProjOffset_Texture2D },
+    std::pair{ "textureSampleLodProjOffset"_c, &SampledTextureSampleLodProjOffset_Texture2D },
+    std::pair{ "textureSampleLodProjOffset"_c, &TextureSampleLodProjOffset_Texture3D },
+    std::pair{ "textureSampleLodProjOffset"_c, &SampledTextureSampleLodProjOffset_Texture3D },
+    std::pair{ "textureSampleLodCompare"_c, &TextureSampleLodCompare_Texture1D },
+    std::pair{ "textureSampleLodCompare"_c, &SampledTextureSampleLodCompare_Texture1D },
+    std::pair{ "textureSampleLodCompare"_c, &TextureSampleLodCompare_Texture2D },
+    std::pair{ "textureSampleLodCompare"_c, &SampledTextureSampleLodCompare_Texture2D },
+    std::pair{ "textureSampleLodCompare"_c, &TextureSampleLodCompare_Texture3D },
+    std::pair{ "textureSampleLodCompare"_c, &SampledTextureSampleLodCompare_Texture3D },
+    std::pair{ "textureSampleLodCompare"_c, &TextureSampleLodCompare_Texture1DArray },
+    std::pair{ "textureSampleLodCompare"_c, &SampledTextureSampleLodCompare_Texture1DArray },
+    std::pair{ "textureSampleLodCompare"_c, &TextureSampleLodCompare_Texture2DArray },
+    std::pair{ "textureSampleLodCompare"_c, &SampledTextureSampleLodCompare_Texture2DArray },
+    std::pair{ "textureSampleLodCompareOffset"_c, &TextureSampleLodCompareOffset_Texture1D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &SampledTextureSampleLodCompareOffset_Texture1D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &TextureSampleLodCompareOffset_Texture2D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &SampledTextureSampleLodCompareOffset_Texture2D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &TextureSampleLodCompareOffset_Texture3D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &SampledTextureSampleLodCompareOffset_Texture3D },
+    std::pair{ "textureSampleLodCompareOffset"_c, &TextureSampleLodCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleLodCompareOffset"_c, &SampledTextureSampleLodCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleLodCompareOffset"_c, &TextureSampleLodCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleLodCompareOffset"_c, &SampledTextureSampleLodCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleLodProjCompare"_c, &TextureSampleLodProjCompare_Texture1D },
+    std::pair{ "textureSampleLodProjCompare"_c, &SampledTextureSampleLodProjCompare_Texture1D },
+    std::pair{ "textureSampleLodProjCompare"_c, &TextureSampleLodProjCompare_Texture2D },
+    std::pair{ "textureSampleLodProjCompare"_c, &SampledTextureSampleLodProjCompare_Texture2D },
+    std::pair{ "textureSampleLodProjCompare"_c, &TextureSampleLodProjCompare_Texture3D },
+    std::pair{ "textureSampleLodProjCompare"_c, &SampledTextureSampleLodProjCompare_Texture3D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &TextureSampleLodProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &SampledTextureSampleLodProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &TextureSampleLodProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &SampledTextureSampleLodProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &TextureSampleLodProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleLodProjCompareOffset"_c, &SampledTextureSampleLodProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_Texture1D },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_Texture1D },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_Texture2D },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_Texture2D },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_Texture3D },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_Texture3D },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_TextureCube },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_TextureCube },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_Texture1DArray },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_Texture1DArray },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_Texture2DArray },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_Texture2DArray },
+    std::pair{ "textureSampleGrad"_c, &TextureSampleGrad_TextureCubeArray },
+    std::pair{ "textureSampleGrad"_c, &SampledTextureSampleGrad_TextureCubeArray },
+    std::pair{ "textureSampleGradOffset"_c, &TextureSampleGradOffset_Texture1D },
+    std::pair{ "textureSampleGradOffset"_c, &SampledTextureSampleGradOffset_Texture1D },
+    std::pair{ "textureSampleGradOffset"_c, &TextureSampleGradOffset_Texture2D },
+    std::pair{ "textureSampleGradOffset"_c, &SampledTextureSampleGradOffset_Texture2D },
+    std::pair{ "textureSampleGradOffset"_c, &TextureSampleGradOffset_Texture3D },
+    std::pair{ "textureSampleGradOffset"_c, &SampledTextureSampleGradOffset_Texture3D },
+    std::pair{ "textureSampleGradOffset"_c, &TextureSampleGradOffset_Texture1DArray },
+    std::pair{ "textureSampleGradOffset"_c, &SampledTextureSampleGradOffset_Texture1DArray },
+    std::pair{ "textureSampleGradOffset"_c, &TextureSampleGradOffset_Texture2DArray },
+    std::pair{ "textureSampleGradOffset"_c, &SampledTextureSampleGradOffset_Texture2DArray },
+    std::pair{ "textureSampleGradProj"_c, &TextureSampleGradProj_Texture1D },
+    std::pair{ "textureSampleGradProj"_c, &SampledTextureSampleGradProj_Texture1D },
+    std::pair{ "textureSampleGradProj"_c, &TextureSampleGradProj_Texture2D },
+    std::pair{ "textureSampleGradProj"_c, &SampledTextureSampleGradProj_Texture2D },
+    std::pair{ "textureSampleGradProj"_c, &TextureSampleGradProj_Texture3D },
+    std::pair{ "textureSampleGradProj"_c, &SampledTextureSampleGradProj_Texture3D },
+    std::pair{ "textureSampleGradProjOffset"_c, &TextureSampleGradProjOffset_Texture1D },
+    std::pair{ "textureSampleGradProjOffset"_c, &SampledTextureSampleGradProjOffset_Texture1D },
+    std::pair{ "textureSampleGradProjOffset"_c, &TextureSampleGradProjOffset_Texture2D },
+    std::pair{ "textureSampleGradProjOffset"_c, &SampledTextureSampleGradProjOffset_Texture2D },
+    std::pair{ "textureSampleGradProjOffset"_c, &TextureSampleGradProjOffset_Texture3D },
+    std::pair{ "textureSampleGradProjOffset"_c, &SampledTextureSampleGradProjOffset_Texture3D },
+    std::pair{ "textureSampleGradCompare"_c, &TextureSampleGradCompare_Texture1D },
+    std::pair{ "textureSampleGradCompare"_c, &SampledTextureSampleGradCompare_Texture1D },
+    std::pair{ "textureSampleGradCompare"_c, &TextureSampleGradCompare_Texture2D },
+    std::pair{ "textureSampleGradCompare"_c, &SampledTextureSampleGradCompare_Texture2D },
+    std::pair{ "textureSampleGradCompare"_c, &TextureSampleGradCompare_Texture3D },
+    std::pair{ "textureSampleGradCompare"_c, &SampledTextureSampleGradCompare_Texture3D },
+    std::pair{ "textureSampleGradCompare"_c, &TextureSampleGradCompare_Texture1DArray },
+    std::pair{ "textureSampleGradCompare"_c, &SampledTextureSampleGradCompare_Texture1DArray },
+    std::pair{ "textureSampleGradCompare"_c, &TextureSampleGradCompare_Texture2DArray },
+    std::pair{ "textureSampleGradCompare"_c, &SampledTextureSampleGradCompare_Texture2DArray },
+    std::pair{ "textureSampleGradCompareOffset"_c, &TextureSampleGradCompareOffset_Texture1D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &SampledTextureSampleGradCompareOffset_Texture1D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &TextureSampleGradCompareOffset_Texture2D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &SampledTextureSampleGradCompareOffset_Texture2D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &TextureSampleGradCompareOffset_Texture3D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &SampledTextureSampleGradCompareOffset_Texture3D },
+    std::pair{ "textureSampleGradCompareOffset"_c, &TextureSampleGradCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleGradCompareOffset"_c, &SampledTextureSampleGradCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleGradCompareOffset"_c, &TextureSampleGradCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleGradCompareOffset"_c, &SampledTextureSampleGradCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleGradProjCompare"_c, &TextureSampleGradProjCompare_Texture1D },
+    std::pair{ "textureSampleGradProjCompare"_c, &SampledTextureSampleGradProjCompare_Texture1D },
+    std::pair{ "textureSampleGradProjCompare"_c, &TextureSampleGradProjCompare_Texture2D },
+    std::pair{ "textureSampleGradProjCompare"_c, &SampledTextureSampleGradProjCompare_Texture2D },
+    std::pair{ "textureSampleGradProjCompare"_c, &TextureSampleGradProjCompare_Texture3D },
+    std::pair{ "textureSampleGradProjCompare"_c, &SampledTextureSampleGradProjCompare_Texture3D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &TextureSampleGradProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &SampledTextureSampleGradProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &TextureSampleGradProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &SampledTextureSampleGradProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &TextureSampleGradProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleGradProjCompareOffset"_c, &SampledTextureSampleGradProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_Texture1D },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_Texture1D },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_Texture2D },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_Texture2D },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_Texture3D },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_Texture3D },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_TextureCube },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_TextureCube },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_Texture1DArray },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_Texture1DArray },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_Texture2DArray },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_Texture2DArray },
+    std::pair{ "textureSampleBias"_c, &TextureSampleBias_TextureCubeArray },
+    std::pair{ "textureSampleBias"_c, &SampledTextureSampleBias_TextureCubeArray },
+    std::pair{ "textureSampleBiasOffset"_c, &TextureSampleBiasOffset_Texture1D },
+    std::pair{ "textureSampleBiasOffset"_c, &SampledTextureSampleBiasOffset_Texture1D },
+    std::pair{ "textureSampleBiasOffset"_c, &TextureSampleBiasOffset_Texture2D },
+    std::pair{ "textureSampleBiasOffset"_c, &SampledTextureSampleBiasOffset_Texture2D },
+    std::pair{ "textureSampleBiasOffset"_c, &TextureSampleBiasOffset_Texture3D },
+    std::pair{ "textureSampleBiasOffset"_c, &SampledTextureSampleBiasOffset_Texture3D },
+    std::pair{ "textureSampleBiasOffset"_c, &TextureSampleBiasOffset_Texture1DArray },
+    std::pair{ "textureSampleBiasOffset"_c, &SampledTextureSampleBiasOffset_Texture1DArray },
+    std::pair{ "textureSampleBiasOffset"_c, &TextureSampleBiasOffset_Texture2DArray },
+    std::pair{ "textureSampleBiasOffset"_c, &SampledTextureSampleBiasOffset_Texture2DArray },
+    std::pair{ "textureSampleBiasProj"_c, &TextureSampleBiasProj_Texture1D },
+    std::pair{ "textureSampleBiasProj"_c, &SampledTextureSampleBiasProj_Texture1D },
+    std::pair{ "textureSampleBiasProj"_c, &TextureSampleBiasProj_Texture2D },
+    std::pair{ "textureSampleBiasProj"_c, &SampledTextureSampleBiasProj_Texture2D },
+    std::pair{ "textureSampleBiasProj"_c, &TextureSampleBiasProj_Texture3D },
+    std::pair{ "textureSampleBiasProj"_c, &SampledTextureSampleBiasProj_Texture3D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &TextureSampleBiasProjOffset_Texture1D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &SampledTextureSampleBiasProjOffset_Texture1D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &TextureSampleBiasProjOffset_Texture2D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &SampledTextureSampleBiasProjOffset_Texture2D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &TextureSampleBiasProjOffset_Texture3D },
+    std::pair{ "textureSampleBiasProjOffset"_c, &SampledTextureSampleBiasProjOffset_Texture3D },
+    std::pair{ "textureSampleBiasCompare"_c, &TextureSampleBiasCompare_Texture1D },
+    std::pair{ "textureSampleBiasCompare"_c, &SampledTextureSampleBiasCompare_Texture1D },
+    std::pair{ "textureSampleBiasCompare"_c, &TextureSampleBiasCompare_Texture2D },
+    std::pair{ "textureSampleBiasCompare"_c, &SampledTextureSampleBiasCompare_Texture2D },
+    std::pair{ "textureSampleBiasCompare"_c, &TextureSampleBiasCompare_Texture3D },
+    std::pair{ "textureSampleBiasCompare"_c, &SampledTextureSampleBiasCompare_Texture3D },
+    std::pair{ "textureSampleBiasCompare"_c, &TextureSampleBiasCompare_Texture1DArray },
+    std::pair{ "textureSampleBiasCompare"_c, &SampledTextureSampleBiasCompare_Texture1DArray },
+    std::pair{ "textureSampleBiasCompare"_c, &TextureSampleBiasCompare_Texture2DArray },
+    std::pair{ "textureSampleBiasCompare"_c, &SampledTextureSampleBiasCompare_Texture2DArray },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &TextureSampleBiasCompareOffset_Texture1D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &SampledTextureSampleBiasCompareOffset_Texture1D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &TextureSampleBiasCompareOffset_Texture2D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &SampledTextureSampleBiasCompareOffset_Texture2D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &TextureSampleBiasCompareOffset_Texture3D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &SampledTextureSampleBiasCompareOffset_Texture3D },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &TextureSampleBiasCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &SampledTextureSampleBiasCompareOffset_Texture1DArray },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &TextureSampleBiasCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleBiasCompareOffset"_c, &SampledTextureSampleBiasCompareOffset_Texture2DArray },
+    std::pair{ "textureSampleBiasProjCompare"_c, &TextureSampleBiasProjCompare_Texture1D },
+    std::pair{ "textureSampleBiasProjCompare"_c, &SampledTextureSampleBiasProjCompare_Texture1D },
+    std::pair{ "textureSampleBiasProjCompare"_c, &TextureSampleBiasProjCompare_Texture2D },
+    std::pair{ "textureSampleBiasProjCompare"_c, &SampledTextureSampleBiasProjCompare_Texture2D },
+    std::pair{ "textureSampleBiasProjCompare"_c, &TextureSampleBiasProjCompare_Texture3D },
+    std::pair{ "textureSampleBiasProjCompare"_c, &SampledTextureSampleBiasProjCompare_Texture3D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &TextureSampleBiasProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &SampledTextureSampleBiasProjCompareOffset_Texture1D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &TextureSampleBiasProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &SampledTextureSampleBiasProjCompareOffset_Texture2D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &TextureSampleBiasProjCompareOffset_Texture3D },
+    std::pair{ "textureSampleBiasProjCompareOffset"_c, &SampledTextureSampleBiasProjCompareOffset_Texture3D }
 };
 
 } // namespace GPULang
