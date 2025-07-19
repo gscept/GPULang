@@ -3079,7 +3079,7 @@ def generate_types():
     for intrinsic, direction in zip(subgroup_swap_ops, subgroup_swap_op_directions):
         for type in scalar_types:
             function_name = f'Subgroup{intrinsic}_{type}'
-            value_argument_name = f'{function_name}_color'
+            value_argument_name = f'{function_name}_value'
             fun = Function( 
                 decl_name = function_name,
                 api_name = f'subgroup{intrinsic}',

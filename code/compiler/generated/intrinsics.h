@@ -2812,291 +2812,291 @@ extern Variable SubgroupBallotBit_index;
 extern Function SubgroupBallotBit;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float32_color;
+extern Variable SubgroupSwapDiagonal_Float32_value;
 extern Function SubgroupSwapDiagonal_Float32;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float32x2_color;
+extern Variable SubgroupSwapDiagonal_Float32x2_value;
 extern Function SubgroupSwapDiagonal_Float32x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float32x3_color;
+extern Variable SubgroupSwapDiagonal_Float32x3_value;
 extern Function SubgroupSwapDiagonal_Float32x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float32x4_color;
+extern Variable SubgroupSwapDiagonal_Float32x4_value;
 extern Function SubgroupSwapDiagonal_Float32x4;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float16_color;
+extern Variable SubgroupSwapDiagonal_Float16_value;
 extern Function SubgroupSwapDiagonal_Float16;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float16x2_color;
+extern Variable SubgroupSwapDiagonal_Float16x2_value;
 extern Function SubgroupSwapDiagonal_Float16x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float16x3_color;
+extern Variable SubgroupSwapDiagonal_Float16x3_value;
 extern Function SubgroupSwapDiagonal_Float16x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Float16x4_color;
+extern Variable SubgroupSwapDiagonal_Float16x4_value;
 extern Function SubgroupSwapDiagonal_Float16x4;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int32_color;
+extern Variable SubgroupSwapDiagonal_Int32_value;
 extern Function SubgroupSwapDiagonal_Int32;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int32x2_color;
+extern Variable SubgroupSwapDiagonal_Int32x2_value;
 extern Function SubgroupSwapDiagonal_Int32x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int32x3_color;
+extern Variable SubgroupSwapDiagonal_Int32x3_value;
 extern Function SubgroupSwapDiagonal_Int32x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int32x4_color;
+extern Variable SubgroupSwapDiagonal_Int32x4_value;
 extern Function SubgroupSwapDiagonal_Int32x4;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int16_color;
+extern Variable SubgroupSwapDiagonal_Int16_value;
 extern Function SubgroupSwapDiagonal_Int16;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int16x2_color;
+extern Variable SubgroupSwapDiagonal_Int16x2_value;
 extern Function SubgroupSwapDiagonal_Int16x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int16x3_color;
+extern Variable SubgroupSwapDiagonal_Int16x3_value;
 extern Function SubgroupSwapDiagonal_Int16x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_Int16x4_color;
+extern Variable SubgroupSwapDiagonal_Int16x4_value;
 extern Function SubgroupSwapDiagonal_Int16x4;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt32_color;
+extern Variable SubgroupSwapDiagonal_UInt32_value;
 extern Function SubgroupSwapDiagonal_UInt32;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt32x2_color;
+extern Variable SubgroupSwapDiagonal_UInt32x2_value;
 extern Function SubgroupSwapDiagonal_UInt32x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt32x3_color;
+extern Variable SubgroupSwapDiagonal_UInt32x3_value;
 extern Function SubgroupSwapDiagonal_UInt32x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt32x4_color;
+extern Variable SubgroupSwapDiagonal_UInt32x4_value;
 extern Function SubgroupSwapDiagonal_UInt32x4;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt16_color;
+extern Variable SubgroupSwapDiagonal_UInt16_value;
 extern Function SubgroupSwapDiagonal_UInt16;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt16x2_color;
+extern Variable SubgroupSwapDiagonal_UInt16x2_value;
 extern Function SubgroupSwapDiagonal_UInt16x2;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt16x3_color;
+extern Variable SubgroupSwapDiagonal_UInt16x3_value;
 extern Function SubgroupSwapDiagonal_UInt16x3;
 
 /// subgroupSwapDiagonal
-extern Variable SubgroupSwapDiagonal_UInt16x4_color;
+extern Variable SubgroupSwapDiagonal_UInt16x4_value;
 extern Function SubgroupSwapDiagonal_UInt16x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float32_color;
+extern Variable SubgroupSwapVertical_Float32_value;
 extern Function SubgroupSwapVertical_Float32;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float32x2_color;
+extern Variable SubgroupSwapVertical_Float32x2_value;
 extern Function SubgroupSwapVertical_Float32x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float32x3_color;
+extern Variable SubgroupSwapVertical_Float32x3_value;
 extern Function SubgroupSwapVertical_Float32x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float32x4_color;
+extern Variable SubgroupSwapVertical_Float32x4_value;
 extern Function SubgroupSwapVertical_Float32x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float16_color;
+extern Variable SubgroupSwapVertical_Float16_value;
 extern Function SubgroupSwapVertical_Float16;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float16x2_color;
+extern Variable SubgroupSwapVertical_Float16x2_value;
 extern Function SubgroupSwapVertical_Float16x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float16x3_color;
+extern Variable SubgroupSwapVertical_Float16x3_value;
 extern Function SubgroupSwapVertical_Float16x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Float16x4_color;
+extern Variable SubgroupSwapVertical_Float16x4_value;
 extern Function SubgroupSwapVertical_Float16x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int32_color;
+extern Variable SubgroupSwapVertical_Int32_value;
 extern Function SubgroupSwapVertical_Int32;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int32x2_color;
+extern Variable SubgroupSwapVertical_Int32x2_value;
 extern Function SubgroupSwapVertical_Int32x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int32x3_color;
+extern Variable SubgroupSwapVertical_Int32x3_value;
 extern Function SubgroupSwapVertical_Int32x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int32x4_color;
+extern Variable SubgroupSwapVertical_Int32x4_value;
 extern Function SubgroupSwapVertical_Int32x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int16_color;
+extern Variable SubgroupSwapVertical_Int16_value;
 extern Function SubgroupSwapVertical_Int16;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int16x2_color;
+extern Variable SubgroupSwapVertical_Int16x2_value;
 extern Function SubgroupSwapVertical_Int16x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int16x3_color;
+extern Variable SubgroupSwapVertical_Int16x3_value;
 extern Function SubgroupSwapVertical_Int16x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_Int16x4_color;
+extern Variable SubgroupSwapVertical_Int16x4_value;
 extern Function SubgroupSwapVertical_Int16x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt32_color;
+extern Variable SubgroupSwapVertical_UInt32_value;
 extern Function SubgroupSwapVertical_UInt32;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt32x2_color;
+extern Variable SubgroupSwapVertical_UInt32x2_value;
 extern Function SubgroupSwapVertical_UInt32x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt32x3_color;
+extern Variable SubgroupSwapVertical_UInt32x3_value;
 extern Function SubgroupSwapVertical_UInt32x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt32x4_color;
+extern Variable SubgroupSwapVertical_UInt32x4_value;
 extern Function SubgroupSwapVertical_UInt32x4;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt16_color;
+extern Variable SubgroupSwapVertical_UInt16_value;
 extern Function SubgroupSwapVertical_UInt16;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt16x2_color;
+extern Variable SubgroupSwapVertical_UInt16x2_value;
 extern Function SubgroupSwapVertical_UInt16x2;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt16x3_color;
+extern Variable SubgroupSwapVertical_UInt16x3_value;
 extern Function SubgroupSwapVertical_UInt16x3;
 
 /// subgroupSwapVertical
-extern Variable SubgroupSwapVertical_UInt16x4_color;
+extern Variable SubgroupSwapVertical_UInt16x4_value;
 extern Function SubgroupSwapVertical_UInt16x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float32_color;
+extern Variable SubgroupSwapHorizontal_Float32_value;
 extern Function SubgroupSwapHorizontal_Float32;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float32x2_color;
+extern Variable SubgroupSwapHorizontal_Float32x2_value;
 extern Function SubgroupSwapHorizontal_Float32x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float32x3_color;
+extern Variable SubgroupSwapHorizontal_Float32x3_value;
 extern Function SubgroupSwapHorizontal_Float32x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float32x4_color;
+extern Variable SubgroupSwapHorizontal_Float32x4_value;
 extern Function SubgroupSwapHorizontal_Float32x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float16_color;
+extern Variable SubgroupSwapHorizontal_Float16_value;
 extern Function SubgroupSwapHorizontal_Float16;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float16x2_color;
+extern Variable SubgroupSwapHorizontal_Float16x2_value;
 extern Function SubgroupSwapHorizontal_Float16x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float16x3_color;
+extern Variable SubgroupSwapHorizontal_Float16x3_value;
 extern Function SubgroupSwapHorizontal_Float16x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Float16x4_color;
+extern Variable SubgroupSwapHorizontal_Float16x4_value;
 extern Function SubgroupSwapHorizontal_Float16x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int32_color;
+extern Variable SubgroupSwapHorizontal_Int32_value;
 extern Function SubgroupSwapHorizontal_Int32;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int32x2_color;
+extern Variable SubgroupSwapHorizontal_Int32x2_value;
 extern Function SubgroupSwapHorizontal_Int32x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int32x3_color;
+extern Variable SubgroupSwapHorizontal_Int32x3_value;
 extern Function SubgroupSwapHorizontal_Int32x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int32x4_color;
+extern Variable SubgroupSwapHorizontal_Int32x4_value;
 extern Function SubgroupSwapHorizontal_Int32x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int16_color;
+extern Variable SubgroupSwapHorizontal_Int16_value;
 extern Function SubgroupSwapHorizontal_Int16;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int16x2_color;
+extern Variable SubgroupSwapHorizontal_Int16x2_value;
 extern Function SubgroupSwapHorizontal_Int16x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int16x3_color;
+extern Variable SubgroupSwapHorizontal_Int16x3_value;
 extern Function SubgroupSwapHorizontal_Int16x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_Int16x4_color;
+extern Variable SubgroupSwapHorizontal_Int16x4_value;
 extern Function SubgroupSwapHorizontal_Int16x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt32_color;
+extern Variable SubgroupSwapHorizontal_UInt32_value;
 extern Function SubgroupSwapHorizontal_UInt32;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt32x2_color;
+extern Variable SubgroupSwapHorizontal_UInt32x2_value;
 extern Function SubgroupSwapHorizontal_UInt32x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt32x3_color;
+extern Variable SubgroupSwapHorizontal_UInt32x3_value;
 extern Function SubgroupSwapHorizontal_UInt32x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt32x4_color;
+extern Variable SubgroupSwapHorizontal_UInt32x4_value;
 extern Function SubgroupSwapHorizontal_UInt32x4;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt16_color;
+extern Variable SubgroupSwapHorizontal_UInt16_value;
 extern Function SubgroupSwapHorizontal_UInt16;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt16x2_color;
+extern Variable SubgroupSwapHorizontal_UInt16x2_value;
 extern Function SubgroupSwapHorizontal_UInt16x2;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt16x3_color;
+extern Variable SubgroupSwapHorizontal_UInt16x3_value;
 extern Function SubgroupSwapHorizontal_UInt16x3;
 
 /// subgroupSwapHorizontal
-extern Variable SubgroupSwapHorizontal_UInt16x4_color;
+extern Variable SubgroupSwapHorizontal_UInt16x4_value;
 extern Function SubgroupSwapHorizontal_UInt16x4;
 
 /// atomicLoad

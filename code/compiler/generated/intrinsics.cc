@@ -3416,364 +3416,364 @@ Function SubgroupBallotBit;
 inline constexpr std::array SubgroupBallotBit_args = { &SubgroupBallotBit_mask, &SubgroupBallotBit_index };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float32_color;
+Variable SubgroupSwapDiagonal_Float32_value;
 Function SubgroupSwapDiagonal_Float32;
-inline constexpr std::array SubgroupSwapDiagonal_Float32_args = { &SubgroupSwapDiagonal_Float32_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float32_args = { &SubgroupSwapDiagonal_Float32_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float32x2_color;
+Variable SubgroupSwapDiagonal_Float32x2_value;
 Function SubgroupSwapDiagonal_Float32x2;
-inline constexpr std::array SubgroupSwapDiagonal_Float32x2_args = { &SubgroupSwapDiagonal_Float32x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float32x2_args = { &SubgroupSwapDiagonal_Float32x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float32x3_color;
+Variable SubgroupSwapDiagonal_Float32x3_value;
 Function SubgroupSwapDiagonal_Float32x3;
-inline constexpr std::array SubgroupSwapDiagonal_Float32x3_args = { &SubgroupSwapDiagonal_Float32x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float32x3_args = { &SubgroupSwapDiagonal_Float32x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float32x4_color;
+Variable SubgroupSwapDiagonal_Float32x4_value;
 Function SubgroupSwapDiagonal_Float32x4;
-inline constexpr std::array SubgroupSwapDiagonal_Float32x4_args = { &SubgroupSwapDiagonal_Float32x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float32x4_args = { &SubgroupSwapDiagonal_Float32x4_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float16_color;
+Variable SubgroupSwapDiagonal_Float16_value;
 Function SubgroupSwapDiagonal_Float16;
-inline constexpr std::array SubgroupSwapDiagonal_Float16_args = { &SubgroupSwapDiagonal_Float16_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float16_args = { &SubgroupSwapDiagonal_Float16_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float16x2_color;
+Variable SubgroupSwapDiagonal_Float16x2_value;
 Function SubgroupSwapDiagonal_Float16x2;
-inline constexpr std::array SubgroupSwapDiagonal_Float16x2_args = { &SubgroupSwapDiagonal_Float16x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float16x2_args = { &SubgroupSwapDiagonal_Float16x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float16x3_color;
+Variable SubgroupSwapDiagonal_Float16x3_value;
 Function SubgroupSwapDiagonal_Float16x3;
-inline constexpr std::array SubgroupSwapDiagonal_Float16x3_args = { &SubgroupSwapDiagonal_Float16x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float16x3_args = { &SubgroupSwapDiagonal_Float16x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Float16x4_color;
+Variable SubgroupSwapDiagonal_Float16x4_value;
 Function SubgroupSwapDiagonal_Float16x4;
-inline constexpr std::array SubgroupSwapDiagonal_Float16x4_args = { &SubgroupSwapDiagonal_Float16x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_Float16x4_args = { &SubgroupSwapDiagonal_Float16x4_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int32_color;
+Variable SubgroupSwapDiagonal_Int32_value;
 Function SubgroupSwapDiagonal_Int32;
-inline constexpr std::array SubgroupSwapDiagonal_Int32_args = { &SubgroupSwapDiagonal_Int32_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int32_args = { &SubgroupSwapDiagonal_Int32_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int32x2_color;
+Variable SubgroupSwapDiagonal_Int32x2_value;
 Function SubgroupSwapDiagonal_Int32x2;
-inline constexpr std::array SubgroupSwapDiagonal_Int32x2_args = { &SubgroupSwapDiagonal_Int32x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int32x2_args = { &SubgroupSwapDiagonal_Int32x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int32x3_color;
+Variable SubgroupSwapDiagonal_Int32x3_value;
 Function SubgroupSwapDiagonal_Int32x3;
-inline constexpr std::array SubgroupSwapDiagonal_Int32x3_args = { &SubgroupSwapDiagonal_Int32x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int32x3_args = { &SubgroupSwapDiagonal_Int32x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int32x4_color;
+Variable SubgroupSwapDiagonal_Int32x4_value;
 Function SubgroupSwapDiagonal_Int32x4;
-inline constexpr std::array SubgroupSwapDiagonal_Int32x4_args = { &SubgroupSwapDiagonal_Int32x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int32x4_args = { &SubgroupSwapDiagonal_Int32x4_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int16_color;
+Variable SubgroupSwapDiagonal_Int16_value;
 Function SubgroupSwapDiagonal_Int16;
-inline constexpr std::array SubgroupSwapDiagonal_Int16_args = { &SubgroupSwapDiagonal_Int16_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int16_args = { &SubgroupSwapDiagonal_Int16_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int16x2_color;
+Variable SubgroupSwapDiagonal_Int16x2_value;
 Function SubgroupSwapDiagonal_Int16x2;
-inline constexpr std::array SubgroupSwapDiagonal_Int16x2_args = { &SubgroupSwapDiagonal_Int16x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int16x2_args = { &SubgroupSwapDiagonal_Int16x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int16x3_color;
+Variable SubgroupSwapDiagonal_Int16x3_value;
 Function SubgroupSwapDiagonal_Int16x3;
-inline constexpr std::array SubgroupSwapDiagonal_Int16x3_args = { &SubgroupSwapDiagonal_Int16x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int16x3_args = { &SubgroupSwapDiagonal_Int16x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_Int16x4_color;
+Variable SubgroupSwapDiagonal_Int16x4_value;
 Function SubgroupSwapDiagonal_Int16x4;
-inline constexpr std::array SubgroupSwapDiagonal_Int16x4_args = { &SubgroupSwapDiagonal_Int16x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_Int16x4_args = { &SubgroupSwapDiagonal_Int16x4_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt32_color;
+Variable SubgroupSwapDiagonal_UInt32_value;
 Function SubgroupSwapDiagonal_UInt32;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32_args = { &SubgroupSwapDiagonal_UInt32_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt32_args = { &SubgroupSwapDiagonal_UInt32_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt32x2_color;
+Variable SubgroupSwapDiagonal_UInt32x2_value;
 Function SubgroupSwapDiagonal_UInt32x2;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x2_args = { &SubgroupSwapDiagonal_UInt32x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt32x2_args = { &SubgroupSwapDiagonal_UInt32x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt32x3_color;
+Variable SubgroupSwapDiagonal_UInt32x3_value;
 Function SubgroupSwapDiagonal_UInt32x3;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x3_args = { &SubgroupSwapDiagonal_UInt32x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt32x3_args = { &SubgroupSwapDiagonal_UInt32x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt32x4_color;
+Variable SubgroupSwapDiagonal_UInt32x4_value;
 Function SubgroupSwapDiagonal_UInt32x4;
-inline constexpr std::array SubgroupSwapDiagonal_UInt32x4_args = { &SubgroupSwapDiagonal_UInt32x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt32x4_args = { &SubgroupSwapDiagonal_UInt32x4_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt16_color;
+Variable SubgroupSwapDiagonal_UInt16_value;
 Function SubgroupSwapDiagonal_UInt16;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16_args = { &SubgroupSwapDiagonal_UInt16_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt16_args = { &SubgroupSwapDiagonal_UInt16_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt16x2_color;
+Variable SubgroupSwapDiagonal_UInt16x2_value;
 Function SubgroupSwapDiagonal_UInt16x2;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x2_args = { &SubgroupSwapDiagonal_UInt16x2_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt16x2_args = { &SubgroupSwapDiagonal_UInt16x2_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt16x3_color;
+Variable SubgroupSwapDiagonal_UInt16x3_value;
 Function SubgroupSwapDiagonal_UInt16x3;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x3_args = { &SubgroupSwapDiagonal_UInt16x3_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt16x3_args = { &SubgroupSwapDiagonal_UInt16x3_value };
 
 /// subgroupSwapDiagonal
-Variable SubgroupSwapDiagonal_UInt16x4_color;
+Variable SubgroupSwapDiagonal_UInt16x4_value;
 Function SubgroupSwapDiagonal_UInt16x4;
-inline constexpr std::array SubgroupSwapDiagonal_UInt16x4_args = { &SubgroupSwapDiagonal_UInt16x4_color };
+inline constexpr std::array SubgroupSwapDiagonal_UInt16x4_args = { &SubgroupSwapDiagonal_UInt16x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float32_color;
+Variable SubgroupSwapVertical_Float32_value;
 Function SubgroupSwapVertical_Float32;
-inline constexpr std::array SubgroupSwapVertical_Float32_args = { &SubgroupSwapVertical_Float32_color };
+inline constexpr std::array SubgroupSwapVertical_Float32_args = { &SubgroupSwapVertical_Float32_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float32x2_color;
+Variable SubgroupSwapVertical_Float32x2_value;
 Function SubgroupSwapVertical_Float32x2;
-inline constexpr std::array SubgroupSwapVertical_Float32x2_args = { &SubgroupSwapVertical_Float32x2_color };
+inline constexpr std::array SubgroupSwapVertical_Float32x2_args = { &SubgroupSwapVertical_Float32x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float32x3_color;
+Variable SubgroupSwapVertical_Float32x3_value;
 Function SubgroupSwapVertical_Float32x3;
-inline constexpr std::array SubgroupSwapVertical_Float32x3_args = { &SubgroupSwapVertical_Float32x3_color };
+inline constexpr std::array SubgroupSwapVertical_Float32x3_args = { &SubgroupSwapVertical_Float32x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float32x4_color;
+Variable SubgroupSwapVertical_Float32x4_value;
 Function SubgroupSwapVertical_Float32x4;
-inline constexpr std::array SubgroupSwapVertical_Float32x4_args = { &SubgroupSwapVertical_Float32x4_color };
+inline constexpr std::array SubgroupSwapVertical_Float32x4_args = { &SubgroupSwapVertical_Float32x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float16_color;
+Variable SubgroupSwapVertical_Float16_value;
 Function SubgroupSwapVertical_Float16;
-inline constexpr std::array SubgroupSwapVertical_Float16_args = { &SubgroupSwapVertical_Float16_color };
+inline constexpr std::array SubgroupSwapVertical_Float16_args = { &SubgroupSwapVertical_Float16_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float16x2_color;
+Variable SubgroupSwapVertical_Float16x2_value;
 Function SubgroupSwapVertical_Float16x2;
-inline constexpr std::array SubgroupSwapVertical_Float16x2_args = { &SubgroupSwapVertical_Float16x2_color };
+inline constexpr std::array SubgroupSwapVertical_Float16x2_args = { &SubgroupSwapVertical_Float16x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float16x3_color;
+Variable SubgroupSwapVertical_Float16x3_value;
 Function SubgroupSwapVertical_Float16x3;
-inline constexpr std::array SubgroupSwapVertical_Float16x3_args = { &SubgroupSwapVertical_Float16x3_color };
+inline constexpr std::array SubgroupSwapVertical_Float16x3_args = { &SubgroupSwapVertical_Float16x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Float16x4_color;
+Variable SubgroupSwapVertical_Float16x4_value;
 Function SubgroupSwapVertical_Float16x4;
-inline constexpr std::array SubgroupSwapVertical_Float16x4_args = { &SubgroupSwapVertical_Float16x4_color };
+inline constexpr std::array SubgroupSwapVertical_Float16x4_args = { &SubgroupSwapVertical_Float16x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int32_color;
+Variable SubgroupSwapVertical_Int32_value;
 Function SubgroupSwapVertical_Int32;
-inline constexpr std::array SubgroupSwapVertical_Int32_args = { &SubgroupSwapVertical_Int32_color };
+inline constexpr std::array SubgroupSwapVertical_Int32_args = { &SubgroupSwapVertical_Int32_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int32x2_color;
+Variable SubgroupSwapVertical_Int32x2_value;
 Function SubgroupSwapVertical_Int32x2;
-inline constexpr std::array SubgroupSwapVertical_Int32x2_args = { &SubgroupSwapVertical_Int32x2_color };
+inline constexpr std::array SubgroupSwapVertical_Int32x2_args = { &SubgroupSwapVertical_Int32x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int32x3_color;
+Variable SubgroupSwapVertical_Int32x3_value;
 Function SubgroupSwapVertical_Int32x3;
-inline constexpr std::array SubgroupSwapVertical_Int32x3_args = { &SubgroupSwapVertical_Int32x3_color };
+inline constexpr std::array SubgroupSwapVertical_Int32x3_args = { &SubgroupSwapVertical_Int32x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int32x4_color;
+Variable SubgroupSwapVertical_Int32x4_value;
 Function SubgroupSwapVertical_Int32x4;
-inline constexpr std::array SubgroupSwapVertical_Int32x4_args = { &SubgroupSwapVertical_Int32x4_color };
+inline constexpr std::array SubgroupSwapVertical_Int32x4_args = { &SubgroupSwapVertical_Int32x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int16_color;
+Variable SubgroupSwapVertical_Int16_value;
 Function SubgroupSwapVertical_Int16;
-inline constexpr std::array SubgroupSwapVertical_Int16_args = { &SubgroupSwapVertical_Int16_color };
+inline constexpr std::array SubgroupSwapVertical_Int16_args = { &SubgroupSwapVertical_Int16_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int16x2_color;
+Variable SubgroupSwapVertical_Int16x2_value;
 Function SubgroupSwapVertical_Int16x2;
-inline constexpr std::array SubgroupSwapVertical_Int16x2_args = { &SubgroupSwapVertical_Int16x2_color };
+inline constexpr std::array SubgroupSwapVertical_Int16x2_args = { &SubgroupSwapVertical_Int16x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int16x3_color;
+Variable SubgroupSwapVertical_Int16x3_value;
 Function SubgroupSwapVertical_Int16x3;
-inline constexpr std::array SubgroupSwapVertical_Int16x3_args = { &SubgroupSwapVertical_Int16x3_color };
+inline constexpr std::array SubgroupSwapVertical_Int16x3_args = { &SubgroupSwapVertical_Int16x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_Int16x4_color;
+Variable SubgroupSwapVertical_Int16x4_value;
 Function SubgroupSwapVertical_Int16x4;
-inline constexpr std::array SubgroupSwapVertical_Int16x4_args = { &SubgroupSwapVertical_Int16x4_color };
+inline constexpr std::array SubgroupSwapVertical_Int16x4_args = { &SubgroupSwapVertical_Int16x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt32_color;
+Variable SubgroupSwapVertical_UInt32_value;
 Function SubgroupSwapVertical_UInt32;
-inline constexpr std::array SubgroupSwapVertical_UInt32_args = { &SubgroupSwapVertical_UInt32_color };
+inline constexpr std::array SubgroupSwapVertical_UInt32_args = { &SubgroupSwapVertical_UInt32_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt32x2_color;
+Variable SubgroupSwapVertical_UInt32x2_value;
 Function SubgroupSwapVertical_UInt32x2;
-inline constexpr std::array SubgroupSwapVertical_UInt32x2_args = { &SubgroupSwapVertical_UInt32x2_color };
+inline constexpr std::array SubgroupSwapVertical_UInt32x2_args = { &SubgroupSwapVertical_UInt32x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt32x3_color;
+Variable SubgroupSwapVertical_UInt32x3_value;
 Function SubgroupSwapVertical_UInt32x3;
-inline constexpr std::array SubgroupSwapVertical_UInt32x3_args = { &SubgroupSwapVertical_UInt32x3_color };
+inline constexpr std::array SubgroupSwapVertical_UInt32x3_args = { &SubgroupSwapVertical_UInt32x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt32x4_color;
+Variable SubgroupSwapVertical_UInt32x4_value;
 Function SubgroupSwapVertical_UInt32x4;
-inline constexpr std::array SubgroupSwapVertical_UInt32x4_args = { &SubgroupSwapVertical_UInt32x4_color };
+inline constexpr std::array SubgroupSwapVertical_UInt32x4_args = { &SubgroupSwapVertical_UInt32x4_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt16_color;
+Variable SubgroupSwapVertical_UInt16_value;
 Function SubgroupSwapVertical_UInt16;
-inline constexpr std::array SubgroupSwapVertical_UInt16_args = { &SubgroupSwapVertical_UInt16_color };
+inline constexpr std::array SubgroupSwapVertical_UInt16_args = { &SubgroupSwapVertical_UInt16_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt16x2_color;
+Variable SubgroupSwapVertical_UInt16x2_value;
 Function SubgroupSwapVertical_UInt16x2;
-inline constexpr std::array SubgroupSwapVertical_UInt16x2_args = { &SubgroupSwapVertical_UInt16x2_color };
+inline constexpr std::array SubgroupSwapVertical_UInt16x2_args = { &SubgroupSwapVertical_UInt16x2_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt16x3_color;
+Variable SubgroupSwapVertical_UInt16x3_value;
 Function SubgroupSwapVertical_UInt16x3;
-inline constexpr std::array SubgroupSwapVertical_UInt16x3_args = { &SubgroupSwapVertical_UInt16x3_color };
+inline constexpr std::array SubgroupSwapVertical_UInt16x3_args = { &SubgroupSwapVertical_UInt16x3_value };
 
 /// subgroupSwapVertical
-Variable SubgroupSwapVertical_UInt16x4_color;
+Variable SubgroupSwapVertical_UInt16x4_value;
 Function SubgroupSwapVertical_UInt16x4;
-inline constexpr std::array SubgroupSwapVertical_UInt16x4_args = { &SubgroupSwapVertical_UInt16x4_color };
+inline constexpr std::array SubgroupSwapVertical_UInt16x4_args = { &SubgroupSwapVertical_UInt16x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float32_color;
+Variable SubgroupSwapHorizontal_Float32_value;
 Function SubgroupSwapHorizontal_Float32;
-inline constexpr std::array SubgroupSwapHorizontal_Float32_args = { &SubgroupSwapHorizontal_Float32_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float32_args = { &SubgroupSwapHorizontal_Float32_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float32x2_color;
+Variable SubgroupSwapHorizontal_Float32x2_value;
 Function SubgroupSwapHorizontal_Float32x2;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x2_args = { &SubgroupSwapHorizontal_Float32x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float32x2_args = { &SubgroupSwapHorizontal_Float32x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float32x3_color;
+Variable SubgroupSwapHorizontal_Float32x3_value;
 Function SubgroupSwapHorizontal_Float32x3;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x3_args = { &SubgroupSwapHorizontal_Float32x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float32x3_args = { &SubgroupSwapHorizontal_Float32x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float32x4_color;
+Variable SubgroupSwapHorizontal_Float32x4_value;
 Function SubgroupSwapHorizontal_Float32x4;
-inline constexpr std::array SubgroupSwapHorizontal_Float32x4_args = { &SubgroupSwapHorizontal_Float32x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float32x4_args = { &SubgroupSwapHorizontal_Float32x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float16_color;
+Variable SubgroupSwapHorizontal_Float16_value;
 Function SubgroupSwapHorizontal_Float16;
-inline constexpr std::array SubgroupSwapHorizontal_Float16_args = { &SubgroupSwapHorizontal_Float16_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float16_args = { &SubgroupSwapHorizontal_Float16_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float16x2_color;
+Variable SubgroupSwapHorizontal_Float16x2_value;
 Function SubgroupSwapHorizontal_Float16x2;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x2_args = { &SubgroupSwapHorizontal_Float16x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float16x2_args = { &SubgroupSwapHorizontal_Float16x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float16x3_color;
+Variable SubgroupSwapHorizontal_Float16x3_value;
 Function SubgroupSwapHorizontal_Float16x3;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x3_args = { &SubgroupSwapHorizontal_Float16x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float16x3_args = { &SubgroupSwapHorizontal_Float16x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Float16x4_color;
+Variable SubgroupSwapHorizontal_Float16x4_value;
 Function SubgroupSwapHorizontal_Float16x4;
-inline constexpr std::array SubgroupSwapHorizontal_Float16x4_args = { &SubgroupSwapHorizontal_Float16x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_Float16x4_args = { &SubgroupSwapHorizontal_Float16x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int32_color;
+Variable SubgroupSwapHorizontal_Int32_value;
 Function SubgroupSwapHorizontal_Int32;
-inline constexpr std::array SubgroupSwapHorizontal_Int32_args = { &SubgroupSwapHorizontal_Int32_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int32_args = { &SubgroupSwapHorizontal_Int32_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int32x2_color;
+Variable SubgroupSwapHorizontal_Int32x2_value;
 Function SubgroupSwapHorizontal_Int32x2;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x2_args = { &SubgroupSwapHorizontal_Int32x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int32x2_args = { &SubgroupSwapHorizontal_Int32x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int32x3_color;
+Variable SubgroupSwapHorizontal_Int32x3_value;
 Function SubgroupSwapHorizontal_Int32x3;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x3_args = { &SubgroupSwapHorizontal_Int32x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int32x3_args = { &SubgroupSwapHorizontal_Int32x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int32x4_color;
+Variable SubgroupSwapHorizontal_Int32x4_value;
 Function SubgroupSwapHorizontal_Int32x4;
-inline constexpr std::array SubgroupSwapHorizontal_Int32x4_args = { &SubgroupSwapHorizontal_Int32x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int32x4_args = { &SubgroupSwapHorizontal_Int32x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int16_color;
+Variable SubgroupSwapHorizontal_Int16_value;
 Function SubgroupSwapHorizontal_Int16;
-inline constexpr std::array SubgroupSwapHorizontal_Int16_args = { &SubgroupSwapHorizontal_Int16_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int16_args = { &SubgroupSwapHorizontal_Int16_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int16x2_color;
+Variable SubgroupSwapHorizontal_Int16x2_value;
 Function SubgroupSwapHorizontal_Int16x2;
-inline constexpr std::array SubgroupSwapHorizontal_Int16x2_args = { &SubgroupSwapHorizontal_Int16x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int16x2_args = { &SubgroupSwapHorizontal_Int16x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int16x3_color;
+Variable SubgroupSwapHorizontal_Int16x3_value;
 Function SubgroupSwapHorizontal_Int16x3;
-inline constexpr std::array SubgroupSwapHorizontal_Int16x3_args = { &SubgroupSwapHorizontal_Int16x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int16x3_args = { &SubgroupSwapHorizontal_Int16x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_Int16x4_color;
+Variable SubgroupSwapHorizontal_Int16x4_value;
 Function SubgroupSwapHorizontal_Int16x4;
-inline constexpr std::array SubgroupSwapHorizontal_Int16x4_args = { &SubgroupSwapHorizontal_Int16x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_Int16x4_args = { &SubgroupSwapHorizontal_Int16x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt32_color;
+Variable SubgroupSwapHorizontal_UInt32_value;
 Function SubgroupSwapHorizontal_UInt32;
-inline constexpr std::array SubgroupSwapHorizontal_UInt32_args = { &SubgroupSwapHorizontal_UInt32_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt32_args = { &SubgroupSwapHorizontal_UInt32_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt32x2_color;
+Variable SubgroupSwapHorizontal_UInt32x2_value;
 Function SubgroupSwapHorizontal_UInt32x2;
-inline constexpr std::array SubgroupSwapHorizontal_UInt32x2_args = { &SubgroupSwapHorizontal_UInt32x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt32x2_args = { &SubgroupSwapHorizontal_UInt32x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt32x3_color;
+Variable SubgroupSwapHorizontal_UInt32x3_value;
 Function SubgroupSwapHorizontal_UInt32x3;
-inline constexpr std::array SubgroupSwapHorizontal_UInt32x3_args = { &SubgroupSwapHorizontal_UInt32x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt32x3_args = { &SubgroupSwapHorizontal_UInt32x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt32x4_color;
+Variable SubgroupSwapHorizontal_UInt32x4_value;
 Function SubgroupSwapHorizontal_UInt32x4;
-inline constexpr std::array SubgroupSwapHorizontal_UInt32x4_args = { &SubgroupSwapHorizontal_UInt32x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt32x4_args = { &SubgroupSwapHorizontal_UInt32x4_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt16_color;
+Variable SubgroupSwapHorizontal_UInt16_value;
 Function SubgroupSwapHorizontal_UInt16;
-inline constexpr std::array SubgroupSwapHorizontal_UInt16_args = { &SubgroupSwapHorizontal_UInt16_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt16_args = { &SubgroupSwapHorizontal_UInt16_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt16x2_color;
+Variable SubgroupSwapHorizontal_UInt16x2_value;
 Function SubgroupSwapHorizontal_UInt16x2;
-inline constexpr std::array SubgroupSwapHorizontal_UInt16x2_args = { &SubgroupSwapHorizontal_UInt16x2_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt16x2_args = { &SubgroupSwapHorizontal_UInt16x2_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt16x3_color;
+Variable SubgroupSwapHorizontal_UInt16x3_value;
 Function SubgroupSwapHorizontal_UInt16x3;
-inline constexpr std::array SubgroupSwapHorizontal_UInt16x3_args = { &SubgroupSwapHorizontal_UInt16x3_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt16x3_args = { &SubgroupSwapHorizontal_UInt16x3_value };
 
 /// subgroupSwapHorizontal
-Variable SubgroupSwapHorizontal_UInt16x4_color;
+Variable SubgroupSwapHorizontal_UInt16x4_value;
 Function SubgroupSwapHorizontal_UInt16x4;
-inline constexpr std::array SubgroupSwapHorizontal_UInt16x4_args = { &SubgroupSwapHorizontal_UInt16x4_color };
+inline constexpr std::array SubgroupSwapHorizontal_UInt16x4_args = { &SubgroupSwapHorizontal_UInt16x4_value };
 
 /// atomicLoad
 Variable AtomicLoad_UInt32_ptr;
@@ -14207,723 +14207,723 @@ void SetupIntrinsics()
     Symbol::Resolved(&SubgroupBallotBit)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float32_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float32_color.type = Type::FullType{ Float32Type.name };
+    SubgroupSwapDiagonal_Float32_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapDiagonal_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapDiagonal_Float32.parameters = SubgroupSwapDiagonal_Float32_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float32_color)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float32_value)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32)->returnTypeSymbol = &Float32Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float32x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float32x2_color.type = Type::FullType{ Float32x2Type.name };
+    SubgroupSwapDiagonal_Float32x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapDiagonal_Float32x2.parameters = SubgroupSwapDiagonal_Float32x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x2_color)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x2_value)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float32x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float32x3_color.type = Type::FullType{ Float32x3Type.name };
+    SubgroupSwapDiagonal_Float32x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapDiagonal_Float32x3.parameters = SubgroupSwapDiagonal_Float32x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x3_color)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x3_value)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float32x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float32x4_color.type = Type::FullType{ Float32x4Type.name };
+    SubgroupSwapDiagonal_Float32x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapDiagonal_Float32x4.parameters = SubgroupSwapDiagonal_Float32x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x4_color)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float32x4_value)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float16_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float16_color.type = Type::FullType{ Float16Type.name };
+    SubgroupSwapDiagonal_Float16_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapDiagonal_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapDiagonal_Float16.parameters = SubgroupSwapDiagonal_Float16_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float16_color)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float16_value)->typeSymbol = &Float16Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16)->returnTypeSymbol = &Float16Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float16x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float16x2_color.type = Type::FullType{ Float16x2Type.name };
+    SubgroupSwapDiagonal_Float16x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapDiagonal_Float16x2.parameters = SubgroupSwapDiagonal_Float16x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x2_color)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x2_value)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float16x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float16x3_color.type = Type::FullType{ Float16x3Type.name };
+    SubgroupSwapDiagonal_Float16x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapDiagonal_Float16x3.parameters = SubgroupSwapDiagonal_Float16x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x3_color)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x3_value)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Float16x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_Float16x4_color.type = Type::FullType{ Float16x4Type.name };
+    SubgroupSwapDiagonal_Float16x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Float16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapDiagonal_Float16x4.parameters = SubgroupSwapDiagonal_Float16x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x4_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Float16x4_value)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int32_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int32_color.type = Type::FullType{ Int32Type.name };
+    SubgroupSwapDiagonal_Int32_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapDiagonal_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapDiagonal_Int32.parameters = SubgroupSwapDiagonal_Int32_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int32_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int32x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int32x2_color.type = Type::FullType{ Int32x2Type.name };
+    SubgroupSwapDiagonal_Int32x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapDiagonal_Int32x2.parameters = SubgroupSwapDiagonal_Int32x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x2_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int32x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int32x3_color.type = Type::FullType{ Int32x3Type.name };
+    SubgroupSwapDiagonal_Int32x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapDiagonal_Int32x3.parameters = SubgroupSwapDiagonal_Int32x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x3_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int32x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int32x4_color.type = Type::FullType{ Int32x4Type.name };
+    SubgroupSwapDiagonal_Int32x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapDiagonal_Int32x4.parameters = SubgroupSwapDiagonal_Int32x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x4_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int16_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int16_color.type = Type::FullType{ Int16Type.name };
+    SubgroupSwapDiagonal_Int16_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapDiagonal_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapDiagonal_Int16.parameters = SubgroupSwapDiagonal_Int16_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int16x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int16x2_color.type = Type::FullType{ Int16x2Type.name };
+    SubgroupSwapDiagonal_Int16x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapDiagonal_Int16x2.parameters = SubgroupSwapDiagonal_Int16x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int16x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int16x3_color.type = Type::FullType{ Int16x3Type.name };
+    SubgroupSwapDiagonal_Int16x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapDiagonal_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapDiagonal_Int16x3.parameters = SubgroupSwapDiagonal_Int16x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_Int16x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_Int16x4_color.type = Type::FullType{ Int16x4Type.name };
+    SubgroupSwapDiagonal_Int16x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapDiagonal_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_Int16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapDiagonal_Int16x4.parameters = SubgroupSwapDiagonal_Int16x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt32_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32_color.type = Type::FullType{ UInt32Type.name };
+    SubgroupSwapDiagonal_UInt32_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapDiagonal_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt32.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapDiagonal_UInt32.parameters = SubgroupSwapDiagonal_UInt32_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt32x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x2_color.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupSwapDiagonal_UInt32x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapDiagonal_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt32x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapDiagonal_UInt32x2.parameters = SubgroupSwapDiagonal_UInt32x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt32x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x3_color.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupSwapDiagonal_UInt32x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapDiagonal_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt32x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapDiagonal_UInt32x3.parameters = SubgroupSwapDiagonal_UInt32x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3_color)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt32x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt32x4_color.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupSwapDiagonal_UInt32x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapDiagonal_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt32x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapDiagonal_UInt32x4.parameters = SubgroupSwapDiagonal_UInt32x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4_color)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt16_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16_color.type = Type::FullType{ UInt16Type.name };
+    SubgroupSwapDiagonal_UInt16_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapDiagonal_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt16.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapDiagonal_UInt16.parameters = SubgroupSwapDiagonal_UInt16_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16_color)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt16x2_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x2_color.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupSwapDiagonal_UInt16x2_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapDiagonal_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt16x2.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapDiagonal_UInt16x2.parameters = SubgroupSwapDiagonal_UInt16x2_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2_color)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt16x3_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x3_color.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupSwapDiagonal_UInt16x3_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapDiagonal_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt16x3.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapDiagonal_UInt16x3.parameters = SubgroupSwapDiagonal_UInt16x3_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3_color)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupSwapDiagonal
-    SubgroupSwapDiagonal_UInt16x4_color.name = "value"_c;
-    SubgroupSwapDiagonal_UInt16x4_color.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupSwapDiagonal_UInt16x4_value.name = "value"_c;
+    SubgroupSwapDiagonal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapDiagonal_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapDiagonal_UInt16x4.name = "subgroupSwapDiagonal"_c;
     SubgroupSwapDiagonal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapDiagonal_UInt16x4.parameters = SubgroupSwapDiagonal_UInt16x4_args;
-    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4_color)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupSwapDiagonal_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float32_color.name = "value"_c;
-    SubgroupSwapVertical_Float32_color.type = Type::FullType{ Float32Type.name };
+    SubgroupSwapVertical_Float32_value.name = "value"_c;
+    SubgroupSwapVertical_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapVertical_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapVertical_Float32.parameters = SubgroupSwapVertical_Float32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32_color)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float32_value)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float32)->returnTypeSymbol = &Float32Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float32x2_color.name = "value"_c;
-    SubgroupSwapVertical_Float32x2_color.type = Type::FullType{ Float32x2Type.name };
+    SubgroupSwapVertical_Float32x2_value.name = "value"_c;
+    SubgroupSwapVertical_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapVertical_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapVertical_Float32x2.parameters = SubgroupSwapVertical_Float32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x2_color)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float32x2_value)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float32x3_color.name = "value"_c;
-    SubgroupSwapVertical_Float32x3_color.type = Type::FullType{ Float32x3Type.name };
+    SubgroupSwapVertical_Float32x3_value.name = "value"_c;
+    SubgroupSwapVertical_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapVertical_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapVertical_Float32x3.parameters = SubgroupSwapVertical_Float32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x3_color)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float32x3_value)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float32x4_color.name = "value"_c;
-    SubgroupSwapVertical_Float32x4_color.type = Type::FullType{ Float32x4Type.name };
+    SubgroupSwapVertical_Float32x4_value.name = "value"_c;
+    SubgroupSwapVertical_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapVertical_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapVertical_Float32x4.parameters = SubgroupSwapVertical_Float32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float32x4_color)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float32x4_value)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float16_color.name = "value"_c;
-    SubgroupSwapVertical_Float16_color.type = Type::FullType{ Float16Type.name };
+    SubgroupSwapVertical_Float16_value.name = "value"_c;
+    SubgroupSwapVertical_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapVertical_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapVertical_Float16.parameters = SubgroupSwapVertical_Float16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16_color)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float16_value)->typeSymbol = &Float16Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float16)->returnTypeSymbol = &Float16Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float16x2_color.name = "value"_c;
-    SubgroupSwapVertical_Float16x2_color.type = Type::FullType{ Float16x2Type.name };
+    SubgroupSwapVertical_Float16x2_value.name = "value"_c;
+    SubgroupSwapVertical_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapVertical_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapVertical_Float16x2.parameters = SubgroupSwapVertical_Float16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x2_color)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float16x2_value)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float16x3_color.name = "value"_c;
-    SubgroupSwapVertical_Float16x3_color.type = Type::FullType{ Float16x3Type.name };
+    SubgroupSwapVertical_Float16x3_value.name = "value"_c;
+    SubgroupSwapVertical_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapVertical_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapVertical_Float16x3.parameters = SubgroupSwapVertical_Float16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x3_color)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float16x3_value)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Float16x4_color.name = "value"_c;
-    SubgroupSwapVertical_Float16x4_color.type = Type::FullType{ Float16x4Type.name };
+    SubgroupSwapVertical_Float16x4_value.name = "value"_c;
+    SubgroupSwapVertical_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapVertical_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Float16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapVertical_Float16x4.parameters = SubgroupSwapVertical_Float16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Float16x4_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Float16x4_value)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int32_color.name = "value"_c;
-    SubgroupSwapVertical_Int32_color.type = Type::FullType{ Int32Type.name };
+    SubgroupSwapVertical_Int32_value.name = "value"_c;
+    SubgroupSwapVertical_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapVertical_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapVertical_Int32.parameters = SubgroupSwapVertical_Int32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int32x2_color.name = "value"_c;
-    SubgroupSwapVertical_Int32x2_color.type = Type::FullType{ Int32x2Type.name };
+    SubgroupSwapVertical_Int32x2_value.name = "value"_c;
+    SubgroupSwapVertical_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapVertical_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapVertical_Int32x2.parameters = SubgroupSwapVertical_Int32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x2_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int32x3_color.name = "value"_c;
-    SubgroupSwapVertical_Int32x3_color.type = Type::FullType{ Int32x3Type.name };
+    SubgroupSwapVertical_Int32x3_value.name = "value"_c;
+    SubgroupSwapVertical_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapVertical_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapVertical_Int32x3.parameters = SubgroupSwapVertical_Int32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x3_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int32x4_color.name = "value"_c;
-    SubgroupSwapVertical_Int32x4_color.type = Type::FullType{ Int32x4Type.name };
+    SubgroupSwapVertical_Int32x4_value.name = "value"_c;
+    SubgroupSwapVertical_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapVertical_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapVertical_Int32x4.parameters = SubgroupSwapVertical_Int32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int32x4_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int16_color.name = "value"_c;
-    SubgroupSwapVertical_Int16_color.type = Type::FullType{ Int16Type.name };
+    SubgroupSwapVertical_Int16_value.name = "value"_c;
+    SubgroupSwapVertical_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapVertical_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapVertical_Int16.parameters = SubgroupSwapVertical_Int16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int16x2_color.name = "value"_c;
-    SubgroupSwapVertical_Int16x2_color.type = Type::FullType{ Int16x2Type.name };
+    SubgroupSwapVertical_Int16x2_value.name = "value"_c;
+    SubgroupSwapVertical_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapVertical_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapVertical_Int16x2.parameters = SubgroupSwapVertical_Int16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x2_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int16x3_color.name = "value"_c;
-    SubgroupSwapVertical_Int16x3_color.type = Type::FullType{ Int16x3Type.name };
+    SubgroupSwapVertical_Int16x3_value.name = "value"_c;
+    SubgroupSwapVertical_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapVertical_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapVertical_Int16x3.parameters = SubgroupSwapVertical_Int16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x3_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_Int16x4_color.name = "value"_c;
-    SubgroupSwapVertical_Int16x4_color.type = Type::FullType{ Int16x4Type.name };
+    SubgroupSwapVertical_Int16x4_value.name = "value"_c;
+    SubgroupSwapVertical_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapVertical_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_Int16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapVertical_Int16x4.parameters = SubgroupSwapVertical_Int16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_Int16x4_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt32_color.name = "value"_c;
-    SubgroupSwapVertical_UInt32_color.type = Type::FullType{ UInt32Type.name };
+    SubgroupSwapVertical_UInt32_value.name = "value"_c;
+    SubgroupSwapVertical_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapVertical_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt32.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapVertical_UInt32.parameters = SubgroupSwapVertical_UInt32_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt32x2_color.name = "value"_c;
-    SubgroupSwapVertical_UInt32x2_color.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupSwapVertical_UInt32x2_value.name = "value"_c;
+    SubgroupSwapVertical_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapVertical_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt32x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapVertical_UInt32x2.parameters = SubgroupSwapVertical_UInt32x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt32x3_color.name = "value"_c;
-    SubgroupSwapVertical_UInt32x3_color.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupSwapVertical_UInt32x3_value.name = "value"_c;
+    SubgroupSwapVertical_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapVertical_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt32x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapVertical_UInt32x3.parameters = SubgroupSwapVertical_UInt32x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3_color)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt32x4_color.name = "value"_c;
-    SubgroupSwapVertical_UInt32x4_color.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupSwapVertical_UInt32x4_value.name = "value"_c;
+    SubgroupSwapVertical_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapVertical_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt32x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapVertical_UInt32x4.parameters = SubgroupSwapVertical_UInt32x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4_color)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt16_color.name = "value"_c;
-    SubgroupSwapVertical_UInt16_color.type = Type::FullType{ UInt16Type.name };
+    SubgroupSwapVertical_UInt16_value.name = "value"_c;
+    SubgroupSwapVertical_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapVertical_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt16.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapVertical_UInt16.parameters = SubgroupSwapVertical_UInt16_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16_color)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt16x2_color.name = "value"_c;
-    SubgroupSwapVertical_UInt16x2_color.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupSwapVertical_UInt16x2_value.name = "value"_c;
+    SubgroupSwapVertical_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapVertical_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt16x2.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapVertical_UInt16x2.parameters = SubgroupSwapVertical_UInt16x2_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2_color)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt16x3_color.name = "value"_c;
-    SubgroupSwapVertical_UInt16x3_color.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupSwapVertical_UInt16x3_value.name = "value"_c;
+    SubgroupSwapVertical_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapVertical_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt16x3.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapVertical_UInt16x3.parameters = SubgroupSwapVertical_UInt16x3_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3_color)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupSwapVertical
-    SubgroupSwapVertical_UInt16x4_color.name = "value"_c;
-    SubgroupSwapVertical_UInt16x4_color.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupSwapVertical_UInt16x4_value.name = "value"_c;
+    SubgroupSwapVertical_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapVertical_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapVertical_UInt16x4.name = "subgroupSwapVertical"_c;
     SubgroupSwapVertical_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapVertical_UInt16x4.parameters = SubgroupSwapVertical_UInt16x4_args;
-    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4_color)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupSwapVertical_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupSwapVertical_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float32_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float32_color.type = Type::FullType{ Float32Type.name };
+    SubgroupSwapHorizontal_Float32_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float32_value.type = Type::FullType{ Float32Type.name };
     SubgroupSwapHorizontal_Float32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32.returnType = Type::FullType { Float32Type.name };
     SubgroupSwapHorizontal_Float32.parameters = SubgroupSwapHorizontal_Float32_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32_color)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float32_value)->typeSymbol = &Float32Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32)->returnTypeSymbol = &Float32Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float32x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x2_color.type = Type::FullType{ Float32x2Type.name };
+    SubgroupSwapHorizontal_Float32x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float32x2_value.type = Type::FullType{ Float32x2Type.name };
     SubgroupSwapHorizontal_Float32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x2.returnType = Type::FullType { Float32x2Type.name };
     SubgroupSwapHorizontal_Float32x2.parameters = SubgroupSwapHorizontal_Float32x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2_color)->typeSymbol = &Float32x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2_value)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float32x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x3_color.type = Type::FullType{ Float32x3Type.name };
+    SubgroupSwapHorizontal_Float32x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float32x3_value.type = Type::FullType{ Float32x3Type.name };
     SubgroupSwapHorizontal_Float32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x3.returnType = Type::FullType { Float32x3Type.name };
     SubgroupSwapHorizontal_Float32x3.parameters = SubgroupSwapHorizontal_Float32x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3_color)->typeSymbol = &Float32x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3_value)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float32x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float32x4_color.type = Type::FullType{ Float32x4Type.name };
+    SubgroupSwapHorizontal_Float32x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float32x4_value.type = Type::FullType{ Float32x4Type.name };
     SubgroupSwapHorizontal_Float32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     SubgroupSwapHorizontal_Float32x4.parameters = SubgroupSwapHorizontal_Float32x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4_color)->typeSymbol = &Float32x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4_value)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float16_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float16_color.type = Type::FullType{ Float16Type.name };
+    SubgroupSwapHorizontal_Float16_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float16_value.type = Type::FullType{ Float16Type.name };
     SubgroupSwapHorizontal_Float16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16.returnType = Type::FullType { Float16Type.name };
     SubgroupSwapHorizontal_Float16.parameters = SubgroupSwapHorizontal_Float16_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16_color)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float16_value)->typeSymbol = &Float16Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16)->returnTypeSymbol = &Float16Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float16x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x2_color.type = Type::FullType{ Float16x2Type.name };
+    SubgroupSwapHorizontal_Float16x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float16x2_value.type = Type::FullType{ Float16x2Type.name };
     SubgroupSwapHorizontal_Float16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x2.returnType = Type::FullType { Float16x2Type.name };
     SubgroupSwapHorizontal_Float16x2.parameters = SubgroupSwapHorizontal_Float16x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2_color)->typeSymbol = &Float16x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2_value)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float16x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x3_color.type = Type::FullType{ Float16x3Type.name };
+    SubgroupSwapHorizontal_Float16x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float16x3_value.type = Type::FullType{ Float16x3Type.name };
     SubgroupSwapHorizontal_Float16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x3.returnType = Type::FullType { Float16x3Type.name };
     SubgroupSwapHorizontal_Float16x3.parameters = SubgroupSwapHorizontal_Float16x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3_color)->typeSymbol = &Float16x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3_value)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Float16x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_Float16x4_color.type = Type::FullType{ Float16x4Type.name };
+    SubgroupSwapHorizontal_Float16x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_Float16x4_value.type = Type::FullType{ Float16x4Type.name };
     SubgroupSwapHorizontal_Float16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Float16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     SubgroupSwapHorizontal_Float16x4.parameters = SubgroupSwapHorizontal_Float16x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4_color)->typeSymbol = &Float16x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4_value)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int32_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int32_color.type = Type::FullType{ Int32Type.name };
+    SubgroupSwapHorizontal_Int32_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int32_value.type = Type::FullType{ Int32Type.name };
     SubgroupSwapHorizontal_Int32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32.returnType = Type::FullType { Int32Type.name };
     SubgroupSwapHorizontal_Int32.parameters = SubgroupSwapHorizontal_Int32_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32_color)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int32_value)->typeSymbol = &Int32Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32)->returnTypeSymbol = &Int32Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int32x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x2_color.type = Type::FullType{ Int32x2Type.name };
+    SubgroupSwapHorizontal_Int32x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int32x2_value.type = Type::FullType{ Int32x2Type.name };
     SubgroupSwapHorizontal_Int32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x2.returnType = Type::FullType { Int32x2Type.name };
     SubgroupSwapHorizontal_Int32x2.parameters = SubgroupSwapHorizontal_Int32x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2_color)->typeSymbol = &Int32x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2_value)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int32x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x3_color.type = Type::FullType{ Int32x3Type.name };
+    SubgroupSwapHorizontal_Int32x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int32x3_value.type = Type::FullType{ Int32x3Type.name };
     SubgroupSwapHorizontal_Int32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x3.returnType = Type::FullType { Int32x3Type.name };
     SubgroupSwapHorizontal_Int32x3.parameters = SubgroupSwapHorizontal_Int32x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3_color)->typeSymbol = &Int32x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3_value)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int32x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int32x4_color.type = Type::FullType{ Int32x4Type.name };
+    SubgroupSwapHorizontal_Int32x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int32x4_value.type = Type::FullType{ Int32x4Type.name };
     SubgroupSwapHorizontal_Int32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int32x4.returnType = Type::FullType { Int32x4Type.name };
     SubgroupSwapHorizontal_Int32x4.parameters = SubgroupSwapHorizontal_Int32x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4_color)->typeSymbol = &Int32x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4_value)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int16_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int16_color.type = Type::FullType{ Int16Type.name };
+    SubgroupSwapHorizontal_Int16_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16_value.type = Type::FullType{ Int16Type.name };
     SubgroupSwapHorizontal_Int16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16.returnType = Type::FullType { Int16Type.name };
     SubgroupSwapHorizontal_Int16.parameters = SubgroupSwapHorizontal_Int16_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int16_color)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16_value)->typeSymbol = &Int16Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16)->returnTypeSymbol = &Int16Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int16x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int16x2_color.type = Type::FullType{ Int16x2Type.name };
+    SubgroupSwapHorizontal_Int16x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16x2_value.type = Type::FullType{ Int16x2Type.name };
     SubgroupSwapHorizontal_Int16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x2.returnType = Type::FullType { Int16x2Type.name };
     SubgroupSwapHorizontal_Int16x2.parameters = SubgroupSwapHorizontal_Int16x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2_color)->typeSymbol = &Int16x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2_value)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int16x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int16x3_color.type = Type::FullType{ Int16x3Type.name };
+    SubgroupSwapHorizontal_Int16x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16x3_value.type = Type::FullType{ Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x3.returnType = Type::FullType { Int16x3Type.name };
     SubgroupSwapHorizontal_Int16x3.parameters = SubgroupSwapHorizontal_Int16x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x3_color)->typeSymbol = &Int16x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x3_value)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_Int16x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_Int16x4_color.type = Type::FullType{ Int16x4Type.name };
+    SubgroupSwapHorizontal_Int16x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_Int16x4_value.type = Type::FullType{ Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_Int16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_Int16x4.returnType = Type::FullType { Int16x4Type.name };
     SubgroupSwapHorizontal_Int16x4.parameters = SubgroupSwapHorizontal_Int16x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x4_color)->typeSymbol = &Int16x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_Int16x4_value)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt32_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt32_color.type = Type::FullType{ UInt32Type.name };
+    SubgroupSwapHorizontal_UInt32_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt32_value.type = Type::FullType{ UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt32.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32.returnType = Type::FullType { UInt32Type.name };
     SubgroupSwapHorizontal_UInt32.parameters = SubgroupSwapHorizontal_UInt32_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32_color)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32_value)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32)->returnTypeSymbol = &UInt32Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt32x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt32x2_color.type = Type::FullType{ UInt32x2Type.name };
+    SubgroupSwapHorizontal_UInt32x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt32x2_value.type = Type::FullType{ UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt32x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
     SubgroupSwapHorizontal_UInt32x2.parameters = SubgroupSwapHorizontal_UInt32x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x2_color)->typeSymbol = &UInt32x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x2_value)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt32x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt32x3_color.type = Type::FullType{ UInt32x3Type.name };
+    SubgroupSwapHorizontal_UInt32x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt32x3_value.type = Type::FullType{ UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt32x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
     SubgroupSwapHorizontal_UInt32x3.parameters = SubgroupSwapHorizontal_UInt32x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x3_color)->typeSymbol = &UInt32x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x3_value)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt32x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt32x4_color.type = Type::FullType{ UInt32x4Type.name };
+    SubgroupSwapHorizontal_UInt32x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt32x4_value.type = Type::FullType{ UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt32x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
     SubgroupSwapHorizontal_UInt32x4.parameters = SubgroupSwapHorizontal_UInt32x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x4_color)->typeSymbol = &UInt32x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x4_value)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt16_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt16_color.type = Type::FullType{ UInt16Type.name };
+    SubgroupSwapHorizontal_UInt16_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt16_value.type = Type::FullType{ UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt16.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16.returnType = Type::FullType { UInt16Type.name };
     SubgroupSwapHorizontal_UInt16.parameters = SubgroupSwapHorizontal_UInt16_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16_color)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16_value)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16)->returnTypeSymbol = &UInt16Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt16x2_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt16x2_color.type = Type::FullType{ UInt16x2Type.name };
+    SubgroupSwapHorizontal_UInt16x2_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt16x2_value.type = Type::FullType{ UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt16x2.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
     SubgroupSwapHorizontal_UInt16x2.parameters = SubgroupSwapHorizontal_UInt16x2_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x2_color)->typeSymbol = &UInt16x2Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x2_value)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt16x3_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt16x3_color.type = Type::FullType{ UInt16x3Type.name };
+    SubgroupSwapHorizontal_UInt16x3_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt16x3_value.type = Type::FullType{ UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt16x3.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
     SubgroupSwapHorizontal_UInt16x3.parameters = SubgroupSwapHorizontal_UInt16x3_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x3_color)->typeSymbol = &UInt16x3Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x3_value)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
     /// subgroupSwapHorizontal
-    SubgroupSwapHorizontal_UInt16x4_color.name = "value"_c;
-    SubgroupSwapHorizontal_UInt16x4_color.type = Type::FullType{ UInt16x4Type.name };
+    SubgroupSwapHorizontal_UInt16x4_value.name = "value"_c;
+    SubgroupSwapHorizontal_UInt16x4_value.type = Type::FullType{ UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.documentation = "Returns true if bit at index in mask is 1"_c;
     SubgroupSwapHorizontal_UInt16x4.name = "subgroupSwapHorizontal"_c;
     SubgroupSwapHorizontal_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
     SubgroupSwapHorizontal_UInt16x4.parameters = SubgroupSwapHorizontal_UInt16x4_args;
-    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4_color)->typeSymbol = &UInt16x4Type;
+    Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4_value)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&SubgroupSwapHorizontal_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
     /// atomicLoad
