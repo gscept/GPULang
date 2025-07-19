@@ -7,1497 +7,3263 @@
 #include "types.h"
 namespace GPULang
 {
+/// acos
 Variable acos_Float32_arg;
 Function acos_Float32;
+inline constexpr std::array acos_Float32_args = { &acos_Float32_arg };
+
+/// acos
 Variable acos_Float32x2_arg;
 Function acos_Float32x2;
+inline constexpr std::array acos_Float32x2_args = { &acos_Float32x2_arg };
+
+/// acos
 Variable acos_Float32x3_arg;
 Function acos_Float32x3;
+inline constexpr std::array acos_Float32x3_args = { &acos_Float32x3_arg };
+
+/// acos
 Variable acos_Float32x4_arg;
 Function acos_Float32x4;
+inline constexpr std::array acos_Float32x4_args = { &acos_Float32x4_arg };
+
+/// acos
 Variable acos_Float16_arg;
 Function acos_Float16;
+inline constexpr std::array acos_Float16_args = { &acos_Float16_arg };
+
+/// acos
 Variable acos_Float16x2_arg;
 Function acos_Float16x2;
+inline constexpr std::array acos_Float16x2_args = { &acos_Float16x2_arg };
+
+/// acos
 Variable acos_Float16x3_arg;
 Function acos_Float16x3;
+inline constexpr std::array acos_Float16x3_args = { &acos_Float16x3_arg };
+
+/// acos
 Variable acos_Float16x4_arg;
 Function acos_Float16x4;
+inline constexpr std::array acos_Float16x4_args = { &acos_Float16x4_arg };
+
+/// acosh
 Variable acosh_Float32_arg;
 Function acosh_Float32;
+inline constexpr std::array acosh_Float32_args = { &acosh_Float32_arg };
+
+/// acosh
 Variable acosh_Float32x2_arg;
 Function acosh_Float32x2;
+inline constexpr std::array acosh_Float32x2_args = { &acosh_Float32x2_arg };
+
+/// acosh
 Variable acosh_Float32x3_arg;
 Function acosh_Float32x3;
+inline constexpr std::array acosh_Float32x3_args = { &acosh_Float32x3_arg };
+
+/// acosh
 Variable acosh_Float32x4_arg;
 Function acosh_Float32x4;
+inline constexpr std::array acosh_Float32x4_args = { &acosh_Float32x4_arg };
+
+/// acosh
 Variable acosh_Float16_arg;
 Function acosh_Float16;
+inline constexpr std::array acosh_Float16_args = { &acosh_Float16_arg };
+
+/// acosh
 Variable acosh_Float16x2_arg;
 Function acosh_Float16x2;
+inline constexpr std::array acosh_Float16x2_args = { &acosh_Float16x2_arg };
+
+/// acosh
 Variable acosh_Float16x3_arg;
 Function acosh_Float16x3;
+inline constexpr std::array acosh_Float16x3_args = { &acosh_Float16x3_arg };
+
+/// acosh
 Variable acosh_Float16x4_arg;
 Function acosh_Float16x4;
+inline constexpr std::array acosh_Float16x4_args = { &acosh_Float16x4_arg };
+
+/// asin
 Variable asin_Float32_arg;
 Function asin_Float32;
+inline constexpr std::array asin_Float32_args = { &asin_Float32_arg };
+
+/// asin
 Variable asin_Float32x2_arg;
 Function asin_Float32x2;
+inline constexpr std::array asin_Float32x2_args = { &asin_Float32x2_arg };
+
+/// asin
 Variable asin_Float32x3_arg;
 Function asin_Float32x3;
+inline constexpr std::array asin_Float32x3_args = { &asin_Float32x3_arg };
+
+/// asin
 Variable asin_Float32x4_arg;
 Function asin_Float32x4;
+inline constexpr std::array asin_Float32x4_args = { &asin_Float32x4_arg };
+
+/// asin
 Variable asin_Float16_arg;
 Function asin_Float16;
+inline constexpr std::array asin_Float16_args = { &asin_Float16_arg };
+
+/// asin
 Variable asin_Float16x2_arg;
 Function asin_Float16x2;
+inline constexpr std::array asin_Float16x2_args = { &asin_Float16x2_arg };
+
+/// asin
 Variable asin_Float16x3_arg;
 Function asin_Float16x3;
+inline constexpr std::array asin_Float16x3_args = { &asin_Float16x3_arg };
+
+/// asin
 Variable asin_Float16x4_arg;
 Function asin_Float16x4;
+inline constexpr std::array asin_Float16x4_args = { &asin_Float16x4_arg };
+
+/// asinh
 Variable asinh_Float32_arg;
 Function asinh_Float32;
+inline constexpr std::array asinh_Float32_args = { &asinh_Float32_arg };
+
+/// asinh
 Variable asinh_Float32x2_arg;
 Function asinh_Float32x2;
+inline constexpr std::array asinh_Float32x2_args = { &asinh_Float32x2_arg };
+
+/// asinh
 Variable asinh_Float32x3_arg;
 Function asinh_Float32x3;
+inline constexpr std::array asinh_Float32x3_args = { &asinh_Float32x3_arg };
+
+/// asinh
 Variable asinh_Float32x4_arg;
 Function asinh_Float32x4;
+inline constexpr std::array asinh_Float32x4_args = { &asinh_Float32x4_arg };
+
+/// asinh
 Variable asinh_Float16_arg;
 Function asinh_Float16;
+inline constexpr std::array asinh_Float16_args = { &asinh_Float16_arg };
+
+/// asinh
 Variable asinh_Float16x2_arg;
 Function asinh_Float16x2;
+inline constexpr std::array asinh_Float16x2_args = { &asinh_Float16x2_arg };
+
+/// asinh
 Variable asinh_Float16x3_arg;
 Function asinh_Float16x3;
+inline constexpr std::array asinh_Float16x3_args = { &asinh_Float16x3_arg };
+
+/// asinh
 Variable asinh_Float16x4_arg;
 Function asinh_Float16x4;
+inline constexpr std::array asinh_Float16x4_args = { &asinh_Float16x4_arg };
+
+/// atan
 Variable atan_Float32_arg;
 Function atan_Float32;
+inline constexpr std::array atan_Float32_args = { &atan_Float32_arg };
+
+/// atan
 Variable atan_Float32x2_arg;
 Function atan_Float32x2;
+inline constexpr std::array atan_Float32x2_args = { &atan_Float32x2_arg };
+
+/// atan
 Variable atan_Float32x3_arg;
 Function atan_Float32x3;
+inline constexpr std::array atan_Float32x3_args = { &atan_Float32x3_arg };
+
+/// atan
 Variable atan_Float32x4_arg;
 Function atan_Float32x4;
+inline constexpr std::array atan_Float32x4_args = { &atan_Float32x4_arg };
+
+/// atan
 Variable atan_Float16_arg;
 Function atan_Float16;
+inline constexpr std::array atan_Float16_args = { &atan_Float16_arg };
+
+/// atan
 Variable atan_Float16x2_arg;
 Function atan_Float16x2;
+inline constexpr std::array atan_Float16x2_args = { &atan_Float16x2_arg };
+
+/// atan
 Variable atan_Float16x3_arg;
 Function atan_Float16x3;
+inline constexpr std::array atan_Float16x3_args = { &atan_Float16x3_arg };
+
+/// atan
 Variable atan_Float16x4_arg;
 Function atan_Float16x4;
+inline constexpr std::array atan_Float16x4_args = { &atan_Float16x4_arg };
+
+/// atanh
 Variable atanh_Float32_arg;
 Function atanh_Float32;
+inline constexpr std::array atanh_Float32_args = { &atanh_Float32_arg };
+
+/// atanh
 Variable atanh_Float32x2_arg;
 Function atanh_Float32x2;
+inline constexpr std::array atanh_Float32x2_args = { &atanh_Float32x2_arg };
+
+/// atanh
 Variable atanh_Float32x3_arg;
 Function atanh_Float32x3;
+inline constexpr std::array atanh_Float32x3_args = { &atanh_Float32x3_arg };
+
+/// atanh
 Variable atanh_Float32x4_arg;
 Function atanh_Float32x4;
+inline constexpr std::array atanh_Float32x4_args = { &atanh_Float32x4_arg };
+
+/// atanh
 Variable atanh_Float16_arg;
 Function atanh_Float16;
+inline constexpr std::array atanh_Float16_args = { &atanh_Float16_arg };
+
+/// atanh
 Variable atanh_Float16x2_arg;
 Function atanh_Float16x2;
+inline constexpr std::array atanh_Float16x2_args = { &atanh_Float16x2_arg };
+
+/// atanh
 Variable atanh_Float16x3_arg;
 Function atanh_Float16x3;
+inline constexpr std::array atanh_Float16x3_args = { &atanh_Float16x3_arg };
+
+/// atanh
 Variable atanh_Float16x4_arg;
 Function atanh_Float16x4;
+inline constexpr std::array atanh_Float16x4_args = { &atanh_Float16x4_arg };
+
+/// cos
 Variable cos_Float32_arg;
 Function cos_Float32;
+inline constexpr std::array cos_Float32_args = { &cos_Float32_arg };
+
+/// cos
 Variable cos_Float32x2_arg;
 Function cos_Float32x2;
+inline constexpr std::array cos_Float32x2_args = { &cos_Float32x2_arg };
+
+/// cos
 Variable cos_Float32x3_arg;
 Function cos_Float32x3;
+inline constexpr std::array cos_Float32x3_args = { &cos_Float32x3_arg };
+
+/// cos
 Variable cos_Float32x4_arg;
 Function cos_Float32x4;
+inline constexpr std::array cos_Float32x4_args = { &cos_Float32x4_arg };
+
+/// cos
 Variable cos_Float16_arg;
 Function cos_Float16;
+inline constexpr std::array cos_Float16_args = { &cos_Float16_arg };
+
+/// cos
 Variable cos_Float16x2_arg;
 Function cos_Float16x2;
+inline constexpr std::array cos_Float16x2_args = { &cos_Float16x2_arg };
+
+/// cos
 Variable cos_Float16x3_arg;
 Function cos_Float16x3;
+inline constexpr std::array cos_Float16x3_args = { &cos_Float16x3_arg };
+
+/// cos
 Variable cos_Float16x4_arg;
 Function cos_Float16x4;
+inline constexpr std::array cos_Float16x4_args = { &cos_Float16x4_arg };
+
+/// cosh
 Variable cosh_Float32_arg;
 Function cosh_Float32;
+inline constexpr std::array cosh_Float32_args = { &cosh_Float32_arg };
+
+/// cosh
 Variable cosh_Float32x2_arg;
 Function cosh_Float32x2;
+inline constexpr std::array cosh_Float32x2_args = { &cosh_Float32x2_arg };
+
+/// cosh
 Variable cosh_Float32x3_arg;
 Function cosh_Float32x3;
+inline constexpr std::array cosh_Float32x3_args = { &cosh_Float32x3_arg };
+
+/// cosh
 Variable cosh_Float32x4_arg;
 Function cosh_Float32x4;
+inline constexpr std::array cosh_Float32x4_args = { &cosh_Float32x4_arg };
+
+/// cosh
 Variable cosh_Float16_arg;
 Function cosh_Float16;
+inline constexpr std::array cosh_Float16_args = { &cosh_Float16_arg };
+
+/// cosh
 Variable cosh_Float16x2_arg;
 Function cosh_Float16x2;
+inline constexpr std::array cosh_Float16x2_args = { &cosh_Float16x2_arg };
+
+/// cosh
 Variable cosh_Float16x3_arg;
 Function cosh_Float16x3;
+inline constexpr std::array cosh_Float16x3_args = { &cosh_Float16x3_arg };
+
+/// cosh
 Variable cosh_Float16x4_arg;
 Function cosh_Float16x4;
+inline constexpr std::array cosh_Float16x4_args = { &cosh_Float16x4_arg };
+
+/// exp
 Variable exp_Float32_arg;
 Function exp_Float32;
+inline constexpr std::array exp_Float32_args = { &exp_Float32_arg };
+
+/// exp
 Variable exp_Float32x2_arg;
 Function exp_Float32x2;
+inline constexpr std::array exp_Float32x2_args = { &exp_Float32x2_arg };
+
+/// exp
 Variable exp_Float32x3_arg;
 Function exp_Float32x3;
+inline constexpr std::array exp_Float32x3_args = { &exp_Float32x3_arg };
+
+/// exp
 Variable exp_Float32x4_arg;
 Function exp_Float32x4;
+inline constexpr std::array exp_Float32x4_args = { &exp_Float32x4_arg };
+
+/// exp
 Variable exp_Float16_arg;
 Function exp_Float16;
+inline constexpr std::array exp_Float16_args = { &exp_Float16_arg };
+
+/// exp
 Variable exp_Float16x2_arg;
 Function exp_Float16x2;
+inline constexpr std::array exp_Float16x2_args = { &exp_Float16x2_arg };
+
+/// exp
 Variable exp_Float16x3_arg;
 Function exp_Float16x3;
+inline constexpr std::array exp_Float16x3_args = { &exp_Float16x3_arg };
+
+/// exp
 Variable exp_Float16x4_arg;
 Function exp_Float16x4;
+inline constexpr std::array exp_Float16x4_args = { &exp_Float16x4_arg };
+
+/// exp2
 Variable exp2_Float32_arg;
 Function exp2_Float32;
+inline constexpr std::array exp2_Float32_args = { &exp2_Float32_arg };
+
+/// exp2
 Variable exp2_Float32x2_arg;
 Function exp2_Float32x2;
+inline constexpr std::array exp2_Float32x2_args = { &exp2_Float32x2_arg };
+
+/// exp2
 Variable exp2_Float32x3_arg;
 Function exp2_Float32x3;
+inline constexpr std::array exp2_Float32x3_args = { &exp2_Float32x3_arg };
+
+/// exp2
 Variable exp2_Float32x4_arg;
 Function exp2_Float32x4;
+inline constexpr std::array exp2_Float32x4_args = { &exp2_Float32x4_arg };
+
+/// exp2
 Variable exp2_Float16_arg;
 Function exp2_Float16;
+inline constexpr std::array exp2_Float16_args = { &exp2_Float16_arg };
+
+/// exp2
 Variable exp2_Float16x2_arg;
 Function exp2_Float16x2;
+inline constexpr std::array exp2_Float16x2_args = { &exp2_Float16x2_arg };
+
+/// exp2
 Variable exp2_Float16x3_arg;
 Function exp2_Float16x3;
+inline constexpr std::array exp2_Float16x3_args = { &exp2_Float16x3_arg };
+
+/// exp2
 Variable exp2_Float16x4_arg;
 Function exp2_Float16x4;
+inline constexpr std::array exp2_Float16x4_args = { &exp2_Float16x4_arg };
+
+/// invSqrt
 Variable invSqrt_Float32_arg;
 Function invSqrt_Float32;
+inline constexpr std::array invSqrt_Float32_args = { &invSqrt_Float32_arg };
+
+/// invSqrt
 Variable invSqrt_Float32x2_arg;
 Function invSqrt_Float32x2;
+inline constexpr std::array invSqrt_Float32x2_args = { &invSqrt_Float32x2_arg };
+
+/// invSqrt
 Variable invSqrt_Float32x3_arg;
 Function invSqrt_Float32x3;
+inline constexpr std::array invSqrt_Float32x3_args = { &invSqrt_Float32x3_arg };
+
+/// invSqrt
 Variable invSqrt_Float32x4_arg;
 Function invSqrt_Float32x4;
+inline constexpr std::array invSqrt_Float32x4_args = { &invSqrt_Float32x4_arg };
+
+/// invSqrt
 Variable invSqrt_Float16_arg;
 Function invSqrt_Float16;
+inline constexpr std::array invSqrt_Float16_args = { &invSqrt_Float16_arg };
+
+/// invSqrt
 Variable invSqrt_Float16x2_arg;
 Function invSqrt_Float16x2;
+inline constexpr std::array invSqrt_Float16x2_args = { &invSqrt_Float16x2_arg };
+
+/// invSqrt
 Variable invSqrt_Float16x3_arg;
 Function invSqrt_Float16x3;
+inline constexpr std::array invSqrt_Float16x3_args = { &invSqrt_Float16x3_arg };
+
+/// invSqrt
 Variable invSqrt_Float16x4_arg;
 Function invSqrt_Float16x4;
+inline constexpr std::array invSqrt_Float16x4_args = { &invSqrt_Float16x4_arg };
+
+/// log
 Variable log_Float32_arg;
 Function log_Float32;
+inline constexpr std::array log_Float32_args = { &log_Float32_arg };
+
+/// log
 Variable log_Float32x2_arg;
 Function log_Float32x2;
+inline constexpr std::array log_Float32x2_args = { &log_Float32x2_arg };
+
+/// log
 Variable log_Float32x3_arg;
 Function log_Float32x3;
+inline constexpr std::array log_Float32x3_args = { &log_Float32x3_arg };
+
+/// log
 Variable log_Float32x4_arg;
 Function log_Float32x4;
+inline constexpr std::array log_Float32x4_args = { &log_Float32x4_arg };
+
+/// log
 Variable log_Float16_arg;
 Function log_Float16;
+inline constexpr std::array log_Float16_args = { &log_Float16_arg };
+
+/// log
 Variable log_Float16x2_arg;
 Function log_Float16x2;
+inline constexpr std::array log_Float16x2_args = { &log_Float16x2_arg };
+
+/// log
 Variable log_Float16x3_arg;
 Function log_Float16x3;
+inline constexpr std::array log_Float16x3_args = { &log_Float16x3_arg };
+
+/// log
 Variable log_Float16x4_arg;
 Function log_Float16x4;
+inline constexpr std::array log_Float16x4_args = { &log_Float16x4_arg };
+
+/// log2
 Variable log2_Float32_arg;
 Function log2_Float32;
+inline constexpr std::array log2_Float32_args = { &log2_Float32_arg };
+
+/// log2
 Variable log2_Float32x2_arg;
 Function log2_Float32x2;
+inline constexpr std::array log2_Float32x2_args = { &log2_Float32x2_arg };
+
+/// log2
 Variable log2_Float32x3_arg;
 Function log2_Float32x3;
+inline constexpr std::array log2_Float32x3_args = { &log2_Float32x3_arg };
+
+/// log2
 Variable log2_Float32x4_arg;
 Function log2_Float32x4;
+inline constexpr std::array log2_Float32x4_args = { &log2_Float32x4_arg };
+
+/// log2
 Variable log2_Float16_arg;
 Function log2_Float16;
+inline constexpr std::array log2_Float16_args = { &log2_Float16_arg };
+
+/// log2
 Variable log2_Float16x2_arg;
 Function log2_Float16x2;
+inline constexpr std::array log2_Float16x2_args = { &log2_Float16x2_arg };
+
+/// log2
 Variable log2_Float16x3_arg;
 Function log2_Float16x3;
+inline constexpr std::array log2_Float16x3_args = { &log2_Float16x3_arg };
+
+/// log2
 Variable log2_Float16x4_arg;
 Function log2_Float16x4;
+inline constexpr std::array log2_Float16x4_args = { &log2_Float16x4_arg };
+
+/// sin
 Variable sin_Float32_arg;
 Function sin_Float32;
+inline constexpr std::array sin_Float32_args = { &sin_Float32_arg };
+
+/// sin
 Variable sin_Float32x2_arg;
 Function sin_Float32x2;
+inline constexpr std::array sin_Float32x2_args = { &sin_Float32x2_arg };
+
+/// sin
 Variable sin_Float32x3_arg;
 Function sin_Float32x3;
+inline constexpr std::array sin_Float32x3_args = { &sin_Float32x3_arg };
+
+/// sin
 Variable sin_Float32x4_arg;
 Function sin_Float32x4;
+inline constexpr std::array sin_Float32x4_args = { &sin_Float32x4_arg };
+
+/// sin
 Variable sin_Float16_arg;
 Function sin_Float16;
+inline constexpr std::array sin_Float16_args = { &sin_Float16_arg };
+
+/// sin
 Variable sin_Float16x2_arg;
 Function sin_Float16x2;
+inline constexpr std::array sin_Float16x2_args = { &sin_Float16x2_arg };
+
+/// sin
 Variable sin_Float16x3_arg;
 Function sin_Float16x3;
+inline constexpr std::array sin_Float16x3_args = { &sin_Float16x3_arg };
+
+/// sin
 Variable sin_Float16x4_arg;
 Function sin_Float16x4;
+inline constexpr std::array sin_Float16x4_args = { &sin_Float16x4_arg };
+
+/// sinh
 Variable sinh_Float32_arg;
 Function sinh_Float32;
+inline constexpr std::array sinh_Float32_args = { &sinh_Float32_arg };
+
+/// sinh
 Variable sinh_Float32x2_arg;
 Function sinh_Float32x2;
+inline constexpr std::array sinh_Float32x2_args = { &sinh_Float32x2_arg };
+
+/// sinh
 Variable sinh_Float32x3_arg;
 Function sinh_Float32x3;
+inline constexpr std::array sinh_Float32x3_args = { &sinh_Float32x3_arg };
+
+/// sinh
 Variable sinh_Float32x4_arg;
 Function sinh_Float32x4;
+inline constexpr std::array sinh_Float32x4_args = { &sinh_Float32x4_arg };
+
+/// sinh
 Variable sinh_Float16_arg;
 Function sinh_Float16;
+inline constexpr std::array sinh_Float16_args = { &sinh_Float16_arg };
+
+/// sinh
 Variable sinh_Float16x2_arg;
 Function sinh_Float16x2;
+inline constexpr std::array sinh_Float16x2_args = { &sinh_Float16x2_arg };
+
+/// sinh
 Variable sinh_Float16x3_arg;
 Function sinh_Float16x3;
+inline constexpr std::array sinh_Float16x3_args = { &sinh_Float16x3_arg };
+
+/// sinh
 Variable sinh_Float16x4_arg;
 Function sinh_Float16x4;
+inline constexpr std::array sinh_Float16x4_args = { &sinh_Float16x4_arg };
+
+/// sqrt
 Variable sqrt_Float32_arg;
 Function sqrt_Float32;
+inline constexpr std::array sqrt_Float32_args = { &sqrt_Float32_arg };
+
+/// sqrt
 Variable sqrt_Float32x2_arg;
 Function sqrt_Float32x2;
+inline constexpr std::array sqrt_Float32x2_args = { &sqrt_Float32x2_arg };
+
+/// sqrt
 Variable sqrt_Float32x3_arg;
 Function sqrt_Float32x3;
+inline constexpr std::array sqrt_Float32x3_args = { &sqrt_Float32x3_arg };
+
+/// sqrt
 Variable sqrt_Float32x4_arg;
 Function sqrt_Float32x4;
+inline constexpr std::array sqrt_Float32x4_args = { &sqrt_Float32x4_arg };
+
+/// sqrt
 Variable sqrt_Float16_arg;
 Function sqrt_Float16;
+inline constexpr std::array sqrt_Float16_args = { &sqrt_Float16_arg };
+
+/// sqrt
 Variable sqrt_Float16x2_arg;
 Function sqrt_Float16x2;
+inline constexpr std::array sqrt_Float16x2_args = { &sqrt_Float16x2_arg };
+
+/// sqrt
 Variable sqrt_Float16x3_arg;
 Function sqrt_Float16x3;
+inline constexpr std::array sqrt_Float16x3_args = { &sqrt_Float16x3_arg };
+
+/// sqrt
 Variable sqrt_Float16x4_arg;
 Function sqrt_Float16x4;
+inline constexpr std::array sqrt_Float16x4_args = { &sqrt_Float16x4_arg };
+
+/// tan
 Variable tan_Float32_arg;
 Function tan_Float32;
+inline constexpr std::array tan_Float32_args = { &tan_Float32_arg };
+
+/// tan
 Variable tan_Float32x2_arg;
 Function tan_Float32x2;
+inline constexpr std::array tan_Float32x2_args = { &tan_Float32x2_arg };
+
+/// tan
 Variable tan_Float32x3_arg;
 Function tan_Float32x3;
+inline constexpr std::array tan_Float32x3_args = { &tan_Float32x3_arg };
+
+/// tan
 Variable tan_Float32x4_arg;
 Function tan_Float32x4;
+inline constexpr std::array tan_Float32x4_args = { &tan_Float32x4_arg };
+
+/// tan
 Variable tan_Float16_arg;
 Function tan_Float16;
+inline constexpr std::array tan_Float16_args = { &tan_Float16_arg };
+
+/// tan
 Variable tan_Float16x2_arg;
 Function tan_Float16x2;
+inline constexpr std::array tan_Float16x2_args = { &tan_Float16x2_arg };
+
+/// tan
 Variable tan_Float16x3_arg;
 Function tan_Float16x3;
+inline constexpr std::array tan_Float16x3_args = { &tan_Float16x3_arg };
+
+/// tan
 Variable tan_Float16x4_arg;
 Function tan_Float16x4;
+inline constexpr std::array tan_Float16x4_args = { &tan_Float16x4_arg };
+
+/// tanh
 Variable tanh_Float32_arg;
 Function tanh_Float32;
+inline constexpr std::array tanh_Float32_args = { &tanh_Float32_arg };
+
+/// tanh
 Variable tanh_Float32x2_arg;
 Function tanh_Float32x2;
+inline constexpr std::array tanh_Float32x2_args = { &tanh_Float32x2_arg };
+
+/// tanh
 Variable tanh_Float32x3_arg;
 Function tanh_Float32x3;
+inline constexpr std::array tanh_Float32x3_args = { &tanh_Float32x3_arg };
+
+/// tanh
 Variable tanh_Float32x4_arg;
 Function tanh_Float32x4;
+inline constexpr std::array tanh_Float32x4_args = { &tanh_Float32x4_arg };
+
+/// tanh
 Variable tanh_Float16_arg;
 Function tanh_Float16;
+inline constexpr std::array tanh_Float16_args = { &tanh_Float16_arg };
+
+/// tanh
 Variable tanh_Float16x2_arg;
 Function tanh_Float16x2;
+inline constexpr std::array tanh_Float16x2_args = { &tanh_Float16x2_arg };
+
+/// tanh
 Variable tanh_Float16x3_arg;
 Function tanh_Float16x3;
+inline constexpr std::array tanh_Float16x3_args = { &tanh_Float16x3_arg };
+
+/// tanh
 Variable tanh_Float16x4_arg;
 Function tanh_Float16x4;
+inline constexpr std::array tanh_Float16x4_args = { &tanh_Float16x4_arg };
+
+/// tanh
 Variable atan2_Float32_y;
 Variable atan2_Float32_x;
 Function atan2_Float32;
+inline constexpr std::array atan2_Float32_args = { &atan2_Float32_y, &atan2_Float32_x };
+
+/// tanh
 Variable atan2_Float32x2_y;
 Variable atan2_Float32x2_x;
 Function atan2_Float32x2;
+inline constexpr std::array atan2_Float32x2_args = { &atan2_Float32x2_y, &atan2_Float32x2_x };
+
+/// tanh
 Variable atan2_Float32x3_y;
 Variable atan2_Float32x3_x;
 Function atan2_Float32x3;
+inline constexpr std::array atan2_Float32x3_args = { &atan2_Float32x3_y, &atan2_Float32x3_x };
+
+/// tanh
 Variable atan2_Float32x4_y;
 Variable atan2_Float32x4_x;
 Function atan2_Float32x4;
+inline constexpr std::array atan2_Float32x4_args = { &atan2_Float32x4_y, &atan2_Float32x4_x };
+
+/// tanh
 Variable atan2_Float16_y;
 Variable atan2_Float16_x;
 Function atan2_Float16;
+inline constexpr std::array atan2_Float16_args = { &atan2_Float16_y, &atan2_Float16_x };
+
+/// tanh
 Variable atan2_Float16x2_y;
 Variable atan2_Float16x2_x;
 Function atan2_Float16x2;
+inline constexpr std::array atan2_Float16x2_args = { &atan2_Float16x2_y, &atan2_Float16x2_x };
+
+/// tanh
 Variable atan2_Float16x3_y;
 Variable atan2_Float16x3_x;
 Function atan2_Float16x3;
+inline constexpr std::array atan2_Float16x3_args = { &atan2_Float16x3_y, &atan2_Float16x3_x };
+
+/// tanh
 Variable atan2_Float16x4_y;
 Variable atan2_Float16x4_x;
 Function atan2_Float16x4;
+inline constexpr std::array atan2_Float16x4_args = { &atan2_Float16x4_y, &atan2_Float16x4_x };
+
+/// pow
 Variable pow_Float32_arg;
 Variable pow_Float32_exp;
 Function pow_Float32;
+inline constexpr std::array pow_Float32_args = { &pow_Float32_arg, &pow_Float32_exp };
+
+/// pow
 Variable pow_Float32x2_arg;
 Variable pow_Float32x2_exp;
 Function pow_Float32x2;
+inline constexpr std::array pow_Float32x2_args = { &pow_Float32x2_arg, &pow_Float32x2_exp };
+
+/// pow
 Variable pow_Float32x3_arg;
 Variable pow_Float32x3_exp;
 Function pow_Float32x3;
+inline constexpr std::array pow_Float32x3_args = { &pow_Float32x3_arg, &pow_Float32x3_exp };
+
+/// pow
 Variable pow_Float32x4_arg;
 Variable pow_Float32x4_exp;
 Function pow_Float32x4;
+inline constexpr std::array pow_Float32x4_args = { &pow_Float32x4_arg, &pow_Float32x4_exp };
+
+/// pow
 Variable pow_Float16_arg;
 Variable pow_Float16_exp;
 Function pow_Float16;
+inline constexpr std::array pow_Float16_args = { &pow_Float16_arg, &pow_Float16_exp };
+
+/// pow
 Variable pow_Float16x2_arg;
 Variable pow_Float16x2_exp;
 Function pow_Float16x2;
+inline constexpr std::array pow_Float16x2_args = { &pow_Float16x2_arg, &pow_Float16x2_exp };
+
+/// pow
 Variable pow_Float16x3_arg;
 Variable pow_Float16x3_exp;
 Function pow_Float16x3;
+inline constexpr std::array pow_Float16x3_args = { &pow_Float16x3_arg, &pow_Float16x3_exp };
+
+/// pow
 Variable pow_Float16x4_arg;
 Variable pow_Float16x4_exp;
 Function pow_Float16x4;
+inline constexpr std::array pow_Float16x4_args = { &pow_Float16x4_arg, &pow_Float16x4_exp };
+
+/// mad
 Variable mad_Float32_arg;
 Variable mad_Float32_mul;
 Variable mad_Float32_add;
 Function mad_Float32;
+inline constexpr std::array mad_Float32_args = { &mad_Float32_arg, &mad_Float32_mul, &mad_Float32_add };
+
+/// mad
 Variable mad_Float32x2_arg;
 Variable mad_Float32x2_mul;
 Variable mad_Float32x2_add;
 Function mad_Float32x2;
+inline constexpr std::array mad_Float32x2_args = { &mad_Float32x2_arg, &mad_Float32x2_mul, &mad_Float32x2_add };
+
+/// mad
 Variable mad_Float32x3_arg;
 Variable mad_Float32x3_mul;
 Variable mad_Float32x3_add;
 Function mad_Float32x3;
+inline constexpr std::array mad_Float32x3_args = { &mad_Float32x3_arg, &mad_Float32x3_mul, &mad_Float32x3_add };
+
+/// mad
 Variable mad_Float32x4_arg;
 Variable mad_Float32x4_mul;
 Variable mad_Float32x4_add;
 Function mad_Float32x4;
+inline constexpr std::array mad_Float32x4_args = { &mad_Float32x4_arg, &mad_Float32x4_mul, &mad_Float32x4_add };
+
+/// mad
 Variable mad_Float16_arg;
 Variable mad_Float16_mul;
 Variable mad_Float16_add;
 Function mad_Float16;
+inline constexpr std::array mad_Float16_args = { &mad_Float16_arg, &mad_Float16_mul, &mad_Float16_add };
+
+/// mad
 Variable mad_Float16x2_arg;
 Variable mad_Float16x2_mul;
 Variable mad_Float16x2_add;
 Function mad_Float16x2;
+inline constexpr std::array mad_Float16x2_args = { &mad_Float16x2_arg, &mad_Float16x2_mul, &mad_Float16x2_add };
+
+/// mad
 Variable mad_Float16x3_arg;
 Variable mad_Float16x3_mul;
 Variable mad_Float16x3_add;
 Function mad_Float16x3;
+inline constexpr std::array mad_Float16x3_args = { &mad_Float16x3_arg, &mad_Float16x3_mul, &mad_Float16x3_add };
+
+/// mad
 Variable mad_Float16x4_arg;
 Variable mad_Float16x4_mul;
 Variable mad_Float16x4_add;
 Function mad_Float16x4;
+inline constexpr std::array mad_Float16x4_args = { &mad_Float16x4_arg, &mad_Float16x4_mul, &mad_Float16x4_add };
+
+/// mad
 Variable mad_Int32_arg;
 Variable mad_Int32_mul;
 Variable mad_Int32_add;
 Function mad_Int32;
+inline constexpr std::array mad_Int32_args = { &mad_Int32_arg, &mad_Int32_mul, &mad_Int32_add };
+
+/// mad
 Variable mad_Int32x2_arg;
 Variable mad_Int32x2_mul;
 Variable mad_Int32x2_add;
 Function mad_Int32x2;
+inline constexpr std::array mad_Int32x2_args = { &mad_Int32x2_arg, &mad_Int32x2_mul, &mad_Int32x2_add };
+
+/// mad
 Variable mad_Int32x3_arg;
 Variable mad_Int32x3_mul;
 Variable mad_Int32x3_add;
 Function mad_Int32x3;
+inline constexpr std::array mad_Int32x3_args = { &mad_Int32x3_arg, &mad_Int32x3_mul, &mad_Int32x3_add };
+
+/// mad
 Variable mad_Int32x4_arg;
 Variable mad_Int32x4_mul;
 Variable mad_Int32x4_add;
 Function mad_Int32x4;
+inline constexpr std::array mad_Int32x4_args = { &mad_Int32x4_arg, &mad_Int32x4_mul, &mad_Int32x4_add };
+
+/// mad
 Variable mad_Int16_arg;
 Variable mad_Int16_mul;
 Variable mad_Int16_add;
 Function mad_Int16;
+inline constexpr std::array mad_Int16_args = { &mad_Int16_arg, &mad_Int16_mul, &mad_Int16_add };
+
+/// mad
 Variable mad_Int16x2_arg;
 Variable mad_Int16x2_mul;
 Variable mad_Int16x2_add;
 Function mad_Int16x2;
+inline constexpr std::array mad_Int16x2_args = { &mad_Int16x2_arg, &mad_Int16x2_mul, &mad_Int16x2_add };
+
+/// mad
 Variable mad_Int16x3_arg;
 Variable mad_Int16x3_mul;
 Variable mad_Int16x3_add;
 Function mad_Int16x3;
+inline constexpr std::array mad_Int16x3_args = { &mad_Int16x3_arg, &mad_Int16x3_mul, &mad_Int16x3_add };
+
+/// mad
 Variable mad_Int16x4_arg;
 Variable mad_Int16x4_mul;
 Variable mad_Int16x4_add;
 Function mad_Int16x4;
+inline constexpr std::array mad_Int16x4_args = { &mad_Int16x4_arg, &mad_Int16x4_mul, &mad_Int16x4_add };
+
+/// mad
 Variable mad_UInt32_arg;
 Variable mad_UInt32_mul;
 Variable mad_UInt32_add;
 Function mad_UInt32;
+inline constexpr std::array mad_UInt32_args = { &mad_UInt32_arg, &mad_UInt32_mul, &mad_UInt32_add };
+
+/// mad
 Variable mad_UInt32x2_arg;
 Variable mad_UInt32x2_mul;
 Variable mad_UInt32x2_add;
 Function mad_UInt32x2;
+inline constexpr std::array mad_UInt32x2_args = { &mad_UInt32x2_arg, &mad_UInt32x2_mul, &mad_UInt32x2_add };
+
+/// mad
 Variable mad_UInt32x3_arg;
 Variable mad_UInt32x3_mul;
 Variable mad_UInt32x3_add;
 Function mad_UInt32x3;
+inline constexpr std::array mad_UInt32x3_args = { &mad_UInt32x3_arg, &mad_UInt32x3_mul, &mad_UInt32x3_add };
+
+/// mad
 Variable mad_UInt32x4_arg;
 Variable mad_UInt32x4_mul;
 Variable mad_UInt32x4_add;
 Function mad_UInt32x4;
+inline constexpr std::array mad_UInt32x4_args = { &mad_UInt32x4_arg, &mad_UInt32x4_mul, &mad_UInt32x4_add };
+
+/// mad
 Variable mad_UInt16_arg;
 Variable mad_UInt16_mul;
 Variable mad_UInt16_add;
 Function mad_UInt16;
+inline constexpr std::array mad_UInt16_args = { &mad_UInt16_arg, &mad_UInt16_mul, &mad_UInt16_add };
+
+/// mad
 Variable mad_UInt16x2_arg;
 Variable mad_UInt16x2_mul;
 Variable mad_UInt16x2_add;
 Function mad_UInt16x2;
+inline constexpr std::array mad_UInt16x2_args = { &mad_UInt16x2_arg, &mad_UInt16x2_mul, &mad_UInt16x2_add };
+
+/// mad
 Variable mad_UInt16x3_arg;
 Variable mad_UInt16x3_mul;
 Variable mad_UInt16x3_add;
 Function mad_UInt16x3;
+inline constexpr std::array mad_UInt16x3_args = { &mad_UInt16x3_arg, &mad_UInt16x3_mul, &mad_UInt16x3_add };
+
+/// mad
 Variable mad_UInt16x4_arg;
 Variable mad_UInt16x4_mul;
 Variable mad_UInt16x4_add;
 Function mad_UInt16x4;
+inline constexpr std::array mad_UInt16x4_args = { &mad_UInt16x4_arg, &mad_UInt16x4_mul, &mad_UInt16x4_add };
+
+/// dot
 Variable dot_Float32x2_x;
 Variable dot_Float32x2_y;
 Function dot_Float32x2;
+inline constexpr std::array dot_Float32x2_args = { &dot_Float32x2_x, &dot_Float32x2_y };
+
+/// dot
 Variable dot_Float32x3_x;
 Variable dot_Float32x3_y;
 Function dot_Float32x3;
+inline constexpr std::array dot_Float32x3_args = { &dot_Float32x3_x, &dot_Float32x3_y };
+
+/// dot
 Variable dot_Float32x4_x;
 Variable dot_Float32x4_y;
 Function dot_Float32x4;
+inline constexpr std::array dot_Float32x4_args = { &dot_Float32x4_x, &dot_Float32x4_y };
+
+/// dot
 Variable dot_Float16x2_x;
 Variable dot_Float16x2_y;
 Function dot_Float16x2;
+inline constexpr std::array dot_Float16x2_args = { &dot_Float16x2_x, &dot_Float16x2_y };
+
+/// dot
 Variable dot_Float16x3_x;
 Variable dot_Float16x3_y;
 Function dot_Float16x3;
+inline constexpr std::array dot_Float16x3_args = { &dot_Float16x3_x, &dot_Float16x3_y };
+
+/// dot
 Variable dot_Float16x4_x;
 Variable dot_Float16x4_y;
 Function dot_Float16x4;
+inline constexpr std::array dot_Float16x4_args = { &dot_Float16x4_x, &dot_Float16x4_y };
+
+/// reflect
 Variable reflect_Float32x2_incident;
 Variable reflect_Float32x2_normal;
 Function reflect_Float32x2;
+inline constexpr std::array reflect_Float32x2_args = { &reflect_Float32x2_incident, &reflect_Float32x2_normal };
+
+/// reflect
 Variable reflect_Float32x3_incident;
 Variable reflect_Float32x3_normal;
 Function reflect_Float32x3;
+inline constexpr std::array reflect_Float32x3_args = { &reflect_Float32x3_incident, &reflect_Float32x3_normal };
+
+/// reflect
 Variable reflect_Float32x4_incident;
 Variable reflect_Float32x4_normal;
 Function reflect_Float32x4;
+inline constexpr std::array reflect_Float32x4_args = { &reflect_Float32x4_incident, &reflect_Float32x4_normal };
+
+/// reflect
 Variable reflect_Float16x2_incident;
 Variable reflect_Float16x2_normal;
 Function reflect_Float16x2;
+inline constexpr std::array reflect_Float16x2_args = { &reflect_Float16x2_incident, &reflect_Float16x2_normal };
+
+/// reflect
 Variable reflect_Float16x3_incident;
 Variable reflect_Float16x3_normal;
 Function reflect_Float16x3;
+inline constexpr std::array reflect_Float16x3_args = { &reflect_Float16x3_incident, &reflect_Float16x3_normal };
+
+/// reflect
 Variable reflect_Float16x4_incident;
 Variable reflect_Float16x4_normal;
 Function reflect_Float16x4;
+inline constexpr std::array reflect_Float16x4_args = { &reflect_Float16x4_incident, &reflect_Float16x4_normal };
+
+/// refract
 Variable refract_Float32x2_incident;
 Variable refract_Float32x2_normal;
 Variable refract_Float32x2_ior;
 Function refract_Float32x2;
+inline constexpr std::array refract_Float32x2_args = { &refract_Float32x2_incident, &refract_Float32x2_normal, &refract_Float32x2_ior };
+
+/// refract
 Variable refract_Float32x3_incident;
 Variable refract_Float32x3_normal;
 Variable refract_Float32x3_ior;
 Function refract_Float32x3;
+inline constexpr std::array refract_Float32x3_args = { &refract_Float32x3_incident, &refract_Float32x3_normal, &refract_Float32x3_ior };
+
+/// refract
 Variable refract_Float32x4_incident;
 Variable refract_Float32x4_normal;
 Variable refract_Float32x4_ior;
 Function refract_Float32x4;
+inline constexpr std::array refract_Float32x4_args = { &refract_Float32x4_incident, &refract_Float32x4_normal, &refract_Float32x4_ior };
+
+/// refract
 Variable refract_Float16x2_incident;
 Variable refract_Float16x2_normal;
 Variable refract_Float16x2_ior;
 Function refract_Float16x2;
+inline constexpr std::array refract_Float16x2_args = { &refract_Float16x2_incident, &refract_Float16x2_normal, &refract_Float16x2_ior };
+
+/// refract
 Variable refract_Float16x3_incident;
 Variable refract_Float16x3_normal;
 Variable refract_Float16x3_ior;
 Function refract_Float16x3;
+inline constexpr std::array refract_Float16x3_args = { &refract_Float16x3_incident, &refract_Float16x3_normal, &refract_Float16x3_ior };
+
+/// refract
 Variable refract_Float16x4_incident;
 Variable refract_Float16x4_normal;
 Variable refract_Float16x4_ior;
 Function refract_Float16x4;
+inline constexpr std::array refract_Float16x4_args = { &refract_Float16x4_incident, &refract_Float16x4_normal, &refract_Float16x4_ior };
+
+/// cross
 Variable cross_Float32x3_v0;
 Variable cross_Float32x3_v1;
 Function cross_Float32x3;
+inline constexpr std::array cross_Float32x3_args = { &cross_Float32x3_v0, &cross_Float32x3_v1 };
+
+/// cross
 Variable cross_Float16x3_v0;
 Variable cross_Float16x3_v1;
 Function cross_Float16x3;
+inline constexpr std::array cross_Float16x3_args = { &cross_Float16x3_v0, &cross_Float16x3_v1 };
+
+/// cross
 Variable length_Float32x2_arg;
 Function length_Float32x2;
+inline constexpr std::array length_Float32x2_args = { &length_Float32x2_arg };
+
+/// cross
 Variable length_Float32x3_arg;
 Function length_Float32x3;
+inline constexpr std::array length_Float32x3_args = { &length_Float32x3_arg };
+
+/// cross
 Variable length_Float32x4_arg;
 Function length_Float32x4;
+inline constexpr std::array length_Float32x4_args = { &length_Float32x4_arg };
+
+/// cross
 Variable length_Float16x2_arg;
 Function length_Float16x2;
+inline constexpr std::array length_Float16x2_args = { &length_Float16x2_arg };
+
+/// cross
 Variable length_Float16x3_arg;
 Function length_Float16x3;
+inline constexpr std::array length_Float16x3_args = { &length_Float16x3_arg };
+
+/// cross
 Variable length_Float16x4_arg;
 Function length_Float16x4;
+inline constexpr std::array length_Float16x4_args = { &length_Float16x4_arg };
+
+/// cross
 Variable normalize_Float32x2_arg;
 Function normalize_Float32x2;
+inline constexpr std::array normalize_Float32x2_args = { &normalize_Float32x2_arg };
+
+/// cross
 Variable normalize_Float32x3_arg;
 Function normalize_Float32x3;
+inline constexpr std::array normalize_Float32x3_args = { &normalize_Float32x3_arg };
+
+/// cross
 Variable normalize_Float32x4_arg;
 Function normalize_Float32x4;
+inline constexpr std::array normalize_Float32x4_args = { &normalize_Float32x4_arg };
+
+/// cross
 Variable normalize_Float16x2_arg;
 Function normalize_Float16x2;
+inline constexpr std::array normalize_Float16x2_args = { &normalize_Float16x2_arg };
+
+/// cross
 Variable normalize_Float16x3_arg;
 Function normalize_Float16x3;
+inline constexpr std::array normalize_Float16x3_args = { &normalize_Float16x3_arg };
+
+/// cross
 Variable normalize_Float16x4_arg;
 Function normalize_Float16x4;
+inline constexpr std::array normalize_Float16x4_args = { &normalize_Float16x4_arg };
+
+/// distance
 Variable distance_Float32x2_p0;
 Variable distance_Float32x2_p1;
 Function distance_Float32x2;
+inline constexpr std::array distance_Float32x2_args = { &distance_Float32x2_p0, &distance_Float32x2_p1 };
+
+/// distance
 Variable distance_Float32x3_p0;
 Variable distance_Float32x3_p1;
 Function distance_Float32x3;
+inline constexpr std::array distance_Float32x3_args = { &distance_Float32x3_p0, &distance_Float32x3_p1 };
+
+/// distance
 Variable distance_Float32x4_p0;
 Variable distance_Float32x4_p1;
 Function distance_Float32x4;
+inline constexpr std::array distance_Float32x4_args = { &distance_Float32x4_p0, &distance_Float32x4_p1 };
+
+/// distance
 Variable distance_Float16x2_p0;
 Variable distance_Float16x2_p1;
 Function distance_Float16x2;
+inline constexpr std::array distance_Float16x2_args = { &distance_Float16x2_p0, &distance_Float16x2_p1 };
+
+/// distance
 Variable distance_Float16x3_p0;
 Variable distance_Float16x3_p1;
 Function distance_Float16x3;
+inline constexpr std::array distance_Float16x3_args = { &distance_Float16x3_p0, &distance_Float16x3_p1 };
+
+/// distance
 Variable distance_Float16x4_p0;
 Variable distance_Float16x4_p1;
 Function distance_Float16x4;
+inline constexpr std::array distance_Float16x4_args = { &distance_Float16x4_p0, &distance_Float16x4_p1 };
+
+/// distance
 Variable min_Float32_x;
 Variable min_Float32_y;
 Function min_Float32;
+inline constexpr std::array min_Float32_args = { &min_Float32_x, &min_Float32_y };
+
+/// distance
 Variable min_Float32x2_x;
 Variable min_Float32x2_y;
 Function min_Float32x2;
+inline constexpr std::array min_Float32x2_args = { &min_Float32x2_x, &min_Float32x2_y };
+
+/// distance
 Variable min_Float32x3_x;
 Variable min_Float32x3_y;
 Function min_Float32x3;
+inline constexpr std::array min_Float32x3_args = { &min_Float32x3_x, &min_Float32x3_y };
+
+/// distance
 Variable min_Float32x4_x;
 Variable min_Float32x4_y;
 Function min_Float32x4;
+inline constexpr std::array min_Float32x4_args = { &min_Float32x4_x, &min_Float32x4_y };
+
+/// distance
 Variable min_Float16_x;
 Variable min_Float16_y;
 Function min_Float16;
+inline constexpr std::array min_Float16_args = { &min_Float16_x, &min_Float16_y };
+
+/// distance
 Variable min_Float16x2_x;
 Variable min_Float16x2_y;
 Function min_Float16x2;
+inline constexpr std::array min_Float16x2_args = { &min_Float16x2_x, &min_Float16x2_y };
+
+/// distance
 Variable min_Float16x3_x;
 Variable min_Float16x3_y;
 Function min_Float16x3;
+inline constexpr std::array min_Float16x3_args = { &min_Float16x3_x, &min_Float16x3_y };
+
+/// distance
 Variable min_Float16x4_x;
 Variable min_Float16x4_y;
 Function min_Float16x4;
+inline constexpr std::array min_Float16x4_args = { &min_Float16x4_x, &min_Float16x4_y };
+
+/// distance
 Variable min_Int32_x;
 Variable min_Int32_y;
 Function min_Int32;
+inline constexpr std::array min_Int32_args = { &min_Int32_x, &min_Int32_y };
+
+/// distance
 Variable min_Int32x2_x;
 Variable min_Int32x2_y;
 Function min_Int32x2;
+inline constexpr std::array min_Int32x2_args = { &min_Int32x2_x, &min_Int32x2_y };
+
+/// distance
 Variable min_Int32x3_x;
 Variable min_Int32x3_y;
 Function min_Int32x3;
+inline constexpr std::array min_Int32x3_args = { &min_Int32x3_x, &min_Int32x3_y };
+
+/// distance
 Variable min_Int32x4_x;
 Variable min_Int32x4_y;
 Function min_Int32x4;
+inline constexpr std::array min_Int32x4_args = { &min_Int32x4_x, &min_Int32x4_y };
+
+/// distance
 Variable min_Int16_x;
 Variable min_Int16_y;
 Function min_Int16;
+inline constexpr std::array min_Int16_args = { &min_Int16_x, &min_Int16_y };
+
+/// distance
 Variable min_Int16x2_x;
 Variable min_Int16x2_y;
 Function min_Int16x2;
+inline constexpr std::array min_Int16x2_args = { &min_Int16x2_x, &min_Int16x2_y };
+
+/// distance
 Variable min_Int16x3_x;
 Variable min_Int16x3_y;
 Function min_Int16x3;
+inline constexpr std::array min_Int16x3_args = { &min_Int16x3_x, &min_Int16x3_y };
+
+/// distance
 Variable min_Int16x4_x;
 Variable min_Int16x4_y;
 Function min_Int16x4;
+inline constexpr std::array min_Int16x4_args = { &min_Int16x4_x, &min_Int16x4_y };
+
+/// distance
 Variable min_UInt32_x;
 Variable min_UInt32_y;
 Function min_UInt32;
+inline constexpr std::array min_UInt32_args = { &min_UInt32_x, &min_UInt32_y };
+
+/// distance
 Variable min_UInt32x2_x;
 Variable min_UInt32x2_y;
 Function min_UInt32x2;
+inline constexpr std::array min_UInt32x2_args = { &min_UInt32x2_x, &min_UInt32x2_y };
+
+/// distance
 Variable min_UInt32x3_x;
 Variable min_UInt32x3_y;
 Function min_UInt32x3;
+inline constexpr std::array min_UInt32x3_args = { &min_UInt32x3_x, &min_UInt32x3_y };
+
+/// distance
 Variable min_UInt32x4_x;
 Variable min_UInt32x4_y;
 Function min_UInt32x4;
+inline constexpr std::array min_UInt32x4_args = { &min_UInt32x4_x, &min_UInt32x4_y };
+
+/// distance
 Variable min_UInt16_x;
 Variable min_UInt16_y;
 Function min_UInt16;
+inline constexpr std::array min_UInt16_args = { &min_UInt16_x, &min_UInt16_y };
+
+/// distance
 Variable min_UInt16x2_x;
 Variable min_UInt16x2_y;
 Function min_UInt16x2;
+inline constexpr std::array min_UInt16x2_args = { &min_UInt16x2_x, &min_UInt16x2_y };
+
+/// distance
 Variable min_UInt16x3_x;
 Variable min_UInt16x3_y;
 Function min_UInt16x3;
+inline constexpr std::array min_UInt16x3_args = { &min_UInt16x3_x, &min_UInt16x3_y };
+
+/// distance
 Variable min_UInt16x4_x;
 Variable min_UInt16x4_y;
 Function min_UInt16x4;
+inline constexpr std::array min_UInt16x4_args = { &min_UInt16x4_x, &min_UInt16x4_y };
+
+/// distance
 Variable max_Float32_x;
 Variable max_Float32_y;
 Function max_Float32;
+inline constexpr std::array max_Float32_args = { &max_Float32_x, &max_Float32_y };
+
+/// distance
 Variable max_Float32x2_x;
 Variable max_Float32x2_y;
 Function max_Float32x2;
+inline constexpr std::array max_Float32x2_args = { &max_Float32x2_x, &max_Float32x2_y };
+
+/// distance
 Variable max_Float32x3_x;
 Variable max_Float32x3_y;
 Function max_Float32x3;
+inline constexpr std::array max_Float32x3_args = { &max_Float32x3_x, &max_Float32x3_y };
+
+/// distance
 Variable max_Float32x4_x;
 Variable max_Float32x4_y;
 Function max_Float32x4;
+inline constexpr std::array max_Float32x4_args = { &max_Float32x4_x, &max_Float32x4_y };
+
+/// distance
 Variable max_Float16_x;
 Variable max_Float16_y;
 Function max_Float16;
+inline constexpr std::array max_Float16_args = { &max_Float16_x, &max_Float16_y };
+
+/// distance
 Variable max_Float16x2_x;
 Variable max_Float16x2_y;
 Function max_Float16x2;
+inline constexpr std::array max_Float16x2_args = { &max_Float16x2_x, &max_Float16x2_y };
+
+/// distance
 Variable max_Float16x3_x;
 Variable max_Float16x3_y;
 Function max_Float16x3;
+inline constexpr std::array max_Float16x3_args = { &max_Float16x3_x, &max_Float16x3_y };
+
+/// distance
 Variable max_Float16x4_x;
 Variable max_Float16x4_y;
 Function max_Float16x4;
+inline constexpr std::array max_Float16x4_args = { &max_Float16x4_x, &max_Float16x4_y };
+
+/// distance
 Variable max_Int32_x;
 Variable max_Int32_y;
 Function max_Int32;
+inline constexpr std::array max_Int32_args = { &max_Int32_x, &max_Int32_y };
+
+/// distance
 Variable max_Int32x2_x;
 Variable max_Int32x2_y;
 Function max_Int32x2;
+inline constexpr std::array max_Int32x2_args = { &max_Int32x2_x, &max_Int32x2_y };
+
+/// distance
 Variable max_Int32x3_x;
 Variable max_Int32x3_y;
 Function max_Int32x3;
+inline constexpr std::array max_Int32x3_args = { &max_Int32x3_x, &max_Int32x3_y };
+
+/// distance
 Variable max_Int32x4_x;
 Variable max_Int32x4_y;
 Function max_Int32x4;
+inline constexpr std::array max_Int32x4_args = { &max_Int32x4_x, &max_Int32x4_y };
+
+/// distance
 Variable max_Int16_x;
 Variable max_Int16_y;
 Function max_Int16;
+inline constexpr std::array max_Int16_args = { &max_Int16_x, &max_Int16_y };
+
+/// distance
 Variable max_Int16x2_x;
 Variable max_Int16x2_y;
 Function max_Int16x2;
+inline constexpr std::array max_Int16x2_args = { &max_Int16x2_x, &max_Int16x2_y };
+
+/// distance
 Variable max_Int16x3_x;
 Variable max_Int16x3_y;
 Function max_Int16x3;
+inline constexpr std::array max_Int16x3_args = { &max_Int16x3_x, &max_Int16x3_y };
+
+/// distance
 Variable max_Int16x4_x;
 Variable max_Int16x4_y;
 Function max_Int16x4;
+inline constexpr std::array max_Int16x4_args = { &max_Int16x4_x, &max_Int16x4_y };
+
+/// distance
 Variable max_UInt32_x;
 Variable max_UInt32_y;
 Function max_UInt32;
+inline constexpr std::array max_UInt32_args = { &max_UInt32_x, &max_UInt32_y };
+
+/// distance
 Variable max_UInt32x2_x;
 Variable max_UInt32x2_y;
 Function max_UInt32x2;
+inline constexpr std::array max_UInt32x2_args = { &max_UInt32x2_x, &max_UInt32x2_y };
+
+/// distance
 Variable max_UInt32x3_x;
 Variable max_UInt32x3_y;
 Function max_UInt32x3;
+inline constexpr std::array max_UInt32x3_args = { &max_UInt32x3_x, &max_UInt32x3_y };
+
+/// distance
 Variable max_UInt32x4_x;
 Variable max_UInt32x4_y;
 Function max_UInt32x4;
+inline constexpr std::array max_UInt32x4_args = { &max_UInt32x4_x, &max_UInt32x4_y };
+
+/// distance
 Variable max_UInt16_x;
 Variable max_UInt16_y;
 Function max_UInt16;
+inline constexpr std::array max_UInt16_args = { &max_UInt16_x, &max_UInt16_y };
+
+/// distance
 Variable max_UInt16x2_x;
 Variable max_UInt16x2_y;
 Function max_UInt16x2;
+inline constexpr std::array max_UInt16x2_args = { &max_UInt16x2_x, &max_UInt16x2_y };
+
+/// distance
 Variable max_UInt16x3_x;
 Variable max_UInt16x3_y;
 Function max_UInt16x3;
+inline constexpr std::array max_UInt16x3_args = { &max_UInt16x3_x, &max_UInt16x3_y };
+
+/// distance
 Variable max_UInt16x4_x;
 Variable max_UInt16x4_y;
 Function max_UInt16x4;
+inline constexpr std::array max_UInt16x4_args = { &max_UInt16x4_x, &max_UInt16x4_y };
+
+/// clamp
 Variable clamp_Float32_val;
 Variable clamp_Float32_min;
 Variable clamp_Float32_max;
 Function clamp_Float32;
+inline constexpr std::array clamp_Float32_args = { &clamp_Float32_val, &clamp_Float32_min, &clamp_Float32_max };
+
+/// clamp
 Variable clamp_Float32x2_val;
 Variable clamp_Float32x2_min;
 Variable clamp_Float32x2_max;
 Function clamp_Float32x2;
+inline constexpr std::array clamp_Float32x2_args = { &clamp_Float32x2_val, &clamp_Float32x2_min, &clamp_Float32x2_max };
+
+/// clamp
 Variable clamp_Float32x3_val;
 Variable clamp_Float32x3_min;
 Variable clamp_Float32x3_max;
 Function clamp_Float32x3;
+inline constexpr std::array clamp_Float32x3_args = { &clamp_Float32x3_val, &clamp_Float32x3_min, &clamp_Float32x3_max };
+
+/// clamp
 Variable clamp_Float32x4_val;
 Variable clamp_Float32x4_min;
 Variable clamp_Float32x4_max;
 Function clamp_Float32x4;
+inline constexpr std::array clamp_Float32x4_args = { &clamp_Float32x4_val, &clamp_Float32x4_min, &clamp_Float32x4_max };
+
+/// clamp
 Variable clamp_Float16_val;
 Variable clamp_Float16_min;
 Variable clamp_Float16_max;
 Function clamp_Float16;
+inline constexpr std::array clamp_Float16_args = { &clamp_Float16_val, &clamp_Float16_min, &clamp_Float16_max };
+
+/// clamp
 Variable clamp_Float16x2_val;
 Variable clamp_Float16x2_min;
 Variable clamp_Float16x2_max;
 Function clamp_Float16x2;
+inline constexpr std::array clamp_Float16x2_args = { &clamp_Float16x2_val, &clamp_Float16x2_min, &clamp_Float16x2_max };
+
+/// clamp
 Variable clamp_Float16x3_val;
 Variable clamp_Float16x3_min;
 Variable clamp_Float16x3_max;
 Function clamp_Float16x3;
+inline constexpr std::array clamp_Float16x3_args = { &clamp_Float16x3_val, &clamp_Float16x3_min, &clamp_Float16x3_max };
+
+/// clamp
 Variable clamp_Float16x4_val;
 Variable clamp_Float16x4_min;
 Variable clamp_Float16x4_max;
 Function clamp_Float16x4;
+inline constexpr std::array clamp_Float16x4_args = { &clamp_Float16x4_val, &clamp_Float16x4_min, &clamp_Float16x4_max };
+
+/// clamp
 Variable clamp_Int32_val;
 Variable clamp_Int32_min;
 Variable clamp_Int32_max;
 Function clamp_Int32;
+inline constexpr std::array clamp_Int32_args = { &clamp_Int32_val, &clamp_Int32_min, &clamp_Int32_max };
+
+/// clamp
 Variable clamp_Int32x2_val;
 Variable clamp_Int32x2_min;
 Variable clamp_Int32x2_max;
 Function clamp_Int32x2;
+inline constexpr std::array clamp_Int32x2_args = { &clamp_Int32x2_val, &clamp_Int32x2_min, &clamp_Int32x2_max };
+
+/// clamp
 Variable clamp_Int32x3_val;
 Variable clamp_Int32x3_min;
 Variable clamp_Int32x3_max;
 Function clamp_Int32x3;
+inline constexpr std::array clamp_Int32x3_args = { &clamp_Int32x3_val, &clamp_Int32x3_min, &clamp_Int32x3_max };
+
+/// clamp
 Variable clamp_Int32x4_val;
 Variable clamp_Int32x4_min;
 Variable clamp_Int32x4_max;
 Function clamp_Int32x4;
+inline constexpr std::array clamp_Int32x4_args = { &clamp_Int32x4_val, &clamp_Int32x4_min, &clamp_Int32x4_max };
+
+/// clamp
 Variable clamp_Int16_val;
 Variable clamp_Int16_min;
 Variable clamp_Int16_max;
 Function clamp_Int16;
+inline constexpr std::array clamp_Int16_args = { &clamp_Int16_val, &clamp_Int16_min, &clamp_Int16_max };
+
+/// clamp
 Variable clamp_Int16x2_val;
 Variable clamp_Int16x2_min;
 Variable clamp_Int16x2_max;
 Function clamp_Int16x2;
+inline constexpr std::array clamp_Int16x2_args = { &clamp_Int16x2_val, &clamp_Int16x2_min, &clamp_Int16x2_max };
+
+/// clamp
 Variable clamp_Int16x3_val;
 Variable clamp_Int16x3_min;
 Variable clamp_Int16x3_max;
 Function clamp_Int16x3;
+inline constexpr std::array clamp_Int16x3_args = { &clamp_Int16x3_val, &clamp_Int16x3_min, &clamp_Int16x3_max };
+
+/// clamp
 Variable clamp_Int16x4_val;
 Variable clamp_Int16x4_min;
 Variable clamp_Int16x4_max;
 Function clamp_Int16x4;
+inline constexpr std::array clamp_Int16x4_args = { &clamp_Int16x4_val, &clamp_Int16x4_min, &clamp_Int16x4_max };
+
+/// clamp
 Variable clamp_UInt32_val;
 Variable clamp_UInt32_min;
 Variable clamp_UInt32_max;
 Function clamp_UInt32;
+inline constexpr std::array clamp_UInt32_args = { &clamp_UInt32_val, &clamp_UInt32_min, &clamp_UInt32_max };
+
+/// clamp
 Variable clamp_UInt32x2_val;
 Variable clamp_UInt32x2_min;
 Variable clamp_UInt32x2_max;
 Function clamp_UInt32x2;
+inline constexpr std::array clamp_UInt32x2_args = { &clamp_UInt32x2_val, &clamp_UInt32x2_min, &clamp_UInt32x2_max };
+
+/// clamp
 Variable clamp_UInt32x3_val;
 Variable clamp_UInt32x3_min;
 Variable clamp_UInt32x3_max;
 Function clamp_UInt32x3;
+inline constexpr std::array clamp_UInt32x3_args = { &clamp_UInt32x3_val, &clamp_UInt32x3_min, &clamp_UInt32x3_max };
+
+/// clamp
 Variable clamp_UInt32x4_val;
 Variable clamp_UInt32x4_min;
 Variable clamp_UInt32x4_max;
 Function clamp_UInt32x4;
+inline constexpr std::array clamp_UInt32x4_args = { &clamp_UInt32x4_val, &clamp_UInt32x4_min, &clamp_UInt32x4_max };
+
+/// clamp
 Variable clamp_UInt16_val;
 Variable clamp_UInt16_min;
 Variable clamp_UInt16_max;
 Function clamp_UInt16;
+inline constexpr std::array clamp_UInt16_args = { &clamp_UInt16_val, &clamp_UInt16_min, &clamp_UInt16_max };
+
+/// clamp
 Variable clamp_UInt16x2_val;
 Variable clamp_UInt16x2_min;
 Variable clamp_UInt16x2_max;
 Function clamp_UInt16x2;
+inline constexpr std::array clamp_UInt16x2_args = { &clamp_UInt16x2_val, &clamp_UInt16x2_min, &clamp_UInt16x2_max };
+
+/// clamp
 Variable clamp_UInt16x3_val;
 Variable clamp_UInt16x3_min;
 Variable clamp_UInt16x3_max;
 Function clamp_UInt16x3;
+inline constexpr std::array clamp_UInt16x3_args = { &clamp_UInt16x3_val, &clamp_UInt16x3_min, &clamp_UInt16x3_max };
+
+/// clamp
 Variable clamp_UInt16x4_val;
 Variable clamp_UInt16x4_min;
 Variable clamp_UInt16x4_max;
 Function clamp_UInt16x4;
+inline constexpr std::array clamp_UInt16x4_args = { &clamp_UInt16x4_val, &clamp_UInt16x4_min, &clamp_UInt16x4_max };
+
+/// lerp
 Variable lerp_Float32x2_a;
 Variable lerp_Float32x2_b;
 Variable lerp_Float32x2_t;
 Function lerp_Float32x2;
+inline constexpr std::array lerp_Float32x2_args = { &lerp_Float32x2_a, &lerp_Float32x2_b, &lerp_Float32x2_t };
+
+/// lerp
 Variable lerp_Float32x3_a;
 Variable lerp_Float32x3_b;
 Variable lerp_Float32x3_t;
 Function lerp_Float32x3;
+inline constexpr std::array lerp_Float32x3_args = { &lerp_Float32x3_a, &lerp_Float32x3_b, &lerp_Float32x3_t };
+
+/// lerp
 Variable lerp_Float32x4_a;
 Variable lerp_Float32x4_b;
 Variable lerp_Float32x4_t;
 Function lerp_Float32x4;
+inline constexpr std::array lerp_Float32x4_args = { &lerp_Float32x4_a, &lerp_Float32x4_b, &lerp_Float32x4_t };
+
+/// lerp
 Variable lerp_Float16x2_a;
 Variable lerp_Float16x2_b;
 Variable lerp_Float16x2_t;
 Function lerp_Float16x2;
+inline constexpr std::array lerp_Float16x2_args = { &lerp_Float16x2_a, &lerp_Float16x2_b, &lerp_Float16x2_t };
+
+/// lerp
 Variable lerp_Float16x3_a;
 Variable lerp_Float16x3_b;
 Variable lerp_Float16x3_t;
 Function lerp_Float16x3;
+inline constexpr std::array lerp_Float16x3_args = { &lerp_Float16x3_a, &lerp_Float16x3_b, &lerp_Float16x3_t };
+
+/// lerp
 Variable lerp_Float16x4_a;
 Variable lerp_Float16x4_b;
 Variable lerp_Float16x4_t;
 Function lerp_Float16x4;
+inline constexpr std::array lerp_Float16x4_args = { &lerp_Float16x4_a, &lerp_Float16x4_b, &lerp_Float16x4_t };
+
+/// step
 Variable step_Float32_edge;
 Variable step_Float32_x;
 Function step_Float32;
+inline constexpr std::array step_Float32_args = { &step_Float32_edge, &step_Float32_x };
+
+/// step
 Variable step_Float32x2_edge;
 Variable step_Float32x2_x;
 Function step_Float32x2;
+inline constexpr std::array step_Float32x2_args = { &step_Float32x2_edge, &step_Float32x2_x };
+
+/// step
 Variable step_Float32x3_edge;
 Variable step_Float32x3_x;
 Function step_Float32x3;
+inline constexpr std::array step_Float32x3_args = { &step_Float32x3_edge, &step_Float32x3_x };
+
+/// step
 Variable step_Float32x4_edge;
 Variable step_Float32x4_x;
 Function step_Float32x4;
+inline constexpr std::array step_Float32x4_args = { &step_Float32x4_edge, &step_Float32x4_x };
+
+/// step
 Variable step_Float16_edge;
 Variable step_Float16_x;
 Function step_Float16;
+inline constexpr std::array step_Float16_args = { &step_Float16_edge, &step_Float16_x };
+
+/// step
 Variable step_Float16x2_edge;
 Variable step_Float16x2_x;
 Function step_Float16x2;
+inline constexpr std::array step_Float16x2_args = { &step_Float16x2_edge, &step_Float16x2_x };
+
+/// step
 Variable step_Float16x3_edge;
 Variable step_Float16x3_x;
 Function step_Float16x3;
+inline constexpr std::array step_Float16x3_args = { &step_Float16x3_edge, &step_Float16x3_x };
+
+/// step
 Variable step_Float16x4_edge;
 Variable step_Float16x4_x;
 Function step_Float16x4;
+inline constexpr std::array step_Float16x4_args = { &step_Float16x4_edge, &step_Float16x4_x };
+
+/// smoothstep
 Variable smoothstep_Float32_edge0;
 Variable smoothstep_Float32_edge1;
 Variable smoothstep_Float32_x;
 Function smoothstep_Float32;
+inline constexpr std::array smoothstep_Float32_args = { &smoothstep_Float32_edge0, &smoothstep_Float32_edge1, &smoothstep_Float32_x };
+
+/// smoothstep
 Variable smoothstep_Float32x2_edge0;
 Variable smoothstep_Float32x2_edge1;
 Variable smoothstep_Float32x2_x;
 Function smoothstep_Float32x2;
+inline constexpr std::array smoothstep_Float32x2_args = { &smoothstep_Float32x2_edge0, &smoothstep_Float32x2_edge1, &smoothstep_Float32x2_x };
+
+/// smoothstep
 Variable smoothstep_Float32x3_edge0;
 Variable smoothstep_Float32x3_edge1;
 Variable smoothstep_Float32x3_x;
 Function smoothstep_Float32x3;
+inline constexpr std::array smoothstep_Float32x3_args = { &smoothstep_Float32x3_edge0, &smoothstep_Float32x3_edge1, &smoothstep_Float32x3_x };
+
+/// smoothstep
 Variable smoothstep_Float32x4_edge0;
 Variable smoothstep_Float32x4_edge1;
 Variable smoothstep_Float32x4_x;
 Function smoothstep_Float32x4;
+inline constexpr std::array smoothstep_Float32x4_args = { &smoothstep_Float32x4_edge0, &smoothstep_Float32x4_edge1, &smoothstep_Float32x4_x };
+
+/// smoothstep
 Variable smoothstep_Float16_edge0;
 Variable smoothstep_Float16_edge1;
 Variable smoothstep_Float16_x;
 Function smoothstep_Float16;
+inline constexpr std::array smoothstep_Float16_args = { &smoothstep_Float16_edge0, &smoothstep_Float16_edge1, &smoothstep_Float16_x };
+
+/// smoothstep
 Variable smoothstep_Float16x2_edge0;
 Variable smoothstep_Float16x2_edge1;
 Variable smoothstep_Float16x2_x;
 Function smoothstep_Float16x2;
+inline constexpr std::array smoothstep_Float16x2_args = { &smoothstep_Float16x2_edge0, &smoothstep_Float16x2_edge1, &smoothstep_Float16x2_x };
+
+/// smoothstep
 Variable smoothstep_Float16x3_edge0;
 Variable smoothstep_Float16x3_edge1;
 Variable smoothstep_Float16x3_x;
 Function smoothstep_Float16x3;
+inline constexpr std::array smoothstep_Float16x3_args = { &smoothstep_Float16x3_edge0, &smoothstep_Float16x3_edge1, &smoothstep_Float16x3_x };
+
+/// smoothstep
 Variable smoothstep_Float16x4_edge0;
 Variable smoothstep_Float16x4_edge1;
 Variable smoothstep_Float16x4_x;
 Function smoothstep_Float16x4;
+inline constexpr std::array smoothstep_Float16x4_args = { &smoothstep_Float16x4_edge0, &smoothstep_Float16x4_edge1, &smoothstep_Float16x4_x };
+
+/// smoothstep
 Variable ceil_Float32_arg;
 Function ceil_Float32;
+inline constexpr std::array ceil_Float32_args = { &ceil_Float32_arg };
+
+/// smoothstep
 Variable ceil_Float32x2_arg;
 Function ceil_Float32x2;
+inline constexpr std::array ceil_Float32x2_args = { &ceil_Float32x2_arg };
+
+/// smoothstep
 Variable ceil_Float32x3_arg;
 Function ceil_Float32x3;
+inline constexpr std::array ceil_Float32x3_args = { &ceil_Float32x3_arg };
+
+/// smoothstep
 Variable ceil_Float32x4_arg;
 Function ceil_Float32x4;
+inline constexpr std::array ceil_Float32x4_args = { &ceil_Float32x4_arg };
+
+/// smoothstep
 Variable ceil_Float16_arg;
 Function ceil_Float16;
+inline constexpr std::array ceil_Float16_args = { &ceil_Float16_arg };
+
+/// smoothstep
 Variable ceil_Float16x2_arg;
 Function ceil_Float16x2;
+inline constexpr std::array ceil_Float16x2_args = { &ceil_Float16x2_arg };
+
+/// smoothstep
 Variable ceil_Float16x3_arg;
 Function ceil_Float16x3;
+inline constexpr std::array ceil_Float16x3_args = { &ceil_Float16x3_arg };
+
+/// smoothstep
 Variable ceil_Float16x4_arg;
 Function ceil_Float16x4;
+inline constexpr std::array ceil_Float16x4_args = { &ceil_Float16x4_arg };
+
+/// smoothstep
 Variable floor_Float32_arg;
 Function floor_Float32;
+inline constexpr std::array floor_Float32_args = { &floor_Float32_arg };
+
+/// smoothstep
 Variable floor_Float32x2_arg;
 Function floor_Float32x2;
+inline constexpr std::array floor_Float32x2_args = { &floor_Float32x2_arg };
+
+/// smoothstep
 Variable floor_Float32x3_arg;
 Function floor_Float32x3;
+inline constexpr std::array floor_Float32x3_args = { &floor_Float32x3_arg };
+
+/// smoothstep
 Variable floor_Float32x4_arg;
 Function floor_Float32x4;
+inline constexpr std::array floor_Float32x4_args = { &floor_Float32x4_arg };
+
+/// smoothstep
 Variable floor_Float16_arg;
 Function floor_Float16;
+inline constexpr std::array floor_Float16_args = { &floor_Float16_arg };
+
+/// smoothstep
 Variable floor_Float16x2_arg;
 Function floor_Float16x2;
+inline constexpr std::array floor_Float16x2_args = { &floor_Float16x2_arg };
+
+/// smoothstep
 Variable floor_Float16x3_arg;
 Function floor_Float16x3;
+inline constexpr std::array floor_Float16x3_args = { &floor_Float16x3_arg };
+
+/// smoothstep
 Variable floor_Float16x4_arg;
 Function floor_Float16x4;
+inline constexpr std::array floor_Float16x4_args = { &floor_Float16x4_arg };
+
+/// smoothstep
 Variable fract_Float32_arg;
 Function fract_Float32;
+inline constexpr std::array fract_Float32_args = { &fract_Float32_arg };
+
+/// smoothstep
 Variable fract_Float32x2_arg;
 Function fract_Float32x2;
+inline constexpr std::array fract_Float32x2_args = { &fract_Float32x2_arg };
+
+/// smoothstep
 Variable fract_Float32x3_arg;
 Function fract_Float32x3;
+inline constexpr std::array fract_Float32x3_args = { &fract_Float32x3_arg };
+
+/// smoothstep
 Variable fract_Float32x4_arg;
 Function fract_Float32x4;
+inline constexpr std::array fract_Float32x4_args = { &fract_Float32x4_arg };
+
+/// smoothstep
 Variable fract_Float16_arg;
 Function fract_Float16;
+inline constexpr std::array fract_Float16_args = { &fract_Float16_arg };
+
+/// smoothstep
 Variable fract_Float16x2_arg;
 Function fract_Float16x2;
+inline constexpr std::array fract_Float16x2_args = { &fract_Float16x2_arg };
+
+/// smoothstep
 Variable fract_Float16x3_arg;
 Function fract_Float16x3;
+inline constexpr std::array fract_Float16x3_args = { &fract_Float16x3_arg };
+
+/// smoothstep
 Variable fract_Float16x4_arg;
 Function fract_Float16x4;
+inline constexpr std::array fract_Float16x4_args = { &fract_Float16x4_arg };
+
+/// smoothstep
 Variable saturate_Float32_arg;
 Function saturate_Float32;
+inline constexpr std::array saturate_Float32_args = { &saturate_Float32_arg };
+
+/// smoothstep
 Variable saturate_Float32x2_arg;
 Function saturate_Float32x2;
+inline constexpr std::array saturate_Float32x2_args = { &saturate_Float32x2_arg };
+
+/// smoothstep
 Variable saturate_Float32x3_arg;
 Function saturate_Float32x3;
+inline constexpr std::array saturate_Float32x3_args = { &saturate_Float32x3_arg };
+
+/// smoothstep
 Variable saturate_Float32x4_arg;
 Function saturate_Float32x4;
+inline constexpr std::array saturate_Float32x4_args = { &saturate_Float32x4_arg };
+
+/// smoothstep
 Variable saturate_Float16_arg;
 Function saturate_Float16;
+inline constexpr std::array saturate_Float16_args = { &saturate_Float16_arg };
+
+/// smoothstep
 Variable saturate_Float16x2_arg;
 Function saturate_Float16x2;
+inline constexpr std::array saturate_Float16x2_args = { &saturate_Float16x2_arg };
+
+/// smoothstep
 Variable saturate_Float16x3_arg;
 Function saturate_Float16x3;
+inline constexpr std::array saturate_Float16x3_args = { &saturate_Float16x3_arg };
+
+/// smoothstep
 Variable saturate_Float16x4_arg;
 Function saturate_Float16x4;
+inline constexpr std::array saturate_Float16x4_args = { &saturate_Float16x4_arg };
+
+/// smoothstep
 Variable trunc_Float32_arg;
 Function trunc_Float32;
+inline constexpr std::array trunc_Float32_args = { &trunc_Float32_arg };
+
+/// smoothstep
 Variable trunc_Float32x2_arg;
 Function trunc_Float32x2;
+inline constexpr std::array trunc_Float32x2_args = { &trunc_Float32x2_arg };
+
+/// smoothstep
 Variable trunc_Float32x3_arg;
 Function trunc_Float32x3;
+inline constexpr std::array trunc_Float32x3_args = { &trunc_Float32x3_arg };
+
+/// smoothstep
 Variable trunc_Float32x4_arg;
 Function trunc_Float32x4;
+inline constexpr std::array trunc_Float32x4_args = { &trunc_Float32x4_arg };
+
+/// smoothstep
 Variable trunc_Float16_arg;
 Function trunc_Float16;
+inline constexpr std::array trunc_Float16_args = { &trunc_Float16_arg };
+
+/// smoothstep
 Variable trunc_Float16x2_arg;
 Function trunc_Float16x2;
+inline constexpr std::array trunc_Float16x2_args = { &trunc_Float16x2_arg };
+
+/// smoothstep
 Variable trunc_Float16x3_arg;
 Function trunc_Float16x3;
+inline constexpr std::array trunc_Float16x3_args = { &trunc_Float16x3_arg };
+
+/// smoothstep
 Variable trunc_Float16x4_arg;
 Function trunc_Float16x4;
+inline constexpr std::array trunc_Float16x4_args = { &trunc_Float16x4_arg };
+
+/// smoothstep
 Variable ddx_Float32_arg;
 Function ddx_Float32;
+inline constexpr std::array ddx_Float32_args = { &ddx_Float32_arg };
+
+/// smoothstep
 Variable ddx_Float32x2_arg;
 Function ddx_Float32x2;
+inline constexpr std::array ddx_Float32x2_args = { &ddx_Float32x2_arg };
+
+/// smoothstep
 Variable ddx_Float32x3_arg;
 Function ddx_Float32x3;
+inline constexpr std::array ddx_Float32x3_args = { &ddx_Float32x3_arg };
+
+/// smoothstep
 Variable ddx_Float32x4_arg;
 Function ddx_Float32x4;
+inline constexpr std::array ddx_Float32x4_args = { &ddx_Float32x4_arg };
+
+/// smoothstep
 Variable ddx_Float16_arg;
 Function ddx_Float16;
+inline constexpr std::array ddx_Float16_args = { &ddx_Float16_arg };
+
+/// smoothstep
 Variable ddx_Float16x2_arg;
 Function ddx_Float16x2;
+inline constexpr std::array ddx_Float16x2_args = { &ddx_Float16x2_arg };
+
+/// smoothstep
 Variable ddx_Float16x3_arg;
 Function ddx_Float16x3;
+inline constexpr std::array ddx_Float16x3_args = { &ddx_Float16x3_arg };
+
+/// smoothstep
 Variable ddx_Float16x4_arg;
 Function ddx_Float16x4;
+inline constexpr std::array ddx_Float16x4_args = { &ddx_Float16x4_arg };
+
+/// smoothstep
 Variable ddy_Float32_arg;
 Function ddy_Float32;
+inline constexpr std::array ddy_Float32_args = { &ddy_Float32_arg };
+
+/// smoothstep
 Variable ddy_Float32x2_arg;
 Function ddy_Float32x2;
+inline constexpr std::array ddy_Float32x2_args = { &ddy_Float32x2_arg };
+
+/// smoothstep
 Variable ddy_Float32x3_arg;
 Function ddy_Float32x3;
+inline constexpr std::array ddy_Float32x3_args = { &ddy_Float32x3_arg };
+
+/// smoothstep
 Variable ddy_Float32x4_arg;
 Function ddy_Float32x4;
+inline constexpr std::array ddy_Float32x4_args = { &ddy_Float32x4_arg };
+
+/// smoothstep
 Variable ddy_Float16_arg;
 Function ddy_Float16;
+inline constexpr std::array ddy_Float16_args = { &ddy_Float16_arg };
+
+/// smoothstep
 Variable ddy_Float16x2_arg;
 Function ddy_Float16x2;
+inline constexpr std::array ddy_Float16x2_args = { &ddy_Float16x2_arg };
+
+/// smoothstep
 Variable ddy_Float16x3_arg;
 Function ddy_Float16x3;
+inline constexpr std::array ddy_Float16x3_args = { &ddy_Float16x3_arg };
+
+/// smoothstep
 Variable ddy_Float16x4_arg;
 Function ddy_Float16x4;
+inline constexpr std::array ddy_Float16x4_args = { &ddy_Float16x4_arg };
+
+/// smoothstep
 Variable fwidth_Float32_arg;
 Function fwidth_Float32;
+inline constexpr std::array fwidth_Float32_args = { &fwidth_Float32_arg };
+
+/// smoothstep
 Variable fwidth_Float32x2_arg;
 Function fwidth_Float32x2;
+inline constexpr std::array fwidth_Float32x2_args = { &fwidth_Float32x2_arg };
+
+/// smoothstep
 Variable fwidth_Float32x3_arg;
 Function fwidth_Float32x3;
+inline constexpr std::array fwidth_Float32x3_args = { &fwidth_Float32x3_arg };
+
+/// smoothstep
 Variable fwidth_Float32x4_arg;
 Function fwidth_Float32x4;
+inline constexpr std::array fwidth_Float32x4_args = { &fwidth_Float32x4_arg };
+
+/// smoothstep
 Variable fwidth_Float16_arg;
 Function fwidth_Float16;
+inline constexpr std::array fwidth_Float16_args = { &fwidth_Float16_arg };
+
+/// smoothstep
 Variable fwidth_Float16x2_arg;
 Function fwidth_Float16x2;
+inline constexpr std::array fwidth_Float16x2_args = { &fwidth_Float16x2_arg };
+
+/// smoothstep
 Variable fwidth_Float16x3_arg;
 Function fwidth_Float16x3;
+inline constexpr std::array fwidth_Float16x3_args = { &fwidth_Float16x3_arg };
+
+/// smoothstep
 Variable fwidth_Float16x4_arg;
 Function fwidth_Float16x4;
+inline constexpr std::array fwidth_Float16x4_args = { &fwidth_Float16x4_arg };
+
+/// sign
 Variable sign_Int32_arg;
 Function sign_Int32;
+inline constexpr std::array sign_Int32_args = { &sign_Int32_arg };
+
+/// sign
 Variable sign_Int32x2_arg;
 Function sign_Int32x2;
+inline constexpr std::array sign_Int32x2_args = { &sign_Int32x2_arg };
+
+/// sign
 Variable sign_Int32x3_arg;
 Function sign_Int32x3;
+inline constexpr std::array sign_Int32x3_args = { &sign_Int32x3_arg };
+
+/// sign
 Variable sign_Int32x4_arg;
 Function sign_Int32x4;
+inline constexpr std::array sign_Int32x4_args = { &sign_Int32x4_arg };
+
+/// sign
 Variable sign_Int16_arg;
 Function sign_Int16;
+inline constexpr std::array sign_Int16_args = { &sign_Int16_arg };
+
+/// sign
 Variable sign_Int16x2_arg;
 Function sign_Int16x2;
+inline constexpr std::array sign_Int16x2_args = { &sign_Int16x2_arg };
+
+/// sign
 Variable sign_Int16x3_arg;
 Function sign_Int16x3;
+inline constexpr std::array sign_Int16x3_args = { &sign_Int16x3_arg };
+
+/// sign
 Variable sign_Int16x4_arg;
 Function sign_Int16x4;
+inline constexpr std::array sign_Int16x4_args = { &sign_Int16x4_arg };
+
+/// sign
 Variable sign_Float32_arg;
 Function sign_Float32;
+inline constexpr std::array sign_Float32_args = { &sign_Float32_arg };
+
+/// sign
 Variable sign_Float32x2_arg;
 Function sign_Float32x2;
+inline constexpr std::array sign_Float32x2_args = { &sign_Float32x2_arg };
+
+/// sign
 Variable sign_Float32x3_arg;
 Function sign_Float32x3;
+inline constexpr std::array sign_Float32x3_args = { &sign_Float32x3_arg };
+
+/// sign
 Variable sign_Float32x4_arg;
 Function sign_Float32x4;
+inline constexpr std::array sign_Float32x4_args = { &sign_Float32x4_arg };
+
+/// sign
 Variable sign_Float16_arg;
 Function sign_Float16;
+inline constexpr std::array sign_Float16_args = { &sign_Float16_arg };
+
+/// sign
 Variable sign_Float16x2_arg;
 Function sign_Float16x2;
+inline constexpr std::array sign_Float16x2_args = { &sign_Float16x2_arg };
+
+/// sign
 Variable sign_Float16x3_arg;
 Function sign_Float16x3;
+inline constexpr std::array sign_Float16x3_args = { &sign_Float16x3_arg };
+
+/// sign
 Variable sign_Float16x4_arg;
 Function sign_Float16x4;
+inline constexpr std::array sign_Float16x4_args = { &sign_Float16x4_arg };
+
+/// abs
 Variable abs_Int32_arg;
 Function abs_Int32;
+inline constexpr std::array abs_Int32_args = { &abs_Int32_arg };
+
+/// abs
 Variable abs_Int32x2_arg;
 Function abs_Int32x2;
+inline constexpr std::array abs_Int32x2_args = { &abs_Int32x2_arg };
+
+/// abs
 Variable abs_Int32x3_arg;
 Function abs_Int32x3;
+inline constexpr std::array abs_Int32x3_args = { &abs_Int32x3_arg };
+
+/// abs
 Variable abs_Int32x4_arg;
 Function abs_Int32x4;
+inline constexpr std::array abs_Int32x4_args = { &abs_Int32x4_arg };
+
+/// abs
 Variable abs_Int16_arg;
 Function abs_Int16;
+inline constexpr std::array abs_Int16_args = { &abs_Int16_arg };
+
+/// abs
 Variable abs_Int16x2_arg;
 Function abs_Int16x2;
+inline constexpr std::array abs_Int16x2_args = { &abs_Int16x2_arg };
+
+/// abs
 Variable abs_Int16x3_arg;
 Function abs_Int16x3;
+inline constexpr std::array abs_Int16x3_args = { &abs_Int16x3_arg };
+
+/// abs
 Variable abs_Int16x4_arg;
 Function abs_Int16x4;
+inline constexpr std::array abs_Int16x4_args = { &abs_Int16x4_arg };
+
+/// abs
 Variable abs_Float32_arg;
 Function abs_Float32;
+inline constexpr std::array abs_Float32_args = { &abs_Float32_arg };
+
+/// abs
 Variable abs_Float32x2_arg;
 Function abs_Float32x2;
+inline constexpr std::array abs_Float32x2_args = { &abs_Float32x2_arg };
+
+/// abs
 Variable abs_Float32x3_arg;
 Function abs_Float32x3;
+inline constexpr std::array abs_Float32x3_args = { &abs_Float32x3_arg };
+
+/// abs
 Variable abs_Float32x4_arg;
 Function abs_Float32x4;
+inline constexpr std::array abs_Float32x4_args = { &abs_Float32x4_arg };
+
+/// abs
 Variable abs_Float16_arg;
 Function abs_Float16;
+inline constexpr std::array abs_Float16_args = { &abs_Float16_arg };
+
+/// abs
 Variable abs_Float16x2_arg;
 Function abs_Float16x2;
+inline constexpr std::array abs_Float16x2_args = { &abs_Float16x2_arg };
+
+/// abs
 Variable abs_Float16x3_arg;
 Function abs_Float16x3;
+inline constexpr std::array abs_Float16x3_args = { &abs_Float16x3_arg };
+
+/// abs
 Variable abs_Float16x4_arg;
 Function abs_Float16x4;
+inline constexpr std::array abs_Float16x4_args = { &abs_Float16x4_arg };
+
+/// castToF16
 Variable castToF16_UInt16_arg;
 Function castToF16_UInt16;
+inline constexpr std::array castToF16_UInt16_args = { &castToF16_UInt16_arg };
+
+/// castToF16
 Variable castToF16_Int16_arg;
 Function castToF16_Int16;
+inline constexpr std::array castToF16_Int16_args = { &castToF16_Int16_arg };
+
+/// castToU16
 Variable castToU16_Float16_arg;
 Function castToU16_Float16;
+inline constexpr std::array castToU16_Float16_args = { &castToU16_Float16_arg };
+
+/// castToU16
 Variable castToU16_Int16_arg;
 Function castToU16_Int16;
+inline constexpr std::array castToU16_Int16_args = { &castToU16_Int16_arg };
+
+/// castToI16
 Variable castToI16_Float16_arg;
 Function castToI16_Float16;
+inline constexpr std::array castToI16_Float16_args = { &castToI16_Float16_arg };
+
+/// castToI16
 Variable castToI16_UInt16_arg;
 Function castToI16_UInt16;
+inline constexpr std::array castToI16_UInt16_args = { &castToI16_UInt16_arg };
+
+/// castToF32
 Variable castToF32_UInt32_arg;
 Function castToF32_UInt32;
+inline constexpr std::array castToF32_UInt32_args = { &castToF32_UInt32_arg };
+
+/// castToF32
 Variable castToF32_Int32_arg;
 Function castToF32_Int32;
+inline constexpr std::array castToF32_Int32_args = { &castToF32_Int32_arg };
+
+/// castToU32
 Variable castToU32_Float32_arg;
 Function castToU32_Float32;
+inline constexpr std::array castToU32_Float32_args = { &castToU32_Float32_arg };
+
+/// castToU32
 Variable castToU32_Int32_arg;
 Function castToU32_Int32;
+inline constexpr std::array castToU32_Int32_args = { &castToU32_Int32_arg };
+
+/// castToI32
 Variable castToI32_Float32_arg;
 Function castToI32_Float32;
+inline constexpr std::array castToI32_Float32_args = { &castToI32_Float32_arg };
+
+/// castToI32
 Variable castToI32_UInt32_arg;
 Function castToI32_UInt32;
+inline constexpr std::array castToI32_UInt32_args = { &castToI32_UInt32_arg };
+
+/// any
 Variable any_Bool8_arg;
 Function any_Bool8;
+inline constexpr std::array any_Bool8_args = { &any_Bool8_arg };
+
+/// any
 Variable any_Bool8x2_arg;
 Function any_Bool8x2;
+inline constexpr std::array any_Bool8x2_args = { &any_Bool8x2_arg };
+
+/// any
 Variable any_Bool8x3_arg;
 Function any_Bool8x3;
+inline constexpr std::array any_Bool8x3_args = { &any_Bool8x3_arg };
+
+/// any
 Variable any_Bool8x4_arg;
 Function any_Bool8x4;
+inline constexpr std::array any_Bool8x4_args = { &any_Bool8x4_arg };
+
+/// all
 Variable all_Bool8_arg;
 Function all_Bool8;
+inline constexpr std::array all_Bool8_args = { &all_Bool8_arg };
+
+/// all
 Variable all_Bool8x2_arg;
 Function all_Bool8x2;
+inline constexpr std::array all_Bool8x2_args = { &all_Bool8x2_arg };
+
+/// all
 Variable all_Bool8x3_arg;
 Function all_Bool8x3;
+inline constexpr std::array all_Bool8x3_args = { &all_Bool8x3_arg };
+
+/// all
 Variable all_Bool8x4_arg;
 Function all_Bool8x4;
+inline constexpr std::array all_Bool8x4_args = { &all_Bool8x4_arg };
+
+/// transpose
 Variable transpose_Float32x2x2_arg;
 Function transpose_Float32x2x2;
+inline constexpr std::array transpose_Float32x2x2_args = { &transpose_Float32x2x2_arg };
+
+/// transpose
 Variable transpose_Float16x2x2_arg;
 Function transpose_Float16x2x2;
+inline constexpr std::array transpose_Float16x2x2_args = { &transpose_Float16x2x2_arg };
+
+/// transpose
 Variable transpose_Float32x2x3_arg;
 Function transpose_Float32x2x3;
+inline constexpr std::array transpose_Float32x2x3_args = { &transpose_Float32x2x3_arg };
+
+/// transpose
 Variable transpose_Float16x2x3_arg;
 Function transpose_Float16x2x3;
+inline constexpr std::array transpose_Float16x2x3_args = { &transpose_Float16x2x3_arg };
+
+/// transpose
 Variable transpose_Float32x2x4_arg;
 Function transpose_Float32x2x4;
+inline constexpr std::array transpose_Float32x2x4_args = { &transpose_Float32x2x4_arg };
+
+/// transpose
 Variable transpose_Float16x2x4_arg;
 Function transpose_Float16x2x4;
+inline constexpr std::array transpose_Float16x2x4_args = { &transpose_Float16x2x4_arg };
+
+/// transpose
 Variable transpose_Float32x3x2_arg;
 Function transpose_Float32x3x2;
+inline constexpr std::array transpose_Float32x3x2_args = { &transpose_Float32x3x2_arg };
+
+/// transpose
 Variable transpose_Float16x3x2_arg;
 Function transpose_Float16x3x2;
+inline constexpr std::array transpose_Float16x3x2_args = { &transpose_Float16x3x2_arg };
+
+/// transpose
 Variable transpose_Float32x3x3_arg;
 Function transpose_Float32x3x3;
+inline constexpr std::array transpose_Float32x3x3_args = { &transpose_Float32x3x3_arg };
+
+/// transpose
 Variable transpose_Float16x3x3_arg;
 Function transpose_Float16x3x3;
+inline constexpr std::array transpose_Float16x3x3_args = { &transpose_Float16x3x3_arg };
+
+/// transpose
 Variable transpose_Float32x3x4_arg;
 Function transpose_Float32x3x4;
+inline constexpr std::array transpose_Float32x3x4_args = { &transpose_Float32x3x4_arg };
+
+/// transpose
 Variable transpose_Float16x3x4_arg;
 Function transpose_Float16x3x4;
+inline constexpr std::array transpose_Float16x3x4_args = { &transpose_Float16x3x4_arg };
+
+/// transpose
 Variable transpose_Float32x4x2_arg;
 Function transpose_Float32x4x2;
+inline constexpr std::array transpose_Float32x4x2_args = { &transpose_Float32x4x2_arg };
+
+/// transpose
 Variable transpose_Float16x4x2_arg;
 Function transpose_Float16x4x2;
+inline constexpr std::array transpose_Float16x4x2_args = { &transpose_Float16x4x2_arg };
+
+/// transpose
 Variable transpose_Float32x4x3_arg;
 Function transpose_Float32x4x3;
+inline constexpr std::array transpose_Float32x4x3_args = { &transpose_Float32x4x3_arg };
+
+/// transpose
 Variable transpose_Float16x4x3_arg;
 Function transpose_Float16x4x3;
+inline constexpr std::array transpose_Float16x4x3_args = { &transpose_Float16x4x3_arg };
+
+/// transpose
 Variable transpose_Float32x4x4_arg;
 Function transpose_Float32x4x4;
+inline constexpr std::array transpose_Float32x4x4_args = { &transpose_Float32x4x4_arg };
+
+/// transpose
 Variable transpose_Float16x4x4_arg;
 Function transpose_Float16x4x4;
+inline constexpr std::array transpose_Float16x4x4_args = { &transpose_Float16x4x4_arg };
+
+/// inverse
 Variable inverse_Float32x2x2_arg;
 Function inverse_Float32x2x2;
+inline constexpr std::array inverse_Float32x2x2_args = { &inverse_Float32x2x2_arg };
+
+/// inverse
 Variable inverse_Float16x2x2_arg;
 Function inverse_Float16x2x2;
+inline constexpr std::array inverse_Float16x2x2_args = { &inverse_Float16x2x2_arg };
+
+/// inverse
 Variable inverse_Float32x2x3_arg;
 Function inverse_Float32x2x3;
+inline constexpr std::array inverse_Float32x2x3_args = { &inverse_Float32x2x3_arg };
+
+/// inverse
 Variable inverse_Float16x2x3_arg;
 Function inverse_Float16x2x3;
+inline constexpr std::array inverse_Float16x2x3_args = { &inverse_Float16x2x3_arg };
+
+/// inverse
 Variable inverse_Float32x2x4_arg;
 Function inverse_Float32x2x4;
+inline constexpr std::array inverse_Float32x2x4_args = { &inverse_Float32x2x4_arg };
+
+/// inverse
 Variable inverse_Float16x2x4_arg;
 Function inverse_Float16x2x4;
+inline constexpr std::array inverse_Float16x2x4_args = { &inverse_Float16x2x4_arg };
+
+/// inverse
 Variable inverse_Float32x3x2_arg;
 Function inverse_Float32x3x2;
+inline constexpr std::array inverse_Float32x3x2_args = { &inverse_Float32x3x2_arg };
+
+/// inverse
 Variable inverse_Float16x3x2_arg;
 Function inverse_Float16x3x2;
+inline constexpr std::array inverse_Float16x3x2_args = { &inverse_Float16x3x2_arg };
+
+/// inverse
 Variable inverse_Float32x3x3_arg;
 Function inverse_Float32x3x3;
+inline constexpr std::array inverse_Float32x3x3_args = { &inverse_Float32x3x3_arg };
+
+/// inverse
 Variable inverse_Float16x3x3_arg;
 Function inverse_Float16x3x3;
+inline constexpr std::array inverse_Float16x3x3_args = { &inverse_Float16x3x3_arg };
+
+/// inverse
 Variable inverse_Float32x3x4_arg;
 Function inverse_Float32x3x4;
+inline constexpr std::array inverse_Float32x3x4_args = { &inverse_Float32x3x4_arg };
+
+/// inverse
 Variable inverse_Float16x3x4_arg;
 Function inverse_Float16x3x4;
+inline constexpr std::array inverse_Float16x3x4_args = { &inverse_Float16x3x4_arg };
+
+/// inverse
 Variable inverse_Float32x4x2_arg;
 Function inverse_Float32x4x2;
+inline constexpr std::array inverse_Float32x4x2_args = { &inverse_Float32x4x2_arg };
+
+/// inverse
 Variable inverse_Float16x4x2_arg;
 Function inverse_Float16x4x2;
+inline constexpr std::array inverse_Float16x4x2_args = { &inverse_Float16x4x2_arg };
+
+/// inverse
 Variable inverse_Float32x4x3_arg;
 Function inverse_Float32x4x3;
+inline constexpr std::array inverse_Float32x4x3_args = { &inverse_Float32x4x3_arg };
+
+/// inverse
 Variable inverse_Float16x4x3_arg;
 Function inverse_Float16x4x3;
+inline constexpr std::array inverse_Float16x4x3_args = { &inverse_Float16x4x3_arg };
+
+/// inverse
 Variable inverse_Float32x4x4_arg;
 Function inverse_Float32x4x4;
+inline constexpr std::array inverse_Float32x4x4_args = { &inverse_Float32x4x4_arg };
+
+/// inverse
 Variable inverse_Float16x4x4_arg;
 Function inverse_Float16x4x4;
+inline constexpr std::array inverse_Float16x4x4_args = { &inverse_Float16x4x4_arg };
+
+/// OutputLayer
 Function VertexGetOutputLayer;
+
+/// OutputViewport
 Function VertexGetOutputViewport;
+
+/// Index
 Function VertexGetIndex;
+
+/// InstanceIndex
 Function VertexGetInstanceIndex;
+
+/// BaseIndex
 Function VertexGetBaseIndex;
+
+/// BaseInstanceIndex
 Function VertexGetBaseInstanceIndex;
+
+/// DrawIndex
 Function VertexGetDrawIndex;
+
+/// OutputLayer
 Variable VertexSetOutputLayer_UInt16_arg;
 Function VertexSetOutputLayer_UInt16;
+inline constexpr std::array VertexSetOutputLayer_UInt16_args = { &VertexSetOutputLayer_UInt16_arg };
+
+/// OutputLayer
 Variable VertexSetOutputLayer_UInt32_arg;
 Function VertexSetOutputLayer_UInt32;
+inline constexpr std::array VertexSetOutputLayer_UInt32_args = { &VertexSetOutputLayer_UInt32_arg };
+
+/// OutputViewport
 Variable VertexSetOutputViewport_UInt16_arg;
 Function VertexSetOutputViewport_UInt16;
+inline constexpr std::array VertexSetOutputViewport_UInt16_args = { &VertexSetOutputViewport_UInt16_arg };
+
+/// OutputViewport
 Variable VertexSetOutputViewport_UInt32_arg;
 Function VertexSetOutputViewport_UInt32;
+inline constexpr std::array VertexSetOutputViewport_UInt32_args = { &VertexSetOutputViewport_UInt32_arg };
+
+/// vertexExportExportCoordinates
 Variable VertexExportCoordinates_Float32x4_arg;
 Function VertexExportCoordinates_Float32x4;
+inline constexpr std::array VertexExportCoordinates_Float32x4_args = { &VertexExportCoordinates_Float32x4_arg };
+
+/// vertexExportExportCoordinates
 Variable VertexExportCoordinates_Float16x4_arg;
 Function VertexExportCoordinates_Float16x4;
+inline constexpr std::array VertexExportCoordinates_Float16x4_args = { &VertexExportCoordinates_Float16x4_arg };
+
+/// geometryExportVertex
 Function GeometryExportVertex;
+
+/// geometryExportPrimitive
 Function GeometryExportPrimitive;
+
+/// pixelGetCoordinates
 Function PixelGetCoordinates_Float32x4;
+
+/// pixelGetCoordinates
 Function PixelGetCoordinates_Float16x4;
+
+/// pixelGetDepth
 Function PixelGetDepth;
+
+/// pixelSetDepth
+Variable PixelSetDepth_val;
 Function PixelSetDepth;
+inline constexpr std::array PixelSetDepth_args = { &PixelSetDepth_val };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32_Int32_color;
 Variable PixelExportColor_Float32_Int32_index;
 Function PixelExportColor_Float32_Int32;
+inline constexpr std::array PixelExportColor_Float32_Int32_args = { &PixelExportColor_Float32_Int32_color, &PixelExportColor_Float32_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32_UInt32_color;
 Variable PixelExportColor_Float32_UInt32_index;
 Function PixelExportColor_Float32_UInt32;
+inline constexpr std::array PixelExportColor_Float32_UInt32_args = { &PixelExportColor_Float32_UInt32_color, &PixelExportColor_Float32_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32_Int16_color;
 Variable PixelExportColor_Float32_Int16_index;
 Function PixelExportColor_Float32_Int16;
+inline constexpr std::array PixelExportColor_Float32_Int16_args = { &PixelExportColor_Float32_Int16_color, &PixelExportColor_Float32_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32_UInt16_color;
 Variable PixelExportColor_Float32_UInt16_index;
 Function PixelExportColor_Float32_UInt16;
+inline constexpr std::array PixelExportColor_Float32_UInt16_args = { &PixelExportColor_Float32_UInt16_color, &PixelExportColor_Float32_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x2_Int32_color;
 Variable PixelExportColor_Float32x2_Int32_index;
 Function PixelExportColor_Float32x2_Int32;
+inline constexpr std::array PixelExportColor_Float32x2_Int32_args = { &PixelExportColor_Float32x2_Int32_color, &PixelExportColor_Float32x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x2_UInt32_color;
 Variable PixelExportColor_Float32x2_UInt32_index;
 Function PixelExportColor_Float32x2_UInt32;
+inline constexpr std::array PixelExportColor_Float32x2_UInt32_args = { &PixelExportColor_Float32x2_UInt32_color, &PixelExportColor_Float32x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x2_Int16_color;
 Variable PixelExportColor_Float32x2_Int16_index;
 Function PixelExportColor_Float32x2_Int16;
+inline constexpr std::array PixelExportColor_Float32x2_Int16_args = { &PixelExportColor_Float32x2_Int16_color, &PixelExportColor_Float32x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x2_UInt16_color;
 Variable PixelExportColor_Float32x2_UInt16_index;
 Function PixelExportColor_Float32x2_UInt16;
+inline constexpr std::array PixelExportColor_Float32x2_UInt16_args = { &PixelExportColor_Float32x2_UInt16_color, &PixelExportColor_Float32x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x3_Int32_color;
 Variable PixelExportColor_Float32x3_Int32_index;
 Function PixelExportColor_Float32x3_Int32;
+inline constexpr std::array PixelExportColor_Float32x3_Int32_args = { &PixelExportColor_Float32x3_Int32_color, &PixelExportColor_Float32x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x3_UInt32_color;
 Variable PixelExportColor_Float32x3_UInt32_index;
 Function PixelExportColor_Float32x3_UInt32;
+inline constexpr std::array PixelExportColor_Float32x3_UInt32_args = { &PixelExportColor_Float32x3_UInt32_color, &PixelExportColor_Float32x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x3_Int16_color;
 Variable PixelExportColor_Float32x3_Int16_index;
 Function PixelExportColor_Float32x3_Int16;
+inline constexpr std::array PixelExportColor_Float32x3_Int16_args = { &PixelExportColor_Float32x3_Int16_color, &PixelExportColor_Float32x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x3_UInt16_color;
 Variable PixelExportColor_Float32x3_UInt16_index;
 Function PixelExportColor_Float32x3_UInt16;
+inline constexpr std::array PixelExportColor_Float32x3_UInt16_args = { &PixelExportColor_Float32x3_UInt16_color, &PixelExportColor_Float32x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x4_Int32_color;
 Variable PixelExportColor_Float32x4_Int32_index;
 Function PixelExportColor_Float32x4_Int32;
+inline constexpr std::array PixelExportColor_Float32x4_Int32_args = { &PixelExportColor_Float32x4_Int32_color, &PixelExportColor_Float32x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x4_UInt32_color;
 Variable PixelExportColor_Float32x4_UInt32_index;
 Function PixelExportColor_Float32x4_UInt32;
+inline constexpr std::array PixelExportColor_Float32x4_UInt32_args = { &PixelExportColor_Float32x4_UInt32_color, &PixelExportColor_Float32x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x4_Int16_color;
 Variable PixelExportColor_Float32x4_Int16_index;
 Function PixelExportColor_Float32x4_Int16;
+inline constexpr std::array PixelExportColor_Float32x4_Int16_args = { &PixelExportColor_Float32x4_Int16_color, &PixelExportColor_Float32x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float32x4_UInt16_color;
 Variable PixelExportColor_Float32x4_UInt16_index;
 Function PixelExportColor_Float32x4_UInt16;
+inline constexpr std::array PixelExportColor_Float32x4_UInt16_args = { &PixelExportColor_Float32x4_UInt16_color, &PixelExportColor_Float32x4_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16_Int32_color;
 Variable PixelExportColor_Float16_Int32_index;
 Function PixelExportColor_Float16_Int32;
+inline constexpr std::array PixelExportColor_Float16_Int32_args = { &PixelExportColor_Float16_Int32_color, &PixelExportColor_Float16_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16_UInt32_color;
 Variable PixelExportColor_Float16_UInt32_index;
 Function PixelExportColor_Float16_UInt32;
+inline constexpr std::array PixelExportColor_Float16_UInt32_args = { &PixelExportColor_Float16_UInt32_color, &PixelExportColor_Float16_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16_Int16_color;
 Variable PixelExportColor_Float16_Int16_index;
 Function PixelExportColor_Float16_Int16;
+inline constexpr std::array PixelExportColor_Float16_Int16_args = { &PixelExportColor_Float16_Int16_color, &PixelExportColor_Float16_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16_UInt16_color;
 Variable PixelExportColor_Float16_UInt16_index;
 Function PixelExportColor_Float16_UInt16;
+inline constexpr std::array PixelExportColor_Float16_UInt16_args = { &PixelExportColor_Float16_UInt16_color, &PixelExportColor_Float16_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x2_Int32_color;
 Variable PixelExportColor_Float16x2_Int32_index;
 Function PixelExportColor_Float16x2_Int32;
+inline constexpr std::array PixelExportColor_Float16x2_Int32_args = { &PixelExportColor_Float16x2_Int32_color, &PixelExportColor_Float16x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x2_UInt32_color;
 Variable PixelExportColor_Float16x2_UInt32_index;
 Function PixelExportColor_Float16x2_UInt32;
+inline constexpr std::array PixelExportColor_Float16x2_UInt32_args = { &PixelExportColor_Float16x2_UInt32_color, &PixelExportColor_Float16x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x2_Int16_color;
 Variable PixelExportColor_Float16x2_Int16_index;
 Function PixelExportColor_Float16x2_Int16;
+inline constexpr std::array PixelExportColor_Float16x2_Int16_args = { &PixelExportColor_Float16x2_Int16_color, &PixelExportColor_Float16x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x2_UInt16_color;
 Variable PixelExportColor_Float16x2_UInt16_index;
 Function PixelExportColor_Float16x2_UInt16;
+inline constexpr std::array PixelExportColor_Float16x2_UInt16_args = { &PixelExportColor_Float16x2_UInt16_color, &PixelExportColor_Float16x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x3_Int32_color;
 Variable PixelExportColor_Float16x3_Int32_index;
 Function PixelExportColor_Float16x3_Int32;
+inline constexpr std::array PixelExportColor_Float16x3_Int32_args = { &PixelExportColor_Float16x3_Int32_color, &PixelExportColor_Float16x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x3_UInt32_color;
 Variable PixelExportColor_Float16x3_UInt32_index;
 Function PixelExportColor_Float16x3_UInt32;
+inline constexpr std::array PixelExportColor_Float16x3_UInt32_args = { &PixelExportColor_Float16x3_UInt32_color, &PixelExportColor_Float16x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x3_Int16_color;
 Variable PixelExportColor_Float16x3_Int16_index;
 Function PixelExportColor_Float16x3_Int16;
+inline constexpr std::array PixelExportColor_Float16x3_Int16_args = { &PixelExportColor_Float16x3_Int16_color, &PixelExportColor_Float16x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x3_UInt16_color;
 Variable PixelExportColor_Float16x3_UInt16_index;
 Function PixelExportColor_Float16x3_UInt16;
+inline constexpr std::array PixelExportColor_Float16x3_UInt16_args = { &PixelExportColor_Float16x3_UInt16_color, &PixelExportColor_Float16x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x4_Int32_color;
 Variable PixelExportColor_Float16x4_Int32_index;
 Function PixelExportColor_Float16x4_Int32;
+inline constexpr std::array PixelExportColor_Float16x4_Int32_args = { &PixelExportColor_Float16x4_Int32_color, &PixelExportColor_Float16x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x4_UInt32_color;
 Variable PixelExportColor_Float16x4_UInt32_index;
 Function PixelExportColor_Float16x4_UInt32;
+inline constexpr std::array PixelExportColor_Float16x4_UInt32_args = { &PixelExportColor_Float16x4_UInt32_color, &PixelExportColor_Float16x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x4_Int16_color;
 Variable PixelExportColor_Float16x4_Int16_index;
 Function PixelExportColor_Float16x4_Int16;
+inline constexpr std::array PixelExportColor_Float16x4_Int16_args = { &PixelExportColor_Float16x4_Int16_color, &PixelExportColor_Float16x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Float16x4_UInt16_color;
 Variable PixelExportColor_Float16x4_UInt16_index;
 Function PixelExportColor_Float16x4_UInt16;
+inline constexpr std::array PixelExportColor_Float16x4_UInt16_args = { &PixelExportColor_Float16x4_UInt16_color, &PixelExportColor_Float16x4_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32_Int32_color;
 Variable PixelExportColor_Int32_Int32_index;
 Function PixelExportColor_Int32_Int32;
+inline constexpr std::array PixelExportColor_Int32_Int32_args = { &PixelExportColor_Int32_Int32_color, &PixelExportColor_Int32_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32_UInt32_color;
 Variable PixelExportColor_Int32_UInt32_index;
 Function PixelExportColor_Int32_UInt32;
+inline constexpr std::array PixelExportColor_Int32_UInt32_args = { &PixelExportColor_Int32_UInt32_color, &PixelExportColor_Int32_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32_Int16_color;
 Variable PixelExportColor_Int32_Int16_index;
 Function PixelExportColor_Int32_Int16;
+inline constexpr std::array PixelExportColor_Int32_Int16_args = { &PixelExportColor_Int32_Int16_color, &PixelExportColor_Int32_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32_UInt16_color;
 Variable PixelExportColor_Int32_UInt16_index;
 Function PixelExportColor_Int32_UInt16;
+inline constexpr std::array PixelExportColor_Int32_UInt16_args = { &PixelExportColor_Int32_UInt16_color, &PixelExportColor_Int32_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x2_Int32_color;
 Variable PixelExportColor_Int32x2_Int32_index;
 Function PixelExportColor_Int32x2_Int32;
+inline constexpr std::array PixelExportColor_Int32x2_Int32_args = { &PixelExportColor_Int32x2_Int32_color, &PixelExportColor_Int32x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x2_UInt32_color;
 Variable PixelExportColor_Int32x2_UInt32_index;
 Function PixelExportColor_Int32x2_UInt32;
+inline constexpr std::array PixelExportColor_Int32x2_UInt32_args = { &PixelExportColor_Int32x2_UInt32_color, &PixelExportColor_Int32x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x2_Int16_color;
 Variable PixelExportColor_Int32x2_Int16_index;
 Function PixelExportColor_Int32x2_Int16;
+inline constexpr std::array PixelExportColor_Int32x2_Int16_args = { &PixelExportColor_Int32x2_Int16_color, &PixelExportColor_Int32x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x2_UInt16_color;
 Variable PixelExportColor_Int32x2_UInt16_index;
 Function PixelExportColor_Int32x2_UInt16;
+inline constexpr std::array PixelExportColor_Int32x2_UInt16_args = { &PixelExportColor_Int32x2_UInt16_color, &PixelExportColor_Int32x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x3_Int32_color;
 Variable PixelExportColor_Int32x3_Int32_index;
 Function PixelExportColor_Int32x3_Int32;
+inline constexpr std::array PixelExportColor_Int32x3_Int32_args = { &PixelExportColor_Int32x3_Int32_color, &PixelExportColor_Int32x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x3_UInt32_color;
 Variable PixelExportColor_Int32x3_UInt32_index;
 Function PixelExportColor_Int32x3_UInt32;
+inline constexpr std::array PixelExportColor_Int32x3_UInt32_args = { &PixelExportColor_Int32x3_UInt32_color, &PixelExportColor_Int32x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x3_Int16_color;
 Variable PixelExportColor_Int32x3_Int16_index;
 Function PixelExportColor_Int32x3_Int16;
+inline constexpr std::array PixelExportColor_Int32x3_Int16_args = { &PixelExportColor_Int32x3_Int16_color, &PixelExportColor_Int32x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x3_UInt16_color;
 Variable PixelExportColor_Int32x3_UInt16_index;
 Function PixelExportColor_Int32x3_UInt16;
+inline constexpr std::array PixelExportColor_Int32x3_UInt16_args = { &PixelExportColor_Int32x3_UInt16_color, &PixelExportColor_Int32x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x4_Int32_color;
 Variable PixelExportColor_Int32x4_Int32_index;
 Function PixelExportColor_Int32x4_Int32;
+inline constexpr std::array PixelExportColor_Int32x4_Int32_args = { &PixelExportColor_Int32x4_Int32_color, &PixelExportColor_Int32x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x4_UInt32_color;
 Variable PixelExportColor_Int32x4_UInt32_index;
 Function PixelExportColor_Int32x4_UInt32;
+inline constexpr std::array PixelExportColor_Int32x4_UInt32_args = { &PixelExportColor_Int32x4_UInt32_color, &PixelExportColor_Int32x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x4_Int16_color;
 Variable PixelExportColor_Int32x4_Int16_index;
 Function PixelExportColor_Int32x4_Int16;
+inline constexpr std::array PixelExportColor_Int32x4_Int16_args = { &PixelExportColor_Int32x4_Int16_color, &PixelExportColor_Int32x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int32x4_UInt16_color;
 Variable PixelExportColor_Int32x4_UInt16_index;
 Function PixelExportColor_Int32x4_UInt16;
+inline constexpr std::array PixelExportColor_Int32x4_UInt16_args = { &PixelExportColor_Int32x4_UInt16_color, &PixelExportColor_Int32x4_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16_Int32_color;
 Variable PixelExportColor_Int16_Int32_index;
 Function PixelExportColor_Int16_Int32;
+inline constexpr std::array PixelExportColor_Int16_Int32_args = { &PixelExportColor_Int16_Int32_color, &PixelExportColor_Int16_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16_UInt32_color;
 Variable PixelExportColor_Int16_UInt32_index;
 Function PixelExportColor_Int16_UInt32;
+inline constexpr std::array PixelExportColor_Int16_UInt32_args = { &PixelExportColor_Int16_UInt32_color, &PixelExportColor_Int16_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16_Int16_color;
 Variable PixelExportColor_Int16_Int16_index;
 Function PixelExportColor_Int16_Int16;
+inline constexpr std::array PixelExportColor_Int16_Int16_args = { &PixelExportColor_Int16_Int16_color, &PixelExportColor_Int16_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16_UInt16_color;
 Variable PixelExportColor_Int16_UInt16_index;
 Function PixelExportColor_Int16_UInt16;
+inline constexpr std::array PixelExportColor_Int16_UInt16_args = { &PixelExportColor_Int16_UInt16_color, &PixelExportColor_Int16_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x2_Int32_color;
 Variable PixelExportColor_Int16x2_Int32_index;
 Function PixelExportColor_Int16x2_Int32;
+inline constexpr std::array PixelExportColor_Int16x2_Int32_args = { &PixelExportColor_Int16x2_Int32_color, &PixelExportColor_Int16x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x2_UInt32_color;
 Variable PixelExportColor_Int16x2_UInt32_index;
 Function PixelExportColor_Int16x2_UInt32;
+inline constexpr std::array PixelExportColor_Int16x2_UInt32_args = { &PixelExportColor_Int16x2_UInt32_color, &PixelExportColor_Int16x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x2_Int16_color;
 Variable PixelExportColor_Int16x2_Int16_index;
 Function PixelExportColor_Int16x2_Int16;
+inline constexpr std::array PixelExportColor_Int16x2_Int16_args = { &PixelExportColor_Int16x2_Int16_color, &PixelExportColor_Int16x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x2_UInt16_color;
 Variable PixelExportColor_Int16x2_UInt16_index;
 Function PixelExportColor_Int16x2_UInt16;
+inline constexpr std::array PixelExportColor_Int16x2_UInt16_args = { &PixelExportColor_Int16x2_UInt16_color, &PixelExportColor_Int16x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x3_Int32_color;
 Variable PixelExportColor_Int16x3_Int32_index;
 Function PixelExportColor_Int16x3_Int32;
+inline constexpr std::array PixelExportColor_Int16x3_Int32_args = { &PixelExportColor_Int16x3_Int32_color, &PixelExportColor_Int16x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x3_UInt32_color;
 Variable PixelExportColor_Int16x3_UInt32_index;
 Function PixelExportColor_Int16x3_UInt32;
+inline constexpr std::array PixelExportColor_Int16x3_UInt32_args = { &PixelExportColor_Int16x3_UInt32_color, &PixelExportColor_Int16x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x3_Int16_color;
 Variable PixelExportColor_Int16x3_Int16_index;
 Function PixelExportColor_Int16x3_Int16;
+inline constexpr std::array PixelExportColor_Int16x3_Int16_args = { &PixelExportColor_Int16x3_Int16_color, &PixelExportColor_Int16x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x3_UInt16_color;
 Variable PixelExportColor_Int16x3_UInt16_index;
 Function PixelExportColor_Int16x3_UInt16;
+inline constexpr std::array PixelExportColor_Int16x3_UInt16_args = { &PixelExportColor_Int16x3_UInt16_color, &PixelExportColor_Int16x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x4_Int32_color;
 Variable PixelExportColor_Int16x4_Int32_index;
 Function PixelExportColor_Int16x4_Int32;
+inline constexpr std::array PixelExportColor_Int16x4_Int32_args = { &PixelExportColor_Int16x4_Int32_color, &PixelExportColor_Int16x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x4_UInt32_color;
 Variable PixelExportColor_Int16x4_UInt32_index;
 Function PixelExportColor_Int16x4_UInt32;
+inline constexpr std::array PixelExportColor_Int16x4_UInt32_args = { &PixelExportColor_Int16x4_UInt32_color, &PixelExportColor_Int16x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x4_Int16_color;
 Variable PixelExportColor_Int16x4_Int16_index;
 Function PixelExportColor_Int16x4_Int16;
+inline constexpr std::array PixelExportColor_Int16x4_Int16_args = { &PixelExportColor_Int16x4_Int16_color, &PixelExportColor_Int16x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_Int16x4_UInt16_color;
 Variable PixelExportColor_Int16x4_UInt16_index;
 Function PixelExportColor_Int16x4_UInt16;
+inline constexpr std::array PixelExportColor_Int16x4_UInt16_args = { &PixelExportColor_Int16x4_UInt16_color, &PixelExportColor_Int16x4_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32_Int32_color;
 Variable PixelExportColor_UInt32_Int32_index;
 Function PixelExportColor_UInt32_Int32;
+inline constexpr std::array PixelExportColor_UInt32_Int32_args = { &PixelExportColor_UInt32_Int32_color, &PixelExportColor_UInt32_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32_UInt32_color;
 Variable PixelExportColor_UInt32_UInt32_index;
 Function PixelExportColor_UInt32_UInt32;
+inline constexpr std::array PixelExportColor_UInt32_UInt32_args = { &PixelExportColor_UInt32_UInt32_color, &PixelExportColor_UInt32_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32_Int16_color;
 Variable PixelExportColor_UInt32_Int16_index;
 Function PixelExportColor_UInt32_Int16;
+inline constexpr std::array PixelExportColor_UInt32_Int16_args = { &PixelExportColor_UInt32_Int16_color, &PixelExportColor_UInt32_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32_UInt16_color;
 Variable PixelExportColor_UInt32_UInt16_index;
 Function PixelExportColor_UInt32_UInt16;
+inline constexpr std::array PixelExportColor_UInt32_UInt16_args = { &PixelExportColor_UInt32_UInt16_color, &PixelExportColor_UInt32_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x2_Int32_color;
 Variable PixelExportColor_UInt32x2_Int32_index;
 Function PixelExportColor_UInt32x2_Int32;
+inline constexpr std::array PixelExportColor_UInt32x2_Int32_args = { &PixelExportColor_UInt32x2_Int32_color, &PixelExportColor_UInt32x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x2_UInt32_color;
 Variable PixelExportColor_UInt32x2_UInt32_index;
 Function PixelExportColor_UInt32x2_UInt32;
+inline constexpr std::array PixelExportColor_UInt32x2_UInt32_args = { &PixelExportColor_UInt32x2_UInt32_color, &PixelExportColor_UInt32x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x2_Int16_color;
 Variable PixelExportColor_UInt32x2_Int16_index;
 Function PixelExportColor_UInt32x2_Int16;
+inline constexpr std::array PixelExportColor_UInt32x2_Int16_args = { &PixelExportColor_UInt32x2_Int16_color, &PixelExportColor_UInt32x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x2_UInt16_color;
 Variable PixelExportColor_UInt32x2_UInt16_index;
 Function PixelExportColor_UInt32x2_UInt16;
+inline constexpr std::array PixelExportColor_UInt32x2_UInt16_args = { &PixelExportColor_UInt32x2_UInt16_color, &PixelExportColor_UInt32x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x3_Int32_color;
 Variable PixelExportColor_UInt32x3_Int32_index;
 Function PixelExportColor_UInt32x3_Int32;
+inline constexpr std::array PixelExportColor_UInt32x3_Int32_args = { &PixelExportColor_UInt32x3_Int32_color, &PixelExportColor_UInt32x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x3_UInt32_color;
 Variable PixelExportColor_UInt32x3_UInt32_index;
 Function PixelExportColor_UInt32x3_UInt32;
+inline constexpr std::array PixelExportColor_UInt32x3_UInt32_args = { &PixelExportColor_UInt32x3_UInt32_color, &PixelExportColor_UInt32x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x3_Int16_color;
 Variable PixelExportColor_UInt32x3_Int16_index;
 Function PixelExportColor_UInt32x3_Int16;
+inline constexpr std::array PixelExportColor_UInt32x3_Int16_args = { &PixelExportColor_UInt32x3_Int16_color, &PixelExportColor_UInt32x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x3_UInt16_color;
 Variable PixelExportColor_UInt32x3_UInt16_index;
 Function PixelExportColor_UInt32x3_UInt16;
+inline constexpr std::array PixelExportColor_UInt32x3_UInt16_args = { &PixelExportColor_UInt32x3_UInt16_color, &PixelExportColor_UInt32x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x4_Int32_color;
 Variable PixelExportColor_UInt32x4_Int32_index;
 Function PixelExportColor_UInt32x4_Int32;
+inline constexpr std::array PixelExportColor_UInt32x4_Int32_args = { &PixelExportColor_UInt32x4_Int32_color, &PixelExportColor_UInt32x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x4_UInt32_color;
 Variable PixelExportColor_UInt32x4_UInt32_index;
 Function PixelExportColor_UInt32x4_UInt32;
+inline constexpr std::array PixelExportColor_UInt32x4_UInt32_args = { &PixelExportColor_UInt32x4_UInt32_color, &PixelExportColor_UInt32x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x4_Int16_color;
 Variable PixelExportColor_UInt32x4_Int16_index;
 Function PixelExportColor_UInt32x4_Int16;
+inline constexpr std::array PixelExportColor_UInt32x4_Int16_args = { &PixelExportColor_UInt32x4_Int16_color, &PixelExportColor_UInt32x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt32x4_UInt16_color;
 Variable PixelExportColor_UInt32x4_UInt16_index;
 Function PixelExportColor_UInt32x4_UInt16;
+inline constexpr std::array PixelExportColor_UInt32x4_UInt16_args = { &PixelExportColor_UInt32x4_UInt16_color, &PixelExportColor_UInt32x4_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16_Int32_color;
 Variable PixelExportColor_UInt16_Int32_index;
 Function PixelExportColor_UInt16_Int32;
+inline constexpr std::array PixelExportColor_UInt16_Int32_args = { &PixelExportColor_UInt16_Int32_color, &PixelExportColor_UInt16_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16_UInt32_color;
 Variable PixelExportColor_UInt16_UInt32_index;
 Function PixelExportColor_UInt16_UInt32;
+inline constexpr std::array PixelExportColor_UInt16_UInt32_args = { &PixelExportColor_UInt16_UInt32_color, &PixelExportColor_UInt16_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16_Int16_color;
 Variable PixelExportColor_UInt16_Int16_index;
 Function PixelExportColor_UInt16_Int16;
+inline constexpr std::array PixelExportColor_UInt16_Int16_args = { &PixelExportColor_UInt16_Int16_color, &PixelExportColor_UInt16_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16_UInt16_color;
 Variable PixelExportColor_UInt16_UInt16_index;
 Function PixelExportColor_UInt16_UInt16;
+inline constexpr std::array PixelExportColor_UInt16_UInt16_args = { &PixelExportColor_UInt16_UInt16_color, &PixelExportColor_UInt16_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x2_Int32_color;
 Variable PixelExportColor_UInt16x2_Int32_index;
 Function PixelExportColor_UInt16x2_Int32;
+inline constexpr std::array PixelExportColor_UInt16x2_Int32_args = { &PixelExportColor_UInt16x2_Int32_color, &PixelExportColor_UInt16x2_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x2_UInt32_color;
 Variable PixelExportColor_UInt16x2_UInt32_index;
 Function PixelExportColor_UInt16x2_UInt32;
+inline constexpr std::array PixelExportColor_UInt16x2_UInt32_args = { &PixelExportColor_UInt16x2_UInt32_color, &PixelExportColor_UInt16x2_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x2_Int16_color;
 Variable PixelExportColor_UInt16x2_Int16_index;
 Function PixelExportColor_UInt16x2_Int16;
+inline constexpr std::array PixelExportColor_UInt16x2_Int16_args = { &PixelExportColor_UInt16x2_Int16_color, &PixelExportColor_UInt16x2_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x2_UInt16_color;
 Variable PixelExportColor_UInt16x2_UInt16_index;
 Function PixelExportColor_UInt16x2_UInt16;
+inline constexpr std::array PixelExportColor_UInt16x2_UInt16_args = { &PixelExportColor_UInt16x2_UInt16_color, &PixelExportColor_UInt16x2_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x3_Int32_color;
 Variable PixelExportColor_UInt16x3_Int32_index;
 Function PixelExportColor_UInt16x3_Int32;
+inline constexpr std::array PixelExportColor_UInt16x3_Int32_args = { &PixelExportColor_UInt16x3_Int32_color, &PixelExportColor_UInt16x3_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x3_UInt32_color;
 Variable PixelExportColor_UInt16x3_UInt32_index;
 Function PixelExportColor_UInt16x3_UInt32;
+inline constexpr std::array PixelExportColor_UInt16x3_UInt32_args = { &PixelExportColor_UInt16x3_UInt32_color, &PixelExportColor_UInt16x3_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x3_Int16_color;
 Variable PixelExportColor_UInt16x3_Int16_index;
 Function PixelExportColor_UInt16x3_Int16;
+inline constexpr std::array PixelExportColor_UInt16x3_Int16_args = { &PixelExportColor_UInt16x3_Int16_color, &PixelExportColor_UInt16x3_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x3_UInt16_color;
 Variable PixelExportColor_UInt16x3_UInt16_index;
 Function PixelExportColor_UInt16x3_UInt16;
+inline constexpr std::array PixelExportColor_UInt16x3_UInt16_args = { &PixelExportColor_UInt16x3_UInt16_color, &PixelExportColor_UInt16x3_UInt16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x4_Int32_color;
 Variable PixelExportColor_UInt16x4_Int32_index;
 Function PixelExportColor_UInt16x4_Int32;
+inline constexpr std::array PixelExportColor_UInt16x4_Int32_args = { &PixelExportColor_UInt16x4_Int32_color, &PixelExportColor_UInt16x4_Int32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x4_UInt32_color;
 Variable PixelExportColor_UInt16x4_UInt32_index;
 Function PixelExportColor_UInt16x4_UInt32;
+inline constexpr std::array PixelExportColor_UInt16x4_UInt32_args = { &PixelExportColor_UInt16x4_UInt32_color, &PixelExportColor_UInt16x4_UInt32_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x4_Int16_color;
 Variable PixelExportColor_UInt16x4_Int16_index;
 Function PixelExportColor_UInt16x4_Int16;
+inline constexpr std::array PixelExportColor_UInt16x4_Int16_args = { &PixelExportColor_UInt16x4_Int16_color, &PixelExportColor_UInt16x4_Int16_index };
+
+/// pixelExportColor
 Variable PixelExportColor_UInt16x4_UInt16_color;
 Variable PixelExportColor_UInt16x4_UInt16_index;
 Function PixelExportColor_UInt16x4_UInt16;
+inline constexpr std::array PixelExportColor_UInt16x4_UInt16_args = { &PixelExportColor_UInt16x4_UInt16_color, &PixelExportColor_UInt16x4_UInt16_index };
+
+/// computeGetLocalThreadIndices
 Function ComputeGetLocalThreadIndices;
+
+/// computeGetGlobalThreadIndices
 Function ComputeGetGlobalThreadIndices;
+
+/// computeGetWorkgroupIndices
 Function ComputeGetWorkgroupIndices;
+
+/// computeGetWorkGroupDimensions
 Function ComputeGetWorkGroupDimensions;
+
+/// computeGetIndexInWorkgroup
 Function ComputeGetIndexInWorkgroup;
+
+/// subgroupGetId
 Function SubgroupGetId;
+
+/// subgroupGetSize
 Function SubgroupGetSize;
+
+/// subgroupGetNum
 Function SubgroupGetNum;
+
+/// subgroupGetThreadMask
 Function SubgroupGetThreadMask;
+
+/// subgroupGetThreadAndLowerMask
 Function SubgroupGetThreadAndLowerMask;
+
+/// subgroupGetLowerMask
 Function SubgroupGetLowerMask;
+
+/// subgroupGetThreadAndGreaterMask
 Function SubgroupGetThreadAndGreaterMask;
+
+/// subgroupGetGreaterMask
 Function SubgroupGetGreaterMask;
-Function SubgroupFirstActiveThread;
+
+/// subgroupGetFirstActiveThread
+Function SubgroupGetFirstActiveThread;
+
 Variable BroadcastFirstActiveThread_UInt32_value;
 Function SubgroupBroadcastFirstActiveThread;
 Variable SubgroupBallot_Bool8_predicate;
@@ -3935,1174 +5701,1495 @@ Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
 Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
 void SetupIntrinsics()
 {
+    /// acos
     acos_Float32_arg.name = "val"_c;
     acos_Float32_arg.type = Type::FullType{ Float32Type.name };
     acos_Float32.name = "acos"_c;
-    acos_Float32.returnType = Type::FullType{ Float32Type.name };
+    acos_Float32.returnType = Type::FullType { Float32Type.name };
+    acos_Float32.parameters = acos_Float32_args;
     Symbol::Resolved(&acos_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&acos_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// acos
     acos_Float32x2_arg.name = "val"_c;
     acos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     acos_Float32x2.name = "acos"_c;
-    acos_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    acos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    acos_Float32x2.parameters = acos_Float32x2_args;
     Symbol::Resolved(&acos_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&acos_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// acos
     acos_Float32x3_arg.name = "val"_c;
     acos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     acos_Float32x3.name = "acos"_c;
-    acos_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    acos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    acos_Float32x3.parameters = acos_Float32x3_args;
     Symbol::Resolved(&acos_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&acos_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// acos
     acos_Float32x4_arg.name = "val"_c;
     acos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     acos_Float32x4.name = "acos"_c;
-    acos_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    acos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    acos_Float32x4.parameters = acos_Float32x4_args;
     Symbol::Resolved(&acos_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&acos_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// acos
     acos_Float16_arg.name = "val"_c;
     acos_Float16_arg.type = Type::FullType{ Float16Type.name };
     acos_Float16.name = "acos"_c;
-    acos_Float16.returnType = Type::FullType{ Float16Type.name };
+    acos_Float16.returnType = Type::FullType { Float16Type.name };
+    acos_Float16.parameters = acos_Float16_args;
     Symbol::Resolved(&acos_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&acos_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// acos
     acos_Float16x2_arg.name = "val"_c;
     acos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     acos_Float16x2.name = "acos"_c;
-    acos_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    acos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    acos_Float16x2.parameters = acos_Float16x2_args;
     Symbol::Resolved(&acos_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&acos_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// acos
     acos_Float16x3_arg.name = "val"_c;
     acos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     acos_Float16x3.name = "acos"_c;
-    acos_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    acos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    acos_Float16x3.parameters = acos_Float16x3_args;
     Symbol::Resolved(&acos_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&acos_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// acos
     acos_Float16x4_arg.name = "val"_c;
     acos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     acos_Float16x4.name = "acos"_c;
-    acos_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    acos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    acos_Float16x4.parameters = acos_Float16x4_args;
     Symbol::Resolved(&acos_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&acos_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// acosh
     acosh_Float32_arg.name = "val"_c;
     acosh_Float32_arg.type = Type::FullType{ Float32Type.name };
     acosh_Float32.name = "acosh"_c;
-    acosh_Float32.returnType = Type::FullType{ Float32Type.name };
+    acosh_Float32.returnType = Type::FullType { Float32Type.name };
+    acosh_Float32.parameters = acosh_Float32_args;
     Symbol::Resolved(&acosh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&acosh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// acosh
     acosh_Float32x2_arg.name = "val"_c;
     acosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     acosh_Float32x2.name = "acosh"_c;
-    acosh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    acosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    acosh_Float32x2.parameters = acosh_Float32x2_args;
     Symbol::Resolved(&acosh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&acosh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// acosh
     acosh_Float32x3_arg.name = "val"_c;
     acosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     acosh_Float32x3.name = "acosh"_c;
-    acosh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    acosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    acosh_Float32x3.parameters = acosh_Float32x3_args;
     Symbol::Resolved(&acosh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&acosh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// acosh
     acosh_Float32x4_arg.name = "val"_c;
     acosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     acosh_Float32x4.name = "acosh"_c;
-    acosh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    acosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    acosh_Float32x4.parameters = acosh_Float32x4_args;
     Symbol::Resolved(&acosh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&acosh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// acosh
     acosh_Float16_arg.name = "val"_c;
     acosh_Float16_arg.type = Type::FullType{ Float16Type.name };
     acosh_Float16.name = "acosh"_c;
-    acosh_Float16.returnType = Type::FullType{ Float16Type.name };
+    acosh_Float16.returnType = Type::FullType { Float16Type.name };
+    acosh_Float16.parameters = acosh_Float16_args;
     Symbol::Resolved(&acosh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&acosh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// acosh
     acosh_Float16x2_arg.name = "val"_c;
     acosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     acosh_Float16x2.name = "acosh"_c;
-    acosh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    acosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    acosh_Float16x2.parameters = acosh_Float16x2_args;
     Symbol::Resolved(&acosh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&acosh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// acosh
     acosh_Float16x3_arg.name = "val"_c;
     acosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     acosh_Float16x3.name = "acosh"_c;
-    acosh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    acosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    acosh_Float16x3.parameters = acosh_Float16x3_args;
     Symbol::Resolved(&acosh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&acosh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// acosh
     acosh_Float16x4_arg.name = "val"_c;
     acosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     acosh_Float16x4.name = "acosh"_c;
-    acosh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    acosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    acosh_Float16x4.parameters = acosh_Float16x4_args;
     Symbol::Resolved(&acosh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&acosh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// asin
     asin_Float32_arg.name = "val"_c;
     asin_Float32_arg.type = Type::FullType{ Float32Type.name };
     asin_Float32.name = "asin"_c;
-    asin_Float32.returnType = Type::FullType{ Float32Type.name };
+    asin_Float32.returnType = Type::FullType { Float32Type.name };
+    asin_Float32.parameters = asin_Float32_args;
     Symbol::Resolved(&asin_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&asin_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// asin
     asin_Float32x2_arg.name = "val"_c;
     asin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     asin_Float32x2.name = "asin"_c;
-    asin_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    asin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    asin_Float32x2.parameters = asin_Float32x2_args;
     Symbol::Resolved(&asin_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&asin_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// asin
     asin_Float32x3_arg.name = "val"_c;
     asin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     asin_Float32x3.name = "asin"_c;
-    asin_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    asin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    asin_Float32x3.parameters = asin_Float32x3_args;
     Symbol::Resolved(&asin_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&asin_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// asin
     asin_Float32x4_arg.name = "val"_c;
     asin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     asin_Float32x4.name = "asin"_c;
-    asin_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    asin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    asin_Float32x4.parameters = asin_Float32x4_args;
     Symbol::Resolved(&asin_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&asin_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// asin
     asin_Float16_arg.name = "val"_c;
     asin_Float16_arg.type = Type::FullType{ Float16Type.name };
     asin_Float16.name = "asin"_c;
-    asin_Float16.returnType = Type::FullType{ Float16Type.name };
+    asin_Float16.returnType = Type::FullType { Float16Type.name };
+    asin_Float16.parameters = asin_Float16_args;
     Symbol::Resolved(&asin_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&asin_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// asin
     asin_Float16x2_arg.name = "val"_c;
     asin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     asin_Float16x2.name = "asin"_c;
-    asin_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    asin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    asin_Float16x2.parameters = asin_Float16x2_args;
     Symbol::Resolved(&asin_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&asin_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// asin
     asin_Float16x3_arg.name = "val"_c;
     asin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     asin_Float16x3.name = "asin"_c;
-    asin_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    asin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    asin_Float16x3.parameters = asin_Float16x3_args;
     Symbol::Resolved(&asin_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&asin_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// asin
     asin_Float16x4_arg.name = "val"_c;
     asin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     asin_Float16x4.name = "asin"_c;
-    asin_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    asin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    asin_Float16x4.parameters = asin_Float16x4_args;
     Symbol::Resolved(&asin_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&asin_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// asinh
     asinh_Float32_arg.name = "val"_c;
     asinh_Float32_arg.type = Type::FullType{ Float32Type.name };
     asinh_Float32.name = "asinh"_c;
-    asinh_Float32.returnType = Type::FullType{ Float32Type.name };
+    asinh_Float32.returnType = Type::FullType { Float32Type.name };
+    asinh_Float32.parameters = asinh_Float32_args;
     Symbol::Resolved(&asinh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&asinh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// asinh
     asinh_Float32x2_arg.name = "val"_c;
     asinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     asinh_Float32x2.name = "asinh"_c;
-    asinh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    asinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    asinh_Float32x2.parameters = asinh_Float32x2_args;
     Symbol::Resolved(&asinh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&asinh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// asinh
     asinh_Float32x3_arg.name = "val"_c;
     asinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     asinh_Float32x3.name = "asinh"_c;
-    asinh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    asinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    asinh_Float32x3.parameters = asinh_Float32x3_args;
     Symbol::Resolved(&asinh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&asinh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// asinh
     asinh_Float32x4_arg.name = "val"_c;
     asinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     asinh_Float32x4.name = "asinh"_c;
-    asinh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    asinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    asinh_Float32x4.parameters = asinh_Float32x4_args;
     Symbol::Resolved(&asinh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&asinh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// asinh
     asinh_Float16_arg.name = "val"_c;
     asinh_Float16_arg.type = Type::FullType{ Float16Type.name };
     asinh_Float16.name = "asinh"_c;
-    asinh_Float16.returnType = Type::FullType{ Float16Type.name };
+    asinh_Float16.returnType = Type::FullType { Float16Type.name };
+    asinh_Float16.parameters = asinh_Float16_args;
     Symbol::Resolved(&asinh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&asinh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// asinh
     asinh_Float16x2_arg.name = "val"_c;
     asinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     asinh_Float16x2.name = "asinh"_c;
-    asinh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    asinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    asinh_Float16x2.parameters = asinh_Float16x2_args;
     Symbol::Resolved(&asinh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&asinh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// asinh
     asinh_Float16x3_arg.name = "val"_c;
     asinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     asinh_Float16x3.name = "asinh"_c;
-    asinh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    asinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    asinh_Float16x3.parameters = asinh_Float16x3_args;
     Symbol::Resolved(&asinh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&asinh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// asinh
     asinh_Float16x4_arg.name = "val"_c;
     asinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     asinh_Float16x4.name = "asinh"_c;
-    asinh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    asinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    asinh_Float16x4.parameters = asinh_Float16x4_args;
     Symbol::Resolved(&asinh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&asinh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// atan
     atan_Float32_arg.name = "val"_c;
     atan_Float32_arg.type = Type::FullType{ Float32Type.name };
     atan_Float32.name = "atan"_c;
-    atan_Float32.returnType = Type::FullType{ Float32Type.name };
+    atan_Float32.returnType = Type::FullType { Float32Type.name };
+    atan_Float32.parameters = atan_Float32_args;
     Symbol::Resolved(&atan_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&atan_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// atan
     atan_Float32x2_arg.name = "val"_c;
     atan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     atan_Float32x2.name = "atan"_c;
-    atan_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    atan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    atan_Float32x2.parameters = atan_Float32x2_args;
     Symbol::Resolved(&atan_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&atan_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// atan
     atan_Float32x3_arg.name = "val"_c;
     atan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     atan_Float32x3.name = "atan"_c;
-    atan_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    atan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    atan_Float32x3.parameters = atan_Float32x3_args;
     Symbol::Resolved(&atan_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&atan_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// atan
     atan_Float32x4_arg.name = "val"_c;
     atan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     atan_Float32x4.name = "atan"_c;
-    atan_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    atan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    atan_Float32x4.parameters = atan_Float32x4_args;
     Symbol::Resolved(&atan_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&atan_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// atan
     atan_Float16_arg.name = "val"_c;
     atan_Float16_arg.type = Type::FullType{ Float16Type.name };
     atan_Float16.name = "atan"_c;
-    atan_Float16.returnType = Type::FullType{ Float16Type.name };
+    atan_Float16.returnType = Type::FullType { Float16Type.name };
+    atan_Float16.parameters = atan_Float16_args;
     Symbol::Resolved(&atan_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&atan_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// atan
     atan_Float16x2_arg.name = "val"_c;
     atan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     atan_Float16x2.name = "atan"_c;
-    atan_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    atan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    atan_Float16x2.parameters = atan_Float16x2_args;
     Symbol::Resolved(&atan_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&atan_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// atan
     atan_Float16x3_arg.name = "val"_c;
     atan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     atan_Float16x3.name = "atan"_c;
-    atan_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    atan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    atan_Float16x3.parameters = atan_Float16x3_args;
     Symbol::Resolved(&atan_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&atan_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// atan
     atan_Float16x4_arg.name = "val"_c;
     atan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     atan_Float16x4.name = "atan"_c;
-    atan_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    atan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    atan_Float16x4.parameters = atan_Float16x4_args;
     Symbol::Resolved(&atan_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&atan_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// atanh
     atanh_Float32_arg.name = "val"_c;
     atanh_Float32_arg.type = Type::FullType{ Float32Type.name };
     atanh_Float32.name = "atanh"_c;
-    atanh_Float32.returnType = Type::FullType{ Float32Type.name };
+    atanh_Float32.returnType = Type::FullType { Float32Type.name };
+    atanh_Float32.parameters = atanh_Float32_args;
     Symbol::Resolved(&atanh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&atanh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// atanh
     atanh_Float32x2_arg.name = "val"_c;
     atanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     atanh_Float32x2.name = "atanh"_c;
-    atanh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    atanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    atanh_Float32x2.parameters = atanh_Float32x2_args;
     Symbol::Resolved(&atanh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&atanh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// atanh
     atanh_Float32x3_arg.name = "val"_c;
     atanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     atanh_Float32x3.name = "atanh"_c;
-    atanh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    atanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    atanh_Float32x3.parameters = atanh_Float32x3_args;
     Symbol::Resolved(&atanh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&atanh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// atanh
     atanh_Float32x4_arg.name = "val"_c;
     atanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     atanh_Float32x4.name = "atanh"_c;
-    atanh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    atanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    atanh_Float32x4.parameters = atanh_Float32x4_args;
     Symbol::Resolved(&atanh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&atanh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// atanh
     atanh_Float16_arg.name = "val"_c;
     atanh_Float16_arg.type = Type::FullType{ Float16Type.name };
     atanh_Float16.name = "atanh"_c;
-    atanh_Float16.returnType = Type::FullType{ Float16Type.name };
+    atanh_Float16.returnType = Type::FullType { Float16Type.name };
+    atanh_Float16.parameters = atanh_Float16_args;
     Symbol::Resolved(&atanh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&atanh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// atanh
     atanh_Float16x2_arg.name = "val"_c;
     atanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     atanh_Float16x2.name = "atanh"_c;
-    atanh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    atanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    atanh_Float16x2.parameters = atanh_Float16x2_args;
     Symbol::Resolved(&atanh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&atanh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// atanh
     atanh_Float16x3_arg.name = "val"_c;
     atanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     atanh_Float16x3.name = "atanh"_c;
-    atanh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    atanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    atanh_Float16x3.parameters = atanh_Float16x3_args;
     Symbol::Resolved(&atanh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&atanh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// atanh
     atanh_Float16x4_arg.name = "val"_c;
     atanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     atanh_Float16x4.name = "atanh"_c;
-    atanh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    atanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    atanh_Float16x4.parameters = atanh_Float16x4_args;
     Symbol::Resolved(&atanh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&atanh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// cos
     cos_Float32_arg.name = "val"_c;
     cos_Float32_arg.type = Type::FullType{ Float32Type.name };
     cos_Float32.name = "cos"_c;
-    cos_Float32.returnType = Type::FullType{ Float32Type.name };
+    cos_Float32.returnType = Type::FullType { Float32Type.name };
+    cos_Float32.parameters = cos_Float32_args;
     Symbol::Resolved(&cos_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&cos_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// cos
     cos_Float32x2_arg.name = "val"_c;
     cos_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     cos_Float32x2.name = "cos"_c;
-    cos_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    cos_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    cos_Float32x2.parameters = cos_Float32x2_args;
     Symbol::Resolved(&cos_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&cos_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// cos
     cos_Float32x3_arg.name = "val"_c;
     cos_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     cos_Float32x3.name = "cos"_c;
-    cos_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    cos_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    cos_Float32x3.parameters = cos_Float32x3_args;
     Symbol::Resolved(&cos_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&cos_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// cos
     cos_Float32x4_arg.name = "val"_c;
     cos_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     cos_Float32x4.name = "cos"_c;
-    cos_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    cos_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    cos_Float32x4.parameters = cos_Float32x4_args;
     Symbol::Resolved(&cos_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&cos_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// cos
     cos_Float16_arg.name = "val"_c;
     cos_Float16_arg.type = Type::FullType{ Float16Type.name };
     cos_Float16.name = "cos"_c;
-    cos_Float16.returnType = Type::FullType{ Float16Type.name };
+    cos_Float16.returnType = Type::FullType { Float16Type.name };
+    cos_Float16.parameters = cos_Float16_args;
     Symbol::Resolved(&cos_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&cos_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// cos
     cos_Float16x2_arg.name = "val"_c;
     cos_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     cos_Float16x2.name = "cos"_c;
-    cos_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    cos_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    cos_Float16x2.parameters = cos_Float16x2_args;
     Symbol::Resolved(&cos_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&cos_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// cos
     cos_Float16x3_arg.name = "val"_c;
     cos_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     cos_Float16x3.name = "cos"_c;
-    cos_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    cos_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    cos_Float16x3.parameters = cos_Float16x3_args;
     Symbol::Resolved(&cos_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&cos_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// cos
     cos_Float16x4_arg.name = "val"_c;
     cos_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     cos_Float16x4.name = "cos"_c;
-    cos_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    cos_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    cos_Float16x4.parameters = cos_Float16x4_args;
     Symbol::Resolved(&cos_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&cos_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// cosh
     cosh_Float32_arg.name = "val"_c;
     cosh_Float32_arg.type = Type::FullType{ Float32Type.name };
     cosh_Float32.name = "cosh"_c;
-    cosh_Float32.returnType = Type::FullType{ Float32Type.name };
+    cosh_Float32.returnType = Type::FullType { Float32Type.name };
+    cosh_Float32.parameters = cosh_Float32_args;
     Symbol::Resolved(&cosh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&cosh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// cosh
     cosh_Float32x2_arg.name = "val"_c;
     cosh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     cosh_Float32x2.name = "cosh"_c;
-    cosh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    cosh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    cosh_Float32x2.parameters = cosh_Float32x2_args;
     Symbol::Resolved(&cosh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&cosh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// cosh
     cosh_Float32x3_arg.name = "val"_c;
     cosh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     cosh_Float32x3.name = "cosh"_c;
-    cosh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    cosh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    cosh_Float32x3.parameters = cosh_Float32x3_args;
     Symbol::Resolved(&cosh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&cosh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// cosh
     cosh_Float32x4_arg.name = "val"_c;
     cosh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     cosh_Float32x4.name = "cosh"_c;
-    cosh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    cosh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    cosh_Float32x4.parameters = cosh_Float32x4_args;
     Symbol::Resolved(&cosh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&cosh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// cosh
     cosh_Float16_arg.name = "val"_c;
     cosh_Float16_arg.type = Type::FullType{ Float16Type.name };
     cosh_Float16.name = "cosh"_c;
-    cosh_Float16.returnType = Type::FullType{ Float16Type.name };
+    cosh_Float16.returnType = Type::FullType { Float16Type.name };
+    cosh_Float16.parameters = cosh_Float16_args;
     Symbol::Resolved(&cosh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&cosh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// cosh
     cosh_Float16x2_arg.name = "val"_c;
     cosh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     cosh_Float16x2.name = "cosh"_c;
-    cosh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    cosh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    cosh_Float16x2.parameters = cosh_Float16x2_args;
     Symbol::Resolved(&cosh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&cosh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// cosh
     cosh_Float16x3_arg.name = "val"_c;
     cosh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     cosh_Float16x3.name = "cosh"_c;
-    cosh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    cosh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    cosh_Float16x3.parameters = cosh_Float16x3_args;
     Symbol::Resolved(&cosh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&cosh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// cosh
     cosh_Float16x4_arg.name = "val"_c;
     cosh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     cosh_Float16x4.name = "cosh"_c;
-    cosh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    cosh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    cosh_Float16x4.parameters = cosh_Float16x4_args;
     Symbol::Resolved(&cosh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&cosh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// exp
     exp_Float32_arg.name = "val"_c;
     exp_Float32_arg.type = Type::FullType{ Float32Type.name };
     exp_Float32.name = "exp"_c;
-    exp_Float32.returnType = Type::FullType{ Float32Type.name };
+    exp_Float32.returnType = Type::FullType { Float32Type.name };
+    exp_Float32.parameters = exp_Float32_args;
     Symbol::Resolved(&exp_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&exp_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// exp
     exp_Float32x2_arg.name = "val"_c;
     exp_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     exp_Float32x2.name = "exp"_c;
-    exp_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    exp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    exp_Float32x2.parameters = exp_Float32x2_args;
     Symbol::Resolved(&exp_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&exp_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// exp
     exp_Float32x3_arg.name = "val"_c;
     exp_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     exp_Float32x3.name = "exp"_c;
-    exp_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    exp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    exp_Float32x3.parameters = exp_Float32x3_args;
     Symbol::Resolved(&exp_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&exp_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// exp
     exp_Float32x4_arg.name = "val"_c;
     exp_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     exp_Float32x4.name = "exp"_c;
-    exp_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    exp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    exp_Float32x4.parameters = exp_Float32x4_args;
     Symbol::Resolved(&exp_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&exp_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// exp
     exp_Float16_arg.name = "val"_c;
     exp_Float16_arg.type = Type::FullType{ Float16Type.name };
     exp_Float16.name = "exp"_c;
-    exp_Float16.returnType = Type::FullType{ Float16Type.name };
+    exp_Float16.returnType = Type::FullType { Float16Type.name };
+    exp_Float16.parameters = exp_Float16_args;
     Symbol::Resolved(&exp_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&exp_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// exp
     exp_Float16x2_arg.name = "val"_c;
     exp_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     exp_Float16x2.name = "exp"_c;
-    exp_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    exp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    exp_Float16x2.parameters = exp_Float16x2_args;
     Symbol::Resolved(&exp_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&exp_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// exp
     exp_Float16x3_arg.name = "val"_c;
     exp_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     exp_Float16x3.name = "exp"_c;
-    exp_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    exp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    exp_Float16x3.parameters = exp_Float16x3_args;
     Symbol::Resolved(&exp_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&exp_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// exp
     exp_Float16x4_arg.name = "val"_c;
     exp_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     exp_Float16x4.name = "exp"_c;
-    exp_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    exp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    exp_Float16x4.parameters = exp_Float16x4_args;
     Symbol::Resolved(&exp_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&exp_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// exp2
     exp2_Float32_arg.name = "val"_c;
     exp2_Float32_arg.type = Type::FullType{ Float32Type.name };
     exp2_Float32.name = "exp2"_c;
-    exp2_Float32.returnType = Type::FullType{ Float32Type.name };
+    exp2_Float32.returnType = Type::FullType { Float32Type.name };
+    exp2_Float32.parameters = exp2_Float32_args;
     Symbol::Resolved(&exp2_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&exp2_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// exp2
     exp2_Float32x2_arg.name = "val"_c;
     exp2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     exp2_Float32x2.name = "exp2"_c;
-    exp2_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    exp2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    exp2_Float32x2.parameters = exp2_Float32x2_args;
     Symbol::Resolved(&exp2_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&exp2_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// exp2
     exp2_Float32x3_arg.name = "val"_c;
     exp2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     exp2_Float32x3.name = "exp2"_c;
-    exp2_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    exp2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    exp2_Float32x3.parameters = exp2_Float32x3_args;
     Symbol::Resolved(&exp2_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&exp2_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// exp2
     exp2_Float32x4_arg.name = "val"_c;
     exp2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     exp2_Float32x4.name = "exp2"_c;
-    exp2_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    exp2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    exp2_Float32x4.parameters = exp2_Float32x4_args;
     Symbol::Resolved(&exp2_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&exp2_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// exp2
     exp2_Float16_arg.name = "val"_c;
     exp2_Float16_arg.type = Type::FullType{ Float16Type.name };
     exp2_Float16.name = "exp2"_c;
-    exp2_Float16.returnType = Type::FullType{ Float16Type.name };
+    exp2_Float16.returnType = Type::FullType { Float16Type.name };
+    exp2_Float16.parameters = exp2_Float16_args;
     Symbol::Resolved(&exp2_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&exp2_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// exp2
     exp2_Float16x2_arg.name = "val"_c;
     exp2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     exp2_Float16x2.name = "exp2"_c;
-    exp2_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    exp2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    exp2_Float16x2.parameters = exp2_Float16x2_args;
     Symbol::Resolved(&exp2_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&exp2_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// exp2
     exp2_Float16x3_arg.name = "val"_c;
     exp2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     exp2_Float16x3.name = "exp2"_c;
-    exp2_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    exp2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    exp2_Float16x3.parameters = exp2_Float16x3_args;
     Symbol::Resolved(&exp2_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&exp2_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// exp2
     exp2_Float16x4_arg.name = "val"_c;
     exp2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     exp2_Float16x4.name = "exp2"_c;
-    exp2_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    exp2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    exp2_Float16x4.parameters = exp2_Float16x4_args;
     Symbol::Resolved(&exp2_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&exp2_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// invSqrt
     invSqrt_Float32_arg.name = "val"_c;
     invSqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
     invSqrt_Float32.name = "invSqrt"_c;
-    invSqrt_Float32.returnType = Type::FullType{ Float32Type.name };
+    invSqrt_Float32.returnType = Type::FullType { Float32Type.name };
+    invSqrt_Float32.parameters = invSqrt_Float32_args;
     Symbol::Resolved(&invSqrt_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&invSqrt_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// invSqrt
     invSqrt_Float32x2_arg.name = "val"_c;
     invSqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     invSqrt_Float32x2.name = "invSqrt"_c;
-    invSqrt_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    invSqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    invSqrt_Float32x2.parameters = invSqrt_Float32x2_args;
     Symbol::Resolved(&invSqrt_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&invSqrt_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// invSqrt
     invSqrt_Float32x3_arg.name = "val"_c;
     invSqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     invSqrt_Float32x3.name = "invSqrt"_c;
-    invSqrt_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    invSqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    invSqrt_Float32x3.parameters = invSqrt_Float32x3_args;
     Symbol::Resolved(&invSqrt_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&invSqrt_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// invSqrt
     invSqrt_Float32x4_arg.name = "val"_c;
     invSqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     invSqrt_Float32x4.name = "invSqrt"_c;
-    invSqrt_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    invSqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    invSqrt_Float32x4.parameters = invSqrt_Float32x4_args;
     Symbol::Resolved(&invSqrt_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&invSqrt_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// invSqrt
     invSqrt_Float16_arg.name = "val"_c;
     invSqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
     invSqrt_Float16.name = "invSqrt"_c;
-    invSqrt_Float16.returnType = Type::FullType{ Float16Type.name };
+    invSqrt_Float16.returnType = Type::FullType { Float16Type.name };
+    invSqrt_Float16.parameters = invSqrt_Float16_args;
     Symbol::Resolved(&invSqrt_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&invSqrt_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// invSqrt
     invSqrt_Float16x2_arg.name = "val"_c;
     invSqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     invSqrt_Float16x2.name = "invSqrt"_c;
-    invSqrt_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    invSqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    invSqrt_Float16x2.parameters = invSqrt_Float16x2_args;
     Symbol::Resolved(&invSqrt_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&invSqrt_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// invSqrt
     invSqrt_Float16x3_arg.name = "val"_c;
     invSqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     invSqrt_Float16x3.name = "invSqrt"_c;
-    invSqrt_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    invSqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    invSqrt_Float16x3.parameters = invSqrt_Float16x3_args;
     Symbol::Resolved(&invSqrt_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&invSqrt_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// invSqrt
     invSqrt_Float16x4_arg.name = "val"_c;
     invSqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     invSqrt_Float16x4.name = "invSqrt"_c;
-    invSqrt_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    invSqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    invSqrt_Float16x4.parameters = invSqrt_Float16x4_args;
     Symbol::Resolved(&invSqrt_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&invSqrt_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// log
     log_Float32_arg.name = "val"_c;
     log_Float32_arg.type = Type::FullType{ Float32Type.name };
     log_Float32.name = "log"_c;
-    log_Float32.returnType = Type::FullType{ Float32Type.name };
+    log_Float32.returnType = Type::FullType { Float32Type.name };
+    log_Float32.parameters = log_Float32_args;
     Symbol::Resolved(&log_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&log_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// log
     log_Float32x2_arg.name = "val"_c;
     log_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     log_Float32x2.name = "log"_c;
-    log_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    log_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    log_Float32x2.parameters = log_Float32x2_args;
     Symbol::Resolved(&log_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&log_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// log
     log_Float32x3_arg.name = "val"_c;
     log_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     log_Float32x3.name = "log"_c;
-    log_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    log_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    log_Float32x3.parameters = log_Float32x3_args;
     Symbol::Resolved(&log_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&log_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// log
     log_Float32x4_arg.name = "val"_c;
     log_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     log_Float32x4.name = "log"_c;
-    log_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    log_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    log_Float32x4.parameters = log_Float32x4_args;
     Symbol::Resolved(&log_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&log_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// log
     log_Float16_arg.name = "val"_c;
     log_Float16_arg.type = Type::FullType{ Float16Type.name };
     log_Float16.name = "log"_c;
-    log_Float16.returnType = Type::FullType{ Float16Type.name };
+    log_Float16.returnType = Type::FullType { Float16Type.name };
+    log_Float16.parameters = log_Float16_args;
     Symbol::Resolved(&log_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&log_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// log
     log_Float16x2_arg.name = "val"_c;
     log_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     log_Float16x2.name = "log"_c;
-    log_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    log_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    log_Float16x2.parameters = log_Float16x2_args;
     Symbol::Resolved(&log_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&log_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// log
     log_Float16x3_arg.name = "val"_c;
     log_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     log_Float16x3.name = "log"_c;
-    log_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    log_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    log_Float16x3.parameters = log_Float16x3_args;
     Symbol::Resolved(&log_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&log_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// log
     log_Float16x4_arg.name = "val"_c;
     log_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     log_Float16x4.name = "log"_c;
-    log_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    log_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    log_Float16x4.parameters = log_Float16x4_args;
     Symbol::Resolved(&log_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&log_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// log2
     log2_Float32_arg.name = "val"_c;
     log2_Float32_arg.type = Type::FullType{ Float32Type.name };
     log2_Float32.name = "log2"_c;
-    log2_Float32.returnType = Type::FullType{ Float32Type.name };
+    log2_Float32.returnType = Type::FullType { Float32Type.name };
+    log2_Float32.parameters = log2_Float32_args;
     Symbol::Resolved(&log2_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&log2_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// log2
     log2_Float32x2_arg.name = "val"_c;
     log2_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     log2_Float32x2.name = "log2"_c;
-    log2_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    log2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    log2_Float32x2.parameters = log2_Float32x2_args;
     Symbol::Resolved(&log2_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&log2_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// log2
     log2_Float32x3_arg.name = "val"_c;
     log2_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     log2_Float32x3.name = "log2"_c;
-    log2_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    log2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    log2_Float32x3.parameters = log2_Float32x3_args;
     Symbol::Resolved(&log2_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&log2_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// log2
     log2_Float32x4_arg.name = "val"_c;
     log2_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     log2_Float32x4.name = "log2"_c;
-    log2_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    log2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    log2_Float32x4.parameters = log2_Float32x4_args;
     Symbol::Resolved(&log2_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&log2_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// log2
     log2_Float16_arg.name = "val"_c;
     log2_Float16_arg.type = Type::FullType{ Float16Type.name };
     log2_Float16.name = "log2"_c;
-    log2_Float16.returnType = Type::FullType{ Float16Type.name };
+    log2_Float16.returnType = Type::FullType { Float16Type.name };
+    log2_Float16.parameters = log2_Float16_args;
     Symbol::Resolved(&log2_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&log2_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// log2
     log2_Float16x2_arg.name = "val"_c;
     log2_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     log2_Float16x2.name = "log2"_c;
-    log2_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    log2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    log2_Float16x2.parameters = log2_Float16x2_args;
     Symbol::Resolved(&log2_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&log2_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// log2
     log2_Float16x3_arg.name = "val"_c;
     log2_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     log2_Float16x3.name = "log2"_c;
-    log2_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    log2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    log2_Float16x3.parameters = log2_Float16x3_args;
     Symbol::Resolved(&log2_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&log2_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// log2
     log2_Float16x4_arg.name = "val"_c;
     log2_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     log2_Float16x4.name = "log2"_c;
-    log2_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    log2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    log2_Float16x4.parameters = log2_Float16x4_args;
     Symbol::Resolved(&log2_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&log2_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// sin
     sin_Float32_arg.name = "val"_c;
     sin_Float32_arg.type = Type::FullType{ Float32Type.name };
     sin_Float32.name = "sin"_c;
-    sin_Float32.returnType = Type::FullType{ Float32Type.name };
+    sin_Float32.returnType = Type::FullType { Float32Type.name };
+    sin_Float32.parameters = sin_Float32_args;
     Symbol::Resolved(&sin_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&sin_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// sin
     sin_Float32x2_arg.name = "val"_c;
     sin_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sin_Float32x2.name = "sin"_c;
-    sin_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    sin_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    sin_Float32x2.parameters = sin_Float32x2_args;
     Symbol::Resolved(&sin_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&sin_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// sin
     sin_Float32x3_arg.name = "val"_c;
     sin_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sin_Float32x3.name = "sin"_c;
-    sin_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    sin_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    sin_Float32x3.parameters = sin_Float32x3_args;
     Symbol::Resolved(&sin_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&sin_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// sin
     sin_Float32x4_arg.name = "val"_c;
     sin_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sin_Float32x4.name = "sin"_c;
-    sin_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    sin_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    sin_Float32x4.parameters = sin_Float32x4_args;
     Symbol::Resolved(&sin_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&sin_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// sin
     sin_Float16_arg.name = "val"_c;
     sin_Float16_arg.type = Type::FullType{ Float16Type.name };
     sin_Float16.name = "sin"_c;
-    sin_Float16.returnType = Type::FullType{ Float16Type.name };
+    sin_Float16.returnType = Type::FullType { Float16Type.name };
+    sin_Float16.parameters = sin_Float16_args;
     Symbol::Resolved(&sin_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&sin_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// sin
     sin_Float16x2_arg.name = "val"_c;
     sin_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sin_Float16x2.name = "sin"_c;
-    sin_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    sin_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    sin_Float16x2.parameters = sin_Float16x2_args;
     Symbol::Resolved(&sin_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&sin_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// sin
     sin_Float16x3_arg.name = "val"_c;
     sin_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sin_Float16x3.name = "sin"_c;
-    sin_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    sin_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    sin_Float16x3.parameters = sin_Float16x3_args;
     Symbol::Resolved(&sin_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&sin_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// sin
     sin_Float16x4_arg.name = "val"_c;
     sin_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sin_Float16x4.name = "sin"_c;
-    sin_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    sin_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    sin_Float16x4.parameters = sin_Float16x4_args;
     Symbol::Resolved(&sin_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&sin_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// sinh
     sinh_Float32_arg.name = "val"_c;
     sinh_Float32_arg.type = Type::FullType{ Float32Type.name };
     sinh_Float32.name = "sinh"_c;
-    sinh_Float32.returnType = Type::FullType{ Float32Type.name };
+    sinh_Float32.returnType = Type::FullType { Float32Type.name };
+    sinh_Float32.parameters = sinh_Float32_args;
     Symbol::Resolved(&sinh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&sinh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// sinh
     sinh_Float32x2_arg.name = "val"_c;
     sinh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sinh_Float32x2.name = "sinh"_c;
-    sinh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    sinh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    sinh_Float32x2.parameters = sinh_Float32x2_args;
     Symbol::Resolved(&sinh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&sinh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// sinh
     sinh_Float32x3_arg.name = "val"_c;
     sinh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sinh_Float32x3.name = "sinh"_c;
-    sinh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    sinh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    sinh_Float32x3.parameters = sinh_Float32x3_args;
     Symbol::Resolved(&sinh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&sinh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// sinh
     sinh_Float32x4_arg.name = "val"_c;
     sinh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sinh_Float32x4.name = "sinh"_c;
-    sinh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    sinh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    sinh_Float32x4.parameters = sinh_Float32x4_args;
     Symbol::Resolved(&sinh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&sinh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// sinh
     sinh_Float16_arg.name = "val"_c;
     sinh_Float16_arg.type = Type::FullType{ Float16Type.name };
     sinh_Float16.name = "sinh"_c;
-    sinh_Float16.returnType = Type::FullType{ Float16Type.name };
+    sinh_Float16.returnType = Type::FullType { Float16Type.name };
+    sinh_Float16.parameters = sinh_Float16_args;
     Symbol::Resolved(&sinh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&sinh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// sinh
     sinh_Float16x2_arg.name = "val"_c;
     sinh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sinh_Float16x2.name = "sinh"_c;
-    sinh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    sinh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    sinh_Float16x2.parameters = sinh_Float16x2_args;
     Symbol::Resolved(&sinh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&sinh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// sinh
     sinh_Float16x3_arg.name = "val"_c;
     sinh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sinh_Float16x3.name = "sinh"_c;
-    sinh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    sinh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    sinh_Float16x3.parameters = sinh_Float16x3_args;
     Symbol::Resolved(&sinh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&sinh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// sinh
     sinh_Float16x4_arg.name = "val"_c;
     sinh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sinh_Float16x4.name = "sinh"_c;
-    sinh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    sinh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    sinh_Float16x4.parameters = sinh_Float16x4_args;
     Symbol::Resolved(&sinh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&sinh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// sqrt
     sqrt_Float32_arg.name = "val"_c;
     sqrt_Float32_arg.type = Type::FullType{ Float32Type.name };
     sqrt_Float32.name = "sqrt"_c;
-    sqrt_Float32.returnType = Type::FullType{ Float32Type.name };
+    sqrt_Float32.returnType = Type::FullType { Float32Type.name };
+    sqrt_Float32.parameters = sqrt_Float32_args;
     Symbol::Resolved(&sqrt_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&sqrt_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// sqrt
     sqrt_Float32x2_arg.name = "val"_c;
     sqrt_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sqrt_Float32x2.name = "sqrt"_c;
-    sqrt_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    sqrt_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    sqrt_Float32x2.parameters = sqrt_Float32x2_args;
     Symbol::Resolved(&sqrt_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&sqrt_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// sqrt
     sqrt_Float32x3_arg.name = "val"_c;
     sqrt_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sqrt_Float32x3.name = "sqrt"_c;
-    sqrt_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    sqrt_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    sqrt_Float32x3.parameters = sqrt_Float32x3_args;
     Symbol::Resolved(&sqrt_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&sqrt_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// sqrt
     sqrt_Float32x4_arg.name = "val"_c;
     sqrt_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sqrt_Float32x4.name = "sqrt"_c;
-    sqrt_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    sqrt_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    sqrt_Float32x4.parameters = sqrt_Float32x4_args;
     Symbol::Resolved(&sqrt_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&sqrt_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// sqrt
     sqrt_Float16_arg.name = "val"_c;
     sqrt_Float16_arg.type = Type::FullType{ Float16Type.name };
     sqrt_Float16.name = "sqrt"_c;
-    sqrt_Float16.returnType = Type::FullType{ Float16Type.name };
+    sqrt_Float16.returnType = Type::FullType { Float16Type.name };
+    sqrt_Float16.parameters = sqrt_Float16_args;
     Symbol::Resolved(&sqrt_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&sqrt_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// sqrt
     sqrt_Float16x2_arg.name = "val"_c;
     sqrt_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sqrt_Float16x2.name = "sqrt"_c;
-    sqrt_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    sqrt_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    sqrt_Float16x2.parameters = sqrt_Float16x2_args;
     Symbol::Resolved(&sqrt_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&sqrt_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// sqrt
     sqrt_Float16x3_arg.name = "val"_c;
     sqrt_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sqrt_Float16x3.name = "sqrt"_c;
-    sqrt_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    sqrt_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    sqrt_Float16x3.parameters = sqrt_Float16x3_args;
     Symbol::Resolved(&sqrt_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&sqrt_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// sqrt
     sqrt_Float16x4_arg.name = "val"_c;
     sqrt_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sqrt_Float16x4.name = "sqrt"_c;
-    sqrt_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    sqrt_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    sqrt_Float16x4.parameters = sqrt_Float16x4_args;
     Symbol::Resolved(&sqrt_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&sqrt_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// tan
     tan_Float32_arg.name = "val"_c;
     tan_Float32_arg.type = Type::FullType{ Float32Type.name };
     tan_Float32.name = "tan"_c;
-    tan_Float32.returnType = Type::FullType{ Float32Type.name };
+    tan_Float32.returnType = Type::FullType { Float32Type.name };
+    tan_Float32.parameters = tan_Float32_args;
     Symbol::Resolved(&tan_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&tan_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// tan
     tan_Float32x2_arg.name = "val"_c;
     tan_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     tan_Float32x2.name = "tan"_c;
-    tan_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    tan_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    tan_Float32x2.parameters = tan_Float32x2_args;
     Symbol::Resolved(&tan_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&tan_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// tan
     tan_Float32x3_arg.name = "val"_c;
     tan_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     tan_Float32x3.name = "tan"_c;
-    tan_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    tan_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    tan_Float32x3.parameters = tan_Float32x3_args;
     Symbol::Resolved(&tan_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&tan_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// tan
     tan_Float32x4_arg.name = "val"_c;
     tan_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     tan_Float32x4.name = "tan"_c;
-    tan_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    tan_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    tan_Float32x4.parameters = tan_Float32x4_args;
     Symbol::Resolved(&tan_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&tan_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// tan
     tan_Float16_arg.name = "val"_c;
     tan_Float16_arg.type = Type::FullType{ Float16Type.name };
     tan_Float16.name = "tan"_c;
-    tan_Float16.returnType = Type::FullType{ Float16Type.name };
+    tan_Float16.returnType = Type::FullType { Float16Type.name };
+    tan_Float16.parameters = tan_Float16_args;
     Symbol::Resolved(&tan_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&tan_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// tan
     tan_Float16x2_arg.name = "val"_c;
     tan_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     tan_Float16x2.name = "tan"_c;
-    tan_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    tan_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    tan_Float16x2.parameters = tan_Float16x2_args;
     Symbol::Resolved(&tan_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&tan_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// tan
     tan_Float16x3_arg.name = "val"_c;
     tan_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     tan_Float16x3.name = "tan"_c;
-    tan_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    tan_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    tan_Float16x3.parameters = tan_Float16x3_args;
     Symbol::Resolved(&tan_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&tan_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// tan
     tan_Float16x4_arg.name = "val"_c;
     tan_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     tan_Float16x4.name = "tan"_c;
-    tan_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    tan_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    tan_Float16x4.parameters = tan_Float16x4_args;
     Symbol::Resolved(&tan_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&tan_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// tanh
     tanh_Float32_arg.name = "val"_c;
     tanh_Float32_arg.type = Type::FullType{ Float32Type.name };
     tanh_Float32.name = "tanh"_c;
-    tanh_Float32.returnType = Type::FullType{ Float32Type.name };
+    tanh_Float32.returnType = Type::FullType { Float32Type.name };
+    tanh_Float32.parameters = tanh_Float32_args;
     Symbol::Resolved(&tanh_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&tanh_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// tanh
     tanh_Float32x2_arg.name = "val"_c;
     tanh_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     tanh_Float32x2.name = "tanh"_c;
-    tanh_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    tanh_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    tanh_Float32x2.parameters = tanh_Float32x2_args;
     Symbol::Resolved(&tanh_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&tanh_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// tanh
     tanh_Float32x3_arg.name = "val"_c;
     tanh_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     tanh_Float32x3.name = "tanh"_c;
-    tanh_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    tanh_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    tanh_Float32x3.parameters = tanh_Float32x3_args;
     Symbol::Resolved(&tanh_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&tanh_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// tanh
     tanh_Float32x4_arg.name = "val"_c;
     tanh_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     tanh_Float32x4.name = "tanh"_c;
-    tanh_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    tanh_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    tanh_Float32x4.parameters = tanh_Float32x4_args;
     Symbol::Resolved(&tanh_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&tanh_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// tanh
     tanh_Float16_arg.name = "val"_c;
     tanh_Float16_arg.type = Type::FullType{ Float16Type.name };
     tanh_Float16.name = "tanh"_c;
-    tanh_Float16.returnType = Type::FullType{ Float16Type.name };
+    tanh_Float16.returnType = Type::FullType { Float16Type.name };
+    tanh_Float16.parameters = tanh_Float16_args;
     Symbol::Resolved(&tanh_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&tanh_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// tanh
     tanh_Float16x2_arg.name = "val"_c;
     tanh_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     tanh_Float16x2.name = "tanh"_c;
-    tanh_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    tanh_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    tanh_Float16x2.parameters = tanh_Float16x2_args;
     Symbol::Resolved(&tanh_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&tanh_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// tanh
     tanh_Float16x3_arg.name = "val"_c;
     tanh_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     tanh_Float16x3.name = "tanh"_c;
-    tanh_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    tanh_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    tanh_Float16x3.parameters = tanh_Float16x3_args;
     Symbol::Resolved(&tanh_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&tanh_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// tanh
     tanh_Float16x4_arg.name = "val"_c;
     tanh_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     tanh_Float16x4.name = "tanh"_c;
-    tanh_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    tanh_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    tanh_Float16x4.parameters = tanh_Float16x4_args;
     Symbol::Resolved(&tanh_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&tanh_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// tanh
     atan2_Float32_y.name = "y"_c;
     atan2_Float32_y.type = Type::FullType{ Float32Type.name };
     atan2_Float32_x.name = "x"_c;
     atan2_Float32_x.type = Type::FullType{ Float32Type.name };
     atan2_Float32.name = "tanh"_c;
-    atan2_Float32.returnType = Type::FullType{ Float32Type.name };
+    atan2_Float32.returnType = Type::FullType { Float32Type.name };
+    atan2_Float32.parameters = atan2_Float32_args;
     Symbol::Resolved(&atan2_Float32_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&atan2_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&atan2_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// tanh
     atan2_Float32x2_y.name = "y"_c;
     atan2_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     atan2_Float32x2_x.name = "x"_c;
     atan2_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     atan2_Float32x2.name = "tanh"_c;
-    atan2_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    atan2_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    atan2_Float32x2.parameters = atan2_Float32x2_args;
     Symbol::Resolved(&atan2_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&atan2_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&atan2_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// tanh
     atan2_Float32x3_y.name = "y"_c;
     atan2_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     atan2_Float32x3_x.name = "x"_c;
     atan2_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     atan2_Float32x3.name = "tanh"_c;
-    atan2_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    atan2_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    atan2_Float32x3.parameters = atan2_Float32x3_args;
     Symbol::Resolved(&atan2_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&atan2_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&atan2_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// tanh
     atan2_Float32x4_y.name = "y"_c;
     atan2_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     atan2_Float32x4_x.name = "x"_c;
     atan2_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     atan2_Float32x4.name = "tanh"_c;
-    atan2_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    atan2_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    atan2_Float32x4.parameters = atan2_Float32x4_args;
     Symbol::Resolved(&atan2_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&atan2_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&atan2_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// tanh
     atan2_Float16_y.name = "y"_c;
     atan2_Float16_y.type = Type::FullType{ Float16Type.name };
     atan2_Float16_x.name = "x"_c;
     atan2_Float16_x.type = Type::FullType{ Float16Type.name };
     atan2_Float16.name = "tanh"_c;
-    atan2_Float16.returnType = Type::FullType{ Float16Type.name };
+    atan2_Float16.returnType = Type::FullType { Float16Type.name };
+    atan2_Float16.parameters = atan2_Float16_args;
     Symbol::Resolved(&atan2_Float16_y)->typeSymbol = &Float16Type;
     Symbol::Resolved(&atan2_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&atan2_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// tanh
     atan2_Float16x2_y.name = "y"_c;
     atan2_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     atan2_Float16x2_x.name = "x"_c;
     atan2_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     atan2_Float16x2.name = "tanh"_c;
-    atan2_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    atan2_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    atan2_Float16x2.parameters = atan2_Float16x2_args;
     Symbol::Resolved(&atan2_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&atan2_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&atan2_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// tanh
     atan2_Float16x3_y.name = "y"_c;
     atan2_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     atan2_Float16x3_x.name = "x"_c;
     atan2_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     atan2_Float16x3.name = "tanh"_c;
-    atan2_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    atan2_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    atan2_Float16x3.parameters = atan2_Float16x3_args;
     Symbol::Resolved(&atan2_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&atan2_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&atan2_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// tanh
     atan2_Float16x4_y.name = "y"_c;
     atan2_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     atan2_Float16x4_x.name = "x"_c;
     atan2_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     atan2_Float16x4.name = "tanh"_c;
-    atan2_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    atan2_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    atan2_Float16x4.parameters = atan2_Float16x4_args;
     Symbol::Resolved(&atan2_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&atan2_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&atan2_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// pow
     pow_Float32_arg.name = "val"_c;
     pow_Float32_arg.type = Type::FullType{ Float32Type.name };
     pow_Float32_exp.name = "exponent"_c;
     pow_Float32_exp.type = Type::FullType{ Float32Type.name };
     pow_Float32.name = "pow"_c;
-    pow_Float32.returnType = Type::FullType{ Float32Type.name };
+    pow_Float32.returnType = Type::FullType { Float32Type.name };
+    pow_Float32.parameters = pow_Float32_args;
     Symbol::Resolved(&pow_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&pow_Float32_exp)->typeSymbol = &Float32Type;
     Symbol::Resolved(&pow_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// pow
     pow_Float32x2_arg.name = "val"_c;
     pow_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     pow_Float32x2_exp.name = "exponent"_c;
     pow_Float32x2_exp.type = Type::FullType{ Float32x2Type.name };
     pow_Float32x2.name = "pow"_c;
-    pow_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    pow_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    pow_Float32x2.parameters = pow_Float32x2_args;
     Symbol::Resolved(&pow_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&pow_Float32x2_exp)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&pow_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// pow
     pow_Float32x3_arg.name = "val"_c;
     pow_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     pow_Float32x3_exp.name = "exponent"_c;
     pow_Float32x3_exp.type = Type::FullType{ Float32x3Type.name };
     pow_Float32x3.name = "pow"_c;
-    pow_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    pow_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    pow_Float32x3.parameters = pow_Float32x3_args;
     Symbol::Resolved(&pow_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&pow_Float32x3_exp)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&pow_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// pow
     pow_Float32x4_arg.name = "val"_c;
     pow_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     pow_Float32x4_exp.name = "exponent"_c;
     pow_Float32x4_exp.type = Type::FullType{ Float32x4Type.name };
     pow_Float32x4.name = "pow"_c;
-    pow_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    pow_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    pow_Float32x4.parameters = pow_Float32x4_args;
     Symbol::Resolved(&pow_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&pow_Float32x4_exp)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&pow_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// pow
     pow_Float16_arg.name = "val"_c;
     pow_Float16_arg.type = Type::FullType{ Float16Type.name };
     pow_Float16_exp.name = "exponent"_c;
     pow_Float16_exp.type = Type::FullType{ Float16Type.name };
     pow_Float16.name = "pow"_c;
-    pow_Float16.returnType = Type::FullType{ Float16Type.name };
+    pow_Float16.returnType = Type::FullType { Float16Type.name };
+    pow_Float16.parameters = pow_Float16_args;
     Symbol::Resolved(&pow_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&pow_Float16_exp)->typeSymbol = &Float16Type;
     Symbol::Resolved(&pow_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// pow
     pow_Float16x2_arg.name = "val"_c;
     pow_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     pow_Float16x2_exp.name = "exponent"_c;
     pow_Float16x2_exp.type = Type::FullType{ Float16x2Type.name };
     pow_Float16x2.name = "pow"_c;
-    pow_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    pow_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    pow_Float16x2.parameters = pow_Float16x2_args;
     Symbol::Resolved(&pow_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&pow_Float16x2_exp)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&pow_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// pow
     pow_Float16x3_arg.name = "val"_c;
     pow_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     pow_Float16x3_exp.name = "exponent"_c;
     pow_Float16x3_exp.type = Type::FullType{ Float16x3Type.name };
     pow_Float16x3.name = "pow"_c;
-    pow_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    pow_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    pow_Float16x3.parameters = pow_Float16x3_args;
     Symbol::Resolved(&pow_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&pow_Float16x3_exp)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&pow_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// pow
     pow_Float16x4_arg.name = "val"_c;
     pow_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     pow_Float16x4_exp.name = "exponent"_c;
     pow_Float16x4_exp.type = Type::FullType{ Float16x4Type.name };
     pow_Float16x4.name = "pow"_c;
-    pow_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    pow_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    pow_Float16x4.parameters = pow_Float16x4_args;
     Symbol::Resolved(&pow_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&pow_Float16x4_exp)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&pow_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// mad
     mad_Float32_arg.name = "val"_c;
     mad_Float32_arg.type = Type::FullType{ Float32Type.name };
     mad_Float32_mul.name = "multiplier"_c;
@@ -5110,12 +7197,14 @@ void SetupIntrinsics()
     mad_Float32_add.name = "addend"_c;
     mad_Float32_add.type = Type::FullType{ Float32Type.name };
     mad_Float32.name = "mad"_c;
-    mad_Float32.returnType = Type::FullType{ Float32Type.name };
+    mad_Float32.returnType = Type::FullType { Float32Type.name };
+    mad_Float32.parameters = mad_Float32_args;
     Symbol::Resolved(&mad_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&mad_Float32_mul)->typeSymbol = &Float32Type;
     Symbol::Resolved(&mad_Float32_add)->typeSymbol = &Float32Type;
     Symbol::Resolved(&mad_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// mad
     mad_Float32x2_arg.name = "val"_c;
     mad_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     mad_Float32x2_mul.name = "multiplier"_c;
@@ -5123,12 +7212,14 @@ void SetupIntrinsics()
     mad_Float32x2_add.name = "addend"_c;
     mad_Float32x2_add.type = Type::FullType{ Float32x2Type.name };
     mad_Float32x2.name = "mad"_c;
-    mad_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    mad_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    mad_Float32x2.parameters = mad_Float32x2_args;
     Symbol::Resolved(&mad_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&mad_Float32x2_mul)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&mad_Float32x2_add)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&mad_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// mad
     mad_Float32x3_arg.name = "val"_c;
     mad_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     mad_Float32x3_mul.name = "multiplier"_c;
@@ -5136,12 +7227,14 @@ void SetupIntrinsics()
     mad_Float32x3_add.name = "addend"_c;
     mad_Float32x3_add.type = Type::FullType{ Float32x3Type.name };
     mad_Float32x3.name = "mad"_c;
-    mad_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    mad_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    mad_Float32x3.parameters = mad_Float32x3_args;
     Symbol::Resolved(&mad_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&mad_Float32x3_mul)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&mad_Float32x3_add)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&mad_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// mad
     mad_Float32x4_arg.name = "val"_c;
     mad_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     mad_Float32x4_mul.name = "multiplier"_c;
@@ -5149,12 +7242,14 @@ void SetupIntrinsics()
     mad_Float32x4_add.name = "addend"_c;
     mad_Float32x4_add.type = Type::FullType{ Float32x4Type.name };
     mad_Float32x4.name = "mad"_c;
-    mad_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    mad_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    mad_Float32x4.parameters = mad_Float32x4_args;
     Symbol::Resolved(&mad_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&mad_Float32x4_mul)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&mad_Float32x4_add)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&mad_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// mad
     mad_Float16_arg.name = "val"_c;
     mad_Float16_arg.type = Type::FullType{ Float16Type.name };
     mad_Float16_mul.name = "multiplier"_c;
@@ -5162,12 +7257,14 @@ void SetupIntrinsics()
     mad_Float16_add.name = "addend"_c;
     mad_Float16_add.type = Type::FullType{ Float16Type.name };
     mad_Float16.name = "mad"_c;
-    mad_Float16.returnType = Type::FullType{ Float16Type.name };
+    mad_Float16.returnType = Type::FullType { Float16Type.name };
+    mad_Float16.parameters = mad_Float16_args;
     Symbol::Resolved(&mad_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&mad_Float16_mul)->typeSymbol = &Float16Type;
     Symbol::Resolved(&mad_Float16_add)->typeSymbol = &Float16Type;
     Symbol::Resolved(&mad_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// mad
     mad_Float16x2_arg.name = "val"_c;
     mad_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     mad_Float16x2_mul.name = "multiplier"_c;
@@ -5175,12 +7272,14 @@ void SetupIntrinsics()
     mad_Float16x2_add.name = "addend"_c;
     mad_Float16x2_add.type = Type::FullType{ Float16x2Type.name };
     mad_Float16x2.name = "mad"_c;
-    mad_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    mad_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    mad_Float16x2.parameters = mad_Float16x2_args;
     Symbol::Resolved(&mad_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&mad_Float16x2_mul)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&mad_Float16x2_add)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&mad_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// mad
     mad_Float16x3_arg.name = "val"_c;
     mad_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     mad_Float16x3_mul.name = "multiplier"_c;
@@ -5188,12 +7287,14 @@ void SetupIntrinsics()
     mad_Float16x3_add.name = "addend"_c;
     mad_Float16x3_add.type = Type::FullType{ Float16x3Type.name };
     mad_Float16x3.name = "mad"_c;
-    mad_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    mad_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    mad_Float16x3.parameters = mad_Float16x3_args;
     Symbol::Resolved(&mad_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&mad_Float16x3_mul)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&mad_Float16x3_add)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&mad_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// mad
     mad_Float16x4_arg.name = "val"_c;
     mad_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     mad_Float16x4_mul.name = "multiplier"_c;
@@ -5201,12 +7302,14 @@ void SetupIntrinsics()
     mad_Float16x4_add.name = "addend"_c;
     mad_Float16x4_add.type = Type::FullType{ Float16x4Type.name };
     mad_Float16x4.name = "mad"_c;
-    mad_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    mad_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    mad_Float16x4.parameters = mad_Float16x4_args;
     Symbol::Resolved(&mad_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&mad_Float16x4_mul)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&mad_Float16x4_add)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&mad_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// mad
     mad_Int32_arg.name = "val"_c;
     mad_Int32_arg.type = Type::FullType{ Int32Type.name };
     mad_Int32_mul.name = "multiplier"_c;
@@ -5214,12 +7317,14 @@ void SetupIntrinsics()
     mad_Int32_add.name = "addend"_c;
     mad_Int32_add.type = Type::FullType{ Int32Type.name };
     mad_Int32.name = "mad"_c;
-    mad_Int32.returnType = Type::FullType{ Int32Type.name };
+    mad_Int32.returnType = Type::FullType { Int32Type.name };
+    mad_Int32.parameters = mad_Int32_args;
     Symbol::Resolved(&mad_Int32_arg)->typeSymbol = &Int32Type;
     Symbol::Resolved(&mad_Int32_mul)->typeSymbol = &Int32Type;
     Symbol::Resolved(&mad_Int32_add)->typeSymbol = &Int32Type;
     Symbol::Resolved(&mad_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// mad
     mad_Int32x2_arg.name = "val"_c;
     mad_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     mad_Int32x2_mul.name = "multiplier"_c;
@@ -5227,12 +7332,14 @@ void SetupIntrinsics()
     mad_Int32x2_add.name = "addend"_c;
     mad_Int32x2_add.type = Type::FullType{ Int32x2Type.name };
     mad_Int32x2.name = "mad"_c;
-    mad_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    mad_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    mad_Int32x2.parameters = mad_Int32x2_args;
     Symbol::Resolved(&mad_Int32x2_arg)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&mad_Int32x2_mul)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&mad_Int32x2_add)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&mad_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// mad
     mad_Int32x3_arg.name = "val"_c;
     mad_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
     mad_Int32x3_mul.name = "multiplier"_c;
@@ -5240,12 +7347,14 @@ void SetupIntrinsics()
     mad_Int32x3_add.name = "addend"_c;
     mad_Int32x3_add.type = Type::FullType{ Int32x3Type.name };
     mad_Int32x3.name = "mad"_c;
-    mad_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    mad_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    mad_Int32x3.parameters = mad_Int32x3_args;
     Symbol::Resolved(&mad_Int32x3_arg)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&mad_Int32x3_mul)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&mad_Int32x3_add)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&mad_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// mad
     mad_Int32x4_arg.name = "val"_c;
     mad_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     mad_Int32x4_mul.name = "multiplier"_c;
@@ -5253,12 +7362,14 @@ void SetupIntrinsics()
     mad_Int32x4_add.name = "addend"_c;
     mad_Int32x4_add.type = Type::FullType{ Int32x4Type.name };
     mad_Int32x4.name = "mad"_c;
-    mad_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    mad_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    mad_Int32x4.parameters = mad_Int32x4_args;
     Symbol::Resolved(&mad_Int32x4_arg)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&mad_Int32x4_mul)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&mad_Int32x4_add)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&mad_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// mad
     mad_Int16_arg.name = "val"_c;
     mad_Int16_arg.type = Type::FullType{ Int16Type.name };
     mad_Int16_mul.name = "multiplier"_c;
@@ -5266,12 +7377,14 @@ void SetupIntrinsics()
     mad_Int16_add.name = "addend"_c;
     mad_Int16_add.type = Type::FullType{ Int16Type.name };
     mad_Int16.name = "mad"_c;
-    mad_Int16.returnType = Type::FullType{ Int16Type.name };
+    mad_Int16.returnType = Type::FullType { Int16Type.name };
+    mad_Int16.parameters = mad_Int16_args;
     Symbol::Resolved(&mad_Int16_arg)->typeSymbol = &Int16Type;
     Symbol::Resolved(&mad_Int16_mul)->typeSymbol = &Int16Type;
     Symbol::Resolved(&mad_Int16_add)->typeSymbol = &Int16Type;
     Symbol::Resolved(&mad_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// mad
     mad_Int16x2_arg.name = "val"_c;
     mad_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     mad_Int16x2_mul.name = "multiplier"_c;
@@ -5279,12 +7392,14 @@ void SetupIntrinsics()
     mad_Int16x2_add.name = "addend"_c;
     mad_Int16x2_add.type = Type::FullType{ Int16x2Type.name };
     mad_Int16x2.name = "mad"_c;
-    mad_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    mad_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    mad_Int16x2.parameters = mad_Int16x2_args;
     Symbol::Resolved(&mad_Int16x2_arg)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&mad_Int16x2_mul)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&mad_Int16x2_add)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&mad_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// mad
     mad_Int16x3_arg.name = "val"_c;
     mad_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
     mad_Int16x3_mul.name = "multiplier"_c;
@@ -5292,12 +7407,14 @@ void SetupIntrinsics()
     mad_Int16x3_add.name = "addend"_c;
     mad_Int16x3_add.type = Type::FullType{ Int16x3Type.name };
     mad_Int16x3.name = "mad"_c;
-    mad_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    mad_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    mad_Int16x3.parameters = mad_Int16x3_args;
     Symbol::Resolved(&mad_Int16x3_arg)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&mad_Int16x3_mul)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&mad_Int16x3_add)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&mad_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// mad
     mad_Int16x4_arg.name = "val"_c;
     mad_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     mad_Int16x4_mul.name = "multiplier"_c;
@@ -5305,12 +7422,14 @@ void SetupIntrinsics()
     mad_Int16x4_add.name = "addend"_c;
     mad_Int16x4_add.type = Type::FullType{ Int16x4Type.name };
     mad_Int16x4.name = "mad"_c;
-    mad_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    mad_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    mad_Int16x4.parameters = mad_Int16x4_args;
     Symbol::Resolved(&mad_Int16x4_arg)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&mad_Int16x4_mul)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&mad_Int16x4_add)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&mad_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// mad
     mad_UInt32_arg.name = "val"_c;
     mad_UInt32_arg.type = Type::FullType{ UInt32Type.name };
     mad_UInt32_mul.name = "multiplier"_c;
@@ -5318,12 +7437,14 @@ void SetupIntrinsics()
     mad_UInt32_add.name = "addend"_c;
     mad_UInt32_add.type = Type::FullType{ UInt32Type.name };
     mad_UInt32.name = "mad"_c;
-    mad_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    mad_UInt32.returnType = Type::FullType { UInt32Type.name };
+    mad_UInt32.parameters = mad_UInt32_args;
     Symbol::Resolved(&mad_UInt32_arg)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&mad_UInt32_mul)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&mad_UInt32_add)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&mad_UInt32)->returnTypeSymbol = &UInt32Type;
 
+    /// mad
     mad_UInt32x2_arg.name = "val"_c;
     mad_UInt32x2_arg.type = Type::FullType{ UInt32x2Type.name };
     mad_UInt32x2_mul.name = "multiplier"_c;
@@ -5331,12 +7452,14 @@ void SetupIntrinsics()
     mad_UInt32x2_add.name = "addend"_c;
     mad_UInt32x2_add.type = Type::FullType{ UInt32x2Type.name };
     mad_UInt32x2.name = "mad"_c;
-    mad_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    mad_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    mad_UInt32x2.parameters = mad_UInt32x2_args;
     Symbol::Resolved(&mad_UInt32x2_arg)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&mad_UInt32x2_mul)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&mad_UInt32x2_add)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&mad_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
+    /// mad
     mad_UInt32x3_arg.name = "val"_c;
     mad_UInt32x3_arg.type = Type::FullType{ UInt32x3Type.name };
     mad_UInt32x3_mul.name = "multiplier"_c;
@@ -5344,12 +7467,14 @@ void SetupIntrinsics()
     mad_UInt32x3_add.name = "addend"_c;
     mad_UInt32x3_add.type = Type::FullType{ UInt32x3Type.name };
     mad_UInt32x3.name = "mad"_c;
-    mad_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    mad_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    mad_UInt32x3.parameters = mad_UInt32x3_args;
     Symbol::Resolved(&mad_UInt32x3_arg)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&mad_UInt32x3_mul)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&mad_UInt32x3_add)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&mad_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
+    /// mad
     mad_UInt32x4_arg.name = "val"_c;
     mad_UInt32x4_arg.type = Type::FullType{ UInt32x4Type.name };
     mad_UInt32x4_mul.name = "multiplier"_c;
@@ -5357,12 +7482,14 @@ void SetupIntrinsics()
     mad_UInt32x4_add.name = "addend"_c;
     mad_UInt32x4_add.type = Type::FullType{ UInt32x4Type.name };
     mad_UInt32x4.name = "mad"_c;
-    mad_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    mad_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    mad_UInt32x4.parameters = mad_UInt32x4_args;
     Symbol::Resolved(&mad_UInt32x4_arg)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&mad_UInt32x4_mul)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&mad_UInt32x4_add)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&mad_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
+    /// mad
     mad_UInt16_arg.name = "val"_c;
     mad_UInt16_arg.type = Type::FullType{ UInt16Type.name };
     mad_UInt16_mul.name = "multiplier"_c;
@@ -5370,12 +7497,14 @@ void SetupIntrinsics()
     mad_UInt16_add.name = "addend"_c;
     mad_UInt16_add.type = Type::FullType{ UInt16Type.name };
     mad_UInt16.name = "mad"_c;
-    mad_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    mad_UInt16.returnType = Type::FullType { UInt16Type.name };
+    mad_UInt16.parameters = mad_UInt16_args;
     Symbol::Resolved(&mad_UInt16_arg)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&mad_UInt16_mul)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&mad_UInt16_add)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&mad_UInt16)->returnTypeSymbol = &UInt16Type;
 
+    /// mad
     mad_UInt16x2_arg.name = "val"_c;
     mad_UInt16x2_arg.type = Type::FullType{ UInt16x2Type.name };
     mad_UInt16x2_mul.name = "multiplier"_c;
@@ -5383,12 +7512,14 @@ void SetupIntrinsics()
     mad_UInt16x2_add.name = "addend"_c;
     mad_UInt16x2_add.type = Type::FullType{ UInt16x2Type.name };
     mad_UInt16x2.name = "mad"_c;
-    mad_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    mad_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    mad_UInt16x2.parameters = mad_UInt16x2_args;
     Symbol::Resolved(&mad_UInt16x2_arg)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&mad_UInt16x2_mul)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&mad_UInt16x2_add)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&mad_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
+    /// mad
     mad_UInt16x3_arg.name = "val"_c;
     mad_UInt16x3_arg.type = Type::FullType{ UInt16x3Type.name };
     mad_UInt16x3_mul.name = "multiplier"_c;
@@ -5396,12 +7527,14 @@ void SetupIntrinsics()
     mad_UInt16x3_add.name = "addend"_c;
     mad_UInt16x3_add.type = Type::FullType{ UInt16x3Type.name };
     mad_UInt16x3.name = "mad"_c;
-    mad_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    mad_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    mad_UInt16x3.parameters = mad_UInt16x3_args;
     Symbol::Resolved(&mad_UInt16x3_arg)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&mad_UInt16x3_mul)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&mad_UInt16x3_add)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&mad_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
+    /// mad
     mad_UInt16x4_arg.name = "val"_c;
     mad_UInt16x4_arg.type = Type::FullType{ UInt16x4Type.name };
     mad_UInt16x4_mul.name = "multiplier"_c;
@@ -5409,132 +7542,158 @@ void SetupIntrinsics()
     mad_UInt16x4_add.name = "addend"_c;
     mad_UInt16x4_add.type = Type::FullType{ UInt16x4Type.name };
     mad_UInt16x4.name = "mad"_c;
-    mad_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    mad_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    mad_UInt16x4.parameters = mad_UInt16x4_args;
     Symbol::Resolved(&mad_UInt16x4_arg)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&mad_UInt16x4_mul)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&mad_UInt16x4_add)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&mad_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
+    /// dot
     dot_Float32x2_x.name = "x"_c;
     dot_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     dot_Float32x2_y.name = "y"_c;
     dot_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
     dot_Float32x2.name = "dot"_c;
-    dot_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    dot_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    dot_Float32x2.parameters = dot_Float32x2_args;
     Symbol::Resolved(&dot_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&dot_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&dot_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// dot
     dot_Float32x3_x.name = "x"_c;
     dot_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     dot_Float32x3_y.name = "y"_c;
     dot_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
     dot_Float32x3.name = "dot"_c;
-    dot_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    dot_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    dot_Float32x3.parameters = dot_Float32x3_args;
     Symbol::Resolved(&dot_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&dot_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&dot_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// dot
     dot_Float32x4_x.name = "x"_c;
     dot_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     dot_Float32x4_y.name = "y"_c;
     dot_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
     dot_Float32x4.name = "dot"_c;
-    dot_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    dot_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    dot_Float32x4.parameters = dot_Float32x4_args;
     Symbol::Resolved(&dot_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&dot_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&dot_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// dot
     dot_Float16x2_x.name = "x"_c;
     dot_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     dot_Float16x2_y.name = "y"_c;
     dot_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
     dot_Float16x2.name = "dot"_c;
-    dot_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    dot_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    dot_Float16x2.parameters = dot_Float16x2_args;
     Symbol::Resolved(&dot_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&dot_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&dot_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// dot
     dot_Float16x3_x.name = "x"_c;
     dot_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     dot_Float16x3_y.name = "y"_c;
     dot_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
     dot_Float16x3.name = "dot"_c;
-    dot_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    dot_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    dot_Float16x3.parameters = dot_Float16x3_args;
     Symbol::Resolved(&dot_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&dot_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&dot_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// dot
     dot_Float16x4_x.name = "x"_c;
     dot_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     dot_Float16x4_y.name = "y"_c;
     dot_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
     dot_Float16x4.name = "dot"_c;
-    dot_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    dot_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    dot_Float16x4.parameters = dot_Float16x4_args;
     Symbol::Resolved(&dot_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&dot_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&dot_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// reflect
     reflect_Float32x2_incident.name = "incident"_c;
     reflect_Float32x2_incident.type = Type::FullType{ Float32x2Type.name };
     reflect_Float32x2_normal.name = "normal"_c;
     reflect_Float32x2_normal.type = Type::FullType{ Float32x2Type.name };
     reflect_Float32x2.name = "reflect"_c;
-    reflect_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    reflect_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    reflect_Float32x2.parameters = reflect_Float32x2_args;
     Symbol::Resolved(&reflect_Float32x2_incident)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&reflect_Float32x2_normal)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&reflect_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// reflect
     reflect_Float32x3_incident.name = "incident"_c;
     reflect_Float32x3_incident.type = Type::FullType{ Float32x3Type.name };
     reflect_Float32x3_normal.name = "normal"_c;
     reflect_Float32x3_normal.type = Type::FullType{ Float32x3Type.name };
     reflect_Float32x3.name = "reflect"_c;
-    reflect_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    reflect_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    reflect_Float32x3.parameters = reflect_Float32x3_args;
     Symbol::Resolved(&reflect_Float32x3_incident)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&reflect_Float32x3_normal)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&reflect_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// reflect
     reflect_Float32x4_incident.name = "incident"_c;
     reflect_Float32x4_incident.type = Type::FullType{ Float32x4Type.name };
     reflect_Float32x4_normal.name = "normal"_c;
     reflect_Float32x4_normal.type = Type::FullType{ Float32x4Type.name };
     reflect_Float32x4.name = "reflect"_c;
-    reflect_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    reflect_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    reflect_Float32x4.parameters = reflect_Float32x4_args;
     Symbol::Resolved(&reflect_Float32x4_incident)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&reflect_Float32x4_normal)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&reflect_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// reflect
     reflect_Float16x2_incident.name = "incident"_c;
     reflect_Float16x2_incident.type = Type::FullType{ Float16x2Type.name };
     reflect_Float16x2_normal.name = "normal"_c;
     reflect_Float16x2_normal.type = Type::FullType{ Float16x2Type.name };
     reflect_Float16x2.name = "reflect"_c;
-    reflect_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    reflect_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    reflect_Float16x2.parameters = reflect_Float16x2_args;
     Symbol::Resolved(&reflect_Float16x2_incident)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&reflect_Float16x2_normal)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&reflect_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// reflect
     reflect_Float16x3_incident.name = "incident"_c;
     reflect_Float16x3_incident.type = Type::FullType{ Float16x3Type.name };
     reflect_Float16x3_normal.name = "normal"_c;
     reflect_Float16x3_normal.type = Type::FullType{ Float16x3Type.name };
     reflect_Float16x3.name = "reflect"_c;
-    reflect_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    reflect_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    reflect_Float16x3.parameters = reflect_Float16x3_args;
     Symbol::Resolved(&reflect_Float16x3_incident)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&reflect_Float16x3_normal)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&reflect_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// reflect
     reflect_Float16x4_incident.name = "incident"_c;
     reflect_Float16x4_incident.type = Type::FullType{ Float16x4Type.name };
     reflect_Float16x4_normal.name = "normal"_c;
     reflect_Float16x4_normal.type = Type::FullType{ Float16x4Type.name };
     reflect_Float16x4.name = "reflect"_c;
-    reflect_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    reflect_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    reflect_Float16x4.parameters = reflect_Float16x4_args;
     Symbol::Resolved(&reflect_Float16x4_incident)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&reflect_Float16x4_normal)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&reflect_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// refract
     refract_Float32x2_incident.name = "incident"_c;
     refract_Float32x2_incident.type = Type::FullType{ Float32x2Type.name };
     refract_Float32x2_normal.name = "normal"_c;
@@ -5542,12 +7701,14 @@ void SetupIntrinsics()
     refract_Float32x2_ior.name = "ior"_c;
     refract_Float32x2_ior.type = Type::FullType{ Float32x2Type.name };
     refract_Float32x2.name = "refract"_c;
-    refract_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    refract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    refract_Float32x2.parameters = refract_Float32x2_args;
     Symbol::Resolved(&refract_Float32x2_incident)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&refract_Float32x2_normal)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&refract_Float32x2_ior)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&refract_Float32x2_ior)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&refract_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// refract
     refract_Float32x3_incident.name = "incident"_c;
     refract_Float32x3_incident.type = Type::FullType{ Float32x3Type.name };
     refract_Float32x3_normal.name = "normal"_c;
@@ -5555,12 +7716,14 @@ void SetupIntrinsics()
     refract_Float32x3_ior.name = "ior"_c;
     refract_Float32x3_ior.type = Type::FullType{ Float32x3Type.name };
     refract_Float32x3.name = "refract"_c;
-    refract_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    refract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    refract_Float32x3.parameters = refract_Float32x3_args;
     Symbol::Resolved(&refract_Float32x3_incident)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&refract_Float32x3_normal)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&refract_Float32x3_ior)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&refract_Float32x3_ior)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&refract_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// refract
     refract_Float32x4_incident.name = "incident"_c;
     refract_Float32x4_incident.type = Type::FullType{ Float32x4Type.name };
     refract_Float32x4_normal.name = "normal"_c;
@@ -5568,12 +7731,14 @@ void SetupIntrinsics()
     refract_Float32x4_ior.name = "ior"_c;
     refract_Float32x4_ior.type = Type::FullType{ Float32x4Type.name };
     refract_Float32x4.name = "refract"_c;
-    refract_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    refract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    refract_Float32x4.parameters = refract_Float32x4_args;
     Symbol::Resolved(&refract_Float32x4_incident)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&refract_Float32x4_normal)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&refract_Float32x4_ior)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&refract_Float32x4_ior)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&refract_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// refract
     refract_Float16x2_incident.name = "incident"_c;
     refract_Float16x2_incident.type = Type::FullType{ Float16x2Type.name };
     refract_Float16x2_normal.name = "normal"_c;
@@ -5581,12 +7746,14 @@ void SetupIntrinsics()
     refract_Float16x2_ior.name = "ior"_c;
     refract_Float16x2_ior.type = Type::FullType{ Float16x2Type.name };
     refract_Float16x2.name = "refract"_c;
-    refract_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    refract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    refract_Float16x2.parameters = refract_Float16x2_args;
     Symbol::Resolved(&refract_Float16x2_incident)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&refract_Float16x2_normal)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&refract_Float16x2_ior)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&refract_Float16x2_ior)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&refract_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// refract
     refract_Float16x3_incident.name = "incident"_c;
     refract_Float16x3_incident.type = Type::FullType{ Float16x3Type.name };
     refract_Float16x3_normal.name = "normal"_c;
@@ -5594,12 +7761,14 @@ void SetupIntrinsics()
     refract_Float16x3_ior.name = "ior"_c;
     refract_Float16x3_ior.type = Type::FullType{ Float16x3Type.name };
     refract_Float16x3.name = "refract"_c;
-    refract_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    refract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    refract_Float16x3.parameters = refract_Float16x3_args;
     Symbol::Resolved(&refract_Float16x3_incident)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&refract_Float16x3_normal)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&refract_Float16x3_ior)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&refract_Float16x3_ior)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&refract_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// refract
     refract_Float16x4_incident.name = "incident"_c;
     refract_Float16x4_incident.type = Type::FullType{ Float16x4Type.name };
     refract_Float16x4_normal.name = "normal"_c;
@@ -5607,656 +7776,794 @@ void SetupIntrinsics()
     refract_Float16x4_ior.name = "ior"_c;
     refract_Float16x4_ior.type = Type::FullType{ Float16x4Type.name };
     refract_Float16x4.name = "refract"_c;
-    refract_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    refract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    refract_Float16x4.parameters = refract_Float16x4_args;
     Symbol::Resolved(&refract_Float16x4_incident)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&refract_Float16x4_normal)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&refract_Float16x4_ior)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&refract_Float16x4_ior)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&refract_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// cross
     cross_Float32x3_v0.name = "v0"_c;
     cross_Float32x3_v0.type = Type::FullType{ Float32x3Type.name };
     cross_Float32x3_v1.name = "v1"_c;
     cross_Float32x3_v1.type = Type::FullType{ Float32x3Type.name };
     cross_Float32x3.name = "cross"_c;
-    cross_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    cross_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    cross_Float32x3.parameters = cross_Float32x3_args;
     Symbol::Resolved(&cross_Float32x3_v0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&cross_Float32x3_v1)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&cross_Float32x3)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&cross_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// cross
     cross_Float16x3_v0.name = "v0"_c;
     cross_Float16x3_v0.type = Type::FullType{ Float16x3Type.name };
     cross_Float16x3_v1.name = "v1"_c;
     cross_Float16x3_v1.type = Type::FullType{ Float16x3Type.name };
     cross_Float16x3.name = "cross"_c;
-    cross_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    cross_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    cross_Float16x3.parameters = cross_Float16x3_args;
     Symbol::Resolved(&cross_Float16x3_v0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&cross_Float16x3_v1)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&cross_Float16x3)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&cross_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// cross
     length_Float32x2_arg.name = "val"_c;
     length_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    length_Float32x2.name = "length"_c;
-    length_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    length_Float32x2.name = "cross"_c;
+    length_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    length_Float32x2.parameters = length_Float32x2_args;
     Symbol::Resolved(&length_Float32x2_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&length_Float32x2)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&length_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// cross
     length_Float32x3_arg.name = "val"_c;
     length_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    length_Float32x3.name = "length"_c;
-    length_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    length_Float32x3.name = "cross"_c;
+    length_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    length_Float32x3.parameters = length_Float32x3_args;
     Symbol::Resolved(&length_Float32x3_arg)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&length_Float32x3)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&length_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// cross
     length_Float32x4_arg.name = "val"_c;
     length_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    length_Float32x4.name = "length"_c;
-    length_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    length_Float32x4.name = "cross"_c;
+    length_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    length_Float32x4.parameters = length_Float32x4_args;
     Symbol::Resolved(&length_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&length_Float32x4)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&length_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// cross
     length_Float16x2_arg.name = "val"_c;
     length_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    length_Float16x2.name = "length"_c;
-    length_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    length_Float16x2.name = "cross"_c;
+    length_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    length_Float16x2.parameters = length_Float16x2_args;
     Symbol::Resolved(&length_Float16x2_arg)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&length_Float16x2)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&length_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// cross
     length_Float16x3_arg.name = "val"_c;
     length_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    length_Float16x3.name = "length"_c;
-    length_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    length_Float16x3.name = "cross"_c;
+    length_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    length_Float16x3.parameters = length_Float16x3_args;
     Symbol::Resolved(&length_Float16x3_arg)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&length_Float16x3)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&length_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// cross
     length_Float16x4_arg.name = "val"_c;
     length_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    length_Float16x4.name = "length"_c;
-    length_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    length_Float16x4.name = "cross"_c;
+    length_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    length_Float16x4.parameters = length_Float16x4_args;
     Symbol::Resolved(&length_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&length_Float16x4)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&length_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// cross
     normalize_Float32x2_arg.name = "val"_c;
     normalize_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    normalize_Float32x2.name = "normalize"_c;
-    normalize_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    normalize_Float32x2.name = "cross"_c;
+    normalize_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    normalize_Float32x2.parameters = normalize_Float32x2_args;
     Symbol::Resolved(&normalize_Float32x2_arg)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&normalize_Float32x2)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&normalize_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// cross
     normalize_Float32x3_arg.name = "val"_c;
     normalize_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    normalize_Float32x3.name = "normalize"_c;
-    normalize_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    normalize_Float32x3.name = "cross"_c;
+    normalize_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    normalize_Float32x3.parameters = normalize_Float32x3_args;
     Symbol::Resolved(&normalize_Float32x3_arg)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&normalize_Float32x3)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&normalize_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// cross
     normalize_Float32x4_arg.name = "val"_c;
     normalize_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    normalize_Float32x4.name = "normalize"_c;
-    normalize_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    normalize_Float32x4.name = "cross"_c;
+    normalize_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    normalize_Float32x4.parameters = normalize_Float32x4_args;
     Symbol::Resolved(&normalize_Float32x4_arg)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&normalize_Float32x4)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&normalize_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// cross
     normalize_Float16x2_arg.name = "val"_c;
     normalize_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    normalize_Float16x2.name = "normalize"_c;
-    normalize_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    normalize_Float16x2.name = "cross"_c;
+    normalize_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    normalize_Float16x2.parameters = normalize_Float16x2_args;
     Symbol::Resolved(&normalize_Float16x2_arg)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&normalize_Float16x2)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&normalize_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// cross
     normalize_Float16x3_arg.name = "val"_c;
     normalize_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    normalize_Float16x3.name = "normalize"_c;
-    normalize_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    normalize_Float16x3.name = "cross"_c;
+    normalize_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    normalize_Float16x3.parameters = normalize_Float16x3_args;
     Symbol::Resolved(&normalize_Float16x3_arg)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&normalize_Float16x3)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&normalize_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// cross
     normalize_Float16x4_arg.name = "val"_c;
     normalize_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    normalize_Float16x4.name = "normalize"_c;
-    normalize_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    normalize_Float16x4.name = "cross"_c;
+    normalize_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    normalize_Float16x4.parameters = normalize_Float16x4_args;
     Symbol::Resolved(&normalize_Float16x4_arg)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&normalize_Float16x4)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&normalize_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// distance
     distance_Float32x2_p0.name = "p0"_c;
     distance_Float32x2_p0.type = Type::FullType{ Float32x2Type.name };
     distance_Float32x2_p1.name = "p1"_c;
     distance_Float32x2_p1.type = Type::FullType{ Float32x2Type.name };
     distance_Float32x2.name = "distance"_c;
-    distance_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    distance_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    distance_Float32x2.parameters = distance_Float32x2_args;
     Symbol::Resolved(&distance_Float32x2_p0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&distance_Float32x2_p1)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&distance_Float32x2)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&distance_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// distance
     distance_Float32x3_p0.name = "p0"_c;
     distance_Float32x3_p0.type = Type::FullType{ Float32x3Type.name };
     distance_Float32x3_p1.name = "p1"_c;
     distance_Float32x3_p1.type = Type::FullType{ Float32x3Type.name };
     distance_Float32x3.name = "distance"_c;
-    distance_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    distance_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    distance_Float32x3.parameters = distance_Float32x3_args;
     Symbol::Resolved(&distance_Float32x3_p0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&distance_Float32x3_p1)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&distance_Float32x3)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&distance_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// distance
     distance_Float32x4_p0.name = "p0"_c;
     distance_Float32x4_p0.type = Type::FullType{ Float32x4Type.name };
     distance_Float32x4_p1.name = "p1"_c;
     distance_Float32x4_p1.type = Type::FullType{ Float32x4Type.name };
     distance_Float32x4.name = "distance"_c;
-    distance_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    distance_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    distance_Float32x4.parameters = distance_Float32x4_args;
     Symbol::Resolved(&distance_Float32x4_p0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&distance_Float32x4_p1)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&distance_Float32x4)->returnTypeSymbol = &Float32Type;
+    Symbol::Resolved(&distance_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// distance
     distance_Float16x2_p0.name = "p0"_c;
     distance_Float16x2_p0.type = Type::FullType{ Float16x2Type.name };
     distance_Float16x2_p1.name = "p1"_c;
     distance_Float16x2_p1.type = Type::FullType{ Float16x2Type.name };
     distance_Float16x2.name = "distance"_c;
-    distance_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    distance_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    distance_Float16x2.parameters = distance_Float16x2_args;
     Symbol::Resolved(&distance_Float16x2_p0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&distance_Float16x2_p1)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&distance_Float16x2)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&distance_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// distance
     distance_Float16x3_p0.name = "p0"_c;
     distance_Float16x3_p0.type = Type::FullType{ Float16x3Type.name };
     distance_Float16x3_p1.name = "p1"_c;
     distance_Float16x3_p1.type = Type::FullType{ Float16x3Type.name };
     distance_Float16x3.name = "distance"_c;
-    distance_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    distance_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    distance_Float16x3.parameters = distance_Float16x3_args;
     Symbol::Resolved(&distance_Float16x3_p0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&distance_Float16x3_p1)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&distance_Float16x3)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&distance_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// distance
     distance_Float16x4_p0.name = "p0"_c;
     distance_Float16x4_p0.type = Type::FullType{ Float16x4Type.name };
     distance_Float16x4_p1.name = "p1"_c;
     distance_Float16x4_p1.type = Type::FullType{ Float16x4Type.name };
     distance_Float16x4.name = "distance"_c;
-    distance_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    distance_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    distance_Float16x4.parameters = distance_Float16x4_args;
     Symbol::Resolved(&distance_Float16x4_p0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&distance_Float16x4_p1)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&distance_Float16x4)->returnTypeSymbol = &Float16Type;
+    Symbol::Resolved(&distance_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// distance
     min_Float32_x.name = "x"_c;
     min_Float32_x.type = Type::FullType{ Float32Type.name };
     min_Float32_y.name = "y"_c;
     min_Float32_y.type = Type::FullType{ Float32Type.name };
-    min_Float32.name = "min"_c;
-    min_Float32.returnType = Type::FullType{ Float32Type.name };
+    min_Float32.name = "distance"_c;
+    min_Float32.returnType = Type::FullType { Float32Type.name };
+    min_Float32.parameters = min_Float32_args;
     Symbol::Resolved(&min_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&min_Float32_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&min_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// distance
     min_Float32x2_x.name = "x"_c;
     min_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     min_Float32x2_y.name = "y"_c;
     min_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
-    min_Float32x2.name = "min"_c;
-    min_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    min_Float32x2.name = "distance"_c;
+    min_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    min_Float32x2.parameters = min_Float32x2_args;
     Symbol::Resolved(&min_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&min_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&min_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// distance
     min_Float32x3_x.name = "x"_c;
     min_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     min_Float32x3_y.name = "y"_c;
     min_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
-    min_Float32x3.name = "min"_c;
-    min_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    min_Float32x3.name = "distance"_c;
+    min_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    min_Float32x3.parameters = min_Float32x3_args;
     Symbol::Resolved(&min_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&min_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&min_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// distance
     min_Float32x4_x.name = "x"_c;
     min_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     min_Float32x4_y.name = "y"_c;
     min_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
-    min_Float32x4.name = "min"_c;
-    min_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    min_Float32x4.name = "distance"_c;
+    min_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    min_Float32x4.parameters = min_Float32x4_args;
     Symbol::Resolved(&min_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&min_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&min_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// distance
     min_Float16_x.name = "x"_c;
     min_Float16_x.type = Type::FullType{ Float16Type.name };
     min_Float16_y.name = "y"_c;
     min_Float16_y.type = Type::FullType{ Float16Type.name };
-    min_Float16.name = "min"_c;
-    min_Float16.returnType = Type::FullType{ Float16Type.name };
+    min_Float16.name = "distance"_c;
+    min_Float16.returnType = Type::FullType { Float16Type.name };
+    min_Float16.parameters = min_Float16_args;
     Symbol::Resolved(&min_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&min_Float16_y)->typeSymbol = &Float16Type;
     Symbol::Resolved(&min_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// distance
     min_Float16x2_x.name = "x"_c;
     min_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     min_Float16x2_y.name = "y"_c;
     min_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
-    min_Float16x2.name = "min"_c;
-    min_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    min_Float16x2.name = "distance"_c;
+    min_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    min_Float16x2.parameters = min_Float16x2_args;
     Symbol::Resolved(&min_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&min_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&min_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// distance
     min_Float16x3_x.name = "x"_c;
     min_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     min_Float16x3_y.name = "y"_c;
     min_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
-    min_Float16x3.name = "min"_c;
-    min_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    min_Float16x3.name = "distance"_c;
+    min_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    min_Float16x3.parameters = min_Float16x3_args;
     Symbol::Resolved(&min_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&min_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&min_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// distance
     min_Float16x4_x.name = "x"_c;
     min_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     min_Float16x4_y.name = "y"_c;
     min_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
-    min_Float16x4.name = "min"_c;
-    min_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    min_Float16x4.name = "distance"_c;
+    min_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    min_Float16x4.parameters = min_Float16x4_args;
     Symbol::Resolved(&min_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&min_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&min_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// distance
     min_Int32_x.name = "x"_c;
     min_Int32_x.type = Type::FullType{ Int32Type.name };
     min_Int32_y.name = "y"_c;
     min_Int32_y.type = Type::FullType{ Int32Type.name };
-    min_Int32.name = "min"_c;
-    min_Int32.returnType = Type::FullType{ Int32Type.name };
+    min_Int32.name = "distance"_c;
+    min_Int32.returnType = Type::FullType { Int32Type.name };
+    min_Int32.parameters = min_Int32_args;
     Symbol::Resolved(&min_Int32_x)->typeSymbol = &Int32Type;
     Symbol::Resolved(&min_Int32_y)->typeSymbol = &Int32Type;
     Symbol::Resolved(&min_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// distance
     min_Int32x2_x.name = "x"_c;
     min_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     min_Int32x2_y.name = "y"_c;
     min_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
-    min_Int32x2.name = "min"_c;
-    min_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    min_Int32x2.name = "distance"_c;
+    min_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    min_Int32x2.parameters = min_Int32x2_args;
     Symbol::Resolved(&min_Int32x2_x)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&min_Int32x2_y)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&min_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// distance
     min_Int32x3_x.name = "x"_c;
     min_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     min_Int32x3_y.name = "y"_c;
     min_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
-    min_Int32x3.name = "min"_c;
-    min_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    min_Int32x3.name = "distance"_c;
+    min_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    min_Int32x3.parameters = min_Int32x3_args;
     Symbol::Resolved(&min_Int32x3_x)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&min_Int32x3_y)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&min_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// distance
     min_Int32x4_x.name = "x"_c;
     min_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     min_Int32x4_y.name = "y"_c;
     min_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
-    min_Int32x4.name = "min"_c;
-    min_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    min_Int32x4.name = "distance"_c;
+    min_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    min_Int32x4.parameters = min_Int32x4_args;
     Symbol::Resolved(&min_Int32x4_x)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&min_Int32x4_y)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&min_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// distance
     min_Int16_x.name = "x"_c;
     min_Int16_x.type = Type::FullType{ Int16Type.name };
     min_Int16_y.name = "y"_c;
     min_Int16_y.type = Type::FullType{ Int16Type.name };
-    min_Int16.name = "min"_c;
-    min_Int16.returnType = Type::FullType{ Int16Type.name };
+    min_Int16.name = "distance"_c;
+    min_Int16.returnType = Type::FullType { Int16Type.name };
+    min_Int16.parameters = min_Int16_args;
     Symbol::Resolved(&min_Int16_x)->typeSymbol = &Int16Type;
     Symbol::Resolved(&min_Int16_y)->typeSymbol = &Int16Type;
     Symbol::Resolved(&min_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// distance
     min_Int16x2_x.name = "x"_c;
     min_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     min_Int16x2_y.name = "y"_c;
     min_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
-    min_Int16x2.name = "min"_c;
-    min_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    min_Int16x2.name = "distance"_c;
+    min_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    min_Int16x2.parameters = min_Int16x2_args;
     Symbol::Resolved(&min_Int16x2_x)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&min_Int16x2_y)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&min_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// distance
     min_Int16x3_x.name = "x"_c;
     min_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     min_Int16x3_y.name = "y"_c;
     min_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
-    min_Int16x3.name = "min"_c;
-    min_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    min_Int16x3.name = "distance"_c;
+    min_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    min_Int16x3.parameters = min_Int16x3_args;
     Symbol::Resolved(&min_Int16x3_x)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&min_Int16x3_y)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&min_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// distance
     min_Int16x4_x.name = "x"_c;
     min_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     min_Int16x4_y.name = "y"_c;
     min_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
-    min_Int16x4.name = "min"_c;
-    min_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    min_Int16x4.name = "distance"_c;
+    min_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    min_Int16x4.parameters = min_Int16x4_args;
     Symbol::Resolved(&min_Int16x4_x)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&min_Int16x4_y)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&min_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// distance
     min_UInt32_x.name = "x"_c;
     min_UInt32_x.type = Type::FullType{ UInt32Type.name };
     min_UInt32_y.name = "y"_c;
     min_UInt32_y.type = Type::FullType{ UInt32Type.name };
-    min_UInt32.name = "min"_c;
-    min_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    min_UInt32.name = "distance"_c;
+    min_UInt32.returnType = Type::FullType { UInt32Type.name };
+    min_UInt32.parameters = min_UInt32_args;
     Symbol::Resolved(&min_UInt32_x)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&min_UInt32_y)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&min_UInt32)->returnTypeSymbol = &UInt32Type;
 
+    /// distance
     min_UInt32x2_x.name = "x"_c;
     min_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     min_UInt32x2_y.name = "y"_c;
     min_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
-    min_UInt32x2.name = "min"_c;
-    min_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    min_UInt32x2.name = "distance"_c;
+    min_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    min_UInt32x2.parameters = min_UInt32x2_args;
     Symbol::Resolved(&min_UInt32x2_x)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&min_UInt32x2_y)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&min_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
+    /// distance
     min_UInt32x3_x.name = "x"_c;
     min_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     min_UInt32x3_y.name = "y"_c;
     min_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
-    min_UInt32x3.name = "min"_c;
-    min_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    min_UInt32x3.name = "distance"_c;
+    min_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    min_UInt32x3.parameters = min_UInt32x3_args;
     Symbol::Resolved(&min_UInt32x3_x)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&min_UInt32x3_y)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&min_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
+    /// distance
     min_UInt32x4_x.name = "x"_c;
     min_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     min_UInt32x4_y.name = "y"_c;
     min_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
-    min_UInt32x4.name = "min"_c;
-    min_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    min_UInt32x4.name = "distance"_c;
+    min_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    min_UInt32x4.parameters = min_UInt32x4_args;
     Symbol::Resolved(&min_UInt32x4_x)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&min_UInt32x4_y)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&min_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
+    /// distance
     min_UInt16_x.name = "x"_c;
     min_UInt16_x.type = Type::FullType{ UInt16Type.name };
     min_UInt16_y.name = "y"_c;
     min_UInt16_y.type = Type::FullType{ UInt16Type.name };
-    min_UInt16.name = "min"_c;
-    min_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    min_UInt16.name = "distance"_c;
+    min_UInt16.returnType = Type::FullType { UInt16Type.name };
+    min_UInt16.parameters = min_UInt16_args;
     Symbol::Resolved(&min_UInt16_x)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&min_UInt16_y)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&min_UInt16)->returnTypeSymbol = &UInt16Type;
 
+    /// distance
     min_UInt16x2_x.name = "x"_c;
     min_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     min_UInt16x2_y.name = "y"_c;
     min_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
-    min_UInt16x2.name = "min"_c;
-    min_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    min_UInt16x2.name = "distance"_c;
+    min_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    min_UInt16x2.parameters = min_UInt16x2_args;
     Symbol::Resolved(&min_UInt16x2_x)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&min_UInt16x2_y)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&min_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
+    /// distance
     min_UInt16x3_x.name = "x"_c;
     min_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     min_UInt16x3_y.name = "y"_c;
     min_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
-    min_UInt16x3.name = "min"_c;
-    min_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    min_UInt16x3.name = "distance"_c;
+    min_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    min_UInt16x3.parameters = min_UInt16x3_args;
     Symbol::Resolved(&min_UInt16x3_x)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&min_UInt16x3_y)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&min_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
+    /// distance
     min_UInt16x4_x.name = "x"_c;
     min_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     min_UInt16x4_y.name = "y"_c;
     min_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
-    min_UInt16x4.name = "min"_c;
-    min_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    min_UInt16x4.name = "distance"_c;
+    min_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    min_UInt16x4.parameters = min_UInt16x4_args;
     Symbol::Resolved(&min_UInt16x4_x)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&min_UInt16x4_y)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&min_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
+    /// distance
     max_Float32_x.name = "x"_c;
     max_Float32_x.type = Type::FullType{ Float32Type.name };
     max_Float32_y.name = "y"_c;
     max_Float32_y.type = Type::FullType{ Float32Type.name };
-    max_Float32.name = "max"_c;
-    max_Float32.returnType = Type::FullType{ Float32Type.name };
+    max_Float32.name = "distance"_c;
+    max_Float32.returnType = Type::FullType { Float32Type.name };
+    max_Float32.parameters = max_Float32_args;
     Symbol::Resolved(&max_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&max_Float32_y)->typeSymbol = &Float32Type;
     Symbol::Resolved(&max_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// distance
     max_Float32x2_x.name = "x"_c;
     max_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     max_Float32x2_y.name = "y"_c;
     max_Float32x2_y.type = Type::FullType{ Float32x2Type.name };
-    max_Float32x2.name = "max"_c;
-    max_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    max_Float32x2.name = "distance"_c;
+    max_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    max_Float32x2.parameters = max_Float32x2_args;
     Symbol::Resolved(&max_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&max_Float32x2_y)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&max_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// distance
     max_Float32x3_x.name = "x"_c;
     max_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     max_Float32x3_y.name = "y"_c;
     max_Float32x3_y.type = Type::FullType{ Float32x3Type.name };
-    max_Float32x3.name = "max"_c;
-    max_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    max_Float32x3.name = "distance"_c;
+    max_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    max_Float32x3.parameters = max_Float32x3_args;
     Symbol::Resolved(&max_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&max_Float32x3_y)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&max_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// distance
     max_Float32x4_x.name = "x"_c;
     max_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     max_Float32x4_y.name = "y"_c;
     max_Float32x4_y.type = Type::FullType{ Float32x4Type.name };
-    max_Float32x4.name = "max"_c;
-    max_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    max_Float32x4.name = "distance"_c;
+    max_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    max_Float32x4.parameters = max_Float32x4_args;
     Symbol::Resolved(&max_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&max_Float32x4_y)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&max_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// distance
     max_Float16_x.name = "x"_c;
     max_Float16_x.type = Type::FullType{ Float16Type.name };
     max_Float16_y.name = "y"_c;
     max_Float16_y.type = Type::FullType{ Float16Type.name };
-    max_Float16.name = "max"_c;
-    max_Float16.returnType = Type::FullType{ Float16Type.name };
+    max_Float16.name = "distance"_c;
+    max_Float16.returnType = Type::FullType { Float16Type.name };
+    max_Float16.parameters = max_Float16_args;
     Symbol::Resolved(&max_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&max_Float16_y)->typeSymbol = &Float16Type;
     Symbol::Resolved(&max_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// distance
     max_Float16x2_x.name = "x"_c;
     max_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     max_Float16x2_y.name = "y"_c;
     max_Float16x2_y.type = Type::FullType{ Float16x2Type.name };
-    max_Float16x2.name = "max"_c;
-    max_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    max_Float16x2.name = "distance"_c;
+    max_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    max_Float16x2.parameters = max_Float16x2_args;
     Symbol::Resolved(&max_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&max_Float16x2_y)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&max_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// distance
     max_Float16x3_x.name = "x"_c;
     max_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     max_Float16x3_y.name = "y"_c;
     max_Float16x3_y.type = Type::FullType{ Float16x3Type.name };
-    max_Float16x3.name = "max"_c;
-    max_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    max_Float16x3.name = "distance"_c;
+    max_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    max_Float16x3.parameters = max_Float16x3_args;
     Symbol::Resolved(&max_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&max_Float16x3_y)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&max_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// distance
     max_Float16x4_x.name = "x"_c;
     max_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     max_Float16x4_y.name = "y"_c;
     max_Float16x4_y.type = Type::FullType{ Float16x4Type.name };
-    max_Float16x4.name = "max"_c;
-    max_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    max_Float16x4.name = "distance"_c;
+    max_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    max_Float16x4.parameters = max_Float16x4_args;
     Symbol::Resolved(&max_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&max_Float16x4_y)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&max_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// distance
     max_Int32_x.name = "x"_c;
     max_Int32_x.type = Type::FullType{ Int32Type.name };
     max_Int32_y.name = "y"_c;
     max_Int32_y.type = Type::FullType{ Int32Type.name };
-    max_Int32.name = "max"_c;
-    max_Int32.returnType = Type::FullType{ Int32Type.name };
+    max_Int32.name = "distance"_c;
+    max_Int32.returnType = Type::FullType { Int32Type.name };
+    max_Int32.parameters = max_Int32_args;
     Symbol::Resolved(&max_Int32_x)->typeSymbol = &Int32Type;
     Symbol::Resolved(&max_Int32_y)->typeSymbol = &Int32Type;
     Symbol::Resolved(&max_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// distance
     max_Int32x2_x.name = "x"_c;
     max_Int32x2_x.type = Type::FullType{ Int32x2Type.name };
     max_Int32x2_y.name = "y"_c;
     max_Int32x2_y.type = Type::FullType{ Int32x2Type.name };
-    max_Int32x2.name = "max"_c;
-    max_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    max_Int32x2.name = "distance"_c;
+    max_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    max_Int32x2.parameters = max_Int32x2_args;
     Symbol::Resolved(&max_Int32x2_x)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&max_Int32x2_y)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&max_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// distance
     max_Int32x3_x.name = "x"_c;
     max_Int32x3_x.type = Type::FullType{ Int32x3Type.name };
     max_Int32x3_y.name = "y"_c;
     max_Int32x3_y.type = Type::FullType{ Int32x3Type.name };
-    max_Int32x3.name = "max"_c;
-    max_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    max_Int32x3.name = "distance"_c;
+    max_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    max_Int32x3.parameters = max_Int32x3_args;
     Symbol::Resolved(&max_Int32x3_x)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&max_Int32x3_y)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&max_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// distance
     max_Int32x4_x.name = "x"_c;
     max_Int32x4_x.type = Type::FullType{ Int32x4Type.name };
     max_Int32x4_y.name = "y"_c;
     max_Int32x4_y.type = Type::FullType{ Int32x4Type.name };
-    max_Int32x4.name = "max"_c;
-    max_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    max_Int32x4.name = "distance"_c;
+    max_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    max_Int32x4.parameters = max_Int32x4_args;
     Symbol::Resolved(&max_Int32x4_x)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&max_Int32x4_y)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&max_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// distance
     max_Int16_x.name = "x"_c;
     max_Int16_x.type = Type::FullType{ Int16Type.name };
     max_Int16_y.name = "y"_c;
     max_Int16_y.type = Type::FullType{ Int16Type.name };
-    max_Int16.name = "max"_c;
-    max_Int16.returnType = Type::FullType{ Int16Type.name };
+    max_Int16.name = "distance"_c;
+    max_Int16.returnType = Type::FullType { Int16Type.name };
+    max_Int16.parameters = max_Int16_args;
     Symbol::Resolved(&max_Int16_x)->typeSymbol = &Int16Type;
     Symbol::Resolved(&max_Int16_y)->typeSymbol = &Int16Type;
     Symbol::Resolved(&max_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// distance
     max_Int16x2_x.name = "x"_c;
     max_Int16x2_x.type = Type::FullType{ Int16x2Type.name };
     max_Int16x2_y.name = "y"_c;
     max_Int16x2_y.type = Type::FullType{ Int16x2Type.name };
-    max_Int16x2.name = "max"_c;
-    max_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    max_Int16x2.name = "distance"_c;
+    max_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    max_Int16x2.parameters = max_Int16x2_args;
     Symbol::Resolved(&max_Int16x2_x)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&max_Int16x2_y)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&max_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// distance
     max_Int16x3_x.name = "x"_c;
     max_Int16x3_x.type = Type::FullType{ Int16x3Type.name };
     max_Int16x3_y.name = "y"_c;
     max_Int16x3_y.type = Type::FullType{ Int16x3Type.name };
-    max_Int16x3.name = "max"_c;
-    max_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    max_Int16x3.name = "distance"_c;
+    max_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    max_Int16x3.parameters = max_Int16x3_args;
     Symbol::Resolved(&max_Int16x3_x)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&max_Int16x3_y)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&max_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// distance
     max_Int16x4_x.name = "x"_c;
     max_Int16x4_x.type = Type::FullType{ Int16x4Type.name };
     max_Int16x4_y.name = "y"_c;
     max_Int16x4_y.type = Type::FullType{ Int16x4Type.name };
-    max_Int16x4.name = "max"_c;
-    max_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    max_Int16x4.name = "distance"_c;
+    max_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    max_Int16x4.parameters = max_Int16x4_args;
     Symbol::Resolved(&max_Int16x4_x)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&max_Int16x4_y)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&max_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// distance
     max_UInt32_x.name = "x"_c;
     max_UInt32_x.type = Type::FullType{ UInt32Type.name };
     max_UInt32_y.name = "y"_c;
     max_UInt32_y.type = Type::FullType{ UInt32Type.name };
-    max_UInt32.name = "max"_c;
-    max_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    max_UInt32.name = "distance"_c;
+    max_UInt32.returnType = Type::FullType { UInt32Type.name };
+    max_UInt32.parameters = max_UInt32_args;
     Symbol::Resolved(&max_UInt32_x)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&max_UInt32_y)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&max_UInt32)->returnTypeSymbol = &UInt32Type;
 
+    /// distance
     max_UInt32x2_x.name = "x"_c;
     max_UInt32x2_x.type = Type::FullType{ UInt32x2Type.name };
     max_UInt32x2_y.name = "y"_c;
     max_UInt32x2_y.type = Type::FullType{ UInt32x2Type.name };
-    max_UInt32x2.name = "max"_c;
-    max_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    max_UInt32x2.name = "distance"_c;
+    max_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    max_UInt32x2.parameters = max_UInt32x2_args;
     Symbol::Resolved(&max_UInt32x2_x)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&max_UInt32x2_y)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&max_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
+    /// distance
     max_UInt32x3_x.name = "x"_c;
     max_UInt32x3_x.type = Type::FullType{ UInt32x3Type.name };
     max_UInt32x3_y.name = "y"_c;
     max_UInt32x3_y.type = Type::FullType{ UInt32x3Type.name };
-    max_UInt32x3.name = "max"_c;
-    max_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    max_UInt32x3.name = "distance"_c;
+    max_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    max_UInt32x3.parameters = max_UInt32x3_args;
     Symbol::Resolved(&max_UInt32x3_x)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&max_UInt32x3_y)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&max_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
+    /// distance
     max_UInt32x4_x.name = "x"_c;
     max_UInt32x4_x.type = Type::FullType{ UInt32x4Type.name };
     max_UInt32x4_y.name = "y"_c;
     max_UInt32x4_y.type = Type::FullType{ UInt32x4Type.name };
-    max_UInt32x4.name = "max"_c;
-    max_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    max_UInt32x4.name = "distance"_c;
+    max_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    max_UInt32x4.parameters = max_UInt32x4_args;
     Symbol::Resolved(&max_UInt32x4_x)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&max_UInt32x4_y)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&max_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
+    /// distance
     max_UInt16_x.name = "x"_c;
     max_UInt16_x.type = Type::FullType{ UInt16Type.name };
     max_UInt16_y.name = "y"_c;
     max_UInt16_y.type = Type::FullType{ UInt16Type.name };
-    max_UInt16.name = "max"_c;
-    max_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    max_UInt16.name = "distance"_c;
+    max_UInt16.returnType = Type::FullType { UInt16Type.name };
+    max_UInt16.parameters = max_UInt16_args;
     Symbol::Resolved(&max_UInt16_x)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&max_UInt16_y)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&max_UInt16)->returnTypeSymbol = &UInt16Type;
 
+    /// distance
     max_UInt16x2_x.name = "x"_c;
     max_UInt16x2_x.type = Type::FullType{ UInt16x2Type.name };
     max_UInt16x2_y.name = "y"_c;
     max_UInt16x2_y.type = Type::FullType{ UInt16x2Type.name };
-    max_UInt16x2.name = "max"_c;
-    max_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    max_UInt16x2.name = "distance"_c;
+    max_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    max_UInt16x2.parameters = max_UInt16x2_args;
     Symbol::Resolved(&max_UInt16x2_x)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&max_UInt16x2_y)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&max_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
+    /// distance
     max_UInt16x3_x.name = "x"_c;
     max_UInt16x3_x.type = Type::FullType{ UInt16x3Type.name };
     max_UInt16x3_y.name = "y"_c;
     max_UInt16x3_y.type = Type::FullType{ UInt16x3Type.name };
-    max_UInt16x3.name = "max"_c;
-    max_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    max_UInt16x3.name = "distance"_c;
+    max_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    max_UInt16x3.parameters = max_UInt16x3_args;
     Symbol::Resolved(&max_UInt16x3_x)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&max_UInt16x3_y)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&max_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
+    /// distance
     max_UInt16x4_x.name = "x"_c;
     max_UInt16x4_x.type = Type::FullType{ UInt16x4Type.name };
     max_UInt16x4_y.name = "y"_c;
     max_UInt16x4_y.type = Type::FullType{ UInt16x4Type.name };
-    max_UInt16x4.name = "max"_c;
-    max_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    max_UInt16x4.name = "distance"_c;
+    max_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    max_UInt16x4.parameters = max_UInt16x4_args;
     Symbol::Resolved(&max_UInt16x4_x)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&max_UInt16x4_y)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&max_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
+    /// clamp
     clamp_Float32_val.name = "val"_c;
     clamp_Float32_val.type = Type::FullType{ Float32Type.name };
     clamp_Float32_min.name = "min"_c;
@@ -6264,12 +8571,14 @@ void SetupIntrinsics()
     clamp_Float32_max.name = "max"_c;
     clamp_Float32_max.type = Type::FullType{ Float32Type.name };
     clamp_Float32.name = "clamp"_c;
-    clamp_Float32.returnType = Type::FullType{ Float32Type.name };
+    clamp_Float32.returnType = Type::FullType { Float32Type.name };
+    clamp_Float32.parameters = clamp_Float32_args;
     Symbol::Resolved(&clamp_Float32_val)->typeSymbol = &Float32Type;
     Symbol::Resolved(&clamp_Float32_min)->typeSymbol = &Float32Type;
     Symbol::Resolved(&clamp_Float32_max)->typeSymbol = &Float32Type;
     Symbol::Resolved(&clamp_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// clamp
     clamp_Float32x2_val.name = "val"_c;
     clamp_Float32x2_val.type = Type::FullType{ Float32x2Type.name };
     clamp_Float32x2_min.name = "min"_c;
@@ -6277,12 +8586,14 @@ void SetupIntrinsics()
     clamp_Float32x2_max.name = "max"_c;
     clamp_Float32x2_max.type = Type::FullType{ Float32x2Type.name };
     clamp_Float32x2.name = "clamp"_c;
-    clamp_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    clamp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    clamp_Float32x2.parameters = clamp_Float32x2_args;
     Symbol::Resolved(&clamp_Float32x2_val)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&clamp_Float32x2_min)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&clamp_Float32x2_max)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&clamp_Float32x2_max)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&clamp_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// clamp
     clamp_Float32x3_val.name = "val"_c;
     clamp_Float32x3_val.type = Type::FullType{ Float32x3Type.name };
     clamp_Float32x3_min.name = "min"_c;
@@ -6290,12 +8601,14 @@ void SetupIntrinsics()
     clamp_Float32x3_max.name = "max"_c;
     clamp_Float32x3_max.type = Type::FullType{ Float32x3Type.name };
     clamp_Float32x3.name = "clamp"_c;
-    clamp_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    clamp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    clamp_Float32x3.parameters = clamp_Float32x3_args;
     Symbol::Resolved(&clamp_Float32x3_val)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&clamp_Float32x3_min)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&clamp_Float32x3_max)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&clamp_Float32x3_max)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&clamp_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// clamp
     clamp_Float32x4_val.name = "val"_c;
     clamp_Float32x4_val.type = Type::FullType{ Float32x4Type.name };
     clamp_Float32x4_min.name = "min"_c;
@@ -6303,12 +8616,14 @@ void SetupIntrinsics()
     clamp_Float32x4_max.name = "max"_c;
     clamp_Float32x4_max.type = Type::FullType{ Float32x4Type.name };
     clamp_Float32x4.name = "clamp"_c;
-    clamp_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    clamp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    clamp_Float32x4.parameters = clamp_Float32x4_args;
     Symbol::Resolved(&clamp_Float32x4_val)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&clamp_Float32x4_min)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&clamp_Float32x4_max)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&clamp_Float32x4_max)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&clamp_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// clamp
     clamp_Float16_val.name = "val"_c;
     clamp_Float16_val.type = Type::FullType{ Float16Type.name };
     clamp_Float16_min.name = "min"_c;
@@ -6316,12 +8631,14 @@ void SetupIntrinsics()
     clamp_Float16_max.name = "max"_c;
     clamp_Float16_max.type = Type::FullType{ Float16Type.name };
     clamp_Float16.name = "clamp"_c;
-    clamp_Float16.returnType = Type::FullType{ Float16Type.name };
+    clamp_Float16.returnType = Type::FullType { Float16Type.name };
+    clamp_Float16.parameters = clamp_Float16_args;
     Symbol::Resolved(&clamp_Float16_val)->typeSymbol = &Float16Type;
     Symbol::Resolved(&clamp_Float16_min)->typeSymbol = &Float16Type;
     Symbol::Resolved(&clamp_Float16_max)->typeSymbol = &Float16Type;
     Symbol::Resolved(&clamp_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// clamp
     clamp_Float16x2_val.name = "val"_c;
     clamp_Float16x2_val.type = Type::FullType{ Float16x2Type.name };
     clamp_Float16x2_min.name = "min"_c;
@@ -6329,12 +8646,14 @@ void SetupIntrinsics()
     clamp_Float16x2_max.name = "max"_c;
     clamp_Float16x2_max.type = Type::FullType{ Float16x2Type.name };
     clamp_Float16x2.name = "clamp"_c;
-    clamp_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    clamp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    clamp_Float16x2.parameters = clamp_Float16x2_args;
     Symbol::Resolved(&clamp_Float16x2_val)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&clamp_Float16x2_min)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&clamp_Float16x2_max)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&clamp_Float16x2_max)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&clamp_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// clamp
     clamp_Float16x3_val.name = "val"_c;
     clamp_Float16x3_val.type = Type::FullType{ Float16x3Type.name };
     clamp_Float16x3_min.name = "min"_c;
@@ -6342,12 +8661,14 @@ void SetupIntrinsics()
     clamp_Float16x3_max.name = "max"_c;
     clamp_Float16x3_max.type = Type::FullType{ Float16x3Type.name };
     clamp_Float16x3.name = "clamp"_c;
-    clamp_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    clamp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    clamp_Float16x3.parameters = clamp_Float16x3_args;
     Symbol::Resolved(&clamp_Float16x3_val)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&clamp_Float16x3_min)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&clamp_Float16x3_max)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&clamp_Float16x3_max)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&clamp_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// clamp
     clamp_Float16x4_val.name = "val"_c;
     clamp_Float16x4_val.type = Type::FullType{ Float16x4Type.name };
     clamp_Float16x4_min.name = "min"_c;
@@ -6355,12 +8676,14 @@ void SetupIntrinsics()
     clamp_Float16x4_max.name = "max"_c;
     clamp_Float16x4_max.type = Type::FullType{ Float16x4Type.name };
     clamp_Float16x4.name = "clamp"_c;
-    clamp_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    clamp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    clamp_Float16x4.parameters = clamp_Float16x4_args;
     Symbol::Resolved(&clamp_Float16x4_val)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&clamp_Float16x4_min)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&clamp_Float16x4_max)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&clamp_Float16x4_max)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&clamp_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// clamp
     clamp_Int32_val.name = "val"_c;
     clamp_Int32_val.type = Type::FullType{ Int32Type.name };
     clamp_Int32_min.name = "min"_c;
@@ -6368,12 +8691,14 @@ void SetupIntrinsics()
     clamp_Int32_max.name = "max"_c;
     clamp_Int32_max.type = Type::FullType{ Int32Type.name };
     clamp_Int32.name = "clamp"_c;
-    clamp_Int32.returnType = Type::FullType{ Int32Type.name };
+    clamp_Int32.returnType = Type::FullType { Int32Type.name };
+    clamp_Int32.parameters = clamp_Int32_args;
     Symbol::Resolved(&clamp_Int32_val)->typeSymbol = &Int32Type;
     Symbol::Resolved(&clamp_Int32_min)->typeSymbol = &Int32Type;
     Symbol::Resolved(&clamp_Int32_max)->typeSymbol = &Int32Type;
     Symbol::Resolved(&clamp_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// clamp
     clamp_Int32x2_val.name = "val"_c;
     clamp_Int32x2_val.type = Type::FullType{ Int32x2Type.name };
     clamp_Int32x2_min.name = "min"_c;
@@ -6381,12 +8706,14 @@ void SetupIntrinsics()
     clamp_Int32x2_max.name = "max"_c;
     clamp_Int32x2_max.type = Type::FullType{ Int32x2Type.name };
     clamp_Int32x2.name = "clamp"_c;
-    clamp_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    clamp_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    clamp_Int32x2.parameters = clamp_Int32x2_args;
     Symbol::Resolved(&clamp_Int32x2_val)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&clamp_Int32x2_min)->typeSymbol = &Int32x2Type;
-    Symbol::Resolved(&clamp_Int32x2_max)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&clamp_Int32x2_max)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&clamp_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// clamp
     clamp_Int32x3_val.name = "val"_c;
     clamp_Int32x3_val.type = Type::FullType{ Int32x3Type.name };
     clamp_Int32x3_min.name = "min"_c;
@@ -6394,12 +8721,14 @@ void SetupIntrinsics()
     clamp_Int32x3_max.name = "max"_c;
     clamp_Int32x3_max.type = Type::FullType{ Int32x3Type.name };
     clamp_Int32x3.name = "clamp"_c;
-    clamp_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    clamp_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    clamp_Int32x3.parameters = clamp_Int32x3_args;
     Symbol::Resolved(&clamp_Int32x3_val)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&clamp_Int32x3_min)->typeSymbol = &Int32x3Type;
-    Symbol::Resolved(&clamp_Int32x3_max)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&clamp_Int32x3_max)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&clamp_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// clamp
     clamp_Int32x4_val.name = "val"_c;
     clamp_Int32x4_val.type = Type::FullType{ Int32x4Type.name };
     clamp_Int32x4_min.name = "min"_c;
@@ -6407,12 +8736,14 @@ void SetupIntrinsics()
     clamp_Int32x4_max.name = "max"_c;
     clamp_Int32x4_max.type = Type::FullType{ Int32x4Type.name };
     clamp_Int32x4.name = "clamp"_c;
-    clamp_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    clamp_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    clamp_Int32x4.parameters = clamp_Int32x4_args;
     Symbol::Resolved(&clamp_Int32x4_val)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&clamp_Int32x4_min)->typeSymbol = &Int32x4Type;
-    Symbol::Resolved(&clamp_Int32x4_max)->typeSymbol = &Int32Type;
+    Symbol::Resolved(&clamp_Int32x4_max)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&clamp_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// clamp
     clamp_Int16_val.name = "val"_c;
     clamp_Int16_val.type = Type::FullType{ Int16Type.name };
     clamp_Int16_min.name = "min"_c;
@@ -6420,12 +8751,14 @@ void SetupIntrinsics()
     clamp_Int16_max.name = "max"_c;
     clamp_Int16_max.type = Type::FullType{ Int16Type.name };
     clamp_Int16.name = "clamp"_c;
-    clamp_Int16.returnType = Type::FullType{ Int16Type.name };
+    clamp_Int16.returnType = Type::FullType { Int16Type.name };
+    clamp_Int16.parameters = clamp_Int16_args;
     Symbol::Resolved(&clamp_Int16_val)->typeSymbol = &Int16Type;
     Symbol::Resolved(&clamp_Int16_min)->typeSymbol = &Int16Type;
     Symbol::Resolved(&clamp_Int16_max)->typeSymbol = &Int16Type;
     Symbol::Resolved(&clamp_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// clamp
     clamp_Int16x2_val.name = "val"_c;
     clamp_Int16x2_val.type = Type::FullType{ Int16x2Type.name };
     clamp_Int16x2_min.name = "min"_c;
@@ -6433,12 +8766,14 @@ void SetupIntrinsics()
     clamp_Int16x2_max.name = "max"_c;
     clamp_Int16x2_max.type = Type::FullType{ Int16x2Type.name };
     clamp_Int16x2.name = "clamp"_c;
-    clamp_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    clamp_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    clamp_Int16x2.parameters = clamp_Int16x2_args;
     Symbol::Resolved(&clamp_Int16x2_val)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&clamp_Int16x2_min)->typeSymbol = &Int16x2Type;
-    Symbol::Resolved(&clamp_Int16x2_max)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&clamp_Int16x2_max)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&clamp_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// clamp
     clamp_Int16x3_val.name = "val"_c;
     clamp_Int16x3_val.type = Type::FullType{ Int16x3Type.name };
     clamp_Int16x3_min.name = "min"_c;
@@ -6446,12 +8781,14 @@ void SetupIntrinsics()
     clamp_Int16x3_max.name = "max"_c;
     clamp_Int16x3_max.type = Type::FullType{ Int16x3Type.name };
     clamp_Int16x3.name = "clamp"_c;
-    clamp_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    clamp_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    clamp_Int16x3.parameters = clamp_Int16x3_args;
     Symbol::Resolved(&clamp_Int16x3_val)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&clamp_Int16x3_min)->typeSymbol = &Int16x3Type;
-    Symbol::Resolved(&clamp_Int16x3_max)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&clamp_Int16x3_max)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&clamp_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// clamp
     clamp_Int16x4_val.name = "val"_c;
     clamp_Int16x4_val.type = Type::FullType{ Int16x4Type.name };
     clamp_Int16x4_min.name = "min"_c;
@@ -6459,12 +8796,14 @@ void SetupIntrinsics()
     clamp_Int16x4_max.name = "max"_c;
     clamp_Int16x4_max.type = Type::FullType{ Int16x4Type.name };
     clamp_Int16x4.name = "clamp"_c;
-    clamp_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    clamp_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    clamp_Int16x4.parameters = clamp_Int16x4_args;
     Symbol::Resolved(&clamp_Int16x4_val)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&clamp_Int16x4_min)->typeSymbol = &Int16x4Type;
-    Symbol::Resolved(&clamp_Int16x4_max)->typeSymbol = &Int16Type;
+    Symbol::Resolved(&clamp_Int16x4_max)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&clamp_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// clamp
     clamp_UInt32_val.name = "val"_c;
     clamp_UInt32_val.type = Type::FullType{ UInt32Type.name };
     clamp_UInt32_min.name = "min"_c;
@@ -6472,12 +8811,14 @@ void SetupIntrinsics()
     clamp_UInt32_max.name = "max"_c;
     clamp_UInt32_max.type = Type::FullType{ UInt32Type.name };
     clamp_UInt32.name = "clamp"_c;
-    clamp_UInt32.returnType = Type::FullType{ UInt32Type.name };
+    clamp_UInt32.returnType = Type::FullType { UInt32Type.name };
+    clamp_UInt32.parameters = clamp_UInt32_args;
     Symbol::Resolved(&clamp_UInt32_val)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&clamp_UInt32_min)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&clamp_UInt32_max)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&clamp_UInt32)->returnTypeSymbol = &UInt32Type;
 
+    /// clamp
     clamp_UInt32x2_val.name = "val"_c;
     clamp_UInt32x2_val.type = Type::FullType{ UInt32x2Type.name };
     clamp_UInt32x2_min.name = "min"_c;
@@ -6485,12 +8826,14 @@ void SetupIntrinsics()
     clamp_UInt32x2_max.name = "max"_c;
     clamp_UInt32x2_max.type = Type::FullType{ UInt32x2Type.name };
     clamp_UInt32x2.name = "clamp"_c;
-    clamp_UInt32x2.returnType = Type::FullType{ UInt32x2Type.name };
+    clamp_UInt32x2.returnType = Type::FullType { UInt32x2Type.name };
+    clamp_UInt32x2.parameters = clamp_UInt32x2_args;
     Symbol::Resolved(&clamp_UInt32x2_val)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&clamp_UInt32x2_min)->typeSymbol = &UInt32x2Type;
-    Symbol::Resolved(&clamp_UInt32x2_max)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&clamp_UInt32x2_max)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&clamp_UInt32x2)->returnTypeSymbol = &UInt32x2Type;
 
+    /// clamp
     clamp_UInt32x3_val.name = "val"_c;
     clamp_UInt32x3_val.type = Type::FullType{ UInt32x3Type.name };
     clamp_UInt32x3_min.name = "min"_c;
@@ -6498,12 +8841,14 @@ void SetupIntrinsics()
     clamp_UInt32x3_max.name = "max"_c;
     clamp_UInt32x3_max.type = Type::FullType{ UInt32x3Type.name };
     clamp_UInt32x3.name = "clamp"_c;
-    clamp_UInt32x3.returnType = Type::FullType{ UInt32x3Type.name };
+    clamp_UInt32x3.returnType = Type::FullType { UInt32x3Type.name };
+    clamp_UInt32x3.parameters = clamp_UInt32x3_args;
     Symbol::Resolved(&clamp_UInt32x3_val)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&clamp_UInt32x3_min)->typeSymbol = &UInt32x3Type;
-    Symbol::Resolved(&clamp_UInt32x3_max)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&clamp_UInt32x3_max)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&clamp_UInt32x3)->returnTypeSymbol = &UInt32x3Type;
 
+    /// clamp
     clamp_UInt32x4_val.name = "val"_c;
     clamp_UInt32x4_val.type = Type::FullType{ UInt32x4Type.name };
     clamp_UInt32x4_min.name = "min"_c;
@@ -6511,12 +8856,14 @@ void SetupIntrinsics()
     clamp_UInt32x4_max.name = "max"_c;
     clamp_UInt32x4_max.type = Type::FullType{ UInt32x4Type.name };
     clamp_UInt32x4.name = "clamp"_c;
-    clamp_UInt32x4.returnType = Type::FullType{ UInt32x4Type.name };
+    clamp_UInt32x4.returnType = Type::FullType { UInt32x4Type.name };
+    clamp_UInt32x4.parameters = clamp_UInt32x4_args;
     Symbol::Resolved(&clamp_UInt32x4_val)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&clamp_UInt32x4_min)->typeSymbol = &UInt32x4Type;
-    Symbol::Resolved(&clamp_UInt32x4_max)->typeSymbol = &UInt32Type;
+    Symbol::Resolved(&clamp_UInt32x4_max)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&clamp_UInt32x4)->returnTypeSymbol = &UInt32x4Type;
 
+    /// clamp
     clamp_UInt16_val.name = "val"_c;
     clamp_UInt16_val.type = Type::FullType{ UInt16Type.name };
     clamp_UInt16_min.name = "min"_c;
@@ -6524,12 +8871,14 @@ void SetupIntrinsics()
     clamp_UInt16_max.name = "max"_c;
     clamp_UInt16_max.type = Type::FullType{ UInt16Type.name };
     clamp_UInt16.name = "clamp"_c;
-    clamp_UInt16.returnType = Type::FullType{ UInt16Type.name };
+    clamp_UInt16.returnType = Type::FullType { UInt16Type.name };
+    clamp_UInt16.parameters = clamp_UInt16_args;
     Symbol::Resolved(&clamp_UInt16_val)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&clamp_UInt16_min)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&clamp_UInt16_max)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&clamp_UInt16)->returnTypeSymbol = &UInt16Type;
 
+    /// clamp
     clamp_UInt16x2_val.name = "val"_c;
     clamp_UInt16x2_val.type = Type::FullType{ UInt16x2Type.name };
     clamp_UInt16x2_min.name = "min"_c;
@@ -6537,12 +8886,14 @@ void SetupIntrinsics()
     clamp_UInt16x2_max.name = "max"_c;
     clamp_UInt16x2_max.type = Type::FullType{ UInt16x2Type.name };
     clamp_UInt16x2.name = "clamp"_c;
-    clamp_UInt16x2.returnType = Type::FullType{ UInt16x2Type.name };
+    clamp_UInt16x2.returnType = Type::FullType { UInt16x2Type.name };
+    clamp_UInt16x2.parameters = clamp_UInt16x2_args;
     Symbol::Resolved(&clamp_UInt16x2_val)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&clamp_UInt16x2_min)->typeSymbol = &UInt16x2Type;
-    Symbol::Resolved(&clamp_UInt16x2_max)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&clamp_UInt16x2_max)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&clamp_UInt16x2)->returnTypeSymbol = &UInt16x2Type;
 
+    /// clamp
     clamp_UInt16x3_val.name = "val"_c;
     clamp_UInt16x3_val.type = Type::FullType{ UInt16x3Type.name };
     clamp_UInt16x3_min.name = "min"_c;
@@ -6550,12 +8901,14 @@ void SetupIntrinsics()
     clamp_UInt16x3_max.name = "max"_c;
     clamp_UInt16x3_max.type = Type::FullType{ UInt16x3Type.name };
     clamp_UInt16x3.name = "clamp"_c;
-    clamp_UInt16x3.returnType = Type::FullType{ UInt16x3Type.name };
+    clamp_UInt16x3.returnType = Type::FullType { UInt16x3Type.name };
+    clamp_UInt16x3.parameters = clamp_UInt16x3_args;
     Symbol::Resolved(&clamp_UInt16x3_val)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&clamp_UInt16x3_min)->typeSymbol = &UInt16x3Type;
-    Symbol::Resolved(&clamp_UInt16x3_max)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&clamp_UInt16x3_max)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&clamp_UInt16x3)->returnTypeSymbol = &UInt16x3Type;
 
+    /// clamp
     clamp_UInt16x4_val.name = "val"_c;
     clamp_UInt16x4_val.type = Type::FullType{ UInt16x4Type.name };
     clamp_UInt16x4_min.name = "min"_c;
@@ -6563,170 +8916,200 @@ void SetupIntrinsics()
     clamp_UInt16x4_max.name = "max"_c;
     clamp_UInt16x4_max.type = Type::FullType{ UInt16x4Type.name };
     clamp_UInt16x4.name = "clamp"_c;
-    clamp_UInt16x4.returnType = Type::FullType{ UInt16x4Type.name };
+    clamp_UInt16x4.returnType = Type::FullType { UInt16x4Type.name };
+    clamp_UInt16x4.parameters = clamp_UInt16x4_args;
     Symbol::Resolved(&clamp_UInt16x4_val)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&clamp_UInt16x4_min)->typeSymbol = &UInt16x4Type;
-    Symbol::Resolved(&clamp_UInt16x4_max)->typeSymbol = &UInt16Type;
+    Symbol::Resolved(&clamp_UInt16x4_max)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&clamp_UInt16x4)->returnTypeSymbol = &UInt16x4Type;
 
+    /// lerp
     lerp_Float32x2_a.name = "a"_c;
     lerp_Float32x2_a.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2_b.name = "b"_c;
     lerp_Float32x2_b.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2_t.name = "t"_c;
-    lerp_Float32x2_t.type = Type::FullType{ Float32Type.name };
+    lerp_Float32x2_t.type = Type::FullType{ Float32x2Type.name };
     lerp_Float32x2.name = "lerp"_c;
-    lerp_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    lerp_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    lerp_Float32x2.parameters = lerp_Float32x2_args;
     Symbol::Resolved(&lerp_Float32x2_a)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&lerp_Float32x2_b)->typeSymbol = &Float32x2Type;
-    Symbol::Resolved(&lerp_Float32x2_t)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&lerp_Float32x2_t)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&lerp_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// lerp
     lerp_Float32x3_a.name = "a"_c;
     lerp_Float32x3_a.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3_b.name = "b"_c;
     lerp_Float32x3_b.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3_t.name = "t"_c;
-    lerp_Float32x3_t.type = Type::FullType{ Float32Type.name };
+    lerp_Float32x3_t.type = Type::FullType{ Float32x3Type.name };
     lerp_Float32x3.name = "lerp"_c;
-    lerp_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    lerp_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    lerp_Float32x3.parameters = lerp_Float32x3_args;
     Symbol::Resolved(&lerp_Float32x3_a)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&lerp_Float32x3_b)->typeSymbol = &Float32x3Type;
-    Symbol::Resolved(&lerp_Float32x3_t)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&lerp_Float32x3_t)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&lerp_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// lerp
     lerp_Float32x4_a.name = "a"_c;
     lerp_Float32x4_a.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4_b.name = "b"_c;
     lerp_Float32x4_b.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4_t.name = "t"_c;
-    lerp_Float32x4_t.type = Type::FullType{ Float32Type.name };
+    lerp_Float32x4_t.type = Type::FullType{ Float32x4Type.name };
     lerp_Float32x4.name = "lerp"_c;
-    lerp_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    lerp_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    lerp_Float32x4.parameters = lerp_Float32x4_args;
     Symbol::Resolved(&lerp_Float32x4_a)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&lerp_Float32x4_b)->typeSymbol = &Float32x4Type;
-    Symbol::Resolved(&lerp_Float32x4_t)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&lerp_Float32x4_t)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&lerp_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// lerp
     lerp_Float16x2_a.name = "a"_c;
     lerp_Float16x2_a.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2_b.name = "b"_c;
     lerp_Float16x2_b.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2_t.name = "t"_c;
-    lerp_Float16x2_t.type = Type::FullType{ Float16Type.name };
+    lerp_Float16x2_t.type = Type::FullType{ Float16x2Type.name };
     lerp_Float16x2.name = "lerp"_c;
-    lerp_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    lerp_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    lerp_Float16x2.parameters = lerp_Float16x2_args;
     Symbol::Resolved(&lerp_Float16x2_a)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&lerp_Float16x2_b)->typeSymbol = &Float16x2Type;
-    Symbol::Resolved(&lerp_Float16x2_t)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&lerp_Float16x2_t)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&lerp_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// lerp
     lerp_Float16x3_a.name = "a"_c;
     lerp_Float16x3_a.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3_b.name = "b"_c;
     lerp_Float16x3_b.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3_t.name = "t"_c;
-    lerp_Float16x3_t.type = Type::FullType{ Float16Type.name };
+    lerp_Float16x3_t.type = Type::FullType{ Float16x3Type.name };
     lerp_Float16x3.name = "lerp"_c;
-    lerp_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    lerp_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    lerp_Float16x3.parameters = lerp_Float16x3_args;
     Symbol::Resolved(&lerp_Float16x3_a)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&lerp_Float16x3_b)->typeSymbol = &Float16x3Type;
-    Symbol::Resolved(&lerp_Float16x3_t)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&lerp_Float16x3_t)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&lerp_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// lerp
     lerp_Float16x4_a.name = "a"_c;
     lerp_Float16x4_a.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4_b.name = "b"_c;
     lerp_Float16x4_b.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4_t.name = "t"_c;
-    lerp_Float16x4_t.type = Type::FullType{ Float16Type.name };
+    lerp_Float16x4_t.type = Type::FullType{ Float16x4Type.name };
     lerp_Float16x4.name = "lerp"_c;
-    lerp_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    lerp_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    lerp_Float16x4.parameters = lerp_Float16x4_args;
     Symbol::Resolved(&lerp_Float16x4_a)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&lerp_Float16x4_b)->typeSymbol = &Float16x4Type;
-    Symbol::Resolved(&lerp_Float16x4_t)->typeSymbol = &Float16Type;
+    Symbol::Resolved(&lerp_Float16x4_t)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&lerp_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// step
     step_Float32_edge.name = "edge"_c;
     step_Float32_edge.type = Type::FullType{ Float32Type.name };
     step_Float32_x.name = "x"_c;
     step_Float32_x.type = Type::FullType{ Float32Type.name };
     step_Float32.name = "step"_c;
-    step_Float32.returnType = Type::FullType{ Float32Type.name };
+    step_Float32.returnType = Type::FullType { Float32Type.name };
+    step_Float32.parameters = step_Float32_args;
     Symbol::Resolved(&step_Float32_edge)->typeSymbol = &Float32Type;
     Symbol::Resolved(&step_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&step_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// step
     step_Float32x2_edge.name = "edge"_c;
     step_Float32x2_edge.type = Type::FullType{ Float32x2Type.name };
     step_Float32x2_x.name = "x"_c;
     step_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     step_Float32x2.name = "step"_c;
-    step_Float32x2.returnType = Type::FullType{ Float32Type.name };
+    step_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    step_Float32x2.parameters = step_Float32x2_args;
     Symbol::Resolved(&step_Float32x2_edge)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&step_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&step_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// step
     step_Float32x3_edge.name = "edge"_c;
     step_Float32x3_edge.type = Type::FullType{ Float32x3Type.name };
     step_Float32x3_x.name = "x"_c;
     step_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     step_Float32x3.name = "step"_c;
-    step_Float32x3.returnType = Type::FullType{ Float32Type.name };
+    step_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    step_Float32x3.parameters = step_Float32x3_args;
     Symbol::Resolved(&step_Float32x3_edge)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&step_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&step_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// step
     step_Float32x4_edge.name = "edge"_c;
     step_Float32x4_edge.type = Type::FullType{ Float32x4Type.name };
     step_Float32x4_x.name = "x"_c;
     step_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     step_Float32x4.name = "step"_c;
-    step_Float32x4.returnType = Type::FullType{ Float32Type.name };
+    step_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    step_Float32x4.parameters = step_Float32x4_args;
     Symbol::Resolved(&step_Float32x4_edge)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&step_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&step_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// step
     step_Float16_edge.name = "edge"_c;
     step_Float16_edge.type = Type::FullType{ Float16Type.name };
     step_Float16_x.name = "x"_c;
     step_Float16_x.type = Type::FullType{ Float16Type.name };
     step_Float16.name = "step"_c;
-    step_Float16.returnType = Type::FullType{ Float16Type.name };
+    step_Float16.returnType = Type::FullType { Float16Type.name };
+    step_Float16.parameters = step_Float16_args;
     Symbol::Resolved(&step_Float16_edge)->typeSymbol = &Float16Type;
     Symbol::Resolved(&step_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&step_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// step
     step_Float16x2_edge.name = "edge"_c;
     step_Float16x2_edge.type = Type::FullType{ Float16x2Type.name };
     step_Float16x2_x.name = "x"_c;
     step_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     step_Float16x2.name = "step"_c;
-    step_Float16x2.returnType = Type::FullType{ Float16Type.name };
+    step_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    step_Float16x2.parameters = step_Float16x2_args;
     Symbol::Resolved(&step_Float16x2_edge)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&step_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&step_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// step
     step_Float16x3_edge.name = "edge"_c;
     step_Float16x3_edge.type = Type::FullType{ Float16x3Type.name };
     step_Float16x3_x.name = "x"_c;
     step_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     step_Float16x3.name = "step"_c;
-    step_Float16x3.returnType = Type::FullType{ Float16Type.name };
+    step_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    step_Float16x3.parameters = step_Float16x3_args;
     Symbol::Resolved(&step_Float16x3_edge)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&step_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&step_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// step
     step_Float16x4_edge.name = "edge"_c;
     step_Float16x4_edge.type = Type::FullType{ Float16x4Type.name };
     step_Float16x4_x.name = "x"_c;
     step_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     step_Float16x4.name = "step"_c;
-    step_Float16x4.returnType = Type::FullType{ Float16Type.name };
+    step_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    step_Float16x4.parameters = step_Float16x4_args;
     Symbol::Resolved(&step_Float16x4_edge)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&step_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&step_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     smoothstep_Float32_edge0.name = "edge0"_c;
     smoothstep_Float32_edge0.type = Type::FullType{ Float32Type.name };
     smoothstep_Float32_edge1.name = "edge1"_c;
@@ -6734,12 +9117,14 @@ void SetupIntrinsics()
     smoothstep_Float32_x.name = "x"_c;
     smoothstep_Float32_x.type = Type::FullType{ Float32Type.name };
     smoothstep_Float32.name = "smoothstep"_c;
-    smoothstep_Float32.returnType = Type::FullType{ Float32Type.name };
+    smoothstep_Float32.returnType = Type::FullType { Float32Type.name };
+    smoothstep_Float32.parameters = smoothstep_Float32_args;
     Symbol::Resolved(&smoothstep_Float32_edge0)->typeSymbol = &Float32Type;
     Symbol::Resolved(&smoothstep_Float32_edge1)->typeSymbol = &Float32Type;
     Symbol::Resolved(&smoothstep_Float32_x)->typeSymbol = &Float32Type;
     Symbol::Resolved(&smoothstep_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     smoothstep_Float32x2_edge0.name = "edge0"_c;
     smoothstep_Float32x2_edge0.type = Type::FullType{ Float32x2Type.name };
     smoothstep_Float32x2_edge1.name = "edge1"_c;
@@ -6747,12 +9132,14 @@ void SetupIntrinsics()
     smoothstep_Float32x2_x.name = "x"_c;
     smoothstep_Float32x2_x.type = Type::FullType{ Float32x2Type.name };
     smoothstep_Float32x2.name = "smoothstep"_c;
-    smoothstep_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    smoothstep_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    smoothstep_Float32x2.parameters = smoothstep_Float32x2_args;
     Symbol::Resolved(&smoothstep_Float32x2_edge0)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&smoothstep_Float32x2_edge1)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&smoothstep_Float32x2_x)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&smoothstep_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     smoothstep_Float32x3_edge0.name = "edge0"_c;
     smoothstep_Float32x3_edge0.type = Type::FullType{ Float32x3Type.name };
     smoothstep_Float32x3_edge1.name = "edge1"_c;
@@ -6760,12 +9147,14 @@ void SetupIntrinsics()
     smoothstep_Float32x3_x.name = "x"_c;
     smoothstep_Float32x3_x.type = Type::FullType{ Float32x3Type.name };
     smoothstep_Float32x3.name = "smoothstep"_c;
-    smoothstep_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    smoothstep_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    smoothstep_Float32x3.parameters = smoothstep_Float32x3_args;
     Symbol::Resolved(&smoothstep_Float32x3_edge0)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&smoothstep_Float32x3_edge1)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&smoothstep_Float32x3_x)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&smoothstep_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     smoothstep_Float32x4_edge0.name = "edge0"_c;
     smoothstep_Float32x4_edge0.type = Type::FullType{ Float32x4Type.name };
     smoothstep_Float32x4_edge1.name = "edge1"_c;
@@ -6773,12 +9162,14 @@ void SetupIntrinsics()
     smoothstep_Float32x4_x.name = "x"_c;
     smoothstep_Float32x4_x.type = Type::FullType{ Float32x4Type.name };
     smoothstep_Float32x4.name = "smoothstep"_c;
-    smoothstep_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    smoothstep_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    smoothstep_Float32x4.parameters = smoothstep_Float32x4_args;
     Symbol::Resolved(&smoothstep_Float32x4_edge0)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&smoothstep_Float32x4_edge1)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&smoothstep_Float32x4_x)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&smoothstep_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     smoothstep_Float16_edge0.name = "edge0"_c;
     smoothstep_Float16_edge0.type = Type::FullType{ Float16Type.name };
     smoothstep_Float16_edge1.name = "edge1"_c;
@@ -6786,12 +9177,14 @@ void SetupIntrinsics()
     smoothstep_Float16_x.name = "x"_c;
     smoothstep_Float16_x.type = Type::FullType{ Float16Type.name };
     smoothstep_Float16.name = "smoothstep"_c;
-    smoothstep_Float16.returnType = Type::FullType{ Float16Type.name };
+    smoothstep_Float16.returnType = Type::FullType { Float16Type.name };
+    smoothstep_Float16.parameters = smoothstep_Float16_args;
     Symbol::Resolved(&smoothstep_Float16_edge0)->typeSymbol = &Float16Type;
     Symbol::Resolved(&smoothstep_Float16_edge1)->typeSymbol = &Float16Type;
     Symbol::Resolved(&smoothstep_Float16_x)->typeSymbol = &Float16Type;
     Symbol::Resolved(&smoothstep_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     smoothstep_Float16x2_edge0.name = "edge0"_c;
     smoothstep_Float16x2_edge0.type = Type::FullType{ Float16x2Type.name };
     smoothstep_Float16x2_edge1.name = "edge1"_c;
@@ -6799,12 +9192,14 @@ void SetupIntrinsics()
     smoothstep_Float16x2_x.name = "x"_c;
     smoothstep_Float16x2_x.type = Type::FullType{ Float16x2Type.name };
     smoothstep_Float16x2.name = "smoothstep"_c;
-    smoothstep_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    smoothstep_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    smoothstep_Float16x2.parameters = smoothstep_Float16x2_args;
     Symbol::Resolved(&smoothstep_Float16x2_edge0)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&smoothstep_Float16x2_edge1)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&smoothstep_Float16x2_x)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&smoothstep_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     smoothstep_Float16x3_edge0.name = "edge0"_c;
     smoothstep_Float16x3_edge0.type = Type::FullType{ Float16x3Type.name };
     smoothstep_Float16x3_edge1.name = "edge1"_c;
@@ -6812,12 +9207,14 @@ void SetupIntrinsics()
     smoothstep_Float16x3_x.name = "x"_c;
     smoothstep_Float16x3_x.type = Type::FullType{ Float16x3Type.name };
     smoothstep_Float16x3.name = "smoothstep"_c;
-    smoothstep_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    smoothstep_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    smoothstep_Float16x3.parameters = smoothstep_Float16x3_args;
     Symbol::Resolved(&smoothstep_Float16x3_edge0)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&smoothstep_Float16x3_edge1)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&smoothstep_Float16x3_x)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&smoothstep_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     smoothstep_Float16x4_edge0.name = "edge0"_c;
     smoothstep_Float16x4_edge0.type = Type::FullType{ Float16x4Type.name };
     smoothstep_Float16x4_edge1.name = "edge1"_c;
@@ -6825,2296 +9222,2829 @@ void SetupIntrinsics()
     smoothstep_Float16x4_x.name = "x"_c;
     smoothstep_Float16x4_x.type = Type::FullType{ Float16x4Type.name };
     smoothstep_Float16x4.name = "smoothstep"_c;
-    smoothstep_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    smoothstep_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    smoothstep_Float16x4.parameters = smoothstep_Float16x4_args;
     Symbol::Resolved(&smoothstep_Float16x4_edge0)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&smoothstep_Float16x4_edge1)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&smoothstep_Float16x4_x)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&smoothstep_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     ceil_Float32_arg.name = "val"_c;
     ceil_Float32_arg.type = Type::FullType{ Float32Type.name };
-    ceil_Float32.name = "ceil"_c;
-    ceil_Float32.returnType = Type::FullType{ Float32Type.name };
+    ceil_Float32.name = "smoothstep"_c;
+    ceil_Float32.returnType = Type::FullType { Float32Type.name };
+    ceil_Float32.parameters = ceil_Float32_args;
     Symbol::Resolved(&ceil_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&ceil_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     ceil_Float32x2_arg.name = "val"_c;
     ceil_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    ceil_Float32x2.name = "ceil"_c;
-    ceil_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    ceil_Float32x2.name = "smoothstep"_c;
+    ceil_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    ceil_Float32x2.parameters = ceil_Float32x2_args;
     Symbol::Resolved(&ceil_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&ceil_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     ceil_Float32x3_arg.name = "val"_c;
     ceil_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    ceil_Float32x3.name = "ceil"_c;
-    ceil_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    ceil_Float32x3.name = "smoothstep"_c;
+    ceil_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    ceil_Float32x3.parameters = ceil_Float32x3_args;
     Symbol::Resolved(&ceil_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&ceil_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     ceil_Float32x4_arg.name = "val"_c;
     ceil_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    ceil_Float32x4.name = "ceil"_c;
-    ceil_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    ceil_Float32x4.name = "smoothstep"_c;
+    ceil_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    ceil_Float32x4.parameters = ceil_Float32x4_args;
     Symbol::Resolved(&ceil_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&ceil_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     ceil_Float16_arg.name = "val"_c;
     ceil_Float16_arg.type = Type::FullType{ Float16Type.name };
-    ceil_Float16.name = "ceil"_c;
-    ceil_Float16.returnType = Type::FullType{ Float16Type.name };
+    ceil_Float16.name = "smoothstep"_c;
+    ceil_Float16.returnType = Type::FullType { Float16Type.name };
+    ceil_Float16.parameters = ceil_Float16_args;
     Symbol::Resolved(&ceil_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&ceil_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     ceil_Float16x2_arg.name = "val"_c;
     ceil_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    ceil_Float16x2.name = "ceil"_c;
-    ceil_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    ceil_Float16x2.name = "smoothstep"_c;
+    ceil_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    ceil_Float16x2.parameters = ceil_Float16x2_args;
     Symbol::Resolved(&ceil_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&ceil_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     ceil_Float16x3_arg.name = "val"_c;
     ceil_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    ceil_Float16x3.name = "ceil"_c;
-    ceil_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    ceil_Float16x3.name = "smoothstep"_c;
+    ceil_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    ceil_Float16x3.parameters = ceil_Float16x3_args;
     Symbol::Resolved(&ceil_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&ceil_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     ceil_Float16x4_arg.name = "val"_c;
     ceil_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    ceil_Float16x4.name = "ceil"_c;
-    ceil_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    ceil_Float16x4.name = "smoothstep"_c;
+    ceil_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    ceil_Float16x4.parameters = ceil_Float16x4_args;
     Symbol::Resolved(&ceil_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&ceil_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     floor_Float32_arg.name = "val"_c;
     floor_Float32_arg.type = Type::FullType{ Float32Type.name };
-    floor_Float32.name = "floor"_c;
-    floor_Float32.returnType = Type::FullType{ Float32Type.name };
+    floor_Float32.name = "smoothstep"_c;
+    floor_Float32.returnType = Type::FullType { Float32Type.name };
+    floor_Float32.parameters = floor_Float32_args;
     Symbol::Resolved(&floor_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&floor_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     floor_Float32x2_arg.name = "val"_c;
     floor_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    floor_Float32x2.name = "floor"_c;
-    floor_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    floor_Float32x2.name = "smoothstep"_c;
+    floor_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    floor_Float32x2.parameters = floor_Float32x2_args;
     Symbol::Resolved(&floor_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&floor_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     floor_Float32x3_arg.name = "val"_c;
     floor_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    floor_Float32x3.name = "floor"_c;
-    floor_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    floor_Float32x3.name = "smoothstep"_c;
+    floor_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    floor_Float32x3.parameters = floor_Float32x3_args;
     Symbol::Resolved(&floor_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&floor_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     floor_Float32x4_arg.name = "val"_c;
     floor_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    floor_Float32x4.name = "floor"_c;
-    floor_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    floor_Float32x4.name = "smoothstep"_c;
+    floor_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    floor_Float32x4.parameters = floor_Float32x4_args;
     Symbol::Resolved(&floor_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&floor_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     floor_Float16_arg.name = "val"_c;
     floor_Float16_arg.type = Type::FullType{ Float16Type.name };
-    floor_Float16.name = "floor"_c;
-    floor_Float16.returnType = Type::FullType{ Float16Type.name };
+    floor_Float16.name = "smoothstep"_c;
+    floor_Float16.returnType = Type::FullType { Float16Type.name };
+    floor_Float16.parameters = floor_Float16_args;
     Symbol::Resolved(&floor_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&floor_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     floor_Float16x2_arg.name = "val"_c;
     floor_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    floor_Float16x2.name = "floor"_c;
-    floor_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    floor_Float16x2.name = "smoothstep"_c;
+    floor_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    floor_Float16x2.parameters = floor_Float16x2_args;
     Symbol::Resolved(&floor_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&floor_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     floor_Float16x3_arg.name = "val"_c;
     floor_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    floor_Float16x3.name = "floor"_c;
-    floor_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    floor_Float16x3.name = "smoothstep"_c;
+    floor_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    floor_Float16x3.parameters = floor_Float16x3_args;
     Symbol::Resolved(&floor_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&floor_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     floor_Float16x4_arg.name = "val"_c;
     floor_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    floor_Float16x4.name = "floor"_c;
-    floor_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    floor_Float16x4.name = "smoothstep"_c;
+    floor_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    floor_Float16x4.parameters = floor_Float16x4_args;
     Symbol::Resolved(&floor_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&floor_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     fract_Float32_arg.name = "val"_c;
     fract_Float32_arg.type = Type::FullType{ Float32Type.name };
-    fract_Float32.name = "fract"_c;
-    fract_Float32.returnType = Type::FullType{ Float32Type.name };
+    fract_Float32.name = "smoothstep"_c;
+    fract_Float32.returnType = Type::FullType { Float32Type.name };
+    fract_Float32.parameters = fract_Float32_args;
     Symbol::Resolved(&fract_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&fract_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     fract_Float32x2_arg.name = "val"_c;
     fract_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    fract_Float32x2.name = "fract"_c;
-    fract_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    fract_Float32x2.name = "smoothstep"_c;
+    fract_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    fract_Float32x2.parameters = fract_Float32x2_args;
     Symbol::Resolved(&fract_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&fract_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     fract_Float32x3_arg.name = "val"_c;
     fract_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    fract_Float32x3.name = "fract"_c;
-    fract_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    fract_Float32x3.name = "smoothstep"_c;
+    fract_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    fract_Float32x3.parameters = fract_Float32x3_args;
     Symbol::Resolved(&fract_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&fract_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     fract_Float32x4_arg.name = "val"_c;
     fract_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    fract_Float32x4.name = "fract"_c;
-    fract_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    fract_Float32x4.name = "smoothstep"_c;
+    fract_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    fract_Float32x4.parameters = fract_Float32x4_args;
     Symbol::Resolved(&fract_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&fract_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     fract_Float16_arg.name = "val"_c;
     fract_Float16_arg.type = Type::FullType{ Float16Type.name };
-    fract_Float16.name = "fract"_c;
-    fract_Float16.returnType = Type::FullType{ Float16Type.name };
+    fract_Float16.name = "smoothstep"_c;
+    fract_Float16.returnType = Type::FullType { Float16Type.name };
+    fract_Float16.parameters = fract_Float16_args;
     Symbol::Resolved(&fract_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&fract_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     fract_Float16x2_arg.name = "val"_c;
     fract_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    fract_Float16x2.name = "fract"_c;
-    fract_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    fract_Float16x2.name = "smoothstep"_c;
+    fract_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    fract_Float16x2.parameters = fract_Float16x2_args;
     Symbol::Resolved(&fract_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&fract_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     fract_Float16x3_arg.name = "val"_c;
     fract_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    fract_Float16x3.name = "fract"_c;
-    fract_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    fract_Float16x3.name = "smoothstep"_c;
+    fract_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    fract_Float16x3.parameters = fract_Float16x3_args;
     Symbol::Resolved(&fract_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&fract_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     fract_Float16x4_arg.name = "val"_c;
     fract_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    fract_Float16x4.name = "fract"_c;
-    fract_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    fract_Float16x4.name = "smoothstep"_c;
+    fract_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    fract_Float16x4.parameters = fract_Float16x4_args;
     Symbol::Resolved(&fract_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&fract_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     saturate_Float32_arg.name = "val"_c;
     saturate_Float32_arg.type = Type::FullType{ Float32Type.name };
-    saturate_Float32.name = "saturate"_c;
-    saturate_Float32.returnType = Type::FullType{ Float32Type.name };
+    saturate_Float32.name = "smoothstep"_c;
+    saturate_Float32.returnType = Type::FullType { Float32Type.name };
+    saturate_Float32.parameters = saturate_Float32_args;
     Symbol::Resolved(&saturate_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&saturate_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     saturate_Float32x2_arg.name = "val"_c;
     saturate_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    saturate_Float32x2.name = "saturate"_c;
-    saturate_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    saturate_Float32x2.name = "smoothstep"_c;
+    saturate_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    saturate_Float32x2.parameters = saturate_Float32x2_args;
     Symbol::Resolved(&saturate_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&saturate_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     saturate_Float32x3_arg.name = "val"_c;
     saturate_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    saturate_Float32x3.name = "saturate"_c;
-    saturate_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    saturate_Float32x3.name = "smoothstep"_c;
+    saturate_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    saturate_Float32x3.parameters = saturate_Float32x3_args;
     Symbol::Resolved(&saturate_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&saturate_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     saturate_Float32x4_arg.name = "val"_c;
     saturate_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    saturate_Float32x4.name = "saturate"_c;
-    saturate_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    saturate_Float32x4.name = "smoothstep"_c;
+    saturate_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    saturate_Float32x4.parameters = saturate_Float32x4_args;
     Symbol::Resolved(&saturate_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&saturate_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     saturate_Float16_arg.name = "val"_c;
     saturate_Float16_arg.type = Type::FullType{ Float16Type.name };
-    saturate_Float16.name = "saturate"_c;
-    saturate_Float16.returnType = Type::FullType{ Float16Type.name };
+    saturate_Float16.name = "smoothstep"_c;
+    saturate_Float16.returnType = Type::FullType { Float16Type.name };
+    saturate_Float16.parameters = saturate_Float16_args;
     Symbol::Resolved(&saturate_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&saturate_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     saturate_Float16x2_arg.name = "val"_c;
     saturate_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    saturate_Float16x2.name = "saturate"_c;
-    saturate_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    saturate_Float16x2.name = "smoothstep"_c;
+    saturate_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    saturate_Float16x2.parameters = saturate_Float16x2_args;
     Symbol::Resolved(&saturate_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&saturate_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     saturate_Float16x3_arg.name = "val"_c;
     saturate_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    saturate_Float16x3.name = "saturate"_c;
-    saturate_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    saturate_Float16x3.name = "smoothstep"_c;
+    saturate_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    saturate_Float16x3.parameters = saturate_Float16x3_args;
     Symbol::Resolved(&saturate_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&saturate_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     saturate_Float16x4_arg.name = "val"_c;
     saturate_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    saturate_Float16x4.name = "saturate"_c;
-    saturate_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    saturate_Float16x4.name = "smoothstep"_c;
+    saturate_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    saturate_Float16x4.parameters = saturate_Float16x4_args;
     Symbol::Resolved(&saturate_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&saturate_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     trunc_Float32_arg.name = "val"_c;
     trunc_Float32_arg.type = Type::FullType{ Float32Type.name };
-    trunc_Float32.name = "trunc"_c;
-    trunc_Float32.returnType = Type::FullType{ Float32Type.name };
+    trunc_Float32.name = "smoothstep"_c;
+    trunc_Float32.returnType = Type::FullType { Float32Type.name };
+    trunc_Float32.parameters = trunc_Float32_args;
     Symbol::Resolved(&trunc_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&trunc_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     trunc_Float32x2_arg.name = "val"_c;
     trunc_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    trunc_Float32x2.name = "trunc"_c;
-    trunc_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    trunc_Float32x2.name = "smoothstep"_c;
+    trunc_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    trunc_Float32x2.parameters = trunc_Float32x2_args;
     Symbol::Resolved(&trunc_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&trunc_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     trunc_Float32x3_arg.name = "val"_c;
     trunc_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    trunc_Float32x3.name = "trunc"_c;
-    trunc_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    trunc_Float32x3.name = "smoothstep"_c;
+    trunc_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    trunc_Float32x3.parameters = trunc_Float32x3_args;
     Symbol::Resolved(&trunc_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&trunc_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     trunc_Float32x4_arg.name = "val"_c;
     trunc_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    trunc_Float32x4.name = "trunc"_c;
-    trunc_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    trunc_Float32x4.name = "smoothstep"_c;
+    trunc_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    trunc_Float32x4.parameters = trunc_Float32x4_args;
     Symbol::Resolved(&trunc_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&trunc_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     trunc_Float16_arg.name = "val"_c;
     trunc_Float16_arg.type = Type::FullType{ Float16Type.name };
-    trunc_Float16.name = "trunc"_c;
-    trunc_Float16.returnType = Type::FullType{ Float16Type.name };
+    trunc_Float16.name = "smoothstep"_c;
+    trunc_Float16.returnType = Type::FullType { Float16Type.name };
+    trunc_Float16.parameters = trunc_Float16_args;
     Symbol::Resolved(&trunc_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&trunc_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     trunc_Float16x2_arg.name = "val"_c;
     trunc_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    trunc_Float16x2.name = "trunc"_c;
-    trunc_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    trunc_Float16x2.name = "smoothstep"_c;
+    trunc_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    trunc_Float16x2.parameters = trunc_Float16x2_args;
     Symbol::Resolved(&trunc_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&trunc_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     trunc_Float16x3_arg.name = "val"_c;
     trunc_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    trunc_Float16x3.name = "trunc"_c;
-    trunc_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    trunc_Float16x3.name = "smoothstep"_c;
+    trunc_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    trunc_Float16x3.parameters = trunc_Float16x3_args;
     Symbol::Resolved(&trunc_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&trunc_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     trunc_Float16x4_arg.name = "val"_c;
     trunc_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    trunc_Float16x4.name = "trunc"_c;
-    trunc_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    trunc_Float16x4.name = "smoothstep"_c;
+    trunc_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    trunc_Float16x4.parameters = trunc_Float16x4_args;
     Symbol::Resolved(&trunc_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&trunc_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     ddx_Float32_arg.name = "val"_c;
     ddx_Float32_arg.type = Type::FullType{ Float32Type.name };
-    ddx_Float32.name = "ddx"_c;
-    ddx_Float32.returnType = Type::FullType{ Float32Type.name };
+    ddx_Float32.name = "smoothstep"_c;
+    ddx_Float32.returnType = Type::FullType { Float32Type.name };
+    ddx_Float32.parameters = ddx_Float32_args;
     Symbol::Resolved(&ddx_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&ddx_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     ddx_Float32x2_arg.name = "val"_c;
     ddx_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    ddx_Float32x2.name = "ddx"_c;
-    ddx_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    ddx_Float32x2.name = "smoothstep"_c;
+    ddx_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    ddx_Float32x2.parameters = ddx_Float32x2_args;
     Symbol::Resolved(&ddx_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&ddx_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     ddx_Float32x3_arg.name = "val"_c;
     ddx_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    ddx_Float32x3.name = "ddx"_c;
-    ddx_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    ddx_Float32x3.name = "smoothstep"_c;
+    ddx_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    ddx_Float32x3.parameters = ddx_Float32x3_args;
     Symbol::Resolved(&ddx_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&ddx_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     ddx_Float32x4_arg.name = "val"_c;
     ddx_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    ddx_Float32x4.name = "ddx"_c;
-    ddx_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    ddx_Float32x4.name = "smoothstep"_c;
+    ddx_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    ddx_Float32x4.parameters = ddx_Float32x4_args;
     Symbol::Resolved(&ddx_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&ddx_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     ddx_Float16_arg.name = "val"_c;
     ddx_Float16_arg.type = Type::FullType{ Float16Type.name };
-    ddx_Float16.name = "ddx"_c;
-    ddx_Float16.returnType = Type::FullType{ Float16Type.name };
+    ddx_Float16.name = "smoothstep"_c;
+    ddx_Float16.returnType = Type::FullType { Float16Type.name };
+    ddx_Float16.parameters = ddx_Float16_args;
     Symbol::Resolved(&ddx_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&ddx_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     ddx_Float16x2_arg.name = "val"_c;
     ddx_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    ddx_Float16x2.name = "ddx"_c;
-    ddx_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    ddx_Float16x2.name = "smoothstep"_c;
+    ddx_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    ddx_Float16x2.parameters = ddx_Float16x2_args;
     Symbol::Resolved(&ddx_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&ddx_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     ddx_Float16x3_arg.name = "val"_c;
     ddx_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    ddx_Float16x3.name = "ddx"_c;
-    ddx_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    ddx_Float16x3.name = "smoothstep"_c;
+    ddx_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    ddx_Float16x3.parameters = ddx_Float16x3_args;
     Symbol::Resolved(&ddx_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&ddx_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     ddx_Float16x4_arg.name = "val"_c;
     ddx_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    ddx_Float16x4.name = "ddx"_c;
-    ddx_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    ddx_Float16x4.name = "smoothstep"_c;
+    ddx_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    ddx_Float16x4.parameters = ddx_Float16x4_args;
     Symbol::Resolved(&ddx_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&ddx_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     ddy_Float32_arg.name = "val"_c;
     ddy_Float32_arg.type = Type::FullType{ Float32Type.name };
-    ddy_Float32.name = "ddy"_c;
-    ddy_Float32.returnType = Type::FullType{ Float32Type.name };
+    ddy_Float32.name = "smoothstep"_c;
+    ddy_Float32.returnType = Type::FullType { Float32Type.name };
+    ddy_Float32.parameters = ddy_Float32_args;
     Symbol::Resolved(&ddy_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&ddy_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     ddy_Float32x2_arg.name = "val"_c;
     ddy_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    ddy_Float32x2.name = "ddy"_c;
-    ddy_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    ddy_Float32x2.name = "smoothstep"_c;
+    ddy_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    ddy_Float32x2.parameters = ddy_Float32x2_args;
     Symbol::Resolved(&ddy_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&ddy_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     ddy_Float32x3_arg.name = "val"_c;
     ddy_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    ddy_Float32x3.name = "ddy"_c;
-    ddy_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    ddy_Float32x3.name = "smoothstep"_c;
+    ddy_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    ddy_Float32x3.parameters = ddy_Float32x3_args;
     Symbol::Resolved(&ddy_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&ddy_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     ddy_Float32x4_arg.name = "val"_c;
     ddy_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    ddy_Float32x4.name = "ddy"_c;
-    ddy_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    ddy_Float32x4.name = "smoothstep"_c;
+    ddy_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    ddy_Float32x4.parameters = ddy_Float32x4_args;
     Symbol::Resolved(&ddy_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&ddy_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     ddy_Float16_arg.name = "val"_c;
     ddy_Float16_arg.type = Type::FullType{ Float16Type.name };
-    ddy_Float16.name = "ddy"_c;
-    ddy_Float16.returnType = Type::FullType{ Float16Type.name };
+    ddy_Float16.name = "smoothstep"_c;
+    ddy_Float16.returnType = Type::FullType { Float16Type.name };
+    ddy_Float16.parameters = ddy_Float16_args;
     Symbol::Resolved(&ddy_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&ddy_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     ddy_Float16x2_arg.name = "val"_c;
     ddy_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    ddy_Float16x2.name = "ddy"_c;
-    ddy_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    ddy_Float16x2.name = "smoothstep"_c;
+    ddy_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    ddy_Float16x2.parameters = ddy_Float16x2_args;
     Symbol::Resolved(&ddy_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&ddy_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     ddy_Float16x3_arg.name = "val"_c;
     ddy_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    ddy_Float16x3.name = "ddy"_c;
-    ddy_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    ddy_Float16x3.name = "smoothstep"_c;
+    ddy_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    ddy_Float16x3.parameters = ddy_Float16x3_args;
     Symbol::Resolved(&ddy_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&ddy_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     ddy_Float16x4_arg.name = "val"_c;
     ddy_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    ddy_Float16x4.name = "ddy"_c;
-    ddy_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    ddy_Float16x4.name = "smoothstep"_c;
+    ddy_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    ddy_Float16x4.parameters = ddy_Float16x4_args;
     Symbol::Resolved(&ddy_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&ddy_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// smoothstep
     fwidth_Float32_arg.name = "val"_c;
     fwidth_Float32_arg.type = Type::FullType{ Float32Type.name };
-    fwidth_Float32.name = "fwidth"_c;
-    fwidth_Float32.returnType = Type::FullType{ Float32Type.name };
+    fwidth_Float32.name = "smoothstep"_c;
+    fwidth_Float32.returnType = Type::FullType { Float32Type.name };
+    fwidth_Float32.parameters = fwidth_Float32_args;
     Symbol::Resolved(&fwidth_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&fwidth_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// smoothstep
     fwidth_Float32x2_arg.name = "val"_c;
     fwidth_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
-    fwidth_Float32x2.name = "fwidth"_c;
-    fwidth_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    fwidth_Float32x2.name = "smoothstep"_c;
+    fwidth_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    fwidth_Float32x2.parameters = fwidth_Float32x2_args;
     Symbol::Resolved(&fwidth_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&fwidth_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// smoothstep
     fwidth_Float32x3_arg.name = "val"_c;
     fwidth_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
-    fwidth_Float32x3.name = "fwidth"_c;
-    fwidth_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    fwidth_Float32x3.name = "smoothstep"_c;
+    fwidth_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    fwidth_Float32x3.parameters = fwidth_Float32x3_args;
     Symbol::Resolved(&fwidth_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&fwidth_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// smoothstep
     fwidth_Float32x4_arg.name = "val"_c;
     fwidth_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    fwidth_Float32x4.name = "fwidth"_c;
-    fwidth_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    fwidth_Float32x4.name = "smoothstep"_c;
+    fwidth_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    fwidth_Float32x4.parameters = fwidth_Float32x4_args;
     Symbol::Resolved(&fwidth_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&fwidth_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// smoothstep
     fwidth_Float16_arg.name = "val"_c;
     fwidth_Float16_arg.type = Type::FullType{ Float16Type.name };
-    fwidth_Float16.name = "fwidth"_c;
-    fwidth_Float16.returnType = Type::FullType{ Float16Type.name };
+    fwidth_Float16.name = "smoothstep"_c;
+    fwidth_Float16.returnType = Type::FullType { Float16Type.name };
+    fwidth_Float16.parameters = fwidth_Float16_args;
     Symbol::Resolved(&fwidth_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&fwidth_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// smoothstep
     fwidth_Float16x2_arg.name = "val"_c;
     fwidth_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
-    fwidth_Float16x2.name = "fwidth"_c;
-    fwidth_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    fwidth_Float16x2.name = "smoothstep"_c;
+    fwidth_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    fwidth_Float16x2.parameters = fwidth_Float16x2_args;
     Symbol::Resolved(&fwidth_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&fwidth_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// smoothstep
     fwidth_Float16x3_arg.name = "val"_c;
     fwidth_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
-    fwidth_Float16x3.name = "fwidth"_c;
-    fwidth_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    fwidth_Float16x3.name = "smoothstep"_c;
+    fwidth_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    fwidth_Float16x3.parameters = fwidth_Float16x3_args;
     Symbol::Resolved(&fwidth_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&fwidth_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// smoothstep
     fwidth_Float16x4_arg.name = "val"_c;
     fwidth_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    fwidth_Float16x4.name = "fwidth"_c;
-    fwidth_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    fwidth_Float16x4.name = "smoothstep"_c;
+    fwidth_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    fwidth_Float16x4.parameters = fwidth_Float16x4_args;
     Symbol::Resolved(&fwidth_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&fwidth_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// sign
     sign_Int32_arg.name = "val"_c;
     sign_Int32_arg.type = Type::FullType{ Int32Type.name };
     sign_Int32.name = "sign"_c;
-    sign_Int32.returnType = Type::FullType{ Int32Type.name };
+    sign_Int32.returnType = Type::FullType { Int32Type.name };
+    sign_Int32.parameters = sign_Int32_args;
     Symbol::Resolved(&sign_Int32_arg)->typeSymbol = &Int32Type;
     Symbol::Resolved(&sign_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// sign
     sign_Int32x2_arg.name = "val"_c;
     sign_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     sign_Int32x2.name = "sign"_c;
-    sign_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    sign_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    sign_Int32x2.parameters = sign_Int32x2_args;
     Symbol::Resolved(&sign_Int32x2_arg)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&sign_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// sign
     sign_Int32x3_arg.name = "val"_c;
     sign_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
     sign_Int32x3.name = "sign"_c;
-    sign_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    sign_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    sign_Int32x3.parameters = sign_Int32x3_args;
     Symbol::Resolved(&sign_Int32x3_arg)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&sign_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// sign
     sign_Int32x4_arg.name = "val"_c;
     sign_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     sign_Int32x4.name = "sign"_c;
-    sign_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    sign_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    sign_Int32x4.parameters = sign_Int32x4_args;
     Symbol::Resolved(&sign_Int32x4_arg)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&sign_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// sign
     sign_Int16_arg.name = "val"_c;
     sign_Int16_arg.type = Type::FullType{ Int16Type.name };
     sign_Int16.name = "sign"_c;
-    sign_Int16.returnType = Type::FullType{ Int16Type.name };
+    sign_Int16.returnType = Type::FullType { Int16Type.name };
+    sign_Int16.parameters = sign_Int16_args;
     Symbol::Resolved(&sign_Int16_arg)->typeSymbol = &Int16Type;
     Symbol::Resolved(&sign_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// sign
     sign_Int16x2_arg.name = "val"_c;
     sign_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     sign_Int16x2.name = "sign"_c;
-    sign_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    sign_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    sign_Int16x2.parameters = sign_Int16x2_args;
     Symbol::Resolved(&sign_Int16x2_arg)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&sign_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// sign
     sign_Int16x3_arg.name = "val"_c;
     sign_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
     sign_Int16x3.name = "sign"_c;
-    sign_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    sign_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    sign_Int16x3.parameters = sign_Int16x3_args;
     Symbol::Resolved(&sign_Int16x3_arg)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&sign_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// sign
     sign_Int16x4_arg.name = "val"_c;
     sign_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     sign_Int16x4.name = "sign"_c;
-    sign_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    sign_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    sign_Int16x4.parameters = sign_Int16x4_args;
     Symbol::Resolved(&sign_Int16x4_arg)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&sign_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// sign
     sign_Float32_arg.name = "val"_c;
     sign_Float32_arg.type = Type::FullType{ Float32Type.name };
     sign_Float32.name = "sign"_c;
-    sign_Float32.returnType = Type::FullType{ Float32Type.name };
+    sign_Float32.returnType = Type::FullType { Float32Type.name };
+    sign_Float32.parameters = sign_Float32_args;
     Symbol::Resolved(&sign_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&sign_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// sign
     sign_Float32x2_arg.name = "val"_c;
     sign_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     sign_Float32x2.name = "sign"_c;
-    sign_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    sign_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    sign_Float32x2.parameters = sign_Float32x2_args;
     Symbol::Resolved(&sign_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&sign_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// sign
     sign_Float32x3_arg.name = "val"_c;
     sign_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     sign_Float32x3.name = "sign"_c;
-    sign_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    sign_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    sign_Float32x3.parameters = sign_Float32x3_args;
     Symbol::Resolved(&sign_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&sign_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// sign
     sign_Float32x4_arg.name = "val"_c;
     sign_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     sign_Float32x4.name = "sign"_c;
-    sign_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    sign_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    sign_Float32x4.parameters = sign_Float32x4_args;
     Symbol::Resolved(&sign_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&sign_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// sign
     sign_Float16_arg.name = "val"_c;
     sign_Float16_arg.type = Type::FullType{ Float16Type.name };
     sign_Float16.name = "sign"_c;
-    sign_Float16.returnType = Type::FullType{ Float16Type.name };
+    sign_Float16.returnType = Type::FullType { Float16Type.name };
+    sign_Float16.parameters = sign_Float16_args;
     Symbol::Resolved(&sign_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&sign_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// sign
     sign_Float16x2_arg.name = "val"_c;
     sign_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     sign_Float16x2.name = "sign"_c;
-    sign_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    sign_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    sign_Float16x2.parameters = sign_Float16x2_args;
     Symbol::Resolved(&sign_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&sign_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// sign
     sign_Float16x3_arg.name = "val"_c;
     sign_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     sign_Float16x3.name = "sign"_c;
-    sign_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    sign_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    sign_Float16x3.parameters = sign_Float16x3_args;
     Symbol::Resolved(&sign_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&sign_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// sign
     sign_Float16x4_arg.name = "val"_c;
     sign_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     sign_Float16x4.name = "sign"_c;
-    sign_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    sign_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    sign_Float16x4.parameters = sign_Float16x4_args;
     Symbol::Resolved(&sign_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&sign_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// abs
     abs_Int32_arg.name = "val"_c;
     abs_Int32_arg.type = Type::FullType{ Int32Type.name };
     abs_Int32.name = "abs"_c;
-    abs_Int32.returnType = Type::FullType{ Int32Type.name };
+    abs_Int32.returnType = Type::FullType { Int32Type.name };
+    abs_Int32.parameters = abs_Int32_args;
     Symbol::Resolved(&abs_Int32_arg)->typeSymbol = &Int32Type;
     Symbol::Resolved(&abs_Int32)->returnTypeSymbol = &Int32Type;
 
+    /// abs
     abs_Int32x2_arg.name = "val"_c;
     abs_Int32x2_arg.type = Type::FullType{ Int32x2Type.name };
     abs_Int32x2.name = "abs"_c;
-    abs_Int32x2.returnType = Type::FullType{ Int32x2Type.name };
+    abs_Int32x2.returnType = Type::FullType { Int32x2Type.name };
+    abs_Int32x2.parameters = abs_Int32x2_args;
     Symbol::Resolved(&abs_Int32x2_arg)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&abs_Int32x2)->returnTypeSymbol = &Int32x2Type;
 
+    /// abs
     abs_Int32x3_arg.name = "val"_c;
     abs_Int32x3_arg.type = Type::FullType{ Int32x3Type.name };
     abs_Int32x3.name = "abs"_c;
-    abs_Int32x3.returnType = Type::FullType{ Int32x3Type.name };
+    abs_Int32x3.returnType = Type::FullType { Int32x3Type.name };
+    abs_Int32x3.parameters = abs_Int32x3_args;
     Symbol::Resolved(&abs_Int32x3_arg)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&abs_Int32x3)->returnTypeSymbol = &Int32x3Type;
 
+    /// abs
     abs_Int32x4_arg.name = "val"_c;
     abs_Int32x4_arg.type = Type::FullType{ Int32x4Type.name };
     abs_Int32x4.name = "abs"_c;
-    abs_Int32x4.returnType = Type::FullType{ Int32x4Type.name };
+    abs_Int32x4.returnType = Type::FullType { Int32x4Type.name };
+    abs_Int32x4.parameters = abs_Int32x4_args;
     Symbol::Resolved(&abs_Int32x4_arg)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&abs_Int32x4)->returnTypeSymbol = &Int32x4Type;
 
+    /// abs
     abs_Int16_arg.name = "val"_c;
     abs_Int16_arg.type = Type::FullType{ Int16Type.name };
     abs_Int16.name = "abs"_c;
-    abs_Int16.returnType = Type::FullType{ Int16Type.name };
+    abs_Int16.returnType = Type::FullType { Int16Type.name };
+    abs_Int16.parameters = abs_Int16_args;
     Symbol::Resolved(&abs_Int16_arg)->typeSymbol = &Int16Type;
     Symbol::Resolved(&abs_Int16)->returnTypeSymbol = &Int16Type;
 
+    /// abs
     abs_Int16x2_arg.name = "val"_c;
     abs_Int16x2_arg.type = Type::FullType{ Int16x2Type.name };
     abs_Int16x2.name = "abs"_c;
-    abs_Int16x2.returnType = Type::FullType{ Int16x2Type.name };
+    abs_Int16x2.returnType = Type::FullType { Int16x2Type.name };
+    abs_Int16x2.parameters = abs_Int16x2_args;
     Symbol::Resolved(&abs_Int16x2_arg)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&abs_Int16x2)->returnTypeSymbol = &Int16x2Type;
 
+    /// abs
     abs_Int16x3_arg.name = "val"_c;
     abs_Int16x3_arg.type = Type::FullType{ Int16x3Type.name };
     abs_Int16x3.name = "abs"_c;
-    abs_Int16x3.returnType = Type::FullType{ Int16x3Type.name };
+    abs_Int16x3.returnType = Type::FullType { Int16x3Type.name };
+    abs_Int16x3.parameters = abs_Int16x3_args;
     Symbol::Resolved(&abs_Int16x3_arg)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&abs_Int16x3)->returnTypeSymbol = &Int16x3Type;
 
+    /// abs
     abs_Int16x4_arg.name = "val"_c;
     abs_Int16x4_arg.type = Type::FullType{ Int16x4Type.name };
     abs_Int16x4.name = "abs"_c;
-    abs_Int16x4.returnType = Type::FullType{ Int16x4Type.name };
+    abs_Int16x4.returnType = Type::FullType { Int16x4Type.name };
+    abs_Int16x4.parameters = abs_Int16x4_args;
     Symbol::Resolved(&abs_Int16x4_arg)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&abs_Int16x4)->returnTypeSymbol = &Int16x4Type;
 
+    /// abs
     abs_Float32_arg.name = "val"_c;
     abs_Float32_arg.type = Type::FullType{ Float32Type.name };
     abs_Float32.name = "abs"_c;
-    abs_Float32.returnType = Type::FullType{ Float32Type.name };
+    abs_Float32.returnType = Type::FullType { Float32Type.name };
+    abs_Float32.parameters = abs_Float32_args;
     Symbol::Resolved(&abs_Float32_arg)->typeSymbol = &Float32Type;
     Symbol::Resolved(&abs_Float32)->returnTypeSymbol = &Float32Type;
 
+    /// abs
     abs_Float32x2_arg.name = "val"_c;
     abs_Float32x2_arg.type = Type::FullType{ Float32x2Type.name };
     abs_Float32x2.name = "abs"_c;
-    abs_Float32x2.returnType = Type::FullType{ Float32x2Type.name };
+    abs_Float32x2.returnType = Type::FullType { Float32x2Type.name };
+    abs_Float32x2.parameters = abs_Float32x2_args;
     Symbol::Resolved(&abs_Float32x2_arg)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&abs_Float32x2)->returnTypeSymbol = &Float32x2Type;
 
+    /// abs
     abs_Float32x3_arg.name = "val"_c;
     abs_Float32x3_arg.type = Type::FullType{ Float32x3Type.name };
     abs_Float32x3.name = "abs"_c;
-    abs_Float32x3.returnType = Type::FullType{ Float32x3Type.name };
+    abs_Float32x3.returnType = Type::FullType { Float32x3Type.name };
+    abs_Float32x3.parameters = abs_Float32x3_args;
     Symbol::Resolved(&abs_Float32x3_arg)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&abs_Float32x3)->returnTypeSymbol = &Float32x3Type;
 
+    /// abs
     abs_Float32x4_arg.name = "val"_c;
     abs_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
     abs_Float32x4.name = "abs"_c;
-    abs_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    abs_Float32x4.returnType = Type::FullType { Float32x4Type.name };
+    abs_Float32x4.parameters = abs_Float32x4_args;
     Symbol::Resolved(&abs_Float32x4_arg)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&abs_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// abs
     abs_Float16_arg.name = "val"_c;
     abs_Float16_arg.type = Type::FullType{ Float16Type.name };
     abs_Float16.name = "abs"_c;
-    abs_Float16.returnType = Type::FullType{ Float16Type.name };
+    abs_Float16.returnType = Type::FullType { Float16Type.name };
+    abs_Float16.parameters = abs_Float16_args;
     Symbol::Resolved(&abs_Float16_arg)->typeSymbol = &Float16Type;
     Symbol::Resolved(&abs_Float16)->returnTypeSymbol = &Float16Type;
 
+    /// abs
     abs_Float16x2_arg.name = "val"_c;
     abs_Float16x2_arg.type = Type::FullType{ Float16x2Type.name };
     abs_Float16x2.name = "abs"_c;
-    abs_Float16x2.returnType = Type::FullType{ Float16x2Type.name };
+    abs_Float16x2.returnType = Type::FullType { Float16x2Type.name };
+    abs_Float16x2.parameters = abs_Float16x2_args;
     Symbol::Resolved(&abs_Float16x2_arg)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&abs_Float16x2)->returnTypeSymbol = &Float16x2Type;
 
+    /// abs
     abs_Float16x3_arg.name = "val"_c;
     abs_Float16x3_arg.type = Type::FullType{ Float16x3Type.name };
     abs_Float16x3.name = "abs"_c;
-    abs_Float16x3.returnType = Type::FullType{ Float16x3Type.name };
+    abs_Float16x3.returnType = Type::FullType { Float16x3Type.name };
+    abs_Float16x3.parameters = abs_Float16x3_args;
     Symbol::Resolved(&abs_Float16x3_arg)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&abs_Float16x3)->returnTypeSymbol = &Float16x3Type;
 
+    /// abs
     abs_Float16x4_arg.name = "val"_c;
     abs_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
     abs_Float16x4.name = "abs"_c;
-    abs_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    abs_Float16x4.returnType = Type::FullType { Float16x4Type.name };
+    abs_Float16x4.parameters = abs_Float16x4_args;
     Symbol::Resolved(&abs_Float16x4_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&abs_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// castToF16
     castToF16_UInt16_arg.name = "val"_c;
-    castToF16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    castToF16_UInt16_arg.type = Type::FullType{ Float16x4Type.name };
     castToF16_UInt16.name = "castToF16"_c;
-    castToF16_UInt16.returnType = Type::FullType{ Float16Type.name };
-    Symbol::Resolved(&castToF16_UInt16_arg)->typeSymbol = &Float16Type;
+    castToF16_UInt16.returnType = Type::FullType { Float16Type.name };
+    castToF16_UInt16.parameters = castToF16_UInt16_args;
+    Symbol::Resolved(&castToF16_UInt16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToF16_UInt16)->returnTypeSymbol = &Float16Type;
 
+    /// castToF16
     castToF16_Int16_arg.name = "val"_c;
-    castToF16_Int16_arg.type = Type::FullType{ Int16Type.name };
+    castToF16_Int16_arg.type = Type::FullType{ Float16x4Type.name };
     castToF16_Int16.name = "castToF16"_c;
-    castToF16_Int16.returnType = Type::FullType{ Float16Type.name };
-    Symbol::Resolved(&castToF16_Int16_arg)->typeSymbol = &Float16Type;
+    castToF16_Int16.returnType = Type::FullType { Float16Type.name };
+    castToF16_Int16.parameters = castToF16_Int16_args;
+    Symbol::Resolved(&castToF16_Int16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToF16_Int16)->returnTypeSymbol = &Float16Type;
 
+    /// castToU16
     castToU16_Float16_arg.name = "val"_c;
-    castToU16_Float16_arg.type = Type::FullType{ Float16Type.name };
+    castToU16_Float16_arg.type = Type::FullType{ Float16x4Type.name };
     castToU16_Float16.name = "castToU16"_c;
-    castToU16_Float16.returnType = Type::FullType{ UInt16Type.name };
-    Symbol::Resolved(&castToU16_Float16_arg)->typeSymbol = &UInt16Type;
+    castToU16_Float16.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Float16.parameters = castToU16_Float16_args;
+    Symbol::Resolved(&castToU16_Float16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToU16_Float16)->returnTypeSymbol = &UInt16Type;
 
+    /// castToU16
     castToU16_Int16_arg.name = "val"_c;
-    castToU16_Int16_arg.type = Type::FullType{ Int16Type.name };
+    castToU16_Int16_arg.type = Type::FullType{ Float16x4Type.name };
     castToU16_Int16.name = "castToU16"_c;
-    castToU16_Int16.returnType = Type::FullType{ UInt16Type.name };
-    Symbol::Resolved(&castToU16_Int16_arg)->typeSymbol = &UInt16Type;
+    castToU16_Int16.returnType = Type::FullType { UInt16Type.name };
+    castToU16_Int16.parameters = castToU16_Int16_args;
+    Symbol::Resolved(&castToU16_Int16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToU16_Int16)->returnTypeSymbol = &UInt16Type;
 
+    /// castToI16
     castToI16_Float16_arg.name = "val"_c;
-    castToI16_Float16_arg.type = Type::FullType{ Float16Type.name };
+    castToI16_Float16_arg.type = Type::FullType{ Float16x4Type.name };
     castToI16_Float16.name = "castToI16"_c;
-    castToI16_Float16.returnType = Type::FullType{ Int16Type.name };
-    Symbol::Resolved(&castToI16_Float16_arg)->typeSymbol = &Int16Type;
+    castToI16_Float16.returnType = Type::FullType { Int16Type.name };
+    castToI16_Float16.parameters = castToI16_Float16_args;
+    Symbol::Resolved(&castToI16_Float16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToI16_Float16)->returnTypeSymbol = &Int16Type;
 
+    /// castToI16
     castToI16_UInt16_arg.name = "val"_c;
-    castToI16_UInt16_arg.type = Type::FullType{ UInt16Type.name };
+    castToI16_UInt16_arg.type = Type::FullType{ Float16x4Type.name };
     castToI16_UInt16.name = "castToI16"_c;
-    castToI16_UInt16.returnType = Type::FullType{ Int16Type.name };
-    Symbol::Resolved(&castToI16_UInt16_arg)->typeSymbol = &Int16Type;
+    castToI16_UInt16.returnType = Type::FullType { Int16Type.name };
+    castToI16_UInt16.parameters = castToI16_UInt16_args;
+    Symbol::Resolved(&castToI16_UInt16_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToI16_UInt16)->returnTypeSymbol = &Int16Type;
 
+    /// castToF32
     castToF32_UInt32_arg.name = "val"_c;
-    castToF32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    castToF32_UInt32_arg.type = Type::FullType{ Float16x4Type.name };
     castToF32_UInt32.name = "castToF32"_c;
-    castToF32_UInt32.returnType = Type::FullType{ Float32Type.name };
-    Symbol::Resolved(&castToF32_UInt32_arg)->typeSymbol = &Float32Type;
+    castToF32_UInt32.returnType = Type::FullType { Float32Type.name };
+    castToF32_UInt32.parameters = castToF32_UInt32_args;
+    Symbol::Resolved(&castToF32_UInt32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToF32_UInt32)->returnTypeSymbol = &Float32Type;
 
+    /// castToF32
     castToF32_Int32_arg.name = "val"_c;
-    castToF32_Int32_arg.type = Type::FullType{ Int32Type.name };
+    castToF32_Int32_arg.type = Type::FullType{ Float16x4Type.name };
     castToF32_Int32.name = "castToF32"_c;
-    castToF32_Int32.returnType = Type::FullType{ Float32Type.name };
-    Symbol::Resolved(&castToF32_Int32_arg)->typeSymbol = &Float32Type;
+    castToF32_Int32.returnType = Type::FullType { Float32Type.name };
+    castToF32_Int32.parameters = castToF32_Int32_args;
+    Symbol::Resolved(&castToF32_Int32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToF32_Int32)->returnTypeSymbol = &Float32Type;
 
+    /// castToU32
     castToU32_Float32_arg.name = "val"_c;
-    castToU32_Float32_arg.type = Type::FullType{ Float32Type.name };
+    castToU32_Float32_arg.type = Type::FullType{ Float16x4Type.name };
     castToU32_Float32.name = "castToU32"_c;
-    castToU32_Float32.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&castToU32_Float32_arg)->typeSymbol = &UInt32Type;
+    castToU32_Float32.returnType = Type::FullType { UInt32Type.name };
+    castToU32_Float32.parameters = castToU32_Float32_args;
+    Symbol::Resolved(&castToU32_Float32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToU32_Float32)->returnTypeSymbol = &UInt32Type;
 
+    /// castToU32
     castToU32_Int32_arg.name = "val"_c;
-    castToU32_Int32_arg.type = Type::FullType{ Int32Type.name };
+    castToU32_Int32_arg.type = Type::FullType{ Float16x4Type.name };
     castToU32_Int32.name = "castToU32"_c;
-    castToU32_Int32.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&castToU32_Int32_arg)->typeSymbol = &UInt32Type;
+    castToU32_Int32.returnType = Type::FullType { UInt32Type.name };
+    castToU32_Int32.parameters = castToU32_Int32_args;
+    Symbol::Resolved(&castToU32_Int32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToU32_Int32)->returnTypeSymbol = &UInt32Type;
 
+    /// castToI32
     castToI32_Float32_arg.name = "val"_c;
-    castToI32_Float32_arg.type = Type::FullType{ Float32Type.name };
+    castToI32_Float32_arg.type = Type::FullType{ Float16x4Type.name };
     castToI32_Float32.name = "castToI32"_c;
-    castToI32_Float32.returnType = Type::FullType{ Int32Type.name };
-    Symbol::Resolved(&castToI32_Float32_arg)->typeSymbol = &Int32Type;
+    castToI32_Float32.returnType = Type::FullType { Int32Type.name };
+    castToI32_Float32.parameters = castToI32_Float32_args;
+    Symbol::Resolved(&castToI32_Float32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToI32_Float32)->returnTypeSymbol = &Int32Type;
 
+    /// castToI32
     castToI32_UInt32_arg.name = "val"_c;
-    castToI32_UInt32_arg.type = Type::FullType{ UInt32Type.name };
+    castToI32_UInt32_arg.type = Type::FullType{ Float16x4Type.name };
     castToI32_UInt32.name = "castToI32"_c;
-    castToI32_UInt32.returnType = Type::FullType{ Int32Type.name };
-    Symbol::Resolved(&castToI32_UInt32_arg)->typeSymbol = &Int32Type;
+    castToI32_UInt32.returnType = Type::FullType { Int32Type.name };
+    castToI32_UInt32.parameters = castToI32_UInt32_args;
+    Symbol::Resolved(&castToI32_UInt32_arg)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&castToI32_UInt32)->returnTypeSymbol = &Int32Type;
 
+    /// any
     any_Bool8_arg.name = "val"_c;
     any_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     any_Bool8.name = "any"_c;
-    any_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    any_Bool8.returnType = Type::FullType { Bool8Type.name };
+    any_Bool8.parameters = any_Bool8_args;
     Symbol::Resolved(&any_Bool8_arg)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&any_Bool8)->returnTypeSymbol = &Bool8Type;
 
+    /// any
     any_Bool8x2_arg.name = "val"_c;
     any_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     any_Bool8x2.name = "any"_c;
-    any_Bool8x2.returnType = Type::FullType{ Bool8Type.name };
+    any_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
+    any_Bool8x2.parameters = any_Bool8x2_args;
     Symbol::Resolved(&any_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&any_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&any_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
+    /// any
     any_Bool8x3_arg.name = "val"_c;
     any_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     any_Bool8x3.name = "any"_c;
-    any_Bool8x3.returnType = Type::FullType{ Bool8Type.name };
+    any_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
+    any_Bool8x3.parameters = any_Bool8x3_args;
     Symbol::Resolved(&any_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&any_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&any_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
+    /// any
     any_Bool8x4_arg.name = "val"_c;
     any_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     any_Bool8x4.name = "any"_c;
-    any_Bool8x4.returnType = Type::FullType{ Bool8Type.name };
+    any_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
+    any_Bool8x4.parameters = any_Bool8x4_args;
     Symbol::Resolved(&any_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&any_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&any_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
+    /// all
     all_Bool8_arg.name = "val"_c;
     all_Bool8_arg.type = Type::FullType{ Bool8Type.name };
     all_Bool8.name = "all"_c;
-    all_Bool8.returnType = Type::FullType{ Bool8Type.name };
+    all_Bool8.returnType = Type::FullType { Bool8Type.name };
+    all_Bool8.parameters = all_Bool8_args;
     Symbol::Resolved(&all_Bool8_arg)->typeSymbol = &Bool8Type;
     Symbol::Resolved(&all_Bool8)->returnTypeSymbol = &Bool8Type;
 
+    /// all
     all_Bool8x2_arg.name = "val"_c;
     all_Bool8x2_arg.type = Type::FullType{ Bool8x2Type.name };
     all_Bool8x2.name = "all"_c;
-    all_Bool8x2.returnType = Type::FullType{ Bool8Type.name };
+    all_Bool8x2.returnType = Type::FullType { Bool8x2Type.name };
+    all_Bool8x2.parameters = all_Bool8x2_args;
     Symbol::Resolved(&all_Bool8x2_arg)->typeSymbol = &Bool8x2Type;
-    Symbol::Resolved(&all_Bool8x2)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&all_Bool8x2)->returnTypeSymbol = &Bool8x2Type;
 
+    /// all
     all_Bool8x3_arg.name = "val"_c;
     all_Bool8x3_arg.type = Type::FullType{ Bool8x3Type.name };
     all_Bool8x3.name = "all"_c;
-    all_Bool8x3.returnType = Type::FullType{ Bool8Type.name };
+    all_Bool8x3.returnType = Type::FullType { Bool8x3Type.name };
+    all_Bool8x3.parameters = all_Bool8x3_args;
     Symbol::Resolved(&all_Bool8x3_arg)->typeSymbol = &Bool8x3Type;
-    Symbol::Resolved(&all_Bool8x3)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&all_Bool8x3)->returnTypeSymbol = &Bool8x3Type;
 
+    /// all
     all_Bool8x4_arg.name = "val"_c;
     all_Bool8x4_arg.type = Type::FullType{ Bool8x4Type.name };
     all_Bool8x4.name = "all"_c;
-    all_Bool8x4.returnType = Type::FullType{ Bool8Type.name };
+    all_Bool8x4.returnType = Type::FullType { Bool8x4Type.name };
+    all_Bool8x4.parameters = all_Bool8x4_args;
     Symbol::Resolved(&all_Bool8x4_arg)->typeSymbol = &Bool8x4Type;
-    Symbol::Resolved(&all_Bool8x4)->returnTypeSymbol = &Bool8Type;
+    Symbol::Resolved(&all_Bool8x4)->returnTypeSymbol = &Bool8x4Type;
 
+    /// transpose
     transpose_Float32x2x2_arg.name = "val"_c;
     transpose_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
     transpose_Float32x2x2.name = "transpose"_c;
-    transpose_Float32x2x2.returnType = Type::FullType{ Float32x2x2Type.name };
+    transpose_Float32x2x2.returnType = Type::FullType { Float32x2x2Type.name };
+    transpose_Float32x2x2.parameters = transpose_Float32x2x2_args;
     Symbol::Resolved(&transpose_Float32x2x2_arg)->typeSymbol = &Float32x2x2Type;
     Symbol::Resolved(&transpose_Float32x2x2)->returnTypeSymbol = &Float32x2x2Type;
 
+    /// transpose
     transpose_Float16x2x2_arg.name = "val"_c;
     transpose_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
     transpose_Float16x2x2.name = "transpose"_c;
-    transpose_Float16x2x2.returnType = Type::FullType{ Float16x2x2Type.name };
+    transpose_Float16x2x2.returnType = Type::FullType { Float16x2x2Type.name };
+    transpose_Float16x2x2.parameters = transpose_Float16x2x2_args;
     Symbol::Resolved(&transpose_Float16x2x2_arg)->typeSymbol = &Float16x2x2Type;
     Symbol::Resolved(&transpose_Float16x2x2)->returnTypeSymbol = &Float16x2x2Type;
 
+    /// transpose
     transpose_Float32x2x3_arg.name = "val"_c;
     transpose_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
     transpose_Float32x2x3.name = "transpose"_c;
-    transpose_Float32x2x3.returnType = Type::FullType{ Float32x2x3Type.name };
+    transpose_Float32x2x3.returnType = Type::FullType { Float32x2x3Type.name };
+    transpose_Float32x2x3.parameters = transpose_Float32x2x3_args;
     Symbol::Resolved(&transpose_Float32x2x3_arg)->typeSymbol = &Float32x2x3Type;
     Symbol::Resolved(&transpose_Float32x2x3)->returnTypeSymbol = &Float32x2x3Type;
 
+    /// transpose
     transpose_Float16x2x3_arg.name = "val"_c;
     transpose_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
     transpose_Float16x2x3.name = "transpose"_c;
-    transpose_Float16x2x3.returnType = Type::FullType{ Float16x2x3Type.name };
+    transpose_Float16x2x3.returnType = Type::FullType { Float16x2x3Type.name };
+    transpose_Float16x2x3.parameters = transpose_Float16x2x3_args;
     Symbol::Resolved(&transpose_Float16x2x3_arg)->typeSymbol = &Float16x2x3Type;
     Symbol::Resolved(&transpose_Float16x2x3)->returnTypeSymbol = &Float16x2x3Type;
 
+    /// transpose
     transpose_Float32x2x4_arg.name = "val"_c;
     transpose_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
     transpose_Float32x2x4.name = "transpose"_c;
-    transpose_Float32x2x4.returnType = Type::FullType{ Float32x2x4Type.name };
+    transpose_Float32x2x4.returnType = Type::FullType { Float32x2x4Type.name };
+    transpose_Float32x2x4.parameters = transpose_Float32x2x4_args;
     Symbol::Resolved(&transpose_Float32x2x4_arg)->typeSymbol = &Float32x2x4Type;
     Symbol::Resolved(&transpose_Float32x2x4)->returnTypeSymbol = &Float32x2x4Type;
 
+    /// transpose
     transpose_Float16x2x4_arg.name = "val"_c;
     transpose_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
     transpose_Float16x2x4.name = "transpose"_c;
-    transpose_Float16x2x4.returnType = Type::FullType{ Float16x2x4Type.name };
+    transpose_Float16x2x4.returnType = Type::FullType { Float16x2x4Type.name };
+    transpose_Float16x2x4.parameters = transpose_Float16x2x4_args;
     Symbol::Resolved(&transpose_Float16x2x4_arg)->typeSymbol = &Float16x2x4Type;
     Symbol::Resolved(&transpose_Float16x2x4)->returnTypeSymbol = &Float16x2x4Type;
 
+    /// transpose
     transpose_Float32x3x2_arg.name = "val"_c;
     transpose_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
     transpose_Float32x3x2.name = "transpose"_c;
-    transpose_Float32x3x2.returnType = Type::FullType{ Float32x3x2Type.name };
+    transpose_Float32x3x2.returnType = Type::FullType { Float32x3x2Type.name };
+    transpose_Float32x3x2.parameters = transpose_Float32x3x2_args;
     Symbol::Resolved(&transpose_Float32x3x2_arg)->typeSymbol = &Float32x3x2Type;
     Symbol::Resolved(&transpose_Float32x3x2)->returnTypeSymbol = &Float32x3x2Type;
 
+    /// transpose
     transpose_Float16x3x2_arg.name = "val"_c;
     transpose_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
     transpose_Float16x3x2.name = "transpose"_c;
-    transpose_Float16x3x2.returnType = Type::FullType{ Float16x3x2Type.name };
+    transpose_Float16x3x2.returnType = Type::FullType { Float16x3x2Type.name };
+    transpose_Float16x3x2.parameters = transpose_Float16x3x2_args;
     Symbol::Resolved(&transpose_Float16x3x2_arg)->typeSymbol = &Float16x3x2Type;
     Symbol::Resolved(&transpose_Float16x3x2)->returnTypeSymbol = &Float16x3x2Type;
 
+    /// transpose
     transpose_Float32x3x3_arg.name = "val"_c;
     transpose_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
     transpose_Float32x3x3.name = "transpose"_c;
-    transpose_Float32x3x3.returnType = Type::FullType{ Float32x3x3Type.name };
+    transpose_Float32x3x3.returnType = Type::FullType { Float32x3x3Type.name };
+    transpose_Float32x3x3.parameters = transpose_Float32x3x3_args;
     Symbol::Resolved(&transpose_Float32x3x3_arg)->typeSymbol = &Float32x3x3Type;
     Symbol::Resolved(&transpose_Float32x3x3)->returnTypeSymbol = &Float32x3x3Type;
 
+    /// transpose
     transpose_Float16x3x3_arg.name = "val"_c;
     transpose_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
     transpose_Float16x3x3.name = "transpose"_c;
-    transpose_Float16x3x3.returnType = Type::FullType{ Float16x3x3Type.name };
+    transpose_Float16x3x3.returnType = Type::FullType { Float16x3x3Type.name };
+    transpose_Float16x3x3.parameters = transpose_Float16x3x3_args;
     Symbol::Resolved(&transpose_Float16x3x3_arg)->typeSymbol = &Float16x3x3Type;
     Symbol::Resolved(&transpose_Float16x3x3)->returnTypeSymbol = &Float16x3x3Type;
 
+    /// transpose
     transpose_Float32x3x4_arg.name = "val"_c;
     transpose_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
     transpose_Float32x3x4.name = "transpose"_c;
-    transpose_Float32x3x4.returnType = Type::FullType{ Float32x3x4Type.name };
+    transpose_Float32x3x4.returnType = Type::FullType { Float32x3x4Type.name };
+    transpose_Float32x3x4.parameters = transpose_Float32x3x4_args;
     Symbol::Resolved(&transpose_Float32x3x4_arg)->typeSymbol = &Float32x3x4Type;
     Symbol::Resolved(&transpose_Float32x3x4)->returnTypeSymbol = &Float32x3x4Type;
 
+    /// transpose
     transpose_Float16x3x4_arg.name = "val"_c;
     transpose_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
     transpose_Float16x3x4.name = "transpose"_c;
-    transpose_Float16x3x4.returnType = Type::FullType{ Float16x3x4Type.name };
+    transpose_Float16x3x4.returnType = Type::FullType { Float16x3x4Type.name };
+    transpose_Float16x3x4.parameters = transpose_Float16x3x4_args;
     Symbol::Resolved(&transpose_Float16x3x4_arg)->typeSymbol = &Float16x3x4Type;
     Symbol::Resolved(&transpose_Float16x3x4)->returnTypeSymbol = &Float16x3x4Type;
 
+    /// transpose
     transpose_Float32x4x2_arg.name = "val"_c;
     transpose_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
     transpose_Float32x4x2.name = "transpose"_c;
-    transpose_Float32x4x2.returnType = Type::FullType{ Float32x4x2Type.name };
+    transpose_Float32x4x2.returnType = Type::FullType { Float32x4x2Type.name };
+    transpose_Float32x4x2.parameters = transpose_Float32x4x2_args;
     Symbol::Resolved(&transpose_Float32x4x2_arg)->typeSymbol = &Float32x4x2Type;
     Symbol::Resolved(&transpose_Float32x4x2)->returnTypeSymbol = &Float32x4x2Type;
 
+    /// transpose
     transpose_Float16x4x2_arg.name = "val"_c;
     transpose_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
     transpose_Float16x4x2.name = "transpose"_c;
-    transpose_Float16x4x2.returnType = Type::FullType{ Float16x4x2Type.name };
+    transpose_Float16x4x2.returnType = Type::FullType { Float16x4x2Type.name };
+    transpose_Float16x4x2.parameters = transpose_Float16x4x2_args;
     Symbol::Resolved(&transpose_Float16x4x2_arg)->typeSymbol = &Float16x4x2Type;
     Symbol::Resolved(&transpose_Float16x4x2)->returnTypeSymbol = &Float16x4x2Type;
 
+    /// transpose
     transpose_Float32x4x3_arg.name = "val"_c;
     transpose_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
     transpose_Float32x4x3.name = "transpose"_c;
-    transpose_Float32x4x3.returnType = Type::FullType{ Float32x4x3Type.name };
+    transpose_Float32x4x3.returnType = Type::FullType { Float32x4x3Type.name };
+    transpose_Float32x4x3.parameters = transpose_Float32x4x3_args;
     Symbol::Resolved(&transpose_Float32x4x3_arg)->typeSymbol = &Float32x4x3Type;
     Symbol::Resolved(&transpose_Float32x4x3)->returnTypeSymbol = &Float32x4x3Type;
 
+    /// transpose
     transpose_Float16x4x3_arg.name = "val"_c;
     transpose_Float16x4x3_arg.type = Type::FullType{ Float16x4x3Type.name };
     transpose_Float16x4x3.name = "transpose"_c;
-    transpose_Float16x4x3.returnType = Type::FullType{ Float16x4x3Type.name };
+    transpose_Float16x4x3.returnType = Type::FullType { Float16x4x3Type.name };
+    transpose_Float16x4x3.parameters = transpose_Float16x4x3_args;
     Symbol::Resolved(&transpose_Float16x4x3_arg)->typeSymbol = &Float16x4x3Type;
     Symbol::Resolved(&transpose_Float16x4x3)->returnTypeSymbol = &Float16x4x3Type;
 
+    /// transpose
     transpose_Float32x4x4_arg.name = "val"_c;
     transpose_Float32x4x4_arg.type = Type::FullType{ Float32x4x4Type.name };
     transpose_Float32x4x4.name = "transpose"_c;
-    transpose_Float32x4x4.returnType = Type::FullType{ Float32x4x4Type.name };
+    transpose_Float32x4x4.returnType = Type::FullType { Float32x4x4Type.name };
+    transpose_Float32x4x4.parameters = transpose_Float32x4x4_args;
     Symbol::Resolved(&transpose_Float32x4x4_arg)->typeSymbol = &Float32x4x4Type;
     Symbol::Resolved(&transpose_Float32x4x4)->returnTypeSymbol = &Float32x4x4Type;
 
+    /// transpose
     transpose_Float16x4x4_arg.name = "val"_c;
     transpose_Float16x4x4_arg.type = Type::FullType{ Float16x4x4Type.name };
     transpose_Float16x4x4.name = "transpose"_c;
-    transpose_Float16x4x4.returnType = Type::FullType{ Float16x4x4Type.name };
+    transpose_Float16x4x4.returnType = Type::FullType { Float16x4x4Type.name };
+    transpose_Float16x4x4.parameters = transpose_Float16x4x4_args;
     Symbol::Resolved(&transpose_Float16x4x4_arg)->typeSymbol = &Float16x4x4Type;
     Symbol::Resolved(&transpose_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
+    /// inverse
     inverse_Float32x2x2_arg.name = "val"_c;
     inverse_Float32x2x2_arg.type = Type::FullType{ Float32x2x2Type.name };
     inverse_Float32x2x2.name = "inverse"_c;
-    inverse_Float32x2x2.returnType = Type::FullType{ Float32x2x2Type.name };
+    inverse_Float32x2x2.returnType = Type::FullType { Float32x2x2Type.name };
+    inverse_Float32x2x2.parameters = inverse_Float32x2x2_args;
     Symbol::Resolved(&inverse_Float32x2x2_arg)->typeSymbol = &Float32x2x2Type;
     Symbol::Resolved(&inverse_Float32x2x2)->returnTypeSymbol = &Float32x2x2Type;
 
+    /// inverse
     inverse_Float16x2x2_arg.name = "val"_c;
     inverse_Float16x2x2_arg.type = Type::FullType{ Float16x2x2Type.name };
     inverse_Float16x2x2.name = "inverse"_c;
-    inverse_Float16x2x2.returnType = Type::FullType{ Float16x2x2Type.name };
+    inverse_Float16x2x2.returnType = Type::FullType { Float16x2x2Type.name };
+    inverse_Float16x2x2.parameters = inverse_Float16x2x2_args;
     Symbol::Resolved(&inverse_Float16x2x2_arg)->typeSymbol = &Float16x2x2Type;
     Symbol::Resolved(&inverse_Float16x2x2)->returnTypeSymbol = &Float16x2x2Type;
 
+    /// inverse
     inverse_Float32x2x3_arg.name = "val"_c;
     inverse_Float32x2x3_arg.type = Type::FullType{ Float32x2x3Type.name };
     inverse_Float32x2x3.name = "inverse"_c;
-    inverse_Float32x2x3.returnType = Type::FullType{ Float32x2x3Type.name };
+    inverse_Float32x2x3.returnType = Type::FullType { Float32x2x3Type.name };
+    inverse_Float32x2x3.parameters = inverse_Float32x2x3_args;
     Symbol::Resolved(&inverse_Float32x2x3_arg)->typeSymbol = &Float32x2x3Type;
     Symbol::Resolved(&inverse_Float32x2x3)->returnTypeSymbol = &Float32x2x3Type;
 
+    /// inverse
     inverse_Float16x2x3_arg.name = "val"_c;
     inverse_Float16x2x3_arg.type = Type::FullType{ Float16x2x3Type.name };
     inverse_Float16x2x3.name = "inverse"_c;
-    inverse_Float16x2x3.returnType = Type::FullType{ Float16x2x3Type.name };
+    inverse_Float16x2x3.returnType = Type::FullType { Float16x2x3Type.name };
+    inverse_Float16x2x3.parameters = inverse_Float16x2x3_args;
     Symbol::Resolved(&inverse_Float16x2x3_arg)->typeSymbol = &Float16x2x3Type;
     Symbol::Resolved(&inverse_Float16x2x3)->returnTypeSymbol = &Float16x2x3Type;
 
+    /// inverse
     inverse_Float32x2x4_arg.name = "val"_c;
     inverse_Float32x2x4_arg.type = Type::FullType{ Float32x2x4Type.name };
     inverse_Float32x2x4.name = "inverse"_c;
-    inverse_Float32x2x4.returnType = Type::FullType{ Float32x2x4Type.name };
+    inverse_Float32x2x4.returnType = Type::FullType { Float32x2x4Type.name };
+    inverse_Float32x2x4.parameters = inverse_Float32x2x4_args;
     Symbol::Resolved(&inverse_Float32x2x4_arg)->typeSymbol = &Float32x2x4Type;
     Symbol::Resolved(&inverse_Float32x2x4)->returnTypeSymbol = &Float32x2x4Type;
 
+    /// inverse
     inverse_Float16x2x4_arg.name = "val"_c;
     inverse_Float16x2x4_arg.type = Type::FullType{ Float16x2x4Type.name };
     inverse_Float16x2x4.name = "inverse"_c;
-    inverse_Float16x2x4.returnType = Type::FullType{ Float16x2x4Type.name };
+    inverse_Float16x2x4.returnType = Type::FullType { Float16x2x4Type.name };
+    inverse_Float16x2x4.parameters = inverse_Float16x2x4_args;
     Symbol::Resolved(&inverse_Float16x2x4_arg)->typeSymbol = &Float16x2x4Type;
     Symbol::Resolved(&inverse_Float16x2x4)->returnTypeSymbol = &Float16x2x4Type;
 
+    /// inverse
     inverse_Float32x3x2_arg.name = "val"_c;
     inverse_Float32x3x2_arg.type = Type::FullType{ Float32x3x2Type.name };
     inverse_Float32x3x2.name = "inverse"_c;
-    inverse_Float32x3x2.returnType = Type::FullType{ Float32x3x2Type.name };
+    inverse_Float32x3x2.returnType = Type::FullType { Float32x3x2Type.name };
+    inverse_Float32x3x2.parameters = inverse_Float32x3x2_args;
     Symbol::Resolved(&inverse_Float32x3x2_arg)->typeSymbol = &Float32x3x2Type;
     Symbol::Resolved(&inverse_Float32x3x2)->returnTypeSymbol = &Float32x3x2Type;
 
+    /// inverse
     inverse_Float16x3x2_arg.name = "val"_c;
     inverse_Float16x3x2_arg.type = Type::FullType{ Float16x3x2Type.name };
     inverse_Float16x3x2.name = "inverse"_c;
-    inverse_Float16x3x2.returnType = Type::FullType{ Float16x3x2Type.name };
+    inverse_Float16x3x2.returnType = Type::FullType { Float16x3x2Type.name };
+    inverse_Float16x3x2.parameters = inverse_Float16x3x2_args;
     Symbol::Resolved(&inverse_Float16x3x2_arg)->typeSymbol = &Float16x3x2Type;
     Symbol::Resolved(&inverse_Float16x3x2)->returnTypeSymbol = &Float16x3x2Type;
 
+    /// inverse
     inverse_Float32x3x3_arg.name = "val"_c;
     inverse_Float32x3x3_arg.type = Type::FullType{ Float32x3x3Type.name };
     inverse_Float32x3x3.name = "inverse"_c;
-    inverse_Float32x3x3.returnType = Type::FullType{ Float32x3x3Type.name };
+    inverse_Float32x3x3.returnType = Type::FullType { Float32x3x3Type.name };
+    inverse_Float32x3x3.parameters = inverse_Float32x3x3_args;
     Symbol::Resolved(&inverse_Float32x3x3_arg)->typeSymbol = &Float32x3x3Type;
     Symbol::Resolved(&inverse_Float32x3x3)->returnTypeSymbol = &Float32x3x3Type;
 
+    /// inverse
     inverse_Float16x3x3_arg.name = "val"_c;
     inverse_Float16x3x3_arg.type = Type::FullType{ Float16x3x3Type.name };
     inverse_Float16x3x3.name = "inverse"_c;
-    inverse_Float16x3x3.returnType = Type::FullType{ Float16x3x3Type.name };
+    inverse_Float16x3x3.returnType = Type::FullType { Float16x3x3Type.name };
+    inverse_Float16x3x3.parameters = inverse_Float16x3x3_args;
     Symbol::Resolved(&inverse_Float16x3x3_arg)->typeSymbol = &Float16x3x3Type;
     Symbol::Resolved(&inverse_Float16x3x3)->returnTypeSymbol = &Float16x3x3Type;
 
+    /// inverse
     inverse_Float32x3x4_arg.name = "val"_c;
     inverse_Float32x3x4_arg.type = Type::FullType{ Float32x3x4Type.name };
     inverse_Float32x3x4.name = "inverse"_c;
-    inverse_Float32x3x4.returnType = Type::FullType{ Float32x3x4Type.name };
+    inverse_Float32x3x4.returnType = Type::FullType { Float32x3x4Type.name };
+    inverse_Float32x3x4.parameters = inverse_Float32x3x4_args;
     Symbol::Resolved(&inverse_Float32x3x4_arg)->typeSymbol = &Float32x3x4Type;
     Symbol::Resolved(&inverse_Float32x3x4)->returnTypeSymbol = &Float32x3x4Type;
 
+    /// inverse
     inverse_Float16x3x4_arg.name = "val"_c;
     inverse_Float16x3x4_arg.type = Type::FullType{ Float16x3x4Type.name };
     inverse_Float16x3x4.name = "inverse"_c;
-    inverse_Float16x3x4.returnType = Type::FullType{ Float16x3x4Type.name };
+    inverse_Float16x3x4.returnType = Type::FullType { Float16x3x4Type.name };
+    inverse_Float16x3x4.parameters = inverse_Float16x3x4_args;
     Symbol::Resolved(&inverse_Float16x3x4_arg)->typeSymbol = &Float16x3x4Type;
     Symbol::Resolved(&inverse_Float16x3x4)->returnTypeSymbol = &Float16x3x4Type;
 
+    /// inverse
     inverse_Float32x4x2_arg.name = "val"_c;
     inverse_Float32x4x2_arg.type = Type::FullType{ Float32x4x2Type.name };
     inverse_Float32x4x2.name = "inverse"_c;
-    inverse_Float32x4x2.returnType = Type::FullType{ Float32x4x2Type.name };
+    inverse_Float32x4x2.returnType = Type::FullType { Float32x4x2Type.name };
+    inverse_Float32x4x2.parameters = inverse_Float32x4x2_args;
     Symbol::Resolved(&inverse_Float32x4x2_arg)->typeSymbol = &Float32x4x2Type;
     Symbol::Resolved(&inverse_Float32x4x2)->returnTypeSymbol = &Float32x4x2Type;
 
+    /// inverse
     inverse_Float16x4x2_arg.name = "val"_c;
     inverse_Float16x4x2_arg.type = Type::FullType{ Float16x4x2Type.name };
     inverse_Float16x4x2.name = "inverse"_c;
-    inverse_Float16x4x2.returnType = Type::FullType{ Float16x4x2Type.name };
+    inverse_Float16x4x2.returnType = Type::FullType { Float16x4x2Type.name };
+    inverse_Float16x4x2.parameters = inverse_Float16x4x2_args;
     Symbol::Resolved(&inverse_Float16x4x2_arg)->typeSymbol = &Float16x4x2Type;
     Symbol::Resolved(&inverse_Float16x4x2)->returnTypeSymbol = &Float16x4x2Type;
 
+    /// inverse
     inverse_Float32x4x3_arg.name = "val"_c;
     inverse_Float32x4x3_arg.type = Type::FullType{ Float32x4x3Type.name };
     inverse_Float32x4x3.name = "inverse"_c;
-    inverse_Float32x4x3.returnType = Type::FullType{ Float32x4x3Type.name };
+    inverse_Float32x4x3.returnType = Type::FullType { Float32x4x3Type.name };
+    inverse_Float32x4x3.parameters = inverse_Float32x4x3_args;
     Symbol::Resolved(&inverse_Float32x4x3_arg)->typeSymbol = &Float32x4x3Type;
     Symbol::Resolved(&inverse_Float32x4x3)->returnTypeSymbol = &Float32x4x3Type;
 
+    /// inverse
     inverse_Float16x4x3_arg.name = "val"_c;
     inverse_Float16x4x3_arg.type = Type::FullType{ Float16x4x3Type.name };
     inverse_Float16x4x3.name = "inverse"_c;
-    inverse_Float16x4x3.returnType = Type::FullType{ Float16x4x3Type.name };
+    inverse_Float16x4x3.returnType = Type::FullType { Float16x4x3Type.name };
+    inverse_Float16x4x3.parameters = inverse_Float16x4x3_args;
     Symbol::Resolved(&inverse_Float16x4x3_arg)->typeSymbol = &Float16x4x3Type;
     Symbol::Resolved(&inverse_Float16x4x3)->returnTypeSymbol = &Float16x4x3Type;
 
+    /// inverse
     inverse_Float32x4x4_arg.name = "val"_c;
     inverse_Float32x4x4_arg.type = Type::FullType{ Float32x4x4Type.name };
     inverse_Float32x4x4.name = "inverse"_c;
-    inverse_Float32x4x4.returnType = Type::FullType{ Float32x4x4Type.name };
+    inverse_Float32x4x4.returnType = Type::FullType { Float32x4x4Type.name };
+    inverse_Float32x4x4.parameters = inverse_Float32x4x4_args;
     Symbol::Resolved(&inverse_Float32x4x4_arg)->typeSymbol = &Float32x4x4Type;
     Symbol::Resolved(&inverse_Float32x4x4)->returnTypeSymbol = &Float32x4x4Type;
 
+    /// inverse
     inverse_Float16x4x4_arg.name = "val"_c;
     inverse_Float16x4x4_arg.type = Type::FullType{ Float16x4x4Type.name };
     inverse_Float16x4x4.name = "inverse"_c;
-    inverse_Float16x4x4.returnType = Type::FullType{ Float16x4x4Type.name };
+    inverse_Float16x4x4.returnType = Type::FullType { Float16x4x4Type.name };
+    inverse_Float16x4x4.parameters = inverse_Float16x4x4_args;
     Symbol::Resolved(&inverse_Float16x4x4_arg)->typeSymbol = &Float16x4x4Type;
     Symbol::Resolved(&inverse_Float16x4x4)->returnTypeSymbol = &Float16x4x4Type;
 
-    VertexGetOutputLayer.name = "vertexGetOutputLayer"_c;
-    VertexGetOutputLayer.returnType = Type::FullType{ UInt32Type.name };
+    /// OutputLayer
+    VertexGetOutputLayer.name = "OutputLayer"_c;
+    VertexGetOutputLayer.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputLayer)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetOutputViewport.name = "vertexGetOutputViewport"_c;
-    VertexGetOutputViewport.returnType = Type::FullType{ UInt32Type.name };
+    /// OutputViewport
+    VertexGetOutputViewport.name = "OutputViewport"_c;
+    VertexGetOutputViewport.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetOutputViewport)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetIndex.name = "vertexGetIndex"_c;
-    VertexGetIndex.returnType = Type::FullType{ UInt32Type.name };
+    /// Index
+    VertexGetIndex.name = "Index"_c;
+    VertexGetIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetIndex)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetInstanceIndex.name = "vertexGetInstanceIndex"_c;
-    VertexGetInstanceIndex.returnType = Type::FullType{ UInt32Type.name };
+    /// InstanceIndex
+    VertexGetInstanceIndex.name = "InstanceIndex"_c;
+    VertexGetInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetBaseIndex.name = "vertexGetBaseIndex"_c;
-    VertexGetBaseIndex.returnType = Type::FullType{ UInt32Type.name };
+    /// BaseIndex
+    VertexGetBaseIndex.name = "BaseIndex"_c;
+    VertexGetBaseIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseIndex)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetBaseInstanceIndex.name = "vertexGetBaseInstanceIndex"_c;
-    VertexGetBaseInstanceIndex.returnType = Type::FullType{ UInt32Type.name };
+    /// BaseInstanceIndex
+    VertexGetBaseInstanceIndex.name = "BaseInstanceIndex"_c;
+    VertexGetBaseInstanceIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetBaseInstanceIndex)->returnTypeSymbol = &UInt32Type;
 
-    VertexGetDrawIndex.name = "vertexGetDrawIndex"_c;
-    VertexGetDrawIndex.returnType = Type::FullType{ UInt32Type.name };
+    /// DrawIndex
+    VertexGetDrawIndex.name = "DrawIndex"_c;
+    VertexGetDrawIndex.returnType = Type::FullType { UInt32Type.name };
     Symbol::Resolved(&VertexGetDrawIndex)->returnTypeSymbol = &UInt32Type;
 
+    /// OutputLayer
     VertexSetOutputLayer_UInt16_arg.name = "val"_c;
     VertexSetOutputLayer_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    VertexSetOutputLayer_UInt16.name = "vertexSetOutputLayer"_c;
-    VertexSetOutputLayer_UInt16.returnType = Type::FullType{ VoidType.name };
+    VertexSetOutputLayer_UInt16.name = "OutputLayer"_c;
+    VertexSetOutputLayer_UInt16.returnType = Type::FullType { VoidType.name };
+    VertexSetOutputLayer_UInt16.parameters = VertexSetOutputLayer_UInt16_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt16_arg)->typeSymbol = &UInt16Type;
-
     Symbol::Resolved(&VertexSetOutputLayer_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// OutputLayer
     VertexSetOutputLayer_UInt32_arg.name = "val"_c;
     VertexSetOutputLayer_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    VertexSetOutputLayer_UInt32.name = "vertexSetOutputLayer"_c;
-    VertexSetOutputLayer_UInt32.returnType = Type::FullType{ VoidType.name };
+    VertexSetOutputLayer_UInt32.name = "OutputLayer"_c;
+    VertexSetOutputLayer_UInt32.returnType = Type::FullType { VoidType.name };
+    VertexSetOutputLayer_UInt32.parameters = VertexSetOutputLayer_UInt32_args;
     Symbol::Resolved(&VertexSetOutputLayer_UInt32_arg)->typeSymbol = &UInt32Type;
-
     Symbol::Resolved(&VertexSetOutputLayer_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// OutputViewport
     VertexSetOutputViewport_UInt16_arg.name = "val"_c;
     VertexSetOutputViewport_UInt16_arg.type = Type::FullType{ UInt16Type.name };
-    VertexSetOutputViewport_UInt16.name = "vertexSetOutputViewport"_c;
-    VertexSetOutputViewport_UInt16.returnType = Type::FullType{ VoidType.name };
+    VertexSetOutputViewport_UInt16.name = "OutputViewport"_c;
+    VertexSetOutputViewport_UInt16.returnType = Type::FullType { VoidType.name };
+    VertexSetOutputViewport_UInt16.parameters = VertexSetOutputViewport_UInt16_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt16_arg)->typeSymbol = &UInt16Type;
-
     Symbol::Resolved(&VertexSetOutputViewport_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// OutputViewport
     VertexSetOutputViewport_UInt32_arg.name = "val"_c;
     VertexSetOutputViewport_UInt32_arg.type = Type::FullType{ UInt32Type.name };
-    VertexSetOutputViewport_UInt32.name = "vertexSetOutputViewport"_c;
-    VertexSetOutputViewport_UInt32.returnType = Type::FullType{ VoidType.name };
+    VertexSetOutputViewport_UInt32.name = "OutputViewport"_c;
+    VertexSetOutputViewport_UInt32.returnType = Type::FullType { VoidType.name };
+    VertexSetOutputViewport_UInt32.parameters = VertexSetOutputViewport_UInt32_args;
     Symbol::Resolved(&VertexSetOutputViewport_UInt32_arg)->typeSymbol = &UInt32Type;
-
     Symbol::Resolved(&VertexSetOutputViewport_UInt32)->returnTypeSymbol = &VoidType;
 
-    VertexExportCoordinates_Float32x4_arg.name = "coordinate"_c;
+    /// vertexExportExportCoordinates
+    VertexExportCoordinates_Float32x4_arg.name = "val"_c;
     VertexExportCoordinates_Float32x4_arg.type = Type::FullType{ Float32x4Type.name };
-    VertexExportCoordinates_Float32x4.name = "vertexExportCoordinates"_c;
-    VertexExportCoordinates_Float32x4.returnType = Type::FullType{ VoidType.name };
+    VertexExportCoordinates_Float32x4.name = "vertexExportExportCoordinates"_c;
+    VertexExportCoordinates_Float32x4.returnType = Type::FullType { VoidType.name };
+    VertexExportCoordinates_Float32x4.parameters = VertexExportCoordinates_Float32x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float32x4_arg)->typeSymbol = &Float32x4Type;
-
     Symbol::Resolved(&VertexExportCoordinates_Float32x4)->returnTypeSymbol = &VoidType;
 
-    VertexExportCoordinates_Float16x4_arg.name = "coordinate"_c;
+    /// vertexExportExportCoordinates
+    VertexExportCoordinates_Float16x4_arg.name = "val"_c;
     VertexExportCoordinates_Float16x4_arg.type = Type::FullType{ Float16x4Type.name };
-    VertexExportCoordinates_Float16x4.name = "vertexExportCoordinates"_c;
-    VertexExportCoordinates_Float16x4.returnType = Type::FullType{ VoidType.name };
+    VertexExportCoordinates_Float16x4.name = "vertexExportExportCoordinates"_c;
+    VertexExportCoordinates_Float16x4.returnType = Type::FullType { VoidType.name };
+    VertexExportCoordinates_Float16x4.parameters = VertexExportCoordinates_Float16x4_args;
     Symbol::Resolved(&VertexExportCoordinates_Float16x4_arg)->typeSymbol = &Float16x4Type;
-
     Symbol::Resolved(&VertexExportCoordinates_Float16x4)->returnTypeSymbol = &VoidType;
 
+    /// geometryExportVertex
     GeometryExportVertex.name = "geometryExportVertex"_c;
-    GeometryExportVertex.returnType = Type::FullType{ VoidType.name };
+    GeometryExportVertex.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&GeometryExportVertex)->returnTypeSymbol = &VoidType;
 
+    /// geometryExportPrimitive
     GeometryExportPrimitive.name = "geometryExportPrimitive"_c;
-    GeometryExportPrimitive.returnType = Type::FullType{ VoidType.name };
+    GeometryExportPrimitive.returnType = Type::FullType { VoidType.name };
     Symbol::Resolved(&GeometryExportPrimitive)->returnTypeSymbol = &VoidType;
 
+    /// pixelGetCoordinates
     PixelGetCoordinates_Float32x4.name = "pixelGetCoordinates"_c;
-    PixelGetCoordinates_Float32x4.returnType = Type::FullType{ Float32x4Type.name };
+    PixelGetCoordinates_Float32x4.returnType = Type::FullType { Float32x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float32x4)->returnTypeSymbol = &Float32x4Type;
 
+    /// pixelGetCoordinates
     PixelGetCoordinates_Float16x4.name = "pixelGetCoordinates"_c;
-    PixelGetCoordinates_Float16x4.returnType = Type::FullType{ Float16x4Type.name };
+    PixelGetCoordinates_Float16x4.returnType = Type::FullType { Float16x4Type.name };
     Symbol::Resolved(&PixelGetCoordinates_Float16x4)->returnTypeSymbol = &Float16x4Type;
 
+    /// pixelGetDepth
     PixelGetDepth.name = "pixelGetDepth"_c;
-    PixelGetDepth.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&PixelGetDepth)->returnTypeSymbol = &Float16x4x4Type;
+    PixelGetDepth.returnType = Type::FullType { Float32Type.name };
+    Symbol::Resolved(&PixelGetDepth)->returnTypeSymbol = &Float32Type;
 
+    /// pixelSetDepth
+    PixelSetDepth_val.name = "val"_c;
+    PixelSetDepth_val.type = Type::FullType{ Float32Type.name };
     PixelSetDepth.name = "pixelSetDepth"_c;
-    PixelSetDepth.returnType = Type::FullType{ Float16x4x4Type.name };
-    Symbol::Resolved(&PixelSetDepth)->returnTypeSymbol = &Float16x4x4Type;
+    PixelSetDepth.returnType = Type::FullType { VoidType.name };
+    PixelSetDepth.parameters = PixelSetDepth_args;
+    Symbol::Resolved(&PixelSetDepth_val)->typeSymbol = &Float32Type;
+    Symbol::Resolved(&PixelSetDepth)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32_Int32_color.name = "color"_c;
     PixelExportColor_Float32_Int32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int32_index.name = "index"_c;
     PixelExportColor_Float32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32_Int32_index.type.literal = true;
+    PixelExportColor_Float32_Int32_index.literal = true;
     PixelExportColor_Float32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32_Int32.parameters = PixelExportColor_Float32_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32_Int32_color)->typeSymbol = &Float32Type;
     Symbol::Resolved(&PixelExportColor_Float32_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float32_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32_UInt32_color.name = "color"_c;
     PixelExportColor_Float32_UInt32_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt32_index.name = "index"_c;
     PixelExportColor_Float32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32_UInt32_index.type.literal = true;
+    PixelExportColor_Float32_UInt32_index.literal = true;
     PixelExportColor_Float32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32_UInt32.parameters = PixelExportColor_Float32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32_UInt32_color)->typeSymbol = &Float32Type;
     Symbol::Resolved(&PixelExportColor_Float32_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float32_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32_Int16_color.name = "color"_c;
     PixelExportColor_Float32_Int16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_Int16_index.name = "index"_c;
     PixelExportColor_Float32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32_Int16_index.type.literal = true;
+    PixelExportColor_Float32_Int16_index.literal = true;
     PixelExportColor_Float32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32_Int16.parameters = PixelExportColor_Float32_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32_Int16_color)->typeSymbol = &Float32Type;
     Symbol::Resolved(&PixelExportColor_Float32_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float32_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32_UInt16_color.name = "color"_c;
     PixelExportColor_Float32_UInt16_color.type = Type::FullType{ Float32Type.name };
     PixelExportColor_Float32_UInt16_index.name = "index"_c;
     PixelExportColor_Float32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32_UInt16_index.type.literal = true;
+    PixelExportColor_Float32_UInt16_index.literal = true;
     PixelExportColor_Float32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32_UInt16.parameters = PixelExportColor_Float32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32_UInt16_color)->typeSymbol = &Float32Type;
     Symbol::Resolved(&PixelExportColor_Float32_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float32_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x2_Int32_color.name = "color"_c;
     PixelExportColor_Float32x2_Int32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int32_index.name = "index"_c;
     PixelExportColor_Float32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x2_Int32_index.type.literal = true;
+    PixelExportColor_Float32x2_Int32_index.literal = true;
     PixelExportColor_Float32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x2_Int32.parameters = PixelExportColor_Float32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int32_color)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x2_UInt32_color.name = "color"_c;
     PixelExportColor_Float32x2_UInt32_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x2_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x2_UInt32_index.literal = true;
     PixelExportColor_Float32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x2_UInt32.parameters = PixelExportColor_Float32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt32_color)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x2_Int16_color.name = "color"_c;
     PixelExportColor_Float32x2_Int16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_Int16_index.name = "index"_c;
     PixelExportColor_Float32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x2_Int16_index.type.literal = true;
+    PixelExportColor_Float32x2_Int16_index.literal = true;
     PixelExportColor_Float32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x2_Int16.parameters = PixelExportColor_Float32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int16_color)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x2_UInt16_color.name = "color"_c;
     PixelExportColor_Float32x2_UInt16_color.type = Type::FullType{ Float32x2Type.name };
     PixelExportColor_Float32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x2_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x2_UInt16_index.literal = true;
     PixelExportColor_Float32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x2_UInt16.parameters = PixelExportColor_Float32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt16_color)->typeSymbol = &Float32x2Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float32x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x3_Int32_color.name = "color"_c;
     PixelExportColor_Float32x3_Int32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int32_index.name = "index"_c;
     PixelExportColor_Float32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x3_Int32_index.type.literal = true;
+    PixelExportColor_Float32x3_Int32_index.literal = true;
     PixelExportColor_Float32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x3_Int32.parameters = PixelExportColor_Float32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int32_color)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x3_UInt32_color.name = "color"_c;
     PixelExportColor_Float32x3_UInt32_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x3_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x3_UInt32_index.literal = true;
     PixelExportColor_Float32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x3_UInt32.parameters = PixelExportColor_Float32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt32_color)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x3_Int16_color.name = "color"_c;
     PixelExportColor_Float32x3_Int16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_Int16_index.name = "index"_c;
     PixelExportColor_Float32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x3_Int16_index.type.literal = true;
+    PixelExportColor_Float32x3_Int16_index.literal = true;
     PixelExportColor_Float32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x3_Int16.parameters = PixelExportColor_Float32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int16_color)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x3_UInt16_color.name = "color"_c;
     PixelExportColor_Float32x3_UInt16_color.type = Type::FullType{ Float32x3Type.name };
     PixelExportColor_Float32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x3_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x3_UInt16_index.literal = true;
     PixelExportColor_Float32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x3_UInt16.parameters = PixelExportColor_Float32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt16_color)->typeSymbol = &Float32x3Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float32x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x4_Int32_color.name = "color"_c;
     PixelExportColor_Float32x4_Int32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int32_index.name = "index"_c;
     PixelExportColor_Float32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float32x4_Int32_index.type.literal = true;
+    PixelExportColor_Float32x4_Int32_index.literal = true;
     PixelExportColor_Float32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x4_Int32.parameters = PixelExportColor_Float32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int32_color)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x4_UInt32_color.name = "color"_c;
     PixelExportColor_Float32x4_UInt32_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float32x4_UInt32_index.type.literal = true;
+    PixelExportColor_Float32x4_UInt32_index.literal = true;
     PixelExportColor_Float32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x4_UInt32.parameters = PixelExportColor_Float32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt32_color)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x4_Int16_color.name = "color"_c;
     PixelExportColor_Float32x4_Int16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_Int16_index.name = "index"_c;
     PixelExportColor_Float32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float32x4_Int16_index.type.literal = true;
+    PixelExportColor_Float32x4_Int16_index.literal = true;
     PixelExportColor_Float32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x4_Int16.parameters = PixelExportColor_Float32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int16_color)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float32x4_UInt16_color.name = "color"_c;
     PixelExportColor_Float32x4_UInt16_color.type = Type::FullType{ Float32x4Type.name };
     PixelExportColor_Float32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float32x4_UInt16_index.type.literal = true;
+    PixelExportColor_Float32x4_UInt16_index.literal = true;
     PixelExportColor_Float32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float32x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float32x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float32x4_UInt16.parameters = PixelExportColor_Float32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt16_color)->typeSymbol = &Float32x4Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float32x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16_Int32_color.name = "color"_c;
     PixelExportColor_Float16_Int32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int32_index.name = "index"_c;
     PixelExportColor_Float16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16_Int32_index.type.literal = true;
+    PixelExportColor_Float16_Int32_index.literal = true;
     PixelExportColor_Float16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16_Int32.parameters = PixelExportColor_Float16_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16_Int32_color)->typeSymbol = &Float16Type;
     Symbol::Resolved(&PixelExportColor_Float16_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float16_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16_UInt32_color.name = "color"_c;
     PixelExportColor_Float16_UInt32_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt32_index.name = "index"_c;
     PixelExportColor_Float16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16_UInt32_index.type.literal = true;
+    PixelExportColor_Float16_UInt32_index.literal = true;
     PixelExportColor_Float16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16_UInt32.parameters = PixelExportColor_Float16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16_UInt32_color)->typeSymbol = &Float16Type;
     Symbol::Resolved(&PixelExportColor_Float16_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float16_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16_Int16_color.name = "color"_c;
     PixelExportColor_Float16_Int16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_Int16_index.name = "index"_c;
     PixelExportColor_Float16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16_Int16_index.type.literal = true;
+    PixelExportColor_Float16_Int16_index.literal = true;
     PixelExportColor_Float16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16_Int16.parameters = PixelExportColor_Float16_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16_Int16_color)->typeSymbol = &Float16Type;
     Symbol::Resolved(&PixelExportColor_Float16_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float16_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16_UInt16_color.name = "color"_c;
     PixelExportColor_Float16_UInt16_color.type = Type::FullType{ Float16Type.name };
     PixelExportColor_Float16_UInt16_index.name = "index"_c;
     PixelExportColor_Float16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16_UInt16_index.type.literal = true;
+    PixelExportColor_Float16_UInt16_index.literal = true;
     PixelExportColor_Float16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16_UInt16.parameters = PixelExportColor_Float16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16_UInt16_color)->typeSymbol = &Float16Type;
     Symbol::Resolved(&PixelExportColor_Float16_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float16_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x2_Int32_color.name = "color"_c;
     PixelExportColor_Float16x2_Int32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int32_index.name = "index"_c;
     PixelExportColor_Float16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x2_Int32_index.type.literal = true;
+    PixelExportColor_Float16x2_Int32_index.literal = true;
     PixelExportColor_Float16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x2_Int32.parameters = PixelExportColor_Float16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int32_color)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x2_UInt32_color.name = "color"_c;
     PixelExportColor_Float16x2_UInt32_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x2_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x2_UInt32_index.literal = true;
     PixelExportColor_Float16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x2_UInt32.parameters = PixelExportColor_Float16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt32_color)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x2_Int16_color.name = "color"_c;
     PixelExportColor_Float16x2_Int16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_Int16_index.name = "index"_c;
     PixelExportColor_Float16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x2_Int16_index.type.literal = true;
+    PixelExportColor_Float16x2_Int16_index.literal = true;
     PixelExportColor_Float16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x2_Int16.parameters = PixelExportColor_Float16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int16_color)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x2_UInt16_color.name = "color"_c;
     PixelExportColor_Float16x2_UInt16_color.type = Type::FullType{ Float16x2Type.name };
     PixelExportColor_Float16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x2_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x2_UInt16_index.literal = true;
     PixelExportColor_Float16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x2_UInt16.parameters = PixelExportColor_Float16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt16_color)->typeSymbol = &Float16x2Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float16x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x3_Int32_color.name = "color"_c;
     PixelExportColor_Float16x3_Int32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int32_index.name = "index"_c;
     PixelExportColor_Float16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x3_Int32_index.type.literal = true;
+    PixelExportColor_Float16x3_Int32_index.literal = true;
     PixelExportColor_Float16x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_Int32.parameters = PixelExportColor_Float16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int32_color)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x3_UInt32_color.name = "color"_c;
     PixelExportColor_Float16x3_UInt32_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x3_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x3_UInt32_index.literal = true;
     PixelExportColor_Float16x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_UInt32.parameters = PixelExportColor_Float16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt32_color)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x3_Int16_color.name = "color"_c;
     PixelExportColor_Float16x3_Int16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_Int16_index.name = "index"_c;
     PixelExportColor_Float16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x3_Int16_index.type.literal = true;
+    PixelExportColor_Float16x3_Int16_index.literal = true;
     PixelExportColor_Float16x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_Int16.parameters = PixelExportColor_Float16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int16_color)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x3_UInt16_color.name = "color"_c;
     PixelExportColor_Float16x3_UInt16_color.type = Type::FullType{ Float16x3Type.name };
     PixelExportColor_Float16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x3_UInt16_index.literal = true;
     PixelExportColor_Float16x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x3_UInt16.parameters = PixelExportColor_Float16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_color)->typeSymbol = &Float16x3Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float16x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x4_Int32_color.name = "color"_c;
     PixelExportColor_Float16x4_Int32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int32_index.name = "index"_c;
     PixelExportColor_Float16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Float16x4_Int32_index.type.literal = true;
+    PixelExportColor_Float16x4_Int32_index.literal = true;
     PixelExportColor_Float16x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_Int32.parameters = PixelExportColor_Float16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int32_color)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x4_UInt32_color.name = "color"_c;
     PixelExportColor_Float16x4_UInt32_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Float16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt32_index.literal = true;
     PixelExportColor_Float16x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_UInt32.parameters = PixelExportColor_Float16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_color)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x4_Int16_color.name = "color"_c;
     PixelExportColor_Float16x4_Int16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_Int16_index.name = "index"_c;
     PixelExportColor_Float16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Float16x4_Int16_index.type.literal = true;
+    PixelExportColor_Float16x4_Int16_index.literal = true;
     PixelExportColor_Float16x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_Int16.parameters = PixelExportColor_Float16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int16_color)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Float16x4_UInt16_color.name = "color"_c;
     PixelExportColor_Float16x4_UInt16_color.type = Type::FullType{ Float16x4Type.name };
     PixelExportColor_Float16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Float16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Float16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Float16x4_UInt16_index.literal = true;
     PixelExportColor_Float16x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Float16x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Float16x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Float16x4_UInt16.parameters = PixelExportColor_Float16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_color)->typeSymbol = &Float16x4Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Float16x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32_Int32_color.name = "color"_c;
     PixelExportColor_Int32_Int32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int32_index.name = "index"_c;
     PixelExportColor_Int32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32_Int32_index.type.literal = true;
+    PixelExportColor_Int32_Int32_index.literal = true;
     PixelExportColor_Int32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_Int32.parameters = PixelExportColor_Int32_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32_Int32_color)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32_UInt32_color.name = "color"_c;
     PixelExportColor_Int32_UInt32_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt32_index.name = "index"_c;
     PixelExportColor_Int32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32_UInt32_index.type.literal = true;
+    PixelExportColor_Int32_UInt32_index.literal = true;
     PixelExportColor_Int32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_UInt32.parameters = PixelExportColor_Int32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32_UInt32_color)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int32_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32_Int16_color.name = "color"_c;
     PixelExportColor_Int32_Int16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_Int16_index.name = "index"_c;
     PixelExportColor_Int32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32_Int16_index.type.literal = true;
+    PixelExportColor_Int32_Int16_index.literal = true;
     PixelExportColor_Int32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_Int16.parameters = PixelExportColor_Int32_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32_Int16_color)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int32_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32_UInt16_color.name = "color"_c;
     PixelExportColor_Int32_UInt16_color.type = Type::FullType{ Int32Type.name };
     PixelExportColor_Int32_UInt16_index.name = "index"_c;
     PixelExportColor_Int32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32_UInt16_index.type.literal = true;
+    PixelExportColor_Int32_UInt16_index.literal = true;
     PixelExportColor_Int32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32_UInt16.parameters = PixelExportColor_Int32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32_UInt16_color)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int32_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x2_Int32_color.name = "color"_c;
     PixelExportColor_Int32x2_Int32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int32_index.name = "index"_c;
     PixelExportColor_Int32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x2_Int32_index.type.literal = true;
+    PixelExportColor_Int32x2_Int32_index.literal = true;
     PixelExportColor_Int32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_Int32.parameters = PixelExportColor_Int32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int32_color)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x2_UInt32_color.name = "color"_c;
     PixelExportColor_Int32x2_UInt32_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt32_index.literal = true;
     PixelExportColor_Int32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_UInt32.parameters = PixelExportColor_Int32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_color)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x2_Int16_color.name = "color"_c;
     PixelExportColor_Int32x2_Int16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_Int16_index.name = "index"_c;
     PixelExportColor_Int32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x2_Int16_index.type.literal = true;
+    PixelExportColor_Int32x2_Int16_index.literal = true;
     PixelExportColor_Int32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_Int16.parameters = PixelExportColor_Int32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int16_color)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x2_UInt16_color.name = "color"_c;
     PixelExportColor_Int32x2_UInt16_color.type = Type::FullType{ Int32x2Type.name };
     PixelExportColor_Int32x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x2_UInt16_index.literal = true;
     PixelExportColor_Int32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x2_UInt16.parameters = PixelExportColor_Int32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_color)->typeSymbol = &Int32x2Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int32x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x3_Int32_color.name = "color"_c;
     PixelExportColor_Int32x3_Int32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int32_index.name = "index"_c;
     PixelExportColor_Int32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x3_Int32_index.type.literal = true;
+    PixelExportColor_Int32x3_Int32_index.literal = true;
     PixelExportColor_Int32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_Int32.parameters = PixelExportColor_Int32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int32_color)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x3_UInt32_color.name = "color"_c;
     PixelExportColor_Int32x3_UInt32_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt32_index.literal = true;
     PixelExportColor_Int32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_UInt32.parameters = PixelExportColor_Int32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_color)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x3_Int16_color.name = "color"_c;
     PixelExportColor_Int32x3_Int16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_Int16_index.name = "index"_c;
     PixelExportColor_Int32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x3_Int16_index.type.literal = true;
+    PixelExportColor_Int32x3_Int16_index.literal = true;
     PixelExportColor_Int32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_Int16.parameters = PixelExportColor_Int32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int16_color)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x3_UInt16_color.name = "color"_c;
     PixelExportColor_Int32x3_UInt16_color.type = Type::FullType{ Int32x3Type.name };
     PixelExportColor_Int32x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x3_UInt16_index.literal = true;
     PixelExportColor_Int32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x3_UInt16.parameters = PixelExportColor_Int32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_color)->typeSymbol = &Int32x3Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int32x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x4_Int32_color.name = "color"_c;
     PixelExportColor_Int32x4_Int32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int32_index.name = "index"_c;
     PixelExportColor_Int32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int32x4_Int32_index.type.literal = true;
+    PixelExportColor_Int32x4_Int32_index.literal = true;
     PixelExportColor_Int32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_Int32.parameters = PixelExportColor_Int32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int32_color)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x4_UInt32_color.name = "color"_c;
     PixelExportColor_Int32x4_UInt32_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int32x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt32_index.literal = true;
     PixelExportColor_Int32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_UInt32.parameters = PixelExportColor_Int32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_color)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x4_Int16_color.name = "color"_c;
     PixelExportColor_Int32x4_Int16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_Int16_index.name = "index"_c;
     PixelExportColor_Int32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int32x4_Int16_index.type.literal = true;
+    PixelExportColor_Int32x4_Int16_index.literal = true;
     PixelExportColor_Int32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_Int16.parameters = PixelExportColor_Int32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int16_color)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int32x4_UInt16_color.name = "color"_c;
     PixelExportColor_Int32x4_UInt16_color.type = Type::FullType{ Int32x4Type.name };
     PixelExportColor_Int32x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int32x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int32x4_UInt16_index.literal = true;
     PixelExportColor_Int32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int32x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int32x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int32x4_UInt16.parameters = PixelExportColor_Int32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_color)->typeSymbol = &Int32x4Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int32x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16_Int32_color.name = "color"_c;
     PixelExportColor_Int16_Int32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int32_index.name = "index"_c;
     PixelExportColor_Int16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16_Int32_index.type.literal = true;
+    PixelExportColor_Int16_Int32_index.literal = true;
     PixelExportColor_Int16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_Int32.parameters = PixelExportColor_Int16_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16_Int32_color)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int16_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16_UInt32_color.name = "color"_c;
     PixelExportColor_Int16_UInt32_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt32_index.name = "index"_c;
     PixelExportColor_Int16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16_UInt32_index.type.literal = true;
+    PixelExportColor_Int16_UInt32_index.literal = true;
     PixelExportColor_Int16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_UInt32.parameters = PixelExportColor_Int16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16_UInt32_color)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int16_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16_Int16_color.name = "color"_c;
     PixelExportColor_Int16_Int16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_Int16_index.name = "index"_c;
     PixelExportColor_Int16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16_Int16_index.type.literal = true;
+    PixelExportColor_Int16_Int16_index.literal = true;
     PixelExportColor_Int16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_Int16.parameters = PixelExportColor_Int16_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16_Int16_color)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16_UInt16_color.name = "color"_c;
     PixelExportColor_Int16_UInt16_color.type = Type::FullType{ Int16Type.name };
     PixelExportColor_Int16_UInt16_index.name = "index"_c;
     PixelExportColor_Int16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16_UInt16_index.type.literal = true;
+    PixelExportColor_Int16_UInt16_index.literal = true;
     PixelExportColor_Int16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16_UInt16.parameters = PixelExportColor_Int16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16_UInt16_color)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int16_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x2_Int32_color.name = "color"_c;
     PixelExportColor_Int16x2_Int32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int32_index.name = "index"_c;
     PixelExportColor_Int16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x2_Int32_index.type.literal = true;
+    PixelExportColor_Int16x2_Int32_index.literal = true;
     PixelExportColor_Int16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_Int32.parameters = PixelExportColor_Int16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int32_color)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x2_UInt32_color.name = "color"_c;
     PixelExportColor_Int16x2_UInt32_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x2_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt32_index.literal = true;
     PixelExportColor_Int16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_UInt32.parameters = PixelExportColor_Int16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_color)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x2_Int16_color.name = "color"_c;
     PixelExportColor_Int16x2_Int16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_Int16_index.name = "index"_c;
     PixelExportColor_Int16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x2_Int16_index.type.literal = true;
+    PixelExportColor_Int16x2_Int16_index.literal = true;
     PixelExportColor_Int16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_Int16.parameters = PixelExportColor_Int16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int16_color)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x2_UInt16_color.name = "color"_c;
     PixelExportColor_Int16x2_UInt16_color.type = Type::FullType{ Int16x2Type.name };
     PixelExportColor_Int16x2_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x2_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x2_UInt16_index.literal = true;
     PixelExportColor_Int16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x2_UInt16.parameters = PixelExportColor_Int16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_color)->typeSymbol = &Int16x2Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int16x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x3_Int32_color.name = "color"_c;
     PixelExportColor_Int16x3_Int32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int32_index.name = "index"_c;
     PixelExportColor_Int16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x3_Int32_index.type.literal = true;
+    PixelExportColor_Int16x3_Int32_index.literal = true;
     PixelExportColor_Int16x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_Int32.parameters = PixelExportColor_Int16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int32_color)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x3_UInt32_color.name = "color"_c;
     PixelExportColor_Int16x3_UInt32_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x3_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt32_index.literal = true;
     PixelExportColor_Int16x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_UInt32.parameters = PixelExportColor_Int16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_color)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x3_Int16_color.name = "color"_c;
     PixelExportColor_Int16x3_Int16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_Int16_index.name = "index"_c;
     PixelExportColor_Int16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x3_Int16_index.type.literal = true;
+    PixelExportColor_Int16x3_Int16_index.literal = true;
     PixelExportColor_Int16x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_Int16.parameters = PixelExportColor_Int16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int16_color)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x3_UInt16_color.name = "color"_c;
     PixelExportColor_Int16x3_UInt16_color.type = Type::FullType{ Int16x3Type.name };
     PixelExportColor_Int16x3_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x3_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x3_UInt16_index.literal = true;
     PixelExportColor_Int16x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x3_UInt16.parameters = PixelExportColor_Int16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_color)->typeSymbol = &Int16x3Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int16x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x4_Int32_color.name = "color"_c;
     PixelExportColor_Int16x4_Int32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int32_index.name = "index"_c;
     PixelExportColor_Int16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_Int16x4_Int32_index.type.literal = true;
+    PixelExportColor_Int16x4_Int32_index.literal = true;
     PixelExportColor_Int16x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_Int32.parameters = PixelExportColor_Int16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int32_color)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x4_UInt32_color.name = "color"_c;
     PixelExportColor_Int16x4_UInt32_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt32_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_Int16x4_UInt32_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt32_index.literal = true;
     PixelExportColor_Int16x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_UInt32.parameters = PixelExportColor_Int16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_color)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x4_Int16_color.name = "color"_c;
     PixelExportColor_Int16x4_Int16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_Int16_index.name = "index"_c;
     PixelExportColor_Int16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_Int16x4_Int16_index.type.literal = true;
+    PixelExportColor_Int16x4_Int16_index.literal = true;
     PixelExportColor_Int16x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_Int16.parameters = PixelExportColor_Int16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int16_color)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_Int16x4_UInt16_color.name = "color"_c;
     PixelExportColor_Int16x4_UInt16_color.type = Type::FullType{ Int16x4Type.name };
     PixelExportColor_Int16x4_UInt16_index.name = "index"_c;
     PixelExportColor_Int16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_Int16x4_UInt16_index.type.literal = true;
+    PixelExportColor_Int16x4_UInt16_index.literal = true;
     PixelExportColor_Int16x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_Int16x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_Int16x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_Int16x4_UInt16.parameters = PixelExportColor_Int16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_color)->typeSymbol = &Int16x4Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_Int16x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32_Int32_color.name = "color"_c;
     PixelExportColor_UInt32_Int32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int32_index.name = "index"_c;
     PixelExportColor_UInt32_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32_Int32_index.type.literal = true;
+    PixelExportColor_UInt32_Int32_index.literal = true;
     PixelExportColor_UInt32_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_Int32.parameters = PixelExportColor_UInt32_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32_Int32_color)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32_UInt32_color.name = "color"_c;
     PixelExportColor_UInt32_UInt32_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32_UInt32_index.literal = true;
     PixelExportColor_UInt32_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_UInt32.parameters = PixelExportColor_UInt32_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt32_color)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32_Int16_color.name = "color"_c;
     PixelExportColor_UInt32_Int16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_Int16_index.name = "index"_c;
     PixelExportColor_UInt32_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32_Int16_index.type.literal = true;
+    PixelExportColor_UInt32_Int16_index.literal = true;
     PixelExportColor_UInt32_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_Int16.parameters = PixelExportColor_UInt32_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32_Int16_color)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt32_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32_UInt16_color.name = "color"_c;
     PixelExportColor_UInt32_UInt16_color.type = Type::FullType{ UInt32Type.name };
     PixelExportColor_UInt32_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32_UInt16_index.literal = true;
     PixelExportColor_UInt32_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32_UInt16.parameters = PixelExportColor_UInt32_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt16_color)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt32_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x2_Int32_color.name = "color"_c;
     PixelExportColor_UInt32x2_Int32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x2_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int32_index.literal = true;
     PixelExportColor_UInt32x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_Int32.parameters = PixelExportColor_UInt32x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_color)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x2_UInt32_color.name = "color"_c;
     PixelExportColor_UInt32x2_UInt32_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x2_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt32_index.literal = true;
     PixelExportColor_UInt32x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_UInt32.parameters = PixelExportColor_UInt32x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_color)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x2_Int16_color.name = "color"_c;
     PixelExportColor_UInt32x2_Int16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x2_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x2_Int16_index.literal = true;
     PixelExportColor_UInt32x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_Int16.parameters = PixelExportColor_UInt32x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_color)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x2_UInt16_color.name = "color"_c;
     PixelExportColor_UInt32x2_UInt16_color.type = Type::FullType{ UInt32x2Type.name };
     PixelExportColor_UInt32x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x2_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x2_UInt16_index.literal = true;
     PixelExportColor_UInt32x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x2_UInt16.parameters = PixelExportColor_UInt32x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_color)->typeSymbol = &UInt32x2Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x3_Int32_color.name = "color"_c;
     PixelExportColor_UInt32x3_Int32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x3_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x3_Int32_index.literal = true;
     PixelExportColor_UInt32x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x3_Int32.parameters = PixelExportColor_UInt32x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32_color)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x3_UInt32_color.name = "color"_c;
     PixelExportColor_UInt32x3_UInt32_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x3_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x3_UInt32_index.literal = true;
     PixelExportColor_UInt32x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x3_UInt32.parameters = PixelExportColor_UInt32x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32_color)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x3_Int16_color.name = "color"_c;
     PixelExportColor_UInt32x3_Int16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x3_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x3_Int16_index.literal = true;
     PixelExportColor_UInt32x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x3_Int16.parameters = PixelExportColor_UInt32x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16_color)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x3_UInt16_color.name = "color"_c;
     PixelExportColor_UInt32x3_UInt16_color.type = Type::FullType{ UInt32x3Type.name };
     PixelExportColor_UInt32x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x3_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x3_UInt16_index.literal = true;
     PixelExportColor_UInt32x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x3_UInt16.parameters = PixelExportColor_UInt32x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16_color)->typeSymbol = &UInt32x3Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x4_Int32_color.name = "color"_c;
     PixelExportColor_UInt32x4_Int32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt32x4_Int32_index.type.literal = true;
+    PixelExportColor_UInt32x4_Int32_index.literal = true;
     PixelExportColor_UInt32x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x4_Int32.parameters = PixelExportColor_UInt32x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32_color)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x4_UInt32_color.name = "color"_c;
     PixelExportColor_UInt32x4_UInt32_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt32x4_UInt32_index.type.literal = true;
+    PixelExportColor_UInt32x4_UInt32_index.literal = true;
     PixelExportColor_UInt32x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x4_UInt32.parameters = PixelExportColor_UInt32x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32_color)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x4_Int16_color.name = "color"_c;
     PixelExportColor_UInt32x4_Int16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt32x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt32x4_Int16_index.type.literal = true;
+    PixelExportColor_UInt32x4_Int16_index.literal = true;
     PixelExportColor_UInt32x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x4_Int16.parameters = PixelExportColor_UInt32x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16_color)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt32x4_UInt16_color.name = "color"_c;
     PixelExportColor_UInt32x4_UInt16_color.type = Type::FullType{ UInt32x4Type.name };
     PixelExportColor_UInt32x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt32x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt32x4_UInt16_index.type.literal = true;
+    PixelExportColor_UInt32x4_UInt16_index.literal = true;
     PixelExportColor_UInt32x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt32x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt32x4_UInt16.parameters = PixelExportColor_UInt32x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16_color)->typeSymbol = &UInt32x4Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt32x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16_Int32_color.name = "color"_c;
     PixelExportColor_UInt16_Int32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int32_index.name = "index"_c;
     PixelExportColor_UInt16_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16_Int32_index.type.literal = true;
+    PixelExportColor_UInt16_Int32_index.literal = true;
     PixelExportColor_UInt16_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16_Int32.parameters = PixelExportColor_UInt16_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int32_color)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt16_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16_UInt32_color.name = "color"_c;
     PixelExportColor_UInt16_UInt32_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16_UInt32_index.literal = true;
     PixelExportColor_UInt16_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16_UInt32.parameters = PixelExportColor_UInt16_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32_color)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16_Int16_color.name = "color"_c;
     PixelExportColor_UInt16_Int16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_Int16_index.name = "index"_c;
     PixelExportColor_UInt16_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16_Int16_index.type.literal = true;
+    PixelExportColor_UInt16_Int16_index.literal = true;
     PixelExportColor_UInt16_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16_Int16.parameters = PixelExportColor_UInt16_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_Int16_color)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16_UInt16_color.name = "color"_c;
     PixelExportColor_UInt16_UInt16_color.type = Type::FullType{ UInt16Type.name };
     PixelExportColor_UInt16_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16_UInt16_index.literal = true;
     PixelExportColor_UInt16_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16_UInt16.parameters = PixelExportColor_UInt16_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16_color)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x2_Int32_color.name = "color"_c;
     PixelExportColor_UInt16x2_Int32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x2_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x2_Int32_index.literal = true;
     PixelExportColor_UInt16x2_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x2_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x2_Int32.parameters = PixelExportColor_UInt16x2_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32_color)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x2_UInt32_color.name = "color"_c;
     PixelExportColor_UInt16x2_UInt32_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x2_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x2_UInt32_index.literal = true;
     PixelExportColor_UInt16x2_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x2_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x2_UInt32.parameters = PixelExportColor_UInt16x2_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32_color)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x2_Int16_color.name = "color"_c;
     PixelExportColor_UInt16x2_Int16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x2_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x2_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x2_Int16_index.literal = true;
     PixelExportColor_UInt16x2_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x2_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x2_Int16.parameters = PixelExportColor_UInt16x2_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_color)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x2_UInt16_color.name = "color"_c;
     PixelExportColor_UInt16x2_UInt16_color.type = Type::FullType{ UInt16x2Type.name };
     PixelExportColor_UInt16x2_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x2_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x2_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x2_UInt16_index.literal = true;
     PixelExportColor_UInt16x2_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x2_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x2_UInt16.parameters = PixelExportColor_UInt16x2_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_color)->typeSymbol = &UInt16x2Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x2_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x3_Int32_color.name = "color"_c;
     PixelExportColor_UInt16x3_Int32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x3_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x3_Int32_index.literal = true;
     PixelExportColor_UInt16x3_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x3_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x3_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x3_Int32.parameters = PixelExportColor_UInt16x3_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int32_color)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x3_UInt32_color.name = "color"_c;
     PixelExportColor_UInt16x3_UInt32_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x3_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x3_UInt32_index.literal = true;
     PixelExportColor_UInt16x3_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x3_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x3_UInt32.parameters = PixelExportColor_UInt16x3_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt32_color)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x3_Int16_color.name = "color"_c;
     PixelExportColor_UInt16x3_Int16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x3_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x3_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x3_Int16_index.literal = true;
     PixelExportColor_UInt16x3_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x3_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x3_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x3_Int16.parameters = PixelExportColor_UInt16x3_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int16_color)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x3_UInt16_color.name = "color"_c;
     PixelExportColor_UInt16x3_UInt16_color.type = Type::FullType{ UInt16x3Type.name };
     PixelExportColor_UInt16x3_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x3_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x3_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x3_UInt16_index.literal = true;
     PixelExportColor_UInt16x3_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x3_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x3_UInt16.parameters = PixelExportColor_UInt16x3_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt16_color)->typeSymbol = &UInt16x3Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x3_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x4_Int32_color.name = "color"_c;
     PixelExportColor_UInt16x4_Int32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int32_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int32_index.type = Type::FullType{ Int32Type.name };
-    PixelExportColor_UInt16x4_Int32_index.type.literal = true;
+    PixelExportColor_UInt16x4_Int32_index.literal = true;
     PixelExportColor_UInt16x4_Int32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x4_Int32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x4_Int32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x4_Int32.parameters = PixelExportColor_UInt16x4_Int32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int32_color)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int32_index)->typeSymbol = &Int32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x4_UInt32_color.name = "color"_c;
     PixelExportColor_UInt16x4_UInt32_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt32_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt32_index.type = Type::FullType{ UInt32Type.name };
-    PixelExportColor_UInt16x4_UInt32_index.type.literal = true;
+    PixelExportColor_UInt16x4_UInt32_index.literal = true;
     PixelExportColor_UInt16x4_UInt32.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x4_UInt32.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x4_UInt32.parameters = PixelExportColor_UInt16x4_UInt32_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt32_color)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt32_index)->typeSymbol = &UInt32Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt32)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x4_Int16_color.name = "color"_c;
     PixelExportColor_UInt16x4_Int16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_Int16_index.name = "index"_c;
     PixelExportColor_UInt16x4_Int16_index.type = Type::FullType{ Int16Type.name };
-    PixelExportColor_UInt16x4_Int16_index.type.literal = true;
+    PixelExportColor_UInt16x4_Int16_index.literal = true;
     PixelExportColor_UInt16x4_Int16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x4_Int16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x4_Int16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x4_Int16.parameters = PixelExportColor_UInt16x4_Int16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int16_color)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int16_index)->typeSymbol = &Int16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_Int16)->returnTypeSymbol = &VoidType;
 
+    /// pixelExportColor
     PixelExportColor_UInt16x4_UInt16_color.name = "color"_c;
     PixelExportColor_UInt16x4_UInt16_color.type = Type::FullType{ UInt16x4Type.name };
     PixelExportColor_UInt16x4_UInt16_index.name = "index"_c;
     PixelExportColor_UInt16x4_UInt16_index.type = Type::FullType{ UInt16Type.name };
-    PixelExportColor_UInt16x4_UInt16_index.type.literal = true;
+    PixelExportColor_UInt16x4_UInt16_index.literal = true;
     PixelExportColor_UInt16x4_UInt16.name = "pixelExportColor"_c;
-    PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType{ VoidType.name };
+    PixelExportColor_UInt16x4_UInt16.returnType = Type::FullType { VoidType.name };
+    PixelExportColor_UInt16x4_UInt16.parameters = PixelExportColor_UInt16x4_UInt16_args;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16_color)->typeSymbol = &UInt16x4Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16_index)->typeSymbol = &UInt16Type;
     Symbol::Resolved(&PixelExportColor_UInt16x4_UInt16)->returnTypeSymbol = &VoidType;
 
+    /// computeGetLocalThreadIndices
     ComputeGetLocalThreadIndices.name = "computeGetLocalThreadIndices"_c;
-    ComputeGetLocalThreadIndices.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetLocalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetLocalThreadIndices.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&ComputeGetLocalThreadIndices)->returnTypeSymbol = &Uint32x3Type;
 
+    /// computeGetGlobalThreadIndices
     ComputeGetGlobalThreadIndices.name = "computeGetGlobalThreadIndices"_c;
-    ComputeGetGlobalThreadIndices.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetGlobalThreadIndices)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetGlobalThreadIndices.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&ComputeGetGlobalThreadIndices)->returnTypeSymbol = &Uint32x3Type;
 
+    /// computeGetWorkgroupIndices
     ComputeGetWorkgroupIndices.name = "computeGetWorkgroupIndices"_c;
-    ComputeGetWorkgroupIndices.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetWorkgroupIndices)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetWorkgroupIndices.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&ComputeGetWorkgroupIndices)->returnTypeSymbol = &Uint32x3Type;
 
+    /// computeGetWorkGroupDimensions
     ComputeGetWorkGroupDimensions.name = "computeGetWorkGroupDimensions"_c;
-    ComputeGetWorkGroupDimensions.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->returnTypeSymbol = &UInt32x3Type;
+    ComputeGetWorkGroupDimensions.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&ComputeGetWorkGroupDimensions)->returnTypeSymbol = &Uint32x3Type;
 
+    /// computeGetIndexInWorkgroup
     ComputeGetIndexInWorkgroup.name = "computeGetIndexInWorkgroup"_c;
-    ComputeGetIndexInWorkgroup.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&ComputeGetIndexInWorkgroup)->returnTypeSymbol = &UInt32Type;
+    ComputeGetIndexInWorkgroup.returnType = Type::FullType { Uint32Type.name };
+    Symbol::Resolved(&ComputeGetIndexInWorkgroup)->returnTypeSymbol = &Uint32Type;
 
-    SubgroupGetId.name = "subgroupGetId"_c;
+    /// subgroupGetId
     SubgroupGetId.documentation = "Returns the subgroup ID of the current thread"_c;
-    SubgroupGetId.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &UInt32x3Type;
+    SubgroupGetId.name = "subgroupGetId"_c;
+    SubgroupGetId.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&SubgroupGetId)->returnTypeSymbol = &Uint32x3Type;
 
-    SubgroupGetSize.name = "subgroupGetSize"_c;
+    /// subgroupGetSize
     SubgroupGetSize.documentation = "Returns the size of the subgroup"_c;
-    SubgroupGetSize.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &UInt32x3Type;
+    SubgroupGetSize.name = "subgroupGetSize"_c;
+    SubgroupGetSize.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&SubgroupGetSize)->returnTypeSymbol = &Uint32x3Type;
 
-    SubgroupGetNum.name = "subgroupGetNum"_c;
+    /// subgroupGetNum
     SubgroupGetNum.documentation = "Returns the number of subgroups in the workgroup"_c;
-    SubgroupGetNum.returnType = Type::FullType{ UInt32x3Type.name };
-    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &UInt32x3Type;
+    SubgroupGetNum.name = "subgroupGetNum"_c;
+    SubgroupGetNum.returnType = Type::FullType { Uint32x3Type.name };
+    Symbol::Resolved(&SubgroupGetNum)->returnTypeSymbol = &Uint32x3Type;
 
-    SubgroupGetThreadMask.name = "subgroupGetThreadMask"_c;
+    /// subgroupGetThreadMask
     SubgroupGetThreadMask.documentation = "Returns a subgroup mask where the current thread is active"_c;
-    SubgroupGetThreadMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetThreadMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadMask.name = "subgroupGetThreadMask"_c;
+    SubgroupGetThreadMask.returnType = Type::FullType { Uint32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadMask)->returnTypeSymbol = &Uint32x4Type;
 
-    SubgroupGetThreadAndLowerMask.name = "subgroupGetThreadAndLowerMask"_c;
+    /// subgroupGetThreadAndLowerMask
     SubgroupGetThreadAndLowerMask.documentation = "Returns a subgroup mask where the current thread and all lower threads are active"_c;
-    SubgroupGetThreadAndLowerMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadAndLowerMask.name = "subgroupGetThreadAndLowerMask"_c;
+    SubgroupGetThreadAndLowerMask.returnType = Type::FullType { Uint32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadAndLowerMask)->returnTypeSymbol = &Uint32x4Type;
 
-    SubgroupGetLowerMask.name = "subgroupGetLowerMask"_c;
+    /// subgroupGetLowerMask
     SubgroupGetLowerMask.documentation = "Returns a subgroup mask where all lower threads are active"_c;
-    SubgroupGetLowerMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetLowerMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetLowerMask.name = "subgroupGetLowerMask"_c;
+    SubgroupGetLowerMask.returnType = Type::FullType { Uint32x4Type.name };
+    Symbol::Resolved(&SubgroupGetLowerMask)->returnTypeSymbol = &Uint32x4Type;
 
-    SubgroupGetThreadAndGreaterMask.name = "subgroupGetThreadAndGreaterMask"_c;
+    /// subgroupGetThreadAndGreaterMask
     SubgroupGetThreadAndGreaterMask.documentation = "Returns a subgroup mask where the current thread and all greater threads are active"_c;
-    SubgroupGetThreadAndGreaterMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetThreadAndGreaterMask.name = "subgroupGetThreadAndGreaterMask"_c;
+    SubgroupGetThreadAndGreaterMask.returnType = Type::FullType { Uint32x4Type.name };
+    Symbol::Resolved(&SubgroupGetThreadAndGreaterMask)->returnTypeSymbol = &Uint32x4Type;
 
-    SubgroupGetGreaterMask.name = "subgroupGetGreaterMask"_c;
+    /// subgroupGetGreaterMask
     SubgroupGetGreaterMask.documentation = "Returns a subgroup mask where all greater threads are active"_c;
-    SubgroupGetGreaterMask.returnType = Type::FullType{ UInt32x4Type.name };
-    Symbol::Resolved(&SubgroupGetGreaterMask)->returnTypeSymbol = &UInt32x4Type;
+    SubgroupGetGreaterMask.name = "subgroupGetGreaterMask"_c;
+    SubgroupGetGreaterMask.returnType = Type::FullType { Uint32x4Type.name };
+    Symbol::Resolved(&SubgroupGetGreaterMask)->returnTypeSymbol = &Uint32x4Type;
 
-    SubgroupFirstActiveThread.name = "subgroupFirstActiveThread"_c;
-    SubgroupFirstActiveThread.documentation = "Returns true for the first active thread in the subgroup"_c;
-    SubgroupFirstActiveThread.returnType = Type::FullType{ UInt32Type.name };
-    Symbol::Resolved(&SubgroupFirstActiveThread)->returnTypeSymbol = &UInt32Type;
+    /// subgroupGetFirstActiveThread
+    SubgroupGetFirstActiveThread.name = "subgroupGetFirstActiveThread"_c;
+    SubgroupGetFirstActiveThread.returnType = Type::FullType { Uint32Type.name };
+    Symbol::Resolved(&SubgroupGetFirstActiveThread)->returnTypeSymbol = &Uint32Type;
 
     BroadcastFirstActiveThread_UInt32_value.name = "value"_c;
     BroadcastFirstActiveThread_UInt32_value.type = Type::FullType{ UInt32Type.name };

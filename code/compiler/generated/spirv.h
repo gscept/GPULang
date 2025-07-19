@@ -14235,7 +14235,7 @@ SPIRVResult SPIRV_clamp_Float32(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14244,7 +14244,7 @@ SPIRVResult SPIRV_clamp_Float32x2(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14253,7 +14253,7 @@ SPIRVResult SPIRV_clamp_Float32x3(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14262,7 +14262,7 @@ SPIRVResult SPIRV_clamp_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14271,7 +14271,7 @@ SPIRVResult SPIRV_clamp_Float16(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14280,7 +14280,7 @@ SPIRVResult SPIRV_clamp_Float16x2(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14289,7 +14289,7 @@ SPIRVResult SPIRV_clamp_Float16x3(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14298,7 +14298,7 @@ SPIRVResult SPIRV_clamp_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), FClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14307,7 +14307,7 @@ SPIRVResult SPIRV_clamp_Int32(const Compiler* c, SPIRVGenerator* g, uint32_t ret
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14316,7 +14316,7 @@ SPIRVResult SPIRV_clamp_Int32x2(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14325,7 +14325,7 @@ SPIRVResult SPIRV_clamp_Int32x3(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14334,7 +14334,7 @@ SPIRVResult SPIRV_clamp_Int32x4(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14343,7 +14343,7 @@ SPIRVResult SPIRV_clamp_Int16(const Compiler* c, SPIRVGenerator* g, uint32_t ret
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14352,7 +14352,7 @@ SPIRVResult SPIRV_clamp_Int16x2(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14361,7 +14361,7 @@ SPIRVResult SPIRV_clamp_Int16x3(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -14370,7 +14370,7 @@ SPIRVResult SPIRV_clamp_Int16x4(const Compiler* c, SPIRVGenerator* g, uint32_t r
     SPIRVResult val = LoadValueSPIRV(c, g, args[0]);
     SPIRVResult min = LoadValueSPIRV(c, g, args[1]);
     SPIRVResult max = LoadValueSPIRV(c, g, args[2]);
-    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), UClamp, val, min, max);
+    uint32_t ret = g->writer->MappedInstruction(OpExtInst, SPVWriter::Section::LocalFunction, returnType, SPVArg(g->writer->Import(GLSL)), SClamp, val, min, max);
     return SPIRVResult(ret, returnType, true);
 }
 
@@ -15869,6 +15869,14 @@ SPIRVResult SPIRV_VertexSetOutputViewport_UInt32(const Compiler* c, SPIRVGenerat
 
 SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
+    g->interfaceVariables.Insert(ret);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    return SPIRVResult::Invalid();
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
@@ -15882,6 +15890,23 @@ SPIRVResult SPIRV_VertexExportCoordinates_Float32x4(const Compiler* c, SPIRVGene
 
 SPIRVResult SPIRV_VertexExportCoordinates_Float16x4(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::ShaderViewportIndex);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 1);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::ViewportIndex);
+    g->interfaceVariables.Insert(ret);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, args[0]);
+    return SPIRVResult::Invalid();
+    g->writer->Capability(Capabilities::Shader);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplOutputViewport"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Output);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::Position);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult loaded = LoadValueSPIRV(c, g, args[0]);
+    g->writer->Instruction(OpStore, SPVWriter::Section::LocalFunction, SPVArg{ret}, loaded);
+    return SPIRVResult::Invalid();
     g->writer->Capability(Capabilities::Shader);
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::Float32, 4);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_f32x4_Output"), OpTypePointer, VariableStorage::Output, SPVArg(baseType));
@@ -17369,7 +17394,7 @@ SPIRVResult SPIRV_SubgroupGetId(const Compiler* c, SPIRVGenerator* g, uint32_t r
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetId"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupId);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17382,7 +17407,7 @@ SPIRVResult SPIRV_SubgroupGetSize(const Compiler* c, SPIRVGenerator* g, uint32_t
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetSize"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupSize);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17395,7 +17420,7 @@ SPIRVResult SPIRV_SubgroupGetNum(const Compiler* c, SPIRVGenerator* g, uint32_t 
     uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 3);
     uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x3_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
     uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetNum"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
-    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::LocalInvocationIndex);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupNum);
     g->interfaceVariables.Insert(ret);
     SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
     res.parentTypes.push_back(baseType);
@@ -17467,8 +17492,17 @@ SPIRVResult SPIRV_SubgroupGetGreaterMask(const Compiler* c, SPIRVGenerator* g, u
     return res;
 }
 
-SPIRVResult SPIRV_SubgroupFirstActiveThread(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
+SPIRVResult SPIRV_SubgroupGetFirstActiveThread(const Compiler* c, SPIRVGenerator* g, uint32_t returnType, const std::vector<SPIRVResult>& args)
 {
+    g->writer->Capability(Capabilities::GroupNonUniform);
+    uint32_t baseType = GeneratePODTypeSPIRV(c, g, TypeCode::UInt32, 4);
+    uint32_t typePtr = GPULang::AddType(g, TStr("ptr_u32x4_Input"), OpTypePointer, VariableStorage::Input, SPVArg(baseType));
+    uint32_t ret = GPULang::AddSymbol(g, TStr("gplSubgroupGetGreaterMask"), SPVWriter::Section::Declarations, OpVariable, typePtr, VariableStorage::Input);
+    g->writer->Decorate(SPVArg{ret}, Decorations::BuiltIn, Builtins::SubgroupGtMask);
+    g->interfaceVariables.Insert(ret);
+    SPIRVResult res(ret, typePtr, false, false, SPIRVResult::Storage::Input);
+    res.parentTypes.push_back(baseType);
+    return res;
     g->writer->Capability(Capabilities::GroupNonUniform);
     uint32_t ret = g->writer->MappedInstruction(OpGroupNonUniformElect, SPVWriter::Section::LocalFunction, returnType, ExecutionScopes::Subgroup);
     return SPIRVResult(ret, returnType, true);
@@ -25397,7 +25431,7 @@ std::pair{ &SubgroupGetThreadAndLowerMask, &SPIRV_SubgroupGetThreadAndLowerMask 
 std::pair{ &SubgroupGetLowerMask, &SPIRV_SubgroupGetLowerMask },
 std::pair{ &SubgroupGetThreadAndGreaterMask, &SPIRV_SubgroupGetThreadAndGreaterMask },
 std::pair{ &SubgroupGetGreaterMask, &SPIRV_SubgroupGetGreaterMask },
-std::pair{ &SubgroupFirstActiveThread, &SPIRV_SubgroupFirstActiveThread },
+std::pair{ &SubgroupGetFirstActiveThread, &SPIRV_SubgroupGetFirstActiveThread },
 std::pair{ &SubgroupBroadcastFirstActiveThread, &SPIRV_SubgroupBroadcastFirstActiveThread },
 std::pair{ &SubgroupBallot, &SPIRV_SubgroupBallot },
 std::pair{ &SubgroupInverseBallot, &SPIRV_SubgroupInverseBallot },

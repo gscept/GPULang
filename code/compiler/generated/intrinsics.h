@@ -4,1497 +4,2692 @@
 //-------------------------------------------------
 namespace GPULang
 {
+/// acos
 extern Variable acos_Float32_arg;
 extern Function acos_Float32;
+
+/// acos
 extern Variable acos_Float32x2_arg;
 extern Function acos_Float32x2;
+
+/// acos
 extern Variable acos_Float32x3_arg;
 extern Function acos_Float32x3;
+
+/// acos
 extern Variable acos_Float32x4_arg;
 extern Function acos_Float32x4;
+
+/// acos
 extern Variable acos_Float16_arg;
 extern Function acos_Float16;
+
+/// acos
 extern Variable acos_Float16x2_arg;
 extern Function acos_Float16x2;
+
+/// acos
 extern Variable acos_Float16x3_arg;
 extern Function acos_Float16x3;
+
+/// acos
 extern Variable acos_Float16x4_arg;
 extern Function acos_Float16x4;
+
+/// acosh
 extern Variable acosh_Float32_arg;
 extern Function acosh_Float32;
+
+/// acosh
 extern Variable acosh_Float32x2_arg;
 extern Function acosh_Float32x2;
+
+/// acosh
 extern Variable acosh_Float32x3_arg;
 extern Function acosh_Float32x3;
+
+/// acosh
 extern Variable acosh_Float32x4_arg;
 extern Function acosh_Float32x4;
+
+/// acosh
 extern Variable acosh_Float16_arg;
 extern Function acosh_Float16;
+
+/// acosh
 extern Variable acosh_Float16x2_arg;
 extern Function acosh_Float16x2;
+
+/// acosh
 extern Variable acosh_Float16x3_arg;
 extern Function acosh_Float16x3;
+
+/// acosh
 extern Variable acosh_Float16x4_arg;
 extern Function acosh_Float16x4;
+
+/// asin
 extern Variable asin_Float32_arg;
 extern Function asin_Float32;
+
+/// asin
 extern Variable asin_Float32x2_arg;
 extern Function asin_Float32x2;
+
+/// asin
 extern Variable asin_Float32x3_arg;
 extern Function asin_Float32x3;
+
+/// asin
 extern Variable asin_Float32x4_arg;
 extern Function asin_Float32x4;
+
+/// asin
 extern Variable asin_Float16_arg;
 extern Function asin_Float16;
+
+/// asin
 extern Variable asin_Float16x2_arg;
 extern Function asin_Float16x2;
+
+/// asin
 extern Variable asin_Float16x3_arg;
 extern Function asin_Float16x3;
+
+/// asin
 extern Variable asin_Float16x4_arg;
 extern Function asin_Float16x4;
+
+/// asinh
 extern Variable asinh_Float32_arg;
 extern Function asinh_Float32;
+
+/// asinh
 extern Variable asinh_Float32x2_arg;
 extern Function asinh_Float32x2;
+
+/// asinh
 extern Variable asinh_Float32x3_arg;
 extern Function asinh_Float32x3;
+
+/// asinh
 extern Variable asinh_Float32x4_arg;
 extern Function asinh_Float32x4;
+
+/// asinh
 extern Variable asinh_Float16_arg;
 extern Function asinh_Float16;
+
+/// asinh
 extern Variable asinh_Float16x2_arg;
 extern Function asinh_Float16x2;
+
+/// asinh
 extern Variable asinh_Float16x3_arg;
 extern Function asinh_Float16x3;
+
+/// asinh
 extern Variable asinh_Float16x4_arg;
 extern Function asinh_Float16x4;
+
+/// atan
 extern Variable atan_Float32_arg;
 extern Function atan_Float32;
+
+/// atan
 extern Variable atan_Float32x2_arg;
 extern Function atan_Float32x2;
+
+/// atan
 extern Variable atan_Float32x3_arg;
 extern Function atan_Float32x3;
+
+/// atan
 extern Variable atan_Float32x4_arg;
 extern Function atan_Float32x4;
+
+/// atan
 extern Variable atan_Float16_arg;
 extern Function atan_Float16;
+
+/// atan
 extern Variable atan_Float16x2_arg;
 extern Function atan_Float16x2;
+
+/// atan
 extern Variable atan_Float16x3_arg;
 extern Function atan_Float16x3;
+
+/// atan
 extern Variable atan_Float16x4_arg;
 extern Function atan_Float16x4;
+
+/// atanh
 extern Variable atanh_Float32_arg;
 extern Function atanh_Float32;
+
+/// atanh
 extern Variable atanh_Float32x2_arg;
 extern Function atanh_Float32x2;
+
+/// atanh
 extern Variable atanh_Float32x3_arg;
 extern Function atanh_Float32x3;
+
+/// atanh
 extern Variable atanh_Float32x4_arg;
 extern Function atanh_Float32x4;
+
+/// atanh
 extern Variable atanh_Float16_arg;
 extern Function atanh_Float16;
+
+/// atanh
 extern Variable atanh_Float16x2_arg;
 extern Function atanh_Float16x2;
+
+/// atanh
 extern Variable atanh_Float16x3_arg;
 extern Function atanh_Float16x3;
+
+/// atanh
 extern Variable atanh_Float16x4_arg;
 extern Function atanh_Float16x4;
+
+/// cos
 extern Variable cos_Float32_arg;
 extern Function cos_Float32;
+
+/// cos
 extern Variable cos_Float32x2_arg;
 extern Function cos_Float32x2;
+
+/// cos
 extern Variable cos_Float32x3_arg;
 extern Function cos_Float32x3;
+
+/// cos
 extern Variable cos_Float32x4_arg;
 extern Function cos_Float32x4;
+
+/// cos
 extern Variable cos_Float16_arg;
 extern Function cos_Float16;
+
+/// cos
 extern Variable cos_Float16x2_arg;
 extern Function cos_Float16x2;
+
+/// cos
 extern Variable cos_Float16x3_arg;
 extern Function cos_Float16x3;
+
+/// cos
 extern Variable cos_Float16x4_arg;
 extern Function cos_Float16x4;
+
+/// cosh
 extern Variable cosh_Float32_arg;
 extern Function cosh_Float32;
+
+/// cosh
 extern Variable cosh_Float32x2_arg;
 extern Function cosh_Float32x2;
+
+/// cosh
 extern Variable cosh_Float32x3_arg;
 extern Function cosh_Float32x3;
+
+/// cosh
 extern Variable cosh_Float32x4_arg;
 extern Function cosh_Float32x4;
+
+/// cosh
 extern Variable cosh_Float16_arg;
 extern Function cosh_Float16;
+
+/// cosh
 extern Variable cosh_Float16x2_arg;
 extern Function cosh_Float16x2;
+
+/// cosh
 extern Variable cosh_Float16x3_arg;
 extern Function cosh_Float16x3;
+
+/// cosh
 extern Variable cosh_Float16x4_arg;
 extern Function cosh_Float16x4;
+
+/// exp
 extern Variable exp_Float32_arg;
 extern Function exp_Float32;
+
+/// exp
 extern Variable exp_Float32x2_arg;
 extern Function exp_Float32x2;
+
+/// exp
 extern Variable exp_Float32x3_arg;
 extern Function exp_Float32x3;
+
+/// exp
 extern Variable exp_Float32x4_arg;
 extern Function exp_Float32x4;
+
+/// exp
 extern Variable exp_Float16_arg;
 extern Function exp_Float16;
+
+/// exp
 extern Variable exp_Float16x2_arg;
 extern Function exp_Float16x2;
+
+/// exp
 extern Variable exp_Float16x3_arg;
 extern Function exp_Float16x3;
+
+/// exp
 extern Variable exp_Float16x4_arg;
 extern Function exp_Float16x4;
+
+/// exp2
 extern Variable exp2_Float32_arg;
 extern Function exp2_Float32;
+
+/// exp2
 extern Variable exp2_Float32x2_arg;
 extern Function exp2_Float32x2;
+
+/// exp2
 extern Variable exp2_Float32x3_arg;
 extern Function exp2_Float32x3;
+
+/// exp2
 extern Variable exp2_Float32x4_arg;
 extern Function exp2_Float32x4;
+
+/// exp2
 extern Variable exp2_Float16_arg;
 extern Function exp2_Float16;
+
+/// exp2
 extern Variable exp2_Float16x2_arg;
 extern Function exp2_Float16x2;
+
+/// exp2
 extern Variable exp2_Float16x3_arg;
 extern Function exp2_Float16x3;
+
+/// exp2
 extern Variable exp2_Float16x4_arg;
 extern Function exp2_Float16x4;
+
+/// invSqrt
 extern Variable invSqrt_Float32_arg;
 extern Function invSqrt_Float32;
+
+/// invSqrt
 extern Variable invSqrt_Float32x2_arg;
 extern Function invSqrt_Float32x2;
+
+/// invSqrt
 extern Variable invSqrt_Float32x3_arg;
 extern Function invSqrt_Float32x3;
+
+/// invSqrt
 extern Variable invSqrt_Float32x4_arg;
 extern Function invSqrt_Float32x4;
+
+/// invSqrt
 extern Variable invSqrt_Float16_arg;
 extern Function invSqrt_Float16;
+
+/// invSqrt
 extern Variable invSqrt_Float16x2_arg;
 extern Function invSqrt_Float16x2;
+
+/// invSqrt
 extern Variable invSqrt_Float16x3_arg;
 extern Function invSqrt_Float16x3;
+
+/// invSqrt
 extern Variable invSqrt_Float16x4_arg;
 extern Function invSqrt_Float16x4;
+
+/// log
 extern Variable log_Float32_arg;
 extern Function log_Float32;
+
+/// log
 extern Variable log_Float32x2_arg;
 extern Function log_Float32x2;
+
+/// log
 extern Variable log_Float32x3_arg;
 extern Function log_Float32x3;
+
+/// log
 extern Variable log_Float32x4_arg;
 extern Function log_Float32x4;
+
+/// log
 extern Variable log_Float16_arg;
 extern Function log_Float16;
+
+/// log
 extern Variable log_Float16x2_arg;
 extern Function log_Float16x2;
+
+/// log
 extern Variable log_Float16x3_arg;
 extern Function log_Float16x3;
+
+/// log
 extern Variable log_Float16x4_arg;
 extern Function log_Float16x4;
+
+/// log2
 extern Variable log2_Float32_arg;
 extern Function log2_Float32;
+
+/// log2
 extern Variable log2_Float32x2_arg;
 extern Function log2_Float32x2;
+
+/// log2
 extern Variable log2_Float32x3_arg;
 extern Function log2_Float32x3;
+
+/// log2
 extern Variable log2_Float32x4_arg;
 extern Function log2_Float32x4;
+
+/// log2
 extern Variable log2_Float16_arg;
 extern Function log2_Float16;
+
+/// log2
 extern Variable log2_Float16x2_arg;
 extern Function log2_Float16x2;
+
+/// log2
 extern Variable log2_Float16x3_arg;
 extern Function log2_Float16x3;
+
+/// log2
 extern Variable log2_Float16x4_arg;
 extern Function log2_Float16x4;
+
+/// sin
 extern Variable sin_Float32_arg;
 extern Function sin_Float32;
+
+/// sin
 extern Variable sin_Float32x2_arg;
 extern Function sin_Float32x2;
+
+/// sin
 extern Variable sin_Float32x3_arg;
 extern Function sin_Float32x3;
+
+/// sin
 extern Variable sin_Float32x4_arg;
 extern Function sin_Float32x4;
+
+/// sin
 extern Variable sin_Float16_arg;
 extern Function sin_Float16;
+
+/// sin
 extern Variable sin_Float16x2_arg;
 extern Function sin_Float16x2;
+
+/// sin
 extern Variable sin_Float16x3_arg;
 extern Function sin_Float16x3;
+
+/// sin
 extern Variable sin_Float16x4_arg;
 extern Function sin_Float16x4;
+
+/// sinh
 extern Variable sinh_Float32_arg;
 extern Function sinh_Float32;
+
+/// sinh
 extern Variable sinh_Float32x2_arg;
 extern Function sinh_Float32x2;
+
+/// sinh
 extern Variable sinh_Float32x3_arg;
 extern Function sinh_Float32x3;
+
+/// sinh
 extern Variable sinh_Float32x4_arg;
 extern Function sinh_Float32x4;
+
+/// sinh
 extern Variable sinh_Float16_arg;
 extern Function sinh_Float16;
+
+/// sinh
 extern Variable sinh_Float16x2_arg;
 extern Function sinh_Float16x2;
+
+/// sinh
 extern Variable sinh_Float16x3_arg;
 extern Function sinh_Float16x3;
+
+/// sinh
 extern Variable sinh_Float16x4_arg;
 extern Function sinh_Float16x4;
+
+/// sqrt
 extern Variable sqrt_Float32_arg;
 extern Function sqrt_Float32;
+
+/// sqrt
 extern Variable sqrt_Float32x2_arg;
 extern Function sqrt_Float32x2;
+
+/// sqrt
 extern Variable sqrt_Float32x3_arg;
 extern Function sqrt_Float32x3;
+
+/// sqrt
 extern Variable sqrt_Float32x4_arg;
 extern Function sqrt_Float32x4;
+
+/// sqrt
 extern Variable sqrt_Float16_arg;
 extern Function sqrt_Float16;
+
+/// sqrt
 extern Variable sqrt_Float16x2_arg;
 extern Function sqrt_Float16x2;
+
+/// sqrt
 extern Variable sqrt_Float16x3_arg;
 extern Function sqrt_Float16x3;
+
+/// sqrt
 extern Variable sqrt_Float16x4_arg;
 extern Function sqrt_Float16x4;
+
+/// tan
 extern Variable tan_Float32_arg;
 extern Function tan_Float32;
+
+/// tan
 extern Variable tan_Float32x2_arg;
 extern Function tan_Float32x2;
+
+/// tan
 extern Variable tan_Float32x3_arg;
 extern Function tan_Float32x3;
+
+/// tan
 extern Variable tan_Float32x4_arg;
 extern Function tan_Float32x4;
+
+/// tan
 extern Variable tan_Float16_arg;
 extern Function tan_Float16;
+
+/// tan
 extern Variable tan_Float16x2_arg;
 extern Function tan_Float16x2;
+
+/// tan
 extern Variable tan_Float16x3_arg;
 extern Function tan_Float16x3;
+
+/// tan
 extern Variable tan_Float16x4_arg;
 extern Function tan_Float16x4;
+
+/// tanh
 extern Variable tanh_Float32_arg;
 extern Function tanh_Float32;
+
+/// tanh
 extern Variable tanh_Float32x2_arg;
 extern Function tanh_Float32x2;
+
+/// tanh
 extern Variable tanh_Float32x3_arg;
 extern Function tanh_Float32x3;
+
+/// tanh
 extern Variable tanh_Float32x4_arg;
 extern Function tanh_Float32x4;
+
+/// tanh
 extern Variable tanh_Float16_arg;
 extern Function tanh_Float16;
+
+/// tanh
 extern Variable tanh_Float16x2_arg;
 extern Function tanh_Float16x2;
+
+/// tanh
 extern Variable tanh_Float16x3_arg;
 extern Function tanh_Float16x3;
+
+/// tanh
 extern Variable tanh_Float16x4_arg;
 extern Function tanh_Float16x4;
+
+/// tanh
 extern Variable atan2_Float32_y;
 extern Variable atan2_Float32_x;
 extern Function atan2_Float32;
+
+/// tanh
 extern Variable atan2_Float32x2_y;
 extern Variable atan2_Float32x2_x;
 extern Function atan2_Float32x2;
+
+/// tanh
 extern Variable atan2_Float32x3_y;
 extern Variable atan2_Float32x3_x;
 extern Function atan2_Float32x3;
+
+/// tanh
 extern Variable atan2_Float32x4_y;
 extern Variable atan2_Float32x4_x;
 extern Function atan2_Float32x4;
+
+/// tanh
 extern Variable atan2_Float16_y;
 extern Variable atan2_Float16_x;
 extern Function atan2_Float16;
+
+/// tanh
 extern Variable atan2_Float16x2_y;
 extern Variable atan2_Float16x2_x;
 extern Function atan2_Float16x2;
+
+/// tanh
 extern Variable atan2_Float16x3_y;
 extern Variable atan2_Float16x3_x;
 extern Function atan2_Float16x3;
+
+/// tanh
 extern Variable atan2_Float16x4_y;
 extern Variable atan2_Float16x4_x;
 extern Function atan2_Float16x4;
+
+/// pow
 extern Variable pow_Float32_arg;
 extern Variable pow_Float32_exp;
 extern Function pow_Float32;
+
+/// pow
 extern Variable pow_Float32x2_arg;
 extern Variable pow_Float32x2_exp;
 extern Function pow_Float32x2;
+
+/// pow
 extern Variable pow_Float32x3_arg;
 extern Variable pow_Float32x3_exp;
 extern Function pow_Float32x3;
+
+/// pow
 extern Variable pow_Float32x4_arg;
 extern Variable pow_Float32x4_exp;
 extern Function pow_Float32x4;
+
+/// pow
 extern Variable pow_Float16_arg;
 extern Variable pow_Float16_exp;
 extern Function pow_Float16;
+
+/// pow
 extern Variable pow_Float16x2_arg;
 extern Variable pow_Float16x2_exp;
 extern Function pow_Float16x2;
+
+/// pow
 extern Variable pow_Float16x3_arg;
 extern Variable pow_Float16x3_exp;
 extern Function pow_Float16x3;
+
+/// pow
 extern Variable pow_Float16x4_arg;
 extern Variable pow_Float16x4_exp;
 extern Function pow_Float16x4;
+
+/// mad
 extern Variable mad_Float32_arg;
 extern Variable mad_Float32_mul;
 extern Variable mad_Float32_add;
 extern Function mad_Float32;
+
+/// mad
 extern Variable mad_Float32x2_arg;
 extern Variable mad_Float32x2_mul;
 extern Variable mad_Float32x2_add;
 extern Function mad_Float32x2;
+
+/// mad
 extern Variable mad_Float32x3_arg;
 extern Variable mad_Float32x3_mul;
 extern Variable mad_Float32x3_add;
 extern Function mad_Float32x3;
+
+/// mad
 extern Variable mad_Float32x4_arg;
 extern Variable mad_Float32x4_mul;
 extern Variable mad_Float32x4_add;
 extern Function mad_Float32x4;
+
+/// mad
 extern Variable mad_Float16_arg;
 extern Variable mad_Float16_mul;
 extern Variable mad_Float16_add;
 extern Function mad_Float16;
+
+/// mad
 extern Variable mad_Float16x2_arg;
 extern Variable mad_Float16x2_mul;
 extern Variable mad_Float16x2_add;
 extern Function mad_Float16x2;
+
+/// mad
 extern Variable mad_Float16x3_arg;
 extern Variable mad_Float16x3_mul;
 extern Variable mad_Float16x3_add;
 extern Function mad_Float16x3;
+
+/// mad
 extern Variable mad_Float16x4_arg;
 extern Variable mad_Float16x4_mul;
 extern Variable mad_Float16x4_add;
 extern Function mad_Float16x4;
+
+/// mad
 extern Variable mad_Int32_arg;
 extern Variable mad_Int32_mul;
 extern Variable mad_Int32_add;
 extern Function mad_Int32;
+
+/// mad
 extern Variable mad_Int32x2_arg;
 extern Variable mad_Int32x2_mul;
 extern Variable mad_Int32x2_add;
 extern Function mad_Int32x2;
+
+/// mad
 extern Variable mad_Int32x3_arg;
 extern Variable mad_Int32x3_mul;
 extern Variable mad_Int32x3_add;
 extern Function mad_Int32x3;
+
+/// mad
 extern Variable mad_Int32x4_arg;
 extern Variable mad_Int32x4_mul;
 extern Variable mad_Int32x4_add;
 extern Function mad_Int32x4;
+
+/// mad
 extern Variable mad_Int16_arg;
 extern Variable mad_Int16_mul;
 extern Variable mad_Int16_add;
 extern Function mad_Int16;
+
+/// mad
 extern Variable mad_Int16x2_arg;
 extern Variable mad_Int16x2_mul;
 extern Variable mad_Int16x2_add;
 extern Function mad_Int16x2;
+
+/// mad
 extern Variable mad_Int16x3_arg;
 extern Variable mad_Int16x3_mul;
 extern Variable mad_Int16x3_add;
 extern Function mad_Int16x3;
+
+/// mad
 extern Variable mad_Int16x4_arg;
 extern Variable mad_Int16x4_mul;
 extern Variable mad_Int16x4_add;
 extern Function mad_Int16x4;
+
+/// mad
 extern Variable mad_UInt32_arg;
 extern Variable mad_UInt32_mul;
 extern Variable mad_UInt32_add;
 extern Function mad_UInt32;
+
+/// mad
 extern Variable mad_UInt32x2_arg;
 extern Variable mad_UInt32x2_mul;
 extern Variable mad_UInt32x2_add;
 extern Function mad_UInt32x2;
+
+/// mad
 extern Variable mad_UInt32x3_arg;
 extern Variable mad_UInt32x3_mul;
 extern Variable mad_UInt32x3_add;
 extern Function mad_UInt32x3;
+
+/// mad
 extern Variable mad_UInt32x4_arg;
 extern Variable mad_UInt32x4_mul;
 extern Variable mad_UInt32x4_add;
 extern Function mad_UInt32x4;
+
+/// mad
 extern Variable mad_UInt16_arg;
 extern Variable mad_UInt16_mul;
 extern Variable mad_UInt16_add;
 extern Function mad_UInt16;
+
+/// mad
 extern Variable mad_UInt16x2_arg;
 extern Variable mad_UInt16x2_mul;
 extern Variable mad_UInt16x2_add;
 extern Function mad_UInt16x2;
+
+/// mad
 extern Variable mad_UInt16x3_arg;
 extern Variable mad_UInt16x3_mul;
 extern Variable mad_UInt16x3_add;
 extern Function mad_UInt16x3;
+
+/// mad
 extern Variable mad_UInt16x4_arg;
 extern Variable mad_UInt16x4_mul;
 extern Variable mad_UInt16x4_add;
 extern Function mad_UInt16x4;
+
+/// dot
 extern Variable dot_Float32x2_x;
 extern Variable dot_Float32x2_y;
 extern Function dot_Float32x2;
+
+/// dot
 extern Variable dot_Float32x3_x;
 extern Variable dot_Float32x3_y;
 extern Function dot_Float32x3;
+
+/// dot
 extern Variable dot_Float32x4_x;
 extern Variable dot_Float32x4_y;
 extern Function dot_Float32x4;
+
+/// dot
 extern Variable dot_Float16x2_x;
 extern Variable dot_Float16x2_y;
 extern Function dot_Float16x2;
+
+/// dot
 extern Variable dot_Float16x3_x;
 extern Variable dot_Float16x3_y;
 extern Function dot_Float16x3;
+
+/// dot
 extern Variable dot_Float16x4_x;
 extern Variable dot_Float16x4_y;
 extern Function dot_Float16x4;
+
+/// reflect
 extern Variable reflect_Float32x2_incident;
 extern Variable reflect_Float32x2_normal;
 extern Function reflect_Float32x2;
+
+/// reflect
 extern Variable reflect_Float32x3_incident;
 extern Variable reflect_Float32x3_normal;
 extern Function reflect_Float32x3;
+
+/// reflect
 extern Variable reflect_Float32x4_incident;
 extern Variable reflect_Float32x4_normal;
 extern Function reflect_Float32x4;
+
+/// reflect
 extern Variable reflect_Float16x2_incident;
 extern Variable reflect_Float16x2_normal;
 extern Function reflect_Float16x2;
+
+/// reflect
 extern Variable reflect_Float16x3_incident;
 extern Variable reflect_Float16x3_normal;
 extern Function reflect_Float16x3;
+
+/// reflect
 extern Variable reflect_Float16x4_incident;
 extern Variable reflect_Float16x4_normal;
 extern Function reflect_Float16x4;
+
+/// refract
 extern Variable refract_Float32x2_incident;
 extern Variable refract_Float32x2_normal;
 extern Variable refract_Float32x2_ior;
 extern Function refract_Float32x2;
+
+/// refract
 extern Variable refract_Float32x3_incident;
 extern Variable refract_Float32x3_normal;
 extern Variable refract_Float32x3_ior;
 extern Function refract_Float32x3;
+
+/// refract
 extern Variable refract_Float32x4_incident;
 extern Variable refract_Float32x4_normal;
 extern Variable refract_Float32x4_ior;
 extern Function refract_Float32x4;
+
+/// refract
 extern Variable refract_Float16x2_incident;
 extern Variable refract_Float16x2_normal;
 extern Variable refract_Float16x2_ior;
 extern Function refract_Float16x2;
+
+/// refract
 extern Variable refract_Float16x3_incident;
 extern Variable refract_Float16x3_normal;
 extern Variable refract_Float16x3_ior;
 extern Function refract_Float16x3;
+
+/// refract
 extern Variable refract_Float16x4_incident;
 extern Variable refract_Float16x4_normal;
 extern Variable refract_Float16x4_ior;
 extern Function refract_Float16x4;
+
+/// cross
 extern Variable cross_Float32x3_v0;
 extern Variable cross_Float32x3_v1;
 extern Function cross_Float32x3;
+
+/// cross
 extern Variable cross_Float16x3_v0;
 extern Variable cross_Float16x3_v1;
 extern Function cross_Float16x3;
+
+/// cross
 extern Variable length_Float32x2_arg;
 extern Function length_Float32x2;
+
+/// cross
 extern Variable length_Float32x3_arg;
 extern Function length_Float32x3;
+
+/// cross
 extern Variable length_Float32x4_arg;
 extern Function length_Float32x4;
+
+/// cross
 extern Variable length_Float16x2_arg;
 extern Function length_Float16x2;
+
+/// cross
 extern Variable length_Float16x3_arg;
 extern Function length_Float16x3;
+
+/// cross
 extern Variable length_Float16x4_arg;
 extern Function length_Float16x4;
+
+/// cross
 extern Variable normalize_Float32x2_arg;
 extern Function normalize_Float32x2;
+
+/// cross
 extern Variable normalize_Float32x3_arg;
 extern Function normalize_Float32x3;
+
+/// cross
 extern Variable normalize_Float32x4_arg;
 extern Function normalize_Float32x4;
+
+/// cross
 extern Variable normalize_Float16x2_arg;
 extern Function normalize_Float16x2;
+
+/// cross
 extern Variable normalize_Float16x3_arg;
 extern Function normalize_Float16x3;
+
+/// cross
 extern Variable normalize_Float16x4_arg;
 extern Function normalize_Float16x4;
+
+/// distance
 extern Variable distance_Float32x2_p0;
 extern Variable distance_Float32x2_p1;
 extern Function distance_Float32x2;
+
+/// distance
 extern Variable distance_Float32x3_p0;
 extern Variable distance_Float32x3_p1;
 extern Function distance_Float32x3;
+
+/// distance
 extern Variable distance_Float32x4_p0;
 extern Variable distance_Float32x4_p1;
 extern Function distance_Float32x4;
+
+/// distance
 extern Variable distance_Float16x2_p0;
 extern Variable distance_Float16x2_p1;
 extern Function distance_Float16x2;
+
+/// distance
 extern Variable distance_Float16x3_p0;
 extern Variable distance_Float16x3_p1;
 extern Function distance_Float16x3;
+
+/// distance
 extern Variable distance_Float16x4_p0;
 extern Variable distance_Float16x4_p1;
 extern Function distance_Float16x4;
+
+/// distance
 extern Variable min_Float32_x;
 extern Variable min_Float32_y;
 extern Function min_Float32;
+
+/// distance
 extern Variable min_Float32x2_x;
 extern Variable min_Float32x2_y;
 extern Function min_Float32x2;
+
+/// distance
 extern Variable min_Float32x3_x;
 extern Variable min_Float32x3_y;
 extern Function min_Float32x3;
+
+/// distance
 extern Variable min_Float32x4_x;
 extern Variable min_Float32x4_y;
 extern Function min_Float32x4;
+
+/// distance
 extern Variable min_Float16_x;
 extern Variable min_Float16_y;
 extern Function min_Float16;
+
+/// distance
 extern Variable min_Float16x2_x;
 extern Variable min_Float16x2_y;
 extern Function min_Float16x2;
+
+/// distance
 extern Variable min_Float16x3_x;
 extern Variable min_Float16x3_y;
 extern Function min_Float16x3;
+
+/// distance
 extern Variable min_Float16x4_x;
 extern Variable min_Float16x4_y;
 extern Function min_Float16x4;
+
+/// distance
 extern Variable min_Int32_x;
 extern Variable min_Int32_y;
 extern Function min_Int32;
+
+/// distance
 extern Variable min_Int32x2_x;
 extern Variable min_Int32x2_y;
 extern Function min_Int32x2;
+
+/// distance
 extern Variable min_Int32x3_x;
 extern Variable min_Int32x3_y;
 extern Function min_Int32x3;
+
+/// distance
 extern Variable min_Int32x4_x;
 extern Variable min_Int32x4_y;
 extern Function min_Int32x4;
+
+/// distance
 extern Variable min_Int16_x;
 extern Variable min_Int16_y;
 extern Function min_Int16;
+
+/// distance
 extern Variable min_Int16x2_x;
 extern Variable min_Int16x2_y;
 extern Function min_Int16x2;
+
+/// distance
 extern Variable min_Int16x3_x;
 extern Variable min_Int16x3_y;
 extern Function min_Int16x3;
+
+/// distance
 extern Variable min_Int16x4_x;
 extern Variable min_Int16x4_y;
 extern Function min_Int16x4;
+
+/// distance
 extern Variable min_UInt32_x;
 extern Variable min_UInt32_y;
 extern Function min_UInt32;
+
+/// distance
 extern Variable min_UInt32x2_x;
 extern Variable min_UInt32x2_y;
 extern Function min_UInt32x2;
+
+/// distance
 extern Variable min_UInt32x3_x;
 extern Variable min_UInt32x3_y;
 extern Function min_UInt32x3;
+
+/// distance
 extern Variable min_UInt32x4_x;
 extern Variable min_UInt32x4_y;
 extern Function min_UInt32x4;
+
+/// distance
 extern Variable min_UInt16_x;
 extern Variable min_UInt16_y;
 extern Function min_UInt16;
+
+/// distance
 extern Variable min_UInt16x2_x;
 extern Variable min_UInt16x2_y;
 extern Function min_UInt16x2;
+
+/// distance
 extern Variable min_UInt16x3_x;
 extern Variable min_UInt16x3_y;
 extern Function min_UInt16x3;
+
+/// distance
 extern Variable min_UInt16x4_x;
 extern Variable min_UInt16x4_y;
 extern Function min_UInt16x4;
+
+/// distance
 extern Variable max_Float32_x;
 extern Variable max_Float32_y;
 extern Function max_Float32;
+
+/// distance
 extern Variable max_Float32x2_x;
 extern Variable max_Float32x2_y;
 extern Function max_Float32x2;
+
+/// distance
 extern Variable max_Float32x3_x;
 extern Variable max_Float32x3_y;
 extern Function max_Float32x3;
+
+/// distance
 extern Variable max_Float32x4_x;
 extern Variable max_Float32x4_y;
 extern Function max_Float32x4;
+
+/// distance
 extern Variable max_Float16_x;
 extern Variable max_Float16_y;
 extern Function max_Float16;
+
+/// distance
 extern Variable max_Float16x2_x;
 extern Variable max_Float16x2_y;
 extern Function max_Float16x2;
+
+/// distance
 extern Variable max_Float16x3_x;
 extern Variable max_Float16x3_y;
 extern Function max_Float16x3;
+
+/// distance
 extern Variable max_Float16x4_x;
 extern Variable max_Float16x4_y;
 extern Function max_Float16x4;
+
+/// distance
 extern Variable max_Int32_x;
 extern Variable max_Int32_y;
 extern Function max_Int32;
+
+/// distance
 extern Variable max_Int32x2_x;
 extern Variable max_Int32x2_y;
 extern Function max_Int32x2;
+
+/// distance
 extern Variable max_Int32x3_x;
 extern Variable max_Int32x3_y;
 extern Function max_Int32x3;
+
+/// distance
 extern Variable max_Int32x4_x;
 extern Variable max_Int32x4_y;
 extern Function max_Int32x4;
+
+/// distance
 extern Variable max_Int16_x;
 extern Variable max_Int16_y;
 extern Function max_Int16;
+
+/// distance
 extern Variable max_Int16x2_x;
 extern Variable max_Int16x2_y;
 extern Function max_Int16x2;
+
+/// distance
 extern Variable max_Int16x3_x;
 extern Variable max_Int16x3_y;
 extern Function max_Int16x3;
+
+/// distance
 extern Variable max_Int16x4_x;
 extern Variable max_Int16x4_y;
 extern Function max_Int16x4;
+
+/// distance
 extern Variable max_UInt32_x;
 extern Variable max_UInt32_y;
 extern Function max_UInt32;
+
+/// distance
 extern Variable max_UInt32x2_x;
 extern Variable max_UInt32x2_y;
 extern Function max_UInt32x2;
+
+/// distance
 extern Variable max_UInt32x3_x;
 extern Variable max_UInt32x3_y;
 extern Function max_UInt32x3;
+
+/// distance
 extern Variable max_UInt32x4_x;
 extern Variable max_UInt32x4_y;
 extern Function max_UInt32x4;
+
+/// distance
 extern Variable max_UInt16_x;
 extern Variable max_UInt16_y;
 extern Function max_UInt16;
+
+/// distance
 extern Variable max_UInt16x2_x;
 extern Variable max_UInt16x2_y;
 extern Function max_UInt16x2;
+
+/// distance
 extern Variable max_UInt16x3_x;
 extern Variable max_UInt16x3_y;
 extern Function max_UInt16x3;
+
+/// distance
 extern Variable max_UInt16x4_x;
 extern Variable max_UInt16x4_y;
 extern Function max_UInt16x4;
+
+/// clamp
 extern Variable clamp_Float32_val;
 extern Variable clamp_Float32_min;
 extern Variable clamp_Float32_max;
 extern Function clamp_Float32;
+
+/// clamp
 extern Variable clamp_Float32x2_val;
 extern Variable clamp_Float32x2_min;
 extern Variable clamp_Float32x2_max;
 extern Function clamp_Float32x2;
+
+/// clamp
 extern Variable clamp_Float32x3_val;
 extern Variable clamp_Float32x3_min;
 extern Variable clamp_Float32x3_max;
 extern Function clamp_Float32x3;
+
+/// clamp
 extern Variable clamp_Float32x4_val;
 extern Variable clamp_Float32x4_min;
 extern Variable clamp_Float32x4_max;
 extern Function clamp_Float32x4;
+
+/// clamp
 extern Variable clamp_Float16_val;
 extern Variable clamp_Float16_min;
 extern Variable clamp_Float16_max;
 extern Function clamp_Float16;
+
+/// clamp
 extern Variable clamp_Float16x2_val;
 extern Variable clamp_Float16x2_min;
 extern Variable clamp_Float16x2_max;
 extern Function clamp_Float16x2;
+
+/// clamp
 extern Variable clamp_Float16x3_val;
 extern Variable clamp_Float16x3_min;
 extern Variable clamp_Float16x3_max;
 extern Function clamp_Float16x3;
+
+/// clamp
 extern Variable clamp_Float16x4_val;
 extern Variable clamp_Float16x4_min;
 extern Variable clamp_Float16x4_max;
 extern Function clamp_Float16x4;
+
+/// clamp
 extern Variable clamp_Int32_val;
 extern Variable clamp_Int32_min;
 extern Variable clamp_Int32_max;
 extern Function clamp_Int32;
+
+/// clamp
 extern Variable clamp_Int32x2_val;
 extern Variable clamp_Int32x2_min;
 extern Variable clamp_Int32x2_max;
 extern Function clamp_Int32x2;
+
+/// clamp
 extern Variable clamp_Int32x3_val;
 extern Variable clamp_Int32x3_min;
 extern Variable clamp_Int32x3_max;
 extern Function clamp_Int32x3;
+
+/// clamp
 extern Variable clamp_Int32x4_val;
 extern Variable clamp_Int32x4_min;
 extern Variable clamp_Int32x4_max;
 extern Function clamp_Int32x4;
+
+/// clamp
 extern Variable clamp_Int16_val;
 extern Variable clamp_Int16_min;
 extern Variable clamp_Int16_max;
 extern Function clamp_Int16;
+
+/// clamp
 extern Variable clamp_Int16x2_val;
 extern Variable clamp_Int16x2_min;
 extern Variable clamp_Int16x2_max;
 extern Function clamp_Int16x2;
+
+/// clamp
 extern Variable clamp_Int16x3_val;
 extern Variable clamp_Int16x3_min;
 extern Variable clamp_Int16x3_max;
 extern Function clamp_Int16x3;
+
+/// clamp
 extern Variable clamp_Int16x4_val;
 extern Variable clamp_Int16x4_min;
 extern Variable clamp_Int16x4_max;
 extern Function clamp_Int16x4;
+
+/// clamp
 extern Variable clamp_UInt32_val;
 extern Variable clamp_UInt32_min;
 extern Variable clamp_UInt32_max;
 extern Function clamp_UInt32;
+
+/// clamp
 extern Variable clamp_UInt32x2_val;
 extern Variable clamp_UInt32x2_min;
 extern Variable clamp_UInt32x2_max;
 extern Function clamp_UInt32x2;
+
+/// clamp
 extern Variable clamp_UInt32x3_val;
 extern Variable clamp_UInt32x3_min;
 extern Variable clamp_UInt32x3_max;
 extern Function clamp_UInt32x3;
+
+/// clamp
 extern Variable clamp_UInt32x4_val;
 extern Variable clamp_UInt32x4_min;
 extern Variable clamp_UInt32x4_max;
 extern Function clamp_UInt32x4;
+
+/// clamp
 extern Variable clamp_UInt16_val;
 extern Variable clamp_UInt16_min;
 extern Variable clamp_UInt16_max;
 extern Function clamp_UInt16;
+
+/// clamp
 extern Variable clamp_UInt16x2_val;
 extern Variable clamp_UInt16x2_min;
 extern Variable clamp_UInt16x2_max;
 extern Function clamp_UInt16x2;
+
+/// clamp
 extern Variable clamp_UInt16x3_val;
 extern Variable clamp_UInt16x3_min;
 extern Variable clamp_UInt16x3_max;
 extern Function clamp_UInt16x3;
+
+/// clamp
 extern Variable clamp_UInt16x4_val;
 extern Variable clamp_UInt16x4_min;
 extern Variable clamp_UInt16x4_max;
 extern Function clamp_UInt16x4;
+
+/// lerp
 extern Variable lerp_Float32x2_a;
 extern Variable lerp_Float32x2_b;
 extern Variable lerp_Float32x2_t;
 extern Function lerp_Float32x2;
+
+/// lerp
 extern Variable lerp_Float32x3_a;
 extern Variable lerp_Float32x3_b;
 extern Variable lerp_Float32x3_t;
 extern Function lerp_Float32x3;
+
+/// lerp
 extern Variable lerp_Float32x4_a;
 extern Variable lerp_Float32x4_b;
 extern Variable lerp_Float32x4_t;
 extern Function lerp_Float32x4;
+
+/// lerp
 extern Variable lerp_Float16x2_a;
 extern Variable lerp_Float16x2_b;
 extern Variable lerp_Float16x2_t;
 extern Function lerp_Float16x2;
+
+/// lerp
 extern Variable lerp_Float16x3_a;
 extern Variable lerp_Float16x3_b;
 extern Variable lerp_Float16x3_t;
 extern Function lerp_Float16x3;
+
+/// lerp
 extern Variable lerp_Float16x4_a;
 extern Variable lerp_Float16x4_b;
 extern Variable lerp_Float16x4_t;
 extern Function lerp_Float16x4;
+
+/// step
 extern Variable step_Float32_edge;
 extern Variable step_Float32_x;
 extern Function step_Float32;
+
+/// step
 extern Variable step_Float32x2_edge;
 extern Variable step_Float32x2_x;
 extern Function step_Float32x2;
+
+/// step
 extern Variable step_Float32x3_edge;
 extern Variable step_Float32x3_x;
 extern Function step_Float32x3;
+
+/// step
 extern Variable step_Float32x4_edge;
 extern Variable step_Float32x4_x;
 extern Function step_Float32x4;
+
+/// step
 extern Variable step_Float16_edge;
 extern Variable step_Float16_x;
 extern Function step_Float16;
+
+/// step
 extern Variable step_Float16x2_edge;
 extern Variable step_Float16x2_x;
 extern Function step_Float16x2;
+
+/// step
 extern Variable step_Float16x3_edge;
 extern Variable step_Float16x3_x;
 extern Function step_Float16x3;
+
+/// step
 extern Variable step_Float16x4_edge;
 extern Variable step_Float16x4_x;
 extern Function step_Float16x4;
+
+/// smoothstep
 extern Variable smoothstep_Float32_edge0;
 extern Variable smoothstep_Float32_edge1;
 extern Variable smoothstep_Float32_x;
 extern Function smoothstep_Float32;
+
+/// smoothstep
 extern Variable smoothstep_Float32x2_edge0;
 extern Variable smoothstep_Float32x2_edge1;
 extern Variable smoothstep_Float32x2_x;
 extern Function smoothstep_Float32x2;
+
+/// smoothstep
 extern Variable smoothstep_Float32x3_edge0;
 extern Variable smoothstep_Float32x3_edge1;
 extern Variable smoothstep_Float32x3_x;
 extern Function smoothstep_Float32x3;
+
+/// smoothstep
 extern Variable smoothstep_Float32x4_edge0;
 extern Variable smoothstep_Float32x4_edge1;
 extern Variable smoothstep_Float32x4_x;
 extern Function smoothstep_Float32x4;
+
+/// smoothstep
 extern Variable smoothstep_Float16_edge0;
 extern Variable smoothstep_Float16_edge1;
 extern Variable smoothstep_Float16_x;
 extern Function smoothstep_Float16;
+
+/// smoothstep
 extern Variable smoothstep_Float16x2_edge0;
 extern Variable smoothstep_Float16x2_edge1;
 extern Variable smoothstep_Float16x2_x;
 extern Function smoothstep_Float16x2;
+
+/// smoothstep
 extern Variable smoothstep_Float16x3_edge0;
 extern Variable smoothstep_Float16x3_edge1;
 extern Variable smoothstep_Float16x3_x;
 extern Function smoothstep_Float16x3;
+
+/// smoothstep
 extern Variable smoothstep_Float16x4_edge0;
 extern Variable smoothstep_Float16x4_edge1;
 extern Variable smoothstep_Float16x4_x;
 extern Function smoothstep_Float16x4;
+
+/// smoothstep
 extern Variable ceil_Float32_arg;
 extern Function ceil_Float32;
+
+/// smoothstep
 extern Variable ceil_Float32x2_arg;
 extern Function ceil_Float32x2;
+
+/// smoothstep
 extern Variable ceil_Float32x3_arg;
 extern Function ceil_Float32x3;
+
+/// smoothstep
 extern Variable ceil_Float32x4_arg;
 extern Function ceil_Float32x4;
+
+/// smoothstep
 extern Variable ceil_Float16_arg;
 extern Function ceil_Float16;
+
+/// smoothstep
 extern Variable ceil_Float16x2_arg;
 extern Function ceil_Float16x2;
+
+/// smoothstep
 extern Variable ceil_Float16x3_arg;
 extern Function ceil_Float16x3;
+
+/// smoothstep
 extern Variable ceil_Float16x4_arg;
 extern Function ceil_Float16x4;
+
+/// smoothstep
 extern Variable floor_Float32_arg;
 extern Function floor_Float32;
+
+/// smoothstep
 extern Variable floor_Float32x2_arg;
 extern Function floor_Float32x2;
+
+/// smoothstep
 extern Variable floor_Float32x3_arg;
 extern Function floor_Float32x3;
+
+/// smoothstep
 extern Variable floor_Float32x4_arg;
 extern Function floor_Float32x4;
+
+/// smoothstep
 extern Variable floor_Float16_arg;
 extern Function floor_Float16;
+
+/// smoothstep
 extern Variable floor_Float16x2_arg;
 extern Function floor_Float16x2;
+
+/// smoothstep
 extern Variable floor_Float16x3_arg;
 extern Function floor_Float16x3;
+
+/// smoothstep
 extern Variable floor_Float16x4_arg;
 extern Function floor_Float16x4;
+
+/// smoothstep
 extern Variable fract_Float32_arg;
 extern Function fract_Float32;
+
+/// smoothstep
 extern Variable fract_Float32x2_arg;
 extern Function fract_Float32x2;
+
+/// smoothstep
 extern Variable fract_Float32x3_arg;
 extern Function fract_Float32x3;
+
+/// smoothstep
 extern Variable fract_Float32x4_arg;
 extern Function fract_Float32x4;
+
+/// smoothstep
 extern Variable fract_Float16_arg;
 extern Function fract_Float16;
+
+/// smoothstep
 extern Variable fract_Float16x2_arg;
 extern Function fract_Float16x2;
+
+/// smoothstep
 extern Variable fract_Float16x3_arg;
 extern Function fract_Float16x3;
+
+/// smoothstep
 extern Variable fract_Float16x4_arg;
 extern Function fract_Float16x4;
+
+/// smoothstep
 extern Variable saturate_Float32_arg;
 extern Function saturate_Float32;
+
+/// smoothstep
 extern Variable saturate_Float32x2_arg;
 extern Function saturate_Float32x2;
+
+/// smoothstep
 extern Variable saturate_Float32x3_arg;
 extern Function saturate_Float32x3;
+
+/// smoothstep
 extern Variable saturate_Float32x4_arg;
 extern Function saturate_Float32x4;
+
+/// smoothstep
 extern Variable saturate_Float16_arg;
 extern Function saturate_Float16;
+
+/// smoothstep
 extern Variable saturate_Float16x2_arg;
 extern Function saturate_Float16x2;
+
+/// smoothstep
 extern Variable saturate_Float16x3_arg;
 extern Function saturate_Float16x3;
+
+/// smoothstep
 extern Variable saturate_Float16x4_arg;
 extern Function saturate_Float16x4;
+
+/// smoothstep
 extern Variable trunc_Float32_arg;
 extern Function trunc_Float32;
+
+/// smoothstep
 extern Variable trunc_Float32x2_arg;
 extern Function trunc_Float32x2;
+
+/// smoothstep
 extern Variable trunc_Float32x3_arg;
 extern Function trunc_Float32x3;
+
+/// smoothstep
 extern Variable trunc_Float32x4_arg;
 extern Function trunc_Float32x4;
+
+/// smoothstep
 extern Variable trunc_Float16_arg;
 extern Function trunc_Float16;
+
+/// smoothstep
 extern Variable trunc_Float16x2_arg;
 extern Function trunc_Float16x2;
+
+/// smoothstep
 extern Variable trunc_Float16x3_arg;
 extern Function trunc_Float16x3;
+
+/// smoothstep
 extern Variable trunc_Float16x4_arg;
 extern Function trunc_Float16x4;
+
+/// smoothstep
 extern Variable ddx_Float32_arg;
 extern Function ddx_Float32;
+
+/// smoothstep
 extern Variable ddx_Float32x2_arg;
 extern Function ddx_Float32x2;
+
+/// smoothstep
 extern Variable ddx_Float32x3_arg;
 extern Function ddx_Float32x3;
+
+/// smoothstep
 extern Variable ddx_Float32x4_arg;
 extern Function ddx_Float32x4;
+
+/// smoothstep
 extern Variable ddx_Float16_arg;
 extern Function ddx_Float16;
+
+/// smoothstep
 extern Variable ddx_Float16x2_arg;
 extern Function ddx_Float16x2;
+
+/// smoothstep
 extern Variable ddx_Float16x3_arg;
 extern Function ddx_Float16x3;
+
+/// smoothstep
 extern Variable ddx_Float16x4_arg;
 extern Function ddx_Float16x4;
+
+/// smoothstep
 extern Variable ddy_Float32_arg;
 extern Function ddy_Float32;
+
+/// smoothstep
 extern Variable ddy_Float32x2_arg;
 extern Function ddy_Float32x2;
+
+/// smoothstep
 extern Variable ddy_Float32x3_arg;
 extern Function ddy_Float32x3;
+
+/// smoothstep
 extern Variable ddy_Float32x4_arg;
 extern Function ddy_Float32x4;
+
+/// smoothstep
 extern Variable ddy_Float16_arg;
 extern Function ddy_Float16;
+
+/// smoothstep
 extern Variable ddy_Float16x2_arg;
 extern Function ddy_Float16x2;
+
+/// smoothstep
 extern Variable ddy_Float16x3_arg;
 extern Function ddy_Float16x3;
+
+/// smoothstep
 extern Variable ddy_Float16x4_arg;
 extern Function ddy_Float16x4;
+
+/// smoothstep
 extern Variable fwidth_Float32_arg;
 extern Function fwidth_Float32;
+
+/// smoothstep
 extern Variable fwidth_Float32x2_arg;
 extern Function fwidth_Float32x2;
+
+/// smoothstep
 extern Variable fwidth_Float32x3_arg;
 extern Function fwidth_Float32x3;
+
+/// smoothstep
 extern Variable fwidth_Float32x4_arg;
 extern Function fwidth_Float32x4;
+
+/// smoothstep
 extern Variable fwidth_Float16_arg;
 extern Function fwidth_Float16;
+
+/// smoothstep
 extern Variable fwidth_Float16x2_arg;
 extern Function fwidth_Float16x2;
+
+/// smoothstep
 extern Variable fwidth_Float16x3_arg;
 extern Function fwidth_Float16x3;
+
+/// smoothstep
 extern Variable fwidth_Float16x4_arg;
 extern Function fwidth_Float16x4;
+
+/// sign
 extern Variable sign_Int32_arg;
 extern Function sign_Int32;
+
+/// sign
 extern Variable sign_Int32x2_arg;
 extern Function sign_Int32x2;
+
+/// sign
 extern Variable sign_Int32x3_arg;
 extern Function sign_Int32x3;
+
+/// sign
 extern Variable sign_Int32x4_arg;
 extern Function sign_Int32x4;
+
+/// sign
 extern Variable sign_Int16_arg;
 extern Function sign_Int16;
+
+/// sign
 extern Variable sign_Int16x2_arg;
 extern Function sign_Int16x2;
+
+/// sign
 extern Variable sign_Int16x3_arg;
 extern Function sign_Int16x3;
+
+/// sign
 extern Variable sign_Int16x4_arg;
 extern Function sign_Int16x4;
+
+/// sign
 extern Variable sign_Float32_arg;
 extern Function sign_Float32;
+
+/// sign
 extern Variable sign_Float32x2_arg;
 extern Function sign_Float32x2;
+
+/// sign
 extern Variable sign_Float32x3_arg;
 extern Function sign_Float32x3;
+
+/// sign
 extern Variable sign_Float32x4_arg;
 extern Function sign_Float32x4;
+
+/// sign
 extern Variable sign_Float16_arg;
 extern Function sign_Float16;
+
+/// sign
 extern Variable sign_Float16x2_arg;
 extern Function sign_Float16x2;
+
+/// sign
 extern Variable sign_Float16x3_arg;
 extern Function sign_Float16x3;
+
+/// sign
 extern Variable sign_Float16x4_arg;
 extern Function sign_Float16x4;
+
+/// abs
 extern Variable abs_Int32_arg;
 extern Function abs_Int32;
+
+/// abs
 extern Variable abs_Int32x2_arg;
 extern Function abs_Int32x2;
+
+/// abs
 extern Variable abs_Int32x3_arg;
 extern Function abs_Int32x3;
+
+/// abs
 extern Variable abs_Int32x4_arg;
 extern Function abs_Int32x4;
+
+/// abs
 extern Variable abs_Int16_arg;
 extern Function abs_Int16;
+
+/// abs
 extern Variable abs_Int16x2_arg;
 extern Function abs_Int16x2;
+
+/// abs
 extern Variable abs_Int16x3_arg;
 extern Function abs_Int16x3;
+
+/// abs
 extern Variable abs_Int16x4_arg;
 extern Function abs_Int16x4;
+
+/// abs
 extern Variable abs_Float32_arg;
 extern Function abs_Float32;
+
+/// abs
 extern Variable abs_Float32x2_arg;
 extern Function abs_Float32x2;
+
+/// abs
 extern Variable abs_Float32x3_arg;
 extern Function abs_Float32x3;
+
+/// abs
 extern Variable abs_Float32x4_arg;
 extern Function abs_Float32x4;
+
+/// abs
 extern Variable abs_Float16_arg;
 extern Function abs_Float16;
+
+/// abs
 extern Variable abs_Float16x2_arg;
 extern Function abs_Float16x2;
+
+/// abs
 extern Variable abs_Float16x3_arg;
 extern Function abs_Float16x3;
+
+/// abs
 extern Variable abs_Float16x4_arg;
 extern Function abs_Float16x4;
+
+/// castToF16
 extern Variable castToF16_UInt16_arg;
 extern Function castToF16_UInt16;
+
+/// castToF16
 extern Variable castToF16_Int16_arg;
 extern Function castToF16_Int16;
+
+/// castToU16
 extern Variable castToU16_Float16_arg;
 extern Function castToU16_Float16;
+
+/// castToU16
 extern Variable castToU16_Int16_arg;
 extern Function castToU16_Int16;
+
+/// castToI16
 extern Variable castToI16_Float16_arg;
 extern Function castToI16_Float16;
+
+/// castToI16
 extern Variable castToI16_UInt16_arg;
 extern Function castToI16_UInt16;
+
+/// castToF32
 extern Variable castToF32_UInt32_arg;
 extern Function castToF32_UInt32;
+
+/// castToF32
 extern Variable castToF32_Int32_arg;
 extern Function castToF32_Int32;
+
+/// castToU32
 extern Variable castToU32_Float32_arg;
 extern Function castToU32_Float32;
+
+/// castToU32
 extern Variable castToU32_Int32_arg;
 extern Function castToU32_Int32;
+
+/// castToI32
 extern Variable castToI32_Float32_arg;
 extern Function castToI32_Float32;
+
+/// castToI32
 extern Variable castToI32_UInt32_arg;
 extern Function castToI32_UInt32;
+
+/// any
 extern Variable any_Bool8_arg;
 extern Function any_Bool8;
+
+/// any
 extern Variable any_Bool8x2_arg;
 extern Function any_Bool8x2;
+
+/// any
 extern Variable any_Bool8x3_arg;
 extern Function any_Bool8x3;
+
+/// any
 extern Variable any_Bool8x4_arg;
 extern Function any_Bool8x4;
+
+/// all
 extern Variable all_Bool8_arg;
 extern Function all_Bool8;
+
+/// all
 extern Variable all_Bool8x2_arg;
 extern Function all_Bool8x2;
+
+/// all
 extern Variable all_Bool8x3_arg;
 extern Function all_Bool8x3;
+
+/// all
 extern Variable all_Bool8x4_arg;
 extern Function all_Bool8x4;
+
+/// transpose
 extern Variable transpose_Float32x2x2_arg;
 extern Function transpose_Float32x2x2;
+
+/// transpose
 extern Variable transpose_Float16x2x2_arg;
 extern Function transpose_Float16x2x2;
+
+/// transpose
 extern Variable transpose_Float32x2x3_arg;
 extern Function transpose_Float32x2x3;
+
+/// transpose
 extern Variable transpose_Float16x2x3_arg;
 extern Function transpose_Float16x2x3;
+
+/// transpose
 extern Variable transpose_Float32x2x4_arg;
 extern Function transpose_Float32x2x4;
+
+/// transpose
 extern Variable transpose_Float16x2x4_arg;
 extern Function transpose_Float16x2x4;
+
+/// transpose
 extern Variable transpose_Float32x3x2_arg;
 extern Function transpose_Float32x3x2;
+
+/// transpose
 extern Variable transpose_Float16x3x2_arg;
 extern Function transpose_Float16x3x2;
+
+/// transpose
 extern Variable transpose_Float32x3x3_arg;
 extern Function transpose_Float32x3x3;
+
+/// transpose
 extern Variable transpose_Float16x3x3_arg;
 extern Function transpose_Float16x3x3;
+
+/// transpose
 extern Variable transpose_Float32x3x4_arg;
 extern Function transpose_Float32x3x4;
+
+/// transpose
 extern Variable transpose_Float16x3x4_arg;
 extern Function transpose_Float16x3x4;
+
+/// transpose
 extern Variable transpose_Float32x4x2_arg;
 extern Function transpose_Float32x4x2;
+
+/// transpose
 extern Variable transpose_Float16x4x2_arg;
 extern Function transpose_Float16x4x2;
+
+/// transpose
 extern Variable transpose_Float32x4x3_arg;
 extern Function transpose_Float32x4x3;
+
+/// transpose
 extern Variable transpose_Float16x4x3_arg;
 extern Function transpose_Float16x4x3;
+
+/// transpose
 extern Variable transpose_Float32x4x4_arg;
 extern Function transpose_Float32x4x4;
+
+/// transpose
 extern Variable transpose_Float16x4x4_arg;
 extern Function transpose_Float16x4x4;
+
+/// inverse
 extern Variable inverse_Float32x2x2_arg;
 extern Function inverse_Float32x2x2;
+
+/// inverse
 extern Variable inverse_Float16x2x2_arg;
 extern Function inverse_Float16x2x2;
+
+/// inverse
 extern Variable inverse_Float32x2x3_arg;
 extern Function inverse_Float32x2x3;
+
+/// inverse
 extern Variable inverse_Float16x2x3_arg;
 extern Function inverse_Float16x2x3;
+
+/// inverse
 extern Variable inverse_Float32x2x4_arg;
 extern Function inverse_Float32x2x4;
+
+/// inverse
 extern Variable inverse_Float16x2x4_arg;
 extern Function inverse_Float16x2x4;
+
+/// inverse
 extern Variable inverse_Float32x3x2_arg;
 extern Function inverse_Float32x3x2;
+
+/// inverse
 extern Variable inverse_Float16x3x2_arg;
 extern Function inverse_Float16x3x2;
+
+/// inverse
 extern Variable inverse_Float32x3x3_arg;
 extern Function inverse_Float32x3x3;
+
+/// inverse
 extern Variable inverse_Float16x3x3_arg;
 extern Function inverse_Float16x3x3;
+
+/// inverse
 extern Variable inverse_Float32x3x4_arg;
 extern Function inverse_Float32x3x4;
+
+/// inverse
 extern Variable inverse_Float16x3x4_arg;
 extern Function inverse_Float16x3x4;
+
+/// inverse
 extern Variable inverse_Float32x4x2_arg;
 extern Function inverse_Float32x4x2;
+
+/// inverse
 extern Variable inverse_Float16x4x2_arg;
 extern Function inverse_Float16x4x2;
+
+/// inverse
 extern Variable inverse_Float32x4x3_arg;
 extern Function inverse_Float32x4x3;
+
+/// inverse
 extern Variable inverse_Float16x4x3_arg;
 extern Function inverse_Float16x4x3;
+
+/// inverse
 extern Variable inverse_Float32x4x4_arg;
 extern Function inverse_Float32x4x4;
+
+/// inverse
 extern Variable inverse_Float16x4x4_arg;
 extern Function inverse_Float16x4x4;
+
+/// OutputLayer
 extern Function VertexGetOutputLayer;
+
+/// OutputViewport
 extern Function VertexGetOutputViewport;
+
+/// Index
 extern Function VertexGetIndex;
+
+/// InstanceIndex
 extern Function VertexGetInstanceIndex;
+
+/// BaseIndex
 extern Function VertexGetBaseIndex;
+
+/// BaseInstanceIndex
 extern Function VertexGetBaseInstanceIndex;
+
+/// DrawIndex
 extern Function VertexGetDrawIndex;
+
+/// OutputLayer
 extern Variable VertexSetOutputLayer_UInt16_arg;
 extern Function VertexSetOutputLayer_UInt16;
+
+/// OutputLayer
 extern Variable VertexSetOutputLayer_UInt32_arg;
 extern Function VertexSetOutputLayer_UInt32;
+
+/// OutputViewport
 extern Variable VertexSetOutputViewport_UInt16_arg;
 extern Function VertexSetOutputViewport_UInt16;
+
+/// OutputViewport
 extern Variable VertexSetOutputViewport_UInt32_arg;
 extern Function VertexSetOutputViewport_UInt32;
+
+/// vertexExportExportCoordinates
 extern Variable VertexExportCoordinates_Float32x4_arg;
 extern Function VertexExportCoordinates_Float32x4;
+
+/// vertexExportExportCoordinates
 extern Variable VertexExportCoordinates_Float16x4_arg;
 extern Function VertexExportCoordinates_Float16x4;
+
+/// geometryExportVertex
 extern Function GeometryExportVertex;
+
+/// geometryExportPrimitive
 extern Function GeometryExportPrimitive;
+
+/// pixelGetCoordinates
 extern Function PixelGetCoordinates_Float32x4;
+
+/// pixelGetCoordinates
 extern Function PixelGetCoordinates_Float16x4;
+
+/// pixelGetDepth
 extern Function PixelGetDepth;
+
+/// pixelSetDepth
+extern Variable PixelSetDepth_val;
 extern Function PixelSetDepth;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32_Int32_color;
 extern Variable PixelExportColor_Float32_Int32_index;
 extern Function PixelExportColor_Float32_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32_UInt32_color;
 extern Variable PixelExportColor_Float32_UInt32_index;
 extern Function PixelExportColor_Float32_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32_Int16_color;
 extern Variable PixelExportColor_Float32_Int16_index;
 extern Function PixelExportColor_Float32_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32_UInt16_color;
 extern Variable PixelExportColor_Float32_UInt16_index;
 extern Function PixelExportColor_Float32_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x2_Int32_color;
 extern Variable PixelExportColor_Float32x2_Int32_index;
 extern Function PixelExportColor_Float32x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x2_UInt32_color;
 extern Variable PixelExportColor_Float32x2_UInt32_index;
 extern Function PixelExportColor_Float32x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x2_Int16_color;
 extern Variable PixelExportColor_Float32x2_Int16_index;
 extern Function PixelExportColor_Float32x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x2_UInt16_color;
 extern Variable PixelExportColor_Float32x2_UInt16_index;
 extern Function PixelExportColor_Float32x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x3_Int32_color;
 extern Variable PixelExportColor_Float32x3_Int32_index;
 extern Function PixelExportColor_Float32x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x3_UInt32_color;
 extern Variable PixelExportColor_Float32x3_UInt32_index;
 extern Function PixelExportColor_Float32x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x3_Int16_color;
 extern Variable PixelExportColor_Float32x3_Int16_index;
 extern Function PixelExportColor_Float32x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x3_UInt16_color;
 extern Variable PixelExportColor_Float32x3_UInt16_index;
 extern Function PixelExportColor_Float32x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x4_Int32_color;
 extern Variable PixelExportColor_Float32x4_Int32_index;
 extern Function PixelExportColor_Float32x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x4_UInt32_color;
 extern Variable PixelExportColor_Float32x4_UInt32_index;
 extern Function PixelExportColor_Float32x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x4_Int16_color;
 extern Variable PixelExportColor_Float32x4_Int16_index;
 extern Function PixelExportColor_Float32x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float32x4_UInt16_color;
 extern Variable PixelExportColor_Float32x4_UInt16_index;
 extern Function PixelExportColor_Float32x4_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16_Int32_color;
 extern Variable PixelExportColor_Float16_Int32_index;
 extern Function PixelExportColor_Float16_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16_UInt32_color;
 extern Variable PixelExportColor_Float16_UInt32_index;
 extern Function PixelExportColor_Float16_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16_Int16_color;
 extern Variable PixelExportColor_Float16_Int16_index;
 extern Function PixelExportColor_Float16_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16_UInt16_color;
 extern Variable PixelExportColor_Float16_UInt16_index;
 extern Function PixelExportColor_Float16_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x2_Int32_color;
 extern Variable PixelExportColor_Float16x2_Int32_index;
 extern Function PixelExportColor_Float16x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x2_UInt32_color;
 extern Variable PixelExportColor_Float16x2_UInt32_index;
 extern Function PixelExportColor_Float16x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x2_Int16_color;
 extern Variable PixelExportColor_Float16x2_Int16_index;
 extern Function PixelExportColor_Float16x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x2_UInt16_color;
 extern Variable PixelExportColor_Float16x2_UInt16_index;
 extern Function PixelExportColor_Float16x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x3_Int32_color;
 extern Variable PixelExportColor_Float16x3_Int32_index;
 extern Function PixelExportColor_Float16x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x3_UInt32_color;
 extern Variable PixelExportColor_Float16x3_UInt32_index;
 extern Function PixelExportColor_Float16x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x3_Int16_color;
 extern Variable PixelExportColor_Float16x3_Int16_index;
 extern Function PixelExportColor_Float16x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x3_UInt16_color;
 extern Variable PixelExportColor_Float16x3_UInt16_index;
 extern Function PixelExportColor_Float16x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x4_Int32_color;
 extern Variable PixelExportColor_Float16x4_Int32_index;
 extern Function PixelExportColor_Float16x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x4_UInt32_color;
 extern Variable PixelExportColor_Float16x4_UInt32_index;
 extern Function PixelExportColor_Float16x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x4_Int16_color;
 extern Variable PixelExportColor_Float16x4_Int16_index;
 extern Function PixelExportColor_Float16x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Float16x4_UInt16_color;
 extern Variable PixelExportColor_Float16x4_UInt16_index;
 extern Function PixelExportColor_Float16x4_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32_Int32_color;
 extern Variable PixelExportColor_Int32_Int32_index;
 extern Function PixelExportColor_Int32_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32_UInt32_color;
 extern Variable PixelExportColor_Int32_UInt32_index;
 extern Function PixelExportColor_Int32_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32_Int16_color;
 extern Variable PixelExportColor_Int32_Int16_index;
 extern Function PixelExportColor_Int32_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32_UInt16_color;
 extern Variable PixelExportColor_Int32_UInt16_index;
 extern Function PixelExportColor_Int32_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x2_Int32_color;
 extern Variable PixelExportColor_Int32x2_Int32_index;
 extern Function PixelExportColor_Int32x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x2_UInt32_color;
 extern Variable PixelExportColor_Int32x2_UInt32_index;
 extern Function PixelExportColor_Int32x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x2_Int16_color;
 extern Variable PixelExportColor_Int32x2_Int16_index;
 extern Function PixelExportColor_Int32x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x2_UInt16_color;
 extern Variable PixelExportColor_Int32x2_UInt16_index;
 extern Function PixelExportColor_Int32x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x3_Int32_color;
 extern Variable PixelExportColor_Int32x3_Int32_index;
 extern Function PixelExportColor_Int32x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x3_UInt32_color;
 extern Variable PixelExportColor_Int32x3_UInt32_index;
 extern Function PixelExportColor_Int32x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x3_Int16_color;
 extern Variable PixelExportColor_Int32x3_Int16_index;
 extern Function PixelExportColor_Int32x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x3_UInt16_color;
 extern Variable PixelExportColor_Int32x3_UInt16_index;
 extern Function PixelExportColor_Int32x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x4_Int32_color;
 extern Variable PixelExportColor_Int32x4_Int32_index;
 extern Function PixelExportColor_Int32x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x4_UInt32_color;
 extern Variable PixelExportColor_Int32x4_UInt32_index;
 extern Function PixelExportColor_Int32x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x4_Int16_color;
 extern Variable PixelExportColor_Int32x4_Int16_index;
 extern Function PixelExportColor_Int32x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int32x4_UInt16_color;
 extern Variable PixelExportColor_Int32x4_UInt16_index;
 extern Function PixelExportColor_Int32x4_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16_Int32_color;
 extern Variable PixelExportColor_Int16_Int32_index;
 extern Function PixelExportColor_Int16_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16_UInt32_color;
 extern Variable PixelExportColor_Int16_UInt32_index;
 extern Function PixelExportColor_Int16_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16_Int16_color;
 extern Variable PixelExportColor_Int16_Int16_index;
 extern Function PixelExportColor_Int16_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16_UInt16_color;
 extern Variable PixelExportColor_Int16_UInt16_index;
 extern Function PixelExportColor_Int16_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x2_Int32_color;
 extern Variable PixelExportColor_Int16x2_Int32_index;
 extern Function PixelExportColor_Int16x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x2_UInt32_color;
 extern Variable PixelExportColor_Int16x2_UInt32_index;
 extern Function PixelExportColor_Int16x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x2_Int16_color;
 extern Variable PixelExportColor_Int16x2_Int16_index;
 extern Function PixelExportColor_Int16x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x2_UInt16_color;
 extern Variable PixelExportColor_Int16x2_UInt16_index;
 extern Function PixelExportColor_Int16x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x3_Int32_color;
 extern Variable PixelExportColor_Int16x3_Int32_index;
 extern Function PixelExportColor_Int16x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x3_UInt32_color;
 extern Variable PixelExportColor_Int16x3_UInt32_index;
 extern Function PixelExportColor_Int16x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x3_Int16_color;
 extern Variable PixelExportColor_Int16x3_Int16_index;
 extern Function PixelExportColor_Int16x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x3_UInt16_color;
 extern Variable PixelExportColor_Int16x3_UInt16_index;
 extern Function PixelExportColor_Int16x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x4_Int32_color;
 extern Variable PixelExportColor_Int16x4_Int32_index;
 extern Function PixelExportColor_Int16x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x4_UInt32_color;
 extern Variable PixelExportColor_Int16x4_UInt32_index;
 extern Function PixelExportColor_Int16x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x4_Int16_color;
 extern Variable PixelExportColor_Int16x4_Int16_index;
 extern Function PixelExportColor_Int16x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_Int16x4_UInt16_color;
 extern Variable PixelExportColor_Int16x4_UInt16_index;
 extern Function PixelExportColor_Int16x4_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32_Int32_color;
 extern Variable PixelExportColor_UInt32_Int32_index;
 extern Function PixelExportColor_UInt32_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32_UInt32_color;
 extern Variable PixelExportColor_UInt32_UInt32_index;
 extern Function PixelExportColor_UInt32_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32_Int16_color;
 extern Variable PixelExportColor_UInt32_Int16_index;
 extern Function PixelExportColor_UInt32_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32_UInt16_color;
 extern Variable PixelExportColor_UInt32_UInt16_index;
 extern Function PixelExportColor_UInt32_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x2_Int32_color;
 extern Variable PixelExportColor_UInt32x2_Int32_index;
 extern Function PixelExportColor_UInt32x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x2_UInt32_color;
 extern Variable PixelExportColor_UInt32x2_UInt32_index;
 extern Function PixelExportColor_UInt32x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x2_Int16_color;
 extern Variable PixelExportColor_UInt32x2_Int16_index;
 extern Function PixelExportColor_UInt32x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x2_UInt16_color;
 extern Variable PixelExportColor_UInt32x2_UInt16_index;
 extern Function PixelExportColor_UInt32x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x3_Int32_color;
 extern Variable PixelExportColor_UInt32x3_Int32_index;
 extern Function PixelExportColor_UInt32x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x3_UInt32_color;
 extern Variable PixelExportColor_UInt32x3_UInt32_index;
 extern Function PixelExportColor_UInt32x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x3_Int16_color;
 extern Variable PixelExportColor_UInt32x3_Int16_index;
 extern Function PixelExportColor_UInt32x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x3_UInt16_color;
 extern Variable PixelExportColor_UInt32x3_UInt16_index;
 extern Function PixelExportColor_UInt32x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x4_Int32_color;
 extern Variable PixelExportColor_UInt32x4_Int32_index;
 extern Function PixelExportColor_UInt32x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x4_UInt32_color;
 extern Variable PixelExportColor_UInt32x4_UInt32_index;
 extern Function PixelExportColor_UInt32x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x4_Int16_color;
 extern Variable PixelExportColor_UInt32x4_Int16_index;
 extern Function PixelExportColor_UInt32x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt32x4_UInt16_color;
 extern Variable PixelExportColor_UInt32x4_UInt16_index;
 extern Function PixelExportColor_UInt32x4_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16_Int32_color;
 extern Variable PixelExportColor_UInt16_Int32_index;
 extern Function PixelExportColor_UInt16_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16_UInt32_color;
 extern Variable PixelExportColor_UInt16_UInt32_index;
 extern Function PixelExportColor_UInt16_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16_Int16_color;
 extern Variable PixelExportColor_UInt16_Int16_index;
 extern Function PixelExportColor_UInt16_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16_UInt16_color;
 extern Variable PixelExportColor_UInt16_UInt16_index;
 extern Function PixelExportColor_UInt16_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x2_Int32_color;
 extern Variable PixelExportColor_UInt16x2_Int32_index;
 extern Function PixelExportColor_UInt16x2_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x2_UInt32_color;
 extern Variable PixelExportColor_UInt16x2_UInt32_index;
 extern Function PixelExportColor_UInt16x2_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x2_Int16_color;
 extern Variable PixelExportColor_UInt16x2_Int16_index;
 extern Function PixelExportColor_UInt16x2_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x2_UInt16_color;
 extern Variable PixelExportColor_UInt16x2_UInt16_index;
 extern Function PixelExportColor_UInt16x2_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x3_Int32_color;
 extern Variable PixelExportColor_UInt16x3_Int32_index;
 extern Function PixelExportColor_UInt16x3_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x3_UInt32_color;
 extern Variable PixelExportColor_UInt16x3_UInt32_index;
 extern Function PixelExportColor_UInt16x3_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x3_Int16_color;
 extern Variable PixelExportColor_UInt16x3_Int16_index;
 extern Function PixelExportColor_UInt16x3_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x3_UInt16_color;
 extern Variable PixelExportColor_UInt16x3_UInt16_index;
 extern Function PixelExportColor_UInt16x3_UInt16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x4_Int32_color;
 extern Variable PixelExportColor_UInt16x4_Int32_index;
 extern Function PixelExportColor_UInt16x4_Int32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x4_UInt32_color;
 extern Variable PixelExportColor_UInt16x4_UInt32_index;
 extern Function PixelExportColor_UInt16x4_UInt32;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x4_Int16_color;
 extern Variable PixelExportColor_UInt16x4_Int16_index;
 extern Function PixelExportColor_UInt16x4_Int16;
+
+/// pixelExportColor
 extern Variable PixelExportColor_UInt16x4_UInt16_color;
 extern Variable PixelExportColor_UInt16x4_UInt16_index;
 extern Function PixelExportColor_UInt16x4_UInt16;
+
+/// computeGetLocalThreadIndices
 extern Function ComputeGetLocalThreadIndices;
+
+/// computeGetGlobalThreadIndices
 extern Function ComputeGetGlobalThreadIndices;
+
+/// computeGetWorkgroupIndices
 extern Function ComputeGetWorkgroupIndices;
+
+/// computeGetWorkGroupDimensions
 extern Function ComputeGetWorkGroupDimensions;
+
+/// computeGetIndexInWorkgroup
 extern Function ComputeGetIndexInWorkgroup;
+
+/// subgroupGetId
 extern Function SubgroupGetId;
+
+/// subgroupGetSize
 extern Function SubgroupGetSize;
+
+/// subgroupGetNum
 extern Function SubgroupGetNum;
+
+/// subgroupGetThreadMask
 extern Function SubgroupGetThreadMask;
+
+/// subgroupGetThreadAndLowerMask
 extern Function SubgroupGetThreadAndLowerMask;
+
+/// subgroupGetLowerMask
 extern Function SubgroupGetLowerMask;
+
+/// subgroupGetThreadAndGreaterMask
 extern Function SubgroupGetThreadAndGreaterMask;
+
+/// subgroupGetGreaterMask
 extern Function SubgroupGetGreaterMask;
-extern Function SubgroupFirstActiveThread;
+
+/// subgroupGetFirstActiveThread
+extern Function SubgroupGetFirstActiveThread;
+
 extern Variable BroadcastFirstActiveThread_UInt32_value;
 extern Function SubgroupBroadcastFirstActiveThread;
 extern Variable SubgroupBallot_Bool8_predicate;
@@ -3930,817 +5125,1415 @@ extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_proj;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_compare;
 extern Variable SampledTextureSampleBiasProjCompareOffset_Texture3D_offset;
 extern Function SampledTextureSampleBiasProjCompareOffset_Texture3D;
-inline constexpr StaticMap<ConstantString, Symbol*> Intrinsics = std::array{
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(u32)"_c, &Float32_convert_UInt32 },
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(i32)"_c, &Float32_convert_Int32 },
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(f16)"_c, &Float32_convert_Float16 },
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(u16)"_c, &Float32_convert_UInt16 },
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(i16)"_c, &Float32_convert_Int16 },
-std::pair{ "f32"_c, f32 },
-std::pair{ "f32(f32)"_c, &Float32_ctor0 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(f32)"_c, &UInt32_convert_Float32 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(i32)"_c, &UInt32_convert_Int32 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(f16)"_c, &UInt32_convert_Float16 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(u16)"_c, &UInt32_convert_UInt16 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(i16)"_c, &UInt32_convert_Int16 },
-std::pair{ "u32"_c, u32 },
-std::pair{ "u32(u32)"_c, &UInt32_ctor0 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(f32)"_c, &Int32_convert_Float32 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(u32)"_c, &Int32_convert_UInt32 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(f16)"_c, &Int32_convert_Float16 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(u16)"_c, &Int32_convert_UInt16 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(i16)"_c, &Int32_convert_Int16 },
-std::pair{ "i32"_c, i32 },
-std::pair{ "i32(i32)"_c, &Int32_ctor0 },
-std::pair{ "b8"_c, b8 },
-std::pair{ "b8(u32)"_c, &Bool8_convert_UInt32 },
-std::pair{ "b8"_c, b8 },
-std::pair{ "b8(i32)"_c, &Bool8_convert_Int32 },
-std::pair{ "b8"_c, b8 },
-std::pair{ "b8(u16)"_c, &Bool8_convert_UInt16 },
-std::pair{ "b8"_c, b8 },
-std::pair{ "b8(i16)"_c, &Bool8_convert_Int16 },
-std::pair{ "b8"_c, b8 },
-std::pair{ "b8(b8)"_c, &Bool8_ctor0 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(f32)"_c, &Float16_convert_Float32 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(u32)"_c, &Float16_convert_UInt32 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(i32)"_c, &Float16_convert_Int32 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(u16)"_c, &Float16_convert_UInt16 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(i16)"_c, &Float16_convert_Int16 },
-std::pair{ "f16"_c, f16 },
-std::pair{ "f16(f16)"_c, &Float16_ctor0 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(f32)"_c, &UInt16_convert_Float32 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(u32)"_c, &UInt16_convert_UInt32 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(i32)"_c, &UInt16_convert_Int32 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(f16)"_c, &UInt16_convert_Float16 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(i16)"_c, &UInt16_convert_Int16 },
-std::pair{ "u16"_c, u16 },
-std::pair{ "u16(u16)"_c, &UInt16_ctor0 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(f32)"_c, &Int16_convert_Float32 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(u32)"_c, &Int16_convert_UInt32 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(i32)"_c, &Int16_convert_Int32 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(f16)"_c, &Int16_convert_Float16 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(u16)"_c, &Int16_convert_UInt16 },
-std::pair{ "i16"_c, i16 },
-std::pair{ "i16(i16)"_c, &Int16_ctor0 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(f32x2)"_c, &Float32x2_convert_Float32x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(f32)"_c, &Float32x2_splat_Float32 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(u32x2)"_c, &Float32x2_convert_UInt32x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(u32)"_c, &Float32x2_splat_UInt32 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(i32x2)"_c, &Float32x2_convert_Int32x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(i32)"_c, &Float32x2_splat_Int32 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(f16x2)"_c, &Float32x2_convert_Float16x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(f16)"_c, &Float32x2_splat_Float16 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(u16x2)"_c, &Float32x2_convert_UInt16x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(u16)"_c, &Float32x2_splat_UInt16 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(i16x2)"_c, &Float32x2_convert_Int16x2 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(i16)"_c, &Float32x2_splat_Int16 },
-std::pair{ "f32x2"_c, f32x2 },
-std::pair{ "f32x2(f32,f32)"_c, &Float32x2_ctor0 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(f32x2)"_c, &UInt32x2_convert_Float32x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(f32)"_c, &UInt32x2_splat_Float32 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(u32x2)"_c, &UInt32x2_convert_UInt32x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(u32)"_c, &UInt32x2_splat_UInt32 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(i32x2)"_c, &UInt32x2_convert_Int32x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(i32)"_c, &UInt32x2_splat_Int32 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(f16x2)"_c, &UInt32x2_convert_Float16x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(f16)"_c, &UInt32x2_splat_Float16 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(u16x2)"_c, &UInt32x2_convert_UInt16x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(u16)"_c, &UInt32x2_splat_UInt16 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(i16x2)"_c, &UInt32x2_convert_Int16x2 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(i16)"_c, &UInt32x2_splat_Int16 },
-std::pair{ "u32x2"_c, u32x2 },
-std::pair{ "u32x2(u32,u32)"_c, &UInt32x2_ctor0 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(f32x2)"_c, &Int32x2_convert_Float32x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(f32)"_c, &Int32x2_splat_Float32 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(u32x2)"_c, &Int32x2_convert_UInt32x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(u32)"_c, &Int32x2_splat_UInt32 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(i32x2)"_c, &Int32x2_convert_Int32x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(i32)"_c, &Int32x2_splat_Int32 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(f16x2)"_c, &Int32x2_convert_Float16x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(f16)"_c, &Int32x2_splat_Float16 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(u16x2)"_c, &Int32x2_convert_UInt16x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(u16)"_c, &Int32x2_splat_UInt16 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(i16x2)"_c, &Int32x2_convert_Int16x2 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(i16)"_c, &Int32x2_splat_Int16 },
-std::pair{ "i32x2"_c, i32x2 },
-std::pair{ "i32x2(i32,i32)"_c, &Int32x2_ctor0 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(u32x2)"_c, &Bool8x2_convert_UInt32x2 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(u32)"_c, &Bool8x2_splat_UInt32 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(i32x2)"_c, &Bool8x2_convert_Int32x2 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(i32)"_c, &Bool8x2_splat_Int32 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(u16x2)"_c, &Bool8x2_convert_UInt16x2 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(u16)"_c, &Bool8x2_splat_UInt16 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(i16x2)"_c, &Bool8x2_convert_Int16x2 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(i16)"_c, &Bool8x2_splat_Int16 },
-std::pair{ "b8x2"_c, b8x2 },
-std::pair{ "b8x2(b8,b8)"_c, &Bool8x2_ctor0 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(f32x2)"_c, &Float16x2_convert_Float32x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(f32)"_c, &Float16x2_splat_Float32 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(u32x2)"_c, &Float16x2_convert_UInt32x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(u32)"_c, &Float16x2_splat_UInt32 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(i32x2)"_c, &Float16x2_convert_Int32x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(i32)"_c, &Float16x2_splat_Int32 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(f16x2)"_c, &Float16x2_convert_Float16x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(f16)"_c, &Float16x2_splat_Float16 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(u16x2)"_c, &Float16x2_convert_UInt16x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(u16)"_c, &Float16x2_splat_UInt16 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(i16x2)"_c, &Float16x2_convert_Int16x2 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(i16)"_c, &Float16x2_splat_Int16 },
-std::pair{ "f16x2"_c, f16x2 },
-std::pair{ "f16x2(f16,f16)"_c, &Float16x2_ctor0 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(f32x2)"_c, &UInt16x2_convert_Float32x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(f32)"_c, &UInt16x2_splat_Float32 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(u32x2)"_c, &UInt16x2_convert_UInt32x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(u32)"_c, &UInt16x2_splat_UInt32 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(i32x2)"_c, &UInt16x2_convert_Int32x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(i32)"_c, &UInt16x2_splat_Int32 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(f16x2)"_c, &UInt16x2_convert_Float16x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(f16)"_c, &UInt16x2_splat_Float16 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(u16x2)"_c, &UInt16x2_convert_UInt16x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(u16)"_c, &UInt16x2_splat_UInt16 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(i16x2)"_c, &UInt16x2_convert_Int16x2 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(i16)"_c, &UInt16x2_splat_Int16 },
-std::pair{ "u16x2"_c, u16x2 },
-std::pair{ "u16x2(u16,u16)"_c, &UInt16x2_ctor0 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(f32x2)"_c, &Int16x2_convert_Float32x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(f32)"_c, &Int16x2_splat_Float32 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(u32x2)"_c, &Int16x2_convert_UInt32x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(u32)"_c, &Int16x2_splat_UInt32 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(i32x2)"_c, &Int16x2_convert_Int32x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(i32)"_c, &Int16x2_splat_Int32 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(f16x2)"_c, &Int16x2_convert_Float16x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(f16)"_c, &Int16x2_splat_Float16 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(u16x2)"_c, &Int16x2_convert_UInt16x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(u16)"_c, &Int16x2_splat_UInt16 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(i16x2)"_c, &Int16x2_convert_Int16x2 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(i16)"_c, &Int16x2_splat_Int16 },
-std::pair{ "i16x2"_c, i16x2 },
-std::pair{ "i16x2(i16,i16)"_c, &Int16x2_ctor0 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f32x3)"_c, &Float32x3_convert_Float32x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f32)"_c, &Float32x3_splat_Float32 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(u32x3)"_c, &Float32x3_convert_UInt32x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(u32)"_c, &Float32x3_splat_UInt32 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(i32x3)"_c, &Float32x3_convert_Int32x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(i32)"_c, &Float32x3_splat_Int32 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f16x3)"_c, &Float32x3_convert_Float16x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f16)"_c, &Float32x3_splat_Float16 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(u16x3)"_c, &Float32x3_convert_UInt16x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(u16)"_c, &Float32x3_splat_UInt16 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(i16x3)"_c, &Float32x3_convert_Int16x3 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(i16)"_c, &Float32x3_splat_Int16 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f32,f32,f32)"_c, &Float32x3_ctor0 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f32x2,f32)"_c, &Float32x3_ctor1 },
-std::pair{ "f32x3"_c, f32x3 },
-std::pair{ "f32x3(f32,f32x2)"_c, &Float32x3_ctor2 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(f32x3)"_c, &UInt32x3_convert_Float32x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(f32)"_c, &UInt32x3_splat_Float32 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u32x3)"_c, &UInt32x3_convert_UInt32x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u32)"_c, &UInt32x3_splat_UInt32 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(i32x3)"_c, &UInt32x3_convert_Int32x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(i32)"_c, &UInt32x3_splat_Int32 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(f16x3)"_c, &UInt32x3_convert_Float16x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(f16)"_c, &UInt32x3_splat_Float16 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u16x3)"_c, &UInt32x3_convert_UInt16x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u16)"_c, &UInt32x3_splat_UInt16 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(i16x3)"_c, &UInt32x3_convert_Int16x3 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(i16)"_c, &UInt32x3_splat_Int16 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u32,u32,u32)"_c, &UInt32x3_ctor0 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u32x2,u32)"_c, &UInt32x3_ctor1 },
-std::pair{ "u32x3"_c, u32x3 },
-std::pair{ "u32x3(u32,u32x2)"_c, &UInt32x3_ctor2 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(f32x3)"_c, &Int32x3_convert_Float32x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(f32)"_c, &Int32x3_splat_Float32 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(u32x3)"_c, &Int32x3_convert_UInt32x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(u32)"_c, &Int32x3_splat_UInt32 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i32x3)"_c, &Int32x3_convert_Int32x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i32)"_c, &Int32x3_splat_Int32 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(f16x3)"_c, &Int32x3_convert_Float16x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(f16)"_c, &Int32x3_splat_Float16 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(u16x3)"_c, &Int32x3_convert_UInt16x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(u16)"_c, &Int32x3_splat_UInt16 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i16x3)"_c, &Int32x3_convert_Int16x3 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i16)"_c, &Int32x3_splat_Int16 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i32,i32,i32)"_c, &Int32x3_ctor0 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i32x2,i32)"_c, &Int32x3_ctor1 },
-std::pair{ "i32x3"_c, i32x3 },
-std::pair{ "i32x3(i32,i32x2)"_c, &Int32x3_ctor2 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(u32x3)"_c, &Bool8x3_convert_UInt32x3 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(u32)"_c, &Bool8x3_splat_UInt32 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(i32x3)"_c, &Bool8x3_convert_Int32x3 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(i32)"_c, &Bool8x3_splat_Int32 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(u16x3)"_c, &Bool8x3_convert_UInt16x3 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(u16)"_c, &Bool8x3_splat_UInt16 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(i16x3)"_c, &Bool8x3_convert_Int16x3 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(i16)"_c, &Bool8x3_splat_Int16 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(b8,b8,b8)"_c, &Bool8x3_ctor0 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(b8x2,b8)"_c, &Bool8x3_ctor1 },
-std::pair{ "b8x3"_c, b8x3 },
-std::pair{ "b8x3(b8,b8x2)"_c, &Bool8x3_ctor2 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f32x3)"_c, &Float16x3_convert_Float32x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f32)"_c, &Float16x3_splat_Float32 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(u32x3)"_c, &Float16x3_convert_UInt32x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(u32)"_c, &Float16x3_splat_UInt32 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(i32x3)"_c, &Float16x3_convert_Int32x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(i32)"_c, &Float16x3_splat_Int32 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f16x3)"_c, &Float16x3_convert_Float16x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f16)"_c, &Float16x3_splat_Float16 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(u16x3)"_c, &Float16x3_convert_UInt16x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(u16)"_c, &Float16x3_splat_UInt16 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(i16x3)"_c, &Float16x3_convert_Int16x3 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(i16)"_c, &Float16x3_splat_Int16 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f16,f16,f16)"_c, &Float16x3_ctor0 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f16x2,f16)"_c, &Float16x3_ctor1 },
-std::pair{ "f16x3"_c, f16x3 },
-std::pair{ "f16x3(f16,f16x2)"_c, &Float16x3_ctor2 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(f32x3)"_c, &UInt16x3_convert_Float32x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(f32)"_c, &UInt16x3_splat_Float32 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u32x3)"_c, &UInt16x3_convert_UInt32x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u32)"_c, &UInt16x3_splat_UInt32 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(i32x3)"_c, &UInt16x3_convert_Int32x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(i32)"_c, &UInt16x3_splat_Int32 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(f16x3)"_c, &UInt16x3_convert_Float16x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(f16)"_c, &UInt16x3_splat_Float16 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u16x3)"_c, &UInt16x3_convert_UInt16x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u16)"_c, &UInt16x3_splat_UInt16 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(i16x3)"_c, &UInt16x3_convert_Int16x3 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(i16)"_c, &UInt16x3_splat_Int16 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u16,u16,u16)"_c, &UInt16x3_ctor0 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u16x2,u16)"_c, &UInt16x3_ctor1 },
-std::pair{ "u16x3"_c, u16x3 },
-std::pair{ "u16x3(u16,u16x2)"_c, &UInt16x3_ctor2 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(f32x3)"_c, &Int16x3_convert_Float32x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(f32)"_c, &Int16x3_splat_Float32 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(u32x3)"_c, &Int16x3_convert_UInt32x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(u32)"_c, &Int16x3_splat_UInt32 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i32x3)"_c, &Int16x3_convert_Int32x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i32)"_c, &Int16x3_splat_Int32 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(f16x3)"_c, &Int16x3_convert_Float16x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(f16)"_c, &Int16x3_splat_Float16 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(u16x3)"_c, &Int16x3_convert_UInt16x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(u16)"_c, &Int16x3_splat_UInt16 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i16x3)"_c, &Int16x3_convert_Int16x3 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i16)"_c, &Int16x3_splat_Int16 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i16,i16,i16)"_c, &Int16x3_ctor0 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i16x2,i16)"_c, &Int16x3_ctor1 },
-std::pair{ "i16x3"_c, i16x3 },
-std::pair{ "i16x3(i16,i16x2)"_c, &Int16x3_ctor2 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32x4)"_c, &Float32x4_convert_Float32x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32)"_c, &Float32x4_splat_Float32 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(u32x4)"_c, &Float32x4_convert_UInt32x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(u32)"_c, &Float32x4_splat_UInt32 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(i32x4)"_c, &Float32x4_convert_Int32x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(i32)"_c, &Float32x4_splat_Int32 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f16x4)"_c, &Float32x4_convert_Float16x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f16)"_c, &Float32x4_splat_Float16 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(u16x4)"_c, &Float32x4_convert_UInt16x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(u16)"_c, &Float32x4_splat_UInt16 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(i16x4)"_c, &Float32x4_convert_Int16x4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(i16)"_c, &Float32x4_splat_Int16 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32,f32,f32,f32)"_c, &Float32x4_ctor0 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32x2,f32,f32)"_c, &Float32x4_ctor1 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32,f32x2,f32)"_c, &Float32x4_ctor2 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32,f32,f32x2)"_c, &Float32x4_ctor3 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32x3,f32)"_c, &Float32x4_ctor4 },
-std::pair{ "f32x4"_c, f32x4 },
-std::pair{ "f32x4(f32,f32x3)"_c, &Float32x4_ctor5 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(f32x4)"_c, &UInt32x4_convert_Float32x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(f32)"_c, &UInt32x4_splat_Float32 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32x4)"_c, &UInt32x4_convert_UInt32x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32)"_c, &UInt32x4_splat_UInt32 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(i32x4)"_c, &UInt32x4_convert_Int32x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(i32)"_c, &UInt32x4_splat_Int32 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(f16x4)"_c, &UInt32x4_convert_Float16x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(f16)"_c, &UInt32x4_splat_Float16 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u16x4)"_c, &UInt32x4_convert_UInt16x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u16)"_c, &UInt32x4_splat_UInt16 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(i16x4)"_c, &UInt32x4_convert_Int16x4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(i16)"_c, &UInt32x4_splat_Int16 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32,u32,u32,u32)"_c, &UInt32x4_ctor0 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32x2,u32,u32)"_c, &UInt32x4_ctor1 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32,u32x2,u32)"_c, &UInt32x4_ctor2 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32,u32,u32x2)"_c, &UInt32x4_ctor3 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32x3,u32)"_c, &UInt32x4_ctor4 },
-std::pair{ "u32x4"_c, u32x4 },
-std::pair{ "u32x4(u32,u32x3)"_c, &UInt32x4_ctor5 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(f32x4)"_c, &Int32x4_convert_Float32x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(f32)"_c, &Int32x4_splat_Float32 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(u32x4)"_c, &Int32x4_convert_UInt32x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(u32)"_c, &Int32x4_splat_UInt32 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32x4)"_c, &Int32x4_convert_Int32x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32)"_c, &Int32x4_splat_Int32 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(f16x4)"_c, &Int32x4_convert_Float16x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(f16)"_c, &Int32x4_splat_Float16 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(u16x4)"_c, &Int32x4_convert_UInt16x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(u16)"_c, &Int32x4_splat_UInt16 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i16x4)"_c, &Int32x4_convert_Int16x4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i16)"_c, &Int32x4_splat_Int16 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32,i32,i32,i32)"_c, &Int32x4_ctor0 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32x2,i32,i32)"_c, &Int32x4_ctor1 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32,i32x2,i32)"_c, &Int32x4_ctor2 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32,i32,i32x2)"_c, &Int32x4_ctor3 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32x3,i32)"_c, &Int32x4_ctor4 },
-std::pair{ "i32x4"_c, i32x4 },
-std::pair{ "i32x4(i32,i32x3)"_c, &Int32x4_ctor5 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(u32x4)"_c, &Bool8x4_convert_UInt32x4 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(u32)"_c, &Bool8x4_splat_UInt32 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(i32x4)"_c, &Bool8x4_convert_Int32x4 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(i32)"_c, &Bool8x4_splat_Int32 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(u16x4)"_c, &Bool8x4_convert_UInt16x4 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(u16)"_c, &Bool8x4_splat_UInt16 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(i16x4)"_c, &Bool8x4_convert_Int16x4 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(i16)"_c, &Bool8x4_splat_Int16 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8,b8,b8,b8)"_c, &Bool8x4_ctor0 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8x2,b8,b8)"_c, &Bool8x4_ctor1 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8,b8x2,b8)"_c, &Bool8x4_ctor2 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8,b8,b8x2)"_c, &Bool8x4_ctor3 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8x3,b8)"_c, &Bool8x4_ctor4 },
-std::pair{ "b8x4"_c, b8x4 },
-std::pair{ "b8x4(b8,b8x3)"_c, &Bool8x4_ctor5 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f32x4)"_c, &Float16x4_convert_Float32x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f32)"_c, &Float16x4_splat_Float32 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(u32x4)"_c, &Float16x4_convert_UInt32x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(u32)"_c, &Float16x4_splat_UInt32 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(i32x4)"_c, &Float16x4_convert_Int32x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(i32)"_c, &Float16x4_splat_Int32 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16x4)"_c, &Float16x4_convert_Float16x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16)"_c, &Float16x4_splat_Float16 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(u16x4)"_c, &Float16x4_convert_UInt16x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(u16)"_c, &Float16x4_splat_UInt16 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(i16x4)"_c, &Float16x4_convert_Int16x4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(i16)"_c, &Float16x4_splat_Int16 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16,f16,f16,f16)"_c, &Float16x4_ctor0 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16x2,f16,f16)"_c, &Float16x4_ctor1 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16,f16x2,f16)"_c, &Float16x4_ctor2 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16,f16,f16x2)"_c, &Float16x4_ctor3 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16x3,f16)"_c, &Float16x4_ctor4 },
-std::pair{ "f16x4"_c, f16x4 },
-std::pair{ "f16x4(f16,f16x3)"_c, &Float16x4_ctor5 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(f32x4)"_c, &UInt16x4_convert_Float32x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(f32)"_c, &UInt16x4_splat_Float32 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u32x4)"_c, &UInt16x4_convert_UInt32x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u32)"_c, &UInt16x4_splat_UInt32 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(i32x4)"_c, &UInt16x4_convert_Int32x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(i32)"_c, &UInt16x4_splat_Int32 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(f16x4)"_c, &UInt16x4_convert_Float16x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(f16)"_c, &UInt16x4_splat_Float16 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16x4)"_c, &UInt16x4_convert_UInt16x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16)"_c, &UInt16x4_splat_UInt16 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(i16x4)"_c, &UInt16x4_convert_Int16x4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(i16)"_c, &UInt16x4_splat_Int16 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16,u16,u16,u16)"_c, &UInt16x4_ctor0 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16x2,u16,u16)"_c, &UInt16x4_ctor1 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16,u16x2,u16)"_c, &UInt16x4_ctor2 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16,u16,u16x2)"_c, &UInt16x4_ctor3 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16x3,u16)"_c, &UInt16x4_ctor4 },
-std::pair{ "u16x4"_c, u16x4 },
-std::pair{ "u16x4(u16,u16x3)"_c, &UInt16x4_ctor5 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(f32x4)"_c, &Int16x4_convert_Float32x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(f32)"_c, &Int16x4_splat_Float32 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(u32x4)"_c, &Int16x4_convert_UInt32x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(u32)"_c, &Int16x4_splat_UInt32 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i32x4)"_c, &Int16x4_convert_Int32x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i32)"_c, &Int16x4_splat_Int32 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(f16x4)"_c, &Int16x4_convert_Float16x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(f16)"_c, &Int16x4_splat_Float16 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(u16x4)"_c, &Int16x4_convert_UInt16x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(u16)"_c, &Int16x4_splat_UInt16 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16x4)"_c, &Int16x4_convert_Int16x4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16)"_c, &Int16x4_splat_Int16 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16,i16,i16,i16)"_c, &Int16x4_ctor0 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16x2,i16,i16)"_c, &Int16x4_ctor1 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16,i16x2,i16)"_c, &Int16x4_ctor2 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16,i16,i16x2)"_c, &Int16x4_ctor3 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16x3,i16)"_c, &Int16x4_ctor4 },
-std::pair{ "i16x4"_c, i16x4 },
-std::pair{ "i16x4(i16,i16x3)"_c, &Int16x4_ctor5 },
-std::pair{ "f32x2x2"_c, f32x2x2 },
-std::pair{ "f32x2x2(f32x2,f32x2)"_c, &Float32x2x2_Float32_2_ctor },
-std::pair{ "f32x2x2"_c, f32x2x2 },
-std::pair{ "f32x2x2()"_c, &Float32x2x2_identity },
-std::pair{ "f32x2x2"_c, f32x2x2 },
-std::pair{ "f32x2x2(f32,f32,f32,f32)"_c, &Float32x2x2_raw_list },
-std::pair{ "f32x2x3"_c, f32x2x3 },
-std::pair{ "f32x2x3(f32x3,f32x3)"_c, &Float32x2x3_Float32_3_ctor },
-std::pair{ "f32x2x3"_c, f32x2x3 },
-std::pair{ "f32x2x3()"_c, &Float32x2x3_identity },
-std::pair{ "f32x2x3"_c, f32x2x3 },
-std::pair{ "f32x2x3(f32,f32,f32,f32,f32,f32)"_c, &Float32x2x3_raw_list },
-std::pair{ "f32x2x4"_c, f32x2x4 },
-std::pair{ "f32x2x4(f32x4,f32x4)"_c, &Float32x2x4_Float32_4_ctor },
-std::pair{ "f32x2x4"_c, f32x2x4 },
-std::pair{ "f32x2x4()"_c, &Float32x2x4_identity },
-std::pair{ "f32x2x4"_c, f32x2x4 },
-std::pair{ "f32x2x4(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x2x4_raw_list },
-std::pair{ "f32x3x2"_c, f32x3x2 },
-std::pair{ "f32x3x2(f32x2,f32x2,f32x2)"_c, &Float32x3x2_Float32_2_ctor },
-std::pair{ "f32x3x2"_c, f32x3x2 },
-std::pair{ "f32x3x2()"_c, &Float32x3x2_identity },
-std::pair{ "f32x3x2"_c, f32x3x2 },
-std::pair{ "f32x3x2(f32,f32,f32,f32,f32,f32)"_c, &Float32x3x2_raw_list },
-std::pair{ "f32x3x3"_c, f32x3x3 },
-std::pair{ "f32x3x3(f32x3,f32x3,f32x3)"_c, &Float32x3x3_Float32_3_ctor },
-std::pair{ "f32x3x3"_c, f32x3x3 },
-std::pair{ "f32x3x3()"_c, &Float32x3x3_identity },
-std::pair{ "f32x3x3"_c, f32x3x3 },
-std::pair{ "f32x3x3(f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x3_raw_list },
-std::pair{ "f32x3x4"_c, f32x3x4 },
-std::pair{ "f32x3x4(f32x4,f32x4,f32x4)"_c, &Float32x3x4_Float32_4_ctor },
-std::pair{ "f32x3x4"_c, f32x3x4 },
-std::pair{ "f32x3x4()"_c, &Float32x3x4_identity },
-std::pair{ "f32x3x4"_c, f32x3x4 },
-std::pair{ "f32x3x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x4_raw_list },
-std::pair{ "f32x4x2"_c, f32x4x2 },
-std::pair{ "f32x4x2(f32x2,f32x2,f32x2,f32x2)"_c, &Float32x4x2_Float32_2_ctor },
-std::pair{ "f32x4x2"_c, f32x4x2 },
-std::pair{ "f32x4x2()"_c, &Float32x4x2_identity },
-std::pair{ "f32x4x2"_c, f32x4x2 },
-std::pair{ "f32x4x2(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x2_raw_list },
-std::pair{ "f32x4x3"_c, f32x4x3 },
-std::pair{ "f32x4x3(f32x3,f32x3,f32x3,f32x3)"_c, &Float32x4x3_Float32_3_ctor },
-std::pair{ "f32x4x3"_c, f32x4x3 },
-std::pair{ "f32x4x3()"_c, &Float32x4x3_identity },
-std::pair{ "f32x4x3"_c, f32x4x3 },
-std::pair{ "f32x4x3(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x3_raw_list },
-std::pair{ "f32x4x4"_c, f32x4x4 },
-std::pair{ "f32x4x4(f32x4,f32x4,f32x4,f32x4)"_c, &Float32x4x4_Float32_4_ctor },
-std::pair{ "f32x4x4"_c, f32x4x4 },
-std::pair{ "f32x4x4()"_c, &Float32x4x4_identity },
-std::pair{ "f32x4x4"_c, f32x4x4 },
-std::pair{ "f32x4x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x4_raw_list },
-std::pair{ "f16x2x2"_c, f16x2x2 },
-std::pair{ "f16x2x2(f16x2,f16x2)"_c, &Float16x2x2_Float16_2_ctor },
-std::pair{ "f16x2x2"_c, f16x2x2 },
-std::pair{ "f16x2x2()"_c, &Float16x2x2_identity },
-std::pair{ "f16x2x2"_c, f16x2x2 },
-std::pair{ "f16x2x2(f16,f16,f16,f16)"_c, &Float16x2x2_raw_list },
-std::pair{ "f16x2x3"_c, f16x2x3 },
-std::pair{ "f16x2x3(f16x3,f16x3)"_c, &Float16x2x3_Float16_3_ctor },
-std::pair{ "f16x2x3"_c, f16x2x3 },
-std::pair{ "f16x2x3()"_c, &Float16x2x3_identity },
-std::pair{ "f16x2x3"_c, f16x2x3 },
-std::pair{ "f16x2x3(f16,f16,f16,f16,f16,f16)"_c, &Float16x2x3_raw_list },
-std::pair{ "f16x2x4"_c, f16x2x4 },
-std::pair{ "f16x2x4(f16x4,f16x4)"_c, &Float16x2x4_Float16_4_ctor },
-std::pair{ "f16x2x4"_c, f16x2x4 },
-std::pair{ "f16x2x4()"_c, &Float16x2x4_identity },
-std::pair{ "f16x2x4"_c, f16x2x4 },
-std::pair{ "f16x2x4(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x2x4_raw_list },
-std::pair{ "f16x3x2"_c, f16x3x2 },
-std::pair{ "f16x3x2(f16x2,f16x2,f16x2)"_c, &Float16x3x2_Float16_2_ctor },
-std::pair{ "f16x3x2"_c, f16x3x2 },
-std::pair{ "f16x3x2()"_c, &Float16x3x2_identity },
-std::pair{ "f16x3x2"_c, f16x3x2 },
-std::pair{ "f16x3x2(f16,f16,f16,f16,f16,f16)"_c, &Float16x3x2_raw_list },
-std::pair{ "f16x3x3"_c, f16x3x3 },
-std::pair{ "f16x3x3(f16x3,f16x3,f16x3)"_c, &Float16x3x3_Float16_3_ctor },
-std::pair{ "f16x3x3"_c, f16x3x3 },
-std::pair{ "f16x3x3()"_c, &Float16x3x3_identity },
-std::pair{ "f16x3x3"_c, f16x3x3 },
-std::pair{ "f16x3x3(f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x3_raw_list },
-std::pair{ "f16x3x4"_c, f16x3x4 },
-std::pair{ "f16x3x4(f16x4,f16x4,f16x4)"_c, &Float16x3x4_Float16_4_ctor },
-std::pair{ "f16x3x4"_c, f16x3x4 },
-std::pair{ "f16x3x4()"_c, &Float16x3x4_identity },
-std::pair{ "f16x3x4"_c, f16x3x4 },
-std::pair{ "f16x3x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x4_raw_list },
-std::pair{ "f16x4x2"_c, f16x4x2 },
-std::pair{ "f16x4x2(f16x2,f16x2,f16x2,f16x2)"_c, &Float16x4x2_Float16_2_ctor },
-std::pair{ "f16x4x2"_c, f16x4x2 },
-std::pair{ "f16x4x2()"_c, &Float16x4x2_identity },
-std::pair{ "f16x4x2"_c, f16x4x2 },
-std::pair{ "f16x4x2(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x2_raw_list },
-std::pair{ "f16x4x3"_c, f16x4x3 },
-std::pair{ "f16x4x3(f16x3,f16x3,f16x3,f16x3)"_c, &Float16x4x3_Float16_3_ctor },
-std::pair{ "f16x4x3"_c, f16x4x3 },
-std::pair{ "f16x4x3()"_c, &Float16x4x3_identity },
-std::pair{ "f16x4x3"_c, f16x4x3 },
-std::pair{ "f16x4x3(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x3_raw_list },
-std::pair{ "f16x4x4"_c, f16x4x4 },
-std::pair{ "f16x4x4(f16x4,f16x4,f16x4,f16x4)"_c, &Float16x4x4_Float16_4_ctor },
-std::pair{ "f16x4x4"_c, f16x4x4 },
-std::pair{ "f16x4x4()"_c, &Float16x4x4_identity },
-std::pair{ "f16x4x4"_c, f16x4x4 },
-std::pair{ "f16x4x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x4_raw_list }};
+inline constexpr StaticMap Intrinsics = std::array{
+    std::pair{ "f32"_c, &Float32_convert_UInt32 },
+    std::pair{ "f32(u32)"_c, &Float32_convert_UInt32 },
+    std::pair{ "f32"_c, &Float32_convert_Int32 },
+    std::pair{ "f32(i32)"_c, &Float32_convert_Int32 },
+    std::pair{ "f32"_c, &Float32_convert_Float16 },
+    std::pair{ "f32(f16)"_c, &Float32_convert_Float16 },
+    std::pair{ "f32"_c, &Float32_convert_UInt16 },
+    std::pair{ "f32(u16)"_c, &Float32_convert_UInt16 },
+    std::pair{ "f32"_c, &Float32_convert_Int16 },
+    std::pair{ "f32(i16)"_c, &Float32_convert_Int16 },
+    std::pair{ "f32"_c, &Float32_ctor0 },
+    std::pair{ "f32(f32)"_c, &Float32_ctor0 },
+    std::pair{ "u32"_c, &UInt32_convert_Float32 },
+    std::pair{ "u32(f32)"_c, &UInt32_convert_Float32 },
+    std::pair{ "u32"_c, &UInt32_convert_Int32 },
+    std::pair{ "u32(i32)"_c, &UInt32_convert_Int32 },
+    std::pair{ "u32"_c, &UInt32_convert_Float16 },
+    std::pair{ "u32(f16)"_c, &UInt32_convert_Float16 },
+    std::pair{ "u32"_c, &UInt32_convert_UInt16 },
+    std::pair{ "u32(u16)"_c, &UInt32_convert_UInt16 },
+    std::pair{ "u32"_c, &UInt32_convert_Int16 },
+    std::pair{ "u32(i16)"_c, &UInt32_convert_Int16 },
+    std::pair{ "u32"_c, &UInt32_ctor0 },
+    std::pair{ "u32(u32)"_c, &UInt32_ctor0 },
+    std::pair{ "i32"_c, &Int32_convert_Float32 },
+    std::pair{ "i32(f32)"_c, &Int32_convert_Float32 },
+    std::pair{ "i32"_c, &Int32_convert_UInt32 },
+    std::pair{ "i32(u32)"_c, &Int32_convert_UInt32 },
+    std::pair{ "i32"_c, &Int32_convert_Float16 },
+    std::pair{ "i32(f16)"_c, &Int32_convert_Float16 },
+    std::pair{ "i32"_c, &Int32_convert_UInt16 },
+    std::pair{ "i32(u16)"_c, &Int32_convert_UInt16 },
+    std::pair{ "i32"_c, &Int32_convert_Int16 },
+    std::pair{ "i32(i16)"_c, &Int32_convert_Int16 },
+    std::pair{ "i32"_c, &Int32_ctor0 },
+    std::pair{ "i32(i32)"_c, &Int32_ctor0 },
+    std::pair{ "b8"_c, &Bool8_convert_UInt32 },
+    std::pair{ "b8(u32)"_c, &Bool8_convert_UInt32 },
+    std::pair{ "b8"_c, &Bool8_convert_Int32 },
+    std::pair{ "b8(i32)"_c, &Bool8_convert_Int32 },
+    std::pair{ "b8"_c, &Bool8_convert_UInt16 },
+    std::pair{ "b8(u16)"_c, &Bool8_convert_UInt16 },
+    std::pair{ "b8"_c, &Bool8_convert_Int16 },
+    std::pair{ "b8(i16)"_c, &Bool8_convert_Int16 },
+    std::pair{ "b8"_c, &Bool8_ctor0 },
+    std::pair{ "b8(b8)"_c, &Bool8_ctor0 },
+    std::pair{ "f16"_c, &Float16_convert_Float32 },
+    std::pair{ "f16(f32)"_c, &Float16_convert_Float32 },
+    std::pair{ "f16"_c, &Float16_convert_UInt32 },
+    std::pair{ "f16(u32)"_c, &Float16_convert_UInt32 },
+    std::pair{ "f16"_c, &Float16_convert_Int32 },
+    std::pair{ "f16(i32)"_c, &Float16_convert_Int32 },
+    std::pair{ "f16"_c, &Float16_convert_UInt16 },
+    std::pair{ "f16(u16)"_c, &Float16_convert_UInt16 },
+    std::pair{ "f16"_c, &Float16_convert_Int16 },
+    std::pair{ "f16(i16)"_c, &Float16_convert_Int16 },
+    std::pair{ "f16"_c, &Float16_ctor0 },
+    std::pair{ "f16(f16)"_c, &Float16_ctor0 },
+    std::pair{ "u16"_c, &UInt16_convert_Float32 },
+    std::pair{ "u16(f32)"_c, &UInt16_convert_Float32 },
+    std::pair{ "u16"_c, &UInt16_convert_UInt32 },
+    std::pair{ "u16(u32)"_c, &UInt16_convert_UInt32 },
+    std::pair{ "u16"_c, &UInt16_convert_Int32 },
+    std::pair{ "u16(i32)"_c, &UInt16_convert_Int32 },
+    std::pair{ "u16"_c, &UInt16_convert_Float16 },
+    std::pair{ "u16(f16)"_c, &UInt16_convert_Float16 },
+    std::pair{ "u16"_c, &UInt16_convert_Int16 },
+    std::pair{ "u16(i16)"_c, &UInt16_convert_Int16 },
+    std::pair{ "u16"_c, &UInt16_ctor0 },
+    std::pair{ "u16(u16)"_c, &UInt16_ctor0 },
+    std::pair{ "i16"_c, &Int16_convert_Float32 },
+    std::pair{ "i16(f32)"_c, &Int16_convert_Float32 },
+    std::pair{ "i16"_c, &Int16_convert_UInt32 },
+    std::pair{ "i16(u32)"_c, &Int16_convert_UInt32 },
+    std::pair{ "i16"_c, &Int16_convert_Int32 },
+    std::pair{ "i16(i32)"_c, &Int16_convert_Int32 },
+    std::pair{ "i16"_c, &Int16_convert_Float16 },
+    std::pair{ "i16(f16)"_c, &Int16_convert_Float16 },
+    std::pair{ "i16"_c, &Int16_convert_UInt16 },
+    std::pair{ "i16(u16)"_c, &Int16_convert_UInt16 },
+    std::pair{ "i16"_c, &Int16_ctor0 },
+    std::pair{ "i16(i16)"_c, &Int16_ctor0 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_Float32x2 },
+    std::pair{ "f32x2(f32x2)"_c, &Float32x2_convert_Float32x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_Float32 },
+    std::pair{ "f32x2(f32)"_c, &Float32x2_splat_Float32 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_UInt32x2 },
+    std::pair{ "f32x2(u32x2)"_c, &Float32x2_convert_UInt32x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_UInt32 },
+    std::pair{ "f32x2(u32)"_c, &Float32x2_splat_UInt32 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_Int32x2 },
+    std::pair{ "f32x2(i32x2)"_c, &Float32x2_convert_Int32x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_Int32 },
+    std::pair{ "f32x2(i32)"_c, &Float32x2_splat_Int32 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_Float16x2 },
+    std::pair{ "f32x2(f16x2)"_c, &Float32x2_convert_Float16x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_Float16 },
+    std::pair{ "f32x2(f16)"_c, &Float32x2_splat_Float16 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_UInt16x2 },
+    std::pair{ "f32x2(u16x2)"_c, &Float32x2_convert_UInt16x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_UInt16 },
+    std::pair{ "f32x2(u16)"_c, &Float32x2_splat_UInt16 },
+    std::pair{ "f32x2"_c, &Float32x2_convert_Int16x2 },
+    std::pair{ "f32x2(i16x2)"_c, &Float32x2_convert_Int16x2 },
+    std::pair{ "f32x2"_c, &Float32x2_splat_Int16 },
+    std::pair{ "f32x2(i16)"_c, &Float32x2_splat_Int16 },
+    std::pair{ "f32x2"_c, &Float32x2_ctor0 },
+    std::pair{ "f32x2(f32,f32)"_c, &Float32x2_ctor0 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_Float32x2 },
+    std::pair{ "u32x2(f32x2)"_c, &UInt32x2_convert_Float32x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_Float32 },
+    std::pair{ "u32x2(f32)"_c, &UInt32x2_splat_Float32 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_UInt32x2 },
+    std::pair{ "u32x2(u32x2)"_c, &UInt32x2_convert_UInt32x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_UInt32 },
+    std::pair{ "u32x2(u32)"_c, &UInt32x2_splat_UInt32 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_Int32x2 },
+    std::pair{ "u32x2(i32x2)"_c, &UInt32x2_convert_Int32x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_Int32 },
+    std::pair{ "u32x2(i32)"_c, &UInt32x2_splat_Int32 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_Float16x2 },
+    std::pair{ "u32x2(f16x2)"_c, &UInt32x2_convert_Float16x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_Float16 },
+    std::pair{ "u32x2(f16)"_c, &UInt32x2_splat_Float16 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_UInt16x2 },
+    std::pair{ "u32x2(u16x2)"_c, &UInt32x2_convert_UInt16x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_UInt16 },
+    std::pair{ "u32x2(u16)"_c, &UInt32x2_splat_UInt16 },
+    std::pair{ "u32x2"_c, &UInt32x2_convert_Int16x2 },
+    std::pair{ "u32x2(i16x2)"_c, &UInt32x2_convert_Int16x2 },
+    std::pair{ "u32x2"_c, &UInt32x2_splat_Int16 },
+    std::pair{ "u32x2(i16)"_c, &UInt32x2_splat_Int16 },
+    std::pair{ "u32x2"_c, &UInt32x2_ctor0 },
+    std::pair{ "u32x2(u32,u32)"_c, &UInt32x2_ctor0 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_Float32x2 },
+    std::pair{ "i32x2(f32x2)"_c, &Int32x2_convert_Float32x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_Float32 },
+    std::pair{ "i32x2(f32)"_c, &Int32x2_splat_Float32 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_UInt32x2 },
+    std::pair{ "i32x2(u32x2)"_c, &Int32x2_convert_UInt32x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_UInt32 },
+    std::pair{ "i32x2(u32)"_c, &Int32x2_splat_UInt32 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_Int32x2 },
+    std::pair{ "i32x2(i32x2)"_c, &Int32x2_convert_Int32x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_Int32 },
+    std::pair{ "i32x2(i32)"_c, &Int32x2_splat_Int32 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_Float16x2 },
+    std::pair{ "i32x2(f16x2)"_c, &Int32x2_convert_Float16x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_Float16 },
+    std::pair{ "i32x2(f16)"_c, &Int32x2_splat_Float16 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_UInt16x2 },
+    std::pair{ "i32x2(u16x2)"_c, &Int32x2_convert_UInt16x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_UInt16 },
+    std::pair{ "i32x2(u16)"_c, &Int32x2_splat_UInt16 },
+    std::pair{ "i32x2"_c, &Int32x2_convert_Int16x2 },
+    std::pair{ "i32x2(i16x2)"_c, &Int32x2_convert_Int16x2 },
+    std::pair{ "i32x2"_c, &Int32x2_splat_Int16 },
+    std::pair{ "i32x2(i16)"_c, &Int32x2_splat_Int16 },
+    std::pair{ "i32x2"_c, &Int32x2_ctor0 },
+    std::pair{ "i32x2(i32,i32)"_c, &Int32x2_ctor0 },
+    std::pair{ "b8x2"_c, &Bool8x2_convert_UInt32x2 },
+    std::pair{ "b8x2(u32x2)"_c, &Bool8x2_convert_UInt32x2 },
+    std::pair{ "b8x2"_c, &Bool8x2_splat_UInt32 },
+    std::pair{ "b8x2(u32)"_c, &Bool8x2_splat_UInt32 },
+    std::pair{ "b8x2"_c, &Bool8x2_convert_Int32x2 },
+    std::pair{ "b8x2(i32x2)"_c, &Bool8x2_convert_Int32x2 },
+    std::pair{ "b8x2"_c, &Bool8x2_splat_Int32 },
+    std::pair{ "b8x2(i32)"_c, &Bool8x2_splat_Int32 },
+    std::pair{ "b8x2"_c, &Bool8x2_convert_UInt16x2 },
+    std::pair{ "b8x2(u16x2)"_c, &Bool8x2_convert_UInt16x2 },
+    std::pair{ "b8x2"_c, &Bool8x2_splat_UInt16 },
+    std::pair{ "b8x2(u16)"_c, &Bool8x2_splat_UInt16 },
+    std::pair{ "b8x2"_c, &Bool8x2_convert_Int16x2 },
+    std::pair{ "b8x2(i16x2)"_c, &Bool8x2_convert_Int16x2 },
+    std::pair{ "b8x2"_c, &Bool8x2_splat_Int16 },
+    std::pair{ "b8x2(i16)"_c, &Bool8x2_splat_Int16 },
+    std::pair{ "b8x2"_c, &Bool8x2_ctor0 },
+    std::pair{ "b8x2(b8,b8)"_c, &Bool8x2_ctor0 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_Float32x2 },
+    std::pair{ "f16x2(f32x2)"_c, &Float16x2_convert_Float32x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_Float32 },
+    std::pair{ "f16x2(f32)"_c, &Float16x2_splat_Float32 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_UInt32x2 },
+    std::pair{ "f16x2(u32x2)"_c, &Float16x2_convert_UInt32x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_UInt32 },
+    std::pair{ "f16x2(u32)"_c, &Float16x2_splat_UInt32 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_Int32x2 },
+    std::pair{ "f16x2(i32x2)"_c, &Float16x2_convert_Int32x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_Int32 },
+    std::pair{ "f16x2(i32)"_c, &Float16x2_splat_Int32 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_Float16x2 },
+    std::pair{ "f16x2(f16x2)"_c, &Float16x2_convert_Float16x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_Float16 },
+    std::pair{ "f16x2(f16)"_c, &Float16x2_splat_Float16 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_UInt16x2 },
+    std::pair{ "f16x2(u16x2)"_c, &Float16x2_convert_UInt16x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_UInt16 },
+    std::pair{ "f16x2(u16)"_c, &Float16x2_splat_UInt16 },
+    std::pair{ "f16x2"_c, &Float16x2_convert_Int16x2 },
+    std::pair{ "f16x2(i16x2)"_c, &Float16x2_convert_Int16x2 },
+    std::pair{ "f16x2"_c, &Float16x2_splat_Int16 },
+    std::pair{ "f16x2(i16)"_c, &Float16x2_splat_Int16 },
+    std::pair{ "f16x2"_c, &Float16x2_ctor0 },
+    std::pair{ "f16x2(f16,f16)"_c, &Float16x2_ctor0 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_Float32x2 },
+    std::pair{ "u16x2(f32x2)"_c, &UInt16x2_convert_Float32x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_Float32 },
+    std::pair{ "u16x2(f32)"_c, &UInt16x2_splat_Float32 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_UInt32x2 },
+    std::pair{ "u16x2(u32x2)"_c, &UInt16x2_convert_UInt32x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_UInt32 },
+    std::pair{ "u16x2(u32)"_c, &UInt16x2_splat_UInt32 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_Int32x2 },
+    std::pair{ "u16x2(i32x2)"_c, &UInt16x2_convert_Int32x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_Int32 },
+    std::pair{ "u16x2(i32)"_c, &UInt16x2_splat_Int32 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_Float16x2 },
+    std::pair{ "u16x2(f16x2)"_c, &UInt16x2_convert_Float16x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_Float16 },
+    std::pair{ "u16x2(f16)"_c, &UInt16x2_splat_Float16 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_UInt16x2 },
+    std::pair{ "u16x2(u16x2)"_c, &UInt16x2_convert_UInt16x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_UInt16 },
+    std::pair{ "u16x2(u16)"_c, &UInt16x2_splat_UInt16 },
+    std::pair{ "u16x2"_c, &UInt16x2_convert_Int16x2 },
+    std::pair{ "u16x2(i16x2)"_c, &UInt16x2_convert_Int16x2 },
+    std::pair{ "u16x2"_c, &UInt16x2_splat_Int16 },
+    std::pair{ "u16x2(i16)"_c, &UInt16x2_splat_Int16 },
+    std::pair{ "u16x2"_c, &UInt16x2_ctor0 },
+    std::pair{ "u16x2(u16,u16)"_c, &UInt16x2_ctor0 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_Float32x2 },
+    std::pair{ "i16x2(f32x2)"_c, &Int16x2_convert_Float32x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_Float32 },
+    std::pair{ "i16x2(f32)"_c, &Int16x2_splat_Float32 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_UInt32x2 },
+    std::pair{ "i16x2(u32x2)"_c, &Int16x2_convert_UInt32x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_UInt32 },
+    std::pair{ "i16x2(u32)"_c, &Int16x2_splat_UInt32 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_Int32x2 },
+    std::pair{ "i16x2(i32x2)"_c, &Int16x2_convert_Int32x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_Int32 },
+    std::pair{ "i16x2(i32)"_c, &Int16x2_splat_Int32 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_Float16x2 },
+    std::pair{ "i16x2(f16x2)"_c, &Int16x2_convert_Float16x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_Float16 },
+    std::pair{ "i16x2(f16)"_c, &Int16x2_splat_Float16 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_UInt16x2 },
+    std::pair{ "i16x2(u16x2)"_c, &Int16x2_convert_UInt16x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_UInt16 },
+    std::pair{ "i16x2(u16)"_c, &Int16x2_splat_UInt16 },
+    std::pair{ "i16x2"_c, &Int16x2_convert_Int16x2 },
+    std::pair{ "i16x2(i16x2)"_c, &Int16x2_convert_Int16x2 },
+    std::pair{ "i16x2"_c, &Int16x2_splat_Int16 },
+    std::pair{ "i16x2(i16)"_c, &Int16x2_splat_Int16 },
+    std::pair{ "i16x2"_c, &Int16x2_ctor0 },
+    std::pair{ "i16x2(i16,i16)"_c, &Int16x2_ctor0 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_Float32x3 },
+    std::pair{ "f32x3(f32x3)"_c, &Float32x3_convert_Float32x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_Float32 },
+    std::pair{ "f32x3(f32)"_c, &Float32x3_splat_Float32 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_UInt32x3 },
+    std::pair{ "f32x3(u32x3)"_c, &Float32x3_convert_UInt32x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_UInt32 },
+    std::pair{ "f32x3(u32)"_c, &Float32x3_splat_UInt32 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_Int32x3 },
+    std::pair{ "f32x3(i32x3)"_c, &Float32x3_convert_Int32x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_Int32 },
+    std::pair{ "f32x3(i32)"_c, &Float32x3_splat_Int32 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_Float16x3 },
+    std::pair{ "f32x3(f16x3)"_c, &Float32x3_convert_Float16x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_Float16 },
+    std::pair{ "f32x3(f16)"_c, &Float32x3_splat_Float16 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_UInt16x3 },
+    std::pair{ "f32x3(u16x3)"_c, &Float32x3_convert_UInt16x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_UInt16 },
+    std::pair{ "f32x3(u16)"_c, &Float32x3_splat_UInt16 },
+    std::pair{ "f32x3"_c, &Float32x3_convert_Int16x3 },
+    std::pair{ "f32x3(i16x3)"_c, &Float32x3_convert_Int16x3 },
+    std::pair{ "f32x3"_c, &Float32x3_splat_Int16 },
+    std::pair{ "f32x3(i16)"_c, &Float32x3_splat_Int16 },
+    std::pair{ "f32x3"_c, &Float32x3_ctor0 },
+    std::pair{ "f32x3(f32,f32,f32)"_c, &Float32x3_ctor0 },
+    std::pair{ "f32x3"_c, &Float32x3_ctor1 },
+    std::pair{ "f32x3(f32x2,f32)"_c, &Float32x3_ctor1 },
+    std::pair{ "f32x3"_c, &Float32x3_ctor2 },
+    std::pair{ "f32x3(f32,f32x2)"_c, &Float32x3_ctor2 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_Float32x3 },
+    std::pair{ "u32x3(f32x3)"_c, &UInt32x3_convert_Float32x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_Float32 },
+    std::pair{ "u32x3(f32)"_c, &UInt32x3_splat_Float32 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_UInt32x3 },
+    std::pair{ "u32x3(u32x3)"_c, &UInt32x3_convert_UInt32x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_UInt32 },
+    std::pair{ "u32x3(u32)"_c, &UInt32x3_splat_UInt32 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_Int32x3 },
+    std::pair{ "u32x3(i32x3)"_c, &UInt32x3_convert_Int32x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_Int32 },
+    std::pair{ "u32x3(i32)"_c, &UInt32x3_splat_Int32 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_Float16x3 },
+    std::pair{ "u32x3(f16x3)"_c, &UInt32x3_convert_Float16x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_Float16 },
+    std::pair{ "u32x3(f16)"_c, &UInt32x3_splat_Float16 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_UInt16x3 },
+    std::pair{ "u32x3(u16x3)"_c, &UInt32x3_convert_UInt16x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_UInt16 },
+    std::pair{ "u32x3(u16)"_c, &UInt32x3_splat_UInt16 },
+    std::pair{ "u32x3"_c, &UInt32x3_convert_Int16x3 },
+    std::pair{ "u32x3(i16x3)"_c, &UInt32x3_convert_Int16x3 },
+    std::pair{ "u32x3"_c, &UInt32x3_splat_Int16 },
+    std::pair{ "u32x3(i16)"_c, &UInt32x3_splat_Int16 },
+    std::pair{ "u32x3"_c, &UInt32x3_ctor0 },
+    std::pair{ "u32x3(u32,u32,u32)"_c, &UInt32x3_ctor0 },
+    std::pair{ "u32x3"_c, &UInt32x3_ctor1 },
+    std::pair{ "u32x3(u32x2,u32)"_c, &UInt32x3_ctor1 },
+    std::pair{ "u32x3"_c, &UInt32x3_ctor2 },
+    std::pair{ "u32x3(u32,u32x2)"_c, &UInt32x3_ctor2 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_Float32x3 },
+    std::pair{ "i32x3(f32x3)"_c, &Int32x3_convert_Float32x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_Float32 },
+    std::pair{ "i32x3(f32)"_c, &Int32x3_splat_Float32 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_UInt32x3 },
+    std::pair{ "i32x3(u32x3)"_c, &Int32x3_convert_UInt32x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_UInt32 },
+    std::pair{ "i32x3(u32)"_c, &Int32x3_splat_UInt32 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_Int32x3 },
+    std::pair{ "i32x3(i32x3)"_c, &Int32x3_convert_Int32x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_Int32 },
+    std::pair{ "i32x3(i32)"_c, &Int32x3_splat_Int32 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_Float16x3 },
+    std::pair{ "i32x3(f16x3)"_c, &Int32x3_convert_Float16x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_Float16 },
+    std::pair{ "i32x3(f16)"_c, &Int32x3_splat_Float16 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_UInt16x3 },
+    std::pair{ "i32x3(u16x3)"_c, &Int32x3_convert_UInt16x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_UInt16 },
+    std::pair{ "i32x3(u16)"_c, &Int32x3_splat_UInt16 },
+    std::pair{ "i32x3"_c, &Int32x3_convert_Int16x3 },
+    std::pair{ "i32x3(i16x3)"_c, &Int32x3_convert_Int16x3 },
+    std::pair{ "i32x3"_c, &Int32x3_splat_Int16 },
+    std::pair{ "i32x3(i16)"_c, &Int32x3_splat_Int16 },
+    std::pair{ "i32x3"_c, &Int32x3_ctor0 },
+    std::pair{ "i32x3(i32,i32,i32)"_c, &Int32x3_ctor0 },
+    std::pair{ "i32x3"_c, &Int32x3_ctor1 },
+    std::pair{ "i32x3(i32x2,i32)"_c, &Int32x3_ctor1 },
+    std::pair{ "i32x3"_c, &Int32x3_ctor2 },
+    std::pair{ "i32x3(i32,i32x2)"_c, &Int32x3_ctor2 },
+    std::pair{ "b8x3"_c, &Bool8x3_convert_UInt32x3 },
+    std::pair{ "b8x3(u32x3)"_c, &Bool8x3_convert_UInt32x3 },
+    std::pair{ "b8x3"_c, &Bool8x3_splat_UInt32 },
+    std::pair{ "b8x3(u32)"_c, &Bool8x3_splat_UInt32 },
+    std::pair{ "b8x3"_c, &Bool8x3_convert_Int32x3 },
+    std::pair{ "b8x3(i32x3)"_c, &Bool8x3_convert_Int32x3 },
+    std::pair{ "b8x3"_c, &Bool8x3_splat_Int32 },
+    std::pair{ "b8x3(i32)"_c, &Bool8x3_splat_Int32 },
+    std::pair{ "b8x3"_c, &Bool8x3_convert_UInt16x3 },
+    std::pair{ "b8x3(u16x3)"_c, &Bool8x3_convert_UInt16x3 },
+    std::pair{ "b8x3"_c, &Bool8x3_splat_UInt16 },
+    std::pair{ "b8x3(u16)"_c, &Bool8x3_splat_UInt16 },
+    std::pair{ "b8x3"_c, &Bool8x3_convert_Int16x3 },
+    std::pair{ "b8x3(i16x3)"_c, &Bool8x3_convert_Int16x3 },
+    std::pair{ "b8x3"_c, &Bool8x3_splat_Int16 },
+    std::pair{ "b8x3(i16)"_c, &Bool8x3_splat_Int16 },
+    std::pair{ "b8x3"_c, &Bool8x3_ctor0 },
+    std::pair{ "b8x3(b8,b8,b8)"_c, &Bool8x3_ctor0 },
+    std::pair{ "b8x3"_c, &Bool8x3_ctor1 },
+    std::pair{ "b8x3(b8x2,b8)"_c, &Bool8x3_ctor1 },
+    std::pair{ "b8x3"_c, &Bool8x3_ctor2 },
+    std::pair{ "b8x3(b8,b8x2)"_c, &Bool8x3_ctor2 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_Float32x3 },
+    std::pair{ "f16x3(f32x3)"_c, &Float16x3_convert_Float32x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_Float32 },
+    std::pair{ "f16x3(f32)"_c, &Float16x3_splat_Float32 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_UInt32x3 },
+    std::pair{ "f16x3(u32x3)"_c, &Float16x3_convert_UInt32x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_UInt32 },
+    std::pair{ "f16x3(u32)"_c, &Float16x3_splat_UInt32 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_Int32x3 },
+    std::pair{ "f16x3(i32x3)"_c, &Float16x3_convert_Int32x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_Int32 },
+    std::pair{ "f16x3(i32)"_c, &Float16x3_splat_Int32 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_Float16x3 },
+    std::pair{ "f16x3(f16x3)"_c, &Float16x3_convert_Float16x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_Float16 },
+    std::pair{ "f16x3(f16)"_c, &Float16x3_splat_Float16 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_UInt16x3 },
+    std::pair{ "f16x3(u16x3)"_c, &Float16x3_convert_UInt16x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_UInt16 },
+    std::pair{ "f16x3(u16)"_c, &Float16x3_splat_UInt16 },
+    std::pair{ "f16x3"_c, &Float16x3_convert_Int16x3 },
+    std::pair{ "f16x3(i16x3)"_c, &Float16x3_convert_Int16x3 },
+    std::pair{ "f16x3"_c, &Float16x3_splat_Int16 },
+    std::pair{ "f16x3(i16)"_c, &Float16x3_splat_Int16 },
+    std::pair{ "f16x3"_c, &Float16x3_ctor0 },
+    std::pair{ "f16x3(f16,f16,f16)"_c, &Float16x3_ctor0 },
+    std::pair{ "f16x3"_c, &Float16x3_ctor1 },
+    std::pair{ "f16x3(f16x2,f16)"_c, &Float16x3_ctor1 },
+    std::pair{ "f16x3"_c, &Float16x3_ctor2 },
+    std::pair{ "f16x3(f16,f16x2)"_c, &Float16x3_ctor2 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_Float32x3 },
+    std::pair{ "u16x3(f32x3)"_c, &UInt16x3_convert_Float32x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_Float32 },
+    std::pair{ "u16x3(f32)"_c, &UInt16x3_splat_Float32 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_UInt32x3 },
+    std::pair{ "u16x3(u32x3)"_c, &UInt16x3_convert_UInt32x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_UInt32 },
+    std::pair{ "u16x3(u32)"_c, &UInt16x3_splat_UInt32 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_Int32x3 },
+    std::pair{ "u16x3(i32x3)"_c, &UInt16x3_convert_Int32x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_Int32 },
+    std::pair{ "u16x3(i32)"_c, &UInt16x3_splat_Int32 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_Float16x3 },
+    std::pair{ "u16x3(f16x3)"_c, &UInt16x3_convert_Float16x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_Float16 },
+    std::pair{ "u16x3(f16)"_c, &UInt16x3_splat_Float16 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_UInt16x3 },
+    std::pair{ "u16x3(u16x3)"_c, &UInt16x3_convert_UInt16x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_UInt16 },
+    std::pair{ "u16x3(u16)"_c, &UInt16x3_splat_UInt16 },
+    std::pair{ "u16x3"_c, &UInt16x3_convert_Int16x3 },
+    std::pair{ "u16x3(i16x3)"_c, &UInt16x3_convert_Int16x3 },
+    std::pair{ "u16x3"_c, &UInt16x3_splat_Int16 },
+    std::pair{ "u16x3(i16)"_c, &UInt16x3_splat_Int16 },
+    std::pair{ "u16x3"_c, &UInt16x3_ctor0 },
+    std::pair{ "u16x3(u16,u16,u16)"_c, &UInt16x3_ctor0 },
+    std::pair{ "u16x3"_c, &UInt16x3_ctor1 },
+    std::pair{ "u16x3(u16x2,u16)"_c, &UInt16x3_ctor1 },
+    std::pair{ "u16x3"_c, &UInt16x3_ctor2 },
+    std::pair{ "u16x3(u16,u16x2)"_c, &UInt16x3_ctor2 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_Float32x3 },
+    std::pair{ "i16x3(f32x3)"_c, &Int16x3_convert_Float32x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_Float32 },
+    std::pair{ "i16x3(f32)"_c, &Int16x3_splat_Float32 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_UInt32x3 },
+    std::pair{ "i16x3(u32x3)"_c, &Int16x3_convert_UInt32x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_UInt32 },
+    std::pair{ "i16x3(u32)"_c, &Int16x3_splat_UInt32 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_Int32x3 },
+    std::pair{ "i16x3(i32x3)"_c, &Int16x3_convert_Int32x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_Int32 },
+    std::pair{ "i16x3(i32)"_c, &Int16x3_splat_Int32 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_Float16x3 },
+    std::pair{ "i16x3(f16x3)"_c, &Int16x3_convert_Float16x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_Float16 },
+    std::pair{ "i16x3(f16)"_c, &Int16x3_splat_Float16 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_UInt16x3 },
+    std::pair{ "i16x3(u16x3)"_c, &Int16x3_convert_UInt16x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_UInt16 },
+    std::pair{ "i16x3(u16)"_c, &Int16x3_splat_UInt16 },
+    std::pair{ "i16x3"_c, &Int16x3_convert_Int16x3 },
+    std::pair{ "i16x3(i16x3)"_c, &Int16x3_convert_Int16x3 },
+    std::pair{ "i16x3"_c, &Int16x3_splat_Int16 },
+    std::pair{ "i16x3(i16)"_c, &Int16x3_splat_Int16 },
+    std::pair{ "i16x3"_c, &Int16x3_ctor0 },
+    std::pair{ "i16x3(i16,i16,i16)"_c, &Int16x3_ctor0 },
+    std::pair{ "i16x3"_c, &Int16x3_ctor1 },
+    std::pair{ "i16x3(i16x2,i16)"_c, &Int16x3_ctor1 },
+    std::pair{ "i16x3"_c, &Int16x3_ctor2 },
+    std::pair{ "i16x3(i16,i16x2)"_c, &Int16x3_ctor2 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_Float32x4 },
+    std::pair{ "f32x4(f32x4)"_c, &Float32x4_convert_Float32x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_Float32 },
+    std::pair{ "f32x4(f32)"_c, &Float32x4_splat_Float32 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_UInt32x4 },
+    std::pair{ "f32x4(u32x4)"_c, &Float32x4_convert_UInt32x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_UInt32 },
+    std::pair{ "f32x4(u32)"_c, &Float32x4_splat_UInt32 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_Int32x4 },
+    std::pair{ "f32x4(i32x4)"_c, &Float32x4_convert_Int32x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_Int32 },
+    std::pair{ "f32x4(i32)"_c, &Float32x4_splat_Int32 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_Float16x4 },
+    std::pair{ "f32x4(f16x4)"_c, &Float32x4_convert_Float16x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_Float16 },
+    std::pair{ "f32x4(f16)"_c, &Float32x4_splat_Float16 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_UInt16x4 },
+    std::pair{ "f32x4(u16x4)"_c, &Float32x4_convert_UInt16x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_UInt16 },
+    std::pair{ "f32x4(u16)"_c, &Float32x4_splat_UInt16 },
+    std::pair{ "f32x4"_c, &Float32x4_convert_Int16x4 },
+    std::pair{ "f32x4(i16x4)"_c, &Float32x4_convert_Int16x4 },
+    std::pair{ "f32x4"_c, &Float32x4_splat_Int16 },
+    std::pair{ "f32x4(i16)"_c, &Float32x4_splat_Int16 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor0 },
+    std::pair{ "f32x4(f32,f32,f32,f32)"_c, &Float32x4_ctor0 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor1 },
+    std::pair{ "f32x4(f32x2,f32,f32)"_c, &Float32x4_ctor1 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor2 },
+    std::pair{ "f32x4(f32,f32x2,f32)"_c, &Float32x4_ctor2 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor3 },
+    std::pair{ "f32x4(f32,f32,f32x2)"_c, &Float32x4_ctor3 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor4 },
+    std::pair{ "f32x4(f32x3,f32)"_c, &Float32x4_ctor4 },
+    std::pair{ "f32x4"_c, &Float32x4_ctor5 },
+    std::pair{ "f32x4(f32,f32x3)"_c, &Float32x4_ctor5 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_Float32x4 },
+    std::pair{ "u32x4(f32x4)"_c, &UInt32x4_convert_Float32x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_Float32 },
+    std::pair{ "u32x4(f32)"_c, &UInt32x4_splat_Float32 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_UInt32x4 },
+    std::pair{ "u32x4(u32x4)"_c, &UInt32x4_convert_UInt32x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_UInt32 },
+    std::pair{ "u32x4(u32)"_c, &UInt32x4_splat_UInt32 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_Int32x4 },
+    std::pair{ "u32x4(i32x4)"_c, &UInt32x4_convert_Int32x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_Int32 },
+    std::pair{ "u32x4(i32)"_c, &UInt32x4_splat_Int32 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_Float16x4 },
+    std::pair{ "u32x4(f16x4)"_c, &UInt32x4_convert_Float16x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_Float16 },
+    std::pair{ "u32x4(f16)"_c, &UInt32x4_splat_Float16 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_UInt16x4 },
+    std::pair{ "u32x4(u16x4)"_c, &UInt32x4_convert_UInt16x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_UInt16 },
+    std::pair{ "u32x4(u16)"_c, &UInt32x4_splat_UInt16 },
+    std::pair{ "u32x4"_c, &UInt32x4_convert_Int16x4 },
+    std::pair{ "u32x4(i16x4)"_c, &UInt32x4_convert_Int16x4 },
+    std::pair{ "u32x4"_c, &UInt32x4_splat_Int16 },
+    std::pair{ "u32x4(i16)"_c, &UInt32x4_splat_Int16 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor0 },
+    std::pair{ "u32x4(u32,u32,u32,u32)"_c, &UInt32x4_ctor0 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor1 },
+    std::pair{ "u32x4(u32x2,u32,u32)"_c, &UInt32x4_ctor1 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor2 },
+    std::pair{ "u32x4(u32,u32x2,u32)"_c, &UInt32x4_ctor2 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor3 },
+    std::pair{ "u32x4(u32,u32,u32x2)"_c, &UInt32x4_ctor3 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor4 },
+    std::pair{ "u32x4(u32x3,u32)"_c, &UInt32x4_ctor4 },
+    std::pair{ "u32x4"_c, &UInt32x4_ctor5 },
+    std::pair{ "u32x4(u32,u32x3)"_c, &UInt32x4_ctor5 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_Float32x4 },
+    std::pair{ "i32x4(f32x4)"_c, &Int32x4_convert_Float32x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_Float32 },
+    std::pair{ "i32x4(f32)"_c, &Int32x4_splat_Float32 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_UInt32x4 },
+    std::pair{ "i32x4(u32x4)"_c, &Int32x4_convert_UInt32x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_UInt32 },
+    std::pair{ "i32x4(u32)"_c, &Int32x4_splat_UInt32 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_Int32x4 },
+    std::pair{ "i32x4(i32x4)"_c, &Int32x4_convert_Int32x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_Int32 },
+    std::pair{ "i32x4(i32)"_c, &Int32x4_splat_Int32 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_Float16x4 },
+    std::pair{ "i32x4(f16x4)"_c, &Int32x4_convert_Float16x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_Float16 },
+    std::pair{ "i32x4(f16)"_c, &Int32x4_splat_Float16 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_UInt16x4 },
+    std::pair{ "i32x4(u16x4)"_c, &Int32x4_convert_UInt16x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_UInt16 },
+    std::pair{ "i32x4(u16)"_c, &Int32x4_splat_UInt16 },
+    std::pair{ "i32x4"_c, &Int32x4_convert_Int16x4 },
+    std::pair{ "i32x4(i16x4)"_c, &Int32x4_convert_Int16x4 },
+    std::pair{ "i32x4"_c, &Int32x4_splat_Int16 },
+    std::pair{ "i32x4(i16)"_c, &Int32x4_splat_Int16 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor0 },
+    std::pair{ "i32x4(i32,i32,i32,i32)"_c, &Int32x4_ctor0 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor1 },
+    std::pair{ "i32x4(i32x2,i32,i32)"_c, &Int32x4_ctor1 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor2 },
+    std::pair{ "i32x4(i32,i32x2,i32)"_c, &Int32x4_ctor2 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor3 },
+    std::pair{ "i32x4(i32,i32,i32x2)"_c, &Int32x4_ctor3 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor4 },
+    std::pair{ "i32x4(i32x3,i32)"_c, &Int32x4_ctor4 },
+    std::pair{ "i32x4"_c, &Int32x4_ctor5 },
+    std::pair{ "i32x4(i32,i32x3)"_c, &Int32x4_ctor5 },
+    std::pair{ "b8x4"_c, &Bool8x4_convert_UInt32x4 },
+    std::pair{ "b8x4(u32x4)"_c, &Bool8x4_convert_UInt32x4 },
+    std::pair{ "b8x4"_c, &Bool8x4_splat_UInt32 },
+    std::pair{ "b8x4(u32)"_c, &Bool8x4_splat_UInt32 },
+    std::pair{ "b8x4"_c, &Bool8x4_convert_Int32x4 },
+    std::pair{ "b8x4(i32x4)"_c, &Bool8x4_convert_Int32x4 },
+    std::pair{ "b8x4"_c, &Bool8x4_splat_Int32 },
+    std::pair{ "b8x4(i32)"_c, &Bool8x4_splat_Int32 },
+    std::pair{ "b8x4"_c, &Bool8x4_convert_UInt16x4 },
+    std::pair{ "b8x4(u16x4)"_c, &Bool8x4_convert_UInt16x4 },
+    std::pair{ "b8x4"_c, &Bool8x4_splat_UInt16 },
+    std::pair{ "b8x4(u16)"_c, &Bool8x4_splat_UInt16 },
+    std::pair{ "b8x4"_c, &Bool8x4_convert_Int16x4 },
+    std::pair{ "b8x4(i16x4)"_c, &Bool8x4_convert_Int16x4 },
+    std::pair{ "b8x4"_c, &Bool8x4_splat_Int16 },
+    std::pair{ "b8x4(i16)"_c, &Bool8x4_splat_Int16 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor0 },
+    std::pair{ "b8x4(b8,b8,b8,b8)"_c, &Bool8x4_ctor0 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor1 },
+    std::pair{ "b8x4(b8x2,b8,b8)"_c, &Bool8x4_ctor1 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor2 },
+    std::pair{ "b8x4(b8,b8x2,b8)"_c, &Bool8x4_ctor2 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor3 },
+    std::pair{ "b8x4(b8,b8,b8x2)"_c, &Bool8x4_ctor3 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor4 },
+    std::pair{ "b8x4(b8x3,b8)"_c, &Bool8x4_ctor4 },
+    std::pair{ "b8x4"_c, &Bool8x4_ctor5 },
+    std::pair{ "b8x4(b8,b8x3)"_c, &Bool8x4_ctor5 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_Float32x4 },
+    std::pair{ "f16x4(f32x4)"_c, &Float16x4_convert_Float32x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_Float32 },
+    std::pair{ "f16x4(f32)"_c, &Float16x4_splat_Float32 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_UInt32x4 },
+    std::pair{ "f16x4(u32x4)"_c, &Float16x4_convert_UInt32x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_UInt32 },
+    std::pair{ "f16x4(u32)"_c, &Float16x4_splat_UInt32 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_Int32x4 },
+    std::pair{ "f16x4(i32x4)"_c, &Float16x4_convert_Int32x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_Int32 },
+    std::pair{ "f16x4(i32)"_c, &Float16x4_splat_Int32 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_Float16x4 },
+    std::pair{ "f16x4(f16x4)"_c, &Float16x4_convert_Float16x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_Float16 },
+    std::pair{ "f16x4(f16)"_c, &Float16x4_splat_Float16 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_UInt16x4 },
+    std::pair{ "f16x4(u16x4)"_c, &Float16x4_convert_UInt16x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_UInt16 },
+    std::pair{ "f16x4(u16)"_c, &Float16x4_splat_UInt16 },
+    std::pair{ "f16x4"_c, &Float16x4_convert_Int16x4 },
+    std::pair{ "f16x4(i16x4)"_c, &Float16x4_convert_Int16x4 },
+    std::pair{ "f16x4"_c, &Float16x4_splat_Int16 },
+    std::pair{ "f16x4(i16)"_c, &Float16x4_splat_Int16 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor0 },
+    std::pair{ "f16x4(f16,f16,f16,f16)"_c, &Float16x4_ctor0 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor1 },
+    std::pair{ "f16x4(f16x2,f16,f16)"_c, &Float16x4_ctor1 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor2 },
+    std::pair{ "f16x4(f16,f16x2,f16)"_c, &Float16x4_ctor2 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor3 },
+    std::pair{ "f16x4(f16,f16,f16x2)"_c, &Float16x4_ctor3 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor4 },
+    std::pair{ "f16x4(f16x3,f16)"_c, &Float16x4_ctor4 },
+    std::pair{ "f16x4"_c, &Float16x4_ctor5 },
+    std::pair{ "f16x4(f16,f16x3)"_c, &Float16x4_ctor5 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_Float32x4 },
+    std::pair{ "u16x4(f32x4)"_c, &UInt16x4_convert_Float32x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_Float32 },
+    std::pair{ "u16x4(f32)"_c, &UInt16x4_splat_Float32 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_UInt32x4 },
+    std::pair{ "u16x4(u32x4)"_c, &UInt16x4_convert_UInt32x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_UInt32 },
+    std::pair{ "u16x4(u32)"_c, &UInt16x4_splat_UInt32 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_Int32x4 },
+    std::pair{ "u16x4(i32x4)"_c, &UInt16x4_convert_Int32x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_Int32 },
+    std::pair{ "u16x4(i32)"_c, &UInt16x4_splat_Int32 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_Float16x4 },
+    std::pair{ "u16x4(f16x4)"_c, &UInt16x4_convert_Float16x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_Float16 },
+    std::pair{ "u16x4(f16)"_c, &UInt16x4_splat_Float16 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_UInt16x4 },
+    std::pair{ "u16x4(u16x4)"_c, &UInt16x4_convert_UInt16x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_UInt16 },
+    std::pair{ "u16x4(u16)"_c, &UInt16x4_splat_UInt16 },
+    std::pair{ "u16x4"_c, &UInt16x4_convert_Int16x4 },
+    std::pair{ "u16x4(i16x4)"_c, &UInt16x4_convert_Int16x4 },
+    std::pair{ "u16x4"_c, &UInt16x4_splat_Int16 },
+    std::pair{ "u16x4(i16)"_c, &UInt16x4_splat_Int16 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor0 },
+    std::pair{ "u16x4(u16,u16,u16,u16)"_c, &UInt16x4_ctor0 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor1 },
+    std::pair{ "u16x4(u16x2,u16,u16)"_c, &UInt16x4_ctor1 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor2 },
+    std::pair{ "u16x4(u16,u16x2,u16)"_c, &UInt16x4_ctor2 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor3 },
+    std::pair{ "u16x4(u16,u16,u16x2)"_c, &UInt16x4_ctor3 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor4 },
+    std::pair{ "u16x4(u16x3,u16)"_c, &UInt16x4_ctor4 },
+    std::pair{ "u16x4"_c, &UInt16x4_ctor5 },
+    std::pair{ "u16x4(u16,u16x3)"_c, &UInt16x4_ctor5 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_Float32x4 },
+    std::pair{ "i16x4(f32x4)"_c, &Int16x4_convert_Float32x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_Float32 },
+    std::pair{ "i16x4(f32)"_c, &Int16x4_splat_Float32 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_UInt32x4 },
+    std::pair{ "i16x4(u32x4)"_c, &Int16x4_convert_UInt32x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_UInt32 },
+    std::pair{ "i16x4(u32)"_c, &Int16x4_splat_UInt32 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_Int32x4 },
+    std::pair{ "i16x4(i32x4)"_c, &Int16x4_convert_Int32x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_Int32 },
+    std::pair{ "i16x4(i32)"_c, &Int16x4_splat_Int32 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_Float16x4 },
+    std::pair{ "i16x4(f16x4)"_c, &Int16x4_convert_Float16x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_Float16 },
+    std::pair{ "i16x4(f16)"_c, &Int16x4_splat_Float16 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_UInt16x4 },
+    std::pair{ "i16x4(u16x4)"_c, &Int16x4_convert_UInt16x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_UInt16 },
+    std::pair{ "i16x4(u16)"_c, &Int16x4_splat_UInt16 },
+    std::pair{ "i16x4"_c, &Int16x4_convert_Int16x4 },
+    std::pair{ "i16x4(i16x4)"_c, &Int16x4_convert_Int16x4 },
+    std::pair{ "i16x4"_c, &Int16x4_splat_Int16 },
+    std::pair{ "i16x4(i16)"_c, &Int16x4_splat_Int16 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor0 },
+    std::pair{ "i16x4(i16,i16,i16,i16)"_c, &Int16x4_ctor0 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor1 },
+    std::pair{ "i16x4(i16x2,i16,i16)"_c, &Int16x4_ctor1 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor2 },
+    std::pair{ "i16x4(i16,i16x2,i16)"_c, &Int16x4_ctor2 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor3 },
+    std::pair{ "i16x4(i16,i16,i16x2)"_c, &Int16x4_ctor3 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor4 },
+    std::pair{ "i16x4(i16x3,i16)"_c, &Int16x4_ctor4 },
+    std::pair{ "i16x4"_c, &Int16x4_ctor5 },
+    std::pair{ "i16x4(i16,i16x3)"_c, &Int16x4_ctor5 },
+    std::pair{ "f32x2x2"_c, &Float32x2x2_Float32_2_ctor },
+    std::pair{ "f32x2x2(f32x2,f32x2)"_c, &Float32x2x2_Float32_2_ctor },
+    std::pair{ "f32x2x2"_c, &Float32x2x2_identity },
+    std::pair{ "f32x2x2()"_c, &Float32x2x2_identity },
+    std::pair{ "f32x2x2"_c, &Float32x2x2_raw_list },
+    std::pair{ "f32x2x2(f32,f32,f32,f32)"_c, &Float32x2x2_raw_list },
+    std::pair{ "f32x2x3"_c, &Float32x2x3_Float32_3_ctor },
+    std::pair{ "f32x2x3(f32x3,f32x3)"_c, &Float32x2x3_Float32_3_ctor },
+    std::pair{ "f32x2x3"_c, &Float32x2x3_identity },
+    std::pair{ "f32x2x3()"_c, &Float32x2x3_identity },
+    std::pair{ "f32x2x3"_c, &Float32x2x3_raw_list },
+    std::pair{ "f32x2x3(f32,f32,f32,f32,f32,f32)"_c, &Float32x2x3_raw_list },
+    std::pair{ "f32x2x4"_c, &Float32x2x4_Float32_4_ctor },
+    std::pair{ "f32x2x4(f32x4,f32x4)"_c, &Float32x2x4_Float32_4_ctor },
+    std::pair{ "f32x2x4"_c, &Float32x2x4_identity },
+    std::pair{ "f32x2x4()"_c, &Float32x2x4_identity },
+    std::pair{ "f32x2x4"_c, &Float32x2x4_raw_list },
+    std::pair{ "f32x2x4(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x2x4_raw_list },
+    std::pair{ "f32x3x2"_c, &Float32x3x2_Float32_2_ctor },
+    std::pair{ "f32x3x2(f32x2,f32x2,f32x2)"_c, &Float32x3x2_Float32_2_ctor },
+    std::pair{ "f32x3x2"_c, &Float32x3x2_identity },
+    std::pair{ "f32x3x2()"_c, &Float32x3x2_identity },
+    std::pair{ "f32x3x2"_c, &Float32x3x2_raw_list },
+    std::pair{ "f32x3x2(f32,f32,f32,f32,f32,f32)"_c, &Float32x3x2_raw_list },
+    std::pair{ "f32x3x3"_c, &Float32x3x3_Float32_3_ctor },
+    std::pair{ "f32x3x3(f32x3,f32x3,f32x3)"_c, &Float32x3x3_Float32_3_ctor },
+    std::pair{ "f32x3x3"_c, &Float32x3x3_identity },
+    std::pair{ "f32x3x3()"_c, &Float32x3x3_identity },
+    std::pair{ "f32x3x3"_c, &Float32x3x3_raw_list },
+    std::pair{ "f32x3x3(f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x3_raw_list },
+    std::pair{ "f32x3x4"_c, &Float32x3x4_Float32_4_ctor },
+    std::pair{ "f32x3x4(f32x4,f32x4,f32x4)"_c, &Float32x3x4_Float32_4_ctor },
+    std::pair{ "f32x3x4"_c, &Float32x3x4_identity },
+    std::pair{ "f32x3x4()"_c, &Float32x3x4_identity },
+    std::pair{ "f32x3x4"_c, &Float32x3x4_raw_list },
+    std::pair{ "f32x3x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x3x4_raw_list },
+    std::pair{ "f32x4x2"_c, &Float32x4x2_Float32_2_ctor },
+    std::pair{ "f32x4x2(f32x2,f32x2,f32x2,f32x2)"_c, &Float32x4x2_Float32_2_ctor },
+    std::pair{ "f32x4x2"_c, &Float32x4x2_identity },
+    std::pair{ "f32x4x2()"_c, &Float32x4x2_identity },
+    std::pair{ "f32x4x2"_c, &Float32x4x2_raw_list },
+    std::pair{ "f32x4x2(f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x2_raw_list },
+    std::pair{ "f32x4x3"_c, &Float32x4x3_Float32_3_ctor },
+    std::pair{ "f32x4x3(f32x3,f32x3,f32x3,f32x3)"_c, &Float32x4x3_Float32_3_ctor },
+    std::pair{ "f32x4x3"_c, &Float32x4x3_identity },
+    std::pair{ "f32x4x3()"_c, &Float32x4x3_identity },
+    std::pair{ "f32x4x3"_c, &Float32x4x3_raw_list },
+    std::pair{ "f32x4x3(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x3_raw_list },
+    std::pair{ "f32x4x4"_c, &Float32x4x4_Float32_4_ctor },
+    std::pair{ "f32x4x4(f32x4,f32x4,f32x4,f32x4)"_c, &Float32x4x4_Float32_4_ctor },
+    std::pair{ "f32x4x4"_c, &Float32x4x4_identity },
+    std::pair{ "f32x4x4()"_c, &Float32x4x4_identity },
+    std::pair{ "f32x4x4"_c, &Float32x4x4_raw_list },
+    std::pair{ "f32x4x4(f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32,f32)"_c, &Float32x4x4_raw_list },
+    std::pair{ "f16x2x2"_c, &Float16x2x2_Float16_2_ctor },
+    std::pair{ "f16x2x2(f16x2,f16x2)"_c, &Float16x2x2_Float16_2_ctor },
+    std::pair{ "f16x2x2"_c, &Float16x2x2_identity },
+    std::pair{ "f16x2x2()"_c, &Float16x2x2_identity },
+    std::pair{ "f16x2x2"_c, &Float16x2x2_raw_list },
+    std::pair{ "f16x2x2(f16,f16,f16,f16)"_c, &Float16x2x2_raw_list },
+    std::pair{ "f16x2x3"_c, &Float16x2x3_Float16_3_ctor },
+    std::pair{ "f16x2x3(f16x3,f16x3)"_c, &Float16x2x3_Float16_3_ctor },
+    std::pair{ "f16x2x3"_c, &Float16x2x3_identity },
+    std::pair{ "f16x2x3()"_c, &Float16x2x3_identity },
+    std::pair{ "f16x2x3"_c, &Float16x2x3_raw_list },
+    std::pair{ "f16x2x3(f16,f16,f16,f16,f16,f16)"_c, &Float16x2x3_raw_list },
+    std::pair{ "f16x2x4"_c, &Float16x2x4_Float16_4_ctor },
+    std::pair{ "f16x2x4(f16x4,f16x4)"_c, &Float16x2x4_Float16_4_ctor },
+    std::pair{ "f16x2x4"_c, &Float16x2x4_identity },
+    std::pair{ "f16x2x4()"_c, &Float16x2x4_identity },
+    std::pair{ "f16x2x4"_c, &Float16x2x4_raw_list },
+    std::pair{ "f16x2x4(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x2x4_raw_list },
+    std::pair{ "f16x3x2"_c, &Float16x3x2_Float16_2_ctor },
+    std::pair{ "f16x3x2(f16x2,f16x2,f16x2)"_c, &Float16x3x2_Float16_2_ctor },
+    std::pair{ "f16x3x2"_c, &Float16x3x2_identity },
+    std::pair{ "f16x3x2()"_c, &Float16x3x2_identity },
+    std::pair{ "f16x3x2"_c, &Float16x3x2_raw_list },
+    std::pair{ "f16x3x2(f16,f16,f16,f16,f16,f16)"_c, &Float16x3x2_raw_list },
+    std::pair{ "f16x3x3"_c, &Float16x3x3_Float16_3_ctor },
+    std::pair{ "f16x3x3(f16x3,f16x3,f16x3)"_c, &Float16x3x3_Float16_3_ctor },
+    std::pair{ "f16x3x3"_c, &Float16x3x3_identity },
+    std::pair{ "f16x3x3()"_c, &Float16x3x3_identity },
+    std::pair{ "f16x3x3"_c, &Float16x3x3_raw_list },
+    std::pair{ "f16x3x3(f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x3_raw_list },
+    std::pair{ "f16x3x4"_c, &Float16x3x4_Float16_4_ctor },
+    std::pair{ "f16x3x4(f16x4,f16x4,f16x4)"_c, &Float16x3x4_Float16_4_ctor },
+    std::pair{ "f16x3x4"_c, &Float16x3x4_identity },
+    std::pair{ "f16x3x4()"_c, &Float16x3x4_identity },
+    std::pair{ "f16x3x4"_c, &Float16x3x4_raw_list },
+    std::pair{ "f16x3x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x3x4_raw_list },
+    std::pair{ "f16x4x2"_c, &Float16x4x2_Float16_2_ctor },
+    std::pair{ "f16x4x2(f16x2,f16x2,f16x2,f16x2)"_c, &Float16x4x2_Float16_2_ctor },
+    std::pair{ "f16x4x2"_c, &Float16x4x2_identity },
+    std::pair{ "f16x4x2()"_c, &Float16x4x2_identity },
+    std::pair{ "f16x4x2"_c, &Float16x4x2_raw_list },
+    std::pair{ "f16x4x2(f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x2_raw_list },
+    std::pair{ "f16x4x3"_c, &Float16x4x3_Float16_3_ctor },
+    std::pair{ "f16x4x3(f16x3,f16x3,f16x3,f16x3)"_c, &Float16x4x3_Float16_3_ctor },
+    std::pair{ "f16x4x3"_c, &Float16x4x3_identity },
+    std::pair{ "f16x4x3()"_c, &Float16x4x3_identity },
+    std::pair{ "f16x4x3"_c, &Float16x4x3_raw_list },
+    std::pair{ "f16x4x3(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x3_raw_list },
+    std::pair{ "f16x4x4"_c, &Float16x4x4_Float16_4_ctor },
+    std::pair{ "f16x4x4(f16x4,f16x4,f16x4,f16x4)"_c, &Float16x4x4_Float16_4_ctor },
+    std::pair{ "f16x4x4"_c, &Float16x4x4_identity },
+    std::pair{ "f16x4x4()"_c, &Float16x4x4_identity },
+    std::pair{ "f16x4x4"_c, &Float16x4x4_raw_list },
+    std::pair{ "f16x4x4(f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16,f16)"_c, &Float16x4x4_raw_list },
+    std::pair{ "acos"_c, &acos_Float32 },
+    std::pair{ "acos"_c, &acos_Float32x2 },
+    std::pair{ "acos"_c, &acos_Float32x3 },
+    std::pair{ "acos"_c, &acos_Float32x4 },
+    std::pair{ "acos"_c, &acos_Float16 },
+    std::pair{ "acos"_c, &acos_Float16x2 },
+    std::pair{ "acos"_c, &acos_Float16x3 },
+    std::pair{ "acos"_c, &acos_Float16x4 },
+    std::pair{ "acosh"_c, &acosh_Float32 },
+    std::pair{ "acosh"_c, &acosh_Float32x2 },
+    std::pair{ "acosh"_c, &acosh_Float32x3 },
+    std::pair{ "acosh"_c, &acosh_Float32x4 },
+    std::pair{ "acosh"_c, &acosh_Float16 },
+    std::pair{ "acosh"_c, &acosh_Float16x2 },
+    std::pair{ "acosh"_c, &acosh_Float16x3 },
+    std::pair{ "acosh"_c, &acosh_Float16x4 },
+    std::pair{ "asin"_c, &asin_Float32 },
+    std::pair{ "asin"_c, &asin_Float32x2 },
+    std::pair{ "asin"_c, &asin_Float32x3 },
+    std::pair{ "asin"_c, &asin_Float32x4 },
+    std::pair{ "asin"_c, &asin_Float16 },
+    std::pair{ "asin"_c, &asin_Float16x2 },
+    std::pair{ "asin"_c, &asin_Float16x3 },
+    std::pair{ "asin"_c, &asin_Float16x4 },
+    std::pair{ "asinh"_c, &asinh_Float32 },
+    std::pair{ "asinh"_c, &asinh_Float32x2 },
+    std::pair{ "asinh"_c, &asinh_Float32x3 },
+    std::pair{ "asinh"_c, &asinh_Float32x4 },
+    std::pair{ "asinh"_c, &asinh_Float16 },
+    std::pair{ "asinh"_c, &asinh_Float16x2 },
+    std::pair{ "asinh"_c, &asinh_Float16x3 },
+    std::pair{ "asinh"_c, &asinh_Float16x4 },
+    std::pair{ "atan"_c, &atan_Float32 },
+    std::pair{ "atan"_c, &atan_Float32x2 },
+    std::pair{ "atan"_c, &atan_Float32x3 },
+    std::pair{ "atan"_c, &atan_Float32x4 },
+    std::pair{ "atan"_c, &atan_Float16 },
+    std::pair{ "atan"_c, &atan_Float16x2 },
+    std::pair{ "atan"_c, &atan_Float16x3 },
+    std::pair{ "atan"_c, &atan_Float16x4 },
+    std::pair{ "atanh"_c, &atanh_Float32 },
+    std::pair{ "atanh"_c, &atanh_Float32x2 },
+    std::pair{ "atanh"_c, &atanh_Float32x3 },
+    std::pair{ "atanh"_c, &atanh_Float32x4 },
+    std::pair{ "atanh"_c, &atanh_Float16 },
+    std::pair{ "atanh"_c, &atanh_Float16x2 },
+    std::pair{ "atanh"_c, &atanh_Float16x3 },
+    std::pair{ "atanh"_c, &atanh_Float16x4 },
+    std::pair{ "cos"_c, &cos_Float32 },
+    std::pair{ "cos"_c, &cos_Float32x2 },
+    std::pair{ "cos"_c, &cos_Float32x3 },
+    std::pair{ "cos"_c, &cos_Float32x4 },
+    std::pair{ "cos"_c, &cos_Float16 },
+    std::pair{ "cos"_c, &cos_Float16x2 },
+    std::pair{ "cos"_c, &cos_Float16x3 },
+    std::pair{ "cos"_c, &cos_Float16x4 },
+    std::pair{ "cosh"_c, &cosh_Float32 },
+    std::pair{ "cosh"_c, &cosh_Float32x2 },
+    std::pair{ "cosh"_c, &cosh_Float32x3 },
+    std::pair{ "cosh"_c, &cosh_Float32x4 },
+    std::pair{ "cosh"_c, &cosh_Float16 },
+    std::pair{ "cosh"_c, &cosh_Float16x2 },
+    std::pair{ "cosh"_c, &cosh_Float16x3 },
+    std::pair{ "cosh"_c, &cosh_Float16x4 },
+    std::pair{ "exp"_c, &exp_Float32 },
+    std::pair{ "exp"_c, &exp_Float32x2 },
+    std::pair{ "exp"_c, &exp_Float32x3 },
+    std::pair{ "exp"_c, &exp_Float32x4 },
+    std::pair{ "exp"_c, &exp_Float16 },
+    std::pair{ "exp"_c, &exp_Float16x2 },
+    std::pair{ "exp"_c, &exp_Float16x3 },
+    std::pair{ "exp"_c, &exp_Float16x4 },
+    std::pair{ "exp2"_c, &exp2_Float32 },
+    std::pair{ "exp2"_c, &exp2_Float32x2 },
+    std::pair{ "exp2"_c, &exp2_Float32x3 },
+    std::pair{ "exp2"_c, &exp2_Float32x4 },
+    std::pair{ "exp2"_c, &exp2_Float16 },
+    std::pair{ "exp2"_c, &exp2_Float16x2 },
+    std::pair{ "exp2"_c, &exp2_Float16x3 },
+    std::pair{ "exp2"_c, &exp2_Float16x4 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float32 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float32x2 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float32x3 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float32x4 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float16 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float16x2 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float16x3 },
+    std::pair{ "invSqrt"_c, &invSqrt_Float16x4 },
+    std::pair{ "log"_c, &log_Float32 },
+    std::pair{ "log"_c, &log_Float32x2 },
+    std::pair{ "log"_c, &log_Float32x3 },
+    std::pair{ "log"_c, &log_Float32x4 },
+    std::pair{ "log"_c, &log_Float16 },
+    std::pair{ "log"_c, &log_Float16x2 },
+    std::pair{ "log"_c, &log_Float16x3 },
+    std::pair{ "log"_c, &log_Float16x4 },
+    std::pair{ "log2"_c, &log2_Float32 },
+    std::pair{ "log2"_c, &log2_Float32x2 },
+    std::pair{ "log2"_c, &log2_Float32x3 },
+    std::pair{ "log2"_c, &log2_Float32x4 },
+    std::pair{ "log2"_c, &log2_Float16 },
+    std::pair{ "log2"_c, &log2_Float16x2 },
+    std::pair{ "log2"_c, &log2_Float16x3 },
+    std::pair{ "log2"_c, &log2_Float16x4 },
+    std::pair{ "sin"_c, &sin_Float32 },
+    std::pair{ "sin"_c, &sin_Float32x2 },
+    std::pair{ "sin"_c, &sin_Float32x3 },
+    std::pair{ "sin"_c, &sin_Float32x4 },
+    std::pair{ "sin"_c, &sin_Float16 },
+    std::pair{ "sin"_c, &sin_Float16x2 },
+    std::pair{ "sin"_c, &sin_Float16x3 },
+    std::pair{ "sin"_c, &sin_Float16x4 },
+    std::pair{ "sinh"_c, &sinh_Float32 },
+    std::pair{ "sinh"_c, &sinh_Float32x2 },
+    std::pair{ "sinh"_c, &sinh_Float32x3 },
+    std::pair{ "sinh"_c, &sinh_Float32x4 },
+    std::pair{ "sinh"_c, &sinh_Float16 },
+    std::pair{ "sinh"_c, &sinh_Float16x2 },
+    std::pair{ "sinh"_c, &sinh_Float16x3 },
+    std::pair{ "sinh"_c, &sinh_Float16x4 },
+    std::pair{ "sqrt"_c, &sqrt_Float32 },
+    std::pair{ "sqrt"_c, &sqrt_Float32x2 },
+    std::pair{ "sqrt"_c, &sqrt_Float32x3 },
+    std::pair{ "sqrt"_c, &sqrt_Float32x4 },
+    std::pair{ "sqrt"_c, &sqrt_Float16 },
+    std::pair{ "sqrt"_c, &sqrt_Float16x2 },
+    std::pair{ "sqrt"_c, &sqrt_Float16x3 },
+    std::pair{ "sqrt"_c, &sqrt_Float16x4 },
+    std::pair{ "tan"_c, &tan_Float32 },
+    std::pair{ "tan"_c, &tan_Float32x2 },
+    std::pair{ "tan"_c, &tan_Float32x3 },
+    std::pair{ "tan"_c, &tan_Float32x4 },
+    std::pair{ "tan"_c, &tan_Float16 },
+    std::pair{ "tan"_c, &tan_Float16x2 },
+    std::pair{ "tan"_c, &tan_Float16x3 },
+    std::pair{ "tan"_c, &tan_Float16x4 },
+    std::pair{ "tanh"_c, &tanh_Float32 },
+    std::pair{ "tanh"_c, &tanh_Float32x2 },
+    std::pair{ "tanh"_c, &tanh_Float32x3 },
+    std::pair{ "tanh"_c, &tanh_Float32x4 },
+    std::pair{ "tanh"_c, &tanh_Float16 },
+    std::pair{ "tanh"_c, &tanh_Float16x2 },
+    std::pair{ "tanh"_c, &tanh_Float16x3 },
+    std::pair{ "tanh"_c, &tanh_Float16x4 },
+    std::pair{ "tanh"_c, &atan2_Float32 },
+    std::pair{ "tanh"_c, &atan2_Float32x2 },
+    std::pair{ "tanh"_c, &atan2_Float32x3 },
+    std::pair{ "tanh"_c, &atan2_Float32x4 },
+    std::pair{ "tanh"_c, &atan2_Float16 },
+    std::pair{ "tanh"_c, &atan2_Float16x2 },
+    std::pair{ "tanh"_c, &atan2_Float16x3 },
+    std::pair{ "tanh"_c, &atan2_Float16x4 },
+    std::pair{ "pow"_c, &pow_Float32 },
+    std::pair{ "pow"_c, &pow_Float32x2 },
+    std::pair{ "pow"_c, &pow_Float32x3 },
+    std::pair{ "pow"_c, &pow_Float32x4 },
+    std::pair{ "pow"_c, &pow_Float16 },
+    std::pair{ "pow"_c, &pow_Float16x2 },
+    std::pair{ "pow"_c, &pow_Float16x3 },
+    std::pair{ "pow"_c, &pow_Float16x4 },
+    std::pair{ "mad"_c, &mad_Float32 },
+    std::pair{ "mad"_c, &mad_Float32x2 },
+    std::pair{ "mad"_c, &mad_Float32x3 },
+    std::pair{ "mad"_c, &mad_Float32x4 },
+    std::pair{ "mad"_c, &mad_Float16 },
+    std::pair{ "mad"_c, &mad_Float16x2 },
+    std::pair{ "mad"_c, &mad_Float16x3 },
+    std::pair{ "mad"_c, &mad_Float16x4 },
+    std::pair{ "mad"_c, &mad_Int32 },
+    std::pair{ "mad"_c, &mad_Int32x2 },
+    std::pair{ "mad"_c, &mad_Int32x3 },
+    std::pair{ "mad"_c, &mad_Int32x4 },
+    std::pair{ "mad"_c, &mad_Int16 },
+    std::pair{ "mad"_c, &mad_Int16x2 },
+    std::pair{ "mad"_c, &mad_Int16x3 },
+    std::pair{ "mad"_c, &mad_Int16x4 },
+    std::pair{ "mad"_c, &mad_UInt32 },
+    std::pair{ "mad"_c, &mad_UInt32x2 },
+    std::pair{ "mad"_c, &mad_UInt32x3 },
+    std::pair{ "mad"_c, &mad_UInt32x4 },
+    std::pair{ "mad"_c, &mad_UInt16 },
+    std::pair{ "mad"_c, &mad_UInt16x2 },
+    std::pair{ "mad"_c, &mad_UInt16x3 },
+    std::pair{ "mad"_c, &mad_UInt16x4 },
+    std::pair{ "dot"_c, &dot_Float32x2 },
+    std::pair{ "dot"_c, &dot_Float32x3 },
+    std::pair{ "dot"_c, &dot_Float32x4 },
+    std::pair{ "dot"_c, &dot_Float16x2 },
+    std::pair{ "dot"_c, &dot_Float16x3 },
+    std::pair{ "dot"_c, &dot_Float16x4 },
+    std::pair{ "reflect"_c, &reflect_Float32x2 },
+    std::pair{ "reflect"_c, &reflect_Float32x3 },
+    std::pair{ "reflect"_c, &reflect_Float32x4 },
+    std::pair{ "reflect"_c, &reflect_Float16x2 },
+    std::pair{ "reflect"_c, &reflect_Float16x3 },
+    std::pair{ "reflect"_c, &reflect_Float16x4 },
+    std::pair{ "refract"_c, &refract_Float32x2 },
+    std::pair{ "refract"_c, &refract_Float32x3 },
+    std::pair{ "refract"_c, &refract_Float32x4 },
+    std::pair{ "refract"_c, &refract_Float16x2 },
+    std::pair{ "refract"_c, &refract_Float16x3 },
+    std::pair{ "refract"_c, &refract_Float16x4 },
+    std::pair{ "cross"_c, &cross_Float32x3 },
+    std::pair{ "cross"_c, &cross_Float16x3 },
+    std::pair{ "cross"_c, &length_Float32x2 },
+    std::pair{ "cross"_c, &length_Float32x3 },
+    std::pair{ "cross"_c, &length_Float32x4 },
+    std::pair{ "cross"_c, &length_Float16x2 },
+    std::pair{ "cross"_c, &length_Float16x3 },
+    std::pair{ "cross"_c, &length_Float16x4 },
+    std::pair{ "cross"_c, &normalize_Float32x2 },
+    std::pair{ "cross"_c, &normalize_Float32x3 },
+    std::pair{ "cross"_c, &normalize_Float32x4 },
+    std::pair{ "cross"_c, &normalize_Float16x2 },
+    std::pair{ "cross"_c, &normalize_Float16x3 },
+    std::pair{ "cross"_c, &normalize_Float16x4 },
+    std::pair{ "distance"_c, &distance_Float32x2 },
+    std::pair{ "distance"_c, &distance_Float32x3 },
+    std::pair{ "distance"_c, &distance_Float32x4 },
+    std::pair{ "distance"_c, &distance_Float16x2 },
+    std::pair{ "distance"_c, &distance_Float16x3 },
+    std::pair{ "distance"_c, &distance_Float16x4 },
+    std::pair{ "distance"_c, &min_Float32 },
+    std::pair{ "distance"_c, &min_Float32x2 },
+    std::pair{ "distance"_c, &min_Float32x3 },
+    std::pair{ "distance"_c, &min_Float32x4 },
+    std::pair{ "distance"_c, &min_Float16 },
+    std::pair{ "distance"_c, &min_Float16x2 },
+    std::pair{ "distance"_c, &min_Float16x3 },
+    std::pair{ "distance"_c, &min_Float16x4 },
+    std::pair{ "distance"_c, &min_Int32 },
+    std::pair{ "distance"_c, &min_Int32x2 },
+    std::pair{ "distance"_c, &min_Int32x3 },
+    std::pair{ "distance"_c, &min_Int32x4 },
+    std::pair{ "distance"_c, &min_Int16 },
+    std::pair{ "distance"_c, &min_Int16x2 },
+    std::pair{ "distance"_c, &min_Int16x3 },
+    std::pair{ "distance"_c, &min_Int16x4 },
+    std::pair{ "distance"_c, &min_UInt32 },
+    std::pair{ "distance"_c, &min_UInt32x2 },
+    std::pair{ "distance"_c, &min_UInt32x3 },
+    std::pair{ "distance"_c, &min_UInt32x4 },
+    std::pair{ "distance"_c, &min_UInt16 },
+    std::pair{ "distance"_c, &min_UInt16x2 },
+    std::pair{ "distance"_c, &min_UInt16x3 },
+    std::pair{ "distance"_c, &min_UInt16x4 },
+    std::pair{ "distance"_c, &max_Float32 },
+    std::pair{ "distance"_c, &max_Float32x2 },
+    std::pair{ "distance"_c, &max_Float32x3 },
+    std::pair{ "distance"_c, &max_Float32x4 },
+    std::pair{ "distance"_c, &max_Float16 },
+    std::pair{ "distance"_c, &max_Float16x2 },
+    std::pair{ "distance"_c, &max_Float16x3 },
+    std::pair{ "distance"_c, &max_Float16x4 },
+    std::pair{ "distance"_c, &max_Int32 },
+    std::pair{ "distance"_c, &max_Int32x2 },
+    std::pair{ "distance"_c, &max_Int32x3 },
+    std::pair{ "distance"_c, &max_Int32x4 },
+    std::pair{ "distance"_c, &max_Int16 },
+    std::pair{ "distance"_c, &max_Int16x2 },
+    std::pair{ "distance"_c, &max_Int16x3 },
+    std::pair{ "distance"_c, &max_Int16x4 },
+    std::pair{ "distance"_c, &max_UInt32 },
+    std::pair{ "distance"_c, &max_UInt32x2 },
+    std::pair{ "distance"_c, &max_UInt32x3 },
+    std::pair{ "distance"_c, &max_UInt32x4 },
+    std::pair{ "distance"_c, &max_UInt16 },
+    std::pair{ "distance"_c, &max_UInt16x2 },
+    std::pair{ "distance"_c, &max_UInt16x3 },
+    std::pair{ "distance"_c, &max_UInt16x4 },
+    std::pair{ "clamp"_c, &clamp_Float32 },
+    std::pair{ "clamp"_c, &clamp_Float32x2 },
+    std::pair{ "clamp"_c, &clamp_Float32x3 },
+    std::pair{ "clamp"_c, &clamp_Float32x4 },
+    std::pair{ "clamp"_c, &clamp_Float16 },
+    std::pair{ "clamp"_c, &clamp_Float16x2 },
+    std::pair{ "clamp"_c, &clamp_Float16x3 },
+    std::pair{ "clamp"_c, &clamp_Float16x4 },
+    std::pair{ "clamp"_c, &clamp_Int32 },
+    std::pair{ "clamp"_c, &clamp_Int32x2 },
+    std::pair{ "clamp"_c, &clamp_Int32x3 },
+    std::pair{ "clamp"_c, &clamp_Int32x4 },
+    std::pair{ "clamp"_c, &clamp_Int16 },
+    std::pair{ "clamp"_c, &clamp_Int16x2 },
+    std::pair{ "clamp"_c, &clamp_Int16x3 },
+    std::pair{ "clamp"_c, &clamp_Int16x4 },
+    std::pair{ "clamp"_c, &clamp_UInt32 },
+    std::pair{ "clamp"_c, &clamp_UInt32x2 },
+    std::pair{ "clamp"_c, &clamp_UInt32x3 },
+    std::pair{ "clamp"_c, &clamp_UInt32x4 },
+    std::pair{ "clamp"_c, &clamp_UInt16 },
+    std::pair{ "clamp"_c, &clamp_UInt16x2 },
+    std::pair{ "clamp"_c, &clamp_UInt16x3 },
+    std::pair{ "clamp"_c, &clamp_UInt16x4 },
+    std::pair{ "lerp"_c, &lerp_Float32x2 },
+    std::pair{ "lerp"_c, &lerp_Float32x3 },
+    std::pair{ "lerp"_c, &lerp_Float32x4 },
+    std::pair{ "lerp"_c, &lerp_Float16x2 },
+    std::pair{ "lerp"_c, &lerp_Float16x3 },
+    std::pair{ "lerp"_c, &lerp_Float16x4 },
+    std::pair{ "step"_c, &step_Float32 },
+    std::pair{ "step"_c, &step_Float32x2 },
+    std::pair{ "step"_c, &step_Float32x3 },
+    std::pair{ "step"_c, &step_Float32x4 },
+    std::pair{ "step"_c, &step_Float16 },
+    std::pair{ "step"_c, &step_Float16x2 },
+    std::pair{ "step"_c, &step_Float16x3 },
+    std::pair{ "step"_c, &step_Float16x4 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float32 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float32x2 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float32x3 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float32x4 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float16 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float16x2 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float16x3 },
+    std::pair{ "smoothstep"_c, &smoothstep_Float16x4 },
+    std::pair{ "smoothstep"_c, &ceil_Float32 },
+    std::pair{ "smoothstep"_c, &ceil_Float32x2 },
+    std::pair{ "smoothstep"_c, &ceil_Float32x3 },
+    std::pair{ "smoothstep"_c, &ceil_Float32x4 },
+    std::pair{ "smoothstep"_c, &ceil_Float16 },
+    std::pair{ "smoothstep"_c, &ceil_Float16x2 },
+    std::pair{ "smoothstep"_c, &ceil_Float16x3 },
+    std::pair{ "smoothstep"_c, &ceil_Float16x4 },
+    std::pair{ "smoothstep"_c, &floor_Float32 },
+    std::pair{ "smoothstep"_c, &floor_Float32x2 },
+    std::pair{ "smoothstep"_c, &floor_Float32x3 },
+    std::pair{ "smoothstep"_c, &floor_Float32x4 },
+    std::pair{ "smoothstep"_c, &floor_Float16 },
+    std::pair{ "smoothstep"_c, &floor_Float16x2 },
+    std::pair{ "smoothstep"_c, &floor_Float16x3 },
+    std::pair{ "smoothstep"_c, &floor_Float16x4 },
+    std::pair{ "smoothstep"_c, &fract_Float32 },
+    std::pair{ "smoothstep"_c, &fract_Float32x2 },
+    std::pair{ "smoothstep"_c, &fract_Float32x3 },
+    std::pair{ "smoothstep"_c, &fract_Float32x4 },
+    std::pair{ "smoothstep"_c, &fract_Float16 },
+    std::pair{ "smoothstep"_c, &fract_Float16x2 },
+    std::pair{ "smoothstep"_c, &fract_Float16x3 },
+    std::pair{ "smoothstep"_c, &fract_Float16x4 },
+    std::pair{ "smoothstep"_c, &saturate_Float32 },
+    std::pair{ "smoothstep"_c, &saturate_Float32x2 },
+    std::pair{ "smoothstep"_c, &saturate_Float32x3 },
+    std::pair{ "smoothstep"_c, &saturate_Float32x4 },
+    std::pair{ "smoothstep"_c, &saturate_Float16 },
+    std::pair{ "smoothstep"_c, &saturate_Float16x2 },
+    std::pair{ "smoothstep"_c, &saturate_Float16x3 },
+    std::pair{ "smoothstep"_c, &saturate_Float16x4 },
+    std::pair{ "smoothstep"_c, &trunc_Float32 },
+    std::pair{ "smoothstep"_c, &trunc_Float32x2 },
+    std::pair{ "smoothstep"_c, &trunc_Float32x3 },
+    std::pair{ "smoothstep"_c, &trunc_Float32x4 },
+    std::pair{ "smoothstep"_c, &trunc_Float16 },
+    std::pair{ "smoothstep"_c, &trunc_Float16x2 },
+    std::pair{ "smoothstep"_c, &trunc_Float16x3 },
+    std::pair{ "smoothstep"_c, &trunc_Float16x4 },
+    std::pair{ "smoothstep"_c, &ddx_Float32 },
+    std::pair{ "smoothstep"_c, &ddx_Float32x2 },
+    std::pair{ "smoothstep"_c, &ddx_Float32x3 },
+    std::pair{ "smoothstep"_c, &ddx_Float32x4 },
+    std::pair{ "smoothstep"_c, &ddx_Float16 },
+    std::pair{ "smoothstep"_c, &ddx_Float16x2 },
+    std::pair{ "smoothstep"_c, &ddx_Float16x3 },
+    std::pair{ "smoothstep"_c, &ddx_Float16x4 },
+    std::pair{ "smoothstep"_c, &ddy_Float32 },
+    std::pair{ "smoothstep"_c, &ddy_Float32x2 },
+    std::pair{ "smoothstep"_c, &ddy_Float32x3 },
+    std::pair{ "smoothstep"_c, &ddy_Float32x4 },
+    std::pair{ "smoothstep"_c, &ddy_Float16 },
+    std::pair{ "smoothstep"_c, &ddy_Float16x2 },
+    std::pair{ "smoothstep"_c, &ddy_Float16x3 },
+    std::pair{ "smoothstep"_c, &ddy_Float16x4 },
+    std::pair{ "smoothstep"_c, &fwidth_Float32 },
+    std::pair{ "smoothstep"_c, &fwidth_Float32x2 },
+    std::pair{ "smoothstep"_c, &fwidth_Float32x3 },
+    std::pair{ "smoothstep"_c, &fwidth_Float32x4 },
+    std::pair{ "smoothstep"_c, &fwidth_Float16 },
+    std::pair{ "smoothstep"_c, &fwidth_Float16x2 },
+    std::pair{ "smoothstep"_c, &fwidth_Float16x3 },
+    std::pair{ "smoothstep"_c, &fwidth_Float16x4 },
+    std::pair{ "sign"_c, &sign_Int32 },
+    std::pair{ "sign"_c, &sign_Int32x2 },
+    std::pair{ "sign"_c, &sign_Int32x3 },
+    std::pair{ "sign"_c, &sign_Int32x4 },
+    std::pair{ "sign"_c, &sign_Int16 },
+    std::pair{ "sign"_c, &sign_Int16x2 },
+    std::pair{ "sign"_c, &sign_Int16x3 },
+    std::pair{ "sign"_c, &sign_Int16x4 },
+    std::pair{ "sign"_c, &sign_Float32 },
+    std::pair{ "sign"_c, &sign_Float32x2 },
+    std::pair{ "sign"_c, &sign_Float32x3 },
+    std::pair{ "sign"_c, &sign_Float32x4 },
+    std::pair{ "sign"_c, &sign_Float16 },
+    std::pair{ "sign"_c, &sign_Float16x2 },
+    std::pair{ "sign"_c, &sign_Float16x3 },
+    std::pair{ "sign"_c, &sign_Float16x4 },
+    std::pair{ "abs"_c, &abs_Int32 },
+    std::pair{ "abs"_c, &abs_Int32x2 },
+    std::pair{ "abs"_c, &abs_Int32x3 },
+    std::pair{ "abs"_c, &abs_Int32x4 },
+    std::pair{ "abs"_c, &abs_Int16 },
+    std::pair{ "abs"_c, &abs_Int16x2 },
+    std::pair{ "abs"_c, &abs_Int16x3 },
+    std::pair{ "abs"_c, &abs_Int16x4 },
+    std::pair{ "abs"_c, &abs_Float32 },
+    std::pair{ "abs"_c, &abs_Float32x2 },
+    std::pair{ "abs"_c, &abs_Float32x3 },
+    std::pair{ "abs"_c, &abs_Float32x4 },
+    std::pair{ "abs"_c, &abs_Float16 },
+    std::pair{ "abs"_c, &abs_Float16x2 },
+    std::pair{ "abs"_c, &abs_Float16x3 },
+    std::pair{ "abs"_c, &abs_Float16x4 },
+    std::pair{ "castToF16"_c, &castToF16_UInt16 },
+    std::pair{ "castToF16"_c, &castToF16_Int16 },
+    std::pair{ "castToU16"_c, &castToU16_Float16 },
+    std::pair{ "castToU16"_c, &castToU16_Int16 },
+    std::pair{ "castToI16"_c, &castToI16_Float16 },
+    std::pair{ "castToI16"_c, &castToI16_UInt16 },
+    std::pair{ "castToF32"_c, &castToF32_UInt32 },
+    std::pair{ "castToF32"_c, &castToF32_Int32 },
+    std::pair{ "castToU32"_c, &castToU32_Float32 },
+    std::pair{ "castToU32"_c, &castToU32_Int32 },
+    std::pair{ "castToI32"_c, &castToI32_Float32 },
+    std::pair{ "castToI32"_c, &castToI32_UInt32 },
+    std::pair{ "any"_c, &any_Bool8 },
+    std::pair{ "any"_c, &any_Bool8x2 },
+    std::pair{ "any"_c, &any_Bool8x3 },
+    std::pair{ "any"_c, &any_Bool8x4 },
+    std::pair{ "all"_c, &all_Bool8 },
+    std::pair{ "all"_c, &all_Bool8x2 },
+    std::pair{ "all"_c, &all_Bool8x3 },
+    std::pair{ "all"_c, &all_Bool8x4 },
+    std::pair{ "transpose"_c, &transpose_Float32x2x2 },
+    std::pair{ "transpose"_c, &transpose_Float16x2x2 },
+    std::pair{ "transpose"_c, &transpose_Float32x2x3 },
+    std::pair{ "transpose"_c, &transpose_Float16x2x3 },
+    std::pair{ "transpose"_c, &transpose_Float32x2x4 },
+    std::pair{ "transpose"_c, &transpose_Float16x2x4 },
+    std::pair{ "transpose"_c, &transpose_Float32x3x2 },
+    std::pair{ "transpose"_c, &transpose_Float16x3x2 },
+    std::pair{ "transpose"_c, &transpose_Float32x3x3 },
+    std::pair{ "transpose"_c, &transpose_Float16x3x3 },
+    std::pair{ "transpose"_c, &transpose_Float32x3x4 },
+    std::pair{ "transpose"_c, &transpose_Float16x3x4 },
+    std::pair{ "transpose"_c, &transpose_Float32x4x2 },
+    std::pair{ "transpose"_c, &transpose_Float16x4x2 },
+    std::pair{ "transpose"_c, &transpose_Float32x4x3 },
+    std::pair{ "transpose"_c, &transpose_Float16x4x3 },
+    std::pair{ "transpose"_c, &transpose_Float32x4x4 },
+    std::pair{ "transpose"_c, &transpose_Float16x4x4 },
+    std::pair{ "inverse"_c, &inverse_Float32x2x2 },
+    std::pair{ "inverse"_c, &inverse_Float16x2x2 },
+    std::pair{ "inverse"_c, &inverse_Float32x2x3 },
+    std::pair{ "inverse"_c, &inverse_Float16x2x3 },
+    std::pair{ "inverse"_c, &inverse_Float32x2x4 },
+    std::pair{ "inverse"_c, &inverse_Float16x2x4 },
+    std::pair{ "inverse"_c, &inverse_Float32x3x2 },
+    std::pair{ "inverse"_c, &inverse_Float16x3x2 },
+    std::pair{ "inverse"_c, &inverse_Float32x3x3 },
+    std::pair{ "inverse"_c, &inverse_Float16x3x3 },
+    std::pair{ "inverse"_c, &inverse_Float32x3x4 },
+    std::pair{ "inverse"_c, &inverse_Float16x3x4 },
+    std::pair{ "inverse"_c, &inverse_Float32x4x2 },
+    std::pair{ "inverse"_c, &inverse_Float16x4x2 },
+    std::pair{ "inverse"_c, &inverse_Float32x4x3 },
+    std::pair{ "inverse"_c, &inverse_Float16x4x3 },
+    std::pair{ "inverse"_c, &inverse_Float32x4x4 },
+    std::pair{ "inverse"_c, &inverse_Float16x4x4 },
+    std::pair{ "OutputLayer"_c, &VertexGetOutputLayer },
+    std::pair{ "OutputViewport"_c, &VertexGetOutputViewport },
+    std::pair{ "Index"_c, &VertexGetIndex },
+    std::pair{ "InstanceIndex"_c, &VertexGetInstanceIndex },
+    std::pair{ "BaseIndex"_c, &VertexGetBaseIndex },
+    std::pair{ "BaseInstanceIndex"_c, &VertexGetBaseInstanceIndex },
+    std::pair{ "DrawIndex"_c, &VertexGetDrawIndex },
+    std::pair{ "OutputLayer"_c, &VertexSetOutputLayer_UInt16 },
+    std::pair{ "OutputLayer"_c, &VertexSetOutputLayer_UInt32 },
+    std::pair{ "OutputViewport"_c, &VertexSetOutputViewport_UInt16 },
+    std::pair{ "OutputViewport"_c, &VertexSetOutputViewport_UInt32 },
+    std::pair{ "vertexExportExportCoordinates"_c, &VertexExportCoordinates_Float32x4 },
+    std::pair{ "vertexExportExportCoordinates"_c, &VertexExportCoordinates_Float16x4 },
+    std::pair{ "geometryExportVertex"_c, &GeometryExportVertex },
+    std::pair{ "geometryExportPrimitive"_c, &GeometryExportPrimitive },
+    std::pair{ "pixelGetCoordinates"_c, &PixelGetCoordinates_Float32x4 },
+    std::pair{ "pixelGetCoordinates"_c, &PixelGetCoordinates_Float16x4 },
+    std::pair{ "pixelGetDepth"_c, &PixelGetDepth },
+    std::pair{ "pixelSetDepth"_c, &PixelSetDepth },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float32x4_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Float16x4_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int32x4_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_Int16x4_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt32x4_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x2_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x2_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x2_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x2_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x3_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x3_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x3_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x3_UInt16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x4_Int32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x4_UInt32 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x4_Int16 },
+    std::pair{ "pixelExportColor"_c, &PixelExportColor_UInt16x4_UInt16 },
+    std::pair{ "computeGetLocalThreadIndices"_c, &ComputeGetLocalThreadIndices },
+    std::pair{ "computeGetGlobalThreadIndices"_c, &ComputeGetGlobalThreadIndices },
+    std::pair{ "computeGetWorkgroupIndices"_c, &ComputeGetWorkgroupIndices },
+    std::pair{ "computeGetWorkGroupDimensions"_c, &ComputeGetWorkGroupDimensions },
+    std::pair{ "computeGetIndexInWorkgroup"_c, &ComputeGetIndexInWorkgroup },
+    std::pair{ "subgroupGetId"_c, &SubgroupGetId },
+    std::pair{ "subgroupGetSize"_c, &SubgroupGetSize },
+    std::pair{ "subgroupGetNum"_c, &SubgroupGetNum },
+    std::pair{ "subgroupGetThreadMask"_c, &SubgroupGetThreadMask },
+    std::pair{ "subgroupGetThreadAndLowerMask"_c, &SubgroupGetThreadAndLowerMask },
+    std::pair{ "subgroupGetLowerMask"_c, &SubgroupGetLowerMask },
+    std::pair{ "subgroupGetThreadAndGreaterMask"_c, &SubgroupGetThreadAndGreaterMask },
+    std::pair{ "subgroupGetGreaterMask"_c, &SubgroupGetGreaterMask },
+    std::pair{ "subgroupGetFirstActiveThread"_c, &SubgroupGetFirstActiveThread }
+};
 
 } // namespace GPULang
 
