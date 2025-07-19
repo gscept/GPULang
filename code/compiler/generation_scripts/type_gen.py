@@ -386,7 +386,10 @@ def generate_types():
             self.documentation = documentation
 
         def declaration(self):
-            return_string = f'/// {self.api_name}\n'
+            if self.parameters.__len__() > 0:
+                return_string = f'/// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
+            else:
+                return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'extern Variable {param.decl_name};\n'
             return_string += f'extern Function {self.decl_name};\n'
@@ -394,7 +397,10 @@ def generate_types():
             return return_string
 
         def definition(self):
-            return_string = f'/// {self.api_name}\n'
+            if self.parameters.__len__() > 0:
+                return_string = f'/// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
+            else:
+                return_string = f'/// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'Variable {param.decl_name};\n'
             return_string += f'Function {self.decl_name};\n'
@@ -404,7 +410,10 @@ def generate_types():
             return return_string
 
         def setup(self):
-            return_string = f'    /// {self.api_name}\n'
+            if self.parameters.__len__() > 0:
+                return_string = f'    /// {self.api_name} with {", ".join([param.type_name for param in self.parameters])}\n'
+            else:
+                return_string = f'    /// {self.api_name}\n'
             for param in self.parameters:
                 return_string += f'    {param.decl_name}.name = "{param.api_name}"_c;\n'
                 return_string += f'    {param.decl_name}.type = Type::FullType{{ {param.type_name}Type.name }};\n'
